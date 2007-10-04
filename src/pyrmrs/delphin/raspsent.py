@@ -1,8 +1,8 @@
-import config;
-import globals;
-
 import os;
 import codecs;
+
+import pyrmrs.config;
+import pyrmrs.globals;
 
 
 
@@ -16,7 +16,7 @@ class RaspSplitReader:
     
     self.f = f;
     self.stopped = False;
-    self.logger = globals.get_logger( self );
+    self.logger = pyrmrs.globals.get_logger( self );
     
   def __iter__( self ):
 
@@ -46,7 +46,7 @@ class RaspSplitReader:
     txt = txt.strip();
     
     if not self.logger is None:
-      self.logger.log( globals.LOG_DEBUG_COARSE, "returning sentstr |>%s<|;" % txt );
+      self.logger.log( pyrmrs.globals.LOG_DEBUG_COARSE, "returning sentstr |>%s<|;" % txt );
     
     return txt;
 
@@ -60,11 +60,11 @@ class RaspSentenceSplitter:
   
   def __init__( self ):
     
-    self.logger = globals.get_logger( self );
+    self.logger = pyrmrs.globals.get_logger( self );
     
     if not self.logger is None:
-      self.logger.debug( "opening pipe on %s..." % config.SH_RASPSENT );
-    ( self.raspsentin, self.raspsentout ) = os.popen4( config.SH_RASPSENT );
+      self.logger.debug( "opening pipe on %s..." % pyrmrs.config.SH_RASPSENT );
+    ( self.raspsentin, self.raspsentout ) = os.popen4( pyrmrs.config.SH_RASPSENT );
     if not self.logger is None:
       self.logger.debug( "finished opening pipe;" );
     
@@ -74,7 +74,7 @@ class RaspSentenceSplitter:
   def txtstr_to_sentstrs( self, txt ):
     
     if not self.logger is None:
-      self.logger.log( globals.LOG_DEBUG_COARSE, "splitting |>%s<|;" % txt );
+      self.logger.log( pyrmrs.globals.LOG_DEBUG_COARSE, "splitting |>%s<|;" % txt );
     
     txt = txt.replace( "\n\n", "\021" );
     txt = txt.replace( "\n", " " );

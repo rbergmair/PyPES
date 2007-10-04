@@ -1,19 +1,18 @@
-import globals;
-import config;
-
 import codecs;
 
-import delphin.pet;
-import delphin.raspsent;
+import pyrmrs.globals;
+import pyrmrs.config;
 
-globals.init_main();
+import pyrmrs.delphin.raspsent;
 
-f = open( config.DIR_PYRMRSHOME + "/testdta/test.txt" );
+pyrmrs.globals.init_main();
+
+f = open( pyrmrs.config.DIR_PYRMRSHOME + "/testdta/test.txt" );
 f = codecs.getreader( "utf-8" )( f );
 txt = f.read();
 f.close();
 
-raspsentctrl = delphin.raspsent.RaspSentenceSplitter();
+raspsentctrl = pyrmrs.delphin.raspsent.RaspSentenceSplitter();
 
 for sent in raspsentctrl.txtstr_to_sentstrs( txt ):
   print sent;
@@ -21,4 +20,4 @@ for sent in raspsentctrl.txtstr_to_sentstrs( txt ):
 for sent in raspsentctrl.txtstr_to_sentstrs( txt ):
   print sent;
 
-globals.destruct_main();
+pyrmrs.globals.destruct_main();
