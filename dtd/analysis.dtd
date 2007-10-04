@@ -1,0 +1,7 @@
+<!ELEMENT analysis (sentence)*>
+<!ELEMENT sentence (rmrs|error)*>
+
+<!ELEMENT rmrs
+  SYSTEM "file:///home/rb432/workspace/PyRMRS/dtd/rmrs.dtd">
+
+<!ELEMENT error (#PCDATA)>
