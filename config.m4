@@ -39,6 +39,8 @@ m4_dnl     define(`_SH_PYTHON',`/usr/bin/python')
 m4_dnl   _DIR_PYRMRSHOME points to the directory where this file is located.
 m4_define(`_DIR_PYRMRSHOME',m4_esyscmd(`echo -n $PWD'))
 
+m4_define(`_DIR_LOG',`/tmp')
+
 
 
 m4_dnl specific to rb432

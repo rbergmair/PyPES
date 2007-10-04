@@ -2,6 +2,10 @@ import sys;
 import codecs;
 import logging;
 import config;
+import os;
+import time;
+import random;
+import string;
 
 
 
@@ -15,74 +19,93 @@ LOG_NOTSET = logging.NOTSET;
 
 
 
+logdir = [ None ];
+loggers = {};
+
+
+
 def init_main():
-    
+  
   sys.stdin = codecs.getreader( "utf-8" )( sys.stdin );
   sys.stdout = codecs.getwriter( "utf-8" )( sys.stdout );
   sys.stderr = codecs.getwriter( "utf-8" )( sys.stderr );
   
-  if not config.LOGGING is None:
+  if logdir[0] is None:
     
-    logging.addLevelName( LOG_DEBUG_COARSE, "DEBUG_COARSE" );
-    
-    if not config.LOGGING.has_key( "" ):
-      newhndl = logging.StreamHandler();
-      newhndl.setLevel( logging.WARNING );
-      logger = logging.getLogger( "" );
-      logger.addHandler( newhndl );
-      logger.setLevel( 0 );
+    logdir[0] = "%s/pyrmrs-%s-%c%c" % (
+      config.DIR_LOG,
+      time.strftime( "%y%m%d%H%M%S" ),
+      random.choice( string.digits + string.ascii_lowercase ),
+      random.choice( string.digits + string.ascii_lowercase )
+    );
 
-    for key in config.LOGGING:
-      newhndl = logging.StreamHandler();
-      newhndl.setLevel( config.LOGGING[ key ] );
-      logger = logging.getLogger( key );
-      logger.addHandler( newhndl );
-      logger.setLevel( 0 );
+    try:
+      os.mkdir( logdir[0] );
+    except:
+      logdir[0] = None;
+  
+  if not config.STDERR_LOGGING is None:
     
-    #if config.LOGGING.has_key( "" ):
-    #  logging.basicConfig( stream=sys.stderr, level=config.LOGGING[ "" ] );
-    #else:
-    #  logging.basicConfig( stream=sys.stderr, level=logging.WARNING );
+    logging.addLevelName( LOG_DEBUG_COARSE, "DEBUG" );
+    formatter = logging.Formatter( "%(name)-12s: %(message)s" );
+    
+    if not config.STDERR_LOGGING.has_key( "pyrmrs" ):
+      config.STDERR_LOGGING[ "pyrmrs" ] = logging.WARNING;
+      
+    for lgname in config.STDERR_LOGGING:
+      if ( lgname == "pyrmrs" ) or ( lgname.find("pyrmrs.") == 0 ):
+        newhndl = logging.StreamHandler( sys.stderr );
+        newhndl.setLevel( config.STDERR_LOGGING[ lgname ] );
+        newhndl.setFormatter( formatter );
+        logger = logging.getLogger( lgname );
+        logger.addHandler( newhndl );
+        logger.setLevel( 1 );
 
 def destruct_main():
   
-  pass;
+  for logname in loggers:
+    ( logger, handler, f ) = loggers[ logname ];
+    logger.removeHandler( handler );
+    handler.close();
+    f.close();
+    pass;
 
 
-
-loggers = [];
-
-def compare_prefix( a, b ):
-
-  if a == b:
-    return 0;
-  elif ( a+"." ).find( b+"." ) == 0:
-    return +1;
-  elif ( b+"." ).find( a+"." ) == 0:
-    return -1;
-  return 0;
 
 def get_logger( inst ):
   
-  if config.LOGGING is None:
+  if config.STDERR_LOGGING is None and config.FILE_TRACING is None:
     return None;
   
   logname = inst.__class__.__module__;
-  
   logger = logging.getLogger( logname );
-  logger.setLevel( 0 );
-  
-  return logger;
-  
-  if logger in loggers:
+
+  if logname in loggers:
     return logger;
   
-  lgnames = [];
-  for lgname in config.LOGGING.keys():
+  if config.FILE_TRACING is None:
+    return logger;
+  
+  if logdir[0] is None:
+    return logger;
+
+  logger.setLevel( 1 );
+  
+  minlvl = 100;
+  for lgname in config.FILE_TRACING:
     if ( logname+"." ).find( lgname+"." ) == 0:
-      lgnames.append( lgname );
-  lgnames.sort( cmp=compare_prefix );
-  for lgname in lgnames:
-    logger.setLevel( config.LOGGING[ lgname ] );
-                                          
+      minlvl = min( minlvl, config.FILE_TRACING[lgname] );
+  
+  formatter = logging.Formatter( "%(message)s" );
+  
+  f = open( logdir[0]+"/"+logname+".log", "w" );
+  f = codecs.getwriter( "utf-8" )( f );
+  
+  newhndl = logging.StreamHandler( f );
+  newhndl.setLevel( minlvl );
+  newhndl.setFormatter( formatter );
+  logger.addHandler( newhndl );
+
+  loggers[ logname ] = ( logger, newhndl, f );
+  
   return logger;
