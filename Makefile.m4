@@ -17,7 +17,7 @@ CAT=cat
 
 MAKEFILE=Makefile
 
-CONFIG=src/config.py
+CONFIG=src/pyrmrs/config.py
 
 SCRIPTS=bin/rmrsify.py bin/test_large_mrs.py bin/test_large_rmrs.py \
   bin/test_pet.py bin/test_rasp.py bin/test_raspsent.py bin/test_simple_mrs.py \
@@ -45,7 +45,7 @@ $(MAKEFILE): $(MAKEFILE).m4
 %.xml: %.xml.m4 config.m4 _CONFIG_M4_LOCAL $(MAKEFILE)
 	( $(ECHO) "`m4_changecom'()"; $(CAT) $< ) | $(M4) - > $@
 
-src/config.py: src/config.py.m4 config.m4 _CONFIG_M4_LOCAL $(MAKEFILE)
+src/pyrmrs/config.py: src/pyrmrs/config.py.m4 config.m4 _CONFIG_M4_LOCAL $(MAKEFILE)
 	( $(ECHO) "`m4_changecom'()"; $(CAT) $< ) | $(M4) - > $@
 
 bin/%.py: src/%.py $(MAKEFILE)
