@@ -1,6 +1,6 @@
-import common.pchar_element;
+import pyrmrs.xml.pchar_element;
 
-class Predicate( common.pchar_element.PCharElement ):
+class Predicate( pyrmrs.xml.pchar_element.PCharElement ):
   
   XMLELEM = "PRED";
   XMLELEMs = [ XMLELEM ];

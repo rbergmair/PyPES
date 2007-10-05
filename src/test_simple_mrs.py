@@ -1,22 +1,16 @@
-import globals;
+import pyrmrs.globals;
+import pyrmrs.config;
 
-import gzip;
-import warnings;
-import random;
-import config;
+import pyrmrs.mrs.simple.mrsreader;
 
-import xml.sax;
+pyrmrs.globals.init_main();
 
-import mrs.mrsreader;
-
-globals.init_main();
-
-DOCS = config.DIR_PYRMRSHOME + "/testdta/testmrslist.xml";
+DOCS = pyrmrs.config.DIR_PYRMRSHOME + "/testdta/testmrslist.xml";
 #DOCS = config.DIR_PYRMRSHOME + "/testdta/testrmrslist.xml";
 
 doc = open( DOCS, "r" );
 
-x = mrs.mrsreader.MRSReader( doc.fileno() );
+x = pyrmrs.mrs.simple.mrsreader.MRSReader( doc.fileno() );
 
 for mrs in x:
   print mrs.str_xml();
@@ -24,4 +18,4 @@ for mrs in x:
 
 doc.close();
 
-globals.destruct_main();
+pyrmrs.globals.destruct_main();

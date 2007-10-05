@@ -1,9 +1,9 @@
-import common.referent;
-import mrs.extrapair;
+import pyrmrs.mrs.common.referent;
+import extrapair;
 
 import string;
 
-class Referent( common.referent.Referent ):
+class Referent( pyrmrs.mrs.common.referent.Referent ):
   
   extrapair_by_path = {};
   extrapairs = [];
@@ -19,7 +19,7 @@ class Referent( common.referent.Referent ):
 
   def register( self, obj ):
     
-    if isinstance( obj, mrs.extrapair.ExtraPair ):
+    if isinstance( obj, extrapair.ExtraPair ):
       self.extrapair_by_path[ obj.path ] = obj;
       self.extrapairs.append( obj );
 

@@ -1,13 +1,13 @@
-import common.reader_element;
+import pyrmrs.xml.reader_element;
 
-import mrs.variable;
-import mrs.constant;
+import variable;
+import constant;
 
 import string;
 
 
 
-class FvPair( common.reader_element.ReaderElement ):
+class FvPair( pyrmrs.xml.reader_element.ReaderElement ):
 
   XMLELEM = "FVPAIR";
   XMLELEM_RARGNAME = "RARGNAME";
@@ -51,10 +51,10 @@ class FvPair( common.reader_element.ReaderElement ):
   def register( self, obj ):
     
     if self.state == self.STATE_BASE:
-      if isinstance( obj, mrs.variable.Variable ):
+      if isinstance( obj, variable.Variable ):
         self.var = obj;
         self.ref = obj;
-      elif isinstance( obj, mrs.constant.Constant ):
+      elif isinstance( obj, constant.Constant ):
         self.const = obj;
         self.ref = obj;
 

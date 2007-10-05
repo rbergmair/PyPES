@@ -1,13 +1,13 @@
-import common.reader_element;
+import pyrmrs.xml.reader_element;
 
 
 
-class ExtraPair( common.reader_element.ReaderElement ):
+class ExtraPair( pyrmrs.xml.reader_element.ReaderElement ):
 
   XMLELEM = "EXTRAPAIR";
   XMLELEM_PATH = "PATH";
   XMLELEM_VALUE = "VALUE";
-  XMLELEMs = [ XMLELEM ];
+  XMLELEMs = [ XMLELEM, XMLELEM_PATH, XMLELEM_VALUE ];
 
   path = None;
   value = None;

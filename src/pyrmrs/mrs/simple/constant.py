@@ -1,5 +1,5 @@
-import common.constant;
+import pyrmrs.mrs.common.constant;
 
-class Constant( common.constant.Constant ):
+class Constant( pyrmrs.mrs.common.constant.Constant ):
   
   None;

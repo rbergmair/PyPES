@@ -1,11 +1,11 @@
-import common.mrsem;
+import pyrmrs.mrs.common.mrsem;
 
-import mrs.variable;
+import variable;
 
 import string;
 import copy;
 
-class MRSem( common.mrsem.MRSem ):
+class MRSem(  pyrmrs.mrs.common.mrsem.MRSem ):
   
   XMLELEM = "MRS";
   XMLELEMs = [ XMLELEM ];
@@ -16,7 +16,7 @@ class MRSem( common.mrsem.MRSem ):
   
   def __init__( self ):
     
-    common.mrsem.MRSem.__init__( self );
+    pyrmrs.mrs.common.mrsem.MRSem.__init__( self );
 
     self.topvar = None;
 
@@ -24,7 +24,7 @@ class MRSem( common.mrsem.MRSem ):
 
   def startElement( self, name, attrs ):
     
-    common.mrsem.MRSem.startElement( self, name, attrs );
+    pyrmrs.mrs.common.mrsem.MRSem.startElement( self, name, attrs );
     if attrs.has_key( "cfrom" ):
       self.cfrom = int( attrs[ "cfrom" ] );
     if attrs.has_key( "cto" ):
@@ -32,8 +32,8 @@ class MRSem( common.mrsem.MRSem ):
   
   def register( self, obj ):
     
-    common.mrsem.MRSem.register( self, obj );
-    if isinstance( obj, mrs.variable.Variable ):
+    pyrmrs.mrs.common.mrsem.MRSem.register( self, obj );
+    if isinstance( obj, variable.Variable ):
       
       if self.topvar == None:
         self.topvar = obj;
@@ -46,7 +46,7 @@ class MRSem( common.mrsem.MRSem ):
   
   def xml_tmplt( self, base ):
 
-    base = common.mrsem.MRSem.xml_tmplt( self, base );
+    base = pyrmrs.mrs.common.mrsem.MRSem.xml_tmplt( self, base );
     
     attributes = "";
     if self.cfrom != None:
@@ -88,7 +88,7 @@ class MRSem( common.mrsem.MRSem ):
           st = st.replace( "="+ev+" ", "=*"+ev+"* " );
           st = self.fmt( st, ep.surface ) + "\n";
           for fvp in ep.fvpairs:
-            if fvp.var != None and fvp.var.sort == mrs.variable.Variable.SORT_HOLE:
+            if fvp.var != None and fvp.var.sort == variable.Variable.SORT_HOLE:
               if self.hcons_by_hi_hid.has_key( fvp.var.vid ):
                 for hcon in self.hcons_by_hi_hid[ fvp.var.vid ]:
                   st += "          :    " + hcon.str_pretty() + "\n";

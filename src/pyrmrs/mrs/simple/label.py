@@ -1,6 +1,8 @@
-import common.label;
+import pyrmrs.mrs.common.label;
 
-class Label( common.label.Label ):
+import extrapair;
+
+class Label( pyrmrs.mrs.common.label.Label ):
   
   extrapairs = [];
 
@@ -8,7 +10,7 @@ class Label( common.label.Label ):
 
   def __init__( self ):
     
-    common.label.Label.__init__( self );
+    pyrmrs.mrs.common.label.Label.__init__( self );
     self.extrapairs = [];
   
   
@@ -29,7 +31,7 @@ class Label( common.label.Label ):
 
   def xml_tmplt( self, base ):
     
-    base = common.label.Label.xml_tmplt( self, base );
+    base = pyrmrs.mrs.common.label.Label.xml_tmplt( self, base );
     
     elements = "";
     for extrapair in self.extrapairs:

@@ -1,6 +1,5 @@
-import common.elementary_predication;
-
-import error.xmlsem_error;
+import pyrmrs.mrs.common.elementary_predication;
+import pyrmrs.error.xmlsem_error;
 
 import predicate;
 import spredicate;
@@ -10,7 +9,7 @@ import string;
 
 
 
-class ElementaryPredication( common.elementary_predication.ElementaryPredication ):
+class ElementaryPredication( pyrmrs.mrs.common.elementary_predication.ElementaryPredication ):
 
   spredicate = None;
   predicate = None;
@@ -21,7 +20,7 @@ class ElementaryPredication( common.elementary_predication.ElementaryPredication
 
   def __init__( self ):
     
-    common.elementary_predication.ElementaryPredication.__init__( self );
+    pyrmrs.mrs.common.elementary_predication.ElementaryPredication.__init__( self );
     self.spredicate = None;
     self.predicate = None;
     
@@ -31,7 +30,7 @@ class ElementaryPredication( common.elementary_predication.ElementaryPredication
     
   def register( self, obj ):
 
-    common.elementary_predication.ElementaryPredication.register( self, obj );
+    pyrmrs.mrs.common.elementary_predication.ElementaryPredication.register( self, obj );
     
     if isinstance( obj, spredicate.SPredicate ):
       self.spredicate = obj;
@@ -48,7 +47,7 @@ class ElementaryPredication( common.elementary_predication.ElementaryPredication
 
   def xml_tmplt( self, base ):
     
-    base = common.elementary_predication.ElementaryPredication.xml_tmplt( \
+    base = pyrmrs.mrs.common.elementary_predication.ElementaryPredication.xml_tmplt( \
       self, base );
     
     elements = "";
