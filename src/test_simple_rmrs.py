@@ -7,14 +7,14 @@ import gzip;
 import random;
 
 
-globals.init_main();
+pyrmrs.globals.init_main();
 
 DOCS = "/local/scratch/rb432/qa05/rmrs/ans/top_docs.186.rmrs.gz";
-DOCS = config.DIR_PYRMRSHOME + "/testdta/testrmrslist.xml";
+DOCS = pyrmrs.config.DIR_PYRMRSHOME + "/testdta/testrmrslist.xml";
 
 doc = open( DOCS, "r" );
 
-x = rmrs.rmrsreader.RMRSReader( doc.fileno() );
+x = pyrmrs.mrs.robust.rmrsreader.RMRSReader( doc.fileno() );
 
 for rmrs in x:
   print rmrs.str_xml();
@@ -22,4 +22,4 @@ for rmrs in x:
 
 doc.close();
 
-globals.destruct_main();
+pyrmrs.globals.destruct_main();
