@@ -1,5 +1,5 @@
-import globals;
-import config;
+import pyrmrs.globals;
+import pyrmrs.config;
 
 import os;
 import codecs;
@@ -17,10 +17,10 @@ class Rasp:
   
   def __init__( self ):
     
-    self.logger = globals.get_logger( self );
+    self.logger = pyrmrs.globals.get_logger( self );
     
     cmd = '%s -w -p" -ot -u -n %d"' % \
-            ( config.SH_RASP, config.RASP_MAX_NO_PARSES );
+            ( pyrmrs.config.SH_RASP, pyrmrs.config.RASP_MAX_NO_PARSES );
     
     if not self.logger is None:
       self.logger.debug( "opening pipe on %s..." % cmd );
@@ -53,7 +53,7 @@ class Rasp:
   def sentstr_to_raspstr( self, sent ):
     
     if not self.logger is None:
-      self.logger.log( globals.LOG_DEBUG_COARSE, "rasping |>%s<|;" % sent );
+      self.logger.log( pyrmrs.globals.LOG_DEBUG_COARSE, "rasping |>%s<|;" % sent );
     
     sent += " ^ \n";
     
@@ -90,7 +90,7 @@ class Rasp:
     buf = buf[ : len(buf) - pending ]+"\n\n";
     
     if not self.logger is None:
-      self.logger.log( globals.LOG_DEBUG_COARSE, "returning raspstr |>%s<|;" % buf );
+      self.logger.log( pyrmrs.globals.LOG_DEBUG_COARSE, "returning raspstr |>%s<|;" % buf );
     
     return buf;
 

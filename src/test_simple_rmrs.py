@@ -1,12 +1,11 @@
-import globals;
+import pyrmrs.globals;
+import pyrmrs.config;
+
+import pyrmrs.mrs.robust.rmrsreader;
 
 import gzip;
 import random;
-import config;
 
-import xml.sax;
-
-import rmrs.rmrsreader;
 
 globals.init_main();
 
