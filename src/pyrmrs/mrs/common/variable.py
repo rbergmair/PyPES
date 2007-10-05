@@ -1,10 +1,10 @@
-import reader_element;
+import pyrmrs.xml.reader_element;
 
 import referent;
 
 
 
-class Variable( reader_element.ReaderElement ):
+class Variable( pyrmrs.xml.reader_element.ReaderElement ):
   
   XMLELEM = "VAR";
   XMLELEMs = [ XMLELEM ];

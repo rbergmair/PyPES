@@ -1,14 +1,12 @@
-import globals;
+import pyrmrs.globals;
+import pyrmrs.config;
+import pyrmrs.mrs.robust.rmrsreader;
 
 import codecs;
-
 import gzip;
 import random;
-import config;
 
-import xml.sax;
 
-import rmrs.rmrsreader;
 
 import sys;
 

@@ -1,6 +1,6 @@
-import common.pchar_element;
+import pyrmrs.xml.pchar_element;
 
-class GrammarPredicate( common.pchar_element.PCharElement ):
+class GrammarPredicate( pyrmrs.xml.pchar_element.PCharElement ):
 
   XMLELEM = "GPRED";
   XMLELEMs = [ XMLELEM ];

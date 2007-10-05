@@ -1,4 +1,4 @@
-import common.xmlreader;
+import pyrmrs.xml.xmlreader;
 
 import rmrsem;
 import elementary_predication;
@@ -11,7 +11,7 @@ import constant;
 import in_group;
 import hole_constraint;
 
-class RMRSReader( common.xmlreader.XMLReader ):
+class RMRSReader( pyrmrs.xml.xmlreader.XMLReader ):
 
   CLIENTS = [
     rmrsem.RMRSem,
@@ -36,7 +36,7 @@ class RMRSReader( common.xmlreader.XMLReader ):
     
     if addxml != None:
       addxml = ( "rmrs-list-mc", "rmrs.dtd" );
-    common.xmlreader.XMLReader.__init__( self, ifile, addxml, limit );
+    pyrmrs.xml.xmlreader.XMLReader.__init__( self, ifile, addxml, limit );
 
 for client in RMRSReader.CLIENTS:
   RMRSReader.CLIENT_BYNAME[ client.XMLELEM ] = client;

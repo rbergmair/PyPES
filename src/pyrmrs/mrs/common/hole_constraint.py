@@ -1,6 +1,5 @@
-import reader_element;
-
-import error.xmlsem_error;
+import pyrmrs.xml.reader_element;
+import pyrmrs.error.xmlsem_error;
 
 import variable;
 import label;
@@ -9,7 +8,7 @@ import string;
 
 
 
-class HoleConstraint( reader_element.ReaderElement ):
+class HoleConstraint( pyrmrs.xml.reader_element.ReaderElement ):
 
   XMLELEM = "HCONS";
   XMLELEM_HI = "HI";

@@ -1,6 +1,6 @@
-import common.referent;
+import pyrmrs.mrs.common.referent;
 
-class Referent( common.referent.Referent ):
+class Referent( pyrmrs.mrs.common.referent.Referent ):
 
   NUM_SINGULAR = "sg";
   NUM_PLURAL = "pl";

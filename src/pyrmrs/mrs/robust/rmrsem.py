@@ -1,4 +1,5 @@
-import common.mrsem;
+import pyrmrs.mrs.common.mrsem;
+import pyrmrs.error.xmlsem_error;
 
 import constant;
 import elementary_predication;
@@ -14,11 +15,9 @@ import referent;
 import copy;
 import string;
 
-import error.xmlsem_error;
 
 
-
-class RMRSem( common.mrsem.MRSem ):
+class RMRSem( pyrmrs.mrs.common.mrsem.MRSem ):
 
   XMLELEM = "RMRS";
   XMLELEMs = [ XMLELEM ];
@@ -40,7 +39,7 @@ class RMRSem( common.mrsem.MRSem ):
 
   def __init__( self ):
     
-    common.mrsem.MRSem.__init__( self );
+    pyrmrs.mrs.common.mrsem.MRSem.__init__( self );
     
     self.eps_by_lid = {};
     self.rargs = [];
@@ -59,13 +58,13 @@ class RMRSem( common.mrsem.MRSem ):
 
   def startElement( self, name, attrs ):
     
-    common.mrsem.MRSem.startElement( self, name, attrs );
+    pyrmrs.mrs.common.mrsem.MRSem.startElement( self, name, attrs );
     self.cfrom = int( attrs[ "cfrom" ] );
     self.cto = int( attrs[ "cto" ] );
 
   def register( self, obj ):
     
-    common.mrsem.MRSem.register( self, obj );
+    pyrmrs.mrs.common.mrsem.MRSem.register( self, obj );
 
     if isinstance( obj, label.Label ):
       
@@ -120,7 +119,7 @@ class RMRSem( common.mrsem.MRSem ):
   
   def xml_tmplt( self, base ):
     
-    base = common.mrsem.MRSem.xml_tmplt( self, base );
+    base = pyrmrs.mrs.common.mrsem.MRSem.xml_tmplt( self, base );
 
     attributes = " cfrom='%s'" % self.cfrom;
     attributes += " cto='%s'" % self.cto;

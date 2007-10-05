@@ -1,6 +1,6 @@
-import reader_element;
+import pyrmrs.xml.reader_element;
 
-class Label( reader_element.ReaderElement ):
+class Label( pyrmrs.xml.reader_element.ReaderElement ):
   
   XMLELEM = "LABEL";
   XMLELEMs = [ XMLELEM ];

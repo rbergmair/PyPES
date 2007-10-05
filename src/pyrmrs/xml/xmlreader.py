@@ -1,11 +1,12 @@
+import pyrmrs.config;
+import pyrmrs.globals;
+import pyrmrs.error.xmlsem_error;
+
 import xml.sax;
 import xml.sax.handler;
 
-import error.xmlsem_error;
-
 import errno;
 import sys;
-import config;
 import os;
 
 CHUNK_SIZE = 512;
@@ -68,8 +69,12 @@ class XMLReader( xml.sax.handler.ContentHandler ):
   start_callbacks = {};
   char_callbacks = {};
   end_callbacks = {};
+  
+  logger = None;
 
   def __init__( self, ifile, addxml=None, limit=None ):
+    
+    self.logger = pyrmrs.globals.get_logger( self );
     
     self.tlcont = "";
     self.limit = limit;
@@ -87,7 +92,7 @@ class XMLReader( xml.sax.handler.ContentHandler ):
       (self.top, self.dtd) = addxml;
       self.parser.feed( "<?xml version='1.0'?>\n\n" );
       self.parser.feed( "<!DOCTYPE " + self.top + " SYSTEM \"file://" + \
-        config.PYRMRSHOME + "/dtd/" + self.dtd + "\">\n\n" );
+        config.DIR_PYRMRSHOME + "/dtd/" + self.dtd + "\">\n\n" );
       self.parser.feed( "<%s>\n\n" % self.top );
 
     self.ifile = ifile;
@@ -132,24 +137,24 @@ class XMLReader( xml.sax.handler.ContentHandler ):
       try:
         data = os.read( self.ifile, CHUNK_SIZE );
         #data = data.replace( "\000", "" );
-        if data.find( "\003" ) != -1:
+        if data.find( "\027" ) != -1:
           eob = True;
-          data = data.replace( "\003", "" );
+          data = data.replace( "\027", "" );
       except IOError, (err, strerr):
         if err == errno.EAGAIN:
           data = "";
         else:
           raise;
-
+        
       if data != "":
         try:
-          if config.VERBOSE:
+          if not self.logger is None:
             self.alldata += data;
             self.alldata = self.alldata[ len( self.alldata ) - CHUNK_SIZE*3: len( self.alldata ) ];
           self.parser.feed( data );
         except:
-          if config.VERBOSE:
-            print self.alldata + "***";
+          if not self.logger is None:
+            self.logger.warning( self.alldata + "***" );
           raise;
 
       if eob or data == "" or ( ( self.limit != None ) and ( self.noread >= self.limit ) ):
@@ -212,9 +217,8 @@ class XMLReader( xml.sax.handler.ContentHandler ):
         for cb in self.char_callbacks[ active_obj.__class__ ]:
           cb( active_obj, content );
           
-    elif config.VERBOSE:
-      sys.stdout.write( content );
-      sys.stdout.flush();
+    elif not self.logger is None:
+      self.logger.debug( content );
 
   def endElement( self, name ):
 

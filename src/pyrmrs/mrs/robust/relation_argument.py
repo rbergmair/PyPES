@@ -1,6 +1,5 @@
-import common.reader_element;
-
-import error.xmlsem_error;
+import pyrmrs.xml.reader_element;
+import pyrmrs.error.xmlsem_error;
 
 import label;
 import variable;
@@ -10,7 +9,7 @@ import string;
 
 
 
-class RelationArgument( common.reader_element.ReaderElement ):
+class RelationArgument( pyrmrs.xml.reader_element.ReaderElement ):
   
   XMLELEM = "RARG";
   XMLELEM_RARGNAME = "RARGNAME"; 

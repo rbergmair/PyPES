@@ -1,5 +1,5 @@
-import common.label;
+import pyrmrs.mrs.common.label;
 
-class Label( common.label.Label ):
+class Label( pyrmrs.mrs.common.label.Label ):
   
   pass;

@@ -1,6 +1,4 @@
-import reader_element;
-
-import error.xmlsem_error;
+import pyrmrs.xml.reader_element;
 
 import label;
 import real_predicate;
@@ -9,7 +7,7 @@ import string;
 
 
 
-class ElementaryPredication( reader_element.ReaderElement ):
+class ElementaryPredication( pyrmrs.xml.reader_element.ReaderElement ):
 
   XMLELEM = "EP";
   XMLELEMs = [ XMLELEM ];

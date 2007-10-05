@@ -1,5 +1,5 @@
-import common.hole_constraint;
+import pyrmrs.mrs.common.hole_constraint;
 
-class HoleConstraint( common.hole_constraint.HoleConstraint ):
+class HoleConstraint( pyrmrs.mrs.common.hole_constraint.HoleConstraint ):
   
   pass;

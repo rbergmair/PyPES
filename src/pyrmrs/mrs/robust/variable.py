@@ -1,12 +1,12 @@
-import common.variable;
+import pyrmrs.mrs.common.variable;
 
 import referent;
 
-class Variable( common.variable.Variable ):
+class Variable( pyrmrs.mrs.common.variable.Variable ):
   
   def startElement( self, name, attrs ):
     
-    common.variable.Variable.startElement( self, name, attrs );
+    pyrmrs.mrs.common.variable.Variable.startElement( self, name, attrs );
     
     if name == self.XMLELEM:
 

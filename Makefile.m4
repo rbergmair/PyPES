@@ -12,6 +12,7 @@ CHMOD=chmod
 FIND=find
 ECHO=echo
 CAT=cat
+SED=sed
 
 
 
@@ -27,15 +28,22 @@ TESTXMLS=testdta/testrmrslist.xml testdta/testmrslist.xml
 
 
 
-all: $(CONFIG) $(SCRIPTS) $(TESTXMLS) $(MAKEFILE)
+all: $(MAKEFILE) $(CONFIG) $(SCRIPTS) $(TESTXMLS)
 
 clean: $(MAKEFILE)
 	$(FIND) . -name *.pyc -exec $(RM) {} \;
 	$(RM) $(CONFIG)
 	$(RM) $(SCRIPTS)
 	$(RM) $(TESTXMLS)
+  
+loc: $(MAKEFILE)
+	$(FIND) . -name *.py -exec $(GREP) -H --count -e "" {} \;
+	$(FIND) . -name *.py -exec $(CAT) {} \; | $(GREP) -e "" --count
+  
 
-.PHONY: all clean
+
+
+.PHONY: all clean loc
 
 
 
@@ -43,7 +51,7 @@ $(MAKEFILE): $(MAKEFILE).m4
 	( $(ECHO) "`m4_changecom'()"; $(CAT) $< ) | $(M4) - > $@
 
 %.xml: %.xml.m4 config.m4 _CONFIG_M4_LOCAL $(MAKEFILE)
-	( $(ECHO) "`m4_changecom'()"; $(CAT) $< ) | $(M4) - > $@
+	( $(ECHO) "`m4_changecom'()"; $(CAT) $< ) | $(M4) - | $(SED) "/^$$/d" > $@
 
 src/pyrmrs/config.py: src/pyrmrs/config.py.m4 config.m4 _CONFIG_M4_LOCAL $(MAKEFILE)
 	( $(ECHO) "`m4_changecom'()"; $(CAT) $< ) | $(M4) - > $@
