@@ -44,10 +44,17 @@ m4_define(`_DIR_LOG',`/tmp')
 
 
 m4_dnl specific to rb432
+
 m4_define(`_SH_CHEAP',m4_esyscmd(`echo -n $DELPHINHOME/pet/bin/cheap'))
-m4_define(`_FILE_GRAMMAR',m4_esyscmd(`echo -n $DELPHINHOME/erg/english.grm'))
+
+m4_define(`_DIR_ERGHOME',m4_esyscmd(`echo -n $DELPHINHOME/erg'))
+m4_define(`_FILE_ERG',m4_esyscmd(`echo -n $DELPHINHOME/erg/english.grm'))
+
 m4_define(`_SH_RASP',m4_esyscmd(`echo -n $SCRATCH/rasp3/scripts/rasp-rb.sh'))
 m4_define(`_SH_RASPSENT',m4_esyscmd(`echo -n $SCRATCH/rasp3/sentence/sentence.x86_64_linux.int'))
+
+m4_define(`_DIR_LKBHOME',m4_esyscmd(`echo -n $DELPHINHOME/lkb'))
+m4_define(`_SH_LKB',m4_esyscmd(`echo -n $DELPHINHOME/lkb/linux.x86.64/lkb'))
 
 
 

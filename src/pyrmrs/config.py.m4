@@ -1,18 +1,23 @@
 # m4_include(`config.m4')
 # m4_sinclude(`config.m4.local')
 
-SH_CHEAP = "_SH_CHEAP";
-FILE_GRAMMAR = "_FILE_GRAMMAR";
-
 DIR_PYRMRSHOME = "_DIR_PYRMRSHOME";
 
 DIR_LOG = "_DIR_LOG";
 
+SH_CHEAP = "_SH_CHEAP";
+
+DIR_ERGHOME = "_DIR_ERGHOME";
+FILE_ERG = "_FILE_ERG";
+
+SH_RASP = "_SH_RASP";
+SH_RASPSENT = "_SH_RASPSENT";
+
+DIR_LKBHOME = "_DIR_LKBHOME";
+SH_LKB = "_SH_LKB";
+
 DIR_QA05 = "_DIR_QA05";
 DIR_BIGTMP = "_DIR_BIGTMP";
-
-SH_RASPSENT = "_SH_RASPSENT";
-SH_RASP = "_SH_RASP";
 
 #import logging;
 #STDERR_LOGGING = {
@@ -32,7 +37,7 @@ PET_NSOLUTIONS = 5;
 PET_RESULTS = 5;
 
 PET_EDGELIMIT = 12288;
-PET_OPT = "-predict-les ";
-# PET_OPT = "";
+#PET_OPT = "-predict-les ";
+PET_OPT = "";
 
 RASP_MAX_NO_PARSES = 5;

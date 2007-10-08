@@ -84,10 +84,12 @@
       (with-input-from-string (jstream input)
         (setf (stream-external-format jstream) :utf-8)
         (format ostream "<rmrs-list>~%")
-        (let* ((tagged (read jstream nil nil))
-               (number (read jstream nil nil))
-               (tree (read jstream nil nil)))
-          (declare (ignore number))
+        (setq tagged (read jstream nil nil))
+        (setq number (read jstream nil nil))
+        (loop
+          (setq tree (read jstream nil nil))
+          (unless tree
+            (return))
           (when tree
             (construct-sem-for-tree 
               tree
