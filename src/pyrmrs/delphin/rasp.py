@@ -8,8 +8,6 @@ import codecs;
 
 class Rasp:
   
-  logger = None;
-
   raspin = None;
   raspout = None;
 
@@ -17,16 +15,12 @@ class Rasp:
   
   def __init__( self ):
     
-    self.logger = pyrmrs.globals.get_logger( self );
-    
     cmd = '%s -w -p" -ot -u -n %d"' % \
             ( pyrmrs.config.SH_RASP, pyrmrs.config.RASP_MAX_NO_PARSES );
-    
-    if not self.logger is None:
-      self.logger.debug( "opening pipe on %s..." % cmd );
+            
+    pyrmrs.globals.logDebug( self, "opening pipe on %s..." % cmd );
     ( self.raspin, self.raspout ) = os.popen4( cmd );
-    if not self.logger is None:
-      self.logger.debug( "finished opening pipe." );
+    pyrmrs.globals.logDebug( self, "finished opening pipe." );
     
     self.raspin = codecs.getwriter( "utf-8" )( self.raspin );
     self.raspout = codecs.getreader( "utf-8" )( self.raspout );
@@ -52,17 +46,14 @@ class Rasp:
 
   def sentstr_to_raspstr( self, sent ):
     
-    if not self.logger is None:
-      self.logger.log( pyrmrs.globals.LOG_DEBUG_COARSE, "rasping |>%s<|;" % sent );
+    pyrmrs.globals.logDebugCoarse( self, "rasping |>%s<|;" % sent );
     
     sent += " ^ \n";
     
-    if not self.logger is None:  
-      self.logger.debug( "writing |>%s<|..." % sent );
+    pyrmrs.globals.logDebug( self, "writing |>%s<|..." % sent );
     self.raspin.write( sent );
     self.raspin.flush();
-    if not self.logger is None:  
-      self.logger.debug( "finished writing;" );
+    pyrmrs.globals.logDebug( self, "finished writing;" );
     
     eob_marker = "\n\n() -1 ; ()\n\n(X)\n\n";
     eom = eob_marker;
@@ -71,11 +62,9 @@ class Rasp:
     pending = 0;
     while True:
       
-      if not self.logger is None:
-        self.logger.debug( "reading %d chars..." % len(eom) );
+      pyrmrs.globals.logDebug( self, "reading %d chars..." % len(eom) );
       block = self.raspout.read( len(eom) );
-      if not self.logger is None:
-        self.logger.debug( "finished reading; got |>%s<|;" % block );
+      pyrmrs.globals.logDebug( self, "finished reading; got |>%s<|;" % block );
       
       overl = self.str_overlap( block, eom );
       if len( overl ) == len( block ):
@@ -89,8 +78,7 @@ class Rasp:
     
     buf = buf[ : len(buf) - pending ]+"\n\n";
     
-    if not self.logger is None:
-      self.logger.log( pyrmrs.globals.LOG_DEBUG_COARSE, "returning raspstr |>%s<|;" % buf );
+    pyrmrs.globals.logDebugCoarse( self, "returning raspstr |>%s<|;" % buf );
     
     return buf;
 
@@ -98,9 +86,7 @@ class Rasp:
 
   def __del__( self ):
     
-    if not self.logger is None:
-      self.logger.debug( "closing pipe..." );
+    pyrmrs.globals.logDebug( self, "closing pipe..." );
     self.raspin.close();
     self.raspout.close();
-    if not self.logger is None:
-      self.logger.debug( "finished closing;" );
+    pyrmrs.globals.logDebug( self, "finished closing;" );

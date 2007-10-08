@@ -6,46 +6,35 @@ import codecs;
 import gzip;
 import random;
 
-
-
 import sys;
+import os;
 
 
 
 SAMPLE_SIZE = 5;
-
-
-
-PHASE0 = sys.argv[ 1 ] + "/rmrs/ans/top_docs.%d.rmrs.gz";
-PHASE1 = sys.argv[ 2 ] + "/docs.%d.rmrs";
-PHASE2 = sys.argv[ 3 ] + "/docs.%d.rmrs";
-PHASE3 = sys.argv[ 4 ] + "/docs.%d.rmrs";
-STARRED = False;
-if len( sys.argv ) > 5:
-  STARRED = sys.argv[ 5 ] == "*";
+LIMIT = 5;
 
 
 
 def copy( ifile, ofile ):
 
-  ofile.write( "<?xml version='1.0'?>\n\n");
+  ofile.write( "<?xml version='1.0' encoding=\"utf-8\"?>\n\n");
   ofile.write( "<!DOCTYPE rmrs-list SYSTEM \"file://" + \
-    config.DIR_PYRMRSHOME + "/dtd/rmrs.dtd\">\n\n" );
+    pyrmrs.config.DIR_PYRMRSHOME + "/dtd/rmrs.dtd\">\n\n" );
   ofile.write( "<rmrs-list>\n\n" );
 
   k = 0;
-  
 
-  doc = rmrs.rmrsreader.RMRSReader( ifile.fileno() );
+  doc = pyrmrs.mrs.robust.rmrsreader.RMRSReader( ifile );
   for xrmrs in doc:
     ofile.write( "<!--\n" );
     ofile.write( xrmrs.str_pretty() );
     ofile.write( "\n-->\n" );
-    ofile.write( rmrs.str_xml() );
+    ofile.write( xrmrs.str_xml() );
     ofile.write( "\n\n\n" );
     k += 1;
-    if STARRED:
-      if k >= 30:
+    if not LIMIT is None:
+      if k >= LIMIT:
         break;
 
   ofile.write("</rmrs-list>");
@@ -54,10 +43,18 @@ def copy( ifile, ofile ):
 
 
 
-globals.init_main();
+pyrmrs.globals.initMain();
+
+dirname = pyrmrs.config.DIR_BIGTMP + \
+  "/pyrmrs-tstl-" + \
+  pyrmrs.globals.getInstTok();
+
+os.mkdir( dirname );
+os.mkdir( dirname + "/phase1" );
+os.mkdir( dirname + "/phase2" );
+os.mkdir( dirname + "/phase3" );
 
 samples = [];
-
 j = 0;
 
 while j < SAMPLE_SIZE:
@@ -65,45 +62,43 @@ while j < SAMPLE_SIZE:
   s = random.randrange( 0, 201 );
   while s in samples:
     s = random.randrange( 0, 201 );
-  samples.append( s );
     
+  try:
+    ifile = gzip.open(
+      pyrmrs.config.DIR_QA05 + "/rmrs/ans/top_docs.%d.rmrs.gz" % s,
+      "r"
+    );
+    ifile = codecs.getreader( "utf-8" )( ifile );
+  except:
+    continue;
+
   sys.stdout.write( "%3d: " % s );
   sys.stdout.flush();
-
-  try:
-    ifile = gzip.open( PHASE0 % s, "r" );
-  except:
-    sys.stdout.write( "!\n" );
-    sys.stdout.flush();
-    continue;
-  
+    
+  samples.append( s );
   j += 1;
   
-  ofile = codecs.open( PHASE1 % s, "w", encoding="utf-8" );
+  ofile = codecs.open( dirname + ("/phase1/%d.rmrs.xml"%s), "w", encoding="utf-8" );
   k = copy( ifile, ofile );
   ofile.close();
   ifile.close();
-
   sys.stdout.write( "%7d " % k );
   sys.stdout.flush();
 
-
-  ifile = open( PHASE1 % s, "r" );
-  ofile = codecs.open( PHASE2 % s, "w", encoding="utf-8" );
+  ifile = open( dirname + ("/phase1/%d.rmrs.xml"%s), "r" );
+  ofile = codecs.open( dirname + ("/phase2/%d.rmrs.xml"%s), "w", encoding="utf-8" );
   k = copy( ifile, ofile );
   ofile.close();
   ifile.close();
-
   sys.stdout.write( "%7d " % k );
   sys.stdout.flush();
 
-  ifile = open( PHASE2 % s, "r" );
-  ofile = codecs.open( PHASE3 % s, "w", encoding="utf-8" );
+  ifile = open( dirname + ("/phase2/%d.rmrs.xml"%s), "r" );
+  ofile = codecs.open( dirname + ("/phase3/%d.rmrs.xml"%s), "w", encoding="utf-8" );
   k = copy( ifile, ofile );
   ofile.close();
   ifile.close();
-
   sys.stdout.write( "%7d\n" % k );
   sys.stdout.flush();
   
-globals.destruct_main();
+pyrmrs.globals.destructMain();

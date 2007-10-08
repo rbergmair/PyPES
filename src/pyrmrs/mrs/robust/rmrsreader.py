@@ -25,7 +25,8 @@ class RMRSReader( pyrmrs.xml.xmlreader.XMLReader ):
     in_group.InGroup,
     hole_constraint.HoleConstraint
   ];
-
+  
+  XMLELEM = rmrsem.RMRSem.XMLELEM;
   XMLELEMs = [];
 
   IGNORE = [

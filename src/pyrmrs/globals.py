@@ -19,12 +19,29 @@ LOG_NOTSET = logging.NOTSET;
 
 
 
+insttok = [ None ];
 logdir = [ None ];
 loggers = {};
 
 
 
-def init_main():
+def getInstTok():
+
+  if not insttok[0] is None:
+    return insttok[0];
+
+  insttok[0] = "%s-%s-%c%c" % (
+    time.strftime( "%y%m%d%-H%M%S" ),
+    str( int( ( time.time() % 1.0 ) * 1000.0 ) ).zfill(3),
+    random.choice( string.digits + string.ascii_lowercase ),
+    random.choice( string.digits + string.ascii_lowercase )
+  )
+  
+  return insttok[0];
+
+
+
+def initMain():
   
   sys.stdin = codecs.getreader( "utf-8" )( sys.stdin );
   sys.stdout = codecs.getwriter( "utf-8" )( sys.stdout );
@@ -32,12 +49,7 @@ def init_main():
   
   if logdir[0] is None:
     
-    logdir[0] = "%s/pyrmrs-%s-%c%c" % (
-      config.DIR_LOG,
-      time.strftime( "%y%m%d%H%M%S" ),
-      random.choice( string.digits + string.ascii_lowercase ),
-      random.choice( string.digits + string.ascii_lowercase )
-    );
+    logdir[0] = "%s/pyrmrs-%s" % ( config.DIR_LOG, getInstTok() );
 
     try:
       os.mkdir( logdir[0] );
@@ -61,7 +73,7 @@ def init_main():
         logger.addHandler( newhndl );
         logger.setLevel( 1 );
 
-def destruct_main():
+def destructMain():
   
   for logname in loggers:
     ( logger, handler, f ) = loggers[ logname ];
@@ -72,12 +84,14 @@ def destruct_main():
 
 
 
-def get_logger( inst ):
+def getLogger( inst=None ):
   
   if config.STDERR_LOGGING is None and config.FILE_TRACING is None:
     return None;
   
-  logname = inst.__class__.__module__;
+  logname = "pyrmrs";
+  if not inst is None:
+    logname = inst.__class__.__module__;
   logger = logging.getLogger( logname );
 
   if logname in loggers:
@@ -109,3 +123,34 @@ def get_logger( inst ):
   loggers[ logname ] = ( logger, newhndl, f );
   
   return logger;
+
+def logDebug( inst=None, message="" ):
+
+  if config.STDERR_LOGGING is None and config.FILE_TRACING is None:
+    return;
+  if not isinstance( message, unicode ):
+    message = unicode( message, "utf-8" );
+  getLogger( inst ).log( LOG_DEBUG, message );
+
+def logDebugCoarse( inst=None, message="" ):
+
+  if config.STDERR_LOGGING is None and config.FILE_TRACING is None:
+    return;
+  if not isinstance( message, unicode ):
+    message = unicode( message, "utf-8" );
+  getLogger( inst ).log( LOG_DEBUG_COARSE, message );
+
+def logWarning( inst=None, message="" ):
+
+  if config.STDERR_LOGGING is None and config.FILE_TRACING is None:
+    return;
+  if not isinstance( message, unicode ):
+    message = unicode( message, "utf-8" );
+  getLogger( inst ).log( LOG_WARNING, message );
+
+def logIsActive( self ):
+  
+  if config.STDERR_LOGGING is None and config.FILE_TRACING is None:
+    return False;
+  return True;
+  

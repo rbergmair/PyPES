@@ -3,14 +3,14 @@ import pyrmrs.config;
 
 import pyrmrs.mrs.simple.mrsreader;
 
-pyrmrs.globals.init_main();
+pyrmrs.globals.initMain();
 
 DOCS = pyrmrs.config.DIR_PYRMRSHOME + "/testdta/testmrslist.xml";
 #DOCS = config.DIR_PYRMRSHOME + "/testdta/testrmrslist.xml";
 
 doc = open( DOCS, "r" );
 
-x = pyrmrs.mrs.simple.mrsreader.MRSReader( doc.fileno() );
+x = pyrmrs.mrs.simple.mrsreader.MRSReader( doc );
 
 for mrs in x:
   print mrs.str_xml();
@@ -18,4 +18,4 @@ for mrs in x:
 
 doc.close();
 
-pyrmrs.globals.destruct_main();
+pyrmrs.globals.destructMain();

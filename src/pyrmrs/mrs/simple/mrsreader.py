@@ -32,6 +32,7 @@ class MRSReader( pyrmrs.xml.xmlreader.XMLReader ):
     variable.Variable
   ];
   
+  XMLELEM = mrsem.MRSem.XMLELEM;
   XMLELEMs = [];
   
   IGNORE = [

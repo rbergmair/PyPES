@@ -1,16 +1,10 @@
-import config;
+import pyrmrs.config;
+import pyrmrs.globals;
+import pyrmrs.mrs.robust.rmrsreader;
 
-import os;
+import simpleio;
+
 import re;
-import sys;
-import errno;
-import time;
-
-import config;
-
-import fcntl;
-
-import rmrs.rmrsreader;
 
 
 
@@ -20,7 +14,7 @@ class PETError( Exception ):
   ERRNO_ZERO_READINGS = 2;
   ERRNO_EDGE_LIMIT_EXHAUSTED = 3;
   ERRNO_UNKNOWN = -1;
-  ERRNO_UNEXPECTED_EOB = -2;
+  ERRNO_UNEXPECTED_ETB = -2;
 
   errno = None;
   errmsg = "";
@@ -39,123 +33,56 @@ class PETError( Exception ):
 
 
 
-class PET:
-
-  petpipein = None;
-  petpipeout = None;
-  
-  inp = None;
-  outp = None;
+class PET( simpleio.SimpleIO ):
   
   results = None;
-  
-  mrs = "rmrx";
-  tok = "string";
 
-  limit = config.PET_EDGELIMIT;
-  nicety = config.PET_NICETY;
-  packing = config.PET_PACKING;
-  nsolutions = config.PET_NSOLUTIONS;
-  results = config.PET_RESULTS;
-  opt = config.PET_OPT;
-  
-  def read_pet( self, len=1 ):
-
-    bytestr = "";
-    while True:
-      bytestr = os.read( self.petpipeout, len );
-      if bytestr == "":
-        time.sleep( 0.2 );
-      else:
-        break;
-      
-    ch = "";
-    while True:
-      try:
-        ch = bytestr.decode( "utf-8" );
-      except UnicodeDecodeError:
-        bytestr += os.read( self.petpipeout, 1 );
-      else:
-        break;
-      
-    return ch;
-  
-  def read_pet_line( self ):
-    
-    line = "";
-    while True:
-      ch = self.read_pet();
-      line += ch;
-      if ch == "\n":
-        break;
-    line = line.replace( "\003", "" );
-    return line;
-
-  def read_pet_block( self, limit=512 ):
-    
-    block = "";
-    while True:
-      data = self.read_pet( limit );
-      block += data;
-      if data.find( "\003" ) != -1:
-        break;
-    block = block.replace( "\003", "" );
-    return block;
-  
   def __init__( self, results=None, nsolutions=None ):
+
+    self.results = pyrmrs.config.PET_RESULTS;
+    nsolutions = pyrmrs.config.PET_NSOLUTIONS;
+  
+    nicety = pyrmrs.config.PET_NICETY;
     
     if results != None:
       self.results = results;
     if nsolutions != None:
-      self.nsolutions = nsolutions;
+      nsolutions = nsolutions;
 
     cmd = \
-      ( "%s " % config.SH_CHEAP ) + \
-      ( "-nsolutions=%d " % self.nsolutions ) + \
+      ( "%s " % pyrmrs.config.SH_CHEAP ) + \
       ( "-results=%d " % self.results ) + \
-      ( "-limit=%d " % self.limit ) + \
-      ( "-packing=%d " % self.packing ) + \
-      ( "-mrs=%s " % self.mrs ) + \
-      ( "-tok=%s " % self.tok ) + \
-      self.opt + \
-      ( "%s" % config.SH_GRAMMAR );
+      ( "-nsolutions=%d " % nsolutions ) + \
+      ( "-limit=%d " % pyrmrs.config.PET_EDGELIMIT ) + \
+      ( "-packing=%d " % pyrmrs.config.PET_PACKING ) + \
+      "-mrs=rmrx -tok=string " + \
+      pyrmrs.config.PET_OPT + \
+      ( "%s" % pyrmrs.config.FILE_GRAMMAR );
 
-    if self.nicety != None:
-      cmd = "nice -n %d %s" % ( self.nicety, cmd );
-
-    if config.VERBOSE:
-      sys.stdout.write( cmd + "\n" );
-      sys.stdout.flush();
-
-    ( self.inp, self.outp ) = os.popen4( cmd );
-    self.petpipein = self.inp.fileno();
-    self.petpipeout = self.outp.fileno();
-
-    self.read_pet_block();
+    if nicety != None:
+      cmd = "nice -n %d %s" % ( nicety, cmd );
+      
+    self.open_pipe( cmd );
+    self.read_block();
     
   def analyze( self, scr ):
 
     scr = scr.replace( "<", "&lt;" );
     scr = scr.replace( ">", "&gt;" );
-    scr += "\n";
-    
     if scr.count( "'" ) > 1:
       scr = scr.replace( "'", "\"" );
+      
+    self.write_line( scr );
     
-    os.write( self.petpipein, scr.encode( "utf-8" ) );
-    # self.petpipein.flush();
-    
-    line = self.read_pet_line();
+    line = self.read_line();
     if line == "":
       raise PETError( ( \
-        PETError.ERRNO_UNEXPECTED_EOB, \
-        "unexpected end of data block during read_pet_line()" \
+        PETError.ERRNO_UNEXPECTED_ETB, \
+        "unexpected end of transmission block during read_line()" \
       ) );
-    if config.VERBOSE:
-      sys.stdout.write( line );
-      sys.stdout.flush();
-      
+    
     line = line.replace( "\n", "" );
+    pyrmrs.globals.logDebug( self, "first line of PET response: |>%s<|" % line );
 
     success = re.compile( \
       "(^\([0-9]*\) `.*' \[[0-9]*] --- )([0-9]*)( " + \
@@ -177,10 +104,11 @@ class PET:
         
     else:
       
-      block = self.read_pet_block( 512 );
-      if config.VERBOSE:
-        sys.stdout.write( block );
-        sys.stdout.flush();
+      block = self.read_block();
+      pyrmrs.globals.logDebug(
+        self,
+        "subsequent block of PET response: |>%s<|" % block
+      );
         
       msg = line + "\n" + block;
       msg = msg.strip();
@@ -203,8 +131,8 @@ class PET:
 
       if block == "":
         raise PETError( ( \
-          PETError.ERRNO_UNEXPECTED_EOB, \
-          "unexpected end of data block during read_pet_block()" \
+          PETError.ERRNO_UNEXPECTED_ETB, \
+          "unexpected end of transmission block during read_block()" \
         ) );
 
       raise PETError( ( \
@@ -214,11 +142,10 @@ class PET:
     
     if noparses > self.results:
       noparses = self.results;
-    reader = rmrs.rmrsreader.RMRSReader( self.petpipeout, True, noparses );
+    reader = pyrmrs.mrs.robust.rmrsreader.RMRSReader( self.ioout, True, noparses );
     return reader;
 
   def __del__( self ):
     
-    os.write( self.petpipein, "\n\n" );
-    self.inp.close();
-    self.outp.close();
+    self.write_line( "" );
+    self.close_pipe();

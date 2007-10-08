@@ -69,4 +69,4 @@ m4_dnl   When creating very large temporary files, as some of the test scripts d
 m4_dnl   you don't want to use your usual TMPDIR. BIGTMP sets the directory to use
 m4_dnl   for such files. You proably want this to be on a fast big filesystem.
 
-m4_define(`_DIR_BIGTMP',esyscmd(`echo -n $SCRATCH)/tmp'))
+m4_define(`_DIR_BIGTMP',m4_esyscmd(`echo -n $SCRATCH/tmp'))

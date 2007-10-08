@@ -7,7 +7,6 @@ import xml.sax.handler;
 
 import errno;
 import sys;
-import os;
 
 CHUNK_SIZE = 512;
 
@@ -46,14 +45,18 @@ class XMLReader( xml.sax.handler.ContentHandler ):
   buf = [];
   ifile = None;
   parser = None;
+  
+  firstchunk = None;
 
   active_elements = [];
+  active_element_names = [];
     
   CLIENT_BYNAME = {};
   CLIENTS = [];
   
   IGNORE = [];
   
+  XMLELEM = None;
   XMLELEMs = [];
   
   top = None;
@@ -70,11 +73,7 @@ class XMLReader( xml.sax.handler.ContentHandler ):
   char_callbacks = {};
   end_callbacks = {};
   
-  logger = None;
-
   def __init__( self, ifile, addxml=None, limit=None ):
-    
-    self.logger = pyrmrs.globals.get_logger( self );
     
     self.tlcont = "";
     self.limit = limit;
@@ -90,15 +89,16 @@ class XMLReader( xml.sax.handler.ContentHandler ):
     self.dtd = None;
     if addxml != None:
       (self.top, self.dtd) = addxml;
-      self.parser.feed( "<?xml version='1.0'?>\n\n" );
+      self.parser.feed( "<?xml version='1.0' encoding=\"utf-8\"?>\n\n" );
       self.parser.feed( "<!DOCTYPE " + self.top + " SYSTEM \"file://" + \
-        config.DIR_PYRMRSHOME + "/dtd/" + self.dtd + "\">\n\n" );
+        pyrmrs.config.DIR_PYRMRSHOME + "/dtd/" + self.dtd + "\">\n\n" );
       self.parser.feed( "<%s>\n\n" % self.top );
 
     self.ifile = ifile;
     
     self.buf = [];
     self.active_elements = [];
+    self.active_element_names = [];
     self.alldata = "";
     
     self.start_callbacks = {};
@@ -127,6 +127,16 @@ class XMLReader( xml.sax.handler.ContentHandler ):
     if not self.end_callbacks.has_key( type ):
       self.end_callbacks[ type ] = [];
     self.end_callbacks[ type ].append( cb );
+    
+  def ignore_char( self, ch ):
+    
+    if ord( ch ) >= 32:
+      return False;
+    
+    if ord( ch ) in [ 9, 10, 13 ]:
+      return False;
+    
+    return True;
 
   def readChunk( self ):
     
@@ -134,27 +144,23 @@ class XMLReader( xml.sax.handler.ContentHandler ):
       
       eob = False;
 
-      try:
-        data = os.read( self.ifile, CHUNK_SIZE );
-        #data = data.replace( "\000", "" );
-        if data.find( "\027" ) != -1:
+      chunk = self.ifile.read( CHUNK_SIZE );
+      data = "";
+      for ch in chunk:
+        if not self.ignore_char( ch ):
+          data += ch;
+        if ch == "\027":
           eob = True;
-          data = data.replace( "\027", "" );
-      except IOError, (err, strerr):
-        if err == errno.EAGAIN:
-          data = "";
-        else:
-          raise;
         
       if data != "":
         try:
-          if not self.logger is None:
+          if pyrmrs.globals.logIsActive( self ):
             self.alldata += data;
             self.alldata = self.alldata[ len( self.alldata ) - CHUNK_SIZE*3: len( self.alldata ) ];
+          pyrmrs.globals.logDebug( self, data );
           self.parser.feed( data );
         except:
-          if not self.logger is None:
-            self.logger.warning( self.alldata + "***" );
+          pyrmrs.globals.logWarning( self, self.alldata + "***" );
           raise;
 
       if eob or data == "" or ( ( self.limit != None ) and ( self.noread >= self.limit ) ):
@@ -191,12 +197,14 @@ class XMLReader( xml.sax.handler.ContentHandler ):
       client = self.CLIENT_BYNAME[ name ];
       new_obj = client();
       self.active_elements.append( ( name, new_obj ) );
+      self.active_element_names.append( name );
       ( active_name, active_obj ) = ( name, new_obj );
     elif not name in self.IGNORE + self.XMLELEMs:
-      print "!"+name;
-      print self.IGNORE;
-      print self.XMLELEMs;
-      assert False;
+      if self.XMLELEM in self.active_element_names:
+        print "!"+name;
+        print self.IGNORE;
+        print self.XMLELEMs;
+        assert False;
     
     if active_obj != None:
       active_obj.startElement( name, attrs );
@@ -216,9 +224,6 @@ class XMLReader( xml.sax.handler.ContentHandler ):
       if self.char_callbacks.has_key( active_obj.__class__ ):
         for cb in self.char_callbacks[ active_obj.__class__ ]:
           cb( active_obj, content );
-          
-    elif not self.logger is None:
-      self.logger.debug( content );
 
   def endElement( self, name ):
 
@@ -233,6 +238,7 @@ class XMLReader( xml.sax.handler.ContentHandler ):
       if name == active_name:
         
         self.active_elements.pop();
+        self.active_element_names.pop();
       
         if len( self.active_elements ) > 0:
           for i in range( len( self.active_elements ) - 1, -1, -1  ):
