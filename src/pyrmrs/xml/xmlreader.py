@@ -154,7 +154,7 @@ class XMLReader( xml.sax.handler.ContentHandler ):
         
       if data != "":
         try:
-          if pyrmrs.globals.logIsActive( self ):
+          if pyrmrs.globals.logIsActive():
             self.alldata += data;
             self.alldata = self.alldata[ len( self.alldata ) - CHUNK_SIZE*3: len( self.alldata ) ];
           pyrmrs.globals.logDebug( self, data );

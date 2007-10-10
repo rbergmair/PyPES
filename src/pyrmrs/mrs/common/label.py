@@ -37,3 +37,4 @@ class Label( pyrmrs.xml.reader_element.ReaderElement ):
   def str_pretty( self ):
     
     return "l%s" % self.vid;
+  

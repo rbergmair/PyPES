@@ -1,18 +1,18 @@
 import pyrmrs.globals;
 import pyrmrs.config;
 
-import pyrmrs.mrs.simple.mrsreader;
+import pyrmrs.smafpkg.smafreader;
 
 pyrmrs.globals.initMain();
 
 DOCS = pyrmrs.config.DIR_PYRMRSHOME + "/testdta/testsmaflist.xml";
 doc = open( DOCS, "r" );
 
-x = pyrmrs.mrs.simple.mrsreader.MRSReader( doc );
+x = pyrmrs.smafpkg.smafreader.SMAFReader( doc );
 
-for mrs in x:
-  print mrs.str_xml();
-  print mrs.str_pretty();
+for smaf in x:
+  print smaf.str_xml();
+  print;
 
 doc.close();
 

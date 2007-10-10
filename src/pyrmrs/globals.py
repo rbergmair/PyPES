@@ -19,42 +19,63 @@ LOG_NOTSET = logging.NOTSET;
 
 
 
-insttok = [ None ];
-logdir = [ None ];
-loggers = {};
+insttok = None;
 
 
 
 def getInstTok():
+  
+  global insttok;
 
-  if not insttok[0] is None:
-    return insttok[0];
+  if not insttok is None:
+    return insttok;
 
-  insttok[0] = "%s-%s-%c%c" % (
-    time.strftime( "%y%m%d%-H%M%S" ),
-    str( int( ( time.time() % 1.0 ) * 1000.0 ) ).zfill(3),
+  insttok = "%s-%s-%c%c" % (
+    time.strftime( "%y%m%d-%H%M%S" ),
+    str( int( ( time.time() % 1.0 ) * 100000.0 ) ).zfill(5),
     random.choice( string.digits + string.ascii_lowercase ),
     random.choice( string.digits + string.ascii_lowercase )
   )
   
-  return insttok[0];
+  return insttok;
 
 
+
+runningno = 0;
+
+def getUnqID():
+  
+  global runningno;
+  
+  unqid = "%s-%d" % (
+    getInstTok(),
+    runningno
+  );
+  
+  runningno += 1;
+  
+  return unqid;
+
+
+
+logdir = None;
 
 def initMain():
+  
+  global logdir;
   
   sys.stdin = codecs.getreader( "utf-8" )( sys.stdin );
   sys.stdout = codecs.getwriter( "utf-8" )( sys.stdout );
   sys.stderr = codecs.getwriter( "utf-8" )( sys.stderr );
   
-  if logdir[0] is None:
+  if logdir is None:
     
-    logdir[0] = "%s/pyrmrs-%s" % ( config.DIR_LOG, getInstTok() );
+    logdir = "%s/pyrmrs-%s" % ( config.DIR_LOG, getInstTok() );
 
     try:
-      os.mkdir( logdir[0] );
+      os.mkdir( logdir );
     except:
-      logdir[0] = None;
+      logdir = None;
   
   if not config.STDERR_LOGGING is None:
     
@@ -73,7 +94,13 @@ def initMain():
         logger.addHandler( newhndl );
         logger.setLevel( 1 );
 
+
+
+loggers = {};
+
 def destructMain():
+  
+  global loggers;
   
   for logname in loggers:
     ( logger, handler, f ) = loggers[ logname ];
@@ -85,6 +112,9 @@ def destructMain():
 
 
 def getLogger( inst=None ):
+  
+  global loggers;
+  global logdir;
   
   if config.STDERR_LOGGING is None and config.FILE_TRACING is None:
     return None;
@@ -100,7 +130,7 @@ def getLogger( inst=None ):
   if config.FILE_TRACING is None:
     return logger;
   
-  if logdir[0] is None:
+  if logdir is None:
     return logger;
 
   logger.setLevel( 1 );
@@ -112,7 +142,7 @@ def getLogger( inst=None ):
   
   formatter = logging.Formatter( "%(message)s" );
   
-  f = open( logdir[0]+"/"+logname+".log", "w" );
+  f = open( logdir+"/"+logname+".log", "w" );
   f = codecs.getwriter( "utf-8" )( f );
   
   newhndl = logging.StreamHandler( f );
@@ -123,6 +153,8 @@ def getLogger( inst=None ):
   loggers[ logname ] = ( logger, newhndl, f );
   
   return logger;
+
+
 
 def logDebug( inst=None, message="" ):
 
@@ -148,7 +180,7 @@ def logWarning( inst=None, message="" ):
     message = unicode( message, "utf-8" );
   getLogger( inst ).log( LOG_WARNING, message );
 
-def logIsActive( self ):
+def logIsActive():
   
   if config.STDERR_LOGGING is None and config.FILE_TRACING is None:
     return False;
