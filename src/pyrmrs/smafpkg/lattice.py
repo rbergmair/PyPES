@@ -1,23 +1,22 @@
 import pyrmrs.xml.reader_element;
 
-import edge;
+import generic_edge;
 
 class Lattice( pyrmrs.xml.reader_element.ReaderElement ):
   
   XMLELEM = "LATTICE";
   XMLELEMs = [ XMLELEM ];
   
-  nodes = [];
   init = None;
   final = None;
-  edges = [];
+  lattice = {};
+  
   
   def __init__( self ):
     
-    self.nodes = [];
     self.init = None;
     self.final = None;
-    self.edges = [];
+    self.lattice = {};
     
   
   
@@ -25,20 +24,27 @@ class Lattice( pyrmrs.xml.reader_element.ReaderElement ):
     
     if attrs.has_key( "init" ):
       self.init = attrs[ "init" ];
-      if not self.init in self.nodes:
-        self.nodes.append( self.init );
+      if not self.lattice.has_key( self.init ):
+        self.lattice[ self.init ] = [];
         
     if attrs.has_key( "final" ):
       self.final = attrs[ "final" ];
-      if not self.final in self.nodes:
-        self.nodes.append( self.final );
+      if not self.lattice.has_key( self.final ):
+        self.lattice[ self.final ] = [];
       
     
 
   def register( self, obj ):
     
-    if isinstance( obj, edge.Edge ):
-      self.edges.append( obj );
+    if isinstance( obj, generic_edge.GenericEdge ):
+      if not self.lattice.has_key( obj.edge_inst.source ):
+        self.lattice[ obj.edge_inst.source ] = [];
+      if not self.lattice.has_key( obj.edge_inst.target ):
+        self.lattice[ obj.edge_inst.target ] = [];
+      self.lattice[ obj.edge_inst.source ].append( (
+        obj.edge_inst.target,
+        obj.edge_inst
+      ) );
 
 
 
@@ -49,8 +55,9 @@ class Lattice( pyrmrs.xml.reader_element.ReaderElement ):
   def xml_tmplt( self, base ):
     
     elements = "";
-    for edge in self.edges:
-      elements += "\n" + edge.str_xml();
+    for key in self.lattice:
+      for ( target, edge ) in self.lattice[ key ]:
+        elements += "\n" + edge.str_xml();
     elements = elements.replace( "\n", "\n  " );
     elements = elements.replace( "%", "%%" );
     attrs = " init=\"%s\" final=\"%s\"" % ( self.init, self.final );

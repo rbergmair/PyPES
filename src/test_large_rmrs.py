@@ -68,7 +68,6 @@ while j < SAMPLE_SIZE:
       pyrmrs.config.DIR_QA05 + "/rmrs/ans/top_docs.%d.rmrs.gz" % s,
       "r"
     );
-    ifile = codecs.getreader( "utf-8" )( ifile );
   except:
     continue;
 

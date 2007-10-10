@@ -155,12 +155,15 @@ class XMLReader( xml.sax.handler.ContentHandler ):
       if data != "":
         try:
           if pyrmrs.globals.logIsActive():
-            self.alldata += data;
-            self.alldata = self.alldata[ len( self.alldata ) - CHUNK_SIZE*3: len( self.alldata ) ];
+            self.alldata += data + "|";
+            first = len( self.alldata ) - CHUNK_SIZE*3;
+            if first < 0:
+              first = 0;
+            self.alldata = self.alldata[ first : len( self.alldata ) ];
           pyrmrs.globals.logDebug( self, data );
           self.parser.feed( data );
         except:
-          pyrmrs.globals.logWarning( self, self.alldata + "***" );
+          pyrmrs.globals.logWarning( self, self.alldata );
           raise;
 
       if eob or data == "" or ( ( self.limit != None ) and ( self.noread >= self.limit ) ):

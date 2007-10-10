@@ -3,8 +3,6 @@ import pyrmrs.config;
 import pyrmrs.mrs.simple.mrsreader;
 
 import codecs;
-import gzip;
-import random;
 
 import sys;
 import os;
@@ -12,7 +10,6 @@ import os;
 
 
 SAMPLE_SIZE = 5;
-LIMIT = 5;
 
 
 
@@ -23,9 +20,9 @@ def copy( ifile, ofile ):
     pyrmrs.config.DIR_PYRMRSHOME + "/dtd/mrs.dtd\">\n\n" );
   ofile.write( "<mrs-list>\n\n" );
 
-  k = 0;
-
   doc = pyrmrs.mrs.simple.mrsreader.MRSReader( ifile );
+  k = 0;
+  
   for xrmrs in doc:
     ofile.write( "<!--\n" );
     ofile.write( xrmrs.str_pretty() );
@@ -33,11 +30,8 @@ def copy( ifile, ofile ):
     ofile.write( xrmrs.str_xml() );
     ofile.write( "\n\n\n" );
     k += 1;
-    if not LIMIT is None:
-      if k >= LIMIT:
-        break;
 
-  ofile.write("</mrs-list>");
+  ofile.write( "</mrs-list>" );
   
   return k;
 
@@ -54,8 +48,7 @@ os.mkdir( dirname + "/phase1" );
 os.mkdir( dirname + "/phase2" );
 os.mkdir( dirname + "/phase3" );
 
-ifile = codecs.open( pyrmrs.config.DIR_PYRMRSHOME + "/testdta/testmrslist.xml", "r", "utf-8" );
-
+ifile = open( pyrmrs.config.DIR_PYRMRSHOME + "/testdta/testmrslist.xml", "r" );
 ofile = codecs.open( dirname + "/phase1/testmrslist.mrs.xml", "w", encoding="utf-8" );
 k = copy( ifile, ofile );
 ofile.close();

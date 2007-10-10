@@ -3,10 +3,12 @@ import pyrmrs.config;
 
 import pyrmrs.smafpkg.smafreader;
 
+import codecs;
+
 pyrmrs.globals.initMain();
 
 DOCS = pyrmrs.config.DIR_PYRMRSHOME + "/testdta/testsmaflist.xml";
-doc = open( DOCS, "r" );
+doc = codecs.open( DOCS, "r" );
 
 x = pyrmrs.smafpkg.smafreader.SMAFReader( doc );
 

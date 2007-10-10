@@ -1,6 +1,6 @@
 import pyrmrs.xml.xmlreader;
 
-import edge;
+import generic_edge;
 import lattice;
 import smaf;
 import slot;
@@ -8,7 +8,7 @@ import slot;
 class SMAFReader( pyrmrs.xml.xmlreader.XMLReader ):
 
   CLIENTS = [
-    edge.Edge,
+    generic_edge.GenericEdge,
     lattice.Lattice,
     smaf.SMAF,
     slot.Slot

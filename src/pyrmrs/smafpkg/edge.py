@@ -1,6 +1,6 @@
-import pyrmrs.xml.pchar_element;
+import pyrmrs.xml.reader_element;
 
-class Edge( pyrmrs.xml.pchar_element.PCharElement ):
+class Edge( pyrmrs.xml.reader_element.ReaderElement ):
 
   XMLELEM = "EDGE";
   XMLELEMs = [ XMLELEM ];
@@ -12,7 +12,6 @@ class Edge( pyrmrs.xml.pchar_element.PCharElement ):
 
   def __init__( self ):
     
-    pyrmrs.xml.pchar_element.PCharElement.__init__( self );
     self.type = None;
     self.id = None;
     self.source = None;
@@ -20,8 +19,6 @@ class Edge( pyrmrs.xml.pchar_element.PCharElement ):
     
   def startElement( self, name, attrs ):
 
-    pyrmrs.xml.pchar_element.PCharElement.startElement( self, name, attrs );
-    
     if attrs.has_key( "type" ):
       self.type = attrs[ "type" ];
     if attrs.has_key( "id" ):
@@ -47,4 +44,4 @@ class Edge( pyrmrs.xml.pchar_element.PCharElement ):
     if not self.target is None:
       attrs += " target=\"%s\"" % self.target;
       
-    return base % ( attrs+"%s", self.text+"%s" );
+    return base % ( attrs+"%s", "%s" );
