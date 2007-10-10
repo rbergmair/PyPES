@@ -5,7 +5,7 @@ import pyrmrs.mrs.simple.mrsreader;
 
 pyrmrs.globals.initMain();
 
-DOCS = pyrmrs.config.DIR_PYRMRSHOME + "/testdta/testsmaflist.xml";
+DOCS = pyrmrs.config.DIR_PYRMRSHOME + "/testdta/testmrslist.xml";
 doc = open( DOCS, "r" );
 
 x = pyrmrs.mrs.simple.mrsreader.MRSReader( doc );

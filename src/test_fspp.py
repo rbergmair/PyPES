@@ -13,6 +13,8 @@ f.close();
 fsppctrl = pyrmrs.delphin.fspp.FSPP();
 
 for line in sents.splitlines():
-  fsppctrl.sentstr_to_smafstr( line );
+  for smaf in fsppctrl.sentstr_to_smafs( line ):
+    print smaf.str_xml();
+    print;
 
 pyrmrs.globals.destructMain();

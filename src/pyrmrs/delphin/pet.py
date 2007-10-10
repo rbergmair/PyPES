@@ -57,7 +57,7 @@ class PET( simpleio.SimpleIO ):
       ( "-packing=%d " % pyrmrs.config.PET_PACKING ) + \
       "-mrs=rmrx -tok=string " + \
       pyrmrs.config.PET_OPT + \
-      ( "%s" % pyrmrs.config.FILE_GRAMMAR );
+      ( "%s" % pyrmrs.config.FILE_ERG );
 
     if nicety != None:
       cmd = "nice -n %d %s" % ( nicety, cmd );

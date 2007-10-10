@@ -17,7 +17,7 @@ class SimpleIO:
     pyrmrs.globals.logDebug( self, "finished opening pipe;" );
     
     self.ioin = codecs.getwriter( "utf-8" )( self.ioin );
-    self.ioout = codecs.getreader( "utf-8" )( self.ioout );
+    #self.ioout = codecs.getreader( "utf-8" )( self.ioout );
   
   def ignore_char( self, ch ):
     
