@@ -10,6 +10,7 @@ class Lattice( pyrmrs.xml.reader_element.ReaderElement ):
   init = None;
   final = None;
   lattice = {};
+  edges = [];
   
   
   def __init__( self ):
@@ -17,6 +18,7 @@ class Lattice( pyrmrs.xml.reader_element.ReaderElement ):
     self.init = None;
     self.final = None;
     self.lattice = {};
+    self.edges = [];
     
   
   
@@ -37,6 +39,7 @@ class Lattice( pyrmrs.xml.reader_element.ReaderElement ):
   def register( self, obj ):
     
     if isinstance( obj, generic_edge.GenericEdge ):
+      self.edges.append( obj.edge_inst );
       if not self.lattice.has_key( obj.edge_inst.source ):
         self.lattice[ obj.edge_inst.source ] = [];
       if not self.lattice.has_key( obj.edge_inst.target ):
@@ -55,9 +58,8 @@ class Lattice( pyrmrs.xml.reader_element.ReaderElement ):
   def xml_tmplt( self, base ):
     
     elements = "";
-    for key in self.lattice:
-      for ( target, edge ) in self.lattice[ key ]:
-        elements += "\n" + edge.str_xml();
+    for edge in self.edges:
+      elements += "\n" + edge.str_xml();
     elements = elements.replace( "\n", "\n  " );
     elements = elements.replace( "%", "%%" );
     attrs = " init=\"%s\" final=\"%s\"" % ( self.init, self.final );
