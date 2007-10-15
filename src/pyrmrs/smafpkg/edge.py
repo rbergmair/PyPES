@@ -9,6 +9,8 @@ class Edge( pyrmrs.xml.reader_element.ReaderElement ):
   id = None;
   source = None;
   target = None;
+  cfrom = None;
+  cto = None;
 
   def __init__( self ):
     
@@ -16,6 +18,8 @@ class Edge( pyrmrs.xml.reader_element.ReaderElement ):
     self.id = None;
     self.source = None;
     self.target = None;
+    self.cfrom = None;
+    self.cto = None;
     
   def startElement( self, name, attrs ):
 
@@ -27,6 +31,11 @@ class Edge( pyrmrs.xml.reader_element.ReaderElement ):
       self.source = attrs[ "source" ];
     if attrs.has_key( "target" ):
       self.target = attrs[ "target" ];
+    if attrs.has_key( "cfrom" ):
+      self.cfrom = attrs[ "cfrom" ];
+    if attrs.has_key( "cto" ):
+      self.cto = attrs[ "cto" ];
+      
   
   def xml_base( self ):
     
@@ -43,5 +52,9 @@ class Edge( pyrmrs.xml.reader_element.ReaderElement ):
       attrs += " source=\"%s\"" % self.source;
     if not self.target is None:
       attrs += " target=\"%s\"" % self.target;
+    if not self.cfrom is None:
+      attrs += " cfrom=\"%s\"" % self.cfrom;
+    if not self.cto is None:
+      attrs += " cto=\"%s\"" % self.cto;
       
     return base % ( attrs+"%s", "%s" );

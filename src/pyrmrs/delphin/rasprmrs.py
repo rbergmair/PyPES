@@ -12,11 +12,12 @@ class RaspRMRS( simpleio.SimpleIO ):
   
   def __init__( self ):
     
-    cmd = "cd %s; %s -L %s/ext/lkb-fns.lsp -e \"%s\"" % ( \
+    cmd = "cd %s; %s -L %s/ext/lkb-fns.lsp -e \"%s\" -e \"%s\"" % ( \
       pyrmrs.config.DIR_LKBHOME,
       pyrmrs.config.SH_LKB,
       pyrmrs.config.DIR_PYRMRSHOME,
-      "(mrs::simple-io-rasp-rmrs *standard-input* *standard-output*)"
+      "(mrs::simple-io-rasp-rmrs *standard-input* *standard-output*)",
+      "(excl:exit)"
     );
     
     self.open_pipe( cmd );
@@ -30,4 +31,4 @@ class RaspRMRS( simpleio.SimpleIO ):
   def __del__( self ):
     
     self.close_pipe();
-    
+  

@@ -12,11 +12,12 @@ class FSPP( simpleio.SimpleIO ):
   
   def __init__( self ):
   
-    cmd = "cd %s; %s -L %s/ext/lkb-fns.lsp -e \"%s\"" % ( \
+    cmd = "cd %s; %s -L %s/ext/lkb-fns.lsp -e \"%s\" -e \"%s\"" % ( \
       pyrmrs.config.DIR_ERGHOME,
       pyrmrs.config.SH_LKB,
       pyrmrs.config.DIR_PYRMRSHOME,
-      "(preprocessor::simple-io-preprocess *standard-input* *standard-output*)"
+      "(preprocessor::simple-io-preprocess *standard-input* *standard-output*)",
+      "(excl:exit)"
     );
   
     self.open_pipe( cmd );

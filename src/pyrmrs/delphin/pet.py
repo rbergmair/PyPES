@@ -55,7 +55,7 @@ class PET( simpleio.SimpleIO ):
       ( "-nsolutions=%d " % nsolutions ) + \
       ( "-limit=%d " % pyrmrs.config.PET_EDGELIMIT ) + \
       ( "-packing=%d " % pyrmrs.config.PET_PACKING ) + \
-      "-mrs=rmrx -tok=string " + \
+      "-mrs=rmrx -tok=smaf " + \
       pyrmrs.config.PET_OPT + \
       ( "%s" % pyrmrs.config.FILE_ERG );
 
@@ -65,14 +65,14 @@ class PET( simpleio.SimpleIO ):
     self.open_pipe( cmd );
     self.read_block();
     
-  def analyze( self, scr ):
+  def smaf_to_rmrss( self, smaf ):
 
-    scr = scr.replace( "<", "&lt;" );
-    scr = scr.replace( ">", "&gt;" );
-    if scr.count( "'" ) > 1:
-      scr = scr.replace( "'", "\"" );
+    #scr = scr.replace( "<", "&lt;" );
+    #scr = scr.replace( ">", "&gt;" );
+    #if scr.count( "'" ) > 1:
+    #  scr = scr.replace( "'", "\"" );
       
-    self.write_line( scr );
+    self.write_block( smaf.str_xml() );
     
     line = self.read_line();
     if line == "":
@@ -147,5 +147,5 @@ class PET( simpleio.SimpleIO ):
 
   def __del__( self ):
     
-    self.write_line( "" );
+    self.write_block( "" );
     self.close_pipe();

@@ -30,13 +30,12 @@ class SMAF( pyrmrs.xml.reader_element.ReaderElement ):
 
   def xml_tmplt( self, base ):
     
-    elements = """<olac:olac xmlns:olac="http://www.language-archives.org/OLAC/1.0/"
-           xmlns="http://purl.org/dc/elements/1.1/"
-           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-           xsi:schemaLocation="http://www.language-archives.org/OLAC/1.0/ http://www.language-archives.org/OLAC/1.0/olac.xsd">
-  <identifier>%s</identifier>
-</olac:olac>""" % pyrmrs.globals.getUnqID();
-    elements += "\n";
+    #    elements = """<olac:olac xmlns:olac="http://www.language-archives.org/OLAC/1.0/"
+    #           xmlns:dc="http://purl.org/dc/elements/1.1/">
+    #  <dc:identifier>%s</dc:identifier>
+    #</olac:olac>""" % pyrmrs.globals.getUnqID();
+    #    elements += "\n";
+    elements = "";
     if not self.lattice is None:
       elements += self.lattice.str_xml();
     else:

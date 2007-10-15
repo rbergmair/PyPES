@@ -1,9 +1,21 @@
+import sys;
+import pyrmrs.config;
 import pyrmrs.globals;
 import pyrmrs.delphin.pet;
+import pyrmrs.delphin.fspp;
 
 pyrmrs.globals.initMain();
 
 petctrl = pyrmrs.delphin.pet.PET( 10 );
+fsppctrl = pyrmrs.delphin.fspp.FSPP();
+for smaf in fsppctrl.sentstr_to_smafs( "The dog barks." ):
+  for rmrs in petctrl.smaf_to_rmrss( smaf ):
+    print;
+    print rmrs.str_pretty();
+
+pyrmrs.globals.destructMain();
+sys.exit();
+
 
 try:  
   for rmrs in petctrl.analyze( "The dog barks." ):

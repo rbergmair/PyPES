@@ -9,6 +9,8 @@ class Lattice( pyrmrs.xml.reader_element.ReaderElement ):
   
   init = None;
   final = None;
+  cfrom = None;
+  cto = None;
   lattice = {};
   edges = [];
   
@@ -17,6 +19,8 @@ class Lattice( pyrmrs.xml.reader_element.ReaderElement ):
     
     self.init = None;
     self.final = None;
+    self.cfrom = None;
+    self.cto = None;
     self.lattice = {};
     self.edges = [];
     
@@ -33,6 +37,11 @@ class Lattice( pyrmrs.xml.reader_element.ReaderElement ):
       self.final = attrs[ "final" ];
       if not self.lattice.has_key( self.final ):
         self.lattice[ self.final ] = [];
+
+    if attrs.has_key( "cfrom" ):
+      self.cfrom = attrs[ "cfrom" ];
+    if attrs.has_key( "cto" ):
+      self.cfrom = attrs[ "cto" ];
       
     
 
@@ -63,5 +72,10 @@ class Lattice( pyrmrs.xml.reader_element.ReaderElement ):
     elements = elements.replace( "\n", "\n  " );
     elements = elements.replace( "%", "%%" );
     attrs = " init=\"%s\" final=\"%s\"" % ( self.init, self.final );
+    if not self.cfrom is None:
+      attrs += " cfrom=\"%s\"" % self.cfrom;
+    if not self.cto is None:
+      attrs += " cto=\"%s\"" % self.cto;
+      
     return base % ( attrs+"%s", elements+"%s" );
     
