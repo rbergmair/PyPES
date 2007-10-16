@@ -1,8 +1,8 @@
-import common.reader_element;
+import pyrmrs.xml.reader_element;
 
 import sentence;
 
-class Analysis( common.reader_element.ReaderElement ):
+class Analysis( pyrmrs.xml.reader_element.ReaderElement ):
   
   XMLELEM = "ANALYSIS";
   XMLELEMs = [ XMLELEM ];

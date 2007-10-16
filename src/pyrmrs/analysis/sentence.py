@@ -1,8 +1,8 @@
-import common.reader_element;
+import pyrmrs.xml.reader_element;
 
-import rmrs.rmrsem;
+import pyrmrs.mrs.robust.rmrsem;
 
-class Sentence( common.reader_element.ReaderElement ):
+class Sentence( pyrmrs.xml.reader_element.ReaderElement ):
   
   XMLELEM = "SENTENCE";
   XMLELEM_ERROR = "ERROR";
@@ -36,7 +36,7 @@ class Sentence( common.reader_element.ReaderElement ):
   
   def register( self, obj ):
     
-    if isinstance( obj, rmrs.rmrsem.RMRSem ):
+    if isinstance( obj, pyrmrs.mrs.robust.rmrsem.RMRSem ):
       self.rmrslist.append( obj );
     
   def endElement( self, name ):

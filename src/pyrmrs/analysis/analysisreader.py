@@ -1,14 +1,14 @@
-import rmrs.rmrsreader;
+import pyrmrs.mrs.robust.rmrsreader;
 
-import common.xmlreader;
+import pyrmrs.xml.xmlreader;
 
 import analysis;
 import sentence;
 
-class AnalysisReader( common.xmlreader.XMLReader ):
+class AnalysisReader( pyrmrs.xml.xmlreader.XMLReader ):
   
   CLIENTS = \
-    rmrs.rmrsreader.RMRSReader.CLIENTS + [
+    pyrmrs.mrs.robust.rmrsreader.RMRSReader.CLIENTS + [
       sentence.Sentence,
       analysis.Analysis
     ];

@@ -125,7 +125,55 @@ class RMRSifier( xml.sax.handler.ContentHandler ):
           break;
       block = block.replace( "\\\n"+st, "" );
     return block.strip();
+  
+  def rmrsify( self, surface ):
 
+    self.out.write( "\n" + self.atindent + "<analysis>" );
+    self.out.write( "\n" + self.atindent );
+    
+    for sent in self.raspsentctrl.sentsplit( surface ):
+      
+      self.out.write( "\n" + self.atindent + "<sentence>" );
+      self.out.write( "\n" + self.atindent );
+      
+      err = None;
+      cnt = 0;
+      
+      try:
+        
+        for rmrs in self.petctrl.analyze( sent ):
+          
+          cnt += 1;
+
+          self.out.write( "\n" + self.atindent + "<!--\n" );
+          self.out.write( rmrs.str_pretty() );
+          self.out.write( "\n" + self.atindent + "-->\n" + self.atindent );
+          self.out.write( \
+            string.replace( rmrs.str_xml(), "\n", "\n" + self.atindent ) );
+          self.out.write( "\n" );
+      
+      except delphin.pet.PETError, e:
+        self.out.write( "<error>\n" + self.atindent + STDINDENT );
+        self.out.write( e.errmsg );
+        self.out.write( "\n" + self.atindent + "</error>" );
+        
+        err = e;
+        
+      self.cnts.append( cnt );
+      
+      self.total += 1;
+      if err == None:
+        print "   --> %s" % sent;
+        self.succ += 1;
+      else:
+        print "%2d --> %s" % ( err.errno, sent );
+        if err.errno != 1:
+          print "       " + err.errmsg;
+
+      self.out.write( "\n" + self.atindent + "</sentence>" );
+      
+    self.out.write( "\n" + self.atindent + "</analysis>" );
+    self.out.write( "\n" );
     
   def endElement( self, name ):
     
@@ -155,55 +203,10 @@ class RMRSifier( xml.sax.handler.ContentHandler ):
         self.out.write( "\\\n" + self.atindent + STDINDENT );
         
       self.out.write( "\n" + self.atindent + "</surface>" );
-      self.out.write( "\n" + self.atindent + "<analysis>" );
-      self.out.write( "\n" + self.atindent );
-      
-        
-      self.preprocsurface = self.preprocsurface.replace( "\\ ", "" );
-      
-      for sent in self.raspsentctrl.sentsplit( self.preprocsurface ):
-        
-        self.out.write( "\n" + self.atindent + "<sentence>" );
-        self.out.write( "\n" + self.atindent );
-        
-        err = None;
-        cnt = 0;
-        
-        try:
-          
-          for rmrs in self.petctrl.analyze( sent ):
-            
-            cnt += 1;
-  
-            self.out.write( "\n" + self.atindent + "<!--\n" );
-            self.out.write( rmrs.str_pretty() );
-            self.out.write( "\n" + self.atindent + "-->\n" + self.atindent );
-            self.out.write( \
-              string.replace( rmrs.str_xml(), "\n", "\n" + self.atindent ) );
-            self.out.write( "\n" );
-        
-        except delphin.pet.PETError, e:
-          self.out.write( "<error>\n" + self.atindent + STDINDENT );
-          self.out.write( e.errmsg );
-          self.out.write( "\n" + self.atindent + "</error>" );
-          
-          err = e;
-          
-        self.cnts.append( cnt );
-        
-        self.total += 1;
-        if err == None:
-          print "   --> %s" % sent;
-          self.succ += 1;
-        else:
-          print "%2d --> %s" % ( err.errno, sent );
-          if err.errno != 1:
-            print "       " + err.errmsg;
 
-        self.out.write( "\n" + self.atindent + "</sentence>" );
-        
-      self.out.write( "\n" + self.atindent + "</analysis>" );
-      self.out.write( "\n" );
+      self.preprocsurface = self.preprocsurface.replace( "\\ ", "" );
+
+      self.rmrsify( self.preprocsurface );
       
       self.copythrough = True;
       self.out.write( self.atindent + "</%s>" % name );

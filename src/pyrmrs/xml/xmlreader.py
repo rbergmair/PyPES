@@ -203,11 +203,11 @@ class XMLReader( xml.sax.handler.ContentHandler ):
       self.active_element_names.append( name );
       ( active_name, active_obj ) = ( name, new_obj );
     elif not name in self.IGNORE + self.XMLELEMs:
-      if self.XMLELEM in self.active_element_names:
-        print "!"+name;
-        print self.IGNORE;
-        print self.XMLELEMs;
-        assert False;
+      # if self.XMLELEM in self.active_element_names:
+      print "!"+name;
+      print self.IGNORE;
+      print self.XMLELEMs;
+      assert False;
     
     if active_obj != None:
       active_obj.startElement( name, attrs );
