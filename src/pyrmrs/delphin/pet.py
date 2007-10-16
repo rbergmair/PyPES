@@ -71,10 +71,15 @@ class PET( simpleio.SimpleIO ):
     #scr = scr.replace( ">", "&gt;" );
     #if scr.count( "'" ) > 1:
     #  scr = scr.replace( "'", "\"" );
-      
-    self.write_block( smaf.str_xml() );
     
-    line = self.read_line();
+    st = "<?xml version='1.0' encoding='UTF-8'?>\n";
+    st += "<!DOCTYPE smaf SYSTEM \"file://%s/dtd/smaf.dtd\">\n" % ( pyrmrs.config.DIR_PYRMRSHOME );
+    st += smaf.str_xml();
+    pyrmrs.globals.logDebug( st );
+      
+    self.write_block( st );
+    
+    line = unicode( self.read_line(), encoding="utf-8" );
     if line == "":
       raise PETError( ( \
         PETError.ERRNO_UNEXPECTED_ETB, \
@@ -104,7 +109,7 @@ class PET( simpleio.SimpleIO ):
         
     else:
       
-      block = self.read_block();
+      block = unicode( self.read_block(), encoding="utf-8" );
       pyrmrs.globals.logDebug(
         self,
         "subsequent block of PET response: |>%s<|" % block
@@ -144,8 +149,4 @@ class PET( simpleio.SimpleIO ):
       noparses = self.results;
     reader = pyrmrs.mrs.robust.rmrsreader.RMRSReader( self.ioout, True, noparses );
     return reader;
-
-  def __del__( self ):
-    
-    self.write_block( "" );
-    self.close_pipe();
+  

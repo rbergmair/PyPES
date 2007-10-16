@@ -1,8 +1,8 @@
-import pyrmrs.xml.reader_element;
+import pyrmrs.xmltools.reader_element;
 
 
 
-class ExtraPair( pyrmrs.xml.reader_element.ReaderElement ):
+class ExtraPair( pyrmrs.xmltools.reader_element.ReaderElement ):
 
   XMLELEM = "EXTRAPAIR";
   XMLELEM_PATH = "PATH";

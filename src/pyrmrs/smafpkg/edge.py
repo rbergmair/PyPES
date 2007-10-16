@@ -1,6 +1,6 @@
-import pyrmrs.xml.reader_element;
+import pyrmrs.xmltools.reader_element;
 
-class Edge( pyrmrs.xml.reader_element.ReaderElement ):
+class Edge( pyrmrs.xmltools.reader_element.ReaderElement ):
 
   XMLELEM = "EDGE";
   XMLELEMs = [ XMLELEM ];

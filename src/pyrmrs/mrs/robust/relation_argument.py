@@ -1,4 +1,4 @@
-import pyrmrs.xml.reader_element;
+import pyrmrs.xmltools.reader_element;
 import pyrmrs.error.xmlsem_error;
 
 import label;
@@ -9,7 +9,7 @@ import string;
 
 
 
-class RelationArgument( pyrmrs.xml.reader_element.ReaderElement ):
+class RelationArgument( pyrmrs.xmltools.reader_element.ReaderElement ):
   
   XMLELEM = "RARG";
   XMLELEM_RARGNAME = "RARGNAME"; 

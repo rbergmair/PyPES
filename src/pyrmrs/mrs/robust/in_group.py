@@ -1,11 +1,11 @@
-import pyrmrs.xml.reader_element;
+import pyrmrs.xmltools.reader_element;
 
 import variable;
 import string;
 
 
 
-class InGroup( pyrmrs.xml.reader_element.ReaderElement ):
+class InGroup( pyrmrs.xmltools.reader_element.ReaderElement ):
   
   XMLELEM = "ING";
   XMLELEM_INGA = "ING-A";

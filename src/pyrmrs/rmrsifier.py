@@ -1,8 +1,11 @@
 import xml.sax;
 import xml.sax.handler;
 
+import pyrmrs.globals;
+
 import delphin.pet;
 import delphin.raspsent;
+import delphin.fspp;
 
 
 
@@ -26,6 +29,7 @@ class RMRSifier( xml.sax.handler.ContentHandler ):
   
   petctrl = None;
   raspsentctrl = None;
+  fsppctrl = None;
   
   active_tags = None;
   atindent = "";
@@ -61,6 +65,7 @@ class RMRSifier( xml.sax.handler.ContentHandler ):
     
     self.petctrl = delphin.pet.PET( 5, 5 );
     self.raspsentctrl = delphin.raspsent.RaspSentenceSplitter();
+    self.fsppctrl = delphin.fspp.FSPP();
     
     reading_indent = True;
     self.indent = "";
@@ -117,11 +122,17 @@ class RMRSifier( xml.sax.handler.ContentHandler ):
 
   
   def rmrsify( self, surface ):
+    
+    surface = surface.strip();
+    
+    pyrmrs.globals.logDebug( self, "|>%s<|" % surface );
 
     self.out.write( "\n" + self.atindent + "<analysis>" );
     self.out.write( "\n" + self.atindent );
     
-    for sent in self.raspsentctrl.sentsplit( surface ):
+    for sent in self.raspsentctrl.txtstr_to_sentstrs( surface ):
+
+      pyrmrs.globals.logDebug( self, "|>%s<|" % sent );
       
       self.out.write( "\n" + self.atindent + "<sentence>" );
       self.out.write( "\n" + self.atindent );
@@ -131,16 +142,17 @@ class RMRSifier( xml.sax.handler.ContentHandler ):
       
       try:
         
-        for rmrs in self.petctrl.analyze( sent ):
-          
-          cnt += 1;
-
-          self.out.write( "\n" + self.atindent + "<!--\n" );
-          self.out.write( rmrs.str_pretty() );
-          self.out.write( "\n" + self.atindent + "-->\n" + self.atindent );
-          self.out.write( \
-            rmrs.str_xml().replace( "\n", "\n" + self.atindent ) );
-          self.out.write( "\n" );
+        for smaf in self.fsppctrl.sentstr_to_smafs( sent ):
+          for rmrs in self.petctrl.smaf_to_rmrss( smaf ):
+            
+            cnt += 1;
+  
+            self.out.write( "\n" + self.atindent + "<!--\n" );
+            self.out.write( rmrs.str_pretty() );
+            self.out.write( "\n" + self.atindent + "-->\n" + self.atindent );
+            self.out.write( \
+              rmrs.str_xml().replace( "\n", "\n" + self.atindent ) );
+            self.out.write( "\n" );
       
       except delphin.pet.PETError, e:
         self.out.write( "<error>\n" + self.atindent + STDINDENT );

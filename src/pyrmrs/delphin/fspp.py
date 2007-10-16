@@ -35,10 +35,7 @@ class FSPP( simpleio.SimpleIO ):
           break;
         elif i == 70:
           i = None;
-    x = self.ioout.read( i );
+    if i > 0:
+      x = self.ioout.read( i );
     return pyrmrs.smafpkg.smafreader.SMAFReader( self.ioout, True, 1 );
-  
-  def __del__( self ):
-  
-    self.close_pipe();
   

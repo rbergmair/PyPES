@@ -10,8 +10,6 @@
   (loop
 
     (setq len (read-sequence *indata* istrm))
-    (if (< len 512)
-      (return-from simple-io-read-block nil))
 
     (setq i 0)
     (setq o 0)
@@ -77,8 +75,7 @@
     (loop
 
       (setq input (common-lisp-user::simple-io-read-block istream))
-
-      (if (not input)
+      (if (string= input "")
         (return))
 
       (with-input-from-string (jstream input)
@@ -123,8 +120,7 @@
   (loop
 
     (setq input (common-lisp-user::simple-io-read-block istream))
-
-    (if (not input)
+    (if (string= input "")
       (return))
 
     (with-input-from-string (jstream input)

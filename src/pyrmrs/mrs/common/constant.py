@@ -1,6 +1,6 @@
-import pyrmrs.xml.pchar_element;
+import pyrmrs.xmltools.pchar_element;
 
-class Constant( pyrmrs.xml.pchar_element.PCharElement ):
+class Constant( pyrmrs.xmltools.pchar_element.PCharElement ):
   
   XMLELEM = "CONSTANT";
   XMLELEMs = [ XMLELEM ];

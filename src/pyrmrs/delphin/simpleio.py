@@ -79,8 +79,13 @@ class SimpleIO:
     pyrmrs.globals.logDebug( self, "finished writing;" );
   
   def close_pipe( self ):
-                            
+    
+    self.write_block( "" );
     pyrmrs.globals.logDebug( self, "closing pipe..." );
     self.ioin.close();
     self.ioout.close();
     pyrmrs.globals.logDebug( self, "finished closing;" );
+
+  def __del__( self ):
+    
+    self.close_pipe();

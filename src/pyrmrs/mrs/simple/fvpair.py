@@ -1,4 +1,4 @@
-import pyrmrs.xml.reader_element;
+import pyrmrs.xmltools.reader_element;
 
 import variable;
 import constant;
@@ -7,7 +7,7 @@ import string;
 
 
 
-class FvPair( pyrmrs.xml.reader_element.ReaderElement ):
+class FvPair( pyrmrs.xmltools.reader_element.ReaderElement ):
 
   XMLELEM = "FVPAIR";
   XMLELEM_RARGNAME = "RARGNAME";

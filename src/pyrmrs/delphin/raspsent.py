@@ -87,3 +87,4 @@ class RaspSentenceSplitter:
     self.raspsentin.close();
     self.raspsentout.close();
     pyrmrs.globals.logDebug( self, "finished closing;" );
+  

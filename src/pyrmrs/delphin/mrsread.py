@@ -27,7 +27,3 @@ class MRSRead( simpleio.SimpleIO ):
     self.write_block( mrsstr );
     return pyrmrs.mrs.robust.rmrsreader.RMRSReader( self.ioout, True );
   
-  def __del__( self ):
-  
-    self.close_pipe();
-  

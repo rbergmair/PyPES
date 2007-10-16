@@ -1,4 +1,4 @@
-import pyrmrs.xml.reader_element;
+import pyrmrs.xmltools.reader_element;
 
 import label;
 import elementary_predication;
@@ -8,7 +8,7 @@ import string;
 
 
 
-class MRSem( pyrmrs.xml.reader_element.ReaderElement ):
+class MRSem( pyrmrs.xmltools.reader_element.ReaderElement ):
 
   XMLELEM = "???";
   XMLELEMs = [ XMLELEM ];

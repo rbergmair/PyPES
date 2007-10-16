@@ -1,6 +1,6 @@
-import pyrmrs.xml.pchar_element;
+import pyrmrs.xmltools.pchar_element;
 
-class SPredicate( pyrmrs.xml.pchar_element.PCharElement ):
+class SPredicate( pyrmrs.xmltools.pchar_element.PCharElement ):
   
   XMLELEM = "SPRED";
   XMLELEMs = [ XMLELEM ];

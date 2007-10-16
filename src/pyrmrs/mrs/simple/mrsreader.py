@@ -1,4 +1,4 @@
-import pyrmrs.xml.xmlreader;
+import pyrmrs.xmltools.xmlreader;
 
 import mrsem;
 import constant;
@@ -15,7 +15,7 @@ import variable;
 
 
 
-class MRSReader( pyrmrs.xml.xmlreader.XMLReader ):
+class MRSReader( pyrmrs.xmltools.xmlreader.XMLReader ):
 
   CLIENTS = [
     mrsem.MRSem,
@@ -43,7 +43,7 @@ class MRSReader( pyrmrs.xml.xmlreader.XMLReader ):
     
     if addxml != None:
       addxml = ( "mrs-list-mc", "mrs.dtd" );
-    pyrmrs.xml.xmlreader.XMLReader.__init__( self, ifile, addxml, limit );
+    pyrmrs.xmltools.xmlreader.XMLReader.__init__( self, ifile, addxml, limit );
     
 for client in MRSReader.CLIENTS:
   MRSReader.CLIENT_BYNAME[ client.XMLELEM ] = client;

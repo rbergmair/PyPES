@@ -1,10 +1,10 @@
-import pyrmrs.xml.reader_element;
+import pyrmrs.xmltools.reader_element;
 
 import pyrmrs.globals;
 
 import lattice;
 
-class SMAF( pyrmrs.xml.reader_element.ReaderElement ):
+class SMAF( pyrmrs.xmltools.reader_element.ReaderElement ):
   
   XMLELEM = "SMAF";
   XMLELEMs = [ XMLELEM ];

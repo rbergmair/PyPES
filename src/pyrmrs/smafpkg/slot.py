@@ -1,6 +1,6 @@
-import pyrmrs.xml.pchar_element;
+import pyrmrs.xmltools.pchar_element;
 
-class Slot( pyrmrs.xml.pchar_element.PCharElement ):
+class Slot( pyrmrs.xmltools.pchar_element.PCharElement ):
 
   XMLELEM = "SLOT";
   XMLELEMs = [ XMLELEM ];
@@ -9,7 +9,7 @@ class Slot( pyrmrs.xml.pchar_element.PCharElement ):
   
   def __init__( self, name=None, text=None ):
     
-    pyrmrs.xml.pchar_element.PCharElement.__init__( self );
+    pyrmrs.xmltools.pchar_element.PCharElement.__init__( self );
     if not name is None:
       self.name = name;
     if not text is None:
@@ -17,7 +17,7 @@ class Slot( pyrmrs.xml.pchar_element.PCharElement ):
 
   def startElement( self, name, attrs ):
     
-    pyrmrs.xml.pchar_element.PCharElement.startElement( self, name, attrs );
+    pyrmrs.xmltools.pchar_element.PCharElement.startElement( self, name, attrs );
     if attrs.has_key( "name" ):
       self.name = attrs[ "name" ];
   

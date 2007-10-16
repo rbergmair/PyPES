@@ -1,6 +1,6 @@
-import pyrmrs.xml.reader_element;
+import pyrmrs.xmltools.reader_element;
 
-class RealPredicate( pyrmrs.xml.reader_element.ReaderElement ):
+class RealPredicate( pyrmrs.xmltools.reader_element.ReaderElement ):
   
   XMLELEM = "REALPRED";
   XMLELEMs = [ XMLELEM ];

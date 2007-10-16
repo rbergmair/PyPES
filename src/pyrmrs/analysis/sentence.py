@@ -1,8 +1,8 @@
-import pyrmrs.xml.reader_element;
+import pyrmrs.xmltools.reader_element;
 
 import pyrmrs.mrs.robust.rmrsem;
 
-class Sentence( pyrmrs.xml.reader_element.ReaderElement ):
+class Sentence( pyrmrs.xmltools.reader_element.ReaderElement ):
   
   XMLELEM = "SENTENCE";
   XMLELEM_ERROR = "ERROR";

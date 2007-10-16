@@ -1,8 +1,8 @@
-import pyrmrs.xml.reader_element;
+import pyrmrs.xmltools.reader_element;
 
 import generic_edge;
 
-class Lattice( pyrmrs.xml.reader_element.ReaderElement ):
+class Lattice( pyrmrs.xmltools.reader_element.ReaderElement ):
   
   XMLELEM = "LATTICE";
   XMLELEMs = [ XMLELEM ];

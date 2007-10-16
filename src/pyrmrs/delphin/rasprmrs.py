@@ -27,8 +27,4 @@ class RaspRMRS( simpleio.SimpleIO ):
     
     self.write_block( raspstr );
     return pyrmrs.mrs.robust.rmrsreader.RMRSReader( self.ioout, True );
-    
-  def __del__( self ):
-    
-    self.close_pipe();
   
