@@ -127,7 +127,7 @@ class RMRSifier( xml.sax.handler.ContentHandler ):
           for rmrs in self.petctrl.smaf_to_rmrss( smaf ):
             
             cnt += 1;
-  
+            
             self.out.write( "\n" + self.atindent + "<!--\n" );
             self.out.write( rmrs.str_pretty() );
             self.out.write( "\n" + self.atindent + "-->\n" + self.atindent );

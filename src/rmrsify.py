@@ -12,7 +12,7 @@ def rmrsify( ifile, ofile ):
 
   before_time = time.time();
   before_cpu = time.clock();
-  rmrsifier = pyrmrs.rmrsifier.RMRSifier( ifile, ofile );
+  rmrsifier = pyrmrs.rmrsifier.RMRSifier( ifile, ofile, [ "t", "h" ] );
   after_cpu = time.clock();
   after_time = time.time();
   
