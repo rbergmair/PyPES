@@ -25,5 +25,5 @@ class MRSRead( simpleio.SimpleIO ):
   def mrsread( self, mrsstr ):
   
     self.write_block( mrsstr );
-    return pyrmrs.mrs.robust.rmrsreader.RMRSReader( self.ioout, True );
+    return pyrmrs.mrs.robust.rmrsreader.RMRSReader( self.ioout_bare, True );
   

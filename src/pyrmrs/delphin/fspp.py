@@ -29,13 +29,17 @@ class FSPP( simpleio.SimpleIO ):
     x = "";
     i = None;
     while i is None:
+      pyrmrs.globals.logDebug( self, "reading 71 chars..." );
       x = self.ioout.read( 71 );
+      pyrmrs.globals.logDebug( self, "finished reading; got |>%s<|;" % x );
       for i in range( 0, 71 ):
-        if ord( x[i] ) != 0:
+        if not ord( x[i] ) in [ 0, 23 ]:
           break;
         elif i == 70:
           i = None;
     if i > 0:
+      pyrmrs.globals.logDebug( self, "reading %d chars..." % i );
       x = self.ioout.read( i );
-    return pyrmrs.smafpkg.smafreader.SMAFReader( self.ioout, True, 1 );
+      pyrmrs.globals.logDebug( self, "finished reading; got |>%s<|;" % x );
+    return pyrmrs.smafpkg.smafreader.SMAFReader( self.ioout_bare, True, 1 );
   

@@ -22,6 +22,9 @@ class ErsatzEdge( edge.Edge ):
       if obj.name == "surface":
         self.surface = obj.text;
         
+  def xml_base( self ):
+    
+    return "<edge%s>%s</edge>";
       
   def xml_tmplt( self, base ):
     
@@ -32,4 +35,7 @@ class ErsatzEdge( edge.Edge ):
     if not self.surface is None:
       elements += "\n  "+slot.Slot( "surface", self.surface ).str_xml();
     elements += "\n";
+    elements = elements.replace( "%", "%%" );
+    
+    base = base.replace( "%%", "%%%%" );
     return base % ( "%s", elements+"%s" );

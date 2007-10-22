@@ -57,12 +57,28 @@ def getUnqID():
   return unqid;
 
 
+def utf8ign_reader( stream, errors="strict" ):
+  (encoder, decoder, stream_reader, stream_writer) = codecs.lookup( "utf-8" );
+  return stream_reader( stream, "ignore" );
+
+def utf8ign_writer( stream, errors="strict" ):
+  (encoder, decoder, stream_reader, stream_writer) = codecs.lookup( "utf-8" );
+  return stream_writer( stream, "ignore" );
+
+def utf8ign_search( name ):
+  if name == "utf-8-ignore":
+    (encoder, decoder, stream_reader, stream_writer) = codecs.lookup( "utf-8" );
+    return (encoder, decoder, utf8ign_reader, utf8ign_writer);
+  else:
+    return None;
 
 logdir = None;
 
 def initMain():
   
   global logdir;
+  
+  codecs.register( utf8ign_search );
   
   sys.stdin = codecs.getreader( "utf-8" )( sys.stdin );
   sys.stdout = codecs.getwriter( "utf-8" )( sys.stdout );
@@ -185,4 +201,31 @@ def logIsActive():
   if config.STDERR_LOGGING is None and config.FILE_TRACING is None:
     return False;
   return True;
+
+
+
+def decode_str( block ):
   
+  if block.find( "\\\n" ) != -1:
+    st = "";
+    if block[ 0 ] == "\n":
+      block = block[ 1: ];
+    for ch in block:
+      if ch == " ":
+        st += " ";
+      else:
+        break;
+    block = block.replace( "\\\n"+st, "" );
+  return block;
+
+def encode_str( line, line_len=78 ):
+  
+  rslt = "";
+  i = 0;
+  while True:
+    rslt += line[ i : i + line_len-1 ];
+    i += line_len-1;
+    if i >= len( line ):
+      break;
+    rslt += "\\\n";
+  return rslt;

@@ -40,18 +40,8 @@ class GenericEdge( edge.Edge ):
   
   def xml_base( self ):
     
-    return "<edge%s>%s</edge>";
+    return self.edge_inst.xml_base();
 
   def xml_tmplt( self, base ):
     
-    attrs = "";
-    if not self.type is None:
-      attrs += " type=\"%s\"" % self.type;
-    if not self.id is None:
-      attrs += " id=\"%s\"" % self.id;
-    if not self.source is None:
-      attrs += " source=\"%s\"" % self.source;
-    if not self.target is None:
-      attrs += " target=\"%s\"" % self.target;
-      
-    return base % ( attrs+"%s", self.text+"%s" );
+    return self.edge_inst.xml_tmplt( base )

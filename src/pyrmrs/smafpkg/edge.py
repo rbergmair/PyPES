@@ -56,5 +56,7 @@ class Edge( pyrmrs.xmltools.reader_element.ReaderElement ):
       attrs += " cfrom=\"%s\"" % self.cfrom;
     if not self.cto is None:
       attrs += " cto=\"%s\"" % self.cto;
-      
+    attrs = attrs.replace ( "%", "%%" );
+
+    base = base.replace( "%%", "%%%%" );
     return base % ( attrs+"%s", "%s" );

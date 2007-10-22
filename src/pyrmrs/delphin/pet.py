@@ -79,7 +79,7 @@ class PET( simpleio.SimpleIO ):
       
     self.write_block( st );
     
-    line = unicode( self.read_line(), encoding="utf-8" );
+    line = self.read_line();
     if line == "":
       raise PETError( ( \
         PETError.ERRNO_UNEXPECTED_ETB, \
@@ -109,7 +109,7 @@ class PET( simpleio.SimpleIO ):
         
     else:
       
-      block = unicode( self.read_block(), encoding="utf-8" );
+      block = self.read_block();
       pyrmrs.globals.logDebug(
         self,
         "subsequent block of PET response: |>%s<|" % block
@@ -147,6 +147,6 @@ class PET( simpleio.SimpleIO ):
     
     if noparses > self.results:
       noparses = self.results;
-    reader = pyrmrs.mrs.robust.rmrsreader.RMRSReader( self.ioout, True, noparses );
+    reader = pyrmrs.mrs.robust.rmrsreader.RMRSReader( self.ioout_bare, True, noparses );
     return reader;
   

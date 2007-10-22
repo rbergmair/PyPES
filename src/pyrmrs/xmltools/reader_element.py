@@ -1,34 +1,19 @@
+import pyrmrs.globals;
+
 import xml.sax.handler;
 
 import string;
+
 
 class ReaderElement( xml.sax.handler.ContentHandler ):
 
   def encode_str( self, line, line_len=78 ):
     
-    rslt = "";
-    i = 0;
-    while True:
-      rslt += line[ i : i + line_len-1 ];
-      i += line_len-1;
-      if i >= len( line ):
-        break;
-      rslt += "\\\n";
-    return rslt;
+    return pyrmrs.globals.encode_str( line, line_len );
   
   def decode_str( self, block ):
     
-    if block.find( "\\\n" ) != -1:
-      st = "";
-      if block[ 0 ] == "\n":
-        block = block[ 1: ];
-      for ch in block:
-        if ch == " ":
-          st += " ";
-        else:
-          break;
-      block = block.replace( "\\\n"+st, "" );
-    return block;
+    return pyrmrs.globals.decode_str( block );
   
   def startElement( self, name, attrs ):
     
@@ -56,4 +41,7 @@ class ReaderElement( xml.sax.handler.ContentHandler ):
   
   def str_xml( self ):
     
-    return self.xml_tmplt( self.xml_base() ) % ( "", "" );
+    base = self.xml_base();
+    base = self.xml_tmplt( base );
+    base = base % ( "", "" )
+    return base;

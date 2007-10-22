@@ -33,5 +33,8 @@ class Slot( pyrmrs.xmltools.pchar_element.PCharElement ):
     txt = "";
     if not self.text is None:
       txt = self.text;
+    attrs = attrs.replace( "%", "%%" );
+    txt = txt.replace( "%", "%%" );
     
+    base = base.replace( "%%", "%%%%" );
     return base % ( attrs+"%s", txt+"%s" );

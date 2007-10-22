@@ -29,4 +29,8 @@ class TokenEdge( edge.Edge, pyrmrs.xmltools.pchar_element.PCharElement ):
   def xml_tmplt( self, base ):
     
     base = edge.Edge.xml_tmplt ( self, base );
-    return base % ( "%s", self.text+"%s" );
+    elements = self.text;
+    elements = elements.replace( "%", "%%" );
+    
+    base = base.replace( "%%", "%%%%" );
+    return base % ( "%s", elements+"%s" );

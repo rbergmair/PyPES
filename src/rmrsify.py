@@ -22,7 +22,7 @@ def rmrsify( ifile, ofile ):
   print "%d/%d successful ( %2.2f%% )" % \
     ( rmrsifier.succ, rmrsifier.total, (100.0*float(rmrsifier.succ))/float(rmrsifier.total) );
   
-  cnts = rte3rd.cnts;
+  cnts = rmrsifier.cnts;
   cnts.sort();
   
   sum = 0;

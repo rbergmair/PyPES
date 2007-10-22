@@ -26,5 +26,5 @@ class RaspRMRS( simpleio.SimpleIO ):
   def raspstr_to_rmrss( self, raspstr ):
     
     self.write_block( raspstr );
-    return pyrmrs.mrs.robust.rmrsreader.RMRSReader( self.ioout, True );
+    return pyrmrs.mrs.robust.rmrsreader.RMRSReader( self.ioout_bare, True );
   

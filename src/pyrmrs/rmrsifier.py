@@ -7,12 +7,7 @@ import delphin.pet;
 import delphin.raspsent;
 import delphin.fspp;
 
-
-
 STDINDENT = "  ";
-CHBREAK = 78;
-
-LINELEN = CHBREAK - len( STDINDENT );
 
 
 
@@ -86,20 +81,6 @@ class RMRSifier( xml.sax.handler.ContentHandler ):
         reading_indent = True;
         self.indent = "";
       self.parser.feed( data );
-      
-  def decode_str( self, block ):
-    
-    if block.find( "\\\n" ) != -1:
-      st = "";
-      if block[ 0 ] == "\n":
-        block = block[ 1: ];
-      for ch in block:
-        if ch == " ":
-          st += " ";
-        else:
-          break;
-      block = block.replace( "\\\n"+st, "" );
-    return block;
 
   def startElement( self, name, attrs ):
     
@@ -155,8 +136,9 @@ class RMRSifier( xml.sax.handler.ContentHandler ):
             self.out.write( "\n" );
       
       except delphin.pet.PETError, e:
-        self.out.write( "<error>\n" + self.atindent + STDINDENT );
-        self.out.write( e.errmsg );
+        self.out.write( "<error>\n" );
+        self.out.write( self.atindent + self.atindent );
+        self.out.write( e.errmsg.replace( "\n", "\n"+self.atindent+STDINDENT ) );
         self.out.write( "\n" + self.atindent + "</error>" );
         
         err = e;
@@ -169,8 +151,8 @@ class RMRSifier( xml.sax.handler.ContentHandler ):
         self.succ += 1;
       else:
         print "%2d --> %s" % ( err.errno, sent );
-        if err.errno != 1:
-          print "       " + err.errmsg;
+        #if err.errno != 1:
+        #  print "       " + err.errmsg;
 
       self.out.write( "\n" + self.atindent + "</sentence>" );
       
@@ -182,7 +164,8 @@ class RMRSifier( xml.sax.handler.ContentHandler ):
     if name in self.active_tags:
     
       text = self.chbuf.pop();
-      text = self.decode_str( text );
+      text = pyrmrs.globals.decode_str( text );
+      text = text.strip();
 
       if name == "pp":
         self.preprocsurface = text;
@@ -193,16 +176,11 @@ class RMRSifier( xml.sax.handler.ContentHandler ):
         self.preprocsurface = self.surface;
         
       self.out.write( "\n" + self.atindent );
-      self.out.write( "<surface>" );
-      self.out.write( "\n" + self.atindent + STDINDENT );
-      
-      i = 0;
-      while True:
-        self.out.write( self.surface[ i : i + LINELEN - 1 ] );
-        i += LINELEN - 1;
-        if i >= len( self.surface ):
-          break;
-        self.out.write( "\\\n" + self.atindent + STDINDENT );
+      self.out.write( "<surface>\n" );
+      self.out.write( \
+        self.atindent+STDINDENT+
+        pyrmrs.globals.encode_str( self.surface, 80-len(self.atindent+STDINDENT) ).replace( \
+          "\n", "\n"+self.atindent+STDINDENT ) );
         
       self.out.write( "\n" + self.atindent + "</surface>" );
 

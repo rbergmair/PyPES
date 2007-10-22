@@ -45,5 +45,6 @@ class SMAF( pyrmrs.xmltools.reader_element.ReaderElement ):
     
     elements = elements.replace( "%", "%%" );
     
+    base = base.replace( "%%", "%%%%" );
     return base % ( "%s", elements+"%s" );
     
