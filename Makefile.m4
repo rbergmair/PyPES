@@ -39,7 +39,6 @@ clean: $(MAKEFILE)
 loc: $(MAKEFILE)
 	$(FIND) . -name *.py -exec $(GREP) -H --count -e "" {} \;
 	$(FIND) . -name *.py -exec $(CAT) {} \; | $(GREP) -e "" --count
-  
 
 
 
@@ -53,7 +52,7 @@ $(MAKEFILE): $(MAKEFILE).m4
 %.xml: %.xml.m4 config.m4 _CONFIG_M4_LOCAL $(MAKEFILE)
 	( $(ECHO) "`m4_changecom'()"; $(CAT) $< ) | $(M4) - | $(SED) "/^$$/d" > $@
 
-src/pyrmrs/config.py: src/pyrmrs/config.py.m4 config.m4 _CONFIG_M4_LOCAL $(MAKEFILE)
+$(CONFIG): src/pyrmrs/config.py.m4 config.m4 _CONFIG_M4_LOCAL $(MAKEFILE)
 	( $(ECHO) "`m4_changecom'()"; $(CAT) $< ) | $(M4) - > $@
 
 bin/%.py: src/%.py $(MAKEFILE)

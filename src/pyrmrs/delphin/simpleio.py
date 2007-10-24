@@ -3,6 +3,7 @@ import pyrmrs.globals;
 import os;
 import codecs;
 import sys;
+import select;
 
 
 
@@ -122,8 +123,35 @@ class SimpleIO:
     for i in range( 0, 511 ):
       block += "\000";
     pyrmrs.globals.logDebug( self, "writing |>%s<|..." % block );
+    
+    #( readable, writable, exceptional) = select.select( [self.ioout], [self.ioin], [], 0.5 );
+    #
+    #nzs = "";
+    #if len( writable ) == 0:
+    #  pyrmrs.globals.logDebug( self, "possible deadlock situation;" );
+    #  if len( readable ) == 0:
+    #    pyrmrs.globals.logDebug( self, "situation hopeless;" );
+    #  else:
+    #    while True:
+    #      pyrmrs.globals.logDebug( self, "reading 1 byte..." );
+    #      ch = self.ioout.read( 1 );
+    #      if ch != '\000':
+    #        pyrmrs.globals.logDebug( self, "huh? got nonzero |>%s<|;" % ch );
+    #        nzs += ch;
+    #      else:
+    #        pyrmrs.globals.logDebug( self, "got zero;" );
+    #      ( readable, writable, exceptional) = select.select( [self.ioout], [self.ioin], [], 0.5 );
+    #      if len( writable ) > 0:
+    #        break;
+    #      if len( readable ) == 0:
+    #        pyrmrs.globals.logDebug( self, "situation hopeless;" );
+    #        break;
+    #if nzs != "":
+    #  pyrmrs.globals.logDebug( self, "got nonzero stuff: |>%s<|" % nzs );
+    
     self.ioin.write( block );
     self.ioin.flush();
+    
     pyrmrs.globals.logDebug( self, "finished writing;" );
   
   def close_pipe( self ):

@@ -45,16 +45,18 @@ m4_define(`_DIR_LOG',`/tmp')
 
 m4_dnl specific to rb432
 
-m4_define(`_SH_CHEAP',m4_esyscmd(`echo -n $DELPHINHOME/pet/bin/cheap'))
+m4_define(`_DIR_DELPHINHOME',m4_esyscmd(`echo -n $DELPHINHOME'))
+m4_define(`_SH_CHEAP',`_DIR_DELPHINHOME/pet/bin/cheap')
 
-m4_define(`_DIR_ERGHOME',m4_esyscmd(`echo -n $DELPHINHOME/erg'))
-m4_define(`_FILE_ERG',m4_esyscmd(`echo -n $DELPHINHOME/erg/english.grm'))
+m4_define(`_DIR_ERGHOME',`_DIR_DELPHINHOME/erg')
+m4_define(`_FILE_ERG',`_DIR_ERGHOME/english.grm')
 
-m4_define(`_SH_RASP',m4_esyscmd(`echo -n $SCRATCH/rasp3/scripts/rasp-rb.sh'))
-m4_define(`_SH_RASPSENT',m4_esyscmd(`echo -n $SCRATCH/rasp3/sentence/sentence.x86_64_linux.int'))
+m4_define(`_DIR_RASPHOME',m4_esyscmd(`echo -n $SCRATCH/rasp3'))
+m4_define(`_SH_RASP',`_DIR_RASPHOME/scripts/rasp-rb.sh')
+m4_define(`_SH_RASPSENT',`_DIR_RASPHOME/sentence/sentence.x86_64_linux.int')
 
 m4_define(`_DIR_LKBHOME',m4_esyscmd(`echo -n $DELPHINHOME/lkb'))
-m4_define(`_SH_LKB',m4_esyscmd(`echo -n $DELPHINHOME/lkb/linux.x86.64/lkb'))
+m4_define(`_SH_LKB',`/usr/opt/acl80.64/alisp -I _DIR_LKBHOME/rasp3-rmrs/rasp3-rmrs.dxl')
 
 
 

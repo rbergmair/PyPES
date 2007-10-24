@@ -3,15 +3,11 @@ import xml.sax.handler;
 
 import pyrmrs.globals;
 
-import delphin.pet;
-import delphin.raspsent;
-import delphin.fspp;
-
-STDINDENT = "  ";
-
 
 
 class RMRSifier( xml.sax.handler.ContentHandler ):
+
+  STDINDENT = "  ";
 
   tags = {};
   parser = None;
@@ -21,10 +17,6 @@ class RMRSifier( xml.sax.handler.ContentHandler ):
   
   preprocsurface = "";
   realsurface = "";
-  
-  petctrl = None;
-  raspsentctrl = None;
-  fsppctrl = None;
   
   active_tags = None;
   atindent = "";
@@ -58,10 +50,6 @@ class RMRSifier( xml.sax.handler.ContentHandler ):
     self.active_tags = active_tags;
     self.active_tags.append( "pp" );
     
-    self.petctrl = delphin.pet.PET( 5, 5 );
-    self.raspsentctrl = delphin.raspsent.RaspSentenceSplitter();
-    self.fsppctrl = delphin.fspp.FSPP();
-    
     reading_indent = True;
     self.indent = "";
 
@@ -69,7 +57,7 @@ class RMRSifier( xml.sax.handler.ContentHandler ):
       data = ifile.read( 1 );
       if data == "":
         break;
-      data = data.replace( "\t", STDINDENT );
+      data = data.replace( "\t", self.STDINDENT );
       if self.copythrough:
         ofile.write( data );
       if reading_indent:
@@ -100,64 +88,10 @@ class RMRSifier( xml.sax.handler.ContentHandler ):
     
     if not self.copythrough:
       self.chbuf[ len( self.chbuf )-1 ] += content;
-
   
   def rmrsify( self, surface ):
     
-    surface = surface.strip();
-    
-    pyrmrs.globals.logDebug( self, "|>%s<|" % surface );
-
-    self.out.write( "\n" + self.atindent + "<analysis>" );
-    self.out.write( "\n" + self.atindent );
-    
-    for sent in self.raspsentctrl.txtstr_to_sentstrs( surface ):
-
-      pyrmrs.globals.logDebug( self, "|>%s<|" % sent );
-      
-      self.out.write( "\n" + self.atindent + "<sentence>" );
-      self.out.write( "\n" + self.atindent );
-      
-      err = None;
-      cnt = 0;
-      
-      try:
-        
-        for smaf in self.fsppctrl.sentstr_to_smafs( sent ):
-          for rmrs in self.petctrl.smaf_to_rmrss( smaf ):
-            
-            cnt += 1;
-            
-            self.out.write( "\n" + self.atindent + "<!--\n" );
-            self.out.write( rmrs.str_pretty() );
-            self.out.write( "\n" + self.atindent + "-->\n" + self.atindent );
-            self.out.write( \
-              rmrs.str_xml().replace( "\n", "\n" + self.atindent ) );
-            self.out.write( "\n" );
-      
-      except delphin.pet.PETError, e:
-        self.out.write( "<error>\n" );
-        self.out.write( self.atindent + self.atindent );
-        self.out.write( e.errmsg.replace( "\n", "\n"+self.atindent+STDINDENT ) );
-        self.out.write( "\n" + self.atindent + "</error>" );
-        
-        err = e;
-        
-      self.cnts.append( cnt );
-      
-      self.total += 1;
-      if err == None:
-        print "   --> %s" % sent;
-        self.succ += 1;
-      else:
-        print "%2d --> %s" % ( err.errno, sent );
-        #if err.errno != 1:
-        #  print "       " + err.errmsg;
-
-      self.out.write( "\n" + self.atindent + "</sentence>" );
-      
-    self.out.write( "\n" + self.atindent + "</analysis>" );
-    self.out.write( "\n" );
+    self.out.write( surface );
     
   def endElement( self, name ):
     
@@ -178,9 +112,9 @@ class RMRSifier( xml.sax.handler.ContentHandler ):
       self.out.write( "\n" + self.atindent );
       self.out.write( "<surface>\n" );
       self.out.write( \
-        self.atindent+STDINDENT+
-        pyrmrs.globals.encode_str( self.surface, 80-len(self.atindent+STDINDENT) ).replace( \
-          "\n", "\n"+self.atindent+STDINDENT ) );
+        self.atindent+self.STDINDENT+
+        pyrmrs.globals.encode_str( self.surface, 80-len(self.atindent+self.STDINDENT) ).replace( \
+          "\n", "\n"+self.atindent+self.STDINDENT ) );
         
       self.out.write( "\n" + self.atindent + "</surface>" );
 

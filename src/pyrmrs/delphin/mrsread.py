@@ -20,7 +20,7 @@ class MRSRead( simpleio.SimpleIO ):
     );
   
     self.open_pipe( cmd );
-    x = self.read_block();
+    self.read_block();
   
   def mrsread( self, mrsstr ):
   

@@ -79,22 +79,19 @@ class PET( simpleio.SimpleIO ):
       
     self.write_block( st );
     
-    line = self.read_line();
-    if line == "":
+    block = self.read_block();
+    if block == "":
       raise PETError( ( \
         PETError.ERRNO_UNEXPECTED_ETB, \
         "unexpected end of transmission block during read_line()" \
       ) );
     
-    line = line.replace( "\n", "" );
-    pyrmrs.globals.logDebug( self, "first line of PET response: |>%s<|" % line );
-
     success = re.compile( \
       "(^\([0-9]*\) `.*' \[[0-9]*] --- )([0-9]*)( " + \
       "\(-?[0-9]*.[0-9]*.-?[0-9]*.[0-9]*s\) " +
       "<[0-9]+:[0-9]+> \([0-9]*\.[0-9]*.\) \[[0-9]*\.[0-9]*s\])" \
     );
-    mat = success.match( line );
+    mat = success.search( block );
     
     noparses = 0;
 
@@ -109,40 +106,25 @@ class PET( simpleio.SimpleIO ):
         
     else:
       
-      block = self.read_block();
-      pyrmrs.globals.logDebug(
-        self,
-        "subsequent block of PET response: |>%s<|" % block
-      );
-        
-      msg = line + "\n" + block;
-      msg = msg.strip();
-        
       nolex = re.compile( "no lexicon entries for" );
-      mat = nolex.search( line );
+      mat = nolex.search( block );
       if mat != None:
         raise PETError( ( \
           PETError.ERRNO_MISSING_LEXICAL_ENTRY, \
-          msg \
+          block.strip() \
         ) );
         
       edgelim = re.compile( "edge limit exhausted \([0-9]+ pedges\)" );
-      mat = edgelim.search( line );
+      mat = edgelim.search( block );
       if mat != None:
         raise PETError( ( \
           PETError.ERRNO_EDGE_LIMIT_EXHAUSTED, \
-          msg \
-        ) );
-
-      if block == "":
-        raise PETError( ( \
-          PETError.ERRNO_UNEXPECTED_ETB, \
-          "unexpected end of transmission block during read_block()" \
+          block.strip() \
         ) );
 
       raise PETError( ( \
         PETError.ERRNO_UNKNOWN, \
-        msg \
+        block.strip() \
       ) );
     
     if noparses > self.results:

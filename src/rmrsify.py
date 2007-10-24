@@ -1,18 +1,93 @@
 import pyrmrs.globals;
-
 import pyrmrs.rmrsifier;
 
 import sys;
 import time;
 import codecs;
 
+import pyrmrs.delphin.pet;
+import pyrmrs.delphin.raspsent;
+import pyrmrs.delphin.fspp;
+
+
+
+class MyRMRSifier( pyrmrs.rmrsifier.RMRSifier ):
+  
+  petctrl = None;
+  raspsentctrl = None;
+  fsppctrl = None;
+  
+  def __init__( self, ifile, ofile, active_tags = [ "t", "h" ] ):
+    
+    self.petctrl = pyrmrs.delphin.pet.PET( 5, 5 );
+    self.raspsentctrl = pyrmrs.delphin.raspsent.RaspSentenceSplitter();
+    self.fsppctrl = pyrmrs.delphin.fspp.FSPP();
+    pyrmrs.rmrsifier.RMRSifier.__init__( self, ifile, ofile, active_tags );
+    
+  def rmrsify( self, surface ):
+    
+    surface = surface.strip();
+    
+    pyrmrs.globals.logDebug( self, "|>%s<|" % surface );
+
+    self.out.write( "\n" + self.atindent + "<analysis>" );
+    self.out.write( "\n" + self.atindent );
+    
+    for sent in self.raspsentctrl.txtstr_to_sentstrs( surface ):
+
+      pyrmrs.globals.logDebug( self, "|>%s<|" % sent );
+      
+      self.out.write( "\n" + self.atindent + "<sentence>" );
+      self.out.write( "\n" + self.atindent );
+      
+      err = None;
+      cnt = 0;
+      
+      try:
+        
+        for smaf in self.fsppctrl.sentstr_to_smafs( sent ):
+          for rmrs in self.petctrl.smaf_to_rmrss( smaf ):
+            
+            cnt += 1;
+            
+            self.out.write( "\n" + self.atindent + "<!--\n" );
+            self.out.write( rmrs.str_pretty() );
+            self.out.write( "\n" + self.atindent + "-->\n" + self.atindent );
+            self.out.write( \
+              rmrs.str_xml().replace( "\n", "\n" + self.atindent ) );
+            self.out.write( "\n" );
+      
+      except pyrmrs.delphin.pet.PETError, e:
+        self.out.write( "<error>\n" );
+        self.out.write( self.atindent + self.atindent );
+        self.out.write( e.errmsg.replace( "\n", "\n"+self.atindent+self.STDINDENT ) );
+        self.out.write( "\n" + self.atindent + "</error>" );
+        
+        err = e;
+        
+      self.cnts.append( cnt );
+      
+      self.total += 1;
+      if err == None:
+        print "   --> %s" % sent;
+        self.succ += 1;
+      else:
+        print "%2d --> %s" % ( err.errno, sent );
+        #if err.errno != 1:
+        #  print "       " + err.errmsg;
+
+      self.out.write( "\n" + self.atindent + "</sentence>" );
+      
+    self.out.write( "\n" + self.atindent + "</analysis>" );
+    self.out.write( "\n" );
+  
 
 
 def rmrsify( ifile, ofile ):
 
   before_time = time.time();
   before_cpu = time.clock();
-  rmrsifier = pyrmrs.rmrsifier.RMRSifier( ifile, ofile, [ "t", "h" ] );
+  rmrsifier = MyRMRSifier( ifile, ofile );
   after_cpu = time.clock();
   after_time = time.time();
   

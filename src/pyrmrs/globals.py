@@ -84,14 +84,16 @@ def initMain():
   sys.stdout = codecs.getwriter( "utf-8" )( sys.stdout );
   sys.stderr = codecs.getwriter( "utf-8" )( sys.stderr );
   
-  if logdir is None:
+  if not config.FILE_TRACING is None:
     
-    logdir = "%s/pyrmrs-%s" % ( config.DIR_LOG, getInstTok() );
-
-    try:
-      os.mkdir( logdir );
-    except:
-      logdir = None;
+    if logdir is None:
+      
+      logdir = "%s/pyrmrs-%s" % ( config.DIR_LOG, getInstTok() );
+  
+      try:
+        os.mkdir( logdir );
+      except:
+        logdir = None;
   
   if not config.STDERR_LOGGING is None:
     
