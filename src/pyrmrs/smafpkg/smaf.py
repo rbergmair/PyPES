@@ -23,7 +23,7 @@ class SMAF( pyrmrs.xmltools.reader_element.ReaderElement ):
       self.lattice = obj;
 
 
-
+  
   def xml_base( self ):
     
     return "<smaf%s>\n  %s</smaf>";

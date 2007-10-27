@@ -111,6 +111,8 @@ class Referent( pyrmrs.mrs.common.referent.Referent ):
     
     if name != self.XMLELEM:
       return;
+    
+    pyrmrs.mrs.common.referent.Referent.startElement( self, name, attrs );
       
     if attrs.has_key( "num" ):
       self.num = attrs[ "num" ];
@@ -155,9 +157,11 @@ class Referent( pyrmrs.mrs.common.referent.Referent ):
 
   def xml_base( self ):
     
-    return "<var%s/>%s";
+    return pyrmrs.mrs.common.referent.Referent.xml_base( self );
 
   def xml_tmplt( self, base ):
+    
+    base = pyrmrs.mrs.common.referent.Referent.xml_tmplt( self, base );
     
     st = "";
     if self.num != None:

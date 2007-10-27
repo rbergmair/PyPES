@@ -140,6 +140,8 @@ def getLogger( inst=None ):
   logname = "pyrmrs";
   if not inst is None:
     logname = inst.__class__.__module__;
+    if not logname.startswith( "pyrmrs." ):
+      return None;
   logger = logging.getLogger( logname );
 
   if logname in loggers:
@@ -180,7 +182,9 @@ def logDebug( inst=None, message="" ):
     return;
   if not isinstance( message, unicode ):
     message = unicode( message, "utf-8" );
-  getLogger( inst ).log( LOG_DEBUG, message );
+  logger = getLogger( inst );
+  if not logger is None:
+    logger.log( LOG_DEBUG, message );
 
 def logDebugCoarse( inst=None, message="" ):
 
@@ -188,7 +192,9 @@ def logDebugCoarse( inst=None, message="" ):
     return;
   if not isinstance( message, unicode ):
     message = unicode( message, "utf-8" );
-  getLogger( inst ).log( LOG_DEBUG_COARSE, message );
+  logger = getLogger( inst );
+  if not logger is None:
+    logger.log( LOG_DEBUG_COARSE, message );
 
 def logWarning( inst=None, message="" ):
 
@@ -196,7 +202,9 @@ def logWarning( inst=None, message="" ):
     return;
   if not isinstance( message, unicode ):
     message = unicode( message, "utf-8" );
-  getLogger( inst ).log( LOG_WARNING, message );
+  logger = getLogger( inst );
+  if not logger is None:
+    logger.log( LOG_WARNING, message );
 
 def logIsActive():
   

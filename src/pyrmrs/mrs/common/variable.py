@@ -1,7 +1,5 @@
 import pyrmrs.xmltools.reader_element;
 
-import referent;
-
 
 
 class Variable( pyrmrs.xmltools.reader_element.ReaderElement ):
@@ -35,7 +33,10 @@ class Variable( pyrmrs.xmltools.reader_element.ReaderElement ):
   def startElement( self, name, attrs ):
     
     if name == self.XMLELEM:
+      if self.referent != None:
+        self.referent.startElement( name, attrs );
       self.vid = int( attrs[ "vid" ] );
+      self.sort = attrs[ "sort" ];
 
   def characters( self, content ):
     
@@ -50,7 +51,7 @@ class Variable( pyrmrs.xmltools.reader_element.ReaderElement ):
   def endElement( self, name ):
 
     if self.referent != None:
-      self.referent.endElement( name );  
+      self.referent.endElement( name );
 
 
 
@@ -63,15 +64,17 @@ class Variable( pyrmrs.xmltools.reader_element.ReaderElement ):
   
   def xml_tmplt( self, base ):
     
-    attributes = " sort='%s'" % self.sort;
-    attributes += " vid='%s'" % self.vid;
-
-    base = base.replace( "%%", "%%%%" );
-    base = base % ( attributes + "%s", "%s" );
-    
     if self.referent != None:
       
       base = self.referent.xml_tmplt( base );
+    
+    else:
+
+      attributes = " sort='%s'" % self.sort;
+      attributes += " vid='%s'" % self.vid;
+  
+      base = base.replace( "%%", "%%%%" );
+      base = base % ( attributes + "%s", "%s" );
       
     return base;
 

@@ -28,7 +28,7 @@ class RMRSem( pyrmrs.mrs.common.mrsem.MRSem ):
   ings = [];
   groups = [];
   group_by_hid = {};
-  lbls = [];
+  _lbls = [];
   lbl_by_lid = {};
   vars = [];
   refs = [];
@@ -47,7 +47,7 @@ class RMRSem( pyrmrs.mrs.common.mrsem.MRSem ):
     self.ings = [];
     self.groups = [];
     self.group_by_hid = {};
-    self.lbls = [];
+    self._lbls = [];
     self.lbl_by_lid = {};
     self.vars = [];
     self.refs = [];
@@ -68,12 +68,13 @@ class RMRSem( pyrmrs.mrs.common.mrsem.MRSem ):
 
     if isinstance( obj, label.Label ):
       
-      self.lbls.append( obj );
+      self._lbls.append( obj );
       self.lbl_by_lid[ obj.vid ] = obj;
       
     elif isinstance( obj, variable.Variable ):
-  
+      
       self.vars.append( obj );
+      
       if obj.referent != None:
         var =  obj.sort + str( obj.vid );
         if self.ref_by_var.has_key( var ):
@@ -161,7 +162,7 @@ class RMRSem( pyrmrs.mrs.common.mrsem.MRSem ):
     declarations = [];  
     for ep in self.eps:
       declarations.append( ep.label.vid );
-    for lbl in self.lbls:
+    for lbl in self._lbls:
       if lbl.vid not in declarations:
         # raise error.xmlsem_error.XMLSemError( \
         #   error.xmlsem_error.XMLSemError.ERRNO_UNDEFINED );
@@ -249,17 +250,18 @@ class RMRSem( pyrmrs.mrs.common.mrsem.MRSem ):
       ep = eps[ 0 ];
 
       pref = not pref;
-
+      
       if self.group_by_hid.has_key( ep.label.vid ):
-        
+
         group = self.group_by_hid[ ep.label.vid ];
+        
         i = 0;
         while True:
           if i >= len( eps ):
             break;
           ep = eps[ i ];
-          i += 1;
           if not ep.label.vid in group:
+            i += 1;
             continue;
           
           res = self.str_pretty_ep( ep );
@@ -268,7 +270,7 @@ class RMRSem( pyrmrs.mrs.common.mrsem.MRSem ):
           else:
             res = res.replace( ":", "|" );
           rslt += res;
-          del eps[ i-1 ];
+          del eps[ i ];
 
       else:
             
