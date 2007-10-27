@@ -1,7 +1,7 @@
 import codecs;
 
 import pyrmrs.globals;
-import pyrmrs.delphin.fspp;
+import pyrmrs.ext.fspp;
 
 pyrmrs.globals.initMain();
 
@@ -10,7 +10,7 @@ f = codecs.getreader( "utf-8" )( f );
 sents = f.read();
 f.close();
 
-fsppctrl = pyrmrs.delphin.fspp.FSPP();
+fsppctrl = pyrmrs.ext.fspp.FSPP();
 
 for line in sents.splitlines():
   for smaf in fsppctrl.sentstr_to_smafs( line ):

@@ -5,9 +5,9 @@ import sys;
 import time;
 import codecs;
 
-import pyrmrs.delphin.pet;
-import pyrmrs.delphin.raspsent;
-import pyrmrs.delphin.fspp;
+import pyrmrs.ext.pet;
+import pyrmrs.ext.raspsent;
+import pyrmrs.ext.fspp;
 
 
 
@@ -19,9 +19,9 @@ class MyRMRSifier( pyrmrs.rmrsifier.RMRSifier ):
   
   def __init__( self, ifile, ofile, active_tags = [ "t", "h" ] ):
     
-    self.petctrl = pyrmrs.delphin.pet.PET( 5, 5 );
-    self.raspsentctrl = pyrmrs.delphin.raspsent.RaspSentenceSplitter();
-    self.fsppctrl = pyrmrs.delphin.fspp.FSPP();
+    self.petctrl = pyrmrs.ext.pet.PET( 5, 5 );
+    self.raspsentctrl = pyrmrs.ext.raspsent.RaspSentenceSplitter();
+    self.fsppctrl = pyrmrs.ext.fspp.FSPP();
     pyrmrs.rmrsifier.RMRSifier.__init__( self, ifile, ofile, active_tags );
     
   def rmrsify( self, surface ):
@@ -57,7 +57,7 @@ class MyRMRSifier( pyrmrs.rmrsifier.RMRSifier ):
               rmrs.str_xml().replace( "\n", "\n" + self.atindent ) );
             self.out.write( "\n" );
       
-      except pyrmrs.delphin.pet.PETError, e:
+      except pyrmrs.ext.pet.PETError, e:
         self.out.write( "<error>\n" );
         self.out.write( self.atindent + self.atindent );
         self.out.write( e.errmsg.replace( "\n", "\n"+self.atindent+self.STDINDENT ) );

@@ -3,7 +3,7 @@ import codecs;
 import pyrmrs.globals;
 import pyrmrs.config;
 
-import pyrmrs.delphin.raspsent;
+import pyrmrs.ext.raspsent;
 
 pyrmrs.globals.initMain();
 
@@ -12,7 +12,7 @@ f = codecs.getreader( "utf-8" )( f );
 txt = f.read();
 f.close();
 
-raspsentctrl = pyrmrs.delphin.raspsent.RaspSentenceSplitter();
+raspsentctrl = pyrmrs.ext.raspsent.RaspSentenceSplitter();
 
 for sent in raspsentctrl.txtstr_to_sentstrs( txt ):
   print sent;
