@@ -58,18 +58,19 @@ for smaf in fsppctrl.sentstr_to_smafs( SURFACE ):
   tok_smaf = smaf;
 del fsppctrl;
 
-pyrmrs.tools.merge_pos_into_smaf.merge_pos_into_smaf( tok_smaf, pos_smaf );
+uni_smaf = pyrmrs.tools.merge_pos_into_smaf.merge_pos_into_smaf( tok_smaf, pos_smaf );
+print uni_smaf.str_xml();
 
 
 
-#petctrl = pyrmrs.ext.pet.PET( 10 );
-#
-#try:  
-#  for rmrs in petctrl.smaf_to_rmrss( smaf ):
-#    print rmrs.str_pretty();
-#    print;
-#except pyrmrs.ext.pet.PETError, (e, msg):
-#  print "error %d: %s" % ( e, msg );
-#  print;
+petctrl = pyrmrs.ext.pet.PET( 10 );
+
+try:  
+  for rmrs in petctrl.smaf_to_rmrss( uni_smaf ):
+    print rmrs.str_pretty();
+    print;
+except pyrmrs.ext.pet.PETError, (e, msg):
+  print "error %d: %s" % ( e, msg );
+  print;
 
 pyrmrs.globals.destructMain();

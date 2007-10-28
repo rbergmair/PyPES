@@ -34,9 +34,9 @@ class Edge( pyrmrs.xmltools.reader_element.ReaderElement ):
     if attrs.has_key( "target" ):
       self.target = attrs[ "target" ];
     if attrs.has_key( "cfrom" ):
-      self.cfrom = attrs[ "cfrom" ];
+      self.cfrom = int( attrs[ "cfrom" ] );
     if attrs.has_key( "cto" ):
-      self.cto = attrs[ "cto" ];
+      self.cto = int( attrs[ "cto" ] );
     if attrs.has_key( "deps" ):
       self.deps = attrs[ "deps" ];
       

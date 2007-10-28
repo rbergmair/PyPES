@@ -40,9 +40,9 @@ class Lattice( pyrmrs.xmltools.reader_element.ReaderElement ):
         self.lattice[ self.final ] = [];
 
     if attrs.has_key( "cfrom" ):
-      self.cfrom = attrs[ "cfrom" ];
+      self.cfrom = int( attrs[ "cfrom" ] );
     if attrs.has_key( "cto" ):
-      self.cfrom = attrs[ "cto" ];
+      self.cfrom = int( attrs[ "cto" ] );
       
     
 
@@ -63,10 +63,7 @@ class Lattice( pyrmrs.xmltools.reader_element.ReaderElement ):
       self.lattice[ edge_.source ] = [];
     if not self.lattice.has_key( edge_.target ):
       self.lattice[ edge_.target ] = [];
-    self.lattice[ edge_.source ].append( (
-      edge_.target,
-      edge_
-    ) );
+    self.lattice[ edge_.source ].append( edge_ );
 
 
 
