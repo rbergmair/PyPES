@@ -11,6 +11,7 @@ class Edge( pyrmrs.xmltools.reader_element.ReaderElement ):
   target = None;
   cfrom = None;
   cto = None;
+  deps = None;
 
   def __init__( self ):
     
@@ -20,6 +21,7 @@ class Edge( pyrmrs.xmltools.reader_element.ReaderElement ):
     self.target = None;
     self.cfrom = None;
     self.cto = None;
+    self.deps = None;
     
   def startElement( self, name, attrs ):
 
@@ -35,6 +37,8 @@ class Edge( pyrmrs.xmltools.reader_element.ReaderElement ):
       self.cfrom = attrs[ "cfrom" ];
     if attrs.has_key( "cto" ):
       self.cto = attrs[ "cto" ];
+    if attrs.has_key( "deps" ):
+      self.deps = attrs[ "deps" ];
       
   
   def xml_base( self ):
@@ -56,6 +60,9 @@ class Edge( pyrmrs.xmltools.reader_element.ReaderElement ):
       attrs += " cfrom=\"%s\"" % self.cfrom;
     if not self.cto is None:
       attrs += " cto=\"%s\"" % self.cto;
+    if not self.deps is None:
+      attrs += " deps=\"%s\"" % self.deps;
+      
     attrs = attrs.replace ( "%", "%%" );
 
     base = base.replace( "%%", "%%%%" );

@@ -99,6 +99,7 @@ class PET( simpleio.SimpleIO ):
 
       noparses = int( mat.groups()[ 1 ] );
       if noparses == 0:
+        block += self.read_block(); # ???
         raise PETError( ( \
           PETError.ERRNO_ZERO_READINGS, \
           "Zero readings." \

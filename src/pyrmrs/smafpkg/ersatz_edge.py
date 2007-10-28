@@ -12,6 +12,7 @@ class ErsatzEdge( edge.Edge ):
     edge.Edge.__init__( self );
     self.name = None;
     self.surface = None;
+    self.type = "ersatz";
     
   def register( self, obj ):
     
@@ -22,10 +23,6 @@ class ErsatzEdge( edge.Edge ):
       if obj.name == "surface":
         self.surface = obj.text;
         
-  def xml_base( self ):
-    
-    return "<edge%s>%s</edge>";
-      
   def xml_tmplt( self, base ):
     
     base = edge.Edge.xml_tmplt ( self, base );

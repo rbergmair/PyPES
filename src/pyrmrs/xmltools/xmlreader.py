@@ -145,6 +145,10 @@ class XMLReader( xml.sax.handler.ContentHandler ):
       eob = False;
 
       chunk = self.ifile.read( CHUNK_SIZE );
+      r = chunk.find( "\027" );
+      if r != -1:
+        chunk += self.ifile.read( CHUNK_SIZE - ( len(chunk) - r ) );
+      
       data = "";
       for ch in chunk:
         if not self.ignore_char( ch ):
@@ -166,7 +170,7 @@ class XMLReader( xml.sax.handler.ContentHandler ):
           pyrmrs.globals.logWarning( self, self.alldata );
           raise;
 
-      if eob or data == "" or ( ( self.limit != None ) and ( self.noread >= self.limit ) ):
+      if eob: # or data == "" or ( ( self.limit != None ) and ( self.noread >= self.limit ) ):
         if self.top != None:
           self.parser.feed( "\n</%s>\n" % self.top );
         raise StopIteration;

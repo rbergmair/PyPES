@@ -1,9 +1,20 @@
-import pyrmrs.tools.raspstr_to_smaf;
 import pyrmrs.globals;
+
+import pyrmrs.ext.pet;
+import pyrmrs.ext.fspp;
+
+import pyrmrs.tools.raspstr_to_smaf;
+import pyrmrs.tools.merge_pos_into_smaf;
+
 
 pyrmrs.globals.initMain();
 
-pyrmrs.tools.raspstr_to_smaf.raspstr_to_smaf( """(|<w s='4' e='4'>I_PPIS1</w>| |<w s='6' e='8'>see+ed_VVD</w>| |<w s='10' e='10'>a_AT1</w>| |<w s='12' e='14'>man_NN1</w>| |<w s='16' e='19'>with_IW</w>| |<w s='21' e='21'>a_AT1</w>| |<w s='23' e='31'>telescope_NN1</w>| |<w s='32' e='32'>._.</w>|) 3 ; (-6.792 -7.203 -8.471)
+
+SURFACE = "I saw a man with a telescope.";
+
+pos_smaf = pyrmrs.tools.raspstr_to_smaf.raspstr_to_smaf( \
+  SURFACE, \
+  """(|<w s='4' e='4'>I_PPIS1</w>| |<w s='6' e='8'>see+ed_VVD</w>| |<w s='10' e='10'>a_AT1</w>| |<w s='12' e='14'>man_NN1</w>| |<w s='16' e='19'>with_IW</w>| |<w s='21' e='21'>a_AT1</w>| |<w s='23' e='31'>telescope_NN1</w>| |<w s='32' e='32'>._.</w>|) 3 ; (-6.792 -7.203 -8.471)
 
 (|T/txt-sc1/-+|
  (|S/np_vp| |<w s='4' e='4'>I_PPIS1</w>|
@@ -40,5 +51,25 @@ pyrmrs.tools.raspstr_to_smaf.raspstr_to_smaf( """(|<w s='4' e='4'>I_PPIS1</w>| |
  (|End-punct3/-| |<w s='32' e='32'>._.</w>|))
 
 """ );
+
+fsppctrl = pyrmrs.ext.fspp.FSPP();
+tok_smaf = None;
+for smaf in fsppctrl.sentstr_to_smafs( SURFACE ):
+  tok_smaf = smaf;
+del fsppctrl;
+
+pyrmrs.tools.merge_pos_into_smaf.merge_pos_into_smaf( tok_smaf, pos_smaf );
+
+
+
+#petctrl = pyrmrs.ext.pet.PET( 10 );
+#
+#try:  
+#  for rmrs in petctrl.smaf_to_rmrss( smaf ):
+#    print rmrs.str_pretty();
+#    print;
+#except pyrmrs.ext.pet.PETError, (e, msg):
+#  print "error %d: %s" % ( e, msg );
+#  print;
 
 pyrmrs.globals.destructMain();

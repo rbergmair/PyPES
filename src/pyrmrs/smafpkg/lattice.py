@@ -1,5 +1,6 @@
 import pyrmrs.xmltools.reader_element;
 
+import edge;
 import generic_edge;
 
 class Lattice( pyrmrs.xmltools.reader_element.ReaderElement ):
@@ -47,16 +48,25 @@ class Lattice( pyrmrs.xmltools.reader_element.ReaderElement ):
 
   def register( self, obj ):
     
+    edge_ = None;
+    
     if isinstance( obj, generic_edge.GenericEdge ):
-      self.edges.append( obj.edge_inst );
-      if not self.lattice.has_key( obj.edge_inst.source ):
-        self.lattice[ obj.edge_inst.source ] = [];
-      if not self.lattice.has_key( obj.edge_inst.target ):
-        self.lattice[ obj.edge_inst.target ] = [];
-      self.lattice[ obj.edge_inst.source ].append( (
-        obj.edge_inst.target,
-        obj.edge_inst
-      ) );
+      edge_ = obj.edge_inst;
+    elif isinstance( obj, edge.Edge ):
+      edge_ = obj;
+      
+    if edge_ is None:
+      return;
+    
+    self.edges.append( edge_ );
+    if not self.lattice.has_key( edge_.source ):
+      self.lattice[ edge_.source ] = [];
+    if not self.lattice.has_key( edge_.target ):
+      self.lattice[ edge_.target ] = [];
+    self.lattice[ edge_.source ].append( (
+      edge_.target,
+      edge_
+    ) );
 
 
 

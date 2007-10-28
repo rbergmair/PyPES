@@ -3,13 +3,15 @@ import edge;
 
 class TokenEdge( edge.Edge, pyrmrs.xmltools.pchar_element.PCharElement ):
   
+  type="token";
+  
   text = None;
-  active = False;
   
   def __init__( self ):
     
     pyrmrs.xmltools.pchar_element.PCharElement.__init__( self );
     edge.Edge.__init__( self );
+    self.type="token";
     
   def startElement( self, name, attrs ):
 

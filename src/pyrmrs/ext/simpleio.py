@@ -104,7 +104,9 @@ class SimpleIO:
       for ch in data:
         if not self.ignore_char( ch ):
           block += ch;
-      if data.find( "\027" ) != -1:
+      r = data.find( "\027" );
+      if r != -1:
+        data += self.read_uncd( 512 - ( len(data) - r ) );
         break;
     pyrmrs.globals.logDebug( self, "result of read_block(): |>%s<|;" % block );
     return block;
@@ -113,6 +115,9 @@ class SimpleIO:
     
     line += "\n";
     pyrmrs.globals.logDebug( self, "writing |>%s<|..." % line );
+    #self.ioin.flush();
+    #os.write( self.ioin.fileno(), line );
+    #self.ioin.flush();
     self.ioin.write( line );
     self.ioin.flush();
     pyrmrs.globals.logDebug( self, "finished writing;" );
@@ -124,31 +129,36 @@ class SimpleIO:
       block += "\000";
     pyrmrs.globals.logDebug( self, "writing |>%s<|..." % block );
     
-    #( readable, writable, exceptional) = select.select( [self.ioout], [self.ioin], [], 0.5 );
-    #
-    #nzs = "";
-    #if len( writable ) == 0:
-    #  pyrmrs.globals.logDebug( self, "possible deadlock situation;" );
-    #  if len( readable ) == 0:
-    #    pyrmrs.globals.logDebug( self, "situation hopeless;" );
-    #  else:
-    #    while True:
-    #      pyrmrs.globals.logDebug( self, "reading 1 byte..." );
-    #      ch = self.ioout.read( 1 );
-    #      if ch != '\000':
-    #        pyrmrs.globals.logDebug( self, "huh? got nonzero |>%s<|;" % ch );
-    #        nzs += ch;
-    #      else:
-    #        pyrmrs.globals.logDebug( self, "got zero;" );
-    #      ( readable, writable, exceptional) = select.select( [self.ioout], [self.ioin], [], 0.5 );
-    #      if len( writable ) > 0:
-    #        break;
-    #      if len( readable ) == 0:
-    #        pyrmrs.globals.logDebug( self, "situation hopeless;" );
-    #        break;
-    #if nzs != "":
-    #  pyrmrs.globals.logDebug( self, "got nonzero stuff: |>%s<|" % nzs );
+    ( readable, writable, exceptional) = select.select( [self.ioout], [self.ioin], [], 0.5 );
     
+    nzs = "";
+    if len( writable ) == 0:
+      pyrmrs.globals.logDebug( self, "possible deadlock situation;" );
+      assert False;
+      if len( readable ) == 0:
+        pyrmrs.globals.logDebug( self, "situation hopeless;" );
+      else:
+        while True:
+          pyrmrs.globals.logDebug( self, "reading 1 byte..." );
+          ch = self.ioout.read( 1 );
+          if ch != '\000':
+            pyrmrs.globals.logDebug( self, "huh? got nonzero |>%s<|;" % ch );
+            nzs += ch;
+          else:
+            pyrmrs.globals.logDebug( self, "got zero;" );
+          ( readable, writable, exceptional) = select.select( [self.ioout], [self.ioin], [], 0.5 );
+          if len( writable ) > 0:
+            break;
+          if len( readable ) == 0:
+            pyrmrs.globals.logDebug( self, "situation hopeless;" );
+            break;
+    if nzs != "":
+      pyrmrs.globals.logDebug( self, "got nonzero stuff: |>%s<|" % nzs );
+
+    #self.ioin.flush();
+    #os.write( self.ioin.fileno(), block );
+    #self.ioin.flush();
+
     self.ioin.write( block );
     self.ioin.flush();
     
