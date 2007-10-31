@@ -283,3 +283,65 @@ class RMRSem( pyrmrs.mrs.common.mrsem.MRSem ):
         del eps[ 0 ];
 
     return rslt[ 1: ];
+  
+  
+  
+  def get_lr_scoping( self ):
+      
+    x = [];
+    for ep in self.eps:
+      x.append( ( ep.cfrom, ep ) );
+    x.sort();
+    
+    lbls = [];
+    holes = [ self.top.vid ];
+    for ( cfrom, ep ) in x:
+      lbls.append( ep.label.vid );
+      if ep.realpred != None:
+        if ep.realpred.pos == ep.realpred.POS_QUANTIFIER:
+          if self.rargs_by_lid.has_key( ep.label.vid ):
+            rstr = None;
+            body = None;
+            if self.rargs_by_lid[ ep.label.vid ].has_key( "RSTR" ):
+              rstr = self.rargs_by_lid[ ep.label.vid ][ "RSTR" ].var.vid;
+            if self.rargs_by_lid[ ep.label.vid ].has_key( "BODY" ):
+              body = self.rargs_by_lid[ ep.label.vid ][ "BODY" ].var.vid;
+            if ( not ( body is None ) ) and ( not ( rstr is None ) ):
+              holes.append( rstr );
+              holes.append( body );
+    
+    labels_ = [];
+    curgrp = [];
+    group_ = None;
+    
+    i = 0;
+    
+    while True:
+      
+      if ( group_ is None ) or ( lbls[ i ] not in group_ ):
+        
+        group_ = None;
+        labels_.append( curgrp );
+        curgrp = [];
+    
+      curgrp.append( lbls[ i ] );
+      
+      if group_ is None:
+        for group in self.groups:
+          if lbls[ i ] in group:
+            group_ = group;
+            break;
+    
+      i += 1;
+      if i >= len( lbls ):
+        break;
+    
+    labels_.append( curgrp );
+    del labels_[ 0 ];
+    
+    scoping = {};
+    
+    for k in range( 0, len(holes) ):
+      scoping[ holes[ k ] ] = labels_[k];
+  
+    return scoping

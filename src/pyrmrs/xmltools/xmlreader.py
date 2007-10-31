@@ -145,6 +145,9 @@ class XMLReader( xml.sax.handler.ContentHandler ):
       eob = False;
 
       chunk = self.ifile.read( CHUNK_SIZE );
+      if chunk == "":
+        raise StopIteration;
+      
       r = chunk.find( "\027" );
       if r != -1:
         chunk += self.ifile.read( CHUNK_SIZE - ( len(chunk) - r ) );

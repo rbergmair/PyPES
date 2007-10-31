@@ -23,7 +23,7 @@ class ElementaryPredication( pyrmrs.mrs.common.elementary_predication.Elementary
     self.var = None;
 
 
-    
+
   def register( self, obj ):
 
     pyrmrs.mrs.common.elementary_predication.ElementaryPredication.register( self, obj );

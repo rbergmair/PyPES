@@ -8,7 +8,8 @@ import pyrmrs.smafpkg.lattice;
 
 
 GRAMMAR = [
-  ( [ "NN1" ], [ "NN1", "." ] )
+  ( [ "NN1" ], [ "NN1", "." ] ),
+  ( [ "VVD" ], [ "VVD", "." ] )
 ];
 
 i = None;
