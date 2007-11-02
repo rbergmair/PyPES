@@ -17,6 +17,14 @@ def raspstr_to_smaf( surface, raspstr ):
   min = None;
   max = None;
   
+  utf8offs = [];
+  i = 0;
+  for ch in surface:
+    utf8offs.append( i );
+    if ord( ch ) > 127:
+      utf8offs.append( i );
+    i += 1;
+
   i = 1;
   
   for token in raspstr.split( "|" ):
@@ -26,24 +34,27 @@ def raspstr_to_smaf( surface, raspstr ):
     
     r = re.compile( "(<w s=')([0-9]+)(' e=')([0-9]+)('>.*_)(.*)(</w>)" );
     m = r.match( token );
-    if not m is None:
+    if m is None:
+      assert False;
+    else:
       
-      try:
-        s = int( m.groups()[ 1 ] );
-        e = int( m.groups()[ 3 ] );
-        pos = m.groups()[ 5 ];
-      except:
-        continue;
-      
+      s = int( m.groups()[ 1 ] );
+      e = int( m.groups()[ 3 ] );
+      pos = m.groups()[ 5 ];
+
       if min is None:
         min = s;
-        
+      max = e;
+
       s -= min;
       e -= min;
+
+      s = utf8offs[s];
+      e = utf8offs[e];
+
       e += 1;
-      txt = surface[ s:e ];
-      
-      max = e;
+        
+      txt = surface[ s : e ];
       
       edge = pyrmrs.smafpkg.token_edge.TokenEdge();
       edge.id = "t%d" % i;

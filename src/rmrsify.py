@@ -1,27 +1,41 @@
 import pyrmrs.globals;
 import pyrmrs.rmrsifier;
 
+import cPickle;
+
 import sys;
 import time;
 import codecs;
 
-import pyrmrs.ext.pet;
+import pyrmrs.ext.rasp;
 import pyrmrs.ext.raspsent;
 import pyrmrs.ext.fspp;
+import pyrmrs.ext.pet;
+
+import pyrmrs.tools.raspstr_to_smaf;
+import pyrmrs.tools.merge_pos_into_smaf;
+import pyrmrs.tools.fix_fspp_smaf;
 
 
 
 class MyRMRSifier( pyrmrs.rmrsifier.RMRSifier ):
   
-  petctrl = None;
+  raspctrl = None;
   raspsentctrl = None;
   fsppctrl = None;
+  petctrl = None;
+  
+  outfile = None;
   
   def __init__( self, ifile, ofile, active_tags = [ "t", "h" ] ):
     
-    self.petctrl = pyrmrs.ext.pet.PET( 5, 5 );
+    self.raspctrl = pyrmrs.ext.rasp.Rasp();
     self.raspsentctrl = pyrmrs.ext.raspsent.RaspSentenceSplitter();
     self.fsppctrl = pyrmrs.ext.fspp.FSPP();
+    # self.petctrl = pyrmrs.ext.pet.PET( 5, 5 );
+    
+    self.outfile = open( "testdta/rtesmafs.pickle", "w" );
+
     pyrmrs.rmrsifier.RMRSifier.__init__( self, ifile, ofile, active_tags );
     
   def rmrsify( self, surface ):
@@ -34,9 +48,9 @@ class MyRMRSifier( pyrmrs.rmrsifier.RMRSifier ):
     self.out.write( "\n" + self.atindent );
     
     for sent in self.raspsentctrl.txtstr_to_sentstrs( surface ):
-
-      pyrmrs.globals.logDebug( self, "|>%s<|" % sent );
       
+      pyrmrs.globals.logDebug( self, "|>%s<|" % sent );
+        
       self.out.write( "\n" + self.atindent + "<sentence>" );
       self.out.write( "\n" + self.atindent );
       
@@ -44,18 +58,38 @@ class MyRMRSifier( pyrmrs.rmrsifier.RMRSifier ):
       cnt = 0;
       
       try:
+
+        fsppsmaf = None;
+        for smaf_ in self.fsppctrl.sentstr_to_smafs( sent ):
+          fsppsmaf = smaf_;
+        if fsppsmaf is None:
+          assert False;
+        fsppsmaf = pyrmrs.tools.fix_fspp_smaf.fix_fspp_smaf( fsppsmaf );
+        pyrmrs.globals.logDebug( self, "|>%s<|" % fsppsmaf.str_xml() );
         
-        for smaf in self.fsppctrl.sentstr_to_smafs( sent ):
-          for rmrs in self.petctrl.smaf_to_rmrss( smaf ):
-            
-            cnt += 1;
-            
-            self.out.write( "\n" + self.atindent + "<!--\n" );
-            self.out.write( rmrs.str_pretty() );
-            self.out.write( "\n" + self.atindent + "-->\n" + self.atindent );
-            self.out.write( \
-              rmrs.str_xml().replace( "\n", "\n" + self.atindent ) );
-            self.out.write( "\n" );
+        raspstr = self.raspctrl.sentstr_to_raspstr( sent );
+        pyrmrs.globals.logDebug( self, "|>%s<|" % raspstr );
+        raspsmaf = pyrmrs.tools.raspstr_to_smaf.raspstr_to_smaf( sent, raspstr );
+        pyrmrs.globals.logDebug( self, "|>%s<|" % raspsmaf.str_xml() );
+        
+        cPickle.dump( fsppsmaf, self.outfile, 2 );
+        cPickle.dump( raspsmaf, self.outfile, 2 );
+        
+        # smaf = pyrmrs.tools.merge_pos_into_smaf.merge_pos_into_smaf( fsppsmaf, raspsmaf );
+        # pyrmrs.globals.logDebug( self, "|>%s<|" % smaf.str_xml() );
+        
+        # smaf = fsppsmaf;
+          
+        # for rmrs in self.petctrl.smaf_to_rmrss( smaf ):
+        #  
+        # cnt += 1;
+        #  
+        #  self.out.write( "\n" + self.atindent + "<!--\n" );
+        #  self.out.write( rmrs.str_pretty() );
+        #  self.out.write( "\n" + self.atindent + "-->\n" + self.atindent );
+        #  self.out.write( \
+        #    rmrs.str_xml().replace( "\n", "\n" + self.atindent ) );
+        #  self.out.write( "\n" );
       
       except pyrmrs.ext.pet.PETError, e:
         self.out.write( "<error>\n" );
@@ -80,6 +114,10 @@ class MyRMRSifier( pyrmrs.rmrsifier.RMRSifier ):
       
     self.out.write( "\n" + self.atindent + "</analysis>" );
     self.out.write( "\n" );
+  
+  def __del__( self ):
+    
+    self.outfile.close();
   
 
 
@@ -114,15 +152,9 @@ def rmrsify( ifile, ofile ):
     ( avg, q0, q1, q2, q3, q4 );
   
   #
-  #   35.67179 secs ( 3.65 units of processor time )
-  #   44/237 successful (18.57%)
-  #   readings per sentence: avg=0.84 min=0 q1=0 med=0 q3=0 max=5
-  #
-  
-  #
-  #   185.28623 secs ( 10.47 units of processor time )
-  #   126/237 successful (53.16%)
-  #   readings per sentence: avg=2.32 min=0 q1=0 med=1 q3=5 max=5
+  #   61.94369 secs ( 12.17 units of processor time )
+  #   62/248 successful ( 25.00% )
+  #   readings per sentence: avg=1.16 min=0 q1=0 med=0 q3=0 max=5
   #
 
 def main(argv=None):

@@ -16,5 +16,6 @@ for line in sents.splitlines():
   for smaf in fsppctrl.sentstr_to_smafs( line ):
     print smaf.str_xml();
     print;
+  break;
 
 pyrmrs.globals.destructMain();
