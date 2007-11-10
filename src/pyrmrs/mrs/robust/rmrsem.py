@@ -1,6 +1,8 @@
 import pyrmrs.mrs.common.mrsem;
 import pyrmrs.error.xmlsem_error;
 
+import pyrmrs.tools.ndomcon_solver;
+
 import constant;
 import elementary_predication;
 import grammar_predicate;
@@ -283,10 +285,91 @@ class RMRSem( pyrmrs.mrs.common.mrsem.MRSem ):
         del eps[ 0 ];
 
     return rslt[ 1: ];
+ 
   
+  
+  def get_all_scopings( self ):
+    
+    self.interpret();
+    
+    lbls = [];
+    for lbl in self._lbls:
+      if lbl.vid != self.top.vid:
+        if not lbl.vid in lbls:
+          lbls.append( lbl.vid );
+
+    roots = [];
+    curgrp = [];
+    group_ = None;
+    
+    i = 0;
+    
+    while True:
+      
+      if ( group_ is None ) or ( lbls[ i ] not in group_ ):
+        
+        group_ = None;
+        roots.append( curgrp );
+        curgrp = [];
+    
+      curgrp.append( lbls[ i ] );
+      
+      if group_ is None:
+        for group in self.groups:
+          if lbls[ i ] in group:
+            group_ = group;
+            break;
+    
+      i += 1;
+      if i >= len( lbls ):
+        break;
+    
+    roots.append( curgrp );
+    del roots[ 0 ];
+    
+    print roots;
+    
+    fragments = {};
+    cons = {};
+    root_by_lid = {};
+    
+    for k in range( 0, len(roots) ):
+      root = roots[ k ];
+      holes = [];
+      for lid in root:
+        root_by_lid[ lid ] = k;
+        if self.rargs_by_lid.has_key( lid ):
+          if self.rargs_by_lid.has_key( lid ):
+            rstr = None;
+            body = None;
+            if self.rargs_by_lid[ lid ].has_key( "RSTR" ):
+              rstr = self.rargs_by_lid[ lid ][ "RSTR" ].var.vid;
+            if self.rargs_by_lid[ lid ].has_key( "BODY" ):
+              body = self.rargs_by_lid[ lid ][ "BODY" ].var.vid;
+            if ( not ( body is None ) ) and ( not ( rstr is None ) ):
+              holes.append( rstr );
+              holes.append( body );
+      fragments[ k ] = holes;
+    
+    for hcon in self.hcons:
+      assert hcon.lovar is None;
+      hole = hcon.hi.vid;
+      root = root_by_lid[ hcon.lolbl.vid ];
+      if not cons.has_key( hole ):
+        cons[ hole ] = [];
+      cons[ hole ].append( root );
+    
+    solver = pyrmrs.tools.ndomcon_solver.NormalDominanceConstraintSolver( \
+               fragments, cons );
+    solver.solve();
+    
+    return [ self.get_lr_scoping() ];
+    
   
   
   def get_lr_scoping( self ):
+    
+    self.interpret();
       
     x = [];
     for ep in self.eps:
