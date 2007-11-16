@@ -3,7 +3,7 @@ import copy;
 
 
 
-class NormalDominanceConstraintSolver:
+class CommonScoping:
 
   _fragments = {};
   
@@ -38,9 +38,6 @@ class NormalDominanceConstraintSolver:
 
 
   def _reachable( self, v1, v2, roots_=None ):
-    
-    if v1 == (True, 4) and v2 == (False, 6) and roots_ == [(True, 1), (True, 4)]:
-      pass;
     
     roots = None;
     if roots_ is None:
