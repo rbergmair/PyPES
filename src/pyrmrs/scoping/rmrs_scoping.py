@@ -1,10 +1,21 @@
-import common_scoping;
+import ndomcon_solution;
+import copy;
 
 
-class RMRSScoping( common_scoping.CommonScoping ):
+
+class RMRSScoping( ndomcon_solution.NDomConSolution ):
   
+  _fragments = {};
+  _cons = {};
+  
+  _roots = [];
+  _root_by_lid = {};
+  
+  _top_hid = None;
 
   def __init__( self, rmrs ):
+    
+    self._top_hid = rmrs.top.vid;
 
     lbls = [];
     for lbl in rmrs._lbls:
@@ -12,7 +23,7 @@ class RMRSScoping( common_scoping.CommonScoping ):
         if not lbl.vid in lbls:
           lbls.append( lbl.vid );
 
-    roots = [];
+    self._roots = [];
     curgrp = [];
     group_ = None;
     
@@ -23,7 +34,7 @@ class RMRSScoping( common_scoping.CommonScoping ):
       if ( group_ is None ) or ( lbls[ i ] not in group_ ):
         
         group_ = None;
-        roots.append( curgrp );
+        self._roots.append( curgrp );
         curgrp = [];
     
       curgrp.append( lbls[ i ] );
@@ -38,31 +49,31 @@ class RMRSScoping( common_scoping.CommonScoping ):
       if i >= len( lbls ):
         break;
     
-    roots.append( curgrp );
-    del roots[ 0 ];
-    print roots;
+    self._roots.append( curgrp );
+    del self._roots[ 0 ];
+    #print self._roots;
     
-    fragments = {};
-    root_by_lid = {};
+    self._fragments = {};
+    self._root_by_lid = {};
     quant_labels = [];
     
-    for k in range( 0, len(roots) ):
-      root = roots[ k ];
+    for k in range( 0, len(self._roots) ):
+      root = self._roots[ k ];
       holes = [];
       for lid in root:
-        root_by_lid[ lid ] = k;
+        self._root_by_lid[ lid ] = k;
         if rmrs.rargs_by_lid.has_key( lid ):
           rstr = None;
           body = None;
           if rmrs.rargs_by_lid[ lid ].has_key( "RSTR" ):
             rstr = rmrs.rargs_by_lid[ lid ][ "RSTR" ].var.vid;
-          if self.rargs_by_lid[ lid ].has_key( "BODY" ):
+          if rmrs.rargs_by_lid[ lid ].has_key( "BODY" ):
             body = rmrs.rargs_by_lid[ lid ][ "BODY" ].var.vid;
           if ( not ( body is None ) ) and ( not ( rstr is None ) ):
             holes.append( (False,rstr) );
             holes.append( (False,body) );
             quant_labels.append( lid );
-      fragments[ (True,k) ] = holes;
+      self._fragments[ (True,k) ] = holes;
 
     bindings = {};
     
@@ -70,8 +81,8 @@ class RMRSScoping( common_scoping.CommonScoping ):
       if ep.label.vid in quant_labels:
         bindings[ ep.var.referent ] = ep.label.vid;
 
-    cons = {};
-    
+    self._cons = {};
+
     for ep in rmrs.eps:
       if not ep.label.vid in quant_labels:
         refs = [ ep.var.referent ];
@@ -81,43 +92,47 @@ class RMRSScoping( common_scoping.CommonScoping ):
             assert not args[ arg ].var is None;
             assert bindings.has_key( args[ arg ].var.referent );
             binding = bindings[ args[ arg ].var.referent ];
-            assert root_by_lid.has_key( binding );
-            upper = ( True, root_by_lid[binding] );
-            lower = ( True, root_by_lid[ep.label.vid] );
-            if not cons.has_key( upper ):
-              cons[ upper ] = [];
-            cons[ upper ].append( lower )
-    
+            assert self._root_by_lid.has_key( binding );
+            upper = ( True, self._root_by_lid[binding] );
+            lower = ( True, self._root_by_lid[ep.label.vid] );
+            if not self._cons.has_key( upper ):
+              self._cons[ upper ] = [];
+            self._cons[ upper ].append( lower )
+
     for hcon in rmrs.hcons:
       assert hcon.lovar is None;
       upper = ( False, hcon.hi.vid );
-      lower = ( True, root_by_lid[ hcon.lolbl.vid ] );
-      if not cons.has_key( upper ):
-        cons[ upper ] = [];
-      cons[ upper ].append( lower );
+      lower = ( True, self._root_by_lid[ hcon.lolbl.vid ] );
+      if not self._cons.has_key( upper ):
+        self._cons[ upper ] = [];
+      self._cons[ upper ].append( lower );
+      
+    ndomcon_solution.NDomConSolution.__init__( self, self._fragments, self._cons );
+
+
+
+  def solve( self ):
+
+    if not ndomcon_solution.NDomConSolution.solve( self ):
+      return False;
+
+
+
+  def enumerate( self ):
+  
+    results = [];
     
-    solver = pyrmrs.tools.ndomcon_solver.NormalDominanceConstraintSolver( \
-               fragments, cons );
-    if not solver.solve():
-      return None;
-    
-    print "CHART IDX"+str(solver._chart_keys);
-    print "CHART"+str(solver._chart);
-    
-    
-    found = False;
-    idxs = [];
-    for i in range( 0, len(solver._chart_keys) ):
-      if len( solver._chart_keys[ i ] ) == len( fragments.keys() ):
-        found = True;
-        for root in solver._chart_keys[ i ]:
-          if not root in fragments.keys():
-            found = False;
-        if found:
-          idxs.append( i );
-    
-    print idxs;
-    for idx in idxs:
-      print "I"+str( solver._chart[ idx ] );
-    
-    return [ rmrs.get_lr_scoping() ];
+    for ( scoping, ( isroot_top, id_top ) ) in ndomcon_solution.NDomConSolution.enumerate( self ):
+      rmrs_scoping = {};
+      for hi in scoping:
+        lo = scoping[ hi ];
+        ( isroot_hi, id_hi ) = hi;
+        ( isroot_lo, id_lo ) = lo;
+        assert not isroot_hi;
+        assert isroot_lo;
+        rmrs_scoping[ id_hi ] = self._roots[ id_lo ];
+      assert isroot_top;
+      rmrs_scoping[ self._top_hid ] = self._roots[ id_top ];
+      results.append( rmrs_scoping );
+      
+    return results;

@@ -21,3 +21,47 @@ CHART{
       (False, 5): [(True, 4)]
      }
 }
+
+
+
+
+  def dictunion( self, a, b ):
+    
+    for key in b:
+      a[ key ] = b[ key ];
+    return a;
+
+
+  
+  def enumerate( self, fragments=None ):
+    
+    if fragments is None:
+      fragments = self._fragments.keys();
+
+    if len( fragments ) == 1:
+      return [ ( {}, self._roots[ fragments[0][1] ] ) ];
+
+    results = [];
+    
+    for i in range( 0, len(self._chart_keys) ):
+      if self.setequals( self._chart_keys[i], fragments ):
+        fragcp = copy.copy( fragments );
+        split = self._chart[i];
+        scope = {};
+        for ( isroot, vid ) in split.keys():
+          subfragments = split[ (isroot,vid) ];
+          print subfragments;
+          for frag in subfragments:
+            fragcp.remove( frag );
+          for ( subscope, top ) in self.enumerate( subfragments ):
+            #print "a"+str(scope);
+            #print "b"+str(subscope);
+            scope = self.dictunion( scope, subscope );
+            #print "c"+str(scope);
+            print "t"+str(top);
+            scope[ vid ] = top;
+        assert len( fragcp ) == 1;
+        assert fragcp[0][0];
+        results.append( ( scope, self._roots[ fragcp[0][1] ] ) );
+    
+    return results;

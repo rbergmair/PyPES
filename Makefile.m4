@@ -24,7 +24,8 @@ SCRIPTS=bin/rmrsify.py bin/test_large_mrs.py bin/test_large_rmrs.py \
   bin/test_pet.py bin/test_rasp.py bin/test_raspsent.py bin/test_simple_mrs.py \
   bin/test_simple_rmrs.py
 
-TESTXMLS=testdta/testrmrslist.xml testdta/testmrslist.xml testdta/testsmaflist.xml
+TESTXMLS=testdta/testrmrslist.xml testdta/testmrslist.xml testdta/testsmaflist.xml \
+  testdta/dragon.xml
 
 
 

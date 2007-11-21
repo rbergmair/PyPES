@@ -3,12 +3,12 @@ import copy;
 
 
 
-class CommonScoping:
+class NDomConSolution:
 
   _fragments = {};
+  _cons = {};
   
-  _dom_cons = {};
-  _dom_cons_inv = {};
+  _cons_inv = {};
   
   _reachability_cache = None;
   
@@ -17,23 +17,23 @@ class CommonScoping:
 
 
 
-  def __init__( self, fragments, dom_cons={} ):
+  def __init__( self, fragments, cons={} ):
 
     self._fragments = fragments;
-    self._dom_cons = dom_cons;
+    self._cons = cons;
     
     pyrmrs.globals.logDebug( self, str( self._fragments ) );
-    pyrmrs.globals.logDebug( self, str( self._dom_cons ) );
+    pyrmrs.globals.logDebug( self, str( self._cons ) );
     
     self._chart = {};
     self._chart_keys = [];
     
-    self._dom_cons_inv = {};
-    for hole in dom_cons:
-      for root in dom_cons[ hole ]:
-        if not self._dom_cons_inv.has_key( root ):
-          self._dom_cons_inv[ root ] = [];
-        self._dom_cons_inv[ root ].append( hole );
+    self._cons_inv = {};
+    for hole in cons:
+      for root in cons[ hole ]:
+        if not self._cons_inv.has_key( root ):
+          self._cons_inv[ root ] = [];
+        self._cons_inv[ root ].append( hole );
 
 
 
@@ -60,8 +60,8 @@ class CommonScoping:
           if ( not ( root, hole ) in reachable ) and \
              ( not ( hole, root ) in reachable ):
             reachable.append( (root,hole) );
-      for higher in self._dom_cons:
-        for lower in self._dom_cons[ higher ]:
+      for higher in self._cons:
+        for lower in self._cons[ higher ]:
           if not ( higher[0] and not higher in roots ):
             if ( not ( higher, lower ) in reachable ) and \
                ( not ( lower, higher ) in reachable ):
@@ -120,8 +120,14 @@ class CommonScoping:
 
 
 
+  def solve( self ):
+    
+    return self.solve_domcon();
+
+
+
   # GRAPH-SOLVER-CHART(G')
-  def solve( self, roots_=None ):
+  def solve_domcon( self, roots_=None ):
 
     roots = None;
     if roots_ is None:
@@ -145,7 +151,7 @@ class CommonScoping:
     free_roots = [];
     for k in range( 0, len(roots) ):
       root = roots[ k ];
-      if self._dom_cons_inv.has_key( root ):
+      if self._cons_inv.has_key( root ):
         continue;
       del roots[ k ];
       fragment = self._fragments[ root ];
@@ -206,7 +212,7 @@ class CommonScoping:
       # for each S in WCCS(G'-F)
       for hole in split:
         # if GRAPH-SOLVER-CHART(S) == false
-        if not self.solve( split[ hole ] ):
+        if not self.solve_domcon( split[ hole ] ):
           # return false
           return False;
       
@@ -216,3 +222,65 @@ class CommonScoping:
       
     # return true
     return True;
+
+
+
+  def setequals( self, a, b ):
+    
+    found = False;
+    if len(a) == len(b):
+      found = True;
+      for item in a:
+        if not item in b:
+          found = False;
+          break;
+      for item in b:
+        if not item in a:
+          found = False;
+          break;
+    return found;
+
+
+
+  def dictunion( self, a, b ):
+    
+    for key in b:
+      a[ key ] = b[ key ];
+    return a;
+
+
+  
+  def enumerate_rec( self, fragments ):
+    
+    if len( fragments ) == 1:
+      return [ ( {}, fragments[0] ) ];
+
+    results = [];
+    
+    for i in range( 0, len(self._chart_keys) ):
+      if self.setequals( self._chart_keys[i], fragments ):
+        fragcp = copy.copy( fragments );
+        split = self._chart[i];
+        scope = {};
+        for fragment in split.keys():
+          subfragments = split[ fragment ];
+          #print subfragments;
+          for frag in subfragments:
+            fragcp.remove( frag );
+          for ( subscope, top ) in self.enumerate_rec( subfragments ):
+            #print "a"+str(scope);
+            #print "b"+str(subscope);
+            scope = self.dictunion( scope, subscope );
+            #print "c"+str(scope);
+            #print "t"+str(top);
+            scope[ fragment ] = top;
+        assert len( fragcp ) == 1;
+        results.append( ( scope, fragcp[0] ) );
+
+    return results;
+  
+  
+  
+  def enumerate( self ):
+    
+    return self.enumerate_rec( self._fragments.keys() );
