@@ -89,15 +89,15 @@ class RMRSScoping( ndomcon_solution.NDomConSolution ):
         if rmrs.rargs_by_lid.has_key( ep.label.vid ):
           args = rmrs.rargs_by_lid[ ep.label.vid ];
           for arg in args:
-            assert not args[ arg ].var is None;
-            assert bindings.has_key( args[ arg ].var.referent );
-            binding = bindings[ args[ arg ].var.referent ];
-            assert self._root_by_lid.has_key( binding );
-            upper = ( True, self._root_by_lid[binding] );
-            lower = ( True, self._root_by_lid[ep.label.vid] );
-            if not self._cons.has_key( upper ):
-              self._cons[ upper ] = [];
-            self._cons[ upper ].append( lower )
+            if not args[ arg ].var is None:
+              assert bindings.has_key( args[ arg ].var.referent );
+              binding = bindings[ args[ arg ].var.referent ];
+              assert self._root_by_lid.has_key( binding );
+              upper = ( True, self._root_by_lid[binding] );
+              lower = ( True, self._root_by_lid[ep.label.vid] );
+              if not self._cons.has_key( upper ):
+                self._cons[ upper ] = [];
+              self._cons[ upper ].append( lower )
 
     for hcon in rmrs.hcons:
       assert hcon.lovar is None;
