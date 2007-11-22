@@ -12,37 +12,29 @@ def str_pretty_scoped( rmrs, curhole, scoping ):
     
     ep = rmrs.eps_by_lid[ lid ];
     
-    if ep.realpred is None or ep.realpred.pos != ep.realpred.POS_QUANTIFIER:
-      rslt += ep.str_pretty() + " & ";
+    rslt += ep.str_pretty();
+    
+    if not rmrs.ep_is_scopal( ep ):
+      rslt += " & ";
       continue;
+    
+    rslt += "( ";
     
     rargs = None;
     if not rmrs.rargs_by_lid.has_key( ep.label.vid ):
       assert False;
     rargs = rmrs.rargs_by_lid[ ep.label.vid ];
     
-    rstr = None;
-    if not rargs.has_key( "RSTR" ):
-      assert False;
-    var = rargs[ "RSTR" ].var;
-    if not var.sort == var.SORT_HOLE:
-      assert False;
-    rstr = var.vid;
-      
-    body = None;
-    if not rargs.has_key( "BODY" ):
-      assert False;
-    var = rargs[ "BODY" ].var;
-    if not var.sort == var.SORT_HOLE:
-      assert False
-    body = var.vid;
+    rargnames = rargs.keys();
+    rargnames.sort();
     
-    rslt += "%s( %s, %s ) & " % ( \
-             ep.str_pretty(),
-             str_pretty_scoped( rmrs, rstr, scoping ),
-             str_pretty_scoped( rmrs, body, scoping )
-           );
-  
+    for rargname in rargnames:
+      var = rargs[ rargname ].var;
+      if var.sort == var.SORT_HOLE:
+        rslt += str_pretty_scoped( rmrs, var.vid, scoping ) + ", ";
+    rslt = rslt[ : len(rslt) - 2 ];
+    rslt += ") & ";
+    
   rslt = rslt[ : len(rslt) - 2 ];
   return rslt;
 
@@ -74,6 +66,8 @@ print;
 
 scoping = rmrs.get_scoping();
 scoping.solve();
+print scoping._chart_keys;
+print scoping._chart;
 for scoping in scoping.enumerate():
   print str_pretty_scoped( rmrs, rmrs.top.vid, scoping );
 

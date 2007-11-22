@@ -217,6 +217,7 @@ class NDomConSolution:
           return False;
       
       # add (G',split) to the chart
+      # if split != {}:
       self._chart_keys.append( roots );
       self._chart[ len( self._chart_keys )-1 ] = split;
       
@@ -250,32 +251,40 @@ class NDomConSolution:
 
 
   
-  def enumerate_rec( self, fragments ):
+  def enumerate_rec( self, roots ):
     
-    if len( fragments ) == 1:
-      return [ ( {}, fragments[0] ) ];
+    if len( roots ) == 1:
+      return [ ( {}, roots[0] ) ];
 
     results = [];
     
     for i in range( 0, len(self._chart_keys) ):
-      if self.setequals( self._chart_keys[i], fragments ):
-        fragcp = copy.copy( fragments );
+      if self.setequals( self._chart_keys[i], roots ):
+        rootcp = copy.copy( roots );
         split = self._chart[i];
         scope = {};
-        for fragment in split.keys():
-          subfragments = split[ fragment ];
-          #print subfragments;
-          for frag in subfragments:
-            fragcp.remove( frag );
-          for ( subscope, top ) in self.enumerate_rec( subfragments ):
+        for root in split.keys():
+          subroots = split[ root ];
+          #print subroot;
+          for root_ in subroots:
+            rootcp.remove( root_ );
+          for ( subscope, top ) in self.enumerate_rec( subroots ):
             #print "a"+str(scope);
             #print "b"+str(subscope);
             scope = self.dictunion( scope, subscope );
             #print "c"+str(scope);
             #print "t"+str(top);
-            scope[ fragment ] = top;
-        assert len( fragcp ) == 1;
-        results.append( ( scope, fragcp[0] ) );
+            scope[ root ] = top;
+        if len( rootcp ) != 1:
+          print self._roots;
+          print self._fragments;
+          print self._chart_keys;
+          print self._chart;
+          print roots;
+          print split;
+          print rootcp;
+        assert len( rootcp ) == 1;
+        results.append( ( scope, rootcp[0] ) );
 
     return results;
   
