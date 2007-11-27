@@ -1,3 +1,5 @@
+import pyrmrs.globals;
+
 import ndomcon_solution;
 import copy;
 
@@ -14,11 +16,11 @@ class RMRSScoping( ndomcon_solution.NDomConSolution ):
   _top_hid = None;
   
   
-
+  
   def __init__( self, rmrs ):
     
     self._top_hid = rmrs.top.vid;
-
+  
     lbls = [];
     for lbl in rmrs._lbls:
       if lbl.vid != rmrs.top.vid:
@@ -94,28 +96,49 @@ class RMRSScoping( ndomcon_solution.NDomConSolution ):
       self._fragments[ (True,k) ] = holes;
 
     bindings = {};
-    
     for ep in rmrs.eps:
-      if rmrs.ep_is_scopal( ep ):
+      if ep.label.vid in quant_labels:
         bindings[ ep.var.referent ] = ep.label.vid;
 
     self._cons = {};
 
     for ep in rmrs.eps:
-      if not rmrs.ep_is_scopal( ep ):
-        refs = [ ep.var.referent ];
-        if rmrs.rargs_by_lid.has_key( ep.label.vid ):
-          args = rmrs.rargs_by_lid[ ep.label.vid ];
-          for arg in args:
-            if not args[ arg ].var is None:
-              if bindings.has_key( args[ arg ].var.referent ):
-                binding = bindings[ args[ arg ].var.referent ];
-                assert self._root_by_lid.has_key( binding );
-                upper = ( True, self._root_by_lid[binding] );
-                lower = ( True, self._root_by_lid[ep.label.vid] );
-                if not self._cons.has_key( upper ):
-                  self._cons[ upper ] = [];
-                self._cons[ upper ].append( lower )
+      
+      if ep.label.vid in quant_labels:
+        continue;
+      
+      vars = [ ep.var ];
+      
+      if rmrs.rargs_by_lid.has_key( ep.label.vid ):
+        args = rmrs.rargs_by_lid[ ep.label.vid ];
+        for arg in args:
+          var = args[ arg ].var;
+          if var is None:
+            continue;
+          vars.append( var );
+          
+      i = 0;
+      while True:
+        if i >= len(vars):
+          break;
+        var = vars[i];
+        if not bindings.has_key( var.referent ):
+          if var.sort != var.SORT_ENTITY:
+            del vars[ i ];
+            continue;
+          assert False;
+        i += 1;
+        
+      for var in vars:
+        
+        binding = bindings[ var.referent ];
+        assert self._root_by_lid.has_key( binding );
+        upper = ( True, self._root_by_lid[binding] );
+        lower = ( True, self._root_by_lid[ep.label.vid] );
+        if not self._cons.has_key( upper ):
+          self._cons[ upper ] = [];
+        if not lower in self._cons[ upper ]:
+          self._cons[ upper ].append( lower );
 
     for hcon in rmrs.hcons:
       assert hcon.lovar is None;
@@ -124,6 +147,21 @@ class RMRSScoping( ndomcon_solution.NDomConSolution ):
       if not self._cons.has_key( upper ):
         self._cons[ upper ] = [];
       self._cons[ upper ].append( lower );
+
+    pyrmrs.globals.logDebug( self, "---" );
+    pyrmrs.globals.logDebug( self, "ROOTS:" );
+    i = 0;
+    for item in self._roots:
+      pyrmrs.globals.logDebug( self, "  %d: %s" % ( i, item ) );
+      i += 1;
+    pyrmrs.globals.logDebug( self, "FRAGMENTS:" );
+    keys = self._fragments.keys();
+    keys.sort();
+    for key in keys:
+      pyrmrs.globals.logDebug( self, "  %s: %s" % ( key, self._fragments[key] ) );
+    pyrmrs.globals.logDebug( self, "CONSTRAINTS:" );
+    for key in self._cons:
+      pyrmrs.globals.logDebug( self, "  %s: %s" % ( key, self._cons[key] ) );
       
     ndomcon_solution.NDomConSolution.__init__( self, self._fragments, self._cons );
 
@@ -137,6 +175,13 @@ class RMRSScoping( ndomcon_solution.NDomConSolution ):
 
   def enumerate( self ):
   
+    pyrmrs.globals.logDebug( self, "CHART KEYS:" );
+    for item in self._chart_keys:
+      pyrmrs.globals.logDebug( self, "  "+str(item) );
+    pyrmrs.globals.logDebug( self, "CHART:" );
+    for item in self._chart:
+      pyrmrs.globals.logDebug( self, "  "+str(item) );
+
     results = [];
     
     for ( scoping, ( isroot_top, id_top ) ) in ndomcon_solution.NDomConSolution.enumerate( self ):
@@ -150,7 +195,7 @@ class RMRSScoping( ndomcon_solution.NDomConSolution ):
         rmrs_scoping[ id_hi ] = self._roots[ id_lo ];
       assert isroot_top;
       rmrs_scoping[ self._top_hid ] = self._roots[ id_top ];
-      if len( rmrs_scoping ) == len( self._fragments ):
-        results.append( rmrs_scoping );
+      #if len( rmrs_scoping ) == len( self._fragments ):
+      results.append( rmrs_scoping );
       
     return results;

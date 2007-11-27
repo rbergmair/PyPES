@@ -13,7 +13,33 @@ class NDomConSolution:
   _reachability_cache = None;
   
   _chart_keys = [];
-  _chart = {};
+  _chart = [];
+
+
+
+  def setequals( self, a, b ):
+    
+    found = False;
+    if len(a) == len(b):
+      found = True;
+      for item in a:
+        if not item in b:
+          found = False;
+          break;
+      for item in b:
+        if not item in a:
+          found = False;
+          break;
+    return found;
+
+
+
+  def dictunion( self, a, b ):
+    
+    #a = copy.copy( a );
+    for key in b:
+      a[ key ] = b[ key ];
+    return a;
 
 
 
@@ -22,10 +48,16 @@ class NDomConSolution:
     self._fragments = fragments;
     self._cons = cons;
     
+    #for key in self._cons:
+    #  for i in range( 0, len( self._cons[key] ) ):
+    #    lo = self._cons[ key ][ i ];
+    #    if self._fragments.has_key( lo ) and len( self._fragments[ lo ] ) == 1:
+    #      self._cons[ key ][ i ] = self._fragments[ lo ][ 0 ];
+    
     pyrmrs.globals.logDebug( self, str( self._fragments ) );
     pyrmrs.globals.logDebug( self, str( self._cons ) );
     
-    self._chart = {};
+    self._chart = [];
     self._chart_keys = [];
     
     self._cons_inv = {};
@@ -122,7 +154,8 @@ class NDomConSolution:
 
   def solve( self ):
     
-    return self.solve_domcon();
+    if not self.solve_domcon():
+      return False;
 
 
 
@@ -134,9 +167,17 @@ class NDomConSolution:
       roots = copy.copy( self._fragments.keys() );
     else:
       roots = copy.copy( roots_ );
+      
+    if self.setequals( roots, [(True, 2), (True, 12), (True, 10), (True, 11), (True, 1)] ):
+      assert False;
 
     # if there is an entry for G' in the chart
-    if roots in self._chart_keys:
+    found = False;
+    for i in range( 0, len(self._chart_keys) ):
+      if self.setequals( self._chart_keys[i], roots ):
+        found = True;
+        break;
+    if found:
       # then return true
       return True;
 
@@ -152,7 +193,13 @@ class NDomConSolution:
     for k in range( 0, len(roots) ):
       root = roots[ k ];
       if self._cons_inv.has_key( root ):
-        continue;
+        reach = False;
+        for pred in self._cons_inv[ root ]:
+          if self._reachable( pred, root, roots ):
+            reach = True;
+            break;
+        if reach:
+          continue;
       del roots[ k ];
       fragment = self._fragments[ root ];
       free = True;
@@ -175,9 +222,7 @@ class NDomConSolution:
     # for each F in free
     for free_root in free_roots:
 
-      pyrmrs.globals.logDebug( self, "R"+str(roots) );
-      pyrmrs.globals.logDebug( self, "F"+str(free_roots) );
-      pyrmrs.globals.logDebug( self, "-->"+str(free_root) );
+      pyrmrs.globals.logDebug( self, "--> "+str(free_root) );
       
       # split <- SPLIT(G',F)
       roots.remove( free_root );
@@ -193,9 +238,12 @@ class NDomConSolution:
       for hole in split:
         if split[ hole ] == []:
           empty_hole.append( hole );
+        else:
+          pyrmrs.globals.logDebug( self, "    NEH %s %s" % (hole,split[hole]) );
 
+      pyrmrs.globals.logDebug( self, "    EH"+str(empty_hole) );
       assert len( empty_hole ) <= 1;
-
+      
       if len( empty_hole ) == 1:
         empty_hole = empty_hole[ 0 ];
         split[ empty_hole ] = [];
@@ -207,7 +255,7 @@ class NDomConSolution:
       roots.append( free_root );
       # assert split == SPLIT(G',F)
 
-      pyrmrs.globals.logDebug( self, "S"+str(split) );
+      pyrmrs.globals.logDebug( self, "    S"+str(split) );
       
       # for each S in WCCS(G'-F)
       for hole in split:
@@ -215,42 +263,24 @@ class NDomConSolution:
         if not self.solve_domcon( split[ hole ] ):
           # return false
           return False;
-      
+        
       # add (G',split) to the chart
-      # if split != {}:
-      self._chart_keys.append( roots );
-      self._chart[ len( self._chart_keys )-1 ] = split;
+      if split != {}:
+      #  found = False;
+      #  for i in range( 0, len(self._chart_keys) ):
+      #    if self.setequals( self._chart_keys[i], roots ):
+      #      if split == self._chart[i]:
+      #        found = True;
+      #        break;
+      #  if not found:
+        self._chart_keys.append( roots );
+        self._chart.append( split );
       
     # return true
     return True;
 
 
 
-  def setequals( self, a, b ):
-    
-    found = False;
-    if len(a) == len(b):
-      found = True;
-      for item in a:
-        if not item in b:
-          found = False;
-          break;
-      for item in b:
-        if not item in a:
-          found = False;
-          break;
-    return found;
-
-
-
-  def dictunion( self, a, b ):
-    
-    for key in b:
-      a[ key ] = b[ key ];
-    return a;
-
-
-  
   def enumerate_rec( self, roots ):
     
     if len( roots ) == 1:
@@ -265,31 +295,31 @@ class NDomConSolution:
         scope = {};
         for root in split.keys():
           subroots = split[ root ];
-          #print subroot;
+          #pyrmrs.globals.logDebug( self, "rr" + str(root) );
           for root_ in subroots:
             rootcp.remove( root_ );
           for ( subscope, top ) in self.enumerate_rec( subroots ):
-            #print "a"+str(scope);
-            #print "b"+str(subscope);
+            assert len( subscope ) < len( roots );
+            #pyrmrs.globals.logDebug( self, str(scope) );
+            #pyrmrs.globals.logDebug( self, "b"+str(subscope) );
             scope = self.dictunion( scope, subscope );
-            #print "c"+str(scope);
-            #print "t"+str(top);
+            #pyrmrs.globals.logDebug( self, "c"+str(scope) );
+            #pyrmrs.globals.logDebug( self, "t"+str(top) );
             scope[ root ] = top;
         if len( rootcp ) != 1:
-          print self._roots;
-          print self._fragments;
-          print self._chart_keys;
-          print self._chart;
-          print roots;
-          print split;
-          print rootcp;
+          pyrmrs.globals.logDebug( self, "ROOTS: " + str(roots) );
+          pyrmrs.globals.logDebug( self, "SPLIT: " + str(split) );
+          pyrmrs.globals.logDebug( self, "ROOTCP: " + str(rootcp) );
         assert len( rootcp ) == 1;
-        results.append( ( scope, rootcp[0] ) );
-
+        for subroot in rootcp:
+          results.append( ( scope, subroot ) );
+        
     return results;
   
   
   
   def enumerate( self ):
     
-    return self.enumerate_rec( self._fragments.keys() );
+    rslt = self.enumerate_rec( self._fragments.keys() );
+    print rslt;
+    return rslt;

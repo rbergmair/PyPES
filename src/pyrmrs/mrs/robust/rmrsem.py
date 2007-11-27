@@ -152,7 +152,9 @@ class RMRSem( pyrmrs.mrs.common.mrsem.MRSem ):
         groupb = self.group_by_hid[ in_g.varb.vid ];
       else:
         self.group_by_hid[ in_g.varb.vid ] = groupb;
-      groupa += groupb;
+      for item in groupb:
+        if not item in groupa:
+          groupa.append( item );
       for hid in self.group_by_hid:
         if self.group_by_hid[ hid ] == groupb:
           self.group_by_hid[ hid ] = groupa;
