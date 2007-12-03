@@ -65,3 +65,23 @@ CHART{
         results.append( ( scope, self._roots[ fragcp[0][1] ] ) );
     
     return results;
+
+    
+
+
+
+       l3 | _every_q( ARG0=x4 BODY=h5 RSTR=h6 ) 
+          |    h6 qeq l7
+       l7 + _nephew_n_1( ARG0=x4 ) 
+   l10001 + _of_p( ARG0=e8 ARG1=x4 ARG2=x9 ) 
+      l10 | _a_q( ARG0=x9 BODY=h11 RSTR=h12 ) 
+          |    h12 qeq l13
+      l13 + _dragon_n_1( ARG0=x9 ) 
+      l14 | _snore_v_1( ARG0=e2 ARG1=x4 ) 
+
+sco{1: [10], 11: [3], 12: [13], 5: [14], 6: [7, 10001]}
+_a_q( _every_q( _snore_v_1 , _nephew_n_1 & _of_p ) , _dragon_n_1 ) 
+
+sco{1: [3], 11: [7, 10001], 12: [13], 5: [14], 6: [10]}
+_every_q( _snore_v_1 , _a_q( _nephew_n_1 & _of_p , _dragon_n_1 ) ) 
+ 

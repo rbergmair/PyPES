@@ -54,8 +54,8 @@ class NDomConSolution:
     #    if self._fragments.has_key( lo ) and len( self._fragments[ lo ] ) == 1:
     #      self._cons[ key ][ i ] = self._fragments[ lo ][ 0 ];
     
-    pyrmrs.globals.logDebug( self, str( self._fragments ) );
-    pyrmrs.globals.logDebug( self, str( self._cons ) );
+    pyrmrs.globals.logDebugCoarse( self, str( self._fragments ) );
+    pyrmrs.globals.logDebugCoarse( self, str( self._cons ) );
     
     self._chart = [];
     self._chart_keys = [];
@@ -169,7 +169,8 @@ class NDomConSolution:
       roots = copy.copy( roots_ );
       
     if self.setequals( roots, [(True, 2), (True, 12), (True, 10), (True, 11), (True, 1)] ):
-      assert False;
+      # assert False;
+      pass;
 
     # if there is an entry for G' in the chart
     found = False;
@@ -218,6 +219,8 @@ class NDomConSolution:
     if len(free_roots) == 0:
       # then return false
       return False;
+    
+    splits = [];
 
     # for each F in free
     for free_root in free_roots:
@@ -273,9 +276,10 @@ class NDomConSolution:
       #        found = True;
       #        break;
       #  if not found:
-        self._chart_keys.append( roots );
-        self._chart.append( split );
+        splits.append( (free_root,split) );
       
+    self._chart_keys.append( roots );
+    self._chart.append( splits );
     # return true
     return True;
 
@@ -286,34 +290,29 @@ class NDomConSolution:
     if len( roots ) == 1:
       return [ ( {}, roots[0] ) ];
 
-    results = [];
+    splits = [];
     
     for i in range( 0, len(self._chart_keys) ):
       if self.setequals( self._chart_keys[i], roots ):
-        rootcp = copy.copy( roots );
-        split = self._chart[i];
-        scope = {};
-        for root in split.keys():
-          subroots = split[ root ];
-          #pyrmrs.globals.logDebug( self, "rr" + str(root) );
-          for root_ in subroots:
-            rootcp.remove( root_ );
-          for ( subscope, top ) in self.enumerate_rec( subroots ):
-            assert len( subscope ) < len( roots );
-            #pyrmrs.globals.logDebug( self, str(scope) );
-            #pyrmrs.globals.logDebug( self, "b"+str(subscope) );
-            scope = self.dictunion( scope, subscope );
-            #pyrmrs.globals.logDebug( self, "c"+str(scope) );
-            #pyrmrs.globals.logDebug( self, "t"+str(top) );
-            scope[ root ] = top;
-        if len( rootcp ) != 1:
-          pyrmrs.globals.logDebug( self, "ROOTS: " + str(roots) );
-          pyrmrs.globals.logDebug( self, "SPLIT: " + str(split) );
-          pyrmrs.globals.logDebug( self, "ROOTCP: " + str(rootcp) );
-        assert len( rootcp ) == 1;
-        for subroot in rootcp:
-          results.append( ( scope, subroot ) );
-        
+        splits = self._chart[i];
+        break;
+      
+    results = [];
+    for (top,split) in splits:
+      scopesin = [ {} ];
+      for root in split:
+        scopesout = [];
+        subroots = split[ root ];
+        subs = self.enumerate_rec( subroots );
+        for scope in scopesin:
+          scope_ = copy.copy( scope );
+          for (subscope,subtop) in subs:
+            scope_ = self.dictunion( scope, subscope );
+            scope_[ root ] = subtop;
+            scopesout.append( scope_ );
+        scopesin = scopesout;
+      for scope in scopesout:
+        results.append( (scope,top) );
     return results;
   
   
@@ -321,5 +320,7 @@ class NDomConSolution:
   def enumerate( self ):
     
     rslt = self.enumerate_rec( self._fragments.keys() );
-    print rslt;
+    for x in rslt:
+      print "_ %s %s" % x;
+      assert False;
     return rslt;

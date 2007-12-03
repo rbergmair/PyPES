@@ -4,6 +4,20 @@ import pyrmrs.mrs.robust.variable;
 
 
 
+def mycmp( x, y ):
+  if x == "BODY" and y == "RSTR":
+    return +1;
+  elif x == "RSTR" and y == "BODY":
+    return -1;
+  elif x > y:
+    return +1;
+  elif x < y:
+    return -1;
+  else:
+    return 0;
+
+
+
 def str_pretty_scoped( rmrs, curhole, scoping ):
   
   rslt = "";
@@ -26,7 +40,7 @@ def str_pretty_scoped( rmrs, curhole, scoping ):
     rargs = rmrs.rargs_by_lid[ ep.label.vid ];
     
     rargnames = rargs.keys();
-    rargnames.sort();
+    rargnames.sort( mycmp );
     
     for rargname in rargnames:
       var = rargs[ rargname ].var;
@@ -49,11 +63,12 @@ for rmrs in rmrsrd:
   scoping = rmrs.get_scoping();
   scoping.solve();
   for scoping in scoping.enumerate():
+    print "sco"+str(scoping);
     print str_pretty_scoped( rmrs, rmrs.top.vid, scoping );
   print "-------";
+  assert False;
   print;
   print;
-
 
 doc.close();
 pyrmrs.globals.destructMain();

@@ -148,20 +148,20 @@ class RMRSScoping( ndomcon_solution.NDomConSolution ):
         self._cons[ upper ] = [];
       self._cons[ upper ].append( lower );
 
-    pyrmrs.globals.logDebug( self, "---" );
-    pyrmrs.globals.logDebug( self, "ROOTS:" );
+    pyrmrs.globals.logDebugCoarse( self, "---" );
+    pyrmrs.globals.logDebugCoarse( self, "ROOTS:" );
     i = 0;
     for item in self._roots:
-      pyrmrs.globals.logDebug( self, "  %d: %s" % ( i, item ) );
+      pyrmrs.globals.logDebugCoarse( self, "  %d: %s" % ( i, item ) );
       i += 1;
-    pyrmrs.globals.logDebug( self, "FRAGMENTS:" );
+    pyrmrs.globals.logDebugCoarse( self, "FRAGMENTS:" );
     keys = self._fragments.keys();
     keys.sort();
     for key in keys:
-      pyrmrs.globals.logDebug( self, "  %s: %s" % ( key, self._fragments[key] ) );
+      pyrmrs.globals.logDebugCoarse( self, "  %s: %s" % ( key, self._fragments[key] ) );
     pyrmrs.globals.logDebug( self, "CONSTRAINTS:" );
     for key in self._cons:
-      pyrmrs.globals.logDebug( self, "  %s: %s" % ( key, self._cons[key] ) );
+      pyrmrs.globals.logDebugCoarse( self, "  %s: %s" % ( key, self._cons[key] ) );
       
     ndomcon_solution.NDomConSolution.__init__( self, self._fragments, self._cons );
 

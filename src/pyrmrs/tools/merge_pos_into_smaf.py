@@ -11,9 +11,10 @@ import pyrmrs.smafpkg.lattice;
 GRAMMAR = [
   ( [ "JB" ], [ "JB", "JB" ] ),
   ( [ "JJ" ], [ "JJ", "JJ" ] ),
-  ( [ "NN1" ], [ "NN1", None ] ),
-  ( [ "NP1" ], [ "NP1", None, None ] ),
-  ( [ "NP1" ], [ "NP1", "NP1" ] )
+#  ( [ "NN1" ], [ "NN1", None ] ),
+#  ( [ "NP1" ], [ "NP1", None, None ] ),
+  ( [ "NP1" ], [ "NP1", "NP1" ] ),
+  ( [ "NN1" ], [ "NN1", "NN1" ] )
 ];
 
 i = None;
@@ -46,7 +47,7 @@ def merge_pos_into_smaf( tok_smaf, pos_smaf ):
 
   
   
-  def fit_tags( tags, target ):
+  def fit_tags( tags, target, src=None, trg=None ):
     
     if len(tags) == target:
       return tags;
@@ -60,13 +61,15 @@ def merge_pos_into_smaf( tok_smaf, pos_smaf ):
     if target == 1 and len(tags) == 2 and tags[1] in [ ".", ",", "$" ]:
       return tags[ 0 : 1 ];
     
-    if target == 1:
+    if target == 1 and len(tags) > 1:
       curtag = tags[ 0 ];
       allthesame = True;
       for tag in tags:
         if tag != curtag:
           allthesame = False;
-      return [ curtag ] * target;
+          break;
+      if allthesame:
+        return [ curtag ] * target;
     
     agenda = [ tags ];
     results = [];
@@ -107,6 +110,8 @@ def merge_pos_into_smaf( tok_smaf, pos_smaf ):
       if len(results) > 1:
         reason = "ambiguous";
       print "%s results for %s -> %d." % ( reason, str(tags), target );
+      print "source: %s" % str(src);
+      print "target: %s" % str(trg);
       assert False;
     
     return results[ 0 ];
@@ -136,10 +141,16 @@ def merge_pos_into_smaf( tok_smaf, pos_smaf ):
     global i;
     
     tags = [];
+    src = [];
     for edge in pos_edges:
       tags.append( edge.tag );
+      src.append( edge.pos );
+    
+    trg = [];
+    for edge in tok_edges:
+      trg.append(  )
       
-    tags = fit_tags( tags, len(tok_edges) );
+    tags = fit_tags( tags, len(tok_edges), pos_edges, tok_edges );
     
     for k in range( 0, len(tok_edges) ):
       
