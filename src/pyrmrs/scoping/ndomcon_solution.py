@@ -322,5 +322,5 @@ class NDomConSolution:
     rslt = self.enumerate_rec( self._fragments.keys() );
     for x in rslt:
       print "_ %s %s" % x;
-      assert False;
+      #assert False;
     return rslt;

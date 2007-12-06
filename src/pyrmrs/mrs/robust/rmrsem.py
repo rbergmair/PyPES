@@ -233,9 +233,29 @@ class RMRSem( pyrmrs.mrs.common.mrsem.MRSem ):
       lab = "*%s*" % lab;
     fl += "%9s : %s( ARG0=%s " % ( lab, ep.str_pretty(), ep.var.str_pretty() );
     
+    args = [];
     if self.rargs_by_lid.has_key( ep.label.vid ):
       for arg in self.rargs_by_lid[ ep.label.vid ]:
-        fl += "%s=%s " % ( arg,self.rargs_by_lid[ep.label.vid][arg].str_pretty() );
+        args.append( (arg,self.rargs_by_lid[ep.label.vid][arg]) );
+    
+    def mycmp( x_a, y_b ):
+      (x,a) = x_a;
+      (y,b) = y_b;
+      if x == "BODY" and y == "RSTR":
+        return +1;
+      elif x == "RSTR" and y == "BODY":
+        return -1;
+      elif x > y:
+        return +1;
+      elif x < y:
+        return -1;
+      else:
+        return 0;
+    
+    args.sort( cmp=mycmp );
+    
+    for ( argname, arg ) in args:
+      fl += "%s=%s " % ( argname, arg.str_pretty() );
     fl += ") ";
     
     rslt += self.fmt( fl, ep.surface );

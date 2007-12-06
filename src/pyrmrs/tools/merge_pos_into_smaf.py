@@ -47,7 +47,7 @@ def merge_pos_into_smaf( tok_smaf, pos_smaf ):
 
   
   
-  def fit_tags( tags, target, src=None, trg=None ):
+  def fit_tags( tags, target ):
     
     if len(tags) == target:
       return tags;
@@ -110,8 +110,6 @@ def merge_pos_into_smaf( tok_smaf, pos_smaf ):
       if len(results) > 1:
         reason = "ambiguous";
       print "%s results for %s -> %d." % ( reason, str(tags), target );
-      print "source: %s" % str(src);
-      print "target: %s" % str(trg);
       assert False;
     
     return results[ 0 ];
@@ -140,17 +138,19 @@ def merge_pos_into_smaf( tok_smaf, pos_smaf ):
     global output_lattice;
     global i;
     
-    tags = [];
-    src = [];
-    for edge in pos_edges:
-      tags.append( edge.tag );
-      src.append( edge.pos );
-    
-    trg = [];
-    for edge in tok_edges:
-      trg.append(  )
+    if len( tok_edges ) != len( pos_edges ):
+      print "--"
+      for ( tok, pos ) in pos_edges:
+        print "  P %s/%s" % ( tok.text, pos.tag );
+      for tok in tok_edges:
+        print "  T %s" % tok.text;
       
-    tags = fit_tags( tags, len(tok_edges), pos_edges, tok_edges );
+    
+    tags = [];
+    for ( tok, pos ) in pos_edges:
+      tags.append( pos.tag );
+      
+    tags = fit_tags( tags, len(tok_edges) );
     
     for k in range( 0, len(tok_edges) ):
       
@@ -182,8 +182,9 @@ def merge_pos_into_smaf( tok_smaf, pos_smaf ):
   
   tok_edge = get_tok_edge( tok_smaf.lattice.lattice[ tok_smaf.lattice.init ] );
   pos_edge = get_pos_edge( pos_smaf.lattice.lattice[ pos_smaf.lattice.init ] );
+  pos_tok_edge = get_tok_edge( pos_smaf.lattice.lattice[ pos_smaf.lattice.init ] );
   tok_edges = [ tok_edge ];
-  pos_edges = [ pos_edge ];
+  pos_edges = [ (pos_tok_edge,pos_edge) ];
   
   while True:
     
@@ -195,14 +196,18 @@ def merge_pos_into_smaf( tok_smaf, pos_smaf ):
     
     if tok_edge.cto == pos_edge.cto:
       output_aligned( tok_edges, pos_edges );
-      pos_edge = get_pos_edge( pos_smaf.lattice.lattice[ pos_edge.target ] );
       tok_edge = get_tok_edge( tok_smaf.lattice.lattice[ tok_edge.target ] );
-      pos_edges = [ pos_edge ];
+      trg = pos_edge.target;
+      pos_edge = get_pos_edge( pos_smaf.lattice.lattice[ trg ] );
+      pos_tok_edge = get_tok_edge( pos_smaf.lattice.lattice[ trg ] );
       tok_edges = [ tok_edge ];
+      pos_edges = [ (pos_tok_edge,pos_edge) ];
       
     elif tok_edge.cto > pos_edge.cto:
-      pos_edge = get_pos_edge( pos_smaf.lattice.lattice[ pos_edge.target ] );
-      pos_edges.append( pos_edge );
+      trg = pos_edge.target;
+      pos_edge = get_pos_edge( pos_smaf.lattice.lattice[ trg ] );
+      pos_tok_edge = get_tok_edge( pos_smaf.lattice.lattice[ trg ] );
+      pos_edges.append( (pos_tok_edge,pos_edge) );
     
     elif tok_edge.cto < pos_edge.cto:
       tok_edge = get_tok_edge( tok_smaf.lattice.lattice[ tok_edge.target ] );
