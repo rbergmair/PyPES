@@ -59,16 +59,17 @@ doc = open( "testdta/dragon.xml", "r" );
 rmrsrd = pyrmrs.mrs.robust.rmrsreader.RMRSReader( doc );
 for rmrs in rmrsrd:
   print rmrs.str_pretty();
-  print;
   scoping = rmrs.get_scoping();
   scoping.solve();
+  scoping.enumerate();
   for scoping in scoping.enumerate():
-    print "sco"+str(scoping);
+    #print str(scoping);
     print str_pretty_scoped( rmrs, rmrs.top.vid, scoping );
-  print "-------";
-  assert False;
   print;
-  print;
+  #print "-------";
+  #assert False;
+  #print;
+  #print;
 
 doc.close();
 pyrmrs.globals.destructMain();

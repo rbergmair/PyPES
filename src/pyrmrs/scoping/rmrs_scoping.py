@@ -7,112 +7,124 @@ import copy;
 
 class RMRSScoping( ndomcon_solution.NDomConSolution ):
   
-  _fragments = {};
-  _cons = {};
-  
-  _roots = [];
-  _root_by_lid = {};
+  _rmrs = None;
   
   _top_hid = None;
   
+  _groups = [];
+  _groupid_by_lid = {};
+  _grouped_fragments = {};
+  
+  _roots = [];
+  _rootid_by_lid = {};
+  _rooted_fragments = {};
+  
+  _eqs = {};
   
   
-  def __init__( self, rmrs ):
-    
-    self._top_hid = rmrs.top.vid;
   
+  def _build_grouped_fragments( self ):
+
     lbls = [];
-    for lbl in rmrs._lbls:
-      if lbl.vid != rmrs.top.vid:
+    for lbl in self._rmrs._lbls:
+      if lbl.vid != self._rmrs.top.vid:
         if not lbl.vid in lbls:
           lbls.append( lbl.vid );
           
     grouped_lbls = [];
-    self._roots = [];
+    self._groups = [];
     
-    for group in rmrs.groups:
-      self._roots.append( group );
+    for group in self._rmrs.groups:
+      self._groups.append( group );
       for item in group:
         grouped_lbls.append( item );
     
     for lbl in lbls:
       if not lbl in grouped_lbls:
-        self._roots.append( [lbl] );
-        
-    #curgrp = [];
-    #group_ = None;
-    #
-    #i = 0;
-    #
-    #while True:
-    #  
-    #  if ( group_ is None ) or ( lbls[ i ] not in group_ ):
-    #    
-    #    group_ = None;
-    #    self._roots.append( curgrp );
-    #    curgrp = [];
-    #
-    #  curgrp.append( lbls[ i ] );
-    #  
-    #  if group_ is None:
-    #    for group in rmrs.groups:
-    #      if lbls[ i ] in group:
-    #        group_ = group;
-    #        break;
-    #
-    #  i += 1;
-    #  if i >= len( lbls ):
-    #    break;
-    # 
-    # self._roots.append( curgrp );
-    # del self._roots[ 0 ];
-    # #print self._roots;
+        self._groups.append( [lbl] );
     
-    self._fragments = {};
-    self._root_by_lid = {};
+    self._grouped_fragments = {};
+    self._groupid_by_lid = {};
     quant_labels = [];
     
-    for k in range( 0, len(self._roots) ):
-      root = self._roots[ k ];
+    for k in range( 0, len(self._groups) ):
+      group = self._groups[ k ];
       holes = [];
-      for lid in root:
-        self._root_by_lid[ lid ] = k;
-        if rmrs.rargs_by_lid.has_key( lid ):
-          rstr = None;
-          body = None;
-          if rmrs.rargs_by_lid[ lid ].has_key( "RSTR" ):
-            rstr = rmrs.rargs_by_lid[ lid ][ "RSTR" ].var.vid;
-          if rmrs.rargs_by_lid[ lid ].has_key( "BODY" ):
-            body = rmrs.rargs_by_lid[ lid ][ "BODY" ].var.vid;
-          if ( not ( body is None ) ) and ( not ( rstr is None ) ):
-            holes.append( (False,rstr) );
-            holes.append( (False,body) );
-            quant_labels.append( lid );
-          else:
-            for arg in rmrs.rargs_by_lid[ lid ].values():
-              if not arg.var is None and arg.var.sort == arg.var.SORT_HOLE:
-                holes.append( (False,arg.var.vid) );
-            
-      self._fragments[ (True,k) ] = holes;
+      for lid in group:
+        self._groupid_by_lid[ lid ] = k;
+        if self._rmrs.rargs_by_lid.has_key( lid ):
+          for arg in self._rmrs.rargs_by_lid[ lid ].values():
+            if not arg.var is None and arg.var.sort == arg.var.SORT_HOLE:
+              holes.append( (False,arg.var.vid) );
+      self._grouped_fragments[ (True,k) ] = holes;
+  
+  
+  def _build_rooted_fragments( self ):
+    
+    self._roots = [];
+    self._rootid_by_lid = {};
+    self._rooted_fragments = {};
+    
+    self._eqs = {};
+    
+    i = 0;
+    
+    processed_gids = [];
+    for j in range( 0, len(self._groups) ):
+      if j in processed_gids:
+        continue;
+      processed_gids.append( j );
+      
+      lbls = self._groups[ j ];
+      holes = self._grouped_fragments[ (True,j) ];
+      
+      k = 0;
+      while True:
+        if k >= len( holes ):
+          break;
+        
+        hid = holes[ k ][ 1 ];
+        if hid in self._rmrs.lbl_by_lid.keys():
+          del holes[ k ];
+          gid = self._groupid_by_lid[ hid ];
+          self._eqs[ hid ] = self._groups[ gid ];
+          lbls += self._groups[ gid ];
+          holes += self._grouped_fragments[ (True,gid) ];
+          processed_gids.append( gid );
+        else:
+          k += 1;
+    
+      self._roots.append( lbls );
+      for lbl in lbls:
+        self._rootid_by_lid[ lbl ] = i;
+      self._rooted_fragments[ (True,i) ] = holes;
+      i += 1;
+      
+      
+  def _build_cons( self ):    
 
+    quant_labels = [];
+    for lid in self._rmrs.rargs_by_lid:
+      rargs = self._rmrs.rargs_by_lid[ lid ];
+      if rargs.has_key( "RSTR" ) and rargs.has_key( "BODY" ):
+        quant_labels.append( lid );
+      
     bindings = {};
-    for ep in rmrs.eps:
+    for ep in self._rmrs.eps:
       if ep.label.vid in quant_labels:
         bindings[ ep.var.referent ] = ep.label.vid;
 
     self._cons = {};
 
-    for ep in rmrs.eps:
-      
+    for ep in self._rmrs.eps:
       if ep.label.vid in quant_labels:
         continue;
       
       vars = [ ep.var ];
-      
-      if rmrs.rargs_by_lid.has_key( ep.label.vid ):
-        args = rmrs.rargs_by_lid[ ep.label.vid ];
-        for arg in args:
-          var = args[ arg ].var;
+      if self._rmrs.rargs_by_lid.has_key( ep.label.vid ):
+        rargs = self._rmrs.rargs_by_lid[ ep.label.vid ];
+        for arg in rargs:
+          var = rargs[ arg ].var;
           if var is None:
             continue;
           vars.append( var );
@@ -132,21 +144,35 @@ class RMRSScoping( ndomcon_solution.NDomConSolution ):
       for var in vars:
         
         binding = bindings[ var.referent ];
-        assert self._root_by_lid.has_key( binding );
-        upper = ( True, self._root_by_lid[binding] );
-        lower = ( True, self._root_by_lid[ep.label.vid] );
+        assert self._groupid_by_lid.has_key( binding );
+        assert self._rootid_by_lid.has_key( binding );
+        
+        upper = ( True, self._rootid_by_lid[binding] );
+        lower = ( True, self._rootid_by_lid[ep.label.vid] );
+        
         if not self._cons.has_key( upper ):
           self._cons[ upper ] = [];
         if not lower in self._cons[ upper ]:
           self._cons[ upper ].append( lower );
 
-    for hcon in rmrs.hcons:
+    for hcon in self._rmrs.hcons:
       assert hcon.lovar is None;
       upper = ( False, hcon.hi.vid );
-      lower = ( True, self._root_by_lid[ hcon.lolbl.vid ] );
+      lower = ( True, self._rootid_by_lid[ hcon.lolbl.vid ] );
       if not self._cons.has_key( upper ):
         self._cons[ upper ] = [];
-      self._cons[ upper ].append( lower );
+      if not lower in self._cons[ upper ]:
+        self._cons[ upper ].append( lower );
+
+
+  def __init__( self, rmrs ):
+    
+    self._rmrs = rmrs;
+    self._top_hid = rmrs.top.vid;
+    self._build_grouped_fragments();
+    self._build_rooted_fragments();
+    self._build_cons();
+
 
     pyrmrs.globals.logDebugCoarse( self, "---" );
     pyrmrs.globals.logDebugCoarse( self, "ROOTS:" );
@@ -155,20 +181,20 @@ class RMRSScoping( ndomcon_solution.NDomConSolution ):
       pyrmrs.globals.logDebugCoarse( self, "  %d: %s" % ( i, item ) );
       i += 1;
     pyrmrs.globals.logDebugCoarse( self, "FRAGMENTS:" );
-    keys = self._fragments.keys();
+    keys = self._rooted_fragments.keys();
     keys.sort();
     for key in keys:
-      pyrmrs.globals.logDebugCoarse( self, "  %s: %s" % ( key, self._fragments[key] ) );
+      pyrmrs.globals.logDebugCoarse( self, "  %s: %s" % ( key, self._rooted_fragments[key] ) );
     pyrmrs.globals.logDebug( self, "CONSTRAINTS:" );
     for key in self._cons:
       pyrmrs.globals.logDebugCoarse( self, "  %s: %s" % ( key, self._cons[key] ) );
       
-    ndomcon_solution.NDomConSolution.__init__( self, self._fragments, self._cons );
+    ndomcon_solution.NDomConSolution.__init__( self, self._rooted_fragments, self._cons );
 
 
 
   def solve( self ):
-
+    
     return ndomcon_solution.NDomConSolution.solve( self );
 
 
@@ -185,7 +211,9 @@ class RMRSScoping( ndomcon_solution.NDomConSolution ):
     results = [];
     
     for ( scoping, ( isroot_top, id_top ) ) in ndomcon_solution.NDomConSolution.enumerate( self ):
-      rmrs_scoping = {};
+      #print scoping;
+      #continue;
+      rmrs_scoping = copy.copy( self._eqs );
       for hi in scoping:
         lo = scoping[ hi ];
         ( isroot_hi, id_hi ) = hi;

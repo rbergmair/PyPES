@@ -309,7 +309,8 @@ class NDomConSolution:
           for (subscope,subtop) in subs:
             scope_ = self.dictunion( scope, subscope );
             scope_[ root ] = subtop;
-            scopesout.append( scope_ );
+            if not scope_ in scopesout:
+              scopesout.append( scope_ );
         scopesin = scopesout;
       for scope in scopesout:
         results.append( (scope,top) );
@@ -320,7 +321,7 @@ class NDomConSolution:
   def enumerate( self ):
     
     rslt = self.enumerate_rec( self._fragments.keys() );
-    for x in rslt:
-      print "_ %s %s" % x;
+    #for x in rslt:
+      #print "_ %s %s" % x;
       #assert False;
     return rslt;
