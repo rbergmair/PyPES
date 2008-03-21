@@ -1,0 +1,50 @@
+Index: cheap/cheap.cpp
+===================================================================
+--- cheap/cheap.cpp	(revision 369)
++++ cheap/cheap.cpp	(working copy)
+@@ -19,6 +19,8 @@
+ 
+ /* main module (standalone parser) */
+ 
++#include <string.h>
++
+ #include "pet-config.h"
+ #include "cheap.h"
+ #include "parse.h"
+@@ -130,6 +132,13 @@
+   string input;
+   int id = 1;
+ 
++  // BEGIN rb432's modification
++  char chbuf[511];
++  memset((void *)&chbuf, 0, 511);
++
++  // END rb432's modification
++
++
+   //tFegramedPrinter chp("/tmp/fed-");
+   //chp.print(type_dag(lookup_type("quant-rel")));
+   //exit(1);
+@@ -143,7 +152,21 @@
+               , opt_tsdb_dir.c_str());
+   }
+ 
+-  while(!(input = read_line(stdin, opt_comment_passthrough)).empty()) {
++
++  // BEGIN rb432's modification
++  // while(!(input = read_line(stdin, opt_comment_passthrough)).empty()) {
++  for (;;) {
++  
++    fprintf(fstatus, "\027");
++    fflush(fstatus);
++    fflush(ferr);
++    write(1, (void *)&chbuf, 511);
++
++    input = read_line(stdin, opt_comment_passthrough);
++    if ( input.empty() )
++      break;
++  // END rb432's modification
++
+     chart *Chart = 0;
+ 
+     tsdb_dump.start();
