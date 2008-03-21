@@ -1,0 +1,87 @@
+CHART IDX[
+  [(True, 1), (True, 4), (True, 0)],
+  [(True, 3), (True, 1), (True, 4), (True, 2), (True, 0)],
+  [(True, 3), (True, 1), (True, 2)],
+  [(True, 3), (True, 1), (True, 4), (True, 2), (True, 0)]
+]
+
+
+
+CHART{
+  0: { (False, 6): [(True, 1)],
+       (False, 5): [(True, 4)]
+     },
+  1: {(False, 11): [(True, 0), (True, 1), (True, 4)],
+      (False, 12): [(True, 3)]
+     },
+  2: {(False, 11): [(True, 1)],
+      (False, 12): [(True, 3)]
+     },
+  3: {(False, 6): [(True, 2), (True, 3), (True, 1)],
+      (False, 5): [(True, 4)]
+     }
+}
+
+
+
+
+  def dictunion( self, a, b ):
+    
+    for key in b:
+      a[ key ] = b[ key ];
+    return a;
+
+
+  
+  def enumerate( self, fragments=None ):
+    
+    if fragments is None:
+      fragments = self._fragments.keys();
+
+    if len( fragments ) == 1:
+      return [ ( {}, self._roots[ fragments[0][1] ] ) ];
+
+    results = [];
+    
+    for i in range( 0, len(self._chart_keys) ):
+      if self.setequals( self._chart_keys[i], fragments ):
+        fragcp = copy.copy( fragments );
+        split = self._chart[i];
+        scope = {};
+        for ( isroot, vid ) in split.keys():
+          subfragments = split[ (isroot,vid) ];
+          print subfragments;
+          for frag in subfragments:
+            fragcp.remove( frag );
+          for ( subscope, top ) in self.enumerate( subfragments ):
+            #print "a"+str(scope);
+            #print "b"+str(subscope);
+            scope = self.dictunion( scope, subscope );
+            #print "c"+str(scope);
+            print "t"+str(top);
+            scope[ vid ] = top;
+        assert len( fragcp ) == 1;
+        assert fragcp[0][0];
+        results.append( ( scope, self._roots[ fragcp[0][1] ] ) );
+    
+    return results;
+
+    
+
+
+
+       l3 | _every_q( ARG0=x4 BODY=h5 RSTR=h6 ) 
+          |    h6 qeq l7
+       l7 + _nephew_n_1( ARG0=x4 ) 
+   l10001 + _of_p( ARG0=e8 ARG1=x4 ARG2=x9 ) 
+      l10 | _a_q( ARG0=x9 BODY=h11 RSTR=h12 ) 
+          |    h12 qeq l13
+      l13 + _dragon_n_1( ARG0=x9 ) 
+      l14 | _snore_v_1( ARG0=e2 ARG1=x4 ) 
+
+sco{1: [10], 11: [3], 12: [13], 5: [14], 6: [7, 10001]}
+_a_q( _every_q( _snore_v_1 , _nephew_n_1 & _of_p ) , _dragon_n_1 ) 
+
+sco{1: [3], 11: [7, 10001], 12: [13], 5: [14], 6: [10]}
+_every_q( _snore_v_1 , _a_q( _nephew_n_1 & _of_p , _dragon_n_1 ) ) 
+ 
