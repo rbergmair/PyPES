@@ -54,8 +54,9 @@ class PET( simpleio.SimpleIO ):
       ( "-results=%d " % self.results ) + \
       ( "-nsolutions=%d " % nsolutions ) + \
       ( "-limit=%d " % pyrmrs.config.PET_EDGELIMIT ) + \
+      ( "-timeout=%d " % pyrmrs.config.PET_TIMEOUT ) + \
       ( "-packing=%d " % pyrmrs.config.PET_PACKING ) + \
-      "-mrs=rmrx -tok=smaf " + \
+      "-default-les -mrs=rmrx -tok=smaf " + \
       pyrmrs.config.PET_OPT + \
       ( "%s" % pyrmrs.config.FILE_ERG );
 

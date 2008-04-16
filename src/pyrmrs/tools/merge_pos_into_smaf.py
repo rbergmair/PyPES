@@ -36,7 +36,9 @@ def merge_pos_into_smaf( tok_smaf, pos_smaf ):
   curnode_id = output_smaf.lattice.init;
   while curnode_id != output_smaf.lattice.final:
     curnode_edges = output_smaf.lattice.lattice[ curnode_id ];
-    assert len( curnode_edges ) == 1;
+    #assert len( curnode_edges ) == 1;
+    if len( curnode_edges ) != 1:
+      print "WARNING: non-unique edge";
     edge = curnode_edges[ 0 ];
     
     tags = [];
