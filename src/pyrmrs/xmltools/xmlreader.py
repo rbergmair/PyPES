@@ -73,6 +73,8 @@ class XMLReader( xml.sax.handler.ContentHandler ):
   char_callbacks = {};
   end_callbacks = {};
   
+  substfn = None;
+  
   def __init__( self, ifile, addxml=None, limit=None ):
     
     self.tlcont = "";
@@ -109,6 +111,10 @@ class XMLReader( xml.sax.handler.ContentHandler ):
     #  self.readChunk();
     #except StopIteration:
     #  pass;
+  
+  def setSubstFn( self, fn ):
+    
+    self.substfn = fn;
 
   def regStartElementCB( self, type, cb ):
     
@@ -167,6 +173,8 @@ class XMLReader( xml.sax.handler.ContentHandler ):
             if first < 0:
               first = 0;
             self.alldata = self.alldata[ first : len( self.alldata ) ];
+          if not self.substfn is None:
+            data = self.substfn( data );
           pyrmrs.globals.logDebug( self, data );
           self.parser.feed( data );
         except:

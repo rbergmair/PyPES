@@ -1,3 +1,5 @@
+import xml.sax.saxutils;
+
 import pyrmrs.xmltools.pchar_element;
 
 class Constant( pyrmrs.xmltools.pchar_element.PCharElement ):
@@ -13,7 +15,9 @@ class Constant( pyrmrs.xmltools.pchar_element.PCharElement ):
 
   def xml_tmplt( self, base ):
     
-    text = self.text.replace( "%", "%%" );
+    text = self.text;
+    text = xml.sax.saxutils.escape( text );
+    text = text.replace( "%", "%%" );
     base = base.replace( "%%", "%%%%" );
     return base % ( "%s", text+"%s" );
 

@@ -22,6 +22,9 @@ class FSPP( simpleio.SimpleIO ):
   
     self.open_pipe( cmd );
     x = self.read_block();
+    
+  def subst( self, stri ):
+    return stri.replace( "&", "&amp;" );
   
   def sentstr_to_smafs( self, sentstr ):
   
@@ -42,5 +45,8 @@ class FSPP( simpleio.SimpleIO ):
     x = self.ioout.read( 66 );
     pyrmrs.globals.logDebug( self, "finished reading; got |>%s<|;" % x );
 
-    return pyrmrs.smafpkg.smafreader.SMAFReader( self.ioout_bare, True, 1 );
+    rslt = pyrmrs.smafpkg.smafreader.SMAFReader( self.ioout_bare, True, 1 );
+    rslt.setSubstFn( self.subst );
+    return rslt;
+    
   

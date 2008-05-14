@@ -39,23 +39,53 @@ m4_dnl     define(`_SH_PYTHON',`/usr/bin/python')
 m4_dnl   _DIR_PYRMRSHOME points to the directory where this file is located.
 m4_define(`_DIR_PYRMRSHOME',m4_esyscmd(`echo -n $PWD'))
 
+m4_dnl   This is where log files will end up. You may want to change this.
 m4_define(`_DIR_LOG',`/tmp')
 
 
 
-m4_dnl specific to rb432
-
+m4_dnl   Define DELPHINHOME and RASPHOME in the environment.
 m4_define(`_DIR_DELPHINHOME',m4_esyscmd(`echo -n $DELPHINHOME'))
+m4_define(`_DIR_RASPHOME',m4_esyscmd(`echo -n $RASPHOME'))
+
+
+m4_dnl   We have to know the architecture for calling the right
+m4_dnl   RASP scripts. Set this accordingly.
+m4_define(`_RASPARCH', `x86_64_linux')
+
+
+m4_dnl   You probably don't have to change this, but feel free
+m4_dnl   to do so if necessary.
 m4_define(`_SH_CHEAP',`_DIR_DELPHINHOME/pet/bin/cheap')
 
 m4_define(`_DIR_ERGHOME',`_DIR_DELPHINHOME/erg')
 m4_define(`_FILE_ERG',`_DIR_ERGHOME/english.grm')
 
-m4_define(`_DIR_RASPHOME',m4_esyscmd(`echo -n $SCRATCH/rasp3'))
 m4_define(`_SH_RASP',`_DIR_RASPHOME/scripts/rasp-rb.sh')
-m4_define(`_SH_RASPSENT',`_DIR_RASPHOME/sentence/sentence.x86_64_linux.int')
 
-m4_define(`_DIR_LKBHOME',m4_esyscmd(`echo -n $DELPHINHOME/lkb'))
+m4_define(`_DIR_RASPSENT_HOME',`_DIR_RASPHOME/sentence')
+m4_define(`_SH_RASPSENT',`_DIR_RASPSENT_HOME/sentence._RASPARCH.int')
+
+m4_define(`_DIR_RASPTOK_HOME',`_DIR_RASPHOME/tokenise')
+m4_define(`_SH_RASPTOK',`_DIR_RASPTOK_HOME/token._RASPARCH')
+
+m4_define(`_DIR_RASPTAG_HOME',`_DIR_RASPHOME/tag')
+m4_define(`_SH_RASPTAG',`_DIR_RASPTAG_HOME/_RASPARCH/label - B1 b C1 N \
+  t _DIR_RASPTAG_HOME/auxiliary_files/slb.trn \
+  d _DIR_RASPTAG_HOME/auxiliary_files/seclarge.lex \
+  j _DIR_RASPTAG_HOME/auxiliary_files/unkstats-seclarge \
+  m _DIR_RASPTAG_HOME/auxiliary_files/tags.map')
+m4_define(`_DIR_RASPTAG_LDLP',`_DIR_RASPTAG_HOME/database/_RASPARCH')
+
+m4_define(`_DIR_RASPMORPH_HOME',`_DIR_RASPHOME/morph')
+m4_define(`_SH_RASPMORPH',`_DIR_RASPMORPH_HOME/morpha')
+
+m4_define(`_SH_RASPPARSE',`_DIR_RASPHOME/scripts/rasp_parse.sh')
+
+m4_define(`_DIR_LKBHOME',`_DIR_DELPHINHOME/lkb')
+
+
+m4_dnl   You might want to change this.
 m4_define(`_SH_LKB',`/usr/opt/acl80.64/alisp -I _DIR_LKBHOME/image/linux.x86.64/lkb.dxl')
 
 

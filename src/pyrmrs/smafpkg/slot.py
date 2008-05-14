@@ -1,3 +1,4 @@
+import xml.sax.saxutils;
 import pyrmrs.xmltools.pchar_element;
 
 class Slot( pyrmrs.xmltools.pchar_element.PCharElement ):
@@ -32,7 +33,7 @@ class Slot( pyrmrs.xmltools.pchar_element.PCharElement ):
       attrs += " name=\"%s\"" % self.name;
     txt = "";
     if not self.text is None:
-      txt = self.text;
+      txt = xml.sax.saxutils.escape( self.text );
     attrs = attrs.replace( "%", "%%" );
     txt = txt.replace( "%", "%%" );
     

@@ -1,10 +1,13 @@
 import pyrmrs.globals;
 
-import os;
+#import os;
 import codecs;
 import sys;
 import select;
 
+import subprocess;
+
+import time;
 
 
 class SimpleIO:
@@ -12,11 +15,15 @@ class SimpleIO:
   ioin = None;
   ioout = None;
   ioout_bare = None;
-
+  pipe = None;
+  
   def open_pipe( self, cmd ):
     
     pyrmrs.globals.logDebug( self, "opening pipe on %s..." % cmd );
-    ( self.ioin, self.ioout_bare ) = os.popen4( cmd );
+    self.pipe = subprocess.Popen( cmd, shell=True, stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.STDOUT );
+    self.ioin = self.pipe.stdin;
+    self.ioout_bare = self.pipe.stdout;
+    #( self.ioin, self.ioout_bare ) = os.popen4( cmd );
     pyrmrs.globals.logDebug( self, "finished opening pipe;" );
     
     self.ioin = codecs.getwriter( "utf-8" )( self.ioin );
@@ -140,31 +147,31 @@ class SimpleIO:
       block += "\000";
     pyrmrs.globals.logDebug( self, "writing |>%s<|..." % block );
     
-    ( readable, writable, exceptional) = select.select( [self.ioout], [self.ioin], [], 0.5 );
-    
-    nzs = "";
-    if len( writable ) == 0:
-      pyrmrs.globals.logDebug( self, "possible deadlock situation;" );
-      assert False;
-      if len( readable ) == 0:
-        pyrmrs.globals.logDebug( self, "situation hopeless;" );
-      else:
-        while True:
-          pyrmrs.globals.logDebug( self, "reading 1 byte..." );
-          ch = self.ioout.read( 1 );
-          if ch != '\000':
-            pyrmrs.globals.logDebug( self, "huh? got nonzero |>%s<|;" % ch );
-            nzs += ch;
-          else:
-            pyrmrs.globals.logDebug( self, "got zero;" );
-          ( readable, writable, exceptional) = select.select( [self.ioout], [self.ioin], [], 0.5 );
-          if len( writable ) > 0:
-            break;
-          if len( readable ) == 0:
-            pyrmrs.globals.logDebug( self, "situation hopeless;" );
-            break;
-    if nzs != "":
-      pyrmrs.globals.logDebug( self, "got nonzero stuff: |>%s<|" % nzs );
+    #( readable, writable, exceptional) = select.select( [self.ioout], [self.ioin], [], 0.5 );
+    #
+    #nzs = "";
+    #if len( writable ) == 0:
+    #  pyrmrs.globals.logDebug( self, "possible deadlock situation;" );
+    #  assert False;
+    #  if len( readable ) == 0:
+    #    pyrmrs.globals.logDebug( self, "situation hopeless;" );
+    #  else:
+    #    while True:
+    #      pyrmrs.globals.logDebug( self, "reading 1 byte..." );
+    #      ch = self.ioout.read( 1 );
+    #      if ch != '\000':
+    #        pyrmrs.globals.logDebug( self, "huh? got nonzero |>%s<|;" % ch );
+    #        nzs += ch;
+    #      else:
+    #        pyrmrs.globals.logDebug( self, "got zero;" );
+    #      ( readable, writable, exceptional) = select.select( [self.ioout], [self.ioin], [], 0.5 );
+    #      if len( writable ) > 0:
+    #        break;
+    #      if len( readable ) == 0:
+    #        pyrmrs.globals.logDebug( self, "situation hopeless;" );
+    #        break;
+    #if nzs != "":
+    #  pyrmrs.globals.logDebug( self, "got nonzero stuff: |>%s<|" % nzs );
 
     #self.ioin.flush();
     #os.write( self.ioin.fileno(), block );
@@ -177,11 +184,30 @@ class SimpleIO:
   
   def close_pipe( self ):
     
-    self.write_block( "" );
-    pyrmrs.globals.logDebug( self, "closing pipe..." );
-    self.ioin.close();
-    self.ioout.close();
-    pyrmrs.globals.logDebug( self, "finished closing;" );
+    if not ( self.ioout is None or self.ioin is None ):
+      
+      self.write_block( "" );
+      #time.sleep( 2 );
+      pyrmrs.globals.logDebug( self, "waiting for the subprocess to terminate..." );
+      self.pipe.wait();
+      pyrmrs.globals.logDebug( self, "terminated." );
+      
+      #while True:
+      #  ( readable, writable, exceptional) = select.select( [self.ioout], [self.ioin], [], 0.5 );
+      #  if len(writable) == 0 and len(readable):
+      #    break;
+      #  else:
+      #    if self.ioin in writable:
+      #      self.ioin.write( "\000" );
+      #    if self.ioout in readable:
+      #      self.ioout.read( 1 );
+          
+      pyrmrs.globals.logDebug( self, "closing pipe..." );
+      self.ioin.close();
+      self.ioout.close();
+      self.ioin = None;
+      self.ioout = None;
+      pyrmrs.globals.logDebug( self, "finished closing;" );
 
   def __del__( self ):
     

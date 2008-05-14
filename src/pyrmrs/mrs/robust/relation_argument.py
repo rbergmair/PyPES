@@ -1,3 +1,5 @@
+import xml.sax.saxutils;
+
 import pyrmrs.xmltools.reader_element;
 import pyrmrs.error.xmlsem_error;
 
@@ -83,7 +85,7 @@ class RelationArgument( pyrmrs.xmltools.reader_element.ReaderElement ):
   
   def xml_tmplt( self, base ):
     
-    body = "\n  <rargname>%s</rargname>" % self.name;
+    body = "\n  <rargname>%s</rargname>" % xml.sax.saxutils.escape( self.name );
     body += string.replace( "\n" + self.label.str_xml(), "\n", "\n  " );
     body += string.replace( "\n" + self.val.str_xml(), "\n", "\n  " );
     body = body.replace( "%", "%%" );

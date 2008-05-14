@@ -1,5 +1,9 @@
 import os;
+import sig;
+
 import codecs;
+
+import subprocess;
 
 import pyrmrs.config;
 import pyrmrs.globals;
@@ -51,11 +55,15 @@ class RaspSentenceSplitter:
 
   raspsentin = None;
   raspsentout = None;
+  pipe = None;
   
   def __init__( self ):
     
     pyrmrs.globals.logDebug( self, "opening pipe on %s..." % pyrmrs.config.SH_RASPSENT );
-    ( self.raspsentin, self.raspsentout ) = os.popen4( pyrmrs.config.SH_RASPSENT );
+    self.pipe = subprocess.Popen( pyrmrs.config.SH_RASPSENT, shell=True, stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.STDOUT );
+    self.raspsentin = self.pipe.stdin;
+    self.raspsentout = self.pipe.stdout;
+    #( self.raspsentin, self.raspsentout ) = os.popen4( pyrmrs.config.SH_RASPSENT );
     pyrmrs.globals.logDebug( self, "finished opening pipe;" );
     
     self.raspsentin = codecs.getwriter( "utf-8" )( self.raspsentin );
@@ -86,5 +94,6 @@ class RaspSentenceSplitter:
     pyrmrs.globals.logDebug( self, "closing pipe..." );
     self.raspsentin.close();
     self.raspsentout.close();
+    self.pipe.wait();
     pyrmrs.globals.logDebug( self, "finished closing;" );
   
