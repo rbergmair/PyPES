@@ -11,7 +11,8 @@ MAP = {
 };
 
 wspan = re.compile( "(<w s=')([0-9]+)(' e=')([0-9]+)('>)(.*)(</w>)" );
-number = re.compile( "([0-9]+)(\.[0-9]+(e[+-]?[0-9]+)?)?" );
+number = re.compile( "(?:[0-9]+)(?:\.[0-9]+(?:e[\+\-]?[0-9]+)?)?" );
+
 
 
 def rasptagstr_to_smaf( surface, raspstr ):
@@ -98,7 +99,7 @@ def rasptagstr_to_smaf( surface, raspstr ):
       probtxt = postagspl[1];
       
       m = number.search( probtxt );
-      prob = probtxt[ m.start(0) : m.end( len( m.groups() ) ) ];
+      prob = m.group();
       
       posedge = pyrmrs.smafpkg.pos_edge.PosEdge();
       
@@ -130,3 +131,37 @@ def rasptagstr_to_smaf( surface, raspstr ):
   smaf.register( lattice );
   
   return smaf;
+
+
+
+def smaf_to_raspparse_inputstr( smaf ):
+  
+  node = smaf.lattice.init;
+  
+  rslt = "";
+  
+  while node != smaf.lattice.final:
+
+    trg = None;
+    tok = None;
+    poss = [];
+    
+    for edge in smaf.lattice.lattice[ node ]:
+  
+      if trg is None:
+        trg = edge.target;
+      assert edge.target == trg;
+      
+      if isinstance( edge, pyrmrs.smafpkg.pos_edge.PosEdge ):
+        poss.append( (edge.tag,edge.weight) );
+      elif isinstance( edge, pyrmrs.smafpkg.token_edge.TokenEdge ):
+        tok = edge.text;
+    
+    rslt += tok;
+    for ( tag, weight ) in poss:
+      rslt += " %s_%s:%s" % ( tok, tag, weight );
+    rslt += "\n";
+    
+    node = trg;
+  
+  return rslt;  

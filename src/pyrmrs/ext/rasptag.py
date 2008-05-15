@@ -95,6 +95,8 @@ class RaspPosTagger:
     
     buf = buf[ : len(buf) - pending ];
     
+    buf = buf.replace( "\021", "^" );
+    
     pyrmrs.globals.logDebugCoarse( self, "returning |>%s<|;" % buf );
 
     return buf;
