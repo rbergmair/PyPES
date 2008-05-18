@@ -1,6 +1,8 @@
 import edge;
 import token_edge;
 import ersatz_edge;
+import pos_edge;
+import morph_edge;
 
 class GenericEdge( edge.Edge ):
   
@@ -20,7 +22,15 @@ class GenericEdge( edge.Edge ):
     elif self.type == "ersatz":
       self.edge_inst = ersatz_edge.ErsatzEdge();
       self.edge_inst.startElement( name, attrs );
+    elif self.type == "pos":
+      self.edge_inst = pos_edge.PosEdge();
+      self.edge_inst.startElement( name, attrs );
+    elif self.type == "morph":
+      self.edge_inst = morph_edge.MorphologicalEdge();
+      self.edge_inst.startElement( name, attrs );
     else:
+      print self.type;
+      print name;
       assert False;
 
   def characters( self, content ):

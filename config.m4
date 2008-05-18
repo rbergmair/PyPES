@@ -70,7 +70,8 @@ m4_define(`_DIR_RASPTOK_HOME',`_DIR_RASPHOME/tokenise')
 m4_define(`_SH_RASPTOK',`_DIR_RASPTOK_HOME/token._RASPARCH')
 
 m4_define(`_DIR_RASPTAG_HOME',`_DIR_RASPHOME/tag')
-m4_define(`_SH_RASPTAG',`_DIR_RASPTAG_HOME/_RASPARCH/label - B1 b C1 N \
+m4_define(`_SH_RASPTAG',`_DIR_RASPTAG_HOME/_RASPARCH/label \
+  - B1 b C1 N \
   t _DIR_RASPTAG_HOME/auxiliary_files/slb.trn \
   d _DIR_RASPTAG_HOME/auxiliary_files/seclarge.lex \
   j _DIR_RASPTAG_HOME/auxiliary_files/unkstats-seclarge \
@@ -78,7 +79,8 @@ m4_define(`_SH_RASPTAG',`_DIR_RASPTAG_HOME/_RASPARCH/label - B1 b C1 N \
 m4_define(`_DIR_RASPTAG_LDLP',`_DIR_RASPTAG_HOME/database/_RASPARCH')
 
 m4_define(`_DIR_RASPMORPH_HOME',`_DIR_RASPHOME/morph')
-m4_define(`_SH_RASPMORPH',`_DIR_RASPMORPH_HOME/morpha')
+m4_define(`_SH_RASPMORPH',`_DIR_RASPMORPH_HOME/morpha._RASPARCH \
+  -actf _DIR_RASPMORPH_HOME/verbstem.list')
 
 m4_define(`_SH_RASPPARSE',`_DIR_RASPHOME/scripts/rasp_parse.sh')
 

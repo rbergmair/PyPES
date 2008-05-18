@@ -14,7 +14,6 @@ class RaspTokenise:
   rasptokin = None;
   rasptokout = None;
   pipe = None;
-  first = None;
   
   def __init__( self ):
     
@@ -30,22 +29,17 @@ class RaspTokenise:
     self.rasptokin = codecs.getwriter( "utf-8" )( self.rasptokin );
     self.rasptokout = codecs.getreader( "utf-8" )( self.rasptokout );
     
-    self.first = True;
-    
   def sentstr_to_tokstr( self, sent ):
     
     pyrmrs.globals.logDebugCoarse( self, "tokenizing |>%s<|;" % sent );
     
-    sent = "^ %s ^ \n" % sent.replace( "^", "\021" );
+    sent = "^ %s^ \n" % sent.replace( "^", "\021" );
     pyrmrs.globals.logDebug( self, "writing |>%s<|..." % sent );
     self.rasptokin.write( sent );
     self.rasptokin.flush();
     pyrmrs.globals.logDebug( self, "finished writing;" );
     
     i = 3;
-    if self.first:
-      i = 2;
-      self.first = False;
     
     pyrmrs.globals.logDebug( self, "reading %d chars..." % i );
     ch = self.rasptokout.read( i );

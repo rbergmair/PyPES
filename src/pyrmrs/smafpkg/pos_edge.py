@@ -20,6 +20,8 @@ class PosEdge( edge.Edge ):
     if isinstance( obj, slot.Slot ):
       if obj.name == "tag":
         self.tag = obj.text;
+      if obj.name == "weight":
+        self.weight = obj.text;
       
   def xml_tmplt( self, base ):
     
