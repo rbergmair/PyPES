@@ -2,7 +2,7 @@
 
 import pyrmrs.globals;
 
-import pyrmrs.ext.raspparse;
+import pyrmrs.ext.rasp.parser;
 
 import pyrmrs.tools.stringrdwr;
 
@@ -459,61 +459,10 @@ testsmafs = [
 ];
 
 
-def smaf_to_raspparse_inputstr( smaf ):
-  
-  node = smaf.lattice.init;
-  
-  rslt = "";
-  
-  while node != smaf.lattice.final:
-
-    trg = None;
-    
-    tok = None;
-    poss = [];
-    morphs = {};
-    
-    for edge in smaf.lattice.lattice[ node ]:
-  
-      if trg is None:
-        trg = edge.target;
-      assert edge.target == trg;
-      
-      if isinstance( edge, pyrmrs.smafpkg.pos_edge.PosEdge ):
-        poss.append( edge );
-      elif isinstance( edge, pyrmrs.smafpkg.token_edge.TokenEdge ):
-        tok = edge;
-      elif isinstance( edge, pyrmrs.smafpkg.morph_edge.MorphologicalEdge ):
-        if not morphs.has_key( edge.deps ):
-          morphs[ edge.deps ] = [];
-        morphs[ edge.deps ].append( edge );
-
-    rslt += tok.text;
-    
-    for tag in poss:
-      try:
-        assert tag.deps == tok.id;
-      except:
-        print tag.deps;
-        print tok.id;
-        raise;
-      
-      txt = tok.text;
-      if morphs.has_key( tag.id ):
-        for morph in morphs[ tag.id ]:
-          rslt += " %s_%s:%s" % ( morph.text, tag.tag, tag.weight );
-      else:
-          rslt += " %s_%s:%s" % ( tok.text, tag.tag, tag.weight );
-          
-    rslt += "\n";
-      
-    node = trg;
-  
-  return rslt;  
 
 
 
-raspctrl = pyrmrs.ext.raspparse.RaspParser();
+raspctrl = pyrmrs.ext.rasp.parser.Parser();
 
 for smafstr in testsmafs:
   f = pyrmrs.tools.stringrdwr.StringReader( smafstr );
@@ -521,9 +470,7 @@ for smafstr in testsmafs:
   smaf = None;
   for _smaf in smafrd:
     smaf = _smaf;
-  x = smaf_to_raspparse_inputstr( smaf );
-  print x;
-  print raspctrl.invoke_parser( x );
+  print raspctrl.parse( smaf );
 
 
 

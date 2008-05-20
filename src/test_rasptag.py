@@ -2,7 +2,7 @@
 
 import pyrmrs.globals;
 
-import pyrmrs.tools.rasptagstr;
+import pyrmrs.ext.rasp.tagger;
 
 testcases = [
     (
@@ -27,17 +27,18 @@ import pyrmrs.ext.rasptag;
 
 pyrmrs.globals.initMain();
 
-raspctrl = pyrmrs.ext.rasptag.RaspPosTagger();
+raspctrl = pyrmrs.ext.rasp.tagger.Tagger();
 
 for ( surface, toked ) in testcases:
   
   tagged = raspctrl.tokstr_to_tagstr( toked );
-  smaf = pyrmrs.tools.rasptagstr.rasptagstr_to_smaf( surface, tagged );
+  print tagged;
+  #smaf = pyrmrs.tools.rasptagstr.rasptagstr_to_smaf( surface, tagged );
 
-  print "surface: %s" % surface;
-  print smaf.str_xml();
+  #print "surface: %s" % surface;
+  #print smaf.str_xml();
   
-  rpis = pyrmrs.tools.rasptagstr.smaf_to_raspparse_inputstr( smaf );
-  print rpis;
+  #rpis = pyrmrs.tools.rasptagstr.smaf_to_raspparse_inputstr( smaf );
+  #print rpis;
 
 pyrmrs.globals.destructMain();

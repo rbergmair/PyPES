@@ -7,6 +7,10 @@ import time;
 import random;
 import string;
 
+import atexit;
+
+import pyrmrs.tools.stringtools;
+
 
 
 LOG_CRITICAL = logging.CRITICAL;
@@ -20,8 +24,6 @@ LOG_NOTSET = logging.NOTSET;
 
 
 insttok = None;
-
-
 
 def getInstTok():
   
@@ -57,6 +59,7 @@ def getUnqID():
   return unqid;
 
 
+
 def utf8ign_reader( stream, errors="strict" ):
   (encoder, decoder, stream_reader, stream_writer) = codecs.lookup( "utf-8" );
   return stream_reader( stream, "ignore" );
@@ -72,17 +75,61 @@ def utf8ign_search( name ):
   else:
     return None;
 
+
+def utf8repl_reader( stream, errors="strict" ):
+  (encoder, decoder, stream_reader, stream_writer) = codecs.lookup( "utf-8" );
+  return stream_reader( stream, "replace" );
+
+def utf8repl_writer( stream, errors="strict" ):
+  (encoder, decoder, stream_reader, stream_writer) = codecs.lookup( "utf-8" );
+  return stream_writer( stream, "replace" );
+
+def utf8repl_search( name ):
+  if name == "utf-8-replace":
+    (encoder, decoder, stream_reader, stream_writer) = codecs.lookup( "utf-8" );
+    return (encoder, decoder, utf8repl_reader, utf8repl_writer);
+  else:
+    return None;
+
+
+
+loggers = {};
 logdir = None;
 
+
+def destructMain():
+  
+  global loggers;
+  
+  for logname in loggers:
+    ( logger, handler, f ) = loggers[ logname ];
+    logger.removeHandler( handler );
+    handler.close();
+    f.close();
+
+
+initialized = False;
+exec_context = None;
+
 def initMain():
+  
+  global initialized;
+  if initialized:
+    return;
   
   global logdir;
   
   codecs.register( utf8ign_search );
+  codecs.register( utf8repl_search );
   
-  sys.stdin = codecs.getreader( "utf-8" )( sys.stdin );
-  sys.stdout = codecs.getwriter( "utf-8" )( sys.stdout );
-  sys.stderr = codecs.getwriter( "utf-8" )( sys.stderr );
+  sys.stdin = codecs.getreader( "utf-8-replace" )( sys.stdin );
+  sys.stdout = codecs.getwriter( "utf-8-replace" )( sys.stdout );
+  sys.stderr = codecs.getwriter( "utf-8-replace" )( sys.stderr );
+  
+  if not ( config.FILE_TRACING is None and config.STDERR_LOGGING is None ):
+    
+    logging.addLevelName( LOG_DEBUG_COARSE, "DEBUG" );
+
   
   if not config.FILE_TRACING is None:
     
@@ -97,14 +144,14 @@ def initMain():
   
   if not config.STDERR_LOGGING is None:
     
-    logging.addLevelName( LOG_DEBUG_COARSE, "DEBUG" );
     formatter = logging.Formatter( "%(name)-12s: %(message)s" );
     
     if not config.STDERR_LOGGING.has_key( "pyrmrs" ):
       config.STDERR_LOGGING[ "pyrmrs" ] = logging.WARNING;
       
     for lgname in config.STDERR_LOGGING:
-      if ( lgname == "pyrmrs" ) or ( lgname.find("pyrmrs.") == 0 ):
+      if ( lgname == "pyrmrs" ) or ( lgname.startswith( "pyrmrs." ) ) or \
+         ( lgname == "pyrmrstest" ) or ( lgname.startswith( "pyrmrstest." ) ):
         newhndl = logging.StreamHandler( sys.stderr );
         newhndl.setLevel( config.STDERR_LOGGING[ lgname ] );
         newhndl.setFormatter( formatter );
@@ -112,20 +159,22 @@ def initMain():
         logger.addHandler( newhndl );
         logger.setLevel( 1 );
 
-
-
-loggers = {};
-
-def destructMain():
+  global exec_context;
   
-  global loggers;
+  cntx = os.getcwd().split( "/" );
+  k = None;
+  for i in range( len(cntx)-1, 0, -1 ):
+    if cntx[i] in [ "pyrmrs", "pyrmrstest" ]:
+      k = i;
+  if not k is None:
+    exec_context = "";
+    for i in range( k, len(cntx) ):
+      exec_context += cntx[i] + ".";
   
-  for logname in loggers:
-    ( logger, handler, f ) = loggers[ logname ];
-    logger.removeHandler( handler );
-    handler.close();
-    f.close();
-    pass;
+  atexit.register( destructMain );
+  
+  
+initMain();
 
 
 
@@ -133,6 +182,7 @@ def getLogger( inst=None ):
   
   global loggers;
   global logdir;
+  global exec_context;
   
   if config.STDERR_LOGGING is None and config.FILE_TRACING is None:
     return None;
@@ -140,8 +190,13 @@ def getLogger( inst=None ):
   logname = "pyrmrs";
   if not inst is None:
     logname = inst.__class__.__module__;
-    if not logname.startswith( "pyrmrs." ):
-      return None;
+    if not ( logname == "pyrmrs" or logname.startswith( "pyrmrs." ) or
+             logname == "pyrmrstest" or logname.startswith( "pyrmrstest." ) ):
+      if exec_context is None:
+        return;
+      else:
+        logname = exec_context + logname;
+    
   logger = logging.getLogger( logname );
 
   if logname in loggers:
@@ -163,7 +218,7 @@ def getLogger( inst=None ):
   formatter = logging.Formatter( "%(message)s" );
   
   f = open( logdir+"/"+logname+".log", "w" );
-  f = codecs.getwriter( "utf-8" )( f );
+  f = codecs.getwriter( "utf-8-replace" )( f );
   
   newhndl = logging.StreamHandler( f );
   newhndl.setLevel( minlvl );
@@ -176,66 +231,32 @@ def getLogger( inst=None ):
 
 
 
-def logDebug( inst=None, message="" ):
-
-  if config.STDERR_LOGGING is None and config.FILE_TRACING is None:
-    return;
-  if not isinstance( message, unicode ):
-    message = unicode( message, "utf-8" );
-  logger = getLogger( inst );
-  if not logger is None:
-    logger.log( LOG_DEBUG, message );
-
-def logDebugCoarse( inst=None, message="" ):
-
-  if config.STDERR_LOGGING is None and config.FILE_TRACING is None:
-    return;
-  if not isinstance( message, unicode ):
-    message = unicode( message, "utf-8" );
-  logger = getLogger( inst );
-  if not logger is None:
-    logger.log( LOG_DEBUG_COARSE, message );
-
-def logWarning( inst=None, message="" ):
-
-  if config.STDERR_LOGGING is None and config.FILE_TRACING is None:
-    return;
-  if not isinstance( message, unicode ):
-    message = unicode( message, "utf-8" );
-  logger = getLogger( inst );
-  if not logger is None:
-    logger.log( LOG_WARNING, message );
-
 def logIsActive():
   
   if config.STDERR_LOGGING is None and config.FILE_TRACING is None:
     return False;
   return True;
 
+def log( level=LOG_DEBUG, inst=None, message="", debugstyle=False ):
 
+  if config.STDERR_LOGGING is None and config.FILE_TRACING is None:
+    return;
+  if not isinstance( message, unicode ):
+    if not isinstance( message, str ):
+      message = str( message );
+    if not isinstance( message, unicode ):
+      message = message.decode( "utf-8", "replace" );
+  if debugstyle:
+    message = pyrmrs.tools.stringtools.debug_format( message );
+  logger = getLogger( inst );
+  if not logger is None:
+    logger.log( level, message );
 
-def decode_str( block ):
-  
-  if block.find( "\\\n" ) != -1:
-    st = "";
-    if block[ 0 ] == "\n":
-      block = block[ 1: ];
-    for ch in block:
-      if ch == " ":
-        st += " ";
-      else:
-        break;
-    block = block.replace( "\\\n"+st, "" );
-  return block;
-
-def encode_str( line, line_len=78 ):
-  
-  rslt = "";
-  i = 0;
-  while True:
-    rslt += line[ i : i + line_len-1 ];
-    i += line_len-1;
-    if i >= len( line ):
-      break;
-    rslt += "\\\n";
-  return rslt;
+def logDebug( inst=None, message="" ):
+  log( LOG_DEBUG, inst, message, True );
+def logDebugCoarse( inst=None, message="" ):
+  log( LOG_DEBUG_COARSE, inst, message, True );
+def logWarning( inst=None, message="", debugstyle=False ):
+  log( LOG_WARN, inst, message, debugstyle );
+def logInfo( inst=None, message="", debugstyle=False ):
+  log( LOG_INFO, inst, message, debugstyle );

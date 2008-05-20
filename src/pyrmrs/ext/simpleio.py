@@ -151,7 +151,7 @@ class SimpleIO:
     #
     #nzs = "";
     #if len( writable ) == 0:
-    #  pyrmrs.globals.logDebug( self, "possible deadlock situation;" );
+    #  pyrmrs.globals.logDebug( self, "detected possible deadlock situation;" );
     #  assert False;
     #  if len( readable ) == 0:
     #    pyrmrs.globals.logDebug( self, "situation hopeless;" );
@@ -212,3 +212,4 @@ class SimpleIO:
   def __del__( self ):
     
     self.close_pipe();
+    

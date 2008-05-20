@@ -3,7 +3,7 @@ import codecs;
 import pyrmrs.globals;
 import pyrmrs.config;
 
-import pyrmrs.ext.raspsent;
+import pyrmrs.ext.rasp.splitter;
 
 pyrmrs.globals.initMain();
 
@@ -12,12 +12,12 @@ f = codecs.getreader( "utf-8" )( f );
 txt = f.read();
 f.close();
 
-raspsentctrl = pyrmrs.ext.raspsent.RaspSentenceSplitter();
+raspsentctrl = pyrmrs.ext.rasp.splitter.Splitter();
 
-for sent in raspsentctrl.txtstr_to_sentstrs( txt ):
+for sent in raspsentctrl.split( txt+"." ):
   print sent;
 
-for sent in raspsentctrl.txtstr_to_sentstrs( txt ):
+for sent in raspsentctrl.split( txt ):
   print sent;
 
 pyrmrs.globals.destructMain();

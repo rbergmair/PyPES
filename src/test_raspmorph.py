@@ -2,7 +2,7 @@
 
 import pyrmrs.globals;
 
-import pyrmrs.ext.raspmorph;
+import pyrmrs.ext.rasp.morpher;
 
 import pyrmrs.tools.stringrdwr;
 
@@ -21,9 +21,9 @@ testcases = [
 
 
   
-raspctrl = pyrmrs.ext.raspmorph.RaspMorpher();
+raspctrl = pyrmrs.ext.rasp.morpher.Morpher();
 for testcase in testcases:
-  print raspctrl.morph_token( testcase );
+  print raspctrl.invoke( testcase );
 
 
 

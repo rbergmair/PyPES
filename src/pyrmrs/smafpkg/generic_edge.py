@@ -3,6 +3,8 @@ import token_edge;
 import ersatz_edge;
 import pos_edge;
 import morph_edge;
+import syntree_edge;
+
 
 class GenericEdge( edge.Edge ):
   
@@ -27,6 +29,9 @@ class GenericEdge( edge.Edge ):
       self.edge_inst.startElement( name, attrs );
     elif self.type == "morph":
       self.edge_inst = morph_edge.MorphologicalEdge();
+      self.edge_inst.startElement( name, attrs );
+    elif self.type == "syntree":
+      self.edge_inst = syntree_edge.SyntaxTreeEdge();
       self.edge_inst.startElement( name, attrs );
     else:
       print self.type;
