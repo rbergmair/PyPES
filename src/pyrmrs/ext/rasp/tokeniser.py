@@ -15,7 +15,6 @@ class Tokeniser( pyrmrs.ext.basicio.BasicIO ):
   EOB_MARKER_READ = "^ ";
 
   WSPAN = re.compile( "(<w s=')([0-9]+)(' e=')([0-9]+)('>)(.*)" );
-  NUMBER = re.compile( "(?:[0-9]+)(?:\.[0-9]+(?:e[\+\-]?[0-9]+)?)?" );
 
   
   def __init__( self ):

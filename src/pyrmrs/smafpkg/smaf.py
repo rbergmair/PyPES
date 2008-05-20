@@ -38,7 +38,37 @@ class SMAFTokenIterator:
     
     assert len( toks ) == 1;
     
+    self.node = trg;
+    
     return toks[ 0 ];
+
+
+
+class SMAFTagIterator:
+  
+  def __init__( self, smaf ):
+    
+    self.smaf = smaf;
+    self.smaf_token_iterator = SMAFTokenIterator( smaf );
+    
+  def __iter__( self ):
+    
+    return self;
+  
+  def next( self ):
+    
+    token_edge = self.smaf_token_iterator.next();
+    
+    pos_edges = [];
+    for edge in self.smaf.lattice.lattice[ token_edge.source ]:
+      
+      if not isinstance( edge, pyrmrs.smafpkg.pos_edge.PosEdge ):
+        continue;
+      
+      assert edge.target == token_edge.target;
+      pos_edges.append( edge );
+    
+    return ( token_edge, pos_edges );
 
 
 
@@ -71,10 +101,16 @@ class SMAF( pyrmrs.xmltools.reader_element.ReaderElement ):
     if isinstance( obj, lattice.Lattice ):
       self.lattice = obj;
   
+
   
   def getTokens( self ):
     
-    return SMAFTokenIterator();
+    return SMAFTokenIterator( self );
+
+
+  def getTags( self ):
+    
+    return SMAFTagIterator( self );
 
 
   

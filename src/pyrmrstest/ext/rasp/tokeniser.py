@@ -27,9 +27,12 @@ class TestTokeniser( pyrmrstest.mytest.MyTestCase ):
     for i in range( 0, len(data.TEXT) ):
       smaf = pyrmrs.smafpkg.smaf.SMAF( data.TEXT[i] );
       self.tokeniser.tokenise( smaf );
-      self.assertStringCrudelyEqual( data.TOKENISED[i]+"x", smaf.str_xml() );
+      self.assertStringCrudelyEqual( data.TOKENISED[i], smaf.str_xml() );
 
 
+
+def suite():
+  return unittest.makeSuite( TestTokeniser )
 
 if __name__ == '__main__':
-    unittest.main();
+    unittest.TextTestRunner( verbosity=2 ).run( suite() );

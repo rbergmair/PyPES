@@ -196,10 +196,23 @@ class XMLReader( xml.sax.handler.ContentHandler ):
         del self.buf[ 0 ];
       except StopIteration:
         break;
+      
 
-  def __iter__( self ):
+  def getAll( self ):
 
     return XMLReaderIter( self );
+  
+  def getFirst( self ):
+    
+    iter = self.getAll();
+    rslt = None;
+    try:
+      rslt = iter.next();
+    except StopIteration:
+      pass;
+    return rslt;
+    
+    
   
   def startElement( self, name, attrs ):
     

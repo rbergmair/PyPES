@@ -5,10 +5,10 @@ import pyrmrs.tools.stringtools;
 
 class MyTestCase( unittest.TestCase ):
   
-  def __init__( self, x ):
+  def __init__( self, *args, **kwds ):
     
     self.my_init();
-    unittest.TestCase.__init__( self, x );
+    unittest.TestCase.__init__( self, *args, **kwds );
   
   def my_init( self ):
     
