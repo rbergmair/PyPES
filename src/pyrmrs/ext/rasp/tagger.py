@@ -41,10 +41,10 @@ class Tagger( pyrmrs.ext.basicio.BasicIO ):
   def tag( self, smaf ):
     
     toks = [];
-    toks_str = "";
+    toks_str = u"";
     for token in smaf.getTokens():
-      tok = "<w s='%d' e='%d'>%s" % ( token.cfrom, token.cto, token.text );
-      toks_str += tok + "</w> ";
+      tok = u"<w s='%d' e='%d'>%s" % ( token.cfrom, token.cto, token.text );
+      toks_str += tok + u"</w> ";
       toks.append( tok );
       
     rslt = self.invoke( toks_str );

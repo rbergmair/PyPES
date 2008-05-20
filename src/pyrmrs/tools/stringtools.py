@@ -18,15 +18,16 @@ def debug_format( stri ):
 
 
 def crude_hashcode( s ):
-
+  
   md5sum = md5.new();
-  st = "";
+  i = -1;
+  
   for ch in s:
     if ord(ch) > 32 and \
        string.printable.find( ch ) != -1 and \
        string.whitespace.find( ch ) == -1:
       md5sum.update( ch );
-      st += ch;
+
   return md5sum.digest();
 
 def crude_match( s1, s2 ):

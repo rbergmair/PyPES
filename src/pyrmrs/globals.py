@@ -257,6 +257,6 @@ def logDebug( inst=None, message="" ):
 def logDebugCoarse( inst=None, message="" ):
   log( LOG_DEBUG_COARSE, inst, message, True );
 def logWarning( inst=None, message="", debugstyle=False ):
-  log( LOG_WARN, inst, message, debugstyle );
+  log( LOG_WARNING, inst, message, debugstyle );
 def logInfo( inst=None, message="", debugstyle=False ):
   log( LOG_INFO, inst, message, debugstyle );

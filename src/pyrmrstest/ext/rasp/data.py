@@ -2,6 +2,86 @@
 
 
 
+SPLITTER_IN = u"""How is infection transmitted? Through unprotected sexual intercourse
+with an infected partner. ACET Director, Dr. Patrick Dixon, recently
+told the National Symposium on Teenage Sexuality at
+Swanwick. Dr. Dixon said, With up to 20 years from infection to
+illness, we just have to ask how many of our congregation have been
+added during that time? Three-quarters of the AIDs problem is in
+London and much of the rest in Scottish cities.
+
+Churches wanting a speaker should contact the West London offices on
+081 840 7879.
+
+The third annual report for 1990/91, subtitled "Bringing it Home" was
+published on 21st June this year.
+
+24,000 pupils are also seen by ACET educators.
+
+The 24-page full colour schools booklet HIV - "It is Your Choice" is
+now available to members of the public at a price of 50p each.
+
+Please write to : THE EDITOR, ACET NEWSLETTER, P.O. BOX 1323, LONDON
+W5 5TF.
+
+Eric Taylor's sixth annual Exhibition of Oil Paintings in aid of
+Amnesty and the Medical Foundation is being held in Tewkesbury Abbey,
+Gloucestershire, from 19th - 26th June inclusive.
+
+So far Eric Taylor has raised a magnificent £2,900 by donations and
+profits.
+
+Santiago, Chile : On a warm autumn evening in 1990 international rock
+star Sting dances on stage with a group of chilean mothers and
+grandmothers of the disappeared.
+
+The annual budget for 1990 is £11 million, which represents only a
+third of the money raised worldwide on Amnesty's behalf. Add to this
+the money raised by new members the length and breadth of the British
+Isles who contributed to the Section's annual turnover of £2.25
+million with their cultural events, sponsored walks and street
+collections.
+
+Newsletter AIDs CARE, EDUCATION AND TRAINING Issue No. 7.
+
+
+ACET Home Care, which moves into the building in July, will share the
+offices with two other AIDS charities, P.A.L.S. (Portsmouth AIDS Link
+Support) and the Link Project.
+
+4.55 p.m. - Tony is ushered into a side ward with three doctors and I
+stay outside with Mum.
+
+Registered Office 318 St Paul's Road, Duke Street, London N1 2LP.
+
+This virus affects the body's defence system so that it can not fight
+infection.""";
+
+
+SPLITTER_OUT = [
+  u'How is infection transmitted?',
+  u'Through unprotected sexual intercourse with an infected partner.',
+  u'ACET Director, Dr. Patrick Dixon, recently told the National Symposium on Teenage Sexuality at Swanwick.',
+  u'Dr. Dixon said, With up to 20 years from infection to illness, we just have to ask how many of our congregation have been added during that time?',
+  u'Three-quarters of the AIDs problem is in London and much of the rest in Scottish cities.',
+  u'Churches wanting a speaker should contact the West London offices on 081 840 7879.',
+  u'The third annual report for 1990/91, subtitled "Bringing it Home" was published on 21st June this year.',
+  u'24,000 pupils are also seen by ACET educators.',
+  u'The 24-page full colour schools booklet HIV - "It is Your Choice" is now available to members of the public at a price of 50p each.',
+  u'Please write to : THE EDITOR, ACET NEWSLETTER, P.O. BOX 1323, LONDON W5 5TF.',
+  u"Eric Taylor's sixth annual Exhibition of Oil Paintings in aid of Amnesty and the Medical Foundation is being held in Tewkesbury Abbey, Gloucestershire, from 19th - 26th June inclusive.",
+  u'So far Eric Taylor has raised a magnificent £2,900 by donations and profits.',
+  u'Santiago, Chile : On a warm autumn evening in 1990 international rock star Sting dances on stage with a group of chilean mothers and grandmothers of the disappeared.',
+  u"The annual budget for 1990 is £11 million, which represents only a third of the money raised worldwide on Amnesty's behalf.",
+  u"Add to this the money raised by new members the length and breadth of the British Isles who contributed to the Section's annual turnover of £2.25 million with their cultural events, sponsored walks and street collections.",
+  u'Newsletter AIDs CARE, EDUCATION AND TRAINING Issue No. 7.', u'ACET Home Care, which moves into the building in July, will share the offices with two other AIDS charities, P.A.L.S. (Portsmouth AIDS Link Support) and the Link Project.',
+  u'4.55 p.m. - Tony is ushered into a side ward with three doctors and I stay outside with Mum.',
+  u"Registered Office 318 St Paul's Road, Duke Street, London N1 2LP.",
+  u"This virus affects the body's defence system so that it can not fight infection."                
+];
+
+
+
 TEXT = [
   u"The dog barks.",
   u"I saw a man with a telescope.",
@@ -15,7 +95,7 @@ TEXT = [
 
   
 TOKENISED = [
-  """<smaf cfrom="0" cto="14">
+  u"""<smaf cfrom="0" cto="14">
     <text>The dog barks.</text>
     <lattice init="v0" final="v4" cfrom="0" cto="14">
       <edge type="token" id="t0" source="v0" target="v1" cfrom="0" cto="3">The</edge>
@@ -24,7 +104,7 @@ TOKENISED = [
       <edge type="token" id="t3" source="v3" target="v4" cfrom="13" cto="14">.</edge>
     </lattice>
   </smaf>""",
-  """<smaf cfrom="0" cto="29">
+  u"""<smaf cfrom="0" cto="29">
     <text>I saw a man with a telescope.</text>
     <lattice init="v0" final="v8" cfrom="0" cto="29">
       <edge type="token" id="t0" source="v0" target="v1" cfrom="0" cto="1">I</edge>
@@ -37,7 +117,7 @@ TOKENISED = [
       <edge type="token" id="t7" source="v7" target="v8" cfrom="28" cto="29">.</edge>
     </lattice>
   </smaf>""",
-  """<smaf cfrom="0" cto="206">
+  u"""<smaf cfrom="0" cto="206">
     <text>As leaders gather in Argentina ahead of this weekends regional talks, Hugo Chávez, Venezuela's populist president is using an energy windfall to win friends and promote his vision of 21st-century socialism.</text>
     <lattice init="v0" final="v35" cfrom="0" cto="206">
       <edge type="token" id="t0" source="v0" target="v1" cfrom="0" cto="2">As</edge>
@@ -77,7 +157,7 @@ TOKENISED = [
       <edge type="token" id="t34" source="v34" target="v35" cfrom="205" cto="206">.</edge>
     </lattice>
   </smaf>""",
-  """<smaf cfrom="0" cto="23">
+  u"""<smaf cfrom="0" cto="23">
     <text>The cat chased the dog.</text>
     <lattice init="v0" final="v6" cfrom="0" cto="23">
       <edge type="token" id="t0" source="v0" target="v1" cfrom="0" cto="3">The</edge>
@@ -93,7 +173,7 @@ TOKENISED = [
 
 
 TAGGED = [
-  """<smaf>
+  u"""<smaf>
     <lattice init="v0" final="v4" cfrom="14">
       <edge type="token" id="t0" source="v0" target="v1" cfrom="0" cto="3">The</edge>
       <edge type="token" id="t1" source="v1" target="v2" cfrom="4" cto="7">dog</edge>
@@ -125,7 +205,7 @@ TAGGED = [
       </edge>
     </lattice>
   </smaf>""",
-  """<smaf>
+  u"""<smaf>
     <lattice init="v0" final="v8" cfrom="29">
       <edge type="token" id="t0" source="v0" target="v1" cfrom="0" cto="1">I</edge>
       <edge type="token" id="t1" source="v1" target="v2" cfrom="2" cto="5">saw</edge>
@@ -205,7 +285,7 @@ TAGGED = [
       </edge>
     </lattice>
   </smaf>""",
-  """<smaf>
+  u"""<smaf>
     <lattice init="v0" final="v35" cfrom="206">
       <edge type="token" id="t0" source="v0" target="v1" cfrom="0" cto="2">As</edge>
       <edge type="token" id="t1" source="v1" target="v2" cfrom="3" cto="10">leaders</edge>
@@ -476,7 +556,7 @@ TAGGED = [
       </edge>
     </lattice>
   </smaf>""",
-  """<smaf>
+  u"""<smaf>
     <lattice init="v0" final="v6" cfrom="23">
       <edge type="token" id="t0" source="v0" target="v1" cfrom="0" cto="3">The</edge>
       <edge type="token" id="t1" source="v1" target="v2" cfrom="4" cto="7">cat</edge>

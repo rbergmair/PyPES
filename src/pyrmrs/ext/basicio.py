@@ -157,14 +157,14 @@ class BasicIO:
     self.ensure_writable();
 
     try:
-      _stri = uncd.encode( encoding );
-    except UnicodeError, e:
-      _stri = uncd.encode( encoding, "ignore" );
+      stri_ = uncd.encode( encoding );
+    except UnicodeDecodeError, e:
+      stri_ = uncd.encode( encoding, "ignore" );
       pyrmrs.globals.logWarning( self, str( e ) );
       raise e;
     
     stri = "";
-    for ch in _stri:
+    for ch in stri_:
       if not self.ignore_ascii_char( ch ):
         stri += ch;
     

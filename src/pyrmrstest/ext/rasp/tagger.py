@@ -23,11 +23,11 @@ class TestTagger( pyrmrstest.mytest.MyTestCase ):
     
     self.tagger = pyrmrs.ext.rasp.tagger.Tagger();
 
-  def test_tokeniser( self ):
+  def test_tagger( self ):
 
     for i in range( 0, len(data.TOKENISED) ):
       
-      f = cStringIO.StringIO( data.TOKENISED[i] );
+      f = cStringIO.StringIO( data.TOKENISED[i].encode( "utf-8" ) );
       rd = pyrmrs.smafpkg.smafreader.SMAFReader( f );
       smaf = rd.getFirst();
       self.tagger.tag( smaf );
@@ -39,4 +39,4 @@ def suite():
   return unittest.makeSuite( TestTagger )
 
 if __name__ == '__main__':
-    unittest.TextTestRunner( verbosity=2 ).run( suite() );
+  unittest.TextTestRunner( verbosity=2 ).run( suite() );
