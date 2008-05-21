@@ -1,13 +1,19 @@
 import unittest;
 
 import splitter;
-import tagger;
 import tokeniser;
+import tagger;
+import morpher;
+import parser;
 
 
 def suite():
   ts = unittest.TestSuite();
-  ts.addTests( [ splitter.suite(), tagger.suite(), tokeniser.suite() ] );
+  ts.addTests( [ splitter.suite(),
+                 tokeniser.suite(),
+                 tagger.suite(),
+                 morpher.suite(),
+                 parser.suite() ] );
   return ts;
 
 

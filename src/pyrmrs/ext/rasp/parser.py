@@ -1,6 +1,8 @@
 import pyrmrs.config;
 import pyrmrs.ext.basicio;
 
+import pyrmrs.smafpkg.syntree_edge;
+
 
 class Parser( pyrmrs.ext.basicio.BasicIO ):
   
@@ -20,45 +22,50 @@ class Parser( pyrmrs.ext.basicio.BasicIO ):
     
     node = smaf.lattice.init;
     
-    rslt = "";
+    parserinput = "";
     
-    while node != smaf.lattice.final:
-  
-      trg = None;
-      
-      tok = None;
-      poss = [];
-      morphs = {};
-      
-      for edge in smaf.lattice.lattice[ node ]:
-    
-        if trg is None:
-          trg = edge.target;
-        assert edge.target == trg;
-        
-        if isinstance( edge, pyrmrs.smafpkg.pos_edge.PosEdge ):
-          poss.append( edge );
-        elif isinstance( edge, pyrmrs.smafpkg.token_edge.TokenEdge ):
-          tok = edge;
-        elif isinstance( edge, pyrmrs.smafpkg.morph_edge.MorphologicalEdge ):
-          if not morphs.has_key( edge.deps ):
-            morphs[ edge.deps ] = [];
-          morphs[ edge.deps ].append( edge );
-  
-      rslt += tok.text;
-      
-      for tag in poss:
-        assert tag.deps == tok.id;
-        
-        txt = tok.text;
-        if morphs.has_key( tag.id ):
-          for morph in morphs[ tag.id ]:
-            rslt += " %s_%s:%s" % ( morph.text, tag.tag, tag.weight );
+    for (tok,posmorph) in smaf.getMorphs():
+      line = tok.text;
+      for (pos,morphs) in posmorph:
+        if len( morphs ) == 0:
+          line += " %s_%s:%s " % ( tok.text, pos.tag, pos.weight );
         else:
-            rslt += " %s_%s:%s" % ( tok.text, tag.tag, tag.weight );
-            
-      rslt += "\n";
-        
-      node = trg;
+          for morph in morphs:
+            line += " %s_%s:%s" % ( morph.text, pos.tag, pos.weight );
+      parserinput += line+"\n";
     
-    return self.invoke( rslt );  
+    #parserinput = parserinput[ : len(parserinput) - 1 ];
+    #print parserinput;
+    rslt = self.invoke( parserinput );
+    if rslt[0] == "\n":
+      rslt = rslt[1:];
+      
+    r = rslt.find("\n");
+    firstline = rslt[ :r ];
+    rest = rslt[ r+1: ];
+    r = firstline.find(" ; ");
+    weights = firstline[ r+3: ];
+    assert weights[0] == "(";
+    assert weights[len(weights)-1] == ")";
+    weights = weights[ 1 : len(weights)-1 ];
+    weights = weights.split( " " );
+      
+    #print "|>%s<|" % weights;
+    
+    for i in range( 0, len(weights) ):
+      
+      start_indicator = "tree-rasp: %d\n" % (i+1);
+      startidx = rest.find( start_indicator );
+      startidx += len( start_indicator );
+      endidx = len( rest );
+      if i+1 < len(weights):
+        endidx = rest.find( "\ntree-rasp: %d" % (i+2) );
+        
+      tree = rest[ startidx : endidx ];
+      assert tree[0] == "(";
+      assert tree[len(tree)-1] == ")";
+      
+      newedge = pyrmrs.smafpkg.syntree_edge.SyntaxTreeEdge();
+      newedge.weight = weights[i];
+      newedge.tree = tree;
+      smaf.lattice.register( newedge );

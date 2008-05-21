@@ -32,7 +32,7 @@ class TestTokeniser( pyrmrstest.mytest.MyTestCase ):
 
 
 def suite():
-  return unittest.makeSuite( TestTokeniser )
+  return unittest.makeSuite( TestTokeniser );
 
 if __name__ == '__main__':
   unittest.TextTestRunner( verbosity=2 ).run( suite() );
