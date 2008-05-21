@@ -69,3 +69,5 @@ class Parser( pyrmrs.ext.basicio.BasicIO ):
       newedge.weight = weights[i];
       newedge.tree = tree;
       smaf.lattice.register( newedge );
+
+    return smaf;

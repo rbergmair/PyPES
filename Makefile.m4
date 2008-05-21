@@ -38,8 +38,8 @@ clean: $(MAKEFILE)
 	$(RM) $(TESTXMLS)
   
 loc: $(MAKEFILE)
-	$(FIND) . -name *.py -exec $(GREP) -H --count -e "" {} \;
-	$(FIND) . -name *.py -exec $(CAT) {} \; | $(GREP) -e "" --count
+	$(FIND) src/pyrmrs -name *.py -exec $(GREP) -H --count -e "" {} \;
+	$(FIND) src/pyrmrs -name *.py -exec $(CAT) {} \; | $(GREP) -e "" --count
 
 
 

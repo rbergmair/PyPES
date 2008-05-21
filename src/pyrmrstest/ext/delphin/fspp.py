@@ -1,14 +1,11 @@
-import traceback;
 import unittest;
+import cStringIO;
 
 
-import pyrmrs.globals;
-import pyrmrs.tools.stringtools;
+import pyrmrs.smafpkg.smafreader;
+import pyrmrs.ext.delphin.fspp;
 
 import pyrmrs.smafpkg.smaf;
-import pyrmrs.ext.rasp.tokeniser;
-
-
 import pyrmrstest.mytest;
 
 
@@ -16,23 +13,24 @@ import data;
 
 
 
-class TestTokeniser( pyrmrstest.mytest.MyTestCase ):
+class TestFspp( pyrmrstest.mytest.MyTestCase ):
   
   def my_init( self ):
     
-    self.tokeniser = pyrmrs.ext.rasp.tokeniser.Tokeniser();
-    
-  def test_tokeniser( self ):
+    self.fspp = pyrmrs.ext.delphin.fspp.Fspp();
+
+  def test_fspp( self ):
 
     for i in range( 0, len(data.TEXT) ):
+
       smaf = pyrmrs.smafpkg.smaf.SMAF( data.TEXT[i] );
-      smaf = self.tokeniser.tokenise( smaf );
+      smaf = self.fspp.tokenise( smaf );
       self.assertStringCrudelyEqual( data.TOKENISED[i], smaf.str_xml() );
 
 
 
 def suite():
-  return unittest.makeSuite( TestTokeniser );
+  return unittest.makeSuite( TestFspp );
 
 if __name__ == '__main__':
   unittest.TextTestRunner( verbosity=2 ).run( suite() );

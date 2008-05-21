@@ -34,3 +34,5 @@ class Morpher( pyrmrs.ext.basicio.BasicIO ):
           morphedge.text = morphstr;
           
           smaf.lattice.register( morphedge );
+          
+    return smaf;

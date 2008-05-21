@@ -30,7 +30,7 @@ class TestTagger( pyrmrstest.mytest.MyTestCase ):
       f = cStringIO.StringIO( data.TOKENISED[i].encode( "utf-8" ) );
       rd = pyrmrs.smafpkg.smafreader.SMAFReader( f );
       smaf = rd.getFirst();
-      self.tagger.tag( smaf );
+      smaf = self.tagger.tag( smaf );
       self.assertStringCrudelyEqual( data.TAGGED[i], smaf.str_xml() );
 
 

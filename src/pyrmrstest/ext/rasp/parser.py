@@ -30,7 +30,7 @@ class TestParser( pyrmrstest.mytest.MyTestCase ):
       f = cStringIO.StringIO( data.MORPHED[i].encode( "utf-8" ) );
       rd = pyrmrs.smafpkg.smafreader.SMAFReader( f );
       smaf = rd.getFirst();
-      self.parser.parse( smaf );
+      smaf = self.parser.parse( smaf );
       self.assertStringCrudelyEqual( data.PARSED[i], smaf.str_xml() );
 
 

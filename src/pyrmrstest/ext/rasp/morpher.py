@@ -30,7 +30,7 @@ class TestMorpher( pyrmrstest.mytest.MyTestCase ):
       f = cStringIO.StringIO( data.TAGGED[i].encode( "utf-8" ) );
       rd = pyrmrs.smafpkg.smafreader.SMAFReader( f );
       smaf = rd.getFirst();
-      self.morpher.morph( smaf );
+      smaf = self.morpher.morph( smaf );
       #print smaf.str_xml();
       self.assertStringCrudelyEqual( data.MORPHED[i], smaf.str_xml() );
 

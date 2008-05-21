@@ -302,7 +302,6 @@ class BasicIO:
       pyrmrs.globals.logDebug( self, "finished closing;" );
 
     if not self.pipe is None:
-
       pyrmrs.globals.logDebug( self, "waiting for the subprocess to terminate..." );
       self.pipe.wait();
       pyrmrs.globals.logDebug( self, "terminated." );
