@@ -81,13 +81,13 @@ class RelationArgument( pyrmrs.xmltools.reader_element.ReaderElement ):
 
   def xml_base( self ):
   
-    return "<rarg%s>%s\n</rarg>";
+    return "<rarg%s> %s </rarg>";
   
   def xml_tmplt( self, base ):
     
-    body = "\n  <rargname>%s</rargname>" % xml.sax.saxutils.escape( self.name );
-    body += string.replace( "\n" + self.label.str_xml(), "\n", "\n  " );
-    body += string.replace( "\n" + self.val.str_xml(), "\n", "\n  " );
+    body = "<rargname>%s</rargname> " % xml.sax.saxutils.escape( self.name );
+    body += self.label.str_xml() + " ";
+    body += self.val.str_xml();
     body = body.replace( "%", "%%" );
     
     base = base.replace( "%%", "%%%%" );

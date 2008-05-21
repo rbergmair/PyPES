@@ -84,14 +84,14 @@ class HoleConstraint( pyrmrs.xmltools.reader_element.ReaderElement ):
 
   def xml_base( self ):
     
-    return "<hcons%s>%s\n</hcons>";
+    return "<hcons%s>   %s   </hcons>";
   
   def xml_tmplt( self, base ):
     
     attributes = " hreln='%s'" % self.hreln;
     
-    elements = string.replace( "\n<hi> %s </hi>" % self.hi.str_xml(), "\n", "\n  " );
-    elements += string.replace( "\n<lo> %s </lo>" % self.lo.str_xml(), "\n", "\n  " );
+    elements = "<hi> %s </hi>   " % self.hi.str_xml();
+    elements += "<lo> %s </lo>" % self.lo.str_xml();
     
     base = base.replace( "%%", "%%%%" );
     return base % ( attributes+"%s", elements+"%s" );

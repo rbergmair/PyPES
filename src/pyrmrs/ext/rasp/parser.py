@@ -6,14 +6,21 @@ import pyrmrs.smafpkg.syntree_edge;
 
 class Parser( pyrmrs.ext.basicio.BasicIO ):
   
-  CMD = pyrmrs.config.SH_RASPPARSE + " -ot -u -n %d" % pyrmrs.config.RASP_MAX_NO_PARSES;
+  CMD = pyrmrs.config.SH_RASPPARSE + " -ot -u";
   CARET = "^ ^_^:1\n";
   EOB_MARKER_WRITE = 2 * CARET;
   EOB_MARKER_READ = "\n\n\n() -1 ; ()\n\n(X)\n\n";
-
   
-  def __init__( self ):
+
+  def configure( self ):
     
+    pyrmrs.ext.basicio.BasicIO.configure( self );
+    self.cmd += " -n %d" % self.no_parses;
+    
+
+  def __init__( self, no_parses=5 ):
+    
+    self.no_parses = no_parses;
     pyrmrs.ext.basicio.BasicIO.__init__( self );
     self.write_block( self.CARET, eob_marker="" );
 

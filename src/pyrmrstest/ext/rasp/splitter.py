@@ -14,14 +14,14 @@ import data;
 
 class TestSplitter( pyrmrstest.mytest.MyTestCase ):
   
-  def my_init( self ):
+  def global_setUp( self ):
     
-    self.splitter = pyrmrs.ext.rasp.splitter.Splitter();
+    self.globalstate.splitter = pyrmrs.ext.rasp.splitter.Splitter();
     
   def test_splitter( self ):
     
     self.assertSequenceEqual(
-      self.splitter.split( data.SPLITTER_IN ),
+      self.globalstate.splitter.split( data.SPLITTER_IN ),
       data.SPLITTER_OUT
     );
 

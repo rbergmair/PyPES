@@ -82,6 +82,8 @@ class BasicIO:
       self.to_rslv = self.TO_RSLV;
       
     self.env = self.ENV;
+    
+    self.cmd = self.CMD;
   
   
   def open_pipe( self ):
@@ -89,7 +91,7 @@ class BasicIO:
     assert not self.CMD is None;
 
     pyrmrs.globals.logDebug( self, "opening pipe on \"%s\"..." % self.CMD );
-    self.pipe = subprocess.Popen( self.CMD, shell=True, env=self.env, \
+    self.pipe = subprocess.Popen( self.cmd, shell=True, env=self.env, \
       stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.STDOUT );
     self.child_in = self.pipe.stdin;
     self.child_out = self.pipe.stdout;

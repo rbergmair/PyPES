@@ -2,19 +2,24 @@
 
 
 
-TEXT = [
+TEXT_EASY = [
   u"The dog barks.",
   u"I saw a man with a telescope.",
+  u"The cat chased the dog."
+];
+
+TEXT_HARD = [
   u"As leaders gather in Argentina ahead of this "+
     u"weekends regional talks, Hugo Chávez, Venezuela's "+
     u"populist president is using an energy windfall to win "+
     u"friends and promote his vision of 21st-century socialism.",
-  u"The cat chased the dog."
 ];
 
+TEXT = TEXT_EASY + TEXT_HARD;
 
 
-TOKENISED = [
+
+TOKENISED_EASY = [
   u"""<smaf>
     <lattice init="v0" final="v3">
       <edge type="token" id="t1" source="v0" target="v1" cfrom="0" cto="3">The</edge>
@@ -33,6 +38,18 @@ TOKENISED = [
       <edge type="token" id="t7" source="v6" target="v7" cfrom="19" cto="29">telescope.</edge>
     </lattice>
   </smaf>""",
+  u"""<smaf>
+    <lattice init="v0" final="v5">
+      <edge type="token" id="t1" source="v0" target="v1" cfrom="0" cto="3">The</edge>
+      <edge type="token" id="t2" source="v1" target="v2" cfrom="4" cto="7">cat</edge>
+      <edge type="token" id="t3" source="v2" target="v3" cfrom="8" cto="14">chased</edge>
+      <edge type="token" id="t4" source="v3" target="v4" cfrom="15" cto="18">the</edge>
+      <edge type="token" id="t5" source="v4" target="v5" cfrom="19" cto="23">dog.</edge>
+    </lattice>
+  </smaf>"""
+];
+  
+TOKENISED_HARD = [
   u"""<smaf>
     <lattice init="v0" final="v33">
       <edge type="token" id="t1" source="v0" target="v1" cfrom="0" cto="2">As</edge>
@@ -70,6 +87,200 @@ TOKENISED = [
       <edge type="token" id="t33" source="v32" target="v33" cfrom="196" cto="206">socialism.</edge>
     </lattice>
   </smaf>""",
+];
+
+TOKENISED = TOKENISED_EASY + TOKENISED_HARD;
+
+
+
+PARSED_EASY = [
+  u"""<smaf>
+    <lattice init="v0" final="v3">
+      <edge type="token" id="t1" source="v0" target="v1" cfrom="0" cto="3">The</edge>
+      <edge type="token" id="t2" source="v1" target="v2" cfrom="4" cto="7">dog</edge>
+      <edge type="token" id="t3" source="v2" target="v3" cfrom="8" cto="14">barks.</edge>
+      <edge type="rmrs" id="r0" source="v0" target="v3">
+        <rmrs cfrom='-1' cto='-1'>
+          <label vid='1'/>
+          <ep cfrom='0' cto='14'> <gpred>unknown_rel</gpred> <label vid='3'/> <var sort='e' vid='2'/> </ep>
+          <ep cfrom='0' cto='3'> <realpred lemma='the' pos='q'/> <label vid='5'/> <var sort='x' vid='4'/> </ep>
+          <ep cfrom='4' cto='14'> <gpred>compound_rel</gpred> <label vid='8'/> <var sort='e' vid='10'/> </ep>
+          <ep cfrom='4' cto='14'> <gpred>udef_q_rel</gpred> <label vid='11'/> <var sort='x' vid='9'/> </ep>
+          <ep cfrom='4' cto='7'> <realpred lemma='dog' pos='n' sense='1'/> <label vid='14'/> <var sort='x' vid='9'/> </ep>
+          <ep cfrom='8' cto='14'> <realpred lemma='bark' pos='n' sense='1'/> <label vid='10001'/> <var sort='x' vid='4'/> </ep>
+          <hcons hreln='qeq'>   <hi> <var sort='h' vid='7'/> </hi>   <lo> <label vid='8'/> </lo>   </hcons>
+          <hcons hreln='qeq'>   <hi> <var sort='h' vid='13'/> </hi>   <lo> <label vid='14'/> </lo>   </hcons>
+          <rarg> <rargname>ARG</rargname> <label vid='3'/> <var sort='x' vid='4'/> </rarg>
+          <rarg> <rargname>RSTR</rargname> <label vid='5'/> <var sort='h' vid='7'/> </rarg>
+          <rarg> <rargname>BODY</rargname> <label vid='5'/> <var sort='h' vid='6'/> </rarg>
+          <rarg> <rargname>ARG1</rargname> <label vid='8'/> <var sort='x' vid='4'/> </rarg>
+          <rarg> <rargname>ARG2</rargname> <label vid='8'/> <var sort='x' vid='9'/> </rarg>
+          <rarg> <rargname>RSTR</rargname> <label vid='11'/> <var sort='h' vid='13'/> </rarg>
+          <rarg> <rargname>BODY</rargname> <label vid='11'/> <var sort='h' vid='12'/> </rarg>
+          <ing>   <ing-a> <var sort='h' vid='8'/> </ing-a>   <ing-b> <var sort='h' vid='10001'/> </ing-b>   </ing>
+        </rmrs>
+      </edge>
+      <edge type="rmrs" id="r1" source="v0" target="v3">
+        <rmrs cfrom='-1' cto='-1'>
+          <label vid='1'/>
+          <ep cfrom='0' cto='3'> <realpred lemma='the' pos='q'/> <label vid='3'/> <var sort='x' vid='6'/> </ep>
+          <ep cfrom='4' cto='7'> <realpred lemma='dog' pos='n' sense='1'/> <label vid='7'/> <var sort='x' vid='6'/> </ep>
+          <ep cfrom='8' cto='14'> <realpred lemma='bark' pos='v' sense='1'/> <label vid='8'/> <var sort='e' vid='2'/> </ep>
+          <hcons hreln='qeq'>   <hi> <var sort='h' vid='5'/> </hi>   <lo> <label vid='7'/> </lo>   </hcons>
+          <rarg> <rargname>RSTR</rargname> <label vid='3'/> <var sort='h' vid='5'/> </rarg>
+          <rarg> <rargname>BODY</rargname> <label vid='3'/> <var sort='h' vid='4'/> </rarg>
+          <rarg> <rargname>ARG1</rargname> <label vid='8'/> <var sort='x' vid='6'/> </rarg>
+        </rmrs>
+      </edge>
+    </lattice>
+  </smaf>""",
+  u"""<smaf>
+    <lattice init="v0" final="v7">
+      <edge type="token" id="t1" source="v0" target="v1" cfrom="0" cto="1">I</edge>
+      <edge type="token" id="t2" source="v1" target="v2" cfrom="2" cto="5">saw</edge>
+      <edge type="token" id="t3" source="v2" target="v3" cfrom="6" cto="7">a</edge>
+      <edge type="token" id="t4" source="v3" target="v4" cfrom="8" cto="11">man</edge>
+      <edge type="token" id="t5" source="v4" target="v5" cfrom="12" cto="16">with</edge>
+      <edge type="token" id="t6" source="v5" target="v6" cfrom="17" cto="18">a</edge>
+      <edge type="token" id="t7" source="v6" target="v7" cfrom="19" cto="29">telescope.</edge>
+      <edge type="rmrs" id="r0" source="v0" target="v7">
+        <rmrs cfrom='-1' cto='-1'>
+          <label vid='1'/>
+          <ep cfrom='0' cto='1'> <gpred>pron_rel</gpred> <label vid='3'/> <var sort='x' vid='4'/> </ep>
+          <ep cfrom='0' cto='1'> <gpred>pronoun_q_rel</gpred> <label vid='5'/> <var sort='x' vid='4'/> </ep>
+          <ep cfrom='2' cto='5'> <realpred lemma='see' pos='v' sense='1'/> <label vid='8'/> <var sort='e' vid='2'/> </ep>
+          <ep cfrom='6' cto='7'> <realpred lemma='a' pos='q'/> <label vid='10'/> <var sort='x' vid='9'/> </ep>
+          <ep cfrom='8' cto='11'> <realpred lemma='man' pos='n' sense='1'/> <label vid='13'/> <var sort='x' vid='9'/> </ep>
+          <ep cfrom='12' cto='16'> <realpred lemma='with' pos='p'/> <label vid='10001'/> <var sort='e' vid='14'/> </ep>
+          <ep cfrom='17' cto='18'> <realpred lemma='a' pos='q'/> <label vid='16'/> <var sort='x' vid='15'/> </ep>
+          <ep cfrom='19' cto='29'> <realpred lemma='telescope' pos='n' sense='1'/> <label vid='19'/> <var sort='x' vid='15'/> </ep>
+          <hcons hreln='qeq'>   <hi> <var sort='h' vid='7'/> </hi>   <lo> <label vid='3'/> </lo>   </hcons>
+          <hcons hreln='qeq'>   <hi> <var sort='h' vid='12'/> </hi>   <lo> <label vid='13'/> </lo>   </hcons>
+          <hcons hreln='qeq'>   <hi> <var sort='h' vid='18'/> </hi>   <lo> <label vid='19'/> </lo>   </hcons>
+          <rarg> <rargname>RSTR</rargname> <label vid='5'/> <var sort='h' vid='7'/> </rarg>
+          <rarg> <rargname>BODY</rargname> <label vid='5'/> <var sort='h' vid='6'/> </rarg>
+          <rarg> <rargname>ARG1</rargname> <label vid='8'/> <var sort='x' vid='4'/> </rarg>
+          <rarg> <rargname>ARG2</rargname> <label vid='8'/> <var sort='x' vid='9'/> </rarg>
+          <rarg> <rargname>RSTR</rargname> <label vid='10'/> <var sort='h' vid='12'/> </rarg>
+          <rarg> <rargname>BODY</rargname> <label vid='10'/> <var sort='h' vid='11'/> </rarg>
+          <rarg> <rargname>ARG1</rargname> <label vid='10001'/> <var sort='x' vid='9'/> </rarg>
+          <rarg> <rargname>ARG2</rargname> <label vid='10001'/> <var sort='x' vid='15'/> </rarg>
+          <rarg> <rargname>RSTR</rargname> <label vid='16'/> <var sort='h' vid='18'/> </rarg>
+          <rarg> <rargname>BODY</rargname> <label vid='16'/> <var sort='h' vid='17'/> </rarg>
+          <ing>   <ing-a> <var sort='h' vid='13'/> </ing-a>   <ing-b> <var sort='h' vid='10001'/> </ing-b>   </ing>
+        </rmrs>
+      </edge>
+      <edge type="rmrs" id="r1" source="v0" target="v7">
+        <rmrs cfrom='-1' cto='-1'>
+          <label vid='1'/>
+          <ep cfrom='0' cto='1'> <gpred>pron_rel</gpred> <label vid='3'/> <var sort='x' vid='4'/> </ep>
+          <ep cfrom='0' cto='1'> <gpred>pronoun_q_rel</gpred> <label vid='5'/> <var sort='x' vid='4'/> </ep>
+          <ep cfrom='2' cto='5'> <realpred lemma='saw' pos='v' sense='1'/> <label vid='8'/> <var sort='e' vid='2'/> </ep>
+          <ep cfrom='6' cto='7'> <realpred lemma='a' pos='q'/> <label vid='10'/> <var sort='x' vid='9'/> </ep>
+          <ep cfrom='8' cto='11'> <realpred lemma='man' pos='n' sense='1'/> <label vid='13'/> <var sort='x' vid='9'/> </ep>
+          <ep cfrom='12' cto='16'> <realpred lemma='with' pos='p'/> <label vid='10001'/> <var sort='e' vid='14'/> </ep>
+          <ep cfrom='17' cto='18'> <realpred lemma='a' pos='q'/> <label vid='16'/> <var sort='x' vid='15'/> </ep>
+          <ep cfrom='19' cto='29'> <realpred lemma='telescope' pos='n' sense='1'/> <label vid='19'/> <var sort='x' vid='15'/> </ep>
+          <hcons hreln='qeq'>   <hi> <var sort='h' vid='7'/> </hi>   <lo> <label vid='3'/> </lo>   </hcons>
+          <hcons hreln='qeq'>   <hi> <var sort='h' vid='12'/> </hi>   <lo> <label vid='13'/> </lo>   </hcons>
+          <hcons hreln='qeq'>   <hi> <var sort='h' vid='18'/> </hi>   <lo> <label vid='19'/> </lo>   </hcons>
+          <rarg> <rargname>RSTR</rargname> <label vid='5'/> <var sort='h' vid='7'/> </rarg>
+          <rarg> <rargname>BODY</rargname> <label vid='5'/> <var sort='h' vid='6'/> </rarg>
+          <rarg> <rargname>ARG1</rargname> <label vid='8'/> <var sort='x' vid='4'/> </rarg>
+          <rarg> <rargname>ARG2</rargname> <label vid='8'/> <var sort='x' vid='9'/> </rarg>
+          <rarg> <rargname>RSTR</rargname> <label vid='10'/> <var sort='h' vid='12'/> </rarg>
+          <rarg> <rargname>BODY</rargname> <label vid='10'/> <var sort='h' vid='11'/> </rarg>
+          <rarg> <rargname>ARG1</rargname> <label vid='10001'/> <var sort='x' vid='9'/> </rarg>
+          <rarg> <rargname>ARG2</rargname> <label vid='10001'/> <var sort='x' vid='15'/> </rarg>
+          <rarg> <rargname>RSTR</rargname> <label vid='16'/> <var sort='h' vid='18'/> </rarg>
+          <rarg> <rargname>BODY</rargname> <label vid='16'/> <var sort='h' vid='17'/> </rarg>
+          <ing>   <ing-a> <var sort='h' vid='13'/> </ing-a>   <ing-b> <var sort='h' vid='10001'/> </ing-b>   </ing>
+        </rmrs>
+      </edge>
+      <edge type="rmrs" id="r2" source="v0" target="v7">
+        <rmrs cfrom='-1' cto='-1'>
+          <label vid='1'/>
+          <ep cfrom='0' cto='1'> <gpred>pron_rel</gpred> <label vid='3'/> <var sort='x' vid='4'/> </ep>
+          <ep cfrom='0' cto='1'> <gpred>pronoun_q_rel</gpred> <label vid='5'/> <var sort='x' vid='4'/> </ep>
+          <ep cfrom='2' cto='5'> <realpred lemma='saw' pos='v' sense='1'/> <label vid='8'/> <var sort='e' vid='2'/> </ep>
+          <ep cfrom='6' cto='7'> <realpred lemma='a' pos='q'/> <label vid='10'/> <var sort='x' vid='9'/> </ep>
+          <ep cfrom='8' cto='11'> <realpred lemma='man' pos='n' sense='1'/> <label vid='13'/> <var sort='x' vid='9'/> </ep>
+          <ep cfrom='12' cto='16'> <realpred lemma='with' pos='p'/> <label vid='10001'/> <var sort='e' vid='15'/> </ep>
+          <ep cfrom='17' cto='18'> <realpred lemma='a' pos='q'/> <label vid='16'/> <var sort='x' vid='14'/> </ep>
+          <ep cfrom='19' cto='29'> <realpred lemma='telescope' pos='n' sense='1'/> <label vid='19'/> <var sort='x' vid='14'/> </ep>
+          <hcons hreln='qeq'>   <hi> <var sort='h' vid='7'/> </hi>   <lo> <label vid='3'/> </lo>   </hcons>
+          <hcons hreln='qeq'>   <hi> <var sort='h' vid='12'/> </hi>   <lo> <label vid='13'/> </lo>   </hcons>
+          <hcons hreln='qeq'>   <hi> <var sort='h' vid='18'/> </hi>   <lo> <label vid='19'/> </lo>   </hcons>
+          <rarg> <rargname>RSTR</rargname> <label vid='5'/> <var sort='h' vid='7'/> </rarg>
+          <rarg> <rargname>BODY</rargname> <label vid='5'/> <var sort='h' vid='6'/> </rarg>
+          <rarg> <rargname>ARG1</rargname> <label vid='8'/> <var sort='x' vid='4'/> </rarg>
+          <rarg> <rargname>ARG2</rargname> <label vid='8'/> <var sort='x' vid='9'/> </rarg>
+          <rarg> <rargname>RSTR</rargname> <label vid='10'/> <var sort='h' vid='12'/> </rarg>
+          <rarg> <rargname>BODY</rargname> <label vid='10'/> <var sort='h' vid='11'/> </rarg>
+          <rarg> <rargname>ARG1</rargname> <label vid='10001'/> <var sort='e' vid='2'/> </rarg>
+          <rarg> <rargname>ARG2</rargname> <label vid='10001'/> <var sort='x' vid='14'/> </rarg>
+          <rarg> <rargname>RSTR</rargname> <label vid='16'/> <var sort='h' vid='18'/> </rarg>
+          <rarg> <rargname>BODY</rargname> <label vid='16'/> <var sort='h' vid='17'/> </rarg>
+          <ing>   <ing-a> <var sort='h' vid='8'/> </ing-a>   <ing-b> <var sort='h' vid='10001'/> </ing-b>   </ing>
+        </rmrs>
+      </edge>
+      <edge type="rmrs" id="r3" source="v0" target="v7">
+        <rmrs cfrom='-1' cto='-1'>
+          <label vid='1'/>
+          <ep cfrom='0' cto='1'> <gpred>pron_rel</gpred> <label vid='3'/> <var sort='x' vid='4'/> </ep>
+          <ep cfrom='0' cto='1'> <gpred>pronoun_q_rel</gpred> <label vid='5'/> <var sort='x' vid='4'/> </ep>
+          <ep cfrom='2' cto='5'> <realpred lemma='see' pos='v' sense='1'/> <label vid='8'/> <var sort='e' vid='2'/> </ep>
+          <ep cfrom='6' cto='7'> <realpred lemma='a' pos='q'/> <label vid='10'/> <var sort='x' vid='9'/> </ep>
+          <ep cfrom='8' cto='11'> <realpred lemma='man' pos='n' sense='1'/> <label vid='13'/> <var sort='x' vid='9'/> </ep>
+          <ep cfrom='12' cto='16'> <realpred lemma='with' pos='p'/> <label vid='10001'/> <var sort='e' vid='15'/> </ep>
+          <ep cfrom='17' cto='18'> <realpred lemma='a' pos='q'/> <label vid='16'/> <var sort='x' vid='14'/> </ep>
+          <ep cfrom='19' cto='29'> <realpred lemma='telescope' pos='n' sense='1'/> <label vid='19'/> <var sort='x' vid='14'/> </ep>
+          <hcons hreln='qeq'>   <hi> <var sort='h' vid='7'/> </hi>   <lo> <label vid='3'/> </lo>   </hcons>
+          <hcons hreln='qeq'>   <hi> <var sort='h' vid='12'/> </hi>   <lo> <label vid='13'/> </lo>   </hcons>
+          <hcons hreln='qeq'>   <hi> <var sort='h' vid='18'/> </hi>   <lo> <label vid='19'/> </lo>   </hcons>
+          <rarg> <rargname>RSTR</rargname> <label vid='5'/> <var sort='h' vid='7'/> </rarg>
+          <rarg> <rargname>BODY</rargname> <label vid='5'/> <var sort='h' vid='6'/> </rarg>
+          <rarg> <rargname>ARG1</rargname> <label vid='8'/> <var sort='x' vid='4'/> </rarg>
+          <rarg> <rargname>ARG2</rargname> <label vid='8'/> <var sort='x' vid='9'/> </rarg>
+          <rarg> <rargname>RSTR</rargname> <label vid='10'/> <var sort='h' vid='12'/> </rarg>
+          <rarg> <rargname>BODY</rargname> <label vid='10'/> <var sort='h' vid='11'/> </rarg>
+          <rarg> <rargname>ARG1</rargname> <label vid='10001'/> <var sort='e' vid='2'/> </rarg>
+          <rarg> <rargname>ARG2</rargname> <label vid='10001'/> <var sort='x' vid='14'/> </rarg>
+          <rarg> <rargname>RSTR</rargname> <label vid='16'/> <var sort='h' vid='18'/> </rarg>
+          <rarg> <rargname>BODY</rargname> <label vid='16'/> <var sort='h' vid='17'/> </rarg>
+          <ing>   <ing-a> <var sort='h' vid='8'/> </ing-a>   <ing-b> <var sort='h' vid='10001'/> </ing-b>   </ing>
+        </rmrs>
+      </edge>
+      <edge type="rmrs" id="r4" source="v0" target="v7">
+        <rmrs cfrom='-1' cto='-1'>
+          <label vid='1'/>
+          <ep cfrom='0' cto='1'> <gpred>pron_rel</gpred> <label vid='3'/> <var sort='x' vid='4'/> </ep>
+          <ep cfrom='0' cto='1'> <gpred>pronoun_q_rel</gpred> <label vid='5'/> <var sort='x' vid='4'/> </ep>
+          <ep cfrom='2' cto='5'> <realpred lemma='see' pos='v' sense='1'/> <label vid='8'/> <var sort='e' vid='2'/> </ep>
+          <ep cfrom='6' cto='7'> <realpred lemma='a' pos='q'/> <label vid='11'/> <var sort='x' vid='9'/> </ep>
+          <ep cfrom='8' cto='11'> <realpred lemma='man' pos='n' sense='1'/> <label vid='14'/> <var sort='x' vid='9'/> </ep>
+          <ep cfrom='12' cto='16'> <realpred lemma='with' pos='p'/> <label vid='15'/> <var sort='e' vid='17'/> </ep>
+          <ep cfrom='17' cto='18'> <realpred lemma='a' pos='q'/> <label vid='18'/> <var sort='x' vid='16'/> </ep>
+          <ep cfrom='19' cto='29'> <realpred lemma='telescope' pos='n' sense='1'/> <label vid='21'/> <var sort='x' vid='16'/> </ep>
+          <hcons hreln='qeq'>   <hi> <var sort='h' vid='7'/> </hi>   <lo> <label vid='3'/> </lo>   </hcons>
+          <hcons hreln='qeq'>   <hi> <var sort='h' vid='10'/> </hi>   <lo> <label vid='15'/> </lo>   </hcons>
+          <hcons hreln='qeq'>   <hi> <var sort='h' vid='13'/> </hi>   <lo> <label vid='14'/> </lo>   </hcons>
+          <hcons hreln='qeq'>   <hi> <var sort='h' vid='20'/> </hi>   <lo> <label vid='21'/> </lo>   </hcons>
+          <rarg> <rargname>RSTR</rargname> <label vid='5'/> <var sort='h' vid='7'/> </rarg>
+          <rarg> <rargname>BODY</rargname> <label vid='5'/> <var sort='h' vid='6'/> </rarg>
+          <rarg> <rargname>ARG1</rargname> <label vid='8'/> <var sort='x' vid='4'/> </rarg>
+          <rarg> <rargname>ARG2</rargname> <label vid='8'/> <var sort='x' vid='9'/> </rarg>
+          <rarg> <rargname>ARG3</rargname> <label vid='8'/> <var sort='h' vid='10'/> </rarg>
+          <rarg> <rargname>RSTR</rargname> <label vid='11'/> <var sort='h' vid='13'/> </rarg>
+          <rarg> <rargname>BODY</rargname> <label vid='11'/> <var sort='h' vid='12'/> </rarg>
+          <rarg> <rargname>ARG1</rargname> <label vid='15'/> <var sort='x' vid='9'/> </rarg>
+          <rarg> <rargname>ARG2</rargname> <label vid='15'/> <var sort='x' vid='16'/> </rarg>
+          <rarg> <rargname>RSTR</rargname> <label vid='18'/> <var sort='h' vid='20'/> </rarg>
+          <rarg> <rargname>BODY</rargname> <label vid='18'/> <var sort='h' vid='19'/> </rarg>
+        </rmrs>
+      </edge>
+    </lattice>
+  </smaf>""",
   u"""<smaf>
     <lattice init="v0" final="v5">
       <edge type="token" id="t1" source="v0" target="v1" cfrom="0" cto="3">The</edge>
@@ -77,6 +288,58 @@ TOKENISED = [
       <edge type="token" id="t3" source="v2" target="v3" cfrom="8" cto="14">chased</edge>
       <edge type="token" id="t4" source="v3" target="v4" cfrom="15" cto="18">the</edge>
       <edge type="token" id="t5" source="v4" target="v5" cfrom="19" cto="23">dog.</edge>
+      <edge type="rmrs" id="r0" source="v0" target="v5">
+        <rmrs cfrom='-1' cto='-1'>
+          <label vid='1'/>
+          <ep cfrom='0' cto='3'> <realpred lemma='the' pos='q'/> <label vid='3'/> <var sort='x' vid='6'/> </ep>
+          <ep cfrom='4' cto='7'> <realpred lemma='cat' pos='n' sense='1'/> <label vid='7'/> <var sort='x' vid='6'/> </ep>
+          <ep cfrom='8' cto='14'> <realpred lemma='chase' pos='v' sense='1'/> <label vid='8'/> <var sort='e' vid='2'/> </ep>
+          <ep cfrom='15' cto='18'> <realpred lemma='the' pos='q'/> <label vid='10'/> <var sort='x' vid='9'/> </ep>
+          <ep cfrom='19' cto='23'> <realpred lemma='dog' pos='n' sense='1'/> <label vid='13'/> <var sort='x' vid='9'/> </ep>
+          <hcons hreln='qeq'>   <hi> <var sort='h' vid='5'/> </hi>   <lo> <label vid='7'/> </lo>   </hcons>
+          <hcons hreln='qeq'>   <hi> <var sort='h' vid='12'/> </hi>   <lo> <label vid='13'/> </lo>   </hcons>
+          <rarg> <rargname>RSTR</rargname> <label vid='3'/> <var sort='h' vid='5'/> </rarg>
+          <rarg> <rargname>BODY</rargname> <label vid='3'/> <var sort='h' vid='4'/> </rarg>
+          <rarg> <rargname>ARG1</rargname> <label vid='8'/> <var sort='x' vid='6'/> </rarg>
+          <rarg> <rargname>ARG2</rargname> <label vid='8'/> <var sort='x' vid='9'/> </rarg>
+          <rarg> <rargname>RSTR</rargname> <label vid='10'/> <var sort='h' vid='12'/> </rarg>
+          <rarg> <rargname>BODY</rargname> <label vid='10'/> <var sort='h' vid='11'/> </rarg>
+        </rmrs>
+      </edge>
+      <edge type="rmrs" id="r1" source="v0" target="v5">
+        <rmrs cfrom='-1' cto='-1'>
+          <label vid='1'/>
+          <ep cfrom='0' cto='23'> <gpred>unknown_rel</gpred> <label vid='3'/> <var sort='e' vid='2'/> </ep>
+          <ep cfrom='0' cto='23'> <gpred>appos_rel</gpred> <label vid='5'/> <var sort='e' vid='6'/> </ep>
+          <ep cfrom='0' cto='3'> <realpred lemma='the' pos='q'/> <label vid='8'/> <var sort='x' vid='4'/> </ep>
+          <ep cfrom='4' cto='7'> <realpred lemma='cat' pos='n' sense='1'/> <label vid='10001'/> <var sort='x' vid='4'/> </ep>
+          <ep cfrom='8' cto='14'> <realpred lemma='chase' pos='v' sense='1'/> <label vid='10002'/> <var sort='e' vid='11'/> </ep>
+          <ep cfrom='8' cto='14'> <gpred>parg_d_rel</gpred> <label vid='10003'/> <var sort='e' vid='13'/> </ep>
+          <ep cfrom='15' cto='18'> <realpred lemma='the' pos='q'/> <label vid='14'/> <var sort='x' vid='7'/> </ep>
+          <ep cfrom='19' cto='23'> <realpred lemma='dog' pos='n' sense='1'/> <label vid='17'/> <var sort='x' vid='7'/> </ep>
+          <hcons hreln='qeq'>   <hi> <var sort='h' vid='10'/> </hi>   <lo> <label vid='5'/> </lo>   </hcons>
+          <hcons hreln='qeq'>   <hi> <var sort='h' vid='15'/> </hi>   <lo> <label vid='17'/> </lo>   </hcons>
+          <rarg> <rargname>ARG</rargname> <label vid='3'/> <var sort='x' vid='4'/> </rarg>
+          <rarg> <rargname>ARG1</rargname> <label vid='5'/> <var sort='x' vid='4'/> </rarg>
+          <rarg> <rargname>ARG2</rargname> <label vid='5'/> <var sort='x' vid='7'/> </rarg>
+          <rarg> <rargname>RSTR</rargname> <label vid='8'/> <var sort='h' vid='10'/> </rarg>
+          <rarg> <rargname>BODY</rargname> <label vid='8'/> <var sort='h' vid='9'/> </rarg>
+          <rarg> <rargname>ARG1</rargname> <label vid='10002'/> <var sort='u' vid='12'/> </rarg>
+          <rarg> <rargname>ARG2</rargname> <label vid='10002'/> <var sort='x' vid='4'/> </rarg>
+          <rarg> <rargname>ARG1</rargname> <label vid='10003'/> <var sort='e' vid='11'/> </rarg>
+          <rarg> <rargname>ARG2</rargname> <label vid='10003'/> <var sort='x' vid='4'/> </rarg>
+          <rarg> <rargname>RSTR</rargname> <label vid='14'/> <var sort='h' vid='15'/> </rarg>
+          <rarg> <rargname>BODY</rargname> <label vid='14'/> <var sort='h' vid='16'/> </rarg>
+          <ing>   <ing-a> <var sort='h' vid='5'/> </ing-a>   <ing-b> <var sort='h' vid='10002'/> </ing-b>   </ing>
+          <ing>   <ing-a> <var sort='h' vid='5'/> </ing-a>   <ing-b> <var sort='h' vid='10001'/> </ing-b>   </ing>
+          <ing>   <ing-a> <var sort='h' vid='5'/> </ing-a>   <ing-b> <var sort='h' vid='10003'/> </ing-b>   </ing>
+        </rmrs>
+      </edge>
     </lattice>
   </smaf>"""
 ];
+
+PARSED_HARD = [
+];
+
+PARSED = PARSED_EASY + PARSED_HARD;

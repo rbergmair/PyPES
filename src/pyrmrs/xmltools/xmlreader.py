@@ -21,6 +21,10 @@ class XMLReaderIter:
 
     self.reader = reader;
     self.dead = False;
+    
+  def __iter__( self ):
+    
+    return self;
 
   def next( self ):
     

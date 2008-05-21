@@ -19,7 +19,7 @@ class TestFspp( pyrmrstest.mytest.MyTestCase ):
     
     self.fspp = pyrmrs.ext.delphin.fspp.Fspp();
 
-  def test_fspp( self ):
+  def test_tokenise( self ):
 
     for i in range( 0, len(data.TEXT) ):
 

@@ -19,9 +19,9 @@ import data;
 
 class TestMorpher( pyrmrstest.mytest.MyTestCase ):
   
-  def my_init( self ):
+  def global_setUp( self ):
     
-    self.morpher = pyrmrs.ext.rasp.morpher.Morpher();
+    self.globalstate.morpher = pyrmrs.ext.rasp.morpher.Morpher();
 
   def test_morpher( self ):
 
@@ -30,7 +30,7 @@ class TestMorpher( pyrmrstest.mytest.MyTestCase ):
       f = cStringIO.StringIO( data.TAGGED[i].encode( "utf-8" ) );
       rd = pyrmrs.smafpkg.smafreader.SMAFReader( f );
       smaf = rd.getFirst();
-      smaf = self.morpher.morph( smaf );
+      smaf = self.globalstate.morpher.morph( smaf );
       #print smaf.str_xml();
       self.assertStringCrudelyEqual( data.MORPHED[i], smaf.str_xml() );
 

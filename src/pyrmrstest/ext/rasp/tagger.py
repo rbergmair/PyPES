@@ -19,9 +19,9 @@ import data;
 
 class TestTagger( pyrmrstest.mytest.MyTestCase ):
   
-  def my_init( self ):
+  def global_setUp( self ):
     
-    self.tagger = pyrmrs.ext.rasp.tagger.Tagger();
+    self.globalstate.tagger = pyrmrs.ext.rasp.tagger.Tagger();
 
   def test_tagger( self ):
 
@@ -30,7 +30,7 @@ class TestTagger( pyrmrstest.mytest.MyTestCase ):
       f = cStringIO.StringIO( data.TOKENISED[i].encode( "utf-8" ) );
       rd = pyrmrs.smafpkg.smafreader.SMAFReader( f );
       smaf = rd.getFirst();
-      smaf = self.tagger.tag( smaf );
+      smaf = self.globalstate.tagger.tag( smaf );
       self.assertStringCrudelyEqual( data.TAGGED[i], smaf.str_xml() );
 
 

@@ -19,9 +19,9 @@ import data;
 
 class TestParser( pyrmrstest.mytest.MyTestCase ):
   
-  def my_init( self ):
+  def global_setUp( self ):
     
-    self.parser = pyrmrs.ext.rasp.parser.Parser();
+    self.globalstate.parser = pyrmrs.ext.rasp.parser.Parser();
 
   def test_parser( self ):
 
@@ -30,7 +30,7 @@ class TestParser( pyrmrstest.mytest.MyTestCase ):
       f = cStringIO.StringIO( data.MORPHED[i].encode( "utf-8" ) );
       rd = pyrmrs.smafpkg.smafreader.SMAFReader( f );
       smaf = rd.getFirst();
-      smaf = self.parser.parse( smaf );
+      smaf = self.globalstate.parser.parse( smaf );
       self.assertStringCrudelyEqual( data.PARSED[i], smaf.str_xml() );
 
 

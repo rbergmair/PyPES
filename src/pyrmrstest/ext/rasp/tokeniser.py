@@ -18,15 +18,15 @@ import data;
 
 class TestTokeniser( pyrmrstest.mytest.MyTestCase ):
   
-  def my_init( self ):
+  def global_setUp( self ):
     
-    self.tokeniser = pyrmrs.ext.rasp.tokeniser.Tokeniser();
+    self.globalstate.tokeniser = pyrmrs.ext.rasp.tokeniser.Tokeniser();
     
   def test_tokeniser( self ):
 
     for i in range( 0, len(data.TEXT) ):
       smaf = pyrmrs.smafpkg.smaf.SMAF( data.TEXT[i] );
-      smaf = self.tokeniser.tokenise( smaf );
+      smaf = self.globalstate.tokeniser.tokenise( smaf );
       self.assertStringCrudelyEqual( data.TOKENISED[i], smaf.str_xml() );
 
 
