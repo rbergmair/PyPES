@@ -60,15 +60,58 @@ class SMAFTagIterator:
     token_edge = self.smaf_token_iterator.next();
     
     pos_edges = [];
+    
     for edge in self.smaf.lattice.lattice[ token_edge.source ]:
       
       if not isinstance( edge, pyrmrs.smafpkg.pos_edge.PosEdge ):
         continue;
       
       assert edge.target == token_edge.target;
+      assert edge.deps == token_edge.id;
+      
       pos_edges.append( edge );
     
     return ( token_edge, pos_edges );
+
+
+
+class SMAFMorphIterator:
+  
+  def __init__( self, smaf ):
+    
+    self.smaf = smaf;
+    self.smaf_tag_iterator = SMAFTagIterator( smaf );
+  
+  def __iter__( self ):
+    
+    return self;
+  
+  def next( self ):
+    
+    ( tok, poss ) = self.smaf_tag_iterator.next();
+
+    morph_edges = {};
+    
+    for edge in self.smaf.lattice.lattice[ tok.source ]:
+      
+      if not isinstance( edge, pyrmrs.smafpkg.morph_edge.MorphologicalEdge ):
+        continue;
+      
+      if not morph_edges.has_key( edge.deps ):
+        morph_edges[ edge.deps ] = [];
+      morph_edges[ edge.deps ].append( edge );
+      
+    posmorph = [];
+    
+    for pos in poss:
+      
+      morphs = [];
+      if morph_edges.has_key( pos.id ):
+        morphs = morph_edges[ pos.id ];
+        
+      posmorph.append( (pos,morphs) );
+    
+    return ( tok, posmorph );
 
 
 
@@ -107,10 +150,13 @@ class SMAF( pyrmrs.xmltools.reader_element.ReaderElement ):
     
     return SMAFTokenIterator( self );
 
-
   def getTags( self ):
     
     return SMAFTagIterator( self );
+  
+  def getMorphs( self ):
+    
+    return SMAFMorphIterator( self );
 
 
   
