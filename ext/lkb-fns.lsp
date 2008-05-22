@@ -44,10 +44,10 @@
 
 (in-package :mrs)
 
-(defvar *rasp-rmrs-gram-file*)
-(defvar *rasp-rmrs-tag-file*)
-(defvar *rasp-xml-word-p*)
-(defvar *rasp-xml-type*)
+;; (defvar *rasp-rmrs-gram-file*)
+;; (defvar *rasp-rmrs-tag-file*)
+;; (defvar *rasp-xml-word-p*)
+;; (defvar *rasp-xml-type*)
 
 (defun simple-io-rasp-rmrs (istream ostream)
 
@@ -56,7 +56,7 @@
         (*rasp-rmrs-tag-file*
          "src/rmrs/rasp3/lex15.rmrs")
         (*rasp-xml-word-p* t)
-        (*renumber-hack* t)
+        (*renumber-hack* nil)
         (*rasp-xml-type* :none))
 
     (setf *algebra-rule-instructions* nil)
@@ -81,16 +81,19 @@
       (with-input-from-string (jstream input)
         (setf (stream-external-format jstream) :utf-8)
         (format ostream "<rmrs-list>~%")
-        (setq tagged (read jstream nil nil))
-        (setq number (read jstream nil nil))
+;;        (setq tagged (read jstream nil nil))
+;;        (setq number (read jstream nil nil))
         (loop
           (setq tree (read jstream nil nil))
           (unless tree
             (return))
-          (when tree
-            (construct-sem-for-tree 
-              tree
-              :rasp ostream tagged))
+          (construct-sem-for-tree 
+            tree
+            :rasp
+            ostream
+;;            tagged
+            nil
+          )
         )
         (format ostream "</rmrs-list>~%")
         (common-lisp-user::simple-io-write-delim ostream)

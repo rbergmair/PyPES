@@ -992,35 +992,35 @@ MORPHED = [
       </edge>
       <edge type="pos" id="p18" source="v13" target="v14" cfrom="75" cto="81" deps="t13">
         <slot name="tag">JJ</slot>
-        <slot name="weight">0.00377618</slot>
+        <slot name="weight">0.00377621</slot>
       </edge>
       <edge type="pos" id="p19" source="v13" target="v14" cfrom="75" cto="81" deps="t13">
         <slot name="tag">NN1</slot>
-        <slot name="weight">0.0183885</slot>
+        <slot name="weight">0.0183804</slot>
       </edge>
       <edge type="pos" id="p20" source="v13" target="v14" cfrom="75" cto="81" deps="t13">
         <slot name="tag">NN2</slot>
-        <slot name="weight">0.00426326</slot>
+        <slot name="weight">0.00426329</slot>
       </edge>
       <edge type="pos" id="p21" source="v13" target="v14" cfrom="75" cto="81" deps="t13">
         <slot name="tag">RR</slot>
-        <slot name="weight">0.00190727</slot>
+        <slot name="weight">0.00190728</slot>
       </edge>
       <edge type="pos" id="p22" source="v13" target="v14" cfrom="75" cto="81" deps="t13">
         <slot name="tag">VV0</slot>
-        <slot name="weight">0.000438305</slot>
+        <slot name="weight">0.000439245</slot>
       </edge>
       <edge type="pos" id="p23" source="v13" target="v14" cfrom="75" cto="81" deps="t13">
         <slot name="tag">VVD</slot>
-        <slot name="weight">0.00291896</slot>
+        <slot name="weight">0.00291899</slot>
       </edge>
       <edge type="pos" id="p24" source="v13" target="v14" cfrom="75" cto="81" deps="t13">
         <slot name="tag">VVG</slot>
-        <slot name="weight">0.966888</slot>
+        <slot name="weight">0.966895</slot>
       </edge>
       <edge type="pos" id="p25" source="v13" target="v14" cfrom="75" cto="81" deps="t13">
         <slot name="tag">VVN</slot>
-        <slot name="weight">0.00142</slot>
+        <slot name="weight">0.00142001</slot>
       </edge>
       <edge type="pos" id="p26" source="v14" target="v15" cfrom="81" cto="82" deps="t14">
         <slot name="tag">,</slot>
@@ -1040,23 +1040,23 @@ MORPHED = [
       </edge>
       <edge type="pos" id="p30" source="v16" target="v17" cfrom="92" cto="94" deps="t16">
         <slot name="tag">VBZ</slot>
-        <slot name="weight">0.0172677</slot>
+        <slot name="weight">0.0172684</slot>
       </edge>
       <edge type="pos" id="p31" source="v16" target="v17" cfrom="92" cto="94" deps="t16">
         <slot name="tag">VDZ</slot>
-        <slot name="weight">2.77101e-06</slot>
+        <slot name="weight">2.77103e-06</slot>
       </edge>
       <edge type="pos" id="p32" source="v16" target="v17" cfrom="92" cto="94" deps="t16">
         <slot name="tag">VHZ</slot>
-        <slot name="weight">0.000497046</slot>
+        <slot name="weight">0.000497064</slot>
       </edge>
       <edge type="pos" id="p33" source="v17" target="v18" cfrom="95" cto="103" deps="t17">
         <slot name="tag">JJ</slot>
-        <slot name="weight">0.902257</slot>
+        <slot name="weight">0.902296</slot>
       </edge>
       <edge type="pos" id="p34" source="v17" target="v18" cfrom="95" cto="103" deps="t17">
         <slot name="tag">NN1</slot>
-        <slot name="weight">0.0977435</slot>
+        <slot name="weight">0.0977044</slot>
       </edge>
       <edge type="pos" id="p35" source="v18" target="v19" cfrom="104" cto="113" deps="t18">
         <slot name="tag">NN1</slot>
@@ -1064,7 +1064,7 @@ MORPHED = [
       </edge>
       <edge type="pos" id="p36" source="v18" target="v19" cfrom="104" cto="113" deps="t18">
         <slot name="tag">NNS1</slot>
-        <slot name="weight">0.00259549</slot>
+        <slot name="weight">0.00259539</slot>
       </edge>
       <edge type="pos" id="p37" source="v19" target="v20" cfrom="114" cto="116" deps="t19">
         <slot name="tag">VBZ</slot>
@@ -1246,12 +1246,15 @@ PARSED = [
       </edge>
       <edge type="morph" id="m1" source="v2" target="v3" cfrom="8" cto="13" deps="p3">bark+s</edge>
       <edge type="morph" id="m2" source="v2" target="v3" cfrom="8" cto="13" deps="p4">bark+s</edge>
-      <edge type="syntree">
+      <edge type="syntree" id="s0" source="v0" target="v4" cfrom="0" cto="14">
         <slot name="weight">-4.440</slot>
         <slot name="tree">
         (|T/txt-sc1/-+|
-         (|S/np_vp| (|NP/det_n1| |The_AT| (|N1/n| |dog_NN1|)) (|V1/v| |bark+s_VVZ|))
-         (|End-punct3/-| ._.))
+         (|S/np_vp|
+          (|NP/det_n1| |&lt;w s='0' e='3'&gt;The_AT&lt;/w&gt;|
+           (|N1/n| |&lt;w s='4' e='7'&gt;dog_NN1&lt;/w&gt;|))
+          (|V1/v| |&lt;w s='8' e='13'&gt;bark+s_VVZ&lt;/w&gt;|))
+         (|End-punct3/-| |&lt;w s='13' e='14'&gt;._.&lt;/w&gt;|))
         </slot>
       </edge>
     </lattice>
@@ -1336,39 +1339,50 @@ PARSED = [
         <slot name="weight">1</slot>
       </edge>
       <edge type="morph" id="m1" source="v1" target="v2" cfrom="2" cto="5" deps="p4">see+ed</edge>
-      <edge type="syntree">
+      <edge type="syntree" id="s0" source="v0" target="v8" cfrom="0" cto="29">
         <slot name="weight">-6.821</slot>
         <slot name="tree">
         (|T/txt-sc1/-+|
-         (|S/np_vp| I_PPIS1
-          (|V1/v_np_pp| |see+ed_VVD| (|NP/det_n1| |a_AT1| (|N1/n| |man_NN1|))
+         (|S/np_vp| |&lt;w s='0' e='1'&gt;I_PPIS1&lt;/w&gt;|
+          (|V1/v_np_pp| |&lt;w s='2' e='5'&gt;see+ed_VVD&lt;/w&gt;|
+           (|NP/det_n1| |&lt;w s='6' e='7'&gt;a_AT1&lt;/w&gt;|
+            (|N1/n| |&lt;w s='8' e='11'&gt;man_NN1&lt;/w&gt;|))
            (|PP/p1|
-            (|P1/p_np| |with_IW| (|NP/det_n1| |a_AT1| (|N1/n| |telescope_NN1|))))))
-         (|End-punct3/-| ._.))
+            (|P1/p_np| |&lt;w s='12' e='16'&gt;with_IW&lt;/w&gt;|
+             (|NP/det_n1| |&lt;w s='17' e='18'&gt;a_AT1&lt;/w&gt;|
+              (|N1/n| |&lt;w s='19' e='28'&gt;telescope_NN1&lt;/w&gt;|))))))
+         (|End-punct3/-| |&lt;w s='28' e='29'&gt;._.&lt;/w&gt;|))
         </slot>
       </edge>
-      <edge type="syntree">
+      <edge type="syntree" id="s1" source="v0" target="v8" cfrom="0" cto="29">
         <slot name="weight">-7.233</slot>
         <slot name="tree">
         (|T/txt-sc1/-+|
-         (|S/np_vp| I_PPIS1
-          (|V1/v_np| |see+ed_VVD|
-           (|NP/det_n1| |a_AT1|
-            (|N1/n1_pp3| (|N1/n| |man_NN1|)
+         (|S/np_vp| |&lt;w s='0' e='1'&gt;I_PPIS1&lt;/w&gt;|
+          (|V1/v_np| |&lt;w s='2' e='5'&gt;see+ed_VVD&lt;/w&gt;|
+           (|NP/det_n1| |&lt;w s='6' e='7'&gt;a_AT1&lt;/w&gt;|
+            (|N1/n1_pp3| (|N1/n| |&lt;w s='8' e='11'&gt;man_NN1&lt;/w&gt;|)
              (|PP/p1|
-              (|P1/p_np| |with_IW| (|NP/det_n1| |a_AT1| (|N1/n| |telescope_NN1|))))))))
-         (|End-punct3/-| ._.))
+              (|P1/p_np| |&lt;w s='12' e='16'&gt;with_IW&lt;/w&gt;|
+               (|NP/det_n1| |&lt;w s='17' e='18'&gt;a_AT1&lt;/w&gt;|
+                (|N1/n| |&lt;w s='19' e='28'&gt;telescope_NN1&lt;/w&gt;|))))))))
+         (|End-punct3/-| |&lt;w s='28' e='29'&gt;._.&lt;/w&gt;|))
         </slot>
       </edge>
-      <edge type="syntree">
+      <edge type="syntree" id="s2" source="v0" target="v8" cfrom="0" cto="29">
         <slot name="weight">-8.501</slot>
         <slot name="tree">
         (|T/txt-sc1/-+|
-         (|S/np_vp| I_PPIS1
-          (|V1/vp_pp| (|V1/v_np| |see+ed_VVD| (|NP/det_n1| |a_AT1| (|N1/n| |man_NN1|)))
+         (|S/np_vp| |&lt;w s='0' e='1'&gt;I_PPIS1&lt;/w&gt;|
+          (|V1/vp_pp|
+           (|V1/v_np| |&lt;w s='2' e='5'&gt;see+ed_VVD&lt;/w&gt;|
+            (|NP/det_n1| |&lt;w s='6' e='7'&gt;a_AT1&lt;/w&gt;|
+             (|N1/n| |&lt;w s='8' e='11'&gt;man_NN1&lt;/w&gt;|)))
            (|PP/p1|
-            (|P1/p_np| |with_IW| (|NP/det_n1| |a_AT1| (|N1/n| |telescope_NN1|))))))
-         (|End-punct3/-| ._.))
+            (|P1/p_np| |&lt;w s='12' e='16'&gt;with_IW&lt;/w&gt;|
+             (|NP/det_n1| |&lt;w s='17' e='18'&gt;a_AT1&lt;/w&gt;|
+              (|N1/n| |&lt;w s='19' e='28'&gt;telescope_NN1&lt;/w&gt;|))))))
+         (|End-punct3/-| |&lt;w s='28' e='29'&gt;._.&lt;/w&gt;|))
         </slot>
       </edge>
     </lattice>
@@ -1444,54 +1458,74 @@ PARSED = [
       </edge>
       <edge type="morph" id="m1" source="v2" target="v3" cfrom="12" cto="18" deps="p9">chase+ed</edge>
       <edge type="morph" id="m2" source="v2" target="v3" cfrom="12" cto="18" deps="p10">chase+ed</edge>
-      <edge type="syntree">
+      <edge type="syntree" id="s0" source="v0" target="v6" cfrom="0" cto="27">
         <slot name="weight">-7.775</slot>
         <slot name="tree">
         (|T/txt-sc1/-+|
-         (|S/n1_vp| (|N1/n-name_n1| |Hugo_NP1| (|N1/n| |Chávez_NN1|))
-          (|V1/v_np| |chase+ed_VVD| (|NP/det_n1| |the_AT| (|N1/n| |dog_NN1|))))
-         (|End-punct3/-| ._.))
+         (|S/n1_vp|
+          (|N1/n-name_n1| |&lt;w s='0' e='4'&gt;Hugo_NP1&lt;/w&gt;|
+           (|N1/n| |&lt;w s='5' e='11'&gt;Chávez_NN1&lt;/w&gt;|))
+          (|V1/v_np| |&lt;w s='12' e='18'&gt;chase+ed_VVD&lt;/w&gt;|
+           (|NP/det_n1| |&lt;w s='19' e='22'&gt;the_AT&lt;/w&gt;|
+            (|N1/n| |&lt;w s='23' e='26'&gt;dog_NN1&lt;/w&gt;|))))
+         (|End-punct3/-| |&lt;w s='26' e='27'&gt;._.&lt;/w&gt;|))
         </slot>
       </edge>
-      <edge type="syntree">
+      <edge type="syntree" id="s1" source="v0" target="v6" cfrom="0" cto="27">
         <slot name="weight">-8.669</slot>
         <slot name="tree">
         (|T/txt-sc1/-+|
-         (|S/n1_vp| (|N1/n-name_n1| |Hugo_NP1| (|N1/n| |Chávez_NN1|))
-          (|V1/v_np| |chase+ed_VVN| (|NP/det_n1| |the_AT| (|N1/n| |dog_NN1|))))
-         (|End-punct3/-| ._.))
+         (|S/n1_vp|
+          (|N1/n-name_n1| |&lt;w s='0' e='4'&gt;Hugo_NP1&lt;/w&gt;|
+           (|N1/n| |&lt;w s='5' e='11'&gt;Chávez_NN1&lt;/w&gt;|))
+          (|V1/v_np| |&lt;w s='12' e='18'&gt;chase+ed_VVN&lt;/w&gt;|
+           (|NP/det_n1| |&lt;w s='19' e='22'&gt;the_AT&lt;/w&gt;|
+            (|N1/n| |&lt;w s='23' e='26'&gt;dog_NN1&lt;/w&gt;|))))
+         (|End-punct3/-| |&lt;w s='26' e='27'&gt;._.&lt;/w&gt;|))
         </slot>
       </edge>
-      <edge type="syntree">
+      <edge type="syntree" id="s2" source="v0" target="v6" cfrom="0" cto="27">
         <slot name="weight">-9.361</slot>
         <slot name="tree">
         (|T/txt-sc1/-+|
-         (|S/np_vp| (|NP/n1-plu| (|N1/n-name_n1| |Hugo_NP1| (|N1/n| |Chávez_NN2|)))
-          (|V1/v_np| |chase+ed_VVD| (|NP/det_n1| |the_AT| (|N1/n| |dog_NN1|))))
-         (|End-punct3/-| ._.))
+         (|S/np_vp|
+          (|NP/n1-plu|
+           (|N1/n-name_n1| |&lt;w s='0' e='4'&gt;Hugo_NP1&lt;/w&gt;|
+            (|N1/n| |&lt;w s='5' e='11'&gt;Chávez_NN2&lt;/w&gt;|)))
+          (|V1/v_np| |&lt;w s='12' e='18'&gt;chase+ed_VVD&lt;/w&gt;|
+           (|NP/det_n1| |&lt;w s='19' e='22'&gt;the_AT&lt;/w&gt;|
+            (|N1/n| |&lt;w s='23' e='26'&gt;dog_NN1&lt;/w&gt;|))))
+         (|End-punct3/-| |&lt;w s='26' e='27'&gt;._.&lt;/w&gt;|))
         </slot>
       </edge>
-      <edge type="syntree">
+      <edge type="syntree" id="s3" source="v0" target="v6" cfrom="0" cto="27">
         <slot name="weight">-9.863</slot>
         <slot name="tree">
         (|T/txt-sc1/-+|
-         (|S/np_vp| (|NP/n1-name| (|N1/n-name| |Hugo_NP1|))
-          (|V1/adv_vp| (|AP/a1| (|A1/a| |Chávez_RR|))
-           (|V1/v_np| |chase+ed_VVD| (|NP/det_n1| |the_AT| (|N1/n| |dog_NN1|)))))
-         (|End-punct3/-| ._.))
+         (|S/np_vp| (|NP/n1-name| (|N1/n-name| |&lt;w s='0' e='4'&gt;Hugo_NP1&lt;/w&gt;|))
+          (|V1/adv_vp| (|AP/a1| (|A1/a| |&lt;w s='5' e='11'&gt;Chávez_RR&lt;/w&gt;|))
+           (|V1/v_np| |&lt;w s='12' e='18'&gt;chase+ed_VVD&lt;/w&gt;|
+            (|NP/det_n1| |&lt;w s='19' e='22'&gt;the_AT&lt;/w&gt;|
+             (|N1/n| |&lt;w s='23' e='26'&gt;dog_NN1&lt;/w&gt;|)))))
+         (|End-punct3/-| |&lt;w s='26' e='27'&gt;._.&lt;/w&gt;|))
         </slot>
       </edge>
-      <edge type="syntree">
+      <edge type="syntree" id="s4" source="v0" target="v6" cfrom="0" cto="27">
         <slot name="weight">-10.255</slot>
         <slot name="tree">
         (|T/txt-sc1/-+|
-         (|S/np_vp| (|NP/n1-plu| (|N1/n-name_n1| |Hugo_NP1| (|N1/n| |Chávez_NN2|)))
-          (|V1/v_np| |chase+ed_VVN| (|NP/det_n1| |the_AT| (|N1/n| |dog_NN1|))))
-         (|End-punct3/-| ._.))
+         (|S/np_vp|
+          (|NP/n1-plu|
+           (|N1/n-name_n1| |&lt;w s='0' e='4'&gt;Hugo_NP1&lt;/w&gt;|
+            (|N1/n| |&lt;w s='5' e='11'&gt;Chávez_NN2&lt;/w&gt;|)))
+          (|V1/v_np| |&lt;w s='12' e='18'&gt;chase+ed_VVN&lt;/w&gt;|
+           (|NP/det_n1| |&lt;w s='19' e='22'&gt;the_AT&lt;/w&gt;|
+            (|N1/n| |&lt;w s='23' e='26'&gt;dog_NN1&lt;/w&gt;|))))
+         (|End-punct3/-| |&lt;w s='26' e='27'&gt;._.&lt;/w&gt;|))
         </slot>
       </edge>
     </lattice>
-  </smaf>""",  
+  </smaf>""",
   u"""<smaf>
     <text>As leaders gather in Argentina ahead of this weekends regional talks, Hugo Chávez, Venezuela's populist president is using an energy windfall to win friends and promote his vision of 21st-century socialism.</text>
     <lattice init="v0" final="v35" cfrom="0" cto="206">
@@ -1604,35 +1638,35 @@ PARSED = [
       </edge>
       <edge type="pos" id="p18" source="v13" target="v14" cfrom="75" cto="81" deps="t13">
         <slot name="tag">JJ</slot>
-        <slot name="weight">0.00377618</slot>
+        <slot name="weight">0.00377621</slot>
       </edge>
       <edge type="pos" id="p19" source="v13" target="v14" cfrom="75" cto="81" deps="t13">
         <slot name="tag">NN1</slot>
-        <slot name="weight">0.0183885</slot>
+        <slot name="weight">0.0183804</slot>
       </edge>
       <edge type="pos" id="p20" source="v13" target="v14" cfrom="75" cto="81" deps="t13">
         <slot name="tag">NN2</slot>
-        <slot name="weight">0.00426326</slot>
+        <slot name="weight">0.00426329</slot>
       </edge>
       <edge type="pos" id="p21" source="v13" target="v14" cfrom="75" cto="81" deps="t13">
         <slot name="tag">RR</slot>
-        <slot name="weight">0.00190727</slot>
+        <slot name="weight">0.00190728</slot>
       </edge>
       <edge type="pos" id="p22" source="v13" target="v14" cfrom="75" cto="81" deps="t13">
         <slot name="tag">VV0</slot>
-        <slot name="weight">0.000438305</slot>
+        <slot name="weight">0.000439245</slot>
       </edge>
       <edge type="pos" id="p23" source="v13" target="v14" cfrom="75" cto="81" deps="t13">
         <slot name="tag">VVD</slot>
-        <slot name="weight">0.00291896</slot>
+        <slot name="weight">0.00291899</slot>
       </edge>
       <edge type="pos" id="p24" source="v13" target="v14" cfrom="75" cto="81" deps="t13">
         <slot name="tag">VVG</slot>
-        <slot name="weight">0.966888</slot>
+        <slot name="weight">0.966895</slot>
       </edge>
       <edge type="pos" id="p25" source="v13" target="v14" cfrom="75" cto="81" deps="t13">
         <slot name="tag">VVN</slot>
-        <slot name="weight">0.00142</slot>
+        <slot name="weight">0.00142001</slot>
       </edge>
       <edge type="pos" id="p26" source="v14" target="v15" cfrom="81" cto="82" deps="t14">
         <slot name="tag">,</slot>
@@ -1652,23 +1686,23 @@ PARSED = [
       </edge>
       <edge type="pos" id="p30" source="v16" target="v17" cfrom="92" cto="94" deps="t16">
         <slot name="tag">VBZ</slot>
-        <slot name="weight">0.0172677</slot>
+        <slot name="weight">0.0172684</slot>
       </edge>
       <edge type="pos" id="p31" source="v16" target="v17" cfrom="92" cto="94" deps="t16">
         <slot name="tag">VDZ</slot>
-        <slot name="weight">2.77101e-06</slot>
+        <slot name="weight">2.77103e-06</slot>
       </edge>
       <edge type="pos" id="p32" source="v16" target="v17" cfrom="92" cto="94" deps="t16">
         <slot name="tag">VHZ</slot>
-        <slot name="weight">0.000497046</slot>
+        <slot name="weight">0.000497064</slot>
       </edge>
       <edge type="pos" id="p33" source="v17" target="v18" cfrom="95" cto="103" deps="t17">
         <slot name="tag">JJ</slot>
-        <slot name="weight">0.902257</slot>
+        <slot name="weight">0.902296</slot>
       </edge>
       <edge type="pos" id="p34" source="v17" target="v18" cfrom="95" cto="103" deps="t17">
         <slot name="tag">NN1</slot>
-        <slot name="weight">0.0977435</slot>
+        <slot name="weight">0.0977044</slot>
       </edge>
       <edge type="pos" id="p35" source="v18" target="v19" cfrom="104" cto="113" deps="t18">
         <slot name="tag">NN1</slot>
@@ -1676,7 +1710,7 @@ PARSED = [
       </edge>
       <edge type="pos" id="p36" source="v18" target="v19" cfrom="104" cto="113" deps="t18">
         <slot name="tag">NNS1</slot>
-        <slot name="weight">0.00259549</slot>
+        <slot name="weight">0.00259539</slot>
       </edge>
       <edge type="pos" id="p37" source="v19" target="v20" cfrom="114" cto="116" deps="t19">
         <slot name="tag">VBZ</slot>
@@ -1773,228 +1807,266 @@ PARSED = [
       <edge type="morph" id="m9" source="v19" target="v20" cfrom="114" cto="116" deps="p37">be+s</edge>
       <edge type="morph" id="m10" source="v20" target="v21" cfrom="117" cto="122" deps="p38">use+ing</edge>
       <edge type="morph" id="m11" source="v26" target="v27" cfrom="149" cto="156" deps="p47">friend+s</edge>
-      <edge type="syntree">
+      <edge type="syntree" id="s0" source="v0" target="v35" cfrom="0" cto="206">
         <slot name="weight">-70.013</slot>
         <slot name="tree">
-        (|T/txt-sc1/-+|
-         (|S/pp-sfin_s/+|
-          (|PP/p1|
-           (|P1/p_s| |As_CSA|
-            (|S/np_vp| (|NP/n1-plu| (|N1/n| |leader+s_NN2|))
-             (|V1/v_pp| |gather_VV0|
-              (|PP/p1|
-               (|P1/p_np| |in_II|
-                (|NP/n1-name_np-r|
-                 (|N1/n_pp-of| |Argentina_NP1|
-                  (|PP/adv_p1| (|AP/a1| (|A1/a| |ahead_RR|))
-                   (|P1/p_np| |of_IO|
-                    (|NP/det_a1-r/+-| |this_DD1| (|N1/n-nt| |weekend+s_NNT2|)
-                     (|A1/a| |regional_JJ|)))))
-                 (|NP/n1-plu| (|N1/n| |talk+s_NN2|)))))))))
-          |,_,|
-          (|S/np_vp|
-           (|NP/np-poss_n1|
-            (|NP/np_n-poss|
-             (|NP/n1-name|
-              (|N1/n-name_n1-name| |Hugo_NP1|
-               (|N1/ing_n1-r/-+| |Chávez_VVG| |,_,| (|N1/n-name| |Venezuela_NP1|))))
-             |'s+_$|)
-            (|N1/ap_n1/-| (|AP/a1| (|A1/a| |populist_JJ|)) (|N1/n| |president_NN1|)))
-           (|V1/be_ing/--| |be+s_VBZ|
-            (|V1/v_np_inf| |use+ing_VVG|
-             (|NP/det_n1| |an_AT1| (|N1/n_n1| |energy_NN1| (|N1/n| |windfall_NN1|)))
-             (|V1/to_bse/-| |to_TO|
-              (|V1/vp_vp-coord/-|
-               (|V1/v_np| |win_VV0| (|NP/n1-plu| (|N1/n| |friend+s_NN2|)))
-               (|V1/cj-end_vp/--| |and_CC|
-                (|V1/v_np| |promote_VV0|
-                 (|NP/det_n1| |his_APP$|
-                  (|N1/n_pp-of| |vision_NN1|
-                   (|PP/p1|
-                    (|P1/p_n1| |of_IO|
-                     (|N1/ap_n1/-| (|AP/a1| (|A1/a| |21st-century_JB|))
-                      (|N1/n| |socialism_NN1|))))))))))))))
-         (|End-punct3/-| ._.))
+          (|T/txt-sc1/-+|
+           (|S/pp-sfin_s/+|
+            (|PP/p1|
+             (|P1/p_s| |&lt;w s='0' e='2'&gt;As_CSA&lt;/w&gt;|
+              (|S/np_vp| (|NP/n1-plu| (|N1/n| |&lt;w s='3' e='10'&gt;leader+s_NN2&lt;/w&gt;|))
+               (|V1/v_pp| |&lt;w s='11' e='17'&gt;gather_VV0&lt;/w&gt;|
+                (|PP/p1|
+                 (|P1/p_np| |&lt;w s='18' e='20'&gt;in_II&lt;/w&gt;|
+                  (|NP/n1-name_np-r|
+                   (|N1/n_pp-of| |&lt;w s='21' e='30'&gt;Argentina_NP1&lt;/w&gt;|
+                    (|PP/adv_p1| (|AP/a1| (|A1/a| |&lt;w s='31' e='36'&gt;ahead_RR&lt;/w&gt;|))
+                     (|P1/p_np| |&lt;w s='37' e='39'&gt;of_IO&lt;/w&gt;|
+                      (|NP/det_a1-r/+-| |&lt;w s='40' e='44'&gt;this_DD1&lt;/w&gt;|
+                       (|N1/n-nt| |&lt;w s='45' e='53'&gt;weekend+s_NNT2&lt;/w&gt;|)
+                       (|A1/a| |&lt;w s='54' e='62'&gt;regional_JJ&lt;/w&gt;|)))))
+                   (|NP/n1-plu| (|N1/n| |&lt;w s='63' e='68'&gt;talk+s_NN2&lt;/w&gt;|)))))))))
+            |&lt;w s='68' e='69'&gt;,_,&lt;/w&gt;|
+            (|S/np_vp|
+             (|NP/np-poss_n1|
+              (|NP/np_n-poss|
+               (|NP/n1-name|
+                (|N1/n-name_n1-name| |&lt;w s='70' e='74'&gt;Hugo_NP1&lt;/w&gt;|
+                 (|N1/ing_n1-r/-+| |&lt;w s='75' e='81'&gt;Chávez_VVG&lt;/w&gt;|
+                  |&lt;w s='81' e='82'&gt;,_,&lt;/w&gt;|
+                  (|N1/n-name| |&lt;w s='83' e='92'&gt;Venezuela_NP1&lt;/w&gt;|))))
+               |&lt;w s='92' e='94'&gt;'s+_$&lt;/w&gt;|)
+              (|N1/ap_n1/-| (|AP/a1| (|A1/a| |&lt;w s='95' e='103'&gt;populist_JJ&lt;/w&gt;|))
+               (|N1/n| |&lt;w s='104' e='113'&gt;president_NN1&lt;/w&gt;|)))
+             (|V1/be_ing/--| |&lt;w s='114' e='116'&gt;be+s_VBZ&lt;/w&gt;|
+              (|V1/v_np_inf| |&lt;w s='117' e='122'&gt;use+ing_VVG&lt;/w&gt;|
+               (|NP/det_n1| |&lt;w s='123' e='125'&gt;an_AT1&lt;/w&gt;|
+                (|N1/n_n1| |&lt;w s='126' e='132'&gt;energy_NN1&lt;/w&gt;|
+                 (|N1/n| |&lt;w s='133' e='141'&gt;windfall_NN1&lt;/w&gt;|)))
+               (|V1/to_bse/-| |&lt;w s='142' e='144'&gt;to_TO&lt;/w&gt;|
+                (|V1/vp_vp-coord/-|
+                 (|V1/v_np| |&lt;w s='145' e='148'&gt;win_VV0&lt;/w&gt;|
+                  (|NP/n1-plu| (|N1/n| |&lt;w s='149' e='156'&gt;friend+s_NN2&lt;/w&gt;|)))
+                 (|V1/cj-end_vp/--| |&lt;w s='157' e='160'&gt;and_CC&lt;/w&gt;|
+                  (|V1/v_np| |&lt;w s='161' e='168'&gt;promote_VV0&lt;/w&gt;|
+                   (|NP/det_n1| |&lt;w s='169' e='172'&gt;his_APP$&lt;/w&gt;|
+                    (|N1/n_pp-of| |&lt;w s='173' e='179'&gt;vision_NN1&lt;/w&gt;|
+                     (|PP/p1|
+                      (|P1/p_n1| |&lt;w s='180' e='182'&gt;of_IO&lt;/w&gt;|
+                       (|N1/ap_n1/-|
+                        (|AP/a1| (|A1/a| |&lt;w s='183' e='195'&gt;21st-century_JB&lt;/w&gt;|))
+                        (|N1/n| |&lt;w s='196' e='205'&gt;socialism_NN1&lt;/w&gt;|))))))))))))))
+           (|End-punct3/-| |&lt;w s='205' e='206'&gt;._.&lt;/w&gt;|))
         </slot>
       </edge>
-      <edge type="syntree">
+      <edge type="syntree" id="s1" source="v0" target="v35" cfrom="0" cto="206">
         <slot name="weight">-70.966</slot>
         <slot name="tree">
-        (|T/txt-sc1/-+|
-         (|S/pp-sfin_s/+|
-          (|PP/p1|
-           (|P1/p_s| |As_CSA|
-            (|S/np_vp| (|NP/n1-plu| (|N1/n| |leader+s_NN2|))
-             (|V1/v_pp| |gather_VV0|
-              (|PP/p1|
-               (|P1/p_np| |in_II|
-                (|NP/n1-name_np-r|
-                 (|N1/n_pp-of| |Argentina_NP1|
-                  (|PP/adv_p1| (|AP/a1| (|A1/a| |ahead_RR|))
-                   (|P1/p_np| |of_IO|
-                    (|NP/det_a1-r/+-| |this_DD1| (|N1/n-nt| |weekend+s_NNT2|)
-                     (|A1/a| |regional_JJ|)))))
-                 (|NP/n1-plu| (|N1/n| |talk+s_NN2|)))))))))
-          |,_,|
-          (|S/np_vp|
-           (|NP/np-poss_n1|
-            (|NP/np_n-poss|
-             (|NP/n1-name|
-              (|N1/n-name_n1-name| |Hugo_NP1|
-               (|N1/ing_n1-r/-+| |Chávez_VVG| |,_,| (|N1/n-name| |Venezuela_NP1|))))
-             |'s+_$|)
-            (|N1/ap_n1/-| (|AP/a1| (|A1/a| |populist_JJ|)) (|N1/n| |president_NN1|)))
-           (|V1/be_ing/--| |be+s_VBZ|
-            (|V1/v_np| |use+ing_VVG|
-             (|NP/det_n1| |an_AT1|
-              (|N1/n_n1| |energy_NN1|
-               (|N1/n_inf| |windfall_NN1|
-                (|V1/to_bse/-| |to_TO|
-                 (|V1/vp_vp-coord/-|
-                  (|V1/v_np| |win_VV0| (|NP/n1-plu| (|N1/n| |friend+s_NN2|)))
-                  (|V1/cj-end_vp/--| |and_CC|
-                   (|V1/v_np| |promote_VV0|
-                    (|NP/det_n1| |his_APP$|
-                     (|N1/n_pp-of| |vision_NN1|
-                      (|PP/p1|
-                       (|P1/p_n1| |of_IO|
-                        (|N1/ap_n1/-| (|AP/a1| (|A1/a| |21st-century_JB|))
-                         (|N1/n| |socialism_NN1|)))))))))))))))))
-         (|End-punct3/-| ._.))
+          (|T/txt-sc1/-+|
+           (|S/pp-sfin_s/+|
+            (|PP/p1|
+             (|P1/p_s| |&lt;w s='0' e='2'&gt;As_CSA&lt;/w&gt;|
+              (|S/np_vp| (|NP/n1-plu| (|N1/n| |&lt;w s='3' e='10'&gt;leader+s_NN2&lt;/w&gt;|))
+               (|V1/v_pp| |&lt;w s='11' e='17'&gt;gather_VV0&lt;/w&gt;|
+                (|PP/p1|
+                 (|P1/p_np| |&lt;w s='18' e='20'&gt;in_II&lt;/w&gt;|
+                  (|NP/n1-name_np-r|
+                   (|N1/n_pp-of| |&lt;w s='21' e='30'&gt;Argentina_NP1&lt;/w&gt;|
+                    (|PP/adv_p1| (|AP/a1| (|A1/a| |&lt;w s='31' e='36'&gt;ahead_RR&lt;/w&gt;|))
+                     (|P1/p_np| |&lt;w s='37' e='39'&gt;of_IO&lt;/w&gt;|
+                      (|NP/det_a1-r/+-| |&lt;w s='40' e='44'&gt;this_DD1&lt;/w&gt;|
+                       (|N1/n-nt| |&lt;w s='45' e='53'&gt;weekend+s_NNT2&lt;/w&gt;|)
+                       (|A1/a| |&lt;w s='54' e='62'&gt;regional_JJ&lt;/w&gt;|)))))
+                   (|NP/n1-plu| (|N1/n| |&lt;w s='63' e='68'&gt;talk+s_NN2&lt;/w&gt;|)))))))))
+            |&lt;w s='68' e='69'&gt;,_,&lt;/w&gt;|
+            (|S/np_vp|
+             (|NP/np-poss_n1|
+              (|NP/np_n-poss|
+               (|NP/n1-name|
+                (|N1/n-name_n1-name| |&lt;w s='70' e='74'&gt;Hugo_NP1&lt;/w&gt;|
+                 (|N1/ing_n1-r/-+| |&lt;w s='75' e='81'&gt;Chávez_VVG&lt;/w&gt;|
+                  |&lt;w s='81' e='82'&gt;,_,&lt;/w&gt;|
+                  (|N1/n-name| |&lt;w s='83' e='92'&gt;Venezuela_NP1&lt;/w&gt;|))))
+               |&lt;w s='92' e='94'&gt;'s+_$&lt;/w&gt;|)
+              (|N1/ap_n1/-| (|AP/a1| (|A1/a| |&lt;w s='95' e='103'&gt;populist_JJ&lt;/w&gt;|))
+               (|N1/n| |&lt;w s='104' e='113'&gt;president_NN1&lt;/w&gt;|)))
+             (|V1/be_ing/--| |&lt;w s='114' e='116'&gt;be+s_VBZ&lt;/w&gt;|
+              (|V1/v_np| |&lt;w s='117' e='122'&gt;use+ing_VVG&lt;/w&gt;|
+               (|NP/det_n1| |&lt;w s='123' e='125'&gt;an_AT1&lt;/w&gt;|
+                (|N1/n_n1| |&lt;w s='126' e='132'&gt;energy_NN1&lt;/w&gt;|
+                 (|N1/n_inf| |&lt;w s='133' e='141'&gt;windfall_NN1&lt;/w&gt;|
+                  (|V1/to_bse/-| |&lt;w s='142' e='144'&gt;to_TO&lt;/w&gt;|
+                   (|V1/vp_vp-coord/-|
+                    (|V1/v_np| |&lt;w s='145' e='148'&gt;win_VV0&lt;/w&gt;|
+                     (|NP/n1-plu| (|N1/n| |&lt;w s='149' e='156'&gt;friend+s_NN2&lt;/w&gt;|)))
+                    (|V1/cj-end_vp/--| |&lt;w s='157' e='160'&gt;and_CC&lt;/w&gt;|
+                     (|V1/v_np| |&lt;w s='161' e='168'&gt;promote_VV0&lt;/w&gt;|
+                      (|NP/det_n1| |&lt;w s='169' e='172'&gt;his_APP$&lt;/w&gt;|
+                       (|N1/n_pp-of| |&lt;w s='173' e='179'&gt;vision_NN1&lt;/w&gt;|
+                        (|PP/p1|
+                         (|P1/p_n1| |&lt;w s='180' e='182'&gt;of_IO&lt;/w&gt;|
+                          (|N1/ap_n1/-|
+                           (|AP/a1| (|A1/a| |&lt;w s='183' e='195'&gt;21st-century_JB&lt;/w&gt;|))
+                           (|N1/n|
+                            |&lt;w s='196' e='205'&gt;socialism_NN1&lt;/w&gt;|)))))))))))))))))
+           (|End-punct3/-| |&lt;w s='205' e='206'&gt;._.&lt;/w&gt;|))
         </slot>
       </edge>
-      <edge type="syntree">
+      <edge type="syntree" id="s2" source="v0" target="v35" cfrom="0" cto="206">
         <slot name="weight">-71.363</slot>
         <slot name="tree">
-        (|T/txt-sc1/-+|
-         (|S/pp-sfin_s/+|
-          (|PP/p1|
-           (|P1/p_s| |As_CSA|
-            (|S/np_vp| (|NP/n1-plu| (|N1/n| |leader+s_NN2|))
-             (|V1/v_pp_np-hs-r| |gather_VV0|
-              (|PP/p1|
-               (|P1/p_np-name| |in_II|
-                (|NP/n1-name|
-                 (|N1/n_pp-of| |Argentina_NP1|
-                  (|PP/adv_p1| (|AP/a1| (|A1/a| |ahead_RR|))
-                   (|P1/p_np| |of_IO|
-                    (|NP/det_a1-r/+-| |this_DD1| (|N1/n-nt| |weekend+s_NNT2|)
-                     (|A1/a| |regional_JJ|))))))))
-              (|NP/n1-plu| (|N1/n| |talk+s_NN2|))))))
-          |,_,|
-          (|S/np_vp|
-           (|NP/np-poss_n1|
-            (|NP/np_n-poss|
-             (|NP/n1-name|
-              (|N1/n-name_n1-name| |Hugo_NP1|
-               (|N1/ing_n1-r/-+| |Chávez_VVG| |,_,| (|N1/n-name| |Venezuela_NP1|))))
-             |'s+_$|)
-            (|N1/ap_n1/-| (|AP/a1| (|A1/a| |populist_JJ|)) (|N1/n| |president_NN1|)))
-           (|V1/be_ing/--| |be+s_VBZ|
-            (|V1/v_np_inf| |use+ing_VVG|
-             (|NP/det_n1| |an_AT1| (|N1/n_n1| |energy_NN1| (|N1/n| |windfall_NN1|)))
-             (|V1/to_bse/-| |to_TO|
-              (|V1/vp_vp-coord/-|
-               (|V1/v_np| |win_VV0| (|NP/n1-plu| (|N1/n| |friend+s_NN2|)))
-               (|V1/cj-end_vp/--| |and_CC|
-                (|V1/v_np| |promote_VV0|
-                 (|NP/det_n1| |his_APP$|
-                  (|N1/n_pp-of| |vision_NN1|
-                   (|PP/p1|
-                    (|P1/p_n1| |of_IO|
-                     (|N1/ap_n1/-| (|AP/a1| (|A1/a| |21st-century_JB|))
-                      (|N1/n| |socialism_NN1|))))))))))))))
-         (|End-punct3/-| ._.))
+          (|T/txt-sc1/-+|
+           (|S/pp-sfin_s/+|
+            (|PP/p1|
+             (|P1/p_s| |&lt;w s='0' e='2'&gt;As_CSA&lt;/w&gt;|
+              (|S/np_vp| (|NP/n1-plu| (|N1/n| |&lt;w s='3' e='10'&gt;leader+s_NN2&lt;/w&gt;|))
+               (|V1/v_pp_np-hs-r| |&lt;w s='11' e='17'&gt;gather_VV0&lt;/w&gt;|
+                (|PP/p1|
+                 (|P1/p_np-name| |&lt;w s='18' e='20'&gt;in_II&lt;/w&gt;|
+                  (|NP/n1-name|
+                   (|N1/n_pp-of| |&lt;w s='21' e='30'&gt;Argentina_NP1&lt;/w&gt;|
+                    (|PP/adv_p1| (|AP/a1| (|A1/a| |&lt;w s='31' e='36'&gt;ahead_RR&lt;/w&gt;|))
+                     (|P1/p_np| |&lt;w s='37' e='39'&gt;of_IO&lt;/w&gt;|
+                      (|NP/det_a1-r/+-| |&lt;w s='40' e='44'&gt;this_DD1&lt;/w&gt;|
+                       (|N1/n-nt| |&lt;w s='45' e='53'&gt;weekend+s_NNT2&lt;/w&gt;|)
+                       (|A1/a| |&lt;w s='54' e='62'&gt;regional_JJ&lt;/w&gt;|))))))))
+                (|NP/n1-plu| (|N1/n| |&lt;w s='63' e='68'&gt;talk+s_NN2&lt;/w&gt;|))))))
+            |&lt;w s='68' e='69'&gt;,_,&lt;/w&gt;|
+            (|S/np_vp|
+             (|NP/np-poss_n1|
+              (|NP/np_n-poss|
+               (|NP/n1-name|
+                (|N1/n-name_n1-name| |&lt;w s='70' e='74'&gt;Hugo_NP1&lt;/w&gt;|
+                 (|N1/ing_n1-r/-+| |&lt;w s='75' e='81'&gt;Chávez_VVG&lt;/w&gt;|
+                  |&lt;w s='81' e='82'&gt;,_,&lt;/w&gt;|
+                  (|N1/n-name| |&lt;w s='83' e='92'&gt;Venezuela_NP1&lt;/w&gt;|))))
+               |&lt;w s='92' e='94'&gt;'s+_$&lt;/w&gt;|)
+              (|N1/ap_n1/-| (|AP/a1| (|A1/a| |&lt;w s='95' e='103'&gt;populist_JJ&lt;/w&gt;|))
+               (|N1/n| |&lt;w s='104' e='113'&gt;president_NN1&lt;/w&gt;|)))
+             (|V1/be_ing/--| |&lt;w s='114' e='116'&gt;be+s_VBZ&lt;/w&gt;|
+              (|V1/v_np_inf| |&lt;w s='117' e='122'&gt;use+ing_VVG&lt;/w&gt;|
+               (|NP/det_n1| |&lt;w s='123' e='125'&gt;an_AT1&lt;/w&gt;|
+                (|N1/n_n1| |&lt;w s='126' e='132'&gt;energy_NN1&lt;/w&gt;|
+                 (|N1/n| |&lt;w s='133' e='141'&gt;windfall_NN1&lt;/w&gt;|)))
+               (|V1/to_bse/-| |&lt;w s='142' e='144'&gt;to_TO&lt;/w&gt;|
+                (|V1/vp_vp-coord/-|
+                 (|V1/v_np| |&lt;w s='145' e='148'&gt;win_VV0&lt;/w&gt;|
+                  (|NP/n1-plu| (|N1/n| |&lt;w s='149' e='156'&gt;friend+s_NN2&lt;/w&gt;|)))
+                 (|V1/cj-end_vp/--| |&lt;w s='157' e='160'&gt;and_CC&lt;/w&gt;|
+                  (|V1/v_np| |&lt;w s='161' e='168'&gt;promote_VV0&lt;/w&gt;|
+                   (|NP/det_n1| |&lt;w s='169' e='172'&gt;his_APP$&lt;/w&gt;|
+                    (|N1/n_pp-of| |&lt;w s='173' e='179'&gt;vision_NN1&lt;/w&gt;|
+                     (|PP/p1|
+                      (|P1/p_n1| |&lt;w s='180' e='182'&gt;of_IO&lt;/w&gt;|
+                       (|N1/ap_n1/-|
+                        (|AP/a1| (|A1/a| |&lt;w s='183' e='195'&gt;21st-century_JB&lt;/w&gt;|))
+                        (|N1/n| |&lt;w s='196' e='205'&gt;socialism_NN1&lt;/w&gt;|))))))))))))))
+           (|End-punct3/-| |&lt;w s='205' e='206'&gt;._.&lt;/w&gt;|))
         </slot>
       </edge>
-      <edge type="syntree">
+      <edge type="syntree" id="s3" source="v0" target="v35" cfrom="0" cto="206">
         <slot name="weight">-71.389</slot>
         <slot name="tree">
-        (|T/txt-sc1/-+|
-         (|S/pp-sfin_s/+|
-          (|PP/p1|
-           (|P1/p_s| |As_CSA|
-            (|S/np_vp| (|NP/n1-plu| (|N1/n| |leader+s_NN2|))
-             (|V1/vp_pp| (|V1/v| |gather_VV0|)
-              (|PP/p1|
-               (|P1/p_np| |in_II|
-                (|NP/n1-name_np-r|
-                 (|N1/n_pp-of| |Argentina_NP1|
-                  (|PP/adv_p1| (|AP/a1| (|A1/a| |ahead_RR|))
-                   (|P1/p_np| |of_IO|
-                    (|NP/det_a1-r/+-| |this_DD1| (|N1/n-nt| |weekend+s_NNT2|)
-                     (|A1/a| |regional_JJ|)))))
-                 (|NP/n1-plu| (|N1/n| |talk+s_NN2|)))))))))
-          |,_,|
-          (|S/np_vp|
-           (|NP/np-poss_n1|
-            (|NP/np_n-poss|
-             (|NP/n1-name|
-              (|N1/n-name_n1-name| |Hugo_NP1|
-               (|N1/ing_n1-r/-+| |Chávez_VVG| |,_,| (|N1/n-name| |Venezuela_NP1|))))
-             |'s+_$|)
-            (|N1/ap_n1/-| (|AP/a1| (|A1/a| |populist_JJ|)) (|N1/n| |president_NN1|)))
-           (|V1/be_ing/--| |be+s_VBZ|
-            (|V1/v_np_inf| |use+ing_VVG|
-             (|NP/det_n1| |an_AT1| (|N1/n_n1| |energy_NN1| (|N1/n| |windfall_NN1|)))
-             (|V1/to_bse/-| |to_TO|
-              (|V1/vp_vp-coord/-|
-               (|V1/v_np| |win_VV0| (|NP/n1-plu| (|N1/n| |friend+s_NN2|)))
-               (|V1/cj-end_vp/--| |and_CC|
-                (|V1/v_np| |promote_VV0|
-                 (|NP/det_n1| |his_APP$|
-                  (|N1/n_pp-of| |vision_NN1|
-                   (|PP/p1|
-                    (|P1/p_n1| |of_IO|
-                     (|N1/ap_n1/-| (|AP/a1| (|A1/a| |21st-century_JB|))
-                      (|N1/n| |socialism_NN1|))))))))))))))
-         (|End-punct3/-| ._.))
+          (|T/txt-sc1/-+|
+           (|S/pp-sfin_s/+|
+            (|PP/p1|
+             (|P1/p_s| |&lt;w s='0' e='2'&gt;As_CSA&lt;/w&gt;|
+              (|S/np_vp| (|NP/n1-plu| (|N1/n| |&lt;w s='3' e='10'&gt;leader+s_NN2&lt;/w&gt;|))
+               (|V1/vp_pp| (|V1/v| |&lt;w s='11' e='17'&gt;gather_VV0&lt;/w&gt;|)
+                (|PP/p1|
+                 (|P1/p_np| |&lt;w s='18' e='20'&gt;in_II&lt;/w&gt;|
+                  (|NP/n1-name_np-r|
+                   (|N1/n_pp-of| |&lt;w s='21' e='30'&gt;Argentina_NP1&lt;/w&gt;|
+                    (|PP/adv_p1| (|AP/a1| (|A1/a| |&lt;w s='31' e='36'&gt;ahead_RR&lt;/w&gt;|))
+                     (|P1/p_np| |&lt;w s='37' e='39'&gt;of_IO&lt;/w&gt;|
+                      (|NP/det_a1-r/+-| |&lt;w s='40' e='44'&gt;this_DD1&lt;/w&gt;|
+                       (|N1/n-nt| |&lt;w s='45' e='53'&gt;weekend+s_NNT2&lt;/w&gt;|)
+                       (|A1/a| |&lt;w s='54' e='62'&gt;regional_JJ&lt;/w&gt;|)))))
+                   (|NP/n1-plu| (|N1/n| |&lt;w s='63' e='68'&gt;talk+s_NN2&lt;/w&gt;|)))))))))
+            |&lt;w s='68' e='69'&gt;,_,&lt;/w&gt;|
+            (|S/np_vp|
+             (|NP/np-poss_n1|
+              (|NP/np_n-poss|
+               (|NP/n1-name|
+                (|N1/n-name_n1-name| |&lt;w s='70' e='74'&gt;Hugo_NP1&lt;/w&gt;|
+                 (|N1/ing_n1-r/-+| |&lt;w s='75' e='81'&gt;Chávez_VVG&lt;/w&gt;|
+                  |&lt;w s='81' e='82'&gt;,_,&lt;/w&gt;|
+                  (|N1/n-name| |&lt;w s='83' e='92'&gt;Venezuela_NP1&lt;/w&gt;|))))
+               |&lt;w s='92' e='94'&gt;'s+_$&lt;/w&gt;|)
+              (|N1/ap_n1/-| (|AP/a1| (|A1/a| |&lt;w s='95' e='103'&gt;populist_JJ&lt;/w&gt;|))
+               (|N1/n| |&lt;w s='104' e='113'&gt;president_NN1&lt;/w&gt;|)))
+             (|V1/be_ing/--| |&lt;w s='114' e='116'&gt;be+s_VBZ&lt;/w&gt;|
+              (|V1/v_np_inf| |&lt;w s='117' e='122'&gt;use+ing_VVG&lt;/w&gt;|
+               (|NP/det_n1| |&lt;w s='123' e='125'&gt;an_AT1&lt;/w&gt;|
+                (|N1/n_n1| |&lt;w s='126' e='132'&gt;energy_NN1&lt;/w&gt;|
+                 (|N1/n| |&lt;w s='133' e='141'&gt;windfall_NN1&lt;/w&gt;|)))
+               (|V1/to_bse/-| |&lt;w s='142' e='144'&gt;to_TO&lt;/w&gt;|
+                (|V1/vp_vp-coord/-|
+                 (|V1/v_np| |&lt;w s='145' e='148'&gt;win_VV0&lt;/w&gt;|
+                  (|NP/n1-plu| (|N1/n| |&lt;w s='149' e='156'&gt;friend+s_NN2&lt;/w&gt;|)))
+                 (|V1/cj-end_vp/--| |&lt;w s='157' e='160'&gt;and_CC&lt;/w&gt;|
+                  (|V1/v_np| |&lt;w s='161' e='168'&gt;promote_VV0&lt;/w&gt;|
+                   (|NP/det_n1| |&lt;w s='169' e='172'&gt;his_APP$&lt;/w&gt;|
+                    (|N1/n_pp-of| |&lt;w s='173' e='179'&gt;vision_NN1&lt;/w&gt;|
+                     (|PP/p1|
+                      (|P1/p_n1| |&lt;w s='180' e='182'&gt;of_IO&lt;/w&gt;|
+                       (|N1/ap_n1/-|
+                        (|AP/a1| (|A1/a| |&lt;w s='183' e='195'&gt;21st-century_JB&lt;/w&gt;|))
+                        (|N1/n| |&lt;w s='196' e='205'&gt;socialism_NN1&lt;/w&gt;|))))))))))))))
+           (|End-punct3/-| |&lt;w s='205' e='206'&gt;._.&lt;/w&gt;|))
         </slot>
       </edge>
-      <edge type="syntree">
+      <edge type="syntree" id="s4" source="v0" target="v35" cfrom="0" cto="206">
         <slot name="weight">-72.316</slot>
         <slot name="tree">
-        (|T/txt-sc1/-+|
-         (|S/pp-sfin_s/+|
-          (|PP/p1|
-           (|P1/p_s| |As_CSA|
-            (|S/np_vp| (|NP/n1-plu| (|N1/n| |leader+s_NN2|))
-             (|V1/v_pp_np-hs-r| |gather_VV0|
-              (|PP/p1|
-               (|P1/p_np-name| |in_II|
-                (|NP/n1-name|
-                 (|N1/n_pp-of| |Argentina_NP1|
-                  (|PP/adv_p1| (|AP/a1| (|A1/a| |ahead_RR|))
-                   (|P1/p_np| |of_IO|
-                    (|NP/det_a1-r/+-| |this_DD1| (|N1/n-nt| |weekend+s_NNT2|)
-                     (|A1/a| |regional_JJ|))))))))
-              (|NP/n1-plu| (|N1/n| |talk+s_NN2|))))))
-          |,_,|
-          (|S/np_vp|
-           (|NP/np-poss_n1|
-            (|NP/np_n-poss|
-             (|NP/n1-name|
-              (|N1/n-name_n1-name| |Hugo_NP1|
-               (|N1/ing_n1-r/-+| |Chávez_VVG| |,_,| (|N1/n-name| |Venezuela_NP1|))))
-             |'s+_$|)
-            (|N1/ap_n1/-| (|AP/a1| (|A1/a| |populist_JJ|)) (|N1/n| |president_NN1|)))
-           (|V1/be_ing/--| |be+s_VBZ|
-            (|V1/v_np| |use+ing_VVG|
-             (|NP/det_n1| |an_AT1|
-              (|N1/n_n1| |energy_NN1|
-               (|N1/n_inf| |windfall_NN1|
-                (|V1/to_bse/-| |to_TO|
-                 (|V1/vp_vp-coord/-|
-                  (|V1/v_np| |win_VV0| (|NP/n1-plu| (|N1/n| |friend+s_NN2|)))
-                  (|V1/cj-end_vp/--| |and_CC|
-                   (|V1/v_np| |promote_VV0|
-                    (|NP/det_n1| |his_APP$|
-                     (|N1/n_pp-of| |vision_NN1|
-                      (|PP/p1|
-                       (|P1/p_n1| |of_IO|
-                        (|N1/ap_n1/-| (|AP/a1| (|A1/a| |21st-century_JB|))
-                         (|N1/n| |socialism_NN1|)))))))))))))))))
-         (|End-punct3/-| ._.))
+          (|T/txt-sc1/-+|
+           (|S/pp-sfin_s/+|
+            (|PP/p1|
+             (|P1/p_s| |&lt;w s='0' e='2'&gt;As_CSA&lt;/w&gt;|
+              (|S/np_vp| (|NP/n1-plu| (|N1/n| |&lt;w s='3' e='10'&gt;leader+s_NN2&lt;/w&gt;|))
+               (|V1/v_pp_np-hs-r| |&lt;w s='11' e='17'&gt;gather_VV0&lt;/w&gt;|
+                (|PP/p1|
+                 (|P1/p_np-name| |&lt;w s='18' e='20'&gt;in_II&lt;/w&gt;|
+                  (|NP/n1-name|
+                   (|N1/n_pp-of| |&lt;w s='21' e='30'&gt;Argentina_NP1&lt;/w&gt;|
+                    (|PP/adv_p1| (|AP/a1| (|A1/a| |&lt;w s='31' e='36'&gt;ahead_RR&lt;/w&gt;|))
+                     (|P1/p_np| |&lt;w s='37' e='39'&gt;of_IO&lt;/w&gt;|
+                      (|NP/det_a1-r/+-| |&lt;w s='40' e='44'&gt;this_DD1&lt;/w&gt;|
+                       (|N1/n-nt| |&lt;w s='45' e='53'&gt;weekend+s_NNT2&lt;/w&gt;|)
+                       (|A1/a| |&lt;w s='54' e='62'&gt;regional_JJ&lt;/w&gt;|))))))))
+                (|NP/n1-plu| (|N1/n| |&lt;w s='63' e='68'&gt;talk+s_NN2&lt;/w&gt;|))))))
+            |&lt;w s='68' e='69'&gt;,_,&lt;/w&gt;|
+            (|S/np_vp|
+             (|NP/np-poss_n1|
+              (|NP/np_n-poss|
+               (|NP/n1-name|
+                (|N1/n-name_n1-name| |&lt;w s='70' e='74'&gt;Hugo_NP1&lt;/w&gt;|
+                 (|N1/ing_n1-r/-+| |&lt;w s='75' e='81'&gt;Chávez_VVG&lt;/w&gt;|
+                  |&lt;w s='81' e='82'&gt;,_,&lt;/w&gt;|
+                  (|N1/n-name| |&lt;w s='83' e='92'&gt;Venezuela_NP1&lt;/w&gt;|))))
+               |&lt;w s='92' e='94'&gt;'s+_$&lt;/w&gt;|)
+              (|N1/ap_n1/-| (|AP/a1| (|A1/a| |&lt;w s='95' e='103'&gt;populist_JJ&lt;/w&gt;|))
+               (|N1/n| |&lt;w s='104' e='113'&gt;president_NN1&lt;/w&gt;|)))
+             (|V1/be_ing/--| |&lt;w s='114' e='116'&gt;be+s_VBZ&lt;/w&gt;|
+              (|V1/v_np| |&lt;w s='117' e='122'&gt;use+ing_VVG&lt;/w&gt;|
+               (|NP/det_n1| |&lt;w s='123' e='125'&gt;an_AT1&lt;/w&gt;|
+                (|N1/n_n1| |&lt;w s='126' e='132'&gt;energy_NN1&lt;/w&gt;|
+                 (|N1/n_inf| |&lt;w s='133' e='141'&gt;windfall_NN1&lt;/w&gt;|
+                  (|V1/to_bse/-| |&lt;w s='142' e='144'&gt;to_TO&lt;/w&gt;|
+                   (|V1/vp_vp-coord/-|
+                    (|V1/v_np| |&lt;w s='145' e='148'&gt;win_VV0&lt;/w&gt;|
+                     (|NP/n1-plu| (|N1/n| |&lt;w s='149' e='156'&gt;friend+s_NN2&lt;/w&gt;|)))
+                    (|V1/cj-end_vp/--| |&lt;w s='157' e='160'&gt;and_CC&lt;/w&gt;|
+                     (|V1/v_np| |&lt;w s='161' e='168'&gt;promote_VV0&lt;/w&gt;|
+                      (|NP/det_n1| |&lt;w s='169' e='172'&gt;his_APP$&lt;/w&gt;|
+                       (|N1/n_pp-of| |&lt;w s='173' e='179'&gt;vision_NN1&lt;/w&gt;|
+                        (|PP/p1|
+                         (|P1/p_n1| |&lt;w s='180' e='182'&gt;of_IO&lt;/w&gt;|
+                          (|N1/ap_n1/-|
+                           (|AP/a1| (|A1/a| |&lt;w s='183' e='195'&gt;21st-century_JB&lt;/w&gt;|))
+                           (|N1/n|
+                            |&lt;w s='196' e='205'&gt;socialism_NN1&lt;/w&gt;|)))))))))))))))))
+           (|End-punct3/-| |&lt;w s='205' e='206'&gt;._.&lt;/w&gt;|))
         </slot>
       </edge>
     </lattice>
@@ -2042,13 +2114,17 @@ PARSED = [
       </edge>
       <edge type="morph" id="m1" source="v2" target="v3" cfrom="8" cto="14" deps="p2">chase+ed</edge>
       <edge type="morph" id="m2" source="v2" target="v3" cfrom="8" cto="14" deps="p3">chase+ed</edge>
-      <edge type="syntree">
+      <edge type="syntree" id="s0" source="v0" target="v6" cfrom="0" cto="23">
         <slot name="weight">-4.679</slot>
         <slot name="tree">
         (|T/txt-sc1/-+|
-         (|S/np_vp| (|NP/det_n1| |The_AT| (|N1/n| |cat_NN1|))
-          (|V1/v_np| |chase+ed_VVD| (|NP/det_n1| |the_AT| (|N1/n| |dog_NN1|))))
-         (|End-punct3/-| ._.))
+         (|S/np_vp|
+          (|NP/det_n1| |&lt;w s='0' e='3'&gt;The_AT&lt;/w&gt;|
+           (|N1/n| |&lt;w s='4' e='7'&gt;cat_NN1&lt;/w&gt;|))
+          (|V1/v_np| |&lt;w s='8' e='14'&gt;chase+ed_VVD&lt;/w&gt;|
+           (|NP/det_n1| |&lt;w s='15' e='18'&gt;the_AT&lt;/w&gt;|
+            (|N1/n| |&lt;w s='19' e='22'&gt;dog_NN1&lt;/w&gt;|))))
+         (|End-punct3/-| |&lt;w s='22' e='23'&gt;._.&lt;/w&gt;|))
         </slot>
       </edge>
     </lattice>

@@ -2,11 +2,13 @@ import unittest;
 
 import fspp;
 import pet;
+import rasprmrs;
 
 def suite():
   ts = unittest.TestSuite();
   ts.addTests( [ fspp.suite(),
-                 pet.suite() ] );
+                 pet.suite(),
+                 rasprmrs.suite() ] );
   return ts;
 
 

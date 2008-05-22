@@ -31,6 +31,7 @@ class TestParser( pyrmrstest.mytest.MyTestCase ):
       rd = pyrmrs.smafpkg.smafreader.SMAFReader( f );
       smaf = rd.getFirst();
       smaf = self.globalstate.parser.parse( smaf );
+      #print smaf.str_xml();
       self.assertStringCrudelyEqual( smaf.str_xml(), data.PARSED[i] );
 
 

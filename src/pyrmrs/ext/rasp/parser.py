@@ -35,10 +35,10 @@ class Parser( pyrmrs.ext.basicio.BasicIO ):
       line = tok.text;
       for (pos,morphs) in posmorph:
         if len( morphs ) == 0:
-          line += " %s_%s:%s " % ( tok.text, pos.tag, pos.weight );
+          line += " <w s='%d' e='%d'>%s_%s:%s</w>" % ( tok.cfrom, tok.cto, tok.text, pos.tag, pos.weight );
         else:
           for morph in morphs:
-            line += " %s_%s:%s" % ( morph.text, pos.tag, pos.weight );
+            line += " <w s='%d' e='%d'>%s_%s:%s</w>" % ( tok.cfrom, tok.cto, morph.text, pos.tag, pos.weight );
       parserinput += line+"\n";
     
     #parserinput = parserinput[ : len(parserinput) - 1 ];
@@ -59,6 +59,8 @@ class Parser( pyrmrs.ext.basicio.BasicIO ):
       
     #print "|>%s<|" % weights;
     
+    sid = 0;
+    
     for i in range( 0, len(weights) ):
       
       start_indicator = "tree-rasp: %d\n" % (i+1);
@@ -73,8 +75,18 @@ class Parser( pyrmrs.ext.basicio.BasicIO ):
       assert tree[len(tree)-1] == ")";
       
       newedge = pyrmrs.smafpkg.syntree_edge.SyntaxTreeEdge();
+      
+      newedge.id = "s%d" % sid;
+      sid += 1;
+
+      newedge.source = smaf.lattice.init;
+      newedge.target = smaf.lattice.final;
+      newedge.cfrom = smaf.lattice.cfrom;
+      newedge.cto = smaf.lattice.cto;
+      
       newedge.weight = weights[i];
       newedge.tree = tree;
+      
       smaf.lattice.register( newedge );
 
     return smaf;

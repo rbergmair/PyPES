@@ -14,6 +14,7 @@ class Fspp( pyrmrs.ext.basicio.BasicIO ):
     "(preprocessor::simple-io-preprocess *standard-input* *standard-output*)",
     "(excl:exit)"
   );
+  
   EOB_MARKER = "\027" + 511*"\0";
 
   
@@ -58,3 +59,8 @@ class Fspp( pyrmrs.ext.basicio.BasicIO ):
     
     return smaf_out;
   
+  
+  def close_pipe( self ):
+    
+    self.write_block( "" );
+    pyrmrs.ext.basicio.BasicIO.close_pipe( self );

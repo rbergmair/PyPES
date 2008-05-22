@@ -2,6 +2,25 @@ import md5;
 import string;
 
 
+def unindent( stri ):
+  
+  if stri[0] != "\n":
+    return stri;
+  
+  if isinstance( stri, str ):
+    indent = ""; 
+  else:
+    indent = u"";
+    
+  for ch in stri[1:]:
+    if string.whitespace.find( ch ) == -1:
+      break;
+    indent += ch;
+  
+  return stri.replace( "\n"+indent, "\n" );
+      
+
+
 
 def debug_format( stri ):
   
