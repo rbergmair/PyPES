@@ -42,7 +42,7 @@ class Lattice( pyrmrs.xmltools.reader_element.ReaderElement ):
     if attrs.has_key( "cfrom" ):
       self.cfrom = int( attrs[ "cfrom" ] );
     if attrs.has_key( "cto" ):
-      self.cfrom = int( attrs[ "cto" ] );
+      self.cto = int( attrs[ "cto" ] );
       
     
 

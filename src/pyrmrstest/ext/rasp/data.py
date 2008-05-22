@@ -86,6 +86,7 @@ SPLITTER_OUT = [
 TEXT = [
   u"The dog barks.",
   u"I saw a man with a telescope.",
+  u"Hugo Chávez chased the dog.",
   u"As leaders gather in Argentina ahead of this "+
     u"weekends regional talks, Hugo Chávez, Venezuela's "+
     u"populist president is using an energy windfall to win "+
@@ -96,7 +97,7 @@ TEXT = [
 
   
 TOKENISED = [
-  u"""<smaf cfrom="0" cto="14">
+  u"""<smaf>
     <text>The dog barks.</text>
     <lattice init="v0" final="v4" cfrom="0" cto="14">
       <edge type="token" id="t0" source="v0" target="v1" cfrom="0" cto="3">The</edge>
@@ -105,7 +106,7 @@ TOKENISED = [
       <edge type="token" id="t3" source="v3" target="v4" cfrom="13" cto="14">.</edge>
     </lattice>
   </smaf>""",
-  u"""<smaf cfrom="0" cto="29">
+  u"""<smaf>
     <text>I saw a man with a telescope.</text>
     <lattice init="v0" final="v8" cfrom="0" cto="29">
       <edge type="token" id="t0" source="v0" target="v1" cfrom="0" cto="1">I</edge>
@@ -118,7 +119,18 @@ TOKENISED = [
       <edge type="token" id="t7" source="v7" target="v8" cfrom="28" cto="29">.</edge>
     </lattice>
   </smaf>""",
-  u"""<smaf cfrom="0" cto="206">
+  u"""<smaf>
+    <text>Hugo Chávez chased the dog.</text>
+    <lattice init="v0" final="v6" cfrom="0" cto="27">
+      <edge type="token" id="t0" source="v0" target="v1" cfrom="0" cto="4">Hugo</edge>
+      <edge type="token" id="t1" source="v1" target="v2" cfrom="5" cto="11">Chávez</edge>
+      <edge type="token" id="t2" source="v2" target="v3" cfrom="12" cto="18">chased</edge>
+      <edge type="token" id="t3" source="v3" target="v4" cfrom="19" cto="22">the</edge>
+      <edge type="token" id="t4" source="v4" target="v5" cfrom="23" cto="26">dog</edge>
+      <edge type="token" id="t5" source="v5" target="v6" cfrom="26" cto="27">.</edge>
+    </lattice>
+  </smaf>""",
+  u"""<smaf>
     <text>As leaders gather in Argentina ahead of this weekends regional talks, Hugo Chávez, Venezuela's populist president is using an energy windfall to win friends and promote his vision of 21st-century socialism.</text>
     <lattice init="v0" final="v35" cfrom="0" cto="206">
       <edge type="token" id="t0" source="v0" target="v1" cfrom="0" cto="2">As</edge>
@@ -158,7 +170,7 @@ TOKENISED = [
       <edge type="token" id="t34" source="v34" target="v35" cfrom="205" cto="206">.</edge>
     </lattice>
   </smaf>""",
-  u"""<smaf cfrom="0" cto="23">
+  u"""<smaf>
     <text>The cat chased the dog.</text>
     <lattice init="v0" final="v6" cfrom="0" cto="23">
       <edge type="token" id="t0" source="v0" target="v1" cfrom="0" cto="3">The</edge>
@@ -175,7 +187,8 @@ TOKENISED = [
 
 TAGGED = [
   u"""<smaf>
-    <lattice init="v0" final="v4" cfrom="14">
+    <text>The dog barks.</text>
+    <lattice init="v0" final="v4" cfrom="0" cto="14">
       <edge type="token" id="t0" source="v0" target="v1" cfrom="0" cto="3">The</edge>
       <edge type="token" id="t1" source="v1" target="v2" cfrom="4" cto="7">dog</edge>
       <edge type="token" id="t2" source="v2" target="v3" cfrom="8" cto="13">barks</edge>
@@ -207,7 +220,8 @@ TAGGED = [
     </lattice>
   </smaf>""",
   u"""<smaf>
-    <lattice init="v0" final="v8" cfrom="29">
+    <text>I saw a man with a telescope.</text>
+    <lattice init="v0" final="v8" cfrom="0" cto="29">
       <edge type="token" id="t0" source="v0" target="v1" cfrom="0" cto="1">I</edge>
       <edge type="token" id="t1" source="v1" target="v2" cfrom="2" cto="5">saw</edge>
       <edge type="token" id="t2" source="v2" target="v3" cfrom="6" cto="7">a</edge>
@@ -287,7 +301,79 @@ TAGGED = [
     </lattice>
   </smaf>""",
   u"""<smaf>
-    <lattice init="v0" final="v35" cfrom="206">
+    <text>Hugo Chávez chased the dog.</text>
+    <lattice init="v0" final="v6" cfrom="0" cto="27">
+      <edge type="token" id="t0" source="v0" target="v1" cfrom="0" cto="4">Hugo</edge>
+      <edge type="token" id="t1" source="v1" target="v2" cfrom="5" cto="11">Chávez</edge>
+      <edge type="token" id="t2" source="v2" target="v3" cfrom="12" cto="18">chased</edge>
+      <edge type="token" id="t3" source="v3" target="v4" cfrom="19" cto="22">the</edge>
+      <edge type="token" id="t4" source="v4" target="v5" cfrom="23" cto="26">dog</edge>
+      <edge type="token" id="t5" source="v5" target="v6" cfrom="26" cto="27">.</edge>
+      <edge type="pos" id="p0" source="v0" target="v1" cfrom="0" cto="4" deps="t0">
+        <slot name="tag">NP1</slot>
+        <slot name="weight">1</slot>
+      </edge>
+      <edge type="pos" id="p1" source="v1" target="v2" cfrom="5" cto="11" deps="t1">
+        <slot name="tag">JJ</slot>
+        <slot name="weight">0.00357779</slot>
+      </edge>
+      <edge type="pos" id="p2" source="v1" target="v2" cfrom="5" cto="11" deps="t1">
+        <slot name="tag">NN1</slot>
+        <slot name="weight">0.792963</slot>
+      </edge>
+      <edge type="pos" id="p3" source="v1" target="v2" cfrom="5" cto="11" deps="t1">
+        <slot name="tag">NN2</slot>
+        <slot name="weight">0.151421</slot>
+      </edge>
+      <edge type="pos" id="p4" source="v1" target="v2" cfrom="5" cto="11" deps="t1">
+        <slot name="tag">RR</slot>
+        <slot name="weight">0.0461225</slot>
+      </edge>
+      <edge type="pos" id="p5" source="v1" target="v2" cfrom="5" cto="11" deps="t1">
+        <slot name="tag">VV0</slot>
+        <slot name="weight">0.000336622</slot>
+      </edge>
+      <edge type="pos" id="p6" source="v1" target="v2" cfrom="5" cto="11" deps="t1">
+        <slot name="tag">VVD</slot>
+        <slot name="weight">0.00531652</slot>
+      </edge>
+      <edge type="pos" id="p7" source="v1" target="v2" cfrom="5" cto="11" deps="t1">
+        <slot name="tag">VVG</slot>
+        <slot name="weight">0.000113307</slot>
+      </edge>
+      <edge type="pos" id="p8" source="v1" target="v2" cfrom="5" cto="11" deps="t1">
+        <slot name="tag">VVN</slot>
+        <slot name="weight">0.000149814</slot>
+      </edge>
+      <edge type="pos" id="p9" source="v2" target="v3" cfrom="12" cto="18" deps="t2">
+        <slot name="tag">VVD</slot>
+        <slot name="weight">0.886745</slot>
+      </edge>
+      <edge type="pos" id="p10" source="v2" target="v3" cfrom="12" cto="18" deps="t2">
+        <slot name="tag">VVN</slot>
+        <slot name="weight">0.113255</slot>
+      </edge>
+      <edge type="pos" id="p11" source="v3" target="v4" cfrom="19" cto="22" deps="t3">
+        <slot name="tag">AT</slot>
+        <slot name="weight">1</slot>
+      </edge>
+      <edge type="pos" id="p12" source="v4" target="v5" cfrom="23" cto="26" deps="t4">
+        <slot name="tag">NN1</slot>
+        <slot name="weight">0.999833</slot>
+      </edge>
+      <edge type="pos" id="p13" source="v4" target="v5" cfrom="23" cto="26" deps="t4">
+        <slot name="tag">VV0</slot>
+        <slot name="weight">0.000166966</slot>
+      </edge>
+      <edge type="pos" id="p14" source="v5" target="v6" cfrom="26" cto="27" deps="t5">
+        <slot name="tag">.</slot>
+        <slot name="weight">1</slot>
+      </edge>
+    </lattice>
+  </smaf>""",
+  u"""<smaf>
+    <text>As leaders gather in Argentina ahead of this weekends regional talks, Hugo Chávez, Venezuela's populist president is using an energy windfall to win friends and promote his vision of 21st-century socialism.</text>
+    <lattice init="v0" final="v35" cfrom="0" cto="206">
       <edge type="token" id="t0" source="v0" target="v1" cfrom="0" cto="2">As</edge>
       <edge type="token" id="t1" source="v1" target="v2" cfrom="3" cto="10">leaders</edge>
       <edge type="token" id="t2" source="v2" target="v3" cfrom="11" cto="17">gather</edge>
@@ -397,35 +483,35 @@ TAGGED = [
       </edge>
       <edge type="pos" id="p18" source="v13" target="v14" cfrom="75" cto="81" deps="t13">
         <slot name="tag">JJ</slot>
-        <slot name="weight">0.0337125</slot>
+        <slot name="weight">0.00377621</slot>
       </edge>
       <edge type="pos" id="p19" source="v13" target="v14" cfrom="75" cto="81" deps="t13">
         <slot name="tag">NN1</slot>
-        <slot name="weight">0.783491</slot>
+        <slot name="weight">0.0183804</slot>
       </edge>
       <edge type="pos" id="p20" source="v13" target="v14" cfrom="75" cto="81" deps="t13">
         <slot name="tag">NN2</slot>
-        <slot name="weight">0.110038</slot>
+        <slot name="weight">0.00426329</slot>
       </edge>
       <edge type="pos" id="p21" source="v13" target="v14" cfrom="75" cto="81" deps="t13">
         <slot name="tag">RR</slot>
-        <slot name="weight">0.0173089</slot>
+        <slot name="weight">0.00190728</slot>
       </edge>
       <edge type="pos" id="p22" source="v13" target="v14" cfrom="75" cto="81" deps="t13">
         <slot name="tag">VV0</slot>
-        <slot name="weight">0.00391381</slot>
+        <slot name="weight">0.000439245</slot>
       </edge>
       <edge type="pos" id="p23" source="v13" target="v14" cfrom="75" cto="81" deps="t13">
         <slot name="tag">VVD</slot>
-        <slot name="weight">0.0491277</slot>
+        <slot name="weight">0.00291899</slot>
       </edge>
       <edge type="pos" id="p24" source="v13" target="v14" cfrom="75" cto="81" deps="t13">
         <slot name="tag">VVG</slot>
-        <slot name="weight">0.000974584</slot>
+        <slot name="weight">0.966895</slot>
       </edge>
       <edge type="pos" id="p25" source="v13" target="v14" cfrom="75" cto="81" deps="t13">
         <slot name="tag">VVN</slot>
-        <slot name="weight">0.00143255</slot>
+        <slot name="weight">0.00142001</slot>
       </edge>
       <edge type="pos" id="p26" source="v14" target="v15" cfrom="81" cto="82" deps="t14">
         <slot name="tag">,</slot>
@@ -437,39 +523,39 @@ TAGGED = [
       </edge>
       <edge type="pos" id="p28" source="v16" target="v17" cfrom="92" cto="94" deps="t16">
         <slot name="tag">$</slot>
-        <slot name="weight">0.982721</slot>
+        <slot name="weight">0.982232</slot>
       </edge>
       <edge type="pos" id="p29" source="v16" target="v17" cfrom="92" cto="94" deps="t16">
         <slot name="tag">PPIO2</slot>
-        <slot name="weight">2.43739e-308</slot>
+        <slot name="weight">2.44046e-308</slot>
       </edge>
       <edge type="pos" id="p30" source="v16" target="v17" cfrom="92" cto="94" deps="t16">
         <slot name="tag">VBZ</slot>
-        <slot name="weight">0.016791</slot>
+        <slot name="weight">0.0172684</slot>
       </edge>
       <edge type="pos" id="p31" source="v16" target="v17" cfrom="92" cto="94" deps="t16">
         <slot name="tag">VDZ</slot>
-        <slot name="weight">2.75874e-06</slot>
+        <slot name="weight">2.77103e-06</slot>
       </edge>
       <edge type="pos" id="p32" source="v16" target="v17" cfrom="92" cto="94" deps="t16">
         <slot name="tag">VHZ</slot>
-        <slot name="weight">0.000484776</slot>
+        <slot name="weight">0.000497064</slot>
       </edge>
       <edge type="pos" id="p33" source="v17" target="v18" cfrom="95" cto="103" deps="t17">
         <slot name="tag">JJ</slot>
-        <slot name="weight">0.876188</slot>
+        <slot name="weight">0.902296</slot>
       </edge>
       <edge type="pos" id="p34" source="v17" target="v18" cfrom="95" cto="103" deps="t17">
         <slot name="tag">NN1</slot>
-        <slot name="weight">0.123812</slot>
+        <slot name="weight">0.0977044</slot>
       </edge>
       <edge type="pos" id="p35" source="v18" target="v19" cfrom="104" cto="113" deps="t18">
         <slot name="tag">NN1</slot>
-        <slot name="weight">0.997338</slot>
+        <slot name="weight">0.997405</slot>
       </edge>
       <edge type="pos" id="p36" source="v18" target="v19" cfrom="104" cto="113" deps="t18">
         <slot name="tag">NNS1</slot>
-        <slot name="weight">0.00266191</slot>
+        <slot name="weight">0.00259539</slot>
       </edge>
       <edge type="pos" id="p37" source="v19" target="v20" cfrom="114" cto="116" deps="t19">
         <slot name="tag">VBZ</slot>
@@ -558,7 +644,8 @@ TAGGED = [
     </lattice>
   </smaf>""",
   u"""<smaf>
-    <lattice init="v0" final="v6" cfrom="23">
+    <text>The cat chased the dog.</text>
+    <lattice init="v0" final="v6" cfrom="0" cto="23">
       <edge type="token" id="t0" source="v0" target="v1" cfrom="0" cto="3">The</edge>
       <edge type="token" id="t1" source="v1" target="v2" cfrom="4" cto="7">cat</edge>
       <edge type="token" id="t2" source="v2" target="v3" cfrom="8" cto="14">chased</edge>
@@ -604,7 +691,8 @@ TAGGED = [
 
 MORPHED = [
   u"""<smaf>
-    <lattice init="v0" final="v4" cfrom="14">
+    <text>The dog barks.</text>
+    <lattice init="v0" final="v4" cfrom="0" cto="14">
       <edge type="token" id="t0" source="v0" target="v1" cfrom="0" cto="3">The</edge>
       <edge type="token" id="t1" source="v1" target="v2" cfrom="4" cto="7">dog</edge>
       <edge type="token" id="t2" source="v2" target="v3" cfrom="8" cto="13">barks</edge>
@@ -638,7 +726,8 @@ MORPHED = [
     </lattice>
   </smaf>""",
   u"""<smaf>
-    <lattice init="v0" final="v8" cfrom="29">
+    <text>I saw a man with a telescope.</text>
+    <lattice init="v0" final="v8" cfrom="0" cto="29">
       <edge type="token" id="t0" source="v0" target="v1" cfrom="0" cto="1">I</edge>
       <edge type="token" id="t1" source="v1" target="v2" cfrom="2" cto="5">saw</edge>
       <edge type="token" id="t2" source="v2" target="v3" cfrom="6" cto="7">a</edge>
@@ -719,7 +808,81 @@ MORPHED = [
     </lattice>
   </smaf>""",
   u"""<smaf>
-    <lattice init="v0" final="v35" cfrom="206">
+    <text>Hugo Chávez chased the dog.</text>
+    <lattice init="v0" final="v6" cfrom="0" cto="27">
+      <edge type="token" id="t0" source="v0" target="v1" cfrom="0" cto="4">Hugo</edge>
+      <edge type="token" id="t1" source="v1" target="v2" cfrom="5" cto="11">Chávez</edge>
+      <edge type="token" id="t2" source="v2" target="v3" cfrom="12" cto="18">chased</edge>
+      <edge type="token" id="t3" source="v3" target="v4" cfrom="19" cto="22">the</edge>
+      <edge type="token" id="t4" source="v4" target="v5" cfrom="23" cto="26">dog</edge>
+      <edge type="token" id="t5" source="v5" target="v6" cfrom="26" cto="27">.</edge>
+      <edge type="pos" id="p0" source="v0" target="v1" cfrom="0" cto="4" deps="t0">
+        <slot name="tag">NP1</slot>
+        <slot name="weight">1</slot>
+      </edge>
+      <edge type="pos" id="p1" source="v1" target="v2" cfrom="5" cto="11" deps="t1">
+        <slot name="tag">JJ</slot>
+        <slot name="weight">0.00357779</slot>
+      </edge>
+      <edge type="pos" id="p2" source="v1" target="v2" cfrom="5" cto="11" deps="t1">
+        <slot name="tag">NN1</slot>
+        <slot name="weight">0.792963</slot>
+      </edge>
+      <edge type="pos" id="p3" source="v1" target="v2" cfrom="5" cto="11" deps="t1">
+        <slot name="tag">NN2</slot>
+        <slot name="weight">0.151421</slot>
+      </edge>
+      <edge type="pos" id="p4" source="v1" target="v2" cfrom="5" cto="11" deps="t1">
+        <slot name="tag">RR</slot>
+        <slot name="weight">0.0461225</slot>
+      </edge>
+      <edge type="pos" id="p5" source="v1" target="v2" cfrom="5" cto="11" deps="t1">
+        <slot name="tag">VV0</slot>
+        <slot name="weight">0.000336622</slot>
+      </edge>
+      <edge type="pos" id="p6" source="v1" target="v2" cfrom="5" cto="11" deps="t1">
+        <slot name="tag">VVD</slot>
+        <slot name="weight">0.00531652</slot>
+      </edge>
+      <edge type="pos" id="p7" source="v1" target="v2" cfrom="5" cto="11" deps="t1">
+        <slot name="tag">VVG</slot>
+        <slot name="weight">0.000113307</slot>
+      </edge>
+      <edge type="pos" id="p8" source="v1" target="v2" cfrom="5" cto="11" deps="t1">
+        <slot name="tag">VVN</slot>
+        <slot name="weight">0.000149814</slot>
+      </edge>
+      <edge type="pos" id="p9" source="v2" target="v3" cfrom="12" cto="18" deps="t2">
+        <slot name="tag">VVD</slot>
+        <slot name="weight">0.886745</slot>
+      </edge>
+      <edge type="pos" id="p10" source="v2" target="v3" cfrom="12" cto="18" deps="t2">
+        <slot name="tag">VVN</slot>
+        <slot name="weight">0.113255</slot>
+      </edge>
+      <edge type="pos" id="p11" source="v3" target="v4" cfrom="19" cto="22" deps="t3">
+        <slot name="tag">AT</slot>
+        <slot name="weight">1</slot>
+      </edge>
+      <edge type="pos" id="p12" source="v4" target="v5" cfrom="23" cto="26" deps="t4">
+        <slot name="tag">NN1</slot>
+        <slot name="weight">0.999833</slot>
+      </edge>
+      <edge type="pos" id="p13" source="v4" target="v5" cfrom="23" cto="26" deps="t4">
+        <slot name="tag">VV0</slot>
+        <slot name="weight">0.000166966</slot>
+      </edge>
+      <edge type="pos" id="p14" source="v5" target="v6" cfrom="26" cto="27" deps="t5">
+        <slot name="tag">.</slot>
+        <slot name="weight">1</slot>
+      </edge>
+      <edge type="morph" id="m1" source="v2" target="v3" cfrom="12" cto="18" deps="p9">chase+ed</edge>
+      <edge type="morph" id="m2" source="v2" target="v3" cfrom="12" cto="18" deps="p10">chase+ed</edge>
+    </lattice>
+  </smaf>""",  
+  u"""<smaf>
+    <text>As leaders gather in Argentina ahead of this weekends regional talks, Hugo Chávez, Venezuela's populist president is using an energy windfall to win friends and promote his vision of 21st-century socialism.</text>
+    <lattice init="v0" final="v35" cfrom="0" cto="206">
       <edge type="token" id="t0" source="v0" target="v1" cfrom="0" cto="2">As</edge>
       <edge type="token" id="t1" source="v1" target="v2" cfrom="3" cto="10">leaders</edge>
       <edge type="token" id="t2" source="v2" target="v3" cfrom="11" cto="17">gather</edge>
@@ -829,35 +992,35 @@ MORPHED = [
       </edge>
       <edge type="pos" id="p18" source="v13" target="v14" cfrom="75" cto="81" deps="t13">
         <slot name="tag">JJ</slot>
-        <slot name="weight">0.0337125</slot>
+        <slot name="weight">0.00377618</slot>
       </edge>
       <edge type="pos" id="p19" source="v13" target="v14" cfrom="75" cto="81" deps="t13">
         <slot name="tag">NN1</slot>
-        <slot name="weight">0.783491</slot>
+        <slot name="weight">0.0183885</slot>
       </edge>
       <edge type="pos" id="p20" source="v13" target="v14" cfrom="75" cto="81" deps="t13">
         <slot name="tag">NN2</slot>
-        <slot name="weight">0.110038</slot>
+        <slot name="weight">0.00426326</slot>
       </edge>
       <edge type="pos" id="p21" source="v13" target="v14" cfrom="75" cto="81" deps="t13">
         <slot name="tag">RR</slot>
-        <slot name="weight">0.0173089</slot>
+        <slot name="weight">0.00190727</slot>
       </edge>
       <edge type="pos" id="p22" source="v13" target="v14" cfrom="75" cto="81" deps="t13">
         <slot name="tag">VV0</slot>
-        <slot name="weight">0.00391381</slot>
+        <slot name="weight">0.000438305</slot>
       </edge>
       <edge type="pos" id="p23" source="v13" target="v14" cfrom="75" cto="81" deps="t13">
         <slot name="tag">VVD</slot>
-        <slot name="weight">0.0491277</slot>
+        <slot name="weight">0.00291896</slot>
       </edge>
       <edge type="pos" id="p24" source="v13" target="v14" cfrom="75" cto="81" deps="t13">
         <slot name="tag">VVG</slot>
-        <slot name="weight">0.000974584</slot>
+        <slot name="weight">0.966888</slot>
       </edge>
       <edge type="pos" id="p25" source="v13" target="v14" cfrom="75" cto="81" deps="t13">
         <slot name="tag">VVN</slot>
-        <slot name="weight">0.00143255</slot>
+        <slot name="weight">0.00142</slot>
       </edge>
       <edge type="pos" id="p26" source="v14" target="v15" cfrom="81" cto="82" deps="t14">
         <slot name="tag">,</slot>
@@ -869,39 +1032,39 @@ MORPHED = [
       </edge>
       <edge type="pos" id="p28" source="v16" target="v17" cfrom="92" cto="94" deps="t16">
         <slot name="tag">$</slot>
-        <slot name="weight">0.982721</slot>
+        <slot name="weight">0.982232</slot>
       </edge>
       <edge type="pos" id="p29" source="v16" target="v17" cfrom="92" cto="94" deps="t16">
         <slot name="tag">PPIO2</slot>
-        <slot name="weight">2.43739e-308</slot>
+        <slot name="weight">2.44046e-308</slot>
       </edge>
       <edge type="pos" id="p30" source="v16" target="v17" cfrom="92" cto="94" deps="t16">
         <slot name="tag">VBZ</slot>
-        <slot name="weight">0.016791</slot>
+        <slot name="weight">0.0172677</slot>
       </edge>
       <edge type="pos" id="p31" source="v16" target="v17" cfrom="92" cto="94" deps="t16">
         <slot name="tag">VDZ</slot>
-        <slot name="weight">2.75874e-06</slot>
+        <slot name="weight">2.77101e-06</slot>
       </edge>
       <edge type="pos" id="p32" source="v16" target="v17" cfrom="92" cto="94" deps="t16">
         <slot name="tag">VHZ</slot>
-        <slot name="weight">0.000484776</slot>
+        <slot name="weight">0.000497046</slot>
       </edge>
       <edge type="pos" id="p33" source="v17" target="v18" cfrom="95" cto="103" deps="t17">
         <slot name="tag">JJ</slot>
-        <slot name="weight">0.876188</slot>
+        <slot name="weight">0.902257</slot>
       </edge>
       <edge type="pos" id="p34" source="v17" target="v18" cfrom="95" cto="103" deps="t17">
         <slot name="tag">NN1</slot>
-        <slot name="weight">0.123812</slot>
+        <slot name="weight">0.0977435</slot>
       </edge>
       <edge type="pos" id="p35" source="v18" target="v19" cfrom="104" cto="113" deps="t18">
         <slot name="tag">NN1</slot>
-        <slot name="weight">0.997338</slot>
+        <slot name="weight">0.997405</slot>
       </edge>
       <edge type="pos" id="p36" source="v18" target="v19" cfrom="104" cto="113" deps="t18">
         <slot name="tag">NNS1</slot>
-        <slot name="weight">0.00266191</slot>
+        <slot name="weight">0.00259549</slot>
       </edge>
       <edge type="pos" id="p37" source="v19" target="v20" cfrom="114" cto="116" deps="t19">
         <slot name="tag">VBZ</slot>
@@ -1001,7 +1164,8 @@ MORPHED = [
     </lattice>
   </smaf>""",
   u"""<smaf>
-    <lattice init="v0" final="v6" cfrom="23">
+    <text>The cat chased the dog.</text>
+    <lattice init="v0" final="v6" cfrom="0" cto="23">
       <edge type="token" id="t0" source="v0" target="v1" cfrom="0" cto="3">The</edge>
       <edge type="token" id="t1" source="v1" target="v2" cfrom="4" cto="7">cat</edge>
       <edge type="token" id="t2" source="v2" target="v3" cfrom="8" cto="14">chased</edge>
@@ -1050,7 +1214,8 @@ MORPHED = [
 
 PARSED = [
   u"""<smaf>
-    <lattice init="v0" final="v4" cfrom="14">
+    <text>The dog barks.</text>
+    <lattice init="v0" final="v4" cfrom="0" cto="14">
       <edge type="token" id="t0" source="v0" target="v1" cfrom="0" cto="3">The</edge>
       <edge type="token" id="t1" source="v1" target="v2" cfrom="4" cto="7">dog</edge>
       <edge type="token" id="t2" source="v2" target="v3" cfrom="8" cto="13">barks</edge>
@@ -1092,7 +1257,8 @@ PARSED = [
     </lattice>
   </smaf>""",
   u"""<smaf>
-    <lattice init="v0" final="v8" cfrom="29">
+    <text>I saw a man with a telescope.</text>
+    <lattice init="v0" final="v8" cfrom="0" cto="29">
       <edge type="token" id="t0" source="v0" target="v1" cfrom="0" cto="1">I</edge>
       <edge type="token" id="t1" source="v1" target="v2" cfrom="2" cto="5">saw</edge>
       <edge type="token" id="t2" source="v2" target="v3" cfrom="6" cto="7">a</edge>
@@ -1208,7 +1374,127 @@ PARSED = [
     </lattice>
   </smaf>""",
   u"""<smaf>
-    <lattice init="v0" final="v35" cfrom="206">
+    <text>Hugo Chávez chased the dog.</text>
+    <lattice init="v0" final="v6" cfrom="0" cto="27">
+      <edge type="token" id="t0" source="v0" target="v1" cfrom="0" cto="4">Hugo</edge>
+      <edge type="token" id="t1" source="v1" target="v2" cfrom="5" cto="11">Chávez</edge>
+      <edge type="token" id="t2" source="v2" target="v3" cfrom="12" cto="18">chased</edge>
+      <edge type="token" id="t3" source="v3" target="v4" cfrom="19" cto="22">the</edge>
+      <edge type="token" id="t4" source="v4" target="v5" cfrom="23" cto="26">dog</edge>
+      <edge type="token" id="t5" source="v5" target="v6" cfrom="26" cto="27">.</edge>
+      <edge type="pos" id="p0" source="v0" target="v1" cfrom="0" cto="4" deps="t0">
+        <slot name="tag">NP1</slot>
+        <slot name="weight">1</slot>
+      </edge>
+      <edge type="pos" id="p1" source="v1" target="v2" cfrom="5" cto="11" deps="t1">
+        <slot name="tag">JJ</slot>
+        <slot name="weight">0.00357779</slot>
+      </edge>
+      <edge type="pos" id="p2" source="v1" target="v2" cfrom="5" cto="11" deps="t1">
+        <slot name="tag">NN1</slot>
+        <slot name="weight">0.792963</slot>
+      </edge>
+      <edge type="pos" id="p3" source="v1" target="v2" cfrom="5" cto="11" deps="t1">
+        <slot name="tag">NN2</slot>
+        <slot name="weight">0.151421</slot>
+      </edge>
+      <edge type="pos" id="p4" source="v1" target="v2" cfrom="5" cto="11" deps="t1">
+        <slot name="tag">RR</slot>
+        <slot name="weight">0.0461225</slot>
+      </edge>
+      <edge type="pos" id="p5" source="v1" target="v2" cfrom="5" cto="11" deps="t1">
+        <slot name="tag">VV0</slot>
+        <slot name="weight">0.000336622</slot>
+      </edge>
+      <edge type="pos" id="p6" source="v1" target="v2" cfrom="5" cto="11" deps="t1">
+        <slot name="tag">VVD</slot>
+        <slot name="weight">0.00531652</slot>
+      </edge>
+      <edge type="pos" id="p7" source="v1" target="v2" cfrom="5" cto="11" deps="t1">
+        <slot name="tag">VVG</slot>
+        <slot name="weight">0.000113307</slot>
+      </edge>
+      <edge type="pos" id="p8" source="v1" target="v2" cfrom="5" cto="11" deps="t1">
+        <slot name="tag">VVN</slot>
+        <slot name="weight">0.000149814</slot>
+      </edge>
+      <edge type="pos" id="p9" source="v2" target="v3" cfrom="12" cto="18" deps="t2">
+        <slot name="tag">VVD</slot>
+        <slot name="weight">0.886745</slot>
+      </edge>
+      <edge type="pos" id="p10" source="v2" target="v3" cfrom="12" cto="18" deps="t2">
+        <slot name="tag">VVN</slot>
+        <slot name="weight">0.113255</slot>
+      </edge>
+      <edge type="pos" id="p11" source="v3" target="v4" cfrom="19" cto="22" deps="t3">
+        <slot name="tag">AT</slot>
+        <slot name="weight">1</slot>
+      </edge>
+      <edge type="pos" id="p12" source="v4" target="v5" cfrom="23" cto="26" deps="t4">
+        <slot name="tag">NN1</slot>
+        <slot name="weight">0.999833</slot>
+      </edge>
+      <edge type="pos" id="p13" source="v4" target="v5" cfrom="23" cto="26" deps="t4">
+        <slot name="tag">VV0</slot>
+        <slot name="weight">0.000166966</slot>
+      </edge>
+      <edge type="pos" id="p14" source="v5" target="v6" cfrom="26" cto="27" deps="t5">
+        <slot name="tag">.</slot>
+        <slot name="weight">1</slot>
+      </edge>
+      <edge type="morph" id="m1" source="v2" target="v3" cfrom="12" cto="18" deps="p9">chase+ed</edge>
+      <edge type="morph" id="m2" source="v2" target="v3" cfrom="12" cto="18" deps="p10">chase+ed</edge>
+      <edge type="syntree">
+        <slot name="weight">-7.775</slot>
+        <slot name="tree">
+        (|T/txt-sc1/-+|
+         (|S/n1_vp| (|N1/n-name_n1| |Hugo_NP1| (|N1/n| |Chávez_NN1|))
+          (|V1/v_np| |chase+ed_VVD| (|NP/det_n1| |the_AT| (|N1/n| |dog_NN1|))))
+         (|End-punct3/-| ._.))
+        </slot>
+      </edge>
+      <edge type="syntree">
+        <slot name="weight">-8.669</slot>
+        <slot name="tree">
+        (|T/txt-sc1/-+|
+         (|S/n1_vp| (|N1/n-name_n1| |Hugo_NP1| (|N1/n| |Chávez_NN1|))
+          (|V1/v_np| |chase+ed_VVN| (|NP/det_n1| |the_AT| (|N1/n| |dog_NN1|))))
+         (|End-punct3/-| ._.))
+        </slot>
+      </edge>
+      <edge type="syntree">
+        <slot name="weight">-9.361</slot>
+        <slot name="tree">
+        (|T/txt-sc1/-+|
+         (|S/np_vp| (|NP/n1-plu| (|N1/n-name_n1| |Hugo_NP1| (|N1/n| |Chávez_NN2|)))
+          (|V1/v_np| |chase+ed_VVD| (|NP/det_n1| |the_AT| (|N1/n| |dog_NN1|))))
+         (|End-punct3/-| ._.))
+        </slot>
+      </edge>
+      <edge type="syntree">
+        <slot name="weight">-9.863</slot>
+        <slot name="tree">
+        (|T/txt-sc1/-+|
+         (|S/np_vp| (|NP/n1-name| (|N1/n-name| |Hugo_NP1|))
+          (|V1/adv_vp| (|AP/a1| (|A1/a| |Chávez_RR|))
+           (|V1/v_np| |chase+ed_VVD| (|NP/det_n1| |the_AT| (|N1/n| |dog_NN1|)))))
+         (|End-punct3/-| ._.))
+        </slot>
+      </edge>
+      <edge type="syntree">
+        <slot name="weight">-10.255</slot>
+        <slot name="tree">
+        (|T/txt-sc1/-+|
+         (|S/np_vp| (|NP/n1-plu| (|N1/n-name_n1| |Hugo_NP1| (|N1/n| |Chávez_NN2|)))
+          (|V1/v_np| |chase+ed_VVN| (|NP/det_n1| |the_AT| (|N1/n| |dog_NN1|))))
+         (|End-punct3/-| ._.))
+        </slot>
+      </edge>
+    </lattice>
+  </smaf>""",  
+  u"""<smaf>
+    <text>As leaders gather in Argentina ahead of this weekends regional talks, Hugo Chávez, Venezuela's populist president is using an energy windfall to win friends and promote his vision of 21st-century socialism.</text>
+    <lattice init="v0" final="v35" cfrom="0" cto="206">
       <edge type="token" id="t0" source="v0" target="v1" cfrom="0" cto="2">As</edge>
       <edge type="token" id="t1" source="v1" target="v2" cfrom="3" cto="10">leaders</edge>
       <edge type="token" id="t2" source="v2" target="v3" cfrom="11" cto="17">gather</edge>
@@ -1318,35 +1604,35 @@ PARSED = [
       </edge>
       <edge type="pos" id="p18" source="v13" target="v14" cfrom="75" cto="81" deps="t13">
         <slot name="tag">JJ</slot>
-        <slot name="weight">0.0337125</slot>
+        <slot name="weight">0.00377618</slot>
       </edge>
       <edge type="pos" id="p19" source="v13" target="v14" cfrom="75" cto="81" deps="t13">
         <slot name="tag">NN1</slot>
-        <slot name="weight">0.783491</slot>
+        <slot name="weight">0.0183885</slot>
       </edge>
       <edge type="pos" id="p20" source="v13" target="v14" cfrom="75" cto="81" deps="t13">
         <slot name="tag">NN2</slot>
-        <slot name="weight">0.110038</slot>
+        <slot name="weight">0.00426326</slot>
       </edge>
       <edge type="pos" id="p21" source="v13" target="v14" cfrom="75" cto="81" deps="t13">
         <slot name="tag">RR</slot>
-        <slot name="weight">0.0173089</slot>
+        <slot name="weight">0.00190727</slot>
       </edge>
       <edge type="pos" id="p22" source="v13" target="v14" cfrom="75" cto="81" deps="t13">
         <slot name="tag">VV0</slot>
-        <slot name="weight">0.00391381</slot>
+        <slot name="weight">0.000438305</slot>
       </edge>
       <edge type="pos" id="p23" source="v13" target="v14" cfrom="75" cto="81" deps="t13">
         <slot name="tag">VVD</slot>
-        <slot name="weight">0.0491277</slot>
+        <slot name="weight">0.00291896</slot>
       </edge>
       <edge type="pos" id="p24" source="v13" target="v14" cfrom="75" cto="81" deps="t13">
         <slot name="tag">VVG</slot>
-        <slot name="weight">0.000974584</slot>
+        <slot name="weight">0.966888</slot>
       </edge>
       <edge type="pos" id="p25" source="v13" target="v14" cfrom="75" cto="81" deps="t13">
         <slot name="tag">VVN</slot>
-        <slot name="weight">0.00143255</slot>
+        <slot name="weight">0.00142</slot>
       </edge>
       <edge type="pos" id="p26" source="v14" target="v15" cfrom="81" cto="82" deps="t14">
         <slot name="tag">,</slot>
@@ -1358,39 +1644,39 @@ PARSED = [
       </edge>
       <edge type="pos" id="p28" source="v16" target="v17" cfrom="92" cto="94" deps="t16">
         <slot name="tag">$</slot>
-        <slot name="weight">0.982721</slot>
+        <slot name="weight">0.982232</slot>
       </edge>
       <edge type="pos" id="p29" source="v16" target="v17" cfrom="92" cto="94" deps="t16">
         <slot name="tag">PPIO2</slot>
-        <slot name="weight">2.43739e-308</slot>
+        <slot name="weight">2.44046e-308</slot>
       </edge>
       <edge type="pos" id="p30" source="v16" target="v17" cfrom="92" cto="94" deps="t16">
         <slot name="tag">VBZ</slot>
-        <slot name="weight">0.016791</slot>
+        <slot name="weight">0.0172677</slot>
       </edge>
       <edge type="pos" id="p31" source="v16" target="v17" cfrom="92" cto="94" deps="t16">
         <slot name="tag">VDZ</slot>
-        <slot name="weight">2.75874e-06</slot>
+        <slot name="weight">2.77101e-06</slot>
       </edge>
       <edge type="pos" id="p32" source="v16" target="v17" cfrom="92" cto="94" deps="t16">
         <slot name="tag">VHZ</slot>
-        <slot name="weight">0.000484776</slot>
+        <slot name="weight">0.000497046</slot>
       </edge>
       <edge type="pos" id="p33" source="v17" target="v18" cfrom="95" cto="103" deps="t17">
         <slot name="tag">JJ</slot>
-        <slot name="weight">0.876188</slot>
+        <slot name="weight">0.902257</slot>
       </edge>
       <edge type="pos" id="p34" source="v17" target="v18" cfrom="95" cto="103" deps="t17">
         <slot name="tag">NN1</slot>
-        <slot name="weight">0.123812</slot>
+        <slot name="weight">0.0977435</slot>
       </edge>
       <edge type="pos" id="p35" source="v18" target="v19" cfrom="104" cto="113" deps="t18">
         <slot name="tag">NN1</slot>
-        <slot name="weight">0.997338</slot>
+        <slot name="weight">0.997405</slot>
       </edge>
       <edge type="pos" id="p36" source="v18" target="v19" cfrom="104" cto="113" deps="t18">
         <slot name="tag">NNS1</slot>
-        <slot name="weight">0.00266191</slot>
+        <slot name="weight">0.00259549</slot>
       </edge>
       <edge type="pos" id="p37" source="v19" target="v20" cfrom="114" cto="116" deps="t19">
         <slot name="tag">VBZ</slot>
@@ -1488,7 +1774,7 @@ PARSED = [
       <edge type="morph" id="m10" source="v20" target="v21" cfrom="117" cto="122" deps="p38">use+ing</edge>
       <edge type="morph" id="m11" source="v26" target="v27" cfrom="149" cto="156" deps="p47">friend+s</edge>
       <edge type="syntree">
-        <slot name="weight">-67.880</slot>
+        <slot name="weight">-70.013</slot>
         <slot name="tree">
         (|T/txt-sc1/-+|
          (|S/pp-sfin_s/+|
@@ -1511,8 +1797,7 @@ PARSED = [
             (|NP/np_n-poss|
              (|NP/n1-name|
               (|N1/n-name_n1-name| |Hugo_NP1|
-               (|N1/ap_n1/+| (|AP/a1| (|A1/a| |Chávez_JJ|)) |,_,|
-                (|N1/n-name| |Venezuela_NP1|))))
+               (|N1/ing_n1-r/-+| |Chávez_VVG| |,_,| (|N1/n-name| |Venezuela_NP1|))))
              |'s+_$|)
             (|N1/ap_n1/-| (|AP/a1| (|A1/a| |populist_JJ|)) (|N1/n| |president_NN1|)))
            (|V1/be_ing/--| |be+s_VBZ|
@@ -1533,7 +1818,7 @@ PARSED = [
         </slot>
       </edge>
       <edge type="syntree">
-        <slot name="weight">-68.833</slot>
+        <slot name="weight">-70.966</slot>
         <slot name="tree">
         (|T/txt-sc1/-+|
          (|S/pp-sfin_s/+|
@@ -1556,8 +1841,7 @@ PARSED = [
             (|NP/np_n-poss|
              (|NP/n1-name|
               (|N1/n-name_n1-name| |Hugo_NP1|
-               (|N1/ap_n1/+| (|AP/a1| (|A1/a| |Chávez_JJ|)) |,_,|
-                (|N1/n-name| |Venezuela_NP1|))))
+               (|N1/ing_n1-r/-+| |Chávez_VVG| |,_,| (|N1/n-name| |Venezuela_NP1|))))
              |'s+_$|)
             (|N1/ap_n1/-| (|AP/a1| (|A1/a| |populist_JJ|)) (|N1/n| |president_NN1|)))
            (|V1/be_ing/--| |be+s_VBZ|
@@ -1580,7 +1864,7 @@ PARSED = [
         </slot>
       </edge>
       <edge type="syntree">
-        <slot name="weight">-69.231</slot>
+        <slot name="weight">-71.363</slot>
         <slot name="tree">
         (|T/txt-sc1/-+|
          (|S/pp-sfin_s/+|
@@ -1603,8 +1887,7 @@ PARSED = [
             (|NP/np_n-poss|
              (|NP/n1-name|
               (|N1/n-name_n1-name| |Hugo_NP1|
-               (|N1/ap_n1/+| (|AP/a1| (|A1/a| |Chávez_JJ|)) |,_,|
-                (|N1/n-name| |Venezuela_NP1|))))
+               (|N1/ing_n1-r/-+| |Chávez_VVG| |,_,| (|N1/n-name| |Venezuela_NP1|))))
              |'s+_$|)
             (|N1/ap_n1/-| (|AP/a1| (|A1/a| |populist_JJ|)) (|N1/n| |president_NN1|)))
            (|V1/be_ing/--| |be+s_VBZ|
@@ -1625,7 +1908,7 @@ PARSED = [
         </slot>
       </edge>
       <edge type="syntree">
-        <slot name="weight">-69.256</slot>
+        <slot name="weight">-71.389</slot>
         <slot name="tree">
         (|T/txt-sc1/-+|
          (|S/pp-sfin_s/+|
@@ -1648,8 +1931,7 @@ PARSED = [
             (|NP/np_n-poss|
              (|NP/n1-name|
               (|N1/n-name_n1-name| |Hugo_NP1|
-               (|N1/ap_n1/+| (|AP/a1| (|A1/a| |Chávez_JJ|)) |,_,|
-                (|N1/n-name| |Venezuela_NP1|))))
+               (|N1/ing_n1-r/-+| |Chávez_VVG| |,_,| (|N1/n-name| |Venezuela_NP1|))))
              |'s+_$|)
             (|N1/ap_n1/-| (|AP/a1| (|A1/a| |populist_JJ|)) (|N1/n| |president_NN1|)))
            (|V1/be_ing/--| |be+s_VBZ|
@@ -1670,52 +1952,56 @@ PARSED = [
         </slot>
       </edge>
       <edge type="syntree">
-        <slot name="weight">-69.313</slot>
+        <slot name="weight">-72.316</slot>
         <slot name="tree">
         (|T/txt-sc1/-+|
-         (|T/s_leta|
-          (|S/pp-sfin_s/+|
-           (|PP/p1|
-            (|P1/p_s| |As_CSA|
-             (|S/np_vp| (|NP/n1-plu| (|N1/n| |leader+s_NN2|))
-              (|V1/v_pp| |gather_VV0|
-               (|PP/p1|
-                (|P1/p_np| |in_II|
-                 (|NP/n1-name_np-r|
-                  (|N1/n_pp-of| |Argentina_NP1|
-                   (|PP/adv_p1| (|AP/a1| (|A1/a| |ahead_RR|))
-                    (|P1/p_np| |of_IO|
-                     (|NP/det_a1-r/+-| |this_DD1| (|N1/n-nt| |weekend+s_NNT2|)
-                      (|A1/a| |regional_JJ|)))))
-                  (|NP/n1-plu| (|N1/n| |talk+s_NN2|)))))))))
-           |,_,|
-           (|S/np_vp| (|NP/n1-name| (|N1/n-name| |Hugo_NP1|)) (|V1/v| |Chávez_VVD|)))
-          (|Tacl/comma-e| |,_,|
-           (|S/np_vp|
-            (|NP/np-poss_n1|
-             (|NP/np_n-poss| (|NP/n1-name| (|N1/n-name| |Venezuela_NP1|)) |'s+_$|)
-             (|N1/ap_n1/-| (|AP/a1| (|A1/a| |populist_JJ|)) (|N1/n| |president_NN1|)))
-            (|V1/be_ing/--| |be+s_VBZ|
-             (|V1/v_np_inf| |use+ing_VVG|
-              (|NP/det_n1| |an_AT1| (|N1/n_n1| |energy_NN1| (|N1/n| |windfall_NN1|)))
-              (|V1/to_bse/-| |to_TO|
-               (|V1/vp_vp-coord/-|
-                (|V1/v_np| |win_VV0| (|NP/n1-plu| (|N1/n| |friend+s_NN2|)))
-                (|V1/cj-end_vp/--| |and_CC|
-                 (|V1/v_np| |promote_VV0|
-                  (|NP/det_n1| |his_APP$|
-                   (|N1/n_pp-of| |vision_NN1|
-                    (|PP/p1|
-                     (|P1/p_n1| |of_IO|
-                      (|N1/ap_n1/-| (|AP/a1| (|A1/a| |21st-century_JB|))
-                       (|N1/n| |socialism_NN1|)))))))))))))))
+         (|S/pp-sfin_s/+|
+          (|PP/p1|
+           (|P1/p_s| |As_CSA|
+            (|S/np_vp| (|NP/n1-plu| (|N1/n| |leader+s_NN2|))
+             (|V1/v_pp_np-hs-r| |gather_VV0|
+              (|PP/p1|
+               (|P1/p_np-name| |in_II|
+                (|NP/n1-name|
+                 (|N1/n_pp-of| |Argentina_NP1|
+                  (|PP/adv_p1| (|AP/a1| (|A1/a| |ahead_RR|))
+                   (|P1/p_np| |of_IO|
+                    (|NP/det_a1-r/+-| |this_DD1| (|N1/n-nt| |weekend+s_NNT2|)
+                     (|A1/a| |regional_JJ|))))))))
+              (|NP/n1-plu| (|N1/n| |talk+s_NN2|))))))
+          |,_,|
+          (|S/np_vp|
+           (|NP/np-poss_n1|
+            (|NP/np_n-poss|
+             (|NP/n1-name|
+              (|N1/n-name_n1-name| |Hugo_NP1|
+               (|N1/ing_n1-r/-+| |Chávez_VVG| |,_,| (|N1/n-name| |Venezuela_NP1|))))
+             |'s+_$|)
+            (|N1/ap_n1/-| (|AP/a1| (|A1/a| |populist_JJ|)) (|N1/n| |president_NN1|)))
+           (|V1/be_ing/--| |be+s_VBZ|
+            (|V1/v_np| |use+ing_VVG|
+             (|NP/det_n1| |an_AT1|
+              (|N1/n_n1| |energy_NN1|
+               (|N1/n_inf| |windfall_NN1|
+                (|V1/to_bse/-| |to_TO|
+                 (|V1/vp_vp-coord/-|
+                  (|V1/v_np| |win_VV0| (|NP/n1-plu| (|N1/n| |friend+s_NN2|)))
+                  (|V1/cj-end_vp/--| |and_CC|
+                   (|V1/v_np| |promote_VV0|
+                    (|NP/det_n1| |his_APP$|
+                     (|N1/n_pp-of| |vision_NN1|
+                      (|PP/p1|
+                       (|P1/p_n1| |of_IO|
+                        (|N1/ap_n1/-| (|AP/a1| (|A1/a| |21st-century_JB|))
+                         (|N1/n| |socialism_NN1|)))))))))))))))))
          (|End-punct3/-| ._.))
         </slot>
       </edge>
     </lattice>
   </smaf>""",
   u"""<smaf>
-    <lattice init="v0" final="v6" cfrom="23">
+    <text>The cat chased the dog.</text>
+    <lattice init="v0" final="v6" cfrom="0" cto="23">
       <edge type="token" id="t0" source="v0" target="v1" cfrom="0" cto="3">The</edge>
       <edge type="token" id="t1" source="v1" target="v2" cfrom="4" cto="7">cat</edge>
       <edge type="token" id="t2" source="v2" target="v3" cfrom="8" cto="14">chased</edge>

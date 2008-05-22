@@ -4,7 +4,6 @@ import cStringIO;
 
 
 import pyrmrs.globals;
-import pyrmrs.tools.stringtools;
 
 import pyrmrs.smafpkg.smafreader;
 import pyrmrs.ext.rasp.morpher;
@@ -32,7 +31,7 @@ class TestMorpher( pyrmrstest.mytest.MyTestCase ):
       smaf = rd.getFirst();
       smaf = self.globalstate.morpher.morph( smaf );
       #print smaf.str_xml();
-      self.assertStringCrudelyEqual( data.MORPHED[i], smaf.str_xml() );
+      self.assertStringCrudelyEqual( smaf.str_xml(), data.MORPHED[i] );
 
 
 

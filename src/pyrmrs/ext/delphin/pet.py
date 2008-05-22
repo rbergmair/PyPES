@@ -132,7 +132,7 @@ class BasicPet( pyrmrs.ext.basicio.BasicIO ):
   def parse( self, smaf ):
     
     rslt = self.invoke( smaf.str_xml() );
-    f = cStringIO.StringIO( rslt.decode( "utf-8" ) );
+    f = cStringIO.StringIO( rslt.encode( "utf-8" ) );
     
     rmrsid = 0;
     
@@ -150,6 +150,9 @@ class BasicPet( pyrmrs.ext.basicio.BasicIO ):
       
       newedge.rmrs = rmrs;
       
+      rmrs.cfrom = newedge.cfrom;
+      rmrs.cto = newedge.cto;
+      
       smaf.lattice.register( newedge );
       
     return smaf;
@@ -159,3 +162,9 @@ class BasicPet( pyrmrs.ext.basicio.BasicIO ):
     
     self.write_block( "" );
     pyrmrs.ext.basicio.BasicIO.close_pipe( self );
+
+
+
+class TaggedPet( BasicPet ):
+  
+  CMD = BasicPet.CMD % "-default-les %s";

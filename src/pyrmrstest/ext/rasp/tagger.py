@@ -31,7 +31,8 @@ class TestTagger( pyrmrstest.mytest.MyTestCase ):
       rd = pyrmrs.smafpkg.smafreader.SMAFReader( f );
       smaf = rd.getFirst();
       smaf = self.globalstate.tagger.tag( smaf );
-      self.assertStringCrudelyEqual( data.TAGGED[i], smaf.str_xml() );
+      self.assertStringCrudelyEqual( smaf.str_xml(), data.TAGGED[i] );
+      #print smaf.str_xml();
 
 
 

@@ -29,6 +29,7 @@ class PosEdge( edge.Edge ):
     elements = "";
     if not self.tag is None:
       elements += "\n  "+slot.Slot( "tag", self.tag ).str_xml();
+    if not self.weight is None:
       elements += "\n  "+slot.Slot( "weight", self.weight ).str_xml();
     elements += "\n";
     elements = elements.replace( "%", "%%" );

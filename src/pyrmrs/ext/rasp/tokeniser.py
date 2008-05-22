@@ -139,7 +139,7 @@ class Tokeniser( pyrmrs.ext.basicio.BasicIO ):
     lattice.cto = maxe - mins + 1;
     smaf.register( lattice );
     
-    smaf.cfrom = smaf.lattice.cfrom;
-    smaf.cto = smaf.lattice.cto;
+    #smaf.cfrom = smaf.lattice.cfrom;
+    #smaf.cto = smaf.lattice.cto;
     
     return smaf;

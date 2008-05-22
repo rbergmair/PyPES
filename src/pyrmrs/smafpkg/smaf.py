@@ -3,6 +3,7 @@ import pyrmrs.xmltools.reader_element;
 import pyrmrs.globals;
 
 import lattice;
+import text;
 
 
 
@@ -122,8 +123,8 @@ class SMAF( pyrmrs.xmltools.reader_element.ReaderElement ):
   
   text = None;
   
-  cfrom = None;
-  cto = None;
+  #cfrom = None;
+  #cto = None;
   
   lattice = None;
   
@@ -132,20 +133,29 @@ class SMAF( pyrmrs.xmltools.reader_element.ReaderElement ):
     
     self.text = text;
     
-    self.cfrom = None;
-    self.cto = None;
+    #self.cfrom = None;
+    #self.cto = None;
     
     self.lattice = None;
-  
+    
+    
+  def startElement( self, name, attrs ):
+    
+    #if attrs.has_key( "cfrom" ):
+    #  self.cfrom = int( attrs[ "cfrom" ] );
+    #if attrs.has_key( "cto" ):
+    #  self.cto = int( attrs[ "cto" ] );
+    pass;
   
   
   def register( self, obj ):
     
     if isinstance( obj, lattice.Lattice ):
       self.lattice = obj;
+    if isinstance( obj, text.Text ):
+      self.text = obj.text;
   
 
-  
   def getTokens( self ):
     
     return SMAFTokenIterator( self );
@@ -180,10 +190,10 @@ class SMAF( pyrmrs.xmltools.reader_element.ReaderElement ):
     elements = elements.replace( "%", "%%" );
     
     attribs = "";
-    if not self.cfrom is None:
-      attribs += " cfrom=\"%s\"" % self.cfrom;
-    if not self.cto is None:
-      attribs += " cto=\"%s\"" % self.cto;
+    #if not self.cfrom is None:
+    #  attribs += " cfrom=\"%s\"" % self.cfrom;
+    #if not self.cto is None:
+    #  attribs += " cto=\"%s\"" % self.cto;
     
     base = base.replace( "%%", "%%%%" );
     return base % ( attribs+"%s", elements+"%s" );

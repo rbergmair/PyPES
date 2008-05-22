@@ -38,6 +38,23 @@ class Fspp( pyrmrs.ext.basicio.BasicIO ):
     f = cStringIO.StringIO( rslt.encode( "utf-8" ) );
     rd = pyrmrs.smafpkg.smafreader.SMAFReader( f );
     smaf_out = rd.getFirst();
+    smaf_out.text = smaf.text;
+    
+    mincfrom = None;
+    maxcto = None;
+    
+    for tok in smaf_out.getTokens():
+      if mincfrom is None:
+        mincfrom = tok.cfrom;
+      else:
+        mincfrom = min( tok.cfrom, mincfrom );
+      if maxcto is None:
+        maxcto = tok.cto;
+      else:
+        maxcto = max( tok.cto, maxcto );
+    
+    smaf_out.lattice.cfrom = mincfrom;
+    smaf_out.lattice.cto = maxcto;
     
     return smaf_out;
   

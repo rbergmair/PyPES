@@ -15,17 +15,18 @@ import data;
 
 class TestFspp( pyrmrstest.mytest.MyTestCase ):
   
-  def my_init( self ):
+  def global_setUp( self ):
     
-    self.fspp = pyrmrs.ext.delphin.fspp.Fspp();
+    self.globalstate.fspp = pyrmrs.ext.delphin.fspp.Fspp();
 
   def test_tokenise( self ):
 
     for i in range( 0, len(data.TEXT) ):
 
       smaf = pyrmrs.smafpkg.smaf.SMAF( data.TEXT[i] );
-      smaf = self.fspp.tokenise( smaf );
-      self.assertStringCrudelyEqual( data.TOKENISED[i], smaf.str_xml() );
+      smaf = self.globalstate.fspp.tokenise( smaf );
+      #print smaf.str_xml();
+      self.assertStringCrudelyEqual( smaf.str_xml(), data.TOKENISED[i] );
 
 
 
