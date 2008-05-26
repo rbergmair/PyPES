@@ -1,9 +1,8 @@
 import os;
 import sys;
-
 import time;
 
-import smaftransform;
+import pyrmrs.tools.smaftransform;
 
 import pyrmrs.globals;
 
@@ -96,7 +95,7 @@ def parse_all( reportfile, indir, outdir, rstrgy ):
     before_time = time.time();
     before_cpu = time.clock();
     
-    smaftransform.smaftransform( ifile, ofile, parse_sent );
+    pyrmrs.tools.smaftransform.smaftransform( ifile, ofile, parse_sent );
 
     after_time = time.time();
     after_cpu = time.clock();
@@ -210,7 +209,8 @@ def main( argv=None ):
   
   if help or illegal:
     
-    print "usage: python ergparse.py"
+    print "usage: ergparse.py ..."
+    print;
     print;
     print "invocation options 1"
     print;
@@ -220,6 +220,7 @@ def main( argv=None ):
     print "    --infile=...     Read the input from this file."
     print "    --outfile=...    Write the output to this file."
     print;
+    print;
     print "invocation options 2"
     print;
     print "    Use both of these options to ergparse each file in a directory,"
@@ -227,6 +228,7 @@ def main( argv=None ):
     print;
     print "     --indir=...     Read the input from files in this directory."
     print "     --outdir=...    Write the output to files in this directory."
+    print;
     print;
     print "options for choosing the robustification strategy"
     print;
@@ -236,11 +238,12 @@ def main( argv=None ):
     print "     --predict-les   Pass the \"-predict-les\" option to PET."
     print "     --default-les   Pass the \"-default-les\" option to PET."
     print;
+    print;
     print "other options"
     print;
     print "     --help          Print this."
     print "     --report=...    Write the parse reports to this file.";
-    print "                      default: parse-report.csv"
+    print "                       default: parse-report.csv"
     print;
     
     if help:
