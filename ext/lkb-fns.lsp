@@ -10,6 +10,8 @@
   (loop
 
     (setq len (read-sequence *indata* istrm))
+    (when (= len 0)
+      (return-from simple-io-read-block ""))
 
     (setq i 0)
     (setq o 0)

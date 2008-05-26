@@ -1,6 +1,8 @@
 import os;
 import re;
 
+import pyrmrs.globals;
+
 import pyrmrs.config;
 import pyrmrs.ext.basicio;
 
@@ -75,11 +77,20 @@ class Tagger( pyrmrs.ext.basicio.BasicIO ):
       
       for postag in rslt_tok_tags_spl:
         
-        postagspl = postag.split( ":" );
-        tag = postagspl[0];
-        probtxt = postagspl[1];
+        r = postag.rfind( ":" );
+        #postagspl = postag.split( ":" );
+        tag = postag[:r];
+        #tag = postagspl[0];
+        probtxt = postag[r+1:];
+        #probtxt = postagspl[1];
         
         m = self.NUMBER.search( probtxt );
+        try:
+          assert not m is None;
+        except AssertionError, e:
+          pyrmrs.globals.logDebug( self, "failed to find number in |>%s<|" % probtxt );
+          raise e;
+          
         prob = m.group();
         
         posedge = pyrmrs.smafpkg.pos_edge.PosEdge();

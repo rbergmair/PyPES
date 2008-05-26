@@ -132,6 +132,9 @@ class BasicPet( pyrmrs.ext.basicio.BasicIO ):
   def parse( self, smaf ):
     
     rslt = self.invoke( smaf.str_xml() );
+    
+    rslt = rslt.replace( "&", "&amp;" );
+    
     f = cStringIO.StringIO( rslt.encode( "utf-8" ) );
     
     rmrsid = 0;

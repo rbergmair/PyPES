@@ -21,8 +21,7 @@ class Tokeniser( pyrmrs.ext.basicio.BasicIO ):
     
     pyrmrs.ext.basicio.BasicIO.__init__( self );
     self.invoke( "" );
-
-  
+    
   def tokenise( self, smaf ):
     
     surface = smaf.text;
@@ -43,9 +42,12 @@ class Tokeniser( pyrmrs.ext.basicio.BasicIO ):
     
     sent = smaf.text.replace( "^", "\021" );
     rslt = self.invoke( sent );
-    rslt = rslt.replace( "\021", "^" );
     rslt = rslt[ :len(rslt)-1 ];
     
+    rslt = rslt.replace( "\021", "^" );
+    
+    rslt = rslt.replace( "&raspsquo;", "'" );
+    rslt = rslt.replace( "&rasprsquo;", "`" );
     
     mins = None;
     maxe = None;

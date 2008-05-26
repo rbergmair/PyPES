@@ -290,7 +290,7 @@ class BasicIO:
   
   
   def close_pipe( self ):
-    
+
     if not self.child_out is None:
       pyrmrs.globals.logDebug( self, "closing child output stream..." );
       self.child_out.close();

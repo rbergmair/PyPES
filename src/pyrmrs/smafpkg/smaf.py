@@ -1,3 +1,4 @@
+import xml.sax.saxutils;
 import pyrmrs.xmltools.reader_element;
 
 import pyrmrs.globals;
@@ -28,7 +29,11 @@ class SMAFTokenIterator:
     
     for edge in self.smaf.lattice.lattice[ self.node ]:
       
-      if not isinstance( edge, pyrmrs.smafpkg.token_edge.TokenEdge ):
+      if isinstance( edge, pyrmrs.smafpkg.token_edge.TokenEdge ):
+        pass;
+      elif isinstance( edge, pyrmrs.smafpkg.ersatz_edge.ErsatzEdge ):
+        pass;
+      else:
         continue;
   
       if trg is None:
@@ -37,7 +42,12 @@ class SMAFTokenIterator:
       
       toks.append( edge );
     
-    assert len( toks ) == 1;
+    try:
+      assert len( toks ) == 1;
+    except AssertionError, e:
+      print self.smaf.str_xml();
+      print "Warning: ambiguous tokens";
+      
     
     self.node = trg;
     
@@ -178,7 +188,7 @@ class SMAF( pyrmrs.xmltools.reader_element.ReaderElement ):
     
     elements = "";
     if not self.text is None:
-      elements += "<text>%s</text>\n" % self.text;
+      elements += "<text>%s</text>\n" % xml.sax.saxutils.escape( self.text );
     
     if not self.lattice is None:
       elements += self.lattice.str_xml();

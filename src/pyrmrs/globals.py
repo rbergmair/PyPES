@@ -116,6 +116,7 @@ def initMain():
   global initialized;
   if initialized:
     return;
+  initialized = True;
   
   global logdir;
   

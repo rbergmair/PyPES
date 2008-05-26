@@ -1,4 +1,5 @@
 import cStringIO;
+import time;
 
 import pyrmrs.config;
 import pyrmrs.ext.basicio;
@@ -63,4 +64,5 @@ class Fspp( pyrmrs.ext.basicio.BasicIO ):
   def close_pipe( self ):
     
     self.write_block( "" );
+    time.sleep(0.5);
     pyrmrs.ext.basicio.BasicIO.close_pipe( self );

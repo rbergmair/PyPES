@@ -183,6 +183,7 @@ class XMLReader( xml.sax.handler.ContentHandler ):
           self.parser.feed( data );
         except:
           pyrmrs.globals.logWarning( self, self.alldata );
+          print self.alldata;
           raise;
 
       if eob: # or data == "" or ( ( self.limit != None ) and ( self.noread >= self.limit ) ):

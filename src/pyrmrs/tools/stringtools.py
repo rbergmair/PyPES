@@ -24,6 +24,8 @@ def unindent( stri ):
 
 def debug_format( stri ):
   
+  return stri;
+  
   out = u"";
   for ch in stri:
     if ord(ch) < 32:
