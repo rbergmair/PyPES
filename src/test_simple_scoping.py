@@ -57,11 +57,11 @@ def str_pretty_scoped( rmrs, curhole, scoping ):
 pyrmrs.globals.initMain();
 doc = open( "testdta/dragon.xml", "r" );
 rmrsrd = pyrmrs.mrs.robust.rmrsreader.RMRSReader( doc );
-for rmrs in rmrsrd:
+for rmrs in rmrsrd.getAll():
   print rmrs.str_pretty();
   scoping = rmrs.get_scoping();
   scoping.solve();
-  scoping.enumerate();
+  # scoping.enumerate();
   for scoping in scoping.enumerate():
     #print str(scoping);
     print str_pretty_scoped( rmrs, rmrs.top.vid, scoping );
