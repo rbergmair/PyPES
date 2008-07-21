@@ -2,13 +2,13 @@ import os;
 import sys;
 import time;
 
-import pyrmrs.tools.smaftransform;
-
 import pyrmrs.globals;
 
-import pyrmrs.smafpkg.smaf;
+import pyrmrs.tools.smaftransform;
 
+import pyrmrs.smafpkg.smaf;
 import pyrmrs.ext.delphin.pet;
+
 
 
 pet = None;
@@ -42,16 +42,10 @@ def parse_sent( smaf ):
   return smaf;
 
 
+
 import random;
 
-
-
-RSTRGY_LEXICON_ONLY = 1;
-RSTRGY_PREDICT_LES = 2;
-RSTRGY_DEFAULT_LES = 3;
-
-
-def parse_all( reportfile, indir, outdir, rstrgy ):
+def parse_file( reportfile, ifile, ofile ):
   
   global pet;
   
@@ -59,97 +53,60 @@ def parse_all( reportfile, indir, outdir, rstrgy ):
   global gram_error;
   global sys_error;
   
-  pyrmrs.globals.initMain();
+  total = 0;
+  gram_error = 0;
+  sys_error = 0;
 
-  reportfile = open( "parse-report.csv", "w" );
-  reportfile.write( "unqid,filename,overall coverage[%],gram coverage [%],sys coverage [%],no items,sys errs,gram errs,avg time per item [s],avg time per item [cpu]\n" );
-    
-  pet = pyrmrs.ext.delphin.pet.TaggedPet();
-
-
-
-  files = os.listdir( "ergtag/rte" );
-  #files.sort();
-  random.shuffle( files );
+  before_time = time.time();
+  before_cpu = time.clock();
   
-  for file in files:
-  #for file in [ "dev1-cd-h-06-10.xml" ]:
-  #for file in [ "dev2-sum-t-11-15.xml" ]:
-  #for file in [ "dev1-cd-h-11-15.xml" ]:
+  pyrmrs.tools.smaftransform.smaftransform( ifile, ofile, parse_sent );
 
-    
-    print;
-    print;
-    print;
-    print file;
-    print;
+  after_time = time.time();
+  after_cpu = time.clock();
 
-    
-    total = 0;
-    gram_error = 0;
-    sys_error = 0;
-
-    ifile = open( "ergtag/rte/%s" % file, "r" );
-    ofile = open( "ergrmrsdl/rte/%s" % file, "w" );
-
-    before_time = time.time();
-    before_cpu = time.clock();
-    
-    pyrmrs.tools.smaftransform.smaftransform( ifile, ofile, parse_sent );
-
-    after_time = time.time();
-    after_cpu = time.clock();
-
-    ofile.close();
-    ifile.close();
+  ofile.close();
+  ifile.close();
 
 
-    oc = " ";
-    gc = " ";
-    sc = " ";
+  oc = " ";
+  gc = " ";
+  sc = " ";
 
-    print;
-    
-    print "%3.5f secs ( %s units of processor time )" % \
-      ( after_time - before_time, after_cpu - before_cpu );
-      
-    if total > 0:
-      oc = "%2.2f" % ( ( 100.0 * float( total-gram_error-sys_error ) ) / float( total ) );
-    print "overall coverage: %d/%d = %s%%" % \
-      ( total-gram_error-sys_error, total, oc );
-      
-    if total-sys_error > 0:
-      gc = "%2.2f" % ( ( 100.0 * float( total-gram_error-sys_error ) ) / float( total-sys_error ) );
-    print "grammatical coverage: %d/%d = %s%%" % \
-      ( total-gram_error-sys_error, total-sys_error, gc );
-      
-    if total-gram_error > 0:
-      sc = "%2.2f" % ( ( 100.0 * float( total-gram_error-sys_error ) ) / float( total-gram_error ) );
-    print "system coverage: %d/%d = %s%%" % \
-      ( total-gram_error-sys_error, total-gram_error, sc );
-      
-    tpi = " ";
-    cpi = " ";
-    if total-gram_error-sys_error > 0:
-      tpi = "%2.4f" % ( float( after_time-before_time )/float( total-gram_error-sys_error ) );
-      cpi = "%2.4f" % ( float( after_cpu-before_cpu )/float( total-gram_error-sys_error ) );
-      
-    reportfile.write( "%s,%s,%s,%s,%s,%d,%d,%d,%s,%s\n" % ( \
-      pyrmrs.globals.getUnqID(), \
-      file, \
-      oc, gc, sc, \
-      total, sys_error, gram_error, \
-      tpi, cpi \
-    ) );
-    reportfile.flush();
-    
-  del pet;
+  print;
   
-  reportfile.close();
-  
-  pyrmrs.globals.destructMain();
-  
-  return 0;
+  print "%3.5f secs ( %s units of processor time )" % \
+    ( after_time - before_time, after_cpu - before_cpu );
+    
+  if total > 0:
+    oc = "%2.2f" % ( ( 100.0 * float( total-gram_error-sys_error ) ) / float( total ) );
+  print "overall coverage: %d/%d = %s%%" % \
+    ( total-gram_error-sys_error, total, oc );
+    
+  if total-sys_error > 0:
+    gc = "%2.2f" % ( ( 100.0 * float( total-gram_error-sys_error ) ) / float( total-sys_error ) );
+  print "grammatical coverage: %d/%d = %s%%" % \
+    ( total-gram_error-sys_error, total-sys_error, gc );
+    
+  if total-gram_error > 0:
+    sc = "%2.2f" % ( ( 100.0 * float( total-gram_error-sys_error ) ) / float( total-gram_error ) );
+  print "system coverage: %d/%d = %s%%" % \
+    ( total-gram_error-sys_error, total-gram_error, sc );
+    
+  tpi = " ";
+  cpi = " ";
+  if total-gram_error-sys_error > 0:
+    tpi = "%2.4f" % ( float( after_time-before_time )/float( total-gram_error-sys_error ) );
+    cpi = "%2.4f" % ( float( after_cpu-before_cpu )/float( total-gram_error-sys_error ) );
+    
+  reportfile.write( "%s,%s,%s,%s,%s,%d,%d,%d,%s,%s\n" % ( \
+    pyrmrs.globals.getUnqID(), \
+    file, \
+    oc, gc, sc, \
+    total, sys_error, gram_error, \
+    tpi, cpi \
+  ) );
+  reportfile.flush();
 
 
 
@@ -159,6 +116,10 @@ def main( argv=None ):
     argv = sys.argv;
     
   reportfilename = "parse-report.csv";
+
+  RSTRGY_LEXICON_ONLY = 1;
+  RSTRGY_PREDICT_LES = 2;
+  RSTRGY_DEFAULT_LES = 3;
 
   rstrgy = RSTRGY_LEXICON_ONLY;
   
@@ -250,8 +211,70 @@ def main( argv=None ):
       return 0;
     elif illegal:
       return -1;
+
+  global pet;
   
-  pass;
+  if rstrgy == RSTRGY_LEXICON_ONLY:
+    pet = pyrmrs.ext.delphin.pet.BasicPet();
+  elif rstrgy == RSTRGY_DEFAULT_LES:
+    pet = pyrmrs.ext.delphin.pet.TaggedPet();
+  elif rstrgy == RSTRGY_PREDICT_LES:
+    print "not yet implemented";
+  
+  try:
+    
+    import traceback;
+    
+    reportf = open( reportfilename, "w" );
+    reportf.write( "unqid,filename,overall coverage[%],gram coverage [%],sys coverage [%],no items,sys errs,gram errs,avg time per item [s],avg time per item [cpu]\n" );
+    
+    files = [];
+    if not infile is None:
+      files.append( (infile,outfile) );
+    
+    if not indir is None:
+      for filen in os.listdir( indir ):
+        files.append( ( indir+"/"+filen, outdir+"/"+filen ) );
+    
+    try:
+      
+      for (infile,outfile) in files:
+
+        print;
+        print;
+        print;
+        print infile;
+        print;
+        
+        try:
+          inf = open( infile, "r" );
+        except:
+          traceback.print_tb();
+          continue;
+          
+        try:
+          
+          try:
+            outf = open( outfile, "w" );
+          except:
+            traceback.print_tb();
+            continue;
+        
+          try:
+            try:
+              parse_file( reportf, inf, outf )
+            except:
+              traceback.print_exc();
+          finally:
+            outf.close();
+        finally:
+          inf.close();
+    finally:
+      reportf.close();
+  
+  finally:
+    
+    del pet;
 
 
 

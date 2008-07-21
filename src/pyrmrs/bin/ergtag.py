@@ -1,13 +1,13 @@
 import sys;
 
-import smaftransform;
-
 import pyrmrs.globals;
 
-import pyrmrs.smafpkg.smaf;
+import pyrmrs.tools.smaftransform;
 
+import pyrmrs.smafpkg.smaf;
 import pyrmrs.ext.delphin.fspp;
 import pyrmrs.ext.glue.merge_rasp_erg_pp;
+
 
 
 fspp = None;
@@ -40,7 +40,7 @@ def main( argv=None ):
   
   ifile = open( argv[1], "r" );
   ofile = open( argv[2], "w" );
-  smaftransform.smaftransform( ifile, ofile, ergtag );
+  pyrmrs.tools.smaftransform.smaftransform( ifile, ofile, ergtag );
   ofile.close();
   ifile.close();
   
