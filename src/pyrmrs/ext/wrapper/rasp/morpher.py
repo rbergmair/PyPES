@@ -1,8 +1,8 @@
 import pyrmrs.config;
-import pyrmrs.ext.basicio;
+import pyrmrs.ext.wrapper.basicio;
 
 
-class Morpher( pyrmrs.ext.basicio.BasicIO ):
+class Morpher( pyrmrs.ext.wrapper.basicio.BasicIO ):
   
   CMD = pyrmrs.config.SH_RASPMORPH;
   EOB_MARKER = "\n";

@@ -1,16 +1,14 @@
 import unittest;
 
 
+import wrapper.suite;
 import glue.suite;
-import rasp.suite;
-import delphin.suite;
 
 
 def suite():
   ts = unittest.TestSuite();
-  ts.addTests( [ glue.suite.suite(),
-                 rasp.suite.suite(),
-                 delphin.suite.suite() ] );
+  ts.addTests( [ wrapper.suite.suite(),
+                 glue.suite.suite() ] );
   return ts;
 
 

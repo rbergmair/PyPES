@@ -2,11 +2,11 @@ import cStringIO;
 import time;
 
 import pyrmrs.config;
-import pyrmrs.ext.basicio;
+import pyrmrs.ext.wrapper.basicio;
 
 
 
-class Fspp( pyrmrs.ext.basicio.BasicIO ):
+class Fspp( pyrmrs.ext.wrapper.basicio.BasicIO ):
   
   CMD = "cd %s; %s -L %s/ext/lkb-fns.lsp -e \"%s\" -e \"%s\"" % ( \
     pyrmrs.config.DIR_ERGHOME,
@@ -21,7 +21,7 @@ class Fspp( pyrmrs.ext.basicio.BasicIO ):
   
   def __init__( self ):
     
-    pyrmrs.ext.basicio.BasicIO.__init__( self );
+    pyrmrs.ext.wrapper.basicio.BasicIO.__init__( self );
     self.read_block();
     
   def tokenise( self, smaf ):
@@ -64,5 +64,5 @@ class Fspp( pyrmrs.ext.basicio.BasicIO ):
   def close_pipe( self ):
     
     self.write_block( "" );
-    time.sleep(0.5);
-    pyrmrs.ext.basicio.BasicIO.close_pipe( self );
+    #time.sleep(0.5);
+    pyrmrs.ext.wrapper.basicio.BasicIO.close_pipe( self );

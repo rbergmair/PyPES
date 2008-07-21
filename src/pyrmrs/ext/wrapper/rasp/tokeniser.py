@@ -1,5 +1,5 @@
 import pyrmrs.config;
-import pyrmrs.ext.basicio;
+import pyrmrs.ext.wrapper.basicio;
 
 import pyrmrs.smafpkg.token_edge;
 import pyrmrs.smafpkg.lattice;
@@ -8,7 +8,7 @@ import re;
 
 
 
-class Tokeniser( pyrmrs.ext.basicio.BasicIO ):
+class Tokeniser( pyrmrs.ext.wrapper.basicio.BasicIO ):
   
   CMD = pyrmrs.config.SH_RASPTOK + " -w";
   EOB_MARKER_WRITE = "^ \n";
@@ -19,7 +19,7 @@ class Tokeniser( pyrmrs.ext.basicio.BasicIO ):
   
   def __init__( self ):
     
-    pyrmrs.ext.basicio.BasicIO.__init__( self );
+    pyrmrs.ext.wrapper.basicio.BasicIO.__init__( self );
     self.invoke( "" );
     
   def tokenise( self, smaf ):

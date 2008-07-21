@@ -7,7 +7,7 @@ import pyrmrs.globals;
 import pyrmrs.tools.stringtools;
 
 import pyrmrs.smafpkg.smafreader;
-import pyrmrs.ext.rasp.parser;
+import pyrmrs.ext.wrapper.rasp.parser;
 
 
 import pyrmrstest.mytest;
@@ -21,7 +21,7 @@ class TestParser( pyrmrstest.mytest.MyTestCase ):
   
   def global_setUp( self ):
     
-    self.globalstate.parser = pyrmrs.ext.rasp.parser.Parser();
+    self.globalstate.parser = pyrmrs.ext.wrapper.rasp.parser.Parser();
 
   def test_parser( self ):
 

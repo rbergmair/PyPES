@@ -1,10 +1,10 @@
 import pyrmrs.config;
-import pyrmrs.ext.basicio;
+import pyrmrs.ext.wrapper.basicio;
 
 import pyrmrs.smafpkg.syntree_edge;
 
 
-class Parser( pyrmrs.ext.basicio.BasicIO ):
+class Parser( pyrmrs.ext.wrapper.basicio.BasicIO ):
   
   CMD = pyrmrs.config.SH_RASPPARSE + " -ot -u";
   CARET = "^ ^_^:1\n";
@@ -14,14 +14,14 @@ class Parser( pyrmrs.ext.basicio.BasicIO ):
 
   def configure( self ):
     
-    pyrmrs.ext.basicio.BasicIO.configure( self );
+    pyrmrs.ext.wrapper.basicio.BasicIO.configure( self );
     self.cmd += " -n %d" % self.no_parses;
     
 
   def __init__( self, no_parses=5 ):
     
     self.no_parses = no_parses;
-    pyrmrs.ext.basicio.BasicIO.__init__( self );
+    pyrmrs.ext.wrapper.basicio.BasicIO.__init__( self );
     self.write_block( self.CARET, eob_marker="" );
 
 

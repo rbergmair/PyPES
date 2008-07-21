@@ -7,7 +7,7 @@ import pyrmrs.globals;
 import pyrmrs.tools.stringtools;
 
 import pyrmrs.smafpkg.smafreader;
-import pyrmrs.ext.rasp.tagger;
+import pyrmrs.ext.wrapper.rasp.tagger;
 
 
 import pyrmrstest.mytest;
@@ -21,7 +21,7 @@ class TestTagger( pyrmrstest.mytest.MyTestCase ):
   
   def global_setUp( self ):
     
-    self.globalstate.tagger = pyrmrs.ext.rasp.tagger.Tagger();
+    self.globalstate.tagger = pyrmrs.ext.wrapper.rasp.tagger.Tagger();
 
   def test_tagger( self ):
 

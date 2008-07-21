@@ -4,13 +4,13 @@ import re;
 import pyrmrs.globals;
 
 import pyrmrs.config;
-import pyrmrs.ext.basicio;
+import pyrmrs.ext.wrapper.basicio;
 
 import pyrmrs.smafpkg.pos_edge;
 
 
 
-class Tagger( pyrmrs.ext.basicio.BasicIO ):
+class Tagger( pyrmrs.ext.wrapper.basicio.BasicIO ):
   
   CMD = pyrmrs.config.SH_RASPTAG + " O60";
   EOB_MARKER_WRITE = " ^ \n";
@@ -21,7 +21,7 @@ class Tagger( pyrmrs.ext.basicio.BasicIO ):
   
   def configure( self ):
     
-    pyrmrs.ext.basicio.BasicIO.configure( self );
+    pyrmrs.ext.wrapper.basicio.BasicIO.configure( self );
 
     LDLP = "LD_LIBRARY_PATH";
     

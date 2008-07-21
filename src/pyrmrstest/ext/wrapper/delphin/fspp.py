@@ -3,7 +3,7 @@ import cStringIO;
 
 
 import pyrmrs.smafpkg.smafreader;
-import pyrmrs.ext.delphin.fspp;
+import pyrmrs.ext.wrapper.delphin.fspp;
 
 import pyrmrs.smafpkg.smaf;
 import pyrmrstest.mytest;
@@ -17,7 +17,7 @@ class TestFspp( pyrmrstest.mytest.MyTestCase ):
   
   def global_setUp( self ):
     
-    self.globalstate.fspp = pyrmrs.ext.delphin.fspp.Fspp();
+    self.globalstate.fspp = pyrmrs.ext.wrapper.delphin.fspp.Fspp();
 
   def test_tokenise( self ):
 

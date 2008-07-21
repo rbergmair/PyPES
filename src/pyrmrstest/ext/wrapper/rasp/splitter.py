@@ -3,7 +3,7 @@ import unittest;
 
 
 import pyrmrs.globals;
-import pyrmrs.ext.rasp.splitter;
+import pyrmrs.ext.wrapper.rasp.splitter;
 
 import pyrmrstest.mytest;
 
@@ -16,7 +16,7 @@ class TestSplitter( pyrmrstest.mytest.MyTestCase ):
   
   def global_setUp( self ):
     
-    self.globalstate.splitter = pyrmrs.ext.rasp.splitter.Splitter();
+    self.globalstate.splitter = pyrmrs.ext.wrapper.rasp.splitter.Splitter();
     
   def test_splitter( self ):
     

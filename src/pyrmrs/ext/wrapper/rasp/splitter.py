@@ -1,8 +1,8 @@
 import pyrmrs.config;
-import pyrmrs.ext.basicio;
+import pyrmrs.ext.wrapper.basicio;
 
 
-class Splitter( pyrmrs.ext.basicio.BasicIO ):
+class Splitter( pyrmrs.ext.wrapper.basicio.BasicIO ):
   
   CMD = pyrmrs.config.SH_RASPSENT;
   EOB_MARKER_READ = "\027"+6*"\0";

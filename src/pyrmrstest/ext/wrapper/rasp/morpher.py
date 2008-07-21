@@ -6,7 +6,7 @@ import cStringIO;
 import pyrmrs.globals;
 
 import pyrmrs.smafpkg.smafreader;
-import pyrmrs.ext.rasp.morpher;
+import pyrmrs.ext.wrapper.rasp.morpher;
 
 
 import pyrmrstest.mytest;
@@ -20,7 +20,7 @@ class TestMorpher( pyrmrstest.mytest.MyTestCase ):
   
   def global_setUp( self ):
     
-    self.globalstate.morpher = pyrmrs.ext.rasp.morpher.Morpher();
+    self.globalstate.morpher = pyrmrs.ext.wrapper.rasp.morpher.Morpher();
 
   def test_morpher( self ):
 

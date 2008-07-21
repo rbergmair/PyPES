@@ -6,7 +6,7 @@ import pyrmrs.globals;
 import pyrmrs.tools.stringtools;
 
 import pyrmrs.smafpkg.smaf;
-import pyrmrs.ext.rasp.tokeniser;
+import pyrmrs.ext.wrapper.rasp.tokeniser;
 
 
 import pyrmrstest.mytest;
@@ -20,7 +20,7 @@ class TestTokeniser( pyrmrstest.mytest.MyTestCase ):
   
   def global_setUp( self ):
     
-    self.globalstate.tokeniser = pyrmrs.ext.rasp.tokeniser.Tokeniser();
+    self.globalstate.tokeniser = pyrmrs.ext.wrapper.rasp.tokeniser.Tokeniser();
     
   def test_tokeniser( self ):
 

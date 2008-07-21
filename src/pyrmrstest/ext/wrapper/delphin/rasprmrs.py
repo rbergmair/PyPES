@@ -3,7 +3,7 @@ import cStringIO;
 
 
 import pyrmrs.smafpkg.smafreader;
-import pyrmrs.ext.delphin.rasprmrs;
+import pyrmrs.ext.wrapper.delphin.rasprmrs;
 
 import pyrmrstest.mytest;
 
@@ -16,7 +16,7 @@ class TestRaspRmrs( pyrmrstest.mytest.MyTestCase ):
   
   def global_setUp( self ):
     
-    self.globalstate.rasprmrs = pyrmrs.ext.delphin.rasprmrs.RaspRmrs();
+    self.globalstate.rasprmrs = pyrmrs.ext.wrapper.delphin.rasprmrs.RaspRmrs();
 
   def test_rasprmrs( self ):
 

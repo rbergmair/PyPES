@@ -1,14 +1,14 @@
 import cStringIO;
 
 import pyrmrs.config;
-import pyrmrs.ext.basicio;
+import pyrmrs.ext.wrapper.basicio;
 
 import pyrmrs.mrs.robust.rmrsreader;
 import pyrmrs.smafpkg.rmrs_edge;
 
 
 
-class RaspRmrs( pyrmrs.ext.basicio.BasicIO ):
+class RaspRmrs( pyrmrs.ext.wrapper.basicio.BasicIO ):
   
   CMD = "cd %s; %s -L %s/ext/lkb-fns.lsp -e \"%s\" -e \"%s\"" % ( \
     pyrmrs.config.DIR_LKBHOME,
@@ -23,7 +23,7 @@ class RaspRmrs( pyrmrs.ext.basicio.BasicIO ):
   
   def __init__( self ):
     
-    pyrmrs.ext.basicio.BasicIO.__init__( self );
+    pyrmrs.ext.wrapper.basicio.BasicIO.__init__( self );
     self.read_block();
     
   def convert( self, smaf ):
@@ -65,4 +65,4 @@ class RaspRmrs( pyrmrs.ext.basicio.BasicIO ):
   def close_pipe( self ):
     
     self.write_block( "" );
-    pyrmrs.ext.basicio.BasicIO.close_pipe( self );
+    pyrmrs.ext.wrapper.basicio.BasicIO.close_pipe( self );

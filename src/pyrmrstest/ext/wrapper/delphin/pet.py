@@ -3,7 +3,7 @@ import cStringIO;
 
 
 import pyrmrs.smafpkg.smafreader;
-import pyrmrs.ext.delphin.pet;
+import pyrmrs.ext.wrapper.delphin.pet;
 
 import pyrmrs.smafpkg.smafreader;
 import pyrmrstest.mytest;
@@ -17,7 +17,7 @@ class TestBasicPet( pyrmrstest.mytest.MyTestCase ):
   
   def global_setUp( self ):
     
-    self.globalstate.pet = pyrmrs.ext.delphin.pet.BasicPet();
+    self.globalstate.pet = pyrmrs.ext.wrapper.delphin.pet.BasicPet();
     
   def global_tearDown( self ):
     
@@ -42,7 +42,7 @@ class TestBasicPet( pyrmrstest.mytest.MyTestCase ):
       try:
         self.globalstate.pet.parse(smaf);
         self.fail();
-      except pyrmrs.ext.delphin.pet.PetError, e:
+      except pyrmrs.ext.wrapper.delphin.pet.PetError, e:
         self.assertEquals( e.errno, e.ERRNO_MISSING_LEXICAL_ENTRY );
 
 
@@ -51,7 +51,7 @@ class TestTaggedPet( pyrmrstest.mytest.MyTestCase ):
   
   def global_setUp( self ):
     
-    self.globalstate.pet = pyrmrs.ext.delphin.pet.TaggedPet();
+    self.globalstate.pet = pyrmrs.ext.wrapper.delphin.pet.TaggedPet();
     
   def global_tearDown( self ):
     
@@ -85,7 +85,7 @@ class TestTaggedPet( pyrmrstest.mytest.MyTestCase ):
       try:
         smaf = self.globalstate.pet.parse( smaf );
         self.fail();
-      except pyrmrs.ext.delphin.pet.PetError, e:
+      except pyrmrs.ext.wrapper.delphin.pet.PetError, e:
         self.assertEquals( e.errno, e.ERRNO_ZERO_READINGS );
 
 

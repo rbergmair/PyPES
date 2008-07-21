@@ -2,7 +2,7 @@ import cStringIO;
 import re;
 
 import pyrmrs.config;
-import pyrmrs.ext.basicio;
+import pyrmrs.ext.wrapper.basicio;
 
 import pyrmrs.mrs.robust.rmrsreader;
 
@@ -35,7 +35,7 @@ class PetError( Exception ):
 
 
 
-class BasicPet( pyrmrs.ext.basicio.BasicIO ):
+class BasicPet( pyrmrs.ext.wrapper.basicio.BasicIO ):
   
   EOB_MARKER = "\027" + 511*"\0";
 
@@ -60,7 +60,7 @@ class BasicPet( pyrmrs.ext.basicio.BasicIO ):
 
   def configure( self ):
     
-    pyrmrs.ext.basicio.BasicIO.configure( self );
+    pyrmrs.ext.wrapper.basicio.BasicIO.configure( self );
     
     cmdext = \
       "-results=%d " % self.no_parses + \
@@ -75,7 +75,7 @@ class BasicPet( pyrmrs.ext.basicio.BasicIO ):
   def __init__( self, no_parses=5 ):
 
     self.no_parses = no_parses;
-    pyrmrs.ext.basicio.BasicIO.__init__( self );
+    pyrmrs.ext.wrapper.basicio.BasicIO.__init__( self );
     self.read_block();
   
   
@@ -164,7 +164,7 @@ class BasicPet( pyrmrs.ext.basicio.BasicIO ):
   def close_pipe( self ):
     
     self.write_block( "" );
-    pyrmrs.ext.basicio.BasicIO.close_pipe( self );
+    pyrmrs.ext.wrapper.basicio.BasicIO.close_pipe( self );
 
 
 
