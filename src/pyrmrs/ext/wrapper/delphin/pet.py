@@ -7,6 +7,8 @@ import pyrmrs.ext.wrapper.basicio;
 import pyrmrs.mrs.robust.rmrsreader;
 
 import pyrmrs.smafpkg.rmrs_edge;
+import pyrmrs.smafpkg.err_edge;
+
 
 
 
@@ -131,30 +133,48 @@ class BasicPet( pyrmrs.ext.wrapper.basicio.BasicIO ):
   
   def parse( self, smaf ):
     
-    rslt = self.invoke( smaf.str_xml() );
-    
-    rslt = rslt.replace( "&", "&amp;" );
-    
-    f = cStringIO.StringIO( rslt.encode( "utf-8" ) );
-    
-    rmrsid = 0;
-    
-    for rmrs in pyrmrs.mrs.robust.rmrsreader.RMRSReader( f, True ).getAll():
+    try:
       
-      newedge = pyrmrs.smafpkg.rmrs_edge.RmrsEdge();
+      rslt = self.invoke( smaf.str_xml() );
       
-      newedge.id = "r%d" % rmrsid;
-      rmrsid += 1;
-
+      rslt = rslt.replace( "&", "&amp;" );
+      
+      f = cStringIO.StringIO( rslt.encode( "utf-8" ) );
+      
+      rmrsid = 0;
+      
+      for rmrs in pyrmrs.mrs.robust.rmrsreader.RMRSReader( f, True ).getAll():
+        
+        newedge = pyrmrs.smafpkg.rmrs_edge.RmrsEdge();
+        
+        newedge.id = "r%d" % rmrsid;
+        rmrsid += 1;
+  
+        newedge.source = smaf.lattice.init;
+        newedge.target = smaf.lattice.final;
+        newedge.cfrom = smaf.lattice.cfrom;
+        newedge.cto = smaf.lattice.cto;
+        
+        newedge.rmrs = rmrs;
+        
+        rmrs.cfrom = newedge.cfrom;
+        rmrs.cto = newedge.cto;
+        
+        smaf.lattice.register( newedge );
+    
+    except PetError, err:
+      
+      newedge = pyrmrs.smafpkg.err_edge.ErrEdge();
+      
+      newedge.id = "r0";
+      
       newedge.source = smaf.lattice.init;
       newedge.target = smaf.lattice.final;
       newedge.cfrom = smaf.lattice.cfrom;
       newedge.cto = smaf.lattice.cto;
       
-      newedge.rmrs = rmrs;
-      
-      rmrs.cfrom = newedge.cfrom;
-      rmrs.cto = newedge.cto;
+      newedge.errno = err.errno;
+      newedge.errmsg = err.errmsg;
       
       smaf.lattice.register( newedge );
       

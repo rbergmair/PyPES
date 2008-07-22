@@ -6,6 +6,10 @@ import pyrmrs.smafpkg.smafreader;
 import pyrmrs.ext.wrapper.delphin.pet;
 
 import pyrmrs.smafpkg.smafreader;
+
+import pyrmrs.smafpkg.err_edge;
+
+
 import pyrmrstest.mytest;
 
 
@@ -38,12 +42,15 @@ class TestBasicPet( pyrmrstest.mytest.MyTestCase ):
   
       f = cStringIO.StringIO( data.TOKENISED_HARD[i].encode( "utf-8" ) );
       smaf = pyrmrs.smafpkg.smafreader.SMAFReader( f ).getFirst();
-      
-      try:
-        self.globalstate.pet.parse(smaf);
+      smaf = self.globalstate.pet.parse( smaf );
+      success = False;
+      for edge in smaf.lattice.edges:
+        if isinstance( edge, pyrmrs.smafpkg.err_edge.ErrEdge ):
+          if edge.errno == pyrmrs.ext.wrapper.delphin.pet.PetError.ERRNO_MISSING_LEXICAL_ENTRY:
+            success = True;
+            break;
+      if not success:
         self.fail();
-      except pyrmrs.ext.wrapper.delphin.pet.PetError, e:
-        self.assertEquals( e.errno, e.ERRNO_MISSING_LEXICAL_ENTRY );
 
 
 
@@ -82,18 +89,22 @@ class TestTaggedPet( pyrmrstest.mytest.MyTestCase ):
   
       f = cStringIO.StringIO( data.TAGGED_HARD[i].encode( "utf-8" ) );
       smaf = pyrmrs.smafpkg.smafreader.SMAFReader( f ).getFirst();
-      try:
-        smaf = self.globalstate.pet.parse( smaf );
+      smaf = self.globalstate.pet.parse( smaf );
+      success = False;
+      for edge in smaf.lattice.edges:
+        if isinstance( edge, pyrmrs.smafpkg.err_edge.ErrEdge ):
+          if edge.errno == pyrmrs.ext.wrapper.delphin.pet.PetError.ERRNO_ZERO_READINGS:
+            success = True;
+            break;
+      if not success:
         self.fail();
-      except pyrmrs.ext.wrapper.delphin.pet.PetError, e:
-        self.assertEquals( e.errno, e.ERRNO_ZERO_READINGS );
 
 
 
 def suite():
   ts = unittest.TestSuite();
-  ts.addTests( [ unittest.makeSuite( TestBasicPet ),
-                 unittest.makeSuite( TestTaggedPet ) ] );
+  ts.addTests( [ unittest.makeSuite( TestBasicPet ) ] );
+  ts.addTests( [ unittest.makeSuite( TestTaggedPet ) ] );
   return ts;
   
   
