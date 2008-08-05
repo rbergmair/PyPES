@@ -1,5 +1,7 @@
 import xml.sax;
+import xml.sax.saxutils;
 import xml.sax.handler;
+
 
 import pyrmrs.globals;
 
@@ -25,6 +27,8 @@ def uncpri_to_int( ch ):
 
 
 class TextContentFilter( xml.sax.handler.ContentHandler ):
+  
+  BYPASS_ESCAPE = False;
 
   parser = None;
   filters = {};
@@ -186,8 +190,11 @@ class TextContentFilter( xml.sax.handler.ContentHandler ):
       if self.filters.has_key( name ):
         filter_ = self.filters[ name ];
         if not filter_ is None:
-          text[0] = filter_( text[0] );
-        
+          if not self.BYPASS_ESCAPE:
+            text[0] = xml.sax.saxutils.escape( filter_( text[0] ) );
+          else:
+            text[0] = filter_( text[0] );
+
       id1 = self.get_free_id();
       tagx = [ tag ];
       self.tags[ id1 ] = tagx;

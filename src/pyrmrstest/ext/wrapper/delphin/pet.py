@@ -97,6 +97,7 @@ class TestTaggedPet( pyrmrstest.mytest.MyTestCase ):
             success = True;
             break;
       if not success:
+        print smaf.str_xml();
         self.fail();
 
 
