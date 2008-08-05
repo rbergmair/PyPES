@@ -139,15 +139,19 @@ class StoppableHttpServer( BaseHTTPServer.HTTPServer ):
         self.handle_request();
 
 
+def main( argv=None ):
 
-if __name__ == '__main__':
+  if argv == None:
+    argv = sys.argv;
+    
+  port = int( sys.argv[1] );
       
   try:
     
     srv = RmrsificationServer();
   
-    httpd = StoppableHttpServer( ( "", 8081 ), RmrsificationHandler );
-    print "Ready! Listening on Port 8081.\n";
+    httpd = StoppableHttpServer( ( "", port ), RmrsificationHandler );
+    print "Ready! Listening on Port %d.\n" % port;
     httpd.serve_forever();
     
     srv._close();
@@ -156,3 +160,9 @@ if __name__ == '__main__':
     
     if sys.exc_info()[ 0 ] != SystemExit:
       traceback.print_exc();
+
+
+if __name__ == "__main__":
+  sys.exit( main() );
+
+
