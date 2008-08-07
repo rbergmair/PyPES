@@ -116,6 +116,7 @@
 
   (setf (stream-external-format istream) :utf-8)
   (setf (stream-external-format ostream) :utf-8)
+  (setq excl::*global-gc-behavior* :auto)
 
   (read-preprocessor "preprocessor.fsr") 
 

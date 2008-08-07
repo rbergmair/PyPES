@@ -14,7 +14,7 @@ class RmrsEdge( edge.Edge ):
   
   def register( self, obj ):
     
-    if isinstance( obj, pyrmrs.mrs.robust.RMRSem ):
+    if isinstance( obj, pyrmrs.mrs.robust.rmrsem.RMRSem ):
       self.rmrs = obj;
     
   def xml_tmplt( self, base ):

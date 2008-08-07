@@ -1,6 +1,8 @@
 import sys;
 import traceback;
+
 import BaseHTTPServer;
+import httplib;
 
 import cStringIO;
 
@@ -24,8 +26,26 @@ import pyrmrs.ext.glue.merge_rasp_erg_pp;
 
 
 
-class RmrsificationServer( pyrmrs.object_types.SingletonObject ):
+class RMRSificationHandler( BaseHTTPServer.BaseHTTPRequestHandler ):
   
+  def do_POST( self ):
+    
+    self.server.do_POST( self );
+  
+  def do_GET( self ):
+    
+    self.server.do_GET( self );
+
+
+
+class RMRSificationServer( BaseHTTPServer.HTTPServer ):  
+
+
+  STD_HEADERS = { "Content-type": "text/xml",
+                  "Accept": "text/xml",
+                  "Content-Length": None };
+                  
+                  
   inst = None;
   function = None;
   
@@ -56,7 +76,7 @@ class RmrsificationServer( pyrmrs.object_types.SingletonObject ):
     self.erg_parser = pyrmrs.ext.wrapper.delphin.pet.TaggedPet();
     
     
-  def _close( self ):
+  def _del( self ):
     
     del self.erg_parser;
     del self.rasp_rmrs;
@@ -65,7 +85,7 @@ class RmrsificationServer( pyrmrs.object_types.SingletonObject ):
     del self.erg_tokeniser;
     del self.rasp_tagger;
     del self.rasp_tokeniser;
-      
+    
   
   def work( self, strin ):
 
@@ -94,49 +114,80 @@ class RmrsificationServer( pyrmrs.object_types.SingletonObject ):
     return strout;
 
 
-  def do_POST( self, reqhandler ):
+  def do_POST( self, req ):
 
-    print "POST request to '%s'" % reqhandler.path;
+    path_prefix = "/rmrsify?transid=";
+    path = req.path;
     
-    cntlen = int( reqhandler.headers.getheader( "Content-Length" ) );
-
-    strin = reqhandler.rfile.read( cntlen );
-    reqhandler.rfile.close();
+    if not req.path.startswith( path_prefix ):
+      
+      req.send_response( 404 );
+      req.end_headers();
+      req.finish();
+      return;
+    
+    transid = 0;
+    try:
+      transid = int( path[ len(path_prefix) : ] );
+    except:      
+      req.send_response( 404 );
+      req.end_headers();
+      req.finish();
+      return;
+    
+    cntlen = int( req.headers.getheader( "Content-Length" ) );
+    strin = req.rfile.read( cntlen );
+    req.rfile.close();
+    
+    req.send_response( 200 );
+    req.end_headers();
+    req.finish();
+    
     strout = self.work( strin );
     strout = strout.encode( "utf-8" );
-  
-    reqhandler.send_response( 200 );
-    reqhandler.send_header( "Content-Type", "text/xml; charset=UTF-8" );
-    reqhandler.send_header( "Content-Length", len(strout) );
-    reqhandler.send_header( "Cache-Control", "no-cache" );
-    reqhandler.end_headers();
     
-    reqhandler.wfile.write( strout );
-  
-
-
-class RmrsificationHandler( BaseHTTPServer.BaseHTTPRequestHandler ):
-  
-  def do_POST( self ):
-
-    srv = RmrsificationServer();
-    srv.do_POST( self );
-  
-  def do_GET( self ):
+    client_ = req.client_address;
+    client = ( client_[0], 8080 );
     
-    if self.path == "/quit":
-      self.finish();
-      self.server.stop = True;
+    headers = RMRSificationServer.STD_HEADERS;
+    headers[ "Content-Length" ] = "%d" % len(strout);
+    
+    conn = httplib.HTTPConnection( client[0], client[1] );
+    conn.request( "POST", "/register?transid=%d" % transid, strout );
+    resp = conn.getresponse();
+    assert resp.status == 200;
+    
+    
+  def do_GET( self, req ):
 
+    if req.path == "/quit":
 
+      req.send_response( 200 );
+      req.end_headers();
+      req.finish();
+      self.stop = True;
+    
+    else:
 
-class StoppableHttpServer( BaseHTTPServer.HTTPServer ):
+      req.send_response( 404 );
+      req.end_headers();
+      req.finish();
+
 
   def serve_forever( self ):
     
     self.stop = False;
-    while not self.stop:
+    try:
+      while not self.stop:
         self.handle_request();
+    except KeyboardInterrupt:
+      pass;
+      
+  
+  def run( self ):
+
+    self.serve_forever();
+        
 
 
 def main( argv=None ):
@@ -144,22 +195,20 @@ def main( argv=None ):
   if argv == None:
     argv = sys.argv;
     
-  port = int( sys.argv[1] );
-      
+  port = 8081;
   try:
-    
-    srv = RmrsificationServer();
-  
-    httpd = StoppableHttpServer( ( "", port ), RmrsificationHandler );
-    print "Ready! Listening on Port %d.\n" % port;
-    httpd.serve_forever();
-    
-    srv._close();
-  
+    port = int( sys.argv[1] );
   except:
-    
-    if sys.exc_info()[ 0 ] != SystemExit:
-      traceback.print_exc();
+    pass;
+      
+  httpd = RMRSificationServer( ( "", port ), RMRSificationHandler );
+  try:
+    httpd._init();
+    print "Ready! Listening on Port %d.\n" % port;
+    httpd.run();
+  finally:
+    httpd._del();
+
 
 
 if __name__ == "__main__":

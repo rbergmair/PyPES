@@ -31,7 +31,19 @@ class Fspp( pyrmrs.ext.wrapper.basicio.BasicIO ):
     rslt = self.invoke( smaf.text );
     
     rsltign = rslt [ : len(IGNORE) ];
-    assert rsltign == IGNORE;
+    try:
+      assert rsltign == IGNORE;
+    except:
+      f = codecs.open( "/tmp/fspp-log.txt", "a", encoding="utf-8" );
+      f.write( "INPUT: ---\n" );
+      f.write( smaf.text );
+      f.write( "\n" );
+      f.write( "RESULT: ---\n" );
+      f.write( rslt );
+      f.write( "\n" );
+      f.write( "---\n\n\n" );
+      f.close();
+      raise;
     rsltrest = rslt[ len(IGNORE) : ];
     
     rslt = rsltrest;

@@ -1,3 +1,5 @@
+import xml.sax.saxutils;
+
 import pyrmrs.xmltools.reader_element;
 
 class RealPredicate( pyrmrs.xmltools.reader_element.ReaderElement ):
@@ -49,10 +51,10 @@ class RealPredicate( pyrmrs.xmltools.reader_element.ReaderElement ):
   
   def xml_tmplt( self, base ):
     
-    attributes = " lemma='%s'" % self.lemma;
-    attributes += " pos='%s'" % self.pos;
+    attributes = " lemma='%s'" % xml.sax.saxutils.escape( self.lemma );
+    attributes += " pos='%s'" % xml.sax.saxutils.escape( self.pos );
     if self.sense != None:
-      attributes += " sense='%s'" % self.sense;
+      attributes += " sense='%s'" % xml.sax.saxutils.escape( self.sense );
     attributes = attributes.replace( "%", "%%" );
       
     base = base.replace( "%%", "%%%%" );

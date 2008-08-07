@@ -1,3 +1,5 @@
+import xml.sax.saxutils;
+
 import pyrmrs.xmltools.reader_element;
 
 import label;
@@ -69,10 +71,10 @@ class ElementaryPredication( pyrmrs.xmltools.reader_element.ReaderElement ):
     
     srf = "";
     if self.surface != None:
-      srf = " surface='%s'" % self.surface;
+      srf = " surface='%s'" % xml.sax.saxutils.escape( self.surface );
     bas = "";
     if self.base != None:
-      bas = " base='%s'" % self.base;
+      bas = " base='%s'" % xml.sax.saxutils.escape( self.base );
       
     attributes = " cfrom='%s' cto='%s'" % ( self.cfrom, self.cto ) + srf + bas;
     attributes = attributes.replace( "%", "%%" );

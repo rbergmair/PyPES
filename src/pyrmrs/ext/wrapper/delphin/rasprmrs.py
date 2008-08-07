@@ -1,4 +1,5 @@
 import cStringIO;
+import codecs;
 
 import pyrmrs.config;
 import pyrmrs.ext.wrapper.basicio;
@@ -39,6 +40,19 @@ class RaspRmrs( pyrmrs.ext.wrapper.basicio.BasicIO ):
         rslt = self.invoke( edge.tree );
         f = cStringIO.StringIO( rslt.encode( "utf-8" ) );
         rmrs = pyrmrs.mrs.robust.rmrsreader.RMRSReader( f, True ).getFirst();
+        if rmrs is None:
+          f = codecs.open( "/tmp/rasp-rmrs-log.txt", "a", encoding="utf-8" );
+          f.write( "INPUT TREE: ---\n" );
+          f.write( edge.tree );
+          f.write( "\n" );
+          f.write( "RESULT: ---\n" );
+          f.write( rslt );
+          f.write( "\n" );
+          f.write( "---\n\n\n" );
+          f.close();
+          if rslt.find( "; Exiting" ) != -1:
+            self.__init__();
+          continue;
 
         newedge = pyrmrs.smafpkg.rmrs_edge.RmrsEdge();
         

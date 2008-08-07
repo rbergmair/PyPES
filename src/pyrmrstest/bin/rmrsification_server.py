@@ -16,7 +16,7 @@ import pyrmrs.smafpkg.smaf;
 
 
 
-class TestRmrsificationServer( pyrmrstest.mytest.MyTestCase ):
+class TestRMRSificationServer( pyrmrstest.mytest.MyTestCase ):
   
   def global_setUp( self ):
     
@@ -26,7 +26,7 @@ class TestRmrsificationServer( pyrmrstest.mytest.MyTestCase ):
 
     headers = { "Content-type": "text/xml",
                 "Accept": "text/xml",
-                "Content-length": None };
+                "Content-Length": None };
     
     for i in range( 0, len(pyrmrstest.ext.data.TEXT) ):
     #for i in [0]:
@@ -34,9 +34,9 @@ class TestRmrsificationServer( pyrmrstest.mytest.MyTestCase ):
       dat = pyrmrstest.ext.data.TEXT[i];
       smaf = pyrmrs.smafpkg.smaf.SMAF( dat );
       dat = smaf.str_xml().encode( "utf-8" );
-      headers[ "Content-length" ] = "%d" % len(dat);
+      headers[ "Content-Length" ] = "%d" % len(dat);
       conn = httplib.HTTPConnection( "localhost:8081" );
-      conn.request( "POST", "/", dat );
+      conn.request( "POST", "/rmrsify?transid=0", dat );
       resp = conn.getresponse();
       self.assertEqual( resp.status, 200 );
       dat = resp.read().decode( "utf-8" );
@@ -47,7 +47,7 @@ class TestRmrsificationServer( pyrmrstest.mytest.MyTestCase ):
 
 
 def suite():
-  return unittest.makeSuite( TestRmrsificationServer );
+  return unittest.makeSuite( TestRMRSificationServer );
 
 if __name__ == '__main__':
   unittest.TextTestRunner( verbosity=2 ).run( suite() );

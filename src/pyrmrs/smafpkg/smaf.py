@@ -48,7 +48,6 @@ class SMAFTokenIterator:
       print self.smaf.str_xml();
       print "Warning: ambiguous tokens";
       
-    
     self.node = trg;
     
     return toks[ 0 ];
