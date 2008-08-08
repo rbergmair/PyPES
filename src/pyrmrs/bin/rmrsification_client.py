@@ -13,7 +13,7 @@ import pyrmrs.object_types;
 
 
 WORKERS = [
-  ( "localhost", 8081 )
+  ( "localhost", 8082 )
 ];
 
 
@@ -97,7 +97,7 @@ class RemoteRMRSificationServer( BaseHTTPServer.HTTPServer ):
     del self.active_trans[ transid ];
     
     worker_ = req.client_address;
-    worker = ( worker_[0], 8081 );
+    worker = ( worker_[0], 8082 );
     
     self.dispatch_work( worker );
     

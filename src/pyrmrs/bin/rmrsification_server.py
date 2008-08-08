@@ -102,7 +102,7 @@ class RMRSificationServer( BaseHTTPServer.HTTPServer ):
     
     rsmaf = self.rasp_morpher.morph( rsmaf );
     rsmaf = self.rasp_parser.parse( rsmaf );
-    rsmaf = self.rasp_rmrs.convert(  rsmaf );
+    rsmaf = self.rasp_rmrs.convert( rsmaf );
     
     esmaf = self.erg_parser.parse( msmaf );
     
@@ -195,7 +195,7 @@ def main( argv=None ):
   if argv == None:
     argv = sys.argv;
     
-  port = 8081;
+  port = 8082;
   try:
     port = int( sys.argv[1] );
   except:

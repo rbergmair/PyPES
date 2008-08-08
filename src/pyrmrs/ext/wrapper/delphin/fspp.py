@@ -31,19 +31,7 @@ class Fspp( pyrmrs.ext.wrapper.basicio.BasicIO ):
     rslt = self.invoke( smaf.text );
     
     rsltign = rslt [ : len(IGNORE) ];
-    try:
-      assert rsltign == IGNORE;
-    except:
-      f = codecs.open( "/tmp/fspp-log.txt", "a", encoding="utf-8" );
-      f.write( "INPUT: ---\n" );
-      f.write( smaf.text );
-      f.write( "\n" );
-      f.write( "RESULT: ---\n" );
-      f.write( rslt );
-      f.write( "\n" );
-      f.write( "---\n\n\n" );
-      f.close();
-      raise;
+    assert rsltign == IGNORE;
     rsltrest = rslt[ len(IGNORE) : ];
     
     rslt = rsltrest;
@@ -57,15 +45,16 @@ class Fspp( pyrmrs.ext.wrapper.basicio.BasicIO ):
     mincfrom = None;
     maxcto = None;
     
-    for tok in smaf_out.getTokens():
-      if mincfrom is None:
-        mincfrom = tok.cfrom;
-      else:
-        mincfrom = min( tok.cfrom, mincfrom );
-      if maxcto is None:
-        maxcto = tok.cto;
-      else:
-        maxcto = max( tok.cto, maxcto );
+    for alt_toks in smaf_out.getTokens():
+      for tok in alt_toks:
+        if mincfrom is None:
+          mincfrom = tok.cfrom;
+        else:
+          mincfrom = min( tok.cfrom, mincfrom );
+        if maxcto is None:
+          maxcto = tok.cto;
+        else:
+          maxcto = max( tok.cto, maxcto );
     
     smaf_out.lattice.cfrom = mincfrom;
     smaf_out.lattice.cto = maxcto;

@@ -31,15 +31,18 @@ class Parser( pyrmrs.ext.wrapper.basicio.BasicIO ):
     
     parserinput = "";
     
-    for (tok,posmorph) in smaf.getMorphs():
-      line = tok.text;
-      for (pos,morphs) in posmorph:
-        if len( morphs ) == 0:
-          line += " <w s='%d' e='%d'>%s_%s:%s</w>" % ( tok.cfrom, tok.cto, tok.text, pos.tag, pos.weight );
-        else:
-          for morph in morphs:
-            line += " <w s='%d' e='%d'>%s_%s:%s</w>" % ( tok.cfrom, tok.cto, morph.text, pos.tag, pos.weight );
-      parserinput += line+"\n";
+    for alt_toks in smaf.getTokens():
+      assert len( alt_toks ) == 1;
+      for tok in alt_toks:
+        line = tok.text;
+        for tag in smaf.getTags( tok ):
+          morphs = smaf.getMorphs( tag );
+          if len( morphs ) == 0:
+            line += " <w s='%d' e='%d'>%s_%s:%s</w>" % ( tok.cfrom, tok.cto, tok.text, tag.tag, tag.weight );
+          else:
+            for morph in morphs:
+              line += " <w s='%d' e='%d'>%s_%s:%s</w>" % ( tok.cfrom, tok.cto, morph.text, tag.tag, tag.weight );
+        parserinput += line+"\n";
     
     #parserinput = parserinput[ : len(parserinput) - 1 ];
     #print parserinput;

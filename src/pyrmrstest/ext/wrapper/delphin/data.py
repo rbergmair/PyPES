@@ -14,6 +14,10 @@ TEXT_HARD = [
     u"weekends regional talks, Hugo Chávez, Venezuela's "+
     u"populist president is using an energy windfall to win "+
     u"friends and promote his vision of 21st-century socialism.",
+  u"Was backup command pilot for Gemini 5, command pilot for "+
+    u"Gemini 8, backup command pilot for Gemini 11, backup commander for "+
+    u"Apollo 8, and commander for Apollo 11: "+
+    u"successfully completing the first moonwalk."
 ];
 
 TEXT = TEXT_EASY + TEXT_HARD;
@@ -100,6 +104,66 @@ TOKENISED_HARD = [
       <edge type="token" id="t31" source="v30" target="v31" cfrom="183" cto="188">21st-</edge>
       <edge type="token" id="t32" source="v31" target="v32" cfrom="188" cto="195">century</edge>
       <edge type="token" id="t33" source="v32" target="v33" cfrom="196" cto="206">socialism.</edge>
+    </lattice>
+  </smaf>""",
+  u"""<smaf>
+    <text>Was backup command pilot for Gemini 5, command pilot for Gemini 8, backup command pilot for Gemini 11, backup commander for Apollo 8, and commander for Apollo 11: successfully completing the first moonwalk.</text>
+    <lattice init="v0" final="v37" cfrom="0" cto="206">
+      <edge type="token" id="t1" source="v0" target="v1" cfrom="0" cto="3">Was</edge>
+      <edge type="token" id="t2" source="v1" target="v3" cfrom="4" cto="10">backup</edge>
+      <edge type="token" id="t35" source="v1" target="v2" cfrom="4" cto="10">back</edge>
+      <edge type="token" id="t36" source="v2" target="v3" cfrom="4" cto="10">up</edge>
+      <edge type="token" id="t3" source="v3" target="v4" cfrom="11" cto="18">command</edge>
+      <edge type="token" id="t4" source="v4" target="v5" cfrom="19" cto="24">pilot</edge>
+      <edge type="token" id="t5" source="v5" target="v6" cfrom="25" cto="28">for</edge>
+      <edge type="token" id="t6" source="v6" target="v7" cfrom="29" cto="35">Gemini</edge>
+      <edge type="ersatz" id="t41" source="v7" target="v8" cfrom="36" cto="37">
+        <slot name="name">OneDigitErsatz,</slot>
+        <slot name="surface">5</slot>
+      </edge>
+      <edge type="token" id="t8" source="v8" target="v9" cfrom="39" cto="46">command</edge>
+      <edge type="token" id="t9" source="v9" target="v10" cfrom="47" cto="52">pilot</edge>
+      <edge type="token" id="t10" source="v10" target="v11" cfrom="53" cto="56">for</edge>
+      <edge type="token" id="t11" source="v11" target="v12" cfrom="57" cto="63">Gemini</edge>
+      <edge type="ersatz" id="t42" source="v12" target="v13" cfrom="64" cto="65">
+        <slot name="name">OneDigitErsatz,</slot>
+        <slot name="surface">8</slot>
+      </edge>
+      <edge type="token" id="t13" source="v13" target="v15" cfrom="67" cto="73">backup</edge>
+      <edge type="token" id="t37" source="v13" target="v14" cfrom="67" cto="73">back</edge>
+      <edge type="token" id="t38" source="v14" target="v15" cfrom="67" cto="73">up</edge>
+      <edge type="token" id="t14" source="v15" target="v16" cfrom="74" cto="81">command</edge>
+      <edge type="token" id="t15" source="v16" target="v17" cfrom="82" cto="87">pilot</edge>
+      <edge type="token" id="t16" source="v17" target="v18" cfrom="88" cto="91">for</edge>
+      <edge type="token" id="t17" source="v18" target="v19" cfrom="92" cto="98">Gemini</edge>
+      <edge type="ersatz" id="t45" source="v19" target="v20" cfrom="99" cto="101">
+        <slot name="name">TwoDigitErsatz,</slot>
+        <slot name="surface">11</slot>
+      </edge>
+      <edge type="token" id="t19" source="v20" target="v22" cfrom="103" cto="109">backup</edge>
+      <edge type="token" id="t39" source="v20" target="v21" cfrom="103" cto="109">back</edge>
+      <edge type="token" id="t40" source="v21" target="v22" cfrom="103" cto="109">up</edge>
+      <edge type="token" id="t20" source="v22" target="v23" cfrom="110" cto="119">commander</edge>
+      <edge type="token" id="t21" source="v23" target="v24" cfrom="120" cto="123">for</edge>
+      <edge type="token" id="t22" source="v24" target="v25" cfrom="124" cto="130">Apollo</edge>
+      <edge type="ersatz" id="t43" source="v25" target="v26" cfrom="131" cto="132">
+        <slot name="name">OneDigitErsatz,</slot>
+        <slot name="surface">8</slot>
+      </edge>
+      <edge type="token" id="t24" source="v26" target="v27" cfrom="134" cto="137">and</edge>
+      <edge type="token" id="t25" source="v27" target="v28" cfrom="138" cto="147">commander</edge>
+      <edge type="token" id="t26" source="v28" target="v29" cfrom="148" cto="151">for</edge>
+      <edge type="token" id="t27" source="v29" target="v30" cfrom="152" cto="158">Apollo</edge>
+      <edge type="ersatz" id="t44" source="v30" target="v31" cfrom="159" cto="161">
+        <slot name="name">TwoDigitErsatz</slot>
+        <slot name="surface">11</slot>
+      </edge>
+      <edge type="token" id="t29" source="v31" target="v32" cfrom="161" cto="162">:</edge>
+      <edge type="token" id="t30" source="v32" target="v33" cfrom="163" cto="175">successfully</edge>
+      <edge type="token" id="t31" source="v33" target="v34" cfrom="176" cto="186">completing</edge>
+      <edge type="token" id="t32" source="v34" target="v35" cfrom="187" cto="190">the</edge>
+      <edge type="token" id="t33" source="v35" target="v36" cfrom="191" cto="196">first</edge>
+      <edge type="token" id="t34" source="v36" target="v37" cfrom="197" cto="206">moonwalk.</edge>
     </lattice>
   </smaf>"""
 ];

@@ -81,12 +81,8 @@ class RMRSem( pyrmrs.mrs.common.mrsem.MRSem ):
         var =  obj.sort + str( obj.vid );
         if self.ref_by_var.has_key( var ):
           oldref = self.ref_by_var[ var ];
-          try:
-            oldref.merge( obj.referent );
-            obj.referent = oldref;
-          except:
-            raise error.xmlsem_error.XMLSemError( \
-              error.xmlsem_error.XMLSemError.ERRNO_UNDEFINED, "" );
+          oldref.merge( obj.referent );
+          obj.referent = oldref;
         else:
           self.ref_by_var[ var ] = obj.referent;
       
