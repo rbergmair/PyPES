@@ -25,7 +25,7 @@ m4_dnl     define(`_CONFIG_M4_LOCAL',`config.m4.local')
 m4_dnl   _SH_PYTHON is a piece of shellcode executed via the #! directive,
 m4_dnl   to call python for executing scripts from PyRMRS.
 
-m4_define(`_SH_PYTHON',m4_esyscmd(`echo -n $(which python)'))
+m4_define(`_SH_PYTHON',m4_esyscmd(`echo -n $(which python2.4)'))
 
 m4_dnl   If you are having problems with this setting (for example, because
 m4_dnl   you have multiple instances of python installed, and want to run
@@ -53,7 +53,7 @@ m4_define(`_DIR_RASPHOME',m4_esyscmd(`echo -n $RASPHOME'))
 
 m4_dnl   We have to know the architecture for calling the right
 m4_dnl   RASP scripts. Set this accordingly.
-m4_define(`_RASPARCH', `x86_64_linux')
+m4_define(`_RASPARCH', `ix86_linux')
 
 
 m4_dnl   You probably don't have to change this, but feel free
@@ -90,7 +90,7 @@ m4_define(`_DIR_LKBHOME',`_DIR_DELPHINHOME/lkb')
 
 
 m4_dnl   You might want to change this.
-m4_define(`_SH_LKB',`/usr/opt/acl80.64/alisp -I _DIR_LKBHOME/image/linux.x86.64/lkb.dxl')
+m4_define(`_SH_LKB',`_DIR_LKBHOME/linux.x86.32/lkb')
 
 
 
