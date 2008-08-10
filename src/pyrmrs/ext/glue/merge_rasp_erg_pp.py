@@ -18,7 +18,8 @@ def merge_rasp_erg_pp( tok_smaf, tag_smaf ):
     for tok in alt_toks:
       for pos in tag_smaf.getTags( tok ):
         for i in range( tok.cfrom, tok.cto ):
-          char_map[ i-tag_smaf.lattice.cfrom ].append( pos );
+          if not pos.tag in PUN:
+            char_map[ i-tag_smaf.lattice.cfrom ].append( pos );
             
   peid = 0;
   
