@@ -100,15 +100,15 @@ class RunWorker:
     strout += esmaf.str_xml();
     strout += "\n";
     
-    return strout;
+    return strout.encode( "utf-8" );
   
   
   def run( self ):
     
     while True:
       
-      sys.out.write( "Waiting for initial contact " );
-      sys.out.flush();
+      sys.stdout.write( "Waiting for initial contact " );
+      sys.stdout.flush();
       
       transid = None;
       data = None;
@@ -120,77 +120,94 @@ class RunWorker:
         
         resp = None;
         
+        conn = httplib.HTTPConnection( self.dispatcher_name, self.dispatcher_port );
         try:
-          conn = httplib.HTTPConnection( self.dispatcher_name, self.dispatcher_port );
-          conn.request( "POST", "/process" );
-          resp = conn.getresponse();
-        except:
-          sys.out.write( "- " );
-          sys.out.flush();
-          continue;
+          try:
+            conn.request( "POST", "/process" );
+            resp = conn.getresponse();
+          except:
+            sys.stdout.write( "- " );
+            sys.stdout.flush();
+            continue;
+        finally:
+          conn.close();
         
         if resp.status != 200:
-          sys.out.write( "? " );
-          sys.out.flush();
+          sys.stdout.write( "[%d] " % resp.status );
+          sys.stdout.flush();
           continue;
         
         trans = resp.getheader( "Next-Transaction" );
+        
+        assert not trans is None;
         
         if trans == "End":
           exit = True;
           break;
         
-        elif trans == "None":
-          sys.out.write( "+ " );
-          sys.out.flush();
+        elif trans == "No-Transaction":
+          sys.stdout.write( "+ " );
+          sys.stdout.flush();
           continue;
         
         try:
-          transid = int( trans );
-          cntlen = int( resp.getheader( "Content-Length" ) );
+          transid = int( str( trans ) );
+          cntlen = int( str( resp.getheader( "Content-Length" ) ) );
           data = resp.read( cntlen );
         except:
-          sys.out.write( "? " );
-          sys.out.flush();
+          sys.stdout.write( "??? " );
+          traceback.print_exc();
+          sys.stdout.flush();
           continue;
         
         break;
       
       if exit:
-        sys.out.write( "got signal to exit.\n" );
+        sys.stdout.write( "got signal to exit.\n" );
         break;
   
-      sys.out.write( "first transaction is %d.\n" % transid );
-      sys.out.flush();
+      sys.stdout.write( "first transaction is %d.\n" % transid );
+      sys.stdout.flush();
       
       while True:
         
-        sys.out.write( "working..." );
+        sys.stdout.write( "working..." );
         try:
-          data = work( data );
-          sys.out.write( "done.\n" );
+          data = self.work( data );
+          sys.stdout.write( "done.\n" );
         except:
-          sys.out.write( "error.\n" );
+          traceback.print_exc();
+          sys.stdout.write( "error.\n" );
   
-        sys.out.write( "\nposting results..." );
-        sys.out.flush();
+        sys.stdout.write( "\nposting results..." );
+        sys.stdout.flush();
         
         conn = httplib.HTTPConnection( self.dispatcher_name, self.dispatcher_port );
-        conn.request( "POST", "/process?transid=%d" % transid );
+        try:
+          header = {};
+          header[ "Content-Length" ] = str( len( data ) );
+          conn.request( "POST", "/process?transid=%d" % transid, data, header );
+          resp = conn.getresponse();
         
-        trans = resp.getheader( "Next-Transaction" );
+          trans = resp.getheader( "Next-Transaction" );
+          
+          assert not trans is None;
+          
+          if trans == "No-Transaction":
+            sys.stdout.write( "batch finished.\n" );
+            sys.stdout.flush();
+            break;
+          
+          transid = int( str( trans ) );
+          cntlen = int( str( resp.getheader( "Content-Length" ) ) );
+          data = resp.read( cntlen );
+        finally:
+          conn.close();
         
-        if trans == "None":
-          sys.out.write( "batch finished.\n" );
-          sys.out.flush();
-          break;
+        sys.stdout.write( "next transaction is %s.\n" % trans );
+        sys.stdout.flush();
         
-        transid = int( trans );
-        cntlen = int( resp.getheader( "Content-Length" ) );
-        data = resp.read( cntlen );
-        
-        sys.out.write( "next transaction is %d.\n" % transid );
-        sys.out.flush();
+        sys.exit( 0 );
 
 
 
@@ -205,12 +222,12 @@ def main( argv=None ):
   
   try:
     dispatcher_name = sys.argv[1];
-    dispatcher_port = int( sys.argv[2] );
+    dispatcher_port = int( str( sys.argv[2] ) );
   except:
     print "usage: python rmrsification_worker.py <dispatcher-name> <dispatcher-port>";
     return;
   
-  RunWorker( name, port );
+  RunWorker( dispatcher_name, dispatcher_port );
 
 
 

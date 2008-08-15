@@ -16,7 +16,10 @@ class RemoteRMRSificationHandler( BaseHTTPServer.BaseHTTPRequestHandler ):
   
   def do_POST( self ):
     
-    self.server.do_POST( self );
+    if not self.server.lock:
+      self.server.lock = True;
+      self.server.do_POST( self );
+      self.server.lock = False;
 
 
 
@@ -26,6 +29,7 @@ class RemoteRMRSificationServer( BaseHTTPServer.HTTPServer ):
   def _init( self, cntrl ):  
     
     self.cntrl = cntrl;
+    self.lock = False;
   
   
   def _del( self ):
@@ -50,7 +54,7 @@ class RemoteRMRSificationServer( BaseHTTPServer.HTTPServer ):
           if path_suffix.startswith( path_suffix_prefix ):
             path_suffix_suffix = path_suffix[ len(path_suffix_prefix) : ];
             try:
-              transid = int( path_suffix_suffix );
+              transid = int( str( path_suffix_suffix  ) );
             except:
               pass;
     
@@ -69,31 +73,33 @@ class RemoteRMRSificationServer( BaseHTTPServer.HTTPServer ):
       else:
     
         current_transaction_id = self.active_trans[ transid ];
+        del self.active_trans[ transid ];
     
-        cntlen = int( req.headers.getheader( "Content-Length" ) );
+        cntlen = int( str( req.headers.getheader( "Content-Length" ) ) );
         input = req.rfile.read( cntlen );
-        req.rfile.close();
+        #req.rfile.close();
 
     rc = self.cntrl.get_next_item_in();
+
+    req.send_response( 200 );
     
     if rc is None:
       
-      req.send_response( 200 );
-      req.send_header( "Next-Transaction", "None" );
+      req.send_header( "Next-Transaction", "No-Transaction" );
       req.end_headers();
       req.finish();
       
       self.finishing_up = True;
       
     else:
-      
-      req.send_header( "Next-Transaction", self.next_transid );
-      self.next_transid += 1;
+
+      req.send_header( "Next-Transaction", str( self.next_transid ) );
       ( next_transaction_id, item ) = rc;
-      self.active_trans[ self.next_transaction ] = next_transaction_id;
+      self.active_trans[ self.next_transid ] = next_transaction_id;
+      self.next_transid += 1;
       smaf = pyrmrs.smafpkg.smaf.SMAF( item );
       output = smaf.str_xml().encode( "utf-8" );
-      req.send_header( "Content-Length", len( output ) );
+      req.send_header( "Content-Length", str( len( output ) ) );
       req.end_headers();
       req.wfile.write( output );
       req.finish();
@@ -109,13 +115,13 @@ class RemoteRMRSificationServer( BaseHTTPServer.HTTPServer ):
       try:
         raspsmaf = it.next();
       except:
-        print cnt;
+        print input;
       
       ergsmaf = None;
       try:  
         ergsmaf = it.next();
       except:
-        print cnt;
+        print input;
       
       self.cntrl.set_smaf_out( current_transaction_id, raspsmaf, ergsmaf );
       
@@ -125,8 +131,15 @@ class RemoteRMRSificationServer( BaseHTTPServer.HTTPServer ):
     self.next_transid = 1;
     self.active_trans = {};
     self.finishing_up = False;
+    
+    self.exit_now = False;
       
-    while ( not self.finishing_up ) or len( self.active_trans ) > 0:
+    while True:
+      if self.exit_now:
+        break;
+      if self.finishing_up:
+        if len( self.active_trans ) == 0:
+          break;
       self.handle_request();
 
 
