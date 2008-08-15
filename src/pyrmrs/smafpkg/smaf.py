@@ -66,7 +66,8 @@ class SMAF( pyrmrs.xmltools.reader_element.ReaderElement ):
     
     self.text = text;
     
-    #self.cfrom = None;
+    #self.cfrom = 0;
+    #self.cto = len(self.text);
     #self.cto = None;
     
     self.lattice = None;
@@ -124,6 +125,19 @@ class SMAF( pyrmrs.xmltools.reader_element.ReaderElement ):
       morph_edges.append( edge );
     
     return morph_edges;
+  
+  def getRMRSes( self ):
+    
+    rmrs_edges = [];
+    
+    for edge in self.lattice.edges:
+      
+      if not isinstance( edge, pyrmrs.smafpkg.rmrs_edge.RmrsEdge ):
+        continue;
+      
+      rmrs_edges.append( edge.rmrs );
+    
+    return rmrs_edges;
 
   
   def xml_base( self ):
