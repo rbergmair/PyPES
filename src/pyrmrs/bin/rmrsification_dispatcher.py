@@ -12,17 +12,6 @@ import pyrmrs.object_types;
 
 
 
-WORKERS = [
-  ( "128.232.16.13", 8082 ),
-  ( "128.232.16.15", 8082 ),
-  ( "128.232.16.31", 8082 ),
-  ( "128.232.16.25", 8082 ),
-  ( "128.232.16.26", 8082 ),
-  ( "128.232.16.10", 8082 )
-];
-
-
-
 class RemoteRMRSificationHandler( BaseHTTPServer.BaseHTTPRequestHandler ):
   
   def do_POST( self ):
@@ -32,11 +21,6 @@ class RemoteRMRSificationHandler( BaseHTTPServer.BaseHTTPRequestHandler ):
 
 
 class RemoteRMRSificationServer( BaseHTTPServer.HTTPServer ):
-  
-  
-  STD_HEADERS = { "Content-type": "text/xml",
-                  "Accept": "text/xml",
-                  "Content-Length": None };
   
   
   def _init( self, cntrl ):  
@@ -51,98 +35,98 @@ class RemoteRMRSificationServer( BaseHTTPServer.HTTPServer ):
   
   def do_POST( self, req ):
     
-    path_prefix = "/register?transid=";
-    path = req.path;
+    path_prefix = "/process";
     
-    if not req.path.startswith( path_prefix ):
+    transid = None;
+    empty_transaction = False;
+    
+    if len( req.path ) >= len( path_prefix ):
+      if req.path.startswith( path_prefix ):
+        path_suffix = req.path[ len(path_prefix) : ];
+        if path_suffix == "":
+          empty_transaction = True;
+        else:
+          path_suffix_prefix = "?transid=";
+          if path_suffix.startswith( path_suffix_prefix ):
+            path_suffix_suffix = path_suffix[ len(path_suffix_prefix) : ];
+            try:
+              transid = int( path_suffix_suffix );
+            except:
+              pass;
+    
+    input = None;
+    current_transaction_id = None;
+    
+    if not empty_transaction:
       
-      req.send_response( 404 );
-      req.end_headers();
-      req.finish();
-      return;
+      if transid is None:
+        
+        req.send_response( 404 );
+        req.end_headers();
+        req.finish();
+        return;
+      
+      else:
     
-    transid = 0;
-    try:
-      transid = int( path[ len(path_prefix) : ] );
-    except:      
-      req.send_response( 404 );
-      req.end_headers();
-      req.finish();
-      return;
+        current_transaction_id = self.active_trans[ transid ];
     
-    id = self.active_trans[ transid ];
+        cntlen = int( req.headers.getheader( "Content-Length" ) );
+        input = req.rfile.read( cntlen );
+        req.rfile.close();
 
-    cntlen = int( req.headers.getheader( "Content-Length" ) );
-    cnt = req.rfile.read( cntlen );
-    req.rfile.close();
-    
-    req.send_response( 200 );
-    req.end_headers();
-    req.finish();
-    
-    ifile = cStringIO.StringIO( cnt );
-    rd = pyrmrs.smafpkg.smafreader.SMAFReader( ifile, True );
-    it = rd.getAll();
-    
-    raspsmaf = None;
-    
-    try:
-      raspsmaf = it.next();
-    except:
-      print cnt;
-    
-    ergsmaf = None;
-    try:  
-      ergsmaf = it.next();
-    except:
-      print cnt;
-    
-    self.cntrl.set_smaf_out( id, raspsmaf, ergsmaf );
-    
-    del self.active_trans[ transid ];
-    
-    worker_ = req.client_address;
-    worker = ( worker_[0], 8082 );
-    
-    self.dispatch_work( worker );
-    
-  
-  def dispatch_work( self, worker ):
-    
     rc = self.cntrl.get_next_item_in();
+    
     if rc is None:
-      return False;
-    
-    ( id, item ) = rc;
-    
-    self.active_trans[ self.next_transid ] = id;
-    
-    smaf = pyrmrs.smafpkg.smaf.SMAF( item );
-    dat = smaf.str_xml().encode( "utf-8" );
-    
-    headers = RemoteRMRSificationServer.STD_HEADERS;
-    headers[ "Content-Length" ] = "%d" % len(dat);
-    
-    conn = httplib.HTTPConnection( worker[0], worker[1] );
-    conn.request( "POST", "/rmrsify?transid=%d" % self.next_transid, dat );
-    resp = conn.getresponse();
-    assert resp.status == 200;
-    
-    self.next_transid += 1;
-    
-    return True;
-    
       
+      req.send_response( 200 );
+      req.send_header( "Next-Transaction", "None" );
+      req.end_headers();
+      req.finish();
+      
+      self.finishing_up = True;
+      
+    else:
+      
+      req.send_header( "Next-Transaction", self.next_transid );
+      self.next_transid += 1;
+      ( next_transaction_id, item ) = rc;
+      self.active_trans[ self.next_transaction ] = next_transaction_id;
+      smaf = pyrmrs.smafpkg.smaf.SMAF( item );
+      output = smaf.str_xml().encode( "utf-8" );
+      req.send_header( "Content-Length", len( output ) );
+      req.end_headers();
+      req.wfile.write( output );
+      req.finish();
+      
+    if not empty_transaction:
+      
+      ifile = cStringIO.StringIO( input );
+      rd = pyrmrs.smafpkg.smafreader.SMAFReader( ifile, True );
+      it = rd.getAll();
+      
+      raspsmaf = None;
+      
+      try:
+        raspsmaf = it.next();
+      except:
+        print cnt;
+      
+      ergsmaf = None;
+      try:  
+        ergsmaf = it.next();
+      except:
+        print cnt;
+      
+      self.cntrl.set_smaf_out( current_transaction_id, raspsmaf, ergsmaf );
+      
+  
   def run( self ):
     
     self.next_transid = 1;
     self.active_trans = {};
-    
-    for worker in WORKERS:
-      if not self.dispatch_work( worker ):
-        break;
+    self.finishing_up = False;
       
-    while len( self.active_trans ) > 0:
+    while ( not self.finishing_up ) or len( self.active_trans ) > 0:
       self.handle_request();
 
 
@@ -186,7 +170,7 @@ def main( argv=None ):
     argv = sys.argv;
   
   if len( argv ) != 2:
-    print "usage: python rmrsification_client.py <string>";
+    print "usage: python rmrsification_dispatcher.py <string>";
     return;
   
   cntrl = RemoteRMRSificationController();

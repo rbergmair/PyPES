@@ -1,12 +1,10 @@
 import sys;
+import time;
 import traceback;
 
-import BaseHTTPServer;
 import httplib;
 
 import cStringIO;
-
-import pyrmrs.object_types;
 
 import pyrmrs.smafpkg.smafreader;
 
@@ -26,26 +24,9 @@ import pyrmrs.ext.glue.merge_rasp_erg_pp;
 
 
 
-class RMRSificationHandler( BaseHTTPServer.BaseHTTPRequestHandler ):
-  
-  def do_POST( self ):
-    
-    self.server.do_POST( self );
-  
-  def do_GET( self ):
-    
-    self.server.do_GET( self );
+class RunWorker:  
 
 
-
-class RMRSificationServer( BaseHTTPServer.HTTPServer ):  
-
-
-  STD_HEADERS = { "Content-type": "text/xml",
-                  "Accept": "text/xml",
-                  "Content-Length": None };
-                  
-                  
   inst = None;
   function = None;
   
@@ -59,9 +40,12 @@ class RMRSificationServer( BaseHTTPServer.HTTPServer ):
   rasp_rmrs = None;
   
   erg_parser = None;
-
   
-  def _init( self ):
+  dispatcher_name = None;
+  dispatcher_port = None;
+  
+  
+  def __init__( self, dispatcher_name, dispatcher_port ):
     
     self.rasp_tokeniser = pyrmrs.ext.wrapper.rasp.tokeniser.Tokeniser();
     self.rasp_tagger = pyrmrs.ext.wrapper.rasp.tagger.Tagger();
@@ -75,8 +59,13 @@ class RMRSificationServer( BaseHTTPServer.HTTPServer ):
     
     self.erg_parser = pyrmrs.ext.wrapper.delphin.pet.TaggedPet();
     
+    self.dispatcher_name = dispatcher_name;
+    self.dispatcher_port = dispatcher_port;
     
-  def _del( self ):
+    self.run();
+    
+    
+  def __del__( self ):
     
     del self.erg_parser;
     del self.rasp_rmrs;
@@ -112,82 +101,97 @@ class RMRSificationServer( BaseHTTPServer.HTTPServer ):
     strout += "\n";
     
     return strout;
-
-
-  def do_POST( self, req ):
-
-    path_prefix = "/rmrsify?transid=";
-    path = req.path;
-    
-    if not req.path.startswith( path_prefix ):
-      
-      req.send_response( 404 );
-      req.end_headers();
-      req.finish();
-      return;
-    
-    transid = 0;
-    try:
-      transid = int( path[ len(path_prefix) : ] );
-    except:      
-      req.send_response( 404 );
-      req.end_headers();
-      req.finish();
-      return;
-    
-    cntlen = int( req.headers.getheader( "Content-Length" ) );
-    strin = req.rfile.read( cntlen );
-    req.rfile.close();
-    
-    req.send_response( 200 );
-    req.end_headers();
-    req.finish();
-    
-    strout = self.work( strin );
-    strout = strout.encode( "utf-8" );
-    
-    client_ = req.client_address;
-    client = ( client_[0], 8080 );
-    
-    headers = RMRSificationServer.STD_HEADERS;
-    headers[ "Content-Length" ] = "%d" % len(strout);
-    
-    conn = httplib.HTTPConnection( client[0], client[1] );
-    conn.request( "POST", "/register?transid=%d" % transid, strout );
-    resp = conn.getresponse();
-    assert resp.status == 200;
-    
-    
-  def do_GET( self, req ):
-
-    if req.path == "/quit":
-
-      req.send_response( 200 );
-      req.end_headers();
-      req.finish();
-      self.stop = True;
-    
-    else:
-
-      req.send_response( 404 );
-      req.end_headers();
-      req.finish();
-
-
-  def serve_forever( self ):
-    
-    self.stop = False;
-    try:
-      while not self.stop:
-        self.handle_request();
-    except KeyboardInterrupt:
-      pass;
-      
+  
   
   def run( self ):
-
-    self.serve_forever();
+    
+    while True:
+      
+      sys.out.write( "Waiting for initial contact " );
+      sys.out.flush();
+      
+      transid = None;
+      data = None;
+      exit = False;
+      
+      while True:
+  
+        time.sleep(5);
         
+        resp = None;
+        
+        try:
+          conn = httplib.HTTPConnection( self.dispatcher_name, self.dispatcher_port );
+          conn.request( "POST", "/process" );
+          resp = conn.getresponse();
+        except:
+          sys.out.write( "- " );
+          sys.out.flush();
+          continue;
+        
+        if resp.status != 200:
+          sys.out.write( "? " );
+          sys.out.flush();
+          continue;
+        
+        trans = resp.getheader( "Next-Transaction" );
+        
+        if trans == "End":
+          exit = True;
+          break;
+        
+        elif trans == "None":
+          sys.out.write( "+ " );
+          sys.out.flush();
+          continue;
+        
+        try:
+          transid = int( trans );
+          cntlen = int( resp.getheader( "Content-Length" ) );
+          data = resp.read( cntlen );
+        except:
+          sys.out.write( "? " );
+          sys.out.flush();
+          continue;
+        
+        break;
+      
+      if exit:
+        sys.out.write( "got signal to exit.\n" );
+        break;
+  
+      sys.out.write( "first transaction is %d.\n" % transid );
+      sys.out.flush();
+      
+      while True:
+        
+        sys.out.write( "working..." );
+        try:
+          data = work( data );
+          sys.out.write( "done.\n" );
+        except:
+          sys.out.write( "error.\n" );
+  
+        sys.out.write( "\nposting results..." );
+        sys.out.flush();
+        
+        conn = httplib.HTTPConnection( self.dispatcher_name, self.dispatcher_port );
+        conn.request( "POST", "/process?transid=%d" % transid );
+        
+        trans = resp.getheader( "Next-Transaction" );
+        
+        if trans == "None":
+          sys.out.write( "batch finished.\n" );
+          sys.out.flush();
+          break;
+        
+        transid = int( trans );
+        cntlen = int( resp.getheader( "Content-Length" ) );
+        data = resp.read( cntlen );
+        
+        sys.out.write( "next transaction is %d.\n" % transid );
+        sys.out.flush();
+
 
 
 def main( argv=None ):
@@ -195,19 +199,18 @@ def main( argv=None ):
   if argv == None:
     argv = sys.argv;
     
-  port = 8082;
+  if len( argv ) != 3:
+    print "usage: python rmrsification_worker.py <dispatcher-name> <dispatcher-port>";
+    return;
+  
   try:
-    port = int( sys.argv[1] );
+    dispatcher_name = sys.argv[1];
+    dispatcher_port = int( sys.argv[2] );
   except:
-    pass;
-      
-  httpd = RMRSificationServer( ( "", port ), RMRSificationHandler );
-  try:
-    httpd._init();
-    print "Ready! Listening on Port %d.\n" % port;
-    httpd.run();
-  finally:
-    httpd._del();
+    print "usage: python rmrsification_worker.py <dispatcher-name> <dispatcher-port>";
+    return;
+  
+  RunWorker( name, port );
 
 
 
