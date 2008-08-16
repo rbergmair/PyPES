@@ -115,6 +115,8 @@ class BasicIO:
 
   def ensure_writable( self ):
     
+    return;
+    
     to = self.to_write;
     if self.first_write:
       to = self.to_first_write;
@@ -206,6 +208,8 @@ class BasicIO:
     
     
   def ensure_readable( self ):
+    
+    return;
     
     to = self.to_read;
     if self.first_read:

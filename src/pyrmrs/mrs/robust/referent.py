@@ -1,6 +1,10 @@
-import pyrmrs.mrs.common.referent;
+import traceback;
 
+import pyrmrs.globals;
+import pyrmrs.mrs.common.referent;
 import pyrmrs.error.xmlsem_error;
+
+
 
 class Referent( pyrmrs.mrs.common.referent.Referent ):
 

@@ -109,7 +109,6 @@ class RemoteRMRSificationServer( BaseHTTPServer.HTTPServer ):
     if not empty_transaction:
       
       current_transaction_id = self.active_trans[ transid ];
-      del self.active_trans[ transid ];
   
       cntlen = int( str( req.headers.getheader( "Content-Length" ) ) );
       input = req.rfile.read( cntlen );
@@ -175,6 +174,8 @@ class RemoteRMRSificationServer( BaseHTTPServer.HTTPServer ):
         pyrmrs.globals.logError( self, "-------------" );
       
       self.cntrl.set_smaf_out( current_transaction_id, raspsmaf, ergsmaf );
+      del self.active_trans[ transid ];
+      
       
   
   def run( self ):

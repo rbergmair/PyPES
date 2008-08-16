@@ -82,9 +82,17 @@ class RunWorker:
   def work( self, strin ):
 
     strinio = cStringIO.StringIO( strin );
-    smafrd = pyrmrs.smafpkg.smafreader.SMAFReader( strinio, True );
-    ismaf = smafrd.getFirst();
-    
+    try:
+      smafrd = pyrmrs.smafpkg.smafreader.SMAFReader( strinio, True );
+      ismaf = smafrd.getFirst();
+    except:
+      pyrmrs.globals.logError( self, "error while parsing input SMAF" );
+      pyrmrs.globals.logError( self, traceback.format_exc() );
+      pyrmrs.globals.logError( self, "--- INPUT ---" );
+      pyrmrs.globals.logError( self, unicode( strin, encoding="utf-8" ) );
+      pyrmrs.globals.logError( self, "-------------" );
+      raise;
+      
     rsmaf = self.rasp_tokeniser.tokenise( ismaf );
     rsmaf = self.rasp_tagger.tag( rsmaf );
     
