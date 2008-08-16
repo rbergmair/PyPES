@@ -261,3 +261,5 @@ def logWarning( inst=None, message="", debugstyle=False ):
   log( LOG_WARNING, inst, message, debugstyle );
 def logInfo( inst=None, message="", debugstyle=False ):
   log( LOG_INFO, inst, message, debugstyle );
+def logError( inst=None, message="", debugstyle=False ):
+  log( LOG_ERROR, inst, message, debugstyle );

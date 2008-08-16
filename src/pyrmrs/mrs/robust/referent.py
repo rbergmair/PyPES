@@ -111,8 +111,10 @@ class Referent( pyrmrs.mrs.common.referent.Referent ):
       self.refdistinct = self.mergeat( self.refdistinct, ref2.refdistinct );
     
     except:
-      print self.str_xml();
-      print ref2.str_xml();
+      pyrmrs.globals.logError( self, "--- INABLE TO MERGE TWO REFERENTS ---" );
+      pyrmrs.globals.logError( self, traceback.format_exc() );
+      pyrmrs.globals.logError( self, "Referent 1: %s" % self.str_xml() );
+      pyrmrs.globals.logError( self, "Referent 2: %s" % ref2.str_xml() );
       raise;
       
       
