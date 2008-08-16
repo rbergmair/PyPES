@@ -71,6 +71,9 @@ class RaspRmrs( pyrmrs.ext.wrapper.basicio.BasicIO ):
           
         if error:
           
+          self.__del__();
+          self.__init__();
+          
           newedge = pyrmrs.smafpkg.err_edge.ErrEdge();
           
           newedge.id = "r0";

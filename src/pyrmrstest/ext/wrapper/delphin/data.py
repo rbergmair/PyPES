@@ -2275,6 +2275,43 @@ RASP_PARSED = [
         </slot>
       </edge>
     </lattice>
+  </smaf>""",
+  u"""<smaf>
+    <lattice init="v0" final="v6" cfrom="0" cto="110">
+      <edge type="syntree" id="s0" source="v0" target="v6" cfrom="0" cto="23">
+        <slot name="weight">0</slot>
+        <slot name="tree">
+          (|T/txt-sc1/-+|
+           (|S/s_pco_ing|
+            (|S/np_vp| (|NP/n1-name| (|N1/n-name| |&lt;w s='0' e='7'&gt;Nichols_NP1&lt;/w&gt;|))
+             (|V1/be_ppart/--| |&lt;w s='8' e='11'&gt;be+ed_VBDZ&lt;/w&gt;|
+              (|V1/v_pp| |&lt;w s='12' e='21'&gt;sentence+ed_VVN&lt;/w&gt;|
+               (|PP/p1|
+                (|P1/p_n1| |&lt;w s='22' e='24'&gt;to_II&lt;/w&gt;|
+                 (|N1/n1_pp1| (|N1/n| |&lt;w s='25' e='29'&gt;life_NN1&lt;/w&gt;|)
+                  (|PP/p1|
+                   (|P1/p_np-pl| |&lt;w s='30' e='32'&gt;in_II&lt;/w&gt;|
+                    (|NP/n1-pl|
+                     (|N1/n1_pp4| (|N1/n-pl| |&lt;w s='33' e='39'&gt;prison_NNL1&lt;/w&gt;|)
+                      (|PP/p1|
+                       (|P1/p_np-nt| |&lt;w s='40' e='43'&gt;for_IF&lt;/w&gt;|
+                        (|NP/det_n1| |&lt;w s='44' e='47'&gt;the_AT&lt;/w&gt;|
+                         (|N1/cplx-nt/-++| |&lt;w s='48' e='53'&gt;April_NPM1&lt;/w&gt;|
+                          |&lt;w s='54' e='56'&gt;19_MC&lt;/w&gt;| |&lt;w s='56' e='57'&gt;,_,&lt;/w&gt;|
+                          |&lt;w s='58' e='62'&gt;1995_MC&lt;/w&gt;|))))))))))))))
+            |&lt;w s='62' e='63'&gt;,_,&lt;/w&gt;|
+            (|V1/v_pp-of| |&lt;w s='64' e='71'&gt;bomb+ing_VVG&lt;/w&gt;|
+             (|PP/p1|
+              (|P1/p_np| |&lt;w s='72' e='74'&gt;of_IO&lt;/w&gt;|
+               (|NP/det_n1| |&lt;w s='75' e='78'&gt;the_AT&lt;/w&gt;|
+                (|N1/n-name_n1| |&lt;w s='79' e='87'&gt;Oklahoma_NP1&lt;/w&gt;|
+                 (|N1/n-name_n1| |&lt;w s='88' e='92'&gt;City_NP1&lt;/w&gt;|
+                  (|N1/ap_n1/-| (|AP/a1| (|A1/a| |&lt;w s='93' e='100'&gt;federal_JJ&lt;/w&gt;|))
+                   (|N1/n| |&lt;w s='101' e='109'&gt;building_NN1&lt;/w&gt;|)))))))))
+           (|End-punct3/-| |&lt;w s='109' e='110'&gt;._.&lt;/w&gt;|))
+        </slot>
+      </edge>
+    </lattice>
   </smaf>"""
 ];
 
@@ -4035,6 +4072,52 @@ RASP_RMRSED = [
           <rarg> <rargname>RSTR</rargname> <label vid='14'/> <var sort='h' vid='22'/> </rarg>
           <rarg> <rargname>BODY</rargname> <label vid='14'/> <var sort='h' vid='23'/> </rarg>
         </rmrs>
+      </edge>
+    </lattice>
+  </smaf>""",
+  u"""<smaf>
+    <lattice init="v0" final="v6" cfrom="0" cto="110">
+      <edge type="syntree" id="s0" source="v0" target="v6" cfrom="0" cto="23">
+        <slot name="weight">0</slot>
+        <slot name="tree">
+          (|T/txt-sc1/-+|
+           (|S/s_pco_ing|
+            (|S/np_vp| (|NP/n1-name| (|N1/n-name| |&lt;w s='0' e='7'&gt;Nichols_NP1&lt;/w&gt;|))
+             (|V1/be_ppart/--| |&lt;w s='8' e='11'&gt;be+ed_VBDZ&lt;/w&gt;|
+              (|V1/v_pp| |&lt;w s='12' e='21'&gt;sentence+ed_VVN&lt;/w&gt;|
+               (|PP/p1|
+                (|P1/p_n1| |&lt;w s='22' e='24'&gt;to_II&lt;/w&gt;|
+                 (|N1/n1_pp1| (|N1/n| |&lt;w s='25' e='29'&gt;life_NN1&lt;/w&gt;|)
+                  (|PP/p1|
+                   (|P1/p_np-pl| |&lt;w s='30' e='32'&gt;in_II&lt;/w&gt;|
+                    (|NP/n1-pl|
+                     (|N1/n1_pp4| (|N1/n-pl| |&lt;w s='33' e='39'&gt;prison_NNL1&lt;/w&gt;|)
+                      (|PP/p1|
+                       (|P1/p_np-nt| |&lt;w s='40' e='43'&gt;for_IF&lt;/w&gt;|
+                        (|NP/det_n1| |&lt;w s='44' e='47'&gt;the_AT&lt;/w&gt;|
+                         (|N1/cplx-nt/-++| |&lt;w s='48' e='53'&gt;April_NPM1&lt;/w&gt;|
+                          |&lt;w s='54' e='56'&gt;19_MC&lt;/w&gt;| |&lt;w s='56' e='57'&gt;,_,&lt;/w&gt;|
+                          |&lt;w s='58' e='62'&gt;1995_MC&lt;/w&gt;|))))))))))))))
+            |&lt;w s='62' e='63'&gt;,_,&lt;/w&gt;|
+            (|V1/v_pp-of| |&lt;w s='64' e='71'&gt;bomb+ing_VVG&lt;/w&gt;|
+             (|PP/p1|
+              (|P1/p_np| |&lt;w s='72' e='74'&gt;of_IO&lt;/w&gt;|
+               (|NP/det_n1| |&lt;w s='75' e='78'&gt;the_AT&lt;/w&gt;|
+                (|N1/n-name_n1| |&lt;w s='79' e='87'&gt;Oklahoma_NP1&lt;/w&gt;|
+                 (|N1/n-name_n1| |&lt;w s='88' e='92'&gt;City_NP1&lt;/w&gt;|
+                  (|N1/ap_n1/-| (|AP/a1| (|A1/a| |&lt;w s='93' e='100'&gt;federal_JJ&lt;/w&gt;|))
+                   (|N1/n| |&lt;w s='101' e='109'&gt;building_NN1&lt;/w&gt;|)))))))))
+           (|End-punct3/-| |&lt;w s='109' e='110'&gt;._.&lt;/w&gt;|))
+        </slot>
+      </edge>
+      <edge type="err" id="r0" source="v0" target="v6" cfrom="0" cto="110" deps="s0">
+        <slot name="errno">0</slot>
+        <slot name="errmsg">&lt;rmrs-list&gt;
+      Warning: An error occurred (Head missing) during the reading or
+               evaluation of -e
+               "(mrs::simple-io-rasp-rmrs *standard-input* *standard-output*)"
+      ; Exiting
+      </slot>
       </edge>
     </lattice>
   </smaf>"""

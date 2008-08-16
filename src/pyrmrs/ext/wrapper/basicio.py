@@ -312,4 +312,7 @@ class BasicIO:
 
   def __del__( self ):
     
-    self.close_pipe();
+    try:
+      self.close_pipe();
+    except:
+      pass;

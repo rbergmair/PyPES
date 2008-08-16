@@ -2,13 +2,11 @@ import sys;
 import cStringIO;
 
 import BaseHTTPServer;
-import httplib;
+
+import pyrmrs.globals;
 
 import pyrmrs.smafpkg.smaf;
 import pyrmrs.smafpkg.smafreader;
-
-
-import pyrmrs.object_types;
 
 
 
@@ -16,10 +14,7 @@ class RemoteRMRSificationHandler( BaseHTTPServer.BaseHTTPRequestHandler ):
   
   def do_POST( self ):
     
-    if not self.server.lock:
-      self.server.lock = True;
-      self.server.do_POST( self );
-      self.server.lock = False;
+    self.server.do_POST( self );
 
 
 
@@ -29,7 +24,6 @@ class RemoteRMRSificationServer( BaseHTTPServer.HTTPServer ):
   def _init( self, cntrl ):  
     
     self.cntrl = cntrl;
-    self.lock = False;
   
   
   def _del( self ):
@@ -37,47 +31,89 @@ class RemoteRMRSificationServer( BaseHTTPServer.HTTPServer ):
     pass;
   
   
+  def do_404( self, req ):
+
+    req.send_response( 404 );
+    req.end_headers();
+    req.finish();
+  
+  
   def do_POST( self, req ):
+
+    prfx_process = "/process";
+    prfx_resume = "/resume";
+    prfx = None;
     
-    path_prefix = "/process";
-    
+    if req.path.startswith( prfx_process ):
+      prfx = prfx_process;
+    elif req.path.startswith( prfx_resume ):
+      prfx = prfx_resume;
+    else:
+      self.do_404( req );
+      return;
+
     transid = None;
-    empty_transaction = False;
+
+    if not prfx is None:
+      path_suffix = req.path[ len(prfx) : ];
+      path_suffix_prefix = "?transid=";
+      if path_suffix.startswith( path_suffix_prefix ):
+        path_suffix_suffix = path_suffix[ len(path_suffix_prefix) : ];
+        try:
+          transid = int( str( path_suffix_suffix  ) );
+        except:
+          pass;
     
-    if len( req.path ) >= len( path_prefix ):
-      if req.path.startswith( path_prefix ):
-        path_suffix = req.path[ len(path_prefix) : ];
-        if path_suffix == "":
-          empty_transaction = True;
-        else:
-          path_suffix_prefix = "?transid=";
-          if path_suffix.startswith( path_suffix_prefix ):
-            path_suffix_suffix = path_suffix[ len(path_suffix_prefix) : ];
-            try:
-              transid = int( str( path_suffix_suffix  ) );
-            except:
-              pass;
+    if prfx == prfx_process:
+      self.do_process( req, transid );
+    elif prfx == prfx_resume:
+      self.do_resume( req, transid );
+
+
+  def do_resume( self, req, transid ):
     
-    input = None;
-    current_transaction_id = None;
+    if transid is None:
+      
+      self.do_404( req );
+      return;
+    
+    current_transaction_id = self.active_trans[ transid ];
+    rc = self.cntrl.get_item_by_id( current_transaction_id );
+    
+    req.send_response( 200 );
+    
+    if rc is None:
+      
+      req.send_header( "Next-Transaction", "None" );
+      req.end_headers();
+      req.finish();
+      
+      self.finishing_up = True;
+
+    else:
+      
+      ( id, item ) = rc;
+      smaf = pyrmrs.smafpkg.smaf.SMAF( item );
+      output = smaf.str_xml().encode( "utf-8" );
+      req.send_header( "Next-Transaction", str( transid ) );
+      req.send_header( "Content-Length", str( len( output ) ) );
+      req.end_headers();
+      req.wfile.write( output );
+      req.finish();
+  
+  
+  def do_process( self, req, transid ):
+    
+    empty_transaction = transid is None;
     
     if not empty_transaction:
       
-      if transid is None:
-        
-        req.send_response( 404 );
-        req.end_headers();
-        req.finish();
-        return;
-      
-      else:
-    
-        current_transaction_id = self.active_trans[ transid ];
-        del self.active_trans[ transid ];
-    
-        cntlen = int( str( req.headers.getheader( "Content-Length" ) ) );
-        input = req.rfile.read( cntlen );
-        #req.rfile.close();
+      current_transaction_id = self.active_trans[ transid ];
+      del self.active_trans[ transid ];
+  
+      cntlen = int( str( req.headers.getheader( "Content-Length" ) ) );
+      input = req.rfile.read( cntlen );
+      req.rfile.close();
 
     rc = self.cntrl.get_next_item_in();
 
@@ -85,7 +121,7 @@ class RemoteRMRSificationServer( BaseHTTPServer.HTTPServer ):
     
     if rc is None:
       
-      req.send_header( "Next-Transaction", "No-Transaction" );
+      req.send_header( "Next-Transaction", "None" );
       req.end_headers();
       req.finish();
       
@@ -96,7 +132,16 @@ class RemoteRMRSificationServer( BaseHTTPServer.HTTPServer ):
       req.send_header( "Next-Transaction", str( self.next_transid ) );
       ( next_transaction_id, item ) = rc;
       self.active_trans[ self.next_transid ] = next_transaction_id;
+      pyrmrs.globals.logInfo( self, \
+        "assigned transaction ( transid=%d, id=%s, item=%s )" % ( \
+           self.next_transid, \
+           next_transaction_id, \
+           item
+        ) \
+      );
       self.next_transid += 1;
+        
+      
       smaf = pyrmrs.smafpkg.smaf.SMAF( item );
       output = smaf.str_xml().encode( "utf-8" );
       req.send_header( "Content-Length", str( len( output ) ) );
@@ -115,13 +160,19 @@ class RemoteRMRSificationServer( BaseHTTPServer.HTTPServer ):
       try:
         raspsmaf = it.next();
       except:
-        print input;
+        pyrmrs.globals.logError( self, "failed parsing SMAF returned by remote RASP." );
+        pyrmrs.globals.logError( self, "--- INPUT ---" );
+        pyrmrs.globals.logError( self, unicode( input, encoding="utf-8" ) );
+        pyrmrs.globals.logError( self, "-------------" );
       
       ergsmaf = None;
       try:  
         ergsmaf = it.next();
       except:
-        print input;
+        pyrmrs.globals.logError( self, "failed parsing SMAF returned by remote ERG." );
+        pyrmrs.globals.logError( self, "--- INPUT ---" );
+        pyrmrs.globals.logError( self, unicode( input, encoding="utf-8" ) );
+        pyrmrs.globals.logError( self, "-------------" );
       
       self.cntrl.set_smaf_out( current_transaction_id, raspsmaf, ergsmaf );
       
@@ -145,6 +196,12 @@ class RemoteRMRSificationServer( BaseHTTPServer.HTTPServer ):
 
 
 class RemoteRMRSificationController:
+  
+  def get_item_by_id( self, id ):
+    
+    if not id is None:
+      return None;
+    return ( None, self.istring );
   
   def get_next_item_in( self ):
     
@@ -170,7 +227,6 @@ class RemoteRMRSificationController:
     httpd = RemoteRMRSificationServer( ( "", 8080 ), RemoteRMRSificationHandler );
     try:
       httpd._init( self );
-      print "Ready! Listening on Port 8080.\n";
       httpd.run();
     finally:
       httpd._del();

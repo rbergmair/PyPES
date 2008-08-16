@@ -6,8 +6,10 @@ import httplib;
 
 import cStringIO;
 
-import pyrmrs.smafpkg.smafreader;
 
+import pyrmrs.globals;
+
+import pyrmrs.smafpkg.smafreader;
 
 import pyrmrs.ext.wrapper.rasp.tokeniser;
 import pyrmrs.ext.wrapper.rasp.tagger;
@@ -18,7 +20,6 @@ import pyrmrs.ext.wrapper.delphin.rasprmrs;
 
 import pyrmrs.ext.wrapper.delphin.fspp;
 import pyrmrs.ext.wrapper.delphin.pet;
-
 
 import pyrmrs.ext.glue.merge_rasp_erg_pp;
 
@@ -45,7 +46,7 @@ class RunWorker:
   dispatcher_port = None;
   
   
-  def __init__( self, dispatcher_name, dispatcher_port ):
+  def __init__( self, dispatcher_name, dispatcher_port, transid=None ):
     
     self.rasp_tokeniser = pyrmrs.ext.wrapper.rasp.tokeniser.Tokeniser();
     self.rasp_tagger = pyrmrs.ext.wrapper.rasp.tagger.Tagger();
@@ -61,6 +62,8 @@ class RunWorker:
     
     self.dispatcher_name = dispatcher_name;
     self.dispatcher_port = dispatcher_port;
+    
+    self.resume_transid = transid;
     
     self.run();
     
@@ -107,8 +110,7 @@ class RunWorker:
     
     while True:
       
-      sys.stdout.write( "Waiting for initial contact " );
-      sys.stdout.flush();
+      pyrmrs.globals.logInfo( self, "waiting for initial contact..." );
       
       transid = None;
       data = None;
@@ -123,18 +125,20 @@ class RunWorker:
         conn = httplib.HTTPConnection( self.dispatcher_name, self.dispatcher_port );
         try:
           try:
-            conn.request( "POST", "/process" );
+            if self.resume_transid is None:
+              conn.request( "POST", "/process" );
+            else:
+              conn.request( "POST", "/resume?transid=%d" % self.resume_transid );
+              self.resume_transid = None;
             resp = conn.getresponse();
           except:
-            sys.stdout.write( "- " );
-            sys.stdout.flush();
+            pyrmrs.globals.logDebug( self, "-" );
             continue;
         finally:
           conn.close();
         
         if resp.status != 200:
-          sys.stdout.write( "[%d] " % resp.status );
-          sys.stdout.flush();
+          pyrmrs.globals.logError( self, "error while waiting; got status code %d;" % resp.status );
           continue;
         
         trans = resp.getheader( "Next-Transaction" );
@@ -145,9 +149,8 @@ class RunWorker:
           exit = True;
           break;
         
-        elif trans == "No-Transaction":
-          sys.stdout.write( "+ " );
-          sys.stdout.flush();
+        elif trans == "None":
+          pyrmrs.globals.logDebug( self, "+" );
           continue;
         
         try:
@@ -155,32 +158,31 @@ class RunWorker:
           cntlen = int( str( resp.getheader( "Content-Length" ) ) );
           data = resp.read( cntlen );
         except:
-          sys.stdout.write( "??? " );
-          traceback.print_exc();
-          sys.stdout.flush();
+          pyrmrs.globals.logDebug( self, "?" );
+          pyrmrs.globals.logDebug( self, traceback.format_exc() );
           continue;
         
         break;
       
       if exit:
-        sys.stdout.write( "got signal to exit.\n" );
+        pyrmrs.globals.logInfo( self, "done waiting; got finish flag;" );
         break;
   
-      sys.stdout.write( "first transaction is %d.\n" % transid );
-      sys.stdout.flush();
+      pyrmrs.globals.logInfo( self, "done waiting; first transaction is %d;" % transid );
       
       while True:
         
-        sys.stdout.write( "working..." );
+        pyrmrs.globals.logDebug( self, "working on transaction %d..." % transid );
         try:
           data = self.work( data );
-          sys.stdout.write( "done.\n" );
+          pyrmrs.globals.logDebug( self, "done working;" );
         except:
-          traceback.print_exc();
-          sys.stdout.write( "error.\n" );
+          pyrmrs.globals.logError( self, "error while working on transaction %d;" % transid );
+          pyrmrs.globals.logError( self, traceback.format_exc() );
   
-        sys.stdout.write( "\nposting results..." );
-        sys.stdout.flush();
+        pyrmrs.globals.logDebug( self, "posting results..." );
+        
+        # x = 1 / 0;
         
         conn = httplib.HTTPConnection( self.dispatcher_name, self.dispatcher_port );
         try:
@@ -193,9 +195,8 @@ class RunWorker:
           
           assert not trans is None;
           
-          if trans == "No-Transaction":
-            sys.stdout.write( "batch finished.\n" );
-            sys.stdout.flush();
+          if trans == "None":
+            pyrmrs.globals.logInfo( self, "batch finished;" );
             break;
           
           transid = int( str( trans ) );
@@ -204,10 +205,7 @@ class RunWorker:
         finally:
           conn.close();
         
-        sys.stdout.write( "next transaction is %s.\n" % trans );
-        sys.stdout.flush();
-        
-        sys.exit( 0 );
+        pyrmrs.globals.logDebug( self, "next transaction is %s;" % trans );
 
 
 
@@ -216,18 +214,22 @@ def main( argv=None ):
   if argv == None:
     argv = sys.argv;
     
-  if len( argv ) != 3:
-    print "usage: python rmrsification_worker.py <dispatcher-name> <dispatcher-port>";
+  if not len( argv ) in [ 3, 4 ]:
+    print "usage: python rmrsification_worker.py <dispatcher-name> <dispatcher-port> [<resume transid>]";
     return;
   
   try:
-    dispatcher_name = sys.argv[1];
-    dispatcher_port = int( str( sys.argv[2] ) );
+    dispatcher_name = argv[1];
+    dispatcher_port = int( str( argv[2] ) );
   except:
-    print "usage: python rmrsification_worker.py <dispatcher-name> <dispatcher-port>";
+    print "usage: python rmrsification_worker.py <dispatcher-name> <dispatcher-port> [<resume transid>]";
     return;
   
-  RunWorker( dispatcher_name, dispatcher_port );
+  transid = None;
+  if len( argv ) == 4:
+    transid = int( argv[3] );
+  
+  RunWorker( dispatcher_name, dispatcher_port, transid );
 
 
 

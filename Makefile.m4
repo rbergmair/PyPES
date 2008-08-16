@@ -21,7 +21,7 @@ MAKEFILE=Makefile
 
 CONFIG=src/pyrmrs/config.py
 
-SCRIPTS=bin/ergparse.py bin/ergtag.py bin/rasptag.py bin/rmrsification_server.py
+SCRIPTS=bin/rmrsification_worker.py bin/rmrsification_dispatcher.py bin/rmrsification_finish_flag.py
 
 TESTXMLS=testdta/testrmrslist.xml testdta/testmrslist.xml testdta/testsmaflist.xml \
   testdta/dragon.xml
