@@ -41,6 +41,11 @@ class SMAFTokenIterator:
         trg = edge.target;
         cto = edge.cto;
       
+      # TODO: Fix this!
+      # this potentially ignores certain nodes that are
+      # not reachable, by always following the shortest
+      # arc in the case of alternative tokenizations
+      
       toks.append( edge );
 
     self.node = trg;
@@ -61,6 +66,8 @@ class SMAF( pyrmrs.xmltools.reader_element.ReaderElement ):
   
   lattice = None;
   
+  toks = None;
+  
   
   def __init__( self, text=None ):
     
@@ -71,6 +78,8 @@ class SMAF( pyrmrs.xmltools.reader_element.ReaderElement ):
     #self.cto = None;
     
     self.lattice = None;
+    
+    self.toks = None;
     
     
   def startElement( self, name, attrs ):
@@ -93,6 +102,16 @@ class SMAF( pyrmrs.xmltools.reader_element.ReaderElement ):
   def getTokens( self ):
     
     return SMAFTokenIterator( self );
+  
+  def getTokenCount( self ):
+    
+    if not self.toks is None:
+      return self.toks;
+    else:
+      self.toks = 0;
+      for alt_toks in smaf.getTokens():
+        self.toks += 1;
+      return self.toks;
 
   def getTags( self, tok ):
     
@@ -138,6 +157,19 @@ class SMAF( pyrmrs.xmltools.reader_element.ReaderElement ):
       rmrs_edges.append( edge.rmrs );
     
     return rmrs_edges;
+  
+  def getErrors( self ):
+    
+    err_edges = [];
+    
+    for edge in self.lattice.edges:
+      
+      if not isinstance( edge, pyrmrs.smafpkg.err_edge.ErrEdge ):
+        continue;
+      
+      err_edges.append( edge );
+    
+    return err_edges;
 
   
   def xml_base( self ):

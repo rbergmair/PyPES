@@ -213,7 +213,7 @@ class RunWorker:
         finally:
           conn.close();
         
-        pyrmrs.globals.logDebug( self, "next transaction is %s;" % trans );
+        pyrmrs.globals.logInfo( self, "next transaction is %s;" % trans );
 
 
 
