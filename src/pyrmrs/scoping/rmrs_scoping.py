@@ -45,7 +45,6 @@ class RMRSScoping( ndomcon_solution.NDomConSolution ):
     
     self._grouped_fragments = {};
     self._groupid_by_lid = {};
-    quant_labels = [];
     
     for k in range( 0, len(self._groups) ):
       group = self._groups[ k ];
@@ -69,6 +68,13 @@ class RMRSScoping( ndomcon_solution.NDomConSolution ):
     
     i = 0;
     
+    allhids = [];
+
+    for j in range( 0, len(self._groups) ):
+      holes = self._grouped_fragments[ (True,j) ];
+      for (x,hid) in holes:
+        allhids.append( hid );
+    
     processed_gids = [];
     for j in range( 0, len(self._groups) ):
       if j in processed_gids:
@@ -78,7 +84,10 @@ class RMRSScoping( ndomcon_solution.NDomConSolution ):
       lbls = self._groups[ j ];
       holes = self._grouped_fragments[ (True,j) ];
       
+      extralbls = [];
+      
       k = 0;
+      force = False;
       while True:
         if k >= len( holes ):
           break;
@@ -88,17 +97,25 @@ class RMRSScoping( ndomcon_solution.NDomConSolution ):
           del holes[ k ];
           gid = self._groupid_by_lid[ hid ];
           self._eqs[ hid ] = self._groups[ gid ];
-          lbls += self._groups[ gid ];
+          #lbls += self._groups[ gid ];
+          extralbls = self._groups[ gid ];
           holes += self._grouped_fragments[ (True,gid) ];
           processed_gids.append( gid );
+          force = True;
         else:
           k += 1;
-    
-      self._roots.append( lbls );
+      
+      found_all = False;    
       for lbl in lbls:
-        self._rootid_by_lid[ lbl ] = i;
-      self._rooted_fragments[ (True,i) ] = holes;
-      i += 1;
+        if lbl in allhids:
+          found_all = True;
+          
+      if ( not found_all ) or force:
+        self._roots.append( lbls );
+        for lbl in lbls + extralbls:
+          self._rootid_by_lid[ lbl ] = i;
+        self._rooted_fragments[ (True,i) ] = holes;
+        i += 1;
       
       
   def _build_cons( self ):    
@@ -169,13 +186,12 @@ class RMRSScoping( ndomcon_solution.NDomConSolution ):
     
     self._rmrs = rmrs;
     self._top_hid = rmrs.top.vid;
-    self._build_grouped_fragments();
-    self._build_rooted_fragments();
-    self._build_cons();
-
 
     pyrmrs.globals.logDebugCoarse( self, "RMRS:" );
     pyrmrs.globals.logDebugCoarse( self, "\n"+rmrs.str_pretty() );
+    
+    self._build_grouped_fragments();
+    self._build_rooted_fragments();
 
     pyrmrs.globals.logDebugCoarse( self, "---" );
     pyrmrs.globals.logDebugCoarse( self, "ROOTS:" );
@@ -188,6 +204,9 @@ class RMRSScoping( ndomcon_solution.NDomConSolution ):
     keys.sort();
     for key in keys:
       pyrmrs.globals.logDebugCoarse( self, "  %s: %s" % ( key, self._rooted_fragments[key] ) );
+
+    self._build_cons();
+      
     pyrmrs.globals.logDebug( self, "CONSTRAINTS:" );
     for key in self._cons:
       pyrmrs.globals.logDebugCoarse( self, "  %s: %s" % ( key, self._cons[key] ) );
