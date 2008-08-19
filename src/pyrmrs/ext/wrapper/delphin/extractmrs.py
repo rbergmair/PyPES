@@ -35,3 +35,57 @@ class ExtractMrs( pyrmrs.ext.wrapper.basicio.BasicIO ):
     rsltfile = cStringIO.StringIO( rslt.encode( "utf-8" ) );
     rd = pyrmrs.mrs.robust.rmrsreader.RMRSReader( rsltfile, True, 1 );
     return rd.getFirst();
+
+
+
+class ExtractMrs1( pyrmrs.ext.wrapper.basicio.BasicIO ):
+  
+  CMD = "cd %s; %s -L %s/ext/lkb-fns.lsp -L %s/ext/lkb-fns2.lsp -e \"%s\" -e \"%s\"" % ( \
+    pyrmrs.config.DIR_LKBHOME,
+    pyrmrs.config.SH_LKB,
+    pyrmrs.config.DIR_PYRMRSHOME,
+    pyrmrs.config.DIR_PYRMRSHOME,
+    "(mrs::simple-io-mrsread *standard-input* *standard-output*)",
+    "(excl:exit)"
+  );
+  
+  EOB_MARKER = "\027" + 511*"\0";
+  
+  def __init__( self ):
+    
+    pyrmrs.ext.wrapper.basicio.BasicIO.__init__( self );
+    self.read_block();
+
+  def close_pipe( self ):
+    
+    self.write_block( "" );
+    pyrmrs.ext.wrapper.basicio.BasicIO.close_pipe( self );
+  
+  def convert( self, tbstr ):
+    
+    rslt = self.invoke( tbstr );
+    return rslt;
+
+
+
+class ExtractMrs2( ExtractMrs1 ):
+  
+  CMD = "cd %s; %s -L %s/ext/lkb-fns.lsp -L %s/ext/lkb-fns2.lsp -e \"%s\" -e \"%s\"" % ( \
+    pyrmrs.config.DIR_LKBHOME,
+    pyrmrs.config.SH_LKB,
+    pyrmrs.config.DIR_PYRMRSHOME,
+    pyrmrs.config.DIR_PYRMRSHOME,
+    "(mrs::simple-io-mrsread2 *standard-input* *standard-output*)",
+    "(excl:exit)"
+  );
+
+class ExtractMrs3( ExtractMrs1 ):
+  
+  CMD = "cd %s; %s -L %s/ext/lkb-fns.lsp -L %s/ext/lkb-fns2.lsp -e \"%s\" -e \"%s\"" % ( \
+    pyrmrs.config.DIR_LKBHOME,
+    pyrmrs.config.SH_LKB,
+    pyrmrs.config.DIR_PYRMRSHOME,
+    pyrmrs.config.DIR_PYRMRSHOME,
+    "(mrs::simple-io-mrsread3 *standard-input* *standard-output*)",
+    "(excl:exit)"
+  );

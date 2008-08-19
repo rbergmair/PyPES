@@ -174,6 +174,9 @@ class RMRSScoping( ndomcon_solution.NDomConSolution ):
     self._build_cons();
 
 
+    pyrmrs.globals.logDebugCoarse( self, "RMRS:" );
+    pyrmrs.globals.logDebugCoarse( self, "\n"+rmrs.str_pretty() );
+
     pyrmrs.globals.logDebugCoarse( self, "---" );
     pyrmrs.globals.logDebugCoarse( self, "ROOTS:" );
     i = 0;
@@ -210,7 +213,19 @@ class RMRSScoping( ndomcon_solution.NDomConSolution ):
 
     results = [];
     
-    for ( scoping, ( isroot_top, id_top ) ) in ndomcon_solution.NDomConSolution.enumerate( self ):
+    scopings = ndomcon_solution.NDomConSolution.enumerate( self );
+
+    pyrmrs.globals.logDebug( self, "SCOPE:" );
+    for ( top, scope ) in scopings:
+      rslt = "";
+      for left in scope:
+        right = scope[left];
+        rslt += "%s=%s " % ( left, right );
+      pyrmrs.globals.logDebug( self, "  "+rslt );
+        
+
+    
+    for ( ( isroot_top, id_top ), scoping ) in scopings:
       #print scoping;
       #continue;
       rmrs_scoping = copy.copy( self._eqs );

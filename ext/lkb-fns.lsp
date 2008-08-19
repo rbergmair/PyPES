@@ -70,6 +70,7 @@
 
     (setf (stream-external-format istream) :utf-8)
     (setf (stream-external-format ostream) :utf-8)
+    (setq excl::*global-gc-behavior* :auto)
 
     (common-lisp-user::simple-io-write-delim ostream)
     (finish-output ostream)

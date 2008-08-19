@@ -285,36 +285,55 @@ class NDomConSolution:
 
 
 
+  def multiply_dicts( self, dicts ):
+    
+    firstpart = dicts[0];
+    rest = dicts[1:];
+    if len( rest ) == 0:
+      return firstpart;
+    
+    results = [];
+    
+    for firstdict in firstpart:
+      for restdict in self.multiply_dicts( rest ):
+        new = copy.copy( firstdict );
+        new = self.dictunion( new, restdict );
+        results.append( new );
+    
+    return results;
+    
+
   def enumerate_rec( self, roots ):
     
     if len( roots ) == 1:
-      return [ ( {}, roots[0] ) ];
+      return [ ( roots[0], {} ) ];
 
-    splits = [];
-    
+    splits = None;
     for i in range( 0, len(self._chart_keys) ):
       if self.setequals( self._chart_keys[i], roots ):
         splits = self._chart[i];
         break;
-      
-    results = [];
+    
+    scopings = [];
+    
     for (top,split) in splits:
-      scopesin = [ {} ];
+      
+      parts = [];
+      
       for root in split:
-        scopesout = [];
         subroots = split[ root ];
-        subs = self.enumerate_rec( subroots );
-        for scope in scopesin:
-          scope_ = copy.copy( scope );
-          for (subscope,subtop) in subs:
-            scope_ = self.dictunion( scope, subscope );
-            scope_[ root ] = subtop;
-            if not scope_ in scopesout:
-              scopesout.append( scope_ );
-        scopesin = scopesout;
-      for scope in scopesout:
-        results.append( (scope,top) );
-    return results;
+        subscopings = self.enumerate_rec( subroots );
+        subparts = [];
+        for ( subtop, subscope ) in subscopings:
+          newscope = copy.copy( subscope );
+          newscope[ root ] = subtop;
+          subparts.append( newscope );
+        parts.append( subparts );
+          
+      for dict in self.multiply_dicts( parts ):
+        scopings.append( (top,dict) );
+            
+    return scopings;
   
   
   

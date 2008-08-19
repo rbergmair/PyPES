@@ -10,7 +10,7 @@ doc = open( DOCS, "r" );
 
 x = pyrmrs.mrs.simple.mrsreader.MRSReader( doc );
 
-for mrs in x:
+for mrs in x.getAll():
   print mrs.str_xml();
   print mrs.str_pretty();
 
