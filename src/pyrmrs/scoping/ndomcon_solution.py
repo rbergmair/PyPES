@@ -168,10 +168,6 @@ class NDomConSolution:
     else:
       roots = copy.copy( roots_ );
       
-    if self.setequals( roots, [(True, 2), (True, 12), (True, 10), (True, 11), (True, 1)] ):
-      # assert False;
-      pass;
-
     # if there is an entry for G' in the chart
     found = False;
     for i in range( 0, len(self._chart_keys) ):
@@ -193,13 +189,21 @@ class NDomConSolution:
     free_roots = [];
     for k in range( 0, len(roots) ):
       root = roots[ k ];
+      #if self._cons_inv.has_key( root ):
+      #  reach = False;
+      #  for pred in self._cons_inv[ root ]:
+      #    if self._reachable( pred, root, roots ):
+      #      reach = True;
+      #      break;
+      #  if reach:
+      #    continue;
       if self._cons_inv.has_key( root ):
-        reach = False;
+        free = True;
         for pred in self._cons_inv[ root ]:
-          if self._reachable( pred, root, roots ):
-            reach = True;
+          if pred in roots:
+            free = False;
             break;
-        if reach:
+        if not free:
           continue;
       del roots[ k ];
       fragment = self._fragments[ root ];
