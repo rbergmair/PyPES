@@ -6,28 +6,47 @@ import pyrmrs.ext.wrapper.basicio;
 
 import pyrmrs.mrs.robust.rmrsreader;
 
-class ExtractMrs( pyrmrs.ext.wrapper.basicio.BasicIO ):
+
+class InvokeMRSFSReader( pyrmrs.ext.wrapper.basicio.BasicIO ):
   
-  CMD = "cd %s; %s -L %s/ext/lkb-fns.lsp -L %s/ext/lkb-fns2.lsp -e \"%s\" -e \"%s\"" % ( \
-    pyrmrs.config.DIR_LKBHOME,
-    pyrmrs.config.SH_LKB,
-    pyrmrs.config.DIR_PYRMRSHOME,
-    pyrmrs.config.DIR_PYRMRSHOME,
-    "(mrs::simple-io-mrsread *standard-input* *standard-output*)",
-    "(excl:exit)"
-  );
-  
+  FUNC = "simple-io-mrsfs-to-xmlrmrs";
   EOB_MARKER = "\027" + 511*"\0";
   
   def __init__( self ):
+
+    self.configure();
     
-    pyrmrs.ext.wrapper.basicio.BasicIO.__init__( self );
+    self.cmd = "cd %s; %s -L %s/ext/lkb-fns.lsp -L %s/ext/lkb-fns2.lsp -e \"%s\" -e \"%s\"" % ( \
+      pyrmrs.config.DIR_LKBHOME,
+      pyrmrs.config.SH_LKB,
+      pyrmrs.config.DIR_PYRMRSHOME,
+      pyrmrs.config.DIR_PYRMRSHOME,
+      "(mrs::%s *standard-input* *standard-output*)" % self.FUNC,
+      "(excl:exit)"
+    );
+    
+    self.open_pipe();
+    
+    self.first_read = True;
+    self.first_write = True;
     self.read_block();
 
   def close_pipe( self ):
     
     self.write_block( "" );
     pyrmrs.ext.wrapper.basicio.BasicIO.close_pipe( self );
+
+
+
+class MrsfsToXMLRMRS( InvokeMRSFSReader ):
+
+  FUNC = "simple-io-mrsfs-to-xmlrmrs";
+
+
+
+class MrsfsToRMRS( MrsfsToXMLRMRS ):
+
+  FUNC = "simple-io-mrsfs-to-xmlrmrs";
   
   def convert( self, tbstr ):
     
@@ -38,54 +57,12 @@ class ExtractMrs( pyrmrs.ext.wrapper.basicio.BasicIO ):
 
 
 
-class ExtractMrs1( pyrmrs.ext.wrapper.basicio.BasicIO ):
-  
-  CMD = "cd %s; %s -L %s/ext/lkb-fns.lsp -L %s/ext/lkb-fns2.lsp -e \"%s\" -e \"%s\"" % ( \
-    pyrmrs.config.DIR_LKBHOME,
-    pyrmrs.config.SH_LKB,
-    pyrmrs.config.DIR_PYRMRSHOME,
-    pyrmrs.config.DIR_PYRMRSHOME,
-    "(mrs::simple-io-mrsread *standard-input* *standard-output*)",
-    "(excl:exit)"
-  );
-  
-  EOB_MARKER = "\027" + 511*"\0";
-  
-  def __init__( self ):
-    
-    pyrmrs.ext.wrapper.basicio.BasicIO.__init__( self );
-    self.read_block();
+class MrsfsToXMLMRS( InvokeMRSFSReader ):
 
-  def close_pipe( self ):
-    
-    self.write_block( "" );
-    pyrmrs.ext.wrapper.basicio.BasicIO.close_pipe( self );
-  
-  def convert( self, tbstr ):
-    
-    rslt = self.invoke( tbstr );
-    return rslt;
+  FUNC = "simple-io-mrsfs-to-xmlmrs";
 
 
 
-class ExtractMrs2( ExtractMrs1 ):
-  
-  CMD = "cd %s; %s -L %s/ext/lkb-fns.lsp -L %s/ext/lkb-fns2.lsp -e \"%s\" -e \"%s\"" % ( \
-    pyrmrs.config.DIR_LKBHOME,
-    pyrmrs.config.SH_LKB,
-    pyrmrs.config.DIR_PYRMRSHOME,
-    pyrmrs.config.DIR_PYRMRSHOME,
-    "(mrs::simple-io-mrsread2 *standard-input* *standard-output*)",
-    "(excl:exit)"
-  );
+class MrsfsToTXTScopedMRS( InvokeMRSFSReader ):
 
-class ExtractMrs3( ExtractMrs1 ):
-  
-  CMD = "cd %s; %s -L %s/ext/lkb-fns.lsp -L %s/ext/lkb-fns2.lsp -e \"%s\" -e \"%s\"" % ( \
-    pyrmrs.config.DIR_LKBHOME,
-    pyrmrs.config.SH_LKB,
-    pyrmrs.config.DIR_PYRMRSHOME,
-    pyrmrs.config.DIR_PYRMRSHOME,
-    "(mrs::simple-io-mrsread3 *standard-input* *standard-output*)",
-    "(excl:exit)"
-  );
+  FUNC = "simple-io-mrsfs-to-scopedmrs";

@@ -9,13 +9,13 @@ class RealPredicate( pyrmrs.xmltools.reader_element.ReaderElement ):
 
   POS_VERB = 'v';
   POS_NOUN = 'n';
-  POS_ADJECTIVE = 'j';
+  POS_J = 'j';
   POS_ADVERB = 'r';
   POS_PREPOSITION = 'p';
   POS_QUANTIFIER = 'q';
   POS_COORDINATOR = 'c';
-  POS_NOT = 'x';
-  POS_A = 'a';
+  POS_X = 'x';
+  POS_ADJECTIVE = 'a';
   POS_U = 'u';
 
   lemma = None;

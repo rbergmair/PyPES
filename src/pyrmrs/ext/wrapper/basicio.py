@@ -88,9 +88,9 @@ class BasicIO:
   
   def open_pipe( self ):
 
-    assert not self.CMD is None;
+    assert not self.cmd is None;
 
-    pyrmrs.globals.logDebug( self, "opening pipe on \"%s\"..." % self.CMD );
+    pyrmrs.globals.logDebug( self, "opening pipe on \"%s\"..." % self.cmd );
     self.pipe = subprocess.Popen( self.cmd, shell=True, env=self.env, \
       stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.STDOUT );
     self.child_in = self.pipe.stdin;

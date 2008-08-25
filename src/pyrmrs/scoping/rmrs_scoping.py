@@ -276,7 +276,7 @@ class RMRSScoping( ndomcon_solution.NDomConSolution ):
 
 
 
-  def enumerate( self ):
+  def enumerate( self, only_first=False ):
   
     pyrmrs.globals.logDebug( self, "CHART KEYS:" );
     for item in self._chart_keys:
@@ -287,7 +287,7 @@ class RMRSScoping( ndomcon_solution.NDomConSolution ):
 
     results = [];
     
-    scopings = ndomcon_solution.NDomConSolution.enumerate( self );
+    scopings = ndomcon_solution.NDomConSolution.enumerate( self, only_first );
 
     pyrmrs.globals.logDebug( self, "SCOPE:" );
     for ( top, scope ) in scopings:

@@ -189,14 +189,28 @@ def getLogger( inst=None ):
     return None;
   
   logname = "pyrmrs";
-  if not inst is None:
-    logname = inst.__class__.__module__;
-    if not ( logname == "pyrmrs" or logname.startswith( "pyrmrs." ) or
-             logname == "pyrmrstest" or logname.startswith( "pyrmrstest." ) ):
-      if exec_context is None:
-        return;
-      else:
-        logname = exec_context + logname;
+
+  if isinstance( inst, str ):
+    logname = inst;
+  elif isinstance( inst, unicode ):
+    logname = inst;
+  else:
+    isclass = True;
+    try:
+      issubclass( inst, inst );
+    except TypeError:
+      isclass = False;
+    if isclass:
+      logname = inst.__module__;
+    elif not inst is None:
+      logname = inst.__class__.__module__;
+
+  if not ( logname == "pyrmrs" or logname.startswith( "pyrmrs." ) or
+           logname == "pyrmrstest" or logname.startswith( "pyrmrstest." ) ):
+    if exec_context is None:
+      return;
+    else:
+      logname = exec_context + logname;
     
   logger = logging.getLogger( logname );
 

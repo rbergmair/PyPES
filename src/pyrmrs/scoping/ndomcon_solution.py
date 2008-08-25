@@ -307,7 +307,7 @@ class NDomConSolution:
     return results;
     
 
-  def enumerate_rec( self, roots ):
+  def enumerate_rec( self, roots, only_first=False ):
     
     if len( roots ) == 1:
       return [ ( roots[0], {} ) ];
@@ -320,13 +320,15 @@ class NDomConSolution:
     
     scopings = [];
     
+    splits.sort();
+    
     for (top,split) in splits:
       
       parts = [];
       
       for root in split:
         subroots = split[ root ];
-        subscopings = self.enumerate_rec( subroots );
+        subscopings = self.enumerate_rec( subroots, only_first );
         subparts = [];
         for ( subtop, subscope ) in subscopings:
           newscope = copy.copy( subscope );
@@ -336,14 +338,17 @@ class NDomConSolution:
           
       for dict in self.multiply_dicts( parts ):
         scopings.append( (top,dict) );
+      
+      if only_first:
+        break;
             
     return scopings;
   
   
   
-  def enumerate( self ):
+  def enumerate( self, only_first=False ):
     
-    rslt = self.enumerate_rec( self._fragments.keys() );
+    rslt = self.enumerate_rec( self._fragments.keys(), only_first );
     #for x in rslt:
       #print "_ %s %s" % x;
       #assert False;
