@@ -134,9 +134,20 @@ class RMRSScoping( ndomcon_solution.NDomConSolution ):
     
     self._merged_groups = [];
     
+    groups_sorted = [];
+
+    for gid in range( 0, len(self._groups) ):
+      group = self._groups[ gid ];
+      maxlid = None;
+      for lid in group:
+        maxlid = max( maxlid, lid );
+      groups_sorted.append( (maxlid,gid) );
+    
+    groups_sorted.sort();
+    
     groupsdone = [];
     
-    for gid in range( 0, len(self._groups) ):
+    for (asdf,gid) in groups_sorted:
       if not gid in groupsdone:
         group = self._groups[ gid ];
         newgroup = copy.copy( group );
@@ -270,9 +281,9 @@ class RMRSScoping( ndomcon_solution.NDomConSolution ):
 
 
 
-  def solve( self ):
+  def solve( self, beam_pruning=None ):
     
-    return ndomcon_solution.NDomConSolution.solve( self );
+    return ndomcon_solution.NDomConSolution.solve( self, beam_pruning=beam_pruning );
 
 
 

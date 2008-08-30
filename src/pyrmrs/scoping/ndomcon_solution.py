@@ -68,99 +68,87 @@ class NDomConSolution:
         self._cons_inv[ root ].append( hole );
 
 
-
-  def _reachable( self, v1, v2, roots_=None ):
+        
+  def _biconnected_graph( self, roots ):
     
-    roots = None;
-    if roots_ is None:
-      roots = copy.copy( self._fragments.keys() );
-    else:
-      roots = copy.copy( roots_ );
+    adjacent_nodes = {};
       
-    i = 0;
-    reachable = [];
-    if not self._reachability_cache is None:
-      ( roots_, reachable_, i_ ) = self._reachability_cache;
-      if roots == roots_:
-        reachable = reachable_;
-        i = i_;
-        pass;
+    for root in roots:
+      if not adjacent_nodes.has_key( root ):
+        adjacent_nodes[ root ] = [];
+      for hole in self._fragments[ root ]:
+        if not hole in adjacent_nodes[ root ]:
+          adjacent_nodes[ root ].append( hole );
+        if not adjacent_nodes.has_key( hole ):
+          adjacent_nodes[ hole ] = [];
+        if not root in adjacent_nodes[ hole ]:
+          adjacent_nodes[ hole ].append( root );
+        
+    for higher in self._cons:
+      if higher[0] and not higher in roots:
+        continue;
+      if not adjacent_nodes.has_key( higher ):
+        adjacent_nodes[ higher ] = [];
+      for lower in self._cons[ higher ]:
+        if lower[0] and not lower in roots:
+          continue;
+        if not lower in adjacent_nodes[ higher ]:
+          adjacent_nodes[ higher ].append( lower );
+        if not adjacent_nodes.has_key( lower ):
+          adjacent_nodes[ lower ] = [];
+        if not higher in adjacent_nodes[ lower ]:
+          adjacent_nodes[ lower ].append( higher );
     
-    if reachable == []:
-      for root in roots:
-        for hole in self._fragments[ root ]:
-          if ( not ( root, hole ) in reachable ) and \
-             ( not ( hole, root ) in reachable ):
-            reachable.append( (root,hole) );
-      for higher in self._cons:
-        for lower in self._cons[ higher ]:
-          if not ( higher[0] and not higher in roots ):
-            if ( not ( higher, lower ) in reachable ) and \
-               ( not ( lower, higher ) in reachable ):
-              reachable.append( (higher,lower) );
+    return adjacent_nodes;
 
-    self._reachability_cache = ( roots, reachable, i );
-    if (v1,v2) in reachable or (v2,v1) in reachable:
-      return True;
 
-    while True:
-      if i >= len( reachable ):
-        break;
-      ( a1, a2 ) = reachable[ i ];
+
+  def _reachable( self, v1, v2, roots ):
+    
+    adjacent_nodes = self._biconnected_graph( roots );
+    visited = {};
+    reachable = [ v1 ];
+    
+    i = 0;
+    
+    while i < len( reachable ):
+      
+      currentvtx = reachable[ i ];
       i += 1;
       
-      j = 0;
-      while True:
-        if j >= i:
-          break;
-        ( b1, b2 ) = reachable[ j ];
-        j += 1;
-        
-        if b1 == a2:
-          if not (a1,b2) in reachable:
-            if not (b2,a1) in reachable:
-              reachable.append( (a1,b2) );
-              if ( a1 == v1 and b2 == v2 ) or ( a1 == v2 and b2 == v1 ):
-                break;
-
-        if a1 == b2:
-          if not (a2,b1) in reachable:
-            if not (b1,a2) in reachable:
-              reachable.append( (a2,b1) );
-              if ( a2 == v1 and b1 == v2 ) or ( a2 == v2 and b1 == v1 ):
-                break;
-
-        if a1 == b1:
-          if not (a2,b2) in reachable:
-            if not (b2,a2) in reachable:
-              reachable.append( (a2,b2) );
-              if ( a2 == v1 and b2 == v2 ) or ( a2 == v2 and b2 == v1 ):
-                break;
-
-        if a2 == b2:
-          if not (a1,b1) in reachable:
-            if not (b1,a1) in reachable:
-              reachable.append( (a1,b1) );
-              if ( a1 == v1 and b1 == v2 ) or ( a1 == v2 and b1 == v1 ):
-                break;
-    
-    self._reachability_cache = ( roots, reachable, i );
-    if (v1,v2) in reachable or (v2,v1) in reachable:
-      return True;
-    else:
+      if adjacent_nodes.has_key( currentvtx ):
+        for next in adjacent_nodes[ currentvtx ]:
+          if not visited.has_key( next ):
+            visited[ next ] = True;
+            reachable.append( next );
+            if not v2 is None:
+              if next == v2:
+                return True;
+              
+    if v2 is None:
+      return visited.keys();
+    else:    
       return False;
-
-
-
-  def solve( self ):
     
-    if not self.solve_domcon():
+  def _is_reachable( self, v1, v2, roots ):
+    
+    return self._reachable( v1, v2, roots );
+  
+  def _generate_reachables( self, v1, roots ):
+    
+    return self._reachable( v1, None, roots );
+
+
+
+  def solve( self, beam_pruning=None ):
+    
+    if not self.solve_domcon( beam_pruning=beam_pruning ):
       return False;
 
 
 
   # GRAPH-SOLVER-CHART(G')
-  def solve_domcon( self, roots_=None ):
+  def solve_domcon( self, roots_=None, beam_pruning=None ):
 
     roots = None;
     if roots_ is None:
@@ -189,14 +177,6 @@ class NDomConSolution:
     free_roots = [];
     for k in range( 0, len(roots) ):
       root = roots[ k ];
-      #if self._cons_inv.has_key( root ):
-      #  reach = False;
-      #  for pred in self._cons_inv[ root ]:
-      #    if self._reachable( pred, root, roots ):
-      #      reach = True;
-      #      break;
-      #  if reach:
-      #    continue;
       if self._cons_inv.has_key( root ):
         free = True;
         for pred in self._cons_inv[ root ]:
@@ -210,7 +190,7 @@ class NDomConSolution:
       free = True;
       for i in range( 0, len(fragment) ):
         for j in range( 0, i ):
-          if self._reachable( fragment[i], fragment[j], roots ):
+          if self._is_reachable( fragment[i], fragment[j], roots ):
             free = False;
       if free:
         free_roots.append( root );
@@ -225,9 +205,15 @@ class NDomConSolution:
       return False;
     
     splits = [];
-
+    
     # for each F in free
-    for free_root in free_roots:
+    
+    free_roots_ = free_roots;
+    if not beam_pruning is None and beam_pruning < len( free_roots ):
+      free_roots.sort();
+      free_roots_ = free_roots[ 0 : beam_pruning ];
+    
+    for free_root in free_roots_:
 
       pyrmrs.globals.logDebug( self, "--> "+str(free_root) );
       
@@ -238,10 +224,10 @@ class NDomConSolution:
       empty_hole = [];
       for hole in self._fragments[ free_root ]:
         split[ hole ] = [];
-        for root in self._fragments:
-          if self._reachable( root, hole, roots ):
-            split[ hole ].append( root );
-            assigned.append( root );
+        for (tf,nn) in self._generate_reachables( hole, roots ):
+          if tf:
+            split[ hole ].append( (tf,nn) );
+        assigned += split[ hole ];
       for hole in split:
         if split[ hole ] == []:
           empty_hole.append( hole );
@@ -257,8 +243,6 @@ class NDomConSolution:
         for root in roots:
           if not root in assigned:
             split[ empty_hole ].append( root );
-        if ( True, 1 ) in split[ empty_hole ]:
-          pass;
       roots.append( free_root );
       # assert split == SPLIT(G',F)
 
@@ -267,7 +251,7 @@ class NDomConSolution:
       # for each S in WCCS(G'-F)
       for hole in split:
         # if GRAPH-SOLVER-CHART(S) == false
-        if not self.solve_domcon( split[ hole ] ):
+        if not self.solve_domcon( split[ hole ], beam_pruning ):
           # return false
           return False;
         
