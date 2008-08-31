@@ -5,6 +5,12 @@ LRPUN = [ '"' ];
 LPUN = [ "(", "[", "{" ];
 RPUN = [ ")", "]", "]", ",", ";", ".", "!", "?" ];
 PUN = LPUN + RPUN + LRPUN;
+
+def convert_tag( intag ):
+  intag = intag.replace( "$", "_DOLLAR" );
+  intag = intag.replace( "&", "_" );
+  return intag;
+  
   
   
 def merge_rasp_erg_pp( tok_smaf, tag_smaf ):
@@ -38,6 +44,8 @@ def merge_rasp_erg_pp( tok_smaf, tag_smaf ):
         newedge = copy.copy( tag );
         newedge.id = "p%d" % peid;
         peid += 1;
+        
+        newedge.tag = convert_tag( newedge.tag );
         
         newedge.source = tok.source;
         newedge.target = tok.target;
