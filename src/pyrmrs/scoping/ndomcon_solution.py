@@ -18,18 +18,26 @@ class NDomConSolution:
 
 
   def setequals( self, a, b ):
+
+    # asdf
+    return a == b;
     
-    found = False;
-    if len(a) == len(b):
-      found = True;
-      for item in a:
-        if not item in b:
-          found = False;
-          break;
-      for item in b:
-        if not item in a:
-          found = False;
-          break;
+    if len(a) != len(b):
+      return False;
+
+    found = True;
+    for item in a:
+      if not item in b:
+        found = False;
+        break;
+    if not found:
+      return False;
+    
+    found = True;
+    for item in b:
+      if not item in a:
+        found = False;
+        break;
     return found;
 
 
@@ -142,8 +150,7 @@ class NDomConSolution:
 
   def solve( self, beam_pruning=None ):
     
-    if not self.solve_domcon( beam_pruning=beam_pruning ):
-      return False;
+    return self.solve_domcon( beam_pruning=beam_pruning );
 
 
 
@@ -155,6 +162,9 @@ class NDomConSolution:
       roots = copy.copy( self._fragments.keys() );
     else:
       roots = copy.copy( roots_ );
+    
+    #asdf
+    roots.sort();
       
     # if there is an entry for G' in the chart
     found = False;
@@ -173,6 +183,12 @@ class NDomConSolution:
       # then return true
       return True;
     
+    rootsplusdaughters = [];
+    for root in roots:
+      rootsplusdaughters.append( root );
+      for daughter in self._fragments[ root ]:
+        rootsplusdaughters.append( daughter );
+    
     # free <- FREE-FRAGMENTS(G')
     free_roots = [];
     for k in range( 0, len(roots) ):
@@ -180,7 +196,7 @@ class NDomConSolution:
       if self._cons_inv.has_key( root ):
         free = True;
         for pred in self._cons_inv[ root ]:
-          if pred in roots:
+          if pred in rootsplusdaughters:
             free = False;
             break;
         if not free:
@@ -208,10 +224,18 @@ class NDomConSolution:
     
     # for each F in free
     
-    free_roots_ = free_roots;
-    if not beam_pruning is None and beam_pruning < len( free_roots ):
-      free_roots.sort();
-      free_roots_ = free_roots[ 0 : beam_pruning ];
+    free_roots_ = [];
+    k = 0;
+    for root in free_roots:
+      if len( self._fragments[ root ] ) == 0:
+        continue;
+      free_roots_.append( root );
+      k += 1;
+      if not beam_pruning is None and beam_pruning >= k:
+        break;
+    
+    if len( free_roots_ ) == 0:
+      return True;
     
     for free_root in free_roots_:
 
@@ -256,16 +280,12 @@ class NDomConSolution:
           return False;
         
       # add (G',split) to the chart
-      if split != {}:
-      #  found = False;
-      #  for i in range( 0, len(self._chart_keys) ):
-      #    if self.setequals( self._chart_keys[i], roots ):
-      #      if split == self._chart[i]:
-      #        found = True;
-      #        break;
-      #  if not found:
-        splits.append( (free_root,split) );
-      
+      assert split != {};
+      splits.append( (free_root,split) );
+        
+    # asdf
+    roots.sort();
+    
     self._chart_keys.append( roots );
     self._chart.append( splits );
     # return true
@@ -274,6 +294,9 @@ class NDomConSolution:
 
 
   def multiply_dicts( self, dicts ):
+    
+    #if len( dicts ) == 0:
+    #  return [];
     
     firstpart = dicts[0];
     rest = dicts[1:];
@@ -295,12 +318,29 @@ class NDomConSolution:
     
     if len( roots ) == 1:
       return [ ( roots[0], {} ) ];
+    
+    #asdf
+    roots.sort();
+    
+    nonterminal = [];
+    for root in roots:
+      if len( self._fragments[ root ] ) > 0:
+        nonterminal.append( root );
 
     splits = None;
     for i in range( 0, len(self._chart_keys) ):
       if self.setequals( self._chart_keys[i], roots ):
         splits = self._chart[i];
         break;
+      
+    if splits is None:
+      assert len( nonterminal ) == 0;
+      
+    if len( nonterminal ) == 0:
+      assert splits is None;
+      
+    if splits is None:
+      pass;
     
     scopings = [];
     
@@ -311,9 +351,10 @@ class NDomConSolution:
       parts = [];
       
       for root in split:
+        
         subroots = split[ root ];
-        subscopings = self.enumerate_rec( subroots, only_first );
         subparts = [];
+        subscopings = self.enumerate_rec( subroots, only_first );
         for ( subtop, subscope ) in subscopings:
           newscope = copy.copy( subscope );
           newscope[ root ] = subtop;
