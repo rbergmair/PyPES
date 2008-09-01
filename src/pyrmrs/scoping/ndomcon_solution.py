@@ -150,6 +150,12 @@ class NDomConSolution:
 
   def solve( self, beam_pruning=None ):
     
+    # reachables = self._generate_reachables( (True,0), self._fragments.keys() );
+    # nonreachable = [];
+    # for root in self._fragments.keys():
+    #   if not root in reachables:
+    #     nonreachable.append( root );
+    # pass;
     return self.solve_domcon( beam_pruning=beam_pruning );
 
 
