@@ -27,6 +27,12 @@ class TestFspp( pyrmrstest.mytest.MyTestCase ):
       smaf = self.globalstate.fspp.tokenise( smaf );
       #print smaf.str_xml();
       self.assertStringCrudelyEqual( smaf.str_xml(), data.TOKENISED[i] );
+  
+  def test_mytest( self ):
+    
+    smaf = pyrmrs.smafpkg.smaf.SMAF( "The increase was 5% above average." );
+    smaf = self.globalstate.fspp.tokenise( smaf );
+    print smaf.str_xml();
 
 
 

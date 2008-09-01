@@ -241,7 +241,7 @@ class NDomConSolution:
         break;
     
     if len( free_roots_ ) == 0:
-      return True;
+      return False;
     
     for free_root in free_roots_:
 
@@ -265,7 +265,9 @@ class NDomConSolution:
           pyrmrs.globals.logDebug( self, "    NEH %s %s" % (hole,split[hole]) );
 
       pyrmrs.globals.logDebug( self, "    EH"+str(empty_hole) );
-      assert len( empty_hole ) <= 1;
+      #assert len( empty_hole ) <= 1;
+      if len( empty_hole ) > 1:
+        return False;
       
       if len( empty_hole ) == 1:
         empty_hole = empty_hole[ 0 ];
