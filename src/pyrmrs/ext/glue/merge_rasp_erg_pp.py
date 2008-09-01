@@ -1,5 +1,7 @@
 import copy;
 
+import pyrmrs.smafpkg.ersatz_edge;
+
 
 LRPUN = [ '"' ];
 LPUN = [ "(", "[", "{" ];
@@ -33,6 +35,9 @@ def merge_rasp_erg_pp( tok_smaf, tag_smaf ):
   for alt_toks in tok_smaf.getTokens():
     for tok in alt_toks:
       
+      if isinstance( tok, pyrmrs.smafpkg.ersatz_edge.ErsatzEdge ):
+        continue;
+      
       tags = [];
       
       for i in range( tok.cfrom, tok.cto ):
@@ -40,8 +45,6 @@ def merge_rasp_erg_pp( tok_smaf, tag_smaf ):
           if not tag in tags:
             tags.append( tag );
             
-      for tag in tags:
-        
         newedge = copy.copy( tag );
         newedge.id = "p%d" % peid;
         peid += 1;
