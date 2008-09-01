@@ -9,6 +9,7 @@ PUN = LPUN + RPUN + LRPUN;
 def convert_tag( intag ):
   intag = intag.replace( "$", "_DOLLAR" );
   intag = intag.replace( "&", "_" );
+  intag = intag.replace( "&amp;", "_" );
   return intag;
   
   
