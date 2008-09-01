@@ -212,9 +212,7 @@ class RMRSScoping( ndomcon_solution.NDomConSolution ):
           vars.append( var );
           
       i = 0;
-      while True:
-        if i >= len(vars):
-          break;
+      while i < len(vars):
         var = vars[i];
         if not bindings.has_key( var.referent ):
           if var.sort != var.SORT_ENTITY:
