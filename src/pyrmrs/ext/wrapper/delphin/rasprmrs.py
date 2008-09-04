@@ -73,7 +73,7 @@ class RaspRmrs( pyrmrs.ext.wrapper.basicio.BasicIO ):
           
           if rslt.find( "(Head missing)" ):
             error = 1;
-          elif excmsg != None:
+          elif excmsg != "":
             error = 2;
           else:
             error = 0;
