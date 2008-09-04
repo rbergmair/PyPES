@@ -28,7 +28,13 @@ class TestFspp( pyrmrstest.mytest.MyTestCase ):
       #print smaf.str_xml();
       self.assertStringCrudelyEqual( smaf.str_xml(), data.TOKENISED[i] );
   
-  def test_mytest( self ):
+  def xtest_mytest_1( self ):
+    
+    smaf = pyrmrs.smafpkg.smaf.SMAF( "He died on 28 July 1997." );
+    smaf = self.globalstate.fspp.tokenise( smaf );
+    print smaf.str_xml();
+
+  def xtest_mytest_2( self ):
     
     smaf = pyrmrs.smafpkg.smaf.SMAF( "The increase was 5% above average." );
     smaf = self.globalstate.fspp.tokenise( smaf );
