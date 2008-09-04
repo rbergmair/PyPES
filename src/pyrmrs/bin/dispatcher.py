@@ -10,7 +10,7 @@ import pyrmrs.smafpkg.smafreader;
 
 
 
-class RemoteRMRSificationHandler( BaseHTTPServer.BaseHTTPRequestHandler ):
+class DispatcherHandler( BaseHTTPServer.BaseHTTPRequestHandler ):
   
   def do_POST( self ):
     
@@ -18,7 +18,7 @@ class RemoteRMRSificationHandler( BaseHTTPServer.BaseHTTPRequestHandler ):
 
 
 
-class RemoteRMRSificationServer( BaseHTTPServer.HTTPServer ):
+class DispatcherServer( BaseHTTPServer.HTTPServer ):
   
   
   def _init( self, cntrl ):  
@@ -150,34 +150,11 @@ class RemoteRMRSificationServer( BaseHTTPServer.HTTPServer ):
       
     if not empty_transaction:
       
-      ifile = cStringIO.StringIO( input );
-      rd = pyrmrs.smafpkg.smafreader.SMAFReader( ifile, True );
-      it = rd.getAll();
+      pass; # input
       
-      raspsmaf = None;
-      
-      try:
-        raspsmaf = it.next();
-      except:
-        pyrmrs.globals.logError( self, "failed parsing SMAF returned by remote RASP." );
-        pyrmrs.globals.logError( self, "--- INPUT ---" );
-        pyrmrs.globals.logError( self, unicode( input, encoding="utf-8" ) );
-        pyrmrs.globals.logError( self, "-------------" );
-      
-      ergsmaf = None;
-      try:  
-        ergsmaf = it.next();
-      except:
-        pyrmrs.globals.logError( self, "failed parsing SMAF returned by remote ERG." );
-        pyrmrs.globals.logError( self, "--- INPUT ---" );
-        pyrmrs.globals.logError( self, unicode( input, encoding="utf-8" ) );
-        pyrmrs.globals.logError( self, "-------------" );
-      
-      self.cntrl.set_smaf_out( current_transaction_id, raspsmaf, ergsmaf );
       del self.active_trans[ transid ];
       
       
-  
   def run( self ):
     
     self.next_transid = 1;
@@ -194,44 +171,17 @@ class RemoteRMRSificationServer( BaseHTTPServer.HTTPServer ):
           break;
       self.handle_request();
 
-
-
-class RemoteRMRSificationController:
+      
+      
+def run( dispatcher ):
   
-  def get_item_by_id( self, id ):
-    
-    if not id is None:
-      return None;
-    return ( None, self.istring );
+  httpd = DispatcherServer( ( "", 8080 ), DispatcherHandler );
+  try:
+    httpd._init( dispatcher );
+    httpd.run();
+  finally:
+    httpd._del();
   
-  def get_next_item_in( self ):
-    
-    if self.done:
-      return None;
-    self.done = True;
-    return ( None, self.istring );
-  
-  def set_smaf_out( self, id, raspsmaf, ergsmaf ):
-    
-    self.ofile.write( raspsmaf.str_xml() );
-    self.ofile.write( "\n\n\n" );
-    self.ofile.write( ergsmaf.str_xml() );
-    self.ofile.write( "\n" );
-  
-  def run( self, istring, ofile ):
-    
-    self.istring = istring;
-    self.ofile = ofile;
-    
-    self.done = False;
-    
-    httpd = RemoteRMRSificationServer( ( "", 8080 ), RemoteRMRSificationHandler );
-    try:
-      httpd._init( self );
-      httpd.run();
-    finally:
-      httpd._del();
-
 
 
 def main( argv=None ):
@@ -240,11 +190,12 @@ def main( argv=None ):
     argv = sys.argv;
   
   if len( argv ) != 2:
-    print "usage: python rmrsification_dispatcher.py <string>";
+    print "usage: python dispatcher.py <dispatcher-module>";
     return;
   
-  cntrl = RemoteRMRSificationController();
-  cntrl.run( argv[1], sys.stdout );
+  exec "import " + argv[1];
+  dispatcher = eval( argv[1] + ".Dispatcher()" );
+  run( dispatcher );
   
   return 0;
 

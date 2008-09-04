@@ -3,7 +3,7 @@ import BaseHTTPServer;
 
 
 
-class RemoteRMRSificationHandler( BaseHTTPServer.BaseHTTPRequestHandler ):
+class FinishFlagHandler( BaseHTTPServer.BaseHTTPRequestHandler ):
   
   def do_POST( self ):
     
@@ -11,7 +11,7 @@ class RemoteRMRSificationHandler( BaseHTTPServer.BaseHTTPRequestHandler ):
 
 
 
-class RemoteRMRSificationServer( BaseHTTPServer.HTTPServer ):
+class FinishFlagServer( BaseHTTPServer.HTTPServer ):
   
   def do_POST( self, req ):
 
@@ -32,7 +32,7 @@ class RemoteRMRSificationServer( BaseHTTPServer.HTTPServer ):
 
 def main( argv=None ):
 
-  httpd = RemoteRMRSificationServer( ( "", 8080 ), RemoteRMRSificationHandler );
+  httpd = FinishFlagServer( ( "", 8080 ), FinishFlagHandler );
   httpd.run();
   
   return 0;

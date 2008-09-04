@@ -9,110 +9,36 @@ import cStringIO;
 
 import pyrmrs.globals;
 
-import pyrmrs.smafpkg.smafreader;
-
-import pyrmrs.ext.wrapper.rasp.tokeniser;
-import pyrmrs.ext.wrapper.rasp.tagger;
-import pyrmrs.ext.wrapper.rasp.morpher;
-import pyrmrs.ext.wrapper.rasp.parser;
-
-import pyrmrs.ext.wrapper.delphin.rasprmrs;
-
-import pyrmrs.ext.wrapper.delphin.fspp;
-import pyrmrs.ext.wrapper.delphin.pet;
-
-import pyrmrs.ext.glue.merge_rasp_erg_pp;
-
-
 
 class RunWorker:  
-
 
   inst = None;
   function = None;
   
-  rasp_tokeniser = None;
-  rasp_tagger = None;
-  
-  erg_tokeniser = None;
-  
-  rasp_morpher = None;
-  rasp_parser = None;
-  rasp_rmrs = None;
-  
-  erg_parser = None;
+  worker = None;
   
   dispatcher_name = None;
   dispatcher_port = None;
   
   
-  def __init__( self, dispatcher_name, dispatcher_port, transid=None ):
+  def __init__( self, worker, dispatcher_name, dispatcher_port, transid=None ):
     
-    self.rasp_tokeniser = pyrmrs.ext.wrapper.rasp.tokeniser.Tokeniser();
-    self.rasp_tagger = pyrmrs.ext.wrapper.rasp.tagger.Tagger();
-    
-    self.erg_tokeniser = pyrmrs.ext.wrapper.delphin.fspp.Fspp();
-    
-    self.rasp_morpher = pyrmrs.ext.wrapper.rasp.morpher.Morpher();
-    self.rasp_parser = pyrmrs.ext.wrapper.rasp.parser.Parser();
-    
-    self.rasp_rmrs = pyrmrs.ext.wrapper.delphin.rasprmrs.RaspRmrs();
-    
-    self.erg_parser = pyrmrs.ext.wrapper.delphin.pet.TaggedPet();
+    self.worker = worker;
     
     self.dispatcher_name = dispatcher_name;
     self.dispatcher_port = dispatcher_port;
     
     self.resume_transid = transid;
     
+    self.worker.global_init();
+    
     self.run();
     
     
   def __del__( self ):
-    
-    del self.erg_parser;
-    del self.rasp_rmrs;
-    del self.rasp_parser;
-    del self.rasp_morpher;
-    del self.erg_tokeniser;
-    del self.rasp_tagger;
-    del self.rasp_tokeniser;
-    
-  
-  def work( self, strin ):
 
-    strinio = cStringIO.StringIO( strin );
-    try:
-      smafrd = pyrmrs.smafpkg.smafreader.SMAFReader( strinio, True );
-      ismaf = smafrd.getFirst();
-    except:
-      pyrmrs.globals.logError( self, "error while parsing input SMAF" );
-      pyrmrs.globals.logError( self, traceback.format_exc() );
-      pyrmrs.globals.logError( self, "--- INPUT ---" );
-      pyrmrs.globals.logError( self, unicode( strin, encoding="utf-8" ) );
-      pyrmrs.globals.logError( self, "-------------" );
-      raise;
-      
-    rsmaf = self.rasp_tokeniser.tokenise( ismaf );
-    rsmaf = self.rasp_tagger.tag( rsmaf );
+    self.worker.global_del();
     
-    esmaf = self.erg_tokeniser.tokenise( ismaf );
-    
-    msmaf = pyrmrs.ext.glue.merge_rasp_erg_pp.merge_rasp_erg_pp( esmaf, rsmaf );
-    
-    rsmaf = self.rasp_morpher.morph( rsmaf );
-    rsmaf = self.rasp_parser.parse( rsmaf );
-    rsmaf = self.rasp_rmrs.convert( rsmaf );
-    
-    esmaf = self.erg_parser.parse( msmaf );
-    
-    strout = rsmaf.str_xml();
-    strout += "\n\n\n";
-    strout += esmaf.str_xml();
-    strout += "\n";
-    
-    return strout.encode( "utf-8" );
-  
   
   def run( self ):
     
@@ -182,15 +108,13 @@ class RunWorker:
         
         pyrmrs.globals.logDebug( self, "working on transaction %d..." % transid );
         try:
-          data = self.work( data );
+          data = self.worker.work( data );
           pyrmrs.globals.logDebug( self, "done working;" );
         except:
           pyrmrs.globals.logError( self, "error while working on transaction %d;" % transid );
           pyrmrs.globals.logError( self, traceback.format_exc() );
   
         pyrmrs.globals.logDebug( self, "posting results..." );
-        
-        # x = 1 / 0;
         
         conn = httplib.HTTPConnection( self.dispatcher_name, self.dispatcher_port );
         try:
@@ -222,26 +146,27 @@ def main( argv=None ):
   if argv == None:
     argv = sys.argv;
     
-  if not len( argv ) in [ 3, 4 ]:
-    print "usage: python rmrsification_worker.py <dispatcher-name> <dispatcher-port> [<resume transid>]";
+  if not len( argv ) in [ 4, 5 ]:
+    print "usage: python worker.py <worker-module> <dispatcher-name> <dispatcher-port> [<resume transid>]";
     return;
   
   try:
-    dispatcher_name = argv[1];
-    dispatcher_port = int( str( argv[2] ) );
+    dispatcher_name = argv[2];
+    dispatcher_port = int( str( argv[3] ) );
   except:
-    print "usage: python rmrsification_worker.py <dispatcher-name> <dispatcher-port> [<resume transid>]";
+    print "usage: python worker.py <worker-module> <dispatcher-name> <dispatcher-port> [<resume transid>]";
     return;
   
-  transid = None;
-  if len( argv ) == 4:
-    transid = int( argv[3] );
+  exec "import " + argv[1];
+  worker = argv[1] + ".Worker()";
   
-  RunWorker( dispatcher_name, dispatcher_port, transid );
+  transid = None;
+  if len( argv ) == 5:
+    transid = int( argv[4] );
+  
+  RunWorker( worker, dispatcher_name, dispatcher_port, transid );
 
 
 
 if __name__ == "__main__":
   sys.exit( main() );
-
-
