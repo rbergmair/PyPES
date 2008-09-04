@@ -1,6 +1,8 @@
 import cStringIO;
 import codecs;
 
+import traceback;
+
 import pyrmrs.config;
 import pyrmrs.ext.wrapper.basicio;
 
@@ -39,6 +41,7 @@ class RaspRmrs( pyrmrs.ext.wrapper.basicio.BasicIO ):
         
         rslt = "";
         error = False;
+        excmsg = "";
 
         try:
           
@@ -68,6 +71,7 @@ class RaspRmrs( pyrmrs.ext.wrapper.basicio.BasicIO ):
         except:
           
           error = True;
+          excmsg = traceback.format_exc();
           
         if error:
           
@@ -87,6 +91,8 @@ class RaspRmrs( pyrmrs.ext.wrapper.basicio.BasicIO ):
           
           newedge.errno = 0;
           newedge.errmsg = rslt;
+          if excmsg != "":
+            newedge.errmsg += "\n" + excmsg;
           
           smaf.lattice.register( newedge );
         
