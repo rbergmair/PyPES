@@ -40,7 +40,8 @@ class RaspRmrs( pyrmrs.ext.wrapper.basicio.BasicIO ):
         assert edge.target == smaf.lattice.final;
         
         rslt = "";
-        error = False;
+        
+        error = None;
         excmsg = "";
 
         try:
@@ -70,13 +71,18 @@ class RaspRmrs( pyrmrs.ext.wrapper.basicio.BasicIO ):
         
         except:
           
-          error = True;
-          excmsg = traceback.format_exc();
+          if rslt.find( "(Head missing)" ):
+            error = 1;
+          elif excmsg != None:
+            error = 2;
+          else:
+            error = 0;
           
-        if error:
+        if not error is None:
           
-          self.__del__();
-          self.__init__();
+          if error != 2:
+            self.__del__();
+            self.__init__();
           
           newedge = pyrmrs.smafpkg.err_edge.ErrEdge();
           
@@ -89,7 +95,7 @@ class RaspRmrs( pyrmrs.ext.wrapper.basicio.BasicIO ):
           
           newedge.deps = edge.id;
           
-          newedge.errno = 0;
+          newedge.errno = error;
           newedge.errmsg = rslt;
           if excmsg != "":
             newedge.errmsg += "\n" + excmsg;
