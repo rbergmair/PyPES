@@ -54,7 +54,7 @@
 (defun simple-io-rasp-rmrs (istream ostream)
 
   (let ((*rasp-rmrs-gram-file*
-         "src/rmrs/rasp3/gram15.rmrs")
+         "src/rmrs/rasp3/gram15-general.rmrs")
         (*rasp-rmrs-tag-file*
          "src/rmrs/rasp3/lex15.rmrs")
         (*rasp-xml-word-p* t)
