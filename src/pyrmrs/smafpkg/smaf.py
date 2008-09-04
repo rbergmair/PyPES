@@ -109,7 +109,7 @@ class SMAF( pyrmrs.xmltools.reader_element.ReaderElement ):
       return self.toks;
     else:
       self.toks = 0;
-      for alt_toks in smaf.getTokens():
+      for alt_toks in self.getTokens():
         self.toks += 1;
       return self.toks;
 

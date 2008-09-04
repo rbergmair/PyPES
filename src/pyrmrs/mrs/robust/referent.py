@@ -92,7 +92,8 @@ class Referent( pyrmrs.mrs.common.referent.Referent ):
         if refat != "u" and selfat != "u":
           #raise pyrmrs.error.xmlsem_error.XMLSemError( \
           #  ( pyrmrs.error.xmlsem_error.XMLSemError.ERRNO_UNDEFINED, "" ) );
-          assert False;
+          #assert False;
+          pass;
             
     return selfat;
     
