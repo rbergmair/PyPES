@@ -80,7 +80,7 @@ class RaspRmrs( pyrmrs.ext.wrapper.basicio.BasicIO ):
           
           newedge = pyrmrs.smafpkg.err_edge.ErrEdge();
           
-          newedge.id = "r0";
+          newedge.id = "err-%s" % edge.id;
           
           newedge.source = smaf.lattice.init;
           newedge.target = smaf.lattice.final;
