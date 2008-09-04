@@ -52,7 +52,7 @@ class RaspRmrs( pyrmrs.ext.wrapper.basicio.BasicIO ):
   
           newedge = pyrmrs.smafpkg.rmrs_edge.RmrsEdge();
           
-          newedge.id = "r%d" % rmrsid;
+          newedge.id = "rmrs-%s" % edge.id;
           rmrsid += 1;
     
           newedge.source = smaf.lattice.init;
