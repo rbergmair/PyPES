@@ -1,4 +1,5 @@
 import sys;
+import cStringIO;
 
 import pyrmrs.smafpkg.smafreader;
 
@@ -91,19 +92,21 @@ class Worker:
 
 class Dispatcher:
   
-  def init( self, istring=None, ofile=None ):
+  def __init__( self, istring=None, ofile=None ):
+
+    self.done = False;
     
+    self.ofile = None;
     if ofile is None:
       self.ofile = sys.stdout;
     else:
       self.ofile = ofile;
       
+    self.istring = None;
     if istring is None:
       self.istring = "The dog barks.";
     else:
       self.istring = istring;
-    
-    self.istring = istring;
 
   def get_workitem_by_id( self, id ):
     

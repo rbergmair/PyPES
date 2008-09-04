@@ -3,10 +3,10 @@ import pyrmrs.globals;
 import unittest;
 
 import pyrmrstest.mytest;
-
 import pyrmrstest.ext.data;
 
-import pyrmrs.bin.rmrsification_dispatcher;
+import pyrmrs.bin.dispatcher;
+import pyrmrs.bin.rmrsifier;
 
 
 
@@ -19,10 +19,11 @@ class TestRMRSification( pyrmrstest.mytest.MyTestCase ):
   def test_rmrsification( self ):
     
     for i in range( 0, len(pyrmrstest.ext.data.TEXT) ):
-      
+
       dat = pyrmrstest.ext.data.TEXT[i];
       
-      pyrmrs.bin.rmrsification_dispatcher.main( [ None, dat ] );
+      dispatcher = pyrmrs.bin.rmrsifier.Dispatcher( dat );
+      pyrmrs.bin.dispatcher.run( dispatcher );
 
 
 

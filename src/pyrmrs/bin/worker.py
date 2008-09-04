@@ -158,7 +158,7 @@ def main( argv=None ):
     return;
   
   exec "import " + argv[1];
-  worker = argv[1] + ".Worker()";
+  worker = eval( argv[1] + ".Worker()" );
   
   transid = None;
   if len( argv ) == 5:

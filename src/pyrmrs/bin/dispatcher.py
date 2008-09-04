@@ -78,7 +78,7 @@ class DispatcherServer( BaseHTTPServer.HTTPServer ):
       return;
     
     current_transaction_id = self.active_trans[ transid ];
-    rc = self.cntrl.get_item_by_id( current_transaction_id );
+    rc = self.cntrl.get_workitem_by_id( current_transaction_id );
     
     req.send_response( 200 );
     
@@ -114,7 +114,7 @@ class DispatcherServer( BaseHTTPServer.HTTPServer ):
       input = req.rfile.read( cntlen );
       req.rfile.close();
 
-    rc = self.cntrl.get_next_item_in();
+    rc = self.cntrl.get_next_workitem();
 
     req.send_response( 200 );
     
@@ -150,7 +150,7 @@ class DispatcherServer( BaseHTTPServer.HTTPServer ):
       
     if not empty_transaction:
       
-      pass; # input
+      self.cntrl.handle_result( current_transaction_id, input );
       
       del self.active_trans[ transid ];
       
