@@ -134,7 +134,7 @@ class Dispatcher:
     except:
       pyrmrs.globals.logError( self, "failed parsing SMAF returned by remote RASP." );
       pyrmrs.globals.logError( self, "--- INPUT ---" );
-      pyrmrs.globals.logError( self, unicode( input, encoding="utf-8" ) );
+      pyrmrs.globals.logError( self, unicode( result, encoding="utf-8" ) );
       pyrmrs.globals.logError( self, "-------------" );
     
     ergsmaf = None;
@@ -143,7 +143,7 @@ class Dispatcher:
     except:
       pyrmrs.globals.logError( self, "failed parsing SMAF returned by remote ERG." );
       pyrmrs.globals.logError( self, "--- INPUT ---" );
-      pyrmrs.globals.logError( self, unicode( input, encoding="utf-8" ) );
+      pyrmrs.globals.logError( self, unicode( result, encoding="utf-8" ) );
       pyrmrs.globals.logError( self, "-------------" );
     
     self.handle_smafs( id, raspsmaf, ergsmaf );

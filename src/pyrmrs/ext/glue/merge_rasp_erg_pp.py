@@ -44,7 +44,9 @@ def merge_rasp_erg_pp( tok_smaf, tag_smaf ):
         for tag in char_map[ i-tag_smaf.lattice.cfrom ]:
           if not tag in tags:
             tags.append( tag );
-            
+      
+      for tag in tags:
+        
         newedge = copy.copy( tag );
         newedge.id = "p%d" % peid;
         peid += 1;
