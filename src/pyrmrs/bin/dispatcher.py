@@ -92,13 +92,11 @@ class DispatcherServer( BaseHTTPServer.HTTPServer ):
 
     else:
       
-      ( id, item ) = rc;
-      smaf = pyrmrs.smafpkg.smaf.SMAF( item );
-      output = smaf.str_xml().encode( "utf-8" );
+      ( next_transaction_id, work_item ) = rc;
       req.send_header( "Next-Transaction", str( transid ) );
-      req.send_header( "Content-Length", str( len( output ) ) );
+      req.send_header( "Content-Length", str( len( work_item ) ) );
       req.end_headers();
-      req.wfile.write( output );
+      req.wfile.write( work_item );
       req.finish();
   
   
