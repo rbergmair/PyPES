@@ -107,6 +107,10 @@ class Dispatcher:
       self.istring = "The dog barks.";
     else:
       self.istring = istring;
+      
+    self.ismaf = pyrmrs.smafpkg.smaf.SMAF( self.istring );
+    self.ismaf_str = self.ismaf.str_xml().encode( "utf-8" );
+    
 
   def get_workitem_by_id( self, id ):
     
@@ -154,3 +158,8 @@ class Dispatcher:
     self.ofile.write( "\n\n\n" );
     self.ofile.write( ergsmaf.str_xml() );
     self.ofile.write( "\n" );
+  
+  def finalize( self ):
+    
+    pass;
+    

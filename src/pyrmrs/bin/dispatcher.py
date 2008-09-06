@@ -129,23 +129,19 @@ class DispatcherServer( BaseHTTPServer.HTTPServer ):
     else:
 
       req.send_header( "Next-Transaction", str( self.next_transid ) );
-      ( next_transaction_id, item ) = rc;
+      ( next_transaction_id, work_item ) = rc;
       self.active_trans[ self.next_transid ] = next_transaction_id;
       pyrmrs.globals.logInfo( self, \
-        "assigned transaction ( transid=%d, id=%s, item=%s )" % ( \
+        "assigned transaction ( transid=%d, id=%s )" % ( \
            self.next_transid, \
-           next_transaction_id, \
-           item
+           next_transaction_id \
         ) \
       );
       self.next_transid += 1;
         
-      
-      smaf = pyrmrs.smafpkg.smaf.SMAF( item );
-      output = smaf.str_xml().encode( "utf-8" );
-      req.send_header( "Content-Length", str( len( output ) ) );
+      req.send_header( "Content-Length", str( len( work_item ) ) );
       req.end_headers();
-      req.wfile.write( output );
+      req.wfile.write( work_item );
       req.finish();
       
     if not empty_transaction:
@@ -173,7 +169,7 @@ class DispatcherServer( BaseHTTPServer.HTTPServer ):
 
       
       
-def run( dispatcher ):
+def runDispatcher( dispatcher ):
   
   httpd = DispatcherServer( ( "", 8080 ), DispatcherHandler );
   try:
@@ -181,6 +177,7 @@ def run( dispatcher ):
     httpd.run();
   finally:
     httpd._del();
+  dispatcher.finalize();
   
 
 
@@ -195,7 +192,7 @@ def main( argv=None ):
   
   exec "import " + argv[1];
   dispatcher = eval( argv[1] + ".Dispatcher()" );
-  run( dispatcher );
+  runDispatcher( dispatcher );
   
   return 0;
 
