@@ -6,6 +6,7 @@ import os;
 import time;
 import random;
 import string;
+import socket;
 
 import atexit;
 
@@ -32,9 +33,10 @@ def getInstTok():
   if not insttok is None:
     return insttok;
 
-  insttok = "%s-%s-%c%c" % (
+  insttok = "%s-%s-%s-%c%c" % (
     time.strftime( "%y%m%d-%H%M%S" ),
     str( int( ( time.time() % 1.0 ) * 100000.0 ) ).zfill(5),
+    socket.gethostname(),
     random.choice( string.digits + string.ascii_lowercase ),
     random.choice( string.digits + string.ascii_lowercase )
   )
