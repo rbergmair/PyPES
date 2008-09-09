@@ -218,10 +218,18 @@ class RMRSScoping( ndomcon_solution.NDomConSolution ):
           if var.sort != var.SORT_ENTITY:
             del vars[ i ];
             continue;
-          assert False;
+          try:
+            #assert False;
+            pass; # ASDF
+          except:
+            print var.vid;
+            raise;
         i += 1;
         
       for var in vars:
+        
+        if not bindings.has_key( var.referent ):   # ASDF
+          continue;
         
         binding = bindings[ var.referent ];
         assert self._groupid_by_lid.has_key( binding );

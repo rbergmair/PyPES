@@ -6,6 +6,7 @@ import morph_edge;
 import syntree_edge;
 import err_edge;
 import rmrs_edge;
+import whatever_edge;
 
 
 class GenericEdge( edge.Edge ):
@@ -40,6 +41,9 @@ class GenericEdge( edge.Edge ):
       self.edge_inst.startElement( name, attrs );
     elif self.type == "rmrs":
       self.edge_inst = rmrs_edge.RmrsEdge();
+      self.edge_inst.startElement( name, attrs );
+    elif self.type == "whatever":
+      self.edge_inst = whatever_edge.WhateverEdge();
       self.edge_inst.startElement( name, attrs );
     else:
       print self.type;

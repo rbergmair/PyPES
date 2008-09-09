@@ -138,6 +138,13 @@ class RMRSem( pyrmrs.mrs.common.mrsem.MRSem ):
   def interpret( self ):
     
     for in_g in self.ings:     
+      
+      if not self.eps_by_lid.has_key( in_g.vara.vid ):
+        continue;
+      if not self.eps_by_lid.has_key( in_g.varb.vid ):
+        continue;
+      
+      
       groupa = [ in_g.vara.vid ];
       if self.group_by_hid.has_key( in_g.vara.vid ):
         groupa = self.group_by_hid[ in_g.vara.vid ];
