@@ -41,11 +41,12 @@ class BasicPet( pyrmrs.ext.wrapper.basicio.BasicIO ):
   
   EOB_MARKER = "\027" + 511*"\0";
 
+  #"-limit=%d " % pyrmrs.config.PET_EDGELIMIT + 
+  # "-timeout=%d " % pyrmrs.config.PET_TIMEOUT + 
+
   CMD = \
     "%s " % pyrmrs.config.SH_CHEAP + \
-    #"-limit=%d " % pyrmrs.config.PET_EDGELIMIT + \
     "-memlimit=%s " % pyrmrs.config.PET_MEMLIMIT + \
-    # "-timeout=%d " % pyrmrs.config.PET_TIMEOUT + \
     "-packing=%d " % pyrmrs.config.PET_PACKING + \
     "-mrs=rmrx " + \
     "-tok=smaf " + \
@@ -64,9 +65,10 @@ class BasicPet( pyrmrs.ext.wrapper.basicio.BasicIO ):
   def configure( self ):
     
     pyrmrs.ext.wrapper.basicio.BasicIO.configure( self );
+
+    #"-results=%d " % self.no_parses + \
     
     cmdext = \
-      #"-results=%d " % self.no_parses + \
       "-nsolutions=%d " % self.no_parses;
       
     self.cmd = self.cmd % cmdext;

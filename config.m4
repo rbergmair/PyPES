@@ -42,7 +42,7 @@ m4_dnl   _DIR_PYRMRSHOME points to the directory where this file is located.
 m4_define(`_DIR_PYRMRSHOME',m4_esyscmd(`echo -n $PWD'))
 
 m4_dnl   This is where log files will end up. You may want to change this.
-m4_define(`_DIR_LOG',`/tmp')
+m4_define(`_DIR_LOG',`/anfs/bigdisc/rb432/log')
 
 
 

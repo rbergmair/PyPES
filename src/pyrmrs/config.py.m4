@@ -35,17 +35,17 @@ DIR_QA05 = "_DIR_QA05";
 DIR_QA05 = "_DIR_QA05";
 DIR_BIGTMP = "_DIR_BIGTMP";
 
-#import logging;
-#STDERR_LOGGING = {
-#  "pyrmrs" : logging.WARNING,
-#  "pyrmrs.delphin" : logging.DEBUG
-#};
-STDERR_LOGGING = None;
-#FILE_TRACING = {
-#  "pyrmrs" : logging.WARNING,
-#  "pyrmrs.delphin" : logging.DEBUG
-#}
-FILE_TRACING = None;
+import logging;
+
+STDERR_LOGGING = {
+  "pyrmrs" : logging.INFO,
+};
+#STDERR_LOGGING = None;
+
+FILE_TRACING = {
+  "pyrmrs" : logging.INFO,
+};
+#FILE_TRACING = None;
 
 PET_NICETY = 40;
 PET_PACKING = 15;
