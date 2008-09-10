@@ -63,6 +63,7 @@
 
     (setf *algebra-rule-instructions* nil)
     (setf *algebra-tag-instructions* nil)
+    (setf *anchor-rmrs-p* t)
 
     (clear-rule-record)
     (read-rmrs-grammar *rasp-rmrs-gram-file*)

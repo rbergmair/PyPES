@@ -157,6 +157,19 @@ class SMAF( pyrmrs.xmltools.reader_element.ReaderElement ):
       rmrs_edges.append( edge.rmrs );
     
     return rmrs_edges;
+
+  def getWhatevers( self ):
+    
+    whatevers = [];
+    
+    for edge in self.lattice.edges:
+      
+      if not isinstance( edge, pyrmrs.smafpkg.whatever_edge.WhateverEdge ):
+        continue;
+      
+      whatevers.append( edge.text );
+    
+    return whatevers;
   
   def getErrors( self ):
     

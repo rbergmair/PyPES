@@ -43,8 +43,9 @@ class BasicPet( pyrmrs.ext.wrapper.basicio.BasicIO ):
 
   CMD = \
     "%s " % pyrmrs.config.SH_CHEAP + \
-    "-limit=%d " % pyrmrs.config.PET_EDGELIMIT + \
-    "-timeout=%d " % pyrmrs.config.PET_TIMEOUT + \
+    #"-limit=%d " % pyrmrs.config.PET_EDGELIMIT + \
+    "-memlimit=%s " % pyrmrs.config.PET_MEMLIMIT + \
+    # "-timeout=%d " % pyrmrs.config.PET_TIMEOUT + \
     "-packing=%d " % pyrmrs.config.PET_PACKING + \
     "-mrs=rmrx " + \
     "-tok=smaf " + \
@@ -65,7 +66,7 @@ class BasicPet( pyrmrs.ext.wrapper.basicio.BasicIO ):
     pyrmrs.ext.wrapper.basicio.BasicIO.configure( self );
     
     cmdext = \
-      "-results=%d " % self.no_parses + \
+      #"-results=%d " % self.no_parses + \
       "-nsolutions=%d " % self.no_parses;
       
     self.cmd = self.cmd % cmdext;

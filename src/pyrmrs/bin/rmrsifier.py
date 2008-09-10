@@ -37,19 +37,19 @@ class Worker:
     
     self.erg_tokeniser = pyrmrs.ext.wrapper.delphin.fspp.Fspp();
     
-    self.rasp_morpher = pyrmrs.ext.wrapper.rasp.morpher.Morpher();
-    self.rasp_parser = pyrmrs.ext.wrapper.rasp.parser.Parser();
+    #self.rasp_morpher = pyrmrs.ext.wrapper.rasp.morpher.Morpher();
+    #self.rasp_parser = pyrmrs.ext.wrapper.rasp.parser.Parser();
     
-    self.rasp_rmrs = pyrmrs.ext.wrapper.delphin.rasprmrs.RaspRmrs();
+    #self.rasp_rmrs = pyrmrs.ext.wrapper.delphin.rasprmrs.RaspRmrs();
     
     self.erg_parser = pyrmrs.ext.wrapper.delphin.pet.TaggedPet();
   
   def global_del( self ):
     
     del self.erg_parser;
-    del self.rasp_rmrs;
-    del self.rasp_parser;
-    del self.rasp_morpher;
+    #del self.rasp_rmrs;
+    #del self.rasp_parser;
+    #del self.rasp_morpher;
     del self.erg_tokeniser;
     del self.rasp_tagger;
     del self.rasp_tokeniser;
@@ -75,14 +75,14 @@ class Worker:
     
     msmaf = pyrmrs.ext.glue.merge_rasp_erg_pp.merge_rasp_erg_pp( esmaf, rsmaf );
     
-    rsmaf = self.rasp_morpher.morph( rsmaf );
-    rsmaf = self.rasp_parser.parse( rsmaf );
-    rsmaf = self.rasp_rmrs.convert( rsmaf );
+    #rsmaf = self.rasp_morpher.morph( rsmaf );
+    #rsmaf = self.rasp_parser.parse( rsmaf );
+    #rsmaf = self.rasp_rmrs.convert( rsmaf );
     
     esmaf = self.erg_parser.parse( msmaf );
     
-    strout = rsmaf.str_xml();
-    strout += "\n\n\n";
+    #strout = rsmaf.str_xml();
+    #strout += "\n\n\n";
     strout += esmaf.str_xml();
     strout += "\n";
     
@@ -133,13 +133,13 @@ class Dispatcher:
     
     raspsmaf = None;
     
-    try:
-      raspsmaf = it.next();
-    except:
-      pyrmrs.globals.logError( self, "failed parsing SMAF returned by remote RASP." );
-      pyrmrs.globals.logError( self, "--- INPUT ---" );
-      pyrmrs.globals.logError( self, unicode( result, encoding="utf-8" ) );
-      pyrmrs.globals.logError( self, "-------------" );
+    #try:
+    #  raspsmaf = it.next();
+    #except:
+    #  pyrmrs.globals.logError( self, "failed parsing SMAF returned by remote RASP." );
+    #  pyrmrs.globals.logError( self, "--- INPUT ---" );
+    #  pyrmrs.globals.logError( self, unicode( result, encoding="utf-8" ) );
+    #  pyrmrs.globals.logError( self, "-------------" );
     
     ergsmaf = None;
     try:  
