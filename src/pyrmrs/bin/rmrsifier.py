@@ -83,7 +83,7 @@ class Worker:
     
     #strout = rsmaf.str_xml();
     #strout += "\n\n\n";
-    strout += esmaf.str_xml();
+    strout = esmaf.str_xml();
     strout += "\n";
     
     return strout.encode( "utf-8" );
