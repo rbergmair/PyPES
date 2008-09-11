@@ -16,14 +16,23 @@ class TestRMRSification( pyrmrstest.mytest.MyTestCase ):
     
     pass;
 
+
   def test_rmrsification( self ):
+    
+    dat = "Valerie Plame is married to Joseph Wilson.";
+    
+    dispatcher = pyrmrs.bin.rmrsifier.Dispatcher( dat );
+    pyrmrs.bin.dispatcher.runDispatcher( dispatcher );
+
+
+  def xtest_rmrsification( self ):
     
     for i in range( 0, len(pyrmrstest.ext.data.TEXT) ):
 
       dat = pyrmrstest.ext.data.TEXT[i];
       
       dispatcher = pyrmrs.bin.rmrsifier.Dispatcher( dat );
-      pyrmrs.bin.dispatcher.run( dispatcher );
+      pyrmrs.bin.dispatcher.runDispatcher( dispatcher );
 
 
 

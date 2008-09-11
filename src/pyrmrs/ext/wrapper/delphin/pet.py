@@ -1,5 +1,6 @@
 import cStringIO;
 import re;
+import traceback;
 
 import pyrmrs.config;
 import pyrmrs.ext.wrapper.basicio;
@@ -86,52 +87,76 @@ class BasicPet( pyrmrs.ext.wrapper.basicio.BasicIO ):
   
   def invoke( self, inputstri ):
     
-    self.write_block( inputstri );
+    rslt = "";
     
-    block = self.read_block();
-    
-    if block == "":
-      raise PetError( ( \
-        PetError.ERRNO_UNEXPECTED_ETB, \
-        "unexpected end of transmission block during read_line()" \
-      ) );
-    
-    mat = self.SUCCESS.search( block );
-    
-    noparses = 0;
+    try:
+      try:
 
-    if mat != None:
-
-      noparses = int( mat.groups()[ 1 ] );
-      if noparses == 0:
-        block += self.read_block(); # ???
-        raise PetError( ( \
-          PetError.ERRNO_ZERO_READINGS, \
-          "Zero readings." \
-        ) );
+        self.write_block( inputstri );
+        block = self.read_block();
         
-    else:
+        if block == "":
+          raise PetError( ( \
+            PetError.ERRNO_UNEXPECTED_ETB, \
+            "unexpected end of transmission block during read_line()" \
+          ) );
+        
+        mat = self.SUCCESS.search( block );
+        
+        noparses = 0;
+    
+        if mat != None:
+    
+          noparses = int( mat.groups()[ 1 ] );
+          if noparses == 0:
+            block += self.read_block(); # ???
+            raise PetError( ( \
+              PetError.ERRNO_ZERO_READINGS, \
+              "Zero readings." \
+            ) );
+            
+        else:
+          
+          mat = self.NOLEX.search( block );
+          if mat != None:
+            raise PetError( ( \
+              PetError.ERRNO_MISSING_LEXICAL_ENTRY, \
+              block.strip() \
+            ) );
+            
+          mat = self.EDGELIM.search( block );
+          if mat != None:
+            raise PetError( ( \
+              PetError.ERRNO_EDGE_LIMIT_EXHAUSTED, \
+              block.strip() \
+            ) );
+    
+          raise PetError( ( \
+            PetError.ERRNO_UNKNOWN, \
+            block.strip() \
+          ) );
+        
+        rslt = self.read_block();
       
-      mat = self.NOLEX.search( block );
-      if mat != None:
-        raise PetError( ( \
-          PetError.ERRNO_MISSING_LEXICAL_ENTRY, \
-          block.strip() \
-        ) );
+      except:
         
-      mat = self.EDGELIM.search( block );
-      if mat != None:
-        raise PetError( ( \
-          PetError.ERRNO_EDGE_LIMIT_EXHAUSTED, \
-          block.strip() \
-        ) );
-
-      raise PetError( ( \
-        PetError.ERRNO_UNKNOWN, \
-        block.strip() \
-      ) );
+        pyrmrs.globals.logError( self, "encountered error on pipe." );
+        pyrmrs.globals.logError( self, traceback.format_exc() );
+        pyrmrs.globals.logError( self, "trying to recover..." );
+        raise;
+      
+    finally:
+      
+      try:
+        self.close_pipe();
+      except:
+        pass;
+      
+      self.open_pipe();
+      pyrmrs.globals.logError( self, "...recovered." );
     
-    return self.read_block();
+    return rslt;
+
 
   
   def parse( self, smaf ):

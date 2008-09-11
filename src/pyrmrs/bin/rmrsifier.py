@@ -116,14 +116,14 @@ class Dispatcher:
     
     if not id is None:
       return None;
-    return ( None, self.istring );
+    return ( None, self.ismaf_str );
   
   def get_next_workitem( self ):
     
     if self.done:
       return None;
     self.done = True;
-    return ( None, self.istring );
+    return ( None, self.ismaf_str );
   
   def handle_result( self, id, result ):
     
@@ -149,15 +149,17 @@ class Dispatcher:
       pyrmrs.globals.logError( self, "--- INPUT ---" );
       pyrmrs.globals.logError( self, unicode( result, encoding="utf-8" ) );
       pyrmrs.globals.logError( self, "-------------" );
-    
+      
     self.handle_smafs( id, raspsmaf, ergsmaf );
     
   def handle_smafs( self, id, raspsmaf, ergsmaf ):
     
-    self.ofile.write( raspsmaf.str_xml() );
-    self.ofile.write( "\n\n\n" );
-    self.ofile.write( ergsmaf.str_xml() );
-    self.ofile.write( "\n" );
+    if not raspsmaf is None:
+      self.ofile.write( raspsmaf.str_xml() );
+      self.ofile.write( "\n\n\n" );
+    if not ergsmaf is None:
+      self.ofile.write( ergsmaf.str_xml() );
+      self.ofile.write( "\n" );
   
   def finalize( self ):
     

@@ -1,5 +1,6 @@
 import subprocess;
 import select;
+import traceback;
 
 import pyrmrs.globals;
 
@@ -288,8 +289,26 @@ class BasicIO:
   
   def invoke( self, inputstri ):
     
-    self.write_block( inputstri );
-    return self.read_block();
+    rslt = "";
+    
+    try:
+      try:
+        self.write_block( inputstri );
+        rslt = self.read_block();
+      except:
+        pyrmrs.globals.logError( self, "encountered error on pipe." );
+        pyrmrs.globals.logError( self, traceback.format_exc() );
+        pyrmrs.globals.logError( self, "trying to recover..." );
+        raise;
+    finally:
+      try:
+        self.close_pipe();
+      except:
+        pass;
+      self.open_pipe();
+      pyrmrs.globals.logError( self, "...recovered." );
+    
+    return rslt;
   
   
   
