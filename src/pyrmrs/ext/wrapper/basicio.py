@@ -295,7 +295,7 @@ class BasicIO:
       try:
         self.write_block( inputstri );
         rslt = self.read_block();
-      except:
+      except IOError:
         pyrmrs.globals.logError( self, "encountered error on pipe." );
         pyrmrs.globals.logError( self, traceback.format_exc() );
         pyrmrs.globals.logError( self, "trying to recover..." );
