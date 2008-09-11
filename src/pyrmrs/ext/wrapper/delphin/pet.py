@@ -143,17 +143,16 @@ class BasicPet( pyrmrs.ext.wrapper.basicio.BasicIO ):
         pyrmrs.globals.logError( self, "encountered error on pipe." );
         pyrmrs.globals.logError( self, traceback.format_exc() );
         pyrmrs.globals.logError( self, "trying to recover..." );
+        try:
+          self.close_pipe();
+        except:
+          pass;
+        self.open_pipe();
+        pyrmrs.globals.logError( self, "...recovered." );
         raise;
       
     finally:
-      
-      try:
-        self.close_pipe();
-      except:
-        pass;
-      
-      self.open_pipe();
-      pyrmrs.globals.logError( self, "...recovered." );
+      pass;
     
     return rslt;
 
