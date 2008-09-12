@@ -28,6 +28,13 @@ def merge_rasp_erg_pp( tok_smaf, tag_smaf ):
     for tok in alt_toks:
       for pos in tag_smaf.getTags( tok ):
         for i in range( tok.cfrom, tok.cto ):
+          weight = None;
+          try:
+            weight = float( pos.weight );
+          except:
+            pass;
+          if weight <= 0.2:
+            continue;
           if not pos.tag in PUN:
             char_map[ i-tag_smaf.lattice.cfrom ].append( pos );
             
