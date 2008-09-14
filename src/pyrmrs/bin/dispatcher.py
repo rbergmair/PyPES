@@ -167,9 +167,9 @@ class DispatcherServer( BaseHTTPServer.HTTPServer ):
 
       
       
-def runDispatcher( dispatcher ):
+def runDispatcher( dispatcher, port ):
   
-  httpd = DispatcherServer( ( "", 8080 ), DispatcherHandler );
+  httpd = DispatcherServer( ( "", port ), DispatcherHandler );
   try:
     httpd._init( dispatcher );
     httpd.run();
@@ -184,13 +184,18 @@ def main( argv=None ):
   if argv == None:
     argv = sys.argv;
   
-  if len( argv ) != 2:
-    print "usage: python dispatcher.py <dispatcher-module>";
+  if not len( argv ) in [2, 3]:
+    print "usage: python dispatcher.py <dispatcher-module> [<port>]";
     return;
   
   exec "import " + argv[1];
   dispatcher = eval( argv[1] + ".Dispatcher()" );
-  runDispatcher( dispatcher );
+  
+  port = 8080;
+  if len( argv ) == 3:
+    port = int( sys.argv[2] );
+  
+  runDispatcher( dispatcher, port );
   
   return 0;
 

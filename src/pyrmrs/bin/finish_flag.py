@@ -32,7 +32,7 @@ class FinishFlagServer( BaseHTTPServer.HTTPServer ):
 
 def main( argv=None ):
 
-  httpd = FinishFlagServer( ( "", 8080 ), FinishFlagHandler );
+  httpd = FinishFlagServer( ( "", 8081 ), FinishFlagHandler );
   httpd.run();
   
   return 0;
