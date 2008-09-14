@@ -24,7 +24,7 @@ class RunWorker:
   
   def __init__( self, worker, dispatcher_name, dispatcher_port, transid=None ):
     
-    socket.setdefaulttimeout( 30.0 );
+    socket.setdefaulttimeout( 300.0 );
     
     self.worker = worker;
     
@@ -63,21 +63,9 @@ class RunWorker:
         try:
           try:
             if self.resume_transid is None:
-              while True:
-                try:
-                  conn.request( "POST", "/process" );
-                  break;
-                except:
-                  import traceback;
-                  traceback.print_exc();
-                  time.sleep(5);
+              conn.request( "POST", "/process" );
             else:
-              while True:
-                try:
-                  conn.request( "POST", "/resume?transid=%d" % self.resume_transid );
-                  break;
-                except:
-                  time.sleep(5);
+              conn.request( "POST", "/resume?transid=%d" % self.resume_transid );
               self.resume_transid = None;
             resp = conn.getresponse();
           except:
@@ -135,12 +123,7 @@ class RunWorker:
         try:
           header = {};
           header[ "Content-Length" ] = str( len( data ) );
-          while True:
-            try:
-              conn.request( "POST", "/process?transid=%d" % transid, data, header );
-              break;
-            except:
-              time.sleep(5);
+          conn.request( "POST", "/process?transid=%d" % transid, data, header );
           resp = conn.getresponse();
         
           trans = resp.getheader( "Next-Transaction" );
