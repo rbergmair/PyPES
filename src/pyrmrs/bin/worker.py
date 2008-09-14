@@ -24,7 +24,7 @@ class RunWorker:
   
   def __init__( self, worker, dispatcher_name, dispatcher_port, transid=None ):
     
-    socket.setdefaulttimeout( None );
+    socket.setdefaulttimeout( 30.0 );
     
     self.worker = worker;
     
@@ -68,6 +68,8 @@ class RunWorker:
                   conn.request( "POST", "/process" );
                   break;
                 except:
+                  import traceback;
+                  traceback.print_exc();
                   time.sleep(5);
             else:
               while True:
