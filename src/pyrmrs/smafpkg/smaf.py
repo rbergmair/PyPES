@@ -158,6 +158,19 @@ class SMAF( pyrmrs.xmltools.reader_element.ReaderElement ):
     
     return rmrs_edges;
 
+  def getTrees( self ):
+    
+    trees = [];
+    
+    for edge in self.lattice.edges:
+      
+      if not isinstance( edge, pyrmrs.smafpkg.syntree_edge.SyntaxTreeEdge ):
+        continue;
+      
+      trees.append( edge.tree );
+    
+    return trees;
+
   def getWhatevers( self ):
     
     whatevers = [];

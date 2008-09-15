@@ -22,7 +22,7 @@ class RunWorker:
   dispatcher_port = None;
   
   
-  def __init__( self, worker, dispatcher_name, dispatcher_port, transid=None ):
+  def __init__( self, worker, dispatcher_name, dispatcher_port, transid=None, once=False; ):
     
     socket.setdefaulttimeout( 300.0 );
     
@@ -34,6 +34,8 @@ class RunWorker:
     self.resume_transid = transid;
     
     self.worker.global_init();
+    
+    self.once = once;
     
     self.run();
     
@@ -132,7 +134,10 @@ class RunWorker:
           
           if trans == "None":
             pyrmrs.globals.logInfo( self, "batch finished;" );
-            break;
+            if self.once:
+              return;
+            else:
+              break;
           
           transid = int( str( trans ) );
           cntlen = int( str( resp.getheader( "Content-Length" ) ) );
