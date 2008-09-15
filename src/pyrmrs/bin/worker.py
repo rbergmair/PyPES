@@ -22,7 +22,7 @@ class RunWorker:
   dispatcher_port = None;
   
   
-  def __init__( self, worker, dispatcher_name, dispatcher_port, transid=None, once=False; ):
+  def __init__( self, worker, dispatcher_name, dispatcher_port, transid=None, once=False ):
     
     socket.setdefaulttimeout( 300.0 );
     
