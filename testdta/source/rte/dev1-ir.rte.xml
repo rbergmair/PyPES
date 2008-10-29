@@ -1,0 +1,283 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<entailment-corpus>
+<pair id='8' value='FALSE' task='IR'>
+  <t>Crude oil for April delivery traded at $37.80 a barrel, down 28 cents.</t>
+  <h>Crude oil prices rose to $37.80 per barrel.</h>
+</pair>
+<pair id='12' value='FALSE' task='IR'>
+  <t>Oracle had fought to keep the forms from being released.</t>
+  <h>Oracle released a confidential document.</h>
+</pair>
+<pair id='13' value='TRUE' task='IR'>
+  <t>iTunes software has seen strong sales in Europe.</t>
+  <h>There are strong sales for iTunes in Europe.</h>
+</pair>
+<pair id='15' value='FALSE' task='IR'>
+  <t>All genetically modified food, including soya or maize oil produced from GM soya and maize, and food ingredients, must be labelled.</t>
+  <h>Companies selling genetically modified foods don't need labels.</h>
+</pair>
+<pair id='19' value='TRUE' task='IR'>
+  <t>Researchers at the Harvard School of Public Health say that people who drink coffee may be doing a lot more than keeping themselves awake - this kind of consumption apparently also can help reduce the risk of diseases.</t>
+  <h>Coffee drinking has health benefits.</h>
+</pair>
+<pair id='20' value='TRUE' task='IR'>
+  <t>Eating lots of foods that are a good source of fiber may keep your blood glucose from rising too fast after you eat.</t>
+  <h>Fiber improves blood sugar control.</h>
+</pair>
+<pair id='46' value='FALSE' task='IR'>
+  <t>The Yankees split Hollywood with something to feel OK about after last night's 5-4 loss to the Dodgers.</t>
+  <h>The Dodgers lose their first game ever at Fenway.</h>
+</pair>
+<pair id='50' value='FALSE' task='IR'>
+  <t>Scientists at the Genome Institute of Singapore (GIS) have discovered the complete genetic sequence of a coronavirus isolated from a Singapore patient with SARS.</t>
+  <h>Singapore scientists reveal that SARS virus has undergone genetic changes.</h>
+</pair>
+<pair id='52' value='TRUE' task='IR'>
+  <t>Phish disbands after a final concert in Vermont on Aug. 15.</t>
+  <h>Rock band Phish holds final concert in Vermont.</h>
+</pair>
+<pair id='56' value='TRUE' task='IR'>
+  <t>Euro-Scandinavian media cheer the Denmark v Sweden draw.</t>
+  <h>Denmark and Sweden tie.</h>
+</pair>
+<pair id='58' value='TRUE' task='IR'>
+  <t>Iraqi militants said Sunday they would behead Kim Sun-Il, a 33-year-old translator, within 24 hours unless plans to dispatch thousands of South Korean troops to Iraq were abandoned.</t>
+  <h>A translator was kidnapped in Iraq.</h>
+</pair>
+<pair id='59' value='FALSE' task='IR'>
+  <t>Two Turkish engineers and an Afghan translator kidnapped in December were freed, Friday.</t>
+  <h>A translator was kidnapped in Iraq.</h>
+</pair>
+<pair id='60' value='FALSE' task='IR'>
+  <t>If a Mexican approaches the border, he's assumed to be trying to illegally cross.</t>
+  <h>Mexicans continue to illegally cross the border.</h>
+</pair>
+<pair id='62' value='TRUE' task='IR'>
+  <t>Green cards are becoming more difficult to obtain.</t>
+  <h>A green card is now difficult to receive.</h>
+</pair>
+<pair id='63' value='TRUE' task='IR'>
+  <t>Iran will soon release eight British servicemen detained along with three vessels.</t>
+  <h>British servicemen were detained.</h>
+</pair>
+<pair id='64' value='TRUE' task='IR'>
+  <t>The wait time for a green card has risen from 21 months to 33 months in those same regions.</t>
+  <h>It takes longer to get a green card.</h>
+</pair>
+<pair id='65' value='TRUE' task='IR'>
+  <t>Coal company stocks got a lift Monday morning after an article in Barron's said the industry was benefiting from soaring natural gas prices and the advent of new power plants that emit less pollution.</t>
+  <h>Coal stocks rise.</h>
+</pair>
+<pair id='66' value='TRUE' task='IR'>
+  <t>The Royal Navy servicemen being held captive by Iran are expected to be freed today.</t>
+  <h>British servicemen were detained.</h>
+</pair>
+<pair id='67' value='FALSE' task='IR'>
+  <t>Total coal stocks with the thermal power stations came down to 9.6 million tonnes on March 3, 2003 from 11 million tonnes on October 1, 2002.</t>
+  <h>Coal stocks rise.</h>
+</pair>
+<pair id='69' value='FALSE' task='IR'>
+  <t>Anorexia in males accounted for approximately six percent of cases seen in an eating disorder clinic.</t>
+  <h>Anorexia becomes common in males.</h>
+</pair>
+<pair id='73' value='FALSE' task='IR'>
+  <t>There are discussions in California and Arizona to allow illegal aliens to have driver's licenses.</t>
+  <h>California driver's licenses are granted to illegal immigrants.</h>
+</pair>
+<pair id='74' value='TRUE' task='IR'>
+  <t>South Korea's deputy foreign minister says his country won't change its plan to send three-thousand soldiers to Iraq, despite the kidnapping of a South Korean man there.</t>
+  <h>South Korea continues to send troops.</h>
+</pair>
+<pair id='78' value='FALSE' task='IR'>
+  <t>Clinton's new book is not a big seller here.</t>
+  <h>Clinton's book is a big seller.</h>
+</pair>
+<pair id='79' value='TRUE' task='IR'>
+  <t>The privately owned spacecraft only got about 400 feet into space, according to radar measurements, but it was enough to confirm that it no longer takes a well-heeled government project to organize space travel.</t>
+  <h>A private spaceship launches.</h>
+</pair>
+<pair id='77' value='FALSE' task='IR'>
+  <t>The media always talk about the Dow being up or down a certain number of points.</t>
+  <h>Dow Jones is down.</h>
+</pair>
+<pair id='80' value='FALSE' task='IR'>
+  <t>The Federal Aviation Administration's Associate Administrator for Commercial Space Transportation (FAA/AST) has given license approval to Scaled Composites of Mojave, California, permitting the firm to expand flight testing of SpaceShipOne - a privately-financed rocket plane to carry passengers to suborbital altitude.</t>
+  <h>A private spaceship launches.</h>
+</pair>
+<pair id='83' value='FALSE' task='IR'>
+  <t>The Los Angeles Lakers rolled over the Indiana Pacers in Wednesday's opening round game of the NBA championship series.</t>
+  <h>Lakers win the championship.</h>
+</pair>
+<pair id='84' value='TRUE' task='IR'>
+  <t>World health officials warned yesterday that West Africa and Central Africa were on the verge of the worst polio outbreak in years, stemming from the refusal of a single state in northern Nigeria to vaccinate children against the disease.</t>
+  <h>An African polio outbreak is feared.</h>
+</pair>
+<pair id='85' value='TRUE' task='IR'>
+  <t>The country's largest private employer, Wal-Mart Stores Inc., is being sued by a number of its female employees who claim they were kept out of jobs in management because they are women.</t>
+  <h>Wal-Mart was sued for sexual discrimination.</h>
+</pair>
+<pair id='86' value='FALSE' task='IR'>
+  <t>The last polio outbreak in the United States was in 1979.</t>
+  <h>An African polio outbreak is feared.</h>
+</pair>
+<pair id='96' value='TRUE' task='IR'>
+  <t>The Massachusetts Supreme Judicial Court has cleared the way for lesbian and gay couples in the state to marry, ruling that government attorneys "failed to identify any constitutionally adequate reason" to deny them the right.</t>
+  <h>The U.S. Supreme Court is in favor of same-sex marriage.</h>
+</pair>
+<pair id='97' value='FALSE' task='IR'>
+  <t>In June the Supreme Court ruled that anti-sodomy laws are unconstitutional.</t>
+  <h>The U.S. Supreme Court is in favor of same-sex marriage.</h>
+</pair>
+<pair id='98' value='FALSE' task='IR'>
+  <t>Sharon warns Arafat could be targeted for assassination.</t>
+  <h>The prime minister was targeted for assassination.</h>
+</pair>
+<pair id='99' value='TRUE' task='IR'>
+  <t>Kurdistan Regional Government Prime Minister Dr. Barham Salih was unharmed after an assassination attempt.</t>
+  <h>The prime minister was targeted for assassination.</h>
+</pair>
+<pair id='110' value='TRUE' task='IR'>
+  <t>Wal-Mart faces huge sex discrimination suit.</t>
+  <h>Wal-Mart faces a sex-discrimination suit.</h>
+</pair>
+<pair id='114' value='FALSE' task='IR'>
+  <t>International journalists' organisations are accusing the U.S. government of committing war crimes in Iraq by intentionally firing at war correspondents.</t>
+  <h>US withdraws war crimes.</h>
+</pair>
+<pair id='117' value='FALSE' task='IR'>
+  <t>It has become increasingly clear that Iran is making rapid progress toward attaining a nuclear weapons capability as U.S. officials have confirmed the presence of various nuclear sites that Tehran has failed to disclose.</t>
+  <h>Iranian chemical weapons threaten United States.</h>
+</pair>
+<pair id='119' value='TRUE' task='IR'>
+  <t>A Cuban American who is accused of espionage pleads innocent.</t>
+  <h>An American was accused of espionage.</h>
+</pair>
+<pair id='121' value='TRUE' task='IR'>
+  <t>A Syrian-American airman accused of espionage complained about prisoner treatment at the US base in Guantanamo, Cuba.</t>
+  <h>An American was accused of espionage.</h>
+</pair>
+<pair id='122' value='TRUE' task='IR'>
+  <t>The Daily Telegraph, most prized asset in Lord Conrad Black's crumbling media empire, has been sold to Britain's Barclay twins.</t>
+  <h>Daily telegraph is sold.</h>
+</pair>
+<pair id='123' value='FALSE' task='IR'>
+  <t>The Daily Mail has confirmed it has pulled out of the bidding for rival newspaper the Daily Telegraph.</t>
+  <h>Daily telegraph is sold.</h>
+</pair>
+<pair id='125' value='TRUE' task='IR'>
+  <t>On November 25, 2001, a baby Asian elephant was born at the National Zoo in Washington, DC.</t>
+  <h>A baby elephant was born.</h>
+</pair>
+<pair id='127' value='TRUE' task='IR'>
+  <t>The 10-day-old "test-tube" baby elephant born at Colchester Zoo has found a name, thanks to the internet!</t>
+  <h>A baby elephant was born.</h>
+</pair>
+<pair id='130' value='FALSE' task='IR'>
+  <t>Weinstock painstakingly reviewed dozens of studies for evidence of any link between sunscreen use and either an increase or decrease in melanoma.</t>
+  <h>Skin cancer numbers increase.</h>
+</pair>
+<pair id='131' value='TRUE' task='IR'>
+  <t>Wasp and bee stings can be life threatening if you are allergic to the venom.</t>
+  <h>Bee stings can be fatal.</h>
+</pair>
+<pair id='135' value='TRUE' task='IR'>
+  <t>The State of California Department of Occupational Health and Safety released its report on the September 5 fatal accident on Disneyland's Big Thunder Mountain Railroad attraction.</t>
+  <h>Disneyland has an accident.</h>
+</pair>
+<pair id='269' value='FALSE' task='IR'>
+  <t>U.S. Embassy spokesman Stanley Shrager said that the Americans hope to help Port-au-Prince's elected mayor, Evans Paul, return from hiding and resume his post as mayor of the city.</t>
+  <h>Americans hope to help Evans Paul in the election for mayor of Port-au-Prince.</h>
+</pair>
+<pair id='270' value='FALSE' task='IR'>
+  <t>Like the United States, U.N. officials are also dismayed that Aristide killed a conference called by Prime Minister Robert Malval in Port-au-Prince in hopes of bringing all the feuding parties together.</t>
+  <h>Aristide had Prime Minister Robert Malval murdered in Port-au-Prince.</h>
+</pair>
+<pair id='275' value='FALSE' task='IR'>
+  <t>Gladys Lauture, a close Aristide friend and longtime supporter, said she and a team of carpenters, plumbers and decorators spent 18 days making Aristide's Port-au-Prince home livable again.</t>
+  <h>Aristide is due to live at Port-au-Prince again.</h>
+</pair>
+<pair id='282' value='FALSE' task='IR'>
+  <t>Juan Antonio Samaranch, president of the International Olympic Committee, left Lillehammer for Sarajevo to pay tribute to the besieged host city of the 1984 Winter Games.</t>
+  <h>The International Olympic Commitee's head office is in Lillehammer.</h>
+</pair>
+<pair id='102' value='TRUE' task='IR'>
+  <t>The White House failed to act on the domestic threat from al Qaeda prior to September 11, 2001.</t>
+  <h>White House ignored the threat of attack.</h>
+</pair>
+<pair id='2141' value='FALSE' task='IR'>
+  <t>No weapons of mass destruction have been found in Iraq Yet.</t>
+  <h>Weapons of mass destruction are found in Iraq.</h>
+</pair>
+<pair id='100' value='TRUE' task='IR'>
+  <t>A priest who served in the Diocese of Metuchen in the mid-1980s has been sentenced to life in prison for sexually abusing a Massachusetts boy.</t>
+  <h>A pedophile gets a life in prison.</h>
+</pair>
+<pair id='256' value='TRUE' task='IR'>
+  <t>Eilat, Israel's most southerly port and the country's only access to the Red Sea, has long been a winter destination for tourists, 80% of whom are Europeans attracted by its temperate climates and clear waters.</t>
+  <h>In winter most tourists to Eilat come from Europe.</h>
+</pair>
+<pair id='72' value='FALSE' task='IR'>
+  <t>On the eve of a widely anticipated retaliation against Russian forces in Grozny, military commanders withdrew key units from the city, leaving it vulnerable to guerrilla infiltration.</t>
+  <h>Russian forces are vulnerable to guerrilla fighters.</h>
+</pair>
+<pair id='2142' value='FALSE' task='IR'>
+  <t>No stockpiles of weapons of mass destruction have been found in Iraq since Saddam's regime was toppled in a US-led invasion last year.</t>
+  <h>Weapons of mass destruction are found in Iraq.</h>
+</pair>
+<pair id='258' value='FALSE' task='IR'>
+  <t>The Scots pioneered the idea of a single currency, when they shared the Ecu with France during the Auld Alliance, and therefore they are certain to join in the monetary union process again when the EU states amalgamate their currencies under Maastricht.</t>
+  <h>France still maintains Ecu is the best denomination for the Maastricht single-currency..</h>
+</pair>
+<pair id='128' value='TRUE' task='IR'>
+  <t>Hippos do come into conflict with people quite often.</t>
+  <h>A hippopotamus attacks a human.</h>
+</pair>
+<pair id='137' value='TRUE' task='IR'>
+  <t>Acid attacks on women are carried out across Asia, with reports of such incidents from Burma, Cambodia, India and Pakistan.</t>
+  <h>Acid attacks are carried out on women.</h>
+</pair>
+<pair id='24' value='TRUE' task='IR'>
+  <t>Dr. Amy Joy Lanou, director of the Physicians Committee for Responsible Medicine in America, was quick to point out health dangers of the Atkins diet.</t>
+  <h>The Atkins diet is associated with increased risk conditions.</h>
+</pair>
+<pair id='2140' value='FALSE' task='IR'>
+  <t>Turkey is unlikely to become involved in, or allow U.S. forces to use Turkish territory in a Middle East war that does not threaten her territory directly.</t>
+  <h>The U.S. are about to use Turkish military bases.</h>
+</pair>
+<pair id='286' value='FALSE' task='IR'>
+  <t>Security preparations kept protestors at bay at the recent G8 Summit on Sea Island (USA).</t>
+  <h>Demonstrations against the G8 Summit took place at Sea Island bay.</h>
+</pair>
+<pair id='36' value='TRUE' task='IR'>
+  <t>Scripps Memorial Hospital Encinitas emergency room doctors and nurses treat two to three injured surfers.</t>
+  <h>Scripps Hospital assists surfing accident victims.</h>
+</pair>
+<pair id='260' value='TRUE' task='IR'>
+  <t>It would create an underclass of illiterate and impoverished residents, deprived of basic skills, including English-language skills, necessary for the integration of immigrant children into our society and our work force.</t>
+  <h>Language skills are a means of social integration.</h>
+</pair>
+<pair id='2143' value='FALSE' task='IR'>
+  <t>There is none. They found as many weapons in this masjid as they found weapons of mass destruction in Iraq.</t>
+  <h>Weapons of mass destruction are found in Iraq.</h>
+</pair>
+<pair id='105' value='TRUE' task='IR'>
+  <t>The Security Council voted in 2002 to protect U.S. soldiers and personnel from other nations that haven't ratified the creation of the court through a treaty, and last June renewed the immunity for a year.</t>
+  <h>Immunity for soldiers was renewed.</h>
+</pair>
+<pair id='279' value='FALSE' task='IR'>
+  <t>The council prohibited any travel outside of Haiti by all officers of the Haitian military and police and all major participants in the September, 1991, coup.</t>
+  <h>The council is prohibited to travel outside of Haiti by military officers.</h>
+</pair>
+<pair id='262' value='TRUE' task='IR'>
+  <t>Winning Team John C. Harsanyi, John F. Nash and Reinhard Selten were jointly awarded the Nobel Prize in Economics. The three professors were singled out for their unique contributions to game theory, derived from studies of games such as poker or chess, in which players have to think ahead and devise a strategy based on expected countermoves from opponents.</t>
+  <h>Three scholars shared a Nobel Prize for their studies about the game theory.</h>
+</pair>
+<pair id='112' value='FALSE' task='IR'>
+  <t>NIH's FY05 budget request of $28.8 billion includes $2 billion for the National Institute of General Medical Sciences, a 3.4-percent increase, and $1.1 billion for the National Center for Research Resources, and a 7.2-percent decrease from FY04 levels.</t>
+  <h>A request was reduced to $1.1 billion.</h>
+</pair>
+<pair id='2137' value='FALSE' task='IR'>
+  <t>The Swedish foreign minister was murdered.</t>
+  <h>The Swedish prime minister was murdered.</h>
+</pair>
+</entailment-corpus>

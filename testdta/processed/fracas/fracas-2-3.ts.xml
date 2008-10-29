@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE testsuite SYSTEM "file:///home/rb432/workspace/rte/dtd/testsuite.dtd">
+
+<testsuite id="2.3" name="bare plurals">
+
+<testcase id="3.97">
+  <proposition id="3.97.1">
+    <rmrsbankitem id="203">Software faults were blamed for the system failure.</rmrsbankitem>
+  </proposition>
+  <proposition id="3.97.2">
+    <rmrsbankitem id="296">Was the system failure based on one or more software faults?</rmrsbankitem>
+  </proposition>
+  <valid id="3.97.a">
+    <theory> <ref src="3.97.1"/> </theory>
+    <conclusion> <ref src="3.97.2"/> </conclusion>
+  </valid>
+</testcase>
+
+<testcase id="3.98">
+  <proposition id="3.98.1">
+    <rmrsbankitem id="203">Software faults were blamed for the system failure.</rmrsbankitem>
+  </proposition>
+  <proposition id="3.98.2">
+    <rmrsbankitem id="147">Bug #32-985 is a known software fault.</rmrsbankitem>
+  </proposition>
+  <proposition id="3.98.3">
+    <rmrsbankitem id="204">Was Bug #32-985 blamed for the system failure?</rmrsbankitem>
+  </proposition>
+  <nonvalid id="3.98.a">
+    <theory> <ref src="3.98.1"/> <ref src="3.98.2"/> </theory>
+    <conclusion> <ref src="3.98.3"/> </conclusion>
+  </nonvalid>
+  <nonvalid id="3.98.b">
+    <theory> <ref src="3.98.1"/> <ref src="3.98.2"/> </theory>
+    <conclusion> <negation> <ref src="3.98.3"/> </negation> </conclusion>
+  </nonvalid>
+</testcase>
+
+<testcase id="3.99">
+  <proposition id="3.99.1">
+    <rmrsbankitem id="297">Clients at the demonstration were all impressed by the system's performance.</rmrsbankitem>
+  </proposition>
+  <proposition id="3.99.2">
+    <rmrsbankitem id="148">Smith was a client at the demonstration.</rmrsbankitem>
+  </proposition>
+  <proposition id="3.99.3">
+    <rmrsbankitem id="149">Was Smith impressed by the system's performance?</rmrsbankitem>
+  </proposition>
+  <valid id="3.99.a">
+    <theory> <ref src="3.99.1"/> <ref src="3.99.2"/> </theory>
+    <conclusion> <ref src="3.99.3"/> </conclusion>
+  </valid>
+</testcase>
+
+<testcase id="3.100">
+  <proposition id="3.100.1">
+    <rmrsbankitem id="271">Clients at the demonstration were impressed by the system's performance.</rmrsbankitem>
+  </proposition>
+  <proposition id="3.100.2">
+    <rmrsbankitem id="298">Were most clients at the demonstration impressed by the system's performance?</rmrsbankitem>
+  </proposition>
+  <valid id="3.100.a">
+    <theory> <ref src="3.100.1"/> </theory>
+    <conclusion> <ref src="3.100.2"/> </conclusion>
+  </valid>
+</testcase>
+
+<testcase id="3.101">
+  <!-- University graduates make poor stock-market traders. -->
+  <proposition id="3.101.1">
+    <rmrsbankitem id="150">University graduates make poor stock market traders.</rmrsbankitem>
+  </proposition>
+  <proposition id="3.101.2">
+    <rmrsbankitem id="33">Smith is a university graduate.</rmrsbankitem>
+  </proposition>
+  <proposition id="3.101.3">
+    <rmrsbankitem id="272">Is Smith likely to make a poor stock market trader?</rmrsbankitem>
+  </proposition>
+  <valid id="3.101.a">
+    <theory> <ref src="3.101.1"/> <ref src="3.101.2"/> </theory>
+    <conclusion> <ref src="3.101.3"/> </conclusion>
+  </valid>
+</testcase>
+
+<testcase id="3.102">
+  <!-- University graduates make poor stock-market traders. -->
+  <proposition id="3.102.1">
+    <rmrsbankitem id="150">University graduates make poor stock market traders.</rmrsbankitem>
+  </proposition>
+  <proposition id="3.102.2">
+    <rmrsbankitem id="33">Smith is a university graduate.</rmrsbankitem>
+  </proposition>
+  <proposition id="3.102.3">
+    <rmrsbankitem id="205">Will Smith make a poor stock market trader?</rmrsbankitem>
+  </proposition>
+  <nonvalid id="3.102.a">
+    <theory> <ref src="3.102.1"/> <ref src="3.102.2"/> </theory>
+    <conclusion> <ref src="3.102.3"/> </conclusion>
+  </nonvalid>
+  <nonvalid id="3.102.b">
+    <theory> <ref src="3.102.1"/> <ref src="3.102.2"/> </theory>
+    <conclusion> <negation> <ref src="3.102.3"/> </negation> </conclusion>
+  </nonvalid>
+</testcase>
+
+</testsuite>

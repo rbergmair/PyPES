@@ -1,0 +1,803 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<entailment-corpus>
+<pair id='401' value='FALSE' task='QA'>
+  <t><rmrsbankitem id="1">The Hubble is a scientific workhorse in the prime of its life.</rmrsbankitem> <rmrsbankitem id="2">It is also the privileged photographer of the universe.</rmrsbankitem> <rmrsbankitem id="3">Whether the images are of solar systems at birth, galaxies colliding, or the death throes of a star in supernova, Hubble's photos reveal both the ferocity and tranquillity of our universe.</rmrsbankitem></t>
+  <h><rmrsbankitem id="1">Hubble is a Space telescope.</rmrsbankitem></h>
+</pair>
+<pair id='402' value='FALSE' task='QA'>
+  <t><rmrsbankitem id="4">The Jurassic Park Institute is an absolutely accurate way for kids to get excited about dinosaur science!</rmrsbankitem> <rmrsbankitem id="5">Written by two noted paleontologists and illustrated in big bold colors, this kid-friendly nonfiction guide uses easy-to-understand text to describe at least 100 dinosaurs alphabetically.</rmrsbankitem></t>
+  <h><rmrsbankitem id="2">Michael Crichton is the author of the book Jurassic Park.</rmrsbankitem></h>
+</pair>
+<pair id='403' value='TRUE' task='QA'>
+  <t><rmrsbankitem id="6">Two of Gianni Versace's favorite buzzwords were quality and future, so after the 50-year-old designer was murdered last July outside his Miami Beach, Fla. mansion, it was somehow inevitable that his family would have to go about putting those words together: They had to ask themselves how they could ensure the future of the company Versace had built without sacrificing its reputation for quality.</rmrsbankitem></t>
+  <h><rmrsbankitem id="3">Gianni Versace is a designer.</rmrsbankitem></h>
+</pair>
+<pair id='404' value='FALSE' task='QA'>
+  <t><rmrsbankitem id="7">In 1962, Armstrong was transferred to astronaut status.</rmrsbankitem> <rmrsbankitem id="8">He served as command pilot for the Gemini 8 mission, launched March 16, 1966, and along with David Scott, performed the first successful docking of two vehicles in space by mating his Gemini 8 with an uninhabited Agena rocket.</rmrsbankitem></t>
+  <h><rmrsbankitem id="4">Neil Armstrong was the first man who landed on the Moon.</rmrsbankitem></h>
+</pair>
+<pair id='405' value='TRUE' task='QA'>
+  <t><rmrsbankitem id="9">Neil Armstrong was an aviator in the Navy and was chosen with the second group of astronauts in 1962.</rmrsbankitem> <rmrsbankitem id="10">Made seven flights in the X-15 program (1960 photo), reaching an altitude of 207,500 feet.</rmrsbankitem> <rmrsbankitem id="11">Was backup command pilot for Gemini 5, command pilot for Gemini 8, backup command pilot for Gemini 11, backup commander for Apollo 8, and commander for Apollo 11: successfully completing the first moonwalk.</rmrsbankitem></t>
+  <h><rmrsbankitem id="4">Neil Armstrong was the first man who landed on the Moon.</rmrsbankitem></h>
+</pair>
+<pair id='406' value='TRUE' task='QA'>
+  <t><rmrsbankitem id="12">The Cyrillic alphabet is an alphabet used for several East and South Slavic languages; (Belarusian, Bulgarian, Macedonian, Russian, Rusyn, Serbian, and Ukrainian) and many other languages of the former Soviet Union, Asia and Eastern Europe.</rmrsbankitem> <rmrsbankitem id="13">It has also been used for other languages in the past.</rmrsbankitem> <rmrsbankitem id="14">Not all letters in the Cyrillic alphabet are used in every language which is written with it.</rmrsbankitem></t>
+  <h><rmrsbankitem id="5">Cyrillic is an alphabet used for certain Slavic languages, such as Russian.</rmrsbankitem></h>
+</pair>
+<pair id='407' value='FALSE' task='QA'>
+  <t><rmrsbankitem id="15">Elizabeth Alexandra Mary was born on April 21, 1926 in London, England.</rmrsbankitem> <rmrsbankitem id="16">Her father, Prince Albert, Duke of York, was the second son of King George V. Her mother, the former Elizabeth Bowes-Lyon, was the daughter of a Scottish earl.</rmrsbankitem> <rmrsbankitem id="17">Princess Elizabeth was their first child.</rmrsbankitem> <rmrsbankitem id="18">Her only sibling, Margaret Rose, was born in 1930.</rmrsbankitem></t>
+  <h><rmrsbankitem id="6">Elizabeth the Second's father was George VI.</rmrsbankitem></h>
+</pair>
+<pair id='408' value='TRUE' task='QA'>
+  <t><rmrsbankitem id="19">Her Majesty Queen Elizabeth II was born in London on April, 21 1926, first child of the Duke and Duchess of York, subsequently King George VI and Queen Elizabeth.</rmrsbankitem> <rmrsbankitem id="20">Five weeks later she was christened in the chapel of Buckingham Palace and was given the names Elizabeth Alexandra Mary Windsor.</rmrsbankitem> <rmrsbankitem id="21">The Queen ascended the throne on February 6, 1952 upon the death of her father, King George VI.</rmrsbankitem> <rmrsbankitem id="22">Her Coronation followed on June 2, 1953.</rmrsbankitem></t>
+  <h><rmrsbankitem id="6">Elizabeth the Second's father was George VI.</rmrsbankitem></h>
+</pair>
+<pair id='409' value='TRUE' task='QA'>
+  <t><rmrsbankitem id="23">George H.W. Bush served this country not only as President but also as Vice President, Member of Congress, United Nations Ambassador, chief of the U.S. Liaison Office to the People's Republic of China, Director of the Central Intelligence Agency and also, as a naval aviator in World War II.</rmrsbankitem> <rmrsbankitem id="24">Coming back from the war, he married his sweetheart, Barbara Pierce of Rye, New York, and later that year made his first civilian adult decision when he made the appropriate choice of moving to Texas, where he lived the rest of his life.</rmrsbankitem></t>
+  <h><rmrsbankitem id="7">The name of George H.W. Bush's wife is Barbara.</rmrsbankitem></h>
+</pair>
+<pair id='410' value='TRUE' task='QA'>
+  <t><rmrsbankitem id="25">Bush and his wife, Laura, departed the White House on Thursday afternoon to spend four days at the wooded presidential retreat of rustic cabins in the Maryland mountains.</rmrsbankitem> <rmrsbankitem id="26">Along with the first lady's mother, Jenna Welch, the weekend gathering includes the president's parents, former President George H.W. Bush and his wife, Barbara; his sister Doro Koch and her husband, Bobby; and his brother, Marvin, and his wife, Margaret.</rmrsbankitem></t>
+  <h><rmrsbankitem id="7">The name of George H.W. Bush's wife is Barbara.</rmrsbankitem></h>
+</pair>
+<pair id='411' value='TRUE' task='QA'>
+  <t><rmrsbankitem id="27">Although I come across Borges and Calvino fairly often, too, I have to admit that Gabriel Garcia Marquez is the only one of the other authors I am at all familiar with, so I am not sure which difference it might make.</rmrsbankitem> <rmrsbankitem id="28">I would be curious, though, what that difference might look like to people writing about media art and architecture in Spanish, for example.</rmrsbankitem></t>
+  <h><rmrsbankitem id="8">Gabriel Garcia Marquez is a writer.</rmrsbankitem></h>
+</pair>
+<pair id='412' value='FALSE' task='QA'>
+  <t><rmrsbankitem id="29">The United Kingdom, Turkey, "Old" British commonwealth forces (New Zealand, Aussies, Canadians, Gurkhas, India), Germany, Poland, Vietnam, some units from USA, Russia, France, China (but only some) Japan would be included but I'm uncomfortable about using the word respected for Japanese soldiers for obvious reasons.</rmrsbankitem></t>
+  <h><rmrsbankitem id="9">The Gurkhas come from Nepal.</rmrsbankitem></h>
+</pair>
+<pair id='413' value='FALSE' task='QA'>
+  <t><rmrsbankitem id="30">The town lies along the stretch of coastline designated as Gold Beach during the D-Day landings, one of the beaches used by British troops in the allied invasion.</rmrsbankitem> <rmrsbankitem id="31">Arromanches was selected as one of the sites for two Mulberry Harbours built on the Normandy coast, the other one built further West at Omaha Beach.</rmrsbankitem></t>
+  <h><rmrsbankitem id="10">The Normandy landings took place in June 1944.</rmrsbankitem></h>
+</pair>
+<pair id='414' value='TRUE' task='QA'>
+  <t><rmrsbankitem id="32">After months of planning and build-up, Supreme Commander Dwight Eisenhower set Operation Overlord for June 6, 1944: some 7000 ships in the British Isles set to sea and sailed across the English Channel, and, under the leadership of Field Marshall Bernard Montgomery, 135,000 troops landed and stormed Feldmarschal Erwin Rommel's German positions along 80 km of the Normandy coast.</rmrsbankitem></t>
+  <h><rmrsbankitem id="10">The Normandy landings took place in June 1944.</rmrsbankitem></h>
+</pair>
+<pair id='415' value='FALSE' task='QA'>
+  <t><rmrsbankitem id="33">Former Chancellor Helmut Kohl, who stunned Germans with admission that he used illegal bank accounts to funnel secret money to Christian Democratic party, invokes personal honor in refusing to disclose names of people who gave more than $1 million between 1993 and 1998; scandal threatens to shred Kohl's place in history for reunifying Germany and leading Europe toward common currency.</rmrsbankitem></t>
+  <h><rmrsbankitem id="11">The name of Helmut Kohl's political party is the Christian Democratic Union.</rmrsbankitem></h>
+</pair>
+<pair id='416' value='FALSE' task='QA'>
+  <t><rmrsbankitem id="34">Since '82 Federal Chancellor (elected by "constructive vote of no confidence" against former Chancellor Helmut Schmidt, Social Democratic Party (SPD); reelected 1983, 1987, 1991 and 1994).</rmrsbankitem> <rmrsbankitem id="35">This makes Helmut Kohl the longest-serving chancellor of the Federal Republic, passing by Konrad Adenauer, the first chancellor, this October.</rmrsbankitem></t>
+  <h><rmrsbankitem id="11">The name of Helmut Kohl's political party is the Christian Democratic Union.</rmrsbankitem></h>
+</pair>
+<pair id='417' value='TRUE' task='QA'>
+  <t><rmrsbankitem id="36">When comparing Michele Granger and Brian Goodell, Brian has to be the clear winner.</rmrsbankitem> <rmrsbankitem id="37">In 1976, while still a student at Mission Viejo High, Brian won two Olympic gold medals at Montreal, breaking his own world records in both the 400 - and 1,500-meter freestyle events.</rmrsbankitem> <rmrsbankitem id="38">He went on to win three gold medals in he 1979 Pan American Games.</rmrsbankitem></t>
+  <h><rmrsbankitem id="12">Brian Goodell won three gold medals in the 1979 Pan American Games.</rmrsbankitem></h>
+</pair>
+<pair id='418' value='TRUE' task='QA'>
+  <t><rmrsbankitem id="39">More than a decade ago, Carl Lewis stood on the threshold of what was to become the greatest athletics career in history.</rmrsbankitem> <rmrsbankitem id="40">He had just broken two of the legendary Jesse Owens' college records, but never believed he would become a corporate icon, the focus of hundreds of millions of dollars in advertising.</rmrsbankitem> <rmrsbankitem id="41">His sport was still nominally amateur.</rmrsbankitem> <rmrsbankitem id="42">Eighteen Olympic and World Championship gold medals and 21 world records later, Lewis has become the richest man in the history of track and field - a multi-millionaire.</rmrsbankitem></t>
+  <h><rmrsbankitem id="13">Carl Lewis won eighteen gold medals and set 21 world records.</rmrsbankitem></h>
+</pair>
+<pair id='419' value='TRUE' task='QA'>
+  <t><rmrsbankitem id="43">Discovery of the top quark, if confirmed, completes one set of subatomic building blocks whose existence is predicted by the prevailing theory, called the Standard Model, of the particles and forces that determine the fundamental nature of matter and energy.</rmrsbankitem> <rmrsbankitem id="44">In the whimsical lexicon of modern physics, the elementary particles are called quarks, leptons and bosons.</rmrsbankitem></t>
+  <h><rmrsbankitem id="14">Quarks, leptons, and bosons are the three elementary particles of physics according to the Standard Model.</rmrsbankitem></h>
+</pair>
+<pair id='420' value='TRUE' task='QA'>
+  <t><rmrsbankitem id="45">Yachtsman Melvyn Percy became so fed up with the standard of service when preparing his boat for the 3000-mile Atlantic crossing that he decided to set up his own company on the Clyde to provide Scots sailors with professional advice and practical assistance.</rmrsbankitem> <rmrsbankitem id="46">Minerva Rigging, based at Kip Marina just south of Gourock, now employs five full-time staff and is the Scottish agent for Kemp, one of Europe's leading yacht spar and mast manufacturers.</rmrsbankitem></t>
+  <h><rmrsbankitem id="15">Melvyn Percy set up Minerva Rigging at Kip Marina.</rmrsbankitem></h>
+</pair>
+<pair id='421' value='TRUE' task='QA'>
+  <t><rmrsbankitem id="47">Of all the national park lands in the United States, none is closer to a major urban area or more beset with problems than the Everglades, a shallow, 50-mile-wide river of grass that flows south from Lake Okeechobee to Florida Bay.</rmrsbankitem> <rmrsbankitem id="48">For more than a generation, this fragile natural wonder has been held hostage by a web of special interests - farmers, sportsmen and about 6 million South Florida residents in need of drinking water and flood control - that is as complex as the ecosystem itself.</rmrsbankitem></t>
+  <h><rmrsbankitem id="16">The Everglades is 50-mile wide.</rmrsbankitem></h>
+</pair>
+<pair id='422' value='TRUE' task='QA'>
+  <t><rmrsbankitem id="49">Aeschylus is often called the father of Greek tragedy; he wrote the earliest complete plays which survive from ancient Greece.</rmrsbankitem> <rmrsbankitem id="50">He is known to have written more than 90 plays, though only seven survive.</rmrsbankitem> <rmrsbankitem id="51">The most famous of these are the trilogy known as Orestia.</rmrsbankitem> <rmrsbankitem id="52">Also well-known are The Persians and Prometheus Bound.</rmrsbankitem></t>
+  <h><rmrsbankitem id="17">"The Persians" was written by Aeschylus.</rmrsbankitem></h>
+</pair>
+<pair id='423' value='FALSE' task='QA'>
+  <t><rmrsbankitem id="53">Canada is officially a bilingual country but, with nearly 60% of the population speaking English as their mother-tongue, and only 24% speaking French as their first language, some people are questioning whether Canada is truly a bilingual nation or rather, a bilingual nation on paper only.</rmrsbankitem> <rmrsbankitem id="54">French is not the only linguistic minority in Canada, and some of the languages spoken, in order of popularity, are Chinese, Italian, German, Polish, Spanish, Portuguese, Punjabi, Ukrainian, Arabic, Dutch, Tagalog, Greek, Vietnamese, Cree and Inuktitut.</rmrsbankitem></t>
+  <h><rmrsbankitem id="18">French is the most widely spoken language in Québec.</rmrsbankitem></h>
+</pair>
+<pair id='424' value='FALSE' task='QA'>
+  <t><rmrsbankitem id="55">One year on from the Indian Ocean tsunami, the world's grief and compassion returned to the tsunami-battered coastlines of the Indian Ocean, where at least 216,000 people lost their lives.</rmrsbankitem> <rmrsbankitem id="56">Under a clear sky and before a gentle sea, the world commemorated those who lost their lives, in one of the worst natural disasters that the modern world has experienced.</rmrsbankitem></t>
+  <h><rmrsbankitem id="19">Earthquakes have the potential to generate a tsunami.</rmrsbankitem></h>
+</pair>
+<pair id='425' value='TRUE' task='QA'>
+  <t><rmrsbankitem id="57">Brazilian cardinal Dom Eusbio Oscar Scheid, Archbishop of Rio de Janeiro, harshly criticized Brazilian President Luiz Inácio Lula da Silva after arriving in Rome on Tuesday.</rmrsbankitem></t>
+  <h><rmrsbankitem id="20">The Brazilian President is Luiz Inácio Lula da Silva.</rmrsbankitem></h>
+</pair>
+<pair id='426' value='TRUE' task='QA'>
+  <t><rmrsbankitem id="58">According to members of Brazilian Court, President Luiz Inácio Lula da Silva may be subjected to an impeachment process, if there is some proof that he is really involved in some of the alleged scandals, or in case someone can prove that he was acting with negligence.</rmrsbankitem></t>
+  <h><rmrsbankitem id="20">The Brazilian President is Luiz Inácio Lula da Silva.</rmrsbankitem></h>
+</pair>
+<pair id='427' value='FALSE' task='QA'>
+  <t><rmrsbankitem id="59">A report prepared by a five member UN commission noted "killing of civilians, enforced disappearances, destruction of villages, rape and other forms of sexual violence, pillaging and forced displacement, throughout Darfur", and secretly named alleged war criminals that should go before the ICC.</rmrsbankitem></t>
+  <h><rmrsbankitem id="21">More than 200,000 people were killed in the air attack in the Darfur region.</rmrsbankitem></h>
+</pair>
+<pair id='428' value='FALSE' task='QA'>
+  <t><rmrsbankitem id="60">The United States Marshals Service working together with nearly 960 other law enforcement agencies recently concluded a week-long operation, Operation FALCON, which succeeded in the arrest of 10,340 fugitives across the United States and elsewhere.</rmrsbankitem> <rmrsbankitem id="61">Other regional sweeps have been conducted before; but this was the first of its kind at the national level and resulted in the highest number of arrests ever recorded in a single operation.</rmrsbankitem></t>
+  <h><rmrsbankitem id="22">Operation Condor was a genocide and a campaign of counter-terrorism implemented by the right-wing dictatorships that dominated the Southern Cone in Latin America from the 1950s to 1980s.</rmrsbankitem></h>
+</pair>
+<pair id='429' value='FALSE' task='QA'>
+  <t><rmrsbankitem id="62">Operation FALCON was conducted during a one week period, April 4-10, 2005, chosen to coincide with National Crime Victim's Rights Week, April 10-16, the dates being chosen to "honor the victims" of violent crime in America.</rmrsbankitem> <rmrsbankitem id="63">"By taking violent fugitives off the streets and putting them behind bars where they belong," said Attorney General Alberto Gonzales, "we've honored the victims and made our streets safer."</rmrsbankitem></t>
+  <h><rmrsbankitem id="22">Operation Condor was a genocide and a campaign of counter-terrorism implemented by the right-wing dictatorships that dominated the Southern Cone in Latin America from the 1950s to 1980s.</rmrsbankitem></h>
+</pair>
+<pair id='430' value='FALSE' task='QA'>
+  <t><rmrsbankitem id="64">Thousands of Romanians participated in rallies on Monday to campaign for the release of three Romanian journalists kidnapped last month in Iraq.</rmrsbankitem> <rmrsbankitem id="65">Crowds swelled in size after a weekend of smaller rallies sponsored by Romanian media workers and the Arab community in Romania.</rmrsbankitem></t>
+  <h><rmrsbankitem id="23">Romania sent 730 troops in Iraq.</rmrsbankitem></h>
+</pair>
+<pair id='431' value='FALSE' task='QA'>
+  <t><rmrsbankitem id="66">"These new results from Cassini may be the first evidence of gases originating either from the surface or possibly from the interior of Enceladus," said Dr. Michele Dougherty, principal investigator for the Cassini magnetometer and professor at Imperial College in London.</rmrsbankitem> <rmrsbankitem id="67">Scientists have suspected Enceladus as geologically active and a possible source of Saturn's icy E ring.</rmrsbankitem> <rmrsbankitem id="68">Enceladus is the most reflective object in the solar system, reflecting about 90 percent of the sunlight that hits it.</rmrsbankitem></t>
+  <h><rmrsbankitem id="24">Titan is the fifteenth of Saturn's known satellites.</rmrsbankitem></h>
+</pair>
+<pair id='432' value='TRUE' task='QA'>
+  <t><rmrsbankitem id="69">A collection of real-life testimonies by Klaus Pohl, one of Germany's most performed dramatists, its power resides less in the conventional meaning of the word drama than in what it reveals - a country still deeply at odds with itself, a kaleidoscope of events that flatters neither side, neither Western capitalism nor the former communist regime.</rmrsbankitem></t>
+  <h><rmrsbankitem id="25">Klaus Pohl is one of Germany's most performed dramatists.</rmrsbankitem></h>
+</pair>
+<pair id='433' value='TRUE' task='QA'>
+  <t><rmrsbankitem id="70">TWA connects through New York en route to Frankfurt.</rmrsbankitem> <rmrsbankitem id="71">Lufthansa, the German airline, flies direct daily from Los Angeles to Frankfurt, and the airline shares flights with Lauda Air, an Austrian carrier, on Wednesdays, Fridays and Sundays to fly directly to Munich.</rmrsbankitem> <rmrsbankitem id="72">Another German airline, Ltu, also flies direct from Los Angeles to Dusseldorf and Munich on Mondays and Thursdays.</rmrsbankitem> <rmrsbankitem id="73">Frankfurt is the hub for trips to most of the country 's smaller cities.</rmrsbankitem></t>
+  <h><rmrsbankitem id="26">Lufthansa is the German airline.</rmrsbankitem></h>
+</pair>
+<pair id='434' value='TRUE' task='QA'>
+  <t><rmrsbankitem id="74">November 9, 1989, the day the Berlin Wall fell and the world changed forever.</rmrsbankitem> <rmrsbankitem id="75">Not even the most astute saw it coming.</rmrsbankitem> <rmrsbankitem id="76">As Hungary's foreign minister in the late summer of 1989, Gyula Horn gave the order to let visiting East Germans use his country to do a 400-mile end run around the Berlin Wall, a move now seen as the beginning of the end for hard-line communism in Europe.</rmrsbankitem></t>
+  <h><rmrsbankitem id="27">The Berlin Wall was torn down in 1989.</rmrsbankitem></h>
+</pair>
+<pair id='435' value='FALSE' task='QA'>
+  <t><rmrsbankitem id="77">Global markets should be "quite strong enough to absorb it without lasting damage", he said.</rmrsbankitem> <rmrsbankitem id="78">"I would stress that these circumstances are unique to Barings and should not apply to other banks operating in London."</rmrsbankitem> <rmrsbankitem id="79">Barings faced losses of at least 600m in contracts on three stock exchanges in Singapore, Osaka and Tokyo, he said, but 'further unquantifiable losses' were expected.</rmrsbankitem></t>
+  <h><rmrsbankitem id="28">The banking firm Barings collapsed due to speculations made by Nick Leeson.</rmrsbankitem></h>
+</pair>
+<pair id='436' value='TRUE' task='QA'>
+  <t><rmrsbankitem id="80">"It's a vote of confidence that the momentum is going to continue", Doyle said.</rmrsbankitem> <rmrsbankitem id="81">The momentum also appears to be moving south.</rmrsbankitem> <rmrsbankitem id="82">The Mexican election is the latest indication that the free-market reforms that have swept Latin America during the past decade are gaining political acceptance.</rmrsbankitem> <rmrsbankitem id="83">In Brazil, prices rose sharply, reacting to the Mexico vote and to new polls favorable to free-market presidential candidate Fernando Henrique Cardoso.</rmrsbankitem></t>
+  <h><rmrsbankitem id="29">Fernando Henrique Cardoso is a presidential candidate.</rmrsbankitem></h>
+</pair>
+<pair id='437' value='TRUE' task='QA'>
+  <t><rmrsbankitem id="84">Although he won with the lowest majority ever tallied by the ruling party, 48.7% of the votes, his ballots almost doubled those of outsider Diego Fernandez de Cevallos, the rightist runner-up.</rmrsbankitem> <rmrsbankitem id="85">And insiders are now favored to win other Latin American elections in the coming months : In Brazil, Fernando Henrique Cardoso, a former Senate leader and Cabinet minister, is expected to finish ahead of outsider Luis Inacio (Lula) da Silva, a leftist former labor leader, in the first round of president.</rmrsbankitem></t>
+  <h><rmrsbankitem id="30">Fernando Henrique Cardoso is a Brazilian former Senate leader and Cabinet minister.</rmrsbankitem></h>
+</pair>
+<pair id='438' value='TRUE' task='QA'>
+  <t><rmrsbankitem id="86">It would force countries in the region to choose between the United States and Japan - or maybe between Japan and China.</rmrsbankitem> <rmrsbankitem id="87">And it would collapse whatever promise the newly born Asia Pacific Economic Cooperation (APEC) holds as a vehicle to assure American commercial access to the booming Pacific markets.</rmrsbankitem> <rmrsbankitem id="88">To risk all of this in the name of a flawed concept is foolish.</rmrsbankitem> <rmrsbankitem id="89">This is not to deny the Administration 's understandable frustration with a persistently huge Japanese trade surplus.</rmrsbankitem></t>
+  <h><rmrsbankitem id="31">APEC is the newly born Asia Pacific Economic Cooperation.</rmrsbankitem></h>
+</pair>
+<pair id='439' value='TRUE' task='QA'>
+  <t><rmrsbankitem id="90">It is an independence movement among the Tamil peoples of northern Sri Lanka - the ancient land of Ceylon independent from Britain in 1948 and took the name Sri Lanka, a Sinhalese word, in 1972.</rmrsbankitem></t>
+  <h><rmrsbankitem id="32">The current name of Ceylon is Sri Lanka.</rmrsbankitem></h>
+</pair>
+<pair id='440' value='TRUE' task='QA'>
+  <t><rmrsbankitem id="91">Article 19 said a correspondent for the independent newspaper Narodnaya Volya who attempted to determine how many people involved in emergency work in the contaminated zone around the Chernobyl nuclear reactor after the 1986 catastrophe were still alive was told by the Ministry of Emergencies that non-state newspapers could be refused access to any information.</rmrsbankitem></t>
+  <h><rmrsbankitem id="33">The catastrophe at Chernobyl happened in 1986.</rmrsbankitem></h>
+</pair>
+<pair id='441' value='TRUE' task='QA'>
+  <t><rmrsbankitem id="92">After leaving Time-Life, Shuker joined the Public Broadcast Laboratory, forerunner of PBS, and participated in two pioneering films - 'The Chair,' about an attorney trying to save a condemned man, and 'Free At Last,' a 90-minute documentary about Dr. Martin Luther King Jr. that by chance was being made when King was murdered in 1968.</rmrsbankitem></t>
+  <h><rmrsbankitem id="34">Martin Luther King was murdered in 1968.</rmrsbankitem></h>
+</pair>
+<pair id='442' value='FALSE' task='QA'>
+  <t><rmrsbankitem id="93">Meanwhile, at a Pushkin-Goethe Festival held recently in Moscow to observe the poets' birthdays (this year is Goethe's 250th), Dmitri Prigov, a post-modernist poet and conceptual artist, took the first line from "Onegin" ("My uncle - high ideals inspire him") and set it to Buddhist and Muslim mantras and Russian Orthodox and Gregorian chants.</rmrsbankitem></t>
+  <h><rmrsbankitem id="35">Johann Wolfgang von Goethe was born in Germany.</rmrsbankitem></h>
+</pair>
+<pair id='443' value='FALSE' task='QA'>
+  <t><rmrsbankitem id="94">Addressing a function organized here by the National Human Rights Commission (NHRC), Anand said, the greatest and most urgent challenges of human rights in India were in the areas of maternal and child care, child education, child labor, child abuse and protection of minorities and weaker sections.</rmrsbankitem></t>
+  <h><rmrsbankitem id="36">Amnesty International takes care of human rights.</rmrsbankitem></h>
+</pair>
+<pair id='444' value='TRUE' task='QA'>
+  <t><rmrsbankitem id="95">President Jacques Chirac of France, a conservative like Kohl, and Prime Minister Lionel Jospin, whose fellow Socialists saw in the victory of Schroeder's Social Democrats a continuation of a European trend that brought them and British Prime Minister Tony Blair's Labor Party to power last year, paid tribute to both in almost equal measure.</rmrsbankitem></t>
+  <h><rmrsbankitem id="37">Tony Blair belongs to the Labor Party.</rmrsbankitem></h>
+</pair>
+<pair id='445' value='TRUE' task='QA'>
+  <t><rmrsbankitem id="96">Aides to British Prime Minister Tony Blair, whose Labor Party won power 13 months ago and who is the current EU president, said the leaders acknowledged jointly - and without trying to blame each other - that the EU's Belgian-based bureaucracy is regarded as both remote and overbearing.</rmrsbankitem></t>
+  <h><rmrsbankitem id="37">Tony Blair belongs to the Labor Party.</rmrsbankitem></h>
+</pair>
+<pair id='446' value='TRUE' task='QA'>
+  <t><rmrsbankitem id="97">That theory, a concept first proposed by Albert Einstein and often reiterated by British astrophysicist Stephen Hawking, seeks to find a single set of equations that can explain all the fundamental forces in the universe: gravity, electromagnetism, and the strong and weak interactive forces among subnuclear particles.</rmrsbankitem></t>
+  <h><rmrsbankitem id="38">Stephen Hawking is a physicist.</rmrsbankitem></h>
+</pair>
+<pair id='447' value='FALSE' task='QA'>
+  <t><rmrsbankitem id="98">A condition called "social anxiety disorder" this week joined the long list of downers in life - including obesity, impotence, depression and phobia - that Americans once commonly saw as challenges of willpower and character but can now have treated by popping a pill.</rmrsbankitem></t>
+  <h><rmrsbankitem id="39">Phobia is a an extreme fear of a particular thing or situation.</rmrsbankitem></h>
+</pair>
+<pair id='448' value='FALSE' task='QA'>
+  <t><rmrsbankitem id="99">NPF said that young people displaying onset symptoms of Parkinson's disease have special needs, because they often have children to raise, jobs to keep and other issues to address that are different than those patients in retirement years.</rmrsbankitem></t>
+  <h><rmrsbankitem id="40">The symptoms of Parkinson's disease are: tremor, rigidity (stiffness; increased muscle tone), bradykinesia/akinesia, also "dysdiadokinesia", and postural instability.</rmrsbankitem></h>
+</pair>
+<pair id='449' value='TRUE' task='QA'>
+  <t><rmrsbankitem id="100">Olympic officials familiar with Salt Lake City's bid for the 2002 Winter Games have described in recent weeks a process by which Salt Lake City Olympic officials targeted the votes of 17 African IOC members after losing by four votes to Nagano, Japan, for the right to play host to the 1998 Winter Olympics.</rmrsbankitem></t>
+  <h><rmrsbankitem id="41">Before Salt Lake City, Winter Olympic Games took place in Nagano.</rmrsbankitem></h>
+</pair>
+<pair id='450' value='FALSE' task='QA'>
+  <t><rmrsbankitem id="101">Hubble is one of the most remarkable facilities in the entire history of science.</rmrsbankitem></t>
+  <h><rmrsbankitem id="1">Hubble is a Space telescope.</rmrsbankitem></h>
+</pair>
+<pair id='451' value='TRUE' task='QA'>
+  <t><rmrsbankitem id="102">Jurassic Park is a novel written by Michael Crichton.</rmrsbankitem> <rmrsbankitem id="103">Jurassic Park was published in 1990.</rmrsbankitem></t>
+  <h><rmrsbankitem id="2">Michael Crichton is the author of the book Jurassic Park.</rmrsbankitem></h>
+</pair>
+<pair id='452' value='TRUE' task='QA'>
+  <t><rmrsbankitem id="104">Boris Becker is a true legend in the sport of tennis.</rmrsbankitem> <rmrsbankitem id="105">Aged just seventeen, he won Wimbledon for the first time and went on to become the most prolific tennis player.</rmrsbankitem></t>
+  <h><rmrsbankitem id="42">Boris Becker is a Wimbledon champion.</rmrsbankitem></h>
+</pair>
+<pair id='453' value='FALSE' task='QA'>
+  <t><rmrsbankitem id="106">Boris Becker is a former professional tennis player for Germany.</rmrsbankitem></t>
+  <h><rmrsbankitem id="42">Boris Becker is a Wimbledon champion.</rmrsbankitem></h>
+</pair>
+<pair id='454' value='TRUE' task='QA'>
+  <t><rmrsbankitem id="107">On Aug. 6, 1945, an atomic bomb was exploded on Hiroshima with an estimated equivalent explosive force of 12,500 tons of TNT, followed three days later by a second, more powerful, bomb on Nagasaki.</rmrsbankitem></t>
+  <h><rmrsbankitem id="43">In 1945, an atomic bomb was dropped on Hiroshima.</rmrsbankitem></h>
+</pair>
+<pair id='455' value='TRUE' task='QA'>
+  <t><rmrsbankitem id="108">He interviewed Shigeko Sasamori in December 2004.</rmrsbankitem> <rmrsbankitem id="109">Ms. Sasamori was thirteen when the atomic bomb was dropped on Hiroshima (August 6, 1945).</rmrsbankitem></t>
+  <h><rmrsbankitem id="43">In 1945, an atomic bomb was dropped on Hiroshima.</rmrsbankitem></h>
+</pair>
+<pair id='456' value='TRUE' task='QA'>
+  <t><rmrsbankitem id="110">On August 6, 1945 the atomic bomb was dropped on the Japanese city of Hiroshima.</rmrsbankitem> <rmrsbankitem id="111">The Enola Gay, piloted by Colonel Tibbetts, was chosen to make the mission.</rmrsbankitem> <rmrsbankitem id="112">The mission was recorded as successful by Capt. William S. Parson at 9:20 A.M.</rmrsbankitem></t>
+  <h><rmrsbankitem id="43">In 1945, an atomic bomb was dropped on Hiroshima.</rmrsbankitem></h>
+</pair>
+<pair id='457' value='TRUE' task='QA'>
+  <t><rmrsbankitem id="113">Even Homer realises the cleverness of Jan De Bont's tautly-directed action.</rmrsbankitem> <rmrsbankitem id="114">Laser Movies, Speed, Widescreen with Keanu Reeves, Dennis Hopper, Sandra Bullock.</rmrsbankitem></t>
+  <h><rmrsbankitem id="44">The movie 'Speed' was directed by Jan De Bont.</rmrsbankitem></h>
+</pair>
+<pair id='458' value='FALSE' task='QA'>
+  <t><rmrsbankitem id="115">According to the director Kim Ki-duk The biggest problem for Americans understanding Korean movies is that all action films have the same plot.</rmrsbankitem> <rmrsbankitem id="116">For example, the movie 'Speed' with Keanu Reeves.</rmrsbankitem></t>
+  <h><rmrsbankitem id="44">The movie 'Speed' was directed by Jan De Bont.</rmrsbankitem></h>
+</pair>
+<pair id='459' value='FALSE' task='QA'>
+  <t><rmrsbankitem id="117">Felipe González Márquez (born March 5, 1942) is a Spanish socialist politician.</rmrsbankitem> <rmrsbankitem id="118">He was the General Secretary of the Spanish Socialist Workers' Party (PSOE) from 1974 to 1997.</rmrsbankitem></t>
+  <h><rmrsbankitem id="45">Felipe González is the President of Spain.</rmrsbankitem></h>
+</pair>
+<pair id='460' value='FALSE' task='QA'>
+  <t><rmrsbankitem id="119">González Márquez, Felipe is a Spanish political leader.</rmrsbankitem> <rmrsbankitem id="120">After joining what was then the Spanish Socialist Workers' party, González became its secretary-general and revived it from the moribund position into which it had fallen under Franco.</rmrsbankitem></t>
+  <h><rmrsbankitem id="45">Felipe González is the President of Spain.</rmrsbankitem></h>
+</pair>
+<pair id='461' value='TRUE' task='QA'>
+  <t><rmrsbankitem id="121">As spacecraft commander for Apollo XI, the first manned lunar landing mission, Armstrong was the first man to walk on the Moon.</rmrsbankitem> <rmrsbankitem id="122">"That's one small step for a man, one giant leap for mankind."</rmrsbankitem> <rmrsbankitem id="123">With these historic words, man's dream of the ages was fulfilled.</rmrsbankitem></t>
+  <h><rmrsbankitem id="4">Neil Armstrong was the first man who landed on the Moon.</rmrsbankitem></h>
+</pair>
+<pair id='462' value='FALSE' task='QA'>
+  <t><rmrsbankitem id="124">Cyrillic is an alphabet form that is derived from the Greek alphabet.</rmrsbankitem> <rmrsbankitem id="125">The characters in the script look substantially different from the Latin alphabet that is used throughout Western Europe.</rmrsbankitem></t>
+  <h><rmrsbankitem id="5">Cyrillic is an alphabet used for certain Slavic languages, such as Russian.</rmrsbankitem></h>
+</pair>
+<pair id='463' value='TRUE' task='QA'>
+  <t><rmrsbankitem id="126">Qin Shi Huang, personal name Zheng, was king of the Chinese State of Qin from 247 BCE to 221 BCE, and then the first emperor of a unified China from 221 BCE to 210 BCE, ruling under the name First Emperor.</rmrsbankitem></t>
+  <h><rmrsbankitem id="46">Qin Shi Huang was the first China Emperor.</rmrsbankitem></h>
+</pair>
+<pair id='464' value='FALSE' task='QA'>
+  <t><rmrsbankitem id="127">The Qin (from which the name China is derived) established the approximate boundaries and basic administrative system that all subsequent dynasties were to follow.</rmrsbankitem></t>
+  <h><rmrsbankitem id="47">Qin Shi Huang was the first Chinese Emperor.</rmrsbankitem></h>
+</pair>
+<pair id='465' value='TRUE' task='QA'>
+  <t><rmrsbankitem id="128">Following the Israel-Egypt Peace Treaty of 1979, Israel agreed to withdraw from the Sinai Peninsula, in exchange for peace with its neighbor.</rmrsbankitem> <rmrsbankitem id="129">For over two decades, the Sinai Peninsula was home to about 7,000 Israelis.</rmrsbankitem></t>
+  <h><rmrsbankitem id="48">The Israel-Egypt Peace Agreement was signed in 1979.</rmrsbankitem></h>
+</pair>
+<pair id='466' value='FALSE' task='QA'>
+  <t><rmrsbankitem id="130">Canada and the United States signed an agreement on January 30, 1979, to amend the treaty to allow subsistence hunting of waterfowl.</rmrsbankitem></t>
+  <h><rmrsbankitem id="48">The Israel-Egypt Peace Agreement was signed in 1979.</rmrsbankitem></h>
+</pair>
+<pair id='467' value='TRUE' task='QA'>
+  <t><rmrsbankitem id="131">In 1979, the leaders signed the Egypt-Israel peace treaty on the White House lawn.</rmrsbankitem> <rmrsbankitem id="132">Both President Begin and Sadat received the Nobel Peace Prize for their work.</rmrsbankitem> <rmrsbankitem id="133">The two nations have enjoyed peaceful relations to this day.</rmrsbankitem></t>
+  <h><rmrsbankitem id="48">The Israel-Egypt Peace Agreement was signed in 1979.</rmrsbankitem></h>
+</pair>
+<pair id='468' value='FALSE' task='QA'>
+  <t><rmrsbankitem id="134">President George W. Bush, who gave the keynote address and introduced his father, raved about the vessel: "She is unrelenting, she unshakeable, she is unyielding, she is unstoppable.</rmrsbankitem> <rmrsbankitem id="135">In fact, she should have been named the Barbara Bush."</rmrsbankitem></t>
+  <h><rmrsbankitem id="7">The name of George H.W. Bush's wife is Barbara.</rmrsbankitem></h>
+</pair>
+<pair id='469' value='TRUE' task='QA'>
+  <t><rmrsbankitem id="136">George Herbert Walker Bush (born June 12, 1924) is the former 41st President of the United States of America.</rmrsbankitem> <rmrsbankitem id="137">Almost immediately upon his return from the war in December 1944, George Bush married Barbara Pierce.</rmrsbankitem></t>
+  <h><rmrsbankitem id="7">The name of George H.W. Bush's wife is Barbara.</rmrsbankitem></h>
+</pair>
+<pair id='470' value='TRUE' task='QA'>
+  <t><rmrsbankitem id="138">Gabriel Garcia Marquez is the author of "One Hundred Years of Solitude", "The Autumn of the Patriarch" and other novels.</rmrsbankitem></t>
+  <h><rmrsbankitem id="49">Gabriel Garcia Marquez is a novelist and writer.</rmrsbankitem></h>
+</pair>
+<pair id='471' value='FALSE' task='QA'>
+  <t><rmrsbankitem id="139">Gabriel Garcia Marquez was a liberal thinker whose left-wing politics angered many conservative politicians and heads of state.</rmrsbankitem> <rmrsbankitem id="140">His job as a reporter for the Cuban news agency Prensa Latina, in 1960, and and friendship with Fidel Castro resulted in his being ultimately denied entry to the United States for political reasons.</rmrsbankitem></t>
+  <h><rmrsbankitem id="50">Gabriel Garcia Marquez was a conservative politician.</rmrsbankitem></h>
+</pair>
+<pair id='472' value='TRUE' task='QA'>
+  <t><rmrsbankitem id="141">In 1867, Nobel obtained a patent on a special type of nitroglycerine, which he called "dynamite".</rmrsbankitem> <rmrsbankitem id="142">The invention quickly proved its usefulness in building and construction in many countries.</rmrsbankitem></t>
+  <h><rmrsbankitem id="51">Alfred Nobel is the inventor of dynamite.</rmrsbankitem></h>
+</pair>
+<pair id='473' value='TRUE' task='QA'>
+  <t><rmrsbankitem id="143">Experimenting on a raft anchored on the river Elbe, Alfred Nobel tries to make nitroglycerine safer to handle.</rmrsbankitem> <rmrsbankitem id="144">Finds that the addition of kieselguhr turns nitroglycerine into a dough that can be kneaded, and calls it "dynamite".</rmrsbankitem></t>
+  <h><rmrsbankitem id="51">Alfred Nobel is the inventor of dynamite.</rmrsbankitem></h>
+</pair>
+<pair id='474' value='FALSE' task='QA'>
+  <t><rmrsbankitem id="145">A British Dynamite Company (Ardeer, Scotland, UK) is founded.</rmrsbankitem> <rmrsbankitem id="146">In 1877 the company name was changed to Nobel's Explosives Company.</rmrsbankitem></t>
+  <h><rmrsbankitem id="51">Alfred Nobel is the inventor of dynamite.</rmrsbankitem></h>
+</pair>
+<pair id='475' value='FALSE' task='QA'>
+  <t><rmrsbankitem id="147">Euro Disney is one of the most popular theme parks of USA.</rmrsbankitem></t>
+  <h><rmrsbankitem id="52">Euro-Disney is an Entertainment Park.</rmrsbankitem></h>
+</pair>
+<pair id='476' value='TRUE' task='QA'>
+  <t><rmrsbankitem id="148">The Disneyland of Europe is located 20 miles east of Paris.</rmrsbankitem> <rmrsbankitem id="149">Euro Disney is a huge complex with hotels, restaurants, shops and a nearby golf course apart from the actual theme park.</rmrsbankitem> <rmrsbankitem id="150">It provides a much better experience than its American cousin thanks to the marvels of modern engineering.</rmrsbankitem></t>
+  <h><rmrsbankitem id="52">Euro-Disney is an Entertainment Park.</rmrsbankitem></h>
+</pair>
+<pair id='477' value='TRUE' task='QA'>
+  <t><rmrsbankitem id="151">Charles de Gaulle died in 1970 at the age of eighty.</rmrsbankitem> <rmrsbankitem id="152">He was thus fifty years old when, as an unknown officer recently promoted to the (temporary) rank of brigadier general, he made his famous broadcast from London rejecting the capitulation of France to the Nazis after the debacle of May-June 1940.</rmrsbankitem></t>
+  <h><rmrsbankitem id="53">Charles de Gaulle died in 1970.</rmrsbankitem></h>
+</pair>
+<pair id='478' value='FALSE' task='QA'>
+  <t><rmrsbankitem id="153">Charles de Gaulle retired as an earl and died in November.</rmrsbankitem> <rmrsbankitem id="154">He wished a simple funeral for himself: he would be buried in his village in a seventy-two dollar oak coffin, borne to his grave by his fellow villagers-a butcher's assistant, a cheesemaker, and a farmhand.</rmrsbankitem></t>
+  <h><rmrsbankitem id="53">Charles de Gaulle died in 1970.</rmrsbankitem></h>
+</pair>
+<pair id='479' value='FALSE' task='QA'>
+  <t><rmrsbankitem id="155">Genevieve de Gaulle-Anthonics, 81, niece of the late Charles de Gaulle, died in Paris on February 14, 2002.</rmrsbankitem> <rmrsbankitem id="156">She joined the French resistance when the Germans occupied Paris.</rmrsbankitem></t>
+  <h><rmrsbankitem id="53">Charles de Gaulle died in 1970.</rmrsbankitem></h>
+</pair>
+<pair id='480' value='FALSE' task='QA'>
+  <t><rmrsbankitem id="157">The Argentinian propaganda made the Gurkhas out to be evil savages who ate their PoW's.</rmrsbankitem> <rmrsbankitem id="158">However instead of causing the Argentinian conscripts fight to the end, it caused them to run away, the Gurkhas never saw more than brief token resistance.</rmrsbankitem></t>
+  <h><rmrsbankitem id="9">The Gurkhas come from Nepal.</rmrsbankitem></h>
+</pair>
+<pair id='481' value='TRUE' task='QA'>
+  <t><rmrsbankitem id="159">The Gurkhas come from mountainous Nepal and are extremely tenacious warriors-as foot soldiers they are the best only in close combat jungle/mountain combat and hand to hand type situation.</rmrsbankitem></t>
+  <h><rmrsbankitem id="9">The Gurkhas come from Nepal.</rmrsbankitem></h>
+</pair>
+<pair id='482' value='TRUE' task='QA'>
+  <t><rmrsbankitem id="160">Arromanches-les-Bains or simply Arromanches is a town in Normandy, France, located on the coast in the heart of the area where the Normandy landings took place on D-Day, on June 6, 1944.</rmrsbankitem></t>
+  <h><rmrsbankitem id="10">The Normandy landings took place in June 1944.</rmrsbankitem></h>
+</pair>
+<pair id='483' value='FALSE' task='QA'>
+  <t><rmrsbankitem id="161">The D-Day was the largest seaborne invasion force ever assembled headed for France on June 6th 1944.</rmrsbankitem></t>
+  <h><rmrsbankitem id="10">The Normandy landings took place in June 1944.</rmrsbankitem></h>
+</pair>
+<pair id='484' value='TRUE' task='QA'>
+  <t><rmrsbankitem id="162">Kohl participated in the late stage of WWII as a teenage soldier.</rmrsbankitem> <rmrsbankitem id="163">He joined the Christian-Democratic Union (CDU) in 1947.</rmrsbankitem></t>
+  <h><rmrsbankitem id="11">The name of Helmut Kohl's political party is the Christian Democratic Union.</rmrsbankitem></h>
+</pair>
+<pair id='485' value='FALSE' task='QA'>
+  <t><rmrsbankitem id="164">An American journalist of Russian descent, Klebnikov was shot four times by at least one assassin in a passing car as he stepped outside his office that evening in Moscow.</rmrsbankitem> <rmrsbankitem id="165">He died shortly after arriving at City Hospital No. 20 in Moscow.</rmrsbankitem></t>
+  <h><rmrsbankitem id="54">Vladislav Listyev was murdered in Moscow.</rmrsbankitem></h>
+</pair>
+<pair id='486' value='FALSE' task='QA'>
+  <t><rmrsbankitem id="164">An American journalist of Russian descent, Klebnikov was shot four times by at least one assassin in a passing car as he stepped outside his office that evening in Moscow.</rmrsbankitem></t>
+  <h><rmrsbankitem id="54">Vladislav Listyev was murdered in Moscow.</rmrsbankitem></h>
+</pair>
+<pair id='487' value='TRUE' task='QA'>
+  <t><rmrsbankitem id="166">Russian Public Television head Vladislav Listyev is shot in the heart by an unknown gunman outside his Moscow home.</rmrsbankitem> <rmrsbankitem id="167">The attack is linked to opponents of an advertising ban he had proposed for the television channel.</rmrsbankitem></t>
+  <h><rmrsbankitem id="54">Vladislav Listyev was murdered in Moscow.</rmrsbankitem></h>
+</pair>
+<pair id='488' value='TRUE' task='QA'>
+  <t><rmrsbankitem id="168">The final major piece of comet Shoemaker-Levy 9 was to hit just after midnight, completing a ring of crater-like plumes of swirling superheated gas and debris thousands of miles across.</rmrsbankitem> <rmrsbankitem id="169">"It hit Jupiter like a string of machine-gun bullets" said Eugene Shoemaker, an astronomer at the Lowell Observatory in Flagstaff, Ariz., who helped discover the comet last year.</rmrsbankitem></t>
+  <h><rmrsbankitem id="55">The Shoemaker-Levy comet hit Jupiter.</rmrsbankitem></h>
+</pair>
+<pair id='489' value='TRUE' task='QA'>
+  <t><rmrsbankitem id="170">You rifle through your visual memory and there it is: Vermeer, the 17th-Century Dutch artist who painted extraordinary portraits of women engaged in the ordinary - writing a letter, making lace or putting on a necklace of pearls.</rmrsbankitem></t>
+  <h><rmrsbankitem id="56">Vermeer is a 17th-Century Dutch artist.</rmrsbankitem></h>
+</pair>
+<pair id='490' value='TRUE' task='QA'>
+  <t><rmrsbankitem id="69">A collection of real-life testimonies by Klaus Pohl, one of Germany's most performed dramatists, its power resides less in the conventional meaning of the word drama than in what it reveals - a country still deeply at odds with itself, a kaleidoscope of events that flatters neither side, neither Western capitalism nor the former communist regime.</rmrsbankitem></t>
+  <h><rmrsbankitem id="57">Klaus Pohl is a German dramatist.</rmrsbankitem></h>
+</pair>
+<pair id='491' value='TRUE' task='QA'>
+  <t><rmrsbankitem id="171">In India, carpets are made mostly in Uttar Pradesh, which adopted a "Child Labour Abolition and Regulation Act" in 1986.</rmrsbankitem></t>
+  <h><rmrsbankitem id="58">The Child Labour Abolition and Regulation Act was adopted in 1986.</rmrsbankitem></h>
+</pair>
+<pair id='492' value='FALSE' task='QA'>
+  <t><rmrsbankitem id="172">Victor Emmanuel was born on Nov. 11, 1869, in Naples.</rmrsbankitem> <rmrsbankitem id="173">After his father, Umberto I, was assassinated in 1900, Victor Emmanuel succeeded to the throne.</rmrsbankitem></t>
+  <h><rmrsbankitem id="59">Victor Emmanuel III was king of Italy from 1900 to 1946.</rmrsbankitem></h>
+</pair>
+<pair id='493' value='TRUE' task='QA'>
+  <t><rmrsbankitem id="174">King Victor Emmanuel III of Italy reigned from 1900 to 1946.</rmrsbankitem></t>
+  <h><rmrsbankitem id="59">Victor Emmanuel III was king of Italy from 1900 to 1946.</rmrsbankitem></h>
+</pair>
+<pair id='494' value='FALSE' task='QA'>
+  <t><rmrsbankitem id="175">Victor Emmanuel III yielded most of his powers to his son Umberto II in 1944, when Umberto was appointed as Lieutenant General of the Realm, and finally abdicated in 1946.</rmrsbankitem></t>
+  <h><rmrsbankitem id="59">Victor Emmanuel III was king of Italy from 1900 to 1946.</rmrsbankitem></h>
+</pair>
+<pair id='495' value='TRUE' task='QA'>
+  <t><rmrsbankitem id="176">Victor Emmanuel III, 1869-1947, king of Italy (1900-1946), emperor of Ethiopia (1936-43), king of Albania (1939-43), son and successor of Humbert I.</rmrsbankitem></t>
+  <h><rmrsbankitem id="59">Victor Emmanuel III was king of Italy from 1900 to 1946.</rmrsbankitem></h>
+</pair>
+<pair id='496' value='TRUE' task='QA'>
+  <t><rmrsbankitem id="177">Franz Liszt (Hungarian: Liszt Ferenc) was a Hungarian/Austrian virtuoso pianist and composer who lived from 1811 to 1886.</rmrsbankitem> <rmrsbankitem id="178">Liszt is widely considered to be one of the greatest piano virtuosi of all time, and certainly the most famous of the nineteenth century.</rmrsbankitem></t>
+  <h><rmrsbankitem id="60">Franz Liszt lived from 1811 to 1886.</rmrsbankitem></h>
+</pair>
+<pair id='497' value='FALSE' task='QA'>
+  <t><rmrsbankitem id="179">The Altenburg is located in the Jenaer street which lies just outside of Weimar's city centre beyond the Ilm park.</rmrsbankitem> <rmrsbankitem id="180">It was built in 1810-1811 and during the years following 1848, Princess Carolyne of Sayn Wittgenstein and her husband, Franz Liszt, lived there.</rmrsbankitem></t>
+  <h><rmrsbankitem id="60">Franz Liszt lived from 1811 to 1886.</rmrsbankitem></h>
+</pair>
+<pair id='498' value='TRUE' task='QA'>
+  <t><rmrsbankitem id="181">Franz Liszt, a Hungarian composer who lived from 1811 to 1886 was the equivalent of a rock star in his day.</rmrsbankitem> <rmrsbankitem id="182">His piano compositions were extremely popular and he often gave concerts to his multitude of fans.</rmrsbankitem> <rmrsbankitem id="183">Liszt was also the pioneer of many musical techniques, including the symphonic poem and the technique of transforming themes.</rmrsbankitem></t>
+  <h><rmrsbankitem id="60">Franz Liszt lived from 1811 to 1886.</rmrsbankitem></h>
+</pair>
+<pair id='499' value='TRUE' task='QA'>
+  <t><rmrsbankitem id="184">Aeschylus was born in 525 BC, and spent his youth as a soldier in the Athenian army.</rmrsbankitem> <rmrsbankitem id="185">He wrote The Persians when he was 53 years old, but it is his earliest surviving work.</rmrsbankitem></t>
+  <h><rmrsbankitem id="17">"The Persians" was written by Aeschylus.</rmrsbankitem></h>
+</pair>
+<pair id='500' value='FALSE' task='QA'>
+  <t><rmrsbankitem id="186">To write "The Persians," which opens Thursday at the Aurora Theatre in Berkeley, Ellen McLaughlin spent six days.</rmrsbankitem> <rmrsbankitem id="187">Given the direction of U.S. foreign policy, McLaughlin says, the lessons of "The Persians" are particularly crucial today, 2,500 years after it was written.</rmrsbankitem></t>
+  <h><rmrsbankitem id="17">"The Persians" was written by Aeschylus.</rmrsbankitem></h>
+</pair>
+<pair id='501' value='FALSE' task='QA'>
+  <t><rmrsbankitem id="188">The brother-in-law of Mohammad Oreibi al-Khalifa, the new chief judge in the genocide trial of Saddam Hussein, has been shot dead, police sources say.</rmrsbankitem></t>
+  <h><rmrsbankitem id="61">Mohammad Khalifa's father-in-law is Osama Bin Laden.</rmrsbankitem></h>
+</pair>
+<pair id='502' value='FALSE' task='QA'>
+  <t><rmrsbankitem id="189">A Muslim charity in the Philippines that was supported by bin Laden and run by a brother-in-law, Mohammad Jamal Khalifa, financed Shah and the other plotters.</rmrsbankitem></t>
+  <h><rmrsbankitem id="61">Mohammad Khalifa's father-in-law is Osama Bin Laden.</rmrsbankitem></h>
+</pair>
+<pair id='503' value='TRUE' task='QA'>
+  <t><rmrsbankitem id="190">Spirou was created in 1938 by Rob-Vel, who sold the rights to the Dupuis publishing house in early 40's.</rmrsbankitem> <rmrsbankitem id="191">Other artists like Jije (Joseph Gillain) took care of the feature.</rmrsbankitem></t>
+  <h><rmrsbankitem id="62">Spirou was created by Rob-Vel.</rmrsbankitem></h>
+</pair>
+<pair id='504' value='FALSE' task='QA'>
+  <t><rmrsbankitem id="192">Tintin, the Smurfs, Boule et Bill, Astérix, Natacha, Spirou and other legendary characters were created by talented artists like Hergé, Morris, Franquin and Walthéry.</rmrsbankitem></t>
+  <h><rmrsbankitem id="62">Spirou was created by Rob-Vel.</rmrsbankitem></h>
+</pair>
+<pair id='505' value='TRUE' task='QA'>
+  <t><rmrsbankitem id="193">Mars is considered the red planet because of its bright red color.</rmrsbankitem></t>
+  <h><rmrsbankitem id="63">Mars is called 'the red planet'.</rmrsbankitem></h>
+</pair>
+<pair id='506' value='TRUE' task='QA'>
+  <t><rmrsbankitem id="194">The planet probably got this name due to its red color; Mars is sometimes referred to as 'the Red Planet'.</rmrsbankitem></t>
+  <h><rmrsbankitem id="63">Mars is called 'the red planet'.</rmrsbankitem></h>
+</pair>
+<pair id='507' value='FALSE' task='QA'>
+  <t><rmrsbankitem id="195">The Red Planet is thought to have no magnetic field.</rmrsbankitem> <rmrsbankitem id="196">It has the greenhouse effect which raises the temperature about 5 degrees.</rmrsbankitem> <rmrsbankitem id="197">It has a very thin atmosphere consisting of 95.3% carbon dioxide, 2.7% nitrogen, 1.6% argon, 0.15% oxygen, and 0.03% water.</rmrsbankitem></t>
+  <h><rmrsbankitem id="64">Mars is called the red planet.</rmrsbankitem></h>
+</pair>
+<pair id='508' value='TRUE' task='QA'>
+  <t><rmrsbankitem id="198">Theravada Buddhism is the official religion of Thailand and is the religion of about 95% of its people.</rmrsbankitem> <rmrsbankitem id="199">The government permits religious diversity, and other major religions are represented.</rmrsbankitem> <rmrsbankitem id="200">Spirit worship and animism are widely practiced.</rmrsbankitem></t>
+  <h><rmrsbankitem id="65">The official religion of Thailand is Theravada Buddhism.</rmrsbankitem></h>
+</pair>
+<pair id='509' value='FALSE' task='QA'>
+  <t><rmrsbankitem id="201">Thailand's official religion is Buddhism which claims the allegiance of most Thai people.</rmrsbankitem> <rmrsbankitem id="202">Their cultural identity seems almost inseparably intertwined with Buddhist traditions.</rmrsbankitem> <rmrsbankitem id="203">The people practice folk Buddhism which includes and elaborate system of spirit worship.</rmrsbankitem></t>
+  <h><rmrsbankitem id="65">The official religion of Thailand is Theravada Buddhism.</rmrsbankitem></h>
+</pair>
+<pair id='510' value='FALSE' task='QA'>
+  <t><rmrsbankitem id="204">The official religion is Theravada Buddhism, which is also practiced in neighboring Laos, Thailand, Burma and Sri Lanka.</rmrsbankitem></t>
+  <h><rmrsbankitem id="65">The official religion of Thailand is Theravada Buddhism.</rmrsbankitem></h>
+</pair>
+<pair id='511' value='TRUE' task='QA'>
+  <t><rmrsbankitem id="205">French is the mother tongue of 80.9 percent of Québeckers, while 7.8 percent cite English as their mother tongue.</rmrsbankitem></t>
+  <h><rmrsbankitem id="18">French is the most widely spoken language in Québec.</rmrsbankitem></h>
+</pair>
+<pair id='512' value='TRUE' task='QA'>
+  <t><rmrsbankitem id="206">Please note that Arabic is the language of Quran so it's better to learn it to understand clearly all the miracles in Quran.</rmrsbankitem></t>
+  <h><rmrsbankitem id="66">Arabic is the language of the Quran.</rmrsbankitem></h>
+</pair>
+<pair id='513' value='TRUE' task='QA'>
+  <t><rmrsbankitem id="207">The Arabic Language is the door to Islam and the Language of the holy Quran and Prophetic traditions.</rmrsbankitem> <rmrsbankitem id="208">Therefore, distancing ourselves from Arabic studies leads to innovation and disbelief.</rmrsbankitem></t>
+  <h><rmrsbankitem id="66">Arabic is the language of the Quran.</rmrsbankitem></h>
+</pair>
+<pair id='514' value='FALSE' task='QA'>
+  <t><rmrsbankitem id="209">The Norwegian Newspaper Corpus is a large and self-expanding corpus of Norwegian newspaper texts.</rmrsbankitem> <rmrsbankitem id="210">The collection of this dynamic and continually growing corpus began in 1998.</rmrsbankitem></t>
+  <h><rmrsbankitem id="67">Dagbladet is a Norwegian newspaper.</rmrsbankitem></h>
+</pair>
+<pair id='515' value='TRUE' task='QA'>
+  <t><rmrsbankitem id="211">The Norwegian newspaper Dagbladet printed an article about the "intolerance page".</rmrsbankitem></t>
+  <h><rmrsbankitem id="67">Dagbladet is a Norwegian newspaper.</rmrsbankitem></h>
+</pair>
+<pair id='516' value='TRUE' task='QA'>
+  <t><rmrsbankitem id="212">The biggest newspaper in Norway, Verdens Gang, prints a letter to the editor written by Joe Harrington and myself.</rmrsbankitem></t>
+  <h><rmrsbankitem id="68">Verdens Gang is a Norwegian newspaper.</rmrsbankitem></h>
+</pair>
+<pair id='517' value='TRUE' task='QA'>
+  <t><rmrsbankitem id="213">A number of undergraduate schools and colleges have also received it, as has the French Red-Cross, the abbey of Notre-Dame des Dombes, and the French railway company SNCF.</rmrsbankitem></t>
+  <h><rmrsbankitem id="69">The French railway company is called SNCF.</rmrsbankitem></h>
+</pair>
+<pair id='518' value='FALSE' task='QA'>
+  <t><rmrsbankitem id="214">Note that SBB, CFF and FFS stand out for the main railway company, in German, French and Italian.</rmrsbankitem></t>
+  <h><rmrsbankitem id="69">The French railway company is called SNCF.</rmrsbankitem></h>
+</pair>
+<pair id='519' value='FALSE' task='QA'>
+  <t><rmrsbankitem id="215">At the 1932 Olympic Games in Los Angeles, Didrikson won gold medals in the javelin (Olympic record) and 80-meter hurdles (world record), along with a silver in the high jump (share of the world record).</rmrsbankitem></t>
+  <h><rmrsbankitem id="70">2,45 m is the world record in the high jump.</rmrsbankitem></h>
+</pair>
+<pair id='520' value='FALSE' task='QA'>
+  <t><rmrsbankitem id="216">Beamon's jump was a world record that eclipsed the previous record by 21 3/4 inches.</rmrsbankitem> <rmrsbankitem id="217">The jump still stands as an Olympic record, and stood as a world record until Mike Powell leapt 29' 4 1/2" at the 1991 World Championships in Tokyo.</rmrsbankitem></t>
+  <h><rmrsbankitem id="70">2,45 m is the world record in the high jump.</rmrsbankitem></h>
+</pair>
+<pair id='521' value='FALSE' task='QA'>
+  <t><rmrsbankitem id="218">February 4, 2005, Iraq.</rmrsbankitem> <rmrsbankitem id="219">With more than two-thirds of the 3.3 million votes counted in the Iraqi legislative election, the United Iraqi Alliance has a considerable lead over interim Iraqi Prime Minister Iyad Allawi's Iraqi List which trails with approximately 17% of the current tally.</rmrsbankitem></t>
+  <h><rmrsbankitem id="71">The first free elections in Iraq were held in January 2005.</rmrsbankitem></h>
+</pair>
+<pair id='522' value='FALSE' task='QA'>
+  <t><rmrsbankitem id="220">Taiwan's former president Lee Teng-hui, the spiritual leader of the pro-independence TSU, and Premier Frank Hsieh, a member of the Democratic Progressive Party, are also taking part in the march.</rmrsbankitem></t>
+  <h><rmrsbankitem id="72">Chen Shui-bian is the new President of Taiwan.</rmrsbankitem></h>
+</pair>
+<pair id='523' value='FALSE' task='QA'>
+  <t><rmrsbankitem id="221">The current President of Brazilian Central Bank, Henrique Meirelles, is accused of financial fraud among other accusations.</rmrsbankitem></t>
+  <h><rmrsbankitem id="73">The current President of Honduras is Manuel Zelaya.</rmrsbankitem></h>
+</pair>
+<pair id='524' value='FALSE' task='QA'>
+  <t><rmrsbankitem id="222">Geoscience Australia said the 5.3 quake did not generate a tsunami.</rmrsbankitem> <rmrsbankitem id="223">The 2004 Indian Ocean earthquake, which had a magnitude of 9.0, triggered a series of lethal tsunamis on December 26, 2004 that killed over 270,000 people, making it the deadliest tsunami in recorded history.</rmrsbankitem></t>
+  <h><rmrsbankitem id="74">A tsunami is a series of waves created when a body of water rapidly displaced on a massive scale.</rmrsbankitem></h>
+</pair>
+<pair id='525' value='FALSE' task='QA'>
+  <t><rmrsbankitem id="224">Switzerland has ratified bilateral agreements with the members of the European Union in March 2004, but the new members (Cyprus, Czech Republic, Estonia, Hungary, Latvia, Lithuania, Malta, Poland, Slovakia and Slovenia) were not included in the deal.</rmrsbankitem></t>
+  <h><rmrsbankitem id="75">Lithuania intends to introduce the use of the Euro as an official currency on January 1, 2007.</rmrsbankitem></h>
+</pair>
+<pair id='526' value='FALSE' task='QA'>
+  <t><rmrsbankitem id="225">It is outstripped only by Denmark, the Netherlands, Belgium, Sweden, Finland and France, and thus ranks 7th in the 25-member European Union in terms of broadband Internet penetration.</rmrsbankitem></t>
+  <h><rmrsbankitem id="76">12 members of the European Union use the Euro instead of their own national currencies.</rmrsbankitem></h>
+</pair>
+<pair id='527' value='FALSE' task='QA'>
+  <t><rmrsbankitem id="226">The documents commented by the magazine date of April 25, 2002, epoch in which the Brazilian president was Fernando Henrique Cardoso.</rmrsbankitem></t>
+  <h><rmrsbankitem id="20">The Brazilian President is Luiz Inácio Lula da Silva.</rmrsbankitem></h>
+</pair>
+<pair id='528' value='FALSE' task='QA'>
+  <t><rmrsbankitem id="227">Gamma ray bursts are some of the most powerful objects observed in the Universe and are thought to signal the birth of black holes.</rmrsbankitem> <rmrsbankitem id="228">Swift is designed to detect the bursts and automatically re-orient itself to gather images and data of the phenomenon.</rmrsbankitem></t>
+  <h><rmrsbankitem id="77">Gamma rays are forms of electromagnetic radiation.</rmrsbankitem></h>
+</pair>
+<pair id='529' value='TRUE' task='QA'>
+  <t><rmrsbankitem id="229">Most recently, US Secretary of State Condoleezza Rice called North Korea an "outpost of tyranny" enraging Kim Jong-il, the leader of North Korea.</rmrsbankitem></t>
+  <h><rmrsbankitem id="78">Condoleezza Rice is the U.S. Secretary of State.</rmrsbankitem></h>
+</pair>
+<pair id='530' value='TRUE' task='QA'>
+  <t><rmrsbankitem id="230">U.S. Secretary of State Condoleeza Rice has expressed her anger after a meeting with Sudanese President Omar Hassan al-Bashir, during which her aides and staff were mistreated by Sudanese security agents.</rmrsbankitem></t>
+  <h><rmrsbankitem id="78">Condoleezza Rice is the U.S. Secretary of State.</rmrsbankitem></h>
+</pair>
+<pair id='531' value='FALSE' task='QA'>
+  <t><rmrsbankitem id="231">James Wilkinson, Ms. Rice's communications director, was shoved against a wall by guards as he tried to enter the meeting.</rmrsbankitem></t>
+  <h><rmrsbankitem id="78">Condoleezza Rice is the U.S. Secretary of State.</rmrsbankitem></h>
+</pair>
+<pair id='532' value='FALSE' task='QA'>
+  <t><rmrsbankitem id="232">Romania currently supplies one of the world's largest contingents of troops in Iraq, with nearly 1000 people.</rmrsbankitem></t>
+  <h><rmrsbankitem id="23">Romania sent 730 troops in Iraq.</rmrsbankitem></h>
+</pair>
+<pair id='533' value='TRUE' task='QA'>
+  <t><rmrsbankitem id="233">Don Brash leader of the New Zealand National Party said that the White Crusaders of the Racial Holy War are "a small, fascist underbelly, hell-bent on causing division and destroying New Zealand's egalitarian ethos."</rmrsbankitem></t>
+  <h><rmrsbankitem id="79">Don Brash is the leader of the New Zealand National Party.</rmrsbankitem></h>
+</pair>
+<pair id='534' value='FALSE' task='QA'>
+  <t><rmrsbankitem id="234">Alternately known as brash, emotional and brilliant, the maverick Kasparov could be a formidable opponent in the realm of politics.</rmrsbankitem></t>
+  <h><rmrsbankitem id="79">Don Brash is the leader of the New Zealand National Party.</rmrsbankitem></h>
+</pair>
+<pair id='535' value='FALSE' task='QA'>
+  <t><rmrsbankitem id="235">NASA's Saturn exploration spacecraft, Cassini, has discovered an atmosphere about the moon Enceladus.</rmrsbankitem> <rmrsbankitem id="236">This is the first such discovery by Cassini, other than Titan, of the presence of an atmosphere around a Saturn moon.</rmrsbankitem></t>
+  <h><rmrsbankitem id="24">Titan is the fifteenth of Saturn's known satellites.</rmrsbankitem></h>
+</pair>
+<pair id='536' value='TRUE' task='QA'>
+  <t><rmrsbankitem id="237">The beleaguered Euro-Disney theme park outside Paris is doing so poorly it might have to close unless it gets help soon from its lenders, the chairman of Walt Disney Co. said in an interview published Friday.</rmrsbankitem></t>
+  <h><rmrsbankitem id="80">Euro-Disney is a theme park outside Paris.</rmrsbankitem></h>
+</pair>
+<pair id='537' value='TRUE' task='QA'>
+  <t><rmrsbankitem id="238">The Pharos, a monumental lighthouse built around 280 BC and standing 330 ft high, lit the entrance to Alexandria harbour for centuries, but archeologists have never been able to identify positively any remains.</rmrsbankitem></t>
+  <h><rmrsbankitem id="81">The Pharos Lighthouse was located in Alexandria.</rmrsbankitem></h>
+</pair>
+<pair id='538' value='TRUE' task='QA'>
+  <t><rmrsbankitem id="238">The Pharos, a monumental lighthouse built around 280 BC and standing 330 ft high, lit the entrance to Alexandria harbour for centuries, but archeologists have never been able to identify positively any remains.</rmrsbankitem></t>
+  <h><rmrsbankitem id="82">The Pharos Lighthouse was built around 280 BC.</rmrsbankitem></h>
+</pair>
+<pair id='539' value='TRUE' task='QA'>
+  <t><rmrsbankitem id="239">Lin Piao, after all, was the creator of Mao's "Little Red Book" of quotations.</rmrsbankitem></t>
+  <h><rmrsbankitem id="83">Lin Piao wrote the "Little Red Book".</rmrsbankitem></h>
+</pair>
+<pair id='540' value='TRUE' task='QA'>
+  <t><rmrsbankitem id="240">New Delhi: More than 100 Nobel prize winners, two US congressmen, and leading labour organizations have expressed concern over threats against the life of Kailash Satyarthi, India's leading opponent of child labour.</rmrsbankitem></t>
+  <h><rmrsbankitem id="84">Kailash Satyarthi, India's leading opponent of child labour.</rmrsbankitem></h>
+</pair>
+<pair id='541' value='TRUE' task='QA'>
+  <t><rmrsbankitem id="241">The hurdler suspended in 1993 for taking the anabolic steroid Nandrolone was cleared after a three judge arbitration panel ruled that the case against her could not be proved beyond reasonable doubt.</rmrsbankitem></t>
+  <h><rmrsbankitem id="85">Nandrolone is a steroid.</rmrsbankitem></h>
+</pair>
+<pair id='542' value='TRUE' task='QA'>
+  <t><rmrsbankitem id="242">Even while accepting the Russian plan, IMF Managing Director Michel Camdessus noted that the efficiency of Russia's State Taxation Service "is declining rapidly."</rmrsbankitem></t>
+  <h><rmrsbankitem id="86">Michel Camdessus is managing director of IMF.</rmrsbankitem></h>
+</pair>
+<pair id='543' value='FALSE' task='QA'>
+  <t><rmrsbankitem id="243">Madrid: Luis Roldan, the former Spanish chief of police who fled the country 10 months ago after allegedly hiving off millions of pounds from secret government funds, was on his way home to a prison cell last night after being captured in Bangkok.</rmrsbankitem></t>
+  <h><rmrsbankitem id="87">Luis Roldan was director of police from 1986 to 1993.</rmrsbankitem></h>
+</pair>
+<pair id='544' value='TRUE' task='QA'>
+  <t><rmrsbankitem id="244">When the Berlin Wall fell in early November, 1989 Berlin's east and west sections were rejoined to create the third-largest city in Europe, with a population of about 3 million.</rmrsbankitem></t>
+  <h><rmrsbankitem id="88">The Berlin Wall was torn down in November, 1989.</rmrsbankitem></h>
+</pair>
+<pair id='545' value='TRUE' task='QA'>
+  <t><rmrsbankitem id="245">Rolf Ekeus the Swedish diplomat who chairs the commission said that while Baghdad had been cooperative in helping his panel establish procedures for monitoring and verifying the weapons destruction it is unclear how the Iraqis will react once the system is in operation.</rmrsbankitem></t>
+  <h><rmrsbankitem id="89">Rolf Ekeus is a Swedish diplomat.</rmrsbankitem></h>
+</pair>
+<pair id='546' value='FALSE' task='QA'>
+  <t><rmrsbankitem id="246">Heaney had joined 'a distinguished group of Irishmen, who have been honoured with this prize for their contribution to Irish literature in the twentieth century.'.</rmrsbankitem></t>
+  <h><rmrsbankitem id="90">Heaney was awarded the Nobel Prize for literature in 1995.</rmrsbankitem></h>
+</pair>
+<pair id='547' value='TRUE' task='QA'>
+  <t><rmrsbankitem id="247">For the case of Aldrich Hazen (Rick) Ames, and his Colombian-born wife, Maria del Rosario Casas Ames arrested by the FBI on charges that they were Russian spies, is so rich in mysteries, puzzles, riddles and contradictions that the answers may never be untangled even as the CIA's counterintell.</rmrsbankitem></t>
+  <h><rmrsbankitem id="91">Aldrich Hazen Ames is married to Rosario Casas Ames.</rmrsbankitem></h>
+</pair>
+<pair id='548' value='TRUE' task='QA'>
+  <t><rmrsbankitem id="248">Fest : "In the Name of the Father" an Academy Award contender starring Daniel Day-Lewis as a man wrongly convicted for an IRA bombing, won the Golden Bear Award for best picture Monday at the Berlin International Film Festival.</rmrsbankitem></t>
+  <h><rmrsbankitem id="92">The Berlin International Film Festival awards the Golden Bear.</rmrsbankitem></h>
+</pair>
+<pair id='549' value='TRUE' task='QA'>
+  <t><rmrsbankitem id="249">Since independence and the blood bath of partition, in which an estimated 15 million people were uprooted and 200,000 died, India and Pakistan have fought three wars, two over possession of Kashmir.</rmrsbankitem></t>
+  <h><rmrsbankitem id="93">India and Pakistan have fought three wars for the possession of Kashmir.</rmrsbankitem></h>
+</pair>
+<pair id='550' value='TRUE' task='QA'>
+  <t><rmrsbankitem id="250">Bukowski attracted the attention of John Martin who founded Black Sparrow Press in 1965 specifically to publish him.</rmrsbankitem></t>
+  <h><rmrsbankitem id="94">John Martin is the founder of Black Sparrow Press.</rmrsbankitem></h>
+</pair>
+<pair id='551' value='TRUE' task='QA'>
+  <t><rmrsbankitem id="251">New Zealand film director Peter Jackson is to make a 264-million-New Zealand-dollar (133 million U.S. dollars) trilogy based on Tolkien's fantasy classic "Lord of The Rings," the local TV station reported Tuesday evening.</rmrsbankitem></t>
+  <h><rmrsbankitem id="95">Tolkien wrote the fantasy epic called "Lord of the Rings".</rmrsbankitem></h>
+</pair>
+<pair id='552' value='FALSE' task='QA'>
+  <t><rmrsbankitem id="252">We look at the cool relationship between these two establishment families and how the party would fare with the son, Texas Gov. George W. Bush, and the wife, Elizabeth Dole, on the 2000 campaign trail.</rmrsbankitem></t>
+  <h><rmrsbankitem id="96">The name of George W. Bush's wife is Laura.</rmrsbankitem></h>
+</pair>
+<pair id='553' value='TRUE' task='QA'>
+  <t><rmrsbankitem id="253">Colin L. Powell and Laura Bush, wife of Gov. George W. Bush, are to speak on the opening night in Philadelphia, while the Democrats have tentative plans to have President Clinton and Hillary Rodham Clinton address the delegates on the first night in Los Angeles.</rmrsbankitem></t>
+  <h><rmrsbankitem id="96">The name of George W. Bush's wife is Laura.</rmrsbankitem></h>
+</pair>
+<pair id='554' value='FALSE' task='QA'>
+  <t><rmrsbankitem id="254">Nepali mountaineer Ang Rita Sherpa last week broke his own record of the number of climbing Mt.</rmrsbankitem> <rmrsbankitem id="255">Everest.</rmrsbankitem></t>
+  <h><rmrsbankitem id="97">Alison Hargreaves is the first woman to have made the climb up the Everest with no artificial oxygen.</rmrsbankitem></h>
+</pair>
+<pair id='555' value='TRUE' task='QA'>
+  <t><rmrsbankitem id="256">Not counting the 1986 catastrophe at Chernobyl, where the nuclear reactors are of a different design, the industry has so far succeeded.</rmrsbankitem></t>
+  <h><rmrsbankitem id="33">The catastrophe at Chernobyl happened in 1986.</rmrsbankitem></h>
+</pair>
+<pair id='556' value='TRUE' task='QA'>
+  <t><rmrsbankitem id="257">The Titanic sank in 1912 after striking an iceberg on its maiden voyage from Southampton, England, to New York.</rmrsbankitem></t>
+  <h><rmrsbankitem id="98">The Titanic sank in 1912.</rmrsbankitem></h>
+</pair>
+<pair id='557' value='TRUE' task='QA'>
+  <t><rmrsbankitem id="258">More than 1,500 people died when the Titanic sank in 1912.</rmrsbankitem></t>
+  <h><rmrsbankitem id="98">The Titanic sank in 1912.</rmrsbankitem></h>
+</pair>
+<pair id='558' value='TRUE' task='QA'>
+  <t><rmrsbankitem id="259">In the early hours of April 15, 1912, the British luxury liner Titanic sank in the North Atlantic off Newfoundland, less than three hours after striking an iceberg.</rmrsbankitem></t>
+  <h><rmrsbankitem id="98">The Titanic sank in 1912.</rmrsbankitem></h>
+</pair>
+<pair id='559' value='FALSE' task='QA'>
+  <t><rmrsbankitem id="260">The recovery of the capsule, which carried astronaut Virgil "Gus" Grissom on a brief suborbital flight on July 21, 1961, took place on the 30th anniversary of mankind's first moon landing.</rmrsbankitem></t>
+  <h><rmrsbankitem id="99">The moon was first touched by mankind in 1969.</rmrsbankitem></h>
+</pair>
+<pair id='560' value='TRUE' task='QA'>
+  <t><rmrsbankitem id="261">Thirty years ago [1969], Neil Armstrong took humanity's first small step on the moon, declaring it "one giant leap for mankind" only to have the space program retreat to tinkering in low Earth orbit.</rmrsbankitem></t>
+  <h><rmrsbankitem id="99">The moon was first touched by mankind in 1969.</rmrsbankitem></h>
+</pair>
+<pair id='561' value='FALSE' task='QA'>
+  <t><rmrsbankitem id="262">"If we could put a man on the moon within decades back in the 1960s, I think we can eliminate TB if we develop the will to do so" said O'Brien, who called for a significant investment for the research, particularly the large field trials necessary to demonstrate efficacy.</rmrsbankitem></t>
+  <h><rmrsbankitem id="99">The moon was first touched by mankind in 1969.</rmrsbankitem></h>
+</pair>
+<pair id='562' value='TRUE' task='QA'>
+  <t><rmrsbankitem id="263">In "Killing the Dream: James Earl Ray and the Assassination of Martin Luther King, JR.", by Gerald Posner (Harvest/Harcourt Brace, $15), the writer who attacked Kennedy conspiracy theories in "Case Closed" takes on Ray's claim of innocence in the 1968 murder of King.</rmrsbankitem></t>
+  <h><rmrsbankitem id="34">Martin Luther King was murdered in 1968.</rmrsbankitem></h>
+</pair>
+<pair id='563' value='TRUE' task='QA'>
+  <t><rmrsbankitem id="264">Polish-born Pope John Paul II, credited for inspiring Poland's return to democracy after more than 40 years of communism, is expected to dedicate the church during his visit next summer.</rmrsbankitem></t>
+  <h><rmrsbankitem id="100">Pope John Paul II was born in Poland.</rmrsbankitem></h>
+</pair>
+<pair id='564' value='FALSE' task='QA'>
+  <t><rmrsbankitem id="265">Unwilling to surrender his dream of beginning a Holy Land pilgrimage in Iraq, Pope John Paul II made a "virtual pilgrimage" Wednesday to Ur, the ancient city that is traditionally held to be the birthplace of Abraham.</rmrsbankitem></t>
+  <h><rmrsbankitem id="100">Pope John Paul II was born in Poland.</rmrsbankitem></h>
+</pair>
+<pair id='565' value='FALSE' task='QA'>
+  <t><headline>JERUSALEM (AP) - </headline><rmrsbankitem id="266">In a spiritual climax to his 22-year papacy, Pope John Paul II on Tuesday began the first official visit by a Roman Catholic pontiff to Israel, fulfilling his dream of visiting the land where Christ was born and died.</rmrsbankitem></t>
+  <h><rmrsbankitem id="100">Pope John Paul II was born in Poland.</rmrsbankitem></h>
+</pair>
+<pair id='566' value='TRUE' task='QA'>
+  <t><rmrsbankitem id="267">On Jan. 27, 1756, composer Wolfgang Amadeus Mozart was born in Salzburg, Austria.</rmrsbankitem></t>
+  <h><rmrsbankitem id="101">Wolfgang Amadeus Mozart was born in Salzburg.</rmrsbankitem></h>
+</pair>
+<pair id='567' value='FALSE' task='QA'>
+  <t><rmrsbankitem id="268">Standing off to one side, seeing all and hearing Mozart's music, which only he understands to be a manifestation of God's love, is Antonio Salieri, the ambitious Italian-born composer and conductor, a favorite at the imperial court in Vienna in 1781.</rmrsbankitem></t>
+  <h><rmrsbankitem id="101">Wolfgang Amadeus Mozart was born in Salzburg.</rmrsbankitem></h>
+</pair>
+<pair id='568' value='FALSE' task='QA'>
+  <t><rmrsbankitem id="269">Moreau, 72, received a Golden Bear award for lifetime achievement at the Berlin Film Festival Friday.</rmrsbankitem></t>
+  <h><rmrsbankitem id="102">The Golden Palm has been awarded at the Cannes film Festival.</rmrsbankitem></h>
+</pair>
+<pair id='569' value='FALSE' task='QA'>
+  <t><rmrsbankitem id="270">The Fifth Golden Rooster and Hundred Flowers Festival, to be held in southeast city of Kunming from October 9 to 13, will feature award-giving ceremonies, film exhibitions, as well as business exchanges.</rmrsbankitem></t>
+  <h><rmrsbankitem id="102">The Golden Palm has been awarded at the Cannes film Festival.</rmrsbankitem></h>
+</pair>
+<pair id='570' value='TRUE' task='QA'>
+  <t><rmrsbankitem id="271">President Bill Clinton on Tuesday passed the leadership of the Democratic Party to Vice President Al Gore, describing his deputy as the right person to be the first U.S. President of the 21st century.</rmrsbankitem></t>
+  <h><rmrsbankitem id="103">Bill Clinton belongs to the Democratic Party.</rmrsbankitem></h>
+</pair>
+<pair id='571' value='FALSE' task='QA'>
+  <t><rmrsbankitem id="272">He has borrowed a clutch of bright ideas from Bill Clinton's favorite think-tank, the Democratic Leadership Council, and endorsed Medicare reforms suggested by one of the Democratic Party's brightest luminaries, Louisiana's John Breaux.</rmrsbankitem></t>
+  <h><rmrsbankitem id="103">Bill Clinton belongs to the Democratic Party.</rmrsbankitem></h>
+</pair>
+<pair id='572' value='TRUE' task='QA'>
+  <t><rmrsbankitem id="273">Out of the seven expeditions who were permitted to climb the 8586-meter high Mt.</rmrsbankitem> <rmrsbankitem id="274">Kanchenjunga, only one climber from the United States succeeded.</rmrsbankitem></t>
+  <h><rmrsbankitem id="104">Kanchenjunga is 8586 meters high.</rmrsbankitem></h>
+</pair>
+<pair id='573' value='TRUE' task='QA'>
+  <t><rmrsbankitem id="275">A seven-member Tibetan mountaineering team conquered the 8,586-meter Mt.</rmrsbankitem> <rmrsbankitem id="276">Kanchenjunga, the third highest peak of the world, the Chinese mountaineering association confirmed here on Sunday.</rmrsbankitem></t>
+  <h><rmrsbankitem id="104">Kanchenjunga is 8586 meters high.</rmrsbankitem></h>
+</pair>
+<pair id='574' value='FALSE' task='QA'>
+  <t><rmrsbankitem id="277">The 10-men team is expected to arrive at the foot of the mountain in the end of April and began their journey to the 8,586-meter peak in early May.</rmrsbankitem></t>
+  <h><rmrsbankitem id="104">Kanchenjunga is 8586 meters high.</rmrsbankitem></h>
+</pair>
+<pair id='575' value='FALSE' task='QA'>
+  <t><rmrsbankitem id="278">The new moon, which is only about 25 miles in diameter, was actually photographed 13 years ago by the Voyager 2.</rmrsbankitem></t>
+  <h><rmrsbankitem id="105">The moon Titan has a diameter of 5100 kilometers.</rmrsbankitem></h>
+</pair>
+<pair id='576' value='FALSE' task='QA'>
+  <t><rmrsbankitem id="279">The newly suggested distance is much closer than the present positions at 2,870,972,200 kilometers from the sun for Uranus and 4,498,252,900 kilometers for Neptune.</rmrsbankitem></t>
+  <h><rmrsbankitem id="105">The moon Titan has a diameter of 5100 kilometers.</rmrsbankitem></h>
+</pair>
+<pair id='577' value='FALSE' task='QA'>
+  <t><rmrsbankitem id="280">Mars has the smallest confirmed moon, Deimos, which is about 7.5 miles in diameter.</rmrsbankitem></t>
+  <h><rmrsbankitem id="106">The terrestrial moon has a diameter of 3746 kilometers.</rmrsbankitem></h>
+</pair>
+<pair id='578' value='FALSE' task='QA'>
+  <t><rmrsbankitem id="281">Io is 2,236 miles (3,598 kilometers) in diameter, slightly larger than the Earth's moon.</rmrsbankitem></t>
+  <h><rmrsbankitem id="106">The terrestrial moon has a diameter of 3746 kilometers.</rmrsbankitem></h>
+</pair>
+<pair id='579' value='TRUE' task='QA'>
+  <t><rmrsbankitem id="282">Salma Hayek drew a crowd in Veracruz, Mexico, at the July 8 premiere of 'Nobody Writes to the Colonel', a movie based on a short novel by Nobel laureate Gabriel Garcia Marquez.</rmrsbankitem></t>
+  <h><rmrsbankitem id="107">Gabriel Garcia Marquez is a Nobel prize winner.</rmrsbankitem></h>
+</pair>
+<pair id='580' value='FALSE' task='QA'>
+  <t><rmrsbankitem id="283">He is like some great writers, from Charles Dickens to William Faulkner to Gabriel Garcia Marquez: the insistence on the value of the local leads to the universal.</rmrsbankitem></t>
+  <h><rmrsbankitem id="107">Gabriel Garcia Marquez is a Nobel prize winner.</rmrsbankitem></h>
+</pair>
+<pair id='581' value='TRUE' task='QA'>
+  <t><rmrsbankitem id="284">Two prominent scientists have made guest appearances on the show, paleontologist Stephen Jay Gould and Stephen Hawking, the theoretical physicist whose brilliance has been compared with Einstein's.</rmrsbankitem></t>
+  <h><rmrsbankitem id="38">Stephen Hawking is a physicist.</rmrsbankitem></h>
+</pair>
+<pair id='582' value='FALSE' task='QA'>
+  <t><rmrsbankitem id="285">"For Japanese yakuza, the most important thing is staying alive, and making money is second," the yakuza said.</rmrsbankitem></t>
+  <h><rmrsbankitem id="108">Yakuza are the Japanese mafia.</rmrsbankitem></h>
+</pair>
+<pair id='583' value='FALSE' task='QA'>
+  <t><rmrsbankitem id="286">Munir Mezyed, a poet and critic, aroused the sentiments and emotions of the audience when he recited his smooth flowing poetry both in Arabic and English, which demonstrated his unique and overwhelming style.</rmrsbankitem></t>
+  <h><rmrsbankitem id="109">Gotthold Ephraim Lessing lived from 1729 to 1781.</rmrsbankitem></h>
+</pair>
+<pair id='584' value='TRUE' task='QA'>
+  <t><rmrsbankitem id="287">The IOC meeting will also review reports submitted by the organizing committees of the 1998 Winter Olympic Games in Nagano, Japan; the 2000 Summer Olympic Games in Sydney, Australia and the 2002 Winter Olympic Games in the Salt Lake City, the United States, respectively.</rmrsbankitem></t>
+  <h><rmrsbankitem id="41">Before Salt Lake City, Winter Olympic Games took place in Nagano.</rmrsbankitem></h>
+</pair>
+<pair id='585' value='FALSE' task='QA'>
+  <t><rmrsbankitem id="288">Hodler claimed there were also irregularities in the campaigns organized by Atlanta for the 1996 Summer Games, Sydney for the Summer Olympics in 2000 and Salt Lake City for the 2002 Winter Games.</rmrsbankitem></t>
+  <h><rmrsbankitem id="41">Before Salt Lake City, Winter Olympic Games took place in Nagano.</rmrsbankitem></h>
+</pair>
+<pair id='586' value='TRUE' task='QA'>
+  <t><rmrsbankitem id="289">The stupendous power of the Tevatron made possible the 1995 discovery of the top quark - the last of six flavors of quarks predicted by the standard model theory of particle physics.</rmrsbankitem></t>
+  <h><rmrsbankitem id="110">The top quark is the last of six flavors of quarks predicted by the standard model theory of particle physics.</rmrsbankitem></h>
+</pair>
+<pair id='587' value='FALSE' task='QA'>
+  <t><rmrsbankitem id="290">The bet, which won him dinner for four, was regarding the existence and mass of the top quark, an elementary particle discovered in 1995.</rmrsbankitem></t>
+  <h><rmrsbankitem id="111">The Top Quark is the last of six flavors of quarks predicted by the standard model theory of particle physics.</rmrsbankitem></h>
+</pair>
+<pair id='588' value='TRUE' task='QA'>
+  <t><rmrsbankitem id="291">Within trillionths of a second after the Big Bang, they have reasoned, the primordial explosion - many billions of degrees hot - must have created a universe that contained equal quantities of matter and antimatter.</rmrsbankitem></t>
+  <h><rmrsbankitem id="112">The Big Bang is the primordial explosion from which the universe was created.</rmrsbankitem></h>
+</pair>
+<pair id='589' value='FALSE' task='QA'>
+  <t><rmrsbankitem id="292">According to Naeye, the newfangled telescopes will be able to peer so far back in space and, thus, time that they "will see the first galaxies assembling a few hundred million years after the Big Bang."</rmrsbankitem></t>
+  <h><rmrsbankitem id="112">The Big Bang is the primordial explosion from which the universe was created.</rmrsbankitem></h>
+</pair>
+<pair id='590' value='FALSE' task='QA'>
+  <t><rmrsbankitem id="293">Jackson also found the company maintained its Windows monopoly by setting deals with computer makers to promote Microsoft products over those from rival software makers.</rmrsbankitem></t>
+  <h><rmrsbankitem id="113">Microsoft Windows is an operating system.</rmrsbankitem></h>
+</pair>
+<pair id='591' value='FALSE' task='QA'>
+  <t><rmrsbankitem id="294">Hoping to loosen Microsoft's ironclad grip on the personal computer desktop, a tiny Seattle company will unveil an onscreen menu bar Monday that bypasses Windows with direct links to programs and the Internet.</rmrsbankitem></t>
+  <h><rmrsbankitem id="113">Microsoft Windows is an operating system.</rmrsbankitem></h>
+</pair>
+<pair id='592' value='TRUE' task='QA'>
+  <t><rmrsbankitem id="295">Qatar and Oman are members of the Gulf Cooperation Council, GCC, which also groups Saudi Arabia, Kuwait, Bahrain and the United Arab Emirates (UAE).</rmrsbankitem></t>
+  <h><rmrsbankitem id="114">The members of the Gulf Cooperation Council are: Saudi Arabia, Kuwait, United Arab Emirates, Qatar, Oman, Bahrain.</rmrsbankitem></h>
+</pair>
+<pair id='593' value='FALSE' task='QA'>
+  <t><rmrsbankitem id="296">Both Bahrain and Qatar are members of the Gulf Cooperation Council (GCC), but they have a territorial dispute that has led to Bahrain's boycott of the GCC summit convened in the Qatari capital of Doha on December 7-9.</rmrsbankitem></t>
+  <h><rmrsbankitem id="114">The members of the Gulf Cooperation Council are: Saudi Arabia, Kuwait, United Arab Emirates, Qatar, Oman, Bahrain.</rmrsbankitem></h>
+</pair>
+<pair id='594' value='TRUE' task='QA'>
+  <t><rmrsbankitem id="297">Egypt, Syria and the members of the Gulf Cooperation Council, namely Bahrain, Kuwait, Oman, Qatar, Saudi Arabia and the United Arab Emirates, signed the Damascus Declaration after the 1991 Gulf War to create a mechanism aimed at guaranteeing security in the Gulf region.</rmrsbankitem></t>
+  <h><rmrsbankitem id="114">The members of the Gulf Cooperation Council are: Saudi Arabia, Kuwait, United Arab Emirates, Qatar, Oman, Bahrain.</rmrsbankitem></h>
+</pair>
+<pair id='595' value='FALSE' task='QA'>
+  <t><rmrsbankitem id="298">Among Stellafane's most ardent partisans is David H. Levy, co-discoverer with Dr. Eugene Shoemaker of a comet named for the two that broke apart in 1994 as it was drawn toward Jupiter, creating fireworks visible from Earth.</rmrsbankitem></t>
+  <h><rmrsbankitem id="115">The Shoemaker-Levy comet was discovered by Shoemaker, his wife, Carolyn, and an astronomer David H. Levy.</rmrsbankitem></h>
+</pair>
+<pair id='596' value='TRUE' task='QA'>
+  <t><rmrsbankitem id="299">The National Park Trust identified 20 high-priority sites - including the Blue Ridge Parkway in North Carolina and Virginia and Everglades National Park in Florida - as areas with private property that could be sold.</rmrsbankitem></t>
+  <h><rmrsbankitem id="116">Everglades National Park is located in Florida.</rmrsbankitem></h>
+</pair>
+<pair id='597' value='FALSE' task='QA'>
+  <t><rmrsbankitem id="300">Many hopes are riding on the sale of Talisman's holdings in Palm Beach and Hendry counties, which Vice President Al Gore announced with much fanfare last year at the 50th anniversary of Everglades National Park.</rmrsbankitem></t>
+  <h><rmrsbankitem id="116">Everglades National Park is located in Florida.</rmrsbankitem></h>
+</pair>
+<pair id='598' value='FALSE' task='QA'>
+  <t><rmrsbankitem id="301">The expulsion of Albanians, which has distracted NATO with a parallel relief operation, has only served to harden the resolve of NATO's 19 members, who are now willing to approve attacks on more sensitive targets, like Milosevic's homes and Yugoslavia's state-run television.</rmrsbankitem></t>
+  <h><rmrsbankitem id="117">NATO has 16 members.</rmrsbankitem></h>
+</pair>
+<pair id='599' value='TRUE' task='QA'>
+  <t><rmrsbankitem id="302">Foreign Ministers of the 16 NATO member countries met early this morning with their Russian counterpart, Yevgeny Primakov, in Berlin in a bid to improve NATO-Russia relations.</rmrsbankitem></t>
+  <h><rmrsbankitem id="118">The NATO has 16 members.</rmrsbankitem></h>
+</pair>
+<pair id='600' value='TRUE' task='QA'>
+  <t><rmrsbankitem id="303">Sotheby's and Christie's, the world's two most powerful auction houses, swapped confidential lists of super-rich clients who were spared from paying fees charged to other sellers, people close to the companies and to a federal antitrust investigation of them said.</rmrsbankitem></t>
+  <h><rmrsbankitem id="119">Christie's is one of the world's largest auction houses.</rmrsbankitem></h>
+</pair>
+</entailment-corpus>

@@ -1,0 +1,331 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<entailment-corpus>
+<pair id='21' value='FALSE' task='PP'>
+  <t><rmrsbankitem id="1">The number of rigs in Canada is 148, down 46 compared to last week's and down 27 compared to last year's.</rmrsbankitem></t>
+  <h><rmrsbankitem id="1">Last year, the tally was 148.</rmrsbankitem></h>
+</pair>
+<pair id='465' value='FALSE' task='PP'>
+  <t><rmrsbankitem id="2">Boise and OfficeMax customers will have the opportunity to get involved with the Belief in Hope campaign in a variety of ways.</rmrsbankitem></t>
+  <h><rmrsbankitem id="2">Boise is about to acquire OfficeMax.</rmrsbankitem></h>
+</pair>
+<pair id='466' value='TRUE' task='PP'>
+  <t><rmrsbankitem id="3">The Yellowstone Park Foundation recognizes the following organizations for their generous support in helping to protect the wonders and wildlife of Yellowstone National Park.</rmrsbankitem></t>
+  <h><rmrsbankitem id="3">The Yellowstone Park Foundation would like to acknowledge and thank the following organizations for their generous support.</rmrsbankitem></h>
+</pair>
+<pair id='468' value='TRUE' task='PP'>
+  <t><rmrsbankitem id="4">Ostriches put their heads into the sand to avoid the wind.</rmrsbankitem></t>
+  <h><rmrsbankitem id="4">Ostriches bury their heads in the sand.</rmrsbankitem></h>
+</pair>
+<pair id='469' value='TRUE' task='PP'>
+  <t><rmrsbankitem id="5">In 1997, insurance companies paid out $51.6 billion for prescription drugs.</rmrsbankitem></t>
+  <h><rmrsbankitem id="5">Insurance companies cover prescription drugs.</rmrsbankitem></h>
+</pair>
+<pair id='474' value='TRUE' task='PP'>
+  <t><rmrsbankitem id="6">Representatives from 142 nations are expected to sit down in Doha Qatar, next Friday for the World Trade Organization's (WTO) fourth Ministerial Conference.</rmrsbankitem></t>
+  <h><rmrsbankitem id="6">Representatives of the 142 member countries of the World Trade Organization will gather in Doha, Qatar, next Friday.</rmrsbankitem></h>
+</pair>
+<pair id='476' value='TRUE' task='PP'>
+  <t><rmrsbankitem id="7">Two women from two counties are dead and police have some clues as to who murdered them.</rmrsbankitem></t>
+  <h><rmrsbankitem id="7">Police gather clues in double assassination.</rmrsbankitem></h>
+</pair>
+<pair id='477' value='TRUE' task='PP'>
+  <t><rmrsbankitem id="8">Trained volunteers are collecting baseline data on water quality, and testing for selected suspected contaminants of the coral reef.</rmrsbankitem></t>
+  <h><rmrsbankitem id="8">Volunteers gather baseline data.</rmrsbankitem></h>
+</pair>
+<pair id='478' value='FALSE' task='PP'>
+  <t><rmrsbankitem id="9">Putin and Bush say Iran doesn't have evil nuclear ambitions.</rmrsbankitem></t>
+  <h><rmrsbankitem id="9">Bush and Putin urge Iran to give up nuclear ambitions.</rmrsbankitem></h>
+</pair>
+<pair id='480' value='TRUE' task='PP'>
+  <t><rmrsbankitem id="10">Iran is said to give up al Qaeda members.</rmrsbankitem></t>
+  <h><rmrsbankitem id="10">Iran hands over al Qaeda members.</rmrsbankitem></h>
+</pair>
+<pair id='482' value='TRUE' task='PP'>
+  <t><rmrsbankitem id="11">Hollywood actress Minnie Driver is taking a break from films to work in a sweatshop in Cambodia.</rmrsbankitem></t>
+  <h><rmrsbankitem id="11">Actress Minnie Driver gives up Hollywood for Cambodian sweat shop.</rmrsbankitem></h>
+</pair>
+<pair id='483' value='TRUE' task='PP'>
+  <t><rmrsbankitem id="12">By clicking here, you can return to the login page.</rmrsbankitem></t>
+  <h><rmrsbankitem id="12">Click here to go back to the login page.</rmrsbankitem></h>
+</pair>
+<pair id='484' value='FALSE' task='PP'>
+  <t><rmrsbankitem id="13">The weapon Inspectors have had since 1991 to peacefully disarm Iraq of its weapons of mass destruction.</rmrsbankitem></t>
+  <h><rmrsbankitem id="13">Weapons inspectors will go back to Iraq.</rmrsbankitem></h>
+</pair>
+<pair id='486' value='TRUE' task='PP'>
+  <t><rmrsbankitem id="14">Following the successful bid to bring the 2010 Ryder Cup to Wales, the Wales Tourist Board has wasted little time in commissioning work to ensure that the benefits accruing from the event are felt throughout the country.</rmrsbankitem></t>
+  <h><rmrsbankitem id="14">Wales to host 2010 Ryder Cup.</rmrsbankitem></h>
+</pair>
+<pair id='487' value='TRUE' task='PP'>
+  <t><rmrsbankitem id="15">Located just three miles from Tullamore and only 45 minutes from the K Club, venue of the 2006 Ryder Cup, is Esker Hills, a genuine hidden gem and one of Irish golf's best kept secrets.</rmrsbankitem></t>
+  <h><rmrsbankitem id="15">The K Club will host the 2006 Ryder Cup.</rmrsbankitem></h>
+</pair>
+<pair id='489' value='FALSE' task='PP'>
+  <t><rmrsbankitem id="16">Coronado High School English teacher Lori Rosales has read the Harry Potter books and sees them as educational and something that children can relate to because the stories are timeless.</rmrsbankitem></t>
+  <h><rmrsbankitem id="16">A teacher wins the right to market Harry Potter.</rmrsbankitem></h>
+</pair>
+<pair id='491' value='TRUE' task='PP'>
+  <t><rmrsbankitem id="17">The magnitude 7 earthquake that occurred today on the Hayward fault (a part of the San Andreas fault system, along the densely populated eastern side of San Francisco bay) caused hundreds of deaths and almost $100 billion of damage.</rmrsbankitem></t>
+  <h><rmrsbankitem id="17">There was a magnitude 7 earthquake on the Hayward fault.</rmrsbankitem></h>
+</pair>
+<pair id='493' value='FALSE' task='PP'>
+  <t><rmrsbankitem id="18">After insulting the UN committee insinuating they were irrelavant, Bush no sooner had approval from Congress to use "force/war" if Hussein did not permit unfettered access for inspections - and the war ships were moved into place on the Gulf.</rmrsbankitem></t>
+  <h><rmrsbankitem id="18">Hussein gives UN inspectors unfettered access.</rmrsbankitem></h>
+</pair>
+<pair id='496' value='TRUE' task='PP'>
+  <t><rmrsbankitem id="19">Like Jews and Christians, Muslims believe there is only one God.</rmrsbankitem></t>
+  <h><rmrsbankitem id="19">Muslims are monotheistic.</rmrsbankitem></h>
+</pair>
+<pair id='497' value='FALSE' task='PP'>
+  <t><rmrsbankitem id="20">Muslims are commanded not to take Jews or Christians for friends.</rmrsbankitem></t>
+  <h><rmrsbankitem id="20">Jews and Christians pray as Muslims do.</rmrsbankitem></h>
+</pair>
+<pair id='498' value='TRUE' task='PP'>
+  <t><rmrsbankitem id="21">Medieval Christians said the rosary as Catholics still do today: by praying five decades of Ave Marias (Hail Marys), each introduced by a Pater Noster (Our Father), while meditating on three series of five mysteries each.</rmrsbankitem></t>
+  <h><rmrsbankitem id="21">Christians pray the rosary.</rmrsbankitem></h>
+</pair>
+<pair id='501' value='TRUE' task='PP'>
+  <t><rmrsbankitem id="22">Then the most important part of the day begins as Muslims go to the mosque, their special place of worship.</rmrsbankitem></t>
+  <h><rmrsbankitem id="22">Muslims pray at the mosque.</rmrsbankitem></h>
+</pair>
+<pair id='503' value='TRUE' task='PP'>
+  <t><rmrsbankitem id="23">During Ramadan, Muslims will gather at the mosque for nightly prayer sessions and evening meals.</rmrsbankitem></t>
+  <h><rmrsbankitem id="23">The mosque is a place of worship for Muslims.</rmrsbankitem></h>
+</pair>
+<pair id='506' value='FALSE' task='PP'>
+  <t><rmrsbankitem id="24">Robert Szabo concludes that circumcision, as practiced by Muslims, would be the most immediately effective intervention for reducing HIV transmission since it is done before men are sexually active.</rmrsbankitem></t>
+  <h><rmrsbankitem id="24">It is incorrect to assert that circumcision prevents HIV infection.</rmrsbankitem></h>
+</pair>
+<pair id='509' value='FALSE' task='PP'>
+  <t><rmrsbankitem id="25">Those teens who are gay, lesbian or confused about their sexuality are also more likely to attempt suicide.</rmrsbankitem></t>
+  <h><rmrsbankitem id="25">Teens who are depressed are much more at risk of attempting suicide than other teens.</rmrsbankitem></h>
+</pair>
+<pair id='510' value='TRUE' task='PP'>
+  <t><rmrsbankitem id="26">Exercising the powers referred to in article 15, paragraph 3, of the protocol to suppress and punish trafficking in persons, especially women and children, the government of Ecuador makes a reservation with regard to article 15, paragraph 2, relating to the settlement of disputes.</rmrsbankitem></t>
+  <h><rmrsbankitem id="26">The government of Ecuador aims to prevent trafficking in persons.</rmrsbankitem></h>
+</pair>
+<pair id='514' value='TRUE' task='PP'>
+  <t><rmrsbankitem id="27">Cyrus captured Babylon without a battle, and remedied the evils done by previous Assyrian and Babylonian rulers by sending prisoners in Babylonia back to their original homelands and aiding in the restoration of temples of the gods of various nations.</rmrsbankitem></t>
+  <h><rmrsbankitem id="27">Babylon surrendered to Cyrus without going to battle.</rmrsbankitem></h>
+</pair>
+<pair id='515' value='FALSE' task='PP'>
+  <t><rmrsbankitem id="28">After the trial, the Family Court found the defendant guilty of willfully violating the order of protection and sentenced him to six months incarceration.</rmrsbankitem></t>
+  <h><rmrsbankitem id="28">The Family Court cannot punish the guilty.</rmrsbankitem></h>
+</pair>
+<pair id='516' value='FALSE' task='PP'>
+  <t><rmrsbankitem id="29">If this challenge interests you, you might enjoy reading "Punished by Rewards" by Alfie Kohn.</rmrsbankitem></t>
+  <h><rmrsbankitem id="29">I read "Punished by Rewards" by Alfie Kohn.</rmrsbankitem></h>
+</pair>
+<pair id='518' value='FALSE' task='PP'>
+  <t><rmrsbankitem id="30">In the year 538, Cyrus set in place a policy which demanded the return of the various gods to their proper places.</rmrsbankitem></t>
+  <h><rmrsbankitem id="30">Cyrus issued a declaration in 538 that would allow the Jews to go back to their homeland.</rmrsbankitem></h>
+</pair>
+<pair id='519' value='TRUE' task='PP'>
+  <t><rmrsbankitem id="31">American Airlines began laying off hundreds of flight attendants on Tuesday, after a federal judge turned aside a union's bid to block the job losses.</rmrsbankitem></t>
+  <h><rmrsbankitem id="31">American Airlines will recall hundreds of flight attendants.</rmrsbankitem></h>
+</pair>
+<pair id='520' value='TRUE' task='PP'>
+  <t><rmrsbankitem id="32">Only 18 states, including Massachusetts, have specific provisions that allow women who quit their jobs due to domestic violence to qualify for UI.</rmrsbankitem></t>
+  <h><rmrsbankitem id="32">18 states have provisions that permit women who quit their jobs because of domestic violence to collect unemployment insurance.</rmrsbankitem></h>
+</pair>
+<pair id='521' value='TRUE' task='PP'>
+  <t><rmrsbankitem id="33">California voters recall Gray Davis and elect Arnold Schwarzenegger as their governor.</rmrsbankitem></t>
+  <h><rmrsbankitem id="33">California voters dumped Gov. Gray Davis and replaced him with Arnold Schwarzenegger.</rmrsbankitem></h>
+</pair>
+<pair id='523' value='TRUE' task='PP'>
+  <t><rmrsbankitem id="34">If any legal action is due to enforcement, dispute, breach, or default, the successful party shall be entitled to reasonable attorney fees and other costs incurred in the actions, in addition to any relief to which they may be entitled.</rmrsbankitem></t>
+  <h><rmrsbankitem id="34">The prevailing party shall recover attorney fees.</rmrsbankitem></h>
+</pair>
+<pair id='524' value='FALSE' task='PP'>
+  <t><rmrsbankitem id="35">The trial court may allow the prevailing party reasonable attorney fees as part of costs.</rmrsbankitem></t>
+  <h><rmrsbankitem id="35">The prevailing party may not recover attorney fees.</rmrsbankitem></h>
+</pair>
+<pair id='525' value='TRUE' task='PP'>
+  <t><rmrsbankitem id="36">Texas Data Recovery is also successful at retrieving lost data from notebooks and laptops, regardless of age, make or model.</rmrsbankitem></t>
+  <h><rmrsbankitem id="36">In the event of a disaster you could use Texas Data Recovery and you will have the capability to restore lost data.</rmrsbankitem></h>
+</pair>
+<pair id='526' value='FALSE' task='PP'>
+  <t><rmrsbankitem id="37">Successful plaintiffs recovered punitive damages in Texas discrimination cases 53% of the time.</rmrsbankitem></t>
+  <h><rmrsbankitem id="37">Legal costs to recover punitive damages are a deductible business expense.</rmrsbankitem></h>
+</pair>
+<pair id='527' value='FALSE' task='PP'>
+  <t><rmrsbankitem id="38">The Heads of state reiterated their deep concern for the serious threat that the rising trend in drug abuse poses for society and the lives and future of children and youth, and for the destabilizing effects that illegal use, production, trafficking and distribution of narcotic drugs psychotropic substances and drug-related offences have for the affected countries of the South Asian region.</rmrsbankitem></t>
+  <h><rmrsbankitem id="38">The Heads of state expressed their deep concern at the fast and continuing degradation of the environment, including extensive destruction of forests, in the South Asian region.</rmrsbankitem></h>
+</pair>
+<pair id='528' value='TRUE' task='PP'>
+  <t><rmrsbankitem id="39">Swedish massage is used to help relax muscles, increase circulation, remove metabolic waste products, and help the recipient obtain a feeling of connectedness, and a better awareness of their body and the way they use and position it.</rmrsbankitem></t>
+  <h><rmrsbankitem id="39">Swedish massage loosens tense muscles.</rmrsbankitem></h>
+</pair>
+<pair id='531' value='FALSE' task='PP'>
+  <t><rmrsbankitem id="40">If you're feeling playful, visit our games area for a game of billiards, surf the Internet or just sit back and relax with a good book from our extensive library.</rmrsbankitem> <rmrsbankitem id="41">Alternatively, soothe away those tired muscles, aches and pains with a Balinese massage.</rmrsbankitem></t>
+  <h><rmrsbankitem id="40">Traditional Balinese massage is a therapy where pushing techniques predominate.</rmrsbankitem></h>
+</pair>
+<pair id='533' value='FALSE' task='PP'>
+  <t><rmrsbankitem id="42">Two years ago Moore had a 5,300-pound monument showcasing the Ten Commandments placed in the rotunda of the Judicial Building, which is just down the street from the Capitol, and a federal judge ordered Moore to remove the plaque.</rmrsbankitem></t>
+  <h><rmrsbankitem id="41">Moore now has the commandments plaque posted in his office.</rmrsbankitem></h>
+</pair>
+<pair id='534' value='FALSE' task='PP'>
+  <t><rmrsbankitem id="43">The substances that our company uses do not leave stains, do not have an unpleasant smell and are not toxic.</rmrsbankitem></t>
+  <h><rmrsbankitem id="42">Our substances remove stains.</rmrsbankitem></h>
+</pair>
+<pair id='535' value='FALSE' task='PP'>
+  <t><rmrsbankitem id="44">Moore had the monument, along with other references to God, installed in the rotunda of the Judicial Building six months after he was elected Chief Justice in 2000.</rmrsbankitem></t>
+  <h><rmrsbankitem id="43">Moore had the monument installed before he became Chief Justice.</rmrsbankitem></h>
+</pair>
+<pair id='537' value='FALSE' task='PP'>
+  <t><rmrsbankitem id="45">Sentiment is growing in the Bush administration and global energy circles to place Iraqi professionals in charge of their country's oil production after any war, despite a push by some officials for the United States to seize control of the lucrative oil fields.</rmrsbankitem></t>
+  <h><rmrsbankitem id="44">The United States threatened the "severest consequences" if Iraq were to use chemical or biological weapons against the United States, destroy Kuwaiti oil fields or participate in terrorism.</rmrsbankitem></h>
+</pair>
+<pair id='538' value='TRUE' task='PP'>
+  <t><rmrsbankitem id="46">The Japanese invasion of Manchuria in 1931 and their eventual attack on China in 1937 also lead to vast areas of China not being under Chiang's control.</rmrsbankitem></t>
+  <h><rmrsbankitem id="45">The Japanese seized Manchuria in 1931, and began a war against China in 1937.</rmrsbankitem></h>
+</pair>
+<pair id='540' value='FALSE' task='PP'>
+  <t><rmrsbankitem id="47">Microsoft for instance, one of the world's largest software companies, lost more than an estimated 500 million dollars last year because of software theft.</rmrsbankitem></t>
+  <h><rmrsbankitem id="46">Microsoft would spend 500 million dollars.</rmrsbankitem></h>
+</pair>
+<pair id='541' value='FALSE' task='PP'>
+  <t><rmrsbankitem id="48">The richest provinces, Ontario, Alberta and B.C., have spent billions on tax cuts and slashing services while at the same time howling for Ottawa to give them more money for medicare.</rmrsbankitem></t>
+  <h><rmrsbankitem id="47">Ottawa promises more money to upgrade the literacy levels and skills of natives and high school dropouts.</rmrsbankitem></h>
+</pair>
+<pair id='542' value='TRUE' task='PP'>
+  <t><rmrsbankitem id="49">It would help the economy by putting people back to work and more money in the hands of consumers.</rmrsbankitem></t>
+  <h><rmrsbankitem id="48">More money in the hands of consumers means more money can be spent to get the economy going.</rmrsbankitem></h>
+</pair>
+<pair id='543' value='FALSE' task='PP'>
+  <t><rmrsbankitem id="50">US Catholic bishops are all but unanimous in believing that Cardinal Law must leave Boston for the good of the church.</rmrsbankitem></t>
+  <h><rmrsbankitem id="49">Cardinal Law returns from Rome with plans to stay in Boston.</rmrsbankitem></h>
+</pair>
+<pair id='544' value='FALSE' task='PP'>
+  <t><rmrsbankitem id="51">The United States would like to see U.N. weapons inspectors return to Iraq providing the Iraqis take concrete, affirmative and demonstrable actions "to show full co-operation" Clinton said.</rmrsbankitem></t>
+  <h><rmrsbankitem id="50">U.N. weapons inspectors could stay in Iraq, Clinton said.</rmrsbankitem></h>
+</pair>
+<pair id='546' value='TRUE' task='PP'>
+  <t><rmrsbankitem id="52">The decision by the British government to suspend flights to Kenya is regrettable, it plays into the hands of terrorists.</rmrsbankitem></t>
+  <h><rmrsbankitem id="51">The British government banned flights to Kenya.</rmrsbankitem></h>
+</pair>
+<pair id='547' value='FALSE' task='PP'>
+  <t><rmrsbankitem id="53">North Korea states intention to restart reactors, throws out IAEA inspectors and takes down inspection cameras, announces immediate withdrawal from the Nuclear Non-Proliferation Treaty and makes threats of war if the UN or the United States imposes sanctions.</rmrsbankitem></t>
+  <h><rmrsbankitem id="52">North Korea has announced its withdrawal from liaison meetings with United States military officers.</rmrsbankitem></h>
+</pair>
+<pair id='557' value='FALSE' task='PP'>
+  <t><rmrsbankitem id="54">If you have rheumatic heart disease, high blood pressure, or diabetes, or take digitalis drugs, vitamin E can be harmful.</rmrsbankitem></t>
+  <h><rmrsbankitem id="53">Vitamin E can prevent heart disease.</rmrsbankitem></h>
+</pair>
+<pair id='558' value='FALSE' task='PP'>
+  <t><rmrsbankitem id="55">When Albright was the US ambassador to the United Nations, Lesley Stahl of "60 Minutes" asked her about the sanctions and the deaths of Iraqi children.</rmrsbankitem> <rmrsbankitem id="56">Albright said it was America's responsibility to make sure the Gulf War did not have to be fought again.</rmrsbankitem></t>
+  <h><rmrsbankitem id="54">Albright said that to punish Saddam Hussein, the deaths of those children were "worth it."</rmrsbankitem></h>
+</pair>
+<pair id='969' value='FALSE' task='PP'>
+  <t><rmrsbankitem id="57">Doug Lawrence bought the impressionist oil landscape by J. Ottis Adams in the mid-1970s at a Fort Wayne antiques dealer.</rmrsbankitem></t>
+  <h><rmrsbankitem id="55">Doug Lawrence sold the impressionist oil landscape by J. Ottis Adams.</rmrsbankitem></h>
+</pair>
+<pair id='970' value='FALSE' task='PP'>
+  <t><rmrsbankitem id="58">Warheads believed to contain the deadly nerve agent cyclosarin that were found by Polish troops in Iraq date back to Saddam Hussein's war with Iran in the 1980s, authorities said Friday.</rmrsbankitem></t>
+  <h><rmrsbankitem id="56">Polish troops confiscated Warheads.</rmrsbankitem></h>
+</pair>
+<pair id='971' value='FALSE' task='PP'>
+  <t><rmrsbankitem id="59">Mitsubishi Motors Corp.'s new vehicle sales in the US fell 46 percent in June.</rmrsbankitem></t>
+  <h><rmrsbankitem id="57">Mitsubishi sales rose 46 percent.</rmrsbankitem></h>
+</pair>
+<pair id='972' value='FALSE' task='PP'>
+  <t><rmrsbankitem id="60">The news comes as the owners of Kilroot announced plans to install clean-up equipment at the plant near Carrickfergus at a cost of £35 million.</rmrsbankitem></t>
+  <h><rmrsbankitem id="58">Owners announced plans to sell clean-up equipment.</rmrsbankitem></h>
+</pair>
+<pair id='1986' value='FALSE' task='PP'>
+  <t><rmrsbankitem id="61">The girl was found in Drummondville.</rmrsbankitem></t>
+  <h><rmrsbankitem id="59">Drummondville contains the girl.</rmrsbankitem></h>
+</pair>
+<pair id='1433' value='TRUE' task='PP'>
+  <t><rmrsbankitem id="62">The report catalogues 10 missed opportunities within the CIA and FBI to uncover pieces of the September 11 plot.</rmrsbankitem></t>
+  <h><rmrsbankitem id="60">The report analyzes 10 missed opportunities within the CIA and FBI to uncover pieces of the September 11 plot.</rmrsbankitem></h>
+</pair>
+<pair id='1970' value='FALSE' task='PP'>
+  <t><rmrsbankitem id="63">The witness then spotted Rodriguez crouching behind a gate for protection.</rmrsbankitem></t>
+  <h><rmrsbankitem id="61">The witness rescued Rodriguez.</rmrsbankitem></h>
+</pair>
+<pair id='1977' value='TRUE' task='PP'>
+  <t><rmrsbankitem id="64">His family has steadfastly denied the charges.</rmrsbankitem></t>
+  <h><rmrsbankitem id="62">The charges were denied by his family.</rmrsbankitem></h>
+</pair>
+<pair id='1429' value='TRUE' task='PP'>
+  <t><rmrsbankitem id="65">Alcohol now fuels 44 percent of all violent crime and 70 percent of Accident and Emergency hospital admissions at peak times are due to booze.</rmrsbankitem></t>
+  <h><rmrsbankitem id="63">Alcohol has an effect on violent crimes.</rmrsbankitem></h>
+</pair>
+<pair id='1435' value='TRUE' task='PP'>
+  <t><rmrsbankitem id="66">Blair has sympathy for anyone who has lost their lives in Iraq.</rmrsbankitem></t>
+  <h><rmrsbankitem id="64">Blair is sympathetic to anyone who has lost their lives in Iraq.</rmrsbankitem></h>
+</pair>
+<pair id='2051' value='FALSE' task='PP'>
+  <t><rmrsbankitem id="67">Protesters, many from organized pro-government groups but including many ordinary citizens, carried anti-American banners and chanted slogans attacking U.N. Secretary-General Kofi Annan for his close alignment with U.S. policy.</rmrsbankitem></t>
+  <h><rmrsbankitem id="65">Protesters confiscated anti-American banners and chanted slogans attacking U.N. Secretary-General Kofi Annan for his close alignment with U.S. policy.</rmrsbankitem></h>
+</pair>
+<pair id='1434' value='TRUE' task='PP'>
+  <t><rmrsbankitem id="62">The report catalogues 10 missed opportunities within the CIA and FBI to uncover pieces of the September 11 plot.</rmrsbankitem></t>
+  <h><rmrsbankitem id="66">Ten missed opportunities within the CIA and FBI are uncovered in the report.</rmrsbankitem></h>
+</pair>
+<pair id='1431' value='TRUE' task='PP'>
+  <t><rmrsbankitem id="68">The report faults intelligence agencies for a "lack of imagination" in not anticipating that al Qaeda could attack the United States using hijacked aircraft.</rmrsbankitem></t>
+  <h><rmrsbankitem id="67">The report blames intelligence agencies.</rmrsbankitem></h>
+</pair>
+<pair id='1438' value='TRUE' task='PP'>
+  <t><rmrsbankitem id="69">Iraq would have been an unsafe, unsecure country that did pose a threat to the world.</rmrsbankitem></t>
+  <h><rmrsbankitem id="68">A threat to the world would have arisen from Iraq.</rmrsbankitem></h>
+</pair>
+<pair id='1972' value='TRUE' task='PP'>
+  <t><rmrsbankitem id="70">Rodriguez told detectives he never touched the burning backpack, which was loaded with plastic pipes packed with gunpowder and BBs.</rmrsbankitem></t>
+  <h><rmrsbankitem id="69">The burning backpack contained plastic pipes packed with gunpowder and BBs.</rmrsbankitem></h>
+</pair>
+<pair id='1436' value='TRUE' task='PP'>
+  <t><rmrsbankitem id="66">Blair has sympathy for anyone who has lost their lives in Iraq.</rmrsbankitem></t>
+  <h><rmrsbankitem id="70">Blair is sorry for anyone who has lost their lives in Iraq.</rmrsbankitem></h>
+</pair>
+<pair id='1993' value='FALSE' task='PP'>
+  <t><rmrsbankitem id="71">Profits nearly doubled to nearly $1.8 billion.</rmrsbankitem></t>
+  <h><rmrsbankitem id="71">Profits nearly doubled from nearly $1.8 billion.</rmrsbankitem></h>
+</pair>
+<pair id='1437' value='TRUE' task='PP'>
+  <t><rmrsbankitem id="69">Iraq would have been an unsafe, unsecure country that did pose a threat to the world.</rmrsbankitem></t>
+  <h><rmrsbankitem id="72">Iraq would have constituted a threat to the world.</rmrsbankitem></h>
+</pair>
+<pair id='2050' value='FALSE' task='PP'>
+  <t><rmrsbankitem id="72">Five other soldiers have been ordered to face courts-martial.</rmrsbankitem></t>
+  <h><rmrsbankitem id="73">Five other soldiers have been refused to face courts-martial.</rmrsbankitem></h>
+</pair>
+<pair id='1439' value='TRUE' task='PP'>
+  <t><rmrsbankitem id="73">The prosecutor told the court that the incident had caused "distress" to one of the children.</rmrsbankitem></t>
+  <h><rmrsbankitem id="74">The prosecutor told the court that "distress" in one of the children is associated with the incident.</rmrsbankitem></h>
+</pair>
+<pair id='1976' value='FALSE' task='PP'>
+  <t><rmrsbankitem id="74">Bomb-sniffing dogs were brought to Rodriguez's Mulberry St. apartment.</rmrsbankitem></t>
+  <h><rmrsbankitem id="75">Bomb-sniffing dogs were estimated at Rodriguez's Mulberry St. apartment.</rmrsbankitem></h>
+</pair>
+<pair id='1965' value='FALSE' task='PP'>
+  <t><rmrsbankitem id="75">Rich and poor nations struck a historic deal on Sunday to slash billions of dollars in farm subsidies, create more open industrial markets and revive stalled world trade talks that could boost global growth.</rmrsbankitem></t>
+  <h><rmrsbankitem id="76">Rich and poor nations crashed into a historic deal on Sunday.</rmrsbankitem></h>
+</pair>
+<pair id='1966' value='TRUE' task='PP'>
+  <t><rmrsbankitem id="76">Relatives of a missing woman and her husband said late Saturday that new information from the husband has prompted them to call off a volunteer search for the woman.</rmrsbankitem></t>
+  <h><rmrsbankitem id="77">Relatives of a missing woman and her husband cancelled a volunteer search for the woman.</rmrsbankitem></h>
+</pair>
+<pair id='1959' value='FALSE' task='PP'>
+  <t><rmrsbankitem id="77">Kerry hit Bush hard on his conduct on the war in Iraq.</rmrsbankitem></t>
+  <h><rmrsbankitem id="78">Kerry shot Bush.</rmrsbankitem></h>
+</pair>
+<pair id='1975' value='FALSE' task='PP'>
+  <t><rmrsbankitem id="78">A matching fingerprint was discovered on the strap.</rmrsbankitem></t>
+  <h><rmrsbankitem id="79">A matching fingerprint was excavated from the strap.</rmrsbankitem></h>
+</pair>
+<pair id='34' value='FALSE' task='PP'>
+  <t><rmrsbankitem id="79">Saudi Arabia, the biggest oil producer in the world, was once a supporter of Osama bin Laden and his associates who led attacks against the United States.</rmrsbankitem></t>
+  <h><rmrsbankitem id="80">Saudi Arabia is a key U.S. ally.</rmrsbankitem></h>
+</pair>
+<pair id='1985' value='FALSE' task='PP'>
+  <t><rmrsbankitem id="80">A Quebec woman and her mother were accused of plotting to kill a four-year-old girl.</rmrsbankitem></t>
+  <h><rmrsbankitem id="81">Quebec woman murdered a four-year-old girl.</rmrsbankitem></h>
+</pair>
+<pair id='1971' value='FALSE' task='PP'>
+  <t><rmrsbankitem id="81">Rodriguez was spotted by a witness running away from the stairwell where the backpack was found seconds before it went off.</rmrsbankitem></t>
+  <h><rmrsbankitem id="82">A witness rescued Rodriguez.</rmrsbankitem></h>
+</pair>
+</entailment-corpus>

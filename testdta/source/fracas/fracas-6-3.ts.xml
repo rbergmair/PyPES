@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE testsuite SYSTEM "file:///home/rb432/workspace/rte/dtd/testsuite.dtd">
+
+<testsuite id="6.3" name="measure phrases">
+
+<testcase id="3.242">
+  <proposition id="3.242.1">
+    The PC-6082 is faster than 500 MIPS.
+  </proposition>
+  <proposition id="3.242.2">
+    The ITEL-ZX is slower than 500 MIPS.
+  </proposition>
+  <proposition id="3.242.3">
+    Is the PC-6082 faster than the ITEL-ZX?
+  </proposition>
+  <valid id="3.242.a">
+    <theory> <ref src="3.242.1"/> <ref src="3.242.2"/> </theory>
+    <conclusion> <ref src="3.242.3"/> </conclusion>
+  </valid>
+</testcase>
+
+</testsuite>

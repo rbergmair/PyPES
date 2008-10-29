@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE testsuite SYSTEM "file:///home/rb432/workspace/rte/dtd/testsuite.dtd">
+
+<testsuite id="2.6" name="collective and distributive plurals">
+
+<testcase id="3.111">
+  <proposition id="3.111.1">
+    Smith signed one contract.
+  </proposition>
+  <proposition id="3.111.2">
+    Jones signed another contract.
+  </proposition>
+  <proposition id="3.111.3">
+    Did Smith and Jones sign two contracts?
+  </proposition>
+  <valid id="3.111.a">
+    <theory> <ref src="3.111.1"/> <ref src="3.111.2"/> </theory>
+    <conclusion> <ref src="3.111.3"/> </conclusion>
+  </valid>
+</testcase>
+
+<testcase id="3.112">
+  <proposition id="3.112.1">
+    Smith signed two contracts.
+  </proposition>
+  <proposition id="3.112.2">
+    Jones signed two contracts.
+  </proposition>
+  <proposition id="3.112.3">
+    Did Smith and Jones sign two contracts?
+  </proposition>
+  <valid id="3.112.a">
+    <theory> <ref src="3.112.1"/> <ref src="3.112.2"/> </theory>
+    <conclusion> <ref src="3.112.3"/> </conclusion>
+  </valid>
+</testcase>
+
+<testcase id="3.113">
+  <proposition id="3.113.1">
+    Smith signed two contracts.
+  </proposition>
+  <proposition id="3.113.2">
+    Jones also signed them.
+  </proposition>
+  <proposition id="3.113.3">
+    Did Smith and Jones sign two contracts?
+  </proposition>
+  <valid id="3.113.a">
+    <theory> <ref src="3.113.1"/> <ref src="3.113.2"/> </theory>
+    <conclusion> <ref src="3.113.3"/> </conclusion>
+  </valid>
+</testcase>
+
+</testsuite>

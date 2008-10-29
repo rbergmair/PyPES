@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE testsuite SYSTEM "file:///home/rb432/workspace/rte/dtd/testsuite.dtd">
+
+<testsuite id="1.1" name="conservativity">
+
+<testcase id="3.1">
+  <proposition id="3.1.1">
+    <rmrsbankitem id="109">An Italian became the world's greatest tenor.</rmrsbankitem>
+  </proposition>
+  <proposition id="3.1.2">
+    <rmrsbankitem id="250">Was there an Italian who became the world's greatest tenor?</rmrsbankitem>
+  </proposition>
+  <valid id="3.1.a">
+    <theory> <ref src="3.1.1"/> </theory>
+    <conclusion> <ref src="3.1.2"/> </conclusion>
+  </valid>
+</testcase>
+
+<testcase id="3.2">
+  <proposition id="3.2.1">
+    <rmrsbankitem id="222">Every Italian man wants to be a great tenor.</rmrsbankitem>
+  </proposition>
+  <proposition id="3.2.2">
+    <rmrsbankitem id="67">Some Italian men are great tenors.</rmrsbankitem>
+  </proposition>
+  <proposition id="3.2.3">
+    <rmrsbankitem id="287">Are there Italian men who want to be a great tenor?</rmrsbankitem>
+  </proposition>
+  <valid id="3.2.a">
+    <theory> <ref src="3.2.1"/> <ref src="3.2.2"/> </theory>
+    <conclusion> <ref src="3.2.3"/> </conclusion>
+  </valid>
+</testcase>
+
+<testcase id="3.3">
+  <proposition id="3.3.1">
+    <rmrsbankitem id="223">All Italian men want to be a great tenor.</rmrsbankitem>
+  </proposition>
+  <proposition id="3.3.2">
+    <rmrsbankitem id="67">Some Italian men are great tenors.</rmrsbankitem>
+  </proposition>
+  <proposition id="3.3.3">
+    <rmrsbankitem id="287">Are there Italian men who want to be a great tenor?</rmrsbankitem>
+  </proposition>
+  <valid id="3.3.a">
+    <theory> <ref src="3.3.1"/> <ref src="3.3.2"/> </theory>
+    <conclusion> <ref src="3.3.3"/> </conclusion>
+  </valid>
+</testcase>
+
+<testcase id="3.4">
+  <proposition id="3.4.1">
+    <rmrsbankitem id="110">Each Italian tenor wants to be great.</rmrsbankitem>
+  </proposition>
+  <proposition id="3.4.2">
+    <rmrsbankitem id="18">Some Italian tenors are great.</rmrsbankitem>
+  </proposition>
+  <proposition id="3.4.3">
+    <rmrsbankitem id="224">Are there Italian tenors who want to be great?</rmrsbankitem>
+  </proposition>
+  <valid id="3.4.a">
+    <theory> <ref src="3.4.1"/> <ref src="3.4.2"/> </theory>
+    <conclusion> <ref src="3.4.3"/> </conclusion>
+  </valid>
+</testcase>
+
+<testcase id="3.5">
+  <proposition id="3.5.1">
+    <rmrsbankitem id="68">The really ambitious tenors are Italian.</rmrsbankitem>
+  </proposition>
+  <proposition id="3.5.2">
+    <rmrsbankitem id="172">Are there really ambitious tenors who are Italian?</rmrsbankitem>
+  </proposition>
+  <valid id="3.5.a">
+    <theory> <ref src="3.5.1"/> </theory>
+    <conclusion> <ref src="3.5.2"/> </conclusion>
+  </valid>
+</testcase>
+
+<testcase id="3.6">
+  <proposition id="3.6.1">
+    <rmrsbankitem id="69">No really great tenors are modest.</rmrsbankitem>
+  </proposition>
+  <proposition id="3.6.2">
+    <rmrsbankitem id="173">Are there really great tenors who are modest?</rmrsbankitem>
+  </proposition>
+  <valid id="3.6.a">
+    <theory> <ref src="3.6.1"/> </theory>
+    <conclusion> <negation> <ref src="3.6.2"/> </negation> </conclusion>
+  </valid>
+</testcase>
+
+<testcase id="3.7">
+  <proposition id="3.7.1">
+    <rmrsbankitem id="19">Some great tenors are Swedish.</rmrsbankitem>
+  </proposition>
+  <proposition id="3.7.2">
+    <rmrsbankitem id="111">Are there great tenors who are Swedish?</rmrsbankitem>
+  </proposition>
+  <valid id="3.7.a">
+    <theory> <ref src="3.7.1"/> </theory>
+    <conclusion> <ref src="3.7.2"/> </conclusion>
+  </valid>
+</testcase>
+
+<testcase id="3.8">
+  <proposition id="3.8.1">
+    <rmrsbankitem id="20">Many great tenors are German.</rmrsbankitem>
+  </proposition>
+  <proposition id="3.8.2">
+    <rmrsbankitem id="112">Are there great tenors who are German?</rmrsbankitem>
+  </proposition>
+  <valid id="3.8.a">
+    <theory> <ref src="3.8.1"/> </theory>
+    <conclusion> <ref src="3.8.2"/> </conclusion>
+  </valid>
+</testcase>
+
+<testcase id="3.9">
+  <proposition id="3.9.1">
+    <rmrsbankitem id="21">Several great tenors are British.</rmrsbankitem>
+  </proposition>
+  <proposition id="3.9.2">
+    <rmrsbankitem id="113">Are there great tenors who are British?</rmrsbankitem>
+  </proposition>
+  <valid id="3.9.a">
+    <theory> <ref src="3.9.1"/> </theory>
+    <conclusion> <ref src="3.9.2"/> </conclusion>
+  </valid>
+</testcase>
+
+<testcase id="3.10">
+  <proposition id="3.10.1">
+    <rmrsbankitem id="22">Most great tenors are Italian.</rmrsbankitem>
+  </proposition>
+  <proposition id="3.10.2">
+    <rmrsbankitem id="114">Are there great tenors who are Italian?</rmrsbankitem>
+  </proposition>
+  <valid id="3.10.a">
+    <theory> <ref src="3.10.1"/> </theory>
+    <conclusion> <ref src="3.10.2"/> </conclusion>
+  </valid>
+</testcase>
+
+<testcase id="3.11">
+  <proposition id="3.11.1">
+    <rmrsbankitem id="115">A few great tenors sing popular music.</rmrsbankitem>
+  </proposition>
+  <proposition id="3.11.2">
+    <rmrsbankitem id="70">Some great tenors like popular music.</rmrsbankitem>
+  </proposition>
+  <proposition id="3.11.3">
+    <rmrsbankitem id="174">Are there great tenors who sing popular music?</rmrsbankitem>
+  </proposition>
+  <valid id="3.11.a">
+    <theory> <ref src="3.11.1"/> <ref src="3.11.2"/> </theory>
+    <conclusion> <ref src="3.11.3"/> </conclusion>
+  </valid>
+</testcase>
+
+<testcase id="3.12">
+  <proposition id="3.12.1">
+    <rmrsbankitem id="23">Few great tenors are poor.</rmrsbankitem>
+  </proposition>
+  <proposition id="3.12.2">
+    <rmrsbankitem id="116">Are there great tenors who are poor?</rmrsbankitem>
+  </proposition>
+  <nonvalid id="3.12.a">
+    <theory> <ref src="3.12.1"/> </theory>
+    <conclusion> <ref src="3.12.2"/> </conclusion>
+  </nonvalid>
+  <nonvalid id="3.12.b">
+    <theory> <ref src="3.12.1"/> </theory>
+    <conclusion> <negation> <ref src="3.12.2"/> </negation> </conclusion>
+  </nonvalid>
+</testcase>
+
+<testcase id="3.13">
+  <proposition id="3.13.1">
+    <rmrsbankitem id="24">Both leading tenors are excellent.</rmrsbankitem>
+  </proposition>
+  <proposition id="3.13.2">
+    <rmrsbankitem id="117">Leading tenors who are excellent are indispensable.</rmrsbankitem>
+  </proposition>
+  <proposition id="3.13.3">
+    <rmrsbankitem id="25">Are both leading tenors indispensable?</rmrsbankitem>
+  </proposition>
+  <valid id="3.13.a">
+    <theory> <ref src="3.13.1"/> <ref src="3.13.2"/> </theory>
+    <conclusion> <ref src="3.13.3"/> </conclusion>
+  </valid>
+</testcase>
+
+<testcase id="3.14">
+  <proposition id="3.14.1">
+    <rmrsbankitem id="26">Neither leading tenor comes cheap.</rmrsbankitem>
+  </proposition>
+  <proposition id="3.14.2">
+    <rmrsbankitem id="118">One of the leading tenors is Pavarotti.</rmrsbankitem>
+  </proposition>
+  <proposition id="3.14.3">
+    <rmrsbankitem id="175">Is Pavarotti a leading tenor who comes cheap?</rmrsbankitem>
+  </proposition>
+  <valid id="3.14.a">
+    <theory> <ref src="3.14.1"/> <ref src="3.14.2"/> </theory>
+    <conclusion> <negation> <ref src="3.14.3"/> </negation> </conclusion>
+  </valid>
+</testcase>
+
+<testcase id="3.15">
+  <proposition id="3.15.1">
+    <rmrsbankitem id="251">At least three tenors will take part in the concert.</rmrsbankitem>
+  </proposition>
+  <proposition id="3.15.2">
+    <rmrsbankitem id="252">Are there tenors who will take part in the concert?</rmrsbankitem>
+  </proposition>
+  <valid id="3.15.a">
+    <theory> <ref src="3.15.1"/> </theory>
+    <conclusion> <ref src="3.15.2"/> </conclusion>
+  </valid>
+</testcase>
+
+<testcase id="3.16">
+  <proposition id="3.16.1">
+    <rmrsbankitem id="253">At most two tenors will contribute their fees to charity.</rmrsbankitem>
+  </proposition>
+  <proposition id="3.16.2">
+    <rmrsbankitem id="254">Are there tenors who will contribute their fees to charity?</rmrsbankitem>
+  </proposition>
+  <nonvalid id="3.16.a">
+    <theory> <ref src="3.16.1"/> </theory>
+    <conclusion> <ref src="3.16.2"/> </conclusion>
+  </nonvalid>
+  <nonvalid id="3.16.b">
+    <theory> <ref src="3.16.1"/> </theory>
+    <conclusion> <negation> <ref src="3.16.2"/> </negation> </conclusion>
+  </nonvalid>
+</testcase>
+
+</testsuite>

@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE testsuite SYSTEM "file:///home/rb432/workspace/rte/dtd/testsuite.dtd">
+
+<testsuite id="5.5" name="extensional and intensional comparison classes">
+
+<testcase id="3.214">
+  <proposition id="3.214.1">
+    All legal authorities are law lecturers.
+  </proposition>
+  <proposition id="3.214.2">
+    All law lecturers are legal authorities.
+  </proposition>
+  <proposition id="3.214.3">
+    Are all fat legal authorities fat law lecturers?
+  </proposition>
+  <valid id="3.214.a">
+    <theory> <ref src="3.214.1"/> <ref src="3.214.2"/> </theory>
+    <conclusion> <ref src="3.214.3"/> </conclusion>
+  </valid>
+</testcase>
+
+<testcase id="3.215">
+  <proposition id="3.215.1">
+    All legal authorities are law lecturers.
+  </proposition>
+  <proposition id="3.215.2">
+    All law lecturers are legal authorities.
+  </proposition>
+  <proposition id="3.215.3">
+    Are all competent legal authorities competent law lecturers?
+  </proposition>
+  <nonvalid id="3.215.a">
+    <theory> <ref src="3.215.1"/> <ref src="3.215.2"/> </theory>
+    <conclusion> <ref src="3.215.3"/> </conclusion>
+  </nonvalid>
+  <nonvalid id="3.215.a">
+    <theory> <ref src="3.215.1"/> <ref src="3.215.2"/> </theory>
+    <conclusion> <negation> <ref src="3.215.3"/> </negation> </conclusion>
+  </nonvalid>
+</testcase>
+
+<testcase id="3.216">
+  <proposition id="3.216.1">
+    John is a fatter politician than Bill.
+  </proposition>
+  <proposition id="3.216.2">
+    Is John fatter than Bill?
+  </proposition>
+  <valid id="3.216.a">
+    <theory> <ref src="3.216.1"/> </theory>
+    <conclusion> <ref src="3.216.2"/> </conclusion>
+  </valid>
+</testcase>
+
+<testcase id="3.217">
+  <proposition id="3.217.1">
+    John is a cleverer politician than Bill.
+  </proposition>
+  <proposition id="3.217.2">
+    Is John cleverer than Bill?
+  </proposition>
+  <nonvalid id="3.217.a">
+    <theory> <ref src="3.217.1"/> </theory>
+    <conclusion> <ref src="3.217.2"/> </conclusion>
+  </nonvalid>
+  <nonvalid id="3.217.a">
+    <theory> <ref src="3.217.1"/> </theory>
+    <conclusion> <negation> <ref src="3.217.2"/> </negation> </conclusion>
+  </nonvalid>
+</testcase>
+
+</testsuite>

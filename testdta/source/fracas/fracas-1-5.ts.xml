@@ -1,0 +1,296 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE testsuite SYSTEM "file:///home/rb432/workspace/rte/dtd/testsuite.dtd">
+
+<testsuite id="1.5" name="monotonicity (downwards on first argument)">
+
+<testcase id="3.65">
+  <proposition id="3.65.1">
+    A Scandinavian won a Nobel prize.
+  </proposition>
+  <proposition id="3.65.2">
+    Every Swede is a Scandinavian.
+  </proposition>
+  <proposition id="3.65.3">
+    Did a Swede win a Nobel prize?
+  </proposition>
+  <nonvalid id="3.65.a">
+    <theory> <ref src="3.65.1"/> <ref src="3.65.2"/> </theory>
+    <conclusion> <ref src="3.65.3"/> </conclusion>
+  </nonvalid>
+  <nonvalid id="3.65.b">
+    <theory> <ref src="3.65.1"/> <ref src="3.65.2"/> </theory>
+    <conclusion> <negation> <ref src="3.65.3"/> </negation> </conclusion>
+  </nonvalid>
+</testcase>
+
+<testcase id="3.66">
+  <proposition id="3.66.1">
+    Every resident of the North American continent
+      can travel freely within Europe.
+  </proposition>
+  <proposition id="3.66.2">
+    Every Canadian resident is a resident of
+      the North American continent.
+  </proposition>
+  <!--
+    Can every Canadian resident
+      freely within Europe?
+  -->
+  <proposition id="3.66.3">
+    Can every Canadian resident
+      travel freely within Europe?
+  </proposition>
+  <valid id="3.66.a">
+    <theory> <ref src="3.66.1"/> <ref src="3.66.2"/> </theory>
+    <conclusion> <ref src="3.66.3"/> </conclusion>
+  </valid>
+</testcase>
+
+<testcase id="3.67">
+  <proposition id="3.67.1">
+    All residents of the North American continent can
+      travel freely within Europe.
+  </proposition>
+  <proposition id="3.67.2">
+    Every Canadian resident is a resident of
+      the North American continent.
+  </proposition>
+  <proposition id="3.67.3">
+    Can all Canadian residents
+      travel freely within Europe?
+  </proposition>
+  <valid id="3.67.a">
+    <theory> <ref src="3.67.1"/> <ref src="3.67.2"/> </theory>
+    <conclusion> <ref src="3.67.3"/> </conclusion>
+  </valid>
+</testcase>
+
+<testcase id="3.68">
+  <proposition id="3.68.1">
+    Each resident of the North American continent
+      can travel freely within Europe.
+  </proposition>
+  <proposition id="3.68.2">
+    Every Canadian resident is a resident of
+      the North American continent.
+  </proposition>
+  <proposition id="3.68.3">
+    Can each Canadian resident
+      travel freely within Europe?
+  </proposition>
+  <valid id="3.68.a">
+    <theory> <ref src="3.68.1"/> <ref src="3.68.2"/> </theory>
+    <conclusion> <ref src="3.68.3"/> </conclusion>
+  </valid>
+</testcase>
+
+<testcase id="3.69">
+  <proposition id="3.69.1">
+    The residents of major western countries can travel freely within Europe.
+  </proposition>
+  <proposition id="3.69.2">
+    All residents of major western countries are residents of
+      western countries.
+  </proposition>
+  <proposition id="3.69.3">
+    Do the residents of major western countries have
+      the right to live in Europe?
+  </proposition>
+  <valid id="3.69.a">
+    <theory> <ref src="3.69.1"/> <ref src="3.69.2"/> </theory>
+    <conclusion> <ref src="3.69.3"/> </conclusion>
+  </valid>
+</testcase>
+
+<testcase id="3.70">
+  <proposition id="3.70.1">
+    No delegate finished the report on time.
+  </proposition>
+  <proposition id="3.70.2">
+    Did any Scandinavian delegate finish the report on time?
+  </proposition>
+  <valid id="3.70.a">
+    <theory> <ref src="3.70.1"/> </theory>
+    <conclusion> <negation> <ref src="3.70.2"/> </negation> </conclusion>
+  </valid>
+</testcase>
+
+<testcase id="3.71">
+  <proposition id="3.71.1">
+    Some delegates finished the survey on time.
+  </proposition>
+  <proposition id="3.71.2">
+    Did any Irish delegates finish the survey on time?
+  </proposition>
+  <valid id="3.71.a">
+    <theory> <ref src="3.71.1"/> </theory>
+    <conclusion> <ref src="3.71.2"/> </conclusion>
+  </valid>
+  <valid id="3.71.b">
+    <theory> <ref src="3.71.1"/> </theory>
+    <conclusion> <negation> <ref src="3.71.2"/> </negation> </conclusion>
+  </valid>
+</testcase>
+
+<testcase id="3.72">
+  <proposition id="3.72.1">
+    Many delegates obtained interesting results from the survey.
+  </proposition>
+  <proposition id="3.72.2">
+    Did many British delegates obtain interesting results from the survey?
+  </proposition>
+  <nonvalid id="3.72.a">
+    <theory>  <ref src="3.72.1"/> </theory>
+    <conclusion> <ref src="3.72.2"/> </conclusion>
+  </nonvalid>
+  <nonvalid id="3.72.b">
+    <theory> <ref src="3.72.1"/> </theory>
+    <conclusion> <negation> <ref src="3.72.2"/> </negation> </conclusion>
+  </nonvalid>
+</testcase>
+
+<testcase id="3.73">
+  <proposition id="3.73.1">
+    Several delegates got the results published in major national newspapers.
+  </proposition>
+  <proposition id="3.73.2">
+    Did several Portuguese delegates get the results published in
+      major national newspapers?
+  </proposition>
+  <nonvalid id="3.73.a">
+    <theory> <ref src="3.73.1"/> </theory>
+    <conclusion> <ref src="3.73.2"/> </conclusion>
+  </nonvalid>
+  <nonvalid id="3.73.b">
+    <theory> <ref src="3.73.1"/> </theory>
+    <conclusion> <negation> <ref src="3.73.2"/> </negation> </conclusion>
+  </nonvalid>
+</testcase>
+
+<testcase id="3.74">
+  <proposition id="3.74.1">
+    Most Europeans can travel freely within Europe.
+  </proposition>
+  <proposition id="3.74.2">
+    Can most Europeans who are resident outside Europe travel freely
+      within Europe?
+  </proposition>
+  <!--
+    <nonvalid id="3.74.a">
+      <theory> <ref src="3.74.1"/> </theory>
+      <conclusion> <ref src="3.74.2"/> </conclusion>
+    </nonvalid>
+    <nonvalid id="3.74.b">
+      <theory> <ref src="3.74.1"/> </theory>
+      <conclusion> <negation> <ref src="3.74.2"/> </negation> </conclusion>
+    </nonvalid>
+  -->
+  <valid id="3.74.a">
+    <theory> <ref src="3.74.1"/> </theory>
+    <conclusion> <negation> <ref src="3.74.2"/> </negation> </conclusion>
+  </valid>
+</testcase>
+
+<testcase id="3.75">
+  <proposition id="3.75.1">
+    A few committee members are from Scandinavia.
+  </proposition>
+  <proposition id="3.75.2">
+    Are at least a few female committee members from Scandinavia?
+  </proposition>
+  <nonvalid id="3.75.a">
+    <theory> <ref src="3.75.1"/> </theory>
+    <conclusion> <ref src="3.75.2"/> </conclusion>
+  </nonvalid>
+  <nonvalid id="3.75.b">
+    <theory> <ref src="3.75.1"/> </theory>
+    <conclusion> <negation> <ref src="3.75.2"/> </negation> </conclusion>
+  </nonvalid>
+</testcase>
+
+<testcase id="3.76">
+  <proposition id="3.76.1">
+    Few committee members are from southern Europe.
+  </proposition>
+  <proposition id="3.76.2">
+    Are few female committee members from southern Europe?
+  </proposition>
+  <valid id="3.76.a">
+    <theory> <ref src="3.76.1"/> </theory>
+    <conclusion> <ref src="3.76.2"/> </conclusion>
+  </valid>
+</testcase>
+
+<testcase id="3.77">
+  <proposition id="3.77.1">
+    Both commissioners used to be in business.
+  </proposition>
+  <!--
+    Did both female commissioners *used* to be in business?
+  -->
+  <proposition id="3.77.2">
+    Did both female commissioners use to be in business?
+  </proposition>
+  <nonvalid id="3.77.a">
+    <theory> <ref src="3.77.1"/> </theory>
+    <conclusion> <ref src="3.77.2"/> </conclusion>
+  </nonvalid>
+  <nonvalid id="3.77.b">
+    <theory> <ref src="3.77.1"/> </theory>
+    <conclusion> <negation> <ref src="3.77.2"/> </negation> </conclusion>
+  </nonvalid>
+</testcase>
+
+<testcase id="3.78">
+  <proposition id="3.78.1">
+    Neither commissioner spends a lot of time at home.
+  </proposition>
+  <proposition id="3.78.2">
+    Does either female commissioner spend a lot of time at home?
+  </proposition>
+  <nonvalid id="3.78.a">
+    <theory> <ref src="3.78.1"/> </theory>
+    <conclusion> <ref src="3.78.2"/> </conclusion>
+  </nonvalid>
+  <nonvalid id="3.78.b">
+    <theory> <ref src="3.78.1"/> </theory>
+    <conclusion> <negation> <ref src="3.78.2"/> </negation> </conclusion>
+  </nonvalid>
+</testcase>
+
+<testcase id="3.79">
+  <!-- A least three commissioners spend time at home. -->
+  <proposition id="3.79.1">
+    At least three commissioners spend time at home.
+  </proposition>
+  <proposition id="3.79.2">
+    Do at least three male commissioners spend time at home?
+  </proposition>
+  <nonvalid id="3.79.a">
+    <theory> <ref src="3.79.1"/> </theory>
+    <conclusion> <ref src="3.79.2"/> </conclusion>
+  </nonvalid>
+  <nonvalid id="3.79.b">
+    <theory> <ref src="3.79.1"/> </theory>
+    <conclusion> <negation> <ref src="3.79.2"/> </negation> </conclusion>
+  </nonvalid>
+</testcase>
+
+<testcase id="3.80">
+  <proposition id="3.80.1">
+    At most ten commissioners spend time at home.
+  </proposition>
+  <proposition id="3.80.2">
+    Do at most ten female commissioners spend time at home?
+  </proposition>
+  <nonvalid id="3.80.a">
+    <theory> <ref src="3.80.1"/> </theory>
+    <conclusion> <ref src="3.80.2"/> </conclusion>
+  </nonvalid>
+  <nonvalid id="3.80.b">
+    <theory> <ref src="3.80.1"/> </theory>
+    <conclusion> <negation> <ref src="3.80.2"/> </negation> </conclusion>
+  </nonvalid>
+</testcase>
+
+</testsuite>

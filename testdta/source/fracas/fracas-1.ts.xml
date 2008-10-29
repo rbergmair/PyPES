@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE testsuite SYSTEM "file:///home/rb432/workspace/rte/dtd/testsuite.dtd">
+
+<testsuite id="1" name="generalized quantifiers">
+
+<testsuiteref src="fracas-1-1.ts.xml"/>
+<testsuiteref src="fracas-1-2.ts.xml"/>
+<testsuiteref src="fracas-1-3.ts.xml"/>
+<testsuiteref src="fracas-1-4.ts.xml"/>
+<testsuiteref src="fracas-1-5.ts.xml"/>
+
+</testsuite>

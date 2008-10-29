@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE testsuite SYSTEM "file:///home/rb432/workspace/rte/dtd/testsuite.dtd">
+
+<testsuite id="9" name="aspectual classes">
+  <testsuiteref src="fracas-9-1.ts.xml"/>
+  <testsuiteref src="fracas-9-2.ts.xml"/>
+</testsuite>

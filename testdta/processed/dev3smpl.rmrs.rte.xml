@@ -1,0 +1,2778 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<entailment-corpus>
+<pair id='999' value='TRUE' task='IE'>
+  <t>
+  <surface>
+    An Italian became the world's greatest tenor. 
+  </surface>
+  <analysis>
+  
+  <sentence>
+  
+  </sentence>
+  </analysis>
+  </t>
+  <h>
+  <surface>
+    Someone became the world's greatest tenor. 
+  </surface>
+  <analysis>
+  
+  <sentence>
+  
+  </sentence>
+  </analysis>
+  </h>
+</pair>
+<pair id='137' value='TRUE' task='IE'>
+  <t>
+  <surface>
+    Centre-left voters in São Paulo have chosen Romano Prodi as the candidate w\
+    \ ho will challenge Prime Minister Silvio Berlusconi in next year's electio\
+    n.\ The former European Commission president and Italian PM won 73.5% of vo\
+    tes\ , according to partial results of primaries. 
+  </surface>
+  <analysis>
+  
+  <sentence>
+  
+  </sentence>
+  </analysis>
+  </t>
+  <h>
+  <surface>
+    Romano Prodi wins Italian primaries. 
+  </surface>
+  <analysis>
+  
+  <sentence>
+  
+  </sentence>
+  </analysis>
+  </h>
+</pair>
+<pair id='24' value='TRUE' task='IE'>
+  <t>
+  <surface>
+    Bountiful arrived after war's end, sailing into San Francisco Bay 21 August\
+    \ 1945. Bountiful was then assigned as hospital ship at Yokosuka, Japan, de\
+    p\ arting San Francisco 1 November 1945. 
+  </surface>
+  <analysis>
+  
+  <sentence>
+  
+  </sentence>
+  <sentence>
+  
+  </sentence>
+  </analysis>
+  </t>
+  <h>
+  <surface>
+    Bountiful reached San Francisco in August 1945. 
+  </surface>
+  <analysis>
+  
+  <sentence>
+  
+  </sentence>
+  </analysis>
+  </h>
+</pair>
+<pair id='144' value='TRUE' task='IE'>
+  <t>
+  <surface>
+    Scott's execution led to outrage in Ontario, and was largely responsible fo\
+    \ r prompting the Wolseley Expedition, which forced Louis Riel, now branded\
+     a\ murderer, to flee the settlement. 
+  </surface>
+  <analysis>
+  
+  <sentence>
+  
+  </sentence>
+  </analysis>
+  </t>
+  <h>
+  <surface>
+    Scott's execution caused the Wolseley Expedition. 
+  </surface>
+  <analysis>
+  
+  <sentence>
+  
+  </sentence>
+  </analysis>
+  </h>
+</pair>
+<pair id='200' value='FALSE' task='IE'>
+  <t>
+  <surface>
+    In 1856 Manuel Ruiz Zorrilla was elected deputy, and soon attracted notice \
+    \ among the most advanced Progressists and Democrats. He took part in the r\
+    ev\ olutionary propaganda that led to the military movement in Madrid on Ju\
+    ne 2\ 2, 1866. He had to take refuge in France for two years, like his fell\
+    ow-con\ spirators, and only returned to Spain when the revolution of 1868 t\
+    ook plac\ e. 
+  </surface>
+  <analysis>
+  
+  <sentence>
+  
+  </sentence>
+  <sentence>
+  
+  </sentence>
+  <sentence>
+  
+  </sentence>
+  </analysis>
+  </t>
+  <h>
+  <surface>
+    Zorrilla started the revolution of 1868. 
+  </surface>
+  <analysis>
+  
+  <sentence>
+  
+  </sentence>
+  </analysis>
+  </h>
+</pair>
+<pair id='142' value='TRUE' task='IE'>
+  <t>
+  <surface>
+    They named themselves for Saint Joan of Arc. The brigade began with 17 wome\
+    \ n, but soon grew to 135 members. Its mission was to obtain money, weapons\
+    , \ provisions, and information for the combatant men. Many smuggled weapon\
+    s in\ to the combat zones by carrying them in carts filled with grain or ce\
+    ment. 
+  </surface>
+  <analysis>
+  
+  <sentence>
+  
+  </sentence>
+  <sentence>
+  
+  </sentence>
+  <sentence>
+  
+  </sentence>
+  <sentence>
+  
+  </sentence>
+  </analysis>
+  </t>
+  <h>
+  <surface>
+    Saint Joan of Arc's brigade got weapons for combatants. 
+  </surface>
+  <analysis>
+  
+  <sentence>
+  
+  </sentence>
+  </analysis>
+  </h>
+</pair>
+<pair id='190' value='TRUE' task='IE'>
+  <t>
+  <surface>
+    In 1975, a 19 year old Wilkins was handed the captaincy of Chelsea, despite\
+    \ the presence of elder and more experienced players in the squad. 
+  </surface>
+  <analysis>
+  
+  <sentence>
+  
+  </sentence>
+  </analysis>
+  </t>
+  <h>
+  <surface>
+    Wilkins became the captain of Chelsea in 1975. 
+  </surface>
+  <analysis>
+  
+  <sentence>
+  
+  </sentence>
+  </analysis>
+  </h>
+</pair>
+<pair id='100' value='FALSE' task='IE'>
+  <t>
+  <surface>
+    On 21 July, the Macdonough patrolled the waters off Guam to protect the ass\
+    \ ault craft from enemy submarines, continuing that role until departing fo\
+    r \ Hawaii on 10 August. After a day at Pearl Harbor, she departed for the \
+    Admi\ ralty Islands. 
+  </surface>
+  <analysis>
+  
+  <sentence>
+  
+  </sentence>
+  <sentence>
+  
+  </sentence>
+  </analysis>
+  </t>
+  <h>
+  <surface>
+    The Macdonough left Hawaii on 10 August. 
+  </surface>
+  <analysis>
+  
+  <sentence>
+  
+  </sentence>
+  </analysis>
+  </h>
+</pair>
+<pair id='72' value='TRUE' task='IE'>
+  <t>
+  <surface>
+    But these are only first hazards. "If the rain continues at the same magnit\
+    \ ude and according to the forecast, then some of the rivers could reach fl\
+    oo\ d stage either later [Tuesday] or Wednesday morning," said Allan Chapma\
+    n, a\ hydrologist with the River Forecast Centre in Victoria. 
+  </surface>
+  <analysis>
+  
+  <sentence>
+  
+  </sentence>
+  <sentence>
+  
+  </sentence>
+  </analysis>
+  </t>
+  <h>
+  <surface>
+    Allan Chapman is employed at the River Forecast Centre. 
+  </surface>
+  <analysis>
+  
+  <sentence>
+  
+  </sentence>
+  </analysis>
+  </h>
+</pair>
+<pair id='127' value='TRUE' task='IE'>
+  <t>
+  <surface>
+    As late as 1799, priests were still being imprisoned or deported to penal c\
+    \ olonies and persecution only worsened after the French army led by Genera\
+    l \ Louis Alexandre Berthier captured Rome and imprisoned Pope Pius VI, who\
+     wou\ ld die in captivity in Valence, Drôme, France in August of 1799. 
+  </surface>
+  <analysis>
+  
+  <sentence>
+  
+  </sentence>
+  </analysis>
+  </t>
+  <h>
+  <surface>
+    Pope Pius VI died in France. 
+  </surface>
+  <analysis>
+  
+  <sentence>
+  
+  </sentence>
+  </analysis>
+  </h>
+</pair>
+<pair id='118' value='TRUE' task='IE'>
+  <t>
+  <surface>
+    According to Nelson Beavers, who is a co-owner of the current company, Caro\
+    \ lina Analytical Laboratories, LLC. and has ownership/employment history w\
+    it\ h Woodson-Tenent and Eurofins, the septic system was installed in the e\
+    arly\ 1990s. 
+  </surface>
+  <analysis>
+  
+  <sentence>
+  
+  </sentence>
+  </analysis>
+  </t>
+  <h>
+  <surface>
+    Nelson Beavers is one of the owners of Carolina Analytical Laboratories. 
+  </surface>
+  <analysis>
+  
+  <sentence>
+  
+  </sentence>
+  </analysis>
+  </h>
+</pair>
+<pair id='75' value='FALSE' task='IE'>
+  <t>
+  <surface>
+    In the May 2005 general election Michael Howard failed to unseat the Labour\
+    \ Government, although the Conservatives did gain 33 seats, playing the mos\
+    t\ significant role in reducing Labour's majority from 167 to 66. 
+  </surface>
+  <analysis>
+  
+  <sentence>
+  
+  </sentence>
+  </analysis>
+  </t>
+  <h>
+  <surface>
+    In the May 2005 general election Conservatives got 33 seats. 
+  </surface>
+  <analysis>
+  
+  <sentence>
+  
+  </sentence>
+  </analysis>
+  </h>
+</pair>
+<pair id='175' value='TRUE' task='IE'>
+  <t>
+  <surface>
+    A computer system failure closed down share trading at the Tokyo Stock Exch\
+    \ ange for most of yesterday, the worst disruption to date for Asia's large\
+    st\ bourse. 
+  </surface>
+  <analysis>
+  
+  <sentence>
+  
+  </sentence>
+  </analysis>
+  </t>
+  <h>
+  <surface>
+    The Tokyo Stock Exchange was closed down by computer system failure. 
+  </surface>
+  <analysis>
+  
+  <sentence>
+  
+  </sentence>
+  </analysis>
+  </h>
+</pair>
+<pair id='184' value='TRUE' task='IE'>
+  <t>
+  <surface>
+    Vera Beers, of Olivet, recently was named employee of the month at Standard\
+    \ Printing in Marshall. 
+  </surface>
+  <analysis>
+  
+  <sentence>
+  
+  </sentence>
+  </analysis>
+  </t>
+  <h>
+  <surface>
+    Vera Beers works for Standard Printing. 
+  </surface>
+  <analysis>
+  
+  <sentence>
+  
+  </sentence>
+  </analysis>
+  </h>
+</pair>
+<pair id='157' value='FALSE' task='IE'>
+  <t>
+  <surface>
+    In 1955, the Aurora Borealis, a coating applied to crystal stones to produc\
+    \ e a "rainbow of colors" effect was introduced. 
+  </surface>
+  <analysis>
+  
+  <sentence>
+  
+  </sentence>
+  </analysis>
+  </t>
+  <h>
+  <surface>
+    The Aurora Borealis was discovered in 1995. 
+  </surface>
+  <analysis>
+  
+  <sentence>
+  
+  </sentence>
+  </analysis>
+  </h>
+</pair>
+<pair id='113' value='FALSE' task='IE'>
+  <t>
+  <surface>
+    Unfortunately, a visit from Mrs Hobday, causes Mr Browne to leave for Londo\
+    \ n. 
+  </surface>
+  <analysis>
+  
+  <sentence>
+  
+  </sentence>
+  </analysis>
+  </t>
+  <h>
+  <surface>
+    Mrs Hobday departs London. 
+  </surface>
+  <analysis>
+  
+  <sentence>
+  
+  </sentence>
+  </analysis>
+  </h>
+</pair>
+<pair id='78' value='FALSE' task='IE'>
+  <t>
+  <surface>
+    At the same time the Italian digital rights group, Electronic Frontiers Ita\
+    \ ly, has asked the nation's government to investigate Sony over its use of\
+     a\ nti-piracy software. 
+  </surface>
+  <analysis>
+  
+  <sentence>
+  
+  </sentence>
+  </analysis>
+  </t>
+  <h>
+  <surface>
+    Italy's government investigates Sony. 
+  </surface>
+  <analysis>
+  
+  <sentence>
+  
+  </sentence>
+  </analysis>
+  </h>
+</pair>
+<pair id='43' value='TRUE' task='IE'>
+  <t>
+  <surface>
+    Parents also had to contribute "much more fully", while "coasting" schools \
+    \ would be tackled, Ms Kelly told MPs. But shadow education secretary David\
+     C\ ameron, who backed some ideas, said other parts were a "complete muddle\
+    ". 
+  </surface>
+  <analysis>
+  
+  <sentence>
+  
+  </sentence>
+  <sentence>
+  
+  </sentence>
+  </analysis>
+  </t>
+  <h>
+  <surface>
+    David Cameron works as the shadow education secretary. 
+  </surface>
+  <analysis>
+  
+  <sentence>
+  
+  </sentence>
+  </analysis>
+  </h>
+</pair>
+<pair id='76' value='FALSE' task='IE'>
+  <t>
+  <surface>
+    The US state of Kansas has ruled that science classes in public schools sho\
+    \ uld include the teaching of intelligent design and the doubts it casts on\
+     D\ arwinian evolution. 
+  </surface>
+  <analysis>
+  
+  <sentence>
+  
+  </sentence>
+  </analysis>
+  </t>
+  <h>
+  <surface>
+    Intelligent design supports Darwinian evolution. 
+  </surface>
+  <analysis>
+  
+  <sentence>
+  
+  </sentence>
+  </analysis>
+  </h>
+</pair>
+<pair id='99' value='TRUE' task='IE'>
+  <t>
+  <surface>
+    The Extra Girl (1923) is a story of a small-town girl, Sue Graham (played b\
+    \ y Mabel Normand) who comes to Hollywood to be in the pictures. This Mabel\
+     N\ ormand vehicle, produced by Mack Sennett, followed earlier films about \
+    the \ film industry and also paved the way for later films about Hollywood,\
+     such \ as King Vidors Show People (1928). 
+  </surface>
+  <analysis>
+  
+  <sentence>
+  
+  </sentence>
+  <sentence>
+  
+  </sentence>
+  </analysis>
+  </t>
+  <h>
+  <surface>
+    Mabel Normand starred in The Extra Girl. 
+  </surface>
+  <analysis>
+  
+  <sentence>
+  
+  </sentence>
+  </analysis>
+  </h>
+</pair>
+<pair id='68' value='FALSE' task='IE'>
+  <t>
+  <surface>
+    A former employee of the company, David Vance of South Portland, said Hoope\
+    \ r spent a lot of time on the road, often meeting with customers between P\
+    or\ tland and Kittery. 
+  </surface>
+  <analysis>
+  
+  <sentence>
+  
+  </sentence>
+  </analysis>
+  </t>
+  <h>
+  <surface>
+    Hooper is a citizen of Portland. 
+  </surface>
+  <analysis>
+  
+  <sentence>
+  
+  </sentence>
+  </analysis>
+  </h>
+</pair>
+<pair id='1' value='TRUE' task='IE'>
+  <t>
+  <surface>
+    The sale was made to pay Yukos' US$ 27.5 billion tax bill, Yuganskneftegaz \
+    \ was originally sold for US$ 9.4 billion to a little known company Baikalf\
+    in\ ansgroup which was later bought by the Russian state-owned oil company \
+    Rosn\ eft . 
+  </surface>
+  <analysis>
+  
+  <sentence>
+  
+  </sentence>
+  </analysis>
+  </t>
+  <h>
+  <surface>
+    Baikalfinansgroup was sold to Rosneft. 
+  </surface>
+  <analysis>
+  
+  <sentence>
+  
+  </sentence>
+  </analysis>
+  </h>
+</pair>
+<pair id='69' value='TRUE' task='IE'>
+  <t>
+  <surface>
+    Hugh was also very supportive of Mustang's plan to become Fuhrer, doing wha\
+    \ tever he can to, as he put it, to "help him from the bottom to the top." 
+  </surface>
+  <analysis>
+  
+  <sentence>
+  
+  </sentence>
+  </analysis>
+  </t>
+  <h>
+  <surface>
+    Hugh assisted Mustang. 
+  </surface>
+  <analysis>
+  
+  <sentence>
+  
+  </sentence>
+  </analysis>
+  </h>
+</pair>
+<pair id='35' value='TRUE' task='IE'>
+  <t>
+  <surface>
+    A leading human rights group on Wednesday identified Poland and Romania as \
+    \ the likely locations in eastern Europe of secret prisons where al-Qaeda s\
+    us\ pects are interrogated by the Central Intelligence Agency. 
+  </surface>
+  <analysis>
+  
+  <sentence>
+  
+  </sentence>
+  </analysis>
+  </t>
+  <h>
+  <surface>
+    CIA secret prisons were located in Eastern Europe. 
+  </surface>
+  <analysis>
+  
+  <sentence>
+  
+  </sentence>
+  </analysis>
+  </h>
+</pair>
+<pair id='136' value='FALSE' task='IE'>
+  <t>
+  <surface>
+    State Police issued bulletins via teletype requesting patrols to be on the \
+    \ lookout for Robert Senacal, 35, of Cortlandt Manor. 
+  </surface>
+  <analysis>
+  
+  <sentence>
+  
+  </sentence>
+  </analysis>
+  </t>
+  <h>
+  <surface>
+    Robert Senacal was arrested by police. 
+  </surface>
+  <analysis>
+  
+  <sentence>
+  
+  </sentence>
+  </analysis>
+  </h>
+</pair>
+<pair id='129' value='TRUE' task='IE'>
+  <t>
+  <surface>
+    Take consumer products giant Procter and Gamble. Even with a $1.8 billion R\
+    \ esearch and Development budget, it still manages 500 active partnerships \
+    ea\ ch year, many of them with small companies. 
+  </surface>
+  <analysis>
+  
+  <sentence>
+  
+  </sentence>
+  <sentence>
+  
+  </sentence>
+  </analysis>
+  </t>
+  <h>
+  <surface>
+    Procter and Gamble spends $1.8 billion for Research and Development. 
+  </surface>
+  <analysis>
+  
+  <sentence>
+  
+  </sentence>
+  </analysis>
+  </h>
+</pair>
+<pair id='323' value='FALSE' task='IR'>
+  <t>
+  <surface>
+    Ronaldo Luiz Nazario da Silva is quite simply one of the greatest strikers \
+    \ in the history of world football, capable of leaving an entire team for d\
+    ea\ d with his darting runs and dribbling ability, voted FIFA World Player \
+    of t\ he Year on three occasions and already a double FIFA World Cup winner\
+    . 
+  </surface>
+  <analysis>
+  
+  <sentence>
+  
+  </sentence>
+  </analysis>
+  </t>
+  <h>
+  <surface>
+    FIFA selects world football player of the year 1994. 
+  </surface>
+  <analysis>
+  
+  <sentence>
+  
+  </sentence>
+  </analysis>
+  </h>
+</pair>
+<pair id='294' value='TRUE' task='IR'>
+  <t>
+  <surface>
+    Mental health problems in children and adolescents are on the rise, the Bri\
+    \ tish Medical Association has warned, and services are ill-equipped to cop\
+    e. 
+  </surface>
+  <analysis>
+  
+  <sentence>
+  
+  </sentence>
+  </analysis>
+  </t>
+  <h>
+  <surface>
+    Mental health problems increase in the young. 
+  </surface>
+  <analysis>
+  
+  <sentence>
+  
+  </sentence>
+  </analysis>
+  </h>
+</pair>
+<pair id='279' value='FALSE' task='IR'>
+  <t>
+  <surface>
+    In November 2005, the EU announced a partial suspension of the PCA with all\
+    \ subcommittees and the Cooperation Committee suspended indefinitely. An ar\
+    m\ s embargo has also put in place, whilst a year-long visa ban has been im\
+    pos\ ed upon 12 Uzbek officials believed to have played a part in the forci\
+    ble s\ uppression of the Andijan demonstrations. 
+  </surface>
+  <analysis>
+  
+  <sentence>
+  
+  </sentence>
+  <sentence>
+  
+  </sentence>
+  </analysis>
+  </t>
+  <h>
+  <surface>
+    The EU partially refuses commission candidates. 
+  </surface>
+  <analysis>
+  
+  <sentence>
+  
+  </sentence>
+  </analysis>
+  </h>
+</pair>
+<pair id='248' value='FALSE' task='IR'>
+  <t>
+  <surface>
+    Ecuador has received short shrift in U.S. policy debates. Yet in recent yea\
+    \ rs, significant public debate has taken place in Ecuador on the joint U.S\
+    ./\ Colombian initiative and its effects on Ecuador and its citizens. 
+  </surface>
+  <analysis>
+  
+  <sentence>
+  
+  </sentence>
+  <sentence>
+  
+  </sentence>
+  </analysis>
+  </t>
+  <h>
+  <surface>
+    Peru debates border region with Ecuador. 
+  </surface>
+  <analysis>
+  
+  <sentence>
+  
+  </sentence>
+  </analysis>
+  </h>
+</pair>
+<pair id='383' value='FALSE' task='IR'>
+  <t>
+  <surface>
+    This coalition took seven months to form, the longest deadlock in Dutch his\
+    \ tory. It occurred only after negotiations between the CDA and the PvdA fa\
+    il\ ed, first over tax issues, then over the issue of abortion. 
+  </surface>
+  <analysis>
+  
+  <sentence>
+  
+  </sentence>
+  <sentence>
+  
+  </sentence>
+  </analysis>
+  </t>
+  <h>
+  <surface>
+    Three parties form a Dutch coalition government. 
+  </surface>
+  <analysis>
+  
+  <sentence>
+  
+  </sentence>
+  </analysis>
+  </h>
+</pair>
+<pair id='268' value='TRUE' task='IR'>
+  <t>
+  <surface>
+    Greece objects to the neighbouring Skopje government using the name Macedon\
+    \ ia, saying it implies claims on a Greek province of the same name. 
+  </surface>
+  <analysis>
+  
+  <sentence>
+  
+  </sentence>
+  </analysis>
+  </t>
+  <h>
+  <surface>
+    Greece and Macedonia are in dispute over name. 
+  </surface>
+  <analysis>
+  
+  <sentence>
+  
+  </sentence>
+  </analysis>
+  </h>
+</pair>
+<pair id='328' value='FALSE' task='IR'>
+  <t>
+  <surface>
+    September 26 - Trial against former Italian Prime Minister Giulio Andreotti\
+    \ , accused of Mafia connections, begins. 
+  </surface>
+  <analysis>
+  
+  <sentence>
+  
+  </sentence>
+  </analysis>
+  </t>
+  <h>
+  <surface>
+    Andreotti collaborates with the Mafia. 
+  </surface>
+  <analysis>
+  
+  <sentence>
+  
+  </sentence>
+  </analysis>
+  </h>
+</pair>
+<pair id='393' value='FALSE' task='IR'>
+  <t>
+  <surface>
+    UFJ Holdings Inc. said it wants to merge with Mitsubishi Tokyo Financial Gr\
+    \ oup Inc., a combination that would surpass Citigroup Inc. as the world's \
+    bi\ ggest bank and accelerate Japan's attempts to clean up bad loans. 
+  </surface>
+  <analysis>
+  
+  <sentence>
+  
+  </sentence>
+  </analysis>
+  </t>
+  <h>
+  <surface>
+    The merger of Japanese Banks creates the world's biggest bank. 
+  </surface>
+  <analysis>
+  
+  <sentence>
+  
+  </sentence>
+  </analysis>
+  </h>
+</pair>
+<pair id='377' value='TRUE' task='IR'>
+  <t>
+  <surface>
+    The spread of AIDS in Africa is driven not by unsafe sex but by unsafe medi\
+    \ cal practice, according to research published last week. 
+  </surface>
+  <analysis>
+  
+  <sentence>
+  
+  </sentence>
+  </analysis>
+  </t>
+  <h>
+  <surface>
+    AIDS spreads in Africa. 
+  </surface>
+  <analysis>
+  
+  <sentence>
+  
+  </sentence>
+  </analysis>
+  </h>
+</pair>
+<pair id='281' value='FALSE' task='IR'>
+  <t>
+  <surface>
+    In this respect, the reforms required across Europe are similar: stronger i\
+    \ ncentives within pension systems to delay retirement, rules which facilit\
+    at\ e gradual retirement, incentives for workers to save for their retireme\
+    nt, \ and public information measures to improve awareness of the options a\
+    vailab\ le. 
+  </surface>
+  <analysis>
+  
+  <sentence>
+  
+  </sentence>
+  </analysis>
+  </t>
+  <h>
+  <surface>
+    National pension systems currently adopted in Europe are in difficulties. 
+  </surface>
+  <analysis>
+  
+  <sentence>
+  
+  </sentence>
+  </analysis>
+  </h>
+</pair>
+<pair id='215' value='TRUE' task='IR'>
+  <t>
+  <surface>
+    Anna Politkovskaya was found shot dead on Saturday in a lift at her block o\
+    \ f flats in the Russian capital, Moscow. 
+  </surface>
+  <analysis>
+  
+  <sentence>
+  
+  </sentence>
+  </analysis>
+  </t>
+  <h>
+  <surface>
+    Anna Politkovskaya was murdered. 
+  </surface>
+  <analysis>
+  
+  <sentence>
+  
+  </sentence>
+  </analysis>
+  </h>
+</pair>
+<pair id='325' value='TRUE' task='IR'>
+  <t>
+  <surface>
+    Russian cosmonaut Valery Polyakov set the record for the longest continuous\
+    \ amount of time spent in space, a staggering 438 days, between 1994 and 19\
+    9\ 5. 
+  </surface>
+  <analysis>
+  
+  <sentence>
+  
+  </sentence>
+  </analysis>
+  </t>
+  <h>
+  <surface>
+    Russians hold record for longest stay in space. 
+  </surface>
+  <analysis>
+  
+  <sentence>
+  
+  </sentence>
+  </analysis>
+  </h>
+</pair>
+<pair id='400' value='FALSE' task='IR'>
+  <t>
+  <surface>
+    Zinedine Zidane has beaten Thierry Henry and Ronaldo to the Fifa 2003 World\
+    \ Player of the Year award. 
+  </surface>
+  <analysis>
+  
+  <sentence>
+  
+  </sentence>
+  </analysis>
+  </t>
+  <h>
+  <surface>
+    FIFA selects world football player of the year 1994. 
+  </surface>
+  <analysis>
+  
+  <sentence>
+  
+  </sentence>
+  </analysis>
+  </h>
+</pair>
+<pair id='356' value='FALSE' task='IR'>
+  <t>
+  <surface>
+    The Italian air transport sector features many typical causes of industrial\
+    \ conflict, including: the troubled economic situation of Alitalia, Italy's\
+     \ flagship airline (IT0404304F); a set of specific factors concerning serv\
+    ice\ s delivery; and a marked fragmentation of trade union representation. 
+  </surface>
+  <analysis>
+  
+  <sentence>
+  
+  </sentence>
+  </analysis>
+  </t>
+  <h>
+  <surface>
+    Italian flight assistants go on strike. 
+  </surface>
+  <analysis>
+  
+  <sentence>
+  
+  </sentence>
+  </analysis>
+  </h>
+</pair>
+<pair id='351' value='TRUE' task='IR'>
+  <t>
+  <surface>
+    The group, along with a broad coalition of disarmament, environmental, peac\
+    \ e, and religious organizations, expects the boycott to put pressure on Fr\
+    en\ ch companies to exert their economic influence and encourage Chirac to \
+    end \ all nuclear weapons testing. 
+  </surface>
+  <analysis>
+  
+  <sentence>
+  
+  </sentence>
+  </analysis>
+  </t>
+  <h>
+  <surface>
+    International pressure is exerted to end French nuclear tests. 
+  </surface>
+  <analysis>
+  
+  <sentence>
+  
+  </sentence>
+  </analysis>
+  </h>
+</pair>
+<pair id='307' value='TRUE' task='IR'>
+  <t>
+  <surface>
+    On 24 March 1992, the number 3 power generating unit at the Leningrad Atomi\
+    \ c Power Station in Sosnovyi Bor underwent an emergency shutdown. The plan\
+    t \ suffered a steam leak, which spewed a total of some 3 thousand curies i\
+    nto \ the atmosphere. 
+  </surface>
+  <analysis>
+  
+  <sentence>
+  
+  </sentence>
+  <sentence>
+  
+  </sentence>
+  </analysis>
+  </t>
+  <h>
+  <surface>
+    Nuclear Power Plant of Sosnovyi Bor suffers an emergency shut down. 
+  </surface>
+  <analysis>
+  
+  <sentence>
+  
+  </sentence>
+  </analysis>
+  </h>
+</pair>
+<pair id='283' value='FALSE' task='IR'>
+  <t>
+  <surface>
+    It is estimated that the disaster resulting from the deliberate crash of a \
+    \ Jumbo-Jet on a nuclear power station would be a multiple of the Chernobyl\
+     a\ ccident in the worst case by a factor of 60. 
+  </surface>
+  <analysis>
+  
+  <sentence>
+  
+  </sentence>
+  </analysis>
+  </t>
+  <h>
+  <surface>
+    The Chernobyl disaster had repercussions outside the ex-USSR. 
+  </surface>
+  <analysis>
+  
+  <sentence>
+  
+  </sentence>
+  </analysis>
+  </h>
+</pair>
+<pair id='340' value='TRUE' task='IR'>
+  <t>
+  <surface>
+    The Dayton Peace Accords for Bosnia and Herzegovina was the first major pea\
+    \ ce agreement adopted after the Beijing conference, in December 1995. 
+  </surface>
+  <analysis>
+  
+  <sentence>
+  
+  </sentence>
+  </analysis>
+  </t>
+  <h>
+  <surface>
+    The Dayton Peace Treaty was formulated to end the war in Bosnia. 
+  </surface>
+  <analysis>
+  
+  <sentence>
+  
+  </sentence>
+  </analysis>
+  </h>
+</pair>
+<pair id='236' value='TRUE' task='IR'>
+  <t>
+  <surface>
+    Claes was foreign minister of Belgium from 1992 until 1994, and secretary g\
+    \ eneral of NATO from 1994 until 1995, when he was forced to resign because\
+     o\ f allegations of corruption related to improper contracts for Agusta he\
+    lico\ pters approved by him while he was minister of economic affairs. For \
+    that h\ e also lost his civil rights for numerous years. 
+  </surface>
+  <analysis>
+  
+  <sentence>
+  
+  </sentence>
+  <sentence>
+  
+  </sentence>
+  </analysis>
+  </t>
+  <h>
+  <surface>
+    NATO Secretary General Willy Claes resigned. 
+  </surface>
+  <analysis>
+  
+  <sentence>
+  
+  </sentence>
+  </analysis>
+  </h>
+</pair>
+<pair id='266' value='FALSE' task='IR'>
+  <t>
+  <surface>
+    Glue-sniffing and other forms of solvent abuse are being overlooked in the \
+    \ fight against drugs, according to a new report. 
+  </surface>
+  <analysis>
+  
+  <sentence>
+  
+  </sentence>
+  </analysis>
+  </t>
+  <h>
+  <surface>
+    Glue-sniffing is common among youngsters. 
+  </surface>
+  <analysis>
+  
+  <sentence>
+  
+  </sentence>
+  </analysis>
+  </h>
+</pair>
+<pair id='224' value='FALSE' task='IR'>
+  <t>
+  <surface>
+    Based on a worldwide study of smoking-related fire and disaster data, UC Da\
+    \ vis epidemiologists show smoking is a leading cause of fires and death fr\
+    om\ fires globally. 
+  </surface>
+  <analysis>
+  
+  <sentence>
+  
+  </sentence>
+  </analysis>
+  </t>
+  <h>
+  <surface>
+    Domestic fires are the major cause of fire death. 
+  </surface>
+  <analysis>
+  
+  <sentence>
+  
+  </sentence>
+  </analysis>
+  </h>
+</pair>
+<pair id='322' value='FALSE' task='IR'>
+  <t>
+  <surface>
+    Research workers of the German archaeological institute have discovered a m\
+    \ ummy in permafrost at excavation work in Mongolia of approximately 2,500 \
+    ye\ ars old. 
+  </surface>
+  <analysis>
+  
+  <sentence>
+  
+  </sentence>
+  </analysis>
+  </t>
+  <h>
+  <surface>
+    Altai ice maiden triggers major dispute. 
+  </surface>
+  <analysis>
+  
+  <sentence>
+  
+  </sentence>
+  </analysis>
+  </h>
+</pair>
+<pair id='207' value='FALSE' task='IR'>
+  <t>
+  <surface>
+    A radiation leak at a nuclear power plant in Yeonggwang, South Jeolla provi\
+    \ nce, led officials yesterday to shut down the facility. 
+  </surface>
+  <analysis>
+  
+  <sentence>
+  
+  </sentence>
+  </analysis>
+  </t>
+  <h>
+  <surface>
+    The nuclear power plant of Sosnovyi Bor suffers an emergency shut down. 
+  </surface>
+  <analysis>
+  
+  <sentence>
+  
+  </sentence>
+  </analysis>
+  </h>
+</pair>
+<pair id='370' value='FALSE' task='IR'>
+  <t>
+  <surface>
+    The party system increased in importance during the Second Republic. Large,\
+    \ strong parties were fostered under the d'Hondt method of proportional rep\
+    r\ esentation, and parties soon began to receive state subsidies. 
+  </surface>
+  <analysis>
+  
+  <sentence>
+  
+  </sentence>
+  <sentence>
+  
+  </sentence>
+  </analysis>
+  </t>
+  <h>
+  <surface>
+    Several new political parties emerged. 
+  </surface>
+  <analysis>
+  
+  <sentence>
+  
+  </sentence>
+  </analysis>
+  </h>
+</pair>
+<pair id='378' value='TRUE' task='IR'>
+  <t>
+  <surface>
+    The U.S. space shuttle Atlantis, its lights flashing like a beacon, smoothl\
+    \ y docked with Russia's space station Mir Wednesday on its mission to pick\
+     u\ p U.S. astronaut Shannon Lucid, who has spent a record-breaking six mon\
+    ths \ in orbit. 
+  </surface>
+  <analysis>
+  
+  <sentence>
+  
+  </sentence>
+  </analysis>
+  </t>
+  <h>
+  <surface>
+    US shuttle Atlantis docks with the Mir space station. 
+  </surface>
+  <analysis>
+  
+  <sentence>
+  
+  </sentence>
+  </analysis>
+  </h>
+</pair>
+<pair id='515' value='TRUE' task='QA'>
+  <t>
+  <surface>
+    The Norwegian newspaper Dagbladet printed an article about the "intolerance\
+    \ page". 
+  </surface>
+  <analysis>
+  
+  <sentence>
+  
+  </sentence>
+  </analysis>
+  </t>
+  <h>
+  <surface>
+    Dagbladet is a Norwegian newspaper. 
+  </surface>
+  <analysis>
+  
+  <sentence>
+  
+  </sentence>
+  </analysis>
+  </h>
+</pair>
+<pair id='578' value='FALSE' task='QA'>
+  <t>
+  <surface>
+    Io is 2,236 miles (3,598 kilometers) in diameter, slightly larger than the \
+    \ Earth's moon. 
+  </surface>
+  <analysis>
+  
+  <sentence>
+  
+  </sentence>
+  </analysis>
+  </t>
+  <h>
+  <surface>
+    The terrestrial moon has a diameter of 3746 kilometers. 
+  </surface>
+  <analysis>
+  
+  <sentence>
+  
+  </sentence>
+  </analysis>
+  </h>
+</pair>
+<pair id='492' value='FALSE' task='QA'>
+  <t>
+  <surface>
+    Victor Emmanuel was born on Nov. 11, 1869, in Naples. After his father, Umb\
+    \ erto I, was assassinated in 1900, Victor Emmanuel succeeded to the throne\
+    . 
+  </surface>
+  <analysis>
+  
+  <sentence>
+  
+  </sentence>
+  <sentence>
+  
+  </sentence>
+  </analysis>
+  </t>
+  <h>
+  <surface>
+    Victor Emmanuel III was king of Italy from 1900 to 1946. 
+  </surface>
+  <analysis>
+  
+  <sentence>
+  
+  </sentence>
+  </analysis>
+  </h>
+</pair>
+<pair id='481' value='TRUE' task='QA'>
+  <t>
+  <surface>
+    The Gurkhas come from mountainous Nepal and are extremely tenacious warrior\
+    \ s-as foot soldiers they are the best only in close combat jungle/mountain\
+     c\ ombat and hand to hand type situation. 
+  </surface>
+  <analysis>
+  
+  <sentence>
+  
+  </sentence>
+  </analysis>
+  </t>
+  <h>
+  <surface>
+    The Gurkhas come from Nepal. 
+  </surface>
+  <analysis>
+  
+  <sentence>
+  
+  </sentence>
+  </analysis>
+  </h>
+</pair>
+<pair id='514' value='FALSE' task='QA'>
+  <t>
+  <surface>
+    The Norwegian Newspaper Corpus is a large and self-expanding corpus of Norw\
+    \ egian newspaper texts. The collection of this dynamic and continually gro\
+    wi\ ng corpus began in 1998. 
+  </surface>
+  <analysis>
+  
+  <sentence>
+  
+  </sentence>
+  <sentence>
+  
+  </sentence>
+  </analysis>
+  </t>
+  <h>
+  <surface>
+    Dagbladet is a Norwegian newspaper. 
+  </surface>
+  <analysis>
+  
+  <sentence>
+  
+  </sentence>
+  </analysis>
+  </h>
+</pair>
+<pair id='577' value='FALSE' task='QA'>
+  <t>
+  <surface>
+    Mars has the smallest confirmed moon, Deimos, which is about 7.5 miles in d\
+    \ iameter. 
+  </surface>
+  <analysis>
+  
+  <sentence>
+  
+  </sentence>
+  </analysis>
+  </t>
+  <h>
+  <surface>
+    The terrestrial moon has a diameter of 3746 kilometers. 
+  </surface>
+  <analysis>
+  
+  <sentence>
+  
+  </sentence>
+  </analysis>
+  </h>
+</pair>
+<pair id='541' value='TRUE' task='QA'>
+  <t>
+  <surface>
+    The hurdler suspended in 1993 for taking the anabolic steroid Nandrolone wa\
+    \ s cleared after a three judge arbitration panel ruled that the case again\
+    st\ her could not be proved beyond reasonable doubt . 
+  </surface>
+  <analysis>
+  
+  <sentence>
+  
+  </sentence>
+  </analysis>
+  </t>
+  <h>
+  <surface>
+    Nandrolone is a steroid. 
+  </surface>
+  <analysis>
+  
+  <sentence>
+  
+  </sentence>
+  </analysis>
+  </h>
+</pair>
+<pair id='549' value='TRUE' task='QA'>
+  <t>
+  <surface>
+    Since independence and the blood bath of partition , in which an estimated \
+    \ 15 million people were uprooted and 200,000 died , India and Pakistan hav\
+    e \ fought three wars , two over possession of Kashmir . 
+  </surface>
+  <analysis>
+  
+  <sentence>
+  
+  </sentence>
+  </analysis>
+  </t>
+  <h>
+  <surface>
+    India and Pakistan have fought three wars for the possession of Kashmir. 
+  </surface>
+  <analysis>
+  
+  <sentence>
+  
+  </sentence>
+  </analysis>
+  </h>
+</pair>
+<pair id='410' value='TRUE' task='QA'>
+  <t>
+  <surface>
+    Bush and his wife, Laura, departed the White House on Thursday afternoon to\
+    \ spend four days at the wooded presidential retreat of rustic cabins in th\
+    e\ Maryland mountains. Along with the first lady's mother, Jenna Welch, the\
+     w\ eekend gathering includes the president's parents, former President Geo\
+    rge \ H.W. Bush and his wife, Barbara; his sister Doro Koch and her husband\
+    , Bobb\ y; and his brother, Marvin, and his wife, Margaret. 
+  </surface>
+  <analysis>
+  
+  <sentence>
+  
+  </sentence>
+  <sentence>
+  
+  </sentence>
+  </analysis>
+  </t>
+  <h>
+  <surface>
+    The name of George H.W. Bush's wife is Barbara. 
+  </surface>
+  <analysis>
+  
+  <sentence>
+  
+  </sentence>
+  </analysis>
+  </h>
+</pair>
+<pair id='403' value='TRUE' task='QA'>
+  <t>
+  <surface>
+    Two of Gianni Versace's favorite buzzwords were quality and future, so afte\
+    \ r the 50-year-old designer was murdered last July outside his Miami Beach\
+    , \ Fla. mansion, it was somehow inevitable that his family would have to g\
+    o ab\ out putting those words together: They had to ask themselves how they\
+     could\ ensure the future of the company Versace had built without sacrific\
+    ing its\ reputation for quality. 
+  </surface>
+  <analysis>
+  
+  <sentence>
+  
+  </sentence>
+  </analysis>
+  </t>
+  <h>
+  <surface>
+    Gianni Versace is a designer. 
+  </surface>
+  <analysis>
+  
+  <sentence>
+  
+  </sentence>
+  </analysis>
+  </h>
+</pair>
+<pair id='409' value='TRUE' task='QA'>
+  <t>
+  <surface>
+    George H.W. Bush served this country not only as President but also as Vice\
+    \ President, Member of Congress, United Nations Ambassador, chief of the U.\
+    S\ . Liaison Office to the People's Republic of China, Director of the Cent\
+    ral\ Intelligence Agency and also, as a naval aviator in World War II. Comi\
+    ng b\ ack from the war, he married his sweetheart, Barbara Pierce of Rye, N\
+    ew Yor\ k, and later that year made his first civilian adult decision when \
+    he made \ the appropriate choice of moving to Texas, where he lived the res\
+    t of his l\ ife. 
+  </surface>
+  <analysis>
+  
+  <sentence>
+  
+  </sentence>
+  <sentence>
+  
+  </sentence>
+  </analysis>
+  </t>
+  <h>
+  <surface>
+    The name of George H.W. Bush's wife is Barbara. 
+  </surface>
+  <analysis>
+  
+  <sentence>
+  
+  </sentence>
+  </analysis>
+  </h>
+</pair>
+<pair id='503' value='TRUE' task='QA'>
+  <t>
+  <surface>
+    Spirou was created in 1938 by Rob-Vel, who sold the rights to the Dupuis pu\
+    \ blishing house in early 40's. Other artists like Jije (Joseph Gillain) to\
+    ok\ care of the feature. 
+  </surface>
+  <analysis>
+  
+  <sentence>
+  
+  </sentence>
+  <sentence>
+  
+  </sentence>
+  </analysis>
+  </t>
+  <h>
+  <surface>
+    Spirou was created by Rob-Vel. 
+  </surface>
+  <analysis>
+  
+  <sentence>
+  
+  </sentence>
+  </analysis>
+  </h>
+</pair>
+<pair id='447' value='FALSE' task='QA'>
+  <t>
+  <surface>
+    A condition called "social anxiety disorder" this week joined the long list\
+    \ of downers in life - including obesity, impotence, depression and phobia \
+    -\ that Americans once commonly saw as challenges of willpower and characte\
+    r \ but can now have treated by popping a pill. 
+  </surface>
+  <analysis>
+  
+  <sentence>
+  
+  </sentence>
+  </analysis>
+  </t>
+  <h>
+  <surface>
+    Phobia is a an extreme fear of a particular thing or situation. 
+  </surface>
+  <analysis>
+  
+  <sentence>
+  
+  </sentence>
+  </analysis>
+  </h>
+</pair>
+<pair id='535' value='FALSE' task='QA'>
+  <t>
+  <surface>
+    NASA's Saturn exploration spacecraft, Cassini , has discovered an atmospher\
+    \ e about the moon Enceladus . This is the first such discovery by Cassini,\
+     o\ ther than Titan , of the presence of an atmosphere around a Saturn moon\
+    . 
+  </surface>
+  <analysis>
+  
+  <sentence>
+  
+  </sentence>
+  <sentence>
+  
+  </sentence>
+  </analysis>
+  </t>
+  <h>
+  <surface>
+    Titan is the fifteenth of Saturn's known satellites. 
+  </surface>
+  <analysis>
+  
+  <sentence>
+  
+  </sentence>
+  </analysis>
+  </h>
+</pair>
+<pair id='498' value='TRUE' task='QA'>
+  <t>
+  <surface>
+    Franz Liszt, a Hungarian composer who lived from 1811 to 1886 was the equiv\
+    \ alent of a rock star in his day. His piano compositions were extremely po\
+    pu\ lar and he often gave concerts to his multitude of fans. Liszt was also\
+     the\ pioneer of many musical techniques, including the symphonic poem and \
+    the t\ echnique of transforming themes. 
+  </surface>
+  <analysis>
+  
+  <sentence>
+  
+  </sentence>
+  <sentence>
+  
+  </sentence>
+  <sentence>
+  
+  </sentence>
+  </analysis>
+  </t>
+  <h>
+  <surface>
+    Franz Liszt lived from 1811 to 1886. 
+  </surface>
+  <analysis>
+  
+  <sentence>
+  
+  </sentence>
+  </analysis>
+  </h>
+</pair>
+<pair id='464' value='FALSE' task='QA'>
+  <t>
+  <surface>
+    The Qin (from which the name China is derived) established the approximate \
+    \ boundaries and basic administrative system that all subsequent dynasties \
+    we\ re to follow. 
+  </surface>
+  <analysis>
+  
+  <sentence>
+  
+  </sentence>
+  </analysis>
+  </t>
+  <h>
+  <surface>
+    Qin Shi Huang was the first Chinese Emperor. 
+  </surface>
+  <analysis>
+  
+  <sentence>
+  
+  </sentence>
+  </analysis>
+  </h>
+</pair>
+<pair id='540' value='TRUE' task='QA'>
+  <t>
+  <surface>
+    New Delhi: More than 100 Nobel prize winners, two US congressmen, and leadi\
+    \ ng labour organizations have expressed concern over threats against the l\
+    if\ e of Kailash Satyarthi, India's leading opponent of child labour. 
+  </surface>
+  <analysis>
+  
+  <sentence>
+  
+  </sentence>
+  </analysis>
+  </t>
+  <h>
+  <surface>
+    Kailash Satyarthi, India's leading opponent of child labour. 
+  </surface>
+  <analysis>
+  
+  <sentence>
+  
+  </sentence>
+  </analysis>
+  </h>
+</pair>
+<pair id='563' value='TRUE' task='QA'>
+  <t>
+  <surface>
+    Polish-born Pope John Paul II, credited for inspiring Poland's return to de\
+    \ mocracy after more than 40 years of communism, is expected to dedicate th\
+    e \ church during his visit next summer. 
+  </surface>
+  <analysis>
+  
+  <sentence>
+  
+  </sentence>
+  </analysis>
+  </t>
+  <h>
+  <surface>
+    Pope John Paul II was born in Poland. 
+  </surface>
+  <analysis>
+  
+  <sentence>
+  
+  </sentence>
+  </analysis>
+  </h>
+</pair>
+<pair id='414' value='TRUE' task='QA'>
+  <t>
+  <surface>
+    After months of planning and build-up, Supreme Commander Dwight Eisenhower \
+    \ set Operation Overlord for June 6, 1944: some 7000 ships in the British I\
+    sl\ es set to sea and sailed across the English Channel, and, under the lea\
+    ders\ hip of Field Marshall Bernard Montgomery, 135,000 troops landed and s\
+    tormed\ Feldmarschal Erwin Rommel's German positions along 80 km of the Nor\
+    mandy c\ oast. 
+  </surface>
+  <analysis>
+  
+  <sentence>
+  
+  </sentence>
+  </analysis>
+  </t>
+  <h>
+  <surface>
+    The Normandy landings took place in June 1944. 
+  </surface>
+  <analysis>
+  
+  <sentence>
+  
+  </sentence>
+  </analysis>
+  </h>
+</pair>
+<pair id='484' value='TRUE' task='QA'>
+  <t>
+  <surface>
+    Kohl participated in the late stage of WWII as a teenage soldier. He joined\
+    \ the Christian-Democratic Union (CDU) in 1947. 
+  </surface>
+  <analysis>
+  
+  <sentence>
+  
+  </sentence>
+  <sentence>
+  
+  </sentence>
+  </analysis>
+  </t>
+  <h>
+  <surface>
+    The name of Helmut Kohl's political party is the Christian Democratic Union\
+    \ . 
+  </surface>
+  <analysis>
+  
+  <sentence>
+  
+  </sentence>
+  </analysis>
+  </h>
+</pair>
+<pair id='510' value='FALSE' task='QA'>
+  <t>
+  <surface>
+    The official religion is Theravada Buddhism, which is also practiced in nei\
+    \ ghboring Laos, Thailand, Burma and Sri Lanka. 
+  </surface>
+  <analysis>
+  
+  <sentence>
+  
+  </sentence>
+  </analysis>
+  </t>
+  <h>
+  <surface>
+    The official religion of Thailand is Theravada Buddhism. 
+  </surface>
+  <analysis>
+  
+  <sentence>
+  
+  </sentence>
+  </analysis>
+  </h>
+</pair>
+<pair id='413' value='FALSE' task='QA'>
+  <t>
+  <surface>
+    The town lies along the stretch of coastline designated as Gold Beach durin\
+    \ g the D-Day landings , one of the beaches used by British troops in the a\
+    ll\ ied invasion. Arromanches was selected as one of the sites for two Mulb\
+    erry\ Harbours built on the Normandy coast, the other one built further Wes\
+    t at \ Omaha Beach. 
+  </surface>
+  <analysis>
+  
+  <sentence>
+  
+  </sentence>
+  <sentence>
+  
+  </sentence>
+  </analysis>
+  </t>
+  <h>
+  <surface>
+    The Normandy landings took place in June 1944. 
+  </surface>
+  <analysis>
+  
+  <sentence>
+  
+  </sentence>
+  </analysis>
+  </h>
+</pair>
+<pair id='544' value='TRUE' task='QA'>
+  <t>
+  <surface>
+    When the Berlin Wall fell in early November, 1989 Berlin's east and west se\
+    \ ctions were rejoined to create the third-largest city in Europe , with a \
+    po\ pulation of about 3 million. 
+  </surface>
+  <analysis>
+  
+  <sentence>
+  
+  </sentence>
+  </analysis>
+  </t>
+  <h>
+  <surface>
+    The Berlin Wall was torn down in November, 1989. 
+  </surface>
+  <analysis>
+  
+  <sentence>
+  
+  </sentence>
+  </analysis>
+  </h>
+</pair>
+<pair id='453' value='FALSE' task='QA'>
+  <t>
+  <surface>
+    Boris Becker is a former professional tennis player for Germany. 
+  </surface>
+  <analysis>
+  
+  <sentence>
+  
+  </sentence>
+  </analysis>
+  </t>
+  <h>
+  <surface>
+    Boris Becker is a Wimbledon champion. 
+  </surface>
+  <analysis>
+  
+  <sentence>
+  
+  </sentence>
+  </analysis>
+  </h>
+</pair>
+<pair id='436' value='TRUE' task='QA'>
+  <t>
+  <surface>
+    "It's a vote of confidence that the momentum is going to continue", Doyle s\
+    \ aid . The momentum also appears to be moving south . The Mexican election\
+     i\ s the latest indication that the free-market reforms that have swept La\
+    tin \ America during the past decade are gaining political acceptance . In \
+    Brazil\ , prices rose sharply , reacting to the Mexico vote and to new poll\
+    s favor\ able to free-market presidential candidate Fernando Henrique Cardo\
+    so . 
+  </surface>
+  <analysis>
+  
+  <sentence>
+  
+  </sentence>
+  <sentence>
+  
+  </sentence>
+  <sentence>
+  
+  </sentence>
+  <sentence>
+  
+  </sentence>
+  </analysis>
+  </t>
+  <h>
+  <surface>
+    Fernando Henrique Cardoso is a presidential candidate. 
+  </surface>
+  <analysis>
+  
+  <sentence>
+  
+  </sentence>
+  </analysis>
+  </h>
+</pair>
+<pair id='775' value='TRUE' task='SUM'>
+  <t>
+  <surface>
+    As a late September report by the Democrats points out, Republicans have do\
+    \ ne a poor job at getting their own small business bills through Congress \
+    ev\ en though they control both Houses and the White House. 
+  </surface>
+  <analysis>
+  
+  <sentence>
+  
+  </sentence>
+  </analysis>
+  </t>
+  <h>
+  <surface>
+    Republicans control both Houses and the White House. 
+  </surface>
+  <analysis>
+  
+  <sentence>
+  
+  </sentence>
+  </analysis>
+  </h>
+</pair>
+<pair id='674' value='FALSE' task='SUM'>
+  <t>
+  <surface>
+    The United Nations last night elected eight judges for the international wa\
+    \ r crimes tribunal that will try those accused of murders and other atroci\
+    ti\ es in former Yugoslavia since 1991. 
+  </surface>
+  <analysis>
+  
+  <sentence>
+  
+  </sentence>
+  </analysis>
+  </t>
+  <h>
+  <surface>
+    11 judges in the Yugoslavia war tribunal were sworn in at the World court. 
+  </surface>
+  <analysis>
+  
+  <sentence>
+  
+  </sentence>
+  </analysis>
+  </h>
+</pair>
+<pair id='754' value='TRUE' task='SUM'>
+  <t>
+  <surface>
+    A team from the U.S. Centers for Disease Control boarded the ship when it d\
+    \ ocked in St. Maarten to oversee the cleaning operation and try to determi\
+    ne\ what caused the outbreak, Carnival said. 
+  </surface>
+  <analysis>
+  
+  <sentence>
+  
+  </sentence>
+  </analysis>
+  </t>
+  <h>
+  <surface>
+    The causes of the outbreak were searched for by a team from the U.S. CDC. 
+  </surface>
+  <analysis>
+  
+  <sentence>
+  
+  </sentence>
+  </analysis>
+  </h>
+</pair>
+<pair id='620' value='FALSE' task='SUM'>
+  <t>
+  <surface>
+    The VW chief has been under intense pressure from the Bonn government and c\
+    \ olleagues in German industry to seek conciliation following his outspoken\
+     s\ tatements last, which were widely seen as damaging Germany's reputation\
+    . 
+  </surface>
+  <analysis>
+  
+  <sentence>
+  
+  </sentence>
+  </analysis>
+  </t>
+  <h>
+  <surface>
+    Germany is concerned about the effect of the court investigations on domest\
+    \ ic economic and political affairs. 
+  </surface>
+  <analysis>
+  
+  <sentence>
+  
+  </sentence>
+  </analysis>
+  </h>
+</pair>
+<pair id='682' value='FALSE' task='SUM'>
+  <t>
+  <surface>
+    Companies are working to reduce the interval between drug discovery and mar\
+    \ keting. 
+  </surface>
+  <analysis>
+  
+  <sentence>
+  
+  </sentence>
+  </analysis>
+  </t>
+  <h>
+  <surface>
+    Companies are working to shorten the new drug development period to an aver\
+    \ age of eight to nine years in the US. 
+  </surface>
+  <analysis>
+  
+  <sentence>
+  
+  </sentence>
+  </analysis>
+  </h>
+</pair>
+<pair id='641' value='FALSE' task='SUM'>
+  <t>
+  <surface>
+    Argentina sought help from Britain on its privatization program and encoura\
+    \ ged British investment. 
+  </surface>
+  <analysis>
+  
+  <sentence>
+  
+  </sentence>
+  </analysis>
+  </t>
+  <h>
+  <surface>
+    Argentina sought UK expertise on privatization and agriculture. 
+  </surface>
+  <analysis>
+  
+  <sentence>
+  
+  </sentence>
+  </analysis>
+  </h>
+</pair>
+<pair id='618' value='TRUE' task='SUM'>
+  <t>
+  <surface>
+    Some passengers were escorted off the ship in wheelchairs by crew wearing b\
+    \ lue gloves. 
+  </surface>
+  <analysis>
+  
+  <sentence>
+  
+  </sentence>
+  </analysis>
+  </t>
+  <h>
+  <surface>
+    Wheelchairs were used to lead passengers off the ship. 
+  </surface>
+  <analysis>
+  
+  <sentence>
+  
+  </sentence>
+  </analysis>
+  </h>
+</pair>
+<pair id='684' value='FALSE' task='SUM'>
+  <t>
+  <surface>
+    Japanese drug makers are now trying to build comprehensive independent oper\
+    \ ations in research and development, production and marketing. 
+  </surface>
+  <analysis>
+  
+  <sentence>
+  
+  </sentence>
+  </analysis>
+  </t>
+  <h>
+  <surface>
+    There are companies that have split the management of their Research and De\
+    \ velopment processes. 
+  </surface>
+  <analysis>
+  
+  <sentence>
+  
+  </sentence>
+  </analysis>
+  </h>
+</pair>
+<pair id='689' value='TRUE' task='SUM'>
+  <t>
+  <surface>
+    A plating company that dumped thousands of gallons of cyanide-laced waste w\
+    \ ater into the Los Angeles sewer system pleaded guilty. 
+  </surface>
+  <analysis>
+  
+  <sentence>
+  
+  </sentence>
+  </analysis>
+  </t>
+  <h>
+  <surface>
+    A plating company dumped cyanide-laced waste water into the Los Angeles sew\
+    \ er system. 
+  </surface>
+  <analysis>
+  
+  <sentence>
+  
+  </sentence>
+  </analysis>
+  </h>
+</pair>
+<pair id='649' value='FALSE' task='SUM'>
+  <t>
+  <surface>
+    Although Philip Morris was selling its cigarettes at lower prices in the US\
+    \ , the increased volumes helped lift operating income in the domestic toba\
+    cc\ o division by 25.1 per cent to Dollars 858m. 
+  </surface>
+  <analysis>
+  
+  <sentence>
+  
+  </sentence>
+  </analysis>
+  </t>
+  <h>
+  <surface>
+    PM cut US prices to restore Marlboro's US standing. 
+  </surface>
+  <analysis>
+  
+  <sentence>
+  
+  </sentence>
+  </analysis>
+  </h>
+</pair>
+<pair id='738' value='TRUE' task='SUM'>
+  <t>
+  <surface>
+    Thousands of troops are being deployed to secure the city of Bogor, where B\
+    \ ush is to hold talks with his Indonesian counterpart, Susilo Bambang Yudh\
+    oy\ ono. 
+  </surface>
+  <analysis>
+  
+  <sentence>
+  
+  </sentence>
+  </analysis>
+  </t>
+  <h>
+  <surface>
+    Bush is scheduled to visit the city of Bogor. 
+  </surface>
+  <analysis>
+  
+  <sentence>
+  
+  </sentence>
+  </analysis>
+  </h>
+</pair>
+<pair id='798' value='FALSE' task='SUM'>
+  <t>
+  <surface>
+    Critics said the National Certificate of Educational Achievement or NCEA, t\
+    \ he main qualification for high school students, would be degraded by the \
+    au\ thority allowing text-speak use in exams. 
+  </surface>
+  <analysis>
+  
+  <sentence>
+  
+  </sentence>
+  </analysis>
+  </t>
+  <h>
+  <surface>
+    The NCEA has been degraded by the authority. 
+  </surface>
+  <analysis>
+  
+  <sentence>
+  
+  </sentence>
+  </analysis>
+  </h>
+</pair>
+<pair id='624' value='TRUE' task='SUM'>
+  <t>
+  <surface>
+    As his jubilant nation cheered, Yunus told reporters in the capital of Dhak\
+    \ a that he wants "to work to create some more new things in the world" and\
+     w\ ould use the award money to start a company to produce inexpensive yet \
+    nutr\ itious food for poor people and set up an eye hospital to treat impov\
+    erishe\ d patients. 
+  </surface>
+  <analysis>
+  
+  <sentence>
+  
+  </sentence>
+  </analysis>
+  </t>
+  <h>
+  <surface>
+    Yunus wants to start a company. 
+  </surface>
+  <analysis>
+  
+  <sentence>
+  
+  </sentence>
+  </analysis>
+  </h>
+</pair>
+<pair id='762' value='FALSE' task='SUM'>
+  <t>
+  <surface>
+    Acetaminophen is best known as the drug in products sold under the Tylenol \
+    \ brand, but is widely available in typically less expensive generic versio\
+    ns\ . 
+  </surface>
+  <analysis>
+  
+  <sentence>
+  
+  </sentence>
+  </analysis>
+  </t>
+  <h>
+  <surface>
+    Acetaminophen is produced by Tylenol. 
+  </surface>
+  <analysis>
+  
+  <sentence>
+  
+  </sentence>
+  </analysis>
+  </h>
+</pair>
+<pair id='735' value='TRUE' task='SUM'>
+  <t>
+  <surface>
+    Trade between China and India is expected to touch $20 bn this year and Chi\
+    \ nese investors are now rushing into India - lured by the country's growin\
+    g \ wealth. 
+  </surface>
+  <analysis>
+  
+  <sentence>
+  
+  </sentence>
+  </analysis>
+  </t>
+  <h>
+  <surface>
+    There is a profitable trade between China and India. 
+  </surface>
+  <analysis>
+  
+  <sentence>
+  
+  </sentence>
+  </analysis>
+  </h>
+</pair>
+<pair id='621' value='FALSE' task='SUM'>
+  <t>
+  <surface>
+    Mr Piech dismissed suggestions that VWs actions in hiring away Mr Lopez and\
+    \ his seven colleagues from GM had caused widespread dismay in German indus\
+    t\ ry, and was at odds with the style of German business. 
+  </surface>
+  <analysis>
+  
+  <sentence>
+  
+  </sentence>
+  </analysis>
+  </t>
+  <h>
+  <surface>
+    Piech got nationalistic in his accusations. 
+  </surface>
+  <analysis>
+  
+  <sentence>
+  
+  </sentence>
+  </analysis>
+  </h>
+</pair>
+<pair id='686' value='FALSE' task='SUM'>
+  <t>
+  <surface>
+    A total of 79 per cent of people questioned in a survey agreed that adults \
+    \ suffering incurable illness should receive 'medical help to a peaceful de\
+    at\ h'. 
+  </surface>
+  <analysis>
+  
+  <sentence>
+  
+  </sentence>
+  </analysis>
+  </t>
+  <h>
+  <surface>
+    In a poll of the American public, most people approved laws that allow life\
+    \ -support to be removed from a terminally ill patient. 
+  </surface>
+  <analysis>
+  
+  <sentence>
+  
+  </sentence>
+  </analysis>
+  </h>
+</pair>
+<pair id='630' value='TRUE' task='SUM'>
+  <t>
+  <surface>
+    To break the grinding cycle of debt and poverty, Yunus loaned $27 to Begum \
+    \ and more than 40 of her neighbours in the village of Joba. He allowed the\
+    m \ to pay him back over the next year as their businesses started to produ\
+    ce s\ table profits. 
+  </surface>
+  <analysis>
+  
+  <sentence>
+  
+  </sentence>
+  <sentence>
+  
+  </sentence>
+  </analysis>
+  </t>
+  <h>
+  <surface>
+    Some people in the village of Joba received loans from Yunus. 
+  </surface>
+  <analysis>
+  
+  <sentence>
+  
+  </sentence>
+  </analysis>
+  </h>
+</pair>
+<pair id='619' value='FALSE' task='SUM'>
+  <t>
+  <surface>
+    The investigation involving Mr Lopez and three associates are primarily con\
+    \ cerned with suspicions of the systematic theft of secrets. 
+  </surface>
+  <analysis>
+  
+  <sentence>
+  
+  </sentence>
+  </analysis>
+  </t>
+  <h>
+  <surface>
+    Seven other GM executives left with Lopez. 
+  </surface>
+  <analysis>
+  
+  <sentence>
+  
+  </sentence>
+  </analysis>
+  </h>
+</pair>
+<pair id='626' value='TRUE' task='SUM'>
+  <t>
+  <surface>
+    The prize is named after Alfred Nobel, a pacifist and entrepreneur who inve\
+    \ nted dynamite in 1866. Nobel left much of his wealth to establish the awa\
+    rd\ , which has honoured achievements in physics, chemistry, medicine, lite\
+    ratu\ re and efforts to promote peace since 1901. 
+  </surface>
+  <analysis>
+  
+  <sentence>
+  
+  </sentence>
+  <sentence>
+  
+  </sentence>
+  </analysis>
+  </t>
+  <h>
+  <surface>
+    Alfred Nobel invented dynamite in 1866. 
+  </surface>
+  <analysis>
+  
+  <sentence>
+  
+  </sentence>
+  </analysis>
+  </h>
+</pair>
+<pair id='791' value='FALSE' task='SUM'>
+  <t>
+  <surface>
+    Attack helicopters, Chinooks, armoured vehicles, cranes and a fire engine e\
+    \ ncircled the group. 
+  </surface>
+  <analysis>
+  
+  <sentence>
+  
+  </sentence>
+  </analysis>
+  </t>
+  <h>
+  <surface>
+    There was a Chinook attack. 
+  </surface>
+  <analysis>
+  
+  <sentence>
+  
+  </sentence>
+  </analysis>
+  </h>
+</pair>
+<pair id='699' value='FALSE' task='SUM'>
+  <t>
+  <surface>
+    NUCOR, the leading US steel mini-mill group is to greatly expand production\
+    \ capacity at a plant in Crawfordsville, Indiana which has shaken up the in\
+    d\ ustry by its use of a radical, new technology. 
+  </surface>
+  <analysis>
+  
+  <sentence>
+  
+  </sentence>
+  </analysis>
+  </t>
+  <h>
+  <surface>
+    The new thin-casting process shook up the steel industry. 
+  </surface>
+  <analysis>
+  
+  <sentence>
+  
+  </sentence>
+  </analysis>
+  </h>
+</pair>
+<pair id='632' value='TRUE' task='SUM'>
+  <t>
+  <surface>
+    The borrowers must form five-member groups that, along with the bank's fiel\
+    \ d workers, closely supervise the loans. Peer pressure substitutes for col\
+    la\ teral because the group's first two borrowers have to start repaying th\
+    e pr\ incipal plus interest over a six-week period before the other members\
+     can t\ ake out loans. The interest rate is fixed at 16 percent. 
+  </surface>
+  <analysis>
+  
+  <sentence>
+  
+  </sentence>
+  <sentence>
+  
+  </sentence>
+  <sentence>
+  
+  </sentence>
+  </analysis>
+  </t>
+  <h>
+  <surface>
+    The first two borrowers must start repaying the principal plus interest ove\
+    \ r a six-week period. 
+  </surface>
+  <analysis>
+  
+  <sentence>
+  
+  </sentence>
+  </analysis>
+  </h>
+</pair>
+<pair id='602' value='FALSE' task='SUM'>
+  <t>
+  <surface>
+    Stolen Warhol works recovered: Amsterdam police said Wednesday that they ha\
+    \ ve recovered stolen lithographs by the late U.S. pop artist Andy Warhol w\
+    or\ th more than $1 million. Dali's paintings are still missing. 
+  </surface>
+  <analysis>
+  
+  <sentence>
+  
+  </sentence>
+  <sentence>
+  
+  </sentence>
+  </analysis>
+  </t>
+  <h>
+  <surface>
+    Millions of dollars of art were recovered, including works by Dali. 
+  </surface>
+  <analysis>
+  
+  <sentence>
+  
+  </sentence>
+  </analysis>
+  </h>
+</pair>
+<pair id='776' value='FALSE' task='SUM'>
+  <t>
+  <surface>
+    Yunus, who was nominated for the peace prize at least twice before, is the \
+    \ first person from Bangladesh, a country of 147 million, to win a Nobel Pr\
+    iz\ e. His Nobel Prize is a rare bright light in a country struggling to de\
+    feat\ Islamic terrorists, and which is chronically inundated by floods and \
+    batte\ red by storms that blow in from the Bay of Bengal. The country, form\
+    erly kn\ own as East Pakistan, is bordered by the Bay of Bengal, India and \
+    Burma. 
+  </surface>
+  <analysis>
+  
+  <sentence>
+  
+  </sentence>
+  <sentence>
+  
+  </sentence>
+  <sentence>
+  
+  </sentence>
+  </analysis>
+  </t>
+  <h>
+  <surface>
+    Yunus is the first person to win a Nobel Prize. 
+  </surface>
+  <analysis>
+  
+  <sentence>
+  
+  </sentence>
+  </analysis>
+  </h>
+</pair>
+</entailment-corpus>

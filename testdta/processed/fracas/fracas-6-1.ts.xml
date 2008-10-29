@@ -1,0 +1,296 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE testsuite SYSTEM "file:///home/rb432/workspace/rte/dtd/testsuite.dtd">
+
+<testsuite id="6.1" name="phrasal comparatives">
+
+<testcase id="3.220">
+  <proposition id="3.220.1">
+    <rmrsbankitem id="157">The PC-6082 is faster than the ITEL-XZ.</rmrsbankitem>
+  </proposition>
+  <proposition id="3.220.2">
+    <rmrsbankitem id="11">The ITEL-XZ is fast.</rmrsbankitem>
+  </proposition>
+  <proposition id="3.220.3">
+    <rmrsbankitem id="12">Is the PC-6082 fast?</rmrsbankitem>
+  </proposition>
+  <valid id="3.220.a">
+    <theory> <ref src="3.220.1"/> <ref src="3.220.2"/> </theory>
+    <conclusion> <ref src="3.220.3"/> </conclusion>
+  </valid>
+</testcase>
+
+<testcase id="3.221">
+  <proposition id="3.221.1">
+    <rmrsbankitem id="157">The PC-6082 is faster than the ITEL-XZ.</rmrsbankitem>
+  </proposition>
+  <proposition id="3.221.2">
+    <rmrsbankitem id="12">Is the PC-6082 fast?</rmrsbankitem>
+  </proposition>
+  <nonvalid id="3.221.a">
+    <theory> <ref src="3.221.1"/> </theory>
+    <conclusion> <ref src="3.221.2"/> </conclusion>
+  </nonvalid>
+  <nonvalid id="3.221.b">
+    <theory> <ref src="3.221.1"/> </theory>
+    <conclusion> <negation> <ref src="3.221.2"/> </negation> </conclusion>
+  </nonvalid>
+</testcase>
+
+<testcase id="3.222">
+  <proposition id="3.222.1">
+    <rmrsbankitem id="157">The PC-6082 is faster than the ITEL-XZ.</rmrsbankitem>
+  </proposition>
+  <proposition id="3.222.2">
+    <rmrsbankitem id="13">The PC-6082 is fast.</rmrsbankitem>
+  </proposition>
+  <proposition id="3.222.3">
+    <rmrsbankitem id="14">Is the ITEL-XZ fast?</rmrsbankitem>
+  </proposition>
+  <nonvalid id="3.222.a">
+    <theory> <ref src="3.222.1"/> <ref src="3.222.2"/> </theory>
+    <conclusion> <ref src="3.222.3"/> </conclusion>
+  </nonvalid>
+  <nonvalid id="3.222.b">
+    <theory> <ref src="3.222.1"/> <ref src="3.222.2"/> </theory>
+    <conclusion> <negation> <ref src="3.222.3"/> </negation> </conclusion>
+  </nonvalid>
+</testcase>
+
+<testcase id="3.223">
+  <proposition id="3.223.1">
+    <rmrsbankitem id="157">The PC-6082 is faster than the ITEL-XZ.</rmrsbankitem>
+  </proposition>
+  <proposition id="3.223.2">
+    <rmrsbankitem id="15">The PC-6082 is slow.</rmrsbankitem>
+  </proposition>
+  <proposition id="3.223.3">
+    <rmrsbankitem id="14">Is the ITEL-XZ fast?</rmrsbankitem>
+  </proposition>
+  <valid id="3.223.a">
+    <theory> <ref src="3.223.1"/> <ref src="3.223.2"/> </theory>
+    <conclusion> <negation> <ref src="3.223.3"/> </negation> </conclusion>
+  </valid>
+</testcase>
+
+<testcase id="3.224">
+  <proposition id="3.224.1">
+    <rmrsbankitem id="209">The PC-6082 is as fast as the ITEL-XZ.</rmrsbankitem>
+  </proposition>
+  <proposition id="3.224.2">
+    <rmrsbankitem id="11">The ITEL-XZ is fast.</rmrsbankitem>
+  </proposition>
+  <proposition id="3.224.3">
+    <rmrsbankitem id="12">Is the PC-6082 fast?</rmrsbankitem>
+  </proposition>
+  <valid id="3.224.a">
+    <theory> <ref src="3.224.1"/> <ref src="3.224.2"/> </theory>
+    <conclusion> <ref src="3.224.3"/> </conclusion>
+  </valid>
+</testcase>
+
+<testcase id="3.225">
+  <proposition id="3.225.1">
+    <rmrsbankitem id="209">The PC-6082 is as fast as the ITEL-XZ.</rmrsbankitem>
+  </proposition>
+  <proposition id="3.225.2">
+    <rmrsbankitem id="12">Is the PC-6082 fast?</rmrsbankitem>
+  </proposition>
+  <nonvalid id="3.225.a">
+    <theory> <ref src="3.225.1"/> </theory>
+    <conclusion> <ref src="3.225.2"/> </conclusion>
+  </nonvalid>
+  <nonvalid id="3.225.b">
+    <theory> <ref src="3.225.1"/> </theory>
+    <conclusion> <negation> <ref src="3.225.2"/> </negation> </conclusion>
+  </nonvalid>
+</testcase>
+
+<testcase id="3.226">
+  <proposition id="3.226.1">
+    <rmrsbankitem id="209">The PC-6082 is as fast as the ITEL-XZ.</rmrsbankitem>
+  </proposition>
+  <proposition id="3.226.2">
+    <rmrsbankitem id="13">The PC-6082 is fast.</rmrsbankitem>
+  </proposition>
+  <proposition id="3.226.3">
+    <rmrsbankitem id="14">Is the ITEL-XZ fast?</rmrsbankitem>
+  </proposition>
+  <nonvalid id="3.226.a">
+    <theory> <ref src="3.226.1"/> <ref src="3.226.2"/> </theory>
+    <conclusion> <ref src="3.226.3"/> </conclusion>
+  </nonvalid>
+  <nonvalid id="3.226.a">
+    <theory> <ref src="3.226.1"/> <ref src="3.226.2"/> </theory>
+    <conclusion> <negation> <ref src="3.226.3"/> </negation> </conclusion>
+  </nonvalid>
+</testcase>
+
+<testcase id="3.227">
+  <proposition id="3.227.1">
+    <rmrsbankitem id="209">The PC-6082 is as fast as the ITEL-XZ.</rmrsbankitem>
+  </proposition>
+  <proposition id="3.227.2">
+    <rmrsbankitem id="15">The PC-6082 is slow.</rmrsbankitem>
+  </proposition>
+  <proposition id="3.227.3">
+    <rmrsbankitem id="14">Is the ITEL-XZ fast?</rmrsbankitem>
+  </proposition>
+  <valid id="3.227.a">
+    <theory> <ref src="3.227.1"/> <ref src="3.227.2"/> </theory>
+    <conclusion> <negation> <ref src="3.227.3"/> </negation> </conclusion>
+  </valid>
+</testcase>
+
+<testcase id="3.228">
+  <proposition id="3.228.1">
+    <rmrsbankitem id="209">The PC-6082 is as fast as the ITEL-XZ.</rmrsbankitem>
+  </proposition>
+  <proposition id="3.228.2">
+    <rmrsbankitem id="158">Is the PC-6082 faster than the ITEL-XZ?</rmrsbankitem>
+  </proposition>
+  <nonvalid id="3.228.a">
+    <theory> <ref src="3.228.1"/> </theory>
+    <conclusion> <ref src="3.228.2"/> </conclusion>
+  </nonvalid>
+  <nonvalid id="3.228.b">
+    <theory> <ref src="3.228.1"/> </theory>
+    <conclusion> <negation> <ref src="3.228.2"/> </negation> </conclusion>
+  </nonvalid>
+</testcase>
+
+<testcase id="3.229">
+  <proposition id="3.229.1">
+    <rmrsbankitem id="209">The PC-6082 is as fast as the ITEL-XZ.</rmrsbankitem>
+  </proposition>
+  <proposition id="3.229.2">
+    <rmrsbankitem id="159">Is the PC-6082 slower than the ITEL-XZ?</rmrsbankitem>
+  </proposition>
+  <valid id="3.229.a">
+    <theory> <ref src="3.229.1"/> </theory>
+    <conclusion> <negation> <ref src="3.229.2"/> </negation> </conclusion>
+  </valid>
+</testcase>
+
+<testcase id="3.230">
+  <proposition id="3.230.1">
+    <rmrsbankitem id="160">ITEL won more orders than APCOM did.</rmrsbankitem>
+  </proposition>
+  <proposition id="3.230.2">
+    <rmrsbankitem id="57">Did ITEL win some orders?</rmrsbankitem>
+  </proposition>
+  <valid id="3.230.a">
+    <theory> <ref src="3.230.1"/> </theory>
+    <conclusion> <ref src="3.230.2"/> </conclusion>
+  </valid>
+</testcase>
+
+<testcase id="3.231">
+  <proposition id="3.231.1">
+    <rmrsbankitem id="160">ITEL won more orders than APCOM did.</rmrsbankitem>
+  </proposition>
+  <proposition id="3.231.2">
+    <rmrsbankitem id="58">Did APCOM win some orders?</rmrsbankitem>
+  </proposition>
+  <nonvalid id="3.231.a">
+    <theory> <ref src="3.231.1"/> </theory>
+    <conclusion> <ref src="3.231.2"/> </conclusion>
+  </nonvalid>
+  <nonvalid id="3.231.a">
+    <theory> <ref src="3.231.1"/> </theory>
+    <conclusion> <negation> <ref src="3.231.2"/> </negation> </conclusion>
+  </nonvalid>
+</testcase>
+
+<testcase id="3.232">
+  <proposition id="3.232.1">
+    <rmrsbankitem id="160">ITEL won more orders than APCOM did.</rmrsbankitem>
+  </proposition>
+  <proposition id="3.232.2">
+    <rmrsbankitem id="16">APCOM won ten orders.</rmrsbankitem>
+  </proposition>
+  <proposition id="3.232.3">
+    <rmrsbankitem id="161">Did ITEL win at least eleven orders?</rmrsbankitem>
+  </proposition>
+  <valid id="3.232.a">
+    <theory> <ref src="3.232.1"/> <ref src="3.232.2"/> </theory>
+    <conclusion> <ref src="3.232.3"/> </conclusion>
+  </valid>
+</testcase>
+
+<testcase id="3.233">
+  <proposition id="3.233.1">
+    <rmrsbankitem id="100">ITEL won more orders than APCOM.</rmrsbankitem>
+  </proposition>
+  <proposition id="3.233.2">
+    <rmrsbankitem id="57">Did ITEL win some orders?</rmrsbankitem>
+  </proposition>
+  <valid id="3.233.a">
+    <theory> <ref src="3.233.1"/> </theory>
+    <conclusion> <ref src="3.233.2"/> </conclusion>
+  </valid>
+</testcase>
+
+<testcase id="3.234">
+  <proposition id="3.234.1">
+    <rmrsbankitem id="100">ITEL won more orders than APCOM.</rmrsbankitem>
+  </proposition>
+  <proposition id="3.234.2">
+    <rmrsbankitem id="58">Did APCOM win some orders?</rmrsbankitem>
+  </proposition>
+  <nonvalid id="3.234.a">
+    <theory> <ref src="3.234.1"/> </theory>
+    <conclusion> <ref src="3.234.2"/> </conclusion>
+  </nonvalid>
+  <nonvalid id="3.234.b">
+    <theory> <ref src="3.234.1"/> </theory>
+    <conclusion> <negation> <ref src="3.234.2"/> </negation> </conclusion>
+  </nonvalid>
+</testcase>
+
+<testcase id="3.235">
+  <proposition id="3.235.1">
+    <rmrsbankitem id="100">ITEL won more orders than APCOM.</rmrsbankitem>
+  </proposition>
+  <proposition id="3.235.2">
+    <rmrsbankitem id="16">APCOM won ten orders.</rmrsbankitem>
+  </proposition>
+  <proposition id="3.235.3">
+    <rmrsbankitem id="161">Did ITEL win at least eleven orders?</rmrsbankitem>
+  </proposition>
+  <valid id="3.235.a">
+    <theory> <ref src="3.235.1"/> <ref src="3.235.2"/> </theory>
+    <conclusion> <ref src="3.235.3"/> </conclusion>
+  </valid>
+</testcase>
+
+<testcase id="3.237">
+  <proposition id="3.237.1">
+    <rmrsbankitem id="210">ITEL won more orders than the APCOM contract.</rmrsbankitem>
+  </proposition>
+  <proposition id="3.237.2">
+    <rmrsbankitem id="162">Did ITEL win more than one order?</rmrsbankitem>
+  </proposition>
+  <valid id="3.237.a">
+    <theory> <ref src="3.237.1"/> </theory>
+    <conclusion> <ref src="3.237.2"/> </conclusion>
+  </valid>
+</testcase>
+
+<testcase id="3.238">
+  <!-- ITEL won twice as many orders than APCOM. -->
+  <proposition id="3.238.1">
+    <rmrsbankitem id="211">ITEL won twice as many orders as APCOM.</rmrsbankitem>
+  </proposition>
+  <proposition id="3.238.2">
+    <rmrsbankitem id="16">APCOM won ten orders.</rmrsbankitem>
+  </proposition>
+  <proposition id="3.238.3">
+    <rmrsbankitem id="59">Did ITEL win twenty orders?</rmrsbankitem>
+  </proposition>
+  <valid id="3.238.a">
+    <theory> <ref src="3.238.1"/> <ref src="3.238.2"/> </theory>
+    <conclusion> <ref src="3.238.3"/> </conclusion>
+  </valid>
+</testcase>
+
+</testsuite>

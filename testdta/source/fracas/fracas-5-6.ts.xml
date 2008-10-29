@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE testsuite SYSTEM "file:///home/rb432/workspace/rte/dtd/testsuite.dtd">
+
+<testsuite id="5.6" name="default comparison classes">
+
+<testcase id="3.218">
+  <proposition id="3.218.1">
+    Kim is a clever person.
+  </proposition>
+  <proposition id="3.218.2">
+    Is Kim clever?
+  </proposition>
+  <valid id="3.218.a">
+    <theory> <ref src="3.218.1"/> </theory>
+    <conclusion> <ref src="3.218.2"/> </conclusion>
+  </valid>
+</testcase>
+
+<testcase id="3.219">
+  <proposition id="3.219.1">
+    Kim is a clever politician.
+  </proposition>
+  <proposition id="3.219.2">
+    Is Kim clever?
+  </proposition>
+  <nonvalid id="3.219.a">
+    <theory> <ref src="3.219.1"/> </theory>
+    <conclusion> <ref src="3.219.2"/> </conclusion>
+  </nonvalid>
+  <nonvalid id="3.219.a">
+    <theory> <ref src="3.219.1"/> </theory>
+    <conclusion> <negation> <ref src="3.219.2"/> </negation> </conclusion>
+  </nonvalid>
+</testcase>
+
+</testsuite>

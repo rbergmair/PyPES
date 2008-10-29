@@ -1,0 +1,803 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<entailment-corpus>
+<pair id='1' value='FALSE' task='IR'>
+  <t><rmrsbankitem id="1">As a result of these weaknesses, computer systems and the operations that rely on the systems were highly vulnerable to tampering, disruption, and misuse from both internal and external sources.</rmrsbankitem></t>
+  <h><rmrsbankitem id="1">Non-authorized personnel illegally entered into computer networks.</rmrsbankitem></h>
+</pair>
+<pair id='15' value='TRUE' task='IR'>
+  <t><rmrsbankitem id="2">A juvenile hacker who crippled an airport tower for six hours, damaged a town's phone system, and broke into pharmacy records has been charged in a first-ever federal prosecution, the U.S. Attorney's office announced today.</rmrsbankitem></t>
+  <h><rmrsbankitem id="1">Non-authorized personnel illegally entered into computer networks.</rmrsbankitem></h>
+</pair>
+<pair id='16' value='FALSE' task='IR'>
+  <t><rmrsbankitem id="3">There has been a lot of concern over the rise of drug-resistant bacteria.</rmrsbankitem></t>
+  <h><rmrsbankitem id="2">Bacteria is winning the war against antibiotics.</rmrsbankitem></h>
+</pair>
+<pair id='19' value='FALSE' task='IR'>
+  <t><rmrsbankitem id="4">Professional computer hackers from the secret services were brought in to attempt to hack into the Government's internal secure communications system, which was launched today.</rmrsbankitem></t>
+  <h><rmrsbankitem id="1">Non-authorized personnel illegally entered into computer networks.</rmrsbankitem></h>
+</pair>
+<pair id='24' value='TRUE' task='IR'>
+  <t><rmrsbankitem id="5">At the Amman Summit of Arab Women in Jordan last month, Secretary General of the Arab League Amr Moussa said womens' advancement in the Arab world will be hobbled as long as they are so poorly represented in parliaments.</rmrsbankitem></t>
+  <h><rmrsbankitem id="3">Women are poorly represented in parliament.</rmrsbankitem></h>
+</pair>
+<pair id='30' value='TRUE' task='IR'>
+  <t><rmrsbankitem id="6">Rockweed has been harvested commercially in Nova Scotia since the late 1950's and is currently the most important commercial seaweed in Atlantic Canada.</rmrsbankitem></t>
+  <h><rmrsbankitem id="4">Marine vegetation is harvested.</rmrsbankitem></h>
+</pair>
+<pair id='40' value='TRUE' task='IR'>
+  <t><rmrsbankitem id="7">The disputed waters lie close to the Sipadan and Ligitan islands, which Indonesia lost to Malaysia in a legal battle in the International Court of Justice in December 2002.</rmrsbankitem></t>
+  <h><rmrsbankitem id="5">There is a territorial waters dispute.</rmrsbankitem></h>
+</pair>
+<pair id='43' value='TRUE' task='IR'>
+  <t><rmrsbankitem id="8">The cost for some 30 million sheets of paper used each year by Cal State Long Beach colleges and departments went up Wednesday for the first time in four years.</rmrsbankitem></t>
+  <h><rmrsbankitem id="6">The cost of paper is rising.</rmrsbankitem></h>
+</pair>
+<pair id='47' value='TRUE' task='IR'>
+  <t><rmrsbankitem id="9">Women form half the population and 54% of the voters in the country, yet are very poorly represented in parliament.</rmrsbankitem></t>
+  <h><rmrsbankitem id="3">Women are poorly represented in parliament.</rmrsbankitem></h>
+</pair>
+<pair id='54' value='FALSE' task='IR'>
+  <t><rmrsbankitem id="10">By the time a case of rabies is confirmed, the disease may have taken hold in the area.</rmrsbankitem></t>
+  <h><rmrsbankitem id="7">A case of rabies was confirmed.</rmrsbankitem></h>
+</pair>
+<pair id='62' value='TRUE' task='IR'>
+  <t><rmrsbankitem id="11">Two weeks ago, China became the first nation to operate a maglev railway commercially, when officials inaugurated a 30-kilometer-long line between downtown Shanghai and the city's airport.</rmrsbankitem></t>
+  <h><rmrsbankitem id="8">Maglev is commercially used.</rmrsbankitem></h>
+</pair>
+<pair id='65' value='TRUE' task='IR'>
+  <t><rmrsbankitem id="12">A number of marine plants are harvested commercially in Nova Scotia.</rmrsbankitem></t>
+  <h><rmrsbankitem id="4">Marine vegetation is harvested.</rmrsbankitem></h>
+</pair>
+<pair id='66' value='FALSE' task='IR'>
+  <t><rmrsbankitem id="13">Lastly, the author uses the precedent of marijuana legalization in other countries as evidence that legalization does not solve any social problems, but instead creates them.</rmrsbankitem></t>
+  <h><rmrsbankitem id="9">Drug legalization has benefits.</rmrsbankitem></h>
+</pair>
+<pair id='68' value='TRUE' task='IR'>
+  <t><rmrsbankitem id="14">A United Nations vehicle was attacked in the Serbian province of Kosovo and at least one civilian policeman was killed, the United Nations said.</rmrsbankitem></t>
+  <h><rmrsbankitem id="10">A civilian policeman was killed.</rmrsbankitem></h>
+</pair>
+<pair id='70' value='FALSE' task='IR'>
+  <t><rmrsbankitem id="15">Nigeria has been the culprit so far, preventing the world from being completely polio-free.</rmrsbankitem></t>
+  <h><rmrsbankitem id="11">Polio is under control in the world.</rmrsbankitem></h>
+</pair>
+<pair id='72' value='TRUE' task='IR'>
+  <t><rmrsbankitem id="16">Environmental and social groups criticized the World Bank decision for shying from meaningful reform.</rmrsbankitem></t>
+  <h><rmrsbankitem id="12">The World Bank is criticized for its policies.</rmrsbankitem></h>
+</pair>
+<pair id='94' value='TRUE' task='IR'>
+  <t><rmrsbankitem id="17">If legalization reduced current narcotics enforcement costs by one-third to one-fourth, it might save $6 - $9 billion per year.</rmrsbankitem></t>
+  <h><rmrsbankitem id="9">Drug legalization has benefits.</rmrsbankitem></h>
+</pair>
+<pair id='96' value='TRUE' task='IR'>
+  <t><rmrsbankitem id="18">Moscow believes that the waters of the Sea of Azov should remain in common use, but Kiev insists on a clear division.</rmrsbankitem></t>
+  <h><rmrsbankitem id="5">There is a territorial waters dispute.</rmrsbankitem></h>
+</pair>
+<pair id='99' value='FALSE' task='IR'>
+  <t><rmrsbankitem id="19">All U.S Embassy personnel in non-emergency positions and family members of U.S Embassy personnel who were evacuated as a result of the initial conflict have been authorized to return to Eritrea.</rmrsbankitem></t>
+  <h><rmrsbankitem id="13">U.S. Military evacuated U.S. citizens.</rmrsbankitem></h>
+</pair>
+<pair id='103' value='TRUE' task='IR'>
+  <t><rmrsbankitem id="20">This paper describes American alcohol use, the temperance movement, Prohibition, and the War on Drugs and explains how legalizing drugs would reduce crime and public health problems.</rmrsbankitem></t>
+  <h><rmrsbankitem id="9">Drug legalization has benefits.</rmrsbankitem></h>
+</pair>
+<pair id='106' value='TRUE' task='IR'>
+  <t><rmrsbankitem id="21">Ocean colour satellite remote sensing has developed rapidly within the last five years and satellite imagery is now processed automatically and made available via the WWW.</rmrsbankitem></t>
+  <h><rmrsbankitem id="14">Ocean remote sensing is developed.</rmrsbankitem></h>
+</pair>
+<pair id='107' value='TRUE' task='IR'>
+  <t><rmrsbankitem id="22">President Ford reported that a force of 70 evacuation helicopters and 865 Marines had evacuated about 1,400 U.S. citizens and 5,500 third country nationals and South Vietnamese from landing zones near the U.S. Embassy in Saigon and the Tan Son Nhut Airfield.</rmrsbankitem></t>
+  <h><rmrsbankitem id="13">U.S. Military evacuated U.S. citizens.</rmrsbankitem></h>
+</pair>
+<pair id='110' value='FALSE' task='IR'>
+  <t><rmrsbankitem id="23">Drew Walker, NHS Tayside's public health director, said: "It is important to stress that this is not a confirmed case of rabies."</rmrsbankitem></t>
+  <h><rmrsbankitem id="7">A case of rabies was confirmed.</rmrsbankitem></h>
+</pair>
+<pair id='114' value='FALSE' task='IR'>
+  <t><rmrsbankitem id="24">The June Movement has always been opposed to giving EU cooperation a military dimension.</rmrsbankitem></t>
+  <h><rmrsbankitem id="15">The introduction of the euro has been opposed.</rmrsbankitem></h>
+</pair>
+<pair id='115' value='TRUE' task='IR'>
+  <t><rmrsbankitem id="25">The World Bank has also been criticized for its role in financing projects that have been detrimental to human rights and the natural environment.</rmrsbankitem></t>
+  <h><rmrsbankitem id="16">The World Bank is criticized for its activities.</rmrsbankitem></h>
+</pair>
+<pair id='116' value='TRUE' task='IR'>
+  <t><rmrsbankitem id="26">In most Pacific countries there are very few women in parliament.</rmrsbankitem></t>
+  <h><rmrsbankitem id="3">Women are poorly represented in parliament.</rmrsbankitem></h>
+</pair>
+<pair id='117' value='FALSE' task='IR'>
+  <t><rmrsbankitem id="27">The release of its report led to calls for a complete ivory trade ban, and at the seventh conference in 1989, the African Elephant was moved to appendix one of the treaty.</rmrsbankitem></t>
+  <h><rmrsbankitem id="17">The ban on ivory trade has been effective in protecting the elephant from extinction.</rmrsbankitem></h>
+</pair>
+<pair id='120' value='FALSE' task='IR'>
+  <t><rmrsbankitem id="28">We are committed to the deployment of these technologies and are excited by the advances in remote sensing technology that are enabling us to extract more information from sensors in a cost-efficient and timely manner.</rmrsbankitem></t>
+  <h><rmrsbankitem id="14">Ocean remote sensing is developed.</rmrsbankitem></h>
+</pair>
+<pair id='121' value='FALSE' task='IR'>
+  <t><rmrsbankitem id="29">The M-2000 uses a commercially manufactured NbTi superconductor, similar to that used in the M-2000 Maglev magnets.</rmrsbankitem></t>
+  <h><rmrsbankitem id="8">Maglev is commercially used.</rmrsbankitem></h>
+</pair>
+<pair id='122' value='FALSE' task='IR'>
+  <t><rmrsbankitem id="30">A pet must have rabies protection confirmed by a blood test.</rmrsbankitem></t>
+  <h><rmrsbankitem id="7">A case of rabies was confirmed.</rmrsbankitem></h>
+</pair>
+<pair id='127' value='FALSE' task='IR'>
+  <t><rmrsbankitem id="31">Humans have won notable battles in the war against infection - and antibiotics are still powerful weapons - but nature has evolution on its side, and the war against bacterial diseases is by no means over.</rmrsbankitem></t>
+  <h><rmrsbankitem id="2">Bacteria is winning the war against antibiotics.</rmrsbankitem></h>
+</pair>
+<pair id='130' value='TRUE' task='IR'>
+  <t><rmrsbankitem id="32">Other drugs on the market, approved to treat mild to moderate Alzheimer's, are believed to work by inhibiting cholinesterase, an enzyme that breaks down acetylcholine which is a chemical used by nerves to communicate with each other.</rmrsbankitem></t>
+  <h><rmrsbankitem id="18">Alzheimer's disease is treated using drugs.</rmrsbankitem></h>
+</pair>
+<pair id='138' value='TRUE' task='IR'>
+  <t><rmrsbankitem id="33">US military forces are evacuating U.S. citizens and citizens of 72 other countries from Liberia at the request of the U.S.</rmrsbankitem></t>
+  <h><rmrsbankitem id="13">U.S. Military evacuated U.S. citizens.</rmrsbankitem></h>
+</pair>
+<pair id='140' value='FALSE' task='IR'>
+  <t><rmrsbankitem id="34">Asprin, an inexpensive drug, helps protect survivors of heart attack and stroke from subsequent heart attacks and death, and even helps reduce the number of deaths that occur within the first hours following a heart attack.</rmrsbankitem></t>
+  <h><rmrsbankitem id="19">People experienced adverse effects while taking aspirin.</rmrsbankitem></h>
+</pair>
+<pair id='141' value='FALSE' task='IR'>
+  <t><rmrsbankitem id="35">A total of 599 United States citizens were evacuated safely, at their request; those who were interviewed expressed great relief at being out of Grenada.</rmrsbankitem></t>
+  <h><rmrsbankitem id="20">The U.S. military evacuated U.S. citizens.</rmrsbankitem></h>
+</pair>
+<pair id='146' value='TRUE' task='IR'>
+  <t><rmrsbankitem id="36">The presence of oil in the South Atlantic was first proved in 1974, but the distance and isolation of the Falklands deterred oil companies from exploring the area until the 1990s.</rmrsbankitem></t>
+  <h><rmrsbankitem id="21">Petroleum is explored in the South Atlantic.</rmrsbankitem></h>
+</pair>
+<pair id='148' value='FALSE' task='IR'>
+  <t><rmrsbankitem id="37">The unconfirmed case in Dundee concerns a rabies-like virus known only in bats.</rmrsbankitem></t>
+  <h><rmrsbankitem id="7">A case of rabies was confirmed.</rmrsbankitem></h>
+</pair>
+<pair id='149' value='TRUE' task='IR'>
+  <t><rmrsbankitem id="38">Legalization would eliminate the harms caused by prohibition, but it would not eliminate the harms caused by drug use.</rmrsbankitem></t>
+  <h><rmrsbankitem id="9">Drug legalization has benefits.</rmrsbankitem></h>
+</pair>
+<pair id='150' value='TRUE' task='IR'>
+  <t><rmrsbankitem id="39">Capital punishment has a deterrent effect.</rmrsbankitem></t>
+  <h><rmrsbankitem id="22">Capital punishment is a deterrent to crime.</rmrsbankitem></h>
+</pair>
+<pair id='155' value='TRUE' task='IR'>
+  <t><rmrsbankitem id="40">Scientists and engineers in the APL Space Department have contributed to ocean remote sensing science and technology for more than a quarter century.</rmrsbankitem></t>
+  <h><rmrsbankitem id="14">Ocean remote sensing is developed.</rmrsbankitem></h>
+</pair>
+<pair id='161' value='FALSE' task='IR'>
+  <t><rmrsbankitem id="41">A report by the African Elephant Specialist Group, which is responsible for monitoring the conservation of the elephants, concludes that elephant poaching has increased despite the 1989 international ban on ivory trading.</rmrsbankitem></t>
+  <h><rmrsbankitem id="17">The ban on ivory trade has been effective in protecting the elephant from extinction.</rmrsbankitem></h>
+</pair>
+<pair id='164' value='FALSE' task='IR'>
+  <t><rmrsbankitem id="42">US troops evacuated two injured soldiers said Staff Sgt. Duane Brown, a spokesman for the 42nd Infantry Division.</rmrsbankitem></t>
+  <h><rmrsbankitem id="13">U.S. Military evacuated U.S. citizens.</rmrsbankitem></h>
+</pair>
+<pair id='176' value='TRUE' task='IR'>
+  <t><rmrsbankitem id="43">Some 55 percent of the German public are opposed to the euro, less than 150 days before its introduction on January 1, 2002, a poll by research group Wahlen showed.</rmrsbankitem></t>
+  <h><rmrsbankitem id="15">The introduction of the euro has been opposed.</rmrsbankitem></h>
+</pair>
+<pair id='179' value='TRUE' task='IR'>
+  <t><rmrsbankitem id="44">Only 16 women were elected to the 223-member parliament in 1995, and only 2 women hold ministerial posts.</rmrsbankitem></t>
+  <h><rmrsbankitem id="3">Women are poorly represented in parliament.</rmrsbankitem></h>
+</pair>
+<pair id='184' value='TRUE' task='IR'>
+  <t><rmrsbankitem id="45">Often criticized and blamed for politically unpopular policies, and confronted with numerous setbacks, the World Bank is experiencing a difficult time with regard to which strategies to adopt, in particular in Africa.</rmrsbankitem></t>
+  <h><rmrsbankitem id="12">The World Bank is criticized for its policies.</rmrsbankitem></h>
+</pair>
+<pair id='190' value='TRUE' task='IR'>
+  <t><rmrsbankitem id="46">German Siemens and ThyssenKrupp may sell relevant core technology to China, which owns the first commercially operated maglev line.</rmrsbankitem></t>
+  <h><rmrsbankitem id="8">Maglev is commercially used.</rmrsbankitem></h>
+</pair>
+<pair id='191' value='FALSE' task='IR'>
+  <t><rmrsbankitem id="47">The introduction of the euro has dismantled barriers to cross-border trading and enhanced risk sharing and opportunities for diversification.</rmrsbankitem></t>
+  <h><rmrsbankitem id="15">The introduction of the euro has been opposed.</rmrsbankitem></h>
+</pair>
+<pair id='192' value='TRUE' task='IR'>
+  <t><rmrsbankitem id="48">Organic fertilizer slowly enriches and feeds the soil.</rmrsbankitem> <rmrsbankitem id="49">Fast acting synthetic fertilizers harm soil life.</rmrsbankitem></t>
+  <h><rmrsbankitem id="23">Organic fertilizers are used as soil enhancers.</rmrsbankitem></h>
+</pair>
+<pair id='193' value='FALSE' task='IR'>
+  <t><rmrsbankitem id="50">The use of aspirin (acetylsalicylic acid) in single doses should not pose any significant risks to the suckling infant.</rmrsbankitem></t>
+  <h><rmrsbankitem id="19">People experienced adverse effects while taking aspirin.</rmrsbankitem></h>
+</pair>
+<pair id='196' value='FALSE' task='IR'>
+  <t><rmrsbankitem id="51">Most commercial logwood is grown in Honduras.</rmrsbankitem></t>
+  <h><rmrsbankitem id="24">Plants are grown in water or in substances other than soil.</rmrsbankitem></h>
+</pair>
+<pair id='198' value='FALSE' task='IR'>
+  <t><rmrsbankitem id="52">The participation of women in parliament in Mauritius is expected to increase as more female candidates have contested Monday's election.</rmrsbankitem></t>
+  <h><rmrsbankitem id="3">Women are poorly represented in parliament.</rmrsbankitem></h>
+</pair>
+<pair id='200' value='TRUE' task='IR'>
+  <t><rmrsbankitem id="53">Definitely do not lift the ban on ivory, it will drive the species to near extinction again.</rmrsbankitem> <rmrsbankitem id="54">Elephant numbers should be controlled but what has ivory got to do with it?</rmrsbankitem> <rmrsbankitem id="55">It is a barbaric trade and should be banned permanently.</rmrsbankitem></t>
+  <h><rmrsbankitem id="17">The ban on ivory trade has been effective in protecting the elephant from extinction.</rmrsbankitem></h>
+</pair>
+<pair id='203' value='TRUE' task='IR'>
+  <t><rmrsbankitem id="56">In a sharply-worded internal World Bank report (leaked to The New York Times) the Bank has criticized its own decision to approve a controversial $40 million anti-poverty plan.</rmrsbankitem></t>
+  <h><rmrsbankitem id="12">The World Bank is criticized for its policies.</rmrsbankitem></h>
+</pair>
+<pair id='205' value='FALSE' task='IR'>
+  <t><rmrsbankitem id="57">Geithner criticized the report's findings on the World Bank, including a commission recommendation that the Bank stop lending to emerging market economies, concentrate its resources on the poorest countries and shift the IFI's concessional assistance from loans to grants.</rmrsbankitem></t>
+  <h><rmrsbankitem id="25">The World Bank is criticized for activities.</rmrsbankitem></h>
+</pair>
+<pair id='206' value='TRUE' task='IR'>
+  <t><rmrsbankitem id="58">It has been observed that in those countries of the world where capital punishment is still in operation, the crime rate, especially murder, is distinctively low in comparison to countries where capital punishment has been discarded.</rmrsbankitem></t>
+  <h><rmrsbankitem id="22">Capital punishment is a deterrent to crime.</rmrsbankitem></h>
+</pair>
+<pair id='208' value='FALSE' task='IR'>
+  <t><rmrsbankitem id="59">More than 2,000 people lost their lives in the devastating Johnstown Flood.</rmrsbankitem></t>
+  <h><rmrsbankitem id="26">100 or more people lost their lives in a ferry sinking.</rmrsbankitem></h>
+</pair>
+<pair id='219' value='TRUE' task='IR'>
+  <t><rmrsbankitem id="60">Only a few Mag-lev trains have been used commercially such as at the Birmingham airport in the UK.</rmrsbankitem></t>
+  <h><rmrsbankitem id="8">Maglev is commercially used.</rmrsbankitem></h>
+</pair>
+<pair id='226' value='FALSE' task='IR'>
+  <t><rmrsbankitem id="61">For others, in the northern hemisphere, judgment may be a little off due to Seasonal Affective Disorder (SAD), which is often at its peak in the weeks following the shortest hours of daylight.</rmrsbankitem></t>
+  <h><rmrsbankitem id="27">Seasonal Affective Disorder (SAD) is a worldwide disorder.</rmrsbankitem></h>
+</pair>
+<pair id='228' value='FALSE' task='IR'>
+  <t><rmrsbankitem id="62">A new report indicates that women's participation in decision-making in the country is minimal.</rmrsbankitem></t>
+  <h><rmrsbankitem id="3">Women are poorly represented in parliament.</rmrsbankitem></h>
+</pair>
+<pair id='235' value='TRUE' task='IR'>
+  <t><rmrsbankitem id="63">Indonesia says the oil blocks are within its borders, as does Malaysia, which has also sent warships to the area, claiming that its waters and airspace have been violated.</rmrsbankitem></t>
+  <h><rmrsbankitem id="5">There is a territorial waters dispute.</rmrsbankitem></h>
+</pair>
+<pair id='236' value='FALSE' task='IR'>
+  <t><rmrsbankitem id="64">The greatest threat to life and property associated with a hurricane and tropical storm is storm surge.</rmrsbankitem></t>
+  <h><rmrsbankitem id="28">A tropical storm has caused significant property damage or loss of life.</rmrsbankitem></h>
+</pair>
+<pair id='237' value='FALSE' task='IR'>
+  <t><rmrsbankitem id="65">Rescuers searched rough seas off the capital yesterday for survivors of a ferry collision that claimed at least 28 lives, as officials blamed crew incompetence for the accident.</rmrsbankitem></t>
+  <h><rmrsbankitem id="26">100 or more people lost their lives in a ferry sinking.</rmrsbankitem></h>
+</pair>
+<pair id='243' value='FALSE' task='IR'>
+  <t><rmrsbankitem id="66">The ivory ban was imposed by CITES in 1989 after a wave of poaching across Africa saw elephant numbers fall from an estimated 1.3 million to a few hundred thousand.</rmrsbankitem></t>
+  <h><rmrsbankitem id="17">The ban on ivory trade has been effective in protecting the elephant from extinction.</rmrsbankitem></h>
+</pair>
+<pair id='245' value='FALSE' task='IR'>
+  <t><rmrsbankitem id="67">Aleksandr Yakovenko, an official representative of the Russian Foreign Ministry, has announced that, in connection with the recent terrorist action in Srinagar, about 100 Russian citizens will be evacuated from Pakistan in the near future.</rmrsbankitem></t>
+  <h><rmrsbankitem id="13">U.S. Military evacuated U.S. citizens.</rmrsbankitem></h>
+</pair>
+<pair id='248' value='FALSE' task='IR'>
+  <t><rmrsbankitem id="68">When patients interrupt a course of antibiotics, the surviving bacteria return with a vengeance, often having rapidly mutated to resist the therapy.</rmrsbankitem></t>
+  <h><rmrsbankitem id="2">Bacteria is winning the war against antibiotics.</rmrsbankitem></h>
+</pair>
+<pair id='250' value='FALSE' task='IR'>
+  <t><rmrsbankitem id="69">While Bush was in the air, the White House was evacuated, with many employees running away from the premises on orders from Secret Service agents.</rmrsbankitem></t>
+  <h><rmrsbankitem id="20">The U.S. military evacuated U.S. citizens.</rmrsbankitem></h>
+</pair>
+<pair id='251' value='TRUE' task='IR'>
+  <t><rmrsbankitem id="70">The university server containing the information relating to Mason's ID cards was illegally entered by computer hackers.</rmrsbankitem></t>
+  <h><rmrsbankitem id="1">Non-authorized personnel illegally entered into computer networks.</rmrsbankitem></h>
+</pair>
+<pair id='255' value='FALSE' task='IR'>
+  <t><rmrsbankitem id="71">Humic acids are complex organic molecules formed by the breakdown of organic matter in the soil.</rmrsbankitem> <rmrsbankitem id="72">They are not considered to be fertilizers, but soil enhancers and improvers.</rmrsbankitem></t>
+  <h><rmrsbankitem id="23">Organic fertilizers are used as soil enhancers.</rmrsbankitem></h>
+</pair>
+<pair id='263' value='FALSE' task='IR'>
+  <t><rmrsbankitem id="73">A massive polio immunization drive is under way in more than 20 nations of West and Central Africa, but in Cote d'Ivoire violence has forced a postponement of the vaccination campaign, the Global Polio Eradication Initiative (GPEI) announced November 18.</rmrsbankitem></t>
+  <h><rmrsbankitem id="11">Polio is under control in the world.</rmrsbankitem></h>
+</pair>
+<pair id='264' value='TRUE' task='IR'>
+  <t><rmrsbankitem id="74">Despite Chinese assertions of control, tensions over the South China Sea's waters have continued to rise.</rmrsbankitem></t>
+  <h><rmrsbankitem id="5">There is a territorial waters dispute.</rmrsbankitem></h>
+</pair>
+<pair id='271' value='TRUE' task='IR'>
+  <t><rmrsbankitem id="75">The May 3 ferry sinking in the Meghna River that claimed the lives of at least 370 people is a reminder of the dangers inherent in this sort of travel.</rmrsbankitem></t>
+  <h><rmrsbankitem id="26">100 or more people lost their lives in a ferry sinking.</rmrsbankitem></h>
+</pair>
+<pair id='274' value='TRUE' task='IR'>
+  <t><rmrsbankitem id="76">In keeping with our national strategy, the concept of the operation was to further deploy our agent staffing and tactical infrastructure resources along the immediate border area, the Rio Grande River, to prevent and deter the illegal entry and smuggling of aliens into the United States at the border itself.</rmrsbankitem></t>
+  <h><rmrsbankitem id="29">Steps are being taken to stop the smuggling of aliens.</rmrsbankitem></h>
+</pair>
+<pair id='275' value='TRUE' task='IR'>
+  <t><rmrsbankitem id="77">For instance, the direct and indirect economic cost of the floods in Mozambique caused by Tropical Storms Elyne and Gloria in February and March 2000, is estimated at US$1 billion, as compared to the country's export earning of only US$300 million in 1999.</rmrsbankitem></t>
+  <h><rmrsbankitem id="28">A tropical storm has caused significant property damage or loss of life.</rmrsbankitem></h>
+</pair>
+<pair id='282' value='TRUE' task='IR'>
+  <t><rmrsbankitem id="78">What is certain, however, is that around 120,000 years ago, at least, the modern Homo sapiens first appeared and lived contemporaneously with the Neanderthal for at least 90,000 years, until the Neanderthal disappeared 30,000 years ago.</rmrsbankitem></t>
+  <h><rmrsbankitem id="30">Humans existed 10,000 years ago.</rmrsbankitem></h>
+</pair>
+<pair id='287' value='FALSE' task='IR'>
+  <t><rmrsbankitem id="79">The harvest of sea-weeds is not allowed in the Puget Sound because of marine vegetation's vital role in providing habitat to important species.</rmrsbankitem></t>
+  <h><rmrsbankitem id="4">Marine vegetation is harvested.</rmrsbankitem></h>
+</pair>
+<pair id='291' value='TRUE' task='IR'>
+  <t><rmrsbankitem id="80">The Sea-Viewing wide Field-of-View Sensor, SeaWiFS, has brought to oceanographers a welcomed and improved renewal of the ocean color remote sensing data.</rmrsbankitem></t>
+  <h><rmrsbankitem id="14">Ocean remote sensing is developed.</rmrsbankitem></h>
+</pair>
+<pair id='293' value='TRUE' task='IR'>
+  <t><rmrsbankitem id="81">The Townsend Thoresen cross-Channel ferry Herald of Free Enterprise capsized outside the Belgian port of Zeebrugge on the 6th of March with the loss of 135 lives.</rmrsbankitem></t>
+  <h><rmrsbankitem id="26">100 or more people lost their lives in a ferry sinking.</rmrsbankitem></h>
+</pair>
+<pair id='297' value='TRUE' task='IR'>
+  <t><rmrsbankitem id="82">Hurricane Isabel was a tropical storm when she entered Virginia, but caused damage to 75% of the state, making it one of the costliest disasters in Virginia's history.</rmrsbankitem></t>
+  <h><rmrsbankitem id="28">A tropical storm has caused significant property damage or loss of life.</rmrsbankitem></h>
+</pair>
+<pair id='298' value='FALSE' task='IR'>
+  <t><rmrsbankitem id="83">One reason for increased osteoporosis in developed countries is the sodium-potassium imbalance.</rmrsbankitem></t>
+  <h><rmrsbankitem id="31">Dietary intake of potassium prevents osteoporosis.</rmrsbankitem></h>
+</pair>
+<pair id='303' value='FALSE' task='IR'>
+  <t><rmrsbankitem id="84">The directive for the Border Patrol to stop arresting illegal aliens, as described in a previous post, has been rescinded by Robert C. Bonner, commissioner of the new Bureau of Customs and Border Protection.</rmrsbankitem></t>
+  <h><rmrsbankitem id="29">Steps are being taken to stop the smuggling of aliens.</rmrsbankitem></h>
+</pair>
+<pair id='304' value='TRUE' task='IR'>
+  <t><rmrsbankitem id="85">As a result, the elephant has been brought back from the brink of extinction, thanks to the ban on international trade in ivory and other elephant products.</rmrsbankitem></t>
+  <h><rmrsbankitem id="17">The ban on ivory trade has been effective in protecting the elephant from extinction.</rmrsbankitem></h>
+</pair>
+<pair id='305' value='FALSE' task='IR'>
+  <t><rmrsbankitem id="86">Tropical storm Koni dumped significant rains on the Philippines before becoming a minimal typhoon and eventually making landfall on the northern coast of Vietnam.</rmrsbankitem></t>
+  <h><rmrsbankitem id="32">A tropical storm has caused significant property damage.</rmrsbankitem></h>
+</pair>
+<pair id='307' value='TRUE' task='IR'>
+  <t><rmrsbankitem id="87">Napkins, invitations and plain old paper cost more than they did a month ago.</rmrsbankitem></t>
+  <h><rmrsbankitem id="6">The cost of paper is rising.</rmrsbankitem></h>
+</pair>
+<pair id='310' value='FALSE' task='IR'>
+  <t><rmrsbankitem id="88">The drive towards this new law was driven in part from a string of transport-related disasters in the late 1980s, such as the sinking of cross-Channel ferry the Herald of Free Enterprise in 1987, the oil platform Piper Alpha disaster in 1988, and the Marchioness Thames river boat collision in 1989.</rmrsbankitem> <rmrsbankitem id="89">More than 400 people lost their lives in these three disasters, but no one individual or organisation was brought to account.</rmrsbankitem></t>
+  <h><rmrsbankitem id="26">100 or more people lost their lives in a ferry sinking.</rmrsbankitem></h>
+</pair>
+<pair id='322' value='TRUE' task='IR'>
+  <t><rmrsbankitem id="90">Some plants grow really well in a hydroponic environment, but others do not.</rmrsbankitem></t>
+  <h><rmrsbankitem id="24">Plants are grown in water or in substances other than soil.</rmrsbankitem></h>
+</pair>
+<pair id='327' value='TRUE' task='IR'>
+  <t><rmrsbankitem id="91">By 45,000 years ago, humans had weathered the comings and goings of a number of ice ages, had spread themselves throughout most of Africa, Europe and Asia, and had reached a population of roughly a million.</rmrsbankitem></t>
+  <h><rmrsbankitem id="30">Humans existed 10,000 years ago.</rmrsbankitem></h>
+</pair>
+<pair id='328' value='TRUE' task='IR'>
+  <t><rmrsbankitem id="92">Epiphyte is the name applied to the class of plants which typically do not root in the soil but, rather, attach themselves to trees or other tall objects where they can obtain light and moisture.</rmrsbankitem></t>
+  <h><rmrsbankitem id="33">Plants are grown in substances other than soil.</rmrsbankitem></h>
+</pair>
+<pair id='346' value='TRUE' task='IR'>
+  <t><rmrsbankitem id="93">About one million years ago, these people began to slowly leave Africa.</rmrsbankitem></t>
+  <h><rmrsbankitem id="30">Humans existed 10,000 years ago.</rmrsbankitem></h>
+</pair>
+<pair id='351' value='FALSE' task='IR'>
+  <t><rmrsbankitem id="94">Meteorological observations suggest Claudette remained a tropical storm as she affected parts of west Texas.</rmrsbankitem></t>
+  <h><rmrsbankitem id="32">A tropical storm has caused significant property damage.</rmrsbankitem></h>
+</pair>
+<pair id='352' value='FALSE' task='IR'>
+  <t><rmrsbankitem id="95">The increase in womens' representation in the first elections to the Scottish Parliament has become a symbol for change, backed by the Parliament's principled commitment to creating a more equal society.</rmrsbankitem></t>
+  <h><rmrsbankitem id="3">Women are poorly represented in parliament.</rmrsbankitem></h>
+</pair>
+<pair id='354' value='TRUE' task='IR'>
+  <t><rmrsbankitem id="96">The most recent poll carried out by NOP market research in January revealed that 61% of Britons are opposed to joining the euro.</rmrsbankitem></t>
+  <h><rmrsbankitem id="15">The introduction of the euro has been opposed.</rmrsbankitem></h>
+</pair>
+<pair id='355' value='TRUE' task='IR'>
+  <t><rmrsbankitem id="97">Albert Sabin developed an oral, attenuated (live) vaccine, which, with Salk's discovery, brought polio under control.</rmrsbankitem></t>
+  <h><rmrsbankitem id="11">Polio is under control in the world.</rmrsbankitem></h>
+</pair>
+<pair id='362' value='TRUE' task='IR'>
+  <t><rmrsbankitem id="98">His research had been focused on near-shore beds of marine plants commercially harvested in western P.E.I.</rmrsbankitem></t>
+  <h><rmrsbankitem id="4">Marine vegetation is harvested.</rmrsbankitem></h>
+</pair>
+<pair id='363' value='TRUE' task='IR'>
+  <t><rmrsbankitem id="99">One economic study will not be the basis of Canada's public policy decisions, but Easton's research does conclusively show that there are economic benefits in the legalization of marijuana.</rmrsbankitem></t>
+  <h><rmrsbankitem id="9">Drug legalization has benefits.</rmrsbankitem></h>
+</pair>
+<pair id='364' value='FALSE' task='IR'>
+  <t><rmrsbankitem id="100">Beth Israel is fighting back in the lab, where bacteria taken from patients are grown in cultures and tested against antibiotics to determine if the bug beats the drug.</rmrsbankitem></t>
+  <h><rmrsbankitem id="2">Bacteria is winning the war against antibiotics.</rmrsbankitem></h>
+</pair>
+<pair id='367' value='TRUE' task='IR'>
+  <t><rmrsbankitem id="101">There are actually good grounds to believe that legalization would reduce the costs of respiratory damage from marijuana smoking by encouraging the development of better smoke filtration technology, the substitution of more potent, less smoke-producing varieties of marijuana, and the substitution of oral preparations for smoked marijuana.</rmrsbankitem></t>
+  <h><rmrsbankitem id="9">Drug legalization has benefits.</rmrsbankitem></h>
+</pair>
+<pair id='369' value='TRUE' task='IR'>
+  <t><rmrsbankitem id="102">The Bakun Hydroelectric Project (BHEP) comprises the construction of a 2,400MW hydroelectric dam, the transmission of its electricity, and the building of related infrastructure including access roads.</rmrsbankitem></t>
+  <h><rmrsbankitem id="34">A hydroelectric project is proposed or is under construction.</rmrsbankitem></h>
+</pair>
+<pair id='370' value='FALSE' task='IR'>
+  <t><rmrsbankitem id="103">Westbridge manufactures certified organic fertilizers including liquid growth enhancers and biostimulants.</rmrsbankitem></t>
+  <h><rmrsbankitem id="23">Organic fertilizers are used as soil enhancers.</rmrsbankitem></h>
+</pair>
+<pair id='371' value='TRUE' task='IR'>
+  <t><rmrsbankitem id="104">The ivory ban has been successful.</rmrsbankitem> <rmrsbankitem id="105">Demand for ivory has dropped and elephant populations expanded dramatically in areas where they were virtually extinct.</rmrsbankitem></t>
+  <h><rmrsbankitem id="17">The ban on ivory trade has been effective in protecting the elephant from extinction.</rmrsbankitem></h>
+</pair>
+<pair id='380' value='FALSE' task='IR'>
+  <t><rmrsbankitem id="106">Capital punishment is a catalyst for more crime.</rmrsbankitem></t>
+  <h><rmrsbankitem id="22">Capital punishment is a deterrent to crime.</rmrsbankitem></h>
+</pair>
+<pair id='385' value='FALSE' task='IR'>
+  <t><rmrsbankitem id="107">There is growing evidence that magnesium may be an important factor in the qualitative changes of the bone matrix that determine bone fragility.</rmrsbankitem></t>
+  <h><rmrsbankitem id="35">Dietary intake of magnesium prevents osteoporosis.</rmrsbankitem></h>
+</pair>
+<pair id='386' value='FALSE' task='IR'>
+  <t><rmrsbankitem id="108">Over 100 more lives were lost at sea, and 1800 were lost in Holland.</rmrsbankitem></t>
+  <h><rmrsbankitem id="26">100 or more people lost their lives in a ferry sinking.</rmrsbankitem></h>
+</pair>
+<pair id='390' value='FALSE' task='IR'>
+  <t><rmrsbankitem id="109">Polio is no longer a serious health problem for people living in the developed nations, such as the United States, Germany, or France.</rmrsbankitem></t>
+  <h><rmrsbankitem id="11">Polio is under control in the world.</rmrsbankitem></h>
+</pair>
+<pair id='391' value='FALSE' task='IR'>
+  <t><rmrsbankitem id="110">And this is a town that everybody agrees, law enforcement, Border Patrol, residents on both sides, is a staging area of illegal drugs and illegal aliens.</rmrsbankitem></t>
+  <h><rmrsbankitem id="29">Steps are being taken to stop the smuggling of aliens.</rmrsbankitem></h>
+</pair>
+<pair id='395' value='FALSE' task='IR'>
+  <t><rmrsbankitem id="111">In 1983, McClintock found that bacteria have rings of DNA (plasmids) that reproduce and have genetic changes that tell the bacteria how to defend itself against the antibiotics.</rmrsbankitem></t>
+  <h><rmrsbankitem id="2">Bacteria is winning the war against antibiotics.</rmrsbankitem></h>
+</pair>
+<pair id='399' value='FALSE' task='IR'>
+  <t><rmrsbankitem id="112">In reality, legalization would dramatically expand America's drug dependence, significantly increase the social costs of drug abuse, and put countless more innocent lives at risk.</rmrsbankitem></t>
+  <h><rmrsbankitem id="9">Drug legalization has benefits.</rmrsbankitem></h>
+</pair>
+<pair id='411' value='FALSE' task='IR'>
+  <t><rmrsbankitem id="113">Deceased U.S. soldiers and their effects were evacuated to Japan and then shipped home in refrigerated containers for interment in the U.S.</rmrsbankitem></t>
+  <h><rmrsbankitem id="20">The U.S. military evacuated U.S. citizens.</rmrsbankitem></h>
+</pair>
+<pair id='415' value='TRUE' task='IR'>
+  <t><rmrsbankitem id="114">The drugs that slow down or halt Alzheimer's disease work best the earlier you administer them.</rmrsbankitem></t>
+  <h><rmrsbankitem id="18">Alzheimer's disease is treated using drugs.</rmrsbankitem></h>
+</pair>
+<pair id='422' value='TRUE' task='IR'>
+  <t><rmrsbankitem id="115">The number of Danes opposed to swapping the krone for the euro has increased slightly to 35.3 percent, up from 34.6 percent in April, according to a poll published on Thursday by Danske Bank.</rmrsbankitem></t>
+  <h><rmrsbankitem id="15">The introduction of the euro has been opposed.</rmrsbankitem></h>
+</pair>
+<pair id='429' value='FALSE' task='IR'>
+  <t><rmrsbankitem id="116">Yes, water is a critical area of dispute in the Arab-Israeli conflict; but given the current climate of peacemaking, and given the general war-weariness among states and populations, such predictions are excitable pieces of subjectivism.</rmrsbankitem></t>
+  <h><rmrsbankitem id="5">There is a territorial waters dispute.</rmrsbankitem></h>
+</pair>
+<pair id='454' value='FALSE' task='IR'>
+  <t><rmrsbankitem id="117">Vegetables help to preserve your bones, and help fight the bone-thinning disease osteoporosis.</rmrsbankitem></t>
+  <h><rmrsbankitem id="36">Fruits and vegetables prevent osteoporosis.</rmrsbankitem></h>
+</pair>
+<pair id='461' value='FALSE' task='IR'>
+  <t><rmrsbankitem id="118">For such patients, regular aspirin use significantly decreased the risk for fatal and nonfatal strokes or heart attacks.</rmrsbankitem></t>
+  <h><rmrsbankitem id="19">People experienced adverse effects while taking aspirin.</rmrsbankitem></h>
+</pair>
+<pair id='462' value='TRUE' task='IR'>
+  <t><rmrsbankitem id="119">The development of agriculture by early humans, roughly 10,000 years ago, was also harmful to many natural ecosystems as they were systematically destroyed and replaced with artificial versions.</rmrsbankitem></t>
+  <h><rmrsbankitem id="30">Humans existed 10,000 years ago.</rmrsbankitem></h>
+</pair>
+<pair id='465' value='TRUE' task='IR'>
+  <t><rmrsbankitem id="120">The Croatian intent is even more problematic because the border between Slovenian and Croatian territorial waters has not yet been established.</rmrsbankitem> <rmrsbankitem id="121">The dispute about this border began in 1991 when both countries became independent.</rmrsbankitem></t>
+  <h><rmrsbankitem id="5">There is a territorial waters dispute.</rmrsbankitem></h>
+</pair>
+<pair id='467' value='TRUE' task='IR'>
+  <t><rmrsbankitem id="122">Public health and animal health officials from the Departments of Health and Community Services and Forest Resources and Agrifoods today confirmed a rabies case involving a red fox in western Newfoundland.</rmrsbankitem></t>
+  <h><rmrsbankitem id="7">A case of rabies was confirmed.</rmrsbankitem></h>
+</pair>
+<pair id='471' value='TRUE' task='IR'>
+  <t><rmrsbankitem id="123">Yet, we now are discovering that antibiotics are losing their effectiveness against illness.</rmrsbankitem> <rmrsbankitem id="124">Disease-causing bacteria are mutating faster than we can come up with new antibiotics to fight the new variations.</rmrsbankitem></t>
+  <h><rmrsbankitem id="2">Bacteria is winning the war against antibiotics.</rmrsbankitem></h>
+</pair>
+<pair id='487' value='FALSE' task='IR'>
+  <t><rmrsbankitem id="125">Rather than deterring crime, capital punishment actually increases the level of brutality in society.</rmrsbankitem></t>
+  <h><rmrsbankitem id="22">Capital punishment is a deterrent to crime.</rmrsbankitem></h>
+</pair>
+<pair id='488' value='FALSE' task='IR'>
+  <t><rmrsbankitem id="126">Obesity is medically accepted to be a disease in its own right.</rmrsbankitem></t>
+  <h><rmrsbankitem id="37">Obesity is medically treated.</rmrsbankitem></h>
+</pair>
+<pair id='489' value='TRUE' task='IR'>
+  <t><rmrsbankitem id="127">Initially the Bundesbank opposed the introduction of the euro but was compelled to accept it in light of the political pressure of the capitalist politicians who supported its introduction.</rmrsbankitem></t>
+  <h><rmrsbankitem id="15">The introduction of the euro has been opposed.</rmrsbankitem></h>
+</pair>
+<pair id='493' value='TRUE' task='IR'>
+  <t><rmrsbankitem id="128">IBM stole trade secrets to copy two of its programs - File-AID, a file manager, and Abend-AID, a program that helps users locate the source of glitches.</rmrsbankitem></t>
+  <h><rmrsbankitem id="38">Trade secrets were stolen.</rmrsbankitem></h>
+</pair>
+<pair id='498' value='TRUE' task='IR'>
+  <t><rmrsbankitem id="129">Seasonal affective disorder (SAD), a type of depression, is a debilitating problem that interferes with the quality of life of thousands of patients, especially during the fall, winter and early spring.</rmrsbankitem> <rmrsbankitem id="130">This syndrome seems to be a worldwide phenomenon and occurs cross culturally, especially in countries far from the equator.</rmrsbankitem></t>
+  <h><rmrsbankitem id="39">Seasonal affective disorder (SAD) is a worldwide disorder.</rmrsbankitem></h>
+</pair>
+<pair id='499' value='TRUE' task='IR'>
+  <t><rmrsbankitem id="131">FBI agent Denise Stemen said in an affidavit that Lowe's alerted the FBI recently that intruders had broken into its computer at company headquarters in North Carolina, altered its computer programs and illegally intercepted credit card transactions.</rmrsbankitem></t>
+  <h><rmrsbankitem id="1">Non-authorized personnel illegally entered into computer networks.</rmrsbankitem></h>
+</pair>
+<pair id='503' value='TRUE' task='IR'>
+  <t><rmrsbankitem id="132">Newspapers choke on rising paper costs and falling revenue.</rmrsbankitem></t>
+  <h><rmrsbankitem id="6">The cost of paper is rising.</rmrsbankitem></h>
+</pair>
+<pair id='505' value='FALSE' task='IR'>
+  <t><rmrsbankitem id="133">The results of numerous epidemiological studies and recent clinical trials provide consistent evidence that diets rich in fruits and vegetables can reduce the risk of chronic disease.</rmrsbankitem></t>
+  <h><rmrsbankitem id="36">Fruits and vegetables prevent osteoporosis.</rmrsbankitem></h>
+</pair>
+<pair id='513' value='TRUE' task='IR'>
+  <t><rmrsbankitem id="134">These acoustic methods are now expected to be useful for the long-range remote sensing of schools of fish as well as for distant ocean bottom characterizations.</rmrsbankitem></t>
+  <h><rmrsbankitem id="14">Ocean remote sensing is developed.</rmrsbankitem></h>
+</pair>
+<pair id='514' value='TRUE' task='IR'>
+  <t><rmrsbankitem id="135">The World Trade Organization, the International Monetary Fund and the World Bank have all been criticized for their role in catalyzing the harmful impacts of corporate globalization on people, the environment and sustainable development.</rmrsbankitem></t>
+  <h><rmrsbankitem id="16">The World Bank is criticized for its activities.</rmrsbankitem></h>
+</pair>
+<pair id='515' value='FALSE' task='IR'>
+  <t><rmrsbankitem id="136">Confidential scriptural materials allegedly stolen from a church were not "trade secrets" as defined by California statute.</rmrsbankitem></t>
+  <h><rmrsbankitem id="38">Trade secrets were stolen.</rmrsbankitem></h>
+</pair>
+<pair id='516' value='FALSE' task='IR'>
+  <t><rmrsbankitem id="137">Lt. Mark Banks, of Savannah, Ga., tends to a patient who was medically evacuated by U.S. Navy helicopter to a temporary triage site in Aceh, Sumatra, Indonesia.</rmrsbankitem></t>
+  <h><rmrsbankitem id="13">U.S. Military evacuated U.S. citizens.</rmrsbankitem></h>
+</pair>
+<pair id='517' value='FALSE' task='IR'>
+  <t><rmrsbankitem id="138">Women are poorly trained for politics.</rmrsbankitem></t>
+  <h><rmrsbankitem id="3">Women are poorly represented in parliament.</rmrsbankitem></h>
+</pair>
+<pair id='520' value='FALSE' task='IR'>
+  <t><rmrsbankitem id="139">A wooden steamer of 293 ft sank on 10/13/1902, 13.5 miles North by Northwest of Fairport Harbor, Ohio.</rmrsbankitem> <rmrsbankitem id="140">The lives of ten of the 19 persons on board were lost in the wreck.</rmrsbankitem></t>
+  <h><rmrsbankitem id="26">100 or more people lost their lives in a ferry sinking.</rmrsbankitem></h>
+</pair>
+<pair id='523' value='TRUE' task='IR'>
+  <t><rmrsbankitem id="141">Eleven years after 852 people, mostly Swedes, perished when the ferry Estonia sank on a stormy Baltic night, an exhibition in the National Maritime Museum in Stockholm brings back the pain and controversy which have haunted Sweden since the disaster.</rmrsbankitem></t>
+  <h><rmrsbankitem id="26">100 or more people lost their lives in a ferry sinking.</rmrsbankitem></h>
+</pair>
+<pair id='528' value='TRUE' task='IR'>
+  <t><rmrsbankitem id="142">Yet fishermen from both sides say boats lack navigational tools to let them know when they've crossed the frontier, which still is subject to a bilateral dispute dating to the 1965 war between the countries.</rmrsbankitem></t>
+  <h><rmrsbankitem id="5">There is a territorial waters dispute.</rmrsbankitem></h>
+</pair>
+<pair id='536' value='TRUE' task='IR'>
+  <t><rmrsbankitem id="143">United States naval forces evacuated U.S. civilians during hostilities between Turkish and Greek Cypriot forces.</rmrsbankitem></t>
+  <h><rmrsbankitem id="13">U.S. Military evacuated U.S. citizens.</rmrsbankitem></h>
+</pair>
+<pair id='539' value='FALSE' task='IR'>
+  <t><rmrsbankitem id="144">The total estimated project cost including financing, inflation and interest during construction, is approximately US$1.1 billion.</rmrsbankitem></t>
+  <h><rmrsbankitem id="34">A hydroelectric project is proposed or is under construction.</rmrsbankitem></h>
+</pair>
+<pair id='541' value='TRUE' task='IR'>
+  <t><rmrsbankitem id="145">Naval units evacuated U.S. civilians and military personnel from the Tachen Islands.</rmrsbankitem></t>
+  <h><rmrsbankitem id="20">The U.S. military evacuated U.S. citizens.</rmrsbankitem></h>
+</pair>
+<pair id='551' value='TRUE' task='IR'>
+  <t><rmrsbankitem id="146">The result in Denmark shows that people are fundamentally opposed to joining the euro.</rmrsbankitem></t>
+  <h><rmrsbankitem id="15">The introduction of the euro has been opposed.</rmrsbankitem></h>
+</pair>
+<pair id='554' value='FALSE' task='IR'>
+  <t><rmrsbankitem id="147">It appears that the super-conducting maglev system is technically ready to be used commercially as a very high-speed, large-capacity transportation system.</rmrsbankitem></t>
+  <h><rmrsbankitem id="8">Maglev is commercially used.</rmrsbankitem></h>
+</pair>
+<pair id='555' value='TRUE' task='IR'>
+  <t><rmrsbankitem id="148">This case of rabies in western Newfoundland is the first case confirmed on the island since 1989.</rmrsbankitem></t>
+  <h><rmrsbankitem id="7">A case of rabies was confirmed.</rmrsbankitem></h>
+</pair>
+<pair id='563' value='FALSE' task='IR'>
+  <t><rmrsbankitem id="149">If confirmed as rabies, the case could be the first occurence of the infection acquired in the UK since 1902.</rmrsbankitem></t>
+  <h><rmrsbankitem id="7">A case of rabies was confirmed.</rmrsbankitem></h>
+</pair>
+<pair id='564' value='TRUE' task='IR'>
+  <t><rmrsbankitem id="150">These problems can be avoided by legalization, under which cannabis could be legally sold, taxed and regulated like alcohol or tobacco.</rmrsbankitem></t>
+  <h><rmrsbankitem id="9">Drug legalization has benefits.</rmrsbankitem></h>
+</pair>
+<pair id='569' value='FALSE' task='IR'>
+  <t><rmrsbankitem id="151">About 3 million years ago, when Lucy was alive, she was rather short, about 4 feet tall, and probably weighed about 50 pounds.</rmrsbankitem></t>
+  <h><rmrsbankitem id="30">Humans existed 10,000 years ago.</rmrsbankitem></h>
+</pair>
+<pair id='571' value='TRUE' task='IR'>
+  <t><rmrsbankitem id="152">Sani-Seat can offset the rising cost of paper products.</rmrsbankitem></t>
+  <h><rmrsbankitem id="6">The cost of paper is rising.</rmrsbankitem></h>
+</pair>
+<pair id='572' value='FALSE' task='IR'>
+  <t><rmrsbankitem id="153">Fast forward a decade or two and scientists began to notice antibiotic-resistant strains of bacteria.</rmrsbankitem></t>
+  <h><rmrsbankitem id="2">Bacteria is winning the war against antibiotics.</rmrsbankitem></h>
+</pair>
+<pair id='583' value='FALSE' task='IR'>
+  <t><rmrsbankitem id="154">If the ruling is that these trade-secrets were stolen goods, I'd be willing to bet that these three guys could refuse to answer any questions, by invoking the 5th Amendment, since they would incriminate themselves by saying anything.</rmrsbankitem></t>
+  <h><rmrsbankitem id="38">Trade secrets were stolen.</rmrsbankitem></h>
+</pair>
+<pair id='584' value='TRUE' task='IR'>
+  <t><rmrsbankitem id="155">Hydroponics is the growth of plants in a substance other than soil with water.</rmrsbankitem></t>
+  <h><rmrsbankitem id="33">Plants are grown in substances other than soil.</rmrsbankitem></h>
+</pair>
+<pair id='585' value='TRUE' task='IR'>
+  <t><rmrsbankitem id="156">Since the fear of death is virtually a universal phenomenon, the death penalty is an unparalleled deterrent for people considering a crime.</rmrsbankitem></t>
+  <h><rmrsbankitem id="22">Capital punishment is a deterrent to crime.</rmrsbankitem></h>
+</pair>
+<pair id='588' value='FALSE' task='IR'>
+  <t><rmrsbankitem id="157">Security forces gunned down six Maoists; while the rebels killed a policeman and an abducted civilian drowned escaping from the Maoists, say latest insurgency related reports.</rmrsbankitem></t>
+  <h><rmrsbankitem id="10">A civilian policeman was killed.</rmrsbankitem></h>
+</pair>
+<pair id='590' value='FALSE' task='IR'>
+  <t><rmrsbankitem id="158">Diets that provide recommended levels of magnesium are beneficial for bone health, but further investigation on the role of magnesium in bone metabolism and osteoporosis is needed.</rmrsbankitem></t>
+  <h><rmrsbankitem id="35">Dietary intake of magnesium prevents osteoporosis.</rmrsbankitem></h>
+</pair>
+<pair id='591' value='FALSE' task='IR'>
+  <t><rmrsbankitem id="159">Both sides of this argument are presented in this paper, but it is the attempt of this paper to emphasize that the legalization of drugs would be destructive to our society.</rmrsbankitem></t>
+  <h><rmrsbankitem id="9">Drug legalization has benefits.</rmrsbankitem></h>
+</pair>
+<pair id='592' value='FALSE' task='IR'>
+  <t><rmrsbankitem id="160">Women are poorly represented in transactions financed by mortgage bonds.</rmrsbankitem></t>
+  <h><rmrsbankitem id="3">Women are poorly represented in parliament.</rmrsbankitem></h>
+</pair>
+<pair id='594' value='FALSE' task='IR'>
+  <t><rmrsbankitem id="161">Though owning no trees and no waters, Takeshima Island has become the subject of a bitter political dispute between Japan and South Korea.</rmrsbankitem></t>
+  <h><rmrsbankitem id="5">There is a territorial waters dispute.</rmrsbankitem></h>
+</pair>
+<pair id='599' value='FALSE' task='IR'>
+  <t><rmrsbankitem id="162">New security steps taken by the Customs Service may not be enough to stop a terrorist from smuggling in nuclear weapons.</rmrsbankitem></t>
+  <h><rmrsbankitem id="29">Steps are being taken to stop the smuggling of aliens.</rmrsbankitem></h>
+</pair>
+<pair id='601' value='FALSE' task='IR'>
+  <t><rmrsbankitem id="163">No case of indigenously acquired rabies infection has been confirmed in man or any animal species during the past 2 years.</rmrsbankitem></t>
+  <h><rmrsbankitem id="7">A case of rabies was confirmed.</rmrsbankitem></h>
+</pair>
+<pair id='603' value='TRUE' task='IR'>
+  <t><rmrsbankitem id="164">This taught postgraduate masters degree programme will provide specialised training at a postgraduate level in the methods and uses of remote sensing applied to the ocean.</rmrsbankitem></t>
+  <h><rmrsbankitem id="40">Ocean remote sensing is applied.</rmrsbankitem></h>
+</pair>
+<pair id='607' value='TRUE' task='IR'>
+  <t><rmrsbankitem id="165">Carmen was only slightly put out to find that women are as poorly represented among Australian political scientists as they are in parliament (Leonie was asking, 'where are all the women?').</rmrsbankitem></t>
+  <h><rmrsbankitem id="3">Women are poorly represented in parliament.</rmrsbankitem></h>
+</pair>
+<pair id='614' value='TRUE' task='IR'>
+  <t><rmrsbankitem id="166">Environment Minister David Anderson today announced his decision regarding the environmental assessment of the proposed Toulnustouc Hydroelectric Project.</rmrsbankitem></t>
+  <h><rmrsbankitem id="34">A hydroelectric project is proposed or is under construction.</rmrsbankitem></h>
+</pair>
+<pair id='624' value='FALSE' task='IR'>
+  <t><rmrsbankitem id="167">Some other objections to legalization point to the greater dangers of family violence, reckless driving, or reckless operation of subways and so on.</rmrsbankitem></t>
+  <h><rmrsbankitem id="9">Drug legalization has benefits.</rmrsbankitem></h>
+</pair>
+<pair id='630' value='TRUE' task='IR'>
+  <t><rmrsbankitem id="168">These early men learned to make fire.</rmrsbankitem> <rmrsbankitem id="169">They traveled over land bridges from Africa, and began to populate the world, about 1 million years ago.</rmrsbankitem></t>
+  <h><rmrsbankitem id="30">Humans existed 10,000 years ago.</rmrsbankitem></h>
+</pair>
+<pair id='636' value='TRUE' task='IR'>
+  <t><rmrsbankitem id="170">Alzheimer's disease is successfully treated, and controlled by drugs which inhibit the synthesis of beta-amyloid protein.</rmrsbankitem></t>
+  <h><rmrsbankitem id="18">Alzheimer's disease is treated using drugs.</rmrsbankitem></h>
+</pair>
+<pair id='640' value='FALSE' task='IR'>
+  <t><rmrsbankitem id="171">Banning ivory is the surest road to extinction for the African elephant, argue leaders in those countries.</rmrsbankitem></t>
+  <h><rmrsbankitem id="17">The ban on ivory trade has been effective in protecting the elephant from extinction.</rmrsbankitem></h>
+</pair>
+<pair id='656' value='FALSE' task='IR'>
+  <t><rmrsbankitem id="172">After two years, the aspirin subjects experienced a reduced risk of fatal and nonfatal stroke.</rmrsbankitem></t>
+  <h><rmrsbankitem id="19">People experienced adverse effects while taking aspirin.</rmrsbankitem></h>
+</pair>
+<pair id='660' value='FALSE' task='IR'>
+  <t><rmrsbankitem id="173">The most surprising news story of the past week must be the 'wonderful' story that the AIDS epidemic in India is under control.</rmrsbankitem></t>
+  <h><rmrsbankitem id="11">Polio is under control in the world.</rmrsbankitem></h>
+</pair>
+<pair id='690' value='FALSE' task='IR'>
+  <t><rmrsbankitem id="174">The drawbacks of legalization do not imply that our current version of prohibition is the optimal drug strategy; it may well be possible to implement prohibition in less harmful ways.</rmrsbankitem></t>
+  <h><rmrsbankitem id="9">Drug legalization has benefits.</rmrsbankitem></h>
+</pair>
+<pair id='693' value='FALSE' task='IR'>
+  <t><rmrsbankitem id="175">They, too, have not produced a practical, commercially acceptable maglev.</rmrsbankitem></t>
+  <h><rmrsbankitem id="8">Maglev is commercially used.</rmrsbankitem></h>
+</pair>
+<pair id='695' value='TRUE' task='IR'>
+  <t><rmrsbankitem id="176">Another factor in the rising cost of paper is the increased cost of wood pulp, from which paper is made.</rmrsbankitem></t>
+  <h><rmrsbankitem id="6">The cost of paper is rising.</rmrsbankitem></h>
+</pair>
+<pair id='697' value='FALSE' task='IR'>
+  <t><rmrsbankitem id="177">20 million years ago there were apes, and by 5 million years ago our closest ancestors and cousins, early ape-humans, had split from the other apes.</rmrsbankitem></t>
+  <h><rmrsbankitem id="30">Humans existed 10,000 years ago.</rmrsbankitem></h>
+</pair>
+<pair id='700' value='FALSE' task='IR'>
+  <t><rmrsbankitem id="178">INS predicts that the smuggling will continue to increase and that alien smuggling organizations will become more sophisticated, organized, and complex.</rmrsbankitem></t>
+  <h><rmrsbankitem id="29">Steps are being taken to stop the smuggling of aliens.</rmrsbankitem></h>
+</pair>
+<pair id='705' value='TRUE' task='IR'>
+  <t><rmrsbankitem id="179">High dietary intake of potassium from fruits and vegetables throughout one's life helps to preserve bone mass, thereby preventing bone loss that can lead to osteoporosis.</rmrsbankitem></t>
+  <h><rmrsbankitem id="31">Dietary intake of potassium prevents osteoporosis.</rmrsbankitem></h>
+</pair>
+<pair id='708' value='FALSE' task='IR'>
+  <t><rmrsbankitem id="180">Nearly five months later on January 24, 1935, the passenger vessel MOHAWK sank after colliding with the Norwegian motorship TALISMAN, and 45 people lost their lives.</rmrsbankitem></t>
+  <h><rmrsbankitem id="26">100 or more people lost their lives in a ferry sinking.</rmrsbankitem></h>
+</pair>
+<pair id='710' value='TRUE' task='IR'>
+  <t><rmrsbankitem id="181">World Bank programs have been heavily criticized for many years for resulting in poverty.</rmrsbankitem></t>
+  <h><rmrsbankitem id="16">The World Bank is criticized for its activities.</rmrsbankitem></h>
+</pair>
+<pair id='716' value='TRUE' task='IR'>
+  <t><rmrsbankitem id="182">The recent 14% hike in third class postage rates, accompanied by simultaneous double-digit paper price increases, has hit smaller catalogers especially hard.</rmrsbankitem></t>
+  <h><rmrsbankitem id="6">The cost of paper is rising.</rmrsbankitem></h>
+</pair>
+<pair id='717' value='TRUE' task='IR'>
+  <t><rmrsbankitem id="183">The gastric bypass operation, also known as stomach stapling, has become the most common surgical procedure for treating obesity.</rmrsbankitem></t>
+  <h><rmrsbankitem id="37">Obesity is medically treated.</rmrsbankitem></h>
+</pair>
+<pair id='723' value='FALSE' task='IR'>
+  <t><rmrsbankitem id="184">Primary prevention of Alzheimer's disease is not possible at present.</rmrsbankitem></t>
+  <h><rmrsbankitem id="18">Alzheimer's disease is treated using drugs.</rmrsbankitem></h>
+</pair>
+<pair id='724' value='FALSE' task='IR'>
+  <t><rmrsbankitem id="185">The death penalty is not a deterrent.</rmrsbankitem></t>
+  <h><rmrsbankitem id="22">Capital punishment is a deterrent to crime.</rmrsbankitem></h>
+</pair>
+<pair id='725' value='TRUE' task='IR'>
+  <t><rmrsbankitem id="186">The German technology was employed to build Shanghai's existing maglev line, the first in the world to be used commercially.</rmrsbankitem></t>
+  <h><rmrsbankitem id="8">Maglev is commercially used.</rmrsbankitem></h>
+</pair>
+<pair id='726' value='TRUE' task='IR'>
+  <t><rmrsbankitem id="187">Organic fertilizers like vermi compost are used for increasing the quality, fertility and mineral content of the soil.</rmrsbankitem></t>
+  <h><rmrsbankitem id="23">Organic fertilizers are used as soil enhancers.</rmrsbankitem></h>
+</pair>
+<pair id='728' value='FALSE' task='IR'>
+  <t><rmrsbankitem id="188">As the U.S. military evacuated Saigon in the Spring of 1975, President Gerald Ford approved Operation Babylift, the plan to transport thousands of Vietnamese children to adoptive parents in the West, hundreds of them at a time, before the U.S. was forced out of the country.</rmrsbankitem></t>
+  <h><rmrsbankitem id="20">The U.S. military evacuated U.S. citizens.</rmrsbankitem></h>
+</pair>
+<pair id='734' value='FALSE' task='IR'>
+  <t><rmrsbankitem id="189">Well, the yolk is on us, the bacteria are winning, and at a record pace.</rmrsbankitem></t>
+  <h><rmrsbankitem id="2">Bacteria is winning the war against antibiotics.</rmrsbankitem></h>
+</pair>
+<pair id='735' value='FALSE' task='IR'>
+  <t><rmrsbankitem id="190">Actual statistics about the deterrent value of capital punishment are not available because it is impossible to know who may have been deterred from committing a crime.</rmrsbankitem></t>
+  <h><rmrsbankitem id="22">Capital punishment is a deterrent to crime.</rmrsbankitem></h>
+</pair>
+<pair id='737' value='TRUE' task='IR'>
+  <t><rmrsbankitem id="191">Capital punishment acts as a deterrent.</rmrsbankitem></t>
+  <h><rmrsbankitem id="22">Capital punishment is a deterrent to crime.</rmrsbankitem></h>
+</pair>
+<pair id='739' value='FALSE' task='IR'>
+  <t><rmrsbankitem id="192">On the other hand, the article, "Fiction and Facts About Drug Legalization", by Joseph Califano identifies possible social problems that could occur as a result of marijuana being decriminalized in any form, whether for medical purposes or for recreational use.</rmrsbankitem></t>
+  <h><rmrsbankitem id="9">Drug legalization has benefits.</rmrsbankitem></h>
+</pair>
+<pair id='742' value='FALSE' task='IR'>
+  <t><rmrsbankitem id="193">Compuware claims that Allan Tortorice and Jim Hildner were among several former employees who revealed trade secrets after they moved to IBM.</rmrsbankitem></t>
+  <h><rmrsbankitem id="38">Trade secrets were stolen.</rmrsbankitem></h>
+</pair>
+<pair id='748' value='FALSE' task='IR'>
+  <t><rmrsbankitem id="194">After the polio cases were identified, public health officials in the Dominican Republic and Haiti began giving the vaccines to large numbers of children.</rmrsbankitem> <rmrsbankitem id="195">Public health officials now say the disease is under control and is not a public health threat.</rmrsbankitem></t>
+  <h><rmrsbankitem id="11">Polio is under control in the world.</rmrsbankitem></h>
+</pair>
+<pair id='750' value='FALSE' task='IR'>
+  <t><rmrsbankitem id="196">National currencies will be completely replaced by the euro in within six months after the introduction of euro notes and coins.</rmrsbankitem></t>
+  <h><rmrsbankitem id="15">The introduction of the euro has been opposed.</rmrsbankitem></h>
+</pair>
+<pair id='753' value='FALSE' task='IR'>
+  <t><rmrsbankitem id="197">The scientific community now generally agrees that between 5 and 8 million years ago, there lived in Africa a hominid which would ultimately give rise to the first hominids and later the members of the genus Homo.</rmrsbankitem></t>
+  <h><rmrsbankitem id="30">Humans existed 10,000 years ago.</rmrsbankitem></h>
+</pair>
+<pair id='754' value='TRUE' task='IR'>
+  <t><rmrsbankitem id="198">Some of the stolen trade secrets were seized from the defendants at the San Francisco International Airport (SFO) while they were attempting to fly to China.</rmrsbankitem></t>
+  <h><rmrsbankitem id="38">Trade secrets were stolen.</rmrsbankitem></h>
+</pair>
+<pair id='756' value='TRUE' task='IR'>
+  <t><rmrsbankitem id="199">Some people may think that there is no other way to grow plants other than in soil; there is however, another way.</rmrsbankitem></t>
+  <h><rmrsbankitem id="33">Plants are grown in substances other than soil.</rmrsbankitem></h>
+</pair>
+<pair id='757' value='TRUE' task='IR'>
+  <t><rmrsbankitem id="200">About 50 percent of all British party members are female (in contrast to only about 25 percent in Germany) but only 9.2 percent are represented in parliament.</rmrsbankitem></t>
+  <h><rmrsbankitem id="3">Women are poorly represented in parliament.</rmrsbankitem></h>
+</pair>
+<pair id='759' value='TRUE' task='IR'>
+  <t><rmrsbankitem id="201">Tropical Storm Debby is blamed for several deaths across the Caribbean.</rmrsbankitem></t>
+  <h><rmrsbankitem id="41">A tropical storm has caused loss of life.</rmrsbankitem></h>
+</pair>
+<pair id='762' value='FALSE' task='IR'>
+  <t><rmrsbankitem id="202">However, market players were more inclined towards weakening yen, as the yen plunged to its lowest levels since October 1998, after foreign exchange markets interpreted comments made by visiting U.S. Treasury Secretary Paul O'Neill to mean that Washington is not opposed to a weak Japanese currency.</rmrsbankitem></t>
+  <h><rmrsbankitem id="15">The introduction of the euro has been opposed.</rmrsbankitem></h>
+</pair>
+<pair id='763' value='TRUE' task='IR'>
+  <t><rmrsbankitem id="203">Thanks to a global ban on the ivory trade that was passed in 1989 by the Convention on International Trade in Endangered Species of Wild Fauna and Flora (CITES), the African elephant population may be reversing its spiral toward extinction.</rmrsbankitem></t>
+  <h><rmrsbankitem id="17">The ban on ivory trade has been effective in protecting the elephant from extinction.</rmrsbankitem></h>
+</pair>
+<pair id='767' value='FALSE' task='IR'>
+  <t><rmrsbankitem id="204">A recent study found no evidence of seasonal affective disorder in Iceland where the sun does not appear for a long time in the winter.</rmrsbankitem></t>
+  <h><rmrsbankitem id="39">Seasonal affective disorder (SAD) is a worldwide disorder.</rmrsbankitem></h>
+</pair>
+<pair id='773' value='TRUE' task='IR'>
+  <t><rmrsbankitem id="205">The provincial veterinarian with the Department of Forest Resources and Agrifoods, Dr. Hugh Whitney, confirmed today another case of rabies in Labrador, bringing the total number of confirmed rabies cases to nine in Labrador since November 2000.</rmrsbankitem></t>
+  <h><rmrsbankitem id="7">A case of rabies was confirmed.</rmrsbankitem></h>
+</pair>
+<pair id='778' value='TRUE' task='IR'>
+  <t><rmrsbankitem id="206">The commission's order on the proposed hydroelectric development shall describe the Energy Facility Siting Council's recommendations on the need for the power.</rmrsbankitem></t>
+  <h><rmrsbankitem id="34">A hydroelectric project is proposed or is under construction.</rmrsbankitem></h>
+</pair>
+<pair id='779' value='TRUE' task='IR'>
+  <t><rmrsbankitem id="207">A joint venture led by Australia's Global Petroleum Ltd. said, yesterday, it had won the right to explore for oil and gas in the inhospitable waters south and east of the Falkland Islands.</rmrsbankitem></t>
+  <h><rmrsbankitem id="42">Petroleum will be explored in the South Atlantic.</rmrsbankitem></h>
+</pair>
+<pair id='781' value='FALSE' task='IR'>
+  <t><rmrsbankitem id="208">A recent study offers sound medical proof that ACE inhibitors, like beta-blockers and aspirin, can improve a patient's odds of surviving a heart attack.</rmrsbankitem></t>
+  <h><rmrsbankitem id="19">People experienced adverse effects while taking aspirin.</rmrsbankitem></h>
+</pair>
+<pair id='785' value='FALSE' task='IR'>
+  <t><rmrsbankitem id="209">This paper discusses marijuana, crack/cocaine, tranquilizers, hallucinogens, amphetamines, heroin, alcohol, nicotine and caffeine to provide a framework for the author's argument that the legalization of drugs can in no way be deemed as ethical or moral.</rmrsbankitem></t>
+  <h><rmrsbankitem id="9">Drug legalization has benefits.</rmrsbankitem></h>
+</pair>
+<pair id='791' value='FALSE' task='IR'>
+  <t><rmrsbankitem id="210">It is hoped that women, who constitute more than half of the population, will vote for other women and ensure that their issues are represented in parliament.</rmrsbankitem></t>
+  <h><rmrsbankitem id="3">Women are poorly represented in parliament.</rmrsbankitem></h>
+</pair>
+<pair id='792' value='TRUE' task='IR'>
+  <t><rmrsbankitem id="211">Though the exact date is debated, dogs are thought to have been domesticated by humans approximately 12,000 years ago.</rmrsbankitem></t>
+  <h><rmrsbankitem id="30">Humans existed 10,000 years ago.</rmrsbankitem></h>
+</pair>
+<pair id='795' value='FALSE' task='IR'>
+  <t><rmrsbankitem id="212">A few growers place charcoal in the bottom of containers to absorb excess salts and maintain sweet soil, if plants are grown more than a few months.</rmrsbankitem></t>
+  <h><rmrsbankitem id="24">Plants are grown in water or in substances other than soil.</rmrsbankitem></h>
+</pair>
+</entailment-corpus>

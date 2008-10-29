@@ -1,0 +1,64 @@
+<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+   - TESTSUITE STRUCTURE
+   - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+
+<!ELEMENT testsuite (testsuite|testcase)*>
+<!ATTLIST testsuite
+          id ID #IMPLIED>
+          
+<!ELEMENT testcase (proposition*,(valid|nonvalid)*)>
+<!ATTLIST testcase
+          id ID #IMPLIED>
+
+<!ELEMENT testsuiteref EMPTY>
+<!ATTLIST testsuiteref
+          src CDATA #REQUIRED>
+
+<!ELEMENT valid (ref|implication|conjunction|negation)>
+<!ATTLIST valid
+          id ID #IMPLIED
+          ignore (yes|no) #IMPLIED>
+
+<!ELEMENT nonvalid (ref|implication|conjunction|negation)>
+<!ATTLIST nonvalid
+          id ID #IMPLIED
+          ignore (yes|no) #IMPLIED>
+
+<!ELEMENT compare ((greater,smaller)|(smaller,greater))>
+<!ATTLIST compare
+          id ID #IMPLIED
+          ignore (yes|no) #IMPLIED>
+<!ELEMENT greater (ref|implication|conjunction|negation)>
+<!ELEMENT smaller (ref|implication|conjunction|negation)>
+
+
+
+<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+   - FORMULAE
+   - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+
+<!ELEMENT implication (antecedent,consequent)>
+<!ELEMENT antecedent (ref|implication|conjunction|negation)>
+<!ELEMENT consequent (ref|implication|conjunction|negation)>
+
+<!ELEMENT conjunction (conjunct)*>
+<!ELEMENT conjunct (ref|implication|conjunction|negation)>
+
+<!ELEMENT negation (ref|implication|conjunction|negation)>
+
+<!ELEMENT ref EMPTY>
+<!ATTLIST ref
+          src IDREF #REQUIRED>
+
+
+
+<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+   - BASIC PROPOSITIONS
+   - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+
+<!ELEMENT proposition (#PCDATA|rmrsbankitem)*>
+<!ATTLIST proposition
+          id ID #IMPLIED>
+
+<!ELEMENT rmrsbankitem (#PCDATA)>
+<!ATTLIST rmrsbankitem id CDATA #REQUIRED>

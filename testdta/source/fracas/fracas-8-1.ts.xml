@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE testsuite SYSTEM "file:///home/rb432/workspace/rte/dtd/testsuite.dtd">
+
+<testsuite id="8.1" name="aspectual classes">
+
+<testcase id="3.326">
+  <proposition id="3.326.1">
+    ITEL built MTALK in 1993.
+  </proposition>
+  <proposition id="3.326.2">
+    Did ITEL finish MTALK in 1993?
+  </proposition>
+  <valid id="3.326.a">
+    <theory> <ref src="3.326.1"/> </theory>
+    <conclusion> <ref src="3.326.2"/> </conclusion>
+  </valid>
+</testcase>
+
+<testcase id="3.327">
+  <proposition id="3.327.1">
+    ITEL was building MTALK in 1993.
+  </proposition>
+  <proposition id="3.327.2">
+    Did ITEL finish MTALK in 1993?
+  </proposition>
+  <nonvalid id="3.327.a">
+    <theory> <ref src="3.327.1"/> </theory>
+    <conclusion> <ref src="3.327.2"/> </conclusion>
+  </nonvalid>
+  <nonvalid id="3.327.b">
+    <theory> <ref src="3.327.1"/> </theory>
+    <conclusion> <negation> <ref src="3.327.2"/> </negation> </conclusion>
+  </nonvalid>
+</testcase>
+
+<testcase id="3.328">
+  <proposition id="3.328.1">
+    ITEL won the contract from APCOM in 1993.
+  </proposition>
+  <proposition id="3.328.2">
+    Did ITEL win a contract in 1993?
+  </proposition>
+  <valid id="3.328.a">
+    <theory> <ref src="3.328.1"/> </theory>
+    <conclusion> <ref src="3.328.2"/> </conclusion>
+  </valid>
+</testcase>
+
+<testcase id="3.329">
+  <proposition id="3.329.1">
+    ITEL was winning the contract from APCOM in 1993.
+  </proposition>
+  <proposition id="3.329.2">
+    Did ITEL win a contract in 1993?
+  </proposition>
+  <nonvalid id="3.329.a">
+    <theory> <ref src="3.329.1"/> </theory>
+    <conclusion> <ref src="3.329.2"/> </conclusion>
+  </nonvalid>
+  <nonvalid id="3.329.b">
+    <theory> <ref src="3.329.1"/> </theory>
+    <conclusion> <negation> <ref src="3.329.2"/> </negation> </conclusion>
+  </nonvalid>
+</testcase>
+
+<testcase id="3.330">
+  <proposition id="3.330.1">
+    ITEL owned APCOM from 1988 to 1992.
+  </proposition>
+  <proposition id="3.330.2">
+    Did ITEL own APCOM in 1990?
+  </proposition>
+  <valid id="3.330.a">
+    <theory> <ref src="3.330.1"/> </theory>
+    <conclusion> <ref src="3.330.2"/> </conclusion>
+  </valid>
+</testcase>
+
+</testsuite>

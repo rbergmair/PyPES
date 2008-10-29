@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE testsuite SYSTEM "file:///home/rb432/workspace/rte/dtd/testsuite.dtd">
+
+<testsuite id="6.5" name="attributive comparatives">
+
+<testcase id="3.244">
+  <proposition id="3.244.1">
+    APCOM has a more important customer than ITEL.
+  </proposition>
+  <proposition id="3.244.2">
+    Does APCOM have a more important customer than ITEL is?
+  </proposition>
+  <valid id="3.244.a">
+    <theory> <ref src="3.244.1"/> </theory>
+    <conclusion> <ref src="3.244.2"/> </conclusion>
+  </valid>
+</testcase>
+
+<testcase id="3.245">
+  <proposition id="3.245.1">
+    APCOM has a more important customer than ITEL.
+  </proposition>
+  <proposition id="3.245.2">
+    <!-- Does APCOM *has* a more important ... -->
+    Does APCOM have a more important customer than ITEL has?
+  </proposition>
+  <valid id="3.245.a">
+    <theory> <ref src="3.245.1"/> </theory>
+    <conclusion> <ref src="3.245.2"/> </conclusion>
+  </valid>
+</testcase>
+
+</testsuite>

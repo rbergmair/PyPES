@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE testsuite SYSTEM "file:///home/rb432/workspace/rte/dtd/testsuite.dtd">
+
+<testsuite id="6.2" name="clausal complement">
+
+<testcase id="3.239">
+  <proposition id="3.239.1">
+    ITEL won more orders than APCOM lost.
+  </proposition>
+  <proposition id="3.239.2">
+    Did ITEL win some orders?
+  </proposition>
+  <!-- ??? -->
+  <valid id="3.239.a">
+    <theory> <ref src="3.239.1"/> </theory>
+    <conclusion> <ref src="3.239.2"/> </conclusion>
+  </valid>
+</testcase>
+
+<testcase id="3.240">
+  <proposition id="3.240.1">
+    ITEL won more orders than APCOM lost.
+  </proposition>
+  <proposition id="3.240.2">
+    Did APCOM lose some orders?
+  </proposition>
+  <nonvalid id="3.240.a">
+    <theory> <ref src="3.240.1"/> </theory>
+    <conclusion> <ref src="3.240.2"/> </conclusion>
+  </nonvalid>
+  <nonvalid id="3.240.a">
+    <theory> <ref src="3.240.1"/> </theory>
+    <conclusion> <negation> <ref src="3.240.2"/> </negation> </conclusion>
+  </nonvalid>
+</testcase>
+
+<testcase id="3.241">
+  <proposition id="3.241.1">
+    ITEL won more orders than APCOM lost.
+  </proposition>
+  <proposition id="3.241.2">
+    APCOM lost ten orders.
+  </proposition>
+  <proposition id="3.241.3">
+    Did ITEL win at least eleven orders?
+  </proposition>
+  <valid id="3.241.a">
+    <theory> <ref src="3.241.1"/> <ref src="3.241.2"/> </theory>
+    <conclusion> <ref src="3.241.3"/> </conclusion>
+  </valid>
+</testcase>
+
+</testsuite>

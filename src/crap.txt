@@ -1,0 +1,291 @@
+lbls = [];
+
+for key in rmrs.lbl_by_lid:
+  lbl = rmrs.lbl_by_lid[ key ];
+  if lbl != rmrs.top:
+    lbls.append( lbl.vid );
+
+labels = [];
+
+for grp in rmrs.groups:
+  cnt = True;
+  for it in grp:
+    if not it in lbls:
+      cnt = False;
+  if cnt:
+    for it in grp:
+      lbls.remove( it );
+    labels.append( grp );
+
+for it in lbls:
+  labels.append( [ it ] );
+
+print labels;
+
+holes = [ ];
+for rarg in rmrs.rargs:
+  var = rarg.val;
+  if isinstance( var, pyrmrs.mrs.robust.variable.Variable ):
+    if var.sort == var.SORT_HOLE:
+      if not var.vid in holes:
+        holes.append( var.vid );
+
+print holes;    
+
+
+
+def scope( current_hole, other_holes, labels, scoping ):
+  
+  pass;
+
+
+
+scope( rmrs.top.vid, holes, labels, {} );
+
+
+
+
+
+[ [(True, 1), (True, 4), (True, 0)],
+  [(True, 3), (True, 1), (True, 4), (True, 2), (True, 0)],
+  [(True, 3), (True, 1), (True, 2)],
+  [(True, 3), (True, 1), (True, 4), (True, 2), (True, 0)]
+]
+
+
+
+{ 0: { (False, 6): [(True, 1)],
+       (False, 5): [(True, 4)] },
+  1: { (False, 11): [(True, 0), (True, 1), (True, 4)],
+       (False, 12): [(True, 3)] },
+  2: { (False, 11): [(True, 1)],
+       (False, 12): [(True, 3)] },
+  3: { (False, 6): [(True, 2),
+       (True, 3), (True, 1)],
+       (False, 5): [(True, 4)] }
+}
+
+
+
+
+[[3], [7], [10], [11], [14]]
+
+{ (True, 2): [],
+  (True, 0): [(False, 5), (False, 6)],
+  (True, 3): [],
+  (True, 1): [],
+  (True, 4): [] }
+
+
+
+[ [(True, 1), (True, 4), (True, 3)],
+  [(True, 2), (True, 1), (True, 4), (True, 0), (True, 3)],
+  [(True, 2), (True, 1), (True, 4), (True, 0), (True, 3)]
+]
+
+{ 0: {},
+  1: { (False, 6): [(True, 3), (True, 1), (True, 4)],
+       (False, 5): [(True, 2)] },
+  2: {} }
+
+  
+  
+  
+
+{ (True, 0): [],
+  (True, 1): [(False, 7), (False, 8)]
+  (True, 2): [(False, 11), (False, 10)],
+  (True, 3): [],
+  (True, 4): [],
+  (True, 5): [],
+  (True, 6): [(False, 17), (False, 18)],
+  (True, 7): [],
+  (True, 8): [(False, 23), (False, 24)],
+  (True, 9): [],
+  (True, 10): [],
+  }
+  
+  
+  
+[ [17, 10002, 10003],		#0
+  [10001, 7],						#1
+  [10005, 10004, 26],		#2
+  [3],									#3
+  [9],									#4
+  [12],									#5
+  [15],									#6
+  [23]									#7
+]
+
+{
+0   (True, 0): [],
+1   (True, 1): [],
+2   (True, 2): [],
+3   (True, 3): [(False, 6), (False, 5)],
+4   (True, 4): [(False, 10)],
+5   (True, 5): [(False, 14), (False, 13)],
+6   (True, 6): [],
+7   (True, 7): [(False, 24),(False, 25)]
+}
+
+
+  
+  
+  
+[ [(True, 2), (True, 0), (True, 7)],
+  [(True, 2), (True, 6), (True, 0), (True, 5), (True, 7)],
+  [(True, 6), (True, 0), (True, 5)],
+  [(True, 2), (True, 6), (True, 0), (True, 5), (True, 7)],
+  [(True, 2), (True, 6), (True, 0), (True, 4), (True, 5), (True, 7)],
+  [(True, 0), (True, 4)],
+  [(True, 2), (True, 0), (True, 7), (True, 4)],
+  [(True, 2), (True, 0), (True, 7)],
+  [(True, 2), (True, 0), (True, 7), (True, 4)],
+  [(True, 2), (True, 6), (True, 0), (True, 4), (True, 5), (True, 7)],
+  [(True, 6), (True, 0), (True, 5)],
+  [(True, 6), (True, 0), (True, 4), (True, 5)],
+  [(True, 6), (True, 0), (True, 4), (True, 5)],
+  [(True, 2), (True, 6), (True, 0), (True, 4), (True, 5), (True, 7)],
+  [(True, 2), (True, 6), (True, 0), (True, 1), (True, 3), (True, 4), (True, 5), (True, 7)],
+  [(True, 2), (True, 0), (True, 7)],
+  [(True, 2), (True, 6), (True, 0), (True, 5), (True, 7)],
+  [(True, 2), (True, 6), (True, 0), (True, 5), (True, 7)],
+  [(True, 2), (True, 6), (True, 0), (True, 1), (True, 3), (True, 4), (True, 5), (True, 7)],
+  [(True, 0), (True, 1), (True, 3), (True, 4)],
+  [(True, 0), (True, 1), (True, 3), (True, 4)],
+  [(True, 2), (True, 0), (True, 1), (True, 7), (True, 3), (True, 4)],
+  [(True, 2), (True, 0), (True, 7)],
+  [(True, 2), (True, 0), (True, 4), (True, 7)],
+  [(True, 2), (True, 0), (True, 4), (True, 7)],
+  [(True, 2), (True, 0), (True, 1), (True, 7), (True, 3), (True, 4)],
+  [(True, 2), (True, 0), (True, 7)],
+  [(True, 2), (True, 0), (True, 1), (True, 7), (True, 3), (True, 4)],
+  [(True, 2), (True, 6), (True, 0), (True, 1), (True, 3), (True, 4), (True, 5), (True, 7)],
+  [(True, 6), (True, 0), (True, 1), (True, 3), (True, 4), (True, 5)],
+  [(True, 6), (True, 0), (True, 5)],
+  [(True, 6), (True, 0), (True, 1), (True, 3), (True, 4), (True, 5)],
+  [(True, 6), (True, 0), (True, 1), (True, 3), (True, 4), (True, 5)],
+  [(True, 2), (True, 6), (True, 0), (True, 1), (True, 3), (True, 4), (True, 5), (True, 7)]
+]
+  
+  
+{ 0: { (False, 25): [(True, 0)],
+       (False, 24): [(True, 2)] },
+  1: { (False, 14): [(True, 6)],
+       (False, 13): [(True, 2), (True, 7), (True, 0)] },
+  2: { (False, 14): [(True, 6)],
+       (False, 13): [(True, 0)] },
+  3: { (False, 25): [(True, 6), (True, 0), (True, 5)],
+       (False, 24): [(True, 2)]},
+  4: { (False, 10): [(True, 2), (True, 5), (True, 6), (True, 7), (True, 0)] },
+  5: { (False, 10): [(True, 0)] },
+  6: { (False, 25): [(True, 0), (True, 4)],
+       (False, 24): [(True, 2)] },
+  7: { (False, 25): [(True, 0)],
+       (False, 24): [(True, 2)] },
+  8: { (False, 10): [(True, 2), (True, 7), (True, 0)] },
+  9: { (False, 14): [(True, 6)],
+       (False, 13): [(True, 2), (True, 7), (True, 0), (True, 4)] },
+ 10: { (False, 14): [(True, 6)],
+       (False, 13): [(True, 0)] },
+ 11: { (False, 10): [(True, 5), (True, 6), (True, 0)] },
+ 12: { (False, 14): [(True, 6)],
+       (False, 13): [(True, 0), (True, 4)] },
+ 13: { (False, 25): [(True, 6), (True, 0), (True, 4), (True, 5)],
+       (False, 24): [(True, 2)] },
+ 14: { (False, 6): [(True, 1)],
+       (False, 5): [(True, 2), (True, 4), (True, 5), (True, 6), (True, 7), (True, 0)] },
+ 15: { (False, 25): [(True, 0)],
+       (False, 24): [(True, 2)] },
+ 16: { (False, 14): [(True, 6)],
+       (False, 13): [(True, 2), (True, 7), (True, 0)] },
+ 17: { (False, 25): [(True, 6), (True, 0), (True, 5)],
+       (False, 24): [(True, 2)] },
+ 18: { (False, 10): [(True, 2), (True, 5), (True, 6), (True, 7), (True, 0)] },
+ 19: { (False, 6): [(True, 1)],
+       (False, 5): [(True, 0), (True, 4)] },
+ 20: { (False, 10): [(True, 0)] },
+ 21: { (False, 25): [(True, 0), (True, 1), (True, 3), (True, 4)],
+       (False, 24): [(True, 2)] },
+ 22: { (False, 25): [(True, 0)],
+       (False, 24): [(True, 2)] },
+ 23: { (False, 10): [(True, 2), (True, 7), (True, 0)] },
+ 24: { (False, 25): [(True, 0), (True, 4)],
+       (False, 24): [(True, 2)]},
+ 25: { (False, 6): [(True, 1)],
+       (False, 5): [(True, 2), (True, 0), (True, 4), (True, 7)] },
+ 26: { (False, 25): [(True, 0)],
+       (False, 24): [(True, 2)] },
+ 27: { (False, 10): [(True, 2), (True, 7), (True, 0)] },
+ 28: { (False, 14): [(True, 6)],
+       (False, 13): [(True, 2), (True, 7), (True, 0), (True, 1), (True, 3), (True, 4)] },
+ 29: { (False, 6): [(True, 1)],
+       (False, 5): [(True, 6), (True, 0), (True, 4), (True, 5)] },
+ 30: { (False, 14): [(True, 6)],
+       (False, 13): [(True, 0)] },
+ 31: { (False, 10): [(True, 5), (True, 6), (True, 0)] },
+ 32: { (False, 14): [(True, 6)],
+       (False, 13): [(True, 0), (True, 1), (True, 3), (True, 4)] },
+ 33: { (False, 25): [(True, 6), (True, 0), (True, 1), (True, 3), (True, 4), (True, 5)],
+       (False, 24): [(True, 2)] }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+{ (True, 5): [(True, 4), (True, 6), (True, 0)],
+  (True, 3): [(True, 1), (True, 4)],
+  (True, 7): [(True, 0), (True, 2)] }
+
+{ (True, 3): [(True, 1), (True, 4)],
+  (False, 6): [(True, 1)],
+  (False, 14): [(True, 6)],
+  (False, 24): [(True, 2)],
+  (True, 5): [(True, 4), (True, 6), (True, 0)],
+  (False, 10): [(True, 0)],
+  (True, 7): [(True, 0), (True, 2)] }
+
+{ (True, 2): [],
+  (True, 3): [(False, 6), (False, 5)],
+  (True, 4): [(False, 10)],
+  (True, 5): [(False, 14), (False, 13)], (True, 6): [], (True, 7): [(False, 24), (False, 25)], (True, 0): [], (True, 1): []}
+
+
+
+
+
+
+
+
+       l3 | _every_q( ARG0=x4 BODY=h5 RSTR=h6 ) 
+          |    h6 qeq l7
+       l7 + _person_n_1( ARG0=x4 ) 
+   l10001 + _have_v_1( ARG0=e8 ARG1=x4 ARG2=x9 ) 
+      l10 | _the_q( ARG0=x9 BODY=h11 RSTR=h12 ) 
+          |    h12 qeq l13
+      l13 + _right_n_1( ARG0=x9 ARG1=h14 ) 
+      l15 | pronoun_q_rel( ARG0=x17 BODY=h18 RSTR=h16 ) 
+          |    h16 qeq l19
+      l19 + pron_rel( ARG0=x17 ) 
+      l14 | _live_v_1( ARG0=e20 ARG1=x17 ) 
+   l10002 | _in_p_dir( ARG0=e21 ARG1=e20 ARG2=x22 ) 
+      l23 + proper_q_rel( ARG0=x22 BODY=h25 RSTR=h24 ) 
+          +    h24 qeq l26
+      l26 | named_rel( ARG0=x22 CARG=Europe ) 
+      l27 + _can_v_modal( ARG0=e2 ARG1=h28 ) 
+          +    h28 qeq l29
+      l29 | _travel_v_1( ARG0=e30 ARG1=x4 ) 
+   l10003 | _free_a_of( ARG0=e31 ARG1=e30 ) 
+   l10004 | _within_p( ARG0=e32 ARG1=e30 ARG2=x33 ) 
+      l34 + proper_q_rel( ARG0=x33 BODY=h36 RSTR=h35 ) 
+          +    h35 qeq l37
+      l37 | named_rel( ARG0=x33 CARG=Europe ) 
+  

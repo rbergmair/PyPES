@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE testsuite SYSTEM "file:///home/rb432/workspace/rte/dtd/testsuite.dtd">
+
+<testsuite id="8.2" name="distributive and collective predication">
+
+<testcase id="3.331">
+  <proposition id="3.331.1">
+    <rmrsbankitem id="105">Smith and Jones left the meeting.</rmrsbankitem>
+  </proposition>
+  <proposition id="3.331.2">
+    <rmrsbankitem id="64">Did Smith leave the meeting?</rmrsbankitem>
+  </proposition>
+  <valid id="3.331.a">
+    <theory> <ref src="3.331.1"/> </theory>
+    <conclusion> <ref src="3.331.2"/> </conclusion>
+  </valid>
+</testcase>
+
+<testcase id="3.332">
+  <proposition id="3.332.1">
+    <rmrsbankitem id="105">Smith and Jones left the meeting.</rmrsbankitem>
+  </proposition>
+  <proposition id="3.332.2">
+    <rmrsbankitem id="65">Did Jones leave the meeting?</rmrsbankitem>
+  </proposition>
+  <valid id="3.332.a">
+    <theory> <ref src="3.332.1"/> </theory>
+    <conclusion> <ref src="3.332.2"/> </conclusion>
+  </valid>
+</testcase>
+
+<testcase id="3.333">
+  <proposition id="3.333.1">
+    <rmrsbankitem id="66">Smith, Anderson and Jones met.</rmrsbankitem>
+  </proposition>
+  <proposition id="3.333.2">
+    <rmrsbankitem id="217">Was there a group of people that met?</rmrsbankitem>
+  </proposition>
+  <valid id="3.333.a">
+    <theory> <ref src="3.333.1"/> </theory>
+    <conclusion> <ref src="3.333.2"/> </conclusion>
+  </valid>
+</testcase>
+
+</testsuite>

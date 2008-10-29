@@ -1,0 +1,283 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<entailment-corpus>
+<pair id='8' value='FALSE' task='IR'>
+  <t><rmrsbankitem id="1">Crude oil for April delivery traded at $37.80 a barrel, down 28 cents.</rmrsbankitem></t>
+  <h><rmrsbankitem id="1">Crude oil prices rose to $37.80 per barrel.</rmrsbankitem></h>
+</pair>
+<pair id='12' value='FALSE' task='IR'>
+  <t><rmrsbankitem id="2">Oracle had fought to keep the forms from being released.</rmrsbankitem></t>
+  <h><rmrsbankitem id="2">Oracle released a confidential document.</rmrsbankitem></h>
+</pair>
+<pair id='13' value='TRUE' task='IR'>
+  <t><rmrsbankitem id="3">iTunes software has seen strong sales in Europe.</rmrsbankitem></t>
+  <h><rmrsbankitem id="3">There are strong sales for iTunes in Europe.</rmrsbankitem></h>
+</pair>
+<pair id='15' value='FALSE' task='IR'>
+  <t><rmrsbankitem id="4">All genetically modified food, including soya or maize oil produced from GM soya and maize, and food ingredients, must be labelled.</rmrsbankitem></t>
+  <h><rmrsbankitem id="4">Companies selling genetically modified foods don't need labels.</rmrsbankitem></h>
+</pair>
+<pair id='19' value='TRUE' task='IR'>
+  <t><rmrsbankitem id="5">Researchers at the Harvard School of Public Health say that people who drink coffee may be doing a lot more than keeping themselves awake - this kind of consumption apparently also can help reduce the risk of diseases.</rmrsbankitem></t>
+  <h><rmrsbankitem id="5">Coffee drinking has health benefits.</rmrsbankitem></h>
+</pair>
+<pair id='20' value='TRUE' task='IR'>
+  <t><rmrsbankitem id="6">Eating lots of foods that are a good source of fiber may keep your blood glucose from rising too fast after you eat.</rmrsbankitem></t>
+  <h><rmrsbankitem id="6">Fiber improves blood sugar control.</rmrsbankitem></h>
+</pair>
+<pair id='46' value='FALSE' task='IR'>
+  <t><rmrsbankitem id="7">The Yankees split Hollywood with something to feel OK about after last night's 5-4 loss to the Dodgers.</rmrsbankitem></t>
+  <h><rmrsbankitem id="7">The Dodgers lose their first game ever at Fenway.</rmrsbankitem></h>
+</pair>
+<pair id='50' value='FALSE' task='IR'>
+  <t><rmrsbankitem id="8">Scientists at the Genome Institute of Singapore (GIS) have discovered the complete genetic sequence of a coronavirus isolated from a Singapore patient with SARS.</rmrsbankitem></t>
+  <h><rmrsbankitem id="8">Singapore scientists reveal that SARS virus has undergone genetic changes.</rmrsbankitem></h>
+</pair>
+<pair id='52' value='TRUE' task='IR'>
+  <t><rmrsbankitem id="9">Phish disbands after a final concert in Vermont on Aug. 15.</rmrsbankitem></t>
+  <h><rmrsbankitem id="9">Rock band Phish holds final concert in Vermont.</rmrsbankitem></h>
+</pair>
+<pair id='56' value='TRUE' task='IR'>
+  <t><rmrsbankitem id="10">Euro-Scandinavian media cheer the Denmark v Sweden draw.</rmrsbankitem></t>
+  <h><rmrsbankitem id="10">Denmark and Sweden tie.</rmrsbankitem></h>
+</pair>
+<pair id='58' value='TRUE' task='IR'>
+  <t><rmrsbankitem id="11">Iraqi militants said Sunday they would behead Kim Sun-Il, a 33-year-old translator, within 24 hours unless plans to dispatch thousands of South Korean troops to Iraq were abandoned.</rmrsbankitem></t>
+  <h><rmrsbankitem id="11">A translator was kidnapped in Iraq.</rmrsbankitem></h>
+</pair>
+<pair id='59' value='FALSE' task='IR'>
+  <t><rmrsbankitem id="12">Two Turkish engineers and an Afghan translator kidnapped in December were freed, Friday.</rmrsbankitem></t>
+  <h><rmrsbankitem id="11">A translator was kidnapped in Iraq.</rmrsbankitem></h>
+</pair>
+<pair id='60' value='FALSE' task='IR'>
+  <t><rmrsbankitem id="13">If a Mexican approaches the border, he's assumed to be trying to illegally cross.</rmrsbankitem></t>
+  <h><rmrsbankitem id="12">Mexicans continue to illegally cross the border.</rmrsbankitem></h>
+</pair>
+<pair id='62' value='TRUE' task='IR'>
+  <t><rmrsbankitem id="14">Green cards are becoming more difficult to obtain.</rmrsbankitem></t>
+  <h><rmrsbankitem id="13">A green card is now difficult to receive.</rmrsbankitem></h>
+</pair>
+<pair id='63' value='TRUE' task='IR'>
+  <t><rmrsbankitem id="15">Iran will soon release eight British servicemen detained along with three vessels.</rmrsbankitem></t>
+  <h><rmrsbankitem id="14">British servicemen were detained.</rmrsbankitem></h>
+</pair>
+<pair id='64' value='TRUE' task='IR'>
+  <t><rmrsbankitem id="16">The wait time for a green card has risen from 21 months to 33 months in those same regions.</rmrsbankitem></t>
+  <h><rmrsbankitem id="15">It takes longer to get a green card.</rmrsbankitem></h>
+</pair>
+<pair id='65' value='TRUE' task='IR'>
+  <t><rmrsbankitem id="17">Coal company stocks got a lift Monday morning after an article in Barron's said the industry was benefiting from soaring natural gas prices and the advent of new power plants that emit less pollution.</rmrsbankitem></t>
+  <h><rmrsbankitem id="16">Coal stocks rise.</rmrsbankitem></h>
+</pair>
+<pair id='66' value='TRUE' task='IR'>
+  <t><rmrsbankitem id="18">The Royal Navy servicemen being held captive by Iran are expected to be freed today.</rmrsbankitem></t>
+  <h><rmrsbankitem id="14">British servicemen were detained.</rmrsbankitem></h>
+</pair>
+<pair id='67' value='FALSE' task='IR'>
+  <t><rmrsbankitem id="19">Total coal stocks with the thermal power stations came down to 9.6 million tonnes on March 3, 2003 from 11 million tonnes on October 1, 2002.</rmrsbankitem></t>
+  <h><rmrsbankitem id="16">Coal stocks rise.</rmrsbankitem></h>
+</pair>
+<pair id='69' value='FALSE' task='IR'>
+  <t><rmrsbankitem id="20">Anorexia in males accounted for approximately six percent of cases seen in an eating disorder clinic.</rmrsbankitem></t>
+  <h><rmrsbankitem id="17">Anorexia becomes common in males.</rmrsbankitem></h>
+</pair>
+<pair id='73' value='FALSE' task='IR'>
+  <t><rmrsbankitem id="21">There are discussions in California and Arizona to allow illegal aliens to have driver's licenses.</rmrsbankitem></t>
+  <h><rmrsbankitem id="18">California driver's licenses are granted to illegal immigrants.</rmrsbankitem></h>
+</pair>
+<pair id='74' value='TRUE' task='IR'>
+  <t><rmrsbankitem id="22">South Korea's deputy foreign minister says his country won't change its plan to send three-thousand soldiers to Iraq, despite the kidnapping of a South Korean man there.</rmrsbankitem></t>
+  <h><rmrsbankitem id="19">South Korea continues to send troops.</rmrsbankitem></h>
+</pair>
+<pair id='78' value='FALSE' task='IR'>
+  <t><rmrsbankitem id="23">Clinton's new book is not a big seller here.</rmrsbankitem></t>
+  <h><rmrsbankitem id="20">Clinton's book is a big seller.</rmrsbankitem></h>
+</pair>
+<pair id='79' value='TRUE' task='IR'>
+  <t><rmrsbankitem id="24">The privately owned spacecraft only got about 400 feet into space, according to radar measurements, but it was enough to confirm that it no longer takes a well-heeled government project to organize space travel.</rmrsbankitem></t>
+  <h><rmrsbankitem id="21">A private spaceship launches.</rmrsbankitem></h>
+</pair>
+<pair id='77' value='FALSE' task='IR'>
+  <t><rmrsbankitem id="25">The media always talk about the Dow being up or down a certain number of points.</rmrsbankitem></t>
+  <h><rmrsbankitem id="22">Dow Jones is down.</rmrsbankitem></h>
+</pair>
+<pair id='80' value='FALSE' task='IR'>
+  <t><rmrsbankitem id="26">The Federal Aviation Administration's Associate Administrator for Commercial Space Transportation (FAA/AST) has given license approval to Scaled Composites of Mojave, California, permitting the firm to expand flight testing of SpaceShipOne - a privately-financed rocket plane to carry passengers to suborbital altitude.</rmrsbankitem></t>
+  <h><rmrsbankitem id="21">A private spaceship launches.</rmrsbankitem></h>
+</pair>
+<pair id='83' value='FALSE' task='IR'>
+  <t><rmrsbankitem id="27">The Los Angeles Lakers rolled over the Indiana Pacers in Wednesday's opening round game of the NBA championship series.</rmrsbankitem></t>
+  <h><rmrsbankitem id="23">Lakers win the championship.</rmrsbankitem></h>
+</pair>
+<pair id='84' value='TRUE' task='IR'>
+  <t><rmrsbankitem id="28">World health officials warned yesterday that West Africa and Central Africa were on the verge of the worst polio outbreak in years, stemming from the refusal of a single state in northern Nigeria to vaccinate children against the disease.</rmrsbankitem></t>
+  <h><rmrsbankitem id="24">An African polio outbreak is feared.</rmrsbankitem></h>
+</pair>
+<pair id='85' value='TRUE' task='IR'>
+  <t><rmrsbankitem id="29">The country's largest private employer, Wal-Mart Stores Inc., is being sued by a number of its female employees who claim they were kept out of jobs in management because they are women.</rmrsbankitem></t>
+  <h><rmrsbankitem id="25">Wal-Mart was sued for sexual discrimination.</rmrsbankitem></h>
+</pair>
+<pair id='86' value='FALSE' task='IR'>
+  <t><rmrsbankitem id="30">The last polio outbreak in the United States was in 1979.</rmrsbankitem></t>
+  <h><rmrsbankitem id="24">An African polio outbreak is feared.</rmrsbankitem></h>
+</pair>
+<pair id='96' value='TRUE' task='IR'>
+  <t><rmrsbankitem id="31">The Massachusetts Supreme Judicial Court has cleared the way for lesbian and gay couples in the state to marry, ruling that government attorneys "failed to identify any constitutionally adequate reason" to deny them the right.</rmrsbankitem></t>
+  <h><rmrsbankitem id="26">The U.S. Supreme Court is in favor of same-sex marriage.</rmrsbankitem></h>
+</pair>
+<pair id='97' value='FALSE' task='IR'>
+  <t><rmrsbankitem id="32">In June the Supreme Court ruled that anti-sodomy laws are unconstitutional.</rmrsbankitem></t>
+  <h><rmrsbankitem id="26">The U.S. Supreme Court is in favor of same-sex marriage.</rmrsbankitem></h>
+</pair>
+<pair id='98' value='FALSE' task='IR'>
+  <t><rmrsbankitem id="33">Sharon warns Arafat could be targeted for assassination.</rmrsbankitem></t>
+  <h><rmrsbankitem id="27">The prime minister was targeted for assassination.</rmrsbankitem></h>
+</pair>
+<pair id='99' value='TRUE' task='IR'>
+  <t><rmrsbankitem id="34">Kurdistan Regional Government Prime Minister Dr. Barham Salih was unharmed after an assassination attempt.</rmrsbankitem></t>
+  <h><rmrsbankitem id="27">The prime minister was targeted for assassination.</rmrsbankitem></h>
+</pair>
+<pair id='110' value='TRUE' task='IR'>
+  <t><rmrsbankitem id="35">Wal-Mart faces huge sex discrimination suit.</rmrsbankitem></t>
+  <h><rmrsbankitem id="28">Wal-Mart faces a sex-discrimination suit.</rmrsbankitem></h>
+</pair>
+<pair id='114' value='FALSE' task='IR'>
+  <t><rmrsbankitem id="36">International journalists' organisations are accusing the U.S. government of committing war crimes in Iraq by intentionally firing at war correspondents.</rmrsbankitem></t>
+  <h><rmrsbankitem id="29">US withdraws war crimes.</rmrsbankitem></h>
+</pair>
+<pair id='117' value='FALSE' task='IR'>
+  <t><rmrsbankitem id="37">It has become increasingly clear that Iran is making rapid progress toward attaining a nuclear weapons capability as U.S. officials have confirmed the presence of various nuclear sites that Tehran has failed to disclose.</rmrsbankitem></t>
+  <h><rmrsbankitem id="30">Iranian chemical weapons threaten United States.</rmrsbankitem></h>
+</pair>
+<pair id='119' value='TRUE' task='IR'>
+  <t><rmrsbankitem id="38">A Cuban American who is accused of espionage pleads innocent.</rmrsbankitem></t>
+  <h><rmrsbankitem id="31">An American was accused of espionage.</rmrsbankitem></h>
+</pair>
+<pair id='121' value='TRUE' task='IR'>
+  <t><rmrsbankitem id="39">A Syrian-American airman accused of espionage complained about prisoner treatment at the US base in Guantanamo, Cuba.</rmrsbankitem></t>
+  <h><rmrsbankitem id="31">An American was accused of espionage.</rmrsbankitem></h>
+</pair>
+<pair id='122' value='TRUE' task='IR'>
+  <t><rmrsbankitem id="40">The Daily Telegraph, most prized asset in Lord Conrad Black's crumbling media empire, has been sold to Britain's Barclay twins.</rmrsbankitem></t>
+  <h><rmrsbankitem id="32">Daily telegraph is sold.</rmrsbankitem></h>
+</pair>
+<pair id='123' value='FALSE' task='IR'>
+  <t><rmrsbankitem id="41">The Daily Mail has confirmed it has pulled out of the bidding for rival newspaper the Daily Telegraph.</rmrsbankitem></t>
+  <h><rmrsbankitem id="32">Daily telegraph is sold.</rmrsbankitem></h>
+</pair>
+<pair id='125' value='TRUE' task='IR'>
+  <t><rmrsbankitem id="42">On November 25, 2001, a baby Asian elephant was born at the National Zoo in Washington, DC.</rmrsbankitem></t>
+  <h><rmrsbankitem id="33">A baby elephant was born.</rmrsbankitem></h>
+</pair>
+<pair id='127' value='TRUE' task='IR'>
+  <t><rmrsbankitem id="43">The 10-day-old "test-tube" baby elephant born at Colchester Zoo has found a name, thanks to the internet!</rmrsbankitem></t>
+  <h><rmrsbankitem id="33">A baby elephant was born.</rmrsbankitem></h>
+</pair>
+<pair id='130' value='FALSE' task='IR'>
+  <t><rmrsbankitem id="44">Weinstock painstakingly reviewed dozens of studies for evidence of any link between sunscreen use and either an increase or decrease in melanoma.</rmrsbankitem></t>
+  <h><rmrsbankitem id="34">Skin cancer numbers increase.</rmrsbankitem></h>
+</pair>
+<pair id='131' value='TRUE' task='IR'>
+  <t><rmrsbankitem id="45">Wasp and bee stings can be life threatening if you are allergic to the venom.</rmrsbankitem></t>
+  <h><rmrsbankitem id="35">Bee stings can be fatal.</rmrsbankitem></h>
+</pair>
+<pair id='135' value='TRUE' task='IR'>
+  <t><rmrsbankitem id="46">The State of California Department of Occupational Health and Safety released its report on the September 5 fatal accident on Disneyland's Big Thunder Mountain Railroad attraction.</rmrsbankitem></t>
+  <h><rmrsbankitem id="36">Disneyland has an accident.</rmrsbankitem></h>
+</pair>
+<pair id='269' value='FALSE' task='IR'>
+  <t><rmrsbankitem id="47">U.S. Embassy spokesman Stanley Shrager said that the Americans hope to help Port-au-Prince's elected mayor, Evans Paul, return from hiding and resume his post as mayor of the city.</rmrsbankitem></t>
+  <h><rmrsbankitem id="37">Americans hope to help Evans Paul in the election for mayor of Port-au-Prince.</rmrsbankitem></h>
+</pair>
+<pair id='270' value='FALSE' task='IR'>
+  <t><rmrsbankitem id="48">Like the United States, U.N. officials are also dismayed that Aristide killed a conference called by Prime Minister Robert Malval in Port-au-Prince in hopes of bringing all the feuding parties together.</rmrsbankitem></t>
+  <h><rmrsbankitem id="38">Aristide had Prime Minister Robert Malval murdered in Port-au-Prince.</rmrsbankitem></h>
+</pair>
+<pair id='275' value='FALSE' task='IR'>
+  <t><rmrsbankitem id="49">Gladys Lauture, a close Aristide friend and longtime supporter, said she and a team of carpenters, plumbers and decorators spent 18 days making Aristide's Port-au-Prince home livable again.</rmrsbankitem></t>
+  <h><rmrsbankitem id="39">Aristide is due to live at Port-au-Prince again.</rmrsbankitem></h>
+</pair>
+<pair id='282' value='FALSE' task='IR'>
+  <t><rmrsbankitem id="50">Juan Antonio Samaranch, president of the International Olympic Committee, left Lillehammer for Sarajevo to pay tribute to the besieged host city of the 1984 Winter Games.</rmrsbankitem></t>
+  <h><rmrsbankitem id="40">The International Olympic Commitee's head office is in Lillehammer.</rmrsbankitem></h>
+</pair>
+<pair id='102' value='TRUE' task='IR'>
+  <t><rmrsbankitem id="51">The White House failed to act on the domestic threat from al Qaeda prior to September 11, 2001.</rmrsbankitem></t>
+  <h><rmrsbankitem id="41">White House ignored the threat of attack.</rmrsbankitem></h>
+</pair>
+<pair id='2141' value='FALSE' task='IR'>
+  <t><rmrsbankitem id="52">No weapons of mass destruction have been found in Iraq Yet.</rmrsbankitem></t>
+  <h><rmrsbankitem id="42">Weapons of mass destruction are found in Iraq.</rmrsbankitem></h>
+</pair>
+<pair id='100' value='TRUE' task='IR'>
+  <t><rmrsbankitem id="53">A priest who served in the Diocese of Metuchen in the mid-1980s has been sentenced to life in prison for sexually abusing a Massachusetts boy.</rmrsbankitem></t>
+  <h><rmrsbankitem id="43">A pedophile gets a life in prison.</rmrsbankitem></h>
+</pair>
+<pair id='256' value='TRUE' task='IR'>
+  <t><rmrsbankitem id="54">Eilat, Israel's most southerly port and the country's only access to the Red Sea, has long been a winter destination for tourists, 80% of whom are Europeans attracted by its temperate climates and clear waters.</rmrsbankitem></t>
+  <h><rmrsbankitem id="44">In winter most tourists to Eilat come from Europe.</rmrsbankitem></h>
+</pair>
+<pair id='72' value='FALSE' task='IR'>
+  <t><rmrsbankitem id="55">On the eve of a widely anticipated retaliation against Russian forces in Grozny, military commanders withdrew key units from the city, leaving it vulnerable to guerrilla infiltration.</rmrsbankitem></t>
+  <h><rmrsbankitem id="45">Russian forces are vulnerable to guerrilla fighters.</rmrsbankitem></h>
+</pair>
+<pair id='2142' value='FALSE' task='IR'>
+  <t><rmrsbankitem id="56">No stockpiles of weapons of mass destruction have been found in Iraq since Saddam's regime was toppled in a US-led invasion last year.</rmrsbankitem></t>
+  <h><rmrsbankitem id="42">Weapons of mass destruction are found in Iraq.</rmrsbankitem></h>
+</pair>
+<pair id='258' value='FALSE' task='IR'>
+  <t><rmrsbankitem id="57">The Scots pioneered the idea of a single currency, when they shared the Ecu with France during the Auld Alliance, and therefore they are certain to join in the monetary union process again when the EU states amalgamate their currencies under Maastricht.</rmrsbankitem></t>
+  <h><rmrsbankitem id="46">France still maintains Ecu is the best denomination for the Maastricht single-currency..</rmrsbankitem></h>
+</pair>
+<pair id='128' value='TRUE' task='IR'>
+  <t><rmrsbankitem id="58">Hippos do come into conflict with people quite often.</rmrsbankitem></t>
+  <h><rmrsbankitem id="47">A hippopotamus attacks a human.</rmrsbankitem></h>
+</pair>
+<pair id='137' value='TRUE' task='IR'>
+  <t><rmrsbankitem id="59">Acid attacks on women are carried out across Asia, with reports of such incidents from Burma, Cambodia, India and Pakistan.</rmrsbankitem></t>
+  <h><rmrsbankitem id="48">Acid attacks are carried out on women.</rmrsbankitem></h>
+</pair>
+<pair id='24' value='TRUE' task='IR'>
+  <t><rmrsbankitem id="60">Dr. Amy Joy Lanou, director of the Physicians Committee for Responsible Medicine in America, was quick to point out health dangers of the Atkins diet.</rmrsbankitem></t>
+  <h><rmrsbankitem id="49">The Atkins diet is associated with increased risk conditions.</rmrsbankitem></h>
+</pair>
+<pair id='2140' value='FALSE' task='IR'>
+  <t><rmrsbankitem id="61">Turkey is unlikely to become involved in, or allow U.S. forces to use Turkish territory in a Middle East war that does not threaten her territory directly.</rmrsbankitem></t>
+  <h><rmrsbankitem id="50">The U.S. are about to use Turkish military bases.</rmrsbankitem></h>
+</pair>
+<pair id='286' value='FALSE' task='IR'>
+  <t><rmrsbankitem id="62">Security preparations kept protestors at bay at the recent G8 Summit on Sea Island (USA).</rmrsbankitem></t>
+  <h><rmrsbankitem id="51">Demonstrations against the G8 Summit took place at Sea Island bay.</rmrsbankitem></h>
+</pair>
+<pair id='36' value='TRUE' task='IR'>
+  <t><rmrsbankitem id="63">Scripps Memorial Hospital Encinitas emergency room doctors and nurses treat two to three injured surfers.</rmrsbankitem></t>
+  <h><rmrsbankitem id="52">Scripps Hospital assists surfing accident victims.</rmrsbankitem></h>
+</pair>
+<pair id='260' value='TRUE' task='IR'>
+  <t><rmrsbankitem id="64">It would create an underclass of illiterate and impoverished residents, deprived of basic skills, including English-language skills, necessary for the integration of immigrant children into our society and our work force.</rmrsbankitem></t>
+  <h><rmrsbankitem id="53">Language skills are a means of social integration.</rmrsbankitem></h>
+</pair>
+<pair id='2143' value='FALSE' task='IR'>
+  <t><rmrsbankitem id="65">There is none.</rmrsbankitem> <rmrsbankitem id="66">They found as many weapons in this masjid as they found weapons of mass destruction in Iraq.</rmrsbankitem></t>
+  <h><rmrsbankitem id="42">Weapons of mass destruction are found in Iraq.</rmrsbankitem></h>
+</pair>
+<pair id='105' value='TRUE' task='IR'>
+  <t><rmrsbankitem id="67">The Security Council voted in 2002 to protect U.S. soldiers and personnel from other nations that haven't ratified the creation of the court through a treaty, and last June renewed the immunity for a year.</rmrsbankitem></t>
+  <h><rmrsbankitem id="54">Immunity for soldiers was renewed.</rmrsbankitem></h>
+</pair>
+<pair id='279' value='FALSE' task='IR'>
+  <t><rmrsbankitem id="68">The council prohibited any travel outside of Haiti by all officers of the Haitian military and police and all major participants in the September, 1991, coup.</rmrsbankitem></t>
+  <h><rmrsbankitem id="55">The council is prohibited to travel outside of Haiti by military officers.</rmrsbankitem></h>
+</pair>
+<pair id='262' value='TRUE' task='IR'>
+  <t><rmrsbankitem id="69">Winning Team John C. Harsanyi, John F. Nash and Reinhard Selten were jointly awarded the Nobel Prize in Economics.</rmrsbankitem> <rmrsbankitem id="70">The three professors were singled out for their unique contributions to game theory, derived from studies of games such as poker or chess, in which players have to think ahead and devise a strategy based on expected countermoves from opponents.</rmrsbankitem></t>
+  <h><rmrsbankitem id="56">Three scholars shared a Nobel Prize for their studies about the game theory.</rmrsbankitem></h>
+</pair>
+<pair id='112' value='FALSE' task='IR'>
+  <t><rmrsbankitem id="71">NIH's FY05 budget request of $28.8 billion includes $2 billion for the National Institute of General Medical Sciences, a 3.4-percent increase, and $1.1 billion for the National Center for Research Resources, and a 7.2-percent decrease from FY04 levels.</rmrsbankitem></t>
+  <h><rmrsbankitem id="57">A request was reduced to $1.1 billion.</rmrsbankitem></h>
+</pair>
+<pair id='2137' value='FALSE' task='IR'>
+  <t><rmrsbankitem id="72">The Swedish foreign minister was murdered.</rmrsbankitem></t>
+  <h><rmrsbankitem id="58">The Swedish prime minister was murdered.</rmrsbankitem></h>
+</pair>
+</entailment-corpus>

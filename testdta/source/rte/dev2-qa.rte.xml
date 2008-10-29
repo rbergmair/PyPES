@@ -1,0 +1,803 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<entailment-corpus>
+<pair id='6' value='TRUE' task='QA'>
+  <t>Muslim fundamentalists such as the Islamic Resistance Movement, also known as Hamas, and the smaller Islamic Jihad are determined to torpedo the peace process.</t>
+  <h>The Islamic Resistance Movement is also known as Hamas.</h>
+</pair>
+<pair id='7' value='FALSE' task='QA'>
+  <t>Jader Barbalho, once president of the country's largest political party, was arrested on Saturday in the Amazonian city of Belem, after officials in the neighbouring state of Tocantins issued a warrant against him.</t>
+  <h>Jader Barbalho is the president of Amazon.</h>
+</pair>
+<pair id='8' value='FALSE' task='QA'>
+  <t>It is also an acronym that stands for Islamic Resistance Movement, a militant Islamist Palestinian organization that opposes the existence of the state of Israel and favors the creation of an Islamic state in Palestine.</t>
+  <h>The Islamic Resistance Movement is also known as the Militant Islamic Palestinian Organization.</h>
+</pair>
+<pair id='10' value='FALSE' task='QA'>
+  <t>In Nigeria, by far the most populous country in sub-Saharan Africa, over 2.7 million people are infected with HIV.</t>
+  <h>2.7 percent of the people infected with HIV live in Africa.</h>
+</pair>
+<pair id='17' value='TRUE' task='QA'>
+  <t>John Wilkes Booth assassinated Abraham Lincoln as he sat in the presidential box of Ford's Theater watching the light comedy, "Our American Cousin."</t>
+  <h>Lincoln was assassinated in the presidential box of Ford's Theater.</h>
+</pair>
+<pair id='20' value='FALSE' task='QA'>
+  <t>While the total population for Missouri increased by 2.8 percent, the Hispanic population shows a 24.9 percent increase between 2000 and 2004.</t>
+  <h>Missouri's population is 2.8 million.</h>
+</pair>
+<pair id='27' value='FALSE' task='QA'>
+  <t>He became a boxing referee in 1964 and became most well-known for his decision against Mike Tyson, during the Holyfield fight, when Tyson bit Holyfield's ear.</t>
+  <h>Mike Tyson bit Holyfield's ear in 1964.</h>
+</pair>
+<pair id='32' value='TRUE' task='QA'>
+  <t>In 1983 Turkish Cypriots proclaimed a separate state, naming it the Turkish Republic of Northern Cyprus (TRNC). Peace talks have been held sporadically, but Cyprus remains divided.</t>
+  <h>Cyprus was divided into two parts in 1983.</h>
+</pair>
+<pair id='36' value='TRUE' task='QA'>
+  <t>The first kibbutz was founded at Degania near the Sea of Galilee in 1909 and there are now some 300 kibbutzim in Israel.</t>
+  <h>The first kibbutz was founded at Degania.</h>
+</pair>
+<pair id='38' value='TRUE' task='QA'>
+  <t>John Lennon's widow, Yoko Ono, approved this museum as the world's first museum to honor John Lennon.</t>
+  <h>Yoko Ono is John Lennon's widow.</h>
+</pair>
+<pair id='42' value='FALSE' task='QA'>
+  <t>Perhaps there is no expansion, at least not due to a big bang which never happened. About 20 years ago, Halton Arp and John Bahcall published a debate in The Redshift Controversy, presenting both sides of the argument.</t>
+  <h>We estimate that the Big Bang happened 20 years ago.</h>
+</pair>
+<pair id='45' value='TRUE' task='QA'>
+  <t>The international humanitarian aid organization, Doctors Without Borders/Medecins Sans Frontieres (MSF), continues to treat victims of violence in all locations where it is present in Darfur.</t>
+  <h>Doctors Without Borders is an international aid organization.</h>
+</pair>
+<pair id='48' value='FALSE' task='QA'>
+  <t>In other words, with its 2 million inhabitants, Slovenia has only 5.5 thousand professional soldiers.</t>
+  <h>Slovenia has 5.5 million inhabitants.</h>
+</pair>
+<pair id='49' value='FALSE' task='QA'>
+  <t>As regards the headquarters building, the Swiss are stipulating that they would transfer it to the WTO for a value of about 51 million swiss franks.</t>
+  <h>The WTO headquarters are in Switzerland.</h>
+</pair>
+<pair id='50' value='TRUE' task='QA'>
+  <t>A charity today joined forces with Glasgow's new Lord Provost to launch a campaign to help the Russian city's twin. A convoy of aid is being sent to Rostov-on-Don next month by The Caring City Organisation.</t>
+  <h>Rostov-on-Don is a Russian city whose twin is Glasgow.</h>
+</pair>
+<pair id='51' value='FALSE' task='QA'>
+  <t>The order is worth EUR 58 million and handover of the submarines to the Portuguese navy is scheduled for 2010. The contract also includes an option for the same equipment to be built into a third submarine.</t>
+  <h>The Portuguese Navy has 58 submarines.</h>
+</pair>
+<pair id='52' value='FALSE' task='QA'>
+  <t>A smaller proportion of Yugoslavia's Italians were settled in Slovenia (at the 1991 national census, some 3000 inhabitants of Slovenia declared themselves as ethnic Italians).</t>
+  <h>Slovenia has 3,000 inhabitants.</h>
+</pair>
+<pair id='56' value='FALSE' task='QA'>
+  <t>The town is also home to the Dalai Lama and to more than 10,000 Tibetans living in exile.</t>
+  <h>The Dalai Lama has been living in exile since 10,000.</h>
+</pair>
+<pair id='59' value='FALSE' task='QA'>
+  <t>About 10 million people live in the Paris metropolitan area, more than 15 percent of the country's total population. France's second largest city is Marseille (795,600) on the Mediterranean coast.</t>
+  <h>About 10 million people live in France.</h>
+</pair>
+<pair id='67' value='FALSE' task='QA'>
+  <t>In sub-Saharan Africa about one in every 30 people is infected with HIV.</t>
+  <h>30% of the people infected with HIV live in Africa.</h>
+</pair>
+<pair id='71' value='TRUE' task='QA'>
+  <t>In support of the Earth Island Institute rebuttal, Greenpeace founder Don White made the following - unfortunately prophetic - public statement on 8/18/93.</t>
+  <h>Don White is the founder of Greenpeace.</h>
+</pair>
+<pair id='78' value='TRUE' task='QA'>
+  <t>German automaker, Volkswagen AG, launched a special collector's edition of its original Beetle, on Thursday, to mark the end of the line for the most popular car in history.</t>
+  <h>Volkswagen AG produces the 'Beetle'.</h>
+</pair>
+<pair id='79' value='TRUE' task='QA'>
+  <t>Six people were killed and 10 injured on Tuesday in a gun battle between rival militiamen in Somalia's capital Mogadishu, witnesses and clan elders said.</t>
+  <h>Mogadishu is the capital of Somalia.</h>
+</pair>
+<pair id='80' value='TRUE' task='QA'>
+  <t>About 33.5 million people live in this massive conurbation. I would guess that 95% of the 5,000 officially foreign-capital firms in Japan are based in Tokyo.</t>
+  <h>About 33.5 million people live in Tokyo.</h>
+</pair>
+<pair id='84' value='FALSE' task='QA'>
+  <t>Jacques Santer succeeded Jacques Delors as president of the European Commission in 1995, the second Luxembourger to hold this high office.</t>
+  <h>Jacques Delors succeeded Jacques Santer in the presidency of the European Commission.</h>
+</pair>
+<pair id='95' value='FALSE' task='QA'>
+  <t>The Chicago White Sox are a major league baseball team based in Chicago, Illinois.</t>
+  <h>The Bulls basketball team is based in Chicago, Illinois.</h>
+</pair>
+<pair id='98' value='FALSE' task='QA'>
+  <t>I have a 1986 Coca-Cola Grand Union 100 Year Statue of Liberty pin set.</t>
+  <h>The Statue of Liberty was built in 1986.</h>
+</pair>
+<pair id='100' value='TRUE' task='QA'>
+  <t>This document declares the 'irrevocable determination' of Edward VIII to abdicate. By signing this document on December 10th, 1936, he gave up his right to the British throne.</t>
+  <h>King Edward VIII abdicated on the 10th of December, 1936.</h>
+</pair>
+<pair id='101' value='TRUE' task='QA'>
+  <t>Vatican spokesman Joaquin Navarro-Valls announced that Pope John Paul was still in serious condition, but he was not in a coma.</t>
+  <h>Joaquin Navarro-Valls is the Vatican Spokesman.</h>
+</pair>
+<pair id='104' value='FALSE' task='QA'>
+  <t>Hands Across the Divide was formed in March 2001, and one of its immediate aims was to press for more freedom of contact and communication right away between the two parts of Cyprus, and for early progress towards a solution to 'the Cyprus problem'.</t>
+  <h>Cyprus was divided into two parts in March 2001.</h>
+</pair>
+<pair id='105' value='FALSE' task='QA'>
+  <t>No player scored more goals in European cup games than Miller: 66 goals in 74 games.</t>
+  <h>Miller was the best scorer at the World Championship in 1966.</h>
+</pair>
+<pair id='111' value='FALSE' task='QA'>
+  <t>By 1979, the literacy rate in Cuba was higher than 90%, comparable to the rates in the United States and other developed countries.</t>
+  <h>The literacy rate in Cuba is 90%.</h>
+</pair>
+<pair id='119' value='TRUE' task='QA'>
+  <t>We learn that Claretta Petacci, Mussolini's last mistress, had a tendency to whine and to lie all day in bed, eating chocolate.</t>
+  <h>Claretta Petacci was Mussolini's last mistress.</h>
+</pair>
+<pair id='125' value='FALSE' task='QA'>
+  <t>Released in 1995, Tyson returned to boxing, winning the World Boxing Council title in 1996. The same year, however, he lost to Evander Holyfield, and in a 1997 rematch bit Holyfield's ear, for which he was temporarily banned from boxing.</t>
+  <h>In 1996 Mike Tyson bit Holyfield's ear.</h>
+</pair>
+<pair id='129' value='TRUE' task='QA'>
+  <t>Natalya Reshetovskaya, 84, was the first wife of Alexander Solzhenitsyn.</t>
+  <h>Alexander Solzhenitsyn's wife's name was Natalya Reshetovskaya.</h>
+</pair>
+<pair id='136' value='FALSE' task='QA'>
+  <t>Today in the city of Sao Paulo (from May 1 to May 30) we have a display on Ayrton Senna.</t>
+  <h>Ayrton Senna was from Sao Paulo.</h>
+</pair>
+<pair id='145' value='FALSE' task='QA'>
+  <t>When Adolf Hitler heard of how Mussolini was executed and put on public display, he vowed he would not let this happen to him. Hitler shot his mistress and new wife, Eva Braunn, and then swallowing some poison, he shot himself in the mouth.</t>
+  <h>Mussolini's mistress was Eva Braunn.</h>
+</pair>
+<pair id='147' value='TRUE' task='QA'>
+  <t>Meanwhile, the inquiries spearheaded by Milan magistrates Antonio di Pietro and Gherardo Colombo began to focus on Italy's private and public business sectors.</t>
+  <h>Antonio di Pietro is a magistrate.</h>
+</pair>
+<pair id='151' value='TRUE' task='QA'>
+  <t>The twin buildings are 88 stories each, compared with the Sears Tower's 110 stories.</t>
+  <h>The Sears Tower has 110 stories.</h>
+</pair>
+<pair id='152' value='FALSE' task='QA'>
+  <t>But when the WTO headquarters issue came up, and Germany made an offer and a pitch to get the WTO to be headquartered in Bonn, the Swiss suddenly realised they were vulnerable and began improving their offers.</t>
+  <h>The WTO headquarters is in Bonn.</h>
+</pair>
+<pair id='153' value='TRUE' task='QA'>
+  <t>Ask Andy Grove, chairman of Intel, about his toughest business challenge, and a pensive look appears in his piercing blue eyes.</t>
+  <h>Andy Grove is chairman of Intel.</h>
+</pair>
+<pair id='162' value='TRUE' task='QA'>
+  <t>&lt;headline&gt;Renminbi - &lt;/headline&gt;RMB (commonly used in China), is the basic unit of currency issued by the People's Bank of China.</t>
+  <h>Renminbi is the currency used in China.</h>
+</pair>
+<pair id='163' value='TRUE' task='QA'>
+  <t>Sabena was the former national airline of Belgium, mainly operating from Brussels National Airport, now replaced by SN Brussels Airlines.</t>
+  <h>Sabena is a national airline.</h>
+</pair>
+<pair id='169' value='FALSE' task='QA'>
+  <t>El Nino is so named because the effects of the warmer water off Peru are usually noticed near Christmas time.</t>
+  <h>El Nino is named after Peru.</h>
+</pair>
+<pair id='173' value='FALSE' task='QA'>
+  <t>In 1997, Tyson bit off part of one of Evander Holyfield's ears in their rematch that led to Tyson's disqualification and suspension. In 2002, at a melee at a news conference in New York, Tyson bit champion Lennox Lewis' leg.</t>
+  <h>Tyson bit off part of one of Evander Holyfield's ears in 2002.</h>
+</pair>
+<pair id='181' value='FALSE' task='QA'>
+  <t>Cosmonaut Valery Polyakov set the record for the longest continuous amount of time spent in space, a staggering 438 days, between 1994 and 1995. He orbited the Earth 7000 times, witnessing 7000 sunrises and 7000 sunsets.</t>
+  <h>7000 days is the record for the longest stay in space by a human.</h>
+</pair>
+<pair id='183' value='FALSE' task='QA'>
+  <t>The plan was never drawn up on paper, but discussed verbally, particularly between Prime Minister Pibul and the British Minister in Bangkok.</t>
+  <h>Pibul was the minister in Bangkok.</h>
+</pair>
+<pair id='185' value='TRUE' task='QA'>
+  <t>The answer to the number one question, "how many continents are there?", is seven.</t>
+  <h>There are seven continents.</h>
+</pair>
+<pair id='187' value='FALSE' task='QA'>
+  <t>Born in 1946, into a family many of whose members belonged to liberal professions, Radwa Ashour studied English Literature at Cairo University. She is now Professor of English Literature at Ain Shams University, a novelist, the wife of Palestinian poet Mourid Al-Barghouti and Umm Tamim.</t>
+  <h>Rwada Ashour is a Palestinian poet.</h>
+</pair>
+<pair id='194' value='FALSE' task='QA'>
+  <t>Begun in 1989 with generous annual support from Lutheran Brotherhood (now Thrivent Financial for Lutherans), the Nobel Peace Prize Forum's stimulating array of programs has involved more than 21,000 participants and reached a much broader audience through national and regional media coverage.</t>
+  <h>Lutheran Brotherhood received the Nobel Peace Prize in 1989.</h>
+</pair>
+<pair id='202' value='TRUE' task='QA'>
+  <t>We believe that, with the opening of Hong Kong Disneyland, visitors from Taiwan will be encouraged to stay longer in Hong Kong, to experience the magic of our theme park and of our city.</t>
+  <h>Disneyland is in Hong Kong.</h>
+</pair>
+<pair id='209' value='FALSE' task='QA'>
+  <t>It's Biodiesel, and Bio-Beetle is the first all-BD rental car company.</t>
+  <h>Biodiesel produces the 'Beetle'.</h>
+</pair>
+<pair id='212' value='TRUE' task='QA'>
+  <t>Mr. McEveety told me he had discussed the quote voiced by Archbishop Dziwisz with the pope's longtime official spokesman, Joaquin Navarro-Valls, head of the Vatican press office.</t>
+  <h>Joaquin Navarro-Valls is the pope's official spokesman.</h>
+</pair>
+<pair id='216' value='TRUE' task='QA'>
+  <t>Yemen, too, was reunified in 1990.</t>
+  <h>Yemen was reunited in 1990.</h>
+</pair>
+<pair id='221' value='FALSE' task='QA'>
+  <t>Last week, LTTE leader Vilupillai Prabhakaran stated that the rebels are running out of patience and are prepared to go back to war.</t>
+  <h>Vilupillai Prabhakaran is a rebel.</h>
+</pair>
+<pair id='230' value='FALSE' task='QA'>
+  <t>Nor is it clear whether any US support to Germany, in favour of Bonn as the WTO headquarters, would necessarily tilt a decision in that direction.</t>
+  <h>The WTO headquarters is in Bonn.</h>
+</pair>
+<pair id='234' value='TRUE' task='QA'>
+  <t>"The Black Panther", or "The Black Pearl", as he was known, was top scorer in the 1966 World Cup, with nine goals to his name.</t>
+  <h>The best scorer at the World Championship in 1966 was "The Black Pearl."</h>
+</pair>
+<pair id='238' value='TRUE' task='QA'>
+  <t>NRDC states its mission as follows: The Natural Resources Defense Council's purpose is to safeguard the Earth: its people, its plants, animals, and the natural systems on which all life depends.</t>
+  <h>The Natural Resources Defense Council safeguards the Earth.</h>
+</pair>
+<pair id='246' value='FALSE' task='QA'>
+  <t>The Philippines have developed into a natural hub for U.S. contact center support with the use of English as the second national language and primary language of business.</t>
+  <h>English is the primary language of the Philippines.</h>
+</pair>
+<pair id='249' value='FALSE' task='QA'>
+  <t>The Statue of Liberty is so big it had to be built in 300 sections.</t>
+  <h>The Statue of Liberty was built in the year 300.</h>
+</pair>
+<pair id='254' value='FALSE' task='QA'>
+  <t>During the Tiananmen Square protest of 1989, Chinese student demonstrators in Beijing built a 10-meter version of the Statue of Liberty to symbolize their struggle.</t>
+  <h>The Statue of Liberty was built in 1989.</h>
+</pair>
+<pair id='260' value='FALSE' task='QA'>
+  <t>Ruth's 1927 single season record of 60 home runs stood unsurpassed until Roger Maris hit 61 in 1961.</t>
+  <h>Babe Ruth hit 60 home runs in his lifetime.</h>
+</pair>
+<pair id='270' value='TRUE' task='QA'>
+  <t>Six time prime minister Giulio Andreotti is just one of the many casualties stemming from these investigations and subsequent trials.</t>
+  <h>Giulio Andreotti is a prime minister.</h>
+</pair>
+<pair id='273' value='FALSE' task='QA'>
+  <t>In early December, Glavkos Clerides and Rauf Denktash, respectively the leaders of the two parts of Cyprus, startled Cypriots by announcing that they would meet for the first time in four years.</t>
+  <h>Cyprus was divided into two parts in December.</h>
+</pair>
+<pair id='277' value='TRUE' task='QA'>
+  <t>The currency used in China is the Renminbi Yuan.</t>
+  <h>The Renminbi Yuan is the currency used in China.</h>
+</pair>
+<pair id='283' value='FALSE' task='QA'>
+  <t>For one, Israel can comfortably subtract Gaza's 1.5m inhabitants from its demographic nightmare, maintaining, for a while longer perhaps, the Jewish majority.</t>
+  <h>Israel has 1.5m Jewish inhabitants.</h>
+</pair>
+<pair id='284' value='TRUE' task='QA'>
+  <t>While preliminary work goes on at the Geneva headquarters of the WTO, with members providing input, key decisions are taken at the ministerial meetings.</t>
+  <h>The WTO headquarters are located in Geneva.</h>
+</pair>
+<pair id='288' value='TRUE' task='QA'>
+  <t>To mark the 20th anniversary of John Lennon's death tomorrow (December 8), his widow, Yoko Ono, has erected billboards supporting gun control in three major U.S. cities.</t>
+  <h>Yoko Ono is John Lennon's widow.</h>
+</pair>
+<pair id='300' value='FALSE' task='QA'>
+  <t>Despite Bjork making her first live performance in two years, the crowd of 10,000 people was only half of what the hall in the Tokyo suburb of Makuhari could hold.</t>
+  <h>10,000 people live in Tokyo.</h>
+</pair>
+<pair id='301' value='TRUE' task='QA'>
+  <t>The abode of the Greek gods was on the summit of Mount Olympus, in Thessaly.</t>
+  <h>Mount Olympus is in Thessaly.</h>
+</pair>
+<pair id='302' value='TRUE' task='QA'>
+  <t>Guggenheim Museum, officially Solomon R. Guggenheim Museum, was founded in 1939 as the Museum of Non-Objective Art.</t>
+  <h>The Solomon R. Guggenheim Museum was opened in 1939.</h>
+</pair>
+<pair id='311' value='TRUE' task='QA'>
+  <t>Access to the underground workings at the La Camorra mine is via a ramp from the surface, excavated at a -15% grade and connecting numerous levels.</t>
+  <h>La Camorra is a mine.</h>
+</pair>
+<pair id='312' value='TRUE' task='QA'>
+  <t>On April 28 1945, at the Piazzale Loreto in Milan, Benito Mussolini and his mistress Clara Petacci were shot and hanged in a spectacle that was photographed repeatedly.</t>
+  <h>Mussolini's mistress was Clara Petacci.</h>
+</pair>
+<pair id='313' value='FALSE' task='QA'>
+  <t>Mohandas Karamchand Gandhi never received the Nobel Peace Prize, though he was nominated for it five times between 1937 and 1948.</t>
+  <h>Mohandas received the Nobel Prize in 1989.</h>
+</pair>
+<pair id='314' value='FALSE' task='QA'>
+  <t>In Greek mythology Mount Olympus was the home of the gods and the site of the throne of Zeus, the chief deity.</t>
+  <h>Mount Olympus is in Greece.</h>
+</pair>
+<pair id='318' value='TRUE' task='QA'>
+  <t>Mount Olympus towers up from the center of the earth.</t>
+  <h>Mount Olympus is in the center of the earth.</h>
+</pair>
+<pair id='321' value='FALSE' task='QA'>
+  <t>John Paul II was the first non-Italian Pope in exactly 600 years, so other things being equal, his successor would presumably be Italian.</t>
+  <h>John Paul II is Italian.</h>
+</pair>
+<pair id='325' value='FALSE' task='QA'>
+  <t>The Dalai Lama has offered to send 50 trained teachers from the exile community to help the educational development of Tibet.</t>
+  <h>The Dalai Lama has been living in exile since 1950.</h>
+</pair>
+<pair id='329' value='TRUE' task='QA'>
+  <t>In June 1971 cosmonauts Georgi Dobrovolski, Vladislav Volkov, and Viktor Patsayev occupied Salyut for 23 days, setting a new record for the longest human spaceflight.</t>
+  <h>23 days is the record for the longest stay in space by a human.</h>
+</pair>
+<pair id='331' value='TRUE' task='QA'>
+  <t>Pibul was anti-communist as well as nationalistic.</t>
+  <h>Pibul was nationalistic.</h>
+</pair>
+<pair id='333' value='FALSE' task='QA'>
+  <t>The European-born groups with the highest labor force participation rates were from Bosnia and Herzegovina.</t>
+  <h>The European country with the highest birth rate is Bosnia-Herzegovina.</h>
+</pair>
+<pair id='334' value='TRUE' task='QA'>
+  <t>The Sears Tower in Chicago, finished in 1974, has 110 stories and is 1,450 feet tall.</t>
+  <h>The Sears Tower has 110 stories.</h>
+</pair>
+<pair id='335' value='TRUE' task='QA'>
+  <t>According to the 2002 census Slovenia has 1,964,036 inhabitants.</t>
+  <h>Slovenia has 1,964,036 inhabitants.</h>
+</pair>
+<pair id='336' value='FALSE' task='QA'>
+  <t>In that decade, Missouri's Hispanic population grew to 118,000 from about 60,000, he said.</t>
+  <h>Missouri's population is 118,000.</h>
+</pair>
+<pair id='342' value='TRUE' task='QA'>
+  <t>The Rock and Roll Hall Of Fame and Museum opened the nation's first major John Lennon retrospective Thursday (October 19) with a gala party attended by his widow, Yoko Ono.</t>
+  <h>Yoko Ono is John Lennon's widow.</h>
+</pair>
+<pair id='344' value='FALSE' task='QA'>
+  <t>There is a growing sense of urgency to deal with the country's social issues, and a large number of professional NGOs can meet BOVESPA's standards of transparency and accountability.</t>
+  <h>BOVESPA is an NGO.</h>
+</pair>
+<pair id='350' value='TRUE' task='QA'>
+  <t>The treaty requires that members comply with guidelines on deficits, public debt and other fiscal benchmarks by the end of 1997 if they are to qualify for taking part in the introduction of a new, single European currency in 1999.</t>
+  <h>The European single currency was introduced in 1999.</h>
+</pair>
+<pair id='361' value='TRUE' task='QA'>
+  <t>Black Tigers are selected for their discipline and their loyalty to Vilupillai Prabhakaran, 41, the elusive leader of the LTTE.</t>
+  <h>Vilupillai Prabhakaran is the elusive leader of the LTTE.</h>
+</pair>
+<pair id='365' value='FALSE' task='QA'>
+  <t>That natural increase accounted for 56 percent of Missouri population growth during the past four years.</t>
+  <h>Missouri's population is 56.</h>
+</pair>
+<pair id='375' value='FALSE' task='QA'>
+  <t>Nine months later, John Glenn becomes the first American man to orbit the Earth.</t>
+  <h>John Glenn was the first man in orbit.</h>
+</pair>
+<pair id='381' value='TRUE' task='QA'>
+  <t>Mossad is one of the world's most well-known intelligence agencies, and is often viewed in the same regard as the CIA and MI6.</t>
+  <h>Mossad is an intelligence agency.</h>
+</pair>
+<pair id='387' value='TRUE' task='QA'>
+  <t>About two weeks before the trial started, I was in Shapiro's office in Century City.</t>
+  <h>Shapiro works in Century City.</h>
+</pair>
+<pair id='388' value='TRUE' task='QA'>
+  <t>On Tuesday, October 7, 2003, Arnold Schwarzenegger was elected Governor of California.</t>
+  <h>Arnold Schwarzenegger was elected Governor of California.</h>
+</pair>
+<pair id='393' value='FALSE' task='QA'>
+  <t>The Beetle has achieved an unbelievable cult status across the world, not least because its creation marked the launch of what has since become the largest car company in Europe.</t>
+  <h>Europe produces the 'Beetle'.</h>
+</pair>
+<pair id='396' value='FALSE' task='QA'>
+  <t>If no settlement is reached, a divided Cyprus will join the European Union on May 1, 2004.</t>
+  <h>Cyprus was divided into two parts on May 1, 2004.</h>
+</pair>
+<pair id='397' value='TRUE' task='QA'>
+  <t>The widow of John Lennon, Yoko Ono, may take legal action against a new breakfast cereal called "Strawberry Fields," which she believes is too close in name to Lennon's song.</t>
+  <h>Yoko Ono is John Lennon's widow.</h>
+</pair>
+<pair id='401' value='FALSE' task='QA'>
+  <t>In February 1942, the Japanese Imperial Army landed an army of 20 thousand men in Dili (the capital of East Timor) and occupied the then Portuguese colony.</t>
+  <h>East Timor was a colony of Dili before it was occupied by Indonesia in 1975.</h>
+</pair>
+<pair id='405' value='TRUE' task='QA'>
+  <t>The two young leaders of the coup, Pibul Songgram and Pridi Phanomyang, both educated in Europe and influenced by Western ideas, came to dominate Thai politics in the ensuing years.</t>
+  <h>Pibul was a young leader.</h>
+</pair>
+<pair id='406' value='FALSE' task='QA'>
+  <t>In 2000 there were 10,578 divorces in Bulgaria, which represents 301 divorces per 1000 marriages or a 1.3% divorce rate per 1000 inhabitants.</t>
+  <h>In 2000 there were 301 divorces in Bulgaria.</h>
+</pair>
+<pair id='407' value='FALSE' task='QA'>
+  <t>Egon Eiermann (born September 29, 1904, Neuendorf; died July 20, 1970, Baden-Baden) was one of Germany's most prominent architects in the second half of the 20th century.</t>
+  <h>Egon Eiermann died on September 29, 1904.</h>
+</pair>
+<pair id='412' value='FALSE' task='QA'>
+  <t>Philadelphia is considered the birthplace of the United States of America, where the Declaration of Independence and Constitution were written and signed in the city's Independence Hall.</t>
+  <h>The US Declaration of Independence is located in Philadelphia.</h>
+</pair>
+<pair id='413' value='FALSE' task='QA'>
+  <t>A male rabbit is called a buck and a female rabbit is called a doe, just like deer.</t>
+  <h>A female rabbit is called a buck.</h>
+</pair>
+<pair id='417' value='FALSE' task='QA'>
+  <t>Today's best estimate of giant panda numbers in the wild is about 1,100 individuals living in up to 32 separate populations mostly in China's Sichuan Province, but also in Shaanxi and Gansu provinces.</t>
+  <h>There are 32 pandas in the wild in China.</h>
+</pair>
+<pair id='419' value='TRUE' task='QA'>
+  <t>Elizabeth Dowdeswell is the Under Secretary General at the United Nations Offices at Nairobi and Executive Director of the United Nations Environment Programme.</t>
+  <h>Elizabeth Dowdeswell is Executive Director of the United Nations Environment Programme.</h>
+</pair>
+<pair id='421' value='FALSE' task='QA'>
+  <t>Between 1978 and 1982, 32 states acknowledged the medical benefits and attempted to make cannabis available, but possession remains a federal offence. Among the states where marijuana is legally used for medical purposes are California, Oregon, Washington, Alaska, Arizona, and Nevada.</t>
+  <h>In the Netherlands, people can legally have 32 grams of cannabis in their possession.</h>
+</pair>
+<pair id='436' value='TRUE' task='QA'>
+  <t>Edward VIII shocked the world in 1936 when he gave up his throne to marry an American divorcee, Wallis Simpson.</t>
+  <h>King Edward VIII abdictated in 1936.</h>
+</pair>
+<pair id='440' value='TRUE' task='QA'>
+  <t>Paul Watson, the founder of Greenpeace, will speak on campus Wednesday, March 3.</t>
+  <h>Paul Watson is the founder of Greenpeace.</h>
+</pair>
+<pair id='443' value='TRUE' task='QA'>
+  <t>In the last few days of the war, Mussolini and his mistress, Clara Petacci, tried to escape to Switzerland.</t>
+  <h>Mussolini's mistress was Clara Petacci.</h>
+</pair>
+<pair id='450' value='TRUE' task='QA'>
+  <t>Since 1974, Cyprus has been divided, de facto, into the government-controlled southern two-thirds of the island and the Turkish-Cypriot northern one-third.</t>
+  <h>Cyprus was divided in 1974.</h>
+</pair>
+<pair id='453' value='TRUE' task='QA'>
+  <t>Durham is the 'City of Medicine' and home of Duke University and North Carolina Central.</t>
+  <h>Duke University is in Durham.</h>
+</pair>
+<pair id='455' value='FALSE' task='QA'>
+  <t>The curious Belgian compromise over the weed has some logic, even for a country which says it wants to reduce drug use. Surveys show that as many as 40 percent of the country's 10 million population has experienced cannabis and, with the Dutch border an hour away for most of the population, some liberalisation seems inevitable.</t>
+  <h>People can legally have 40 grams of cannabis in their possession.</h>
+</pair>
+<pair id='457' value='FALSE' task='QA'>
+  <t>By law, Mexico can only export half the oil it produces to the United States.</t>
+  <h>Mexico produces more oil than any other country.</h>
+</pair>
+<pair id='459' value='FALSE' task='QA'>
+  <t>Tyson, who served three years in jail for rape in the 1990s and who bit off part of Evander Holyfield's ear during a 1997 fight, still thinks he can be heavyweight champion again.</t>
+  <h>Mike Tyson bit Holyfield's ear in 1990.</h>
+</pair>
+<pair id='460' value='FALSE' task='QA'>
+  <t>When the last member of the Hasmonean Dynasty died in 37 B.C., Rome made Herod king of Judah. With Roman backing, Herod (37-34 B.C.) ruled on both sides of the Jordan River. After his death the Jewish kingdom was divided among his heirs and gradually absorbed into the Roman Empire.</t>
+  <h>The Hasmonean Dynasty rules Jordan.</h>
+</pair>
+<pair id='463' value='TRUE' task='QA'>
+  <t>The sunset, touching distant hills with ribbons of fire across the waters of the Dead Sea, brings a sense of unreality to culminate a day's visit to the lowest point on earth, some 400 meters below sea level.</t>
+  <h>The lowest point on earth is at the Dead Sea.</h>
+</pair>
+<pair id='468' value='FALSE' task='QA'>
+  <t>Most of the life of Petko Kiryakov was not unveiled by historians but by the prominent Bulgarian writer Nikolai Haitov, who wrote a novel and a script which was turned into a TV series, which became a favourite of most Bulgarians.</t>
+  <h>Nikolai Haitov is a historian.</h>
+</pair>
+<pair id='469' value='TRUE' task='QA'>
+  <t>Democrat Culbert L. Olson, elected governor of California in 1938, was a loyal supporter of Roosevelt's New Deal.</t>
+  <h>Democrat Culbert L. Olson was elected governor of California.</h>
+</pair>
+<pair id='472' value='TRUE' task='QA'>
+  <t>A male rabbit is called a buck and a female rabbit is called a doe, just like deer.</t>
+  <h>A female rabbit is called a doe.</h>
+</pair>
+<pair id='473' value='TRUE' task='QA'>
+  <t>With its headquarters in Madrid, Spain, WTO is an inter-governmental body entrusted by the United Nations to promote and develop tourism.</t>
+  <h>The WTO headquarters is located in Madrid, Spain.</h>
+</pair>
+<pair id='475' value='TRUE' task='QA'>
+  <t>Today's best estimate of giant panda numbers in the wild is about 1,100 individuals living in up to 32 separate populations mostly in China's Sichuan Province, but also in Shaanxi and Gansu provinces.</t>
+  <h>There are 1,100 pandas in the wild, in China.</h>
+</pair>
+<pair id='478' value='FALSE' task='QA'>
+  <t>Jerusalem was rebuilt and served as Israel's capital off and on under various foreign rulers until 70 AD, when Roman legions burned the city and expelled its Jewish inhabitants.</t>
+  <h>Israel has 70 Jewish inhabitants.</h>
+</pair>
+<pair id='480' value='FALSE' task='QA'>
+  <t>For many years, Sudam was controlled by Jader Barbalho, who was the governor of the state of Pará and its senator.</t>
+  <h>Jader Barbalho is the governor of Sudam.</h>
+</pair>
+<pair id='482' value='FALSE' task='QA'>
+  <t>By 2010 the following countries have the potential to produce more oil than they have ever produced before: Saudi Arabia, Iraq, Kuwait, United Arab Emirates, Kazakhstan and Bolivia.</t>
+  <h>Kuwait produces more oil than any other country.</h>
+</pair>
+<pair id='483' value='FALSE' task='QA'>
+  <t>Cyprus, divided or not, joins the EU on the 1st of May.</t>
+  <h>Cyprus was divided into two parts on May 1.</h>
+</pair>
+<pair id='490' value='TRUE' task='QA'>
+  <t>The lion's share of this traffic comes from Angola, where diamonds from the area controlled by UNITA (National Union for the Total Independence of Angola) rebels are subject to an embargo.</t>
+  <h>Angola was subject to an embargo on the export of diamonds.</h>
+</pair>
+<pair id='496' value='TRUE' task='QA'>
+  <t>Like the corporate logos, the ear is a representation, in mouth-watering chocolate, a delicious reminder of the infamous boxing incident in 1997, when an enraged Mike Tyson bit Holyfield's ear.</t>
+  <h>Mike Tyson bit Holyfield's ear in 1997.</h>
+</pair>
+<pair id='511' value='FALSE' task='QA'>
+  <t>IKEA offers fantastic and affordable solutions for your home furnishing needs.</t>
+  <h>Ikea is a home.</h>
+</pair>
+<pair id='518' value='FALSE' task='QA'>
+  <t>Saudi Arabia's production mix will shift to a higher proportion of lighter crudes. Unlike last year's Qatif and Abu Safah developments, nearly all of the proposed projects produce Arab Light or lighter crudes.</t>
+  <h>Saudi Arabia produces more oil than any other country.</h>
+</pair>
+<pair id='521' value='FALSE' task='QA'>
+  <t>In a move reminiscent for some of another actor, Ronald Reagan, who was twice elected governor of California, Schwarzenegger said he would be putting his movie career on hold so he can devote his time to running for governor.</t>
+  <h>Schwarzenegger was elected governor of California.</h>
+</pair>
+<pair id='524' value='FALSE' task='QA'>
+  <t>Among the fascinating sites in the city are Independence Hall where the Declaration of Independence was signed, and one of America's principal symbols of freedom, The Liberty Bell, located in Congress Hall.</t>
+  <h>The US Declaration of Independence is located in Independence Hall.</h>
+</pair>
+<pair id='526' value='FALSE' task='QA'>
+  <t>The common binding of Catholic faith did little to prevent the Bavarians from slaughtering fellow believers in the 19th century under Prussian Protestant officers.</t>
+  <h>19 Bavarians are Catholic.</h>
+</pair>
+<pair id='530' value='FALSE' task='QA'>
+  <t>Pollner, they say, began trading with Iraq before the 1991 Persian Gulf War and continued after a U.N. embargo. For his part, Chalmers had loaned money to Iraq since the 1980s and received repayment in oil, according to industry experts.</t>
+  <h>Persia bought oil from Iraq during the embargo.</h>
+</pair>
+<pair id='532' value='FALSE' task='QA'>
+  <t>In all, Zerich bought $422 million worth of oil from Iraq, according to the Volcker committee. In the early 1990s after the Soviet Union collapsed, Rich quickly became the most powerful trader there.</t>
+  <h>Zerich bought oil from Iraq during the embargo.</h>
+</pair>
+<pair id='538' value='FALSE' task='QA'>
+  <t>Today about 75% of people live in cities or towns. Art and culture are an important part of France.</t>
+  <h>75 people live in France.</h>
+</pair>
+<pair id='545' value='FALSE' task='QA'>
+  <t>Although the birth rate is the highest it has been for five years, there were still more deaths in Scotland than births last year.</t>
+  <h>Scotland is the European country with the highest birth rate.</h>
+</pair>
+<pair id='550' value='TRUE' task='QA'>
+  <t>Brought under Ottoman rule in the 16th century, Jordan has been led only since the 1920s by Hashemite rulers, a family whose roots are in present-day Saudi Arabia.</t>
+  <h>The Hashemite dynasty rules Jordan.</h>
+</pair>
+<pair id='553' value='TRUE' task='QA'>
+  <t>Pibul Songgram was the pro-Japanese military dictator of Thailand during World War 2.</t>
+  <h>Pibul was the dictator of Thailand.</h>
+</pair>
+<pair id='558' value='TRUE' task='QA'>
+  <t>In a move reminiscent for some of another actor, Ronald Reagan, who was twice elected governor of California, Schwarzenegger said he would be putting his movie career on hold so he can devote his time to running for governor.</t>
+  <h>Ronald Regan was elected governor of California.</h>
+</pair>
+<pair id='559' value='TRUE' task='QA'>
+  <t>Tom Cruise is married to actress Nicole Kidman and the couple has 2 adopted children.</t>
+  <h>Tom Cruise is married to Nicole Kidman.</h>
+</pair>
+<pair id='561' value='FALSE' task='QA'>
+  <t>Anastasia, in the village of Nagutskoye, had a neighbor who gave birth in 1914 to Yuri Andropov, KGB chief and persecutor of Anastasia's nephew, Alexander Solzhenitsyn.</t>
+  <h>Alexander Solzhenitsyn's wife's name is Anastasia.</h>
+</pair>
+<pair id='566' value='TRUE' task='QA'>
+  <t>The headquarters of the WTO are in Geneva, but the disputes which come under its purview are settled in Paris, under ICC rules.</t>
+  <h>The WTO headquarters are located in Geneva.</h>
+</pair>
+<pair id='568' value='TRUE' task='QA'>
+  <t>On June 28, 1997, in what would become known as the bite fight, Mike Tyson bit Evander Holyfield's ear, purportedly in retaliation for Holyfield headbutting him.</t>
+  <h>Mike Tyson bit Evander Holyfield's ear on June 28, 1997.</h>
+</pair>
+<pair id='575' value='TRUE' task='QA'>
+  <t>In other words, with its 2 million inhabitants, Slovenia has only 5.5 thousand professional soldiers.</t>
+  <h>Slovenia has 2 million inhabitants.</h>
+</pair>
+<pair id='576' value='FALSE' task='QA'>
+  <t>For a western European country, the birth rate in Finland is high.</t>
+  <h>Finland is the European country with the highest birth rate.</h>
+</pair>
+<pair id='578' value='TRUE' task='QA'>
+  <t>It uses the first day of the first month of the Lunar Year as the start of the Chinese New Year.</t>
+  <h>The Chinese New Year's Day falls on the first day of the first month of the Lunar Year.</h>
+</pair>
+<pair id='582' value='TRUE' task='QA'>
+  <t>The Chicago Bulls are a National Basketball Association team based in Chicago, Illinois.</t>
+  <h>The Bulls basketball team is based in Chicago, Illinois.</h>
+</pair>
+<pair id='596' value='FALSE' task='QA'>
+  <t>The credit card mobile phones now provided on some aircraft, do not interfere with aircraft systems because they are wired to a special "base station" that has been designed to safely receive and transmit radio signals in the aircraft.</t>
+  <h>Mobile phones can interfere with aircraft systems.</h>
+</pair>
+<pair id='597' value='TRUE' task='QA'>
+  <t>Mount Olympus, the highest mountain in the Olympic Range, rises to a height of 7,965 feet (2,428 meters) and is less than 25 miles (40 kilometers) from the Strait of Juan de Fuca.</t>
+  <h>Mount Olympus is near the Strait of Juan de Fuca.</h>
+</pair>
+<pair id='600' value='FALSE' task='QA'>
+  <t>Prolonged exposure to UV-B light can cause sunburn, and there are worries that damage to the ozone layer may lead to an increase in the incidence of skin cancer.</t>
+  <h>UV-B light is damaging the ozone layer.</h>
+</pair>
+<pair id='605' value='TRUE' task='QA'>
+  <t>Dr. Pridi was forced into exile, and Field Marshal Pibul again assumed power.</t>
+  <h>Pibul was a field marshal.</h>
+</pair>
+<pair id='611' value='TRUE' task='QA'>
+  <t>The book contains short stories by the famous Bulgarian writer, Nikolai Haitov.</t>
+  <h>Nikolai Haitov is a writer.</h>
+</pair>
+<pair id='617' value='TRUE' task='QA'>
+  <t>Named the Solomon R. Guggenheim Museum in honor of its founder, the building opened in 1959, drawing huge crowds and stirring considerable controversy.</t>
+  <h>The Solomon R. Guggenheim Museum was opened in 1959.</h>
+</pair>
+<pair id='619' value='TRUE' task='QA'>
+  <t>Edward VIII became King in January of 1936 and abdicated in December.</t>
+  <h>King Edward VIII abdicated in December 1936.</h>
+</pair>
+<pair id='621' value='FALSE' task='QA'>
+  <t>In Africa today, the majority of infected people acquire HIV by the time they are in their 20s or 30s and, on average, die within ten years.</t>
+  <h>20-30 percent of people infected with HIV live in Africa.</h>
+</pair>
+<pair id='622' value='TRUE' task='QA'>
+  <t>India, an enchanting country situated in the southern central peninsula of the Asian continent, covers over 3.28 million square kilometers.</t>
+  <h>India is on the Asian continent.</h>
+</pair>
+<pair id='623' value='FALSE' task='QA'>
+  <t>Rana told a delegation of the Nepal Trans-Himanlyan Trade Association, the only non-governmental organization which has trade relations with China, who informed the minister of the problems existing in the bilateral trade sector.</t>
+  <h>Rana is the Trade Minister in China.</h>
+</pair>
+<pair id='632' value='TRUE' task='QA'>
+  <t>Mount Olympus, the highest mountain in the Olympic Range, rises to a height of 7,965 feet (2,428 meters) and is less than 25 miles (40 kilometers) from the Strait of Juan de Fuca.</t>
+  <h>Mount Olympus is in the Olympic Range.</h>
+</pair>
+<pair id='633' value='TRUE' task='QA'>
+  <t>Yoko Ono unveiled a bronze statue of her late husband, John Lennon, to complete the official renaming of England's Liverpool Airport as Liverpool John Lennon Airport.</t>
+  <h>Yoko Ono is John Lennon's widow.</h>
+</pair>
+<pair id='635' value='FALSE' task='QA'>
+  <t>The city is twinned with Glasgow, Dortmund, Pleven, and Le Mans.</t>
+  <h>Dortmund is twinned with Glasgow.</h>
+</pair>
+<pair id='637' value='TRUE' task='QA'>
+  <t>IBM is now at the top of my list of where I want to work. Ivy alone had nine interviews when the team visited the company's headquarters in Armonk last week.</t>
+  <h>IBM has its headquarters in Armonk.</h>
+</pair>
+<pair id='638' value='TRUE' task='QA'>
+  <t>And, despite its own suggestions to the contrary, Oracle will sell PeopleSoft and JD Edwards financial software through reseller channels to new customers.</t>
+  <h>Oracle sells financial software.</h>
+</pair>
+<pair id='642' value='FALSE' task='QA'>
+  <t>Among the fascinating sites in the city are Independence Hall where the Declaration of Independence was signed, and one of America's principal symbols of freedom, The Liberty Bell, located in Congress Hall.</t>
+  <h>The US Declaration of Independence is located in America.</h>
+</pair>
+<pair id='647' value='TRUE' task='QA'>
+  <t>Meanwhile, thousands of soldiers from the first Gulf War are still suffering from severe symptoms that have been linked to what is now known as Gulf War illness, say veterans advocates.</t>
+  <h>Many US soldiers developed Gulf War illness after the Gulf War.</h>
+</pair>
+<pair id='648' value='TRUE' task='QA'>
+  <t>The Antarctic ozone 'hole' is defined as a thinning of the ozone layer, over the continent, to levels significantly below pre-1979 levels.</t>
+  <h>The ozone hole is above Antarctica.</h>
+</pair>
+<pair id='649' value='TRUE' task='QA'>
+  <t>On April 27th, Pavolini went on, ahead of his troops, and reached Mussolini. Accompanying him were Angela Curti, the former mistress of Mussolini.</t>
+  <h>Angela Curti was Mussolini's mistress.</h>
+</pair>
+<pair id='652' value='FALSE' task='QA'>
+  <t>The capital of Slovenia is Ljubljana, with 270,000 inhabitants.</t>
+  <h>Slovenia has 270,000 inhabitants.</h>
+</pair>
+<pair id='654' value='TRUE' task='QA'>
+  <t>The PMDB is also the party led by Senator Jader Barbalho, the recently elected Senate President heaped with serious corruption charges.</t>
+  <h>Jader Barbalho is the Senate President.</h>
+</pair>
+<pair id='658' value='FALSE' task='QA'>
+  <t>Two young soldiers have killed themselves after falling ill with suspected Gulf War Syndrome, following the latest conflict in Iraq.</t>
+  <h>Many US soldiers developed Gulf War Syndrome after the Gulf War.</h>
+</pair>
+<pair id='659' value='FALSE' task='QA'>
+  <t>Babe Ruth's career total would have been 1 higher had that rule not been in effect in the early part of his career. The all-time career record for home runs in Major League Baseball is 755, held by Hank Aaron since 1974.</t>
+  <h>Babe Ruth hit 755 home runs in his lifetime.</h>
+</pair>
+<pair id='661' value='FALSE' task='QA'>
+  <t>O'Connor then fought on the side of the Republicans in the 1921-22 Civil War, with those who favored rejection of the treaty which brought peace between Ireland and Britain, but at the cost of a divided island.</t>
+  <h>Ireland has been divided since 1921.</h>
+</pair>
+<pair id='662' value='FALSE' task='QA'>
+  <t>Maine knows he killed Lennon and that he is also a child molester. During the '92 election George Bush admitted twice on TV "Nobody likes who shot John... *I know the media is fascinated with this story but..."</t>
+  <h>John Lennon was killed in 1992.</h>
+</pair>
+<pair id='665' value='TRUE' task='QA'>
+  <t>John Lennon's widow, Yoko Ono, has topped the US dance chart at the age of 71 with a song supporting gay marriage.</t>
+  <h>Yoko Ono is John Lennon's widow.</h>
+</pair>
+<pair id='669' value='TRUE' task='QA'>
+  <t>On July 8th, the Mozilla team released a configuration change which resolves this problem by explicitly disabling the use of the shell, an external protocol handler.</t>
+  <h>A shell is an external protocol handler.</h>
+</pair>
+<pair id='673' value='TRUE' task='QA'>
+  <t>The longest stay in space was 438 days by Valeri Polyakov.</t>
+  <h>The record for the longest stay in space, by a human, is 438 days.</h>
+</pair>
+<pair id='675' value='FALSE' task='QA'>
+  <t>The Statue of Liberty was reopened to the public on July 5 after its extensive refurbishing. 1986 is a common year starting on Wednesday of the Gregorian calendar.</t>
+  <h>The Statute of Liberty was built in 1986.</h>
+</pair>
+<pair id='676' value='TRUE' task='QA'>
+  <t>Joe Friday wore badge No. 714 - in honor of the number of home runs Ruth hit in his career.</t>
+  <h>Ruth hit 714 home runs in his lifetime.</h>
+</pair>
+<pair id='677' value='FALSE' task='QA'>
+  <t>Canadian traffickers also are reported to drop their marijuana loads across the border in remote areas (often without the knowledge of rural landowners), cross into the United States without drugs, later retrieve the marijuana, and continue on to U.S. distribution sites.</t>
+  <h>Most of the marijuana entering the United States comes from Canada.</h>
+</pair>
+<pair id='683' value='TRUE' task='QA'>
+  <t>The number of Gulf War veterans who suffer from Gulf War illness is difficult to grasp. Robinson and other advocates say they believe that many of the 330,000 Gulf War veterans who have sought medical treatment from the VA since the war, and 179,000 who are collecting some level of disability benefits, are suffering from one or more of the symptoms.</t>
+  <h>Many US soldiers developed Gulf War illness after the Gulf War.</h>
+</pair>
+<pair id='685' value='TRUE' task='QA'>
+  <t>The interest of the automotive industry increases and the first amplifier project, a four-channel output module for the German car manufacturer, Porsche, is finished.</t>
+  <h>Porsche is a German car manufacturer.</h>
+</pair>
+<pair id='686' value='FALSE' task='QA'>
+  <t>Immediately after 1990, however, Swedish fertility plummeted in another unique movement, and had fallen to 1.5 children per woman in 1998 and in 1999. This is the lowest birth rate in Sweden ever - although above the European average.</t>
+  <h>Sweden is the European country with the highest birth rate.</h>
+</pair>
+<pair id='687' value='TRUE' task='QA'>
+  <t>As with the Babylonian New Year, the Chinese New Year, which occurred on the 1st of February in 2003, the day before Groundhog Day, is correlated to the beginning of spring.</t>
+  <h>The Chinese New Year's Day falls on the 1st of February in 2003.</h>
+</pair>
+<pair id='691' value='FALSE' task='QA'>
+  <t>Arabic, for example, is used densely across North Africa and from the Eastern Mediterranean to the Philippines, as the key language of the Arab world and the primary vehicle of Islam.</t>
+  <h>Arabic is the primary language of the Philippines.</h>
+</pair>
+<pair id='703' value='TRUE' task='QA'>
+  <t>Mercedes-Benz is another German luxury-car manufacturer, but its M-Class sport-utility vehicle is assembled in Alabama and the new G-Class is from Austria.</t>
+  <h>Mercedes-Benz is a German car manufacturer.</h>
+</pair>
+<pair id='706' value='FALSE' task='QA'>
+  <t>OTN profiles the Hamas (Islamic Resistance Movement), which is a Palestinian Islamic fundamentalist group.</t>
+  <h>The Islamic Resistance Movement is also known as OTN.</h>
+</pair>
+<pair id='709' value='FALSE' task='QA'>
+  <t>The longest mission to Salyut 7 was also a record-breaker, lasting 237 days (nearly eight months) in space.</t>
+  <h>237 days is the record for the longest stay in space by a human.</h>
+</pair>
+<pair id='715' value='TRUE' task='QA'>
+  <t>The first kibbutz, Deganya, near the Sea of Galilee, was founded in 1910.</t>
+  <h>The first kibbutz was founded near the Sea of Galilee.</h>
+</pair>
+<pair id='718' value='FALSE' task='QA'>
+  <t>Her husband, political novice Juan Carlos Lecompte, scrambles to preserve Betancourt's dream and sustain the Oxygen Green Party, the political party she founded.</t>
+  <h>Juan Carlos Lecompte is the founder of the Green Oxygen Party.</h>
+</pair>
+<pair id='721' value='TRUE' task='QA'>
+  <t>Michael Jordan, coach Phil Jackson and the star cast, including Scottie Pippen, took the Chicago Bulls to six National Basketball Association championships.</t>
+  <h>The Bulls basketball team is based in Chicago.</h>
+</pair>
+<pair id='722' value='FALSE' task='QA'>
+  <t>Another French daily newspaper talks about PixVillage.</t>
+  <h>PixVillage is a French newspaper.</h>
+</pair>
+<pair id='740' value='TRUE' task='QA'>
+  <t>Edwin Hubble is recongized as having been one of the foremost astronomers of the modern era.</t>
+  <h>Edwin Hubble was an astronomer.</h>
+</pair>
+<pair id='743' value='FALSE' task='QA'>
+  <t>Mr. Balasingham will return to his London home and then move on to Sri Lanka in early October to consult with LTTE leader Vilupillai Prabhakaran, diplomats said.</t>
+  <h>Vilupillai Prabhakaran is a diplomat.</h>
+</pair>
+<pair id='744' value='TRUE' task='QA'>
+  <t>These days are special for St Petersburg - on January 18, 1943 the siege of Leningrad was broken.</t>
+  <h>The siege of Leningrad was broken on January 18, 1943.</h>
+</pair>
+<pair id='751' value='TRUE' task='QA'>
+  <t>Cannabis is freely available in the Netherlands for sale in "coffee shops" in small quantities. The cost of five grammes, the maximum amount that can be legally purchased, is about £.50 ($19), enough to make about a dozen cigarettes.</t>
+  <h>In the Netherlands five grams of cannabis can be legally held in possession.</h>
+</pair>
+<pair id='752' value='TRUE' task='QA'>
+  <t>Nonetheless, a literacy rate of 96 percent put Cuba on a par with such highly developed countries as Japan, France, the Soviet Union, Switzerland and Italy, Campo said.</t>
+  <h>The literacy rate in Cuba is 96%.</h>
+</pair>
+<pair id='761' value='FALSE' task='QA'>
+  <t>Apart from the new substances entering the market, the phase out of existing ones, which have been definitely identified as damaging the ozone layer, is far from complete.</t>
+  <h>New substances are damaging the ozone layer.</h>
+</pair>
+<pair id='765' value='FALSE' task='QA'>
+  <t>Ruth bounced back from his 1925 ailments and problems to lead the American League in home runs with 47, 28 home runs more than anyone else.</t>
+  <h>Ruth hit 47 runs in his lifetime.</h>
+</pair>
+<pair id='775' value='TRUE' task='QA'>
+  <t>The scandal is one of several threatening to undermine President Cardoso's four-party government alliance, and could force out one of Brazil's top politicians - the newly appointed President of the Senate, Jader Barbalho.</t>
+  <h>Jador Barbalho is a politician.</h>
+</pair>
+<pair id='788' value='FALSE' task='QA'>
+  <t>The two sectors of the divided island of Cyprus held a referendum on reunification on Saturday, April 24, 2004.</t>
+  <h>Cyprus was divided on April 24, 2004.</h>
+</pair>
+<pair id='790' value='TRUE' task='QA'>
+  <t>The airline now flew under the name Sabena - Belgian World Airlines.</t>
+  <h>Sabena is an airline.</h>
+</pair>
+<pair id='797' value='TRUE' task='QA'>
+  <t>Civic Alliance, the umbrella group of civic groups involved in rebuilding, hosted a large, public town-hall meeting for 5,000 people, called "Listening to the City" in July 2002.</t>
+  <h>The Civic Alliance is an umbrella group.</h>
+</pair>
+</entailment-corpus>

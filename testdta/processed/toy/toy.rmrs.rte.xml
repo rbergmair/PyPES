@@ -1,0 +1,5153 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<entailment-corpus>
+
+<pair id="19" entailment="NO" task="IE" length="short" >
+<t>
+  <surface>
+    In 1969, he drew up the report proposing the expulsion from the party of th\
+    e Manifesto group. In 1984, after Berlinguer's death, Natta was elected as \
+    party secretary. 
+  </surface>
+  <analysis>
+  
+  <sentence>
+  
+  <!--
+       l3 | _in_p_temp( ARG0=e5 ARG1=e2 ARG2=x4 ) 
+   l10001 | _draw_v_up( ARG0=e2 ARG1=x12 ARG2=x16 ) 
+       l6 + proper_q_rel( ARG0=x4 BODY=h8 RSTR=h7 ) 
+          +    h7 qeq l9
+       l9 | yofc_rel( ARG0=x4 ARG1=u10 CARG=yearersatz ) 
+      l11 + pron_rel( ARG0=x12 ) 
+      l13 | pronoun_q_rel( ARG0=x12 BODY=h15 RSTR=h14 ) 
+          |    h14 qeq l11
+      l17 + _the_q( ARG0=x16 BODY=h19 RSTR=h18 ) 
+          +    h18 qeq l20
+      l20 | _report_n_of( ARG0=x16 ARG1=u21 ) 
+      l22 + subord_rel( ARG0=e25 MAIN=h23 SUBORD=h24 ) 
+          +    h23 qeq l10001
+          +    h24 qeq l26
+      l26 | _propose_v_1( ARG0=e27 ARG1=u29 ARG2=x28 ) 
+   l10002 | _from_p( ARG0=e36 ARG1=e27 ARG2=x35 ) 
+      l30 + _the_q( ARG0=x28 BODY=h32 RSTR=h31 ) 
+          +    h31 qeq l33
+      l33 | _removal_n_of( ARG0=x28 ARG1=u34 ) 
+      l37 + _the_q( ARG0=x35 BODY=h39 RSTR=h38 ) 
+          +    h38 qeq l40
+      l40 | _party_n_1( ARG0=x35 ) 
+   l10003 + _of_p( ARG0=e42 ARG1=x35 ARG2=x41 ) 
+      l43 | _the_q( ARG0=x41 BODY=h45 RSTR=h44 ) 
+          |    h44 qeq l46
+      l46 + compound_rel( ARG0=e48 ARG1=x41 ARG2=x47 ) 
+   l10004 + _group_n_of( ARG0=x41 ) 
+      l49 | proper_q_rel( ARG0=x47 BODY=h51 RSTR=h50 ) 
+          |    h50 qeq l52
+      l52 + named_rel( ARG0=x47 CARG=nameersatz ) 
+  -->
+  <rmrs cfrom='-1' cto='-1'>
+    <label vid='1'/>
+    <ep cfrom='-1' cto='-1'>
+      <realpred lemma='in' pos='p' sense='temp'/>
+      <label vid='3'/>
+      <var sort='e' vid='5' tense='u'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <gpred>proper_q_rel</gpred>
+      <label vid='6'/>
+      <var sort='x' vid='4' num='sg' pers='3'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <gpred>yofc_rel</gpred>
+      <label vid='9'/>
+      <var sort='x' vid='4' num='sg' pers='3'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <gpred>pron_rel</gpred>
+      <label vid='11'/>
+      <var sort='x' vid='12' num='sg' pers='3' gender='m'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <gpred>pronoun_q_rel</gpred>
+      <label vid='13'/>
+      <var sort='x' vid='12' num='sg' pers='3' gender='m'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <realpred lemma='draw' pos='v' sense='up'/>
+      <label vid='10001'/>
+      <var sort='e' vid='2' tense='past'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <realpred lemma='the' pos='q'/>
+      <label vid='17'/>
+      <var sort='x' vid='16' num='sg' pers='3'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <realpred lemma='report' pos='n' sense='of'/>
+      <label vid='20'/>
+      <var sort='x' vid='16' num='sg' pers='3'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <gpred>subord_rel</gpred>
+      <label vid='22'/>
+      <var sort='e' vid='25' tense='u'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <realpred lemma='propose' pos='v' sense='1'/>
+      <label vid='26'/>
+      <var sort='e' vid='27' tense='u'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <realpred lemma='the' pos='q'/>
+      <label vid='30'/>
+      <var sort='x' vid='28' num='sg' pers='3' gender='n'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <realpred lemma='removal' pos='n' sense='of'/>
+      <label vid='33'/>
+      <var sort='x' vid='28' num='sg' pers='3' gender='n'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <realpred lemma='from' pos='p'/>
+      <label vid='10002'/>
+      <var sort='e' vid='36' tense='u'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <realpred lemma='the' pos='q'/>
+      <label vid='37'/>
+      <var sort='x' vid='35' num='sg' pers='3'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <realpred lemma='party' pos='n' sense='1'/>
+      <label vid='40'/>
+      <var sort='x' vid='35' num='sg' pers='3'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <realpred lemma='of' pos='p'/>
+      <label vid='10003'/>
+      <var sort='e' vid='42'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <realpred lemma='the' pos='q'/>
+      <label vid='43'/>
+      <var sort='x' vid='41' num='sg' pers='3'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <gpred>compound_rel</gpred>
+      <label vid='46'/>
+      <var sort='e' vid='48' tense='u'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <gpred>proper_q_rel</gpred>
+      <label vid='49'/>
+      <var sort='x' vid='47'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <gpred>named_rel</gpred>
+      <label vid='52'/>
+      <var sort='x' vid='47'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <realpred lemma='group' pos='n' sense='of'/>
+      <label vid='10004'/>
+      <var sort='x' vid='41' num='sg' pers='3'/>
+    </ep>
+    <hcons hreln='qeq'>
+      <hi> <var sort='h' vid='7'/> </hi>
+      <lo> <label vid='9'/> </lo>
+    </hcons>
+    <hcons hreln='qeq'>
+      <hi> <var sort='h' vid='14'/> </hi>
+      <lo> <label vid='11'/> </lo>
+    </hcons>
+    <hcons hreln='qeq'>
+      <hi> <var sort='h' vid='18'/> </hi>
+      <lo> <label vid='20'/> </lo>
+    </hcons>
+    <hcons hreln='qeq'>
+      <hi> <var sort='h' vid='23'/> </hi>
+      <lo> <label vid='10001'/> </lo>
+    </hcons>
+    <hcons hreln='qeq'>
+      <hi> <var sort='h' vid='24'/> </hi>
+      <lo> <label vid='26'/> </lo>
+    </hcons>
+    <hcons hreln='qeq'>
+      <hi> <var sort='h' vid='31'/> </hi>
+      <lo> <label vid='33'/> </lo>
+    </hcons>
+    <hcons hreln='qeq'>
+      <hi> <var sort='h' vid='38'/> </hi>
+      <lo> <label vid='40'/> </lo>
+    </hcons>
+    <hcons hreln='qeq'>
+      <hi> <var sort='h' vid='44'/> </hi>
+      <lo> <label vid='46'/> </lo>
+    </hcons>
+    <hcons hreln='qeq'>
+      <hi> <var sort='h' vid='50'/> </hi>
+      <lo> <label vid='52'/> </lo>
+    </hcons>
+    <rarg>
+      <rargname>ARG1</rargname>
+      <label vid='3'/>
+      <var sort='e' vid='2' tense='past'/>
+    </rarg>
+    <rarg>
+      <rargname>ARG2</rargname>
+      <label vid='3'/>
+      <var sort='x' vid='4' num='sg' pers='3'/>
+    </rarg>
+    <rarg>
+      <rargname>RSTR</rargname>
+      <label vid='6'/>
+      <var sort='h' vid='7'/>
+    </rarg>
+    <rarg>
+      <rargname>BODY</rargname>
+      <label vid='6'/>
+      <var sort='h' vid='8'/>
+    </rarg>
+    <rarg>
+      <rargname>ARG1</rargname>
+      <label vid='9'/>
+      <var sort='u' vid='10'/>
+    </rarg>
+    <rarg>
+      <rargname>CARG</rargname>
+      <label vid='9'/>
+      <constant>yearersatz</constant>
+    </rarg>
+    <rarg>
+      <rargname>RSTR</rargname>
+      <label vid='13'/>
+      <var sort='h' vid='14'/>
+    </rarg>
+    <rarg>
+      <rargname>BODY</rargname>
+      <label vid='13'/>
+      <var sort='h' vid='15'/>
+    </rarg>
+    <rarg>
+      <rargname>ARG1</rargname>
+      <label vid='10001'/>
+      <var sort='x' vid='12' num='sg' pers='3' gender='m'/>
+    </rarg>
+    <rarg>
+      <rargname>ARG2</rargname>
+      <label vid='10001'/>
+      <var sort='x' vid='16' num='sg' pers='3'/>
+    </rarg>
+    <rarg>
+      <rargname>RSTR</rargname>
+      <label vid='17'/>
+      <var sort='h' vid='18'/>
+    </rarg>
+    <rarg>
+      <rargname>BODY</rargname>
+      <label vid='17'/>
+      <var sort='h' vid='19'/>
+    </rarg>
+    <rarg>
+      <rargname>ARG1</rargname>
+      <label vid='20'/>
+      <var sort='u' vid='21'/>
+    </rarg>
+    <rarg>
+      <rargname>MAIN</rargname>
+      <label vid='22'/>
+      <var sort='h' vid='23'/>
+    </rarg>
+    <rarg>
+      <rargname>SUBORD</rargname>
+      <label vid='22'/>
+      <var sort='h' vid='24'/>
+    </rarg>
+    <rarg>
+      <rargname>ARG1</rargname>
+      <label vid='26'/>
+      <var sort='u' vid='29'/>
+    </rarg>
+    <rarg>
+      <rargname>ARG2</rargname>
+      <label vid='26'/>
+      <var sort='x' vid='28' num='sg' pers='3' gender='n'/>
+    </rarg>
+    <rarg>
+      <rargname>RSTR</rargname>
+      <label vid='30'/>
+      <var sort='h' vid='31'/>
+    </rarg>
+    <rarg>
+      <rargname>BODY</rargname>
+      <label vid='30'/>
+      <var sort='h' vid='32'/>
+    </rarg>
+    <rarg>
+      <rargname>ARG1</rargname>
+      <label vid='33'/>
+      <var sort='u' vid='34'/>
+    </rarg>
+    <rarg>
+      <rargname>ARG1</rargname>
+      <label vid='10002'/>
+      <var sort='e' vid='27' tense='u'/>
+    </rarg>
+    <rarg>
+      <rargname>ARG2</rargname>
+      <label vid='10002'/>
+      <var sort='x' vid='35' num='sg' pers='3'/>
+    </rarg>
+    <rarg>
+      <rargname>RSTR</rargname>
+      <label vid='37'/>
+      <var sort='h' vid='38'/>
+    </rarg>
+    <rarg>
+      <rargname>BODY</rargname>
+      <label vid='37'/>
+      <var sort='h' vid='39'/>
+    </rarg>
+    <rarg>
+      <rargname>ARG1</rargname>
+      <label vid='10003'/>
+      <var sort='x' vid='35' num='sg' pers='3'/>
+    </rarg>
+    <rarg>
+      <rargname>ARG2</rargname>
+      <label vid='10003'/>
+      <var sort='x' vid='41' num='sg' pers='3'/>
+    </rarg>
+    <rarg>
+      <rargname>RSTR</rargname>
+      <label vid='43'/>
+      <var sort='h' vid='44'/>
+    </rarg>
+    <rarg>
+      <rargname>BODY</rargname>
+      <label vid='43'/>
+      <var sort='h' vid='45'/>
+    </rarg>
+    <rarg>
+      <rargname>ARG1</rargname>
+      <label vid='46'/>
+      <var sort='x' vid='41' num='sg' pers='3'/>
+    </rarg>
+    <rarg>
+      <rargname>ARG2</rargname>
+      <label vid='46'/>
+      <var sort='x' vid='47'/>
+    </rarg>
+    <rarg>
+      <rargname>RSTR</rargname>
+      <label vid='49'/>
+      <var sort='h' vid='50'/>
+    </rarg>
+    <rarg>
+      <rargname>BODY</rargname>
+      <label vid='49'/>
+      <var sort='h' vid='51'/>
+    </rarg>
+    <rarg>
+      <rargname>CARG</rargname>
+      <label vid='52'/>
+      <constant>nameersatz</constant>
+    </rarg>
+    <ing>
+      <ing-a> <var sort='h' vid='10001'/> </ing-a>
+      <ing-b> <var sort='h' vid='3'/> </ing-b> 
+    </ing>
+    <ing>
+      <ing-a> <var sort='h' vid='26'/> </ing-a>
+      <ing-b> <var sort='h' vid='10002'/> </ing-b> 
+    </ing>
+    <ing>
+      <ing-a> <var sort='h' vid='40'/> </ing-a>
+      <ing-b> <var sort='h' vid='10003'/> </ing-b> 
+    </ing>
+    <ing>
+      <ing-a> <var sort='h' vid='46'/> </ing-a>
+      <ing-b> <var sort='h' vid='10004'/> </ing-b> 
+    </ing>
+  </rmrs>
+
+  </sentence>
+  <sentence>
+  
+  <!--
+       l3 | _in_p_temp( ARG0=e5 ARG1=e2 ARG2=x4 ) 
+   l10003 | _elect_v_1( ARG0=e2 ARG2=x25 ) 
+       l6 + proper_q_rel( ARG0=x4 BODY=h8 RSTR=h7 ) 
+          +    h7 qeq l9
+       l9 | yofc_rel( ARG0=x4 ARG1=u10 CARG=yearersatz ) 
+   l10001 + _after_p( ARG0=e12 ARG1=x4 ARG2=x11 ) 
+      l13 | proper_q_rel( ARG0=x15 BODY=h16 RSTR=h14 ) 
+          |    h14 qeq l17
+      l17 + named_rel( ARG0=x15 CARG=nameersatz ) 
+      l18 | def_explicit_q_rel( ARG0=x11 BODY=h20 RSTR=h19 ) 
+          |    h19 qeq l10002
+      l21 + poss_rel( ARG0=e22 ARG1=x11 ARG2=x15 ) 
+   l10002 | _death_n_1( ARG0=x11 ) 
+      l23 + proper_q_rel( ARG0=x25 BODY=h26 RSTR=h24 ) 
+          +    h24 qeq l27
+      l27 | named_rel( ARG0=x25 CARG=nameersatz ) 
+   l10004 + _as_p_nbar( ARG0=e30 ARG1=e2 ARG2=x29 ) 
+      l31 | udef_q_rel( ARG0=x29 BODY=h33 RSTR=h32 ) 
+          |    h32 qeq l34
+      l34 + compound_rel( ARG0=e36 ARG1=x29 ARG2=x35 ) 
+   l10005 + _secretary_n_of( ARG0=x29 ARG1=u41 ) 
+      l37 | udef_q_rel( ARG0=x35 BODY=h39 RSTR=h38 ) 
+          |    h38 qeq l40
+      l40 + _party_n_1( ARG0=x35 ) 
+  -->
+  <rmrs cfrom='-1' cto='-1'>
+    <label vid='1'/>
+    <ep cfrom='-1' cto='-1'>
+      <realpred lemma='in' pos='p' sense='temp'/>
+      <label vid='3'/>
+      <var sort='e' vid='5' tense='u'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <gpred>proper_q_rel</gpred>
+      <label vid='6'/>
+      <var sort='x' vid='4' num='sg' pers='3'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <gpred>yofc_rel</gpred>
+      <label vid='9'/>
+      <var sort='x' vid='4' num='sg' pers='3'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <realpred lemma='after' pos='p'/>
+      <label vid='10001'/>
+      <var sort='e' vid='12'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <gpred>proper_q_rel</gpred>
+      <label vid='13'/>
+      <var sort='x' vid='15' num='sg' pers='3'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <gpred>named_rel</gpred>
+      <label vid='17'/>
+      <var sort='x' vid='15' num='sg' pers='3'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <gpred>def_explicit_q_rel</gpred>
+      <label vid='18'/>
+      <var sort='x' vid='11' num='sg' pers='3' gender='n'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <gpred>poss_rel</gpred>
+      <label vid='21'/>
+      <var sort='e' vid='22' tense='u'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <realpred lemma='death' pos='n' sense='1'/>
+      <label vid='10002'/>
+      <var sort='x' vid='11' num='sg' pers='3' gender='n'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <gpred>proper_q_rel</gpred>
+      <label vid='23'/>
+      <var sort='x' vid='25' num='sg' pers='3'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <gpred>named_rel</gpred>
+      <label vid='27'/>
+      <var sort='x' vid='25' num='sg' pers='3'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <realpred lemma='elect' pos='v' sense='1'/>
+      <label vid='10003'/>
+      <var sort='e' vid='2' tense='past'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <realpred lemma='as' pos='p' sense='nbar'/>
+      <label vid='10004'/>
+      <var sort='e' vid='30' tense='u'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <gpred>udef_q_rel</gpred>
+      <label vid='31'/>
+      <var sort='x' vid='29' num='sg' pers='3'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <gpred>compound_rel</gpred>
+      <label vid='34'/>
+      <var sort='e' vid='36' tense='u'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <gpred>udef_q_rel</gpred>
+      <label vid='37'/>
+      <var sort='x' vid='35'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <realpred lemma='party' pos='n' sense='1'/>
+      <label vid='40'/>
+      <var sort='x' vid='35'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <realpred lemma='secretary' pos='n' sense='of'/>
+      <label vid='10005'/>
+      <var sort='x' vid='29' num='sg' pers='3'/>
+    </ep>
+    <hcons hreln='qeq'>
+      <hi> <var sort='h' vid='7'/> </hi>
+      <lo> <label vid='9'/> </lo>
+    </hcons>
+    <hcons hreln='qeq'>
+      <hi> <var sort='h' vid='14'/> </hi>
+      <lo> <label vid='17'/> </lo>
+    </hcons>
+    <hcons hreln='qeq'>
+      <hi> <var sort='h' vid='19'/> </hi>
+      <lo> <label vid='10002'/> </lo>
+    </hcons>
+    <hcons hreln='qeq'>
+      <hi> <var sort='h' vid='24'/> </hi>
+      <lo> <label vid='27'/> </lo>
+    </hcons>
+    <hcons hreln='qeq'>
+      <hi> <var sort='h' vid='32'/> </hi>
+      <lo> <label vid='34'/> </lo>
+    </hcons>
+    <hcons hreln='qeq'>
+      <hi> <var sort='h' vid='38'/> </hi>
+      <lo> <label vid='40'/> </lo>
+    </hcons>
+    <rarg>
+      <rargname>ARG1</rargname>
+      <label vid='3'/>
+      <var sort='e' vid='2' tense='past'/>
+    </rarg>
+    <rarg>
+      <rargname>ARG2</rargname>
+      <label vid='3'/>
+      <var sort='x' vid='4' num='sg' pers='3'/>
+    </rarg>
+    <rarg>
+      <rargname>RSTR</rargname>
+      <label vid='6'/>
+      <var sort='h' vid='7'/>
+    </rarg>
+    <rarg>
+      <rargname>BODY</rargname>
+      <label vid='6'/>
+      <var sort='h' vid='8'/>
+    </rarg>
+    <rarg>
+      <rargname>ARG1</rargname>
+      <label vid='9'/>
+      <var sort='u' vid='10'/>
+    </rarg>
+    <rarg>
+      <rargname>CARG</rargname>
+      <label vid='9'/>
+      <constant>yearersatz</constant>
+    </rarg>
+    <rarg>
+      <rargname>ARG1</rargname>
+      <label vid='10001'/>
+      <var sort='x' vid='4' num='sg' pers='3'/>
+    </rarg>
+    <rarg>
+      <rargname>ARG2</rargname>
+      <label vid='10001'/>
+      <var sort='x' vid='11' num='sg' pers='3' gender='n'/>
+    </rarg>
+    <rarg>
+      <rargname>RSTR</rargname>
+      <label vid='13'/>
+      <var sort='h' vid='14'/>
+    </rarg>
+    <rarg>
+      <rargname>BODY</rargname>
+      <label vid='13'/>
+      <var sort='h' vid='16'/>
+    </rarg>
+    <rarg>
+      <rargname>CARG</rargname>
+      <label vid='17'/>
+      <constant>nameersatz</constant>
+    </rarg>
+    <rarg>
+      <rargname>RSTR</rargname>
+      <label vid='18'/>
+      <var sort='h' vid='19'/>
+    </rarg>
+    <rarg>
+      <rargname>BODY</rargname>
+      <label vid='18'/>
+      <var sort='h' vid='20'/>
+    </rarg>
+    <rarg>
+      <rargname>ARG1</rargname>
+      <label vid='21'/>
+      <var sort='x' vid='11' num='sg' pers='3' gender='n'/>
+    </rarg>
+    <rarg>
+      <rargname>ARG2</rargname>
+      <label vid='21'/>
+      <var sort='x' vid='15' num='sg' pers='3'/>
+    </rarg>
+    <rarg>
+      <rargname>RSTR</rargname>
+      <label vid='23'/>
+      <var sort='h' vid='24'/>
+    </rarg>
+    <rarg>
+      <rargname>BODY</rargname>
+      <label vid='23'/>
+      <var sort='h' vid='26'/>
+    </rarg>
+    <rarg>
+      <rargname>CARG</rargname>
+      <label vid='27'/>
+      <constant>nameersatz</constant>
+    </rarg>
+    <rarg>
+      <rargname>ARG2</rargname>
+      <label vid='10003'/>
+      <var sort='x' vid='25' num='sg' pers='3'/>
+    </rarg>
+    <rarg>
+      <rargname>ARG1</rargname>
+      <label vid='10004'/>
+      <var sort='e' vid='2' tense='past'/>
+    </rarg>
+    <rarg>
+      <rargname>ARG2</rargname>
+      <label vid='10004'/>
+      <var sort='x' vid='29' num='sg' pers='3'/>
+    </rarg>
+    <rarg>
+      <rargname>RSTR</rargname>
+      <label vid='31'/>
+      <var sort='h' vid='32'/>
+    </rarg>
+    <rarg>
+      <rargname>BODY</rargname>
+      <label vid='31'/>
+      <var sort='h' vid='33'/>
+    </rarg>
+    <rarg>
+      <rargname>ARG1</rargname>
+      <label vid='34'/>
+      <var sort='x' vid='29' num='sg' pers='3'/>
+    </rarg>
+    <rarg>
+      <rargname>ARG2</rargname>
+      <label vid='34'/>
+      <var sort='x' vid='35'/>
+    </rarg>
+    <rarg>
+      <rargname>RSTR</rargname>
+      <label vid='37'/>
+      <var sort='h' vid='38'/>
+    </rarg>
+    <rarg>
+      <rargname>BODY</rargname>
+      <label vid='37'/>
+      <var sort='h' vid='39'/>
+    </rarg>
+    <rarg>
+      <rargname>ARG1</rargname>
+      <label vid='10005'/>
+      <var sort='u' vid='41'/>
+    </rarg>
+    <ing>
+      <ing-a> <var sort='h' vid='10003'/> </ing-a>
+      <ing-b> <var sort='h' vid='10004'/> </ing-b> 
+    </ing>
+    <ing>
+      <ing-a> <var sort='h' vid='10003'/> </ing-a>
+      <ing-b> <var sort='h' vid='3'/> </ing-b> 
+    </ing>
+    <ing>
+      <ing-a> <var sort='h' vid='9'/> </ing-a>
+      <ing-b> <var sort='h' vid='10001'/> </ing-b> 
+    </ing>
+    <ing>
+      <ing-a> <var sort='h' vid='10002'/> </ing-a>
+      <ing-b> <var sort='h' vid='21'/> </ing-b> 
+    </ing>
+    <ing>
+      <ing-a> <var sort='h' vid='34'/> </ing-a>
+      <ing-b> <var sort='h' vid='10005'/> </ing-b> 
+    </ing>
+  </rmrs>
+
+  </sentence>
+  </analysis>
+  </t>
+<h>
+  <surface>
+    Berlinguer succeeded Natta. 
+  </surface>
+  <analysis>
+  
+  <sentence>
+  
+  <!--
+       l3 | proper_q_rel( ARG0=x5 BODY=h6 RSTR=h4 ) 
+          |    h4 qeq l7
+       l7 + named_rel( ARG0=x5 CARG=nameersatz ) 
+       l8 | _succeed_v_1( ARG0=e2 ARG1=x5 ARG2=x9 ) 
+      l10 + proper_q_rel( ARG0=x9 BODY=h12 RSTR=h11 ) 
+          +    h11 qeq l13
+      l13 | named_rel( ARG0=x9 CARG=nameersatz ) 
+  -->
+  <rmrs cfrom='-1' cto='-1'>
+    <label vid='1'/>
+    <ep cfrom='-1' cto='-1'>
+      <gpred>proper_q_rel</gpred>
+      <label vid='3'/>
+      <var sort='x' vid='5' num='sg' pers='3'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <gpred>named_rel</gpred>
+      <label vid='7'/>
+      <var sort='x' vid='5' num='sg' pers='3'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <realpred lemma='succeed' pos='v' sense='1'/>
+      <label vid='8'/>
+      <var sort='e' vid='2' tense='past'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <gpred>proper_q_rel</gpred>
+      <label vid='10'/>
+      <var sort='x' vid='9' num='sg' pers='3'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <gpred>named_rel</gpred>
+      <label vid='13'/>
+      <var sort='x' vid='9' num='sg' pers='3'/>
+    </ep>
+    <hcons hreln='qeq'>
+      <hi> <var sort='h' vid='4'/> </hi>
+      <lo> <label vid='7'/> </lo>
+    </hcons>
+    <hcons hreln='qeq'>
+      <hi> <var sort='h' vid='11'/> </hi>
+      <lo> <label vid='13'/> </lo>
+    </hcons>
+    <rarg>
+      <rargname>RSTR</rargname>
+      <label vid='3'/>
+      <var sort='h' vid='4'/>
+    </rarg>
+    <rarg>
+      <rargname>BODY</rargname>
+      <label vid='3'/>
+      <var sort='h' vid='6'/>
+    </rarg>
+    <rarg>
+      <rargname>CARG</rargname>
+      <label vid='7'/>
+      <constant>nameersatz</constant>
+    </rarg>
+    <rarg>
+      <rargname>ARG1</rargname>
+      <label vid='8'/>
+      <var sort='x' vid='5' num='sg' pers='3'/>
+    </rarg>
+    <rarg>
+      <rargname>ARG2</rargname>
+      <label vid='8'/>
+      <var sort='x' vid='9' num='sg' pers='3'/>
+    </rarg>
+    <rarg>
+      <rargname>RSTR</rargname>
+      <label vid='10'/>
+      <var sort='h' vid='11'/>
+    </rarg>
+    <rarg>
+      <rargname>BODY</rargname>
+      <label vid='10'/>
+      <var sort='h' vid='12'/>
+    </rarg>
+    <rarg>
+      <rargname>CARG</rargname>
+      <label vid='13'/>
+      <constant>nameersatz</constant>
+    </rarg>
+  </rmrs>
+
+  </sentence>
+  </analysis>
+  </h>
+</pair>
+
+<pair id="164" entailment="YES" task="IE" length="short" >
+<t>
+  <surface>
+    Chicago White Sox Charities also provides annual ongoing support to program\
+    s such as Special Olympics and the Inner City Little League. 
+  </surface>
+  <analysis>
+  
+  <sentence>
+  
+  <!--
+       l3 | proper_q_rel( ARG0=x5 BODY=h6 RSTR=h4 ) 
+          |    h4 qeq l7
+       l7 + named_rel( ARG0=x5 CARG=nameersatz ) 
+       l8 | _also_a_1( ARG0=e10 ARG1=h9 ) 
+          |    h9 qeq l11
+      l11 + _provide_v_1( ARG0=e2 ARG1=x5 ARG2=x13 ARG3=x12 ) 
+      l14 | udef_q_rel( ARG0=x13 BODY=h16 RSTR=h15 ) 
+          |    h15 qeq l10002
+      l17 + _annual_a_1( ARG0=e18 ARG1=x13 ) 
+   l10002 + _support_n_of( ARG0=x13 ARG1=u20 ) 
+   l10001 | _ongoing_a_1( ARG0=e19 ARG1=x13 ) 
+      l21 + udef_q_rel( ARG0=x12 BODY=h23 RSTR=h22 ) 
+          +    h22 qeq l24
+      l24 | _program_n_of( ARG0=x12 ARG1=u25 ) 
+   l10003 + _such+as_p( ARG0=e27 ARG1=x12 ARG2=x26 ) 
+      l28 | udef_q_rel( ARG0=x26 BODY=h30 RSTR=h29 ) 
+          |    h29 qeq l36
+      l31 + proper_q_rel( ARG0=x33 BODY=h34 RSTR=h32 ) 
+          +    h32 qeq l35
+      l35 | named_rel( ARG0=x33 CARG=nameersatz ) 
+      l36 + _and_c( ARG0=x26 R-INDEX=x37 L-INDEX=x33 ) 
+      l40 | _the_q( ARG0=x37 BODY=h42 RSTR=h41 ) 
+          |    h41 qeq l43
+      l43 + compound_rel( ARG0=e45 ARG1=x37 ARG2=x44 ) 
+   l10004 + _league_n_of( ARG0=x37 ARG1=u50 ) 
+      l46 | proper_q_rel( ARG0=x44 BODY=h48 RSTR=h47 ) 
+          |    h47 qeq l49
+      l49 + named_rel( ARG0=x44 CARG=nameersatz ) 
+  -->
+  <rmrs cfrom='-1' cto='-1'>
+    <label vid='1'/>
+    <ep cfrom='-1' cto='-1'>
+      <gpred>proper_q_rel</gpred>
+      <label vid='3'/>
+      <var sort='x' vid='5' num='sg' pers='3'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <gpred>named_rel</gpred>
+      <label vid='7'/>
+      <var sort='x' vid='5' num='sg' pers='3'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <realpred lemma='also' pos='a' sense='1'/>
+      <label vid='8'/>
+      <var sort='e' vid='10' tense='u'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <realpred lemma='provide' pos='v' sense='1'/>
+      <label vid='11'/>
+      <var sort='e' vid='2' tense='present'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <gpred>udef_q_rel</gpred>
+      <label vid='14'/>
+      <var sort='x' vid='13' num='sg' pers='3' gender='n'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <realpred lemma='annual' pos='a' sense='1'/>
+      <label vid='17'/>
+      <var sort='e' vid='18' tense='u'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <realpred lemma='ongoing' pos='a' sense='1'/>
+      <label vid='10001'/>
+      <var sort='e' vid='19' tense='u'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <realpred lemma='support' pos='n' sense='of'/>
+      <label vid='10002'/>
+      <var sort='x' vid='13' num='sg' pers='3' gender='n'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <gpred>udef_q_rel</gpred>
+      <label vid='21'/>
+      <var sort='x' vid='12' num='pl' pers='3'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <realpred lemma='program' pos='n' sense='of'/>
+      <label vid='24'/>
+      <var sort='x' vid='12' num='pl' pers='3'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <realpred lemma='such+as' pos='p'/>
+      <label vid='10003'/>
+      <var sort='e' vid='27'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <gpred>udef_q_rel</gpred>
+      <label vid='28'/>
+      <var sort='x' vid='26' num='pl' pers='3'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <gpred>proper_q_rel</gpred>
+      <label vid='31'/>
+      <var sort='x' vid='33' num='sg' pers='3'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <gpred>named_rel</gpred>
+      <label vid='35'/>
+      <var sort='x' vid='33' num='sg' pers='3'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <realpred lemma='and' pos='c'/>
+      <label vid='36'/>
+      <var sort='x' vid='26' num='pl' pers='3'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <realpred lemma='the' pos='q'/>
+      <label vid='40'/>
+      <var sort='x' vid='37' num='sg' pers='3'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <gpred>compound_rel</gpred>
+      <label vid='43'/>
+      <var sort='e' vid='45' tense='u'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <gpred>proper_q_rel</gpred>
+      <label vid='46'/>
+      <var sort='x' vid='44'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <gpred>named_rel</gpred>
+      <label vid='49'/>
+      <var sort='x' vid='44'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <realpred lemma='league' pos='n' sense='of'/>
+      <label vid='10004'/>
+      <var sort='x' vid='37' num='sg' pers='3'/>
+    </ep>
+    <hcons hreln='qeq'>
+      <hi> <var sort='h' vid='4'/> </hi>
+      <lo> <label vid='7'/> </lo>
+    </hcons>
+    <hcons hreln='qeq'>
+      <hi> <var sort='h' vid='9'/> </hi>
+      <lo> <label vid='11'/> </lo>
+    </hcons>
+    <hcons hreln='qeq'>
+      <hi> <var sort='h' vid='15'/> </hi>
+      <lo> <label vid='10002'/> </lo>
+    </hcons>
+    <hcons hreln='qeq'>
+      <hi> <var sort='h' vid='22'/> </hi>
+      <lo> <label vid='24'/> </lo>
+    </hcons>
+    <hcons hreln='qeq'>
+      <hi> <var sort='h' vid='29'/> </hi>
+      <lo> <label vid='36'/> </lo>
+    </hcons>
+    <hcons hreln='qeq'>
+      <hi> <var sort='h' vid='32'/> </hi>
+      <lo> <label vid='35'/> </lo>
+    </hcons>
+    <hcons hreln='qeq'>
+      <hi> <var sort='h' vid='41'/> </hi>
+      <lo> <label vid='43'/> </lo>
+    </hcons>
+    <hcons hreln='qeq'>
+      <hi> <var sort='h' vid='47'/> </hi>
+      <lo> <label vid='49'/> </lo>
+    </hcons>
+    <rarg>
+      <rargname>RSTR</rargname>
+      <label vid='3'/>
+      <var sort='h' vid='4'/>
+    </rarg>
+    <rarg>
+      <rargname>BODY</rargname>
+      <label vid='3'/>
+      <var sort='h' vid='6'/>
+    </rarg>
+    <rarg>
+      <rargname>CARG</rargname>
+      <label vid='7'/>
+      <constant>nameersatz</constant>
+    </rarg>
+    <rarg>
+      <rargname>ARG1</rargname>
+      <label vid='8'/>
+      <var sort='h' vid='9'/>
+    </rarg>
+    <rarg>
+      <rargname>ARG1</rargname>
+      <label vid='11'/>
+      <var sort='x' vid='5' num='sg' pers='3'/>
+    </rarg>
+    <rarg>
+      <rargname>ARG2</rargname>
+      <label vid='11'/>
+      <var sort='x' vid='13' num='sg' pers='3' gender='n'/>
+    </rarg>
+    <rarg>
+      <rargname>ARG3</rargname>
+      <label vid='11'/>
+      <var sort='x' vid='12' num='pl' pers='3'/>
+    </rarg>
+    <rarg>
+      <rargname>RSTR</rargname>
+      <label vid='14'/>
+      <var sort='h' vid='15'/>
+    </rarg>
+    <rarg>
+      <rargname>BODY</rargname>
+      <label vid='14'/>
+      <var sort='h' vid='16'/>
+    </rarg>
+    <rarg>
+      <rargname>ARG1</rargname>
+      <label vid='17'/>
+      <var sort='x' vid='13' num='sg' pers='3' gender='n'/>
+    </rarg>
+    <rarg>
+      <rargname>ARG1</rargname>
+      <label vid='10001'/>
+      <var sort='x' vid='13' num='sg' pers='3' gender='n'/>
+    </rarg>
+    <rarg>
+      <rargname>ARG1</rargname>
+      <label vid='10002'/>
+      <var sort='u' vid='20'/>
+    </rarg>
+    <rarg>
+      <rargname>RSTR</rargname>
+      <label vid='21'/>
+      <var sort='h' vid='22'/>
+    </rarg>
+    <rarg>
+      <rargname>BODY</rargname>
+      <label vid='21'/>
+      <var sort='h' vid='23'/>
+    </rarg>
+    <rarg>
+      <rargname>ARG1</rargname>
+      <label vid='24'/>
+      <var sort='u' vid='25'/>
+    </rarg>
+    <rarg>
+      <rargname>ARG1</rargname>
+      <label vid='10003'/>
+      <var sort='x' vid='12' num='pl' pers='3'/>
+    </rarg>
+    <rarg>
+      <rargname>ARG2</rargname>
+      <label vid='10003'/>
+      <var sort='x' vid='26' num='pl' pers='3'/>
+    </rarg>
+    <rarg>
+      <rargname>RSTR</rargname>
+      <label vid='28'/>
+      <var sort='h' vid='29'/>
+    </rarg>
+    <rarg>
+      <rargname>BODY</rargname>
+      <label vid='28'/>
+      <var sort='h' vid='30'/>
+    </rarg>
+    <rarg>
+      <rargname>RSTR</rargname>
+      <label vid='31'/>
+      <var sort='h' vid='32'/>
+    </rarg>
+    <rarg>
+      <rargname>BODY</rargname>
+      <label vid='31'/>
+      <var sort='h' vid='34'/>
+    </rarg>
+    <rarg>
+      <rargname>CARG</rargname>
+      <label vid='35'/>
+      <constant>nameersatz</constant>
+    </rarg>
+    <rarg>
+      <rargname>L-INDEX</rargname>
+      <label vid='36'/>
+      <var sort='x' vid='33' num='sg' pers='3'/>
+    </rarg>
+    <rarg>
+      <rargname>R-INDEX</rargname>
+      <label vid='36'/>
+      <var sort='x' vid='37' num='sg' pers='3'/>
+    </rarg>
+    <rarg>
+      <rargname>RSTR</rargname>
+      <label vid='40'/>
+      <var sort='h' vid='41'/>
+    </rarg>
+    <rarg>
+      <rargname>BODY</rargname>
+      <label vid='40'/>
+      <var sort='h' vid='42'/>
+    </rarg>
+    <rarg>
+      <rargname>ARG1</rargname>
+      <label vid='43'/>
+      <var sort='x' vid='37' num='sg' pers='3'/>
+    </rarg>
+    <rarg>
+      <rargname>ARG2</rargname>
+      <label vid='43'/>
+      <var sort='x' vid='44'/>
+    </rarg>
+    <rarg>
+      <rargname>RSTR</rargname>
+      <label vid='46'/>
+      <var sort='h' vid='47'/>
+    </rarg>
+    <rarg>
+      <rargname>BODY</rargname>
+      <label vid='46'/>
+      <var sort='h' vid='48'/>
+    </rarg>
+    <rarg>
+      <rargname>CARG</rargname>
+      <label vid='49'/>
+      <constant>nameersatz</constant>
+    </rarg>
+    <rarg>
+      <rargname>ARG1</rargname>
+      <label vid='10004'/>
+      <var sort='u' vid='50'/>
+    </rarg>
+    <ing>
+      <ing-a> <var sort='h' vid='10002'/> </ing-a>
+      <ing-b> <var sort='h' vid='10001'/> </ing-b> 
+    </ing>
+    <ing>
+      <ing-a> <var sort='h' vid='10002'/> </ing-a>
+      <ing-b> <var sort='h' vid='17'/> </ing-b> 
+    </ing>
+    <ing>
+      <ing-a> <var sort='h' vid='24'/> </ing-a>
+      <ing-b> <var sort='h' vid='10003'/> </ing-b> 
+    </ing>
+    <ing>
+      <ing-a> <var sort='h' vid='43'/> </ing-a>
+      <ing-b> <var sort='h' vid='10004'/> </ing-b> 
+    </ing>
+  </rmrs>
+
+  </sentence>
+  </analysis>
+  </t>
+<h>
+  <surface>
+    The Inner City Little League is sponsored by Chicago White Sox Charities. 
+  </surface>
+  <analysis>
+  
+  <sentence>
+  
+  <!--
+       l3 | _the_q( ARG0=x4 BODY=h6 RSTR=h5 ) 
+          |    h5 qeq l7
+       l7 + compound_rel( ARG0=e9 ARG1=x4 ARG2=x8 ) 
+   l10001 + _league_n_of( ARG0=x4 ARG1=u14 ) 
+      l10 | proper_q_rel( ARG0=x8 BODY=h12 RSTR=h11 ) 
+          |    h11 qeq l13
+      l13 + named_rel( ARG0=x8 CARG=nameersatz ) 
+      l15 | _sponsor_v_1( ARG0=e2 ARG1=x16 ARG2=x4 ) 
+      l17 + proper_q_rel( ARG0=x16 BODY=h19 RSTR=h18 ) 
+          +    h18 qeq l20
+      l20 | named_rel( ARG0=x16 CARG=nameersatz ) 
+  -->
+  <rmrs cfrom='-1' cto='-1'>
+    <label vid='1'/>
+    <ep cfrom='-1' cto='-1'>
+      <realpred lemma='the' pos='q'/>
+      <label vid='3'/>
+      <var sort='x' vid='4' num='sg' pers='3'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <gpred>compound_rel</gpred>
+      <label vid='7'/>
+      <var sort='e' vid='9' tense='u'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <gpred>proper_q_rel</gpred>
+      <label vid='10'/>
+      <var sort='x' vid='8'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <gpred>named_rel</gpred>
+      <label vid='13'/>
+      <var sort='x' vid='8'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <realpred lemma='league' pos='n' sense='of'/>
+      <label vid='10001'/>
+      <var sort='x' vid='4' num='sg' pers='3'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <realpred lemma='sponsor' pos='v' sense='1'/>
+      <label vid='15'/>
+      <var sort='e' vid='2' tense='present'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <gpred>proper_q_rel</gpred>
+      <label vid='17'/>
+      <var sort='x' vid='16' num='sg' pers='3'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <gpred>named_rel</gpred>
+      <label vid='20'/>
+      <var sort='x' vid='16' num='sg' pers='3'/>
+    </ep>
+    <hcons hreln='qeq'>
+      <hi> <var sort='h' vid='5'/> </hi>
+      <lo> <label vid='7'/> </lo>
+    </hcons>
+    <hcons hreln='qeq'>
+      <hi> <var sort='h' vid='11'/> </hi>
+      <lo> <label vid='13'/> </lo>
+    </hcons>
+    <hcons hreln='qeq'>
+      <hi> <var sort='h' vid='18'/> </hi>
+      <lo> <label vid='20'/> </lo>
+    </hcons>
+    <rarg>
+      <rargname>RSTR</rargname>
+      <label vid='3'/>
+      <var sort='h' vid='5'/>
+    </rarg>
+    <rarg>
+      <rargname>BODY</rargname>
+      <label vid='3'/>
+      <var sort='h' vid='6'/>
+    </rarg>
+    <rarg>
+      <rargname>ARG1</rargname>
+      <label vid='7'/>
+      <var sort='x' vid='4' num='sg' pers='3'/>
+    </rarg>
+    <rarg>
+      <rargname>ARG2</rargname>
+      <label vid='7'/>
+      <var sort='x' vid='8'/>
+    </rarg>
+    <rarg>
+      <rargname>RSTR</rargname>
+      <label vid='10'/>
+      <var sort='h' vid='11'/>
+    </rarg>
+    <rarg>
+      <rargname>BODY</rargname>
+      <label vid='10'/>
+      <var sort='h' vid='12'/>
+    </rarg>
+    <rarg>
+      <rargname>CARG</rargname>
+      <label vid='13'/>
+      <constant>nameersatz</constant>
+    </rarg>
+    <rarg>
+      <rargname>ARG1</rargname>
+      <label vid='10001'/>
+      <var sort='u' vid='14'/>
+    </rarg>
+    <rarg>
+      <rargname>ARG1</rargname>
+      <label vid='15'/>
+      <var sort='x' vid='16' num='sg' pers='3'/>
+    </rarg>
+    <rarg>
+      <rargname>ARG2</rargname>
+      <label vid='15'/>
+      <var sort='x' vid='4' num='sg' pers='3'/>
+    </rarg>
+    <rarg>
+      <rargname>RSTR</rargname>
+      <label vid='17'/>
+      <var sort='h' vid='18'/>
+    </rarg>
+    <rarg>
+      <rargname>BODY</rargname>
+      <label vid='17'/>
+      <var sort='h' vid='19'/>
+    </rarg>
+    <rarg>
+      <rargname>CARG</rargname>
+      <label vid='20'/>
+      <constant>nameersatz</constant>
+    </rarg>
+    <ing>
+      <ing-a> <var sort='h' vid='7'/> </ing-a>
+      <ing-b> <var sort='h' vid='10001'/> </ing-b> 
+    </ing>
+  </rmrs>
+
+  </sentence>
+  </analysis>
+  </h>
+</pair>
+
+<pair id="759" entailment="YES" task="SUM" length="short" >
+<t>
+  <surface>
+    CVS will stop selling its own brand of 500-milligram acetaminophen caplets \
+    and pull bottles from store shelves nation wide, spokesman Mike DeAngelis s\
+    aid. 
+  </surface>
+  <analysis>
+  
+  <sentence>
+  <error>
+    edge limit exhausted (65536 pedges)
+  </error>
+  </sentence>
+  </analysis>
+  </t>
+<h>
+  <surface>
+    CVS will not sell its own brand of 500-milligram acetaminophen caplets anyl\
+    onger. 
+  </surface>
+  <analysis>
+  
+  <sentence>
+  
+  <!--
+       l3 | proper_q_rel( ARG0=x5 BODY=h6 RSTR=h4 ) 
+          |    h4 qeq l7
+       l7 + named_rel( ARG0=x5 CARG=nameersatz ) 
+       l8 | neg_rel( ARG0=e10 ARG1=h9 ) 
+          |    h9 qeq l11
+      l11 + _sell_v_1( ARG0=e2 ARG1=x5 ARG2=x12 ) 
+      l13 | def_explicit_q_rel( ARG0=x12 BODY=h15 RSTR=h14 ) 
+          |    h14 qeq l10002
+      l16 + poss_rel( ARG0=e18 ARG1=x12 ARG2=x17 ) 
+   l10001 + _own_a_1( ARG0=e23 ARG1=x12 ) 
+   l10003 + _of_p( ARG0=e25 ARG1=x12 ARG2=x24 ) 
+   l10004 + unspec_loc_rel( ARG0=e31 ARG1=x12 ARG2=x30 ) 
+      l19 | pronoun_q_rel( ARG0=x17 BODY=h21 RSTR=h20 ) 
+          |    h20 qeq l22
+      l22 + pron_rel( ARG0=x17 ) 
+   l10002 | _brand_n_of( ARG0=x12 ) 
+      l26 + proper_q_rel( ARG0=x24 BODY=h28 RSTR=h27 ) 
+          +    h27 qeq l29
+      l29 | named_rel( ARG0=x24 CARG=nameersatz ) 
+      l32 + _any_x_deg( ARG0=e34 ARG1=e33 ) 
+   l10006 + _longer_a_1( ARG0=e33 ARG1=x30 ) 
+   l10005 | time_n_rel( ARG0=x30 ) 
+      l35 + def_implicit_q_rel( ARG0=x30 BODY=h37 RSTR=h36 ) 
+          +    h36 qeq l32
+  -->
+  <rmrs cfrom='-1' cto='-1'>
+    <label vid='1'/>
+    <ep cfrom='-1' cto='-1'>
+      <gpred>proper_q_rel</gpred>
+      <label vid='3'/>
+      <var sort='x' vid='5' num='sg' pers='3'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <gpred>named_rel</gpred>
+      <label vid='7'/>
+      <var sort='x' vid='5' num='sg' pers='3'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <gpred>neg_rel</gpred>
+      <label vid='8'/>
+      <var sort='e' vid='10' tense='u'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <realpred lemma='sell' pos='v' sense='1'/>
+      <label vid='11'/>
+      <var sort='e' vid='2' tense='future'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <gpred>def_explicit_q_rel</gpred>
+      <label vid='13'/>
+      <var sort='x' vid='12' num='sg' pers='3'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <gpred>poss_rel</gpred>
+      <label vid='16'/>
+      <var sort='e' vid='18' tense='u'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <gpred>pronoun_q_rel</gpred>
+      <label vid='19'/>
+      <var sort='x' vid='17' num='sg' pers='3' gender='n'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <gpred>pron_rel</gpred>
+      <label vid='22'/>
+      <var sort='x' vid='17' num='sg' pers='3' gender='n'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <realpred lemma='own' pos='a' sense='1'/>
+      <label vid='10001'/>
+      <var sort='e' vid='23' tense='u'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <realpred lemma='brand' pos='n' sense='of'/>
+      <label vid='10002'/>
+      <var sort='x' vid='12' num='sg' pers='3'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <realpred lemma='of' pos='p'/>
+      <label vid='10003'/>
+      <var sort='e' vid='25'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <gpred>proper_q_rel</gpred>
+      <label vid='26'/>
+      <var sort='x' vid='24' num='sg' pers='3'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <gpred>named_rel</gpred>
+      <label vid='29'/>
+      <var sort='x' vid='24' num='sg' pers='3'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <gpred>unspec_loc_rel</gpred>
+      <label vid='10004'/>
+      <var sort='e' vid='31'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <realpred lemma='any' pos='x' sense='deg'/>
+      <label vid='32'/>
+      <var sort='e' vid='34' tense='u'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <gpred>time_n_rel</gpred>
+      <label vid='10005'/>
+      <var sort='x' vid='30' num='sg' pers='3'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <gpred>def_implicit_q_rel</gpred>
+      <label vid='35'/>
+      <var sort='x' vid='30' num='sg' pers='3'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <realpred lemma='longer' pos='a' sense='1'/>
+      <label vid='10006'/>
+      <var sort='e' vid='33'/>
+    </ep>
+    <hcons hreln='qeq'>
+      <hi> <var sort='h' vid='4'/> </hi>
+      <lo> <label vid='7'/> </lo>
+    </hcons>
+    <hcons hreln='qeq'>
+      <hi> <var sort='h' vid='9'/> </hi>
+      <lo> <label vid='11'/> </lo>
+    </hcons>
+    <hcons hreln='qeq'>
+      <hi> <var sort='h' vid='14'/> </hi>
+      <lo> <label vid='10002'/> </lo>
+    </hcons>
+    <hcons hreln='qeq'>
+      <hi> <var sort='h' vid='20'/> </hi>
+      <lo> <label vid='22'/> </lo>
+    </hcons>
+    <hcons hreln='qeq'>
+      <hi> <var sort='h' vid='27'/> </hi>
+      <lo> <label vid='29'/> </lo>
+    </hcons>
+    <hcons hreln='qeq'>
+      <hi> <var sort='h' vid='36'/> </hi>
+      <lo> <label vid='32'/> </lo>
+    </hcons>
+    <rarg>
+      <rargname>RSTR</rargname>
+      <label vid='3'/>
+      <var sort='h' vid='4'/>
+    </rarg>
+    <rarg>
+      <rargname>BODY</rargname>
+      <label vid='3'/>
+      <var sort='h' vid='6'/>
+    </rarg>
+    <rarg>
+      <rargname>CARG</rargname>
+      <label vid='7'/>
+      <constant>nameersatz</constant>
+    </rarg>
+    <rarg>
+      <rargname>ARG1</rargname>
+      <label vid='8'/>
+      <var sort='h' vid='9'/>
+    </rarg>
+    <rarg>
+      <rargname>ARG1</rargname>
+      <label vid='11'/>
+      <var sort='x' vid='5' num='sg' pers='3'/>
+    </rarg>
+    <rarg>
+      <rargname>ARG2</rargname>
+      <label vid='11'/>
+      <var sort='x' vid='12' num='sg' pers='3'/>
+    </rarg>
+    <rarg>
+      <rargname>RSTR</rargname>
+      <label vid='13'/>
+      <var sort='h' vid='14'/>
+    </rarg>
+    <rarg>
+      <rargname>BODY</rargname>
+      <label vid='13'/>
+      <var sort='h' vid='15'/>
+    </rarg>
+    <rarg>
+      <rargname>ARG1</rargname>
+      <label vid='16'/>
+      <var sort='x' vid='12' num='sg' pers='3'/>
+    </rarg>
+    <rarg>
+      <rargname>ARG2</rargname>
+      <label vid='16'/>
+      <var sort='x' vid='17' num='sg' pers='3' gender='n'/>
+    </rarg>
+    <rarg>
+      <rargname>RSTR</rargname>
+      <label vid='19'/>
+      <var sort='h' vid='20'/>
+    </rarg>
+    <rarg>
+      <rargname>BODY</rargname>
+      <label vid='19'/>
+      <var sort='h' vid='21'/>
+    </rarg>
+    <rarg>
+      <rargname>ARG1</rargname>
+      <label vid='10001'/>
+      <var sort='x' vid='12' num='sg' pers='3'/>
+    </rarg>
+    <rarg>
+      <rargname>ARG1</rargname>
+      <label vid='10003'/>
+      <var sort='x' vid='12' num='sg' pers='3'/>
+    </rarg>
+    <rarg>
+      <rargname>ARG2</rargname>
+      <label vid='10003'/>
+      <var sort='x' vid='24' num='sg' pers='3'/>
+    </rarg>
+    <rarg>
+      <rargname>RSTR</rargname>
+      <label vid='26'/>
+      <var sort='h' vid='27'/>
+    </rarg>
+    <rarg>
+      <rargname>BODY</rargname>
+      <label vid='26'/>
+      <var sort='h' vid='28'/>
+    </rarg>
+    <rarg>
+      <rargname>CARG</rargname>
+      <label vid='29'/>
+      <constant>nameersatz</constant>
+    </rarg>
+    <rarg>
+      <rargname>ARG1</rargname>
+      <label vid='10004'/>
+      <var sort='x' vid='12' num='sg' pers='3'/>
+    </rarg>
+    <rarg>
+      <rargname>ARG2</rargname>
+      <label vid='10004'/>
+      <var sort='x' vid='30' num='sg' pers='3'/>
+    </rarg>
+    <rarg>
+      <rargname>ARG1</rargname>
+      <label vid='32'/>
+      <var sort='e' vid='33'/>
+    </rarg>
+    <rarg>
+      <rargname>RSTR</rargname>
+      <label vid='35'/>
+      <var sort='h' vid='36'/>
+    </rarg>
+    <rarg>
+      <rargname>BODY</rargname>
+      <label vid='35'/>
+      <var sort='h' vid='37'/>
+    </rarg>
+    <rarg>
+      <rargname>ARG1</rargname>
+      <label vid='10006'/>
+      <var sort='x' vid='30' num='sg' pers='3'/>
+    </rarg>
+    <ing>
+      <ing-a> <var sort='h' vid='10002'/> </ing-a>
+      <ing-b> <var sort='h' vid='10001'/> </ing-b> 
+    </ing>
+    <ing>
+      <ing-a> <var sort='h' vid='10002'/> </ing-a>
+      <ing-b> <var sort='h' vid='10003'/> </ing-b> 
+    </ing>
+    <ing>
+      <ing-a> <var sort='h' vid='10002'/> </ing-a>
+      <ing-b> <var sort='h' vid='10004'/> </ing-b> 
+    </ing>
+    <ing>
+      <ing-a> <var sort='h' vid='10002'/> </ing-a>
+      <ing-b> <var sort='h' vid='16'/> </ing-b> 
+    </ing>
+    <ing>
+      <ing-a> <var sort='h' vid='32'/> </ing-a>
+      <ing-b> <var sort='h' vid='10005'/> </ing-b> 
+    </ing>
+    <ing>
+      <ing-a> <var sort='h' vid='32'/> </ing-a>
+      <ing-b> <var sort='h' vid='10006'/> </ing-b> 
+    </ing>
+  </rmrs>
+
+  </sentence>
+  </analysis>
+  </h>
+</pair>
+
+<pair id="23" entailment="YES" task="IE" length="short" >
+<t>
+  <surface>
+    The Kalido Technical Advisory Board members include Boris Evelson, founder \
+    and managing partner, Textra Group, Inc., and Bill Inmon, president, Inmon \
+    Data Systems. 
+  </surface>
+  <analysis>
+  
+  <sentence>
+  
+  <!--
+       l3 | _the_q( ARG0=x4 BODY=h6 RSTR=h5 ) 
+          |    h5 qeq l7
+       l7 + compound_rel( ARG0=e9 ARG1=x4 ARG2=x8 ) 
+   l10001 + _member_n_of( ARG0=x4 ARG1=u14 ) 
+      l10 | proper_q_rel( ARG0=x8 BODY=h12 RSTR=h11 ) 
+          |    h11 qeq l13
+      l13 + named_rel( ARG0=x8 CARG=nameersatz ) 
+      l15 | _include_v_1( ARG0=e2 ARG1=x4 ARG2=x16 ) 
+      l17 + udef_q_rel( ARG0=x16 BODY=h19 RSTR=h18 ) 
+          +    h18 qeq l59
+      l20 | appos_rel( ARG0=e23 ARG1=x21 ARG2=x22 ) 
+   l10002 | named_rel( ARG0=x21 CARG=nameersatz ) 
+      l24 + udef_q_rel( ARG0=x22 BODY=h26 RSTR=h25 ) 
+          +    h25 qeq l30
+      l27 | proper_q_rel( ARG0=x21 BODY=h29 RSTR=h28 ) 
+          |    h28 qeq l20
+      l30 + compound_rel( ARG0=e32 ARG1=x22 ARG2=x31 ) 
+   l10003 + _partner_n_1( ARG0=x22 ) 
+      l33 | udef_q_rel( ARG0=x31 BODY=h35 RSTR=h34 ) 
+          |    h34 qeq l46
+      l36 + udef_q_rel( ARG0=x37 BODY=h39 RSTR=h38 ) 
+          +    h38 qeq l40
+      l40 | _founder_n_of( ARG0=x37 ARG1=u41 ) 
+      l42 + udef_q_rel( ARG0=x44 BODY=h45 RSTR=h43 ) 
+          +    h43 qeq l52
+      l46 | _and_c( ARG0=x31 R-INDEX=x44 L-INDEX=x37 ) 
+      l49 + _manage_v_cope( ARG0=e50 ) 
+      l52 | nominalization_rel( ARG0=x44 ARG1=h49 ) 
+   l10004 + _of_p( ARG0=e54 ARG1=x22 ARG2=x53 ) 
+      l55 | proper_q_rel( ARG0=x53 BODY=h57 RSTR=h56 ) 
+          |    h56 qeq l58
+      l58 + named_rel( ARG0=x53 CARG=nameersatz ) 
+      l59 | _and_c( ARG0=x16 R-INDEX=x60 L-INDEX=x21 ) 
+      l63 + appos_rel( ARG0=e65 ARG1=x60 ARG2=x64 ) 
+   l10005 + named_rel( ARG0=x60 CARG=nameersatz ) 
+      l66 | udef_q_rel( ARG0=x64 BODY=h68 RSTR=h67 ) 
+          |    h67 qeq l72
+      l69 + proper_q_rel( ARG0=x60 BODY=h71 RSTR=h70 ) 
+          +    h70 qeq l63
+      l72 | _president_n_of( ARG0=x64 ARG1=x73 ) 
+      l74 + proper_q_rel( ARG0=x73 BODY=h76 RSTR=h75 ) 
+          +    h75 qeq l77
+      l77 | named_rel( ARG0=x73 CARG=nameersatz ) 
+  -->
+  <rmrs cfrom='-1' cto='-1'>
+    <label vid='1'/>
+    <ep cfrom='-1' cto='-1'>
+      <realpred lemma='the' pos='q'/>
+      <label vid='3'/>
+      <var sort='x' vid='4' num='pl' pers='3'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <gpred>compound_rel</gpred>
+      <label vid='7'/>
+      <var sort='e' vid='9' tense='u'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <gpred>proper_q_rel</gpred>
+      <label vid='10'/>
+      <var sort='x' vid='8'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <gpred>named_rel</gpred>
+      <label vid='13'/>
+      <var sort='x' vid='8'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <realpred lemma='member' pos='n' sense='of'/>
+      <label vid='10001'/>
+      <var sort='x' vid='4' num='pl' pers='3'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <realpred lemma='include' pos='v' sense='1'/>
+      <label vid='15'/>
+      <var sort='e' vid='2' tense='present'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <gpred>udef_q_rel</gpred>
+      <label vid='17'/>
+      <var sort='x' vid='16' num='pl' pers='3'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <gpred>appos_rel</gpred>
+      <label vid='20'/>
+      <var sort='e' vid='23' tense='u'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <gpred>udef_q_rel</gpred>
+      <label vid='24'/>
+      <var sort='x' vid='22' num='sg' pers='3'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <gpred>proper_q_rel</gpred>
+      <label vid='27'/>
+      <var sort='x' vid='21' num='sg' pers='3'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <gpred>named_rel</gpred>
+      <label vid='10002'/>
+      <var sort='x' vid='21' num='sg' pers='3'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <gpred>compound_rel</gpred>
+      <label vid='30'/>
+      <var sort='e' vid='32' tense='u'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <gpred>udef_q_rel</gpred>
+      <label vid='33'/>
+      <var sort='x' vid='31' pers='3'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <gpred>udef_q_rel</gpred>
+      <label vid='36'/>
+      <var sort='x' vid='37'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <realpred lemma='founder' pos='n' sense='of'/>
+      <label vid='40'/>
+      <var sort='x' vid='37'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <gpred>udef_q_rel</gpred>
+      <label vid='42'/>
+      <var sort='x' vid='44' num='sg' pers='3' gender='n'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <realpred lemma='and' pos='c'/>
+      <label vid='46'/>
+      <var sort='x' vid='31' pers='3'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <realpred lemma='manage' pos='v' sense='cope'/>
+      <label vid='49'/>
+      <var sort='e' vid='50' tense='u'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <gpred>nominalization_rel</gpred>
+      <label vid='52'/>
+      <var sort='x' vid='44' num='sg' pers='3' gender='n'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <realpred lemma='partner' pos='n' sense='1'/>
+      <label vid='10003'/>
+      <var sort='x' vid='22' num='sg' pers='3'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <realpred lemma='of' pos='p'/>
+      <label vid='10004'/>
+      <var sort='e' vid='54'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <gpred>proper_q_rel</gpred>
+      <label vid='55'/>
+      <var sort='x' vid='53' num='sg' pers='3'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <gpred>named_rel</gpred>
+      <label vid='58'/>
+      <var sort='x' vid='53' num='sg' pers='3'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <realpred lemma='and' pos='c'/>
+      <label vid='59'/>
+      <var sort='x' vid='16' num='pl' pers='3'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <gpred>appos_rel</gpred>
+      <label vid='63'/>
+      <var sort='e' vid='65' tense='u'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <gpred>udef_q_rel</gpred>
+      <label vid='66'/>
+      <var sort='x' vid='64' num='sg' pers='3'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <gpred>proper_q_rel</gpred>
+      <label vid='69'/>
+      <var sort='x' vid='60' num='sg' pers='3'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <gpred>named_rel</gpred>
+      <label vid='10005'/>
+      <var sort='x' vid='60' num='sg' pers='3'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <realpred lemma='president' pos='n' sense='of'/>
+      <label vid='72'/>
+      <var sort='x' vid='64' num='sg' pers='3'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <gpred>proper_q_rel</gpred>
+      <label vid='74'/>
+      <var sort='x' vid='73' num='sg' pers='3'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <gpred>named_rel</gpred>
+      <label vid='77'/>
+      <var sort='x' vid='73' num='sg' pers='3'/>
+    </ep>
+    <hcons hreln='qeq'>
+      <hi> <var sort='h' vid='5'/> </hi>
+      <lo> <label vid='7'/> </lo>
+    </hcons>
+    <hcons hreln='qeq'>
+      <hi> <var sort='h' vid='11'/> </hi>
+      <lo> <label vid='13'/> </lo>
+    </hcons>
+    <hcons hreln='qeq'>
+      <hi> <var sort='h' vid='18'/> </hi>
+      <lo> <label vid='59'/> </lo>
+    </hcons>
+    <hcons hreln='qeq'>
+      <hi> <var sort='h' vid='25'/> </hi>
+      <lo> <label vid='30'/> </lo>
+    </hcons>
+    <hcons hreln='qeq'>
+      <hi> <var sort='h' vid='28'/> </hi>
+      <lo> <label vid='20'/> </lo>
+    </hcons>
+    <hcons hreln='qeq'>
+      <hi> <var sort='h' vid='34'/> </hi>
+      <lo> <label vid='46'/> </lo>
+    </hcons>
+    <hcons hreln='qeq'>
+      <hi> <var sort='h' vid='38'/> </hi>
+      <lo> <label vid='40'/> </lo>
+    </hcons>
+    <hcons hreln='qeq'>
+      <hi> <var sort='h' vid='43'/> </hi>
+      <lo> <label vid='52'/> </lo>
+    </hcons>
+    <hcons hreln='qeq'>
+      <hi> <var sort='h' vid='56'/> </hi>
+      <lo> <label vid='58'/> </lo>
+    </hcons>
+    <hcons hreln='qeq'>
+      <hi> <var sort='h' vid='67'/> </hi>
+      <lo> <label vid='72'/> </lo>
+    </hcons>
+    <hcons hreln='qeq'>
+      <hi> <var sort='h' vid='70'/> </hi>
+      <lo> <label vid='63'/> </lo>
+    </hcons>
+    <hcons hreln='qeq'>
+      <hi> <var sort='h' vid='75'/> </hi>
+      <lo> <label vid='77'/> </lo>
+    </hcons>
+    <rarg>
+      <rargname>RSTR</rargname>
+      <label vid='3'/>
+      <var sort='h' vid='5'/>
+    </rarg>
+    <rarg>
+      <rargname>BODY</rargname>
+      <label vid='3'/>
+      <var sort='h' vid='6'/>
+    </rarg>
+    <rarg>
+      <rargname>ARG1</rargname>
+      <label vid='7'/>
+      <var sort='x' vid='4' num='pl' pers='3'/>
+    </rarg>
+    <rarg>
+      <rargname>ARG2</rargname>
+      <label vid='7'/>
+      <var sort='x' vid='8'/>
+    </rarg>
+    <rarg>
+      <rargname>RSTR</rargname>
+      <label vid='10'/>
+      <var sort='h' vid='11'/>
+    </rarg>
+    <rarg>
+      <rargname>BODY</rargname>
+      <label vid='10'/>
+      <var sort='h' vid='12'/>
+    </rarg>
+    <rarg>
+      <rargname>CARG</rargname>
+      <label vid='13'/>
+      <constant>nameersatz</constant>
+    </rarg>
+    <rarg>
+      <rargname>ARG1</rargname>
+      <label vid='10001'/>
+      <var sort='u' vid='14'/>
+    </rarg>
+    <rarg>
+      <rargname>ARG1</rargname>
+      <label vid='15'/>
+      <var sort='x' vid='4' num='pl' pers='3'/>
+    </rarg>
+    <rarg>
+      <rargname>ARG2</rargname>
+      <label vid='15'/>
+      <var sort='x' vid='16' num='pl' pers='3'/>
+    </rarg>
+    <rarg>
+      <rargname>RSTR</rargname>
+      <label vid='17'/>
+      <var sort='h' vid='18'/>
+    </rarg>
+    <rarg>
+      <rargname>BODY</rargname>
+      <label vid='17'/>
+      <var sort='h' vid='19'/>
+    </rarg>
+    <rarg>
+      <rargname>ARG1</rargname>
+      <label vid='20'/>
+      <var sort='x' vid='21' num='sg' pers='3'/>
+    </rarg>
+    <rarg>
+      <rargname>ARG2</rargname>
+      <label vid='20'/>
+      <var sort='x' vid='22' num='sg' pers='3'/>
+    </rarg>
+    <rarg>
+      <rargname>RSTR</rargname>
+      <label vid='24'/>
+      <var sort='h' vid='25'/>
+    </rarg>
+    <rarg>
+      <rargname>BODY</rargname>
+      <label vid='24'/>
+      <var sort='h' vid='26'/>
+    </rarg>
+    <rarg>
+      <rargname>RSTR</rargname>
+      <label vid='27'/>
+      <var sort='h' vid='28'/>
+    </rarg>
+    <rarg>
+      <rargname>BODY</rargname>
+      <label vid='27'/>
+      <var sort='h' vid='29'/>
+    </rarg>
+    <rarg>
+      <rargname>CARG</rargname>
+      <label vid='10002'/>
+      <constant>nameersatz</constant>
+    </rarg>
+    <rarg>
+      <rargname>ARG1</rargname>
+      <label vid='30'/>
+      <var sort='x' vid='22' num='sg' pers='3'/>
+    </rarg>
+    <rarg>
+      <rargname>ARG2</rargname>
+      <label vid='30'/>
+      <var sort='x' vid='31' pers='3'/>
+    </rarg>
+    <rarg>
+      <rargname>RSTR</rargname>
+      <label vid='33'/>
+      <var sort='h' vid='34'/>
+    </rarg>
+    <rarg>
+      <rargname>BODY</rargname>
+      <label vid='33'/>
+      <var sort='h' vid='35'/>
+    </rarg>
+    <rarg>
+      <rargname>RSTR</rargname>
+      <label vid='36'/>
+      <var sort='h' vid='38'/>
+    </rarg>
+    <rarg>
+      <rargname>BODY</rargname>
+      <label vid='36'/>
+      <var sort='h' vid='39'/>
+    </rarg>
+    <rarg>
+      <rargname>ARG1</rargname>
+      <label vid='40'/>
+      <var sort='u' vid='41'/>
+    </rarg>
+    <rarg>
+      <rargname>RSTR</rargname>
+      <label vid='42'/>
+      <var sort='h' vid='43'/>
+    </rarg>
+    <rarg>
+      <rargname>BODY</rargname>
+      <label vid='42'/>
+      <var sort='h' vid='45'/>
+    </rarg>
+    <rarg>
+      <rargname>L-INDEX</rargname>
+      <label vid='46'/>
+      <var sort='x' vid='37'/>
+    </rarg>
+    <rarg>
+      <rargname>R-INDEX</rargname>
+      <label vid='46'/>
+      <var sort='x' vid='44' num='sg' pers='3' gender='n'/>
+    </rarg>
+    <rarg>
+      <rargname>ARG1</rargname>
+      <label vid='52'/>
+      <var sort='h' vid='49'/>
+    </rarg>
+    <rarg>
+      <rargname>ARG1</rargname>
+      <label vid='10004'/>
+      <var sort='x' vid='22' num='sg' pers='3'/>
+    </rarg>
+    <rarg>
+      <rargname>ARG2</rargname>
+      <label vid='10004'/>
+      <var sort='x' vid='53' num='sg' pers='3'/>
+    </rarg>
+    <rarg>
+      <rargname>RSTR</rargname>
+      <label vid='55'/>
+      <var sort='h' vid='56'/>
+    </rarg>
+    <rarg>
+      <rargname>BODY</rargname>
+      <label vid='55'/>
+      <var sort='h' vid='57'/>
+    </rarg>
+    <rarg>
+      <rargname>CARG</rargname>
+      <label vid='58'/>
+      <constant>nameersatz</constant>
+    </rarg>
+    <rarg>
+      <rargname>L-INDEX</rargname>
+      <label vid='59'/>
+      <var sort='x' vid='21' num='sg' pers='3'/>
+    </rarg>
+    <rarg>
+      <rargname>R-INDEX</rargname>
+      <label vid='59'/>
+      <var sort='x' vid='60' num='sg' pers='3'/>
+    </rarg>
+    <rarg>
+      <rargname>ARG1</rargname>
+      <label vid='63'/>
+      <var sort='x' vid='60' num='sg' pers='3'/>
+    </rarg>
+    <rarg>
+      <rargname>ARG2</rargname>
+      <label vid='63'/>
+      <var sort='x' vid='64' num='sg' pers='3'/>
+    </rarg>
+    <rarg>
+      <rargname>RSTR</rargname>
+      <label vid='66'/>
+      <var sort='h' vid='67'/>
+    </rarg>
+    <rarg>
+      <rargname>BODY</rargname>
+      <label vid='66'/>
+      <var sort='h' vid='68'/>
+    </rarg>
+    <rarg>
+      <rargname>RSTR</rargname>
+      <label vid='69'/>
+      <var sort='h' vid='70'/>
+    </rarg>
+    <rarg>
+      <rargname>BODY</rargname>
+      <label vid='69'/>
+      <var sort='h' vid='71'/>
+    </rarg>
+    <rarg>
+      <rargname>CARG</rargname>
+      <label vid='10005'/>
+      <constant>nameersatz</constant>
+    </rarg>
+    <rarg>
+      <rargname>ARG1</rargname>
+      <label vid='72'/>
+      <var sort='x' vid='73' num='sg' pers='3'/>
+    </rarg>
+    <rarg>
+      <rargname>RSTR</rargname>
+      <label vid='74'/>
+      <var sort='h' vid='75'/>
+    </rarg>
+    <rarg>
+      <rargname>BODY</rargname>
+      <label vid='74'/>
+      <var sort='h' vid='76'/>
+    </rarg>
+    <rarg>
+      <rargname>CARG</rargname>
+      <label vid='77'/>
+      <constant>nameersatz</constant>
+    </rarg>
+    <ing>
+      <ing-a> <var sort='h' vid='7'/> </ing-a>
+      <ing-b> <var sort='h' vid='10001'/> </ing-b> 
+    </ing>
+    <ing>
+      <ing-a> <var sort='h' vid='20'/> </ing-a>
+      <ing-b> <var sort='h' vid='10002'/> </ing-b> 
+    </ing>
+    <ing>
+      <ing-a> <var sort='h' vid='30'/> </ing-a>
+      <ing-b> <var sort='h' vid='10004'/> </ing-b> 
+    </ing>
+    <ing>
+      <ing-a> <var sort='h' vid='30'/> </ing-a>
+      <ing-b> <var sort='h' vid='10003'/> </ing-b> 
+    </ing>
+    <ing>
+      <ing-a> <var sort='h' vid='63'/> </ing-a>
+      <ing-b> <var sort='h' vid='10005'/> </ing-b> 
+    </ing>
+  </rmrs>
+
+  </sentence>
+  </analysis>
+  </t>
+<h>
+  <surface>
+    Boris Evelson founded the Kalido Technical Advisory Board. 
+  </surface>
+  <analysis>
+  
+  <sentence>
+  
+  <!--
+       l3 | proper_q_rel( ARG0=x5 BODY=h6 RSTR=h4 ) 
+          |    h4 qeq l7
+       l7 + named_rel( ARG0=x5 CARG=nameersatz ) 
+       l8 | _found_v_1( ARG0=e2 ARG1=x5 ARG2=x9 ) 
+      l10 + _the_q( ARG0=x9 BODY=h12 RSTR=h11 ) 
+          +    h11 qeq l13
+      l13 | named_rel( ARG0=x9 CARG=nameersatz ) 
+  -->
+  <rmrs cfrom='-1' cto='-1'>
+    <label vid='1'/>
+    <ep cfrom='-1' cto='-1'>
+      <gpred>proper_q_rel</gpred>
+      <label vid='3'/>
+      <var sort='x' vid='5' num='sg' pers='3'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <gpred>named_rel</gpred>
+      <label vid='7'/>
+      <var sort='x' vid='5' num='sg' pers='3'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <realpred lemma='found' pos='v' sense='1'/>
+      <label vid='8'/>
+      <var sort='e' vid='2' tense='past'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <realpred lemma='the' pos='q'/>
+      <label vid='10'/>
+      <var sort='x' vid='9' num='sg' pers='3'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <gpred>named_rel</gpred>
+      <label vid='13'/>
+      <var sort='x' vid='9' num='sg' pers='3'/>
+    </ep>
+    <hcons hreln='qeq'>
+      <hi> <var sort='h' vid='4'/> </hi>
+      <lo> <label vid='7'/> </lo>
+    </hcons>
+    <hcons hreln='qeq'>
+      <hi> <var sort='h' vid='11'/> </hi>
+      <lo> <label vid='13'/> </lo>
+    </hcons>
+    <rarg>
+      <rargname>RSTR</rargname>
+      <label vid='3'/>
+      <var sort='h' vid='4'/>
+    </rarg>
+    <rarg>
+      <rargname>BODY</rargname>
+      <label vid='3'/>
+      <var sort='h' vid='6'/>
+    </rarg>
+    <rarg>
+      <rargname>CARG</rargname>
+      <label vid='7'/>
+      <constant>nameersatz</constant>
+    </rarg>
+    <rarg>
+      <rargname>ARG1</rargname>
+      <label vid='8'/>
+      <var sort='x' vid='5' num='sg' pers='3'/>
+    </rarg>
+    <rarg>
+      <rargname>ARG2</rargname>
+      <label vid='8'/>
+      <var sort='x' vid='9' num='sg' pers='3'/>
+    </rarg>
+    <rarg>
+      <rargname>RSTR</rargname>
+      <label vid='10'/>
+      <var sort='h' vid='11'/>
+    </rarg>
+    <rarg>
+      <rargname>BODY</rargname>
+      <label vid='10'/>
+      <var sort='h' vid='12'/>
+    </rarg>
+    <rarg>
+      <rargname>CARG</rargname>
+      <label vid='13'/>
+      <constant>nameersatz</constant>
+    </rarg>
+  </rmrs>
+
+  </sentence>
+  </analysis>
+  </h>
+</pair>
+
+<pair id="790" entailment="NO" task="SUM" length="short" >
+<t>
+  <surface>
+    Forty-five percent of the bills examined were bipartisan, and 85 percent of\
+     the reviewed bills had Republican lead sponsors. 8221; Small business owne\
+    rs are disappointed by the Republican track record, particularly the lack o\
+    f productivity in the Senate. 
+  </surface>
+  <analysis>
+  
+  <sentence>
+  <error>
+    edge limit exhausted (65536 pedges)
+  </error>
+  </sentence>
+  <sentence>
+  
+  <!--
+       l3 | udef_q_rel( ARG0=x4 BODY=h6 RSTR=h5 ) 
+          |    h5 qeq l10002
+       l7 + _small_a_1( ARG0=e8 ARG1=x4 ) 
+   l10002 + _owner_n_of( ARG0=x4 ARG1=u15 ) 
+   l10001 | compound_rel( ARG0=e10 ARG1=x4 ARG2=x9 ) 
+      l11 + udef_q_rel( ARG0=x9 BODY=h13 RSTR=h12 ) 
+          +    h12 qeq l14
+      l14 | _business_n_1( ARG0=x9 ) 
+      l16 + _disappoint_v_1( ARG0=e2 ARG1=x17 ARG2=x4 ) 
+      l18 | appos_rel( ARG0=e20 ARG1=x17 ARG2=x19 ) 
+   l10003 | named_rel( ARG0=x17 CARG=nameersatz ) 
+      l21 + proper_q_rel( ARG0=x17 BODY=h23 RSTR=h22 ) 
+          +    h22 qeq l18
+      l24 | _particularly_x_deg( ARG0=e26 ) 
+   l10004 + _the_q( ARG0=x19 BODY=h28 RSTR=h27 ) 
+          +    h27 qeq l29
+      l29 | _lack_n_1( ARG0=x19 ) 
+   l10005 + _of_p( ARG0=e31 ARG1=x19 ARG2=x30 ) 
+      l32 | udef_q_rel( ARG0=x30 BODY=h34 RSTR=h33 ) 
+          |    h33 qeq l35
+      l35 + _effectiveness_n_1( ARG0=x30 ) 
+   l10006 | _in_p( ARG0=e37 ARG1=x30 ARG2=x36 ) 
+      l38 + _the_q( ARG0=x36 BODY=h40 RSTR=h39 ) 
+          +    h39 qeq l41
+      l41 | named_n_rel( ARG0=x36 CARG=senate ) 
+  -->
+  <rmrs cfrom='-1' cto='-1'>
+    <label vid='1'/>
+    <ep cfrom='-1' cto='-1'>
+      <gpred>udef_q_rel</gpred>
+      <label vid='3'/>
+      <var sort='x' vid='4' num='pl' pers='3'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <realpred lemma='small' pos='a' sense='1'/>
+      <label vid='7'/>
+      <var sort='e' vid='8' tense='u'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <gpred>compound_rel</gpred>
+      <label vid='10001'/>
+      <var sort='e' vid='10' tense='u'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <gpred>udef_q_rel</gpred>
+      <label vid='11'/>
+      <var sort='x' vid='9'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <realpred lemma='business' pos='n' sense='1'/>
+      <label vid='14'/>
+      <var sort='x' vid='9'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <realpred lemma='owner' pos='n' sense='of'/>
+      <label vid='10002'/>
+      <var sort='x' vid='4' num='pl' pers='3'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <realpred lemma='disappoint' pos='v' sense='1'/>
+      <label vid='16'/>
+      <var sort='e' vid='2' tense='present'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <gpred>appos_rel</gpred>
+      <label vid='18'/>
+      <var sort='e' vid='20' tense='u'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <gpred>proper_q_rel</gpred>
+      <label vid='21'/>
+      <var sort='x' vid='17' num='sg' pers='3' gender='n'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <gpred>named_rel</gpred>
+      <label vid='10003'/>
+      <var sort='x' vid='17' num='sg' pers='3' gender='n'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <realpred lemma='particularly' pos='x' sense='deg'/>
+      <label vid='24'/>
+      <var sort='e' vid='26' tense='u'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <realpred lemma='the' pos='q'/>
+      <label vid='10004'/>
+      <var sort='x' vid='19' num='sg' pers='3' gender='n'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <realpred lemma='lack' pos='n' sense='1'/>
+      <label vid='29'/>
+      <var sort='x' vid='19' num='sg' pers='3' gender='n'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <realpred lemma='of' pos='p'/>
+      <label vid='10005'/>
+      <var sort='e' vid='31'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <gpred>udef_q_rel</gpred>
+      <label vid='32'/>
+      <var sort='x' vid='30' num='sg' pers='3' gender='n'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <realpred lemma='effectiveness' pos='n' sense='1'/>
+      <label vid='35'/>
+      <var sort='x' vid='30' num='sg' pers='3' gender='n'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <realpred lemma='in' pos='p'/>
+      <label vid='10006'/>
+      <var sort='e' vid='37'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <realpred lemma='the' pos='q'/>
+      <label vid='38'/>
+      <var sort='x' vid='36' num='sg' pers='3'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <gpred>named_n_rel</gpred>
+      <label vid='41'/>
+      <var sort='x' vid='36' num='sg' pers='3'/>
+    </ep>
+    <hcons hreln='qeq'>
+      <hi> <var sort='h' vid='5'/> </hi>
+      <lo> <label vid='10002'/> </lo>
+    </hcons>
+    <hcons hreln='qeq'>
+      <hi> <var sort='h' vid='12'/> </hi>
+      <lo> <label vid='14'/> </lo>
+    </hcons>
+    <hcons hreln='qeq'>
+      <hi> <var sort='h' vid='22'/> </hi>
+      <lo> <label vid='18'/> </lo>
+    </hcons>
+    <hcons hreln='qeq'>
+      <hi> <var sort='h' vid='27'/> </hi>
+      <lo> <label vid='29'/> </lo>
+    </hcons>
+    <hcons hreln='qeq'>
+      <hi> <var sort='h' vid='33'/> </hi>
+      <lo> <label vid='35'/> </lo>
+    </hcons>
+    <hcons hreln='qeq'>
+      <hi> <var sort='h' vid='39'/> </hi>
+      <lo> <label vid='41'/> </lo>
+    </hcons>
+    <rarg>
+      <rargname>RSTR</rargname>
+      <label vid='3'/>
+      <var sort='h' vid='5'/>
+    </rarg>
+    <rarg>
+      <rargname>BODY</rargname>
+      <label vid='3'/>
+      <var sort='h' vid='6'/>
+    </rarg>
+    <rarg>
+      <rargname>ARG1</rargname>
+      <label vid='7'/>
+      <var sort='x' vid='4' num='pl' pers='3'/>
+    </rarg>
+    <rarg>
+      <rargname>ARG1</rargname>
+      <label vid='10001'/>
+      <var sort='x' vid='4' num='pl' pers='3'/>
+    </rarg>
+    <rarg>
+      <rargname>ARG2</rargname>
+      <label vid='10001'/>
+      <var sort='x' vid='9'/>
+    </rarg>
+    <rarg>
+      <rargname>RSTR</rargname>
+      <label vid='11'/>
+      <var sort='h' vid='12'/>
+    </rarg>
+    <rarg>
+      <rargname>BODY</rargname>
+      <label vid='11'/>
+      <var sort='h' vid='13'/>
+    </rarg>
+    <rarg>
+      <rargname>ARG1</rargname>
+      <label vid='10002'/>
+      <var sort='u' vid='15'/>
+    </rarg>
+    <rarg>
+      <rargname>ARG1</rargname>
+      <label vid='16'/>
+      <var sort='x' vid='17' num='sg' pers='3' gender='n'/>
+    </rarg>
+    <rarg>
+      <rargname>ARG2</rargname>
+      <label vid='16'/>
+      <var sort='x' vid='4' num='pl' pers='3'/>
+    </rarg>
+    <rarg>
+      <rargname>ARG1</rargname>
+      <label vid='18'/>
+      <var sort='x' vid='17' num='sg' pers='3' gender='n'/>
+    </rarg>
+    <rarg>
+      <rargname>ARG2</rargname>
+      <label vid='18'/>
+      <var sort='x' vid='19' num='sg' pers='3' gender='n'/>
+    </rarg>
+    <rarg>
+      <rargname>RSTR</rargname>
+      <label vid='21'/>
+      <var sort='h' vid='22'/>
+    </rarg>
+    <rarg>
+      <rargname>BODY</rargname>
+      <label vid='21'/>
+      <var sort='h' vid='23'/>
+    </rarg>
+    <rarg>
+      <rargname>CARG</rargname>
+      <label vid='10003'/>
+      <constant>nameersatz</constant>
+    </rarg>
+    <rarg>
+      <rargname>RSTR</rargname>
+      <label vid='10004'/>
+      <var sort='h' vid='27'/>
+    </rarg>
+    <rarg>
+      <rargname>BODY</rargname>
+      <label vid='10004'/>
+      <var sort='h' vid='28'/>
+    </rarg>
+    <rarg>
+      <rargname>ARG1</rargname>
+      <label vid='10005'/>
+      <var sort='x' vid='19' num='sg' pers='3' gender='n'/>
+    </rarg>
+    <rarg>
+      <rargname>ARG2</rargname>
+      <label vid='10005'/>
+      <var sort='x' vid='30' num='sg' pers='3' gender='n'/>
+    </rarg>
+    <rarg>
+      <rargname>RSTR</rargname>
+      <label vid='32'/>
+      <var sort='h' vid='33'/>
+    </rarg>
+    <rarg>
+      <rargname>BODY</rargname>
+      <label vid='32'/>
+      <var sort='h' vid='34'/>
+    </rarg>
+    <rarg>
+      <rargname>ARG1</rargname>
+      <label vid='10006'/>
+      <var sort='x' vid='30' num='sg' pers='3' gender='n'/>
+    </rarg>
+    <rarg>
+      <rargname>ARG2</rargname>
+      <label vid='10006'/>
+      <var sort='x' vid='36' num='sg' pers='3'/>
+    </rarg>
+    <rarg>
+      <rargname>RSTR</rargname>
+      <label vid='38'/>
+      <var sort='h' vid='39'/>
+    </rarg>
+    <rarg>
+      <rargname>BODY</rargname>
+      <label vid='38'/>
+      <var sort='h' vid='40'/>
+    </rarg>
+    <rarg>
+      <rargname>CARG</rargname>
+      <label vid='41'/>
+      <constant>senate</constant>
+    </rarg>
+    <ing>
+      <ing-a> <var sort='h' vid='10002'/> </ing-a>
+      <ing-b> <var sort='h' vid='10001'/> </ing-b> 
+    </ing>
+    <ing>
+      <ing-a> <var sort='h' vid='10002'/> </ing-a>
+      <ing-b> <var sort='h' vid='7'/> </ing-b> 
+    </ing>
+    <ing>
+      <ing-a> <var sort='h' vid='18'/> </ing-a>
+      <ing-b> <var sort='h' vid='10003'/> </ing-b> 
+    </ing>
+    <ing>
+      <ing-a> <var sort='h' vid='24'/> </ing-a>
+      <ing-b> <var sort='h' vid='10004'/> </ing-b> 
+    </ing>
+    <ing>
+      <ing-a> <var sort='h' vid='29'/> </ing-a>
+      <ing-b> <var sort='h' vid='10005'/> </ing-b> 
+    </ing>
+    <ing>
+      <ing-a> <var sort='h' vid='35'/> </ing-a>
+      <ing-b> <var sort='h' vid='10006'/> </ing-b> 
+    </ing>
+  </rmrs>
+
+  </sentence>
+  </analysis>
+  </t>
+<h>
+  <surface>
+    The Senate is the least productive. 
+  </surface>
+  <analysis>
+  
+  <sentence>
+  
+  <!--
+       l3 | _the_q( ARG0=x4 BODY=h6 RSTR=h5 ) 
+          |    h5 qeq l7
+       l7 + named_n_rel( ARG0=x4 CARG=senate ) 
+       l8 | neg_rel( ARG0=e10 ARG1=h9 ) 
+          |    h9 qeq l11
+      l11 + _effective_a_1( ARG0=e2 ARG1=x4 ) 
+  -->
+  <rmrs cfrom='-1' cto='-1'>
+    <label vid='1'/>
+    <ep cfrom='-1' cto='-1'>
+      <realpred lemma='the' pos='q'/>
+      <label vid='3'/>
+      <var sort='x' vid='4' num='sg' pers='3'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <gpred>named_n_rel</gpred>
+      <label vid='7'/>
+      <var sort='x' vid='4' num='sg' pers='3'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <gpred>neg_rel</gpred>
+      <label vid='8'/>
+      <var sort='e' vid='10' tense='u'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <realpred lemma='effective' pos='a' sense='1'/>
+      <label vid='11'/>
+      <var sort='e' vid='2' tense='present'/>
+    </ep>
+    <hcons hreln='qeq'>
+      <hi> <var sort='h' vid='5'/> </hi>
+      <lo> <label vid='7'/> </lo>
+    </hcons>
+    <hcons hreln='qeq'>
+      <hi> <var sort='h' vid='9'/> </hi>
+      <lo> <label vid='11'/> </lo>
+    </hcons>
+    <rarg>
+      <rargname>RSTR</rargname>
+      <label vid='3'/>
+      <var sort='h' vid='5'/>
+    </rarg>
+    <rarg>
+      <rargname>BODY</rargname>
+      <label vid='3'/>
+      <var sort='h' vid='6'/>
+    </rarg>
+    <rarg>
+      <rargname>CARG</rargname>
+      <label vid='7'/>
+      <constant>senate</constant>
+    </rarg>
+    <rarg>
+      <rargname>ARG1</rargname>
+      <label vid='8'/>
+      <var sort='h' vid='9'/>
+    </rarg>
+    <rarg>
+      <rargname>ARG1</rargname>
+      <label vid='11'/>
+      <var sort='x' vid='4' num='sg' pers='3'/>
+    </rarg>
+  </rmrs>
+
+  </sentence>
+  </analysis>
+  </h>
+</pair>
+
+<pair id="312" entailment="NO" task="IR" length="short" >
+<t>
+  <surface>
+    Oscar-winning director Franco Zeffirelli has been awarded an honorary knigh\
+    thood for his "valuable services to British performing arts". 
+  </surface>
+  <analysis>
+  
+  <sentence>
+  
+  <!--
+       l3 | proper_q_rel( ARG0=x5 BODY=h6 RSTR=h4 ) 
+          |    h4 qeq l7
+       l7 + named_rel( ARG0=x5 CARG=nameersatz ) 
+       l8 | udef_q_rel( ARG0=x10 BODY=h11 RSTR=h9 ) 
+          |    h9 qeq l15
+      l12 + _win_v_1( ARG0=e13 ARG1=x5 ARG2=u14 ) 
+      l15 | nominalization_rel( ARG0=x10 ARG1=h12 ) 
+      l16 + proper_q_rel( ARG0=x18 BODY=h19 RSTR=h17 ) 
+          +    h17 qeq l25
+      l20 | _director_n_of( ARG0=x21 ) 
+      l22 + udef_q_rel( ARG0=x21 BODY=h24 RSTR=h23 ) 
+          +    h23 qeq l20
+      l25 | title_id_rel( ARG0=e26 ARG1=x21 ARG2=x18 ) 
+   l10001 + named_rel( ARG0=x18 CARG=nameersatz ) 
+      l27 | _award_v_1( ARG0=e2 ARG2=x28 ARG3=x18 ) 
+   l10003 | _for_p( ARG0=e37 ARG1=e2 ARG2=x36 ) 
+   l10006 | _to_p( ARG0=e50 ARG1=e2 ARG2=x10 ) 
+      l30 + _a_q( ARG0=x28 BODY=h32 RSTR=h31 ) 
+          +    h31 qeq l10002
+      l33 | _honorary_a_1( ARG0=e34 ARG1=x28 ) 
+   l10002 + _degree_n_of( ARG0=x28 ARG1=u35 ) 
+      l38 | def_explicit_q_rel( ARG0=x36 BODY=h40 RSTR=h39 ) 
+          |    h39 qeq l10005
+      l41 + poss_rel( ARG0=e43 ARG1=x36 ARG2=x42 ) 
+   l10004 + _valuable_a_to-for( ARG0=e49 ARG1=x36 ARG2=u48 ) 
+      l44 | pronoun_q_rel( ARG0=x42 BODY=h46 RSTR=h45 ) 
+          |    h45 qeq l47
+      l47 + pron_rel( ARG0=x42 ) 
+   l10005 | _service_n_1( ARG0=x36 ) 
+      l51 + subord_rel( ARG0=e54 MAIN=h53 SUBORD=h52 ) 
+          +    h53 qeq l27
+          +    h52 qeq l55
+      l55 | _british_a_1( ARG0=e56 ARG1=u57 ) 
+      l58 + subord_rel( ARG0=e61 MAIN=h59 SUBORD=h60 ) 
+          +    h59 qeq l51
+          +    h60 qeq l62
+      l62 | _perform_v_1( ARG0=e63 ARG1=u65 ARG2=x64 ) 
+      l66 + udef_q_rel( ARG0=x64 BODY=h68 RSTR=h67 ) 
+          +    h67 qeq l69
+      l69 | _art_n_1( ARG0=x64 ) 
+  -->
+  <rmrs cfrom='-1' cto='-1'>
+    <label vid='1'/>
+    <ep cfrom='-1' cto='-1'>
+      <gpred>proper_q_rel</gpred>
+      <label vid='3'/>
+      <var sort='x' vid='5' num='sg' pers='3'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <gpred>named_rel</gpred>
+      <label vid='7'/>
+      <var sort='x' vid='5' num='sg' pers='3'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <gpred>udef_q_rel</gpred>
+      <label vid='8'/>
+      <var sort='x' vid='10' num='sg' pers='3' gender='n'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <realpred lemma='win' pos='v' sense='1'/>
+      <label vid='12'/>
+      <var sort='e' vid='13' tense='u'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <gpred>nominalization_rel</gpred>
+      <label vid='15'/>
+      <var sort='x' vid='10' num='sg' pers='3' gender='n'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <gpred>proper_q_rel</gpred>
+      <label vid='16'/>
+      <var sort='x' vid='18' num='sg' pers='3'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <realpred lemma='director' pos='n' sense='of'/>
+      <label vid='20'/>
+      <var sort='x' vid='21'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <gpred>udef_q_rel</gpred>
+      <label vid='22'/>
+      <var sort='x' vid='21'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <gpred>title_id_rel</gpred>
+      <label vid='25'/>
+      <var sort='e' vid='26' tense='u'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <gpred>named_rel</gpred>
+      <label vid='10001'/>
+      <var sort='x' vid='18' num='sg' pers='3'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <realpred lemma='award' pos='v' sense='1'/>
+      <label vid='27'/>
+      <var sort='e' vid='2' tense='present'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <realpred lemma='a' pos='q'/>
+      <label vid='30'/>
+      <var sort='x' vid='28' num='sg' pers='3'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <realpred lemma='honorary' pos='a' sense='1'/>
+      <label vid='33'/>
+      <var sort='e' vid='34' tense='u'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <realpred lemma='degree' pos='n' sense='of'/>
+      <label vid='10002'/>
+      <var sort='x' vid='28' num='sg' pers='3'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <realpred lemma='for' pos='p'/>
+      <label vid='10003'/>
+      <var sort='e' vid='37' tense='u'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <gpred>def_explicit_q_rel</gpred>
+      <label vid='38'/>
+      <var sort='x' vid='36' num='pl' pers='3'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <gpred>poss_rel</gpred>
+      <label vid='41'/>
+      <var sort='e' vid='43' tense='u'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <gpred>pronoun_q_rel</gpred>
+      <label vid='44'/>
+      <var sort='x' vid='42' num='sg' pers='3' gender='m'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <gpred>pron_rel</gpred>
+      <label vid='47'/>
+      <var sort='x' vid='42' num='sg' pers='3' gender='m'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <realpred lemma='valuable' pos='a' sense='to-for'/>
+      <label vid='10004'/>
+      <var sort='e' vid='49' tense='u'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <realpred lemma='service' pos='n' sense='1'/>
+      <label vid='10005'/>
+      <var sort='x' vid='36' num='pl' pers='3'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <realpred lemma='to' pos='p'/>
+      <label vid='10006'/>
+      <var sort='e' vid='50' tense='u'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <gpred>subord_rel</gpred>
+      <label vid='51'/>
+      <var sort='e' vid='54' tense='u'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <realpred lemma='british' pos='a' sense='1'/>
+      <label vid='55'/>
+      <var sort='e' vid='56' tense='u'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <gpred>subord_rel</gpred>
+      <label vid='58'/>
+      <var sort='e' vid='61' tense='u'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <realpred lemma='perform' pos='v' sense='1'/>
+      <label vid='62'/>
+      <var sort='e' vid='63' tense='u'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <gpred>udef_q_rel</gpred>
+      <label vid='66'/>
+      <var sort='x' vid='64' num='pl' pers='3'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <realpred lemma='art' pos='n' sense='1'/>
+      <label vid='69'/>
+      <var sort='x' vid='64' num='pl' pers='3'/>
+    </ep>
+    <hcons hreln='qeq'>
+      <hi> <var sort='h' vid='4'/> </hi>
+      <lo> <label vid='7'/> </lo>
+    </hcons>
+    <hcons hreln='qeq'>
+      <hi> <var sort='h' vid='9'/> </hi>
+      <lo> <label vid='15'/> </lo>
+    </hcons>
+    <hcons hreln='qeq'>
+      <hi> <var sort='h' vid='17'/> </hi>
+      <lo> <label vid='25'/> </lo>
+    </hcons>
+    <hcons hreln='qeq'>
+      <hi> <var sort='h' vid='23'/> </hi>
+      <lo> <label vid='20'/> </lo>
+    </hcons>
+    <hcons hreln='qeq'>
+      <hi> <var sort='h' vid='31'/> </hi>
+      <lo> <label vid='10002'/> </lo>
+    </hcons>
+    <hcons hreln='qeq'>
+      <hi> <var sort='h' vid='39'/> </hi>
+      <lo> <label vid='10005'/> </lo>
+    </hcons>
+    <hcons hreln='qeq'>
+      <hi> <var sort='h' vid='45'/> </hi>
+      <lo> <label vid='47'/> </lo>
+    </hcons>
+    <hcons hreln='qeq'>
+      <hi> <var sort='h' vid='53'/> </hi>
+      <lo> <label vid='27'/> </lo>
+    </hcons>
+    <hcons hreln='qeq'>
+      <hi> <var sort='h' vid='52'/> </hi>
+      <lo> <label vid='55'/> </lo>
+    </hcons>
+    <hcons hreln='qeq'>
+      <hi> <var sort='h' vid='59'/> </hi>
+      <lo> <label vid='51'/> </lo>
+    </hcons>
+    <hcons hreln='qeq'>
+      <hi> <var sort='h' vid='60'/> </hi>
+      <lo> <label vid='62'/> </lo>
+    </hcons>
+    <hcons hreln='qeq'>
+      <hi> <var sort='h' vid='67'/> </hi>
+      <lo> <label vid='69'/> </lo>
+    </hcons>
+    <rarg>
+      <rargname>RSTR</rargname>
+      <label vid='3'/>
+      <var sort='h' vid='4'/>
+    </rarg>
+    <rarg>
+      <rargname>BODY</rargname>
+      <label vid='3'/>
+      <var sort='h' vid='6'/>
+    </rarg>
+    <rarg>
+      <rargname>CARG</rargname>
+      <label vid='7'/>
+      <constant>nameersatz</constant>
+    </rarg>
+    <rarg>
+      <rargname>RSTR</rargname>
+      <label vid='8'/>
+      <var sort='h' vid='9'/>
+    </rarg>
+    <rarg>
+      <rargname>BODY</rargname>
+      <label vid='8'/>
+      <var sort='h' vid='11'/>
+    </rarg>
+    <rarg>
+      <rargname>ARG1</rargname>
+      <label vid='12'/>
+      <var sort='x' vid='5' num='sg' pers='3'/>
+    </rarg>
+    <rarg>
+      <rargname>ARG2</rargname>
+      <label vid='12'/>
+      <var sort='u' vid='14'/>
+    </rarg>
+    <rarg>
+      <rargname>ARG1</rargname>
+      <label vid='15'/>
+      <var sort='h' vid='12'/>
+    </rarg>
+    <rarg>
+      <rargname>RSTR</rargname>
+      <label vid='16'/>
+      <var sort='h' vid='17'/>
+    </rarg>
+    <rarg>
+      <rargname>BODY</rargname>
+      <label vid='16'/>
+      <var sort='h' vid='19'/>
+    </rarg>
+    <rarg>
+      <rargname>RSTR</rargname>
+      <label vid='22'/>
+      <var sort='h' vid='23'/>
+    </rarg>
+    <rarg>
+      <rargname>BODY</rargname>
+      <label vid='22'/>
+      <var sort='h' vid='24'/>
+    </rarg>
+    <rarg>
+      <rargname>ARG1</rargname>
+      <label vid='25'/>
+      <var sort='x' vid='21'/>
+    </rarg>
+    <rarg>
+      <rargname>ARG2</rargname>
+      <label vid='25'/>
+      <var sort='x' vid='18' num='sg' pers='3'/>
+    </rarg>
+    <rarg>
+      <rargname>CARG</rargname>
+      <label vid='10001'/>
+      <constant>nameersatz</constant>
+    </rarg>
+    <rarg>
+      <rargname>ARG2</rargname>
+      <label vid='27'/>
+      <var sort='x' vid='28' num='sg' pers='3'/>
+    </rarg>
+    <rarg>
+      <rargname>ARG3</rargname>
+      <label vid='27'/>
+      <var sort='x' vid='18' num='sg' pers='3'/>
+    </rarg>
+    <rarg>
+      <rargname>RSTR</rargname>
+      <label vid='30'/>
+      <var sort='h' vid='31'/>
+    </rarg>
+    <rarg>
+      <rargname>BODY</rargname>
+      <label vid='30'/>
+      <var sort='h' vid='32'/>
+    </rarg>
+    <rarg>
+      <rargname>ARG1</rargname>
+      <label vid='33'/>
+      <var sort='x' vid='28' num='sg' pers='3'/>
+    </rarg>
+    <rarg>
+      <rargname>ARG1</rargname>
+      <label vid='10002'/>
+      <var sort='u' vid='35'/>
+    </rarg>
+    <rarg>
+      <rargname>ARG1</rargname>
+      <label vid='10003'/>
+      <var sort='e' vid='2' tense='present'/>
+    </rarg>
+    <rarg>
+      <rargname>ARG2</rargname>
+      <label vid='10003'/>
+      <var sort='x' vid='36' num='pl' pers='3'/>
+    </rarg>
+    <rarg>
+      <rargname>RSTR</rargname>
+      <label vid='38'/>
+      <var sort='h' vid='39'/>
+    </rarg>
+    <rarg>
+      <rargname>BODY</rargname>
+      <label vid='38'/>
+      <var sort='h' vid='40'/>
+    </rarg>
+    <rarg>
+      <rargname>ARG1</rargname>
+      <label vid='41'/>
+      <var sort='x' vid='36' num='pl' pers='3'/>
+    </rarg>
+    <rarg>
+      <rargname>ARG2</rargname>
+      <label vid='41'/>
+      <var sort='x' vid='42' num='sg' pers='3' gender='m'/>
+    </rarg>
+    <rarg>
+      <rargname>RSTR</rargname>
+      <label vid='44'/>
+      <var sort='h' vid='45'/>
+    </rarg>
+    <rarg>
+      <rargname>BODY</rargname>
+      <label vid='44'/>
+      <var sort='h' vid='46'/>
+    </rarg>
+    <rarg>
+      <rargname>ARG1</rargname>
+      <label vid='10004'/>
+      <var sort='x' vid='36' num='pl' pers='3'/>
+    </rarg>
+    <rarg>
+      <rargname>ARG2</rargname>
+      <label vid='10004'/>
+      <var sort='u' vid='48'/>
+    </rarg>
+    <rarg>
+      <rargname>ARG1</rargname>
+      <label vid='10006'/>
+      <var sort='e' vid='2' tense='present'/>
+    </rarg>
+    <rarg>
+      <rargname>ARG2</rargname>
+      <label vid='10006'/>
+      <var sort='x' vid='10' num='sg' pers='3' gender='n'/>
+    </rarg>
+    <rarg>
+      <rargname>MAIN</rargname>
+      <label vid='51'/>
+      <var sort='h' vid='53'/>
+    </rarg>
+    <rarg>
+      <rargname>SUBORD</rargname>
+      <label vid='51'/>
+      <var sort='h' vid='52'/>
+    </rarg>
+    <rarg>
+      <rargname>ARG1</rargname>
+      <label vid='55'/>
+      <var sort='u' vid='57'/>
+    </rarg>
+    <rarg>
+      <rargname>MAIN</rargname>
+      <label vid='58'/>
+      <var sort='h' vid='59'/>
+    </rarg>
+    <rarg>
+      <rargname>SUBORD</rargname>
+      <label vid='58'/>
+      <var sort='h' vid='60'/>
+    </rarg>
+    <rarg>
+      <rargname>ARG1</rargname>
+      <label vid='62'/>
+      <var sort='u' vid='65'/>
+    </rarg>
+    <rarg>
+      <rargname>ARG2</rargname>
+      <label vid='62'/>
+      <var sort='x' vid='64' num='pl' pers='3'/>
+    </rarg>
+    <rarg>
+      <rargname>RSTR</rargname>
+      <label vid='66'/>
+      <var sort='h' vid='67'/>
+    </rarg>
+    <rarg>
+      <rargname>BODY</rargname>
+      <label vid='66'/>
+      <var sort='h' vid='68'/>
+    </rarg>
+    <ing>
+      <ing-a> <var sort='h' vid='25'/> </ing-a>
+      <ing-b> <var sort='h' vid='10001'/> </ing-b> 
+    </ing>
+    <ing>
+      <ing-a> <var sort='h' vid='27'/> </ing-a>
+      <ing-b> <var sort='h' vid='10003'/> </ing-b> 
+    </ing>
+    <ing>
+      <ing-a> <var sort='h' vid='27'/> </ing-a>
+      <ing-b> <var sort='h' vid='10006'/> </ing-b> 
+    </ing>
+    <ing>
+      <ing-a> <var sort='h' vid='10002'/> </ing-a>
+      <ing-b> <var sort='h' vid='33'/> </ing-b> 
+    </ing>
+    <ing>
+      <ing-a> <var sort='h' vid='10005'/> </ing-a>
+      <ing-b> <var sort='h' vid='10004'/> </ing-b> 
+    </ing>
+    <ing>
+      <ing-a> <var sort='h' vid='10005'/> </ing-a>
+      <ing-b> <var sort='h' vid='41'/> </ing-b> 
+    </ing>
+  </rmrs>
+
+  </sentence>
+  </analysis>
+  </t>
+<h>
+  <surface>
+    Italian director is awarded honorary Oscar. 
+  </surface>
+  <analysis>
+  
+  <sentence>
+  
+  <!--
+       l3 | _a_q( ARG0=x4 BODY=h6 RSTR=h5 ) 
+          |    h5 qeq l10001
+       l7 + _italian_a_1( ARG0=e8 ARG1=x4 ) 
+   l10001 | _director_n_of( ARG0=x4 ARG1=u9 ) 
+      l10 + _award_v_1( ARG0=e2 ARG2=x11 ARG3=x4 ) 
+      l13 | _a_q( ARG0=x11 BODY=h15 RSTR=h14 ) 
+          |    h14 qeq l16
+      l16 + _honorary_a_1( ARG0=e17 ARG1=x11 ) 
+   l10002 | named_rel( ARG0=x11 CARG=nameersatz ) 
+  -->
+  <rmrs cfrom='-1' cto='-1'>
+    <label vid='1'/>
+    <ep cfrom='-1' cto='-1'>
+      <realpred lemma='a' pos='q'/>
+      <label vid='3'/>
+      <var sort='x' vid='4' num='sg' pers='3'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <realpred lemma='italian' pos='a' sense='1'/>
+      <label vid='7'/>
+      <var sort='e' vid='8' tense='u'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <realpred lemma='director' pos='n' sense='of'/>
+      <label vid='10001'/>
+      <var sort='x' vid='4' num='sg' pers='3'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <realpred lemma='award' pos='v' sense='1'/>
+      <label vid='10'/>
+      <var sort='e' vid='2' tense='present'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <realpred lemma='a' pos='q'/>
+      <label vid='13'/>
+      <var sort='x' vid='11' num='sg' pers='3'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <realpred lemma='honorary' pos='a' sense='1'/>
+      <label vid='16'/>
+      <var sort='e' vid='17' tense='u'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <gpred>named_rel</gpred>
+      <label vid='10002'/>
+      <var sort='x' vid='11' num='sg' pers='3'/>
+    </ep>
+    <hcons hreln='qeq'>
+      <hi> <var sort='h' vid='5'/> </hi>
+      <lo> <label vid='10001'/> </lo>
+    </hcons>
+    <hcons hreln='qeq'>
+      <hi> <var sort='h' vid='14'/> </hi>
+      <lo> <label vid='16'/> </lo>
+    </hcons>
+    <rarg>
+      <rargname>RSTR</rargname>
+      <label vid='3'/>
+      <var sort='h' vid='5'/>
+    </rarg>
+    <rarg>
+      <rargname>BODY</rargname>
+      <label vid='3'/>
+      <var sort='h' vid='6'/>
+    </rarg>
+    <rarg>
+      <rargname>ARG1</rargname>
+      <label vid='7'/>
+      <var sort='x' vid='4' num='sg' pers='3'/>
+    </rarg>
+    <rarg>
+      <rargname>ARG1</rargname>
+      <label vid='10001'/>
+      <var sort='u' vid='9'/>
+    </rarg>
+    <rarg>
+      <rargname>ARG2</rargname>
+      <label vid='10'/>
+      <var sort='x' vid='11' num='sg' pers='3'/>
+    </rarg>
+    <rarg>
+      <rargname>ARG3</rargname>
+      <label vid='10'/>
+      <var sort='x' vid='4' num='sg' pers='3'/>
+    </rarg>
+    <rarg>
+      <rargname>RSTR</rargname>
+      <label vid='13'/>
+      <var sort='h' vid='14'/>
+    </rarg>
+    <rarg>
+      <rargname>BODY</rargname>
+      <label vid='13'/>
+      <var sort='h' vid='15'/>
+    </rarg>
+    <rarg>
+      <rargname>ARG1</rargname>
+      <label vid='16'/>
+      <var sort='x' vid='11' num='sg' pers='3'/>
+    </rarg>
+    <rarg>
+      <rargname>CARG</rargname>
+      <label vid='10002'/>
+      <constant>nameersatz</constant>
+    </rarg>
+    <ing>
+      <ing-a> <var sort='h' vid='10001'/> </ing-a>
+      <ing-b> <var sort='h' vid='7'/> </ing-b> 
+    </ing>
+    <ing>
+      <ing-a> <var sort='h' vid='16'/> </ing-a>
+      <ing-b> <var sort='h' vid='10002'/> </ing-b> 
+    </ing>
+  </rmrs>
+
+  </sentence>
+  </analysis>
+  </h>
+</pair>
+
+<pair id="352" entailment="YES" task="IR" length="short" >
+<t>
+  <surface>
+    The increased amounts of carbon dioxide (CO2) and other greenhouse gases (G\
+    HGs) are the primary causes of the human-induced component of global warmin\
+    g. 
+  </surface>
+  <analysis>
+  
+  <sentence>
+  <error>
+    edge limit exhausted (65536 pedges)
+  </error>
+  </sentence>
+  </analysis>
+  </t>
+<h>
+  <surface>
+    Greenhouse effect changes global climate. 
+  </surface>
+  <analysis>
+  
+  <sentence>
+  
+  <!--
+       l3 | _the_q( ARG0=x4 BODY=h6 RSTR=h5 ) 
+          |    h5 qeq l7
+       l7 + compound_rel( ARG0=e9 ARG1=x4 ARG2=x8 ) 
+   l10001 + _effect_n_1( ARG0=x4 ) 
+      l10 | udef_q_rel( ARG0=x8 BODY=h12 RSTR=h11 ) 
+          |    h11 qeq l13
+      l13 + _greenhouse_n_1( ARG0=x8 ) 
+      l14 | _change_v_cause( ARG0=e2 ARG1=x4 ARG2=x15 ) 
+      l16 + _the_q( ARG0=x15 BODY=h18 RSTR=h17 ) 
+          +    h17 qeq l10002
+      l19 | _global_a_1( ARG0=e20 ARG1=x15 ) 
+   l10002 + _climate_n_1( ARG0=x15 ) 
+  -->
+  <rmrs cfrom='-1' cto='-1'>
+    <label vid='1'/>
+    <ep cfrom='-1' cto='-1'>
+      <realpred lemma='the' pos='q'/>
+      <label vid='3'/>
+      <var sort='x' vid='4' num='sg' pers='3' gender='n'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <gpred>compound_rel</gpred>
+      <label vid='7'/>
+      <var sort='e' vid='9' tense='u'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <gpred>udef_q_rel</gpred>
+      <label vid='10'/>
+      <var sort='x' vid='8'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <realpred lemma='greenhouse' pos='n' sense='1'/>
+      <label vid='13'/>
+      <var sort='x' vid='8'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <realpred lemma='effect' pos='n' sense='1'/>
+      <label vid='10001'/>
+      <var sort='x' vid='4' num='sg' pers='3' gender='n'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <realpred lemma='change' pos='v' sense='cause'/>
+      <label vid='14'/>
+      <var sort='e' vid='2' tense='present'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <realpred lemma='the' pos='q'/>
+      <label vid='16'/>
+      <var sort='x' vid='15' num='sg' pers='3'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <realpred lemma='global' pos='a' sense='1'/>
+      <label vid='19'/>
+      <var sort='e' vid='20' tense='u'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <realpred lemma='climate' pos='n' sense='1'/>
+      <label vid='10002'/>
+      <var sort='x' vid='15' num='sg' pers='3'/>
+    </ep>
+    <hcons hreln='qeq'>
+      <hi> <var sort='h' vid='5'/> </hi>
+      <lo> <label vid='7'/> </lo>
+    </hcons>
+    <hcons hreln='qeq'>
+      <hi> <var sort='h' vid='11'/> </hi>
+      <lo> <label vid='13'/> </lo>
+    </hcons>
+    <hcons hreln='qeq'>
+      <hi> <var sort='h' vid='17'/> </hi>
+      <lo> <label vid='10002'/> </lo>
+    </hcons>
+    <rarg>
+      <rargname>RSTR</rargname>
+      <label vid='3'/>
+      <var sort='h' vid='5'/>
+    </rarg>
+    <rarg>
+      <rargname>BODY</rargname>
+      <label vid='3'/>
+      <var sort='h' vid='6'/>
+    </rarg>
+    <rarg>
+      <rargname>ARG1</rargname>
+      <label vid='7'/>
+      <var sort='x' vid='4' num='sg' pers='3' gender='n'/>
+    </rarg>
+    <rarg>
+      <rargname>ARG2</rargname>
+      <label vid='7'/>
+      <var sort='x' vid='8'/>
+    </rarg>
+    <rarg>
+      <rargname>RSTR</rargname>
+      <label vid='10'/>
+      <var sort='h' vid='11'/>
+    </rarg>
+    <rarg>
+      <rargname>BODY</rargname>
+      <label vid='10'/>
+      <var sort='h' vid='12'/>
+    </rarg>
+    <rarg>
+      <rargname>ARG1</rargname>
+      <label vid='14'/>
+      <var sort='x' vid='4' num='sg' pers='3' gender='n'/>
+    </rarg>
+    <rarg>
+      <rargname>ARG2</rargname>
+      <label vid='14'/>
+      <var sort='x' vid='15' num='sg' pers='3'/>
+    </rarg>
+    <rarg>
+      <rargname>RSTR</rargname>
+      <label vid='16'/>
+      <var sort='h' vid='17'/>
+    </rarg>
+    <rarg>
+      <rargname>BODY</rargname>
+      <label vid='16'/>
+      <var sort='h' vid='18'/>
+    </rarg>
+    <rarg>
+      <rargname>ARG1</rargname>
+      <label vid='19'/>
+      <var sort='x' vid='15' num='sg' pers='3'/>
+    </rarg>
+    <ing>
+      <ing-a> <var sort='h' vid='7'/> </ing-a>
+      <ing-b> <var sort='h' vid='10001'/> </ing-b> 
+    </ing>
+    <ing>
+      <ing-a> <var sort='h' vid='10002'/> </ing-a>
+      <ing-b> <var sort='h' vid='19'/> </ing-b> 
+    </ing>
+  </rmrs>
+
+  </sentence>
+  </analysis>
+  </h>
+</pair>
+
+<pair id="540" entailment="YES" task="QA" length="short" >
+<t>
+  <surface>
+    New Delhi: More than 100 Nobel prize winners, two US congressmen, and leadi\
+    ng labour organizations have expressed concern over threats against the lif\
+    e of Kailash Satyarthi, India's leading opponent of child labour. 
+  </surface>
+  <analysis>
+  
+  <sentence>
+  <error>
+    edge limit exhausted (65536 pedges)
+  </error>
+  </sentence>
+  </analysis>
+  </t>
+<h>
+  <surface>
+    Kailash Satyarthi, India's leading opponent of child labour. 
+  </surface>
+  <analysis>
+  
+  <sentence>
+  
+  <!--
+       l3 | proper_q_rel( ARG0=x5 BODY=h6 RSTR=h4 ) 
+          |    h4 qeq l7
+       l7 + named_rel( ARG0=x5 CARG=nameersatz ) 
+       l8 | _be_v_id( ARG0=e2 ARG1=x5 ARG2=x9 ) 
+      l10 + proper_q_rel( ARG0=x12 BODY=h13 RSTR=h11 ) 
+          +    h11 qeq l14
+      l14 | named_rel( ARG0=x12 CARG=india ) 
+      l15 + def_explicit_q_rel( ARG0=x9 BODY=h17 RSTR=h16 ) 
+          +    h16 qeq l10002
+      l18 | poss_rel( ARG0=e19 ARG1=x9 ARG2=x12 ) 
+   l10002 | _opponent_n_1( ARG0=x9 ) 
+   l10001 + _leading_a_1( ARG0=e20 ARG1=x9 ) 
+   l10003 | _of_p( ARG0=e22 ARG1=x9 ARG2=x21 ) 
+      l23 + udef_q_rel( ARG0=x21 BODY=h25 RSTR=h24 ) 
+          +    h24 qeq l26
+      l26 | _crime_n_1( ARG0=x21 ) 
+  -->
+  <rmrs cfrom='-1' cto='-1'>
+    <label vid='1'/>
+    <ep cfrom='-1' cto='-1'>
+      <gpred>proper_q_rel</gpred>
+      <label vid='3'/>
+      <var sort='x' vid='5' num='sg' pers='3'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <gpred>named_rel</gpred>
+      <label vid='7'/>
+      <var sort='x' vid='5' num='sg' pers='3'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <realpred lemma='be' pos='v' sense='id'/>
+      <label vid='8'/>
+      <var sort='e' vid='2' tense='present'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <gpred>proper_q_rel</gpred>
+      <label vid='10'/>
+      <var sort='x' vid='12' num='sg' pers='3'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <gpred>named_rel</gpred>
+      <label vid='14'/>
+      <var sort='x' vid='12' num='sg' pers='3'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <gpred>def_explicit_q_rel</gpred>
+      <label vid='15'/>
+      <var sort='x' vid='9' num='sg' pers='3'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <gpred>poss_rel</gpred>
+      <label vid='18'/>
+      <var sort='e' vid='19' tense='u'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <realpred lemma='leading' pos='a' sense='1'/>
+      <label vid='10001'/>
+      <var sort='e' vid='20' tense='u'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <realpred lemma='opponent' pos='n' sense='1'/>
+      <label vid='10002'/>
+      <var sort='x' vid='9' num='sg' pers='3'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <realpred lemma='of' pos='p'/>
+      <label vid='10003'/>
+      <var sort='e' vid='22'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <gpred>udef_q_rel</gpred>
+      <label vid='23'/>
+      <var sort='x' vid='21' num='sg' pers='3' gender='n'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <realpred lemma='crime' pos='n' sense='1'/>
+      <label vid='26'/>
+      <var sort='x' vid='21' num='sg' pers='3' gender='n'/>
+    </ep>
+    <hcons hreln='qeq'>
+      <hi> <var sort='h' vid='4'/> </hi>
+      <lo> <label vid='7'/> </lo>
+    </hcons>
+    <hcons hreln='qeq'>
+      <hi> <var sort='h' vid='11'/> </hi>
+      <lo> <label vid='14'/> </lo>
+    </hcons>
+    <hcons hreln='qeq'>
+      <hi> <var sort='h' vid='16'/> </hi>
+      <lo> <label vid='10002'/> </lo>
+    </hcons>
+    <hcons hreln='qeq'>
+      <hi> <var sort='h' vid='24'/> </hi>
+      <lo> <label vid='26'/> </lo>
+    </hcons>
+    <rarg>
+      <rargname>RSTR</rargname>
+      <label vid='3'/>
+      <var sort='h' vid='4'/>
+    </rarg>
+    <rarg>
+      <rargname>BODY</rargname>
+      <label vid='3'/>
+      <var sort='h' vid='6'/>
+    </rarg>
+    <rarg>
+      <rargname>CARG</rargname>
+      <label vid='7'/>
+      <constant>nameersatz</constant>
+    </rarg>
+    <rarg>
+      <rargname>ARG1</rargname>
+      <label vid='8'/>
+      <var sort='x' vid='5' num='sg' pers='3'/>
+    </rarg>
+    <rarg>
+      <rargname>ARG2</rargname>
+      <label vid='8'/>
+      <var sort='x' vid='9' num='sg' pers='3'/>
+    </rarg>
+    <rarg>
+      <rargname>RSTR</rargname>
+      <label vid='10'/>
+      <var sort='h' vid='11'/>
+    </rarg>
+    <rarg>
+      <rargname>BODY</rargname>
+      <label vid='10'/>
+      <var sort='h' vid='13'/>
+    </rarg>
+    <rarg>
+      <rargname>CARG</rargname>
+      <label vid='14'/>
+      <constant>india</constant>
+    </rarg>
+    <rarg>
+      <rargname>RSTR</rargname>
+      <label vid='15'/>
+      <var sort='h' vid='16'/>
+    </rarg>
+    <rarg>
+      <rargname>BODY</rargname>
+      <label vid='15'/>
+      <var sort='h' vid='17'/>
+    </rarg>
+    <rarg>
+      <rargname>ARG1</rargname>
+      <label vid='18'/>
+      <var sort='x' vid='9' num='sg' pers='3'/>
+    </rarg>
+    <rarg>
+      <rargname>ARG2</rargname>
+      <label vid='18'/>
+      <var sort='x' vid='12' num='sg' pers='3'/>
+    </rarg>
+    <rarg>
+      <rargname>ARG1</rargname>
+      <label vid='10001'/>
+      <var sort='x' vid='9' num='sg' pers='3'/>
+    </rarg>
+    <rarg>
+      <rargname>ARG1</rargname>
+      <label vid='10003'/>
+      <var sort='x' vid='9' num='sg' pers='3'/>
+    </rarg>
+    <rarg>
+      <rargname>ARG2</rargname>
+      <label vid='10003'/>
+      <var sort='x' vid='21' num='sg' pers='3' gender='n'/>
+    </rarg>
+    <rarg>
+      <rargname>RSTR</rargname>
+      <label vid='23'/>
+      <var sort='h' vid='24'/>
+    </rarg>
+    <rarg>
+      <rargname>BODY</rargname>
+      <label vid='23'/>
+      <var sort='h' vid='25'/>
+    </rarg>
+    <ing>
+      <ing-a> <var sort='h' vid='10002'/> </ing-a>
+      <ing-b> <var sort='h' vid='10001'/> </ing-b> 
+    </ing>
+    <ing>
+      <ing-a> <var sort='h' vid='10002'/> </ing-a>
+      <ing-b> <var sort='h' vid='10003'/> </ing-b> 
+    </ing>
+    <ing>
+      <ing-a> <var sort='h' vid='10002'/> </ing-a>
+      <ing-b> <var sort='h' vid='18'/> </ing-b> 
+    </ing>
+  </rmrs>
+
+  </sentence>
+  </analysis>
+  </h>
+</pair>
+
+<pair id="723" entailment="YES" task="SUM" length="short" >
+<t>
+  <surface>
+    The motor industry accounts for as much as 40 per cent of the 450,000 insta\
+    lled industrial robots worldwide but their use is changing and applications\
+     are expanding. 
+  </surface>
+  <analysis>
+  
+  <sentence>
+  
+  <!--
+       l3 | _the_q( ARG0=x4 BODY=h6 RSTR=h5 ) 
+          |    h5 qeq l7
+       l7 + compound_rel( ARG0=e9 ARG1=x4 ARG2=x8 ) 
+   l10001 + _industry_n_1( ARG0=x4 ) 
+      l10 | udef_q_rel( ARG0=x8 BODY=h12 RSTR=h11 ) 
+          |    h11 qeq l13
+      l13 + _motor_n_1( ARG0=x8 ) 
+      l14 | _account_v_for( ARG0=e16 ARG1=x4 ARG2=x15 ) 
+   l10009 | _worldwide_a_1( ARG0=e41 ARG1=e16 ) 
+      l17 + part_of_rel( ARG0=x15 ARG1=x18 ) 
+   l10002 + comp_equal_rel( ARG0=e23 ARG2=e24 ) 
+   l10004 + ord_rel( ARG0=e24 ARG1=u26 CARG=dig2erstaz ) 
+      l19 | udef_q_rel( ARG0=x15 BODY=h21 RSTR=h20 ) 
+          |    h20 qeq l17
+   l10003 + much-many_a_rel( ARG0=e25 ARG1=x15 ) 
+   l10005 | _per_p( ARG0=e28 ARG1=e24 ARG2=x27 ) 
+      l29 + udef_q_rel( ARG0=x27 BODY=h31 RSTR=h30 ) 
+          +    h30 qeq l32
+      l32 | _cent_n_1( ARG0=x27 ) 
+      l33 + _the_q( ARG0=x18 BODY=h35 RSTR=h34 ) 
+          +    h34 qeq l36
+      l36 | card_rel( ARG0=e37 ARG1=x18 CARG=card3ersatz ) 
+   l10007 | _industrial_a_1( ARG0=e40 ARG1=x18 ) 
+   l10006 + _install_v_1( ARG0=e38 ARG2=x18 ) 
+   l10008 | _robot_n_1( ARG0=x18 ) 
+      l42 + _but_c( ARG0=e44 ARG1=h43 ) 
+          +    h43 qeq l14
+      l45 | implicit_conj_rel( ARG0=e2 L-HNDL=h42 R-INDEX=e46 R-HNDL=h47 L-I\
+      l48 + def_explicit_q_rel( ARG0=x49 BODY=h51 RSTR=h50 ) 
+          +    h50 qeq l10010
+      l52 | poss_rel( ARG0=e54 ARG1=x49 ARG2=x53 ) 
+   l10010 | _use_n_of( ARG0=x49 ARG1=u59 ) 
+      l55 + pronoun_q_rel( ARG0=x53 BODY=h57 RSTR=h56 ) 
+          +    h56 qeq l58
+      l58 | pron_rel( ARG0=x53 ) 
+      l60 + _change_v_1( ARG0=e61 ARG1=x49 ) 
+      l47 | _and_c( ARG0=e46 L-HNDL=h60 R-INDEX=e62 R-HNDL=h63 L-INDEX=e61 ) 
+      l64 + udef_q_rel( ARG0=x65 BODY=h67 RSTR=h66 ) 
+          +    h66 qeq l68
+      l68 | _application_n_of( ARG0=x65 ARG1=u69 ) 
+      l63 + _expand_v_1( ARG0=e62 ARG1=x65 ) 
+  -->
+  <rmrs cfrom='-1' cto='-1'>
+    <label vid='1'/>
+    <ep cfrom='-1' cto='-1'>
+      <realpred lemma='the' pos='q'/>
+      <label vid='3'/>
+      <var sort='x' vid='4' num='sg' pers='3'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <gpred>compound_rel</gpred>
+      <label vid='7'/>
+      <var sort='e' vid='9' tense='u'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <gpred>udef_q_rel</gpred>
+      <label vid='10'/>
+      <var sort='x' vid='8'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <realpred lemma='motor' pos='n' sense='1'/>
+      <label vid='13'/>
+      <var sort='x' vid='8'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <realpred lemma='industry' pos='n' sense='1'/>
+      <label vid='10001'/>
+      <var sort='x' vid='4' num='sg' pers='3'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <realpred lemma='account' pos='v' sense='for'/>
+      <label vid='14'/>
+      <var sort='e' vid='16' tense='present'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <gpred>part_of_rel</gpred>
+      <label vid='17'/>
+      <var sort='x' vid='15'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <gpred>udef_q_rel</gpred>
+      <label vid='19'/>
+      <var sort='x' vid='15'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <gpred>comp_equal_rel</gpred>
+      <label vid='10002'/>
+      <var sort='e' vid='23' tense='u'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <gpred>much-many_a_rel</gpred>
+      <label vid='10003'/>
+      <var sort='e' vid='25'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <gpred>ord_rel</gpred>
+      <label vid='10004'/>
+      <var sort='e' vid='24'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <realpred lemma='per' pos='p'/>
+      <label vid='10005'/>
+      <var sort='e' vid='28' tense='u'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <gpred>udef_q_rel</gpred>
+      <label vid='29'/>
+      <var sort='x' vid='27' num='sg' pers='3'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <realpred lemma='cent' pos='n' sense='1'/>
+      <label vid='32'/>
+      <var sort='x' vid='27' num='sg' pers='3'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <realpred lemma='the' pos='q'/>
+      <label vid='33'/>
+      <var sort='x' vid='18' num='pl' pers='3'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <gpred>card_rel</gpred>
+      <label vid='36'/>
+      <var sort='e' vid='37' tense='u'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <realpred lemma='install' pos='v' sense='1'/>
+      <label vid='10006'/>
+      <var sort='e' vid='38' tense='u'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <realpred lemma='industrial' pos='a' sense='1'/>
+      <label vid='10007'/>
+      <var sort='e' vid='40' tense='u'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <realpred lemma='robot' pos='n' sense='1'/>
+      <label vid='10008'/>
+      <var sort='x' vid='18' num='pl' pers='3'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <realpred lemma='worldwide' pos='a' sense='1'/>
+      <label vid='10009'/>
+      <var sort='e' vid='41' tense='u'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <realpred lemma='but' pos='c'/>
+      <label vid='42'/>
+      <var sort='e' vid='44' tense='u'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <gpred>implicit_conj_rel</gpred>
+      <label vid='45'/>
+      <var sort='e' vid='2' tense='present'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <gpred>def_explicit_q_rel</gpred>
+      <label vid='48'/>
+      <var sort='x' vid='49' num='sg' pers='3' gender='n'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <gpred>poss_rel</gpred>
+      <label vid='52'/>
+      <var sort='e' vid='54' tense='u'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <gpred>pronoun_q_rel</gpred>
+      <label vid='55'/>
+      <var sort='x' vid='53' num='pl' pers='3'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <gpred>pron_rel</gpred>
+      <label vid='58'/>
+      <var sort='x' vid='53' num='pl' pers='3'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <realpred lemma='use' pos='n' sense='of'/>
+      <label vid='10010'/>
+      <var sort='x' vid='49' num='sg' pers='3' gender='n'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <realpred lemma='change' pos='v' sense='1'/>
+      <label vid='60'/>
+      <var sort='e' vid='61' tense='present'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <realpred lemma='and' pos='c'/>
+      <label vid='47'/>
+      <var sort='e' vid='46' tense='present'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <gpred>udef_q_rel</gpred>
+      <label vid='64'/>
+      <var sort='x' vid='65' num='pl' pers='3'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <realpred lemma='application' pos='n' sense='of'/>
+      <label vid='68'/>
+      <var sort='x' vid='65' num='pl' pers='3'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <realpred lemma='expand' pos='v' sense='1'/>
+      <label vid='63'/>
+      <var sort='e' vid='62' tense='present'/>
+    </ep>
+    <hcons hreln='qeq'>
+      <hi> <var sort='h' vid='5'/> </hi>
+      <lo> <label vid='7'/> </lo>
+    </hcons>
+    <hcons hreln='qeq'>
+      <hi> <var sort='h' vid='11'/> </hi>
+      <lo> <label vid='13'/> </lo>
+    </hcons>
+    <hcons hreln='qeq'>
+      <hi> <var sort='h' vid='20'/> </hi>
+      <lo> <label vid='17'/> </lo>
+    </hcons>
+    <hcons hreln='qeq'>
+      <hi> <var sort='h' vid='30'/> </hi>
+      <lo> <label vid='32'/> </lo>
+    </hcons>
+    <hcons hreln='qeq'>
+      <hi> <var sort='h' vid='34'/> </hi>
+      <lo> <label vid='36'/> </lo>
+    </hcons>
+    <hcons hreln='qeq'>
+      <hi> <var sort='h' vid='43'/> </hi>
+      <lo> <label vid='14'/> </lo>
+    </hcons>
+    <hcons hreln='qeq'>
+      <hi> <var sort='h' vid='50'/> </hi>
+      <lo> <label vid='10010'/> </lo>
+    </hcons>
+    <hcons hreln='qeq'>
+      <hi> <var sort='h' vid='56'/> </hi>
+      <lo> <label vid='58'/> </lo>
+    </hcons>
+    <hcons hreln='qeq'>
+      <hi> <var sort='h' vid='66'/> </hi>
+      <lo> <label vid='68'/> </lo>
+    </hcons>
+    <rarg>
+      <rargname>RSTR</rargname>
+      <label vid='3'/>
+      <var sort='h' vid='5'/>
+    </rarg>
+    <rarg>
+      <rargname>BODY</rargname>
+      <label vid='3'/>
+      <var sort='h' vid='6'/>
+    </rarg>
+    <rarg>
+      <rargname>ARG1</rargname>
+      <label vid='7'/>
+      <var sort='x' vid='4' num='sg' pers='3'/>
+    </rarg>
+    <rarg>
+      <rargname>ARG2</rargname>
+      <label vid='7'/>
+      <var sort='x' vid='8'/>
+    </rarg>
+    <rarg>
+      <rargname>RSTR</rargname>
+      <label vid='10'/>
+      <var sort='h' vid='11'/>
+    </rarg>
+    <rarg>
+      <rargname>BODY</rargname>
+      <label vid='10'/>
+      <var sort='h' vid='12'/>
+    </rarg>
+    <rarg>
+      <rargname>ARG1</rargname>
+      <label vid='14'/>
+      <var sort='x' vid='4' num='sg' pers='3'/>
+    </rarg>
+    <rarg>
+      <rargname>ARG2</rargname>
+      <label vid='14'/>
+      <var sort='x' vid='15'/>
+    </rarg>
+    <rarg>
+      <rargname>ARG1</rargname>
+      <label vid='17'/>
+      <var sort='x' vid='18' num='pl' pers='3'/>
+    </rarg>
+    <rarg>
+      <rargname>RSTR</rargname>
+      <label vid='19'/>
+      <var sort='h' vid='20'/>
+    </rarg>
+    <rarg>
+      <rargname>BODY</rargname>
+      <label vid='19'/>
+      <var sort='h' vid='21'/>
+    </rarg>
+    <rarg>
+      <rargname>ARG2</rargname>
+      <label vid='10002'/>
+      <var sort='e' vid='24'/>
+    </rarg>
+    <rarg>
+      <rargname>ARG1</rargname>
+      <label vid='10003'/>
+      <var sort='x' vid='15'/>
+    </rarg>
+    <rarg>
+      <rargname>ARG1</rargname>
+      <label vid='10004'/>
+      <var sort='u' vid='26'/>
+    </rarg>
+    <rarg>
+      <rargname>CARG</rargname>
+      <label vid='10004'/>
+      <constant>dig2erstaz</constant>
+    </rarg>
+    <rarg>
+      <rargname>ARG1</rargname>
+      <label vid='10005'/>
+      <var sort='e' vid='24'/>
+    </rarg>
+    <rarg>
+      <rargname>ARG2</rargname>
+      <label vid='10005'/>
+      <var sort='x' vid='27' num='sg' pers='3'/>
+    </rarg>
+    <rarg>
+      <rargname>RSTR</rargname>
+      <label vid='29'/>
+      <var sort='h' vid='30'/>
+    </rarg>
+    <rarg>
+      <rargname>BODY</rargname>
+      <label vid='29'/>
+      <var sort='h' vid='31'/>
+    </rarg>
+    <rarg>
+      <rargname>RSTR</rargname>
+      <label vid='33'/>
+      <var sort='h' vid='34'/>
+    </rarg>
+    <rarg>
+      <rargname>BODY</rargname>
+      <label vid='33'/>
+      <var sort='h' vid='35'/>
+    </rarg>
+    <rarg>
+      <rargname>ARG1</rargname>
+      <label vid='36'/>
+      <var sort='x' vid='18' num='pl' pers='3'/>
+    </rarg>
+    <rarg>
+      <rargname>CARG</rargname>
+      <label vid='36'/>
+      <constant>card3ersatz</constant>
+    </rarg>
+    <rarg>
+      <rargname>ARG2</rargname>
+      <label vid='10006'/>
+      <var sort='x' vid='18' num='pl' pers='3'/>
+    </rarg>
+    <rarg>
+      <rargname>ARG1</rargname>
+      <label vid='10007'/>
+      <var sort='x' vid='18' num='pl' pers='3'/>
+    </rarg>
+    <rarg>
+      <rargname>ARG1</rargname>
+      <label vid='10009'/>
+      <var sort='e' vid='16' tense='present'/>
+    </rarg>
+    <rarg>
+      <rargname>ARG1</rargname>
+      <label vid='42'/>
+      <var sort='h' vid='43'/>
+    </rarg>
+    <rarg>
+      <rargname>L-HNDL</rargname>
+      <label vid='45'/>
+      <var sort='h' vid='42'/>
+    </rarg>
+    <rarg>
+      <rargname>L-INDEX</rargname>
+      <label vid='45'/>
+      <var sort='e' vid='16' tense='present'/>
+    </rarg>
+    <rarg>
+      <rargname>R-HNDL</rargname>
+      <label vid='45'/>
+      <var sort='h' vid='47'/>
+    </rarg>
+    <rarg>
+      <rargname>R-INDEX</rargname>
+      <label vid='45'/>
+      <var sort='e' vid='46' tense='present'/>
+    </rarg>
+    <rarg>
+      <rargname>RSTR</rargname>
+      <label vid='48'/>
+      <var sort='h' vid='50'/>
+    </rarg>
+    <rarg>
+      <rargname>BODY</rargname>
+      <label vid='48'/>
+      <var sort='h' vid='51'/>
+    </rarg>
+    <rarg>
+      <rargname>ARG1</rargname>
+      <label vid='52'/>
+      <var sort='x' vid='49' num='sg' pers='3' gender='n'/>
+    </rarg>
+    <rarg>
+      <rargname>ARG2</rargname>
+      <label vid='52'/>
+      <var sort='x' vid='53' num='pl' pers='3'/>
+    </rarg>
+    <rarg>
+      <rargname>RSTR</rargname>
+      <label vid='55'/>
+      <var sort='h' vid='56'/>
+    </rarg>
+    <rarg>
+      <rargname>BODY</rargname>
+      <label vid='55'/>
+      <var sort='h' vid='57'/>
+    </rarg>
+    <rarg>
+      <rargname>ARG1</rargname>
+      <label vid='10010'/>
+      <var sort='u' vid='59'/>
+    </rarg>
+    <rarg>
+      <rargname>ARG1</rargname>
+      <label vid='60'/>
+      <var sort='x' vid='49' num='sg' pers='3' gender='n'/>
+    </rarg>
+    <rarg>
+      <rargname>L-HNDL</rargname>
+      <label vid='47'/>
+      <var sort='h' vid='60'/>
+    </rarg>
+    <rarg>
+      <rargname>L-INDEX</rargname>
+      <label vid='47'/>
+      <var sort='e' vid='61' tense='present'/>
+    </rarg>
+    <rarg>
+      <rargname>R-HNDL</rargname>
+      <label vid='47'/>
+      <var sort='h' vid='63'/>
+    </rarg>
+    <rarg>
+      <rargname>R-INDEX</rargname>
+      <label vid='47'/>
+      <var sort='e' vid='62' tense='present'/>
+    </rarg>
+    <rarg>
+      <rargname>RSTR</rargname>
+      <label vid='64'/>
+      <var sort='h' vid='66'/>
+    </rarg>
+    <rarg>
+      <rargname>BODY</rargname>
+      <label vid='64'/>
+      <var sort='h' vid='67'/>
+    </rarg>
+    <rarg>
+      <rargname>ARG1</rargname>
+      <label vid='68'/>
+      <var sort='u' vid='69'/>
+    </rarg>
+    <rarg>
+      <rargname>ARG1</rargname>
+      <label vid='63'/>
+      <var sort='x' vid='65' num='pl' pers='3'/>
+    </rarg>
+    <ing>
+      <ing-a> <var sort='h' vid='7'/> </ing-a>
+      <ing-b> <var sort='h' vid='10001'/> </ing-b> 
+    </ing>
+    <ing>
+      <ing-a> <var sort='h' vid='14'/> </ing-a>
+      <ing-b> <var sort='h' vid='10009'/> </ing-b> 
+    </ing>
+    <ing>
+      <ing-a> <var sort='h' vid='17'/> </ing-a>
+      <ing-b> <var sort='h' vid='10002'/> </ing-b> 
+    </ing>
+    <ing>
+      <ing-a> <var sort='h' vid='17'/> </ing-a>
+      <ing-b> <var sort='h' vid='10003'/> </ing-b> 
+    </ing>
+    <ing>
+      <ing-a> <var sort='h' vid='17'/> </ing-a>
+      <ing-b> <var sort='h' vid='10004'/> </ing-b> 
+    </ing>
+    <ing>
+      <ing-a> <var sort='h' vid='17'/> </ing-a>
+      <ing-b> <var sort='h' vid='10005'/> </ing-b> 
+    </ing>
+    <ing>
+      <ing-a> <var sort='h' vid='36'/> </ing-a>
+      <ing-b> <var sort='h' vid='10006'/> </ing-b> 
+    </ing>
+    <ing>
+      <ing-a> <var sort='h' vid='36'/> </ing-a>
+      <ing-b> <var sort='h' vid='10007'/> </ing-b> 
+    </ing>
+    <ing>
+      <ing-a> <var sort='h' vid='36'/> </ing-a>
+      <ing-b> <var sort='h' vid='10008'/> </ing-b> 
+    </ing>
+    <ing>
+      <ing-a> <var sort='h' vid='10010'/> </ing-a>
+      <ing-b> <var sort='h' vid='52'/> </ing-b> 
+    </ing>
+  </rmrs>
+
+  </sentence>
+  </analysis>
+  </t>
+<h>
+  <surface>
+    The most common use for robots is the manufacture of automobiles. 
+  </surface>
+  <analysis>
+  
+  <sentence>
+  
+  <!--
+       l3 | _the_q( ARG0=x4 BODY=h6 RSTR=h5 ) 
+          |    h5 qeq l7
+       l7 + superl_rel( ARG0=e8 ARG1=e9 ) 
+   l10002 + _use_n_of( ARG0=x4 ARG1=u10 ) 
+   l10001 | _common_a_1( ARG0=e9 ARG1=x4 ) 
+   l10003 + _for_p( ARG0=e12 ARG1=x4 ARG2=x11 ) 
+      l13 | udef_q_rel( ARG0=x11 BODY=h15 RSTR=h14 ) 
+          |    h14 qeq l16
+      l16 + _robot_n_1( ARG0=x11 ) 
+      l17 | _be_v_id( ARG0=e2 ARG1=x4 ARG2=x18 ) 
+      l19 + _the_q( ARG0=x18 BODY=h21 RSTR=h20 ) 
+          +    h20 qeq l22
+      l22 | _manufacture_n_of( ARG0=x18 ARG1=x23 ) 
+      l24 + udef_q_rel( ARG0=x23 BODY=h26 RSTR=h25 ) 
+          +    h25 qeq l27
+      l27 | _automobile_n_1( ARG0=x23 ) 
+  -->
+  <rmrs cfrom='-1' cto='-1'>
+    <label vid='1'/>
+    <ep cfrom='-1' cto='-1'>
+      <realpred lemma='the' pos='q'/>
+      <label vid='3'/>
+      <var sort='x' vid='4' num='sg' pers='3' gender='n'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <gpred>superl_rel</gpred>
+      <label vid='7'/>
+      <var sort='e' vid='8' tense='u'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <realpred lemma='common' pos='a' sense='1'/>
+      <label vid='10001'/>
+      <var sort='e' vid='9' tense='u'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <realpred lemma='use' pos='n' sense='of'/>
+      <label vid='10002'/>
+      <var sort='x' vid='4' num='sg' pers='3' gender='n'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <realpred lemma='for' pos='p'/>
+      <label vid='10003'/>
+      <var sort='e' vid='12'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <gpred>udef_q_rel</gpred>
+      <label vid='13'/>
+      <var sort='x' vid='11' num='pl' pers='3'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <realpred lemma='robot' pos='n' sense='1'/>
+      <label vid='16'/>
+      <var sort='x' vid='11' num='pl' pers='3'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <realpred lemma='be' pos='v' sense='id'/>
+      <label vid='17'/>
+      <var sort='e' vid='2' tense='present'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <realpred lemma='the' pos='q'/>
+      <label vid='19'/>
+      <var sort='x' vid='18' num='sg' pers='3'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <realpred lemma='manufacture' pos='n' sense='of'/>
+      <label vid='22'/>
+      <var sort='x' vid='18' num='sg' pers='3'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <gpred>udef_q_rel</gpred>
+      <label vid='24'/>
+      <var sort='x' vid='23' num='pl' pers='3'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <realpred lemma='automobile' pos='n' sense='1'/>
+      <label vid='27'/>
+      <var sort='x' vid='23' num='pl' pers='3'/>
+    </ep>
+    <hcons hreln='qeq'>
+      <hi> <var sort='h' vid='5'/> </hi>
+      <lo> <label vid='7'/> </lo>
+    </hcons>
+    <hcons hreln='qeq'>
+      <hi> <var sort='h' vid='14'/> </hi>
+      <lo> <label vid='16'/> </lo>
+    </hcons>
+    <hcons hreln='qeq'>
+      <hi> <var sort='h' vid='20'/> </hi>
+      <lo> <label vid='22'/> </lo>
+    </hcons>
+    <hcons hreln='qeq'>
+      <hi> <var sort='h' vid='25'/> </hi>
+      <lo> <label vid='27'/> </lo>
+    </hcons>
+    <rarg>
+      <rargname>RSTR</rargname>
+      <label vid='3'/>
+      <var sort='h' vid='5'/>
+    </rarg>
+    <rarg>
+      <rargname>BODY</rargname>
+      <label vid='3'/>
+      <var sort='h' vid='6'/>
+    </rarg>
+    <rarg>
+      <rargname>ARG1</rargname>
+      <label vid='7'/>
+      <var sort='e' vid='9' tense='u'/>
+    </rarg>
+    <rarg>
+      <rargname>ARG1</rargname>
+      <label vid='10001'/>
+      <var sort='x' vid='4' num='sg' pers='3' gender='n'/>
+    </rarg>
+    <rarg>
+      <rargname>ARG1</rargname>
+      <label vid='10002'/>
+      <var sort='u' vid='10'/>
+    </rarg>
+    <rarg>
+      <rargname>ARG1</rargname>
+      <label vid='10003'/>
+      <var sort='x' vid='4' num='sg' pers='3' gender='n'/>
+    </rarg>
+    <rarg>
+      <rargname>ARG2</rargname>
+      <label vid='10003'/>
+      <var sort='x' vid='11' num='pl' pers='3'/>
+    </rarg>
+    <rarg>
+      <rargname>RSTR</rargname>
+      <label vid='13'/>
+      <var sort='h' vid='14'/>
+    </rarg>
+    <rarg>
+      <rargname>BODY</rargname>
+      <label vid='13'/>
+      <var sort='h' vid='15'/>
+    </rarg>
+    <rarg>
+      <rargname>ARG1</rargname>
+      <label vid='17'/>
+      <var sort='x' vid='4' num='sg' pers='3' gender='n'/>
+    </rarg>
+    <rarg>
+      <rargname>ARG2</rargname>
+      <label vid='17'/>
+      <var sort='x' vid='18' num='sg' pers='3'/>
+    </rarg>
+    <rarg>
+      <rargname>RSTR</rargname>
+      <label vid='19'/>
+      <var sort='h' vid='20'/>
+    </rarg>
+    <rarg>
+      <rargname>BODY</rargname>
+      <label vid='19'/>
+      <var sort='h' vid='21'/>
+    </rarg>
+    <rarg>
+      <rargname>ARG1</rargname>
+      <label vid='22'/>
+      <var sort='x' vid='23' num='pl' pers='3'/>
+    </rarg>
+    <rarg>
+      <rargname>RSTR</rargname>
+      <label vid='24'/>
+      <var sort='h' vid='25'/>
+    </rarg>
+    <rarg>
+      <rargname>BODY</rargname>
+      <label vid='24'/>
+      <var sort='h' vid='26'/>
+    </rarg>
+    <ing>
+      <ing-a> <var sort='h' vid='7'/> </ing-a>
+      <ing-b> <var sort='h' vid='10001'/> </ing-b> 
+    </ing>
+    <ing>
+      <ing-a> <var sort='h' vid='7'/> </ing-a>
+      <ing-b> <var sort='h' vid='10003'/> </ing-b> 
+    </ing>
+    <ing>
+      <ing-a> <var sort='h' vid='7'/> </ing-a>
+      <ing-b> <var sort='h' vid='10002'/> </ing-b> 
+    </ing>
+  </rmrs>
+
+  </sentence>
+  </analysis>
+  </h>
+</pair>
+
+<pair id="301" entailment="NO" task="IR" length="short" >
+<t>
+  <surface>
+    New York boasts the largest number of billionaires, with 40 residing in the\
+     Big Apple. The world's youngest billionaire is 22-year-old Hind Hariri, da\
+    ughter of assassinated former Lebanese Prime Minister Rafik Hariri. 
+  </surface>
+  <analysis>
+  
+  <sentence>
+  
+  <!--
+       l3 | proper_q_rel( ARG0=x5 BODY=h6 RSTR=h4 ) 
+          |    h4 qeq l7
+       l7 + named_rel( ARG0=x5 CARG=new_york ) 
+       l8 | _boast_v_1( ARG0=e2 ARG1=x5 ARG2=x9 ) 
+      l10 + _the_q( ARG0=x9 BODY=h12 RSTR=h11 ) 
+          +    h11 qeq l10002
+      l13 | _large_a_1( ARG0=e14 ARG1=x9 ) 
+   l10002 | _number_n_of( ARG0=x9 ARG1=x16 ) 
+   l10001 + superl_rel( ARG0=e15 ARG1=e14 ) 
+      l17 | udef_q_rel( ARG0=x16 BODY=h19 RSTR=h18 ) 
+          |    h18 qeq l20
+      l20 + _ape_n_1( ARG0=x16 ) 
+   l10003 | _with_p( ARG0=e22 ARG1=x16 ARG2=x21 ) 
+      l23 + generic_entity_rel( ARG0=x21 ) 
+   l10004 + card_rel( ARG0=u27 ARG1=x21 CARG=2 ) 
+   l10006 + _in_p_dir( ARG0=e30 ARG1=e28 ARG2=x29 ) 
+      l24 | udef_q_rel( ARG0=x21 BODY=h26 RSTR=h25 ) 
+          |    h25 qeq l23
+   l10005 + _reside_v_1( ARG0=e28 ARG1=x21 ) 
+      l31 | _the_q( ARG0=x29 BODY=h33 RSTR=h32 ) 
+          |    h32 qeq l10007
+      l34 + _big_a_1( ARG0=e35 ARG1=x29 ) 
+   l10007 | _apple_n_1( ARG0=x29 ) 
+  -->
+  <rmrs cfrom='-1' cto='-1'>
+    <label vid='1'/>
+    <ep cfrom='-1' cto='-1'>
+      <gpred>proper_q_rel</gpred>
+      <label vid='3'/>
+      <var sort='x' vid='5' num='sg' pers='3'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <gpred>named_rel</gpred>
+      <label vid='7'/>
+      <var sort='x' vid='5' num='sg' pers='3'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <realpred lemma='boast' pos='v' sense='1'/>
+      <label vid='8'/>
+      <var sort='e' vid='2' tense='present'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <realpred lemma='the' pos='q'/>
+      <label vid='10'/>
+      <var sort='x' vid='9' num='sg' pers='3'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <realpred lemma='large' pos='a' sense='1'/>
+      <label vid='13'/>
+      <var sort='e' vid='14'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <gpred>superl_rel</gpred>
+      <label vid='10001'/>
+      <var sort='e' vid='15' tense='u'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <realpred lemma='number' pos='n' sense='of'/>
+      <label vid='10002'/>
+      <var sort='x' vid='9' num='sg' pers='3'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <gpred>udef_q_rel</gpred>
+      <label vid='17'/>
+      <var sort='x' vid='16' num='pl' pers='3'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <realpred lemma='ape' pos='n' sense='1'/>
+      <label vid='20'/>
+      <var sort='x' vid='16' num='pl' pers='3'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <realpred lemma='with' pos='p'/>
+      <label vid='10003'/>
+      <var sort='e' vid='22'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <gpred>generic_entity_rel</gpred>
+      <label vid='23'/>
+      <var sort='x' vid='21' num='pl' pers='3'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <gpred>udef_q_rel</gpred>
+      <label vid='24'/>
+      <var sort='x' vid='21' num='pl' pers='3'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <gpred>card_rel</gpred>
+      <label vid='10004'/>
+      <var sort='u' vid='27'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <realpred lemma='reside' pos='v' sense='1'/>
+      <label vid='10005'/>
+      <var sort='e' vid='28' tense='u'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <realpred lemma='in' pos='p' sense='dir'/>
+      <label vid='10006'/>
+      <var sort='e' vid='30' tense='u'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <realpred lemma='the' pos='q'/>
+      <label vid='31'/>
+      <var sort='x' vid='29' num='sg' pers='3'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <realpred lemma='big' pos='a' sense='1'/>
+      <label vid='34'/>
+      <var sort='e' vid='35' tense='u'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <realpred lemma='apple' pos='n' sense='1'/>
+      <label vid='10007'/>
+      <var sort='x' vid='29' num='sg' pers='3'/>
+    </ep>
+    <hcons hreln='qeq'>
+      <hi> <var sort='h' vid='4'/> </hi>
+      <lo> <label vid='7'/> </lo>
+    </hcons>
+    <hcons hreln='qeq'>
+      <hi> <var sort='h' vid='11'/> </hi>
+      <lo> <label vid='10002'/> </lo>
+    </hcons>
+    <hcons hreln='qeq'>
+      <hi> <var sort='h' vid='18'/> </hi>
+      <lo> <label vid='20'/> </lo>
+    </hcons>
+    <hcons hreln='qeq'>
+      <hi> <var sort='h' vid='25'/> </hi>
+      <lo> <label vid='23'/> </lo>
+    </hcons>
+    <hcons hreln='qeq'>
+      <hi> <var sort='h' vid='32'/> </hi>
+      <lo> <label vid='10007'/> </lo>
+    </hcons>
+    <rarg>
+      <rargname>RSTR</rargname>
+      <label vid='3'/>
+      <var sort='h' vid='4'/>
+    </rarg>
+    <rarg>
+      <rargname>BODY</rargname>
+      <label vid='3'/>
+      <var sort='h' vid='6'/>
+    </rarg>
+    <rarg>
+      <rargname>CARG</rargname>
+      <label vid='7'/>
+      <constant>new_york</constant>
+    </rarg>
+    <rarg>
+      <rargname>ARG1</rargname>
+      <label vid='8'/>
+      <var sort='x' vid='5' num='sg' pers='3'/>
+    </rarg>
+    <rarg>
+      <rargname>ARG2</rargname>
+      <label vid='8'/>
+      <var sort='x' vid='9' num='sg' pers='3'/>
+    </rarg>
+    <rarg>
+      <rargname>RSTR</rargname>
+      <label vid='10'/>
+      <var sort='h' vid='11'/>
+    </rarg>
+    <rarg>
+      <rargname>BODY</rargname>
+      <label vid='10'/>
+      <var sort='h' vid='12'/>
+    </rarg>
+    <rarg>
+      <rargname>ARG1</rargname>
+      <label vid='13'/>
+      <var sort='x' vid='9' num='sg' pers='3'/>
+    </rarg>
+    <rarg>
+      <rargname>ARG1</rargname>
+      <label vid='10001'/>
+      <var sort='e' vid='14'/>
+    </rarg>
+    <rarg>
+      <rargname>ARG1</rargname>
+      <label vid='10002'/>
+      <var sort='x' vid='16' num='pl' pers='3'/>
+    </rarg>
+    <rarg>
+      <rargname>RSTR</rargname>
+      <label vid='17'/>
+      <var sort='h' vid='18'/>
+    </rarg>
+    <rarg>
+      <rargname>BODY</rargname>
+      <label vid='17'/>
+      <var sort='h' vid='19'/>
+    </rarg>
+    <rarg>
+      <rargname>ARG1</rargname>
+      <label vid='10003'/>
+      <var sort='x' vid='16' num='pl' pers='3'/>
+    </rarg>
+    <rarg>
+      <rargname>ARG2</rargname>
+      <label vid='10003'/>
+      <var sort='x' vid='21' num='pl' pers='3'/>
+    </rarg>
+    <rarg>
+      <rargname>RSTR</rargname>
+      <label vid='24'/>
+      <var sort='h' vid='25'/>
+    </rarg>
+    <rarg>
+      <rargname>BODY</rargname>
+      <label vid='24'/>
+      <var sort='h' vid='26'/>
+    </rarg>
+    <rarg>
+      <rargname>ARG1</rargname>
+      <label vid='10004'/>
+      <var sort='x' vid='21' num='pl' pers='3'/>
+    </rarg>
+    <rarg>
+      <rargname>CARG</rargname>
+      <label vid='10004'/>
+      <constant>2</constant>
+    </rarg>
+    <rarg>
+      <rargname>ARG1</rargname>
+      <label vid='10005'/>
+      <var sort='x' vid='21' num='pl' pers='3'/>
+    </rarg>
+    <rarg>
+      <rargname>ARG1</rargname>
+      <label vid='10006'/>
+      <var sort='e' vid='28' tense='u'/>
+    </rarg>
+    <rarg>
+      <rargname>ARG2</rargname>
+      <label vid='10006'/>
+      <var sort='x' vid='29' num='sg' pers='3'/>
+    </rarg>
+    <rarg>
+      <rargname>RSTR</rargname>
+      <label vid='31'/>
+      <var sort='h' vid='32'/>
+    </rarg>
+    <rarg>
+      <rargname>BODY</rargname>
+      <label vid='31'/>
+      <var sort='h' vid='33'/>
+    </rarg>
+    <rarg>
+      <rargname>ARG1</rargname>
+      <label vid='34'/>
+      <var sort='x' vid='29' num='sg' pers='3'/>
+    </rarg>
+    <ing>
+      <ing-a> <var sort='h' vid='10002'/> </ing-a>
+      <ing-b> <var sort='h' vid='10001'/> </ing-b> 
+    </ing>
+    <ing>
+      <ing-a> <var sort='h' vid='10002'/> </ing-a>
+      <ing-b> <var sort='h' vid='13'/> </ing-b> 
+    </ing>
+    <ing>
+      <ing-a> <var sort='h' vid='20'/> </ing-a>
+      <ing-b> <var sort='h' vid='10003'/> </ing-b> 
+    </ing>
+    <ing>
+      <ing-a> <var sort='h' vid='23'/> </ing-a>
+      <ing-b> <var sort='h' vid='10004'/> </ing-b> 
+    </ing>
+    <ing>
+      <ing-a> <var sort='h' vid='23'/> </ing-a>
+      <ing-b> <var sort='h' vid='10006'/> </ing-b> 
+    </ing>
+    <ing>
+      <ing-a> <var sort='h' vid='23'/> </ing-a>
+      <ing-b> <var sort='h' vid='10005'/> </ing-b> 
+    </ing>
+    <ing>
+      <ing-a> <var sort='h' vid='10007'/> </ing-a>
+      <ing-b> <var sort='h' vid='34'/> </ing-b> 
+    </ing>
+  </rmrs>
+
+  </sentence>
+  <sentence>
+  
+  <!--
+       l3 | _the_q( ARG0=x4 BODY=h6 RSTR=h5 ) 
+          |    h5 qeq l7
+       l7 + _world_n_of( ARG0=x4 ARG1=u8 ) 
+       l9 | def_explicit_q_rel( ARG0=x10 BODY=h12 RSTR=h11 ) 
+          |    h11 qeq l10003
+      l13 + poss_rel( ARG0=e14 ARG1=x10 ARG2=x4 ) 
+   l10002 + superl_rel( ARG0=e16 ARG1=e15 ) 
+   l10001 | _young_a_1( ARG0=e15 ARG1=x10 ) 
+   l10003 + _ape_n_1( ARG0=x10 ) 
+      l17 | _be_v_id( ARG0=e2 ARG1=x10 ARG2=x18 ) 
+      l19 + appos_rel( ARG0=e21 ARG1=x18 ARG2=x20 ) 
+   l10004 + named_rel( ARG0=x18 CARG=nameersatz ) 
+      l22 | udef_q_rel( ARG0=x20 BODY=h24 RSTR=h23 ) 
+          |    h23 qeq l28
+      l25 + proper_q_rel( ARG0=x18 BODY=h27 RSTR=h26 ) 
+          +    h26 qeq l19
+      l28 | _daughter_n_1( ARG0=x20 ) 
+   l10005 + _of_p( ARG0=e30 ARG1=x20 ARG2=x29 ) 
+      l31 | proper_q_rel( ARG0=x29 BODY=h33 RSTR=h32 ) 
+          |    h32 qeq l34
+      l34 + compound_rel( ARG0=e36 ARG1=x37 ARG2=x35 ) 
+   l10008 + title_id_rel( ARG0=e49 ARG1=x37 ARG2=x29 ) 
+      l38 | udef_q_rel( ARG0=x35 BODY=h40 RSTR=h39 ) 
+          |    h39 qeq l10007
+      l41 + _assassinate_v_1( ARG0=e42 ARG2=x35 ) 
+   l10007 + _american_n_1( ARG0=x35 ) 
+   l10006 | _former_a_1( ARG0=e44 ARG1=x35 ) 
+      l45 + _prime+minister_n_of( ARG0=x37 ) 
+      l46 | udef_q_rel( ARG0=x37 BODY=h48 RSTR=h47 ) 
+          |    h47 qeq l45
+   l10009 + named_rel( ARG0=x29 CARG=nameersatz ) 
+  -->
+  <rmrs cfrom='-1' cto='-1'>
+    <label vid='1'/>
+    <ep cfrom='-1' cto='-1'>
+      <realpred lemma='the' pos='q'/>
+      <label vid='3'/>
+      <var sort='x' vid='4' num='sg' pers='3'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <realpred lemma='world' pos='n' sense='of'/>
+      <label vid='7'/>
+      <var sort='x' vid='4' num='sg' pers='3'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <gpred>def_explicit_q_rel</gpred>
+      <label vid='9'/>
+      <var sort='x' vid='10' num='sg' pers='3'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <gpred>poss_rel</gpred>
+      <label vid='13'/>
+      <var sort='e' vid='14' tense='u'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <realpred lemma='young' pos='a' sense='1'/>
+      <label vid='10001'/>
+      <var sort='e' vid='15'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <gpred>superl_rel</gpred>
+      <label vid='10002'/>
+      <var sort='e' vid='16' tense='u'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <realpred lemma='ape' pos='n' sense='1'/>
+      <label vid='10003'/>
+      <var sort='x' vid='10' num='sg' pers='3'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <realpred lemma='be' pos='v' sense='id'/>
+      <label vid='17'/>
+      <var sort='e' vid='2' tense='present'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <gpred>appos_rel</gpred>
+      <label vid='19'/>
+      <var sort='e' vid='21' tense='u'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <gpred>udef_q_rel</gpred>
+      <label vid='22'/>
+      <var sort='x' vid='20' num='sg' pers='3'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <gpred>proper_q_rel</gpred>
+      <label vid='25'/>
+      <var sort='x' vid='18' num='sg' pers='3'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <gpred>named_rel</gpred>
+      <label vid='10004'/>
+      <var sort='x' vid='18' num='sg' pers='3'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <realpred lemma='daughter' pos='n' sense='1'/>
+      <label vid='28'/>
+      <var sort='x' vid='20' num='sg' pers='3'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <realpred lemma='of' pos='p'/>
+      <label vid='10005'/>
+      <var sort='e' vid='30'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <gpred>proper_q_rel</gpred>
+      <label vid='31'/>
+      <var sort='x' vid='29' num='sg' pers='3'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <gpred>compound_rel</gpred>
+      <label vid='34'/>
+      <var sort='e' vid='36' tense='u'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <gpred>udef_q_rel</gpred>
+      <label vid='38'/>
+      <var sort='x' vid='35' num='sg' pers='3'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <realpred lemma='assassinate' pos='v' sense='1'/>
+      <label vid='41'/>
+      <var sort='e' vid='42' tense='u'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <realpred lemma='former' pos='a' sense='1'/>
+      <label vid='10006'/>
+      <var sort='e' vid='44' tense='u'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <realpred lemma='american' pos='n' sense='1'/>
+      <label vid='10007'/>
+      <var sort='x' vid='35' num='sg' pers='3'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <realpred lemma='prime+minister' pos='n' sense='of'/>
+      <label vid='45'/>
+      <var sort='x' vid='37'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <gpred>udef_q_rel</gpred>
+      <label vid='46'/>
+      <var sort='x' vid='37'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <gpred>title_id_rel</gpred>
+      <label vid='10008'/>
+      <var sort='e' vid='49' tense='u'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <gpred>named_rel</gpred>
+      <label vid='10009'/>
+      <var sort='x' vid='29' num='sg' pers='3'/>
+    </ep>
+    <hcons hreln='qeq'>
+      <hi> <var sort='h' vid='5'/> </hi>
+      <lo> <label vid='7'/> </lo>
+    </hcons>
+    <hcons hreln='qeq'>
+      <hi> <var sort='h' vid='11'/> </hi>
+      <lo> <label vid='10003'/> </lo>
+    </hcons>
+    <hcons hreln='qeq'>
+      <hi> <var sort='h' vid='23'/> </hi>
+      <lo> <label vid='28'/> </lo>
+    </hcons>
+    <hcons hreln='qeq'>
+      <hi> <var sort='h' vid='26'/> </hi>
+      <lo> <label vid='19'/> </lo>
+    </hcons>
+    <hcons hreln='qeq'>
+      <hi> <var sort='h' vid='32'/> </hi>
+      <lo> <label vid='34'/> </lo>
+    </hcons>
+    <hcons hreln='qeq'>
+      <hi> <var sort='h' vid='39'/> </hi>
+      <lo> <label vid='10007'/> </lo>
+    </hcons>
+    <hcons hreln='qeq'>
+      <hi> <var sort='h' vid='47'/> </hi>
+      <lo> <label vid='45'/> </lo>
+    </hcons>
+    <rarg>
+      <rargname>RSTR</rargname>
+      <label vid='3'/>
+      <var sort='h' vid='5'/>
+    </rarg>
+    <rarg>
+      <rargname>BODY</rargname>
+      <label vid='3'/>
+      <var sort='h' vid='6'/>
+    </rarg>
+    <rarg>
+      <rargname>ARG1</rargname>
+      <label vid='7'/>
+      <var sort='u' vid='8'/>
+    </rarg>
+    <rarg>
+      <rargname>RSTR</rargname>
+      <label vid='9'/>
+      <var sort='h' vid='11'/>
+    </rarg>
+    <rarg>
+      <rargname>BODY</rargname>
+      <label vid='9'/>
+      <var sort='h' vid='12'/>
+    </rarg>
+    <rarg>
+      <rargname>ARG1</rargname>
+      <label vid='13'/>
+      <var sort='x' vid='10' num='sg' pers='3'/>
+    </rarg>
+    <rarg>
+      <rargname>ARG2</rargname>
+      <label vid='13'/>
+      <var sort='x' vid='4' num='sg' pers='3'/>
+    </rarg>
+    <rarg>
+      <rargname>ARG1</rargname>
+      <label vid='10001'/>
+      <var sort='x' vid='10' num='sg' pers='3'/>
+    </rarg>
+    <rarg>
+      <rargname>ARG1</rargname>
+      <label vid='10002'/>
+      <var sort='e' vid='15'/>
+    </rarg>
+    <rarg>
+      <rargname>ARG1</rargname>
+      <label vid='17'/>
+      <var sort='x' vid='10' num='sg' pers='3'/>
+    </rarg>
+    <rarg>
+      <rargname>ARG2</rargname>
+      <label vid='17'/>
+      <var sort='x' vid='18' num='sg' pers='3'/>
+    </rarg>
+    <rarg>
+      <rargname>ARG1</rargname>
+      <label vid='19'/>
+      <var sort='x' vid='18' num='sg' pers='3'/>
+    </rarg>
+    <rarg>
+      <rargname>ARG2</rargname>
+      <label vid='19'/>
+      <var sort='x' vid='20' num='sg' pers='3'/>
+    </rarg>
+    <rarg>
+      <rargname>RSTR</rargname>
+      <label vid='22'/>
+      <var sort='h' vid='23'/>
+    </rarg>
+    <rarg>
+      <rargname>BODY</rargname>
+      <label vid='22'/>
+      <var sort='h' vid='24'/>
+    </rarg>
+    <rarg>
+      <rargname>RSTR</rargname>
+      <label vid='25'/>
+      <var sort='h' vid='26'/>
+    </rarg>
+    <rarg>
+      <rargname>BODY</rargname>
+      <label vid='25'/>
+      <var sort='h' vid='27'/>
+    </rarg>
+    <rarg>
+      <rargname>CARG</rargname>
+      <label vid='10004'/>
+      <constant>nameersatz</constant>
+    </rarg>
+    <rarg>
+      <rargname>ARG1</rargname>
+      <label vid='10005'/>
+      <var sort='x' vid='20' num='sg' pers='3'/>
+    </rarg>
+    <rarg>
+      <rargname>ARG2</rargname>
+      <label vid='10005'/>
+      <var sort='x' vid='29' num='sg' pers='3'/>
+    </rarg>
+    <rarg>
+      <rargname>RSTR</rargname>
+      <label vid='31'/>
+      <var sort='h' vid='32'/>
+    </rarg>
+    <rarg>
+      <rargname>BODY</rargname>
+      <label vid='31'/>
+      <var sort='h' vid='33'/>
+    </rarg>
+    <rarg>
+      <rargname>ARG1</rargname>
+      <label vid='34'/>
+      <var sort='x' vid='37'/>
+    </rarg>
+    <rarg>
+      <rargname>ARG2</rargname>
+      <label vid='34'/>
+      <var sort='x' vid='35' num='sg' pers='3'/>
+    </rarg>
+    <rarg>
+      <rargname>RSTR</rargname>
+      <label vid='38'/>
+      <var sort='h' vid='39'/>
+    </rarg>
+    <rarg>
+      <rargname>BODY</rargname>
+      <label vid='38'/>
+      <var sort='h' vid='40'/>
+    </rarg>
+    <rarg>
+      <rargname>ARG2</rargname>
+      <label vid='41'/>
+      <var sort='x' vid='35' num='sg' pers='3'/>
+    </rarg>
+    <rarg>
+      <rargname>ARG1</rargname>
+      <label vid='10006'/>
+      <var sort='x' vid='35' num='sg' pers='3'/>
+    </rarg>
+    <rarg>
+      <rargname>RSTR</rargname>
+      <label vid='46'/>
+      <var sort='h' vid='47'/>
+    </rarg>
+    <rarg>
+      <rargname>BODY</rargname>
+      <label vid='46'/>
+      <var sort='h' vid='48'/>
+    </rarg>
+    <rarg>
+      <rargname>ARG1</rargname>
+      <label vid='10008'/>
+      <var sort='x' vid='37'/>
+    </rarg>
+    <rarg>
+      <rargname>ARG2</rargname>
+      <label vid='10008'/>
+      <var sort='x' vid='29' num='sg' pers='3'/>
+    </rarg>
+    <rarg>
+      <rargname>CARG</rargname>
+      <label vid='10009'/>
+      <constant>nameersatz</constant>
+    </rarg>
+    <ing>
+      <ing-a> <var sort='h' vid='10003'/> </ing-a>
+      <ing-b> <var sort='h' vid='10001'/> </ing-b> 
+    </ing>
+    <ing>
+      <ing-a> <var sort='h' vid='10003'/> </ing-a>
+      <ing-b> <var sort='h' vid='10002'/> </ing-b> 
+    </ing>
+    <ing>
+      <ing-a> <var sort='h' vid='10003'/> </ing-a>
+      <ing-b> <var sort='h' vid='13'/> </ing-b> 
+    </ing>
+    <ing>
+      <ing-a> <var sort='h' vid='19'/> </ing-a>
+      <ing-b> <var sort='h' vid='10004'/> </ing-b> 
+    </ing>
+    <ing>
+      <ing-a> <var sort='h' vid='28'/> </ing-a>
+      <ing-b> <var sort='h' vid='10005'/> </ing-b> 
+    </ing>
+    <ing>
+      <ing-a> <var sort='h' vid='34'/> </ing-a>
+      <ing-b> <var sort='h' vid='10008'/> </ing-b> 
+    </ing>
+    <ing>
+      <ing-a> <var sort='h' vid='34'/> </ing-a>
+      <ing-b> <var sort='h' vid='10009'/> </ing-b> 
+    </ing>
+    <ing>
+      <ing-a> <var sort='h' vid='10007'/> </ing-a>
+      <ing-b> <var sort='h' vid='10006'/> </ing-b> 
+    </ing>
+    <ing>
+      <ing-a> <var sort='h' vid='10007'/> </ing-a>
+      <ing-b> <var sort='h' vid='41'/> </ing-b> 
+    </ing>
+  </rmrs>
+
+  </sentence>
+  </analysis>
+  </t>
+<h>
+  <surface>
+    The number of billionaires increases. 
+  </surface>
+  <analysis>
+  
+  <sentence>
+  
+  <!--
+       l3 | _the_q( ARG0=x4 BODY=h6 RSTR=h5 ) 
+          |    h5 qeq l7
+       l7 + _number_n_of( ARG0=x4 ARG1=x8 ) 
+       l9 | udef_q_rel( ARG0=x8 BODY=h11 RSTR=h10 ) 
+          |    h10 qeq l12
+      l12 + _ape_n_1( ARG0=x8 ) 
+      l13 | _increase_v_1( ARG0=e2 ARG1=x4 ) 
+  -->
+  <rmrs cfrom='-1' cto='-1'>
+    <label vid='1'/>
+    <ep cfrom='-1' cto='-1'>
+      <realpred lemma='the' pos='q'/>
+      <label vid='3'/>
+      <var sort='x' vid='4' num='sg' pers='3'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <realpred lemma='number' pos='n' sense='of'/>
+      <label vid='7'/>
+      <var sort='x' vid='4' num='sg' pers='3'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <gpred>udef_q_rel</gpred>
+      <label vid='9'/>
+      <var sort='x' vid='8' num='pl' pers='3'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <realpred lemma='ape' pos='n' sense='1'/>
+      <label vid='12'/>
+      <var sort='x' vid='8' num='pl' pers='3'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <realpred lemma='increase' pos='v' sense='1'/>
+      <label vid='13'/>
+      <var sort='e' vid='2' tense='present'/>
+    </ep>
+    <hcons hreln='qeq'>
+      <hi> <var sort='h' vid='5'/> </hi>
+      <lo> <label vid='7'/> </lo>
+    </hcons>
+    <hcons hreln='qeq'>
+      <hi> <var sort='h' vid='10'/> </hi>
+      <lo> <label vid='12'/> </lo>
+    </hcons>
+    <rarg>
+      <rargname>RSTR</rargname>
+      <label vid='3'/>
+      <var sort='h' vid='5'/>
+    </rarg>
+    <rarg>
+      <rargname>BODY</rargname>
+      <label vid='3'/>
+      <var sort='h' vid='6'/>
+    </rarg>
+    <rarg>
+      <rargname>ARG1</rargname>
+      <label vid='7'/>
+      <var sort='x' vid='8' num='pl' pers='3'/>
+    </rarg>
+    <rarg>
+      <rargname>RSTR</rargname>
+      <label vid='9'/>
+      <var sort='h' vid='10'/>
+    </rarg>
+    <rarg>
+      <rargname>BODY</rargname>
+      <label vid='9'/>
+      <var sort='h' vid='11'/>
+    </rarg>
+    <rarg>
+      <rargname>ARG1</rargname>
+      <label vid='13'/>
+      <var sort='x' vid='4' num='sg' pers='3'/>
+    </rarg>
+  </rmrs>
+
+  </sentence>
+  </analysis>
+  </h>
+</pair>
+
+</entailment-corpus>

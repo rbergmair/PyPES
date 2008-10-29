@@ -1,0 +1,313 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE testsuite SYSTEM "file:///home/rb432/workspace/rte/dtd/testsuite.dtd">
+
+<testsuite id="1.3" name="monotonicity (downwards on second argument)">
+
+<testcase id="3.33">
+  <proposition id="3.33.1">
+    An Irishman won a Nobel prize.
+  </proposition>
+  <proposition id="3.33.2">
+    Did an Irishman win the Nobel prize for literature?
+  </proposition>
+  <nonvalid id="3.33.a">
+    <theory>  <ref src="3.33.1"/> </theory>
+    <conclusion> <ref src="3.33.2"/> </conclusion>
+  </nonvalid>
+  <nonvalid id="3.33.b">
+    <theory> <ref src="3.33.1"/> </theory>
+    <conclusion> <negation> <ref src="3.33.2"/> </negation> </conclusion>
+  </nonvalid>
+</testcase>
+
+<testcase id="3.34">
+  <proposition id="3.34.1">
+    Every European can travel freely within Europe.
+  </proposition>
+  <proposition id="3.34.2">
+    Every European is a person.
+  </proposition>
+  <proposition id="3.34.3">
+    Every person who has the right to live in Europe
+      can travel freely within Europe.
+  </proposition>
+  <proposition id="3.34.4">
+    Does every European have the right to live in Europe?
+  </proposition>
+  <nonvalid id="3.34.a">
+    <theory> <ref src="3.34.1"/> <ref src="3.34.2"/> <ref src="3.34.3"/> </theory>
+    <conclusion> <ref src="3.34.4"/> </conclusion>
+  </nonvalid>
+  <nonvalid id="3.34.b">
+    <theory> <ref src="3.34.1"/> <ref src="3.34.2"/> <ref src="3.34.3"/> </theory>
+    <conclusion> <negation> <ref src="3.34.4"/> </negation> </conclusion>
+  </nonvalid>
+</testcase>
+
+<testcase id="3.35">
+  <proposition id="3.35.1">
+    All Europeans can travel freely within Europe.
+  </proposition>
+  <proposition id="3.35.2">
+    Every European is a person.
+  </proposition>
+  <proposition id="3.35.3">
+    Every person who has the right to live in Europe
+      can travel freely within Europe.
+  </proposition>
+  <proposition id="3.35.4">
+    Do all Europeans have the right to live in Europe?
+  </proposition>
+  <nonvalid id="3.35.a">
+    <theory> <ref src="3.35.1"/> <ref src="3.35.2"/> <ref src="3.35.3"/> </theory>
+    <conclusion> <ref src="3.35.4"/> </conclusion>
+  </nonvalid>
+  <nonvalid id="3.35.b">
+    <theory> <ref src="3.35.1"/> <ref src="3.35.2"/> <ref src="3.35.3"/> </theory>
+    <conclusion> <negation> <ref src="3.35.4"/> </negation> </conclusion>
+  </nonvalid>
+</testcase>
+
+<testcase id="3.36">
+  <proposition id="3.36.1">
+    Each European can travel freely within Europe.
+  </proposition>
+  <proposition id="3.36.2">
+    Every European is a person.
+  </proposition>
+  <proposition id="3.36.3">
+    Every person who has the right to live in Europe
+      can travel freely within Europe.
+  </proposition>
+  <proposition id="3.36.4">
+    Does each European have the right to live in Europe?
+  </proposition>
+  <nonvalid id="3.36.a">
+    <theory> <ref src="3.36.1"/> <ref src="3.36.2"/> <ref src="3.36.3"/> </theory>
+    <conclusion> <ref src="3.36.4"/> </conclusion>
+  </nonvalid>
+  <nonvalid id="3.36.b">
+    <theory> <ref src="3.36.1"/> <ref src="3.36.2"/> <ref src="3.36.3"/> </theory>
+    <conclusion> <negation> <ref src="3.36.4"/> </negation> </conclusion>
+  </nonvalid>
+</testcase>
+
+<testcase id="3.37">
+  <proposition id="3.37.1">
+    The residents of member states can travel freely within Europe.
+  </proposition>
+  <proposition id="3.37.2">
+    All residents of member states are individuals.
+  </proposition>
+  <proposition id="3.37.3">
+    Every individual who has the right to live anywhere in Europe
+      can travel freely within Europe.
+  </proposition>
+  <proposition id="3.37.4">
+    Do the residents of member states have the right to live
+      anywhere in Europe?
+  </proposition>
+  <nonvalid id="3.37.a">
+    <theory> <ref src="3.37.1"/> <ref src="3.37.2"/> <ref src="3.37.3"/> </theory>
+    <conclusion> <ref src="3.37.4"/> </conclusion>
+  </nonvalid>
+  <nonvalid id="3.37.b">
+    <theory> <ref src="3.37.1"/> <ref src="3.37.2"/> <ref src="3.37.3"/> </theory>
+    <conclusion> <negation> <ref src="3.37.4"/> </negation> </conclusion>
+  </nonvalid>
+</testcase>
+
+<testcase id="3.38">
+  <proposition id="3.38.1">
+    No delegate finished the report.
+  </proposition>
+  <proposition id="3.38.2">
+    Did any delegate finish the report on time?
+  </proposition>
+  <valid id="3.38.a">
+    <theory> <ref src="3.38.1"/> </theory>
+    <conclusion> <negation> <ref src="3.38.2"/> </negation> </conclusion>
+  </valid>
+</testcase>
+
+<testcase id="3.39">
+  <proposition id="3.39.1">
+    Some delegates finished the survey.
+  </proposition>
+  <proposition id="3.39.2">
+    Did some delegates finish the survey on time?
+  </proposition>
+  <nonvalid id="3.39.a">
+    <theory> <ref src="3.39.1"/> </theory>
+    <conclusion> <ref src="3.39.2"/> </conclusion>
+  </nonvalid>
+  <nonvalid id="3.39.b">
+    <theory> <ref src="3.39.1"/> </theory>
+    <conclusion> <negation> <ref src="3.39.2"/> </negation> </conclusion>
+  </nonvalid>
+</testcase>
+
+<testcase id="3.40">
+  <proposition id="3.40.1">
+    Many delegates obtained results from the survey.
+  </proposition>
+  <proposition id="3.40.2">
+    Did many delegates obtain interesting results from the survey?
+  </proposition>
+  <nonvalid id="3.40.a">
+    <theory> <ref src="3.40.1"/> </theory>
+    <conclusion> <ref src="3.40.2"/> </conclusion>
+  </nonvalid>
+  <nonvalid id="3.40.b">
+    <theory> <ref src="3.40.1"/> </theory>
+    <conclusion> <negation> <ref src="3.40.2"/> </negation> </conclusion>
+  </nonvalid>
+</testcase>
+
+<testcase id="3.41">
+  <proposition id="3.41.1">
+    Several delegates got the results published.
+  </proposition>
+  <proposition id="3.41.2">
+    Did several delegates get the results published
+      in major national newspapers?
+  </proposition>
+  <nonvalid id="3.41.a">
+    <theory> <ref src="3.41.1"/> </theory>
+    <conclusion> <ref src="3.41.2"/> </conclusion>
+  </nonvalid>
+  <nonvalid id="3.41.b">
+    <theory> <ref src="3.41.1"/> </theory>
+    <conclusion> <negation> <ref src="3.41.2"/> </negation> </conclusion>
+  </nonvalid>
+</testcase>
+
+<testcase id="3.42">
+  <proposition id="3.42.1">
+    Most Europeans can travel freely within Europe.
+  </proposition>
+  <proposition id="3.42.2">
+    All Europeans are people.
+  </proposition>
+  <proposition id="3.42.3">
+    All people who are resident in Europe
+      can travel freely within Europe.
+  </proposition>
+  <proposition id="3.42.4">
+    Are most Europeans resident in Europe?
+  </proposition>
+  <nonvalid id="3.42.a">
+    <theory> <ref src="3.42.1"/> <ref src="3.42.2"/> <ref src="3.42.3"/> </theory>
+    <conclusion> <ref src="3.42.4"/> </conclusion>
+  </nonvalid>
+  <nonvalid id="3.42.b">
+    <theory> <ref src="3.42.1"/> <ref src="3.42.2"/> <ref src="3.42.3"/> </theory>
+    <conclusion> <negation> <ref src="3.42.4"/> </negation> </conclusion>
+  </nonvalid>
+</testcase>
+
+<testcase id="3.43">
+  <proposition id="3.43.1">
+    A few committee members are from Scandinavia.
+  </proposition>
+  <proposition id="3.43.2">
+    All committee members are people.
+  </proposition>
+  <proposition id="3.43.3">
+    All people who are from Sweden are from Scandinavia.
+  </proposition>
+  <proposition id="3.43.4">
+    Are at least a few committee members from Sweden?
+  </proposition>
+  <nonvalid id="3.43.a">
+    <theory> <ref src="3.43.1"/> <ref src="3.43.2"/> <ref src="3.43.3"/> </theory>
+    <conclusion> <ref src="3.43.4"/> </conclusion>
+  </nonvalid>
+  <nonvalid id="3.43.b">
+    <theory> <ref src="3.43.1"/> <ref src="3.43.2"/> <ref src="3.43.3"/> </theory>
+    <conclusion> <negation> <ref src="3.43.4"/> </negation> </conclusion>
+  </nonvalid>
+</testcase>
+
+<testcase id="3.44">
+  <proposition id="3.44.1">
+    Few committee members are from southern Europe.
+  </proposition>
+  <proposition id="3.44.2">
+    All committee members are people.
+  </proposition>
+  <proposition id="3.44.3">
+    All people who are from Portugal are from southern Europe.
+  </proposition>
+  <proposition id="3.44.4">
+    Are there few committee members from Portugal?
+  </proposition>
+  <valid id="3.44.a">
+    <theory> <ref src="3.44.1"/> <ref src="3.44.2"/> <ref src="3.44.3"/> </theory>
+    <conclusion> <ref src="3.44.4"/> </conclusion>
+  </valid>
+</testcase>
+
+<testcase id="3.45">
+  <proposition id="3.45.1">
+    Both commissioners used to be businessmen.
+  </proposition>
+  <!-- Did both commissioners *used* to be leading businessmen? -->
+  <proposition id="3.45.2">
+    Did both commissioners use to be leading businessmen?
+  </proposition>
+  <nonvalid id="3.45.a">
+    <theory> <ref src="3.45.1"/> </theory>
+    <conclusion> <ref src="3.45.2"/> </conclusion>
+  </nonvalid>
+  <nonvalid id="3.45.b">
+    <theory> <ref src="3.45.1"/> </theory>
+    <conclusion> <negation> <ref src="3.45.2"/> </negation> </conclusion>
+  </nonvalid>
+</testcase>
+
+<testcase id="3.46">
+  <proposition id="3.46.1">
+    Neither commissioner spends time at home.
+  </proposition>
+  <proposition id="3.46.2">
+    Does either commissioner spend a lot of time at home?
+  </proposition>
+  <valid id="3.46.a">
+    <theory> <ref src="3.46.1"/> </theory>
+    <conclusion> <negation> <ref src="3.46.2"/> </negation> </conclusion>
+  </valid>
+</testcase>
+
+<testcase id="3.47">
+  <!-- *A* least three commissioners spend time at home. -->
+  <proposition id="3.47.1">
+    At least three commissioners spend time at home.
+  </proposition>
+  <proposition id="3.47.2">
+    Do at least three commissioners spend a lot of time at home?
+  </proposition>
+  <nonvalid id="3.47.a">
+    <theory> <ref src="3.47.1"/> </theory>
+    <conclusion> <ref src="3.47.2"/> </conclusion>
+  </nonvalid>
+  <nonvalid id="3.47.b">
+    <theory> <ref src="3.47.1"/> </theory>
+    <conclusion> <negation> <ref src="3.47.2"/> </negation> </conclusion>
+  </nonvalid>
+</testcase>
+
+<testcase id="3.48">
+  <proposition id="3.48.1">
+    At most ten commissioners spend time at home.
+  </proposition>
+  <proposition id="3.48.2">
+    Do at most ten commissioners spend a lot of time at home?
+  </proposition>
+  <valid id="3.48.a">
+    <theory> <ref src="3.48.1"/> </theory>
+    <conclusion> <ref src="3.48.2"/> </conclusion>
+  </valid>
+</testcase>
+
+</testsuite>

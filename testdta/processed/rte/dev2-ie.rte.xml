@@ -1,0 +1,803 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<entailment-corpus>
+<pair id='3' value='FALSE' task='IE'>
+  <t><rmrsbankitem id="1">ECB spokeswoman, Regina Schueller, declined to comment on a report in Italy's La Repubblica newspaper that the ECB council will discuss Mr. Fazio's role in the takeover fight at its Sept. 15 meeting.</rmrsbankitem></t>
+  <h><rmrsbankitem id="1">Regina Shueller works for Italy's La Repubblica newspaper.</rmrsbankitem></h>
+</pair>
+<pair id='4' value='FALSE' task='IE'>
+  <t><rmrsbankitem id="2">Meanwhile, in an exclusive interview with a TIME journalist, the first one-on-one session given to a Western print publication since his election as president of Iran earlier this year, Ahmadinejad attacked the "threat" to bring the issue of Iran's nuclear activity to the UN Security Council by the US, France, Britain and Germany.</rmrsbankitem></t>
+  <h><rmrsbankitem id="2">Ahmedinejad was attacked by the US, France, Britain and Germany.</rmrsbankitem></h>
+</pair>
+<pair id='11' value='FALSE' task='IE'>
+  <t><rmrsbankitem id="3">The chaotic situation unleashed in Bogota last night, with the assassination of Justice Carlos Valencia, began on 28 July in Medellin, when motorized paid assassins murdered third public order Judge Maria Elena Diaz.</rmrsbankitem></t>
+  <h><rmrsbankitem id="3">Justice Carlos Valencia was killed on 28 July.</rmrsbankitem></h>
+</pair>
+<pair id='12' value='FALSE' task='IE'>
+  <t><rmrsbankitem id="4">He met U.S. President, George W. Bush, in Washington and British Prime Minister, Tony Blair, in London.</rmrsbankitem></t>
+  <h><rmrsbankitem id="4">Washington is part of London.</rmrsbankitem></h>
+</pair>
+<pair id='13' value='TRUE' task='IE'>
+  <t><rmrsbankitem id="5">Sunday's earthquake was felt in the southern Indian city of Madras on the mainland, as well as other parts of south India.</rmrsbankitem> <rmrsbankitem id="6">The Naval meteorological office in Port Blair said it was the second biggest aftershock after the Dec. 26 earthquake.</rmrsbankitem></t>
+  <h><rmrsbankitem id="5">The city of Madras is located in Southern India.</rmrsbankitem></h>
+</pair>
+<pair id='14' value='FALSE' task='IE'>
+  <t><rmrsbankitem id="7">A powerful bomb, hidden in a truck, exploded outside the headquarters of Colombia's secret police, Wednesday, causing severe damage, Bogota mayor Andres Pastrana said.</rmrsbankitem></t>
+  <h><rmrsbankitem id="6">An attempt on Andres Pastrana's life was carried out using a powerful bomb.</rmrsbankitem></h>
+</pair>
+<pair id='18' value='TRUE' task='IE'>
+  <t><rmrsbankitem id="8">Muslims make up some 3.2 million of Germany's 82 million people, and Turks represent two thirds of the minority.</rmrsbankitem></t>
+  <h><rmrsbankitem id="7">82 million people live in Germany.</rmrsbankitem></h>
+</pair>
+<pair id='23' value='FALSE' task='IE'>
+  <t><rmrsbankitem id="9">A.C. Milan is in second place with 13 points, after two first-half goals from captain Paolo Maldini earned them a 2-1 victory over Reggina.</rmrsbankitem></t>
+  <h><rmrsbankitem id="8">Paolo Maldini plays for Reggina.</rmrsbankitem></h>
+</pair>
+<pair id='25' value='TRUE' task='IE'>
+  <t><rmrsbankitem id="10">On 12 August, the San Carlos Battalion came across mines placed in their path and one soldier was killed while two were seriously injured.</rmrsbankitem> <rmrsbankitem id="11">Meanwhile on 10 August, urban commandos took a patrol car by surprise and dropped a grenade inside the car, injuring four and partially destroying the vehicle.</rmrsbankitem></t>
+  <h><rmrsbankitem id="9">Four people were injured by a grenade.</rmrsbankitem></h>
+</pair>
+<pair id='31' value='TRUE' task='IE'>
+  <t><rmrsbankitem id="12">During that time, Wilson received the best-play Tony Award for "Fences," plus best-play Tony nominations for six of his other plays, the Pulitzer Prize for both "Fences" and "The Piano Lesson," and (a record) seven New York Drama Critics' Circle prizes.</rmrsbankitem></t>
+  <h><rmrsbankitem id="10">Wilson was awarded the Pulitzer Prize.</rmrsbankitem></h>
+</pair>
+<pair id='33' value='TRUE' task='IE'>
+  <t><rmrsbankitem id="8">Muslims make up some 3.2 million of Germany's 82 million people, and Turks represent two thirds of the minority.</rmrsbankitem></t>
+  <h><rmrsbankitem id="11">3.2 million Muslims live in Germany.</rmrsbankitem></h>
+</pair>
+<pair id='34' value='TRUE' task='IE'>
+  <t><rmrsbankitem id="13">"The capacity people have to adjust and make peace with a new situation, even if they feel vulnerable, is really remarkable," said Randy Quevillon, chair of the psychology department and the Disaster Mental Health Institute at the University of South Dakota.</rmrsbankitem></t>
+  <h><rmrsbankitem id="12">Randy Quevillon is employed at the University of South Dakota.</rmrsbankitem></h>
+</pair>
+<pair id='35' value='FALSE' task='IE'>
+  <t><rmrsbankitem id="2">Meanwhile, in an exclusive interview with a TIME journalist, the first one-on-one session given to a Western print publication since his election as president of Iran earlier this year, Ahmadinejad attacked the "threat" to bring the issue of Iran's nuclear activity to the UN Security Council by the US, France, Britain and Germany.</rmrsbankitem></t>
+  <h><rmrsbankitem id="13">Ahmadinejad attacked the UN Security Council.</rmrsbankitem></h>
+</pair>
+<pair id='41' value='FALSE' task='IE'>
+  <t><rmrsbankitem id="14">Arsenal sneaked a 1-0 victory over Birmingham at Highbury, taking advantage of Stephen Clemence's own-goal in the 81st minute.</rmrsbankitem></t>
+  <h><rmrsbankitem id="14">Arsenal lost to Birmingham.</rmrsbankitem></h>
+</pair>
+<pair id='44' value='FALSE' task='IE'>
+  <t><rmrsbankitem id="10">On 12 August, the San Carlos Battalion came across mines placed in their path and one soldier was killed while two were seriously injured.</rmrsbankitem> <rmrsbankitem id="11">Meanwhile on 10 August, urban commandos took a patrol car by surprise and dropped a grenade inside the car, injuring four and partially destroying the vehicle.</rmrsbankitem></t>
+  <h><rmrsbankitem id="15">A patrol car was attacked by the San Carlos Battalion.</rmrsbankitem></h>
+</pair>
+<pair id='46' value='FALSE' task='IE'>
+  <t><headline>Bogota, 4 May 88 - </headline><rmrsbankitem id="15">The dissemination of a document questioning Colombia's oil policy, is reportedly the aim of the publicity stunt carried out by the pro-Castro Army Of National Liberation, which kidnapped several honorary consuls, newsmen, and political leaders.</rmrsbankitem></t>
+  <h><rmrsbankitem id="16">Several honorary consuls were kidnapped on 4 May 88.</rmrsbankitem></h>
+</pair>
+<pair id='53' value='FALSE' task='IE'>
+  <t><rmrsbankitem id="16">The FMLN has prudently taken time before adopting a definite position, meanwhile the government has increased its detentions and attacked the residences of leaders of the Social Christian People's Movement.</rmrsbankitem></t>
+  <h><rmrsbankitem id="17">Social Christian People's Movement was attacked by FMLN.</rmrsbankitem></h>
+</pair>
+<pair id='58' value='TRUE' task='IE'>
+  <t><rmrsbankitem id="17">"A force majeure is an act of God," said attorney Phil Wittmann, who represents the New Orleans Saints and owner Tom Benson's local interests.</rmrsbankitem></t>
+  <h><rmrsbankitem id="18">Phil Wittmann works for Tom Benson.</rmrsbankitem></h>
+</pair>
+<pair id='60' value='FALSE' task='IE'>
+  <t><rmrsbankitem id="18">Co-producing the film is Happy Madison, the company owned by Sandler, who has been a compatriot of Schneider's since they met early in their careers, as mutually struggling stand-up comedians in Los Angeles.</rmrsbankitem></t>
+  <h><rmrsbankitem id="19">Happy Madison works for the company owned by Sandler.</rmrsbankitem></h>
+</pair>
+<pair id='61' value='TRUE' task='IE'>
+  <t><rmrsbankitem id="19">Although they were born on different planets, Oscar-winning actor Nicolas Cage's new son and Superman have something in common - both were named Kal-el.</rmrsbankitem></t>
+  <h><rmrsbankitem id="20">Nicolas Cage's son is called Kal-el.</rmrsbankitem></h>
+</pair>
+<pair id='63' value='TRUE' task='IE'>
+  <t><rmrsbankitem id="20">With Washington hinting it might soften its tough stance to break the deadlock, top US negotiator, Christopher Hill, said the two sides needed to review the situation.</rmrsbankitem></t>
+  <h><rmrsbankitem id="21">Christopher Hill works for the US.</rmrsbankitem></h>
+</pair>
+<pair id='75' value='TRUE' task='IE'>
+  <t><rmrsbankitem id="21">Jean-Claude Trichet, the European Central Bank president, made it clear, on Wednesday, that he would oppose unwarranted political attempts to remove Antonio Fazio, the Bank of Italy governor, engulfed in controversy over his handling of bank takeover bids.</rmrsbankitem></t>
+  <h><rmrsbankitem id="22">Antonio Fazio works for the Bank of Italy.</rmrsbankitem></h>
+</pair>
+<pair id='76' value='TRUE' task='IE'>
+  <t><rmrsbankitem id="22">The assassins of former Defense Minister Enrique Lopez Albujar Trint are presumably members of the Maoist terrorist organization, Shining Path, since the counterterrorism division has identified one of them as Gerardo Olivos Silva, through a composite made from witness' reports.</rmrsbankitem></t>
+  <h><rmrsbankitem id="23">Gerardo Olivos Silva is a member of the Maoist terrorist organization Shining Path.</rmrsbankitem></h>
+</pair>
+<pair id='85' value='TRUE' task='IE'>
+  <t><rmrsbankitem id="23">Linda Johnson, who lives with her husband, Charles, and two cats in a rented one-bedroom apartment in San Francisco's Mission District, said Katrina has made her realize she needs to gather together, in one accessible place, her scattered disaster supplies.</rmrsbankitem></t>
+  <h><rmrsbankitem id="24">Linda Johnson is married to Charles.</rmrsbankitem></h>
+</pair>
+<pair id='87' value='TRUE' task='IE'>
+  <t><headline>Mexico City (Mexico), 12 Jan 90 (DPA) - </headline><rmrsbankitem id="24">Salvadoran Social Democratic politician Hector Oqueli Colindres was kidnapped today, in Guatemala city, along with Guatemalan Social Democratic leader Gilda Flores, his party, in Mexico City, reported.</rmrsbankitem></t>
+  <h><rmrsbankitem id="25">Hector Oqueli Colindres comes from El Salvador.</rmrsbankitem></h>
+</pair>
+<pair id='90' value='FALSE' task='IE'>
+  <t><rmrsbankitem id="25">From Joss Stone to Keith Richards to Sting, the artists joining Les on the rock-charged album share one clear common bond: Les Paul is one of their most respected and beloved mentors.</rmrsbankitem></t>
+  <h><rmrsbankitem id="26">Eric Clapton is in business with Les Paul.</rmrsbankitem></h>
+</pair>
+<pair id='91' value='TRUE' task='IE'>
+  <t><rmrsbankitem id="26">Japan's Toshiba Corp. announced Tuesday that it has developed the first laptop computer with its new HD DVD drive, a next-generation disc format it is promoting over a rival standard pushed by Sony Corp.</rmrsbankitem></t>
+  <h><rmrsbankitem id="27">Toshiba Corp.'s headquarters is in Japan.</rmrsbankitem></h>
+</pair>
+<pair id='93' value='TRUE' task='IE'>
+  <t><rmrsbankitem id="27">Tilda Swinton has a prominent role as the White Witch in "The Chronicles of Narnia: The Lion, The Witch and The Wardrobe", coming out in December.</rmrsbankitem></t>
+  <h><rmrsbankitem id="28">Tilda Swinton plays the part of the White Witch.</rmrsbankitem></h>
+</pair>
+<pair id='97' value='TRUE' task='IE'>
+  <t><rmrsbankitem id="28">Patricia Amy Messier and Eugene W. Weaver were married May 28 at St. Clare Roman Catholic Church in North Palm Beach.</rmrsbankitem></t>
+  <h><rmrsbankitem id="29">Eugene W. Weaver is the husband of Patricia Amy.</rmrsbankitem></h>
+</pair>
+<pair id='102' value='FALSE' task='IE'>
+  <t><rmrsbankitem id="29">FMLN reports to our people, and to the people of the world, that the massacre against the Salvadoran Workers National Union Federation [Fenastras] was carried out by Colonel Elena Fuente, as the head of the morbid death squad of the army's 1st Infantry Brigade, in response to our military attack on the army staff.</rmrsbankitem></t>
+  <h><rmrsbankitem id="30">Fenastras was attacked by FMLN.</rmrsbankitem></h>
+</pair>
+<pair id='108' value='FALSE' task='IE'>
+  <t><rmrsbankitem id="30">Two new Les Paul books arrive in stores this year: The Les Paul Legacy by Rob Lawrence is due from Hal Leonard Publishing on October 27.</rmrsbankitem></t>
+  <h><rmrsbankitem id="31">Rob Lawrence works for The Les Paul Legacy.</rmrsbankitem></h>
+</pair>
+<pair id='123' value='TRUE' task='IE'>
+  <t><rmrsbankitem id="31">Farabundo Marti National Liberation Front's [FMLN] urban commandos have denied reports they participated in an attack on vice president-elect Francisco Merino's home.</rmrsbankitem></t>
+  <h><rmrsbankitem id="32">Farabundo Marti National Liberation Front is accused of an attack on Merino's home.</rmrsbankitem></h>
+</pair>
+<pair id='132' value='TRUE' task='IE'>
+  <t><rmrsbankitem id="32">The human rights promotion and protection secretariat of the FMLN strongly condemns the massacre of five Spanish-born Jesuit priests, and three Salvadoran citizens, carried out by the Salvadoran Armed Forces Soldiers.</rmrsbankitem></t>
+  <h><rmrsbankitem id="33">The Salvadoran Armed Forces Soldiers murdered three Salvadoran citizens.</rmrsbankitem></h>
+</pair>
+<pair id='134' value='FALSE' task='IE'>
+  <t><rmrsbankitem id="33">Jack Straw, the Foreign Secretary, will meet his Brazilian counterpart, Celso Amorim, in London today.</rmrsbankitem></t>
+  <h><rmrsbankitem id="34">Jack Straw is a partner of Celso Amorim.</rmrsbankitem></h>
+</pair>
+<pair id='135' value='TRUE' task='IE'>
+  <t><rmrsbankitem id="34">The watchdog International Atomic Energy Agency meets in Vienna on September 19.</rmrsbankitem></t>
+  <h><rmrsbankitem id="35">The International Atomic Energy Agency holds a meeting in Vienna.</rmrsbankitem></h>
+</pair>
+<pair id='137' value='TRUE' task='IE'>
+  <t><rmrsbankitem id="35">Police sources stated that during the bomb attack involving the Shining Path, two people were injured.</rmrsbankitem></t>
+  <h><rmrsbankitem id="36">Two people were wounded by a bomb.</rmrsbankitem></h>
+</pair>
+<pair id='142' value='FALSE' task='IE'>
+  <t><rmrsbankitem id="19">Although they were born on different planets, Oscar-winning actor Nicolas Cage's new son and Superman have something in common - both were named Kal-el.</rmrsbankitem></t>
+  <h><rmrsbankitem id="37">Nicolas Cage's new son was awarded an Oscar.</rmrsbankitem></h>
+</pair>
+<pair id='144' value='TRUE' task='IE'>
+  <t><rmrsbankitem id="36">Olson, 62, previously worked as a partner at Ernst &amp; Young LLP, as a Minnesota bank president and as a congressional aide, before joining the Fed board in 2001, to serve a term ending in 2010.</rmrsbankitem></t>
+  <h><rmrsbankitem id="38">Olson is a member of the Fed board.</rmrsbankitem></h>
+</pair>
+<pair id='157' value='TRUE' task='IE'>
+  <t><rmrsbankitem id="37">Valero Energy Corp., on Monday, said it found "extensive" additional damage at its 250,000-barrel-per-day Port Arthur refinery.</rmrsbankitem></t>
+  <h><rmrsbankitem id="39">Valero Energy Corp. is the owner of Port Arthur refinery.</rmrsbankitem></h>
+</pair>
+<pair id='158' value='FALSE' task='IE'>
+  <t><rmrsbankitem id="38">He said that his daughter was told that Clark had been cited to General Sessions Court.</rmrsbankitem></t>
+  <h><rmrsbankitem id="40">Clark is employed at General Sessions Court.</rmrsbankitem></h>
+</pair>
+<pair id='166' value='TRUE' task='IE'>
+  <t><rmrsbankitem id="39">Although Schneider's father, Marvin, died of complications from diabetes only two weeks after "Deuce Bigalow" was released, his Filipino mother Pilar continues to live in Pacifica.</rmrsbankitem></t>
+  <h><rmrsbankitem id="41">Pilar is the mother of Schneider.</rmrsbankitem></h>
+</pair>
+<pair id='167' value='FALSE' task='IE'>
+  <t><rmrsbankitem id="2">Meanwhile, in an exclusive interview with a TIME journalist, the first one-on-one session given to a Western print publication since his election as president of Iran earlier this year, Ahmadinejad attacked the "threat" to bring the issue of Iran's nuclear activity to the UN Security Council by the US, France, Britain and Germany.</rmrsbankitem></t>
+  <h><rmrsbankitem id="42">Ahmadinejad is a TIME magazine journalist.</rmrsbankitem></h>
+</pair>
+<pair id='171' value='FALSE' task='IE'>
+  <t><rmrsbankitem id="40">Hinostroza's children told police that four hooded individuals broke into the house and shot their mother after having insulted her.</rmrsbankitem></t>
+  <h><rmrsbankitem id="43">Hinostroza's children attaked their mother with a gun.</rmrsbankitem></h>
+</pair>
+<pair id='172' value='FALSE' task='IE'>
+  <t><rmrsbankitem id="37">Valero Energy Corp., on Monday, said it found "extensive" additional damage at its 250,000-barrel-per-day Port Arthur refinery.</rmrsbankitem></t>
+  <h><rmrsbankitem id="44">Valero Energy Corp. caused damages to Port Arthur refinery.</rmrsbankitem></h>
+</pair>
+<pair id='174' value='TRUE' task='IE'>
+  <t><rmrsbankitem id="41">Steve Jobs was attacked by Sculley and other Apple executives for not delivering enough hot new products and resigned from the company a few weeks later.</rmrsbankitem></t>
+  <h><rmrsbankitem id="45">Steve Jobs worked for Apple.</rmrsbankitem></h>
+</pair>
+<pair id='175' value='FALSE' task='IE'>
+  <t><rmrsbankitem id="42">The memo, written by Marc Allen Connelly (who was general counsel to the funeral services commission at the time) and sent to Dick McNeil (the Bush-appointed chairman of the funeral commission) stated that Connelly "received information" from Texas state officials that two of the funeral commissioners worked for SCI.</rmrsbankitem></t>
+  <h><rmrsbankitem id="46">Dick McNeil was an employee of Bush.</rmrsbankitem></h>
+</pair>
+<pair id='178' value='TRUE' task='IE'>
+  <t><rmrsbankitem id="43">A Russian Soyuz spacecraft docked with the International Space Station, after a two-day flight from the Baikonur Cosmodrome in Kazakhstan.</rmrsbankitem></t>
+  <h><rmrsbankitem id="47">Soyuz spacecraft were built by Russia.</rmrsbankitem></h>
+</pair>
+<pair id='182' value='TRUE' task='IE'>
+  <t><rmrsbankitem id="44">But according to Dr. Williams, other members of the panel have championed other ideas, for example, that planets should be larger than 2,000 kilometers (or about 1,250 miles) in diameter (Pluto is about 1,500 miles).</rmrsbankitem></t>
+  <h><rmrsbankitem id="48">The diameter of Pluto measures 1,500 miles.</rmrsbankitem></h>
+</pair>
+<pair id='186' value='FALSE' task='IE'>
+  <t><rmrsbankitem id="45">An Afghan interpreter, employed by the United States, was also wounded.</rmrsbankitem></t>
+  <h><rmrsbankitem id="49">An interpreter worked for Afghanistan.</rmrsbankitem></h>
+</pair>
+<pair id='197' value='TRUE' task='IE'>
+  <t><rmrsbankitem id="46">The chaotic situation unleashed in Bogota last night, with the assassination of Justice Carlos Valencia, began on the 28th of July in Medellin, when motorized paid assassins murdered third public order Judge Maria Elena Diaz.</rmrsbankitem></t>
+  <h><rmrsbankitem id="50">Justice Carlos Valencia was killed in Colombia.</rmrsbankitem></h>
+</pair>
+<pair id='207' value='TRUE' task='IE'>
+  <t><rmrsbankitem id="47">Fernandez, of FEMA, was on scene when Martin arrived at a FEMA base camp before going to the hospital.</rmrsbankitem></t>
+  <h><rmrsbankitem id="51">Fernandez works for FEMA.</rmrsbankitem></h>
+</pair>
+<pair id='210' value='TRUE' task='IE'>
+  <t><rmrsbankitem id="48">As a result, peptic ulcer disease has been transformed from a chronic, frequently disabling condition to one that can be cured by a short regimen of antibiotics and other medicines.</rmrsbankitem></t>
+  <h><rmrsbankitem id="52">Antibiotics are used against peptic ulcer.</rmrsbankitem></h>
+</pair>
+<pair id='213' value='FALSE' task='IE'>
+  <t><rmrsbankitem id="49">Alan Mulally, Boeing's head of the unit, said at the start of the strike that it may cause delivery delays that would give Airbus SAS an advantage in what is the strongest commercial aircraft market in five years.</rmrsbankitem></t>
+  <h><rmrsbankitem id="53">Boeing is a subsidiary of Airbus SAS.</rmrsbankitem></h>
+</pair>
+<pair id='214' value='TRUE' task='IE'>
+  <t><rmrsbankitem id="50">Oqueli was to fly to Nicaragua to join an international Socialist delegation, which will observe the Nicaraguan electoral campaign.</rmrsbankitem></t>
+  <h><rmrsbankitem id="54">Oqueli was a member of the Socialist party.</rmrsbankitem></h>
+</pair>
+<pair id='215' value='FALSE' task='IE'>
+  <t><rmrsbankitem id="51">Earlier this year, 78 local, state and federal agencies took part in a chemical attack drill, called Rotunda Thunda, at the Las Vegas Convention Center and the Strip.</rmrsbankitem></t>
+  <h><rmrsbankitem id="55">A chemical attack took place at the Las Vegas Convention Center and the Strip.</rmrsbankitem></h>
+</pair>
+<pair id='218' value='TRUE' task='IE'>
+  <t><rmrsbankitem id="52">The National Assn. of Realtors reported that sales of existing homes had shot up to an annual rate of 7.29 million in August, 7.8% higher than a year earlier.</rmrsbankitem></t>
+  <h><rmrsbankitem id="56">Sales of existing homes raised 7.8%.</rmrsbankitem></h>
+</pair>
+<pair id='220' value='TRUE' task='IE'>
+  <t><rmrsbankitem id="53">Two persons were injured in dynamite attacks perpetrated this evening against two bank branches in this northwestern, Colombian city.</rmrsbankitem></t>
+  <h><rmrsbankitem id="57">Two bank branches were attacked with dynamite.</rmrsbankitem></h>
+</pair>
+<pair id='222' value='FALSE' task='IE'>
+  <t><rmrsbankitem id="54">The biopic of wannabe actor, Johnny Stompanato, may be directed by Adrian Lyne of "Fatal Attraction" and "Indecent Proposal" fame.</rmrsbankitem></t>
+  <h><rmrsbankitem id="58">Johnny Stomponato starred in Fatal Attraction.</rmrsbankitem></h>
+</pair>
+<pair id='223' value='FALSE' task='IE'>
+  <t><rmrsbankitem id="55">Cage is a big fan of "Superman" (who was born on the fictional planet Krypton) and was to play the role in a film planned for the 1990s that never came to be.</rmrsbankitem></t>
+  <h><rmrsbankitem id="59">Cage played Superman.</rmrsbankitem></h>
+</pair>
+<pair id='225' value='FALSE' task='IE'>
+  <t><rmrsbankitem id="56">Gen. Maza Marquez said that the fact that a payment is being offered for the capture of Pablo Escobar does not mean that other persons accused of being capos of the mafia are not being sought, and that if anyone being held in connection with the investigation of the killing of Luis Carlos Galan is released, that does not mean that the investigations are not proceeding well.</rmrsbankitem></t>
+  <h><rmrsbankitem id="60">Luis was killed by the capos of the mafia.</rmrsbankitem></h>
+</pair>
+<pair id='227' value='FALSE' task='IE'>
+  <t><rmrsbankitem id="57">Second-half goals, from Danny Mills and Darius Vassell, lifted Manchester City to a 2-0 victory over Everton.</rmrsbankitem></t>
+  <h><rmrsbankitem id="61">Manchester was beaten by Everton.</rmrsbankitem></h>
+</pair>
+<pair id='229' value='FALSE' task='IE'>
+  <t><rmrsbankitem id="58">The memo, written by Marc Allen Connelly (who was general counsel to the funeral services commission at the time) and sent to Dick McNeil (the Bush-appointed chairman of the funeral commission), stated that Connelly "received information" from Texas state officials that two of the funeral commissioners worked for SCI.</rmrsbankitem></t>
+  <h><rmrsbankitem id="62">Marc Allen Connelly worked for SCI.</rmrsbankitem></h>
+</pair>
+<pair id='231' value='TRUE' task='IE'>
+  <t><rmrsbankitem id="59">Speaking of Jean Charles de Menezes, who was chased by armed officers into the station and shot five times at close range, his cousin, Alex Pereira, hinted today that his family would sue Scotland Yard over the killing.</rmrsbankitem></t>
+  <h><rmrsbankitem id="63">Jean Charles de Menezes is related to Alex Pereira.</rmrsbankitem></h>
+</pair>
+<pair id='232' value='FALSE' task='IE'>
+  <t><rmrsbankitem id="60">Thanks to the recent acquisition of J.D. Edwards, Oracle will soon be able to run JDE apps on its Fusion Middleware platform, too.</rmrsbankitem></t>
+  <h><rmrsbankitem id="64">J.D.E. is the owner of Oracle.</rmrsbankitem></h>
+</pair>
+<pair id='239' value='TRUE' task='IE'>
+  <t><rmrsbankitem id="61">Nancy Vine, who sells tickets at the Big Sky drive-in, seven nights a week, is a daughter of Donald and Dorothy LeGros - part of the extended family that operates the drive-in.</rmrsbankitem></t>
+  <h><rmrsbankitem id="65">Nancy Vine is in business with Donald and Dorothy LeGros.</rmrsbankitem></h>
+</pair>
+<pair id='240' value='TRUE' task='IE'>
+  <t><rmrsbankitem id="62">Helena Brighton, an attorney for Eliza May who served as executive director of the Texas Funeral Services Commission - the state agency that regulates the funeral business - claimed that she was fired from her state job because she raised questions about SCI.</rmrsbankitem></t>
+  <h><rmrsbankitem id="66">Eliza May hired Helena Brighton.</rmrsbankitem></h>
+</pair>
+<pair id='244' value='TRUE' task='IE'>
+  <t><rmrsbankitem id="63">The evidence for the continuing accretion of gas by the Milky Way involves high-velocity clouds, or HVCs - mysterious clumps of hydrogen, moving rapidly through the outer regions of the galaxy.</rmrsbankitem></t>
+  <h><rmrsbankitem id="67">High-velocity clouds are made up of hydrogen.</rmrsbankitem></h>
+</pair>
+<pair id='247' value='FALSE' task='IE'>
+  <t><rmrsbankitem id="64">Despite the turmoil in Israeli society, there is little doubt that Prime Minister Ariel Sharon will pull the nearly 9,000 Israeli settlers out of Gaza, now a closed military zone.</rmrsbankitem></t>
+  <h><rmrsbankitem id="68">9,000 settlers are employed by Israel.</rmrsbankitem></h>
+</pair>
+<pair id='258' value='TRUE' task='IE'>
+  <t><headline>BAGHDAD, Iraq (CNN) - </headline><rmrsbankitem id="65">Australian Prime Minister, John Howard, has made an unannounced visit to Iraq, according to the office of Iraqi transitional Prime Minister Ibrahim al-Jaafari.</rmrsbankitem></t>
+  <h><rmrsbankitem id="69">Howard is a political representative of Australia.</rmrsbankitem></h>
+</pair>
+<pair id='259' value='FALSE' task='IE'>
+  <t><rmrsbankitem id="66">Earlier this year, Kai-Uwe Ricke, chief executive of Deutsche Telekom, floated the possibility that T-Mobile USA might be sold.</rmrsbankitem></t>
+  <h><rmrsbankitem id="70">Deutsche Telekom sold T-Mobile USA.</rmrsbankitem></h>
+</pair>
+<pair id='262' value='TRUE' task='IE'>
+  <t><rmrsbankitem id="67">Martin was given water to drink, then taken to New Orleans Ochsner Foundation Hospital, where nurse Jinny Resor said he was treated for dehydration.</rmrsbankitem></t>
+  <h><rmrsbankitem id="71">Ochsner Foundation Hospital is located in New Orleans.</rmrsbankitem></h>
+</pair>
+<pair id='266' value='FALSE' task='IE'>
+  <t><rmrsbankitem id="68">Nelson Beavers is a co-owner of the current company, Carolina Analytical Laboratories LLC. and has ownership/employment history with Woodson-Tenent and Eurofin.</rmrsbankitem></t>
+  <h><rmrsbankitem id="72">Nelson Beaver is staff at Carolina Analytical Laboratories.</rmrsbankitem></h>
+</pair>
+<pair id='268' value='FALSE' task='IE'>
+  <t><rmrsbankitem id="69">The Bulls agreed to trade center, Eddy Curry, to the New York Knicks on Monday.</rmrsbankitem></t>
+  <h><rmrsbankitem id="73">Eddy Curry was acquired by the Bulls.</rmrsbankitem></h>
+</pair>
+<pair id='272' value='FALSE' task='IE'>
+  <t><rmrsbankitem id="70">Microsoft Corp. and Intel Corp., on Monday, threw their weight behind the next-generation, HD DVD format being promoted by Toshiba Corp., in a blow to Sony Corp.'s Blu-ray format.</rmrsbankitem></t>
+  <h><rmrsbankitem id="74">Microsoft Corp. is a competitor of Toshiba Corp.</rmrsbankitem></h>
+</pair>
+<pair id='276' value='FALSE' task='IE'>
+  <t><rmrsbankitem id="71">Ministers of the Association of Southeast Asian Nations, ASEAN, are gathering in Laos to discuss topics ranging from terrorism and economic integration to non-aggression treaties with several regional neighbors.</rmrsbankitem></t>
+  <h><rmrsbankitem id="75">Ministers of the Association of Southeast Asian Nations work for ASEAN.</rmrsbankitem></h>
+</pair>
+<pair id='285' value='TRUE' task='IE'>
+  <t><rmrsbankitem id="72">He also developed a breath test that could detect sulfur compounds emitted from the H. pylori.</rmrsbankitem></t>
+  <h><rmrsbankitem id="76">The H. pylori produces sulphur compounds.</rmrsbankitem></h>
+</pair>
+<pair id='289' value='FALSE' task='IE'>
+  <t><rmrsbankitem id="21">Jean-Claude Trichet, the European Central Bank president, made it clear, on Wednesday, that he would oppose unwarranted political attempts to remove Antonio Fazio, the Bank of Italy governor, engulfed in controversy over his handling of bank takeover bids.</rmrsbankitem></t>
+  <h><rmrsbankitem id="77">Antonio Fazio is subordinate to Jean-Claude Trichet.</rmrsbankitem></h>
+</pair>
+<pair id='290' value='TRUE' task='IE'>
+  <t><rmrsbankitem id="73">Kaspars Ruklis, press official at the United States Embassy, told the Baltic News Service that Mrs. Bush chose to visit Latvia's Occupation.</rmrsbankitem></t>
+  <h><rmrsbankitem id="78">Kaspars Ruklis works for the United States Embassy.</rmrsbankitem></h>
+</pair>
+<pair id='294' value='TRUE' task='IE'>
+  <t><rmrsbankitem id="2">Meanwhile, in an exclusive interview with a TIME journalist, the first one-on-one session given to a Western print publication since his election as president of Iran earlier this year, Ahmadinejad attacked the "threat" to bring the issue of Iran's nuclear activity to the UN Security Council by the US, France, Britain and Germany.</rmrsbankitem></t>
+  <h><rmrsbankitem id="79">Ahmadinejad is a citizen of Iran.</rmrsbankitem></h>
+</pair>
+<pair id='299' value='FALSE' task='IE'>
+  <t><rmrsbankitem id="9">A.C. Milan is in second place with 13 points, after two first-half goals from captain Paolo Maldini earned them a 2-1 victory over Reggina.</rmrsbankitem></t>
+  <h><rmrsbankitem id="80">A.C. Milan lost to Reggina.</rmrsbankitem></h>
+</pair>
+<pair id='308' value='TRUE' task='IE'>
+  <t><rmrsbankitem id="74">After the press conference, I met up with a Microsoft guy, John Traynor, senior director of segment marketing for the mobile devices division.</rmrsbankitem></t>
+  <h><rmrsbankitem id="81">John Traynor is an executive of Microsoft.</rmrsbankitem></h>
+</pair>
+<pair id='315' value='FALSE' task='IE'>
+  <t><rmrsbankitem id="75">South African President Thabo Mbeki, the main mediator in Cote d'Ivoire's peace process, said, on Sunday, that Pretoria is heightening its intervention in the West African nation in order to pave the way for elections later this year.</rmrsbankitem></t>
+  <h><rmrsbankitem id="82">Thabo Mbeki is a citizen of Cote d'Ivoire.</rmrsbankitem></h>
+</pair>
+<pair id='324' value='FALSE' task='IE'>
+  <t><rmrsbankitem id="76">An investigation has found that Unity Party presidential candidate, Mrs. Ellen Johnson-Sirleaf, United Democratic standard bearer, Charles Brumskine, and Liberian National Union standard bearer, John Morlue, have been in the position of U.S. permanent residency or green card.</rmrsbankitem></t>
+  <h><rmrsbankitem id="83">Mrs. Ellen Johnson-Sirleaf is the leader of Unity party.</rmrsbankitem></h>
+</pair>
+<pair id='332' value='TRUE' task='IE'>
+  <t><rmrsbankitem id="77">Kevin Whitaker, who heads the Cuban affairs office at the Department of State, spoke with Lazo on two occasions about the effort to give his sons visas.</rmrsbankitem></t>
+  <h><rmrsbankitem id="84">Kevin Whitaker is a manager of the Department of State.</rmrsbankitem></h>
+</pair>
+<pair id='338' value='TRUE' task='IE'>
+  <t><rmrsbankitem id="78">For Bechtolsheim, who designed the prototype for the first Sun workstation while he was a Birkenstock-shod Stanford University graduate student in 1982, the new line of computers, code named Galaxy, is a return to the company's roots.</rmrsbankitem></t>
+  <h><rmrsbankitem id="85">The Sun workstation was created by Bechtlsheim.</rmrsbankitem></h>
+</pair>
+<pair id='343' value='FALSE' task='IE'>
+  <t><rmrsbankitem id="79">The dual citizenship debate has been a major distraction for the Weah campaign and many of his opponents have been secretly advocating against his presence in the race.</rmrsbankitem></t>
+  <h><rmrsbankitem id="86">Weah does business with his opponents.</rmrsbankitem></h>
+</pair>
+<pair id='345' value='FALSE' task='IE'>
+  <t><rmrsbankitem id="80">Craig Conway, fired as PeopleSoft's chief executive officer before the company was bought by Oracle, was in England last week.</rmrsbankitem></t>
+  <h><rmrsbankitem id="87">Craig Conway works for Oracle.</rmrsbankitem></h>
+</pair>
+<pair id='349' value='FALSE' task='IE'>
+  <t><rmrsbankitem id="81">Around 50 million years ago, in contrast, oxygen levels in the atmosphere measured 23 percent - 2 percent higher than today.</rmrsbankitem></t>
+  <h><rmrsbankitem id="88">23% of the atmosphere is made up by oxygen.</rmrsbankitem></h>
+</pair>
+<pair id='353' value='FALSE' task='IE'>
+  <t><rmrsbankitem id="82">The three drive-ins nearest to Madison, all less than an hour's drive, are: Big Sky Twin Drive-In Theatres in Wisconsin Dells, Highway 18 Outdoor Theatre, near Jefferson, and Sky-Vu Drive-In, near Monroe.</rmrsbankitem></t>
+  <h><rmrsbankitem id="89">Highway 18 Outdoor Theatre is located in Wisconsin Dells.</rmrsbankitem></h>
+</pair>
+<pair id='358' value='TRUE' task='IE'>
+  <t><rmrsbankitem id="54">The biopic of wannabe actor, Johnny Stompanato, may be directed by Adrian Lyne of "Fatal Attraction" and "Indecent Proposal" fame.</rmrsbankitem></t>
+  <h><rmrsbankitem id="90">Adrian Lyne is the director of "Indecent Proposal".</rmrsbankitem></h>
+</pair>
+<pair id='360' value='FALSE' task='IE'>
+  <t><headline>Kabul - </headline><rmrsbankitem id="83">A roadside bomb that injured six U.S. soldiers in eastern Afghanistan, was followed by a blast near a Kabul police station, Monday, that hurt two police officers and a civilian.</rmrsbankitem></t>
+  <h><rmrsbankitem id="91">The six U.S. soldiers were residents in Afghanistan.</rmrsbankitem></h>
+</pair>
+<pair id='372' value='TRUE' task='IE'>
+  <t><rmrsbankitem id="84">Jim Tracy became the latest to be shown the door in Paul DePodesta's restructuring of the Los Angeles Dodgers.</rmrsbankitem></t>
+  <h><rmrsbankitem id="92">Jim Tracy was fired by Paul DePodesta.</rmrsbankitem></h>
+</pair>
+<pair id='378' value='TRUE' task='IE'>
+  <t><rmrsbankitem id="85">Côte d'Ivoire's President, Laurent Gbagbo, promulgated new election laws on July 14.</rmrsbankitem></t>
+  <h><rmrsbankitem id="93">President Laurent Gbagbo lives in Côte d'Ivoire.</rmrsbankitem></h>
+</pair>
+<pair id='383' value='FALSE' task='IE'>
+  <t><rmrsbankitem id="86">Those accused of the assassination of six Jesuits, if found guilty, will be punished whether they are civilians, military, or influential people.</rmrsbankitem></t>
+  <h><rmrsbankitem id="94">Six Jesuits were killed by civilians.</rmrsbankitem></h>
+</pair>
+<pair id='384' value='TRUE' task='IE'>
+  <t><rmrsbankitem id="87">The seven refineries located in Lake Charles, La., and the Texas cities of Beaumont and Port Arthur, appear to be the ones hardest hit by the water and wind that accompanied Rita.</rmrsbankitem></t>
+  <h><rmrsbankitem id="95">Rita caused damages to seven refineries located in Lake Charles, La.</rmrsbankitem></h>
+</pair>
+<pair id='389' value='TRUE' task='IE'>
+  <t><rmrsbankitem id="88">The Cosmic Microwave Background (CMB) is a uniform fabric of radiation that covers the entire universe at a constant temperature of 2.7 kelvins.</rmrsbankitem></t>
+  <h><rmrsbankitem id="96">The temperature of the Cosmic Microwave Background is 2.7 kelvins.</rmrsbankitem></h>
+</pair>
+<pair id='392' value='TRUE' task='IE'>
+  <t><rmrsbankitem id="89">Nicholas Cage's wife, Alice Kim Cage, gave birth Monday, to a boy, Kal-el Coppola Cage, in New York City, said Cage's Los Angeles-based publicist, Annett Wolf.</rmrsbankitem> <rmrsbankitem id="90">No other details were available.</rmrsbankitem></t>
+  <h><rmrsbankitem id="97">Nicholas Cage is married to Alice Kim Cage.</rmrsbankitem></h>
+</pair>
+<pair id='402' value='TRUE' task='IE'>
+  <t><rmrsbankitem id="91">"The aftershocks were less in the past two months, but they seem to be starting again.</rmrsbankitem> <rmrsbankitem id="92">We are really worried about the fate of these islands," Smriti Kana Saha of Ranjat village, in the Middle Andaman Island, told Reuters by phone.</rmrsbankitem></t>
+  <h><rmrsbankitem id="98">Smriti Kana Saha is a resident of Ranjat village.</rmrsbankitem></h>
+</pair>
+<pair id='403' value='TRUE' task='IE'>
+  <t><rmrsbankitem id="93">Hakimi also claimed that the rebels killed Mawlavi Waqifi, a religious leader in the southeastern province of Khost.</rmrsbankitem></t>
+  <h><rmrsbankitem id="99">Mawlavi Waqifi lived in the southeastern province of Khost.</rmrsbankitem></h>
+</pair>
+<pair id='404' value='FALSE' task='IE'>
+  <t><rmrsbankitem id="94">In that aircraft accident, four people were killed: the pilot, who was wearing civilian clothes, and three other people who were wearing military uniforms.</rmrsbankitem></t>
+  <h><rmrsbankitem id="100">Four people were assassinated by the pilot.</rmrsbankitem></h>
+</pair>
+<pair id='408' value='TRUE' task='IE'>
+  <t><rmrsbankitem id="95">The Actors Studio offering will be based on Simon's female version of the play which was premiered in 1985 in New York, at the Broadhurst Theatre, with the characters' names being Florence Unger and Olive Madison, played by Sally Struthers and Rita Moreno respectively.</rmrsbankitem></t>
+  <h><rmrsbankitem id="101">Broadhurst Theatre is located in New York.</rmrsbankitem></h>
+</pair>
+<pair id='409' value='FALSE' task='IE'>
+  <t><rmrsbankitem id="96">Vinicio Cerezo tacitly blamed president Alfredo Cristiani's administration for the crisis which prevails in the country as a result of the Farabundo Marti National Liberation Front's (FMLN) offensive.</rmrsbankitem> <rmrsbankitem id="97">Meanwhile, Morales Ehrlich blamed the extreme-right death squads of El Salvador for the assassination of six Jesuit priests at the Central American University.</rmrsbankitem></t>
+  <h><rmrsbankitem id="102">Farabundo Marti National Liberation Front is suspected of the assassination of six Jesuit priests.</rmrsbankitem></h>
+</pair>
+<pair id='410' value='TRUE' task='IE'>
+  <t><rmrsbankitem id="98">The solar system is much more complicated now, astronomers say, than in 1930 when Clyde Tombaugh added Pluto to the inventory of wandering lights circling the Sun.</rmrsbankitem></t>
+  <h><rmrsbankitem id="103">Pluto was discovered by Clyde Tombaugh.</rmrsbankitem></h>
+</pair>
+<pair id='414' value='TRUE' task='IE'>
+  <t><rmrsbankitem id="99">The Southeast Asian ministers gather in Laos for their regional meeting.</rmrsbankitem></t>
+  <h><rmrsbankitem id="104">Southeast Asian ministers' meeting is held in Laos.</rmrsbankitem></h>
+</pair>
+<pair id='416' value='TRUE' task='IE'>
+  <t><rmrsbankitem id="100">Australia was one of the countries in the U.S.-led coalition that invaded Iraq in 2003.</rmrsbankitem></t>
+  <h><rmrsbankitem id="105">The coalition is coordinated by the U.S.</rmrsbankitem></h>
+</pair>
+<pair id='418' value='FALSE' task='IE'>
+  <t><rmrsbankitem id="101">Martin was taken to New Orleans Ochsner Foundation Hospital, where nurse Jinny Resor said he was treated for dehydration.</rmrsbankitem></t>
+  <h><rmrsbankitem id="106">Martin works for the Ochsner Foundation Hospital.</rmrsbankitem></h>
+</pair>
+<pair id='423' value='TRUE' task='IE'>
+  <t><rmrsbankitem id="17">"A force majeure is an act of God," said attorney Phil Wittmann, who represents the New Orleans Saints and owner Tom Benson's local interests.</rmrsbankitem></t>
+  <h><rmrsbankitem id="107">New Orleans Saints are property of Tom Benson.</rmrsbankitem></h>
+</pair>
+<pair id='425' value='TRUE' task='IE'>
+  <t><rmrsbankitem id="102">The two rescuers who retrieved him are firefighters with a California-based FEMA team: J.D. Madden of Santa Clara and Eric Mijangos of Menlo Park.</rmrsbankitem></t>
+  <h><rmrsbankitem id="108">A FEMA team is based in California.</rmrsbankitem></h>
+</pair>
+<pair id='427' value='FALSE' task='IE'>
+  <t><rmrsbankitem id="103">The galaxy, measuring just 2,000 light-years across, is a fraction of the size of our own Milky Way, which stretches 100,000 light-years in diameter.</rmrsbankitem></t>
+  <h><rmrsbankitem id="109">The Milky Way measures 2,000 light-years across.</rmrsbankitem></h>
+</pair>
+<pair id='428' value='FALSE' task='IE'>
+  <t><rmrsbankitem id="104">Sir Ian Blair, the Metropolitan Police Commissioner, said, last night, that his officers were "playing out of their socks", but admitted that they were "racing against time" to track down the bombers.</rmrsbankitem></t>
+  <h><rmrsbankitem id="110">The officers belong to Sir Ian Blair's family.</rmrsbankitem></h>
+</pair>
+<pair id='430' value='FALSE' task='IE'>
+  <t><rmrsbankitem id="105">A.S. Roma suffered their second home defeat of the campaign, with a 3-2 loss to 10-man Siena.</rmrsbankitem></t>
+  <h><rmrsbankitem id="111">Siena was beaten by A.S. Roma.</rmrsbankitem></h>
+</pair>
+<pair id='431' value='FALSE' task='IE'>
+  <t><rmrsbankitem id="62">Helena Brighton, an attorney for Eliza May who served as executive director of the Texas Funeral Services Commission - the state agency that regulates the funeral business - claimed that she was fired from her state job because she raised questions about SCI.</rmrsbankitem></t>
+  <h><rmrsbankitem id="112">Helena Brighton is a clerk of the Texas Funeral Services Commission.</rmrsbankitem></h>
+</pair>
+<pair id='433' value='TRUE' task='IE'>
+  <t><rmrsbankitem id="106">Warrington-born Chris Evans denies he went wild, despite quitting Radio 1 in 1997 and later being sacked by Virgin Radio for not turning up for work during a five-day drinking binge.</rmrsbankitem></t>
+  <h><rmrsbankitem id="113">Virgin Radio was the employer of Chris Evans.</rmrsbankitem></h>
+</pair>
+<pair id='434' value='TRUE' task='IE'>
+  <t><rmrsbankitem id="107">Self-sufficiency has been turned into a formal public awareness campaign in San Francisco, by Mayor Gavin Newsom.</rmrsbankitem></t>
+  <h><rmrsbankitem id="114">Gavin Newsom is a politician of San Francisco.</rmrsbankitem></h>
+</pair>
+<pair id='435' value='FALSE' task='IE'>
+  <t><rmrsbankitem id="108">SCI, Houston's largest funeral services company, was headed by Robert Waltrip - a close associate of the Bush family.</rmrsbankitem></t>
+  <h><rmrsbankitem id="115">Robert Waltrip works for the Bush family.</rmrsbankitem></h>
+</pair>
+<pair id='438' value='FALSE' task='IE'>
+  <t><headline>Moscow (USSR), 12 Jul 89 (PRAVDA) - </headline><rmrsbankitem id="109">Blood is flowing in Columbia, where last year, according to official statistics, there were 4,600 victims of political violence, including Jaime Pardo Leal (president of Colombia's national coordination committee), around 30 deputies and many municipal advisors and mayors.</rmrsbankitem></t>
+  <h><rmrsbankitem id="116">Jaime Pardo Leal was killed in Moscow.</rmrsbankitem></h>
+</pair>
+<pair id='439' value='FALSE' task='IE'>
+  <t><headline>San Salvador, Jan. 13, '90 (Acan-Efe) - </headline><rmrsbankitem id="110">The bodies of Hector Oqueli and Gilda Flores, who had been kidnapped yesterday, were found in Cuilapa, Guatemala, near the border with El Salvador, the relatives of one of the victims have reported.</rmrsbankitem></t>
+  <h><rmrsbankitem id="117">Gilda Flores was kidnapped on the 13th of January 1990.</rmrsbankitem></h>
+</pair>
+<pair id='441' value='TRUE' task='IE'>
+  <t><rmrsbankitem id="111">The automobile industry, led by General Motors and Ford, offered price discounts from June-August that temporarily boosted sales, but these discounts may have masked underlying weakness.</rmrsbankitem></t>
+  <h><rmrsbankitem id="118">Ford is part of the automobile industry.</rmrsbankitem></h>
+</pair>
+<pair id='451' value='FALSE' task='IE'>
+  <t><rmrsbankitem id="112">Ordonez Reyes accused Jose Jesus Pena, alleged chief of security for the Nicaraguan embassy in Tegucigalpa, of masterminding the January 7th assassination of contra-commander Manuel Antonio Rugama.</rmrsbankitem></t>
+  <h><rmrsbankitem id="119">Manuel Antonio Rugama was killed by Jose Jesus Pena.</rmrsbankitem></h>
+</pair>
+<pair id='464' value='FALSE' task='IE'>
+  <t><rmrsbankitem id="49">Alan Mulally, Boeing's head of the unit, said at the start of the strike that it may cause delivery delays that would give Airbus SAS an advantage in what is the strongest commercial aircraft market in five years.</rmrsbankitem></t>
+  <h><rmrsbankitem id="120">Alan Mulally is the owner of Boeing.</rmrsbankitem></h>
+</pair>
+<pair id='466' value='FALSE' task='IE'>
+  <t><rmrsbankitem id="113">At the time, neither "USA Today" nor "The Observer" was able to verify which of the sixty-plus candidates it was.</rmrsbankitem></t>
+  <h><rmrsbankitem id="121">"USA Today" is a subsidiary of "The Observer."</rmrsbankitem></h>
+</pair>
+<pair id='477' value='TRUE' task='IE'>
+  <t><rmrsbankitem id="114">He is the professor of theater and drama at Loyola University and the director of Wilson's "Two Trains Running," now onstage at Pegasus Players.</rmrsbankitem></t>
+  <h><rmrsbankitem id="122">"Two Trains Running" was written by Wilson.</rmrsbankitem></h>
+</pair>
+<pair id='481' value='TRUE' task='IE'>
+  <t><headline>Lima, Jan. 10, '90 - </headline><rmrsbankitem id="115">The national police reported that over 15,000 people have been arrested in Lima in a dragnet aimed at uncovering the assassins of former Defense Minister Enrique Lopez Albujar Trint, who was murdered in a terrorist attack, yesterday.</rmrsbankitem></t>
+  <h><rmrsbankitem id="123">Enrique Lopez Albujar Trint was killed on Jan. 9 '90.</rmrsbankitem></h>
+</pair>
+<pair id='484' value='TRUE' task='IE'>
+  <t><rmrsbankitem id="104">Sir Ian Blair, the Metropolitan Police Commissioner, said, last night, that his officers were "playing out of their socks", but admitted that they were "racing against time" to track down the bombers.</rmrsbankitem></t>
+  <h><rmrsbankitem id="124">Sir Ian Blair works for the Metroplitan Police.</rmrsbankitem></h>
+</pair>
+<pair id='485' value='FALSE' task='IE'>
+  <t><rmrsbankitem id="116">Mahbob Amiri, head of Afghanistan's quick-reaction force, said Monday's bomb in the capital detonated as a United Nations vehicle drove past.</rmrsbankitem></t>
+  <h><rmrsbankitem id="125">The United Nations produces vehicles.</rmrsbankitem></h>
+</pair>
+<pair id='491' value='FALSE' task='IE'>
+  <t><rmrsbankitem id="117">U.S. policy on drug trafficking is not consistent with the need to put an end and actively repress the consumption of drugs.</rmrsbankitem> <rmrsbankitem id="118">The solution is not based on the destruction of a native plant, coca, in the continent, but on an active fight against the Colombian drug mafia, which has created a great money and crime empire in Colombia with powerful ramifications outside its borders.</rmrsbankitem></t>
+  <h><rmrsbankitem id="126">A native plant is destroyed by the Colombian drug mafia.</rmrsbankitem></h>
+</pair>
+<pair id='492' value='TRUE' task='IE'>
+  <t><rmrsbankitem id="119">The government of El Salvador strongly condemns the terrorist attacks carried out with explosives, today, against the Salvadoran Workers National Union Federation, in which several persons were wounded and others died.</rmrsbankitem></t>
+  <h><rmrsbankitem id="127">Terrorist attacks were carried out in El Salvador.</rmrsbankitem></h>
+</pair>
+<pair id='497' value='TRUE' task='IE'>
+  <t><rmrsbankitem id="120">He had been hand-picked by John Sculley to take over Steve Jobs' position as head of the Macintosh group.</rmrsbankitem></t>
+  <h><rmrsbankitem id="128">John Sculley was an executive of the Macintosh group.</rmrsbankitem></h>
+</pair>
+<pair id='500' value='TRUE' task='IE'>
+  <t><rmrsbankitem id="106">Warrington-born Chris Evans denies he went wild, despite quitting Radio 1 in 1997 and later being sacked by Virgin Radio for not turning up for work during a five-day drinking binge.</rmrsbankitem></t>
+  <h><rmrsbankitem id="129">Chris Evans worked for Radio 1.</rmrsbankitem></h>
+</pair>
+<pair id='504' value='FALSE' task='IE'>
+  <t><rmrsbankitem id="20">With Washington hinting it might soften its tough stance to break the deadlock, top US negotiator, Christopher Hill, said the two sides needed to review the situation.</rmrsbankitem></t>
+  <h><rmrsbankitem id="130">Christopher Hill is a relative of a top US negotiator.</rmrsbankitem></h>
+</pair>
+<pair id='506' value='TRUE' task='IE'>
+  <t><rmrsbankitem id="121">Another presidential candidate, who we thought was the one involved, was Charles Brumskine, the standard bearer of the United Democratic Party who also has residency in the Northern Virginia area.</rmrsbankitem></t>
+  <h><rmrsbankitem id="131">Charles Brumskine is a member of the United Democratic Party.</rmrsbankitem></h>
+</pair>
+<pair id='508' value='TRUE' task='IE'>
+  <t><rmrsbankitem id="122">Lao government spokesman, Yong Chantalangsy, said Rangoon has promised to announce its decision in Vientiane.</rmrsbankitem></t>
+  <h><rmrsbankitem id="132">Yong Chantalangsy is a representative of Laos.</rmrsbankitem></h>
+</pair>
+<pair id='512' value='FALSE' task='IE'>
+  <t><rmrsbankitem id="123">The murders of Galan, a high-ranking police officer, and a judge last week, were probably carried out by an Israeli mercenary paid by the Medellin cartel - the world's most powerful drug-trafficking mafia - which has set up paramilitary squads accused of hundreds of individual murders and massacres against political and labor leaders, as well as peasants and patriotic union leftist militants in different parts of the country.</rmrsbankitem></t>
+  <h><rmrsbankitem id="133">Galan was killed by patriotic union leftist militants.</rmrsbankitem></h>
+</pair>
+<pair id='525' value='FALSE' task='IE'>
+  <t><headline>Moscow (USSR), 12 Jul 89 (PRAVDA) - </headline><rmrsbankitem id="109">Blood is flowing in Columbia, where last year, according to official statistics, there were 4,600 victims of political violence, including Jaime Pardo Leal (president of Colombia's national coordination committee), around 30 deputies and many municipal advisors and mayors.</rmrsbankitem></t>
+  <h><rmrsbankitem id="134">Around 30 deputies were killed on 12 Jul 89.</rmrsbankitem></h>
+</pair>
+<pair id='534' value='FALSE' task='IE'>
+  <t><rmrsbankitem id="124">The main library at 101 E. Franklin St. changes its solo and group exhibitions monthly in the Gellman Room, the Second Floor Gallery, the Dooley Foyer and the Dooley Hall.</rmrsbankitem></t>
+  <h><rmrsbankitem id="135">Dooley Foyer is located in Dooley Hall.</rmrsbankitem></h>
+</pair>
+<pair id='535' value='TRUE' task='IE'>
+  <t><rmrsbankitem id="125">Toshiba, the world's third-largest notebook computer maker behind Dell Inc. and Hewlett-Packard Co., said the PC would be introduced in Japan in early 2006.</rmrsbankitem></t>
+  <h><rmrsbankitem id="136">Toshiba produces notebook computers.</rmrsbankitem></h>
+</pair>
+<pair id='537' value='TRUE' task='IE'>
+  <t><rmrsbankitem id="126">Larry Estrada, whose father served in the Marine Corps in Vietnam, said he has always had a great appreciation for the military and wanted to do his part to help.</rmrsbankitem></t>
+  <h><rmrsbankitem id="137">Larry Estrada's father belonged to the Marine Corps.</rmrsbankitem></h>
+</pair>
+<pair id='542' value='TRUE' task='IE'>
+  <t><rmrsbankitem id="127">Also, in a landmark deal with Disney, iTunes is now offering current and past episodes from two of the most popular shows on television.</rmrsbankitem></t>
+  <h><rmrsbankitem id="138">I-tunes does business with Disney.</rmrsbankitem></h>
+</pair>
+<pair id='546' value='FALSE' task='IE'>
+  <t><rmrsbankitem id="128">The experiment helped establish that the bacteria came first, causing inflammation, then ulcers.</rmrsbankitem></t>
+  <h><rmrsbankitem id="139">Inflammation is the result of ulcers.</rmrsbankitem></h>
+</pair>
+<pair id='547' value='TRUE' task='IE'>
+  <t><headline>San Salvador, Jan. 13, '90 (Acan-Efe) - </headline><rmrsbankitem id="110">The bodies of Hector Oqueli and Gilda Flores, who had been kidnapped yesterday, were found in Cuilapa, Guatemala, near the border with El Salvador, the relatives of one of the victims have reported.</rmrsbankitem></t>
+  <h><rmrsbankitem id="140">Guatemala borders on El Salvador.</rmrsbankitem></h>
+</pair>
+<pair id='548' value='TRUE' task='IE'>
+  <t><rmrsbankitem id="50">Oqueli was to fly to Nicaragua to join an international Socialist delegation, which will observe the Nicaraguan electoral campaign.</rmrsbankitem></t>
+  <h><rmrsbankitem id="141">An electoral campaign is being held in Nicaragua.</rmrsbankitem></h>
+</pair>
+<pair id='549' value='TRUE' task='IE'>
+  <t><rmrsbankitem id="101">Martin was taken to New Orleans Ochsner Foundation Hospital, where nurse Jinny Resor said he was treated for dehydration.</rmrsbankitem></t>
+  <h><rmrsbankitem id="142">Jinny Resor is employed at Ochsner Foundation Hospital.</rmrsbankitem></h>
+</pair>
+<pair id='556' value='FALSE' task='IE'>
+  <t><headline>Mexico City (Mexico), 12 Jan 90 (DPA) - </headline><rmrsbankitem id="129">Salvadoran Social Democratic politician Hector Oqueli Colindres was kidnapped today in Guatemala city, along with Guatemalan Social Democratic leader Gilda Flores, his party, in Mexico City, reported.</rmrsbankitem></t>
+  <h><rmrsbankitem id="143">Hector Oqueli Colindres is a citizen of Mexico.</rmrsbankitem></h>
+</pair>
+<pair id='557' value='FALSE' task='IE'>
+  <t><rmrsbankitem id="130">Farabundo Marti National Liberation Front's [FMLN] urban commandos have denied reports that they participated in an attack on vice president-elect Francisco Merino's home.</rmrsbankitem></t>
+  <h><rmrsbankitem id="144">Farabundo Marti National Liberation Front have attacked Merino's home.</rmrsbankitem></h>
+</pair>
+<pair id='562' value='TRUE' task='IE'>
+  <t><rmrsbankitem id="131">Salvadoran reporter Mauricio Pineda, a sound technician for the local Canal Doce television station, was shot to death today in Morazan Department in the eastern part of the country.</rmrsbankitem></t>
+  <h><rmrsbankitem id="145">Mauricio Pineda was killed by gunfire.</rmrsbankitem></h>
+</pair>
+<pair id='567' value='FALSE' task='IE'>
+  <t><rmrsbankitem id="125">Toshiba, the world's third-largest notebook computer maker behind Dell Inc. and Hewlett-Packard Co., said the PC would be introduced in Japan in early 2006.</rmrsbankitem></t>
+  <h><rmrsbankitem id="146">Toshiba is a subsidiary of Dell Inc.</rmrsbankitem></h>
+</pair>
+<pair id='570' value='TRUE' task='IE'>
+  <t><rmrsbankitem id="132">Alleged terrorists today, killed Dolores Hinostroza, the mayor of Mulqui district, shooting her five times.</rmrsbankitem></t>
+  <h><rmrsbankitem id="147">The mayor of Mulqui district was murdered with a firearm.</rmrsbankitem></h>
+</pair>
+<pair id='573' value='TRUE' task='IE'>
+  <t><rmrsbankitem id="133">But Rajeev Dhawan, director of the Economic Forecasting Center at Georgia State University, says the main issue ahead is higher inflation.</rmrsbankitem></t>
+  <h><rmrsbankitem id="148">The Economic Forecasting Center is located in Georgia.</rmrsbankitem></h>
+</pair>
+<pair id='580' value='FALSE' task='IE'>
+  <t><rmrsbankitem id="134">"The aftershocks were less in the past two months, but it seems to be starting again.</rmrsbankitem> <rmrsbankitem id="135">We are really worried about the fate of these islands," Smriti Kana Saha of Ranjat village in the Middle Andaman Island told Reuters by phone.</rmrsbankitem></t>
+  <h><rmrsbankitem id="149">Smriti Kana Saha of Ranjat village is part of the Middle Andaman Island.</rmrsbankitem></h>
+</pair>
+<pair id='581' value='FALSE' task='IE'>
+  <t><rmrsbankitem id="136">A mercenary group, faithful to the warmongering policy of former Somozist colonel Enrique Bermudez, attacked an IFA truck belonging to the interior ministry at 0900 on 26 March in El Jicote, wounded and killed an interior ministry worker and wounded five others.</rmrsbankitem></t>
+  <h><rmrsbankitem id="150">A mercenary group was injured in El Jicote.</rmrsbankitem></h>
+</pair>
+<pair id='587' value='TRUE' task='IE'>
+  <t><rmrsbankitem id="137">ECB spokeswoman, Regina Schueller, declined to comment on a report in Italy's la Repubblica newspaper that the ECB council will discuss Mr. Fazio's role in the takeover fight at its Sept. 15 meeting.</rmrsbankitem></t>
+  <h><rmrsbankitem id="151">The ECB council meets on Sept. 15.</rmrsbankitem></h>
+</pair>
+<pair id='589' value='TRUE' task='IE'>
+  <t><rmrsbankitem id="138">The 500,000 eligible, Muslim voters are likely to reward Chancellor Gerhard Schroeder's Social Democrats (SPD) in the September 18 parliamentary election, for its anti-Iraq war position and pro-Muslim policies.</rmrsbankitem></t>
+  <h><rmrsbankitem id="152">The parliamentary election takes place on September 18.</rmrsbankitem></h>
+</pair>
+<pair id='593' value='FALSE' task='IE'>
+  <t><rmrsbankitem id="70">Microsoft Corp. and Intel Corp., on Monday, threw their weight behind the next-generation, HD DVD format being promoted by Toshiba Corp., in a blow to Sony Corp.'s Blu-ray format.</rmrsbankitem></t>
+  <h><rmrsbankitem id="153">Toshiba Corp. is a partner of Sony Corp.</rmrsbankitem></h>
+</pair>
+<pair id='598' value='FALSE' task='IE'>
+  <t><rmrsbankitem id="139">Councilman Pierce said he was advised that the car belonged to James Clark, 68, an acquaintance of the Jones family.</rmrsbankitem></t>
+  <h><rmrsbankitem id="154">Councilman Pierce owns a car.</rmrsbankitem></h>
+</pair>
+<pair id='604' value='FALSE' task='IE'>
+  <t><rmrsbankitem id="140">The marriage is planned to take place in the Kiev Monastery of the Caves, whose father superior, Bishop Pavel, is Yulia Timoshenko's spiritual father.</rmrsbankitem></t>
+  <h><rmrsbankitem id="155">Yulia Timoshenko is the daughter of Bishop Pavel.</rmrsbankitem></h>
+</pair>
+<pair id='613' value='TRUE' task='IE'>
+  <t><rmrsbankitem id="141">"No, we don't get any business from beach traffic," said Butler, whose Men's Shop is located in a small strip mall behind Krispy Kreme on Palmetto.</rmrsbankitem></t>
+  <h><rmrsbankitem id="156">Men's Shop is owned by Butler.</rmrsbankitem></h>
+</pair>
+<pair id='618' value='TRUE' task='IE'>
+  <t><rmrsbankitem id="142">The 54-year-old man from London, who was not otherwise identified, was located following cooperation with British authorities, police said in a statement.</rmrsbankitem></t>
+  <h><rmrsbankitem id="157">The 54-year-old man resides in London.</rmrsbankitem></h>
+</pair>
+<pair id='620' value='TRUE' task='IE'>
+  <t><rmrsbankitem id="112">Ordonez Reyes accused Jose Jesus Pena, alleged chief of security for the Nicaraguan embassy in Tegucigalpa, of masterminding the January 7th assassination of contra-commander Manuel Antonio Rugama.</rmrsbankitem></t>
+  <h><rmrsbankitem id="158">Jose Jesus Pena is accused of the assassination of Manuel Antonio Rugama.</rmrsbankitem></h>
+</pair>
+<pair id='625' value='FALSE' task='IE'>
+  <t><rmrsbankitem id="143">The loss offered a minor moral victory for Liverpool, as they scored only the second goal this season against Chelsea in league play.</rmrsbankitem></t>
+  <h><rmrsbankitem id="159">Liverpool beat Chelsea.</rmrsbankitem></h>
+</pair>
+<pair id='626' value='TRUE' task='IE'>
+  <t><rmrsbankitem id="144">The Bank of Italy, the ultimate arbiter of Italian banking mergers, has been engulfed by scandal since police wire taps revealed Fazio and his wife advised a local banker in a bid for bank Antonveneta against Dutch bank ABN AMRO.</rmrsbankitem></t>
+  <h><rmrsbankitem id="160">Dutch bank ABN AMRO bids for Bank Antonveneta.</rmrsbankitem></h>
+</pair>
+<pair id='627' value='FALSE' task='IE'>
+  <t><headline>La Paz, 30 May 89 - </headline><rmrsbankitem id="145">La Paz Department Police authorities have disclosed that investigations into the murder of two young U.S. citizens are being conducted by a specialized group summoned specially to clarify this crime.</rmrsbankitem></t>
+  <h><rmrsbankitem id="161">Two young U.S. citizens were killed on 30 May 89.</rmrsbankitem></h>
+</pair>
+<pair id='628' value='FALSE' task='IE'>
+  <t><rmrsbankitem id="146">Toshiba, with NEC Corp. and Sanyo Electric Co. Ltd., has been promoting a technology called HD DVD while Sony, along with Samsung Electronics Co. Ltd. and Matsushita Electric Industrial Co. Ltd. (maker of Panasonic brand products), has been pushing for Blu-ray.</rmrsbankitem></t>
+  <h><rmrsbankitem id="162">Panasonic brand products are produced by Samsung Electronics Co. Ltd.</rmrsbankitem></h>
+</pair>
+<pair id='639' value='TRUE' task='IE'>
+  <t><rmrsbankitem id="147">Les Paul, who continues to perform weekly at New York Iridium Jazz Club, has finished recording "Les Paul &amp; Friends."</rmrsbankitem></t>
+  <h><rmrsbankitem id="163">Iridium Jazz Club is located in New York.</rmrsbankitem></h>
+</pair>
+<pair id='641' value='TRUE' task='IE'>
+  <t><rmrsbankitem id="148">Nicholas Cage's wife, Alice Kim Cage, gave birth Monday, to Kal-el Coppola Cage, in New York City, said the actor's Los Angeles-based publicist, Annett Wolf.</rmrsbankitem></t>
+  <h><rmrsbankitem id="164">Kal-el Coppola Cage is the son of Nicholas Cage.</rmrsbankitem></h>
+</pair>
+<pair id='646' value='FALSE' task='IE'>
+  <t><headline>San Salvador, Jan. 13, '90 (Acan-Efe) - </headline><rmrsbankitem id="149">The bodies of Hector Oqueli and Gilda Flores, who had been kidnapped on the 12th of January, were found in Cuilapa, Guatemala, near the border with El Salvador, the relatives of one of the victims have reported.</rmrsbankitem></t>
+  <h><rmrsbankitem id="165">A kidnapping took place in San Salvador.</rmrsbankitem></h>
+</pair>
+<pair id='651' value='FALSE' task='IE'>
+  <t><rmrsbankitem id="150">Three plays later, quarterback James Pinkney was sacked by Wake's Goryal Scales on third-and-one, forcing the team to punt.</rmrsbankitem></t>
+  <h><rmrsbankitem id="166">James Pinkney was an employee of Goryal Scales.</rmrsbankitem></h>
+</pair>
+<pair id='653' value='FALSE' task='IE'>
+  <t><rmrsbankitem id="151">Mr. Olsen paid $20 million for the space trip, but says that in the future space travel will likely become as routine as air travel is today.</rmrsbankitem></t>
+  <h><rmrsbankitem id="167">Air travel costs $20 million.</rmrsbankitem></h>
+</pair>
+<pair id='655' value='FALSE' task='IE'>
+  <t><rmrsbankitem id="152">Ms. Miers' whole life was based in Dallas and revolved around her legal work, her family and an attachment to an evangelical church that led her to what her former pastor described as a flowering of faith late in life.</rmrsbankitem></t>
+  <h><rmrsbankitem id="168">Ms. Miers was a leader of an evangelical church.</rmrsbankitem></h>
+</pair>
+<pair id='657' value='FALSE' task='IE'>
+  <t><rmrsbankitem id="153">Kasyanov was sacked by Putin in February 2004, after he had become critical of the Kremlin's politically motivated legal attack on the Yukos oil giant and its owner, billionaire Mikhail Khodorkovsky.</rmrsbankitem></t>
+  <h><rmrsbankitem id="169">The Kremlin is owned by Mikhail Khodorkovsky.</rmrsbankitem></h>
+</pair>
+<pair id='663' value='TRUE' task='IE'>
+  <t><rmrsbankitem id="154">FMLN militias sabotaged power lines along the road linking Nueva Concepcion to the northern trunk highway at 1800 on 12 August.</rmrsbankitem></t>
+  <h><rmrsbankitem id="170">Power lines were attacked by FMLN.</rmrsbankitem></h>
+</pair>
+<pair id='668' value='FALSE' task='IE'>
+  <t><rmrsbankitem id="155">Their work has stimulated research into microbes as possible reasons for other chronic inflammatory conditions, such as Crohn's disease, ulcerative colitis, rheumatoid arthritis and atherosclerosis, the Nobel assembly said.</rmrsbankitem></t>
+  <h><rmrsbankitem id="171">Rheumatoid arthritis is caused by microbes.</rmrsbankitem></h>
+</pair>
+<pair id='670' value='TRUE' task='IE'>
+  <t><rmrsbankitem id="156">A member of the Burmese delegation, Thaung Tun, told reporters on the eve of the meeting that his government did not wish to place ASEAN in a difficult position by insisting on assuming the chairmanship.</rmrsbankitem></t>
+  <h><rmrsbankitem id="172">Thaung Tun is a representative of Burma.</rmrsbankitem></h>
+</pair>
+<pair id='671' value='FALSE' task='IE'>
+  <t><rmrsbankitem id="157">The San Diego Padres ace, Jake Peavy, was hurt in an 8-5 loss to the St. Louis Cardinals.</rmrsbankitem></t>
+  <h><rmrsbankitem id="173">The San Diego Padres won the game against the St. Louis Cardinals.</rmrsbankitem></h>
+</pair>
+<pair id='678' value='TRUE' task='IE'>
+  <t><rmrsbankitem id="158">It takes 560 years to complete one trip around the Sun (versus 250 years for Pluto).</rmrsbankitem></t>
+  <h><rmrsbankitem id="174">Pluto's trip around the Sun lasts 250 years.</rmrsbankitem></h>
+</pair>
+<pair id='679' value='TRUE' task='IE'>
+  <t><rmrsbankitem id="159">Referring to the April 2 car bomb explosion perpetrated in Santa Tecla, the FMLN-FDR claimed responsibility for the attack in a communique, and said that it was "an action aimed directly at the police" and that "they regret the death of a civilian," but they did not mention compensation for the relatives.</rmrsbankitem></t>
+  <h><rmrsbankitem id="175">A civilian was killed by a car bomb.</rmrsbankitem></h>
+</pair>
+<pair id='680' value='FALSE' task='IE'>
+  <t><rmrsbankitem id="50">Oqueli was to fly to Nicaragua to join an international Socialist delegation, which will observe the Nicaraguan electoral campaign.</rmrsbankitem></t>
+  <h><rmrsbankitem id="176">Oqueli was taking part in the Nicaraguan electoral campaign.</rmrsbankitem></h>
+</pair>
+<pair id='684' value='FALSE' task='IE'>
+  <t><rmrsbankitem id="160">According to an Israeli official, the murders of Galan, a high-ranking police officer, and a judge last week were probably carried out by an Israeli mercenary paid by the Medellin cartel - the world's most powerful drug-trafficking mafia - which has set up paramilitary squads accused of hundreds of individual murders and massacres against political and labor leaders, as well as peasants and patriotic union leftist militants in different parts of the country.</rmrsbankitem></t>
+  <h><rmrsbankitem id="177">Political and labor leaders were killed by patriotic union leftist militants.</rmrsbankitem></h>
+</pair>
+<pair id='692' value='FALSE' task='IE'>
+  <t><rmrsbankitem id="2">Meanwhile, in an exclusive interview with a TIME journalist, the first one-on-one session given to a Western print publication since his election as president of Iran earlier this year, Ahmadinejad attacked the "threat" to bring the issue of Iran's nuclear activity to the UN Security Council by the US, France, Britain and Germany.</rmrsbankitem></t>
+  <h><rmrsbankitem id="178">Ahmadinejab threatens Iran nuclear activity.</rmrsbankitem></h>
+</pair>
+<pair id='701' value='FALSE' task='IE'>
+  <t><rmrsbankitem id="161">FMLN guerrilla units ambushed the 1st company of military detachment no. 2 Jr. Battalion at la Pena Canton, Villa Victoria Jurisdiction.</rmrsbankitem></t>
+  <h><rmrsbankitem id="179">FMLN guerrilla units attacked a commercial company.</rmrsbankitem></h>
+</pair>
+<pair id='702' value='FALSE' task='IE'>
+  <t><rmrsbankitem id="3">The chaotic situation unleashed in Bogota last night, with the assassination of Justice Carlos Valencia, began on 28 July in Medellin, when motorized paid assassins murdered third public order Judge Maria Elena Diaz.</rmrsbankitem></t>
+  <h><rmrsbankitem id="180">Justice Carlos Valencia was killed in Medellin.</rmrsbankitem></h>
+</pair>
+<pair id='707' value='TRUE' task='IE'>
+  <t><rmrsbankitem id="162">The controversy became more desperate, this summer, when astronomers discovered a new object, larger than Pluto, orbiting in the Kuiper Belt at a distance of nine billion miles from the Sun.</rmrsbankitem></t>
+  <h><rmrsbankitem id="181">The Kuiper Belt is nine billion miles from the Sun.</rmrsbankitem></h>
+</pair>
+<pair id='711' value='FALSE' task='IE'>
+  <t><rmrsbankitem id="163">Mufti Latifullah Hakimi, the spokesman for the Taliban rebels, claimed responsibility for the blast, but said that the insurgents had planted the bomb to target the Afghan police.</rmrsbankitem></t>
+  <h><rmrsbankitem id="182">The Taliban is the rebels' employer.</rmrsbankitem></h>
+</pair>
+<pair id='712' value='TRUE' task='IE'>
+  <t><rmrsbankitem id="164">"I think we've already seen the effect on oil and gas prices," said economist Kathleen Camilli of New York-based Camilli Economics.</rmrsbankitem></t>
+  <h><rmrsbankitem id="183">Kathleen Camilli works for Camilli Economics.</rmrsbankitem></h>
+</pair>
+<pair id='713' value='TRUE' task='IE'>
+  <t><rmrsbankitem id="165">Prices hit their lowest levels in five weeks Friday, with light, sweet crude for October closing at $63 on the New York Mercantile Exchange, the lowest settlement price since Aug. 5.</rmrsbankitem></t>
+  <h><rmrsbankitem id="184">Crude oil costs $63.</rmrsbankitem></h>
+</pair>
+<pair id='719' value='FALSE' task='IE'>
+  <t><rmrsbankitem id="70">Microsoft Corp. and Intel Corp., on Monday, threw their weight behind the next-generation, HD DVD format being promoted by Toshiba Corp., in a blow to Sony Corp.'s Blu-ray format.</rmrsbankitem></t>
+  <h><rmrsbankitem id="185">Microsoft Corp. is a partner of Intel Corp.</rmrsbankitem></h>
+</pair>
+<pair id='727' value='TRUE' task='IE'>
+  <t><rmrsbankitem id="138">The 500,000 eligible, Muslim voters are likely to reward Chancellor Gerhard Schroeder's Social Democrats (SPD) in the September 18 parliamentary election, for its anti-Iraq war position and pro-Muslim policies.</rmrsbankitem></t>
+  <h><rmrsbankitem id="186">Gerhard Schroeder belongs to the Social Democrats.</rmrsbankitem></h>
+</pair>
+<pair id='729' value='TRUE' task='IE'>
+  <t><headline>Bogota, 4 May 88 - </headline><rmrsbankitem id="15">The dissemination of a document questioning Colombia's oil policy, is reportedly the aim of the publicity stunt carried out by the pro-Castro Army Of National Liberation, which kidnapped several honorary consuls, newsmen, and political leaders.</rmrsbankitem></t>
+  <h><rmrsbankitem id="187">The Army Of National Liberation are supporters of Castro.</rmrsbankitem></h>
+</pair>
+<pair id='731' value='FALSE' task='IE'>
+  <t><rmrsbankitem id="70">Microsoft Corp. and Intel Corp., on Monday, threw their weight behind the next-generation, HD DVD format being promoted by Toshiba Corp., in a blow to Sony Corp.'s Blu-ray format.</rmrsbankitem></t>
+  <h><rmrsbankitem id="188">Microsoft Corp. invented the next generation HD DVD format.</rmrsbankitem></h>
+</pair>
+<pair id='732' value='TRUE' task='IE'>
+  <t><rmrsbankitem id="166">US President George W. Bush has refused to set a timetable for the withdrawal of the 138,000 US troops in Iraq, but has said that US forces will stand down as Iraqi forces gradually take over.</rmrsbankitem></t>
+  <h><rmrsbankitem id="189">138,000 US troops are located in Iraq.</rmrsbankitem></h>
+</pair>
+<pair id='736' value='TRUE' task='IE'>
+  <t><rmrsbankitem id="167">The hullabaloo is over a glacial period dating to about 750 million to 600 million years ago.</rmrsbankitem></t>
+  <h><rmrsbankitem id="190">A glacial period occurred about 750 million to 600 million years ago.</rmrsbankitem></h>
+</pair>
+<pair id='745' value='FALSE' task='IE'>
+  <t><rmrsbankitem id="168">Others argue that Mr. Sharon should have negotiated the Gaza pullout - both to obtain at least some written promises of better Palestinian behavior, and to provide Mr. Abbas with a prime prize to show his people that diplomacy, not violence, delivered Gaza.</rmrsbankitem></t>
+  <h><rmrsbankitem id="191">Mr. Abbas is a member of the Palestinian family.</rmrsbankitem></h>
+</pair>
+<pair id='746' value='FALSE' task='IE'>
+  <t><rmrsbankitem id="169">Sunday's explosion outside the Al-Rashi police station in the Al-Mashtel neighbourhood in the southeast of Baghdad, left a huge crater in the street.</rmrsbankitem></t>
+  <h><rmrsbankitem id="192">Al Rashi is an executive of the police.</rmrsbankitem></h>
+</pair>
+<pair id='755' value='FALSE' task='IE'>
+  <t><rmrsbankitem id="170">Bechtolsheim left Sun in 1995 to found Granite Systems, a maker of high-speed networking systems, which he later sold to Cisco Systems.</rmrsbankitem></t>
+  <h><rmrsbankitem id="193">Bechtolsheim was the owner of Cisco Systems.</rmrsbankitem></h>
+</pair>
+<pair id='764' value='FALSE' task='IE'>
+  <t><rmrsbankitem id="171">General Miguel Maza Marquez, chief of the Colombian Administrative Department Of Security (DAS), today confirmed foreign participation in the assassination of Luis Carlos Galan, senator and Liberal party presidential candidate, on 18 August in Bogota.</rmrsbankitem></t>
+  <h><rmrsbankitem id="194">General Miguel Maza Marquez took part in the assassination of Luis Carlos Galan.</rmrsbankitem></h>
+</pair>
+<pair id='776' value='FALSE' task='IE'>
+  <t><rmrsbankitem id="160">According to an Israeli official, the murders of Galan, a high-ranking police officer, and a judge last week were probably carried out by an Israeli mercenary paid by the Medellin cartel - the world's most powerful drug-trafficking mafia - which has set up paramilitary squads accused of hundreds of individual murders and massacres against political and labor leaders, as well as peasants and patriotic union leftist militants in different parts of the country.</rmrsbankitem></t>
+  <h><rmrsbankitem id="195">An Israeli official was killed by patriotic union leftist militants.</rmrsbankitem></h>
+</pair>
+<pair id='777' value='FALSE' task='IE'>
+  <t><rmrsbankitem id="33">Jack Straw, the Foreign Secretary, will meet his Brazilian counterpart, Celso Amorim, in London today.</rmrsbankitem></t>
+  <h><rmrsbankitem id="196">Celso Amorim resides in London.</rmrsbankitem></h>
+</pair>
+<pair id='780' value='TRUE' task='IE'>
+  <t><rmrsbankitem id="37">Valero Energy Corp., on Monday, said it found "extensive" additional damage at its 250,000-barrel-per-day Port Arthur refinery.</rmrsbankitem></t>
+  <h><rmrsbankitem id="197">Valero Energy Corp. produces 250,000 barrels per day.</rmrsbankitem></h>
+</pair>
+<pair id='786' value='FALSE' task='IE'>
+  <t><rmrsbankitem id="172">"The Extraditables" have claimed responsibility for the murder of two employees of Bogota's daily El Espectador perpetrated today in Medellin, where two other El Espectator people, Miguel Soler Rodriguez and Martha Luz Lopez, were killed today in separate attacks carried out by gunmen.</rmrsbankitem></t>
+  <h><rmrsbankitem id="198">Miguel Soler Rodriguez and Martha Luz Lopez were killed by two employees of Bogota's daily El Espectador.</rmrsbankitem></h>
+</pair>
+<pair id='793' value='TRUE' task='IE'>
+  <t><rmrsbankitem id="173">Both of these attacks, attributed to the drug trafficking cartels, took place after 10 bombs, placed in nine political offices of the Liberal and Social Conservative parties and in another bank office, exploded early this morning in downtown Bogota.</rmrsbankitem></t>
+  <h><rmrsbankitem id="199">Nine political offices of the Liberal and Social Conservative parties were attacked by the drug trafficking cartels.</rmrsbankitem></h>
+</pair>
+<pair id='796' value='TRUE' task='IE'>
+  <t><rmrsbankitem id="174">The Bank of Italy, the ultimate arbiter of Italian banking mergers, has been engulfed by scandal since police wire taps revealed Fazio and his wife advised a local banker in a bid for Bank Antonveneta against Dutch bank ABN AMRO.</rmrsbankitem></t>
+  <h><rmrsbankitem id="200">A local banker bids for Bank Antonveneta.</rmrsbankitem></h>
+</pair>
+</entailment-corpus>

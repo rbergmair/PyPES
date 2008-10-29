@@ -1,0 +1,1933 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE testsuite SYSTEM "file:///home/rb432/workspace/rte/dtd/testsuite.dtd">
+
+<testsuite>
+
+
+
+<testsuite id="1" name="constraint removal">
+
+<testcase id="1.1">
+  <proposition id="1.1.1">
+  <surface>
+    Some white dogs bark.
+  </surface>
+  <analysis>
+  
+  <sentence>
+  
+  <!--
+       l3 | _some_q( ARG0=x4 BODY=h6 RSTR=h5 ) 
+          |    h5 qeq l10001
+       l7 + _white_a_1( ARG0=e8 ARG1=x4 ) 
+   l10001 | _dog_n_1( ARG0=x4 ) 
+       l9 + _bark_v_1( ARG0=e2 ARG1=x4 ) 
+  -->
+  <rmrs cfrom='-1' cto='-1'>
+    <label vid='1'/>
+    <ep cfrom='-1' cto='-1'>
+      <realpred lemma='some' pos='q'/>
+      <label vid='3'/>
+      <var sort='x' vid='4' num='pl' pers='3'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <realpred lemma='white' pos='a' sense='1'/>
+      <label vid='7'/>
+      <var sort='e' vid='8' tense='u'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <realpred lemma='dog' pos='n' sense='1'/>
+      <label vid='10001'/>
+      <var sort='x' vid='4' num='pl' pers='3'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <realpred lemma='bark' pos='v' sense='1'/>
+      <label vid='9'/>
+      <var sort='e' vid='2' tense='present'/>
+    </ep>
+    <hcons hreln='qeq'>
+      <hi> <var sort='h' vid='5'/> </hi>
+      <lo> <label vid='10001'/> </lo>
+    </hcons>
+    <rarg>
+      <rargname>RSTR</rargname>
+      <label vid='3'/>
+      <var sort='h' vid='5'/>
+    </rarg>
+    <rarg>
+      <rargname>BODY</rargname>
+      <label vid='3'/>
+      <var sort='h' vid='6'/>
+    </rarg>
+    <rarg>
+      <rargname>ARG1</rargname>
+      <label vid='7'/>
+      <var sort='x' vid='4' num='pl' pers='3'/>
+    </rarg>
+    <rarg>
+      <rargname>ARG1</rargname>
+      <label vid='9'/>
+      <var sort='x' vid='4' num='pl' pers='3'/>
+    </rarg>
+    <ing>
+      <ing-a> <var sort='h' vid='10001'/> </ing-a>
+      <ing-b> <var sort='h' vid='7'/> </ing-b> 
+    </ing>
+  </rmrs>
+
+  </sentence>
+  </analysis>
+  </proposition>
+  <proposition id="1.1.2">
+  <surface>
+    Some dogs bark.
+  </surface>
+  <analysis>
+  
+  <sentence>
+  
+  <!--
+       l3 | _some_q( ARG0=x4 BODY=h6 RSTR=h5 ) 
+          |    h5 qeq l7
+       l7 + _dog_n_1( ARG0=x4 ) 
+       l8 | _bark_v_1( ARG0=e2 ARG1=x4 ) 
+  -->
+  <rmrs cfrom='-1' cto='-1'>
+    <label vid='1'/>
+    <ep cfrom='-1' cto='-1'>
+      <realpred lemma='some' pos='q'/>
+      <label vid='3'/>
+      <var sort='x' vid='4' num='pl' pers='3'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <realpred lemma='dog' pos='n' sense='1'/>
+      <label vid='7'/>
+      <var sort='x' vid='4' num='pl' pers='3'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <realpred lemma='bark' pos='v' sense='1'/>
+      <label vid='8'/>
+      <var sort='e' vid='2' tense='present'/>
+    </ep>
+    <hcons hreln='qeq'>
+      <hi> <var sort='h' vid='5'/> </hi>
+      <lo> <label vid='7'/> </lo>
+    </hcons>
+    <rarg>
+      <rargname>RSTR</rargname>
+      <label vid='3'/>
+      <var sort='h' vid='5'/>
+    </rarg>
+    <rarg>
+      <rargname>BODY</rargname>
+      <label vid='3'/>
+      <var sort='h' vid='6'/>
+    </rarg>
+    <rarg>
+      <rargname>ARG1</rargname>
+      <label vid='8'/>
+      <var sort='x' vid='4' num='pl' pers='3'/>
+    </rarg>
+  </rmrs>
+
+  </sentence>
+  </analysis>
+  </proposition>
+  <valid id="1.1.a">
+    <implication>
+      <antecedent> <ref src="1.1.1"/> </antecedent>
+      <consequent> <ref src="1.1.2"/> </consequent>
+    </implication>
+  </valid>
+  <nonvalid id="1.1.b">
+    <implication>
+      <antecedent> <ref src="1.1.2"/> </antecedent>
+      <consequent> <ref src="1.1.1"/> </consequent>
+    </implication>
+  </nonvalid>
+</testcase>
+
+<testcase id="1.2">
+  <proposition id="1.2.1">
+  <surface>
+    Some white cats chase some black dogs.
+  </surface>
+  <analysis>
+  
+  <sentence>
+  
+  <!--
+       l3 | _some_q( ARG0=x4 BODY=h6 RSTR=h5 ) 
+          |    h5 qeq l10001
+       l7 + _white_a_1( ARG0=e8 ARG1=x4 ) 
+   l10001 | _cat_n_1( ARG0=x4 ) 
+       l9 + _chase_v_1( ARG0=e2 ARG1=x4 ARG2=x10 ) 
+      l11 | _some_q( ARG0=x10 BODY=h13 RSTR=h12 ) 
+          |    h12 qeq l10002
+      l14 + _black_a_1( ARG0=e15 ARG1=x10 ) 
+   l10002 | _dog_n_1( ARG0=x10 ) 
+  -->
+  <rmrs cfrom='-1' cto='-1'>
+    <label vid='1'/>
+    <ep cfrom='-1' cto='-1'>
+      <realpred lemma='some' pos='q'/>
+      <label vid='3'/>
+      <var sort='x' vid='4' num='pl' pers='3'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <realpred lemma='white' pos='a' sense='1'/>
+      <label vid='7'/>
+      <var sort='e' vid='8' tense='u'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <realpred lemma='cat' pos='n' sense='1'/>
+      <label vid='10001'/>
+      <var sort='x' vid='4' num='pl' pers='3'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <realpred lemma='chase' pos='v' sense='1'/>
+      <label vid='9'/>
+      <var sort='e' vid='2' tense='present'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <realpred lemma='some' pos='q'/>
+      <label vid='11'/>
+      <var sort='x' vid='10' num='pl' pers='3'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <realpred lemma='black' pos='a' sense='1'/>
+      <label vid='14'/>
+      <var sort='e' vid='15' tense='u'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <realpred lemma='dog' pos='n' sense='1'/>
+      <label vid='10002'/>
+      <var sort='x' vid='10' num='pl' pers='3'/>
+    </ep>
+    <hcons hreln='qeq'>
+      <hi> <var sort='h' vid='5'/> </hi>
+      <lo> <label vid='10001'/> </lo>
+    </hcons>
+    <hcons hreln='qeq'>
+      <hi> <var sort='h' vid='12'/> </hi>
+      <lo> <label vid='10002'/> </lo>
+    </hcons>
+    <rarg>
+      <rargname>RSTR</rargname>
+      <label vid='3'/>
+      <var sort='h' vid='5'/>
+    </rarg>
+    <rarg>
+      <rargname>BODY</rargname>
+      <label vid='3'/>
+      <var sort='h' vid='6'/>
+    </rarg>
+    <rarg>
+      <rargname>ARG1</rargname>
+      <label vid='7'/>
+      <var sort='x' vid='4' num='pl' pers='3'/>
+    </rarg>
+    <rarg>
+      <rargname>ARG1</rargname>
+      <label vid='9'/>
+      <var sort='x' vid='4' num='pl' pers='3'/>
+    </rarg>
+    <rarg>
+      <rargname>ARG2</rargname>
+      <label vid='9'/>
+      <var sort='x' vid='10' num='pl' pers='3'/>
+    </rarg>
+    <rarg>
+      <rargname>RSTR</rargname>
+      <label vid='11'/>
+      <var sort='h' vid='12'/>
+    </rarg>
+    <rarg>
+      <rargname>BODY</rargname>
+      <label vid='11'/>
+      <var sort='h' vid='13'/>
+    </rarg>
+    <rarg>
+      <rargname>ARG1</rargname>
+      <label vid='14'/>
+      <var sort='x' vid='10' num='pl' pers='3'/>
+    </rarg>
+    <ing>
+      <ing-a> <var sort='h' vid='10001'/> </ing-a>
+      <ing-b> <var sort='h' vid='7'/> </ing-b> 
+    </ing>
+    <ing>
+      <ing-a> <var sort='h' vid='10002'/> </ing-a>
+      <ing-b> <var sort='h' vid='14'/> </ing-b> 
+    </ing>
+  </rmrs>
+
+  </sentence>
+  </analysis>
+  </proposition>
+  <proposition id="1.2.2">
+  <surface>
+    Some white cats chase some dogs.
+  </surface>
+  <analysis>
+  
+  <sentence>
+  
+  <!--
+       l3 | _some_q( ARG0=x4 BODY=h6 RSTR=h5 ) 
+          |    h5 qeq l10001
+       l7 + _white_a_1( ARG0=e8 ARG1=x4 ) 
+   l10001 | _cat_n_1( ARG0=x4 ) 
+       l9 + _chase_v_1( ARG0=e2 ARG1=x4 ARG2=x10 ) 
+      l11 | _some_q( ARG0=x10 BODY=h13 RSTR=h12 ) 
+          |    h12 qeq l14
+      l14 + _dog_n_1( ARG0=x10 ) 
+  -->
+  <rmrs cfrom='-1' cto='-1'>
+    <label vid='1'/>
+    <ep cfrom='-1' cto='-1'>
+      <realpred lemma='some' pos='q'/>
+      <label vid='3'/>
+      <var sort='x' vid='4' num='pl' pers='3'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <realpred lemma='white' pos='a' sense='1'/>
+      <label vid='7'/>
+      <var sort='e' vid='8' tense='u'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <realpred lemma='cat' pos='n' sense='1'/>
+      <label vid='10001'/>
+      <var sort='x' vid='4' num='pl' pers='3'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <realpred lemma='chase' pos='v' sense='1'/>
+      <label vid='9'/>
+      <var sort='e' vid='2' tense='present'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <realpred lemma='some' pos='q'/>
+      <label vid='11'/>
+      <var sort='x' vid='10' num='pl' pers='3'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <realpred lemma='dog' pos='n' sense='1'/>
+      <label vid='14'/>
+      <var sort='x' vid='10' num='pl' pers='3'/>
+    </ep>
+    <hcons hreln='qeq'>
+      <hi> <var sort='h' vid='5'/> </hi>
+      <lo> <label vid='10001'/> </lo>
+    </hcons>
+    <hcons hreln='qeq'>
+      <hi> <var sort='h' vid='12'/> </hi>
+      <lo> <label vid='14'/> </lo>
+    </hcons>
+    <rarg>
+      <rargname>RSTR</rargname>
+      <label vid='3'/>
+      <var sort='h' vid='5'/>
+    </rarg>
+    <rarg>
+      <rargname>BODY</rargname>
+      <label vid='3'/>
+      <var sort='h' vid='6'/>
+    </rarg>
+    <rarg>
+      <rargname>ARG1</rargname>
+      <label vid='7'/>
+      <var sort='x' vid='4' num='pl' pers='3'/>
+    </rarg>
+    <rarg>
+      <rargname>ARG1</rargname>
+      <label vid='9'/>
+      <var sort='x' vid='4' num='pl' pers='3'/>
+    </rarg>
+    <rarg>
+      <rargname>ARG2</rargname>
+      <label vid='9'/>
+      <var sort='x' vid='10' num='pl' pers='3'/>
+    </rarg>
+    <rarg>
+      <rargname>RSTR</rargname>
+      <label vid='11'/>
+      <var sort='h' vid='12'/>
+    </rarg>
+    <rarg>
+      <rargname>BODY</rargname>
+      <label vid='11'/>
+      <var sort='h' vid='13'/>
+    </rarg>
+    <ing>
+      <ing-a> <var sort='h' vid='10001'/> </ing-a>
+      <ing-b> <var sort='h' vid='7'/> </ing-b> 
+    </ing>
+  </rmrs>
+
+  </sentence>
+  </analysis>
+  </proposition>
+  <valid id="1.2.a">
+    <implication>
+      <antecedent> <ref src="1.2.1"/> </antecedent>
+      <consequent> <ref src="1.2.2"/> </consequent>
+    </implication>
+  </valid>
+  <nonvalid id="1.2.b">
+    <implication>
+      <antecedent> <ref src="1.2.2"/> </antecedent>
+      <consequent> <ref src="1.2.1"/> </consequent>
+    </implication>
+  </nonvalid>
+</testcase>
+
+</testsuite>
+
+
+
+<testsuite id="2" name="constraint insertion">
+
+<testcase id="2.1">
+
+  <proposition id="2.1.1">
+  <surface>
+    Some dogs bark.
+  </surface>
+  <analysis>
+  
+  <sentence>
+  
+  <!--
+       l3 | _some_q( ARG0=x4 BODY=h6 RSTR=h5 ) 
+          |    h5 qeq l7
+       l7 + _dog_n_1( ARG0=x4 ) 
+       l8 | _bark_v_1( ARG0=e2 ARG1=x4 ) 
+  -->
+  <rmrs cfrom='-1' cto='-1'>
+    <label vid='1'/>
+    <ep cfrom='-1' cto='-1'>
+      <realpred lemma='some' pos='q'/>
+      <label vid='3'/>
+      <var sort='x' vid='4' num='pl' pers='3'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <realpred lemma='dog' pos='n' sense='1'/>
+      <label vid='7'/>
+      <var sort='x' vid='4' num='pl' pers='3'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <realpred lemma='bark' pos='v' sense='1'/>
+      <label vid='8'/>
+      <var sort='e' vid='2' tense='present'/>
+    </ep>
+    <hcons hreln='qeq'>
+      <hi> <var sort='h' vid='5'/> </hi>
+      <lo> <label vid='7'/> </lo>
+    </hcons>
+    <rarg>
+      <rargname>RSTR</rargname>
+      <label vid='3'/>
+      <var sort='h' vid='5'/>
+    </rarg>
+    <rarg>
+      <rargname>BODY</rargname>
+      <label vid='3'/>
+      <var sort='h' vid='6'/>
+    </rarg>
+    <rarg>
+      <rargname>ARG1</rargname>
+      <label vid='8'/>
+      <var sort='x' vid='4' num='pl' pers='3'/>
+    </rarg>
+  </rmrs>
+
+  </sentence>
+  </analysis>
+  </proposition>
+  <proposition id="2.1.2">
+  <surface>
+    Some brown dogs bark.
+  </surface>
+  <analysis>
+  
+  <sentence>
+  
+  <!--
+       l3 | _some_q( ARG0=x4 BODY=h6 RSTR=h5 ) 
+          |    h5 qeq l10001
+       l7 + _brown_a_1( ARG0=e8 ARG1=x4 ) 
+   l10001 | _dog_n_1( ARG0=x4 ) 
+       l9 + _bark_v_1( ARG0=e2 ARG1=x4 ) 
+  -->
+  <rmrs cfrom='-1' cto='-1'>
+    <label vid='1'/>
+    <ep cfrom='-1' cto='-1'>
+      <realpred lemma='some' pos='q'/>
+      <label vid='3'/>
+      <var sort='x' vid='4' num='pl' pers='3'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <realpred lemma='brown' pos='a' sense='1'/>
+      <label vid='7'/>
+      <var sort='e' vid='8' tense='u'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <realpred lemma='dog' pos='n' sense='1'/>
+      <label vid='10001'/>
+      <var sort='x' vid='4' num='pl' pers='3'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <realpred lemma='bark' pos='v' sense='1'/>
+      <label vid='9'/>
+      <var sort='e' vid='2' tense='present'/>
+    </ep>
+    <hcons hreln='qeq'>
+      <hi> <var sort='h' vid='5'/> </hi>
+      <lo> <label vid='10001'/> </lo>
+    </hcons>
+    <rarg>
+      <rargname>RSTR</rargname>
+      <label vid='3'/>
+      <var sort='h' vid='5'/>
+    </rarg>
+    <rarg>
+      <rargname>BODY</rargname>
+      <label vid='3'/>
+      <var sort='h' vid='6'/>
+    </rarg>
+    <rarg>
+      <rargname>ARG1</rargname>
+      <label vid='7'/>
+      <var sort='x' vid='4' num='pl' pers='3'/>
+    </rarg>
+    <rarg>
+      <rargname>ARG1</rargname>
+      <label vid='9'/>
+      <var sort='x' vid='4' num='pl' pers='3'/>
+    </rarg>
+    <ing>
+      <ing-a> <var sort='h' vid='10001'/> </ing-a>
+      <ing-b> <var sort='h' vid='7'/> </ing-b> 
+    </ing>
+  </rmrs>
+
+  </sentence>
+  </analysis>
+  </proposition>
+  <proposition id="2.1.3">
+  <surface>
+    Some big brown dogs bark.
+  </surface>
+  <analysis>
+  
+  <sentence>
+  
+  <!--
+       l3 | _some_q( ARG0=x4 BODY=h6 RSTR=h5 ) 
+          |    h5 qeq l10002
+       l7 + _big_a_1( ARG0=e8 ARG1=x4 ) 
+   l10002 + _dog_n_1( ARG0=x4 ) 
+   l10001 | compound_rel( ARG0=e10 ARG1=x4 ARG2=x9 ) 
+      l11 + proper_q_rel( ARG0=x9 BODY=h13 RSTR=h12 ) 
+          +    h12 qeq l14
+      l14 | named_rel( ARG0=x9 CARG=brown ) 
+      l15 + _bark_v_1( ARG0=e2 ARG1=x4 ) 
+  -->
+  <rmrs cfrom='-1' cto='-1'>
+    <label vid='1'/>
+    <ep cfrom='-1' cto='-1'>
+      <realpred lemma='some' pos='q'/>
+      <label vid='3'/>
+      <var sort='x' vid='4' num='pl' pers='3'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <realpred lemma='big' pos='a' sense='1'/>
+      <label vid='7'/>
+      <var sort='e' vid='8' tense='u'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <gpred>compound_rel</gpred>
+      <label vid='10001'/>
+      <var sort='e' vid='10' tense='u'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <gpred>proper_q_rel</gpred>
+      <label vid='11'/>
+      <var sort='x' vid='9'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <gpred>named_rel</gpred>
+      <label vid='14'/>
+      <var sort='x' vid='9'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <realpred lemma='dog' pos='n' sense='1'/>
+      <label vid='10002'/>
+      <var sort='x' vid='4' num='pl' pers='3'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <realpred lemma='bark' pos='v' sense='1'/>
+      <label vid='15'/>
+      <var sort='e' vid='2' tense='present'/>
+    </ep>
+    <hcons hreln='qeq'>
+      <hi> <var sort='h' vid='5'/> </hi>
+      <lo> <label vid='10002'/> </lo>
+    </hcons>
+    <hcons hreln='qeq'>
+      <hi> <var sort='h' vid='12'/> </hi>
+      <lo> <label vid='14'/> </lo>
+    </hcons>
+    <rarg>
+      <rargname>RSTR</rargname>
+      <label vid='3'/>
+      <var sort='h' vid='5'/>
+    </rarg>
+    <rarg>
+      <rargname>BODY</rargname>
+      <label vid='3'/>
+      <var sort='h' vid='6'/>
+    </rarg>
+    <rarg>
+      <rargname>ARG1</rargname>
+      <label vid='7'/>
+      <var sort='x' vid='4' num='pl' pers='3'/>
+    </rarg>
+    <rarg>
+      <rargname>ARG1</rargname>
+      <label vid='10001'/>
+      <var sort='x' vid='4' num='pl' pers='3'/>
+    </rarg>
+    <rarg>
+      <rargname>ARG2</rargname>
+      <label vid='10001'/>
+      <var sort='x' vid='9'/>
+    </rarg>
+    <rarg>
+      <rargname>RSTR</rargname>
+      <label vid='11'/>
+      <var sort='h' vid='12'/>
+    </rarg>
+    <rarg>
+      <rargname>BODY</rargname>
+      <label vid='11'/>
+      <var sort='h' vid='13'/>
+    </rarg>
+    <rarg>
+      <rargname>CARG</rargname>
+      <label vid='14'/>
+      <constant>brown</constant>
+    </rarg>
+    <rarg>
+      <rargname>ARG1</rargname>
+      <label vid='15'/>
+      <var sort='x' vid='4' num='pl' pers='3'/>
+    </rarg>
+    <ing>
+      <ing-a> <var sort='h' vid='10002'/> </ing-a>
+      <ing-b> <var sort='h' vid='10001'/> </ing-b> 
+    </ing>
+    <ing>
+      <ing-a> <var sort='h' vid='10002'/> </ing-a>
+      <ing-b> <var sort='h' vid='7'/> </ing-b> 
+    </ing>
+  </rmrs>
+
+  </sentence>
+  </analysis>
+  </proposition>
+  
+  <compare id="2.1.c" ignore="yes">
+    <greater>
+      <implication>
+        <antecedent> <ref src="2.1.1"/> </antecedent>
+        <consequent> <ref src="2.1.2"/> </consequent>
+      </implication>
+    </greater>
+    <smaller>
+      <implication>
+        <antecedent> <ref src="2.1.1"/> </antecedent>
+        <consequent> <ref src="2.1.3"/> </consequent>
+      </implication>
+    </smaller>
+  </compare>
+  
+</testcase>
+
+</testsuite>
+
+
+
+<testsuite id="3" name="predicate-argument structure">
+
+<testcase id="3.1">
+  <proposition id="3.1.1">
+  <surface>
+    Some white cats chase some black dogs.
+  </surface>
+  <analysis>
+  
+  <sentence>
+  
+  <!--
+       l3 | _some_q( ARG0=x4 BODY=h6 RSTR=h5 ) 
+          |    h5 qeq l10001
+       l7 + _white_a_1( ARG0=e8 ARG1=x4 ) 
+   l10001 | _cat_n_1( ARG0=x4 ) 
+       l9 + _chase_v_1( ARG0=e2 ARG1=x4 ARG2=x10 ) 
+      l11 | _some_q( ARG0=x10 BODY=h13 RSTR=h12 ) 
+          |    h12 qeq l10002
+      l14 + _black_a_1( ARG0=e15 ARG1=x10 ) 
+   l10002 | _dog_n_1( ARG0=x10 ) 
+  -->
+  <rmrs cfrom='-1' cto='-1'>
+    <label vid='1'/>
+    <ep cfrom='-1' cto='-1'>
+      <realpred lemma='some' pos='q'/>
+      <label vid='3'/>
+      <var sort='x' vid='4' num='pl' pers='3'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <realpred lemma='white' pos='a' sense='1'/>
+      <label vid='7'/>
+      <var sort='e' vid='8' tense='u'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <realpred lemma='cat' pos='n' sense='1'/>
+      <label vid='10001'/>
+      <var sort='x' vid='4' num='pl' pers='3'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <realpred lemma='chase' pos='v' sense='1'/>
+      <label vid='9'/>
+      <var sort='e' vid='2' tense='present'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <realpred lemma='some' pos='q'/>
+      <label vid='11'/>
+      <var sort='x' vid='10' num='pl' pers='3'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <realpred lemma='black' pos='a' sense='1'/>
+      <label vid='14'/>
+      <var sort='e' vid='15' tense='u'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <realpred lemma='dog' pos='n' sense='1'/>
+      <label vid='10002'/>
+      <var sort='x' vid='10' num='pl' pers='3'/>
+    </ep>
+    <hcons hreln='qeq'>
+      <hi> <var sort='h' vid='5'/> </hi>
+      <lo> <label vid='10001'/> </lo>
+    </hcons>
+    <hcons hreln='qeq'>
+      <hi> <var sort='h' vid='12'/> </hi>
+      <lo> <label vid='10002'/> </lo>
+    </hcons>
+    <rarg>
+      <rargname>RSTR</rargname>
+      <label vid='3'/>
+      <var sort='h' vid='5'/>
+    </rarg>
+    <rarg>
+      <rargname>BODY</rargname>
+      <label vid='3'/>
+      <var sort='h' vid='6'/>
+    </rarg>
+    <rarg>
+      <rargname>ARG1</rargname>
+      <label vid='7'/>
+      <var sort='x' vid='4' num='pl' pers='3'/>
+    </rarg>
+    <rarg>
+      <rargname>ARG1</rargname>
+      <label vid='9'/>
+      <var sort='x' vid='4' num='pl' pers='3'/>
+    </rarg>
+    <rarg>
+      <rargname>ARG2</rargname>
+      <label vid='9'/>
+      <var sort='x' vid='10' num='pl' pers='3'/>
+    </rarg>
+    <rarg>
+      <rargname>RSTR</rargname>
+      <label vid='11'/>
+      <var sort='h' vid='12'/>
+    </rarg>
+    <rarg>
+      <rargname>BODY</rargname>
+      <label vid='11'/>
+      <var sort='h' vid='13'/>
+    </rarg>
+    <rarg>
+      <rargname>ARG1</rargname>
+      <label vid='14'/>
+      <var sort='x' vid='10' num='pl' pers='3'/>
+    </rarg>
+    <ing>
+      <ing-a> <var sort='h' vid='10001'/> </ing-a>
+      <ing-b> <var sort='h' vid='7'/> </ing-b> 
+    </ing>
+    <ing>
+      <ing-a> <var sort='h' vid='10002'/> </ing-a>
+      <ing-b> <var sort='h' vid='14'/> </ing-b> 
+    </ing>
+  </rmrs>
+
+  </sentence>
+  </analysis>
+  </proposition>
+  <proposition id="3.1.2">
+  <surface>
+    Some white dogs chase some black cats.
+  </surface>
+  <analysis>
+  
+  <sentence>
+  
+  <!--
+       l3 | _some_q( ARG0=x4 BODY=h6 RSTR=h5 ) 
+          |    h5 qeq l10001
+       l7 + _white_a_1( ARG0=e8 ARG1=x4 ) 
+   l10001 | _dog_n_1( ARG0=x4 ) 
+       l9 + _chase_v_1( ARG0=e2 ARG1=x4 ARG2=x10 ) 
+      l11 | _some_q( ARG0=x10 BODY=h13 RSTR=h12 ) 
+          |    h12 qeq l10002
+      l14 + _black_a_1( ARG0=e15 ARG1=x10 ) 
+   l10002 | _cat_n_1( ARG0=x10 ) 
+  -->
+  <rmrs cfrom='-1' cto='-1'>
+    <label vid='1'/>
+    <ep cfrom='-1' cto='-1'>
+      <realpred lemma='some' pos='q'/>
+      <label vid='3'/>
+      <var sort='x' vid='4' num='pl' pers='3'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <realpred lemma='white' pos='a' sense='1'/>
+      <label vid='7'/>
+      <var sort='e' vid='8' tense='u'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <realpred lemma='dog' pos='n' sense='1'/>
+      <label vid='10001'/>
+      <var sort='x' vid='4' num='pl' pers='3'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <realpred lemma='chase' pos='v' sense='1'/>
+      <label vid='9'/>
+      <var sort='e' vid='2' tense='present'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <realpred lemma='some' pos='q'/>
+      <label vid='11'/>
+      <var sort='x' vid='10' num='pl' pers='3'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <realpred lemma='black' pos='a' sense='1'/>
+      <label vid='14'/>
+      <var sort='e' vid='15' tense='u'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <realpred lemma='cat' pos='n' sense='1'/>
+      <label vid='10002'/>
+      <var sort='x' vid='10' num='pl' pers='3'/>
+    </ep>
+    <hcons hreln='qeq'>
+      <hi> <var sort='h' vid='5'/> </hi>
+      <lo> <label vid='10001'/> </lo>
+    </hcons>
+    <hcons hreln='qeq'>
+      <hi> <var sort='h' vid='12'/> </hi>
+      <lo> <label vid='10002'/> </lo>
+    </hcons>
+    <rarg>
+      <rargname>RSTR</rargname>
+      <label vid='3'/>
+      <var sort='h' vid='5'/>
+    </rarg>
+    <rarg>
+      <rargname>BODY</rargname>
+      <label vid='3'/>
+      <var sort='h' vid='6'/>
+    </rarg>
+    <rarg>
+      <rargname>ARG1</rargname>
+      <label vid='7'/>
+      <var sort='x' vid='4' num='pl' pers='3'/>
+    </rarg>
+    <rarg>
+      <rargname>ARG1</rargname>
+      <label vid='9'/>
+      <var sort='x' vid='4' num='pl' pers='3'/>
+    </rarg>
+    <rarg>
+      <rargname>ARG2</rargname>
+      <label vid='9'/>
+      <var sort='x' vid='10' num='pl' pers='3'/>
+    </rarg>
+    <rarg>
+      <rargname>RSTR</rargname>
+      <label vid='11'/>
+      <var sort='h' vid='12'/>
+    </rarg>
+    <rarg>
+      <rargname>BODY</rargname>
+      <label vid='11'/>
+      <var sort='h' vid='13'/>
+    </rarg>
+    <rarg>
+      <rargname>ARG1</rargname>
+      <label vid='14'/>
+      <var sort='x' vid='10' num='pl' pers='3'/>
+    </rarg>
+    <ing>
+      <ing-a> <var sort='h' vid='10001'/> </ing-a>
+      <ing-b> <var sort='h' vid='7'/> </ing-b> 
+    </ing>
+    <ing>
+      <ing-a> <var sort='h' vid='10002'/> </ing-a>
+      <ing-b> <var sort='h' vid='14'/> </ing-b> 
+    </ing>
+  </rmrs>
+
+  </sentence>
+  </analysis>
+  </proposition>
+  <nonvalid id="3.1.a">
+    <implication>
+      <antecedent> <ref src="3.1.1"/> </antecedent>
+      <consequent> <ref src="3.1.2"/> </consequent>
+    </implication>
+  </nonvalid>
+  <nonvalid id="3.1.b">
+    <implication>
+      <antecedent> <ref src="3.1.2"/> </antecedent>
+      <consequent> <ref src="3.1.1"/> </consequent>
+    </implication>
+  </nonvalid>
+</testcase>
+
+<testcase id="3.2">
+  <proposition id="3.2.1">
+  <surface>
+    Some white cats chase some black dogs.
+  </surface>
+  <analysis>
+  
+  <sentence>
+  
+  <!--
+       l3 | _some_q( ARG0=x4 BODY=h6 RSTR=h5 ) 
+          |    h5 qeq l10001
+       l7 + _white_a_1( ARG0=e8 ARG1=x4 ) 
+   l10001 | _cat_n_1( ARG0=x4 ) 
+       l9 + _chase_v_1( ARG0=e2 ARG1=x4 ARG2=x10 ) 
+      l11 | _some_q( ARG0=x10 BODY=h13 RSTR=h12 ) 
+          |    h12 qeq l10002
+      l14 + _black_a_1( ARG0=e15 ARG1=x10 ) 
+   l10002 | _dog_n_1( ARG0=x10 ) 
+  -->
+  <rmrs cfrom='-1' cto='-1'>
+    <label vid='1'/>
+    <ep cfrom='-1' cto='-1'>
+      <realpred lemma='some' pos='q'/>
+      <label vid='3'/>
+      <var sort='x' vid='4' num='pl' pers='3'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <realpred lemma='white' pos='a' sense='1'/>
+      <label vid='7'/>
+      <var sort='e' vid='8' tense='u'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <realpred lemma='cat' pos='n' sense='1'/>
+      <label vid='10001'/>
+      <var sort='x' vid='4' num='pl' pers='3'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <realpred lemma='chase' pos='v' sense='1'/>
+      <label vid='9'/>
+      <var sort='e' vid='2' tense='present'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <realpred lemma='some' pos='q'/>
+      <label vid='11'/>
+      <var sort='x' vid='10' num='pl' pers='3'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <realpred lemma='black' pos='a' sense='1'/>
+      <label vid='14'/>
+      <var sort='e' vid='15' tense='u'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <realpred lemma='dog' pos='n' sense='1'/>
+      <label vid='10002'/>
+      <var sort='x' vid='10' num='pl' pers='3'/>
+    </ep>
+    <hcons hreln='qeq'>
+      <hi> <var sort='h' vid='5'/> </hi>
+      <lo> <label vid='10001'/> </lo>
+    </hcons>
+    <hcons hreln='qeq'>
+      <hi> <var sort='h' vid='12'/> </hi>
+      <lo> <label vid='10002'/> </lo>
+    </hcons>
+    <rarg>
+      <rargname>RSTR</rargname>
+      <label vid='3'/>
+      <var sort='h' vid='5'/>
+    </rarg>
+    <rarg>
+      <rargname>BODY</rargname>
+      <label vid='3'/>
+      <var sort='h' vid='6'/>
+    </rarg>
+    <rarg>
+      <rargname>ARG1</rargname>
+      <label vid='7'/>
+      <var sort='x' vid='4' num='pl' pers='3'/>
+    </rarg>
+    <rarg>
+      <rargname>ARG1</rargname>
+      <label vid='9'/>
+      <var sort='x' vid='4' num='pl' pers='3'/>
+    </rarg>
+    <rarg>
+      <rargname>ARG2</rargname>
+      <label vid='9'/>
+      <var sort='x' vid='10' num='pl' pers='3'/>
+    </rarg>
+    <rarg>
+      <rargname>RSTR</rargname>
+      <label vid='11'/>
+      <var sort='h' vid='12'/>
+    </rarg>
+    <rarg>
+      <rargname>BODY</rargname>
+      <label vid='11'/>
+      <var sort='h' vid='13'/>
+    </rarg>
+    <rarg>
+      <rargname>ARG1</rargname>
+      <label vid='14'/>
+      <var sort='x' vid='10' num='pl' pers='3'/>
+    </rarg>
+    <ing>
+      <ing-a> <var sort='h' vid='10001'/> </ing-a>
+      <ing-b> <var sort='h' vid='7'/> </ing-b> 
+    </ing>
+    <ing>
+      <ing-a> <var sort='h' vid='10002'/> </ing-a>
+      <ing-b> <var sort='h' vid='14'/> </ing-b> 
+    </ing>
+  </rmrs>
+
+  </sentence>
+  </analysis>
+  </proposition>
+  <proposition id="3.2.2">
+  <surface>
+    Some black cats chase some white dogs.
+  </surface>
+  <analysis>
+  
+  <sentence>
+  
+  <!--
+       l3 | _some_q( ARG0=x4 BODY=h6 RSTR=h5 ) 
+          |    h5 qeq l10001
+       l7 + _black_a_1( ARG0=e8 ARG1=x4 ) 
+   l10001 | _cat_n_1( ARG0=x4 ) 
+       l9 + _chase_v_1( ARG0=e2 ARG1=x4 ARG2=x10 ) 
+      l11 | _some_q( ARG0=x10 BODY=h13 RSTR=h12 ) 
+          |    h12 qeq l10002
+      l14 + _white_a_1( ARG0=e15 ARG1=x10 ) 
+   l10002 | _dog_n_1( ARG0=x10 ) 
+  -->
+  <rmrs cfrom='-1' cto='-1'>
+    <label vid='1'/>
+    <ep cfrom='-1' cto='-1'>
+      <realpred lemma='some' pos='q'/>
+      <label vid='3'/>
+      <var sort='x' vid='4' num='pl' pers='3'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <realpred lemma='black' pos='a' sense='1'/>
+      <label vid='7'/>
+      <var sort='e' vid='8' tense='u'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <realpred lemma='cat' pos='n' sense='1'/>
+      <label vid='10001'/>
+      <var sort='x' vid='4' num='pl' pers='3'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <realpred lemma='chase' pos='v' sense='1'/>
+      <label vid='9'/>
+      <var sort='e' vid='2' tense='present'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <realpred lemma='some' pos='q'/>
+      <label vid='11'/>
+      <var sort='x' vid='10' num='pl' pers='3'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <realpred lemma='white' pos='a' sense='1'/>
+      <label vid='14'/>
+      <var sort='e' vid='15' tense='u'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <realpred lemma='dog' pos='n' sense='1'/>
+      <label vid='10002'/>
+      <var sort='x' vid='10' num='pl' pers='3'/>
+    </ep>
+    <hcons hreln='qeq'>
+      <hi> <var sort='h' vid='5'/> </hi>
+      <lo> <label vid='10001'/> </lo>
+    </hcons>
+    <hcons hreln='qeq'>
+      <hi> <var sort='h' vid='12'/> </hi>
+      <lo> <label vid='10002'/> </lo>
+    </hcons>
+    <rarg>
+      <rargname>RSTR</rargname>
+      <label vid='3'/>
+      <var sort='h' vid='5'/>
+    </rarg>
+    <rarg>
+      <rargname>BODY</rargname>
+      <label vid='3'/>
+      <var sort='h' vid='6'/>
+    </rarg>
+    <rarg>
+      <rargname>ARG1</rargname>
+      <label vid='7'/>
+      <var sort='x' vid='4' num='pl' pers='3'/>
+    </rarg>
+    <rarg>
+      <rargname>ARG1</rargname>
+      <label vid='9'/>
+      <var sort='x' vid='4' num='pl' pers='3'/>
+    </rarg>
+    <rarg>
+      <rargname>ARG2</rargname>
+      <label vid='9'/>
+      <var sort='x' vid='10' num='pl' pers='3'/>
+    </rarg>
+    <rarg>
+      <rargname>RSTR</rargname>
+      <label vid='11'/>
+      <var sort='h' vid='12'/>
+    </rarg>
+    <rarg>
+      <rargname>BODY</rargname>
+      <label vid='11'/>
+      <var sort='h' vid='13'/>
+    </rarg>
+    <rarg>
+      <rargname>ARG1</rargname>
+      <label vid='14'/>
+      <var sort='x' vid='10' num='pl' pers='3'/>
+    </rarg>
+    <ing>
+      <ing-a> <var sort='h' vid='10001'/> </ing-a>
+      <ing-b> <var sort='h' vid='7'/> </ing-b> 
+    </ing>
+    <ing>
+      <ing-a> <var sort='h' vid='10002'/> </ing-a>
+      <ing-b> <var sort='h' vid='14'/> </ing-b> 
+    </ing>
+  </rmrs>
+
+  </sentence>
+  </analysis>
+  </proposition>
+  <nonvalid id="3.2.a">
+    <implication>
+      <antecedent> <ref src="3.2.1"/> </antecedent>
+      <consequent> <ref src="3.2.2"/> </consequent>
+    </implication>
+  </nonvalid>
+  <nonvalid id="3.2.b">
+    <implication>
+      <antecedent> <ref src="3.2.2"/> </antecedent>
+      <consequent> <ref src="3.2.1"/> </consequent>
+    </implication>
+  </nonvalid>
+</testcase>
+
+<testcase id="3.3">
+  <proposition id="3.3.1">
+  <surface>
+    Some white cats chase some black dogs.
+  </surface>
+  <analysis>
+  
+  <sentence>
+  
+  <!--
+       l3 | _some_q( ARG0=x4 BODY=h6 RSTR=h5 ) 
+          |    h5 qeq l10001
+       l7 + _white_a_1( ARG0=e8 ARG1=x4 ) 
+   l10001 | _cat_n_1( ARG0=x4 ) 
+       l9 + _chase_v_1( ARG0=e2 ARG1=x4 ARG2=x10 ) 
+      l11 | _some_q( ARG0=x10 BODY=h13 RSTR=h12 ) 
+          |    h12 qeq l10002
+      l14 + _black_a_1( ARG0=e15 ARG1=x10 ) 
+   l10002 | _dog_n_1( ARG0=x10 ) 
+  -->
+  <rmrs cfrom='-1' cto='-1'>
+    <label vid='1'/>
+    <ep cfrom='-1' cto='-1'>
+      <realpred lemma='some' pos='q'/>
+      <label vid='3'/>
+      <var sort='x' vid='4' num='pl' pers='3'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <realpred lemma='white' pos='a' sense='1'/>
+      <label vid='7'/>
+      <var sort='e' vid='8' tense='u'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <realpred lemma='cat' pos='n' sense='1'/>
+      <label vid='10001'/>
+      <var sort='x' vid='4' num='pl' pers='3'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <realpred lemma='chase' pos='v' sense='1'/>
+      <label vid='9'/>
+      <var sort='e' vid='2' tense='present'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <realpred lemma='some' pos='q'/>
+      <label vid='11'/>
+      <var sort='x' vid='10' num='pl' pers='3'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <realpred lemma='black' pos='a' sense='1'/>
+      <label vid='14'/>
+      <var sort='e' vid='15' tense='u'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <realpred lemma='dog' pos='n' sense='1'/>
+      <label vid='10002'/>
+      <var sort='x' vid='10' num='pl' pers='3'/>
+    </ep>
+    <hcons hreln='qeq'>
+      <hi> <var sort='h' vid='5'/> </hi>
+      <lo> <label vid='10001'/> </lo>
+    </hcons>
+    <hcons hreln='qeq'>
+      <hi> <var sort='h' vid='12'/> </hi>
+      <lo> <label vid='10002'/> </lo>
+    </hcons>
+    <rarg>
+      <rargname>RSTR</rargname>
+      <label vid='3'/>
+      <var sort='h' vid='5'/>
+    </rarg>
+    <rarg>
+      <rargname>BODY</rargname>
+      <label vid='3'/>
+      <var sort='h' vid='6'/>
+    </rarg>
+    <rarg>
+      <rargname>ARG1</rargname>
+      <label vid='7'/>
+      <var sort='x' vid='4' num='pl' pers='3'/>
+    </rarg>
+    <rarg>
+      <rargname>ARG1</rargname>
+      <label vid='9'/>
+      <var sort='x' vid='4' num='pl' pers='3'/>
+    </rarg>
+    <rarg>
+      <rargname>ARG2</rargname>
+      <label vid='9'/>
+      <var sort='x' vid='10' num='pl' pers='3'/>
+    </rarg>
+    <rarg>
+      <rargname>RSTR</rargname>
+      <label vid='11'/>
+      <var sort='h' vid='12'/>
+    </rarg>
+    <rarg>
+      <rargname>BODY</rargname>
+      <label vid='11'/>
+      <var sort='h' vid='13'/>
+    </rarg>
+    <rarg>
+      <rargname>ARG1</rargname>
+      <label vid='14'/>
+      <var sort='x' vid='10' num='pl' pers='3'/>
+    </rarg>
+    <ing>
+      <ing-a> <var sort='h' vid='10001'/> </ing-a>
+      <ing-b> <var sort='h' vid='7'/> </ing-b> 
+    </ing>
+    <ing>
+      <ing-a> <var sort='h' vid='10002'/> </ing-a>
+      <ing-b> <var sort='h' vid='14'/> </ing-b> 
+    </ing>
+  </rmrs>
+
+  </sentence>
+  </analysis>
+  </proposition>
+  <proposition id="3.3.2">
+  <surface>
+    Some black dogs chase some white cats.
+  </surface>
+  <analysis>
+  
+  <sentence>
+  
+  <!--
+       l3 | _some_q( ARG0=x4 BODY=h6 RSTR=h5 ) 
+          |    h5 qeq l10001
+       l7 + _black_a_1( ARG0=e8 ARG1=x4 ) 
+   l10001 | _dog_n_1( ARG0=x4 ) 
+       l9 + _chase_v_1( ARG0=e2 ARG1=x4 ARG2=x10 ) 
+      l11 | _some_q( ARG0=x10 BODY=h13 RSTR=h12 ) 
+          |    h12 qeq l10002
+      l14 + _white_a_1( ARG0=e15 ARG1=x10 ) 
+   l10002 | _cat_n_1( ARG0=x10 ) 
+  -->
+  <rmrs cfrom='-1' cto='-1'>
+    <label vid='1'/>
+    <ep cfrom='-1' cto='-1'>
+      <realpred lemma='some' pos='q'/>
+      <label vid='3'/>
+      <var sort='x' vid='4' num='pl' pers='3'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <realpred lemma='black' pos='a' sense='1'/>
+      <label vid='7'/>
+      <var sort='e' vid='8' tense='u'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <realpred lemma='dog' pos='n' sense='1'/>
+      <label vid='10001'/>
+      <var sort='x' vid='4' num='pl' pers='3'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <realpred lemma='chase' pos='v' sense='1'/>
+      <label vid='9'/>
+      <var sort='e' vid='2' tense='present'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <realpred lemma='some' pos='q'/>
+      <label vid='11'/>
+      <var sort='x' vid='10' num='pl' pers='3'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <realpred lemma='white' pos='a' sense='1'/>
+      <label vid='14'/>
+      <var sort='e' vid='15' tense='u'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <realpred lemma='cat' pos='n' sense='1'/>
+      <label vid='10002'/>
+      <var sort='x' vid='10' num='pl' pers='3'/>
+    </ep>
+    <hcons hreln='qeq'>
+      <hi> <var sort='h' vid='5'/> </hi>
+      <lo> <label vid='10001'/> </lo>
+    </hcons>
+    <hcons hreln='qeq'>
+      <hi> <var sort='h' vid='12'/> </hi>
+      <lo> <label vid='10002'/> </lo>
+    </hcons>
+    <rarg>
+      <rargname>RSTR</rargname>
+      <label vid='3'/>
+      <var sort='h' vid='5'/>
+    </rarg>
+    <rarg>
+      <rargname>BODY</rargname>
+      <label vid='3'/>
+      <var sort='h' vid='6'/>
+    </rarg>
+    <rarg>
+      <rargname>ARG1</rargname>
+      <label vid='7'/>
+      <var sort='x' vid='4' num='pl' pers='3'/>
+    </rarg>
+    <rarg>
+      <rargname>ARG1</rargname>
+      <label vid='9'/>
+      <var sort='x' vid='4' num='pl' pers='3'/>
+    </rarg>
+    <rarg>
+      <rargname>ARG2</rargname>
+      <label vid='9'/>
+      <var sort='x' vid='10' num='pl' pers='3'/>
+    </rarg>
+    <rarg>
+      <rargname>RSTR</rargname>
+      <label vid='11'/>
+      <var sort='h' vid='12'/>
+    </rarg>
+    <rarg>
+      <rargname>BODY</rargname>
+      <label vid='11'/>
+      <var sort='h' vid='13'/>
+    </rarg>
+    <rarg>
+      <rargname>ARG1</rargname>
+      <label vid='14'/>
+      <var sort='x' vid='10' num='pl' pers='3'/>
+    </rarg>
+    <ing>
+      <ing-a> <var sort='h' vid='10001'/> </ing-a>
+      <ing-b> <var sort='h' vid='7'/> </ing-b> 
+    </ing>
+    <ing>
+      <ing-a> <var sort='h' vid='10002'/> </ing-a>
+      <ing-b> <var sort='h' vid='14'/> </ing-b> 
+    </ing>
+  </rmrs>
+
+  </sentence>
+  </analysis>
+  </proposition>
+  <nonvalid id="3.3.a">
+    <implication>
+      <antecedent> <ref src="3.3.1"/> </antecedent>
+      <consequent> <ref src="3.3.2"/> </consequent>
+    </implication>
+  </nonvalid>
+  <nonvalid id="3.3.b">
+    <implication>
+      <antecedent> <ref src="3.3.2"/> </antecedent>
+      <consequent> <ref src="3.3.1"/> </consequent>
+    </implication>
+  </nonvalid>
+</testcase>
+
+</testsuite>
+
+
+
+<testsuite id="4" name="quantifier strength">
+
+<testcase id="4.1">
+  <proposition id="4.1.1">
+  <surface>
+    All white cats chase some black dogs.
+  </surface>
+  <analysis>
+  
+  <sentence>
+  
+  <!--
+       l3 | _all_q( ARG0=x4 BODY=h6 RSTR=h5 ) 
+          |    h5 qeq l10001
+       l7 + _white_a_1( ARG0=e8 ARG1=x4 ) 
+   l10001 | _cat_n_1( ARG0=x4 ) 
+       l9 + _chase_v_1( ARG0=e2 ARG1=x4 ARG2=x10 ) 
+      l11 | _some_q( ARG0=x10 BODY=h13 RSTR=h12 ) 
+          |    h12 qeq l10002
+      l14 + _black_a_1( ARG0=e15 ARG1=x10 ) 
+   l10002 | _dog_n_1( ARG0=x10 ) 
+  -->
+  <rmrs cfrom='-1' cto='-1'>
+    <label vid='1'/>
+    <ep cfrom='-1' cto='-1'>
+      <realpred lemma='all' pos='q'/>
+      <label vid='3'/>
+      <var sort='x' vid='4' num='pl' pers='3'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <realpred lemma='white' pos='a' sense='1'/>
+      <label vid='7'/>
+      <var sort='e' vid='8' tense='u'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <realpred lemma='cat' pos='n' sense='1'/>
+      <label vid='10001'/>
+      <var sort='x' vid='4' num='pl' pers='3'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <realpred lemma='chase' pos='v' sense='1'/>
+      <label vid='9'/>
+      <var sort='e' vid='2' tense='present'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <realpred lemma='some' pos='q'/>
+      <label vid='11'/>
+      <var sort='x' vid='10' num='pl' pers='3'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <realpred lemma='black' pos='a' sense='1'/>
+      <label vid='14'/>
+      <var sort='e' vid='15' tense='u'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <realpred lemma='dog' pos='n' sense='1'/>
+      <label vid='10002'/>
+      <var sort='x' vid='10' num='pl' pers='3'/>
+    </ep>
+    <hcons hreln='qeq'>
+      <hi> <var sort='h' vid='5'/> </hi>
+      <lo> <label vid='10001'/> </lo>
+    </hcons>
+    <hcons hreln='qeq'>
+      <hi> <var sort='h' vid='12'/> </hi>
+      <lo> <label vid='10002'/> </lo>
+    </hcons>
+    <rarg>
+      <rargname>RSTR</rargname>
+      <label vid='3'/>
+      <var sort='h' vid='5'/>
+    </rarg>
+    <rarg>
+      <rargname>BODY</rargname>
+      <label vid='3'/>
+      <var sort='h' vid='6'/>
+    </rarg>
+    <rarg>
+      <rargname>ARG1</rargname>
+      <label vid='7'/>
+      <var sort='x' vid='4' num='pl' pers='3'/>
+    </rarg>
+    <rarg>
+      <rargname>ARG1</rargname>
+      <label vid='9'/>
+      <var sort='x' vid='4' num='pl' pers='3'/>
+    </rarg>
+    <rarg>
+      <rargname>ARG2</rargname>
+      <label vid='9'/>
+      <var sort='x' vid='10' num='pl' pers='3'/>
+    </rarg>
+    <rarg>
+      <rargname>RSTR</rargname>
+      <label vid='11'/>
+      <var sort='h' vid='12'/>
+    </rarg>
+    <rarg>
+      <rargname>BODY</rargname>
+      <label vid='11'/>
+      <var sort='h' vid='13'/>
+    </rarg>
+    <rarg>
+      <rargname>ARG1</rargname>
+      <label vid='14'/>
+      <var sort='x' vid='10' num='pl' pers='3'/>
+    </rarg>
+    <ing>
+      <ing-a> <var sort='h' vid='10001'/> </ing-a>
+      <ing-b> <var sort='h' vid='7'/> </ing-b> 
+    </ing>
+    <ing>
+      <ing-a> <var sort='h' vid='10002'/> </ing-a>
+      <ing-b> <var sort='h' vid='14'/> </ing-b> 
+    </ing>
+  </rmrs>
+
+  </sentence>
+  </analysis>
+  </proposition>
+  <proposition id="4.1.2">
+  <surface>
+    Some white cats chase some black dogs.
+  </surface>
+  <analysis>
+  
+  <sentence>
+  
+  <!--
+       l3 | _some_q( ARG0=x4 BODY=h6 RSTR=h5 ) 
+          |    h5 qeq l10001
+       l7 + _white_a_1( ARG0=e8 ARG1=x4 ) 
+   l10001 | _cat_n_1( ARG0=x4 ) 
+       l9 + _chase_v_1( ARG0=e2 ARG1=x4 ARG2=x10 ) 
+      l11 | _some_q( ARG0=x10 BODY=h13 RSTR=h12 ) 
+          |    h12 qeq l10002
+      l14 + _black_a_1( ARG0=e15 ARG1=x10 ) 
+   l10002 | _dog_n_1( ARG0=x10 ) 
+  -->
+  <rmrs cfrom='-1' cto='-1'>
+    <label vid='1'/>
+    <ep cfrom='-1' cto='-1'>
+      <realpred lemma='some' pos='q'/>
+      <label vid='3'/>
+      <var sort='x' vid='4' num='pl' pers='3'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <realpred lemma='white' pos='a' sense='1'/>
+      <label vid='7'/>
+      <var sort='e' vid='8' tense='u'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <realpred lemma='cat' pos='n' sense='1'/>
+      <label vid='10001'/>
+      <var sort='x' vid='4' num='pl' pers='3'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <realpred lemma='chase' pos='v' sense='1'/>
+      <label vid='9'/>
+      <var sort='e' vid='2' tense='present'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <realpred lemma='some' pos='q'/>
+      <label vid='11'/>
+      <var sort='x' vid='10' num='pl' pers='3'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <realpred lemma='black' pos='a' sense='1'/>
+      <label vid='14'/>
+      <var sort='e' vid='15' tense='u'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <realpred lemma='dog' pos='n' sense='1'/>
+      <label vid='10002'/>
+      <var sort='x' vid='10' num='pl' pers='3'/>
+    </ep>
+    <hcons hreln='qeq'>
+      <hi> <var sort='h' vid='5'/> </hi>
+      <lo> <label vid='10001'/> </lo>
+    </hcons>
+    <hcons hreln='qeq'>
+      <hi> <var sort='h' vid='12'/> </hi>
+      <lo> <label vid='10002'/> </lo>
+    </hcons>
+    <rarg>
+      <rargname>RSTR</rargname>
+      <label vid='3'/>
+      <var sort='h' vid='5'/>
+    </rarg>
+    <rarg>
+      <rargname>BODY</rargname>
+      <label vid='3'/>
+      <var sort='h' vid='6'/>
+    </rarg>
+    <rarg>
+      <rargname>ARG1</rargname>
+      <label vid='7'/>
+      <var sort='x' vid='4' num='pl' pers='3'/>
+    </rarg>
+    <rarg>
+      <rargname>ARG1</rargname>
+      <label vid='9'/>
+      <var sort='x' vid='4' num='pl' pers='3'/>
+    </rarg>
+    <rarg>
+      <rargname>ARG2</rargname>
+      <label vid='9'/>
+      <var sort='x' vid='10' num='pl' pers='3'/>
+    </rarg>
+    <rarg>
+      <rargname>RSTR</rargname>
+      <label vid='11'/>
+      <var sort='h' vid='12'/>
+    </rarg>
+    <rarg>
+      <rargname>BODY</rargname>
+      <label vid='11'/>
+      <var sort='h' vid='13'/>
+    </rarg>
+    <rarg>
+      <rargname>ARG1</rargname>
+      <label vid='14'/>
+      <var sort='x' vid='10' num='pl' pers='3'/>
+    </rarg>
+    <ing>
+      <ing-a> <var sort='h' vid='10001'/> </ing-a>
+      <ing-b> <var sort='h' vid='7'/> </ing-b> 
+    </ing>
+    <ing>
+      <ing-a> <var sort='h' vid='10002'/> </ing-a>
+      <ing-b> <var sort='h' vid='14'/> </ing-b> 
+    </ing>
+  </rmrs>
+
+  </sentence>
+  </analysis>
+  </proposition>
+  <valid id="4.1.a">
+    <implication>
+      <antecedent> <ref src="4.1.1"/> </antecedent>
+      <consequent> <ref src="4.1.2"/> </consequent>
+    </implication>
+  </valid>
+  <nonvalid id="4.1.b" ignore="yes">
+    <implication>
+      <antecedent> <ref src="4.1.2"/> </antecedent>
+      <consequent> <ref src="4.1.1"/> </consequent>
+    </implication>
+  </nonvalid>
+</testcase>
+
+<testcase id="4.2">
+  <proposition id="4.2.1">
+  <surface>
+    All white cats chase all black dogs.
+  </surface>
+  <analysis>
+  
+  <sentence>
+  
+  <!--
+       l3 | _all_q( ARG0=x4 BODY=h6 RSTR=h5 ) 
+          |    h5 qeq l10001
+       l7 + _white_a_1( ARG0=e8 ARG1=x4 ) 
+   l10001 | _cat_n_1( ARG0=x4 ) 
+       l9 + _chase_v_1( ARG0=e2 ARG1=x4 ARG2=x10 ) 
+      l11 | udef_q_rel( ARG0=x10 BODY=h13 RSTR=h12 ) 
+          |    h12 qeq l10003
+      l14 + _all_a_1( ARG0=e15 ARG1=e16 ) 
+   l10003 + _dog_n_1( ARG0=x10 ) 
+   l10002 | _black_a_1( ARG0=e16 ARG1=x10 ) 
+  -->
+  <rmrs cfrom='-1' cto='-1'>
+    <label vid='1'/>
+    <ep cfrom='-1' cto='-1'>
+      <realpred lemma='all' pos='q'/>
+      <label vid='3'/>
+      <var sort='x' vid='4' num='pl' pers='3'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <realpred lemma='white' pos='a' sense='1'/>
+      <label vid='7'/>
+      <var sort='e' vid='8' tense='u'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <realpred lemma='cat' pos='n' sense='1'/>
+      <label vid='10001'/>
+      <var sort='x' vid='4' num='pl' pers='3'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <realpred lemma='chase' pos='v' sense='1'/>
+      <label vid='9'/>
+      <var sort='e' vid='2' tense='present'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <gpred>udef_q_rel</gpred>
+      <label vid='11'/>
+      <var sort='x' vid='10' num='pl' pers='3'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <realpred lemma='all' pos='a' sense='1'/>
+      <label vid='14'/>
+      <var sort='e' vid='15' tense='u'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <realpred lemma='black' pos='a' sense='1'/>
+      <label vid='10002'/>
+      <var sort='e' vid='16' tense='u'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <realpred lemma='dog' pos='n' sense='1'/>
+      <label vid='10003'/>
+      <var sort='x' vid='10' num='pl' pers='3'/>
+    </ep>
+    <hcons hreln='qeq'>
+      <hi> <var sort='h' vid='5'/> </hi>
+      <lo> <label vid='10001'/> </lo>
+    </hcons>
+    <hcons hreln='qeq'>
+      <hi> <var sort='h' vid='12'/> </hi>
+      <lo> <label vid='10003'/> </lo>
+    </hcons>
+    <rarg>
+      <rargname>RSTR</rargname>
+      <label vid='3'/>
+      <var sort='h' vid='5'/>
+    </rarg>
+    <rarg>
+      <rargname>BODY</rargname>
+      <label vid='3'/>
+      <var sort='h' vid='6'/>
+    </rarg>
+    <rarg>
+      <rargname>ARG1</rargname>
+      <label vid='7'/>
+      <var sort='x' vid='4' num='pl' pers='3'/>
+    </rarg>
+    <rarg>
+      <rargname>ARG1</rargname>
+      <label vid='9'/>
+      <var sort='x' vid='4' num='pl' pers='3'/>
+    </rarg>
+    <rarg>
+      <rargname>ARG2</rargname>
+      <label vid='9'/>
+      <var sort='x' vid='10' num='pl' pers='3'/>
+    </rarg>
+    <rarg>
+      <rargname>RSTR</rargname>
+      <label vid='11'/>
+      <var sort='h' vid='12'/>
+    </rarg>
+    <rarg>
+      <rargname>BODY</rargname>
+      <label vid='11'/>
+      <var sort='h' vid='13'/>
+    </rarg>
+    <rarg>
+      <rargname>ARG1</rargname>
+      <label vid='14'/>
+      <var sort='e' vid='16' tense='u'/>
+    </rarg>
+    <rarg>
+      <rargname>ARG1</rargname>
+      <label vid='10002'/>
+      <var sort='x' vid='10' num='pl' pers='3'/>
+    </rarg>
+    <ing>
+      <ing-a> <var sort='h' vid='10001'/> </ing-a>
+      <ing-b> <var sort='h' vid='7'/> </ing-b> 
+    </ing>
+    <ing>
+      <ing-a> <var sort='h' vid='10003'/> </ing-a>
+      <ing-b> <var sort='h' vid='10002'/> </ing-b> 
+    </ing>
+    <ing>
+      <ing-a> <var sort='h' vid='10003'/> </ing-a>
+      <ing-b> <var sort='h' vid='14'/> </ing-b> 
+    </ing>
+  </rmrs>
+
+  </sentence>
+  </analysis>
+  </proposition>
+  <proposition id="4.2.2">
+  <surface>
+    All white cats chase some black dogs.
+  </surface>
+  <analysis>
+  
+  <sentence>
+  
+  <!--
+       l3 | _all_q( ARG0=x4 BODY=h6 RSTR=h5 ) 
+          |    h5 qeq l10001
+       l7 + _white_a_1( ARG0=e8 ARG1=x4 ) 
+   l10001 | _cat_n_1( ARG0=x4 ) 
+       l9 + _chase_v_1( ARG0=e2 ARG1=x4 ARG2=x10 ) 
+      l11 | _some_q( ARG0=x10 BODY=h13 RSTR=h12 ) 
+          |    h12 qeq l10002
+      l14 + _black_a_1( ARG0=e15 ARG1=x10 ) 
+   l10002 | _dog_n_1( ARG0=x10 ) 
+  -->
+  <rmrs cfrom='-1' cto='-1'>
+    <label vid='1'/>
+    <ep cfrom='-1' cto='-1'>
+      <realpred lemma='all' pos='q'/>
+      <label vid='3'/>
+      <var sort='x' vid='4' num='pl' pers='3'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <realpred lemma='white' pos='a' sense='1'/>
+      <label vid='7'/>
+      <var sort='e' vid='8' tense='u'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <realpred lemma='cat' pos='n' sense='1'/>
+      <label vid='10001'/>
+      <var sort='x' vid='4' num='pl' pers='3'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <realpred lemma='chase' pos='v' sense='1'/>
+      <label vid='9'/>
+      <var sort='e' vid='2' tense='present'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <realpred lemma='some' pos='q'/>
+      <label vid='11'/>
+      <var sort='x' vid='10' num='pl' pers='3'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <realpred lemma='black' pos='a' sense='1'/>
+      <label vid='14'/>
+      <var sort='e' vid='15' tense='u'/>
+    </ep>
+    <ep cfrom='-1' cto='-1'>
+      <realpred lemma='dog' pos='n' sense='1'/>
+      <label vid='10002'/>
+      <var sort='x' vid='10' num='pl' pers='3'/>
+    </ep>
+    <hcons hreln='qeq'>
+      <hi> <var sort='h' vid='5'/> </hi>
+      <lo> <label vid='10001'/> </lo>
+    </hcons>
+    <hcons hreln='qeq'>
+      <hi> <var sort='h' vid='12'/> </hi>
+      <lo> <label vid='10002'/> </lo>
+    </hcons>
+    <rarg>
+      <rargname>RSTR</rargname>
+      <label vid='3'/>
+      <var sort='h' vid='5'/>
+    </rarg>
+    <rarg>
+      <rargname>BODY</rargname>
+      <label vid='3'/>
+      <var sort='h' vid='6'/>
+    </rarg>
+    <rarg>
+      <rargname>ARG1</rargname>
+      <label vid='7'/>
+      <var sort='x' vid='4' num='pl' pers='3'/>
+    </rarg>
+    <rarg>
+      <rargname>ARG1</rargname>
+      <label vid='9'/>
+      <var sort='x' vid='4' num='pl' pers='3'/>
+    </rarg>
+    <rarg>
+      <rargname>ARG2</rargname>
+      <label vid='9'/>
+      <var sort='x' vid='10' num='pl' pers='3'/>
+    </rarg>
+    <rarg>
+      <rargname>RSTR</rargname>
+      <label vid='11'/>
+      <var sort='h' vid='12'/>
+    </rarg>
+    <rarg>
+      <rargname>BODY</rargname>
+      <label vid='11'/>
+      <var sort='h' vid='13'/>
+    </rarg>
+    <rarg>
+      <rargname>ARG1</rargname>
+      <label vid='14'/>
+      <var sort='x' vid='10' num='pl' pers='3'/>
+    </rarg>
+    <ing>
+      <ing-a> <var sort='h' vid='10001'/> </ing-a>
+      <ing-b> <var sort='h' vid='7'/> </ing-b> 
+    </ing>
+    <ing>
+      <ing-a> <var sort='h' vid='10002'/> </ing-a>
+      <ing-b> <var sort='h' vid='14'/> </ing-b> 
+    </ing>
+  </rmrs>
+
+  </sentence>
+  </analysis>
+  </proposition>
+  <valid id="4.2.a">
+    <implication>
+      <antecedent> <ref src="4.2.1"/> </antecedent>
+      <consequent> <ref src="4.2.2"/> </consequent>
+    </implication>
+  </valid>
+  <nonvalid id="4.2.b" ignore="yes">
+    <implication>
+      <antecedent> <ref src="4.2.2"/> </antecedent>
+      <consequent> <ref src="4.2.1"/> </consequent>
+    </implication>
+  </nonvalid>
+</testcase>
+
+</testsuite>
+
+
+
+</testsuite>
