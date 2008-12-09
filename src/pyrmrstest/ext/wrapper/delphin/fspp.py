@@ -40,6 +40,12 @@ class TestFspp( pyrmrstest.mytest.MyTestCase ):
     smaf = self.globalstate.fspp.tokenise( smaf );
     print smaf.str_xml();
 
+  def test_mytest_3( self ):
+    
+    smaf = pyrmrs.smafpkg.smaf.SMAF( "US president Bush saw a man with a telescope." );
+    smaf = self.globalstate.fspp.tokenise( smaf );
+    print smaf.str_xml();
+
 
 
 def suite():
