@@ -1,21 +1,21 @@
-import pyrmrs.config;
-import pyrmrs.globals;
-import pyrmrs.error.xmlsem_error;
+# -*-  coding: ascii -*-
+
+import sys;
 
 import xml.sax;
 import xml.sax.handler;
 
-import errno;
-import sys;
+import pyrbutils.globals;
+
+
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 CHUNK_SIZE = 512;
 
 
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 class XMLReaderIter:
-
-  reader = None;
-  dead = False;
 
   def __init__( self, reader ):
 
@@ -43,6 +43,7 @@ class XMLReaderIter:
     return rslt;
 
 
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 class XMLReader( xml.sax.handler.ContentHandler ):
 
@@ -289,3 +290,13 @@ class XMLReader( xml.sax.handler.ContentHandler ):
         if self.end_callbacks.has_key( active_obj.__class__ ):
           for cb in self.end_callbacks[ active_obj.__class__ ]:
             cb( active_obj, name );
+
+
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+#                                                                             #
+# (c) Copyright 2009 by Richard Bergmair.                                     #
+#                                                                             #
+#   See LICENSE.txt for terms and conditions                                  #
+#   on use, reproduction, and distribution.                                   #
+#                                                                             #
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
