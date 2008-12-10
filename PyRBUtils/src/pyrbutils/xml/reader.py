@@ -10,41 +10,6 @@ import pyrbutils.globals;
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-CHUNK_SIZE = 512;
-
-
-# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
-
-class XMLReaderIter:
-
-  def __init__( self, reader ):
-
-    self.reader = reader;
-    self.dead = False;
-    
-  def __iter__( self ):
-    
-    return self;
-
-  def next( self ):
-    
-    if not self.dead:
-      try:
-        while len( self.reader.buf ) == 0:
-          self.reader.readChunk();
-      except StopIteration:
-        self.dead = True;
-      
-    if len( self.reader.buf ) == 0:
-      raise StopIteration;
-
-    rslt = self.reader.buf[ 0 ];
-    del self.reader.buf[ 0 ];
-    return rslt;
-
-
-# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
-
 class XMLReader( xml.sax.handler.ContentHandler ):
 
   buf = [];
