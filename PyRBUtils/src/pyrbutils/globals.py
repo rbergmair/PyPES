@@ -1,18 +1,117 @@
-import sys;
-import codecs;
-import logging;
-import config;
-import os;
-import time;
+# -*-  coding: ascii -*-
+
+__package__ = "pyrbutils";
+
+from string import digits;
+from string import ascii_lowercase;
+
 import random;
-import string;
-import socket;
 
-import atexit;
+from socket import gethostname;
 
-import pyrmrs.tools.stringtools;
+from time import time;
+from time import strftime;
+
+from unittest import TestCase;
+from hashlib import md5;
+
+import logging;
+
+from sys import stderr;
+
+from os import mkdir;
 
 
+
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+
+class RBSubject( type ):
+
+
+  def __subject_new( cls, *args, **kwargs ):
+
+    subject = object.__new__( cls );
+    return subject.run( *args, **kwargs );
+
+
+  def __new__( mcs, name, bases, dict ):
+
+    cls = type.__new__( mcs, name, bases, dict );
+    cls.__new__ = RBSubject.__subject_new;
+    return cls;
+
+
+
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+
+class RBSingleton( type ):
+
+
+  def __singleton_new( cls, *args, **kwargs ):
+
+    if cls.__instance is None:
+
+      cls.__instance = cls.__orig_new( cls, *args, **kwargs );
+      cls.__orig_init = cls.__init__;
+
+    elif cls.__init__ == cls.__orig_init:
+
+      def __nothing( *args, **kwargs ):
+        pass;
+
+      cls.__init__ = __nothing;
+
+    return cls.__instance;
+
+
+  def __new__( mcs, name, bases, dict ):
+
+    cls = type.__new__( mcs, name, bases, dict );
+    cls.__instance = None;
+    cls.__orig_new = cls.__new__;
+    cls.__new__ = RBSingleton.__singleton_new;
+    return cls;
+
+
+
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+
+class RBIDController( metaclass=RBSingleton ):
+
+  def get_current_timestamp( self ):
+
+    return "{0}-{1}-{2}-{3}{4}".format(
+        strftime( "%y%m%d-%H%M%S" ),
+        str( int( ( time() % 1.0 ) * 1000.0 ) ).zfill( 3 ),
+        gethostname(),
+        random.choice( digits + ascii_lowercase ),
+        random.choice( digits + ascii_lowercase )
+      );
+
+  def __init__( self ):
+
+    self._insttok = self.get_current_timestamp();
+    self._runningno = 10239;
+
+  @property
+  def insttok( self ):
+    return self._insttok;
+
+  def get_guid( self ):
+
+    self._runningno += 1;
+    return "{0}-{1}".format( self.insttok, self.get_current_timestamp() );
+
+  def get_runningno( self ):
+
+    self._runningno += 1;
+    return self._runningno;
+
+RBIDController();
+
+
+
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 LOG_CRITICAL = logging.CRITICAL;
 LOG_ERROR = logging.ERROR;
@@ -23,259 +122,279 @@ LOG_DEBUG = logging.DEBUG;
 LOG_NOTSET = logging.NOTSET;
 
 
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-insttok = None;
-
-def getInstTok():
-  
-  global insttok;
-
-  if not insttok is None:
-    return insttok;
-
-  insttok = "%s-%s-%s-%c%c" % (
-    time.strftime( "%y%m%d-%H%M%S" ),
-    str( int( ( time.time() % 1.0 ) * 100000.0 ) ).zfill(5),
-    socket.gethostname(),
-    random.choice( string.digits + string.ascii_lowercase ),
-    random.choice( string.digits + string.ascii_lowercase )
-  )
-  
-  return insttok;
+class RBLogController( metaclass=RBSingleton ):
 
 
+  def __init__( self ):
 
-runningno = 0;
-
-def getUnqID():
-  
-  global runningno;
-  
-  unqid = "%s-%d" % (
-    getInstTok(),
-    runningno
-  );
-  
-  runningno += 1;
-  
-  return unqid;
-
-
-
-def utf8ign_reader( stream, errors="strict" ):
-  (encoder, decoder, stream_reader, stream_writer) = codecs.lookup( "utf-8" );
-  return stream_reader( stream, "ignore" );
-
-def utf8ign_writer( stream, errors="strict" ):
-  (encoder, decoder, stream_reader, stream_writer) = codecs.lookup( "utf-8" );
-  return stream_writer( stream, "ignore" );
-
-def utf8ign_search( name ):
-  if name == "utf-8-ignore":
-    (encoder, decoder, stream_reader, stream_writer) = codecs.lookup( "utf-8" );
-    return (encoder, decoder, utf8ign_reader, utf8ign_writer);
-  else:
-    return None;
-
-
-def utf8repl_reader( stream, errors="strict" ):
-  (encoder, decoder, stream_reader, stream_writer) = codecs.lookup( "utf-8" );
-  return stream_reader( stream, "replace" );
-
-def utf8repl_writer( stream, errors="strict" ):
-  (encoder, decoder, stream_reader, stream_writer) = codecs.lookup( "utf-8" );
-  return stream_writer( stream, "replace" );
-
-def utf8repl_search( name ):
-  if name == "utf-8-replace":
-    (encoder, decoder, stream_reader, stream_writer) = codecs.lookup( "utf-8" );
-    return (encoder, decoder, utf8repl_reader, utf8repl_writer);
-  else:
-    return None;
-
-
-
-loggers = {};
-logdir = None;
-
-
-def destructMain():
-  
-  global loggers;
-  
-  for logname in loggers:
-    ( logger, handler, f ) = loggers[ logname ];
-    logger.removeHandler( handler );
-    handler.close();
-    f.close();
-
-
-initialized = False;
-exec_context = None;
-
-def initMain():
-  
-  global initialized;
-  if initialized:
-    return;
-  initialized = True;
-  
-  global logdir;
-  
-  codecs.register( utf8ign_search );
-  codecs.register( utf8repl_search );
-  
-  sys.stdin = codecs.getreader( "utf-8-replace" )( sys.stdin );
-  sys.stdout = codecs.getwriter( "utf-8-replace" )( sys.stdout );
-  sys.stderr = codecs.getwriter( "utf-8-replace" )( sys.stderr );
-  
-  if not ( config.FILE_TRACING is None and config.STDERR_LOGGING is None ):
-    
     logging.addLevelName( LOG_DEBUG_COARSE, "DEBUG" );
-
-  
-  if not config.FILE_TRACING is None:
-    
-    if logdir is None:
-      
-      logdir = "%s/pyrmrs-%s" % ( config.DIR_LOG, getInstTok() );
-  
-      try:
-        os.mkdir( logdir );
-      except:
-        logdir = None;
-  
-  if not config.STDERR_LOGGING is None:
-    
-    formatter = logging.Formatter( "%(name)-12s: %(message)s" );
-    
-    if not config.STDERR_LOGGING.has_key( "pyrmrs" ):
-      config.STDERR_LOGGING[ "pyrmrs" ] = logging.WARNING;
-      
-    for lgname in config.STDERR_LOGGING:
-      if ( lgname == "pyrmrs" ) or ( lgname.startswith( "pyrmrs." ) ) or \
-         ( lgname == "pyrmrstest" ) or ( lgname.startswith( "pyrmrstest." ) ):
-        newhndl = logging.StreamHandler( sys.stderr );
-        newhndl.setLevel( config.STDERR_LOGGING[ lgname ] );
-        newhndl.setFormatter( formatter );
-        logger = logging.getLogger( lgname );
-        logger.addHandler( newhndl );
-        logger.setLevel( 1 );
-
-  global exec_context;
-  
-  cntx = os.getcwd().split( "/" );
-  k = None;
-  for i in range( len(cntx)-1, 0, -1 ):
-    if cntx[i] in [ "pyrmrs", "pyrmrstest" ]:
-      k = i;
-  if not k is None:
-    exec_context = "";
-    for i in range( k, len(cntx) ):
-      exec_context += cntx[i] + ".";
-  
-  atexit.register( destructMain );
-  
-  
-initMain();
+    self.stderr_formatter = logging.Formatter( "%(name)-12s: %(message)s" );
+    self.aggregate_file_formatter = logging.Formatter(
+        "%(asctime)s-%(msec)d %(name)-12s: %(message)s"
+      );
+    self.individual_file_formatter = logging.Formatter(
+        "%(asctime)s-%(msec)d: %(message)s"
+      );
+    self._logger_config = [];
+    self._loggers = {};
 
 
+  def _initialize_file_logger( self, loggername, level, logdir, is_aggregate ):
 
-def getLogger( inst=None ):
-  
-  global loggers;
-  global logdir;
-  global exec_context;
-  
-  if config.STDERR_LOGGING is None and config.FILE_TRACING is None:
-    return None;
-  
-  logname = "pyrmrs";
+    logdir = logdir + "/" + RBIDController().insttok;
+    try:
+      mkdir( logdir );
+    except:
+      pass;
 
-  if isinstance( inst, str ):
-    logname = inst;
-  elif isinstance( inst, unicode ):
-    logname = inst;
-  else:
+    f = open( logdir+"/"+loggername+".log", "w" );
+
+    handler = logging.StreamHandler( f );
+    handler.setLevel( level );
+    if is_aggregate:
+      handler.setFormatter( self.aggregate_file_formatter );
+    else:
+      handler.setFormatter( self.individual_file_formatter );
+
+    logger = logging.getLogger( loggername );
+    logger.addHandler( handler );
+
+    self._loggers[ loggername ] = ( handler, f );
+
+
+  def __del__( self ):
+
+    for loggername in self._loggers:
+      logger = logging.getLogger( loggername );
+      ( handler, f ) = self._loggers[ loggername ];
+      logger.removeHandler( handler );
+      handler.close();
+      f.close();
+
+
+  def attach_stderr_logger( self, loggername, level ):
+
+    handler = logging.StreamHandler( stderr );
+    handler.setLevel( level );
+    handler.setFormatter( self.stderr_formatter );
+    logger = logging.getLogger( loggername );
+    logger.addHandler( handler );
+    logger.setLevel( 1 );
+
+
+  def attach_file_logger( self, loggername, level, logdir ):
+
+    self._file_logger_config.append( (loggername,level,logdir) );
+
+
+
+
+  def _sourceid_to_str( self, sourceid=None ):
+
+    if isinstance( sourceid, str ):
+
+      return sourceid;
+
     isclass = True;
     try:
-      issubclass( inst, inst );
+      issubclass( sourceid, sourceid );
     except TypeError:
       isclass = False;
-    if isclass:
-      logname = inst.__module__;
-    elif not inst is None:
-      logname = inst.__class__.__module__;
 
-  if not ( logname == "pyrmrs" or logname.startswith( "pyrmrs." ) or
-           logname == "pyrmrstest" or logname.startswith( "pyrmrstest." ) ):
-    if exec_context is None:
-      return;
+    source_class = sourceid;
+    if not isclass:
+      source_class = sourceid.__class__;
+
+    source = source_class.__module__.__package__;
+    if source is None:
+      source = "";
     else:
-      logname = exec_context + logname;
+      source += ".";
+
+    source += str( source_class.__module__ );
+
+    return source;
+
+
+
+  def get_logger( self, sourceid ):
+
+    source = self._sourceid_to_str( sourceid );
+
+    if not source in self._loggers:
+
+      is_initialized = False;
+      min_level = None;
+      min_logdir = None;
+
+      for ( loggername, level, logdir ) in self._file_logger_config:
+
+	if ( source+"." ).startswith( loggername+"." ):
+
+	  if not loggername in self._initialized_loggers:
+
+	    if min_level is None or level < min_level:
+	      min_level = level;
+	      min_logdir = logdir;
+
+	    if source == loggername:
+	      self._initialize_file_logger( loggername, level, logdir, False );
+	      is_initialized = True;
+	    else:
+              self._initialize_file_logger( loggername, level, logdir, True );
+
+      if not ( is_initialized or min_level is None ):
+        self._initialize_file_logger( source, min_level, min_logdir, False );
+
+    return logging.getLogger( source );
+
+
+
+def logInfo( inst, str ):
+
+  print( str );
+
+
+
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+
+def str_crude_hashcode( s ):
+  
+  md5sum = md5();
+  i = -1;
     
-  logger = logging.getLogger( logname );
+  for ch in s:
+    if ord( ch ) > 32 and ch.isprintable() and not ch.isspace():
+      md5sum.update( ch.encode() );
 
-  if logname in loggers:
-    return logger;
+  return md5sum.digest();
+
+
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+
+def str_crude_match( s1, s2 ):
+
+  return str_crude_hashcode( s1 ) == str_crude_hashcode( s2 );
+
+
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+
+class RBTestCaseGlobalState( object ):
+
+  pass;
+
+
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+
+class RBTestCaseController( metaclass=RBSingleton ):
+
+
+  def __init__( self ):
+
+    self._globalstate_insts = {};
+    self._testcase_insts = {};
+
+
+  def attach_rbtestcase_instance( self, testcase_inst ):
+
+    if testcase_inst.__class__ not in self._testcase_insts:
+      self._testcase_insts[ testcase_inst.__class__ ] = 0;
+    self._testcase_insts[ testcase_inst.__class__ ] += 1;
+
+    if testcase_inst.__class__ in self._globalstate_insts: 
+      globalstate = self._globalstate_insts[ testcase_inst.__class__ ];
+      testcase_inst._globalstate = globalstate;
+    else:
+      globalstate = RBTestCaseGlobalState();
+      testcase_inst._globalstate = globalstate;
+      testcase_inst.globalSetUp();
+      self._globalstate_insts[ testcase_inst.__class__ ] = globalstate;
+
+
+  def detach_rbtestcase_instance( self, testcase_inst ):
   
-  if config.FILE_TRACING is None:
-    return logger;
+    self._testcase_insts[ testcase_inst.__class__ ] -= 1;
+    if self._testcase_insts[ testcase_inst.__class__ ] == 0:
+      self._globalstate_insts[ testcase_inst.__class__ ] = None;
+      testcase_inst.globalTearDown();
+
+
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+
+class RBTestCase( TestCase ):
   
-  if logdir is None:
-    return logger;
+  def __init__( self, *args, **kwargs ):
+    
+    TestCase.__init__( self, *args, **kwargs );
+    RBTestCaseController().attach_rbtestcase_instance( self );
+    
+  def __del__( self ):
 
-  logger.setLevel( 1 );
+    RBTestCaseController().detach_rbtestcase_instance( self );
   
-  minlvl = 100;
-  for lgname in config.FILE_TRACING:
-    if ( logname+"." ).find( lgname+"." ) == 0:
-      minlvl = min( minlvl, config.FILE_TRACING[lgname] );
+  def globalSetUp( self ):
+    
+    pass;
   
-  formatter = logging.Formatter( "%(message)s" );
+  def globalTearDown( self ):
+    
+    pass;
+ 
+  def _failStringCrudelyComparison( self, actual, expected, msg=None,
+                                    neg=False ): 
+
+    logInfo( self, "--- ACTUAL ---\n" + actual );
+    if neg:
+      logInfo( self, "--- EXPECTED NOT ---\n" + expected );
+    else:
+      logInfo( self, "--- EXPECTED ---\n" + expected );
+    self.fail( msg );
+
+  def assertStringCrudelyEqual( self, actual, expected, msg=None ):
+    
+    if not str_crude_match( actual, expected ):
+      self._failStringCrudelyComparison( actual, expected, msg, False );
+
+  def assertStringNotCrudelyEqual( self, actual, expected, msg=None ):
+    
+    if str_crude_match( actual, expected ):
+      self._failStringCrudelyComparison( actual, expected, msg, True );
   
-  f = open( logdir+"/"+logname+".log", "w" );
-  f = codecs.getwriter( "utf-8-replace" )( f );
-  
-  newhndl = logging.StreamHandler( f );
-  newhndl.setLevel( minlvl );
-  newhndl.setFormatter( formatter );
-  logger.addHandler( newhndl );
+  def _failSequenceComparison( self, actual, expected, msg = None,
+                               neg=False ):
 
-  loggers[ logname ] = ( logger, newhndl, f );
-  
-  return logger;
+    actual_stri = "";
+    for item in actual:
+      actual_stri += str( item ) + "\n";
+    expected_stri = "";
+    for item in expected:
+      expected_stri += str( item ) + "\n";
+    logInfo( self, "--- ACTUAL ---\n" + actual_stri );
+    if neg:
+      logInfo( self, "--- EXPECTED NOT ---\n" + expected_stri );
+    else:
+      logInfo( self, "--- EXPECTED ---\n" + expected_stri );
+    self.fail( msg );
 
+  def assertSequenceEqual( self, actual, expected, msg=None ):
+    
+    if actual != expected:
+      self._failSequenceComparison( actual, expected, msg, False );
 
+  def assertSequenceNotEqual( self, actual, expected, msg=None ):
+    
+    if actual == expected:
+      self._failSequenceComparison( actual, expected, msg, True );
 
-def logIsActive():
-  
-  if config.STDERR_LOGGING is None and config.FILE_TRACING is None:
-    return False;
-  return True;
+ 
 
-def log( level=LOG_DEBUG, inst=None, message="", debugstyle=False ):
-
-  if config.STDERR_LOGGING is None and config.FILE_TRACING is None:
-    return;
-  if not isinstance( message, unicode ):
-    if not isinstance( message, str ):
-      message = str( message );
-    if not isinstance( message, unicode ):
-      message = message.decode( "utf-8", "replace" );
-  if debugstyle:
-    message = pyrmrs.tools.stringtools.debug_format( message );
-  logger = getLogger( inst );
-  if not logger is None:
-    logger.log( level, message );
-
-def logDebug( inst=None, message="" ):
-  log( LOG_DEBUG, inst, message, True );
-def logDebugCoarse( inst=None, message="" ):
-  log( LOG_DEBUG_COARSE, inst, message, True );
-def logWarning( inst=None, message="", debugstyle=False ):
-  log( LOG_WARNING, inst, message, debugstyle );
-def logInfo( inst=None, message="", debugstyle=False ):
-  log( LOG_INFO, inst, message, debugstyle );
-def logError( inst=None, message="", debugstyle=False ):
-  log( LOG_ERROR, inst, message, debugstyle );
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+#                                                                             #
+# (c) Copyright 2009 by Richard Bergmair.                                     #
+#                                                                             #
+#   See LICENSE.txt for terms and conditions                                  #
+#   on use, reproduction, and distribution.                                   #
+#                                                                             #
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
