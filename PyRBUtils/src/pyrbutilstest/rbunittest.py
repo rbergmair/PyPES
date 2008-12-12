@@ -5,70 +5,9 @@ __package__ = "pyrbutilstest";
 import unittest;
 import sys;
 
-from pyrbutils.globals import RBTestCase;
-from pyrbutils.globals import RBSubject;
+from pyrbutils.rbunittest import RBTestCase;
 
-from pyrbutils.globals import logInfo;
-
-import pyrbutils.globals;
-
-
-
-# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
-
-class Eat( metaclass=RBSubject ):
-
-
-  def run( self, inst ):
-
-    if isinstance( inst, Apple ):
-      assert inst.apple;
-      assert not inst.banana;
-
-    if isinstance( inst, Banana ):
-      assert inst.banana;
-      assert not inst.apple;
-
-    inst.eaten = True;
-
-
-# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
-
-class Apple:
-
-  def __init__( self ):
-
-    self.eaten = False;
-    self.apple = True;
-    self.banana = False;
-    self.eat = lambda: Eat( self );
-
-# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
-
-class Banana:
-
-  def __init__( self ):
-
-    self.eaten = False;
-    self.apple = False;
-    self.banana = True;
-    self.eat = lambda: Eat( self );
-
-
-# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
-
-class TestSubjectOrientedProgramming( RBTestCase ):
-
-  def test_subject_oriented_programming( self ):
-
-    apple = Apple();
-    banana = Banana();
-    self.assertFalse( apple.eaten );
-    self.assertFalse( banana.eaten );
-    apple.eat();
-    banana.eat();
-    self.assertTrue( apple.eaten );
-    self.assertTrue( banana.eaten );
+__all__ = [];
 
 
 
@@ -97,7 +36,6 @@ class TestRBTestCase1( RBTestCase ):
   def test_ac( self ):
 
     self.assertEquals( self._globalstate.mycnt, 3 );
-
 
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
@@ -134,12 +72,11 @@ class TestRBTestCase2( RBTestCase ):
     self.assertEquals( self._globalstate.mycnt, 1 );
 
 
-
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 class TestRBTestCase3( RBTestCase ):
 
-  def x_test_stringcrudelyequal( self ):
+  def test_stringcrudelyequal( self ):
 
     self.assertStringCrudelyEqual( " sd\ndf  \n  ", "sddf" );
 
@@ -156,48 +93,11 @@ class TestRBTestCase3( RBTestCase ):
     self.assertSequenceNotEqual( [ "a", "b", "c" ], [ "a", "c", "b" ] );
 
 
-
-# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
-
-class TestRBIDController( RBTestCase ):
-
-
-  def test_insttok( self ):
-
-    self.assertTrue( isinstance( pyrbutils.globals.RBIDController().insttok, str ) );
-
-
-  def test_guid( self ):
-
-    x1 = pyrbutils.globals.RBIDController().get_guid();
-    x2 = pyrbutils.globals.RBIDController().get_guid();
-
-    isinstance( x1, str );
-    isinstance( x2, str );
-
-    self.assertStringNotCrudelyEqual( x1, x2 );
-
-
-  def test_runningno( self ):
-
-    x1 = pyrbutils.globals.RBIDController().get_runningno();
-    x2 = pyrbutils.globals.RBIDController().get_runningno();
-    x3 = pyrbutils.globals.RBIDController().get_runningno();
-
-    self.assertEquals( x1+1, x2 );
-    self.assertEquals( x2+1, x3 );
-
-
-
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 def suite():
 
   suite = unittest.TestSuite();
-
-  suite.addTests( unittest.TestLoader().loadTestsFromTestCase(
-      TestSubjectOrientedProgramming
-    ) );
 
   suite.addTests( unittest.TestLoader().loadTestsFromTestCase(
       TestRBTestCase1
@@ -214,11 +114,14 @@ def suite():
   return suite;
 
 
-
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
+def main( argv=None ):
+
+  unittest.TextTestRunner( verbosity=2 ).run( suite() );
+
 if __name__ == '__main__':
-  unittest.main();
+  sys.exit( main( sys.argv ) );
 
 
 

@@ -12,7 +12,9 @@ from socket import gethostname;
 from time import time;
 from time import strftime;
 
-from pyrbutils.mc import RBSingleton;
+from pyrbutils.rbmc import RBSingleton;
+
+__all__ = [];
 
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #

@@ -4,20 +4,24 @@ __package__ = "pyrbutils";
 
 from unittest import TestCase;
 
-from mc import RBSingleton;
-from logging import log_info;
+from pyrbutils.rbmc import RBSingleton;
+from pyrbutils.rblogging import log_info;
+from pyrbutils.rbstring import str_crude_match;
+
+__all__ = [];
+
 
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-class RBTestCaseGlobalState( object ):
+class _RBTestCaseGlobalState( object ):
 
   pass;
 
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-class RBTestCaseController( metaclass=RBSingleton ):
+class _RBTestCaseController( metaclass=RBSingleton ):
 
 
   def __init__( self ):
@@ -36,7 +40,7 @@ class RBTestCaseController( metaclass=RBSingleton ):
       globalstate = self._globalstate_insts[ testcase_inst.__class__ ];
       testcase_inst._globalstate = globalstate;
     else:
-      globalstate = RBTestCaseGlobalState();
+      globalstate = _RBTestCaseGlobalState();
       testcase_inst._globalstate = globalstate;
       testcase_inst.globalSetUp();
       self._globalstate_insts[ testcase_inst.__class__ ] = globalstate;
@@ -57,11 +61,11 @@ class RBTestCase( TestCase ):
   def __init__( self, *args, **kwargs ):
     
     TestCase.__init__( self, *args, **kwargs );
-    RBTestCaseController().attach_rbtestcase_instance( self );
+    _RBTestCaseController().attach_rbtestcase_instance( self );
     
   def __del__( self ):
 
-    RBTestCaseController().detach_rbtestcase_instance( self );
+    _RBTestCaseController().detach_rbtestcase_instance( self );
   
   def globalSetUp( self ):
     

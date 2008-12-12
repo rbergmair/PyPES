@@ -1,6 +1,7 @@
 # -*-  coding: ascii -*-
 
 __package__ = "pyrbutils";
+__all__ = [ "RBSubject", "RBSingleton" ];
 
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #

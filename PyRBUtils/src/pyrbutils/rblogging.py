@@ -6,7 +6,14 @@ import logging;
 from sys import stderr;
 from os import mkdir;
 
-from mc import RBSingleton;
+from pyrbutils.rbmc import RBSingleton;
+from pyrbutils.globals import RBIDController;
+
+__all__ = [ "LOG_CRITICAL", "LOG_ERROR", "LOG_WARNING", "LOG_INFO",
+  "LOG_DEBUG_COARSE", "LOG_DEBUG", "LOG_NOTSET", "log_critical",
+  "log_error", "log_warn", "log_info", "log_error", "log_debug_coarse",
+  "log_debug", "log" ];
+
 
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
@@ -20,9 +27,10 @@ LOG_DEBUG = logging.DEBUG;
 LOG_NOTSET = logging.NOTSET;
 
 
+
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-class RBLogController( metaclass=RBSingleton ):
+class _RBLogController( metaclass=RBSingleton ):
 
 
   def __init__( self ):
@@ -30,18 +38,19 @@ class RBLogController( metaclass=RBSingleton ):
     logging.addLevelName( LOG_DEBUG_COARSE, "DEBUG" );
     self.stderr_formatter = logging.Formatter( "%(name)-12s: %(message)s" );
     self.aggregate_file_formatter = logging.Formatter(
-        "%(asctime)s-%(msec)d %(name)-12s: %(message)s"
+        "%(asctime)s %(name)-12s: %(message)s"
       );
     self.individual_file_formatter = logging.Formatter(
-        "%(asctime)s-%(msec)d: %(message)s"
+        "%(asctime)s: %(message)s"
       );
-    self._logger_config = [];
+    self._file_logger_config = [];
     self._loggers = {};
 
 
-  def _initialize_file_logger( self, loggername, level, logdir, is_aggregate ):
+  def _initialize_file_logger( self, loggername, level, logdir,
+                               prefix, is_aggregate ):
 
-    logdir = logdir + "/" + RBIDController().insttok;
+    logdir = logdir + "/" + prefix + "-" + RBIDController().insttok;
     try:
       mkdir( logdir );
     except:
@@ -82,15 +91,14 @@ class RBLogController( metaclass=RBSingleton ):
     logger.setLevel( 1 );
 
 
-  def attach_file_logger( self, loggername, level, logdir ):
+  def attach_file_logger( self, loggername, level, logdir, prefix ):
 
-    self._file_logger_config.append( (loggername,level,logdir) );
+    self._file_logger_config.append( (loggername,level,logdir,prefix) );
 
 
   def _sourceid_to_str( self, sourceid=None ):
 
     if isinstance( sourceid, str ):
-
       return sourceid;
 
     isclass = True;
@@ -103,13 +111,15 @@ class RBLogController( metaclass=RBSingleton ):
     if not isclass:
       source_class = sourceid.__class__;
 
-    source = source_class.__module__.__package__;
+    source_module = __import__( source_class.__module__ );
+
+    source = source_module.__package__;
     if source is None:
       source = "";
     else:
       source += ".";
 
-    source += str( source_class.__module__ );
+    source += source_class.__module__;
 
     return source;
 
@@ -123,34 +133,67 @@ class RBLogController( metaclass=RBSingleton ):
       is_initialized = False;
       min_level = None;
       min_logdir = None;
+      min_prefix = None;
 
-      for ( loggername, level, logdir ) in self._file_logger_config:
+      for ( loggername, level, logdir, prefix ) in self._file_logger_config:
 
-	if ( source+"." ).startswith( loggername+"." ):
+        if ( source+"." ).startswith( loggername+"." ):
 
-	  if not loggername in self._initialized_loggers:
+          if not loggername in self._loggers:
 
-	    if min_level is None or level < min_level:
-	      min_level = level;
-	      min_logdir = logdir;
+            if min_level is None or level < min_level:
+              min_level = level;
+              min_logdir = logdir;
+              min_prefix = prefix;
 
-	    if source == loggername:
-	      self._initialize_file_logger( loggername, level, logdir, False );
-	      is_initialized = True;
-	    else:
-              self._initialize_file_logger( loggername, level, logdir, True );
+            if source == loggername:
+              self._initialize_file_logger( loggername, level,
+                                            logdir, prefix, False );
+              is_initialized = True;
+            else:
+              self._initialize_file_logger( loggername, level,
+                                            logdir, prefix, True );
 
       if not ( is_initialized or min_level is None ):
-        self._initialize_file_logger( source, min_level, min_logdir, False );
+        self._initialize_file_logger( source, min_level,
+                                      min_logdir, min_prefix, False );
 
     return logging.getLogger( source );
 
 
+
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-def log_info( inst, str ):
+def attach_stderr_logger( loggername, level ):
+  _RBLogController().attach_stderr_logger( loggername, level );
 
-  print( str );
+def attach_file_logger( loggername, level, logdir, prefix ):
+  _RBLogController().attach_file_logger( loggername, level, logdir, prefix );
+
+def log_critical( sourceid, msg ):
+  _RBLogController().get_logger( sourceid ).log( LOG_CRITICAL, msg );
+
+def log_error( sourceid, msg ):
+  _RBLogController().get_logger( sourceid ).log( LOG_ERROR, msg );
+
+def log_warn( sourceid, msg ):
+  _RBLogController().get_logger( sourceid ).log( LOG_WARNING, msg );
+
+def log_info( sourceid, msg ):
+  _RBLogController().get_logger( sourceid ).log( LOG_INFO, msg );
+
+def log_error( sourceid, msg ):
+  _RBLogController().get_logger( sourceid ).log( LOG_ERROR, msg );
+
+def log_debug_coarse( sourceid, msg ):
+  _RBLogController().get_logger( sourceid ).log( LOG_DEBUG_COARSE, msg );
+
+def log_debug( sourceid, msg ):
+  _RBLogController().get_logger( sourceid ).log( LOG_DEBUG, msg );
+
+def log( sourceid, level, msg ):
+  _RBLogController().get_logger( sourceid ).log( level, msg );
+
 
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #

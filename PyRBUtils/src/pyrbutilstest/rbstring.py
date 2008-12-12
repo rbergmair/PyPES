@@ -2,44 +2,25 @@
 
 __package__ = "pyrbutilstest";
 
-import sys;
 import unittest;
+import sys;
 
-from pyrbutils.globals import RBIDController;
 from pyrbutils.rbunittest import RBTestCase;
+from pyrbutils.rbstring import str_crude_match;
 
 __all__ = [];
 
 
+
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-class TestRBIDController( RBTestCase ):
+class TestRBString( RBTestCase ):
 
+  def test_stringcrudelyequal( self ):
 
-  def test_insttok( self ):
+    self.assertTrue( str_crude_match(" sd\ndf  \n  ","sddf") );
+    self.assertFalse( str_crude_match(" sd\ndf  \n  ","sdfd") );
 
-    self.assertTrue( isinstance( RBIDController().insttok, str ) );
-
-
-  def test_guid( self ):
-
-    x1 = RBIDController().get_guid();
-    x2 = RBIDController().get_guid();
-
-    isinstance( x1, str );
-    isinstance( x2, str );
-
-    self.assertStringNotCrudelyEqual( x1, x2 );
-
-
-  def test_runningno( self ):
-
-    x1 = RBIDController().get_runningno();
-    x2 = RBIDController().get_runningno();
-    x3 = RBIDController().get_runningno();
-
-    self.assertEquals( x1+1, x2 );
-    self.assertEquals( x2+1, x3 );
 
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
@@ -49,7 +30,7 @@ def suite():
   suite = unittest.TestSuite();
 
   suite.addTests( unittest.TestLoader().loadTestsFromTestCase(
-      TestRBIDController
+      TestRBString
     ) );
 
   return suite;
@@ -65,6 +46,7 @@ if __name__ == '__main__':
   sys.exit( main( sys.argv ) );
 
 
+
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 #                                                                             #
 # (c) Copyright 2009 by Richard Bergmair.                                     #
@@ -73,4 +55,3 @@ if __name__ == '__main__':
 #   on use, reproduction, and distribution.                                   #
 #                                                                             #
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
-

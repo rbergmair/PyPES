@@ -2,44 +2,59 @@
 
 __package__ = "pyrbutilstest";
 
-import sys;
 import unittest;
+import sys;
 
-from pyrbutils.globals import RBIDController;
 from pyrbutils.rbunittest import RBTestCase;
+
+from pyrbutils.rblogging import *;
+import pyrbutils.rblogging;
 
 __all__ = [];
 
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-class TestRBIDController( RBTestCase ):
+class TestRBLogging( RBTestCase ):
 
+  def globalSetUp( self ):
 
-  def test_insttok( self ):
+    pyrbutils.rblogging.attach_stderr_logger(
+        "pyrbutilstest", LOG_ERROR
+      );
 
-    self.assertTrue( isinstance( RBIDController().insttok, str ) );
+    pyrbutils.rblogging.attach_file_logger(
+        "pyrbutilstest", LOG_INFO,
+        "/tmp", "mytest"
+      );
 
+    pyrbutils.rblogging.attach_file_logger(
+        "pyrbutilstest.rblogging", LOG_DEBUG,
+        "/tmp", "mytest"
+      );
 
-  def test_guid( self ):
+    pyrbutils.rblogging.attach_file_logger(
+        "pyrbutilstest.__main__", LOG_DEBUG,
+        "/tmp", "mytest"
+      );
 
-    x1 = RBIDController().get_guid();
-    x2 = RBIDController().get_guid();
+  def globalTearDown( self ):
 
-    isinstance( x1, str );
-    isinstance( x2, str );
+    pass;
 
-    self.assertStringNotCrudelyEqual( x1, x2 );
+  def setUp( self ):
 
+    pass;
 
-  def test_runningno( self ):
+  def tearDown( self ):
 
-    x1 = RBIDController().get_runningno();
-    x2 = RBIDController().get_runningno();
-    x3 = RBIDController().get_runningno();
+    pass;
 
-    self.assertEquals( x1+1, x2 );
-    self.assertEquals( x2+1, x3 );
+  def test_logging( self ):
+
+    log_error( self, "everywhere" );
+    log_debug( self, "module file only" );
+    log_info( self, "both files" );
 
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
@@ -49,7 +64,7 @@ def suite():
   suite = unittest.TestSuite();
 
   suite.addTests( unittest.TestLoader().loadTestsFromTestCase(
-      TestRBIDController
+      TestRBLogging
     ) );
 
   return suite;
@@ -65,6 +80,7 @@ if __name__ == '__main__':
   sys.exit( main( sys.argv ) );
 
 
+
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 #                                                                             #
 # (c) Copyright 2009 by Richard Bergmair.                                     #
@@ -73,4 +89,3 @@ if __name__ == '__main__':
 #   on use, reproduction, and distribution.                                   #
 #                                                                             #
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
-
