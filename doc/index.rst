@@ -9,6 +9,7 @@ Contents:
 
 .. toctree::
    :maxdepth: 2
+
    codingstyle.rst
 
 Indices and tables
