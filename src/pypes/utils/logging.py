@@ -25,7 +25,7 @@ LOG_NOTSET = logging.NOTSET;
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-class _LogController( metaclass=RBSingleton ):
+class _LogController( metaclass=Singleton ):
 
 
   def __init__( self ):

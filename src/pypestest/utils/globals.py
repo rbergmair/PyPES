@@ -5,7 +5,7 @@ __package__ = "pypestest.utils";
 import sys;
 import unittest;
 
-from pypes.utils.logging_ import TestCase;
+from pypes.utils.logging import TestCase;
 
 import pypes.utils.globals;
 
