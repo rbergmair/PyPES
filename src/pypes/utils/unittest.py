@@ -5,8 +5,8 @@ __package__ = "pypes.utils";
 import unittest;
 
 from pypes.utils.mc import Singleton;
-from pypes.utils.logging_ import log_info;
-from pypes.utils.string_ import crude_match;
+from pypes.utils.logging import log_info;
+from pypes.utils.string import crude_match;
 
 
 
