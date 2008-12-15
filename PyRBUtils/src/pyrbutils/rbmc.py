@@ -1,7 +1,6 @@
 # -*-  coding: ascii -*-
 
 __package__ = "pyrbutils";
-__all__ = [ "RBSubject", "RBSingleton" ];
 
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
@@ -34,10 +33,10 @@ class RBSingleton( type ):
 
     elif cls.__init__ == cls.__orig_init:
 
-      def __nothing( *args, **kwargs ):
-        pass;
+      #def __nothing( *args, **kwargs ):
+      #  pass;
 
-      cls.__init__ = __nothing;
+      cls.__init__ = lambda *args, **kwargs: None; 
 
     return cls.__instance;
 

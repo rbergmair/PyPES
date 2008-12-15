@@ -6,9 +6,7 @@ import unittest;
 import sys;
 
 from pyrbutils.rbunittest import RBTestCase;
-from pyrbutils.rbstring import str_crude_match;
-
-__all__ = [];
+from pyrbutils.rbstring import crude_match;
 
 
 
@@ -18,8 +16,8 @@ class TestRBString( RBTestCase ):
 
   def test_stringcrudelyequal( self ):
 
-    self.assertTrue( str_crude_match(" sd\ndf  \n  ","sddf") );
-    self.assertFalse( str_crude_match(" sd\ndf  \n  ","sdfd") );
+    self.assertTrue( crude_match(" sd\ndf  \n  ","sddf") );
+    self.assertFalse( crude_match(" sd\ndf  \n  ","sdfd") );
 
 
 

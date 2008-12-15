@@ -6,9 +6,7 @@ from unittest import TestCase;
 
 from pyrbutils.rbmc import RBSingleton;
 from pyrbutils.rblogging import log_info;
-from pyrbutils.rbstring import str_crude_match;
-
-__all__ = [];
+from pyrbutils.rbstring import crude_match;
 
 
 
@@ -87,12 +85,12 @@ class RBTestCase( TestCase ):
 
   def assertStringCrudelyEqual( self, actual, expected, msg=None ):
     
-    if not str_crude_match( actual, expected ):
+    if not crude_match( actual, expected ):
       self._failStringCrudelyComparison( actual, expected, msg, False );
 
   def assertStringNotCrudelyEqual( self, actual, expected, msg=None ):
     
-    if str_crude_match( actual, expected ):
+    if crude_match( actual, expected ):
       self._failStringCrudelyComparison( actual, expected, msg, True );
   
   def _failSequenceComparison( self, actual, expected, msg = None,

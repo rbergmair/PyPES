@@ -10,8 +10,6 @@ from pyrbutils.rbunittest import RBTestCase;
 from pyrbutils.rblogging import *;
 import pyrbutils.rblogging;
 
-__all__ = [];
-
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 

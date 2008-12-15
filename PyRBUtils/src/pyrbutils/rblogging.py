@@ -9,11 +9,6 @@ from os import mkdir;
 from pyrbutils.rbmc import RBSingleton;
 from pyrbutils.globals import RBIDController;
 
-__all__ = [ "LOG_CRITICAL", "LOG_ERROR", "LOG_WARNING", "LOG_INFO",
-  "LOG_DEBUG_COARSE", "LOG_DEBUG", "LOG_NOTSET", "log_critical",
-  "log_error", "log_warn", "log_info", "log_error", "log_debug_coarse",
-  "log_debug", "log" ];
-
 
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #

@@ -14,41 +14,51 @@ from time import strftime;
 
 from pyrbutils.rbmc import RBSingleton;
 
-__all__ = [];
-
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 class RBIDController( metaclass=RBSingleton ):
 
-  def get_current_timestamp( self ):
 
-    return "{0}-{1}-{2}-{3}{4}".format(
+  def get_timestamp( self ):
+
+    return "{0}-{1}".format(
         strftime( "%y%m%d-%H%M%S" ),
-        str( int( ( time() % 1.0 ) * 1000.0 ) ).zfill( 3 ),
+        str( int( ( time() % 1.0 ) * 1000.0 ) ).zfill( 3 )
+      );
+
+
+  def __init__( self ):
+
+    self._runningno = 10239;
+    self._insttok = "{0}-{1}-{2}{3}".format(
+        self.get_timestamp(),
         gethostname(),
         random.choice( digits + ascii_lowercase ),
         random.choice( digits + ascii_lowercase )
       );
 
-  def __init__( self ):
-
-    self._insttok = self.get_current_timestamp();
-    self._runningno = 10239;
 
   @property
   def insttok( self ):
     return self._insttok;
 
+
   def get_guid( self ):
 
-    self._runningno += 1;
-    return "{0}-{1}".format( self.insttok, self.get_current_timestamp() );
+    return "{0}-{1}-{2}{3}".format(
+        self.insttok,
+        self.get_timestamp(),
+        random.choice( digits + ascii_lowercase ),
+        random.choice( digits + ascii_lowercase )
+      );
+
 
   def get_runningno( self ):
 
     self._runningno += 1;
     return self._runningno;
+
 
 RBIDController();
 

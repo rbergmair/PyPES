@@ -8,8 +8,6 @@ import unittest;
 from pyrbutils.globals import RBIDController;
 from pyrbutils.rbunittest import RBTestCase;
 
-__all__ = [];
-
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 

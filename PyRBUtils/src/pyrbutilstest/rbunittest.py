@@ -7,8 +7,6 @@ import sys;
 
 from pyrbutils.rbunittest import RBTestCase;
 
-__all__ = [];
-
 
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
@@ -80,7 +78,7 @@ class TestRBTestCase3( RBTestCase ):
 
     self.assertStringCrudelyEqual( " sd\ndf  \n  ", "sddf" );
 
-  def test_stringcrudelynotequal( self ):
+  def test_stringnotcrudelyequal( self ):
 
     self.assertStringNotCrudelyEqual( " sd\ndf  \n  ", "sdfd" );
 

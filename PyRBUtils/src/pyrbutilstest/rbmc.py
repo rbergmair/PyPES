@@ -9,8 +9,6 @@ from pyrbutils.rbmc import RBSubject;
 from pyrbutils.rbmc import RBSingleton;
 from pyrbutils.rbunittest import RBTestCase;
 
-__all__ = [];
-
 
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #

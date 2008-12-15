@@ -4,12 +4,10 @@ __package__ = "pyrbutils";
 
 from hashlib import md5;
 
-__all__ = [];
-
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-def str_crude_hashcode( s ):
+def crude_hashcode( s ):
   
   md5sum = md5();
   i = -1;
@@ -23,9 +21,9 @@ def str_crude_hashcode( s ):
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-def str_crude_match( s1, s2 ):
+def crude_match( s1, s2 ):
 
-  return str_crude_hashcode( s1 ) == str_crude_hashcode( s2 );
+  return crude_hashcode( s1 ) == crude_hashcode( s2 );
 
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
