@@ -5,7 +5,7 @@ __package__ = "pypestest.utils";
 import sys;
 import unittest;
 
-from pypes.utils.logging import TestCase;
+from pypes.utils.unittest_ import TestCase;
 
 import pypes.utils.globals;
 
@@ -66,10 +66,10 @@ if __name__ == '__main__':
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 #                                                                             #
-# (c) Copyright 2009 by Richard Bergmair.                                     #
+#        PyPES: the python platform for experimentation with semantics        #
 #                                                                             #
-#   See LICENSE.txt for terms and conditions                                  #
-#   on use, reproduction, and distribution.                                   #
+#                  (c) Copyright 2009 by Richard Bergmair                     #
+#       -----------------------------------------------------------------     #
+#       See LICENSE.txt for terms and conditions on use and reproduction.     #
 #                                                                             #
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
-

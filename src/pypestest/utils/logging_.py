@@ -1,38 +1,37 @@
 # -*-  coding: ascii -*-
 
-__package__ = "pyrbutilstest";
+__package__ = "pypestest.utils";
 
 import unittest;
 import sys;
 
-from pyrbutils.rbunittest import RBTestCase;
+from pypes.utils.unittest_ import TestCase;
 
-from pyrbutils.rblogging import *;
-import pyrbutils.rblogging;
+from pypes.utils.logging_ import *;
 
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-class TestRBLogging( RBTestCase ):
+class TestLogging( TestCase ):
 
   def globalSetUp( self ):
 
-    pyrbutils.rblogging.attach_stderr_logger(
-        "pyrbutilstest", LOG_ERROR
+    log_attach_stderr_logger(
+        "pypestest", LOG_ERROR
       );
 
-    pyrbutils.rblogging.attach_file_logger(
-        "pyrbutilstest", LOG_INFO,
+    log_attach_file_logger(
+        "pypestest", LOG_INFO,
         "/tmp", "mytest"
       );
 
-    pyrbutils.rblogging.attach_file_logger(
-        "pyrbutilstest.rblogging", LOG_DEBUG,
+    log_attach_file_logger(
+        "pypestest.utils.logging_", LOG_DEBUG,
         "/tmp", "mytest"
       );
 
-    pyrbutils.rblogging.attach_file_logger(
-        "pyrbutilstest.__main__", LOG_DEBUG,
+    log_attach_file_logger(
+        "pypestest.utils.__main__", LOG_DEBUG,
         "/tmp", "mytest"
       );
 
@@ -62,7 +61,7 @@ def suite():
   suite = unittest.TestSuite();
 
   suite.addTests( unittest.TestLoader().loadTestsFromTestCase(
-      TestRBLogging
+      TestLogging
     ) );
 
   return suite;
@@ -78,12 +77,12 @@ if __name__ == '__main__':
   sys.exit( main( sys.argv ) );
 
 
-
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 #                                                                             #
-# (c) Copyright 2009 by Richard Bergmair.                                     #
+#        PyPES: the python platform for experimentation with semantics        #
 #                                                                             #
-#   See LICENSE.txt for terms and conditions                                  #
-#   on use, reproduction, and distribution.                                   #
+#                  (c) Copyright 2009 by Richard Bergmair                     #
+#       -----------------------------------------------------------------     #
+#       See LICENSE.txt for terms and conditions on use and reproduction.     #
 #                                                                             #
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #

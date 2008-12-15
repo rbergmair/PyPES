@@ -1,19 +1,18 @@
 # -*-  coding: ascii -*-
 
-__package__ = "pyrbutilstest";
+__package__ = "pypestest.utils";
 
 import sys;
 import unittest;
 
-from pyrbutils.rbmc import RBSubject;
-from pyrbutils.rbmc import RBSingleton;
-from pyrbutils.rbunittest import RBTestCase;
-
+from pypes.utils.mc import Subject;
+from pypes.utils.mc import Singleton;
+from pypes.utils.unittest_ import TestCase;
 
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-class Eat( metaclass=RBSubject ):
+class Eat( metaclass=Subject ):
 
 
   def run( self, inst ):
@@ -40,6 +39,7 @@ class Apple:
     self.banana = False;
     self.eat = lambda: Eat( self );
 
+
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 class Banana:
@@ -54,7 +54,7 @@ class Banana:
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-class TestSubjectOrientedProgramming( RBTestCase ):
+class TestSubjectOrientedProgramming( TestCase ):
 
   def test_subject_oriented_programming( self ):
 
@@ -68,24 +68,22 @@ class TestSubjectOrientedProgramming( RBTestCase ):
     self.assertTrue( banana.eaten );
 
 
-
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-class Singleton( metaclass=RBSingleton ):
+class Singleton( metaclass=Singleton ):
 
   pass;
 
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-class TestSingleton( RBTestCase ):
+class TestSingleton( TestCase ):
 
   def test_singleton( self ):
 
     sng1 = Singleton();
     sng2 = Singleton();
     self.assertTrue( sng1 is sng2 );
-
 
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
@@ -115,13 +113,12 @@ if __name__ == '__main__':
   sys.exit( main( sys.argv ) );
 
 
-
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 #                                                                             #
-# (c) Copyright 2009 by Richard Bergmair.                                     #
+#        PyPES: the python platform for experimentation with semantics        #
 #                                                                             #
-#   See LICENSE.txt for terms and conditions                                  #
-#   on use, reproduction, and distribution.                                   #
+#                  (c) Copyright 2009 by Richard Bergmair                     #
+#       -----------------------------------------------------------------     #
+#       See LICENSE.txt for terms and conditions on use and reproduction.     #
 #                                                                             #
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
-

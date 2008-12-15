@@ -10,7 +10,7 @@ Contents:
 .. toctree::
    :maxdepth: 2
 
-   codingstyle.rst
+   guidelines.rst
 
 Indices and tables
 ==================

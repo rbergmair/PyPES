@@ -1,17 +1,16 @@
 # -*-  coding: ascii -*-
 
-__package__ = "pyrbutilstest";
+__package__ = "pypestest.utils";
 
 import unittest;
 import sys;
 
-from pyrbutils.rbunittest import RBTestCase;
-
+from pypes.utils.unittest_ import TestCase;
 
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-class TestRBTestCase1( RBTestCase ):
+class TestTestCase1( TestCase ):
 
   def globalSetUp( self ):
 
@@ -38,7 +37,7 @@ class TestRBTestCase1( RBTestCase ):
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-class TestRBTestCase2( RBTestCase ):
+class TestTestCase2( TestCase ):
 
   def globalSetUp( self ):
 
@@ -72,7 +71,7 @@ class TestRBTestCase2( RBTestCase ):
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-class TestRBTestCase3( RBTestCase ):
+class TestTestCase3( TestCase ):
 
   def test_stringcrudelyequal( self ):
 
@@ -98,15 +97,15 @@ def suite():
   suite = unittest.TestSuite();
 
   suite.addTests( unittest.TestLoader().loadTestsFromTestCase(
-      TestRBTestCase1
+      TestTestCase1
     ) );
 
   suite.addTests( unittest.TestLoader().loadTestsFromTestCase(
-      TestRBTestCase2
+      TestTestCase2
     ) );
 
   suite.addTests( unittest.TestLoader().loadTestsFromTestCase(
-      TestRBTestCase3
+      TestTestCase3
     ) );
 
   return suite;
@@ -122,13 +121,12 @@ if __name__ == '__main__':
   sys.exit( main( sys.argv ) );
 
 
-
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 #                                                                             #
-# (c) Copyright 2009 by Richard Bergmair.                                     #
+#        PyPES: the python platform for experimentation with semantics        #
 #                                                                             #
-#   See LICENSE.txt for terms and conditions                                  #
-#   on use, reproduction, and distribution.                                   #
+#                  (c) Copyright 2009 by Richard Bergmair                     #
+#       -----------------------------------------------------------------     #
+#       See LICENSE.txt for terms and conditions on use and reproduction.     #
 #                                                                             #
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
-

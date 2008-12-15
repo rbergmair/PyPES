@@ -1,24 +1,22 @@
 # -*-  coding: ascii -*-
 
-__package__ = "pyrbutilstest";
+__package__ = "pypestest.utils";
 
 import unittest;
 import sys;
 
-from pyrbutils.rbunittest import RBTestCase;
-from pyrbutils.rbstring import crude_match;
-
+from pypes.utils.unittest_ import TestCase;
+from pypes.utils.string_ import crude_match;
 
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-class TestRBString( RBTestCase ):
+class TestString( TestCase ):
 
   def test_stringcrudelyequal( self ):
 
     self.assertTrue( crude_match(" sd\ndf  \n  ","sddf") );
     self.assertFalse( crude_match(" sd\ndf  \n  ","sdfd") );
-
 
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
@@ -28,7 +26,7 @@ def suite():
   suite = unittest.TestSuite();
 
   suite.addTests( unittest.TestLoader().loadTestsFromTestCase(
-      TestRBString
+      TestString
     ) );
 
   return suite;
@@ -44,12 +42,12 @@ if __name__ == '__main__':
   sys.exit( main( sys.argv ) );
 
 
-
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 #                                                                             #
-# (c) Copyright 2009 by Richard Bergmair.                                     #
+#        PyPES: the python platform for experimentation with semantics        #
 #                                                                             #
-#   See LICENSE.txt for terms and conditions                                  #
-#   on use, reproduction, and distribution.                                   #
+#                  (c) Copyright 2009 by Richard Bergmair                     #
+#       -----------------------------------------------------------------     #
+#       See LICENSE.txt for terms and conditions on use and reproduction.     #
 #                                                                             #
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #

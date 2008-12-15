@@ -5,9 +5,8 @@ __package__ = "pypes.utils";
 import unittest;
 
 from pypes.utils.mc import Singleton;
-from pypes.utils.logging import log_info;
-from pypes.utils.string import crude_match;
-
+from pypes.utils.logging_ import log_info;
+from pypes.utils.string_ import crude_match;
 
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
@@ -58,7 +57,7 @@ class TestCase( unittest.TestCase ):
   
   def __init__( self, *args, **kwargs ):
     
-    TestCase.__init__( self, *args, **kwargs );
+    unittest.TestCase.__init__( self, *args, **kwargs );
     _TestCaseController().attach_rbtestcase_instance( self );
     
   def __del__( self ):
@@ -118,7 +117,6 @@ class TestCase( unittest.TestCase ):
     
     if actual == expected:
       self._failSequenceComparison( actual, expected, msg, True );
-
  
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #

@@ -10,7 +10,6 @@ from pypes.utils.mc import Singleton;
 from pypes.utils.globals import get_insttok;
 
 
-
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 LOG_CRITICAL = logging.CRITICAL;
@@ -20,7 +19,6 @@ LOG_INFO = logging.INFO;
 LOG_DEBUG_COARSE = ( logging.INFO+logging.DEBUG ) / 2;
 LOG_DEBUG = logging.DEBUG;
 LOG_NOTSET = logging.NOTSET;
-
 
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
@@ -156,13 +154,12 @@ class _LogController( metaclass=Singleton ):
     return logging.getLogger( source );
 
 
-
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-def attach_stderr_logger( loggername, level ):
+def log_attach_stderr_logger( loggername, level ):
   _LogController().attach_stderr_logger( loggername, level );
 
-def attach_file_logger( loggername, level, logdir, prefix ):
+def log_attach_file_logger( loggername, level, logdir, prefix ):
   _LogController().attach_file_logger( loggername, level, logdir, prefix );
 
 def log_critical( sourceid, msg ):
@@ -188,7 +185,6 @@ def log_debug( sourceid, msg ):
 
 def log( sourceid, level, msg ):
   _LogController().get_logger( sourceid ).log( level, msg );
-
 
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #

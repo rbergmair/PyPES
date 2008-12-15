@@ -15,7 +15,7 @@ class Subject( type ):
   def __new__( mcs, name, bases, dict ):
 
     cls = type.__new__( mcs, name, bases, dict );
-    cls.__new__ = RBSubject.__subject_new;
+    cls.__new__ = Subject.__subject_new;
     return cls;
 
 
@@ -43,7 +43,7 @@ class Singleton( type ):
     cls = type.__new__( mcs, name, bases, dict );
     cls.__instance = None;
     cls.__orig_new = cls.__new__;
-    cls.__new__ = RBSingleton.__singleton_new;
+    cls.__new__ = Singleton.__singleton_new;
 
     return cls;
 

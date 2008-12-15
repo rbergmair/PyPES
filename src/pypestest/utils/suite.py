@@ -1,15 +1,15 @@
 # -*-  coding: ascii -*-
 
-__package__ = "pyrbutilstest";
+__package__ = "pypestest.utils";
 
 import sys;
 import unittest;
 
-import pyrbutilstest.globals;
-import pyrbutilstest.rblogging;
-import pyrbutilstest.rbmc;
-import pyrbutilstest.rbstring;
-import pyrbutilstest.rbunittest;
+import pypestest.utils.mc;
+import pypestest.utils.string_;
+import pypestest.utils.globals;
+import pypestest.utils.logging_;
+import pypestest.utils.unittest_;
 
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
@@ -18,12 +18,12 @@ def suite():
 
   suite = unittest.TestSuite();
 
-  suite.addTests( pyrbutilstest.rbmc.suite() );
-  suite.addTests( pyrbutilstest.rbstring.suite() );
-  suite.addTests( pyrbutilstest.globals.suite() );
+  suite.addTests( pypestest.utils.mc.suite() );
+  suite.addTests( pypestest.utils.string_.suite() );
+  suite.addTests( pypestest.utils.globals.suite() );
   # output is annoying
-  # suite.addTests( pyrbutilstest.rblogging.suite() );
-  suite.addTests( pyrbutilstest.rbunittest.suite() );
+  # suite.addTests( pypestest.utils.logging_.suite() );
+  suite.addTests( pypestest.utils.unittest_.suite() );
 
   return suite;
 
@@ -38,12 +38,12 @@ if __name__ == '__main__':
   sys.exit( main( sys.argv ) );
 
 
-
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 #                                                                             #
-# (c) Copyright 2009 by Richard Bergmair.                                     #
+#        PyPES: the python platform for experimentation with semantics        #
 #                                                                             #
-#   See LICENSE.txt for terms and conditions                                  #
-#   on use, reproduction, and distribution.                                   #
+#                  (c) Copyright 2009 by Richard Bergmair                     #
+#       -----------------------------------------------------------------     #
+#       See LICENSE.txt for terms and conditions on use and reproduction.     #
 #                                                                             #
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
