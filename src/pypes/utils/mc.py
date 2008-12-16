@@ -10,7 +10,7 @@ class Subject( type ):
   def __subject_new( cls, *args, **kwargs ):
 
     subject = object.__new__( cls );
-    return subject.run( *args, **kwargs );
+    return subject._run_( *args, **kwargs );
 
   def __new__( mcs, name, bases, dict ):
 

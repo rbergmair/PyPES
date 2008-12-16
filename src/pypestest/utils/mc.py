@@ -15,7 +15,7 @@ from pypes.utils.unittest_ import TestCase;
 class Eat( metaclass=Subject ):
 
 
-  def run( self, inst ):
+  def _run_( self, inst ):
 
     if isinstance( inst, Apple ):
       assert inst.apple;
