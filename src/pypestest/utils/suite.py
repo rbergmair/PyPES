@@ -11,6 +11,8 @@ import pypestest.utils.globals;
 import pypestest.utils.logging_;
 import pypestest.utils.unittest_;
 
+import pypestest.utils.xml_.suite;
+
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
@@ -21,9 +23,10 @@ def suite():
   suite.addTests( pypestest.utils.mc.suite() );
   suite.addTests( pypestest.utils.string_.suite() );
   suite.addTests( pypestest.utils.globals.suite() );
-  # output is annoying
-  # suite.addTests( pypestest.utils.logging_.suite() );
+  suite.addTests( pypestest.utils.logging_.suite() );
   suite.addTests( pypestest.utils.unittest_.suite() );
+
+  suite.addTests( pypestest.utils.xml_.suite.suite() );
 
   return suite;
 

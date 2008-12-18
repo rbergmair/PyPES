@@ -1,16 +1,98 @@
-import pyrmrs.config;
-import pyrmrs.globals;
-import pyrmrs.error.xmlsem_error;
+# -*-  coding: ascii -*-
+
+__package__ = "pypes.utils.xml_";
+
+import string;
 
 import xml.sax;
 import xml.sax.handler;
 
-import errno;
-import sys;
 
-CHUNK_SIZE = 512;
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+
+class ReadXmlElement( xml.sax.handler.ContentHandler ):
+
+  def encode_str( self, line, line_len=78 ):
+
+    return pyrmrs.globals.encode_str( line, line_len );
+
+  def decode_str( self, block ):
+
+    return pyrmrs.globals.decode_str( block );
+
+  def startElement( self, name, attrs ):
+
+    pass;
+
+  def characters( self, content ):
+
+    pass;
+
+  def endElement( self, name ):
+
+    pass;
+
+  def register( self, obj ):
+
+    pass;
+
+  def xml_base( self ):
+
+    return "<%s%%s>%%s</%s>" % ( self.XMLELEM, self.XMLELEM );
+
+  def xml_tmplt( self, base ):
+
+    return base;
+
+  def str_xml( self ):
+
+    base = self.xml_base();
+    base = self.xml_tmplt( base );
+    base = base % ( "", "" )
+    return base;
 
 
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+
+class PCharElement( reader_element.ReaderElement ):
+
+  text = None;
+  active = False;
+  inactive_tags = [];
+
+  def __init__( self ):
+
+    self.text = None;
+    self.active = False;
+    self.inactive_tags = [];
+
+  def startElement( self, name, attrs ):
+
+    if name in self.XMLELEMs:
+      self.text = "";
+      self.active = True;
+    else:
+      self.active = False;
+      self.inactive_tags.append( name );
+
+  def characters( self, content ):
+
+    if self.active:
+      self.text += content;
+
+  def endElement( self, name ):
+
+    if self.active and name in self.XMLELEMs:
+      self.active = False;
+      #self.text = self.text.strip();
+    elif len( self.inactive_tags ) > 0:
+      x = self.inactive_tags.pop();
+      assert x == name;
+      if len( self.inactive_tags ) == 0:
+        self.active = True;
+
+
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 class XMLReaderIter:
 
@@ -43,8 +125,11 @@ class XMLReaderIter:
     return rslt;
 
 
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 class XMLReader( xml.sax.handler.ContentHandler ):
+
+  CHUNK_SIZE = 512;
 
   buf = [];
   ifile = None;
@@ -289,3 +374,15 @@ class XMLReader( xml.sax.handler.ContentHandler ):
         if self.end_callbacks.has_key( active_obj.__class__ ):
           for cb in self.end_callbacks[ active_obj.__class__ ]:
             cb( active_obj, name );
+
+
+
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+#                                                                             #
+#        PyPES: the python platform for experimentation with semantics        #
+#                                                                             #
+#                  (c) Copyright 2009 by Richard Bergmair                     #
+#       -----------------------------------------------------------------     #
+#       See LICENSE.txt for terms and conditions on use and reproduction.     #
+#                                                                             #
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #

@@ -14,6 +14,7 @@ class TestTestCase1( TestCase ):
 
   def globalSetUp( self ):
 
+    super( TestTestCase1, self ).globalSetUp();
     self._globalstate.myvar = True;
     self._globalstate.mycnt = 0;
 
@@ -41,6 +42,7 @@ class TestTestCase2( TestCase ):
 
   def globalSetUp( self ):
 
+    super( TestTestCase2, self ).globalSetUp();
     self._globalstate.mycnt = 0;
 
   def globalTearDown( self ):
@@ -92,6 +94,30 @@ class TestTestCase3( TestCase ):
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
+class Asdf:
+  
+  def __init__( self ):
+
+    self.asdf = None;
+
+  def __del__( self ):
+  
+    pass;
+
+class TestCycles( TestCase ):
+
+  def _test_cylces( self ):
+
+    asdf1 = Asdf();
+    asdf2 = Asdf();
+    asdf3 = Asdf();
+    asdf1.asdf = asdf2;
+    asdf2.asdf = asdf3;
+    asdf3.asdf = asdf1;
+
+
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+
 def suite():
 
   suite = unittest.TestSuite();
@@ -106,6 +132,10 @@ def suite():
 
   suite.addTests( unittest.TestLoader().loadTestsFromTestCase(
       TestTestCase3
+    ) );
+
+  suite.addTests( unittest.TestLoader().loadTestsFromTestCase(
+      TestCycles
     ) );
 
   return suite;

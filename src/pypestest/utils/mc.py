@@ -12,20 +12,19 @@ from pypes.utils.unittest_ import TestCase;
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-class Eat( metaclass=Subject ):
+class Eater( metaclass=Subject ):
 
+  def eat( self ):
 
-  def _run_( self, inst ):
+    if isinstance( self._obj_, Apple ):
+      assert self._obj_.apple;
+      assert not self._obj_.banana;
 
-    if isinstance( inst, Apple ):
-      assert inst.apple;
-      assert not inst.banana;
+    if isinstance( self._obj_, Banana ):
+      assert self._obj_.banana;
+      assert not self._obj_.apple;
 
-    if isinstance( inst, Banana ):
-      assert inst.banana;
-      assert not inst.apple;
-
-    inst.eaten = True;
+    self._obj_.eaten = True;
 
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
@@ -37,7 +36,6 @@ class Apple:
     self.eaten = False;
     self.apple = True;
     self.banana = False;
-    self.eat = lambda: Eat( self );
 
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
@@ -49,7 +47,6 @@ class Banana:
     self.eaten = False;
     self.apple = False;
     self.banana = True;
-    self.eat = lambda: Eat( self );
 
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
@@ -62,8 +59,10 @@ class TestSubjectOrientedProgramming( TestCase ):
     banana = Banana();
     self.assertFalse( apple.eaten );
     self.assertFalse( banana.eaten );
-    apple.eat();
-    banana.eat();
+    with Eater( apple ) as eater:
+      eater.eat();
+    with Eater( banana ) as eater:
+      eater.eat();
     self.assertTrue( apple.eaten );
     self.assertTrue( banana.eaten );
 

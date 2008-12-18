@@ -22,11 +22,12 @@ class TestFilterTextcontent( TestCase ):
 
     with StringIO( INDATA ) as ifile:
       with StringIO() as ofile:
-        FilterTextContent(
-            ifile, ofile,
-            { "p": lambda text: text.replace( "test", "TEST" ),
-              "strong": lambda text: "*"+text+"*" }
-          );
+        with FilterTextContent() as ftc:
+          ftc.filter_textcontent(
+              ifile, ofile,
+              { "p": lambda text: text.replace( "test", "TEST" ),
+                "strong": lambda text: "*"+text+"*" }
+            );
         self.assertStringCrudelyEqual( ofile.getvalue(), OUTDATA );
 
 

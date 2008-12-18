@@ -64,7 +64,7 @@ class _LogController( metaclass=Singleton ):
     self._loggers[ loggername ] = ( handler, f );
 
 
-  def __del__( self ):
+  def _on_exit_( self ):
 
     for loggername in self._loggers:
       logger = logging.getLogger( loggername );

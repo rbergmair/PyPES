@@ -188,17 +188,16 @@ class FilterTextContent( xml.sax.handler.ContentHandler, metaclass=Subject ):
     self._copythrough = True;
 
 
-  def _run_( self, ifile, ofile, filters, bypass_escape=False ):
+  def filter_textcontent( self, ifile, ofile, filters, bypass_escape=False ):
 
     self._bypass_escape = bypass_escape;
 
-    self._parser = xml.sax.make_parser();
-    self._parser.setFeature( xml.sax.handler.feature_namespaces, 0 );
-    self._parser.setContentHandler( self );
+    parser = xml.sax.make_parser();
+    parser.setFeature( xml.sax.handler.feature_namespaces, 0 );
+    parser.setContentHandler( self );
  
     self._filters = filters;
   
-    self._ifile = ifile;
     self._ofile = ofile;
 
     self._tagstack = None;
@@ -210,10 +209,11 @@ class FilterTextContent( xml.sax.handler.ContentHandler, metaclass=Subject ):
   
     reading_indent = True;
     reading_tag = False;
+
     
     while True:
       
-      ch = self._ifile.read( 1 );
+      ch = ifile.read( 1 );
       if ch == "":
         break;
       
@@ -227,12 +227,13 @@ class FilterTextContent( xml.sax.handler.ContentHandler, metaclass=Subject ):
         if not reading_tag:
           self._ofile.write( ch );
       
-      self._parser.feed( ch );
+      parser.feed( ch );
 
       if ch == ">":
         reading_tag = False;
         if self._copythrough:
           self._ofile.write( self._tag );
+
 
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #

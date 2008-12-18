@@ -14,7 +14,7 @@ from pypes.utils.logging_ import *;
 
 class TestLogging( TestCase ):
 
-  def globalSetUp( self ):
+  def test_logging( self ):
 
     log_attach_stderr_logger(
         "pypestest", LOG_ERROR
@@ -35,19 +35,6 @@ class TestLogging( TestCase ):
         "/tmp", "mytest"
       );
 
-  def globalTearDown( self ):
-
-    pass;
-
-  def setUp( self ):
-
-    pass;
-
-  def tearDown( self ):
-
-    pass;
-
-  def test_logging( self ):
 
     log_error( self, "everywhere" );
     log_debug( self, "module file only" );

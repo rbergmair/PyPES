@@ -4,6 +4,9 @@ __package__ = "pypes.utils";
 
 import unittest;
 
+import gc;
+import sys;
+
 from pypes.utils.mc import Singleton;
 from pypes.utils.logging_ import log_info;
 from pypes.utils.string_ import crude_match;
@@ -25,7 +28,7 @@ class _TestCaseController( metaclass=Singleton ):
 
     self._globalstate_insts = {};
     self._testcase_insts = {};
-
+    self.seen_garbage = set();
 
   def attach_rbtestcase_instance( self, testcase_inst ):
 
@@ -65,12 +68,28 @@ class TestCase( unittest.TestCase ):
     _TestCaseController().detach_rbtestcase_instance( self );
   
   def globalSetUp( self ):
-    
+
     pass;
   
   def globalTearDown( self ):
-    
+
     pass;
+
+  def run( self, result ):
+
+    try:
+      gc.collect();
+      # gc.set_debug( gc.DEBUG_UNCOLLECTABLE | gc.DEBUG_COLLECTABLE );
+      gc.set_debug( gc.DEBUG_UNCOLLECTABLE );
+      super( TestCase, TestCase ).run( self, result );
+      gc.collect();
+      grb = set( map( id, gc.garbage ) );
+      grb -= _TestCaseController().seen_garbage;
+      _TestCaseController().seen_garbage |= grb;
+      self.assertEqual( len( grb ), 0 );
+      gc.set_debug( 0 );
+    except:
+      result.addFailure( self, sys.exc_info() );
  
   def _failStringCrudelyComparison( self, actual, expected, msg=None,
                                     neg=False ): 
@@ -117,7 +136,7 @@ class TestCase( unittest.TestCase ):
     
     if actual == expected:
       self._failSequenceComparison( actual, expected, msg, True );
- 
+
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 #                                                                             #
