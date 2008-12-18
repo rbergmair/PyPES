@@ -13,7 +13,7 @@ from pypes.utils.mc import Subject;
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-class FilterTextContent( xml.sax.handler.ContentHandler, metaclass=Subject ):
+class TextContentFilter( xml.sax.handler.ContentHandler, metaclass=Subject ):
 
 
   PRIVATE_LOWER = 0xE000;
@@ -26,21 +26,21 @@ class FilterTextContent( xml.sax.handler.ContentHandler, metaclass=Subject ):
 
     x = ord( chr );
 
-    if not FilterTextContent.PRIVATE_LOWER <= x:
+    if not TextContentFilter.PRIVATE_LOWER <= x:
       return False;
-    if not x <= FilterTextContent.PRIVATE_UPPER:
+    if not x <= TextContentFilter.PRIVATE_UPPER:
       return False;
     return True;
 
 
   def tag_to_punichr( self, tagopen, tagid ):
 
-    assert 0 <= tagid < FilterTextContent.PRIVATE_RANGE;
+    assert 0 <= tagid < TextContentFilter.PRIVATE_RANGE;
 
     if tagopen:
-      return chr( FilterTextContent.PRIVATE_LOWER + tagid );
+      return chr( TextContentFilter.PRIVATE_LOWER + tagid );
     else:
-      return chr( FilterTextContent.PRIVATE_UPPER - tagid );
+      return chr( TextContentFilter.PRIVATE_UPPER - tagid );
 
 
   def punichr_to_tag( self, chr ):
@@ -49,10 +49,10 @@ class FilterTextContent( xml.sax.handler.ContentHandler, metaclass=Subject ):
 
     x = ord( chr );
 
-    if x < FilterTextContent.PRIVATE_MIDDLE:
-      return ( True, x - FilterTextContent.PRIVATE_LOWER );
+    if x < TextContentFilter.PRIVATE_MIDDLE:
+      return ( True, x - TextContentFilter.PRIVATE_LOWER );
     else:
-      return ( False, FilterTextContent.PRIVATE_UPPER - x );
+      return ( False, TextContentFilter.PRIVATE_UPPER - x );
 
 
   def startElement( self, name, attrs ):

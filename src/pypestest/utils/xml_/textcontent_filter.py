@@ -9,20 +9,20 @@ from io import StringIO;
 
 from pypes.utils.unittest_ import TestCase;
 
-from pypes.utils.xml_.filter_textcontent import FilterTextContent;
+from pypes.utils.xml_.textcontent_filter import TextContentFilter;
 
 from pypestest.utils.xml_.data import INDATA, OUTDATA;
 
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-class TestFilterTextcontent( TestCase ):
+class TestTextContentFilter( TestCase ):
 
-  def test_filter_textcontent( self ):
+  def test_textcontent_filter( self ):
 
     with StringIO( INDATA ) as ifile:
       with StringIO() as ofile:
-        with FilterTextContent() as ftc:
+        with TextContentFilter() as ftc:
           ftc.filter_textcontent(
               ifile, ofile,
               { "p": lambda text: text.replace( "test", "TEST" ),
@@ -38,7 +38,7 @@ def suite():
   suite = unittest.TestSuite();
 
   suite.addTests( unittest.TestLoader().loadTestsFromTestCase(
-      TestFilterTextcontent
+      TestTextContentFilter
     ) );
 
   return suite;
