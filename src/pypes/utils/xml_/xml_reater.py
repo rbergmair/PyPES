@@ -10,7 +10,7 @@ import xml.sax.handler;
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-class ReadXmlElement( xml.sax.handler.ContentHandler ):
+class XmlElementReader( xml.sax.handler.ContentHandler ):
 
   def encode_str( self, line, line_len=78 ):
 
@@ -36,25 +36,10 @@ class ReadXmlElement( xml.sax.handler.ContentHandler ):
 
     pass;
 
-  def xml_base( self ):
-
-    return "<%s%%s>%%s</%s>" % ( self.XMLELEM, self.XMLELEM );
-
-  def xml_tmplt( self, base ):
-
-    return base;
-
-  def str_xml( self ):
-
-    base = self.xml_base();
-    base = self.xml_tmplt( base );
-    base = base % ( "", "" )
-    return base;
-
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-class PCharElement( reader_element.ReaderElement ):
+class XmlPCharElementReader( XmlElementReader ):
 
   text = None;
   active = False;
