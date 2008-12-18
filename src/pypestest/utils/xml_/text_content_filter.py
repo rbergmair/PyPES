@@ -9,7 +9,7 @@ from io import StringIO;
 
 from pypes.utils.unittest_ import TestCase;
 
-from pypes.utils.xml_.textcontent_filter import TextContentFilter;
+from pypes.utils.xml_.text_content_filter import TextContentFilter;
 
 from pypestest.utils.xml_.data import INDATA, OUTDATA;
 
