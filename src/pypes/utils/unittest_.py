@@ -86,7 +86,7 @@ class TestCase( unittest.TestCase ):
       grb = set( map( id, gc.garbage ) );
       grb -= _TestCaseController().seen_garbage;
       _TestCaseController().seen_garbage |= grb;
-      self.assertEqual( len( grb ), 0 );
+      self.assertFalse( grb );
       gc.set_debug( 0 );
     except:
       result.addFailure( self, sys.exc_info() );

@@ -6,7 +6,7 @@ import atexit;
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-class SubjectCtxMgr:
+class _SubjectCtxMgr:
 
   def __init__( self, subj ):
 
@@ -21,7 +21,7 @@ class SubjectCtxMgr:
     except AttributeError:
       pass;
     if enter is not None:
-      enter( self._subj );
+      enter();
     return self._subj;
 
   def __exit__( self, exc_type, exc_val, exc_tb ):
@@ -33,7 +33,7 @@ class SubjectCtxMgr:
     except AttributeError:
       pass;
     if exit is not None:
-      rslt = exit( self._subj, exc_type, exc_val, exc_tb );
+      rslt = exit( exc_type, exc_val, exc_tb );
     self._subj._obj_ = None;
     self._subj = None;
     return rslt;
@@ -49,13 +49,16 @@ class Subject( type ):
     subject.__orig_init = cls.__init__;
     subject.__init__ = lambda *args, **kwargs: None;
     subject._obj_ = obj;
-    return SubjectCtxMgr( subject );
+    return _SubjectCtxMgr( subject );
 
   def __new__( mcs, name, bases, dict ):
 
     cls = type.__new__( mcs, name, bases, dict );
-    cls.__orig_new = cls.__new__;
-    cls.__new__ = Subject.__subject_new;
+    try:
+      cls.__orig_new;
+    except AttributeError:
+      cls.__orig_new = cls.__new__;
+      cls.__new__ = Subject.__subject_new;
     return cls;
 
 

@@ -22,7 +22,7 @@ class TextContentFilter( xml.sax.handler.ContentHandler, metaclass=Subject ):
   PRIVATE_RANGE = PRIVATE_MIDDLE - PRIVATE_LOWER;
 
 
-  def ispunichr( self, chr ):
+  def _ispunichr( self, chr ):
 
     x = ord( chr );
 
@@ -33,7 +33,7 @@ class TextContentFilter( xml.sax.handler.ContentHandler, metaclass=Subject ):
     return True;
 
 
-  def tag_to_punichr( self, tagopen, tagid ):
+  def _tag_to_punichr( self, tagopen, tagid ):
 
     assert 0 <= tagid < TextContentFilter.PRIVATE_RANGE;
 
@@ -43,9 +43,9 @@ class TextContentFilter( xml.sax.handler.ContentHandler, metaclass=Subject ):
       return chr( TextContentFilter.PRIVATE_UPPER - tagid );
 
 
-  def punichr_to_tag( self, chr ):
+  def _punichr_to_tag( self, chr ):
 
-    assert self.ispunichr( chr );
+    assert self._ispunichr( chr );
 
     x = ord( chr );
 
@@ -57,7 +57,7 @@ class TextContentFilter( xml.sax.handler.ContentHandler, metaclass=Subject ):
 
   def startElement( self, name, attrs ):
 
-    stack = self._tagstack is not None and len( self._tagstack ) > 0;
+    stack = self._tagstack is not None and self._tagstack;
 
     if stack or name in self._filters:
       
@@ -68,13 +68,13 @@ class TextContentFilter( xml.sax.handler.ContentHandler, metaclass=Subject ):
         self._taginfo = {};
 
       tagid = 0;
-      if len( self._taginfo ) > 0:
+      if self._taginfo:
         tagid = max( self._taginfo ) + 1;
       
       if stack:
         ( chbuf_, tagname_ ) = self._taginfo[ self._tagstack[ -1 ] ];
-        chbuf_ += self.tag_to_punichr( True, tagid );
-        chbuf_ += self.tag_to_punichr( False, tagid );
+        chbuf_ += self._tag_to_punichr( True, tagid );
+        chbuf_ += self._tag_to_punichr( False, tagid );
         self._taginfo[ self._tagstack[ -1 ] ] = ( chbuf_, tagname_ );
 
       self._tagstack.append( tagid );
@@ -86,7 +86,7 @@ class TextContentFilter( xml.sax.handler.ContentHandler, metaclass=Subject ):
     if self._tagstack is None:
       return;
 
-    if len( self._tagstack ) == 0:
+    if not self._tagstack:
       return;
 
     ( chbuf, tagname ) = self._taginfo[ self._tagstack[ -1 ] ];
@@ -105,10 +105,10 @@ class TextContentFilter( xml.sax.handler.ContentHandler, metaclass=Subject ):
 
         wnd = chbuf[ i : i+2 ];
 
-        if self.ispunichr( wnd[0] ):
-          if self.ispunichr( wnd[1] ):
-            ( open0, tagid0 ) = self.punichr_to_tag( wnd[0] );
-            ( open1, tagid1 ) = self.punichr_to_tag( wnd[1] );
+        if self._ispunichr( wnd[0] ):
+          if self._ispunichr( wnd[1] ):
+            ( open0, tagid0 ) = self._punichr_to_tag( wnd[0] );
+            ( open1, tagid1 ) = self._punichr_to_tag( wnd[1] );
             if open0 and not open1 and tagid0 == tagid1:
               ( chbuf_, tagname_ ) = self._taginfo[ tagid0 ];
               out += wnd[0];
@@ -138,12 +138,12 @@ class TextContentFilter( xml.sax.handler.ContentHandler, metaclass=Subject ):
 
     for ch in chbuf:
 
-      if not self.ispunichr( ch ):
+      if not self._ispunichr( ch ):
         token += ch;
         continue;
 
       out += self._escape( token );
-      ( open, tagid ) = self.punichr_to_tag( ch );
+      ( open, tagid ) = self._punichr_to_tag( ch );
       ( chbuf_, tagname_ ) = self._taginfo[ tagid ];
       if open:
         out += "<"+tagname_+">";
@@ -162,7 +162,7 @@ class TextContentFilter( xml.sax.handler.ContentHandler, metaclass=Subject ):
     if self._tagstack is None:
       return;
 
-    if len( self._tagstack ) == 0:
+    if not self._tagstack:
       return;
 
     tagid = self._tagstack[ -1 ];
@@ -179,7 +179,7 @@ class TextContentFilter( xml.sax.handler.ContentHandler, metaclass=Subject ):
 
     self._tagstack.pop();
 
-    if len( self._tagstack ) > 0:
+    if self._tagstack:
       return;
 
     self._ofile.write( "<" + name + ">" + self._to_xml(chbuf) );
@@ -192,7 +192,8 @@ class TextContentFilter( xml.sax.handler.ContentHandler, metaclass=Subject ):
 
     self._bypass_escape = bypass_escape;
 
-    parser = xml.sax.make_parser();
+    parser = xml.sax.make_parser( [ "xml.sax.xmlreader.IncrementalParser" ] );
+    
     parser.setFeature( xml.sax.handler.feature_namespaces, 0 );
     parser.setContentHandler( self );
  

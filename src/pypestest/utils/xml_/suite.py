@@ -6,6 +6,7 @@ import sys;
 import unittest;
 
 import pypestest.utils.xml_.text_content_filter;
+import pypestest.utils.xml_.xml_handler;
 
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
@@ -15,6 +16,7 @@ def suite():
   suite = unittest.TestSuite();
 
   suite.addTests( pypestest.utils.xml_.text_content_filter.suite() );
+  suite.addTests( pypestest.utils.xml_.xml_handler.suite() );
 
   return suite;
 

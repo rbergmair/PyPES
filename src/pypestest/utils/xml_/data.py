@@ -49,3 +49,13 @@ OUTDATA = """<?xml version="1.0" encoding="UTF-8"?>
 
   </html>
   """;
+
+TITLE = "This is a test.";
+
+CONTENT = """HEADING: This is a test.
+  PARAGRAPH: 
+    This is a test
+  PARAGRAPH: 
+    This is a test.
+    This is another test.
+  """;

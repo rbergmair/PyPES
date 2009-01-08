@@ -29,11 +29,22 @@ class Eater( metaclass=Subject ):
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
+class DigestingEater( Eater ):
+
+  def eat( self ):
+    
+    Eater.eat( self );
+    self._obj_.digested = True;
+
+
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+
 class Apple:
 
   def __init__( self ):
 
     self.eaten = False;
+    self.digested = False;
     self.apple = True;
     self.banana = False;
 
@@ -45,6 +56,7 @@ class Banana:
   def __init__( self ):
 
     self.eaten = False;
+    self.digested = False;
     self.apple = False;
     self.banana = True;
 
@@ -53,7 +65,7 @@ class Banana:
 
 class TestSubjectOrientedProgramming( TestCase ):
 
-  def test_subject_oriented_programming( self ):
+  def test_eater( self ):
 
     apple = Apple();
     banana = Banana();
@@ -65,6 +77,19 @@ class TestSubjectOrientedProgramming( TestCase ):
       eater.eat();
     self.assertTrue( apple.eaten );
     self.assertTrue( banana.eaten );
+
+  def test_digesting_eater( self ):
+
+    apple = Apple();
+    banana = Banana();
+    self.assertFalse( apple.digested );
+    self.assertFalse( banana.digested );
+    with DigestingEater( apple ) as eater:
+      eater.eat();
+    with DigestingEater( banana ) as eater:
+      eater.eat();
+    self.assertTrue( apple.digested );
+    self.assertTrue( banana.digested );
 
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
