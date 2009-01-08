@@ -17,7 +17,7 @@ class SubjectCtxMgr:
     self._subj._Subject__orig_init( self._subj );
     enter = None;
     try:
-      enter = self._subj._Subject__enter__;
+      enter = self._subj._enter_;
     except AttributeError:
       pass;
     if enter is not None:
@@ -29,7 +29,7 @@ class SubjectCtxMgr:
     rslt = False;
     exit = None;
     try:
-      exit = self._subj._Subject__exit__;
+      exit = self._subj._exit_;
     except AttributeError:
       pass;
     if exit is not None:
