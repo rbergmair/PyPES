@@ -5,12 +5,12 @@ __package__ = "pypes.utils.xml_";
 import xml.sax;
 import xml.sax.handler;
 
-from pypes.utils.mc import Subject;
+from pypes.utils.mc import subject;
 
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-class XMLElementHandler( xml.sax.handler.ContentHandler, metaclass=Subject ):
+class XMLElementHandler( xml.sax.handler.ContentHandler, metaclass=subject ):
 
   XMLELEM = None;
 
@@ -33,7 +33,7 @@ class XMLElementHandler( xml.sax.handler.ContentHandler, metaclass=Subject ):
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-class XMLPCharElementHandler( XMLElementHandler, metaclass=Subject ):
+class XMLPCharElementHandler( XMLElementHandler ):
   
   XMLELEM = None;
 
@@ -53,7 +53,7 @@ class XMLPCharElementHandler( XMLElementHandler, metaclass=Subject ):
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-class XMLHandler( xml.sax.handler.ContentHandler, metaclass=Subject ):
+class XMLHandler( xml.sax.handler.ContentHandler, metaclass=subject ):
 
   CLIENT_BYNAME = {};
   IGNORE = [];

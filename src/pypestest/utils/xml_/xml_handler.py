@@ -5,7 +5,7 @@ __package__ = "pypestest.utils";
 import sys;
 import unittest;
 
-from pypes.utils.mc import Subject;
+from pypes.utils.mc import subject;
 
 from pypes.utils.unittest_ import TestCase;
 
@@ -80,7 +80,7 @@ class BodyHandler( XMLElementHandler ):
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-class MyXMLHandler( XMLHandler, metaclass=Subject ):
+class MyXMLHandler( XMLHandler, metaclass=subject ):
   
   CLIENT_BYNAME = {
     "html" : ( HTMLHandler, lambda: DocumentModel() ),

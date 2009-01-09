@@ -8,12 +8,12 @@ import xml.sax.handler;
 
 import string;
 
-from pypes.utils.mc import Subject;
+from pypes.utils.mc import subject;
 
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-class TextContentFilter( xml.sax.handler.ContentHandler, metaclass=Subject ):
+class TextContentFilter( xml.sax.handler.ContentHandler, metaclass=subject ):
 
 
   PRIVATE_LOWER = 0xE000;
