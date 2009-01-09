@@ -7,21 +7,21 @@ import unittest;
 import gc;
 import sys;
 
-from pypes.utils.mc import Singleton;
+from pypes.utils.mc import singleton;
 from pypes.utils.logging_ import log_info;
 from pypes.utils.string_ import crude_match;
 
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-class _TestCaseGlobalState( object ):
+class _TestCaseGlobalState:
 
   pass;
 
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-class _TestCaseController( metaclass=Singleton ):
+class _TestCaseController( metaclass=singleton ):
 
 
   def __init__( self ):

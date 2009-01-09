@@ -6,7 +6,7 @@ import logging;
 from sys import stderr;
 from os import mkdir;
 
-from pypes.utils.mc import Singleton;
+from pypes.utils.mc import singleton;
 from pypes.utils.globals import get_insttok;
 
 
@@ -23,7 +23,7 @@ LOG_NOTSET = logging.NOTSET;
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-class _LogController( metaclass=Singleton ):
+class _LogController( metaclass=singleton ):
 
 
   def __init__( self ):

@@ -5,14 +5,14 @@ __package__ = "pypestest.utils";
 import sys;
 import unittest;
 
-from pypes.utils.mc import Subject;
-from pypes.utils.mc import Singleton;
+from pypes.utils.mc import subject;
+from pypes.utils.mc import singleton;
 from pypes.utils.unittest_ import TestCase;
 
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-class Eater( metaclass=Subject ):
+class Eater( metaclass=subject ):
 
   def eat( self ):
 
@@ -94,7 +94,7 @@ class TestSubjectOrientedProgramming( TestCase ):
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-class Singleton( metaclass=Singleton ):
+class Singleton( metaclass=singleton ):
 
   pass;
 

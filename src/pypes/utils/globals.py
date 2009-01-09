@@ -12,12 +12,12 @@ from socket import gethostname;
 from time import time;
 from time import strftime;
 
-from pypes.utils.mc import Singleton;
+from pypes.utils.mc import singleton;
 
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-class _IDController( metaclass=Singleton ):
+class _IDController( metaclass=singleton ):
 
 
   def get_timestamp( self ):
