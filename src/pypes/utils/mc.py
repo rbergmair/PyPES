@@ -4,6 +4,8 @@ __package__ = "pypes.utils";
 
 import atexit;
 
+
+
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 class _SubjectCtxMgr:
@@ -14,7 +16,7 @@ class _SubjectCtxMgr:
 
   def __enter__( self ):
 
-    self._subj._subject__orig_init();
+    self._subj._subject__orig_init( self._subj );
     enter = None;
     try:
       enter = self._subj._enter_;
@@ -39,27 +41,29 @@ class _SubjectCtxMgr:
     return rslt;
 
 
+
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 class subject( type ):
 
   def __subject_new( cls, obj=None ):
 
-    subject = cls._subject__orig_new( cls );
-    subject._subject__orig_init = subject.__init__;
-    subject.__init__ = lambda *args, **kwargs: None;
-    subject._obj_ = obj;
-    return _SubjectCtxMgr( subject );
+    subject_ = cls.__orig_new( cls );
+    subject_.__orig_init = cls.__init__;
+    subject_.__init__ = lambda *args, **kwargs: None;
+    subject_._obj_ = obj;
+    return _SubjectCtxMgr( subject_ );
 
   def __new__( mcs, name, bases, dict ):
 
     cls = type.__new__( mcs, name, bases, dict );
     try:
-      cls._subject__orig_new;
+      cls.__orig_new;
     except AttributeError:
-      cls._subject__orig_new = cls.__new__;
+      cls.__orig_new = cls.__new__;
       cls.__new__ = subject.__subject_new;
     return cls;
+
 
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
@@ -96,6 +100,7 @@ class singleton( type ):
     cls.__new__ = singleton.__singleton_new;
 
     return cls;
+
 
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
