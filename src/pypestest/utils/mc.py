@@ -119,17 +119,17 @@ class TestSingleton( TestCase ):
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-class MyLambda:
+class MyParent:
   
   pass;
 
 
 class MyKLS( metaclass=kls ):
   
-  _l_lmbdvar_ = None;
+  _p_parent_ = None;
   _k_key_ = None;
   
-  def __init__( self, *args, **kwargs ):
+  def __init__( self, x, **kwargs ):
     
     pass;
 
@@ -142,42 +142,55 @@ class TestKLS( TestCase ):
 
   def test_instantiate_kls( self ):
     
-    mylambda = MyLambda();
+    myparent = MyParent();
     
-    mykls_in_statis = MyKLS();
-    self.assertFalse( isinstance( mykls_in_statis, MyKLS ) );
-    mykls_reanimated = mykls_in_statis( lmbdvar=mylambda );
+    mykls_in_stasis = MyKLS();
+    self.assertFalse( isinstance( mykls_in_stasis, MyKLS ) );
+    mykls_reanimated = mykls_in_stasis( parent=myparent, x="y" );
     self.assertTrue( isinstance( mykls_reanimated, MyKLS ) );
 
 
   def test_not_identical( self ):
     
-    mylambda = MyLambda();
+    myparent = MyParent();
     
     kls1 = MyKLS( key=1 );
     kls2 = MyKLS( key=2 );
     
-    kls1_ = kls1( lmbdvar=mylambda );
-    kls2_ = kls2( lmbdvar=mylambda );
+    kls1_ = kls1( parent=myparent, x="y" );
+    kls2_ = kls2( parent=myparent, x="y" );
     
     self.assertFalse( kls1_ is kls2_ );
-    self.assertTrue( mylambda._sos_[ MyKLS ][ 1 ] is kls1_ );
-    self.assertTrue( mylambda._sos_[ MyKLS ][ 2 ] is kls2_ );
+    self.assertTrue( myparent._sos_[ MyKLS ][ 1 ] is kls1_ );
+    self.assertTrue( myparent._sos_[ MyKLS ][ 2 ] is kls2_ );
 
 
   def test_identical( self ):
     
-    mylambda = MyLambda();
+    myparent = MyParent();
     
     kls1 = MyKLS( key=1 );
     kls2 = MyKLS( key=1 );
     
-    kls1_ = kls1( lmbdvar=mylambda );
-    kls2_ = kls2( lmbdvar=mylambda );
+    kls1_ = kls1( parent=myparent, x="y" );
+    kls2_ = kls2( parent=myparent, x="y" );
     
     self.assertTrue( kls1_ is kls2_ );
-    self.assertTrue( mylambda._sos_[ MyKLS ][ 1 ] is kls1_ );
-    self.assertTrue( mylambda._sos_[ MyKLS ][ 1 ] is kls2_ );
+    self.assertTrue( myparent._sos_[ MyKLS ][ 1 ] is kls1_ );
+    self.assertTrue( myparent._sos_[ MyKLS ][ 1 ] is kls2_ );
+
+
+  def test_nokey( self ):
+    
+    myparent = MyParent();
+    
+    kls1 = MyKLS();
+    kls2 = MyKLS();
+    
+    kls1_ = kls1( parent=myparent, x="y" );
+    kls2_ = kls2( parent=myparent, x="y" );
+    
+    self.assertFalse( kls1_ is kls2_ );
 
     
   

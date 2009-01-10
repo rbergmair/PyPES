@@ -112,50 +112,55 @@ class kls( type ):
   
   def __new( cls, **kwargs_outer ):
     
-    return lambda **kwargs_inner: cls.__new_2__( cls, kwargs_inner, kwargs_outer );
+    return \
+      lambda **kwargs_inner: cls.__new_2__( cls, kwargs_inner, kwargs_outer );
 
 
   def __new_2( cls, kwargs_inner, kwargs_outer ):
     
-    items = kwargs_inner.items();
-    assert len( items ) == 1;
-    
-    lmbdname = None;
-    lmbdval = None;
-    for ( x, y ) in items:
-      lmbdname = x;
-      lmbdval = y;
-    assert "_l_"+lmbdname+"_" in cls.__dict__;
+    pname = None;
+    pval = None;
+    for argname in kwargs_inner:
+      if "_p_"+argname+"_" in cls.__dict__:
+        pname = argname;
+        pval = kwargs_inner[ argname ];
 
-    try:
-      lmbdval._sos_;
-    except AttributeError:
-      lmbdval._sos_ = {};
-    if not cls in lmbdval._sos_:
-      lmbdval._sos_[ cls ] = {};
-    
-    superordinate = lmbdval._sos_[ cls ];
-    
-    keyname = None;
-    keyval = None;
-    for kwargname in kwargs_outer:
-      if "_k_"+kwargname+"_" in cls.__dict__:
-        keyname = kwargname;
-        keyval = kwargs_outer[ keyname ];
-        
-    inst = None;
-    
-    if keyval is None:
-      inst = cls.__orig_new( cls );
-      superordinate[ id(inst) ] = inst;
-    elif keyval in superordinate:
-      inst = superordinate[ keyval ];
-    else:
-      inst = cls.__orig_new( cls );
-      superordinate[ keyval ] = inst;
-    
     kwargs = kwargs_inner;
     kwargs.update( kwargs_outer );
+    
+    inst = None;
+    
+    if pname is None or pval is None:
+
+      inst = cls.__orig_new( cls );
+      
+    else:
+      
+      try:
+        pval._sos_;
+      except AttributeError:
+        pval._sos_ = {};
+      if not cls in pval._sos_:
+        pval._sos_[ cls ] = {};
+      
+      superordinate = pval._sos_[ cls ];
+      
+      keyname = None;
+      keyval = None;
+      for kwargname in kwargs_outer:
+        if "_k_"+kwargname+"_" in cls.__dict__:
+          keyname = kwargname;
+          keyval = kwargs_outer[ keyname ];
+      
+      if keyval is None:
+        inst = cls.__orig_new( cls );
+        superordinate[ id(inst) ] = inst;
+      elif keyval in superordinate:
+        inst = superordinate[ keyval ];
+      else:
+        inst = cls.__orig_new( cls );
+        superordinate[ keyval ] = inst;
+    
     inst.__init__( **kwargs );
     return inst;
 

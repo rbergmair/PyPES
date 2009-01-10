@@ -9,7 +9,7 @@ from pypes.utils.mc import kls;
 
 class Variable( metaclass=kls ):
   
-  _l_sig_ = None;
+  _p_sig_ = None;
   _k_sortvid_ = None;
   
   def __init__( self, sig, sortvid ):

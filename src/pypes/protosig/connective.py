@@ -9,7 +9,7 @@ from pypes.utils.mc import kls;
 
 class Connective( metaclass=kls ):
   
-  _l_sig_ = None;
+  _p_sig_ = None;
   _k_ctype_ = None;
   
   def __init__( self, sig, ctype ):

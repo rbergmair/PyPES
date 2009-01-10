@@ -9,7 +9,7 @@ from pypes.utils.mc import kls;
 
 class Handle( metaclass=kls ):
   
-  _l_pf_ = None;
+  _p_pf_ = None;
   _k_hid_ = None;
   
   def __init__( self, pf, hid, sig ):

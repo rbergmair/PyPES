@@ -9,7 +9,7 @@ from pypes.utils.mc import kls;
 
 class Argument( metaclass=kls ):
   
-  _l_predmod_ = None;
+  _p_predmod_ = None;
   _k_arglabel_ = None;
 
   def __init__( self, predmod, arglabel ):
