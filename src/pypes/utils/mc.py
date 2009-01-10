@@ -46,13 +46,13 @@ class _SubjectCtxMgr:
 
 class subject( type ):
 
-  def __subject_new( cls, obj=None ):
+  def __new( cls, obj=None ):
 
-    subject_ = cls.__orig_new( cls );
-    subject_.__orig_init = cls.__init__;
-    subject_.__init__ = lambda *args, **kwargs: None;
-    subject_._obj_ = obj;
-    return _SubjectCtxMgr( subject_ );
+    inst = cls.__orig_new( cls );
+    inst.__orig_init = cls.__init__;
+    inst.__init__ = lambda *args, **kwargs: None;
+    inst._obj_ = obj;
+    return _SubjectCtxMgr( inst );
 
   def __new__( mcs, name, bases, dict ):
 
@@ -61,7 +61,7 @@ class subject( type ):
       cls.__orig_new;
     except AttributeError:
       cls.__orig_new = cls.__new__;
-      cls.__new__ = subject.__subject_new;
+      cls.__new__ = subject.__new;
     return cls;
 
 
@@ -71,7 +71,7 @@ class subject( type ):
 class singleton( type ):
 
 
-  def __singleton_new( cls, *args, **kwargs ):
+  def __new( cls, *args, **kwargs ):
 
     if cls.__instance is None:
 
@@ -96,8 +96,95 @@ class singleton( type ):
 
     cls = type.__new__( mcs, name, bases, dict );
     cls.__instance = None;
-    cls.__orig_new = cls.__new__;
-    cls.__new__ = singleton.__singleton_new;
+    try:
+      cls.__orig_new;
+    except AttributeError:
+      cls.__orig_new = cls.__new__;
+      cls.__new__ = singleton.__new;
+    return cls;
+
+
+
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+
+class kls( type ):
+
+  
+  def __new( cls, **kwargs_outer ):
+    
+    return lambda **kwargs_inner: cls.__new_2__( cls, kwargs_inner, kwargs_outer );
+
+
+  def __new_2( cls, kwargs_inner, kwargs_outer ):
+    
+    items = kwargs_inner.items();
+    assert len( items ) == 1;
+    
+    lmbdname = None;
+    lmbdval = None;
+    for ( x, y ) in items:
+      lmbdname = x;
+      lmbdval = y;
+    assert "_l_"+lmbdname+"_" in cls.__dict__;
+
+    try:
+      lmbdval._sos_;
+    except AttributeError:
+      lmbdval._sos_ = {};
+    if not cls in lmbdval._sos_:
+      lmbdval._sos_[ cls ] = {};
+    
+    superordinate = lmbdval._sos_[ cls ];
+    
+    keyname = None;
+    keyval = None;
+    for kwargname in kwargs_outer:
+      if "_k_"+kwargname+"_" in cls.__dict__:
+        keyname = kwargname;
+        keyval = kwargs_outer[ keyname ];
+        
+    inst = None;
+    
+    if keyval is None:
+      inst = cls.__orig_new( cls );
+      superordinate[ id(inst) ] = inst;
+    elif keyval in superordinate:
+      inst = superordinate[ keyval ];
+    else:
+      inst = cls.__orig_new( cls );
+      superordinate[ keyval ] = inst;
+    
+    kwargs = kwargs_inner;
+    kwargs.update( kwargs_outer );
+    inst.__init__( **kwargs );
+    return inst;
+
+
+  def __init( self, **kwargs ):
+    
+    self.__orig_init( **kwargs );
+    
+
+  def __new__( mcs, name, bases, dict ):
+
+    cls = type.__new__( mcs, name, bases, dict );
+    
+    try:
+      cls.__orig_new;
+    except AttributeError:
+      cls.__orig_new = cls.__new__;
+      cls.__new__ = kls.__new;
+      
+    try:
+      cls.__orig_init;
+    except AttributeError:
+      cls.__orig_init = cls.__init__;
+      cls.__init__ = kls.__init;
+
+    try:
+      cls.__new_2__;
+    except AttributeError:
+      cls.__new_2__ = kls.__new_2;
 
     return cls;
 

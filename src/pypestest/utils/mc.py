@@ -5,9 +5,9 @@ __package__ = "pypestest.utils";
 import sys;
 import unittest;
 
-from pypes.utils.mc import subject;
-from pypes.utils.mc import singleton;
+from pypes.utils.mc import subject, singleton, kls;
 from pypes.utils.unittest_ import TestCase;
+
 
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
@@ -27,14 +27,16 @@ class Eater( metaclass=subject ):
     self._obj_.eaten = True;
 
 
+
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-class DigestingEater( Eater ):
+class DigestingEater( Eater, metaclass=subject ):
 
   def eat( self ):
     
     Eater.eat( self );
     self._obj_.digested = True;
+
 
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
@@ -49,6 +51,7 @@ class Apple:
     self.banana = False;
 
 
+
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 class Banana:
@@ -59,6 +62,7 @@ class Banana:
     self.digested = False;
     self.apple = False;
     self.banana = True;
+
 
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
@@ -92,11 +96,13 @@ class TestSubjectOrientedProgramming( TestCase ):
     self.assertTrue( banana.digested );
 
 
+
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 class Singleton( metaclass=singleton ):
 
   pass;
+
 
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
@@ -110,6 +116,71 @@ class TestSingleton( TestCase ):
     self.assertTrue( sng1 is sng2 );
 
 
+
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+
+class MyLambda:
+  
+  pass;
+
+
+class MyKLS( metaclass=kls ):
+  
+  _l_lmbdvar_ = None;
+  _k_key_ = None;
+  
+  def __init__( self, *args, **kwargs ):
+    
+    pass;
+
+
+
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+
+class TestKLS( TestCase ):
+
+
+  def test_instantiate_kls( self ):
+    
+    mylambda = MyLambda();
+    
+    mykls_in_statis = MyKLS();
+    self.assertFalse( isinstance( mykls_in_statis, MyKLS ) );
+    mykls_reanimated = mykls_in_statis( lmbdvar=mylambda );
+    self.assertTrue( isinstance( mykls_reanimated, MyKLS ) );
+
+
+  def test_not_identical( self ):
+    
+    mylambda = MyLambda();
+    
+    kls1 = MyKLS( key=1 );
+    kls2 = MyKLS( key=2 );
+    
+    kls1_ = kls1( lmbdvar=mylambda );
+    kls2_ = kls2( lmbdvar=mylambda );
+    
+    self.assertFalse( kls1_ is kls2_ );
+    self.assertTrue( mylambda._sos_[ MyKLS ][ 1 ] is kls1_ );
+    self.assertTrue( mylambda._sos_[ MyKLS ][ 2 ] is kls2_ );
+
+
+  def test_identical( self ):
+    
+    mylambda = MyLambda();
+    
+    kls1 = MyKLS( key=1 );
+    kls2 = MyKLS( key=1 );
+    
+    kls1_ = kls1( lmbdvar=mylambda );
+    kls2_ = kls2( lmbdvar=mylambda );
+    
+    self.assertTrue( kls1_ is kls2_ );
+    self.assertTrue( mylambda._sos_[ MyKLS ][ 1 ] is kls1_ );
+    self.assertTrue( mylambda._sos_[ MyKLS ][ 1 ] is kls2_ );
+
+    
+  
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 def suite():
@@ -124,7 +195,12 @@ def suite():
       TestSingleton
     ) );
 
+  suite.addTests( unittest.TestLoader().loadTestsFromTestCase(
+      TestKLS
+    ) );
+
   return suite;
+
 
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
@@ -135,6 +211,7 @@ def main( argv=None ):
 
 if __name__ == '__main__':
   sys.exit( main( sys.argv ) );
+
 
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
