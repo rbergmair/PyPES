@@ -70,7 +70,6 @@ class XMLHandler( xml.sax.handler.ContentHandler, metaclass=subject ):
     self._parser.setContentHandler( self );
     
     self._active_clients = [];
-    self._active_clients_ctx = [];
     
     self._stop_parsing = False;
 

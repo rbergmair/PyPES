@@ -11,10 +11,16 @@ from pypes.utils.mc import kls;
 # of a Cybertronian placed in stasis until a suitable form can be found.
 
 class ProtoForm:
-
-  def __init__( self, sig ):
+  
+  def __init__( self, sig, subforms, constraints ):
     
-    pass;
+    self.subforms = set();
+    for sf in subforms:
+      self.subforms.add( sf( pf=self, sig=sig ) );
+      
+    self.constraints = set();
+    for cons in constraints:
+      self.constraints.add( cons( pf=self ) );
   
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #

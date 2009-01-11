@@ -36,7 +36,7 @@ class _LogController( metaclass=singleton ):
     self.individual_file_formatter = logging.Formatter(
         "%(asctime)s: %(message)s"
       );
-    self._file_logger_config = [];
+    self._file_logger_config = set();
     self._loggers = {};
 
 
@@ -86,7 +86,7 @@ class _LogController( metaclass=singleton ):
 
   def attach_file_logger( self, loggername, level, logdir, prefix ):
 
-    self._file_logger_config.append( (loggername,level,logdir,prefix) );
+    self._file_logger_config.add( (loggername,level,logdir,prefix) );
 
 
   def _sourceid_to_str( self, sourceid=None ):
