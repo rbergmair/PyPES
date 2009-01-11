@@ -1,12 +1,14 @@
-# -*-  coding: ascii -*-
+# -*-  coding: ascii -*-  # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-__package__ = "pypes.protoform";
+__package__ = "pypes.proto.form";
+__all__ = [ "Modification" ];
+
+from pypes.utils.mc import kls;
 
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-
-class Modification:
+class Modification( metaclass=kls ):
   
   def __init__( self, sig, modifier, args, scope ):
     

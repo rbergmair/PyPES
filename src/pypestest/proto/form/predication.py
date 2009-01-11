@@ -1,18 +1,34 @@
 # -*-  coding: ascii -*-  # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-__package__ = "pypestest.utils";
+__package__ = "pypestest.proto.form";
+__all__ = [ "TestPredication", "suite", "main" ];
 
 import sys;
 import unittest;
 
-import pypestest.utils.mc;
-import pypestest.utils.string_;
-import pypestest.utils.globals;
-import pypestest.utils.logging_;
-import pypestest.utils.unittest_;
+from pypes.utils.unittest_ import TestCase;
 
-import pypestest.utils.xml_.suite;
+from pypes.proto import *;
 
+
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+
+class TestPredication( TestCase ):
+  
+  def test_instantiate_predication( self ):
+    
+    inst1 = Predication( predicate = Predicate( cspan=(0,2) ),
+                         args = { Argument( arglabel="ARG1" ):
+                                    Variable( sortvid=(Sort(sortdsc="x"),1) ),
+                                  Argument( arglabel="ARG2" ):
+                                    Variable( sortvid=(Sort(sortdsc="x"),2) )
+                                } );
+    self.assertFalse( isinstance( inst1, Predication ) );
+    
+    sig = ProtoSig();
+    inst2 = inst1( sig=sig );
+    self.assertTrue( isinstance( inst2, Predication ) );
+    
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
@@ -20,13 +36,9 @@ def suite():
 
   suite = unittest.TestSuite();
 
-  suite.addTests( pypestest.utils.mc.suite() );
-  suite.addTests( pypestest.utils.string_.suite() );
-  suite.addTests( pypestest.utils.globals.suite() );
-  suite.addTests( pypestest.utils.logging_.suite() );
-  suite.addTests( pypestest.utils.unittest_.suite() );
-
-  suite.addTests( pypestest.utils.xml_.suite.suite() );
+  suite.addTests( unittest.TestLoader().loadTestsFromTestCase(
+      TestPredication
+    ) );
 
   return suite;
 

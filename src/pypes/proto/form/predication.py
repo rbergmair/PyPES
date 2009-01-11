@@ -1,12 +1,14 @@
-# -*-  coding: ascii -*-
+# -*-  coding: ascii -*-  # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-__package__ = "pypes.protoform";
+__package__ = "pypes.proto.form";
+__all__ = [ "Predication" ];
+
+from pypes.utils.mc import kls;
 
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-
-class Predication:
+class Predication( metaclass=kls ):
   
   def __init__( self, sig, predicate, args ):
     

@@ -1,18 +1,29 @@
 # -*-  coding: ascii -*-  # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-__package__ = "pypestest.utils";
+__package__ = "pypestest.proto.sig";
+__all__ = [ "TestConstant", "suite", "main" ];
 
 import sys;
 import unittest;
 
-import pypestest.utils.mc;
-import pypestest.utils.string_;
-import pypestest.utils.globals;
-import pypestest.utils.logging_;
-import pypestest.utils.unittest_;
+from pypes.utils.unittest_ import TestCase;
 
-import pypestest.utils.xml_.suite;
+from pypes.proto import *;
 
+
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+
+class TestConstant( TestCase ):
+  
+  def test_instantiate_constant( self ):
+    
+    inst1 = Constant( ident="Jones" );
+    self.assertFalse( isinstance( inst1, Constant ) );
+    
+    sig = ProtoSig();
+    inst2 = inst1( sig=sig );
+    self.assertTrue( isinstance( inst2, Constant ) );
+    
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
@@ -20,13 +31,9 @@ def suite():
 
   suite = unittest.TestSuite();
 
-  suite.addTests( pypestest.utils.mc.suite() );
-  suite.addTests( pypestest.utils.string_.suite() );
-  suite.addTests( pypestest.utils.globals.suite() );
-  suite.addTests( pypestest.utils.logging_.suite() );
-  suite.addTests( pypestest.utils.unittest_.suite() );
-
-  suite.addTests( pypestest.utils.xml_.suite.suite() );
+  suite.addTests( unittest.TestLoader().loadTestsFromTestCase(
+      TestConstant
+    ) );
 
   return suite;
 

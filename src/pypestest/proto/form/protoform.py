@@ -1,22 +1,47 @@
 # -*-  coding: ascii -*-  # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-__package__ = "pypes.proto.sig";
-__all__ = [ "Modality" ];
+__package__ = "pypestest.proto.form";
+__all__ = [ "TestProtoForm", "suite", "main" ];
 
-from pypes.utils.mc import kls;
+import sys;
+import unittest;
+
+from pypes.utils.unittest_ import TestCase;
+
+from pypes.proto import *;
 
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-class Modality( metaclass=kls ):
+class TestProtoForm( TestCase ):
   
-  _p_sig_ = None;
-  _k_cspan_ = None;
-
-  def __init__( self, sig, cspan ):
+  def test_instantiate_protoform( self ):
     
-    pass;
-  
+    self.fail();
+    
+
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+
+def suite():
+
+  suite = unittest.TestSuite();
+
+  suite.addTests( unittest.TestLoader().loadTestsFromTestCase(
+      TestProtoForm
+    ) );
+
+  return suite;
+
+
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+
+def main( argv=None ):
+
+  unittest.TextTestRunner( verbosity=2 ).run( suite() );
+
+if __name__ == '__main__':
+  sys.exit( main( sys.argv ) );
+
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 #                                                                             #

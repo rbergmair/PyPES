@@ -1,12 +1,14 @@
-# -*-  coding: ascii -*-
+# -*-  coding: ascii -*-  # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-__package__ = "pypes.protoform";
+__package__ = "pypes.proto.form";
+__all__ = [ "Constraint" ];
+
+from pypes.utils.mc import kls;
 
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-
-class Constraint:
+class Constraint( metaclass=kls ):
   
   def __init__( self, pf, harg, larg ):
     

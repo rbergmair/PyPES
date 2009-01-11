@@ -1,12 +1,14 @@
-# -*-  coding: ascii -*-
+# -*-  coding: ascii -*-  # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-__package__ = "pypes.protoform";
+__package__ = "pypes.proto.form";
+__all__ = [ "Quantification" ];
+
+from pypes.utils.mc import kls;
 
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-
-class Quantification:
+class Quantification( metaclass=kls ):
   
   def __init__( self, sig, quantifier, rstr, body ):
     

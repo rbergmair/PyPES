@@ -1,6 +1,7 @@
-# -*-  coding: ascii -*-
+# -*-  coding: ascii -*-  # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-__package__ = "pypes.protoform";
+__package__ = "pypes.proto.form";
+__all__ = [ "Handle" ];
 
 from pypes.utils.mc import kls;
 

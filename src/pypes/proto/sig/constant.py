@@ -1,9 +1,22 @@
-# -*-  coding: ascii -*-
+# -*-  coding: ascii -*-  # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-__package__ = "pypes.protosig";
+__package__ = "pypes.proto.sig";
+__all__ = [ "Variable" ];
+
+from pypes.utils.mc import kls;
+from pypes.proto.sig.variable import Variable;
 
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+
+class Constant( metaclass=kls ):
+  
+  _p_sig_ = None;
+  _k_ident_ = None;
+  
+  def __init__( self, sig, ident ):
+    
+    pass;
 
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #

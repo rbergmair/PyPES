@@ -1,6 +1,7 @@
-# -*-  coding: ascii -*-
+# -*-  coding: ascii -*-  # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-__package__ = "pypes.protosig";
+__package__ = "pypes.proto.sig";
+__all__ = [ "Sort" ];
 
 from pypes.utils.mc import kls;
 

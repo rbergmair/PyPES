@@ -1,6 +1,7 @@
-# -*-  coding: ascii -*-
+# -*-  coding: ascii -*-  # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-__package__ = "pypes.protoform";
+__package__ = "pypes.proto.form";
+__all__ = [ "ProtoForm" ];
 
 from pypes.utils.mc import kls;
 
@@ -10,9 +11,15 @@ from pypes.utils.mc import kls;
 # In the fictional world of the Transformers, protoforms are "basic frames"
 # of a Cybertronian placed in stasis until a suitable form can be found.
 
-class ProtoForm:
+class ProtoForm( metaclass=kls ):
   
-  def __init__( self, sig, subforms, constraints ):
+  def __init__( self, sig, pf=None, subforms=None, constraints=None ):
+    
+    if subforms is None:
+      subforms = {};
+    
+    if constraints is None:
+      constraints = {};
     
     self.subforms = set();
     for sf in subforms:

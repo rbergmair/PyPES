@@ -1,16 +1,35 @@
-# -*-  coding: ascii -*-
+# -*-  coding: ascii -*-  # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-__package__ = "pypes.protoform";
+__package__ = "pypestest";
+__all__ = [ "suite", "main" ];
+
+import sys;
+import unittest;
+
+import pypestest.proto.form;
+import pypestest.proto.sig;
 
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
+def suite():
 
-class Subform:
-  
-  def __init__( self, pf, sig, root, subform ):
-    
-    pass;
+  suite = unittest.TestSuite();
+
+  suite.addTests( pypestest.proto.form.suite() );
+  suite.addTests( pypestest.proto.sig.suite() );
+
+  return suite;
+
+
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+
+def main( argv=None ):
+
+  unittest.TextTestRunner( verbosity=2 ).run( suite() );
+
+if __name__ == '__main__':
+  sys.exit( main( sys.argv ) );
 
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
