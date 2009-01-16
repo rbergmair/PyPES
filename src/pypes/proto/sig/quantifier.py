@@ -9,11 +9,11 @@ from pypes.utils.mc import kls;
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 class Quantifier( metaclass=kls ):
+
+  _superordinate_ = "sig";
+  _key_ = "referent";
   
-  _p_sig_ = None;
-  _k_cspan_ = None;
-  
-  def __init__( self, sig, cspan ):
+  def __init__( self, sig, referent ):
     
     pass;
 

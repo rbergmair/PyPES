@@ -11,14 +11,76 @@ from pypes.utils.unittest_ import TestCase;
 from pypes.proto import *;
 
 
+
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 class TestProtoForm( TestCase ):
+
   
-  def test_instantiate_protoform( self ):
+  def test_instantiate_protoform_1( self ):
     
-    self.fail();
+    inst1 = ProtoForm();
+
+    self.assertFalse( isinstance( inst1, ProtoForm ) );
     
+    sig = ProtoSig();
+    inst2 = inst1( sig=sig );
+    self.assertTrue( isinstance( inst2, ProtoForm ) );
+    
+
+  def test_instantiate_protoform_2( self ):
+    
+    inst1 = ProtoForm(
+                subforms = { Handle( hid=1 ):
+                               Quantification(
+                                   quantifier = Quantifier( referent = Word( cspan=(0,4), lemma="Every" ) ),
+                                   var = Variable( sortvid=( Sort(sortdsc="x"), 1 ) ),
+                                   rstr = ProtoForm(
+                                              subforms = { Handle( hid=1 ):
+                                                             Predication( predicate = Predicate( referent = Word( cspan=(6,8), lemma="man" ) ) ),
+                                                         }
+                                            ),
+                                   body = Handle( hid=2 )
+                                 ),
+                             Handle( hid=3 ):
+                               Quantification(
+                                   quantifier = Quantifier( referent = Word( cspan=(16,16), lemma="a" ) ),
+                                   var = Variable( sortvid=( Sort(sortdsc="x"), 2 ) ),
+                                   rstr = ProtoForm(
+                                              subforms = { Handle( hid=1 ):
+                                                             Predication( predicate = Predicate( referent = Word( cspan=(18,23), lemma="woman" ) ) ),
+                                                         }
+                                            ),
+                                   body = Handle( hid=4 )
+                                 ),
+                             Handle( hid=5 ):
+                               Predication(
+                                   predicate = Predicate( referent = Word( cspan=(10,14), lemma="loves" ) ),
+                                   args = { Argument( arglabel="ARG1" ):
+                                              Variable( sortvid=(Sort(sortdsc="x"),1) ),
+                                            Argument( arglabel="ARG2" ):
+                                              Variable( sortvid=(Sort(sortdsc="x"),2) )
+                                          }
+                                 )
+                           },
+                constraints = { Constraint(
+                                    harg = Handle( hid=1 ),
+                                    larg = Handle( hid=5 )
+                                  ),
+                                Constraint(
+                                    harg = Handle( hid=3 ),
+                                    larg = Handle( hid=5 )
+                                  )
+                              }
+              );
+
+    self.assertFalse( isinstance( inst1, ProtoForm ) );
+    
+    sig = ProtoSig();
+    inst2 = inst1( sig=sig );
+    self.assertTrue( isinstance( inst2, ProtoForm ) );
+
+
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
@@ -33,6 +95,7 @@ def suite():
   return suite;
 
 
+
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 def main( argv=None ):
@@ -41,6 +104,7 @@ def main( argv=None ):
 
 if __name__ == '__main__':
   sys.exit( main( sys.argv ) );
+
 
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #

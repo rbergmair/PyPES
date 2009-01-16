@@ -10,9 +10,9 @@ from pypes.proto.sig.variable import Variable;
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 class Constant( metaclass=kls ):
-  
-  _p_sig_ = None;
-  _k_ident_ = None;
+
+  _superordinate_ = "sig";
+  _key_ = "ident";
   
   def __init__( self, sig, ident ):
     

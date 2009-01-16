@@ -11,19 +11,33 @@ from pypes.utils.unittest_ import TestCase;
 from pypes.proto import *;
 
 
+
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 class TestArgument( TestCase ):
+
   
-  def test_instantiate_argument( self ):
+  def test_instantiate_argument_1( self ):
     
     inst1 = Argument( arglabel="ARG1" );
     self.assertFalse( isinstance( inst1, Argument ) );
     
     sig = ProtoSig();
-    pred = Predicate( cspan=(0,2) )( sig=sig );
+    pred = Predicate( referent = Word( cspan=(5,7), lemma="man" ) )( sig=sig );
     inst2 = inst1( predmod=pred );
     self.assertTrue( isinstance( inst2, Argument ) );
+
+
+  def test_instantiate_argument_2( self ):
+    
+    inst1 = Argument( arglabel="ARG1" );
+    self.assertFalse( isinstance( inst1, Argument ) );
+    
+    sig = ProtoSig();
+    mod = Modality( referent = Word( cspan=(0,7), lemma="Possibly" ) );
+    inst2 = inst1( predmod=mod );
+    self.assertTrue( isinstance( inst2, Argument ) );
+    
     
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
@@ -39,6 +53,7 @@ def suite():
   return suite;
 
 
+
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 def main( argv=None ):
@@ -47,6 +62,7 @@ def main( argv=None ):
 
 if __name__ == '__main__':
   sys.exit( main( sys.argv ) );
+
 
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #

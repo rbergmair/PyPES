@@ -9,8 +9,11 @@ from pypes.utils.mc import kls;
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 class Quantification( metaclass=kls ):
+
+  _superordinate_ = None;
+  _key_ = None;
   
-  def __init__( self, sig, quantifier, rstr, body ):
+  def __init__( self, sig, quantifier, var, rstr, body ):
     
     pass;
 

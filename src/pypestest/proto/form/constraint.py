@@ -17,8 +17,16 @@ class TestConstraint( TestCase ):
   
   def test_instantiate_constraint( self ):
     
-    Constraint( harg = Handle( hid=1 ),
-                larg = Handle( hid=2 ) );
+    inst1 = Constraint(
+                harg = Handle( hid=1 ),
+                larg = Handle( hid=2 )
+              );
+              
+    self.assertFalse( isinstance( inst1, Constraint ) );
+    
+    form = ProtoForm();
+    inst2 = inst1( pf=form );
+    self.assertTrue( isinstance( inst2, Constraint ) );
     
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #

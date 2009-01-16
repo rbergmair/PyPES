@@ -1,7 +1,7 @@
 # -*-  coding: ascii -*-  # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-__package__ = "pypestest.proto.form";
-__all__ = [ "TestQuantification", "suite", "main" ];
+__package__ = "pypestest.proto.sig";
+__all__ = [ "TestWord", "suite", "main" ];
 
 import sys;
 import unittest;
@@ -13,22 +13,16 @@ from pypes.proto import *;
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-class TestQuantification( TestCase ):
+class TestWord( TestCase ):
   
-  def test_instantiate_quantification( self ):
+  def test_instantiate_sort( self ):
     
-    inst1 = Quantification(
-                quantifier = Operator( otype=Operator.OP_Q_FORALL ),
-                var = Variable( sortvid=( Sort(sortdsc="x"), 1 ) ),
-                rstr = ProtoForm(),
-                body = Handle( hid=1 )
-              );
-                            
-    self.assertFalse( isinstance( inst1, Quantification ) );
+    inst1 = Word( cspan=(0,2), lemma="the" );
+    self.assertFalse( isinstance( inst1, Word ) );
     
     sig = ProtoSig();
     inst2 = inst1( sig=sig );
-    self.assertTrue( isinstance( inst2, Quantification ) );
+    self.assertTrue( isinstance( inst2, Word ) );
     
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
@@ -38,7 +32,7 @@ def suite():
   suite = unittest.TestSuite();
 
   suite.addTests( unittest.TestLoader().loadTestsFromTestCase(
-      TestQuantification
+      TestWord
     ) );
 
   return suite;

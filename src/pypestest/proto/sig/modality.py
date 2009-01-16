@@ -11,19 +11,32 @@ from pypes.utils.unittest_ import TestCase;
 from pypes.proto import *;
 
 
+
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 class TestModality( TestCase ):
+
   
-  def test_instantiate_modality( self ):
+  def test_instantiate_modality_1( self ):
     
-    inst1 = Modality( cspan=(0,2) );
+    inst1 = Modality( referent = Word( cspan=(5,7), lemma="not" ) );
     self.assertFalse( isinstance( inst1, Modality ) );
     
     sig = ProtoSig();
     inst2 = inst1( sig=sig );
     self.assertTrue( isinstance( inst2, Modality ) );
+
+
+  def test_instantiate_modality_2( self ):
     
+    inst1 = Modality( referent = Operator( otype=Operator.OP_M_NEG ) );
+    self.assertFalse( isinstance( inst1, Modality ) );
+    
+    sig = ProtoSig();
+    inst2 = inst1( sig=sig );
+    self.assertTrue( isinstance( inst2, Modality ) );
+
+
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
@@ -38,6 +51,7 @@ def suite():
   return suite;
 
 
+
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 def main( argv=None ):
@@ -46,6 +60,7 @@ def main( argv=None ):
 
 if __name__ == '__main__':
   sys.exit( main( sys.argv ) );
+
 
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #

@@ -11,25 +11,49 @@ from pypes.utils.unittest_ import TestCase;
 from pypes.proto import *;
 
 
+
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 class TestModification( TestCase ):
+
   
-  def test_instantiate_modification( self ):
+  def test_instantiate_modification_1( self ):
     
-    inst1 = Modification( modifier = Modality( cspan=(0,2) ),
-                          args = { Argument( arglabel="ARG1" ):
-                                     Variable( sortvid=(Sort(sortdsc="x"),1) ),
-                                   Argument( arglabel="ARG2" ):
-                                     Variable( sortvid=(Sort(sortdsc="x"),2) )
-                                 },
-                          scope = Handle( hid=1 ) );
+    inst1 = Modification(
+                modifier = Modality(
+                               referent = Word( cspan=(5,8), lemma="told" )
+                             ),
+                args = { Argument( arglabel="ARG1" ):
+                           Variable( sortvid=(Sort(sortdsc="x"),1) ),
+                         Argument( arglabel="ARG2" ):
+                           Variable( sortvid=(Sort(sortdsc="x"),2) )
+                       },
+                scope = Handle( hid=1 )
+              );
+              
+    self.assertFalse( isinstance( inst1, Modification ) );
+    
+    sig = ProtoSig();
+    inst2 = inst1( sig=sig );
+    self.assertTrue( isinstance( inst2, Modification ) );
+
+
+  def test_instantiate_modification_2( self ):
+    
+    inst1 = Modification(
+                modifier = Modality(
+                               referent = Word( cspan=(5,7), lemma="not" )
+                             ),
+                scope = ProtoForm()
+              );
+              
     self.assertFalse( isinstance( inst1, Modification ) );
     
     sig = ProtoSig();
     inst2 = inst1( sig=sig );
     self.assertTrue( isinstance( inst2, Modification ) );
     
+
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
@@ -44,6 +68,7 @@ def suite():
   return suite;
 
 
+
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 def main( argv=None ):
@@ -52,6 +77,7 @@ def main( argv=None ):
 
 if __name__ == '__main__':
   sys.exit( main( sys.argv ) );
+
 
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #

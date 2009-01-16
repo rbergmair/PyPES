@@ -9,9 +9,9 @@ from pypes.utils.mc import kls;
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 class Sort( metaclass=kls ):
-  
-  _p_sig_ = None;
-  _k_sortdsc_ = None;
+
+  _superordinate_ = "sig";
+  _key_ = "sortdsc";
   
   def __init__( self, sig, sortdsc ):
     

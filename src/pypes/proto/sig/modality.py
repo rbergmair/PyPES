@@ -9,11 +9,11 @@ from pypes.utils.mc import kls;
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 class Modality( metaclass=kls ):
-  
-  _p_sig_ = None;
-  _k_cspan_ = None;
 
-  def __init__( self, sig, cspan ):
+  _superordinate_ = "sig";
+  _key_ = "referent";
+
+  def __init__( self, sig, referent ):
     
     pass;
   

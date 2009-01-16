@@ -118,57 +118,42 @@ class kls( type ):
 
   def __new_2( cls, kwargs_inner, kwargs_outer ):
     
-    pname = None;
-    pval = None;
-    for argname in kwargs_inner:
-      if "_p_"+argname+"_" in cls.__dict__:
-        pname = argname;
-        pval = kwargs_inner[ argname ];
-
     kwargs = kwargs_inner;
     kwargs.update( kwargs_outer );
     
     inst = None;
+
+    parent = kwargs_inner.get( cls._superordinate_ );
     
-    if pname is None or pval is None:
+    if parent is None:
 
       inst = cls.__orig_new( cls );
       
     else:
       
       try:
-        pval._sos_;
+        parent._sos_;
       except AttributeError:
-        pval._sos_ = {};
-      if not cls in pval._sos_:
-        pval._sos_[ cls ] = {};
+        parent._sos_ = {};
+      if not cls in parent._sos_:
+        parent._sos_[ cls ] = {};
       
-      superordinate = pval._sos_[ cls ];
+      superordinate = parent._sos_[ cls ];
       
-      keyname = None;
-      keyval = None;
-      for kwargname in kwargs_outer:
-        if "_k_"+kwargname+"_" in cls.__dict__:
-          keyname = kwargname;
-          keyval = kwargs_outer[ keyname ];
+      key = kwargs_outer.get( cls._key_ );
       
-      if keyval is None:
+      if key is None:
         inst = cls.__orig_new( cls );
         superordinate[ id(inst) ] = inst;
-      elif keyval in superordinate:
-        inst = superordinate[ keyval ];
+      elif key in superordinate:
+        inst = superordinate[ key ];
       else:
         inst = cls.__orig_new( cls );
-        superordinate[ keyval ] = inst;
+        superordinate[ key ] = inst;
     
     inst.__init__( **kwargs );
     return inst;
 
-
-  def __init( self, **kwargs ):
-    
-    self.__orig_init( **kwargs );
-    
 
   def __new__( mcs, name, bases, dict ):
 
@@ -179,12 +164,6 @@ class kls( type ):
     except AttributeError:
       cls.__orig_new = cls.__new__;
       cls.__new__ = kls.__new;
-      
-    try:
-      cls.__orig_init;
-    except AttributeError:
-      cls.__orig_init = cls.__init__;
-      cls.__init__ = kls.__init;
 
     try:
       cls.__new_2__;

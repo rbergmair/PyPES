@@ -11,19 +11,32 @@ from pypes.utils.unittest_ import TestCase;
 from pypes.proto import *;
 
 
+
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 class TestPredicate( TestCase ):
   
-  def test_instantiate_predicate( self ):
+  
+  def test_instantiate_predicate_1( self ):
     
-    inst1 = Predicate( cspan=(0,2) );
+    inst1 = Predicate( referent = Word( cspan=(5,7), lemma="man" ) );
+    self.assertFalse( isinstance( inst1, Predicate ) );
+    
+    sig = ProtoSig();
+    inst2 = inst1( sig=sig );
+    self.assertTrue( isinstance( inst2, Predicate ) );
+
+
+  def test_instantiate_predicate_2( self ):
+    
+    inst1 = Predicate( referent = Operator( otype=Operator.OP_R_EQUALS ) );
     self.assertFalse( isinstance( inst1, Predicate ) );
     
     sig = ProtoSig();
     inst2 = inst1( sig=sig );
     self.assertTrue( isinstance( inst2, Predicate ) );
     
+
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
@@ -38,6 +51,7 @@ def suite():
   return suite;
 
 
+
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 def main( argv=None ):
@@ -46,6 +60,7 @@ def main( argv=None ):
 
 if __name__ == '__main__':
   sys.exit( main( sys.argv ) );
+
 
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #

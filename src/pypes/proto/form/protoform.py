@@ -12,6 +12,9 @@ from pypes.utils.mc import kls;
 # of a Cybertronian placed in stasis until a suitable form can be found.
 
 class ProtoForm( metaclass=kls ):
+
+  _superordinate_ = None;
+  _key_ = None;
   
   def __init__( self, sig, pf=None, subforms=None, constraints=None ):
     

@@ -9,9 +9,9 @@ from pypes.utils.mc import kls;
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 class Variable( metaclass=kls ):
-  
-  _p_sig_ = None;
-  _k_sortvid_ = None;
+
+  _superordinate_ = "sig";
+  _key_ = "sortvid";
   
   def __init__( self, sig, sortvid ):
     

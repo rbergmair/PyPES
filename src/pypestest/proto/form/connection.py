@@ -17,7 +17,21 @@ class TestConnection( TestCase ):
   
   def test_instantiate_connection( self ):
     
-    self.fail();
+    inst1 = Connection(
+                connective = Connective(
+                                 referent = Operator(
+                                                otype=Operator.OP_C_STRCON
+                                              )
+                               ),
+                lscope = ProtoForm(),
+                rscope = Handle( hid=1 )
+              );
+                            
+    self.assertFalse( isinstance( inst1, Connection ) );
+    
+    sig = ProtoSig();
+    inst2 = inst1( sig=sig );
+    self.assertTrue( isinstance( inst2, Connection ) );
     
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #

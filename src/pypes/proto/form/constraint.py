@@ -9,6 +9,9 @@ from pypes.utils.mc import kls;
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 class Constraint( metaclass=kls ):
+
+  _superordinate_ = None;
+  _key_ = None;
   
   def __init__( self, pf, harg, larg ):
     

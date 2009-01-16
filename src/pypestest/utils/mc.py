@@ -125,11 +125,11 @@ class MyParent:
 
 
 class MyKLS( metaclass=kls ):
+
+  _superordinate_ = "parent";
+  _key_ = "key";
   
-  _p_parent_ = None;
-  _k_key_ = None;
-  
-  def __init__( self, x, **kwargs ):
+  def __init__( self, parent, x, key=None ):
     
     pass;
 

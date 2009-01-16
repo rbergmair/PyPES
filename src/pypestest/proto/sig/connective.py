@@ -11,19 +11,32 @@ from pypes.utils.unittest_ import TestCase;
 from pypes.proto import *;
 
 
+
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 class TestConnective( TestCase ):
   
-  def test_instantiate_connective( self ):
+  
+  def test_instantiate_connective_1( self ):
+
+    inst1 = Connective( referent = Word( cspan=(5,7), lemma="and" ) );
+    self.assertFalse( isinstance( inst1, Connective ) );
     
-    inst1 = Connective( ctype=1 );
+    sig = ProtoSig();
+    inst2 = inst1( sig=sig );
+    self.assertTrue( isinstance( inst2, Connective ) );
+
+
+  def test_instantiate_connective_2( self ):
+
+    inst1 = Connective( referent = Operator( otype=Operator.OP_C_STRCON ) );
     self.assertFalse( isinstance( inst1, Connective ) );
     
     sig = ProtoSig();
     inst2 = inst1( sig=sig );
     self.assertTrue( isinstance( inst2, Connective ) );
     
+
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
@@ -38,6 +51,7 @@ def suite():
   return suite;
 
 
+
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 def main( argv=None ):
@@ -46,6 +60,7 @@ def main( argv=None ):
 
 if __name__ == '__main__':
   sys.exit( main( sys.argv ) );
+
 
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #

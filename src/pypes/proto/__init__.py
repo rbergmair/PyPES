@@ -7,7 +7,8 @@ __package__ = "pypes";
 __all__ = [ "Connection", "Constraint", "Handle", "Modification",
             "Predication", "ProtoForm", "Quantification",
             "Argument", "Connective", "Constant", "Modality",
-            "Predicate", "ProtoSig", "Quantifier", "Sort", "Variable" ];
+            "Predicate", "ProtoSig", "Quantifier", "Sort", "Variable",
+            "Operator", "Word" ];
 
 from pypes.proto.sig import Argument;
 from pypes.proto.sig import Connective;
@@ -18,6 +19,8 @@ from pypes.proto.sig import ProtoSig;
 from pypes.proto.sig import Quantifier;
 from pypes.proto.sig import Sort;
 from pypes.proto.sig import Variable;
+from pypes.proto.sig import Operator;
+from pypes.proto.sig import Word;
 
 from pypes.proto.form import Connection;
 from pypes.proto.form import Constraint;

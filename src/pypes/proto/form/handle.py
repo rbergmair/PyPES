@@ -9,9 +9,9 @@ from pypes.utils.mc import kls;
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 class Handle( metaclass=kls ):
-  
-  _p_pf_ = None;
-  _k_hid_ = None;
+
+  _superordinate_ = "pf";
+  _key_ = "hid";
   
   def __init__( self, pf, hid, sig ):
     

@@ -17,12 +17,15 @@ class TestPredication( TestCase ):
   
   def test_instantiate_predication( self ):
     
-    inst1 = Predication( predicate = Predicate( cspan=(0,2) ),
-                         args = { Argument( arglabel="ARG1" ):
-                                    Variable( sortvid=(Sort(sortdsc="x"),1) ),
-                                  Argument( arglabel="ARG2" ):
-                                    Variable( sortvid=(Sort(sortdsc="x"),2) )
-                                } );
+    inst1 = Predication(
+                predicate = Predicate(
+                                referent = Word( cspan=(5,7), lemma="cat" )
+                              ),
+                args = { Argument( arglabel="ARG1" ):
+                           Variable( sortvid=(Sort(sortdsc="x"),1) )
+                       }
+              );
+              
     self.assertFalse( isinstance( inst1, Predication ) );
     
     sig = ProtoSig();

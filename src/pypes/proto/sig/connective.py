@@ -9,11 +9,11 @@ from pypes.utils.mc import kls;
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 class Connective( metaclass=kls ):
+
+  _superordinate_ = "sig";
+  _key_ = "referent";
   
-  _p_sig_ = None;
-  _k_ctype_ = None;
-  
-  def __init__( self, sig, ctype ):
+  def __init__( self, sig, referent ):
     
     pass;
 

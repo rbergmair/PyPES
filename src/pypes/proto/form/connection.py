@@ -10,7 +10,10 @@ from pypes.utils.mc import kls;
 
 class Connection( metaclass=kls ):
   
-  def __init__( self, sig, connective, larg, rarg ):
+  _superordinate_ = None;
+  _key_ = None;
+  
+  def __init__( self, sig, connective, lscope, rscope ):
     
     pass;
 

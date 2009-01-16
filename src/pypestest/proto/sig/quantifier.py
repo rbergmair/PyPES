@@ -11,19 +11,32 @@ from pypes.utils.unittest_ import TestCase;
 from pypes.proto import *;
 
 
+
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 class TestQuantifier( TestCase ):
+
   
-  def test_instantiate_quantifier( self ):
+  def test_instantiate_quantifier_1( self ):
     
-    inst1 = Quantifier( cspan=(0,2) );
+    inst1 = Quantifier( referent = Word( cspan=(0,2), lemma="all" ) );
+    self.assertFalse( isinstance( inst1, Quantifier ) );
+    
+    sig = ProtoSig();
+    inst2 = inst1( sig=sig );
+    self.assertTrue( isinstance( inst2, Quantifier ) );
+
+
+  def test_instantiate_quantifier_2( self ):
+    
+    inst1 = Quantifier( referent = Operator( otype=Operator.OP_Q_FORALL ) );
     self.assertFalse( isinstance( inst1, Quantifier ) );
     
     sig = ProtoSig();
     inst2 = inst1( sig=sig );
     self.assertTrue( isinstance( inst2, Quantifier ) );
     
+
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
@@ -38,6 +51,7 @@ def suite():
   return suite;
 
 
+
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 def main( argv=None ):
@@ -46,6 +60,7 @@ def main( argv=None ):
 
 if __name__ == '__main__':
   sys.exit( main( sys.argv ) );
+
 
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #

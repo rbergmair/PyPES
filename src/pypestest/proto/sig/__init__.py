@@ -15,6 +15,8 @@ import pypestest.proto.sig.protosig;
 import pypestest.proto.sig.quantifier;
 import pypestest.proto.sig.sort;
 import pypestest.proto.sig.variable;
+import pypestest.proto.sig.word;
+import pypestest.proto.sig.operator;
 
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
@@ -32,6 +34,8 @@ def suite():
   suite.addTests( pypestest.proto.sig.quantifier.suite() );
   suite.addTests( pypestest.proto.sig.sort.suite() );
   suite.addTests( pypestest.proto.sig.variable.suite() );
+  suite.addTests( pypestest.proto.sig.word.suite() );
+  suite.addTests( pypestest.proto.sig.operator.suite() );
 
   return suite;
 

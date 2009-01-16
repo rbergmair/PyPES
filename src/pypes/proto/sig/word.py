@@ -1,19 +1,19 @@
 # -*-  coding: ascii -*-  # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-__package__ = "pypes.proto.form";
-__all__ = [ "Predication" ];
+__package__ = "pypes.proto.sig";
+__all__ = [ "Word" ];
 
 from pypes.utils.mc import kls;
 
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-class Predication( metaclass=kls ):
+class Word( metaclass=kls ):
 
-  _superordinate_ = None;
-  _key_ = None;
+  _superordinate_ = "sig";
+  _key_ = "cspan";
   
-  def __init__( self, sig, predicate, args ):
+  def __init__( self, sig, cspan, lemma ):
     
     pass;
 
