@@ -5,6 +5,7 @@ __package__ = "pypestest.utils";
 import sys;
 import unittest;
 
+from pypes.utils.mc import object_;
 from pypes.utils.mc import subject, singleton, kls;
 from pypes.utils.unittest_ import TestCase;
 
@@ -41,7 +42,7 @@ class DigestingEater( Eater, metaclass=subject ):
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-class Apple:
+class Apple( metaclass=object_ ):
 
   def __init__( self ):
 
@@ -54,7 +55,7 @@ class Apple:
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-class Banana:
+class Banana( metaclass=object_ ):
 
   def __init__( self ):
 
@@ -67,7 +68,7 @@ class Banana:
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-class TestSubjectOrientedProgramming( TestCase ):
+class TestSubjectOrientedProgramming( TestCase, metaclass=object_ ):
 
   def test_eater( self ):
 
@@ -107,7 +108,7 @@ class Singleton( metaclass=singleton ):
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-class TestSingleton( TestCase ):
+class TestSingleton( TestCase, metaclass=object_ ):
 
   def test_singleton( self ):
 
@@ -119,7 +120,7 @@ class TestSingleton( TestCase ):
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-class MyParent:
+class MyParent( metaclass=object_ ):
   
   pass;
 
@@ -137,7 +138,7 @@ class MyKLS( metaclass=kls ):
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-class TestKLS( TestCase ):
+class TestKLS( TestCase, metaclass=object_ ):
 
 
   def test_instantiate_kls( self ):

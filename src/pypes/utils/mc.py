@@ -8,15 +8,36 @@ import atexit;
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-class _SubjectCtxMgr:
+class object_( type ):
+
+
+  def __new__( mcs, name, bases, dict ):
+
+    cls = type.__new__( mcs, name, bases, dict );
+    
+    try:
+      cls.__del__;
+    except AttributeError:
+      cls.__del__ = lambda *args, **kwargs: None;
+      
+    return cls;
+
+
+
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+
+class _SubjectCtxMgr( metaclass=object_ ):
+
 
   def __init__( self, subj ):
 
     self._subj = subj;
 
+
   def __enter__( self ):
 
     self._subj._subject__orig_init( self._subj );
+    
     enter = None;
     try:
       enter = self._subj._enter_;
@@ -24,11 +45,14 @@ class _SubjectCtxMgr:
       pass;
     if enter is not None:
       enter();
+      
     return self._subj;
+
 
   def __exit__( self, exc_type, exc_val, exc_tb ):
 
     rslt = False;
+    
     exit = None;
     try:
       exit = self._subj._exit_;
@@ -36,8 +60,10 @@ class _SubjectCtxMgr:
       pass;
     if exit is not None:
       rslt = exit( exc_type, exc_val, exc_tb );
+      
     self._subj._obj_ = None;
     self._subj = None;
+    
     return rslt;
 
 
@@ -45,6 +71,7 @@ class _SubjectCtxMgr:
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 class subject( type ):
+
 
   def __new( cls, obj=None ):
 
@@ -54,14 +81,22 @@ class subject( type ):
     inst._obj_ = obj;
     return _SubjectCtxMgr( inst );
 
+
   def __new__( mcs, name, bases, dict ):
 
     cls = type.__new__( mcs, name, bases, dict );
+    
+    try:
+      cls.__del__;
+    except AttributeError:
+      cls.__del__ = lambda *args, **kwargs: None;
+      
     try:
       cls.__orig_new;
     except AttributeError:
       cls.__orig_new = cls.__new__;
       cls.__new__ = subject.__new;
+      
     return cls;
 
 
@@ -95,12 +130,19 @@ class singleton( type ):
   def __new__( mcs, name, bases, dict ):
 
     cls = type.__new__( mcs, name, bases, dict );
+    
+    try:
+      cls.__del__;
+    except AttributeError:
+      cls.__del__ = lambda *args, **kwargs: None;
+      
     cls.__instance = None;
     try:
       cls.__orig_new;
     except AttributeError:
       cls.__orig_new = cls.__new__;
       cls.__new__ = singleton.__new;
+      
     return cls;
 
 
@@ -158,6 +200,11 @@ class kls( type ):
   def __new__( mcs, name, bases, dict ):
 
     cls = type.__new__( mcs, name, bases, dict );
+
+    try:
+      cls.__del__;
+    except AttributeError:
+      cls.__del__ = lambda *args, **kwargs: None;
     
     try:
       cls.__orig_new;

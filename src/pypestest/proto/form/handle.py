@@ -7,13 +7,14 @@ import sys;
 import unittest;
 
 from pypes.utils.unittest_ import TestCase;
+from pypes.utils.mc import object_;
 
 from pypes.proto import *;
 
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-class TestHandle( TestCase ):
+class TestHandle( TestCase, metaclass=object_ ):
   
   def test_instantiate_handle( self ):
     

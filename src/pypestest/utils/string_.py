@@ -6,12 +6,14 @@ import unittest;
 import sys;
 
 from pypes.utils.unittest_ import TestCase;
+from pypes.utils.mc import object_;
+
 from pypes.utils.string_ import crude_match;
 
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-class TestString( TestCase ):
+class TestString( TestCase, metaclass=object_ ):
 
   def test_stringcrudelyequal( self ):
 

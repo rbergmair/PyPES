@@ -6,13 +6,14 @@ import sys;
 import unittest;
 
 from pypes.utils.unittest_ import TestCase;
+from pypes.utils.mc import object_;
 
 import pypes.utils.globals;
 
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-class TestGlobals( TestCase ):
+class TestGlobals( TestCase, metaclass=object_ ):
 
 
   def test_insttok( self ):

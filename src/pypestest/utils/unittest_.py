@@ -6,11 +6,12 @@ import unittest;
 import sys;
 
 from pypes.utils.unittest_ import TestCase;
+from pypes.utils.mc import object_;
 
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-class TestTestCase1( TestCase ):
+class TestTestCase1( TestCase, metaclass=object_ ):
 
   def globalSetUp( self ):
 
@@ -38,7 +39,7 @@ class TestTestCase1( TestCase ):
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-class TestTestCase2( TestCase ):
+class TestTestCase2( TestCase, metaclass=object_ ):
 
   def globalSetUp( self ):
 
@@ -73,7 +74,7 @@ class TestTestCase2( TestCase ):
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-class TestTestCase3( TestCase ):
+class TestTestCase3( TestCase, metaclass=object_ ):
 
   def test_stringcrudelyequal( self ):
 
@@ -104,7 +105,7 @@ class Asdf:
   
     pass;
 
-class TestCycles( TestCase ):
+class TestCycles( TestCase, metaclass=object_ ):
 
   def _test_cylces( self ):
 

@@ -33,7 +33,7 @@ class XMLElementHandler( xml.sax.handler.ContentHandler, metaclass=subject ):
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-class XMLPCharElementHandler( XMLElementHandler ):
+class XMLPCharElementHandler( XMLElementHandler, metaclass=subject ):
   
   XMLELEM = None;
 
@@ -121,6 +121,8 @@ class XMLHandler( xml.sax.handler.ContentHandler, metaclass=subject ):
 
 
   def _exit_( self, exc_type, exc_val, exc_tb ):
+    
+    self._parser = None;
     
     while self._active_clients:
       

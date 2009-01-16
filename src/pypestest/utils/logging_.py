@@ -6,13 +6,14 @@ import unittest;
 import sys;
 
 from pypes.utils.unittest_ import TestCase;
+from pypes.utils.mc import object_;
 
 from pypes.utils.logging_ import *;
 
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-class TestLogging( TestCase ):
+class TestLogging( TestCase, metaclass=object_ ):
 
   def test_logging( self ):
 

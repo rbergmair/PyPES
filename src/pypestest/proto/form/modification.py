@@ -7,6 +7,7 @@ import sys;
 import unittest;
 
 from pypes.utils.unittest_ import TestCase;
+from pypes.utils.mc import object_;
 
 from pypes.proto import *;
 
@@ -14,7 +15,7 @@ from pypes.proto import *;
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-class TestModification( TestCase ):
+class TestModification( TestCase, metaclass=object_ ):
 
   
   def test_instantiate_modification_1( self ):

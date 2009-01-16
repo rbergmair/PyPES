@@ -15,7 +15,7 @@ class Argument( metaclass=kls ):
 
   def __init__( self, predmod, arglabel ):
     
-    pass;
+    self.arglabel = arglabel;
 
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #

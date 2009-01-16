@@ -7,13 +7,14 @@ import sys;
 import unittest;
 
 from pypes.utils.unittest_ import TestCase;
+from pypes.utils.mc import object_;
 
 from pypes.proto import *;
 
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-class TestSort( TestCase ):
+class TestSort( TestCase, metaclass=object_ ):
   
   def test_instantiate_sort( self ):
     

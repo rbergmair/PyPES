@@ -7,22 +7,27 @@ import sys;
 import unittest;
 
 from pypes.utils.unittest_ import TestCase;
+from pypes.utils.mc import object_;
 
 from pypes.proto import *;
 
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-class TestWord( TestCase ):
+class TestWord( TestCase, metaclass=object_ ):
   
   def test_instantiate_sort( self ):
     
-    inst1 = Word( cspan=(0,2), lemma="the" );
-    self.assertFalse( isinstance( inst1, Word ) );
+    inst_ = Word( cspan=(0,2), lemma="the" );
+    self.assertFalse( isinstance( inst_, Word ) );
     
     sig = ProtoSig();
-    inst2 = inst1( sig=sig );
-    self.assertTrue( isinstance( inst2, Word ) );
+    inst = inst_( sig=sig );
+    self.assertTrue( isinstance( inst, Word ) );
+    
+    #assertEquals( inst.cspan, (0,2) );
+    #assertEquals( inst.lemma, "the" );
+    
     
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #

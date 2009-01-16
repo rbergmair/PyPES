@@ -1,0 +1,3 @@
+instrument code for testing
+  __del__ methods
+    stdin/stdout rerouting, redo logger testing

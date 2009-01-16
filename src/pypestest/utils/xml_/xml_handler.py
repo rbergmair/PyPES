@@ -5,6 +5,7 @@ __package__ = "pypestest.utils";
 import sys;
 import unittest;
 
+from pypes.utils.mc import object_;
 from pypes.utils.mc import subject;
 
 from pypes.utils.unittest_ import TestCase;
@@ -18,7 +19,7 @@ from pypestest.utils.xml_.data import INDATA, TITLE, CONTENT;
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-class DocumentModel:
+class DocumentModel( metaclass=object_ ):
   
   def __init__( self ):
     
@@ -26,12 +27,12 @@ class DocumentModel:
     self.content = None;
 
 
-class HTMLHandler( XMLPCharElementHandler ):
+class HTMLHandler( XMLPCharElementHandler, metaclass=subject ):
   
   XMLELEM = "html";
 
 
-class TitleHandler( XMLPCharElementHandler ):
+class TitleHandler( XMLPCharElementHandler, metaclass=subject ):
   
   XMLELEM = "title";
   
@@ -41,7 +42,7 @@ class TitleHandler( XMLPCharElementHandler ):
     self._obj_.title = self._text;
   
 
-class H1Handler( XMLPCharElementHandler ):
+class H1Handler( XMLPCharElementHandler, metaclass=subject ):
 
   XMLELEM = "h1";
   
@@ -51,7 +52,7 @@ class H1Handler( XMLPCharElementHandler ):
     self._obj_._content.append( "HEADING: " + self._text );
 
 
-class PHandler( XMLPCharElementHandler ):
+class PHandler( XMLPCharElementHandler, metaclass=subject ):
   
   XMLELEM = "p";
 
@@ -61,7 +62,7 @@ class PHandler( XMLPCharElementHandler ):
     self._obj_._content.append( "PARAGRAPH: " + self._text );
 
 
-class BodyHandler( XMLElementHandler ):
+class BodyHandler( XMLElementHandler, metaclass=subject ):
   
   XMLELEM = "body";
   
@@ -101,7 +102,7 @@ class MyXMLHandler( XMLHandler, metaclass=subject ):
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-class TestMyXMLHandler( TestCase ):
+class TestMyXMLHandler( TestCase, metaclass=object_ ):
   
   def test_myxmlhandler( self ):
     
@@ -109,6 +110,7 @@ class TestMyXMLHandler( TestCase ):
     with MyXMLHandler( None ) as myxmlhandler:
       myxmlhandler.feed( INDATA );
       rslt = myxmlhandler.result;
+    del myxmlhandler;
       
     self.assertStringCrudelyEqual( rslt.title, TITLE );
     self.assertStringCrudelyEqual( rslt.content, CONTENT );

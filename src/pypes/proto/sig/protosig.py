@@ -3,10 +3,12 @@
 __package__ = "pypes.proto.sig";
 __all__ = [ "ProtoSig" ];
 
+from pypes.utils.mc import object_;
+
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-class ProtoSig:
+class ProtoSig( metaclass=object_ ):
   
   def __init__( self ):
     
