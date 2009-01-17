@@ -24,9 +24,9 @@ class ProtoForm( metaclass=kls ):
     if constraints is None:
       constraints = {};
     
-    self.subforms = set();
-    for sf in subforms:
-      self.subforms.add( sf( pf=self, sig=sig ) );
+    self.subforms = {};
+    for root in subforms:
+      self.subforms[ root( pf=self ) ] = subforms[ root ]( sig=sig, pf=pf )
       
     self.constraints = set();
     for cons in constraints:

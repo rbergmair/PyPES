@@ -13,9 +13,12 @@ class Quantification( metaclass=kls ):
   _superordinate_ = None;
   _key_ = None;
   
-  def __init__( self, sig, quantifier, var, rstr, body ):
+  def __init__( self, sig, pf, quantifier, var, rstr, body ):
     
-    pass;
+    self.quantifier = quantifier( sig=sig );
+    self.var = var( sig=sig );
+    self.rstr = rstr( sig=sig, pf=pf );
+    self.body = body( sig=sig, pf=pf );
 
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #

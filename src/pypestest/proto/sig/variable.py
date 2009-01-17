@@ -5,6 +5,7 @@ __all__ = [ "TestVariable", "suite", "main" ];
 
 import sys;
 import unittest;
+import random;
 
 from pypes.utils.unittest_ import TestCase;
 from pypes.utils.mc import object_;
@@ -12,19 +13,34 @@ from pypes.utils.mc import object_;
 from pypes.proto import *;
 
 
+
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 class TestVariable( TestCase, metaclass=object_ ):
+
   
-  def test_instantiate_variable( self ):
+  def var( self ):
+
+    vid = random.randint( 0, 0x7FFFFFFF );
     
-    inst1 = Variable( sortvid=( Sort(sortdsc="x"), 1 ) );
-    self.assertFalse( isinstance( inst1, Variable ) );
+    inst_ = Variable( sortvid=("x",vid) );
+    self.assertFalse( isinstance( inst_, Variable ) );
     
     sig = ProtoSig();
-    inst2 = inst1( sig=sig );
-    self.assertTrue( isinstance( inst2, Variable ) );
+    inst = inst_( sig=sig );
+    self.assertTrue( isinstance( inst, Variable ) );
     
+    return inst;
+  
+  
+  def test_init_1( self ):
+    
+    inst = self.var();
+    self.assert_( isinstance( inst.sort, Sort ) );
+    self.assertEquals( inst.sort.sortdsc, "x" );
+    self.assert_( isinstance( inst.vid, int ) );
+    
+
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
@@ -39,6 +55,7 @@ def suite():
   return suite;
 
 
+
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 def main( argv=None ):
@@ -47,6 +64,7 @@ def main( argv=None ):
 
 if __name__ == '__main__':
   sys.exit( main( sys.argv ) );
+
 
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #

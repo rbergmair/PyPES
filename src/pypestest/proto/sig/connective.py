@@ -18,24 +18,43 @@ from pypes.proto import *;
 class TestConnective( TestCase, metaclass=object_ ):
   
   
-  def test_instantiate_connective_1( self ):
+  def conn1( self ):
 
-    inst1 = Connective( referent = Word( cspan=(5,7), lemma="and" ) );
-    self.assertFalse( isinstance( inst1, Connective ) );
+    inst_ = Connective( referent = Word( cspan=(5,7), lemma="and" ) );
+    self.assertFalse( isinstance( inst_, Connective ) );
     
     sig = ProtoSig();
-    inst2 = inst1( sig=sig );
-    self.assertTrue( isinstance( inst2, Connective ) );
+    inst = inst_( sig=sig );
+    self.assertTrue( isinstance( inst, Connective ) );
+    
+    return inst;
 
 
-  def test_instantiate_connective_2( self ):
+  def conn2( self ):
 
-    inst1 = Connective( referent = Operator( otype=Operator.OP_C_STRCON ) );
-    self.assertFalse( isinstance( inst1, Connective ) );
+    inst_ = Connective( referent = Operator( otype=Operator.OP_C_STRCON ) );
+    self.assertFalse( isinstance( inst_, Connective ) );
     
     sig = ProtoSig();
-    inst2 = inst1( sig=sig );
-    self.assertTrue( isinstance( inst2, Connective ) );
+    inst = inst_( sig=sig );
+    self.assertTrue( isinstance( inst, Connective ) );
+    
+    return inst;
+  
+  
+  def test_init_1( self ):
+    
+    inst = self.conn1();
+    self.assert_( isinstance( inst.referent, Word ) );
+    self.assertEquals( inst.referent.cspan, (5,7) );
+    self.assertEquals( inst.referent.lemma, "and" );
+  
+  
+  def test_init_2( self ):
+    
+    inst = self.conn2();
+    self.assert_( isinstance( inst.referent, Operator ) );
+    self.assertEquals( inst.referent.otype, Operator.OP_C_STRCON );
     
 
 

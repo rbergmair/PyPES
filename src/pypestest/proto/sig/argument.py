@@ -18,7 +18,7 @@ from pypes.proto import *;
 class TestArgument( TestCase, metaclass=object_ ):
 
   
-  def test_instantiate_argument_1( self ):
+  def arg1( self ):
     
     inst_ = Argument( arglabel="ARG1" );
     self.assertFalse( isinstance( inst_, Argument ) );
@@ -28,10 +28,10 @@ class TestArgument( TestCase, metaclass=object_ ):
     inst = inst_( predmod=pred );
     self.assertTrue( isinstance( inst, Argument ) );
     
-    self.assertEquals( inst.arglabel, "ARG1" );
+    return inst;
 
 
-  def test_instantiate_argument_2( self ):
+  def arg2( self ):
     
     inst_ = Argument( arglabel="ARG1" );
     self.assertFalse( isinstance( inst_, Argument ) );
@@ -40,7 +40,19 @@ class TestArgument( TestCase, metaclass=object_ ):
     mod = Modality( referent = Word( cspan=(0,7), lemma="Possibly" ) );
     inst = inst_( predmod=mod );
     self.assertTrue( isinstance( inst, Argument ) );
+    
+    return inst;
+  
+  
+  def test_init_1( self ):
+    
+    inst = self.arg1();
+    self.assertEquals( inst.arglabel, "ARG1" );
 
+
+  def test_init_2( self ):
+    
+    inst = self.arg2();
     self.assertEquals( inst.arglabel, "ARG1" );
     
     

@@ -5,6 +5,8 @@ __all__ = [ "Variable" ];
 
 from pypes.utils.mc import kls;
 
+from pypes.proto.sig.sort import Sort;
+
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
@@ -15,7 +17,9 @@ class Variable( metaclass=kls ):
   
   def __init__( self, sig, sortvid ):
     
-    pass;
+    (sortdsc,vid) = sortvid;
+    self.sort = Sort( sortdsc=sortdsc )( sig=sig );
+    self.vid = vid;
 
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #

@@ -5,6 +5,7 @@ __all__ = [ "TestConnection", "suite", "main" ];
 
 import sys;
 import unittest;
+import random;
 
 from pypes.utils.unittest_ import TestCase;
 from pypes.utils.mc import object_;
@@ -12,28 +13,47 @@ from pypes.utils.mc import object_;
 from pypes.proto import *;
 
 
+
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 class TestConnection( TestCase, metaclass=object_ ):
+
   
-  def test_instantiate_connection( self ):
+  def conn1( self ):
     
-    inst1 = Connection(
+    hid1 = random.randint( 0, 0x7FFFFFFF );
+    
+    inst_ = Connection(
                 connective = Connective(
                                  referent = Operator(
                                                 otype=Operator.OP_C_STRCON
                                               )
                                ),
                 lscope = ProtoForm(),
-                rscope = Handle( hid=1 )
+                rscope = Handle( hid=hid1 )
               );
                             
-    self.assertFalse( isinstance( inst1, Connection ) );
+    self.assertFalse( isinstance( inst_, Connection ) );
     
     sig = ProtoSig();
-    inst2 = inst1( sig=sig );
-    self.assertTrue( isinstance( inst2, Connection ) );
+    pf = ProtoForm();
+    inst = inst_( sig=sig, pf=pf );
+    self.assertTrue( isinstance( inst, Connection ) );
     
+    return inst;
+
+
+  def test_init( self ):
+    
+    inst = self.conn1();
+    self.assert_( isinstance( inst.connective, Connective ) );
+    self.assert_( isinstance( inst.connective.referent, Operator ) );
+    self.assertEquals( inst.connective.referent.otype, Operator.OP_C_STRCON );
+    self.assert_( isinstance( inst.lscope, ProtoForm ) );
+    self.assert_( isinstance( inst.rscope, Handle ) );
+    self.assert_( isinstance( inst.rscope.hid, int ) );
+
+
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
@@ -48,6 +68,7 @@ def suite():
   return suite;
 
 
+
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 def main( argv=None ):
@@ -56,6 +77,7 @@ def main( argv=None ):
 
 if __name__ == '__main__':
   sys.exit( main( sys.argv ) );
+
 
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #

@@ -13,9 +13,9 @@ class Handle( metaclass=kls ):
   _superordinate_ = "pf";
   _key_ = "hid";
   
-  def __init__( self, pf, hid, sig ):
+  def __init__( self, pf, hid, sig=None ):
     
-    pass;
+    self.hid = hid;
 
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #

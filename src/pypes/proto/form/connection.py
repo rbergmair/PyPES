@@ -13,9 +13,11 @@ class Connection( metaclass=kls ):
   _superordinate_ = None;
   _key_ = None;
   
-  def __init__( self, sig, connective, lscope, rscope ):
+  def __init__( self, sig, pf, connective, lscope, rscope ):
     
-    pass;
+    self.connective = connective( sig=sig );
+    self.lscope = lscope( sig=sig, pf=pf );
+    self.rscope = rscope( sig=sig, pf=pf );
 
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #

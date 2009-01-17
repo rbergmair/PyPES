@@ -12,19 +12,30 @@ from pypes.utils.mc import object_;
 from pypes.proto import *;
 
 
+
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 class TestConstant( TestCase, metaclass=object_ ):
+
   
-  def test_instantiate_constant( self ):
+  def const( self ):
     
-    inst1 = Constant( ident="Jones" );
-    self.assertFalse( isinstance( inst1, Constant ) );
+    inst_ = Constant( ident="Jones" );
+    self.assertFalse( isinstance( inst_, Constant ) );
     
     sig = ProtoSig();
-    inst2 = inst1( sig=sig );
-    self.assertTrue( isinstance( inst2, Constant ) );
+    inst = inst_( sig=sig );
+    self.assertTrue( isinstance( inst, Constant ) );
     
+    return inst;
+  
+  
+  def test_init( self ):
+    
+    inst = self.const();
+    self.assertEquals( inst.ident, "Jones" );
+    
+
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
@@ -39,6 +50,7 @@ def suite():
   return suite;
 
 
+
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 def main( argv=None ):
@@ -47,6 +59,7 @@ def main( argv=None ):
 
 if __name__ == '__main__':
   sys.exit( main( sys.argv ) );
+
 
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #

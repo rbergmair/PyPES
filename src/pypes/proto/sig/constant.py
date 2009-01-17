@@ -16,7 +16,7 @@ class Constant( metaclass=kls ):
   
   def __init__( self, sig, ident ):
     
-    pass;
+    self.ident = ident;
 
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #

@@ -18,24 +18,43 @@ from pypes.proto import *;
 class TestPredicate( TestCase, metaclass=object_ ):
   
   
-  def test_instantiate_predicate_1( self ):
+  def pred1( self ):
     
-    inst1 = Predicate( referent = Word( cspan=(5,7), lemma="man" ) );
-    self.assertFalse( isinstance( inst1, Predicate ) );
-    
-    sig = ProtoSig();
-    inst2 = inst1( sig=sig );
-    self.assertTrue( isinstance( inst2, Predicate ) );
-
-
-  def test_instantiate_predicate_2( self ):
-    
-    inst1 = Predicate( referent = Operator( otype=Operator.OP_R_EQUALS ) );
-    self.assertFalse( isinstance( inst1, Predicate ) );
+    inst_ = Predicate( referent = Word( cspan=(5,7), lemma="man" ) );
+    self.assertFalse( isinstance( inst_, Predicate ) );
     
     sig = ProtoSig();
-    inst2 = inst1( sig=sig );
-    self.assertTrue( isinstance( inst2, Predicate ) );
+    inst = inst_( sig=sig );
+    self.assertTrue( isinstance( inst, Predicate ) );
+    
+    return inst;
+
+
+  def pred2( self ):
+    
+    inst_ = Predicate( referent = Operator( otype=Operator.OP_R_EQUALS ) );
+    self.assertFalse( isinstance( inst_, Predicate ) );
+    
+    sig = ProtoSig();
+    inst = inst_( sig=sig );
+    self.assertTrue( isinstance( inst, Predicate ) );
+    
+    return inst;
+  
+  
+  def test_init_1( self ):
+    
+    inst = self.pred1();
+    self.assert_( isinstance( inst.referent, Word ) );
+    self.assertEquals( inst.referent.cspan, (5,7) );
+    self.assertEquals( inst.referent.lemma, "man" );
+  
+  
+  def test_init_2( self ):
+    
+    inst = self.pred2();
+    self.assert_( isinstance( inst.referent, Operator ) );
+    self.assertEquals( inst.referent.otype, Operator.OP_R_EQUALS );
     
 
 

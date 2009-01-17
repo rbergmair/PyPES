@@ -13,9 +13,12 @@ class Predication( metaclass=kls ):
   _superordinate_ = None;
   _key_ = None;
   
-  def __init__( self, sig, predicate, args ):
+  def __init__( self, sig, predicate, args, pf=None ):
     
-    pass;
+    self.predicate = predicate( sig=sig );
+    self.args = {};
+    for arg_ in args:
+      self.args[ arg_( predmod=self.predicate ) ] = args[ arg_ ]( sig=sig );
 
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #

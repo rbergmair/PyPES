@@ -12,19 +12,30 @@ from pypes.utils.mc import object_;
 from pypes.proto import *;
 
 
+
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 class TestSort( TestCase, metaclass=object_ ):
+
   
-  def test_instantiate_sort( self ):
+  def sort( self ):
     
-    inst1 = Sort( sortdsc="x" );
-    self.assertFalse( isinstance( inst1, Sort ) );
+    inst_ = Sort( sortdsc="x" );
+    self.assertFalse( isinstance( inst_, Sort ) );
     
     sig = ProtoSig();
-    inst2 = inst1( sig=sig );
-    self.assertTrue( isinstance( inst2, Sort ) );
+    inst = inst_( sig=sig );
+    self.assertTrue( isinstance( inst, Sort ) );
     
+    return inst;
+  
+  
+  def test_init( self ):
+    
+    inst = self.sort();
+    self.assertEquals( inst.sortdsc, "x" );
+
+
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
@@ -39,6 +50,7 @@ def suite():
   return suite;
 
 
+
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 def main( argv=None ):
@@ -47,6 +59,7 @@ def main( argv=None ):
 
 if __name__ == '__main__':
   sys.exit( main( sys.argv ) );
+
 
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #

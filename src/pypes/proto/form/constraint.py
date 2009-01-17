@@ -15,7 +15,8 @@ class Constraint( metaclass=kls ):
   
   def __init__( self, pf, harg, larg ):
     
-    pass;
+    self.harg = harg( pf=pf );
+    self.larg = larg( pf=pf );
 
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #

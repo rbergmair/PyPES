@@ -15,7 +15,8 @@ class Word( metaclass=kls ):
   
   def __init__( self, sig, cspan, lemma ):
     
-    pass;
+    self.cspan = cspan;
+    self.lemma = lemma;
 
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #

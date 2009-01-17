@@ -15,7 +15,7 @@ class Modality( metaclass=kls ):
 
   def __init__( self, sig, referent ):
     
-    pass;
+    self.referent = referent( sig=sig );
   
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #

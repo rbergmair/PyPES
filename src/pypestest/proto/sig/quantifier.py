@@ -18,27 +18,46 @@ from pypes.proto import *;
 class TestQuantifier( TestCase, metaclass=object_ ):
 
   
-  def test_instantiate_quantifier_1( self ):
+  def quant1( self ):
     
-    inst1 = Quantifier( referent = Word( cspan=(0,2), lemma="all" ) );
-    self.assertFalse( isinstance( inst1, Quantifier ) );
-    
-    sig = ProtoSig();
-    inst2 = inst1( sig=sig );
-    self.assertTrue( isinstance( inst2, Quantifier ) );
-
-
-  def test_instantiate_quantifier_2( self ):
-    
-    inst1 = Quantifier( referent = Operator( otype=Operator.OP_Q_FORALL ) );
-    self.assertFalse( isinstance( inst1, Quantifier ) );
+    inst_ = Quantifier( referent = Word( cspan=(0,2), lemma="all" ) );
+    self.assertFalse( isinstance( inst_, Quantifier ) );
     
     sig = ProtoSig();
-    inst2 = inst1( sig=sig );
-    self.assertTrue( isinstance( inst2, Quantifier ) );
+    inst = inst_( sig=sig );
+    self.assertTrue( isinstance( inst, Quantifier ) );
+    
+    return inst;
+
+
+  def quant2( self ):
+    
+    inst_ = Quantifier( referent = Operator( otype=Operator.OP_Q_FORALL ) );
+    self.assertFalse( isinstance( inst_, Quantifier ) );
+    
+    sig = ProtoSig();
+    inst = inst_( sig=sig );
+    self.assertTrue( isinstance( inst, Quantifier ) );
+    
+    return inst;
+  
+  
+  def test_init_1( self ):
+    
+    inst = self.quant1();
+    self.assert_( isinstance( inst.referent, Word ) );
+    self.assertEquals( inst.referent.cspan, (0,2) );
+    self.assertEquals( inst.referent.lemma, "all" );
     
 
+  def test_init_2( self ):
+    
+    inst = self.quant2();
+    self.assert_( isinstance( inst.referent, Operator ) );
+    self.assertEquals( inst.referent.otype, Operator.OP_Q_FORALL );
 
+    
+    
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 def suite():

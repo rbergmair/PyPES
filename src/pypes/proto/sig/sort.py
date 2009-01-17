@@ -15,7 +15,7 @@ class Sort( metaclass=kls ):
   
   def __init__( self, sig, sortdsc ):
     
-    pass;
+    self.sortdsc = sortdsc;
 
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #

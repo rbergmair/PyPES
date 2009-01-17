@@ -12,19 +12,30 @@ from pypes.utils.mc import object_;
 from pypes.proto import *;
 
 
+
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 class TestOperator( TestCase, metaclass=object_ ):
+
   
-  def test_instantiate_operator( self ):
+  def op( self ):
     
-    inst1 = Operator( otype=Operator.OP_C_IMPL );
-    self.assertFalse( isinstance( inst1, Operator ) );
+    inst_ = Operator( otype=Operator.OP_C_IMPL );
+    self.assertFalse( isinstance( inst_, Operator ) );
     
     sig = ProtoSig();
-    inst2 = inst1( sig=sig );
-    self.assertTrue( isinstance( inst2, Operator ) );
+    inst = inst_( sig=sig );
+    self.assertTrue( isinstance( inst, Operator ) );
     
+    return inst;
+  
+  
+  def test_init( self ):
+    
+    inst = self.op();
+    self.assertEquals( inst.otype, Operator.OP_C_IMPL );
+    
+
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
@@ -39,6 +50,7 @@ def suite():
   return suite;
 
 
+
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 def main( argv=None ):
@@ -47,6 +59,7 @@ def main( argv=None ):
 
 if __name__ == '__main__':
   sys.exit( main( sys.argv ) );
+
 
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #

@@ -12,11 +12,13 @@ from pypes.utils.mc import object_;
 from pypes.proto import *;
 
 
+
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 class TestWord( TestCase, metaclass=object_ ):
+
   
-  def test_instantiate_sort( self ):
+  def word( self ):
     
     inst_ = Word( cspan=(0,2), lemma="the" );
     self.assertFalse( isinstance( inst_, Word ) );
@@ -25,8 +27,15 @@ class TestWord( TestCase, metaclass=object_ ):
     inst = inst_( sig=sig );
     self.assertTrue( isinstance( inst, Word ) );
     
-    #assertEquals( inst.cspan, (0,2) );
-    #assertEquals( inst.lemma, "the" );
+    return inst;
+  
+  
+  def test_init( self ):
+    
+    inst = self.word();
+    
+    self.assertEquals( inst.cspan, (0,2) );
+    self.assertEquals( inst.lemma, "the" );
     
     
 
@@ -43,6 +52,7 @@ def suite():
   return suite;
 
 
+
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 def main( argv=None ):
@@ -51,6 +61,7 @@ def main( argv=None ):
 
 if __name__ == '__main__':
   sys.exit( main( sys.argv ) );
+
 
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #

@@ -5,6 +5,7 @@ __all__ = [ "TestQuantification", "suite", "main" ];
 
 import sys;
 import unittest;
+import random;
 
 from pypes.utils.unittest_ import TestCase;
 from pypes.utils.mc import object_;
@@ -12,25 +13,53 @@ from pypes.utils.mc import object_;
 from pypes.proto import *;
 
 
+
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 class TestQuantification( TestCase, metaclass=object_ ):
+
   
-  def test_instantiate_quantification( self ):
+  def quant( self ):
+        
+    vid1 = random.randint( 0, 0x7FFFFFFF );
+    hid1 = random.randint( 0, 0x7FFFFFFF );
     
-    inst1 = Quantification(
-                quantifier = Operator( otype=Operator.OP_Q_FORALL ),
-                var = Variable( sortvid=( Sort(sortdsc="x"), 1 ) ),
+    inst_ = Quantification(
+                quantifier = Quantifier(
+                                 referent = Operator(
+                                                otype=Operator.OP_Q_FORALL
+                                              )
+                               ),
+                var = Variable( sortvid=("x",vid1) ),
                 rstr = ProtoForm(),
-                body = Handle( hid=1 )
+                body = Handle( hid=hid1 )
               );
                             
-    self.assertFalse( isinstance( inst1, Quantification ) );
+    self.assertFalse( isinstance( inst_, Quantification ) );
     
     sig = ProtoSig();
-    inst2 = inst1( sig=sig );
-    self.assertTrue( isinstance( inst2, Quantification ) );
+    pf = ProtoForm();
+    inst = inst_( sig=sig, pf=pf );
+    self.assertTrue( isinstance( inst, Quantification ) );
     
+    return inst;
+  
+  
+  def test_init( self ):
+    
+    inst = self.quant();
+    self.assert_( isinstance( inst.quantifier, Quantifier ) );
+    self.assert_( isinstance( inst.quantifier.referent, Operator ) );
+    self.assertEquals( inst.quantifier.referent.otype, Operator.OP_Q_FORALL );
+    self.assert_( isinstance( inst.var, Variable ) );
+    self.assert_( isinstance( inst.var.vid, int ) );
+    self.assert_( isinstance( inst.var.sort, Sort ) );
+    self.assertEquals( inst.var.sort.sortdsc, "x" );
+    self.assert_( isinstance( inst.rstr, ProtoForm ) );
+    self.assert_( isinstance( inst.body, Handle ) );
+    self.assert_( isinstance( inst.body.hid, int ) );
+    
+
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
@@ -45,6 +74,7 @@ def suite():
   return suite;
 
 
+
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 def main( argv=None ):
@@ -53,6 +83,7 @@ def main( argv=None ):
 
 if __name__ == '__main__':
   sys.exit( main( sys.argv ) );
+
 
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #

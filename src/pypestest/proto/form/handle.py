@@ -5,6 +5,7 @@ __all__ = [ "TestHandle", "suite", "main" ];
 
 import sys;
 import unittest;
+import random;
 
 from pypes.utils.unittest_ import TestCase;
 from pypes.utils.mc import object_;
@@ -12,20 +13,33 @@ from pypes.utils.mc import object_;
 from pypes.proto import *;
 
 
+
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 class TestHandle( TestCase, metaclass=object_ ):
+
   
-  def test_instantiate_handle( self ):
+  def handle1( self ):
     
-    inst1 = Handle( hid=1 );
-    self.assertFalse( isinstance( inst1, Handle ) );
+    hid1 = random.randint( 0, 0x7FFFFFFF );
+    
+    inst_ = Handle( hid=hid1 );
+    self.assertFalse( isinstance( inst_, Handle ) );
     
     sig = ProtoSig();
     pf = ProtoForm()( sig=sig );
-    inst2 = inst1( sig=sig, pf=pf );
-    self.assertTrue( isinstance( inst2, Handle ) );
+    inst = inst_( sig=sig, pf=pf );
+    self.assertTrue( isinstance( inst, Handle ) );
     
+    return inst;
+
+  
+  def test_init( self ):
+    
+    inst = self.handle1();
+    self.assert_( isinstance( inst.hid, int ) );
+    
+
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
@@ -40,6 +54,7 @@ def suite():
   return suite;
 
 
+
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 def main( argv=None ):
@@ -48,6 +63,7 @@ def main( argv=None ):
 
 if __name__ == '__main__':
   sys.exit( main( sys.argv ) );
+
 
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #

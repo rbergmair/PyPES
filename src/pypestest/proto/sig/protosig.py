@@ -16,7 +16,7 @@ from pypes.proto import *;
 
 class TestProtoSig( TestCase, metaclass=object_ ):
   
-  def test_instantiate_protosig( self ):
+  def test_init( self ):
     
     sig = ProtoSig();
     self.assertTrue( isinstance( sig, ProtoSig ) );

@@ -29,7 +29,7 @@ class Operator( metaclass=kls ):
   
   def __init__( self, sig, otype ):
     
-    pass;
+    self.otype = otype;
 
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
