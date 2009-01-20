@@ -18,7 +18,7 @@ from pypes.proto import *;
 class TestSort( TestCase, metaclass=object_ ):
 
   
-  def sort( self ):
+  def init_sort1( self ):
     
     inst_ = Sort( sortdsc="x" );
     self.assertFalse( isinstance( inst_, Sort ) );
@@ -30,10 +30,14 @@ class TestSort( TestCase, metaclass=object_ ):
     return inst;
   
   
-  def test_init( self ):
+  def check_sort1( self, inst ):
     
-    inst = self.sort();
     self.assertEquals( inst.sortdsc, "x" );
+  
+  
+  def test_sort1( self ):
+    
+    self.check_sort1( self.init_sort1() );
 
 
 

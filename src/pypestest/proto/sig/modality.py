@@ -18,7 +18,7 @@ from pypes.proto import *;
 class TestModality( TestCase, metaclass=object_ ):
 
   
-  def mod1( self ):
+  def init_mod1( self ):
     
     inst_ = Modality( referent = Word( cspan=(5,7), lemma="not" ) );
     self.assertFalse( isinstance( inst_, Modality ) );
@@ -30,7 +30,7 @@ class TestModality( TestCase, metaclass=object_ ):
     return inst;
 
 
-  def mod2( self ):
+  def init_mod2( self ):
     
     inst_ = Modality( referent = Operator( otype=Operator.OP_M_NEG ) );
     self.assertFalse( isinstance( inst_, Modality ) );
@@ -42,21 +42,27 @@ class TestModality( TestCase, metaclass=object_ ):
     return inst;
   
   
-  def test_init_1( self ):
-    
-    inst = self.mod1();
+  def check_mod1( self, inst ):
     
     self.assert_( isinstance( inst.referent, Word ) );
     self.assertEquals( inst.referent.cspan, (5,7) );
     self.assertEquals( inst.referent.lemma, "not" );
   
   
-  def test_init_2( self ):
-    
-    inst = self.mod2();
+  def check_mod2( self, inst ):
     
     self.assert_( isinstance( inst.referent, Operator ) );
     self.assertEquals( inst.referent.otype, Operator.OP_M_NEG );
+  
+  
+  def test_mod1( self ):
+    
+    self.check_mod1( self.init_mod1() );
+  
+  
+  def test_mod2( self ):
+    
+    self.check_mod2( self.init_mod2() );
 
 
 

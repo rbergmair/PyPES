@@ -18,7 +18,7 @@ from pypes.proto import *;
 class TestPredicate( TestCase, metaclass=object_ ):
   
   
-  def pred1( self ):
+  def init_pred1( self ):
     
     inst_ = Predicate( referent = Word( cspan=(5,7), lemma="man" ) );
     self.assertFalse( isinstance( inst_, Predicate ) );
@@ -30,7 +30,7 @@ class TestPredicate( TestCase, metaclass=object_ ):
     return inst;
 
 
-  def pred2( self ):
+  def init_pred2( self ):
     
     inst_ = Predicate( referent = Operator( otype=Operator.OP_R_EQUALS ) );
     self.assertFalse( isinstance( inst_, Predicate ) );
@@ -42,19 +42,27 @@ class TestPredicate( TestCase, metaclass=object_ ):
     return inst;
   
   
-  def test_init_1( self ):
+  def check_pred1( self, inst ):
     
-    inst = self.pred1();
     self.assert_( isinstance( inst.referent, Word ) );
     self.assertEquals( inst.referent.cspan, (5,7) );
     self.assertEquals( inst.referent.lemma, "man" );
   
   
-  def test_init_2( self ):
+  def check_pred2( self, inst ):
     
-    inst = self.pred2();
     self.assert_( isinstance( inst.referent, Operator ) );
     self.assertEquals( inst.referent.otype, Operator.OP_R_EQUALS );
+  
+  
+  def test_pred1( self ):
+    
+    self.check_pred1( self.init_pred1() );
+
+
+  def test_pred2( self ):
+    
+    self.check_pred2( self.init_pred2() );
     
 
 

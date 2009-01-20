@@ -19,7 +19,7 @@ from pypes.proto import *;
 class TestConnection( TestCase, metaclass=object_ ):
 
   
-  def conn1( self ):
+  def init_conn1( self ):
     
     hid1 = random.randint( 0, 0x7FFFFFFF );
     
@@ -43,15 +43,19 @@ class TestConnection( TestCase, metaclass=object_ ):
     return inst;
 
 
-  def test_init( self ):
+  def check_conn1( self, inst ):
     
-    inst = self.conn1();
     self.assert_( isinstance( inst.connective, Connective ) );
     self.assert_( isinstance( inst.connective.referent, Operator ) );
     self.assertEquals( inst.connective.referent.otype, Operator.OP_C_STRCON );
     self.assert_( isinstance( inst.lscope, ProtoForm ) );
     self.assert_( isinstance( inst.rscope, Handle ) );
     self.assert_( isinstance( inst.rscope.hid, int ) );
+  
+  
+  def test_conn1( self ):
+    
+    self.check_conn1( self.init_conn1() );
 
 
 

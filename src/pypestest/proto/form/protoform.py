@@ -19,7 +19,7 @@ from pypes.proto import *;
 class TestProtoForm( TestCase, metaclass=object_ ):
 
   
-  def pf1( self ):
+  def init_pf1( self ):
     
     inst_ = ProtoForm();
 
@@ -32,7 +32,7 @@ class TestProtoForm( TestCase, metaclass=object_ ):
     return inst;
     
 
-  def pf2( self ):
+  def init_pf2( self ):
     
     ( hid1, hid2, hid3, hid4, hid5 ) = random.sample( range(0,0x7FFFFFFF), 5 );
     ( vid1, vid2 ) = random.sample( range(0,0x7FFFFFFF), 2 );
@@ -86,14 +86,12 @@ class TestProtoForm( TestCase, metaclass=object_ ):
     return inst;
   
   
-  def test_init_1( self ):
+  def check_pf1( self, inst ):
     
-    inst = self.pf1();
-    
-  
-  def test_init_2( self ):
-    
-    inst = self.pf2();
+    pass;
+
+      
+  def check_pf2( self, inst ):
     
     subforms = {};
     
@@ -228,6 +226,16 @@ class TestProtoForm( TestCase, metaclass=object_ ):
     self.assertEquals( len( cons ), 2 );
     self.assert_( cons[ h1 ] is h5 );
     self.assert_( cons[ h3 ] is h5 );
+  
+  
+  def test_pf1( self ):
+    
+    self.check_pf1( self.init_pf1() );
+  
+  
+  def test_pf2( self ):
+    
+    self.check_pf2( self.init_pf2() );
 
 
 

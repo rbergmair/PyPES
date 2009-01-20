@@ -18,7 +18,7 @@ from pypes.proto import *;
 class TestConnective( TestCase, metaclass=object_ ):
   
   
-  def conn1( self ):
+  def init_conn1( self ):
 
     inst_ = Connective( referent = Word( cspan=(5,7), lemma="and" ) );
     self.assertFalse( isinstance( inst_, Connective ) );
@@ -30,7 +30,7 @@ class TestConnective( TestCase, metaclass=object_ ):
     return inst;
 
 
-  def conn2( self ):
+  def init_conn2( self ):
 
     inst_ = Connective( referent = Operator( otype=Operator.OP_C_STRCON ) );
     self.assertFalse( isinstance( inst_, Connective ) );
@@ -42,19 +42,27 @@ class TestConnective( TestCase, metaclass=object_ ):
     return inst;
   
   
-  def test_init_1( self ):
+  def check_conn1( self, inst ):
     
-    inst = self.conn1();
     self.assert_( isinstance( inst.referent, Word ) );
     self.assertEquals( inst.referent.cspan, (5,7) );
     self.assertEquals( inst.referent.lemma, "and" );
   
   
-  def test_init_2( self ):
+  def check_conn2( self, inst ):
     
-    inst = self.conn2();
     self.assert_( isinstance( inst.referent, Operator ) );
     self.assertEquals( inst.referent.otype, Operator.OP_C_STRCON );
+  
+  
+  def test_conn1( self ):
+    
+    self.check_conn1( self.init_conn1() );
+
+
+  def test_conn2( self ):
+    
+    self.check_conn2( self.init_conn2() );
     
 
 

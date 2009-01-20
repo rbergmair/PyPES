@@ -19,7 +19,7 @@ from pypes.proto import *;
 class TestPredication( TestCase, metaclass=object_ ):
 
   
-  def pred( self ):
+  def init_pred1( self ):
     
     vid1 = random.randint( 0, 0x7FFFFFFF );
     
@@ -27,7 +27,7 @@ class TestPredication( TestCase, metaclass=object_ ):
                 predicate = Predicate(
                                 referent = Word( cspan=(5,7), lemma="cat" )
                               ),
-                args = { Argument( arglabel="ARG1" ):
+                args = { Argument( arglabel="arg1" ):
                            Variable( sortvid=("x",vid1) )
                        }
               );
@@ -41,9 +41,8 @@ class TestPredication( TestCase, metaclass=object_ ):
     return inst;
   
   
-  def test_init( self ):
+  def check_pred1( self, inst ):
     
-    inst = self.pred();
     self.assert_( isinstance( inst.predicate, Predicate ) );
     self.assert_( isinstance( inst.predicate.referent, Word ) );
     self.assertEquals( inst.predicate.referent.cspan, (5,7) );
@@ -62,8 +61,13 @@ class TestPredication( TestCase, metaclass=object_ ):
       self.assert_( isinstance( inst.args[ arg ].sort, Sort ) );
       self.assertEquals( inst.args[ arg ].sort.sortdsc, "x" );
     
-    self.assertEquals( labels, { "ARG1" } );
+    self.assertEquals( labels, { "arg1" } );
     self.assertEquals( len( vars ), 1 );
+  
+  
+  def test_pred1( self ):
+    
+    self.check_pred1( self.init_pred1() );
     
 
 

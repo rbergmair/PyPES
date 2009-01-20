@@ -19,7 +19,7 @@ from pypes.proto import *;
 class TestQuantification( TestCase, metaclass=object_ ):
 
   
-  def quant( self ):
+  def init_quant1( self ):
         
     vid1 = random.randint( 0, 0x7FFFFFFF );
     hid1 = random.randint( 0, 0x7FFFFFFF );
@@ -45,9 +45,8 @@ class TestQuantification( TestCase, metaclass=object_ ):
     return inst;
   
   
-  def test_init( self ):
+  def check_quant1( self, inst ):
     
-    inst = self.quant();
     self.assert_( isinstance( inst.quantifier, Quantifier ) );
     self.assert_( isinstance( inst.quantifier.referent, Operator ) );
     self.assertEquals( inst.quantifier.referent.otype, Operator.OP_Q_FORALL );
@@ -58,6 +57,11 @@ class TestQuantification( TestCase, metaclass=object_ ):
     self.assert_( isinstance( inst.rstr, ProtoForm ) );
     self.assert_( isinstance( inst.body, Handle ) );
     self.assert_( isinstance( inst.body.hid, int ) );
+  
+  
+  def test_quant1( self ):
+    
+    self.check_quant1( self.init_quant1() );
     
 
 

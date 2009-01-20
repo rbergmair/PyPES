@@ -13,10 +13,13 @@ class Word( metaclass=kls ):
   _superordinate_ = "sig";
   _key_ = "cspan";
   
-  def __init__( self, sig, cspan, lemma ):
+  def __init__( self, sig, cspan=None, lemma=None, scf=None, pos=None, sense=None ):
     
     self.cspan = cspan;
     self.lemma = lemma;
+    self.scf = scf;
+    self.pos = pos;
+    self.sense = sense;
 
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #

@@ -18,7 +18,7 @@ from pypes.proto import *;
 class TestQuantifier( TestCase, metaclass=object_ ):
 
   
-  def quant1( self ):
+  def init_quant1( self ):
     
     inst_ = Quantifier( referent = Word( cspan=(0,2), lemma="all" ) );
     self.assertFalse( isinstance( inst_, Quantifier ) );
@@ -30,7 +30,7 @@ class TestQuantifier( TestCase, metaclass=object_ ):
     return inst;
 
 
-  def quant2( self ):
+  def init_quant2( self ):
     
     inst_ = Quantifier( referent = Operator( otype=Operator.OP_Q_FORALL ) );
     self.assertFalse( isinstance( inst_, Quantifier ) );
@@ -42,19 +42,27 @@ class TestQuantifier( TestCase, metaclass=object_ ):
     return inst;
   
   
-  def test_init_1( self ):
+  def check_quant1( self, inst ):
     
-    inst = self.quant1();
     self.assert_( isinstance( inst.referent, Word ) );
     self.assertEquals( inst.referent.cspan, (0,2) );
     self.assertEquals( inst.referent.lemma, "all" );
     
 
-  def test_init_2( self ):
+  def check_quant2( self, inst ):
     
-    inst = self.quant2();
     self.assert_( isinstance( inst.referent, Operator ) );
     self.assertEquals( inst.referent.otype, Operator.OP_Q_FORALL );
+  
+  
+  def test_quant1( self ):
+    
+    self.check_quant1( self.init_quant1() );
+  
+  
+  def test_quant2( self ):
+    
+    self.check_quant2( self.init_quant2() );
 
     
     

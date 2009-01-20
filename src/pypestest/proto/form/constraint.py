@@ -19,7 +19,7 @@ from pypes.proto import *;
 class TestConstraint( TestCase, metaclass=object_ ):
 
   
-  def constr1( self ):
+  def init_constr1( self ):
     
     ( hid1, hid2 ) = random.sample( range(0,0x7FFFFFFF), 2 );
     
@@ -37,14 +37,18 @@ class TestConstraint( TestCase, metaclass=object_ ):
     return inst;
   
   
-  def test_init( self ):
+  def check_constr1( self, inst ):
     
-    inst = self.constr1();
     self.assert_( isinstance( inst.harg, Handle ) );
     self.assert_( isinstance( inst.harg.hid, int ) );
     self.assert_( isinstance( inst.larg, Handle ) );
     self.assert_( isinstance( inst.larg.hid, int ) );
     self.assertFalse( inst.harg is inst.larg );
+  
+  
+  def test_constr1( self ):
+    
+    self.check_constr1( self.init_constr1() );
     
 
 

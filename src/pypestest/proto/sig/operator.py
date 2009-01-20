@@ -18,7 +18,7 @@ from pypes.proto import *;
 class TestOperator( TestCase, metaclass=object_ ):
 
   
-  def op( self ):
+  def init_op1( self ):
     
     inst_ = Operator( otype=Operator.OP_C_IMPL );
     self.assertFalse( isinstance( inst_, Operator ) );
@@ -30,10 +30,14 @@ class TestOperator( TestCase, metaclass=object_ ):
     return inst;
   
   
-  def test_init( self ):
+  def check_op1( self, inst ):
     
-    inst = self.op();
     self.assertEquals( inst.otype, Operator.OP_C_IMPL );
+  
+  
+  def test_op1( self ):
+    
+    self.check_op1( self.init_op1() );
     
 
 

@@ -19,7 +19,7 @@ from pypes.proto import *;
 class TestHandle( TestCase, metaclass=object_ ):
 
   
-  def handle1( self ):
+  def init_handle1( self ):
     
     hid1 = random.randint( 0, 0x7FFFFFFF );
     
@@ -34,10 +34,14 @@ class TestHandle( TestCase, metaclass=object_ ):
     return inst;
 
   
-  def test_init( self ):
+  def check_handle1( self, inst ):
     
-    inst = self.handle1();
     self.assert_( isinstance( inst.hid, int ) );
+  
+  
+  def test_handle1( self ):
+    
+    self.check_handle1( self.init_handle1() );
     
 
 

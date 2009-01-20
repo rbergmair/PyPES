@@ -19,7 +19,7 @@ from pypes.proto import *;
 class TestVariable( TestCase, metaclass=object_ ):
 
   
-  def var( self ):
+  def init_var1( self ):
 
     vid = random.randint( 0, 0x7FFFFFFF );
     
@@ -33,12 +33,16 @@ class TestVariable( TestCase, metaclass=object_ ):
     return inst;
   
   
-  def test_init_1( self ):
+  def check_var1( self, inst ):
     
-    inst = self.var();
     self.assert_( isinstance( inst.sort, Sort ) );
     self.assertEquals( inst.sort.sortdsc, "x" );
     self.assert_( isinstance( inst.vid, int ) );
+  
+  
+  def test_var1( self ):
+    
+    self.check_var1( self.init_var1() );
     
 
 

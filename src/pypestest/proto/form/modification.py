@@ -19,7 +19,7 @@ from pypes.proto import *;
 class TestModification( TestCase, metaclass=object_ ):
 
   
-  def modification1( self ):
+  def init_modification1( self ):
 
     ( vid1, vid2 ) = random.sample( range(0,0x7FFFFFFF), 2 );
     hid1 = random.randint( 0, 0x7FFFFFFF );
@@ -46,7 +46,7 @@ class TestModification( TestCase, metaclass=object_ ):
     return inst;
 
 
-  def modification2( self ):
+  def init_modification2( self ):
     
     inst_ = Modification(
                 modifier = Modality(
@@ -65,9 +65,7 @@ class TestModification( TestCase, metaclass=object_ ):
     return inst;
   
   
-  def test_init_1( self ):
-    
-    inst = self.modification1();
+  def check_modification1( self, inst ):
     
     self.assert_( isinstance( inst.modifier, Modality ) );
     self.assert_( isinstance( inst.modifier.referent, Word ) );
@@ -94,15 +92,23 @@ class TestModification( TestCase, metaclass=object_ ):
     self.assert_( isinstance( inst.scope.hid, int ) );
   
   
-  def test_init_2( self ):
-    
-    inst = self.modification2();
+  def check_modification2( self, inst ):
     
     self.assert_( isinstance( inst.modifier, Modality ) );
     self.assert_( isinstance( inst.modifier.referent, Word ) );
     self.assertEquals( inst.modifier.referent.cspan, (5,7) );
     self.assertEquals( inst.modifier.referent.lemma, "not" );
     self.assert_( isinstance( inst.scope, ProtoForm ) );
+  
+  
+  def test_modification1( self ):
+    
+    self.check_modification1( self.init_modification1() );
+  
+  
+  def test_modification2( self ):
+    
+    self.check_modification2( self.init_modification2() );
     
 
 

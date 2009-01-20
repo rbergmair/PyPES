@@ -18,7 +18,7 @@ from pypes.proto import *;
 class TestWord( TestCase, metaclass=object_ ):
 
   
-  def word( self ):
+  def init_word1( self ):
     
     inst_ = Word( cspan=(0,2), lemma="the" );
     self.assertFalse( isinstance( inst_, Word ) );
@@ -30,12 +30,15 @@ class TestWord( TestCase, metaclass=object_ ):
     return inst;
   
   
-  def test_init( self ):
-    
-    inst = self.word();
+  def check_word1( self, inst ):
     
     self.assertEquals( inst.cspan, (0,2) );
     self.assertEquals( inst.lemma, "the" );
+  
+  
+  def test_word1( self ):
+    
+    self.check_word1( self.init_word1() );
     
     
 

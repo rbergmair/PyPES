@@ -18,7 +18,7 @@ from pypes.proto import *;
 class TestArgument( TestCase, metaclass=object_ ):
 
   
-  def arg1( self ):
+  def init_arg1( self ):
     
     inst_ = Argument( arglabel="ARG1" );
     self.assertFalse( isinstance( inst_, Argument ) );
@@ -31,7 +31,7 @@ class TestArgument( TestCase, metaclass=object_ ):
     return inst;
 
 
-  def arg2( self ):
+  def init_arg2( self ):
     
     inst_ = Argument( arglabel="ARG1" );
     self.assertFalse( isinstance( inst_, Argument ) );
@@ -44,16 +44,24 @@ class TestArgument( TestCase, metaclass=object_ ):
     return inst;
   
   
-  def test_init_1( self ):
+  def check_arg1( self, inst ):
     
-    inst = self.arg1();
     self.assertEquals( inst.arglabel, "ARG1" );
 
 
-  def test_init_2( self ):
+  def check_arg2( self, inst ):
     
-    inst = self.arg2();
     self.assertEquals( inst.arglabel, "ARG1" );
+  
+  
+  def test_arg1( self ):
+    
+    self.check_arg1( self.init_arg1() );
+  
+  
+  def test_arg2( self ):
+    
+    self.check_arg2( self.init_arg2() );
     
     
 

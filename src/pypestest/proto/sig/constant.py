@@ -18,7 +18,7 @@ from pypes.proto import *;
 class TestConstant( TestCase, metaclass=object_ ):
 
   
-  def const( self ):
+  def init_const1( self ):
     
     inst_ = Constant( ident="Jones" );
     self.assertFalse( isinstance( inst_, Constant ) );
@@ -30,10 +30,14 @@ class TestConstant( TestCase, metaclass=object_ ):
     return inst;
   
   
-  def test_init( self ):
+  def check_const1( self, inst ):
     
-    inst = self.const();
     self.assertEquals( inst.ident, "Jones" );
+  
+  
+  def x_test_const1( self ):
+    
+    self.check_const1( self.init_const1() );
     
 
 
