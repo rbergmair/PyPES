@@ -25,12 +25,12 @@ class TestModification( TestCase, metaclass=object_ ):
     hid1 = random.randint( 0, 0x7FFFFFFF );
     
     inst_ = Modification(
-                modifier = Modality(
+                modality = Modality(
                                referent = Word( cspan=(5,8), lemma="told" )
                              ),
-                args = { Argument( arglabel="ARG1" ):
+                args = { Argument( arglabel="arg1" ):
                            Variable( sortvid=("x",vid1) ),
-                         Argument( arglabel="ARG2" ):
+                         Argument( arglabel="arg2" ):
                            Variable( sortvid=("x",vid2) )
                        },
                 scope = Handle( hid=hid1 )
@@ -49,7 +49,7 @@ class TestModification( TestCase, metaclass=object_ ):
   def init_modification2( self ):
     
     inst_ = Modification(
-                modifier = Modality(
+                modality = Modality(
                                referent = Word( cspan=(5,7), lemma="not" )
                              ),
                 scope = ProtoForm()
@@ -67,10 +67,10 @@ class TestModification( TestCase, metaclass=object_ ):
   
   def check_modification1( self, inst ):
     
-    self.assert_( isinstance( inst.modifier, Modality ) );
-    self.assert_( isinstance( inst.modifier.referent, Word ) );
-    self.assertEquals( inst.modifier.referent.cspan, (5,8) );
-    self.assertEquals( inst.modifier.referent.lemma, "told" );
+    self.assert_( isinstance( inst.modality, Modality ) );
+    self.assert_( isinstance( inst.modality.referent, Word ) );
+    self.assertEquals( inst.modality.referent.cspan, (5,8) );
+    self.assertEquals( inst.modality.referent.lemma, "told" );
     
     labels = set();
     vars = set();
@@ -85,7 +85,7 @@ class TestModification( TestCase, metaclass=object_ ):
       self.assert_( isinstance( inst.args[ arg ].sort, Sort ) );
       self.assertEquals( inst.args[ arg ].sort.sortdsc, "x" );
     
-    self.assertEquals( labels, { "ARG1", "ARG2" } );
+    self.assertEquals( labels, { "arg1", "arg2" } );
     self.assertEquals( len( vars ), 2 );
       
     self.assert_( isinstance( inst.scope, Handle ) );
@@ -94,10 +94,10 @@ class TestModification( TestCase, metaclass=object_ ):
   
   def check_modification2( self, inst ):
     
-    self.assert_( isinstance( inst.modifier, Modality ) );
-    self.assert_( isinstance( inst.modifier.referent, Word ) );
-    self.assertEquals( inst.modifier.referent.cspan, (5,7) );
-    self.assertEquals( inst.modifier.referent.lemma, "not" );
+    self.assert_( isinstance( inst.modality, Modality ) );
+    self.assert_( isinstance( inst.modality.referent, Word ) );
+    self.assertEquals( inst.modality.referent.cspan, (5,7) );
+    self.assertEquals( inst.modality.referent.lemma, "not" );
     self.assert_( isinstance( inst.scope, ProtoForm ) );
   
   

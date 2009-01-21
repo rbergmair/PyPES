@@ -13,13 +13,13 @@ class Modification( metaclass=kls ):
   _superordinate_ = None;
   _key_ = None;
   
-  def __init__( self, sig, pf, modifier, scope, args={} ):
+  def __init__( self, sig, pf, modality, scope, args={} ):
     
-    self.modifier = modifier( sig=sig );
+    self.modality = modality( sig=sig );
     self.scope = scope( sig=sig, pf=pf );
     self.args = {};
     for arg_ in args:
-      self.args[ arg_( predmod=self.modifier ) ] = args[ arg_ ]( sig=sig );
+      self.args[ arg_( predmod=self.modality ) ] = args[ arg_ ]( sig=sig );
 
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #

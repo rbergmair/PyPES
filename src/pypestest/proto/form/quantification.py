@@ -27,7 +27,7 @@ class TestQuantification( TestCase, metaclass=object_ ):
     inst_ = Quantification(
                 quantifier = Quantifier(
                                  referent = Operator(
-                                                otype=Operator.OP_Q_FORALL
+                                                otype=Operator.OP_Q_UNIV
                                               )
                                ),
                 var = Variable( sortvid=("x",vid1) ),
@@ -49,7 +49,7 @@ class TestQuantification( TestCase, metaclass=object_ ):
     
     self.assert_( isinstance( inst.quantifier, Quantifier ) );
     self.assert_( isinstance( inst.quantifier.referent, Operator ) );
-    self.assertEquals( inst.quantifier.referent.otype, Operator.OP_Q_FORALL );
+    self.assertEquals( inst.quantifier.referent.otype, Operator.OP_Q_UNIV );
     self.assert_( isinstance( inst.var, Variable ) );
     self.assert_( isinstance( inst.var.vid, int ) );
     self.assert_( isinstance( inst.var.sort, Sort ) );

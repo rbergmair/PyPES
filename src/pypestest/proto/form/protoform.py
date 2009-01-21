@@ -47,7 +47,7 @@ class TestProtoForm( TestCase, metaclass=object_ ):
                                    rstr = ProtoForm(
                                               subforms = { Handle( hid=hid_ ):
                                                              Predication( predicate = Predicate( referent = Word( cspan=(6,8), lemma="man" ) ),
-                                                                          args = { Argument( arglabel="ARG0" ): Variable( sortvid=("x",vid1) ) } ),
+                                                                          args = { Argument( arglabel="arg0" ): Variable( sortvid=("x",vid1) ) } ),
                                                          }
                                             ),
                                    body = Handle( hid=hid2 )
@@ -59,7 +59,7 @@ class TestProtoForm( TestCase, metaclass=object_ ):
                                    rstr = ProtoForm(
                                               subforms = { Handle( hid=hid__ ):
                                                              Predication( predicate = Predicate( referent = Word( cspan=(18,23), lemma="woman" ) ),
-                                                                          args = { Argument( arglabel="ARG0" ): Variable( sortvid=("x",vid2) ) } ),
+                                                                          args = { Argument( arglabel="arg0" ): Variable( sortvid=("x",vid2) ) } ),
                                                          }
                                             ),
                                    body = Handle( hid=hid4 )
@@ -67,8 +67,8 @@ class TestProtoForm( TestCase, metaclass=object_ ):
                              Handle( hid=hid5 ):
                                Predication(
                                    predicate = Predicate( referent = Word( cspan=(10,14), lemma="loves" ) ),
-                                   args = { Argument( arglabel="ARG1" ): Variable( sortvid=("x",vid1) ),
-                                            Argument( arglabel="ARG2" ): Variable( sortvid=("x",vid2) )
+                                   args = { Argument( arglabel="arg1" ): Variable( sortvid=("x",vid1) ),
+                                            Argument( arglabel="arg2" ): Variable( sortvid=("x",vid2) )
                                           }
                                  )
                            },
@@ -150,7 +150,7 @@ class TestProtoForm( TestCase, metaclass=object_ ):
       sf_args[ arg.arglabel ] = sf_.args[ arg ];
     
     self.assertEquals( len( sf_args ), 1 );
-    self.assert_( sf_args[ "ARG0" ] is x1 );
+    self.assert_( sf_args[ "arg0" ] is x1 );
 
     h2 = sf1.body;
 
@@ -192,7 +192,7 @@ class TestProtoForm( TestCase, metaclass=object_ ):
       sf__args[ arg.arglabel ] = sf__.args[ arg ];
     
     self.assertEquals( len( sf__args ), 1 );
-    self.assert_( sf__args[ "ARG0" ] is x2 );
+    self.assert_( sf__args[ "arg0" ] is x2 );
 
     h4 = sf3.body;
     
@@ -211,8 +211,8 @@ class TestProtoForm( TestCase, metaclass=object_ ):
       sf5args[ arg.arglabel ] = sf5.args[ arg ];
     
     self.assertEquals( len( sf5args ), 2 );
-    self.assert_( sf5args[ "ARG1" ] is x1 );
-    self.assert_( sf5args[ "ARG2" ] is x2 );
+    self.assert_( sf5args[ "arg1" ] is x1 );
+    self.assert_( sf5args[ "arg2" ] is x2 );
 
     self.assertFalse( x1 is x2 );
     

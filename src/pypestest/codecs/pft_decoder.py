@@ -10,6 +10,11 @@ from pypes.utils.unittest_ import TestCase;
 from pypes.utils.mc import object_;
 
 from pypestest.proto.form.predication import TestPredication;
+from pypestest.proto.form.quantification import TestQuantification;
+from pypestest.proto.form.modification import TestModification;
+from pypestest.proto.form.connection import TestConnection;
+from pypestest.proto.form.constraint import TestConstraint;
+from pypestest.proto.form.protoform import TestProtoForm;
 
 from pypes.codecs.pft_decoder import *;
 
@@ -20,17 +25,19 @@ from pypes.codecs.pft_decoder import *;
 class TestPFTDecoder( TestCase, metaclass=object_ ):
 
 
-  def run_cases( self, cases, type ):
+  def run_cases_pf( self, cases, type ):
 
     for inputstr in cases:
       _ = cases[ inputstr ];
-      inst = None;
+      inst_ = None;
       try:
         with PFTDecoder( inputstr ) as dec:
-          inst = dec.decode( type );
+          inst_ = dec.decode( type );
       except:
         print( inputstr );
         raise;
+      pf = ProtoForm();
+      inst = inst_( pf=pf );
       _( self, inst, inputstr );
 
   
@@ -74,6 +81,10 @@ class TestPFTDecoder( TestCase, metaclass=object_ ):
       self.assertTrue( isinstance( inst, Handle ), msg );
       self.assertEquals( inst.hid, 42, msg );
     cases[ "42" ] = _;
+
+    def _( self, inst, msg ):
+      self.assertTrue( isinstance( inst, Handle ), msg );
+    cases[ "__" ] = _;
     
     self.run_cases_sig_pf( cases, PFTDecoder.handle );
   
@@ -175,15 +186,75 @@ class TestPFTDecoder( TestCase, metaclass=object_ ):
 
     cases = {
         "[cat:5:7]( arg1=x1 )": lambda self, inst, msg:
-          TestPredication.check_pred1( self, inst )
+          TestPredication.check_pred1( self, inst ),
+        "EQUALS( ARG0=x1, ARG2=x2 )": lambda self, inst, msg:
+          None
       };
     
     self.run_cases_sig( cases, PFTDecoder.predication );
     
     
+  def test_quantification( self ):
+
+    cases = {
+        "ALL x1 {} 1": lambda self, inst, msg:
+          TestQuantification.check_quant1( self, inst )
+      };
+    
+    self.run_cases_sig_pf( cases, PFTDecoder.quantification );
     
     
+  def test_modification( self ):
+
+    cases = {
+        "[told:5:8]( arg1=x1, arg2=x2 ) 1": lambda self, inst, msg:
+          TestModification.check_modification1( self, inst ),
+        "[not:5:7]() {}": lambda self, inst, msg:
+          TestModification.check_modification2( self, inst )
+      };
     
+    self.run_cases_sig_pf( cases, PFTDecoder.modification );
+
+
+  def test_connection( self ):
+
+    cases = {
+        "{} && 1": lambda self, inst, msg:
+          TestConnection.check_conn1( self, inst )
+      };
+    
+    self.run_cases_sig_pf( cases, PFTDecoder.connection );
+
+
+  def test_constraint( self ):
+
+    cases = {
+        "1 >> 2": lambda self, inst, msg:
+          TestConstraint.check_constr1( self, inst )
+      };
+    
+    self.run_cases_pf( cases, PFTDecoder.constraint );
+  
+  
+  def test_protoform( self ):
+    
+    PF2_1 = """{ 1: [Every:0:4] x1 { 1: [man:6:8]( arg0=x1 ) } 2;
+                 3: [a:16:16] x2 { 1: [woman:18:23]( arg0=x2 ) } 4;
+                 5: [loves:10:14]( arg1=x1, arg2=x2 );
+                 1 >> 5;
+                 3 >> 5 }""";
+
+    PF2_2 = """{ 1: [Every:0:4] x1 { 1: [man:6:8]( arg0=x1 ) } __;
+                 3: [a:16:16] x2 { 1: [woman:18:23]( arg0=x2 ) } __;
+                 5: [loves:10:14]( arg1=x1, arg2=x2 );
+                 1 >> 5;
+                 3 >> 5 }""";
+               
+    cases = { PF2_1: lambda self, inst, msg:
+                TestProtoForm.check_pf2( self, inst ),
+              PF2_2: lambda self, inst, msg:
+                TestProtoForm.check_pf2( self, inst ) };
+    self.run_cases_sig( cases, PFTDecoder.protoform );
 
 
 

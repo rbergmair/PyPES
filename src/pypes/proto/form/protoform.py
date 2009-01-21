@@ -22,7 +22,7 @@ class ProtoForm( metaclass=kls ):
       subforms = {};
     
     if constraints is None:
-      constraints = {};
+      constraints = set();
     
     self.subforms = {};
     for root in subforms:

@@ -7,6 +7,7 @@ import copy;
 from pyparsing import Literal;
 from pyparsing import Word as Word_;
 from pyparsing import ZeroOrMore, OneOrMore, Optional;
+from pyparsing import Forward;
 from pyparsing import printables, alphas, nums, alphanums;
 from pyparsing import quotedString;
 
@@ -18,9 +19,23 @@ from pypes.proto import *;
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
+GT_HANDLE = 0;
+GT_VARIABLE = 1;
+GT_WORD = 2;
+GT_PREDICATION = 3;
+GT_QUANTIFICATION = 4;
+GT_MODIFICATION = 5;
+GT_CONNECTION = 6;
+GT_CONSTRAINT = 7;
+GT_PROTOFORM = 8;
+
+
+
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+
 class PFTDecoder( metaclass=subject ):
 
-
+  
   def decode( self, item=None ):
     
     if item is None:
@@ -28,7 +43,11 @@ class PFTDecoder( metaclass=subject ):
     
     rslt = item.parseString( self._obj_ );
     assert len( rslt ) == 1;
-    return rslt[ 0 ];
+    ( type_, inst ) = rslt[0];
+    return inst;
+  
+  
+  protoform = Forward();
 
   
   quoted = quotedString;
@@ -40,6 +59,7 @@ class PFTDecoder( metaclass=subject ):
     content = tok[1:-1];
     content = content.replace( '\\"', '"' );
     content = content.replace( "\\'", "'" );
+    content = content.replace( "\\\\", "\\" );
     return content;
   quoted.setParseAction( decode_quoted );
 
@@ -54,10 +74,13 @@ class PFTDecoder( metaclass=subject ):
   decimalnumber.setParseAction( decode_decimalnumber );
 
 
-  handle = Word_( nums, nums );
+  handle = Word_( nums, nums ) | Literal( "__" );
   def decode_handle( str_, loc, toks ):
     assert len(toks) == 1;
-    return Handle( hid = int( toks[0] ) );
+    if toks[0] == "__":
+      return ( GT_HANDLE, Handle() );
+    else:
+      return ( GT_HANDLE, Handle( hid = int( toks[0] ) ) );
   handle.setParseAction( decode_handle );
 
   
@@ -65,7 +88,7 @@ class PFTDecoder( metaclass=subject ):
   def decode_variable( str_, loc, toks ):
     assert len(toks) == 1;
     tok = toks[0];
-    return Variable( sortvid = ( tok[0], int( tok[1:] ) ) );
+    return ( GT_VARIABLE, Variable( sortvid = ( tok[0], int( tok[1:] ) ) ) );
   variable.setParseAction( decode_variable );
   
   
@@ -141,8 +164,8 @@ class PFTDecoder( metaclass=subject ):
     assert len( toks ) > i;
     assert toks[i] == "]";
     
-    return Word( cspan = (cfrom,cto), lemma=lemma, scf=scf, \
-                 pos=pos, sense=sense );
+    return ( GT_WORD, Word( cspan = (cfrom,cto), lemma=lemma, scf=scf, \
+                            pos=pos, sense=sense ) );
           
   word.setParseAction( decode_word );
   
@@ -181,10 +204,15 @@ class PFTDecoder( metaclass=subject ):
       i+= 1;
       
       assert len( toks ) > i;
-      variable = toks[i];
+      ( type_, variable ) = toks[i];
+      assert type_ == GT_VARIABLE;
       i += 1;
       
       args[ argument ] = variable;
+      
+      assert len( toks ) > i;
+      if toks[i] == ",":
+        i += 1;
 
       assert len( toks ) > i;
     
@@ -202,10 +230,11 @@ class PFTDecoder( metaclass=subject ):
     assert len( toks ) > i;
     referent = None;
     if not isinstance( toks[i], str ):
-      referent=toks[i];
+      ( type_, referent ) = toks[i];
+      assert type_ == GT_WORD;
     else:
       if toks[i] == "EQUALS":
-        referent=Operator( otype=Operator.OP_R_EQUAL );
+        referent = Operator( otype=Operator.OP_R_EQUALITY );
       else:
         assert False;
     i += 1;
@@ -214,6 +243,221 @@ class PFTDecoder( metaclass=subject ):
     assert isinstance( toks[i], dict );
     args = toks[i];
     
-    return Predication( predicate=Predicate( referent=referent ), args=args );
+    return ( GT_PREDICATION, Predication(
+                                 predicate = Predicate( referent=referent ),
+                                 args = args
+                               ) );
 
   predication.setParseAction( decode_predication );
+
+
+  quantification = ( word | identifier ) + variable + \
+                   ( handle | protoform ) + ( handle | protoform );
+  
+  def decode_quantification( str_, loc, toks ):
+    
+    i = 0;
+    
+    assert len( toks ) > i;
+    referent = None;
+    if not isinstance( toks[i], str ):
+      ( type_, referent ) = toks[i];
+      assert type_ == GT_WORD;
+    else:
+      if toks[i] == "ALL":
+        referent = Operator( otype=Operator.OP_Q_UNIV );
+      elif toks[i] == "SOME":
+        referent = Operator( otype=Operator.OP_Q_EXIST );
+      elif toks[i] == "THE":
+        referent = Operator( otype=Operator.OP_Q_DESCR );
+      else:
+        assert False;
+        
+    i += 1;
+
+    assert len( toks ) > i;
+    ( type_, var ) = toks[i];
+    assert type_ == GT_VARIABLE;
+    
+    i += 1;
+
+    assert len( toks ) > i;
+    ( type_, rstr ) = toks[i];
+    assert type_ in { GT_HANDLE, GT_PROTOFORM };
+    
+    i += 1;
+
+    assert len( toks ) > i;
+    ( type_, body ) = toks[i];
+    assert type_ in { GT_HANDLE, GT_PROTOFORM };
+    
+    return ( GT_QUANTIFICATION, Quantification(
+                                    quantifier = Quantifier(
+                                                     referent = referent
+                                                   ),
+                                    var = var,
+                                    rstr = rstr,
+                                    body = body
+                                  ) );
+             
+  quantification.setParseAction( decode_quantification );
+
+
+  modification = ( word | identifier ) + arguments_list + \
+                 ( handle | protoform );
+  
+  def decode_modification( str_, loc, toks ):
+    
+    i = 0;
+    
+    assert len( toks ) > i;
+    referent = None;
+    if not isinstance( toks[i], str ):
+      ( type_, referent ) = toks[i];
+      assert type_ == GT_WORD;
+    else:
+      if toks[i] == "NECESSARILY":
+        referent = Operator( otype=Operator.OP_M_NECESSITY );
+      if toks[i] == "POSSIBLY":
+        referent = Operator( otype=Operator.OP_M_POSSIBILITY );
+      else:
+        assert False;
+        
+    i += 1;
+
+    assert len( toks ) > i;
+    assert isinstance( toks[i], dict );
+    args = toks[i];
+
+    i += 1;
+    
+    assert len( toks ) > i;
+    ( type_, scope ) = toks[i];
+    assert type_ in { GT_HANDLE, GT_PROTOFORM };
+    
+    return ( GT_MODIFICATION, Modification(
+                                  modality = Modality( referent=referent ),
+                                  args = args,
+                                  scope = scope
+                                ) );
+
+  modification.setParseAction( decode_modification );
+  
+  
+  connective = Literal( "/\\" ) | Literal( "&&" ) | \
+               Literal( "\\/" ) | Literal( "||" ) | \
+               Literal( "->" );
+
+  connection = ( handle | protoform ) + ( connective | word ) + ( handle | protoform );
+  
+  def decode_connection( str_, loc, toks ):
+    
+    assert len( toks ) == 3;
+    
+    ( type_, lscope ) = toks[0];
+    assert type_ in { GT_HANDLE, GT_PROTOFORM };
+
+    ( type_, rscope ) = toks[2];
+    assert type_ in { GT_HANDLE, GT_PROTOFORM };
+    
+    referent = None;
+    if not isinstance( toks[1], str ):
+      referent = toks[1];
+    elif toks[1] == "/\\":
+      referent = Operator( otype=Operator.OP_C_WEACON );
+    elif toks[1] == "&&":
+      referent = Operator( otype=Operator.OP_C_STRCON );
+    elif toks[1] == "\\/":
+      referent = Operator( otype=Operator.OP_C_WEADIS );
+    elif toks[1] == "||":
+      referent = Operator( otype=Operator.OP_C_STRDIS );
+    elif toks[1] == "->":
+      referent = Operator( otype=Operator.OP_C_IMPL );
+    
+    return ( GT_CONNECTION, Connection(
+                                connective = Connective( referent=referent ),
+                                lscope = lscope,
+                                rscope = rscope
+                              ) );
+             
+  connection.setParseAction( decode_connection );
+
+  
+  constraint = handle + Literal( ">>" ) + handle;
+  
+  def decode_constraint( str_, loc, toks ):
+    
+    assert len( toks ) == 3;
+    
+    assert toks[1] == ">>";
+
+    ( type_, harg ) = toks[0];
+    assert type_ == GT_HANDLE;
+    
+    ( type_, larg ) = toks[2];
+    assert type_ == GT_HANDLE;
+    
+    return ( GT_CONSTRAINT, Constraint( harg=harg, larg=larg ) );
+  
+  constraint.setParseAction( decode_constraint );
+  
+  
+  item = ( Optional( handle + Literal(":") ) + \
+             ( predication | quantification | modification | connection ) ) | \
+         constraint;
+
+  protoform << ( Literal( "{" ) + \
+                 Optional( item + ZeroOrMore( Literal(";") + item ) ) + \
+                 Literal( "}" ) );
+        
+  def decode_protoform( str_, loc, toks ):
+    
+    i = 0;
+    assert len( toks ) > i;
+    
+    assert toks[i] == "{";
+    
+    i += 1;
+    assert len( toks ) > i;
+    
+    subforms = {};
+    constraints = set();
+    
+    handle = None;
+    
+    while toks[i] != "}":
+      
+      ( type_, inst ) = toks[i];
+      i += 1;
+      assert len( toks ) > i;
+      
+      if type_ == GT_CONSTRAINT:
+        constraints.add( inst );
+        if toks[i] == ";":
+          i += 1;
+          assert len( toks ) > i;
+          
+      elif type_ == GT_HANDLE:
+        handle = inst;
+        assert toks[i] == ":";
+        i  += 1;
+        assert len( toks ) > i;
+        
+      elif type_ in { GT_PREDICATION, GT_QUANTIFICATION,
+                      GT_MODIFICATION, GT_CONNECTION }:
+        
+        if handle is None:
+          handle = Handle();
+        subforms[ handle ] = inst;
+        handle = None;
+        if toks[i] == ";":
+          i += 1;
+          assert len( toks ) > i;
+    
+    return ( GT_PROTOFORM, ProtoForm(
+                               subforms = subforms,
+                               constraints = constraints
+                             ) );
+  
+  protoform.setParseAction( decode_protoform );
+  
