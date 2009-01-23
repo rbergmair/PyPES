@@ -3,12 +3,16 @@
 __package__ = "pypes.proto.form";
 __all__ = [ "Connection" ];
 
+
 from pypes.utils.mc import kls;
+from pypes.proto import Connective;
+from pypes.proto.form.scopebearer import ScopeBearer;
+from pypes.proto.form.subform import SubForm;
 
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-class Connection( metaclass=kls ):
+class Connection( SubForm, metaclass=kls ):
   
   _superordinate_ = None;
   _key_ = None;
@@ -16,9 +20,14 @@ class Connection( metaclass=kls ):
   def __init__( self, sig, pf, connective, lscope, rscope ):
     
     self.connective = connective( sig=sig );
+    assert isinstance( self.connective, Connective );
+    
     self.lscope = lscope( sig=sig, pf=pf );
+    assert isinstance( self.lscope, ScopeBearer );
+    
     self.rscope = rscope( sig=sig, pf=pf );
-
+    assert isinstance( self.rscope, ScopeBearer );
+    
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 #                                                                             #

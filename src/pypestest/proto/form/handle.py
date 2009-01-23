@@ -5,7 +5,6 @@ __all__ = [ "TestHandle", "suite", "main" ];
 
 import sys;
 import unittest;
-import random;
 
 from pypes.utils.unittest_ import TestCase;
 from pypes.utils.mc import object_;
@@ -17,31 +16,50 @@ from pypes.proto import *;
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 class TestHandle( TestCase, metaclass=object_ ):
-
   
-  def init_handle1( self ):
-    
-    hid1 = random.randint( 0, 0x7FFFFFFF );
-    
-    inst_ = Handle( hid=hid1 );
-    self.assertFalse( isinstance( inst_, Handle ) );
+  
+  def thaw( self, inst_, msg=None ):
+
+    self.assertFalse( isinstance( inst_, Handle ), msg );
     
     sig = ProtoSig();
     pf = ProtoForm()( sig=sig );
     inst = inst_( sig=sig, pf=pf );
-    self.assertTrue( isinstance( inst, Handle ) );
+    self.assertTrue( isinstance( inst, Handle ), msg );
     
     return inst;
 
   
-  def check_handle1( self, inst ):
+  def init_handle_1( self ):
     
-    self.assert_( isinstance( inst.hid, int ) );
+    inst_ = Handle( hid=42 );
+    return inst_;
+
+  
+  def check_handle_1( self, inst, msg=None ):
+    
+    self.assertEquals( inst.hid, 42, msg );
   
   
-  def test_handle1( self ):
+  def test_1( self ):
     
-    self.check_handle1( self.init_handle1() );
+    self.check_handle_1( self.thaw( self.init_handle_1() ) );
+
+
+  def init_handle_2( self ):
+    
+    inst_ = Handle();
+    return inst_;
+
+  
+  def check_handle_2( self, inst, msg=None ):
+    
+    self.assertEquals( inst.hid, None, msg );
+  
+  
+  def test_2( self ):
+    
+    self.check_handle_2( self.thaw( self.init_handle_2() ) );
     
 
 

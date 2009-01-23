@@ -18,51 +18,51 @@ from pypes.proto import *;
 class TestConnective( TestCase, metaclass=object_ ):
   
   
-  def init_conn1( self ):
+  def thaw( self, inst_, msg=None ):
+
+    self.assertFalse( isinstance( inst_, Connective ), msg );
+    
+    sig = ProtoSig();
+    inst = inst_( sig=sig );
+    self.assertTrue( isinstance( inst, Connective ), msg );
+    
+    return inst;
+  
+  
+  def init_conn_1( self ):
 
     inst_ = Connective( referent = Word( cspan=(5,7), lemma="and" ) );
-    self.assertFalse( isinstance( inst_, Connective ) );
-    
-    sig = ProtoSig();
-    inst = inst_( sig=sig );
-    self.assertTrue( isinstance( inst, Connective ) );
-    
-    return inst;
+    return inst_;
 
 
-  def init_conn2( self ):
+  def check_conn_1( self, inst, msg=None ):
+    
+    self.assert_( isinstance( inst.referent, Word ), msg );
+    self.assertEquals( inst.referent.cfrom, 5, msg );
+    self.assertEquals( inst.referent.cto, 7, msg );
+    self.assertEquals( inst.referent.lemma, "and", msg );
+
+
+  def test_1( self ):
+    
+    self.check_conn_1( self.thaw( self.init_conn_1() ) );
+
+
+  def init_conn_2( self ):
 
     inst_ = Connective( referent = Operator( otype=Operator.OP_C_STRCON ) );
-    self.assertFalse( isinstance( inst_, Connective ) );
+    return inst_;
+  
+  
+  def check_conn_2( self, inst, msg=None ):
     
-    sig = ProtoSig();
-    inst = inst_( sig=sig );
-    self.assertTrue( isinstance( inst, Connective ) );
-    
-    return inst;
-  
-  
-  def check_conn1( self, inst ):
-    
-    self.assert_( isinstance( inst.referent, Word ) );
-    self.assertEquals( inst.referent.cspan, (5,7) );
-    self.assertEquals( inst.referent.lemma, "and" );
-  
-  
-  def check_conn2( self, inst ):
-    
-    self.assert_( isinstance( inst.referent, Operator ) );
-    self.assertEquals( inst.referent.otype, Operator.OP_C_STRCON );
-  
-  
-  def test_conn1( self ):
-    
-    self.check_conn1( self.init_conn1() );
+    self.assert_( isinstance( inst.referent, Operator ), msg );
+    self.assertEquals( inst.referent.otype, Operator.OP_C_STRCON, msg );
 
 
-  def test_conn2( self ):
+  def test_2( self ):
     
-    self.check_conn2( self.init_conn2() );
+    self.check_conn_2( self.thaw( self.init_conn_2() ) );
     
 
 

@@ -1,8 +1,7 @@
 # -*-  coding: ascii -*-
 
-__package__ = "pypes.utils.xml_";
-
-import copy;
+__package__ = "pypes.codecs";
+__all__ = [ "PFTDecoder" ];
 
 from pyparsing import Literal;
 from pyparsing import Word as Word_;
@@ -19,15 +18,15 @@ from pypes.proto import *;
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-GT_HANDLE = 0;
-GT_VARIABLE = 1;
-GT_WORD = 2;
-GT_PREDICATION = 3;
-GT_QUANTIFICATION = 4;
-GT_MODIFICATION = 5;
-GT_CONNECTION = 6;
-GT_CONSTRAINT = 7;
-GT_PROTOFORM = 8;
+_GT_HANDLE = 0;
+_GT_VARIABLE = 1;
+_GT_WORD = 2;
+_GT_PREDICATION = 3;
+_GT_QUANTIFICATION = 4;
+_GT_MODIFICATION = 5;
+_GT_CONNECTION = 6;
+_GT_CONSTRAINT = 7;
+_GT_PROTOFORM = 8;
 
 
 
@@ -51,7 +50,7 @@ class PFTDecoder( metaclass=subject ):
 
   
   quoted = quotedString;
-  def decode_quoted( str_, loc, toks ):
+  def _decode_quoted( str_, loc, toks ):
     assert len(toks) == 1;
     tok = toks[0];
     assert tok[0] in [ '"', "'" ];
@@ -61,38 +60,38 @@ class PFTDecoder( metaclass=subject ):
     content = content.replace( "\\'", "'" );
     content = content.replace( "\\\\", "\\" );
     return content;
-  quoted.setParseAction( decode_quoted );
+  quoted.setParseAction( _decode_quoted );
 
 
   string = quoted | Word_( alphanums, alphanums );
 
   
   decimalnumber = Word_( nums, nums );
-  def decode_decimalnumber( str_, loc, toks ):
+  def _decode_decimalnumber( str_, loc, toks ):
     assert len(toks) == 1;
     return int( toks[0] );
-  decimalnumber.setParseAction( decode_decimalnumber );
+  decimalnumber.setParseAction( _decode_decimalnumber );
 
 
   handle = Word_( nums, nums ) | Literal( "__" );
-  def decode_handle( str_, loc, toks ):
+  def _decode_handle( str_, loc, toks ):
     assert len(toks) == 1;
     if toks[0] == "__":
-      return ( GT_HANDLE, Handle() );
+      return ( _GT_HANDLE, Handle() );
     else:
-      return ( GT_HANDLE, Handle( hid = int( toks[0] ) ) );
-  handle.setParseAction( decode_handle );
+      return ( _GT_HANDLE, Handle( hid = int( toks[0] ) ) );
+  handle.setParseAction( _decode_handle );
 
   
   variable = Word_( alphas, nums );
-  def decode_variable( str_, loc, toks ):
+  def _decode_variable( str_, loc, toks ):
     assert len(toks) == 1;
     tok = toks[0];
-    return ( GT_VARIABLE, Variable( sortvid = ( tok[0], int( tok[1:] ) ) ) );
-  variable.setParseAction( decode_variable );
+    return ( _GT_VARIABLE, Variable( sidvid = ( tok[0], int( tok[1:] ) ) ) );
+  variable.setParseAction( _decode_variable );
   
   
-  def pair( delim, type ):
+  def _pair( delim, type ):
     
     rslt = Optional( type ) + \
              Optional( Literal( delim ) + Optional( type ) );
@@ -120,9 +119,9 @@ class PFTDecoder( metaclass=subject ):
     return rslt;
 
   
-  lemmascf = pair( "+", string );
-  possense = pair( "_", string );
-  cfromcto = pair( ":", decimalnumber )
+  lemmascf = _pair( "+", string );
+  possense = _pair( "_", string );
+  cfromcto = _pair( ":", decimalnumber )
   
   word = Literal ( "[" ) + \
          lemmascf + \
@@ -130,7 +129,7 @@ class PFTDecoder( metaclass=subject ):
          Optional( Literal( ":" ) + cfromcto ) + \
          Literal( "]" );
   
-  def decode_word( str_, loc, toks ):
+  def _decode_word( str_, loc, toks ):
     
     ( lemma, scf, pos, sense, cfrom, cto ) = ( None, None, None, None, None, None );
     
@@ -164,10 +163,10 @@ class PFTDecoder( metaclass=subject ):
     assert len( toks ) > i;
     assert toks[i] == "]";
     
-    return ( GT_WORD, Word( cspan = (cfrom,cto), lemma=lemma, scf=scf, \
+    return ( _GT_WORD, Word( cspan = (cfrom,cto), lemma=lemma, scf=scf, \
                             pos=pos, sense=sense ) );
           
-  word.setParseAction( decode_word );
+  word.setParseAction( _decode_word );
   
   
   identifier = Word_( alphas+"_", alphanums+"_" );
@@ -182,7 +181,7 @@ class PFTDecoder( metaclass=subject ):
                      ) + \
                    Literal( ")" );
                    
-  def decode_arguments_list( str_, loc, toks ):
+  def _decode_arguments_list( str_, loc, toks ):
 
     i = 0;
 
@@ -196,7 +195,7 @@ class PFTDecoder( metaclass=subject ):
     while toks[i] != ")":
       
       assert isinstance( toks[i], str );
-      argument = Argument( arglabel=toks[i] );
+      argument = Argument( aid=toks[i] );
       i+= 1;
       
       assert len( toks ) > i;
@@ -205,7 +204,7 @@ class PFTDecoder( metaclass=subject ):
       
       assert len( toks ) > i;
       ( type_, variable ) = toks[i];
-      assert type_ == GT_VARIABLE;
+      assert type_ == _GT_VARIABLE;
       i += 1;
       
       args[ argument ] = variable;
@@ -218,12 +217,12 @@ class PFTDecoder( metaclass=subject ):
     
     return args;
   
-  arguments_list.setParseAction( decode_arguments_list );
+  arguments_list.setParseAction( _decode_arguments_list );
 
   
   predication = ( word | identifier ) + arguments_list;
   
-  def decode_predication( str_, loc, toks ):
+  def _decode_predication( str_, loc, toks ):
     
     i = 0;
     
@@ -231,7 +230,7 @@ class PFTDecoder( metaclass=subject ):
     referent = None;
     if not isinstance( toks[i], str ):
       ( type_, referent ) = toks[i];
-      assert type_ == GT_WORD;
+      assert type_ == _GT_WORD;
     else:
       if toks[i] == "EQUALS":
         referent = Operator( otype=Operator.OP_R_EQUALITY );
@@ -243,18 +242,18 @@ class PFTDecoder( metaclass=subject ):
     assert isinstance( toks[i], dict );
     args = toks[i];
     
-    return ( GT_PREDICATION, Predication(
+    return ( _GT_PREDICATION, Predication(
                                  predicate = Predicate( referent=referent ),
                                  args = args
                                ) );
 
-  predication.setParseAction( decode_predication );
+  predication.setParseAction( _decode_predication );
 
 
   quantification = ( word | identifier ) + variable + \
                    ( handle | protoform ) + ( handle | protoform );
   
-  def decode_quantification( str_, loc, toks ):
+  def _decode_quantification( str_, loc, toks ):
     
     i = 0;
     
@@ -262,7 +261,7 @@ class PFTDecoder( metaclass=subject ):
     referent = None;
     if not isinstance( toks[i], str ):
       ( type_, referent ) = toks[i];
-      assert type_ == GT_WORD;
+      assert type_ == _GT_WORD;
     else:
       if toks[i] == "ALL":
         referent = Operator( otype=Operator.OP_Q_UNIV );
@@ -277,36 +276,36 @@ class PFTDecoder( metaclass=subject ):
 
     assert len( toks ) > i;
     ( type_, var ) = toks[i];
-    assert type_ == GT_VARIABLE;
+    assert type_ == _GT_VARIABLE;
     
     i += 1;
 
     assert len( toks ) > i;
     ( type_, rstr ) = toks[i];
-    assert type_ in { GT_HANDLE, GT_PROTOFORM };
+    assert type_ in { _GT_HANDLE, _GT_PROTOFORM };
     
     i += 1;
 
     assert len( toks ) > i;
     ( type_, body ) = toks[i];
-    assert type_ in { GT_HANDLE, GT_PROTOFORM };
+    assert type_ in { _GT_HANDLE, _GT_PROTOFORM };
     
-    return ( GT_QUANTIFICATION, Quantification(
-                                    quantifier = Quantifier(
-                                                     referent = referent
-                                                   ),
-                                    var = var,
-                                    rstr = rstr,
-                                    body = body
-                                  ) );
+    return ( _GT_QUANTIFICATION, Quantification(
+                                     quantifier = Quantifier(
+                                                      referent = referent
+                                                    ),
+                                     var = var,
+                                     rstr = rstr,
+                                     body = body
+                                   ) );
              
-  quantification.setParseAction( decode_quantification );
+  quantification.setParseAction( _decode_quantification );
 
 
   modification = ( word | identifier ) + arguments_list + \
                  ( handle | protoform );
   
-  def decode_modification( str_, loc, toks ):
+  def _decode_modification( str_, loc, toks ):
     
     i = 0;
     
@@ -314,11 +313,11 @@ class PFTDecoder( metaclass=subject ):
     referent = None;
     if not isinstance( toks[i], str ):
       ( type_, referent ) = toks[i];
-      assert type_ == GT_WORD;
+      assert type_ == _GT_WORD;
     else:
       if toks[i] == "NECESSARILY":
         referent = Operator( otype=Operator.OP_M_NECESSITY );
-      if toks[i] == "POSSIBLY":
+      elif toks[i] == "POSSIBLY":
         referent = Operator( otype=Operator.OP_M_POSSIBILITY );
       else:
         assert False;
@@ -333,15 +332,15 @@ class PFTDecoder( metaclass=subject ):
     
     assert len( toks ) > i;
     ( type_, scope ) = toks[i];
-    assert type_ in { GT_HANDLE, GT_PROTOFORM };
+    assert type_ in { _GT_HANDLE, _GT_PROTOFORM };
     
-    return ( GT_MODIFICATION, Modification(
-                                  modality = Modality( referent=referent ),
-                                  args = args,
-                                  scope = scope
-                                ) );
+    return ( _GT_MODIFICATION, Modification(
+                                   modality = Modality( referent=referent ),
+                                   args = args,
+                                   scope = scope
+                                 ) );
 
-  modification.setParseAction( decode_modification );
+  modification.setParseAction( _decode_modification );
   
   
   connective = Literal( "/\\" ) | Literal( "&&" ) | \
@@ -350,19 +349,20 @@ class PFTDecoder( metaclass=subject ):
 
   connection = ( handle | protoform ) + ( connective | word ) + ( handle | protoform );
   
-  def decode_connection( str_, loc, toks ):
+  def _decode_connection( str_, loc, toks ):
     
     assert len( toks ) == 3;
     
     ( type_, lscope ) = toks[0];
-    assert type_ in { GT_HANDLE, GT_PROTOFORM };
+    assert type_ in { _GT_HANDLE, _GT_PROTOFORM };
 
     ( type_, rscope ) = toks[2];
-    assert type_ in { GT_HANDLE, GT_PROTOFORM };
+    assert type_ in { _GT_HANDLE, _GT_PROTOFORM };
     
     referent = None;
     if not isinstance( toks[1], str ):
-      referent = toks[1];
+      ( type_, referent ) = toks[1];
+      assert type_ == _GT_WORD;
     elif toks[1] == "/\\":
       referent = Operator( otype=Operator.OP_C_WEACON );
     elif toks[1] == "&&":
@@ -374,32 +374,32 @@ class PFTDecoder( metaclass=subject ):
     elif toks[1] == "->":
       referent = Operator( otype=Operator.OP_C_IMPL );
     
-    return ( GT_CONNECTION, Connection(
-                                connective = Connective( referent=referent ),
-                                lscope = lscope,
-                                rscope = rscope
-                              ) );
+    return ( _GT_CONNECTION, Connection(
+                                 connective = Connective( referent=referent ),
+                                 lscope = lscope,
+                                 rscope = rscope
+                               ) );
              
-  connection.setParseAction( decode_connection );
+  connection.setParseAction( _decode_connection );
 
   
   constraint = handle + Literal( ">>" ) + handle;
   
-  def decode_constraint( str_, loc, toks ):
+  def _decode_constraint( str_, loc, toks ):
     
     assert len( toks ) == 3;
     
     assert toks[1] == ">>";
 
     ( type_, harg ) = toks[0];
-    assert type_ == GT_HANDLE;
+    assert type_ == _GT_HANDLE;
     
     ( type_, larg ) = toks[2];
-    assert type_ == GT_HANDLE;
+    assert type_ == _GT_HANDLE;
     
-    return ( GT_CONSTRAINT, Constraint( harg=harg, larg=larg ) );
+    return ( _GT_CONSTRAINT, Constraint( harg=harg, larg=larg ) );
   
-  constraint.setParseAction( decode_constraint );
+  constraint.setParseAction( _decode_constraint );
   
   
   item = ( Optional( handle + Literal(":") ) + \
@@ -410,7 +410,7 @@ class PFTDecoder( metaclass=subject ):
                  Optional( item + ZeroOrMore( Literal(";") + item ) ) + \
                  Literal( "}" ) );
         
-  def decode_protoform( str_, loc, toks ):
+  def _decode_protoform( str_, loc, toks ):
     
     i = 0;
     assert len( toks ) > i;
@@ -431,20 +431,20 @@ class PFTDecoder( metaclass=subject ):
       i += 1;
       assert len( toks ) > i;
       
-      if type_ == GT_CONSTRAINT:
+      if type_ == _GT_CONSTRAINT:
         constraints.add( inst );
         if toks[i] == ";":
           i += 1;
           assert len( toks ) > i;
           
-      elif type_ == GT_HANDLE:
+      elif type_ == _GT_HANDLE:
         handle = inst;
         assert toks[i] == ":";
         i  += 1;
         assert len( toks ) > i;
         
-      elif type_ in { GT_PREDICATION, GT_QUANTIFICATION,
-                      GT_MODIFICATION, GT_CONNECTION }:
+      elif type_ in { _GT_PREDICATION, _GT_QUANTIFICATION,
+                      _GT_MODIFICATION, _GT_CONNECTION }:
         
         if handle is None:
           handle = Handle();
@@ -454,10 +454,10 @@ class PFTDecoder( metaclass=subject ):
           i += 1;
           assert len( toks ) > i;
     
-    return ( GT_PROTOFORM, ProtoForm(
-                               subforms = subforms,
-                               constraints = constraints
-                             ) );
+    return ( _GT_PROTOFORM, ProtoForm(
+                                subforms = subforms,
+                                constraints = constraints
+                              ) );
   
-  protoform.setParseAction( decode_protoform );
+  protoform.setParseAction( _decode_protoform );
   

@@ -1,7 +1,7 @@
 # -*-  coding: ascii -*-  # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-__package__ = "pypestest.proto.sig";
-__all__ = [ "TestModality", "suite", "main" ];
+__package__ = "pypestest.codecs";
+__all__ = [ "TestPFTEncoder", "suite", "main" ];
 
 import sys;
 import unittest;
@@ -9,60 +9,34 @@ import unittest;
 from pypes.utils.unittest_ import TestCase;
 from pypes.utils.mc import object_;
 
-from pypes.proto import *;
+from pypestest.proto.form.connection import TestConnection;
+from pypestest.proto.form.constraint import TestConstraint;
+from pypestest.proto.form.handle import TestHandle;
+from pypestest.proto.form.modification import TestModification;
+from pypestest.proto.form.predication import TestPredication;
+from pypestest.proto.form.protoform import TestProtoForm;
+from pypestest.proto.form.quantification import TestQuantification;
+
+from pypestest.proto.sig.variable import TestVariable;
+from pypestest.proto.sig.word import TestWord;
+
+from pypes.codecs.pft_encoder import PFTEncoder;
 
 
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-class TestModality( TestCase, metaclass=object_ ):
+class TestPFTEncoder( TestCase, metaclass=object_ ):
   
-  
-  def thaw( self, inst_, msg=None ):
-
-    self.assertFalse( isinstance( inst_, Modality ), msg );
+  def test_handle( self ):
     
-    sig = ProtoSig();
-    inst = inst_( sig=sig );
-    self.assertTrue( isinstance( inst, Modality ), msg );
+    def check( stri, initf ):
+      
+      inst = TestHandle.thaw( self, initf( self ), stri );
+      with PFTEncoder( inst ) as encoder:
+        self.assertStringCrudelyEqual( encoder.encode(), stri, stri );
     
-    return inst;
-
-  
-  def init_mod_1( self ):
-    
-    inst_ = Modality( referent = Word( cspan=(5,7), lemma="not" ) );
-    return inst_;
-
-
-  def check_mod_1( self, inst, msg=None ):
-    
-    self.assert_( isinstance( inst.referent, Word ), msg );
-    self.assertEquals( inst.referent.cfrom, 5, msg );
-    self.assertEquals( inst.referent.cto, 7, msg );
-    self.assertEquals( inst.referent.lemma, "not", msg );
-
-
-  def test_1( self ):
-    
-    self.check_mod_1( self.thaw( self.init_mod_1() ) );
-
-
-  def init_mod_2( self ):
-    
-    inst_ = Modality( referent = Operator( otype=Operator.OP_M_NECESSITY ) );
-    return inst_;
-  
-  
-  def check_mod_2( self, inst, msg=None ):
-    
-    self.assert_( isinstance( inst.referent, Operator ), msg );
-    self.assertEquals( inst.referent.otype, Operator.OP_M_NECESSITY, msg );
-  
-  
-  def test_2( self ):
-    
-    self.check_mod_2( self.thaw( self.init_mod_2() ) );
+    check( "42", TestHandle.init_handle_1 );
 
 
 
@@ -73,7 +47,7 @@ def suite():
   suite = unittest.TestSuite();
 
   suite.addTests( unittest.TestLoader().loadTestsFromTestCase(
-      TestModality
+      TestPFTEncoder
     ) );
 
   return suite;

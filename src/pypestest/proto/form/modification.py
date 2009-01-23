@@ -5,7 +5,6 @@ __all__ = [ "TestModification", "suite", "main" ];
 
 import sys;
 import unittest;
-import random;
 
 from pypes.utils.unittest_ import TestCase;
 from pypes.utils.mc import object_;
@@ -19,96 +18,87 @@ from pypes.proto import *;
 class TestModification( TestCase, metaclass=object_ ):
 
   
-  def init_modification1( self ):
+  def thaw( self, inst_, msg=None ):
 
-    ( vid1, vid2 ) = random.sample( range(0,0x7FFFFFFF), 2 );
-    hid1 = random.randint( 0, 0x7FFFFFFF );
+    self.assertFalse( isinstance( inst_, Modification ), msg );
     
+    sig = ProtoSig();
+    pf = ProtoForm();
+    inst = inst_( sig=sig, pf=pf );
+    self.assertTrue( isinstance( inst, Modification ), msg );
+    
+    return inst;
+
+  
+  def init_modification_1( self ):
+
     inst_ = Modification(
                 modality = Modality(
                                referent = Word( cspan=(5,8), lemma="told" )
                              ),
-                args = { Argument( arglabel="arg1" ):
-                           Variable( sortvid=("x",vid1) ),
-                         Argument( arglabel="arg2" ):
-                           Variable( sortvid=("x",vid2) )
+                args = { Argument( aid="arg1" ):
+                           Variable( sidvid=("x",1) ),
+                         Argument( aid="arg2" ):
+                           Variable( sidvid=("x",2) )
                        },
-                scope = Handle( hid=hid1 )
+                scope = Handle( hid=1 )
               );
               
-    self.assertFalse( isinstance( inst_, Modification ) );
-    
-    sig = ProtoSig();
-    pf = ProtoForm();
-    inst = inst_( sig=sig, pf=pf );
-    self.assertTrue( isinstance( inst, Modification ) );
-    
-    return inst;
-
-
-  def init_modification2( self ):
-    
-    inst_ = Modification(
-                modality = Modality(
-                               referent = Word( cspan=(5,7), lemma="not" )
-                             ),
-                scope = ProtoForm()
-              );
-              
-    self.assertFalse( isinstance( inst_, Modification ) );
-    
-    sig = ProtoSig();
-    pf = ProtoForm();
-    inst = inst_( sig=sig, pf=pf );
-    self.assertTrue( isinstance( inst, Modification ) );
-    
-    return inst;
+    return inst_;
   
-  
-  def check_modification1( self, inst ):
+  def check_modification_1( self, inst, msg=None ):
     
-    self.assert_( isinstance( inst.modality, Modality ) );
-    self.assert_( isinstance( inst.modality.referent, Word ) );
-    self.assertEquals( inst.modality.referent.cspan, (5,8) );
-    self.assertEquals( inst.modality.referent.lemma, "told" );
+    self.assert_( isinstance( inst.modality, Modality ), msg );
+    self.assert_( isinstance( inst.modality.referent, Word ), msg );
+    self.assertEquals( inst.modality.referent.cfrom, 5, msg );
+    self.assertEquals( inst.modality.referent.cto, 8, msg );
+    self.assertEquals( inst.modality.referent.lemma, "told", msg );
     
     labels = set();
     vars = set();
     
     for arg in inst.args:
-      self.assert_( isinstance( arg, Argument ) );
-      self.assert_( isinstance( arg.arglabel, str ) );
-      labels.add( arg.arglabel );
-      self.assert_( isinstance( inst.args[ arg ], Variable ) );
+      self.assert_( isinstance( arg, Argument ), msg );
+      self.assert_( isinstance( arg.aid, str ), msg );
+      labels.add( arg.aid );
+      self.assert_( isinstance( inst.args[ arg ], Variable ), msg );
       vars.add( inst.args[ arg ] );
-      self.assert_( isinstance( inst.args[ arg ].vid, int ) );
-      self.assert_( isinstance( inst.args[ arg ].sort, Sort ) );
-      self.assertEquals( inst.args[ arg ].sort.sortdsc, "x" );
+      self.assert_( isinstance( inst.args[ arg ].vid, int ), msg );
+      self.assert_( isinstance( inst.args[ arg ].sort, Sort ), msg );
+      self.assertEquals( inst.args[ arg ].sort.sid, "x", msg );
     
     self.assertEquals( labels, { "arg1", "arg2" } );
     self.assertEquals( len( vars ), 2 );
       
-    self.assert_( isinstance( inst.scope, Handle ) );
-    self.assert_( isinstance( inst.scope.hid, int ) );
-  
-  
-  def check_modification2( self, inst ):
+    self.assert_( isinstance( inst.scope, Handle ), msg );
+    self.assertEquals( inst.scope.hid, 1, msg );
+
+  def test_1( self ):
     
-    self.assert_( isinstance( inst.modality, Modality ) );
-    self.assert_( isinstance( inst.modality.referent, Word ) );
-    self.assertEquals( inst.modality.referent.cspan, (5,7) );
-    self.assertEquals( inst.modality.referent.lemma, "not" );
-    self.assert_( isinstance( inst.scope, ProtoForm ) );
-  
-  
-  def test_modification1( self ):
+    self.check_modification_1( self.thaw( self.init_modification_1() ) );
+
+
+  def init_modification_2( self ):
     
-    self.check_modification1( self.init_modification1() );
+    inst_ = Modification(
+                modality = Modality(
+                               referent = Operator( otype=Operator.OP_M_NECESSITY )
+                             ),
+                scope = ProtoForm()
+              );
+              
+    return inst_;
   
-  
-  def test_modification2( self ):
+  def check_modification_2( self, inst, msg=None ):
     
-    self.check_modification2( self.init_modification2() );
+    self.assert_( isinstance( inst.modality, Modality ), msg );
+    self.assert_( isinstance( inst.modality.referent, Operator ), msg );
+    self.assertEquals( inst.modality.referent.otype, Operator.OP_M_NECESSITY, msg );
+    self.assert_( isinstance( inst.scope, ProtoForm ), msg );
+  
+  def test_2( self ):
+    
+    self.check_modification_2( self.thaw( self.init_modification_2() ) );
     
 
 

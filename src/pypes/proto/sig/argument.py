@@ -11,11 +11,11 @@ from pypes.utils.mc import kls;
 class Argument( metaclass=kls ):
 
   _superordinate_ = "predmod";
-  _key_ = "arglabel";
+  _key_ = "aid";
 
-  def __init__( self, predmod, arglabel ):
+  def __init__( self, predmod, aid=None ):
     
-    self.arglabel = arglabel;
+    self.aid = aid;
 
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #

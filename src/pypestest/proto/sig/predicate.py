@@ -18,51 +18,51 @@ from pypes.proto import *;
 class TestPredicate( TestCase, metaclass=object_ ):
   
   
-  def init_pred1( self ):
+  def thaw( self, inst_, msg=None ):
+
+    self.assertFalse( isinstance( inst_, Predicate ), msg );
+    
+    sig = ProtoSig();
+    inst = inst_( sig=sig );
+    self.assertTrue( isinstance( inst, Predicate ), msg );
+    
+    return inst;
+  
+  
+  def init_pred_1( self ):
     
     inst_ = Predicate( referent = Word( cspan=(5,7), lemma="man" ) );
-    self.assertFalse( isinstance( inst_, Predicate ) );
-    
-    sig = ProtoSig();
-    inst = inst_( sig=sig );
-    self.assertTrue( isinstance( inst, Predicate ) );
-    
-    return inst;
+    return inst_;
 
 
-  def init_pred2( self ):
+  def check_pred_1( self, inst, msg=None ):
     
-    inst_ = Predicate( referent = Operator( otype=Operator.OP_R_EQUALS ) );
-    self.assertFalse( isinstance( inst_, Predicate ) );
-    
-    sig = ProtoSig();
-    inst = inst_( sig=sig );
-    self.assertTrue( isinstance( inst, Predicate ) );
-    
-    return inst;
-  
-  
-  def check_pred1( self, inst ):
-    
-    self.assert_( isinstance( inst.referent, Word ) );
-    self.assertEquals( inst.referent.cspan, (5,7) );
-    self.assertEquals( inst.referent.lemma, "man" );
-  
-  
-  def check_pred2( self, inst ):
-    
-    self.assert_( isinstance( inst.referent, Operator ) );
-    self.assertEquals( inst.referent.otype, Operator.OP_R_EQUALS );
-  
-  
-  def test_pred1( self ):
-    
-    self.check_pred1( self.init_pred1() );
+    self.assert_( isinstance( inst.referent, Word ), msg );
+    self.assertEquals( inst.referent.cfrom, 5, msg );
+    self.assertEquals( inst.referent.cto, 7, msg );
+    self.assertEquals( inst.referent.lemma, "man", msg );
 
 
-  def test_pred2( self ):
+  def test_1( self ):
     
-    self.check_pred2( self.init_pred2() );
+    self.check_pred_1( self.thaw( self.init_pred_1() ) );
+
+
+  def init_pred_2( self ):
+    
+    inst_ = Predicate( referent = Operator( otype=Operator.OP_R_EQUALITY ) );
+    return inst_;
+  
+  
+  def check_pred_2( self, inst, msg=None ):
+    
+    self.assert_( isinstance( inst.referent, Operator ), msg );
+    self.assertEquals( inst.referent.otype, Operator.OP_R_EQUALITY, msg );
+
+
+  def test_2( self ):
+    
+    self.check_pred_2( self.thaw( self.init_pred_2() ) );
     
 
 

@@ -5,6 +5,9 @@ __all__ = [ "Connective" ];
 
 from pypes.utils.mc import kls;
 
+from pypes.proto.sig.operator import Operator;
+from pypes.proto.sig.word import Word;
+
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
@@ -14,8 +17,14 @@ class Connective( metaclass=kls ):
   _key_ = "referent";
   
   def __init__( self, sig, referent ):
-    
+
     self.referent = referent( sig=sig );
+    
+    if isinstance( self.referent, Operator ):
+      assert self.referent.otype in Operator.OP_Cs;
+    else:
+      assert isinstance( self.referent, Word );
+    
 
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #

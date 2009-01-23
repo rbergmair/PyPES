@@ -5,7 +5,6 @@ __all__ = [ "TestConstraint", "suite", "main" ];
 
 import sys;
 import unittest;
-import random;
 
 from pypes.utils.unittest_ import TestCase;
 from pypes.utils.mc import object_;
@@ -17,38 +16,39 @@ from pypes.proto import *;
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 class TestConstraint( TestCase, metaclass=object_ ):
-
   
-  def init_constr1( self ):
-    
-    ( hid1, hid2 ) = random.sample( range(0,0x7FFFFFFF), 2 );
-    
-    inst_ = Constraint(
-                harg = Handle( hid=hid1 ),
-                larg = Handle( hid=hid2 )
-              );
-              
-    self.assertFalse( isinstance( inst_, Constraint ) );
+  
+  def thaw( self, inst_, msg=None ):
+
+    self.assertFalse( isinstance( inst_, Constraint ), msg );
     
     form = ProtoForm();
     inst = inst_( pf=form );
-    self.assertTrue( isinstance( inst, Constraint ) );
+    self.assertTrue( isinstance( inst, Constraint ), msg );
     
     return inst;
-  
-  
-  def check_constr1( self, inst ):
     
-    self.assert_( isinstance( inst.harg, Handle ) );
-    self.assert_( isinstance( inst.harg.hid, int ) );
-    self.assert_( isinstance( inst.larg, Handle ) );
-    self.assert_( isinstance( inst.larg.hid, int ) );
-    self.assertFalse( inst.harg is inst.larg );
-  
-  
-  def test_constr1( self ):
+
+  def init_constr_1( self ):
     
-    self.check_constr1( self.init_constr1() );
+    inst_ = Constraint(
+                harg = Handle( hid=1 ),
+                larg = Handle( hid=2 )
+              );
+    
+    return inst_;
+  
+  def check_constr_1( self, inst, msg=None ):
+    
+    self.assert_( isinstance( inst.harg, Handle ), msg );
+    self.assertEquals( inst.harg.hid, 1, msg );
+    self.assert_( isinstance( inst.larg, Handle ), msg );
+    self.assertEquals( inst.larg.hid, 2, msg );
+    self.assertFalse( inst.harg is inst.larg, msg );
+  
+  def test_1( self ):
+    
+    self.check_constr_1( self.thaw( self.init_constr_1() ) );
     
 
 

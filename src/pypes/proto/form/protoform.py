@@ -3,7 +3,12 @@
 __package__ = "pypes.proto.form";
 __all__ = [ "ProtoForm" ];
 
+
 from pypes.utils.mc import kls;
+from pypes.proto.form.handle import Handle;
+from pypes.proto.form.subform import SubForm;
+from pypes.proto.form.scopebearer import ScopeBearer;
+from pypes.proto.form.constraint import Constraint;
 
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
@@ -11,7 +16,7 @@ from pypes.utils.mc import kls;
 # In the fictional world of the Transformers, protoforms are "basic frames"
 # of a Cybertronian placed in stasis until a suitable form can be found.
 
-class ProtoForm( metaclass=kls ):
+class ProtoForm( ScopeBearer, metaclass=kls ):
 
   _superordinate_ = None;
   _key_ = None;
@@ -25,12 +30,25 @@ class ProtoForm( metaclass=kls ):
       constraints = set();
     
     self.subforms = {};
-    for root in subforms:
-      self.subforms[ root( pf=self ) ] = subforms[ root ]( sig=sig, pf=pf )
+    
+    for root_ in subforms:
+      
+      root = root_( pf=self );
+      assert isinstance( root, Handle );
+      
+      subform = subforms[ root_ ]( sig=sig, pf=pf );
+      assert isinstance( subform, SubForm );
+      
+      self.subforms[ root ] = subform;
       
     self.constraints = set();
-    for cons in constraints:
-      self.constraints.add( cons( pf=self ) );
+    
+    for constraint_ in constraints:
+      
+      constraint = constraint_( pf=self );
+      assert isinstance( constraint, Constraint );
+      
+      self.constraints.add( constraint );
   
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #

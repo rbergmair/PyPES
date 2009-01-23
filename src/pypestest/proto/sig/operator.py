@@ -18,26 +18,31 @@ from pypes.proto import *;
 class TestOperator( TestCase, metaclass=object_ ):
 
   
-  def init_op1( self ):
-    
-    inst_ = Operator( otype=Operator.OP_C_IMPL );
-    self.assertFalse( isinstance( inst_, Operator ) );
+  def thaw( self, inst_, msg=None ):
+
+    self.assertFalse( isinstance( inst_, Operator ), msg );
     
     sig = ProtoSig();
     inst = inst_( sig=sig );
-    self.assertTrue( isinstance( inst, Operator ) );
+    self.assertTrue( isinstance( inst, Operator ), msg );
     
     return inst;
+
   
-  
-  def check_op1( self, inst ):
+  def init_op_1( self ):
     
-    self.assertEquals( inst.otype, Operator.OP_C_IMPL );
+    inst_ = Operator( otype=Operator.OP_C_IMPL );
+    return inst_;
   
   
-  def test_op1( self ):
+  def check_op_1( self, inst, msg=None ):
     
-    self.check_op1( self.init_op1() );
+    self.assertEquals( inst.otype, Operator.OP_C_IMPL, msg );
+  
+  
+  def test_1( self ):
+    
+    self.check_op_1( self.thaw( self.init_op_1() ) );
     
 
 

@@ -17,27 +17,32 @@ from pypes.proto import *;
 
 class TestSort( TestCase, metaclass=object_ ):
 
-  
-  def init_sort1( self ):
+
+  def thaw( self, inst_, msg=None ):
     
-    inst_ = Sort( sortdsc="x" );
-    self.assertFalse( isinstance( inst_, Sort ) );
+    self.assertFalse( isinstance( inst_, Sort ), msg );
     
     sig = ProtoSig();
     inst = inst_( sig=sig );
-    self.assertTrue( isinstance( inst, Sort ) );
+    self.assertTrue( isinstance( inst, Sort ), msg );
     
     return inst;
+
   
-  
-  def check_sort1( self, inst ):
+  def init_sort_1( self ):
     
-    self.assertEquals( inst.sortdsc, "x" );
+    inst_ = Sort( sid="x" );
+    return inst_;
   
   
-  def test_sort1( self ):
+  def check_sort_1( self, inst, msg=None ):
     
-    self.check_sort1( self.init_sort1() );
+    self.assertEquals( inst.sid, "x", msg );
+  
+  
+  def test_1( self ):
+    
+    self.check_sort_1( self.thaw( self.init_sort_1() ) );
 
 
 

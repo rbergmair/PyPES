@@ -1,21 +1,16 @@
 # -*-  coding: ascii -*-  # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-__package__ = "pypes.proto.sig";
-__all__ = [ "Sort" ];
+__package__ = "pypes.proto.form";
+__all__ = [ "ScopeBearer" ];
 
 from pypes.utils.mc import kls;
 
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-class Sort( metaclass=kls ):
-
-  _superordinate_ = "sig";
-  _key_ = "sid";
+class ScopeBearer( metaclass=kls ):
   
-  def __init__( self, sig, sid=None ):
-    
-    self.sid = sid;
+  pass;
 
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #

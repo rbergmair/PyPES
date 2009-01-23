@@ -5,7 +5,6 @@ __all__ = [ "TestQuantification", "suite", "main" ];
 
 import sys;
 import unittest;
-import random;
 
 from pypes.utils.unittest_ import TestCase;
 from pypes.utils.mc import object_;
@@ -18,50 +17,81 @@ from pypes.proto import *;
 
 class TestQuantification( TestCase, metaclass=object_ ):
 
-  
-  def init_quant1( self ):
-        
-    vid1 = random.randint( 0, 0x7FFFFFFF );
-    hid1 = random.randint( 0, 0x7FFFFFFF );
+
+  def thaw( self, inst_, msg=None ):
+
+    self.assertFalse( isinstance( inst_, Quantification ), msg );
     
+    sig = ProtoSig();
+    pf = ProtoForm();
+    inst = inst_( sig=sig, pf=pf );
+    self.assertTrue( isinstance( inst, Quantification ), msg );
+    
+    return inst;
+
+  
+  def init_quant_1( self ):
+        
     inst_ = Quantification(
                 quantifier = Quantifier(
                                  referent = Operator(
                                                 otype=Operator.OP_Q_UNIV
                                               )
                                ),
-                var = Variable( sortvid=("x",vid1) ),
+                var = Variable( sidvid=("x",1) ),
                 rstr = ProtoForm(),
-                body = Handle( hid=hid1 )
+                body = Handle( hid=1 )
               );
-                            
-    self.assertFalse( isinstance( inst_, Quantification ) );
-    
-    sig = ProtoSig();
-    pf = ProtoForm();
-    inst = inst_( sig=sig, pf=pf );
-    self.assertTrue( isinstance( inst, Quantification ) );
-    
-    return inst;
+              
+    return inst_;
   
-  
-  def check_quant1( self, inst ):
+  def check_quant_1( self, inst, msg=None ):
     
-    self.assert_( isinstance( inst.quantifier, Quantifier ) );
-    self.assert_( isinstance( inst.quantifier.referent, Operator ) );
-    self.assertEquals( inst.quantifier.referent.otype, Operator.OP_Q_UNIV );
-    self.assert_( isinstance( inst.var, Variable ) );
-    self.assert_( isinstance( inst.var.vid, int ) );
-    self.assert_( isinstance( inst.var.sort, Sort ) );
-    self.assertEquals( inst.var.sort.sortdsc, "x" );
-    self.assert_( isinstance( inst.rstr, ProtoForm ) );
-    self.assert_( isinstance( inst.body, Handle ) );
-    self.assert_( isinstance( inst.body.hid, int ) );
+    self.assert_( isinstance( inst.quantifier, Quantifier ), msg );
+    self.assert_( isinstance( inst.quantifier.referent, Operator ), msg );
+    self.assertEquals( inst.quantifier.referent.otype, Operator.OP_Q_UNIV, msg );
+    self.assert_( isinstance( inst.var, Variable ), msg );
+    self.assertEquals( inst.var.vid, 1, msg );
+    self.assert_( isinstance( inst.var.sort, Sort ), msg );
+    self.assertEquals( inst.var.sort.sid, "x", msg );
+    self.assert_( isinstance( inst.rstr, ProtoForm ), msg );
+    self.assert_( isinstance( inst.body, Handle ), msg );
+    self.assertEquals( inst.body.hid, 1, msg );
   
-  
-  def test_quant1( self ):
+  def test_1( self ):
     
-    self.check_quant1( self.init_quant1() );
+    self.check_quant_1( self.thaw( self.init_quant_1() ) );
+
+
+  def init_quant_2( self ):
+        
+    inst_ = Quantification(
+                quantifier = Quantifier(
+                                 referent = Word( lemma="every" )
+                               ),
+                var = Variable( sidvid=("x",1) ),
+                rstr = Handle(),
+                body = ProtoForm()
+              );
+              
+    return inst_;
+  
+  def check_quant_2( self, inst, msg=None ):
+    
+    self.assert_( isinstance( inst.quantifier, Quantifier ), msg );
+    self.assert_( isinstance( inst.quantifier.referent, Word ), msg );
+    self.assertEquals( inst.quantifier.referent.lemma, "every", msg );
+    self.assert_( isinstance( inst.var, Variable ), msg );
+    self.assertEquals( inst.var.vid, 1, msg );
+    self.assert_( isinstance( inst.var.sort, Sort ), msg );
+    self.assertEquals( inst.var.sort.sid, "x", msg );
+    self.assert_( isinstance( inst.rstr, Handle ), msg );
+    self.assertEquals( inst.rstr.hid, None, msg );
+    self.assert_( isinstance( inst.body, ProtoForm ), msg );
+  
+  def test_2( self ):
+    
+    self.check_quant_2( self.thaw( self.init_quant_2() ) );
     
 
 

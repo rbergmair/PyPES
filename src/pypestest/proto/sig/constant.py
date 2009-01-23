@@ -17,27 +17,32 @@ from pypes.proto import *;
 
 class TestConstant( TestCase, metaclass=object_ ):
 
-  
-  def init_const1( self ):
-    
-    inst_ = Constant( ident="Jones" );
-    self.assertFalse( isinstance( inst_, Constant ) );
-    
+
+  def thaw( self, inst_, msg=None ):
+     
+    self.assertFalse( isinstance( inst_, Constant ), msg );
+
     sig = ProtoSig();
     inst = inst_( sig=sig );
-    self.assertTrue( isinstance( inst, Constant ) );
+    self.assertTrue( isinstance( inst, Constant ), msg );
     
     return inst;
+
+  
+  def init_const_1( self ):
+    
+    inst_ = Constant( ident="Jones" );
+    return inst_;
   
   
-  def check_const1( self, inst ):
+  def check_const_1( self, inst ):
     
     self.assertEquals( inst.ident, "Jones" );
   
   
-  def x_test_const1( self ):
+  def x_test_1( self ):
     
-    self.check_const1( self.init_const1() );
+    self.check_const_1( self.thaw( self.init_const_1() ) );
     
 
 

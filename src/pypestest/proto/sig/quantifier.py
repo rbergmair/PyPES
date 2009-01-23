@@ -16,56 +16,56 @@ from pypes.proto import *;
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 class TestQuantifier( TestCase, metaclass=object_ ):
+  
+  
+  def thaw( self, inst_, msg=None ):
+
+    self.assertFalse( isinstance( inst_, Quantifier ), msg );
+    
+    sig = ProtoSig();
+    inst = inst_( sig=sig );
+    self.assertTrue( isinstance( inst, Quantifier ), msg );
+    
+    return inst;
 
   
-  def init_quant1( self ):
+  def init_quant_1( self ):
     
     inst_ = Quantifier( referent = Word( cspan=(0,2), lemma="all" ) );
-    self.assertFalse( isinstance( inst_, Quantifier ) );
-    
-    sig = ProtoSig();
-    inst = inst_( sig=sig );
-    self.assertTrue( isinstance( inst, Quantifier ) );
-    
-    return inst;
+    return inst_;
 
 
-  def init_quant2( self ):
+  def check_quant_1( self, inst, msg=None ):
     
-    inst_ = Quantifier( referent = Operator( otype=Operator.OP_Q_FORALL ) );
-    self.assertFalse( isinstance( inst_, Quantifier ) );
+    self.assert_( isinstance( inst.referent, Word ), msg );
+    self.assertEquals( inst.referent.cfrom, 0, msg );
+    self.assertEquals( inst.referent.cto, 2, msg );
+    self.assertEquals( inst.referent.lemma, "all", msg );
+
+
+  def test_1( self ):
     
-    sig = ProtoSig();
-    inst = inst_( sig=sig );
-    self.assertTrue( isinstance( inst, Quantifier ) );
+    self.check_quant_1( self.thaw( self.init_quant_1() ) );
+
+
+  def init_quant_2( self ):
     
-    return inst;
-  
-  
-  def check_quant1( self, inst ):
-    
-    self.assert_( isinstance( inst.referent, Word ) );
-    self.assertEquals( inst.referent.cspan, (0,2) );
-    self.assertEquals( inst.referent.lemma, "all" );
+    inst_ = Quantifier( referent = Operator( otype=Operator.OP_Q_UNIV ) );
+    return inst_;
     
 
-  def check_quant2( self, inst ):
+  def check_quant_2( self, inst, msg=None ):
     
-    self.assert_( isinstance( inst.referent, Operator ) );
-    self.assertEquals( inst.referent.otype, Operator.OP_Q_FORALL );
+    self.assert_( isinstance( inst.referent, Operator ), msg );
+    self.assertEquals( inst.referent.otype, Operator.OP_Q_UNIV, msg );
   
   
-  def test_quant1( self ):
+  def test_2( self ):
     
-    self.check_quant1( self.init_quant1() );
-  
-  
-  def test_quant2( self ):
-    
-    self.check_quant2( self.init_quant2() );
+    self.check_quant_2( self.thaw( self.init_quant_2() ) );
 
-    
-    
+
+
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 def suite():

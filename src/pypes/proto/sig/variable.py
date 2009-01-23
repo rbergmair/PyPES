@@ -13,12 +13,15 @@ from pypes.proto.sig.sort import Sort;
 class Variable( metaclass=kls ):
 
   _superordinate_ = "sig";
-  _key_ = "sortvid";
+  _key_ = "sidvid";
   
-  def __init__( self, sig, sortvid ):
+  def __init__( self, sig, sidvid=None ):
     
-    (sortdsc,vid) = sortvid;
-    self.sort = Sort( sortdsc=sortdsc )( sig=sig );
+    if sidvid is None:
+      sidvid = (None,None);
+    
+    (sid,vid) = sidvid;
+    self.sort = Sort( sid=sid )( sig=sig );
     self.vid = vid;
 
 

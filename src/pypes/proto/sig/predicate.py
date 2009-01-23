@@ -5,6 +5,9 @@ __all__ = [ "Predicate" ];
 
 from pypes.utils.mc import kls;
 
+from pypes.proto.sig.operator import Operator;
+from pypes.proto.sig.word import Word;
+
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
@@ -14,8 +17,13 @@ class Predicate( metaclass=kls ):
   _key_ = "referent";
   
   def __init__( self, sig, referent ):
-    
+
     self.referent = referent( sig=sig );
+    
+    if isinstance( self.referent, Operator ):
+      assert self.referent.otype in Operator.OP_Rs;
+    else:
+      assert isinstance( self.referent, Word );
 
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #

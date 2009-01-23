@@ -18,50 +18,49 @@ from pypes.proto import *;
 class TestArgument( TestCase, metaclass=object_ ):
 
   
-  def init_arg1( self ):
+  def init_arg( self ):
     
-    inst_ = Argument( arglabel="ARG1" );
-    self.assertFalse( isinstance( inst_, Argument ) );
+    inst_ = Argument( aid="arg1" );
+    return inst_;
+
+
+  def check_arg( self, inst, msg=None ):
+    
+    self.assertEquals( inst.aid, "arg1", msg );
+  
+  
+  def thaw_1( self, inst_, msg=None ):
+
+    self.assertFalse( isinstance( inst_, Argument ), msg );
     
     sig = ProtoSig();
     pred = Predicate( referent = Word( cspan=(5,7), lemma="man" ) )( sig=sig );
     inst = inst_( predmod=pred );
-    self.assertTrue( isinstance( inst, Argument ) );
+    self.assertTrue( isinstance( inst, Argument ), msg );
     
     return inst;
 
 
-  def init_arg2( self ):
+  def test_1( self ):
     
-    inst_ = Argument( arglabel="ARG1" );
-    self.assertFalse( isinstance( inst_, Argument ) );
+    self.check_arg( self.thaw_1( self.init_arg() ) );
+
+
+  def thaw_2( self, inst_, msg=None ):
+
+    self.assertFalse( isinstance( inst_, Argument ), msg );
     
     sig = ProtoSig();
     mod = Modality( referent = Word( cspan=(0,7), lemma="Possibly" ) );
     inst = inst_( predmod=mod );
-    self.assertTrue( isinstance( inst, Argument ) );
+    self.assertTrue( isinstance( inst, Argument ), msg );
     
     return inst;
   
   
-  def check_arg1( self, inst ):
+  def test_2( self ):
     
-    self.assertEquals( inst.arglabel, "ARG1" );
-
-
-  def check_arg2( self, inst ):
-    
-    self.assertEquals( inst.arglabel, "ARG1" );
-  
-  
-  def test_arg1( self ):
-    
-    self.check_arg1( self.init_arg1() );
-  
-  
-  def test_arg2( self ):
-    
-    self.check_arg2( self.init_arg2() );
+    self.check_arg( self.thaw_2( self.init_arg() ) );
     
     
 

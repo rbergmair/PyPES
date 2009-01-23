@@ -1,7 +1,7 @@
 # -*-  coding: ascii -*-  # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 __package__ = "pypestest.codecs";
-# __all__ = [ "TestConnection", "suite", "main" ];
+__all__ = [ "TestPFTDecoder", "suite", "main" ];
 
 import sys;
 import unittest;
@@ -9,12 +9,16 @@ import unittest;
 from pypes.utils.unittest_ import TestCase;
 from pypes.utils.mc import object_;
 
-from pypestest.proto.form.predication import TestPredication;
-from pypestest.proto.form.quantification import TestQuantification;
-from pypestest.proto.form.modification import TestModification;
 from pypestest.proto.form.connection import TestConnection;
 from pypestest.proto.form.constraint import TestConstraint;
+from pypestest.proto.form.handle import TestHandle;
+from pypestest.proto.form.modification import TestModification;
+from pypestest.proto.form.predication import TestPredication;
 from pypestest.proto.form.protoform import TestProtoForm;
+from pypestest.proto.form.quantification import TestQuantification;
+
+from pypestest.proto.sig.variable import TestVariable;
+from pypestest.proto.sig.word import TestWord;
 
 from pypes.codecs.pft_decoder import *;
 
@@ -25,218 +29,134 @@ from pypes.codecs.pft_decoder import *;
 class TestPFTDecoder( TestCase, metaclass=object_ ):
 
 
-  def run_cases_pf( self, cases, type ):
-
-    for inputstr in cases:
-      _ = cases[ inputstr ];
-      inst_ = None;
-      try:
-        with PFTDecoder( inputstr ) as dec:
-          inst_ = dec.decode( type );
-      except:
-        print( inputstr );
-        raise;
-      pf = ProtoForm();
-      inst = inst_( pf=pf );
-      _( self, inst, inputstr );
-
-  
-  def run_cases_sig( self, cases, type ):
-
-    for inputstr in cases:
-      _ = cases[ inputstr ];
-      inst_ = None;
-      try:
-        with PFTDecoder( inputstr ) as dec:
-          inst_ = dec.decode( type );
-      except:
-        print( inputstr );
-        raise;
-      sig = ProtoSig();
-      inst = inst_( sig=sig );
-      _( self, inst, inputstr );
-
-
-  def run_cases_sig_pf( self, cases, type ):
-
-    for inputstr in cases:
-      _ = cases[ inputstr ];
-      inst_ = None;
-      try:
-        with PFTDecoder( inputstr ) as dec:
-          inst_ = dec.decode( type );
-      except:
-        self.fail( inputstr );
-      sig = ProtoSig();
-      pf = ProtoForm()( sig=sig );
-      inst = inst_( sig=sig, pf=pf );
-      _( self, inst, inputstr );
-
-  
   def test_handle( self ):
     
-    cases = {};
-    
-    def _( self, inst, msg ):
-      self.assertTrue( isinstance( inst, Handle ), msg );
-      self.assertEquals( inst.hid, 42, msg );
-    cases[ "42" ] = _;
+    def check( stri, chf ):
 
-    def _( self, inst, msg ):
-      self.assertTrue( isinstance( inst, Handle ), msg );
-    cases[ "__" ] = _;
+      inst_ = None;
+      with PFTDecoder( stri ) as dec:
+        inst_ = dec.decode( PFTDecoder.handle );
+  
+      chf( self, TestHandle.thaw( self, inst_, stri ), stri );
     
-    self.run_cases_sig_pf( cases, PFTDecoder.handle );
+    check( "42", TestHandle.check_handle_1 );
+    check( "__", TestHandle.check_handle_2 );
   
 
   def test_variable( self ):
+    
+    def check( stri, chf ):
 
-    cases = {};
+      inst_ = None;
+      with PFTDecoder( stri ) as dec:
+        inst_ = dec.decode( PFTDecoder.variable );
+  
+      chf( self, TestVariable.thaw( self, inst_, stri ), stri );
     
-    def _( self, inst, msg ):
-      self.assertTrue( isinstance( inst, Variable ), msg );
-      self.assert_( isinstance( inst.sort, Sort ), msg );
-      self.assertEquals( inst.sort.sortdsc, "x", msg );
-      self.assertEquals( inst.vid, 42, msg );
-    cases[ "x42" ] = _;
-    
-    self.run_cases_sig( cases, PFTDecoder.variable );
+    check( "x42", TestVariable.check_var_1 );
 
 
   def test_word( self ):
+
+    def check( stri, chf ):
+
+      inst_ = None;
+      with PFTDecoder( stri ) as dec:
+        inst_ = dec.decode( PFTDecoder.word );
+  
+      chf( self, TestWord.thaw( self, inst_, stri ), stri );
     
-    cases = {};
-    
-    def _( self, inst, msg ):
-      self.assert_( isinstance( inst, Word ) );
-      self.assertEquals( inst.lemma, "lemma", msg );
-      self.assertEquals( inst.scf, None, msg );
-      self.assertEquals( inst.pos, None, msg );
-      self.assertEquals( inst.sense, None, msg );
-      self.assertEquals( inst.cspan, (None,None), msg );
-    cases[ "[lemma]" ] = _;
-
-    def _( self, inst, msg ):
-      self.assert_( isinstance( inst, Word ) );
-      self.assertEquals( inst.lemma, None, msg );
-      self.assertEquals( inst.scf, "scf", msg );
-      self.assertEquals( inst.pos, None, msg );
-      self.assertEquals( inst.sense, None, msg );
-      self.assertEquals( inst.cspan, (None,None), msg );
-    cases[ "[+scf]" ] = _;
-
-    def _( self, inst, msg ):
-      self.assert_( isinstance( inst, Word ) );
-      self.assertEquals( inst.lemma, None, msg );
-      self.assertEquals( inst.scf, None, msg );
-      self.assertEquals( inst.pos, "p", msg );
-      self.assertEquals( inst.sense, None, msg );
-      self.assertEquals( inst.cspan, (None,None), msg );
-    cases[ "[_p]" ] = _;
-
-    def _( self, inst, msg ):
-      self.assert_( isinstance( inst, Word ) );
-      self.assertEquals( inst.lemma, None, msg );
-      self.assertEquals( inst.scf, None, msg );
-      self.assertEquals( inst.pos, None, msg );
-      self.assertEquals( inst.sense, "1", msg );
-      self.assertEquals( inst.cspan, (None,None), msg );
-    cases[ "[__1]" ] = _;
-
-    def _( self, inst, msg ):
-      self.assert_( isinstance( inst, Word ) );
-      self.assertEquals( inst.lemma, None, msg );
-      self.assertEquals( inst.scf, None, msg );
-      self.assertEquals( inst.pos, None, msg );
-      self.assertEquals( inst.sense, None, msg );
-      self.assertEquals( inst.cspan, (1,None), msg );
-    cases[ "[:1]" ] = _;
-
-    def _( self, inst, msg ):
-      self.assert_( isinstance( inst, Word ) );
-      self.assertEquals( inst.lemma, None, msg );
-      self.assertEquals( inst.scf, None, msg );
-      self.assertEquals( inst.pos, None, msg );
-      self.assertEquals( inst.sense, None, msg );
-      self.assertEquals( inst.cspan, (None,2), msg );
-    cases[ "[::2]" ] = _;
-
-    def _( self, inst, msg ):
-      self.assert_( isinstance( inst, Word ) );
-      self.assertEquals( inst.lemma, "lemma", msg );
-      self.assertEquals( inst.scf, "scf", msg );
-      self.assertEquals( inst.pos, "p", msg );
-      self.assertEquals( inst.sense, "1", msg );
-      self.assertEquals( inst.cspan, (1,2), msg );
-    cases[ "['lemma'+scf_p_1:1:2]" ] = _;
-
-    def _( self, inst, msg ):
-      self.assert_( isinstance( inst, Word ) );
-      self.assertEquals( inst.lemma, None, msg );
-      self.assertEquals( inst.scf, None, msg );
-      self.assertEquals( inst.pos, None, msg );
-      self.assertEquals( inst.sense, None, msg );
-      self.assertEquals( inst.cspan, (None,None), msg );
-    cases[ "[]" ] = _;
-    
-    self.run_cases_sig( cases, PFTDecoder.word );
+    check( "[lemma]", TestWord.check_word_1 );
+    check( "[+scf]", TestWord.check_word_2 );
+    check( "[_p]", TestWord.check_word_3 );
+    check( "[__1]", TestWord.check_word_4 );
+    check( "[:0]", TestWord.check_word_5 );
+    check( "[::4]", TestWord.check_word_6 );
+    check( "[:0:4]", TestWord.check_word_7 );
+    check( "['lemma'+scf_p_1:0:4]", TestWord.check_word_8 );
+    check( "[]", TestWord.check_word_9 );
 
 
   def test_predication( self ):
 
-    cases = {
-        "[cat:5:7]( arg1=x1 )": lambda self, inst, msg:
-          TestPredication.check_pred1( self, inst ),
-        "EQUALS( ARG0=x1, ARG2=x2 )": lambda self, inst, msg:
-          None
-      };
+    def check( stri, chf ):
+
+      inst_ = None;
+      with PFTDecoder( stri ) as dec:
+        inst_ = dec.decode( PFTDecoder.predication );
+  
+      chf( self, TestPredication.thaw( self, inst_, stri ), stri );
     
-    self.run_cases_sig( cases, PFTDecoder.predication );
+    check( "[cat:5:7]( arg1=x1 )", TestPredication.check_pred_1 );
+    check( "EQUALS( ARG0=x1, ARG1=x2 )", TestPredication.check_pred_2 );
     
     
   def test_quantification( self ):
 
-    cases = {
-        "ALL x1 {} 1": lambda self, inst, msg:
-          TestQuantification.check_quant1( self, inst )
-      };
+    def check( stri, chf ):
+
+      inst_ = None;
+      with PFTDecoder( stri ) as dec:
+        inst_ = dec.decode( PFTDecoder.quantification );
+  
+      chf( self, TestQuantification.thaw( self, inst_, stri ), stri );
     
-    self.run_cases_sig_pf( cases, PFTDecoder.quantification );
+    check( "ALL x1 {} 1", TestQuantification.check_quant_1 );
+    check( "[every] x1 __ {}", TestQuantification.check_quant_2 );
     
     
   def test_modification( self ):
 
-    cases = {
-        "[told:5:8]( arg1=x1, arg2=x2 ) 1": lambda self, inst, msg:
-          TestModification.check_modification1( self, inst ),
-        "[not:5:7]() {}": lambda self, inst, msg:
-          TestModification.check_modification2( self, inst )
-      };
+    def check( stri, chf ):
+
+      inst_ = None;
+      with PFTDecoder( stri ) as dec:
+        inst_ = dec.decode( PFTDecoder.modification );
+  
+      chf( self, TestModification.thaw( self, inst_, stri ), stri );
     
-    self.run_cases_sig_pf( cases, PFTDecoder.modification );
+    check( "[told:5:8]( arg1=x1, arg2=x2 ) 1",
+           TestModification.check_modification_1 );
+    check( "NECESSARILY() {}",
+           TestModification.check_modification_2 );
 
 
   def test_connection( self ):
 
-    cases = {
-        "{} && 1": lambda self, inst, msg:
-          TestConnection.check_conn1( self, inst )
-      };
+    def check( stri, chf ):
+
+      inst_ = None;
+      with PFTDecoder( stri ) as dec:
+        inst_ = dec.decode( PFTDecoder.connection );
+  
+      chf( self, TestConnection.thaw( self, inst_, stri ), stri );
     
-    self.run_cases_sig_pf( cases, PFTDecoder.connection );
+    check( "{} && 1", TestConnection.check_conn_1 );
+    check( "__ [and] {}", TestConnection.check_conn_2 );
 
 
   def test_constraint( self ):
 
-    cases = {
-        "1 >> 2": lambda self, inst, msg:
-          TestConstraint.check_constr1( self, inst )
-      };
+    def check( stri, chf ):
+
+      inst_ = None;
+      with PFTDecoder( stri ) as dec:
+        inst_ = dec.decode( PFTDecoder.constraint );
+  
+      chf( self, TestConstraint.thaw( self, inst_, stri ), stri );
     
-    self.run_cases_pf( cases, PFTDecoder.constraint );
+    check( "1 >> 2", TestConstraint.check_constr_1 );
   
   
   def test_protoform( self ):
+
+    def check( stri, chf ):
+
+      inst_ = None;
+      with PFTDecoder( stri ) as dec:
+        inst_ = dec.decode( PFTDecoder.protoform );
+  
+      chf( self, TestProtoForm.thaw( self, inst_, stri ), stri );
     
     PF2_1 = """{ 1: [Every:0:4] x1 { 1: [man:6:8]( arg0=x1 ) } 2;
                  3: [a:16:16] x2 { 1: [woman:18:23]( arg0=x2 ) } 4;
@@ -244,17 +164,14 @@ class TestPFTDecoder( TestCase, metaclass=object_ ):
                  1 >> 5;
                  3 >> 5 }""";
 
-    PF2_2 = """{ 1: [Every:0:4] x1 { 1: [man:6:8]( arg0=x1 ) } __;
-                 3: [a:16:16] x2 { 1: [woman:18:23]( arg0=x2 ) } __;
+    PF2_2 = """{ 1: [Every:0:4] x1 { [man:6:8]( arg0=x1 ) } __;
+                 3: [a:16:16] x2 { [woman:18:23]( arg0=x2 ) } __;
                  5: [loves:10:14]( arg1=x1, arg2=x2 );
                  1 >> 5;
                  3 >> 5 }""";
-               
-    cases = { PF2_1: lambda self, inst, msg:
-                TestProtoForm.check_pf2( self, inst ),
-              PF2_2: lambda self, inst, msg:
-                TestProtoForm.check_pf2( self, inst ) };
-    self.run_cases_sig( cases, PFTDecoder.protoform );
+    
+    check( PF2_1, TestProtoForm.check_pf_2 );
+    check( PF2_2, TestProtoForm.check_pf_2 );
 
 
 

@@ -16,18 +16,18 @@ from pypes.proto import *;
 
 class TestProtoSig( TestCase, metaclass=object_ ):
   
-  def init_sig1( self ):
+  def init_sig_1( self ):
     
     inst = ProtoSig();
     return inst;
   
-  def check_sig1( self, inst ):
+  def check_sig_1( self, inst, msg=None ):
     
-    self.assertTrue( isinstance( inst, ProtoSig ) );
+    self.assertTrue( isinstance( inst, ProtoSig ), msg );
   
-  def test_sig1( self ):
+  def test_1( self ):
     
-    self.check_sig1( self.init_sig1() );
+    self.check_sig_1( self.init_sig_1() );
     
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #

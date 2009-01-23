@@ -5,7 +5,6 @@ __all__ = [ "TestPredication", "suite", "main" ];
 
 import sys;
 import unittest;
-import random;
 
 from pypes.utils.unittest_ import TestCase;
 from pypes.utils.mc import object_;
@@ -18,56 +17,92 @@ from pypes.proto import *;
 
 class TestPredication( TestCase, metaclass=object_ ):
 
-  
-  def init_pred1( self ):
+
+  def thaw( self, inst_, msg=None ):
+
+    self.assertFalse( isinstance( inst_, Predication ), msg );
     
-    vid1 = random.randint( 0, 0x7FFFFFFF );
+    sig = ProtoSig();
+    inst = inst_( sig=sig );
+    self.assertTrue( isinstance( inst, Predication ), msg );
+    
+    return inst;
+
+  
+  def init_pred_1( self ):
     
     inst_ = Predication(
                 predicate = Predicate(
                                 referent = Word( cspan=(5,7), lemma="cat" )
                               ),
-                args = { Argument( arglabel="arg1" ):
-                           Variable( sortvid=("x",vid1) )
+                args = { Argument( aid="arg1" ):
+                           Variable( sidvid=("x",1) )
                        }
               );
-              
-    self.assertFalse( isinstance( inst_, Predication ) );
-    
-    sig = ProtoSig();
-    inst = inst_( sig=sig );
-    self.assertTrue( isinstance( inst, Predication ) );
-    
-    return inst;
+    return inst_;
   
-  
-  def check_pred1( self, inst ):
+  def check_pred_1( self, inst, msg=None ):
     
-    self.assert_( isinstance( inst.predicate, Predicate ) );
-    self.assert_( isinstance( inst.predicate.referent, Word ) );
-    self.assertEquals( inst.predicate.referent.cspan, (5,7) );
-    self.assertEquals( inst.predicate.referent.lemma, "cat" );
-    
+    self.assert_( isinstance( inst.predicate, Predicate ), msg );
+    self.assert_( isinstance( inst.predicate.referent, Word ), msg );
+    self.assertEquals( inst.predicate.referent.cfrom, 5, msg );
+    self.assertEquals( inst.predicate.referent.cto, 7, msg );
+    self.assertEquals( inst.predicate.referent.lemma, "cat", msg );
     labels = set();
     vars = set();
-    
     for arg in inst.args:
-      self.assert_( isinstance( arg, Argument ) );
-      self.assert_( isinstance( arg.arglabel, str ) );
-      labels.add( arg.arglabel );
-      self.assert_( isinstance( inst.args[ arg ], Variable ) );
+      self.assert_( isinstance( arg, Argument ), msg );
+      self.assert_( isinstance( arg.aid, str ), msg );
+      labels.add( arg.aid );
+      self.assert_( isinstance( inst.args[ arg ], Variable ), msg );
       vars.add( inst.args[ arg ] );
-      self.assert_( isinstance( inst.args[ arg ].vid, int ) );
-      self.assert_( isinstance( inst.args[ arg ].sort, Sort ) );
-      self.assertEquals( inst.args[ arg ].sort.sortdsc, "x" );
-    
-    self.assertEquals( labels, { "arg1" } );
-    self.assertEquals( len( vars ), 1 );
+      self.assertEquals( inst.args[ arg ].vid, 1, msg );
+      self.assert_( isinstance( inst.args[ arg ].sort, Sort ), msg );
+      self.assertEquals( inst.args[ arg ].sort.sid, "x", msg );
+    self.assertEquals( labels, { "arg1" }, msg );
+    self.assertEquals( len( vars ), 1, msg );
   
-  
-  def test_pred1( self ):
+  def test_1( self ):
     
-    self.check_pred1( self.init_pred1() );
+    self.check_pred_1( self.thaw( self.init_pred_1() ) );
+
+
+  def init_pred_2( self ):
+    
+    inst_ = Predication(
+                predicate = Predicate(
+                                referent = Operator( otype=Operator.OP_R_EQUALITY )
+                              ),
+                args = { Argument( aid="ARG0" ):
+                           Variable( sidvid=("x",1) ),
+                         Argument( aid="ARG1" ):
+                           Variable( sidvid=("x",2) )
+                       }
+              );
+    return inst_;
+  
+  def check_pred_2( self, inst, msg=None ):
+    
+    self.assert_( isinstance( inst.predicate, Predicate ), msg );
+    self.assert_( isinstance( inst.predicate.referent, Operator ), msg );
+    self.assertEquals( inst.predicate.referent.otype, Operator.OP_R_EQUALITY, msg );
+    labels = set();
+    vars = set();
+    for arg in inst.args:
+      self.assert_( isinstance( arg, Argument ), msg );
+      self.assert_( isinstance( arg.aid, str ), msg );
+      labels.add( arg.aid );
+      self.assert_( isinstance( inst.args[ arg ], Variable ), msg );
+      vars.add( inst.args[ arg ] );
+      self.assert_( isinstance( inst.args[ arg ].vid, int ), msg );
+      self.assert_( isinstance( inst.args[ arg ].sort, Sort ), msg );
+      self.assertEquals( inst.args[ arg ].sort.sid, "x", msg );
+    self.assertEquals( labels, { "ARG0", "ARG1" }, msg );
+    self.assertEquals( len( vars ), 2, msg );
+  
+  def test_2( self ):
+    
+    self.check_pred_2( self.thaw( self.init_pred_2() ) );
     
 
 
