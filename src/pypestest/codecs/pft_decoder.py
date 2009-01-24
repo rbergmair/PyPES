@@ -53,7 +53,7 @@ class TestPFTDecoder( TestCase, metaclass=object_ ):
   
       chf( self, TestVariable.thaw( self, inst_, stri ), stri );
     
-    check( "x42", TestVariable.check_var_1 );
+    check( "x1", TestVariable.check_var_1 );
 
 
   def test_word( self ):
@@ -73,7 +73,7 @@ class TestPFTDecoder( TestCase, metaclass=object_ ):
     check( "[:0]", TestWord.check_word_5 );
     check( "[::4]", TestWord.check_word_6 );
     check( "[:0:4]", TestWord.check_word_7 );
-    check( "['lemma'+scf_p_1:0:4]", TestWord.check_word_8 );
+    check( "[lemma+scf_p_1:0:4]", TestWord.check_word_8 );
     check( "[]", TestWord.check_word_9 );
 
 

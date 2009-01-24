@@ -3,6 +3,9 @@
 __package__ = "pypes.codecs";
 __all__ = [ "PFTDecoder" ];
 
+import ast;
+import re;
+
 from pyparsing import Literal;
 from pyparsing import Word as Word_;
 from pyparsing import ZeroOrMore, OneOrMore, Optional;
@@ -32,6 +35,12 @@ _GT_PROTOFORM = 8;
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
+_variable_re = re.compile( "[" + alphas + "]+" + "[" + nums + "]+" );
+
+
+
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+
 class PFTDecoder( metaclass=subject ):
 
   
@@ -53,13 +62,15 @@ class PFTDecoder( metaclass=subject ):
   def _decode_quoted( str_, loc, toks ):
     assert len(toks) == 1;
     tok = toks[0];
-    assert tok[0] in [ '"', "'" ];
-    assert tok[-1] in [ '"', "'" ];
-    content = tok[1:-1];
-    content = content.replace( '\\"', '"' );
-    content = content.replace( "\\'", "'" );
-    content = content.replace( "\\\\", "\\" );
-    return content;
+    if tok[0] == '"':
+      assert tok[-1] == "'";
+    elif tok[0] == "'":
+      assert tok[-1] == "'";
+    else:
+      assert False;
+    rslt = ast.literal_eval( tok );
+    assert isinstance( rslt, str );
+    return rslt;
   quoted.setParseAction( _decode_quoted );
 
 
@@ -82,11 +93,12 @@ class PFTDecoder( metaclass=subject ):
       return ( _GT_HANDLE, Handle( hid = int( toks[0] ) ) );
   handle.setParseAction( _decode_handle );
 
-  
-  variable = Word_( alphas, nums );
+
+  variable = Word_( alphas, alphas+nums );
   def _decode_variable( str_, loc, toks ):
     assert len(toks) == 1;
     tok = toks[0];
+    assert _variable_re.match( tok );
     return ( _GT_VARIABLE, Variable( sidvid = ( tok[0], int( tok[1:] ) ) ) );
   variable.setParseAction( _decode_variable );
   
