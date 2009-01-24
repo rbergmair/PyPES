@@ -1,6 +1,11 @@
 # -*-  coding: ascii -*-
 
 __package__ = "pypes.utils";
+__all__ = [ "LOG_CRITICAL", "LOG_ERROR", "LOG_WARNING", "LOG_INFO",
+            "LOG_DEBUG_COARSE", "LOG_DEBUG", "LOG_NOTSET",
+            "log_attach_stderr_logger", "log_attach_file_logger",
+            "log_critical", "log_error", "log_warn", "log_info",
+            "log_error", "log_debug_coarse", "log_debug", "log" ];
 
 import logging;
 from sys import stderr;
@@ -107,7 +112,7 @@ class _LogController( metaclass=singleton ):
     source_module = __import__( source_class.__module__ );
 
     source = source_module.__package__;
-    if source is None:
+    if not source:
       source = "";
     else:
       source += ".";

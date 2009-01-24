@@ -1,6 +1,7 @@
 # -*-  coding: ascii -*-
 
 __package__ = "pypes.utils.xml_";
+__all__ = [ "TextContentFilter" ];
 
 import xml.sax;
 import xml.sax.saxutils;

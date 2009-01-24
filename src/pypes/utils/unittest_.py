@@ -1,6 +1,7 @@
 # -*-  coding: ascii -*-
 
 __package__ = "pypes.utils";
+__all__ = [ "TestCase" ];
 
 import unittest;
 
