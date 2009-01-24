@@ -1,6 +1,6 @@
 # -*-  coding: ascii -*-  # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-__package__ = "pypestest.utils";
+__package__ = "pypestest";
 
 import sys;
 import unittest;
@@ -11,7 +11,7 @@ import pypestest.utils.globals;
 import pypestest.utils.logging_;
 import pypestest.utils.unittest_;
 
-import pypestest.utils.xml_.suite;
+import pypestest.utils.xml_;
 
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
@@ -26,7 +26,7 @@ def suite():
   suite.addTests( pypestest.utils.logging_.suite() );
   suite.addTests( pypestest.utils.unittest_.suite() );
 
-  suite.addTests( pypestest.utils.xml_.suite.suite() );
+  suite.addTests( pypestest.utils.xml_.suite() );
 
   return suite;
 
