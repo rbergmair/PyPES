@@ -8,7 +8,7 @@ import re;
 
 from pyparsing import Literal;
 from pyparsing import Word as Word_;
-from pyparsing import ZeroOrMore, OneOrMore, Optional;
+from pyparsing import ZeroOrMore, OneOrMore, Optional, NotAny;
 from pyparsing import Forward;
 from pyparsing import printables, alphas, nums, alphanums;
 from pyparsing import quotedString;
@@ -30,6 +30,7 @@ _GT_MODIFICATION = 5;
 _GT_CONNECTION = 6;
 _GT_CONSTRAINT = 7;
 _GT_PROTOFORM = 8;
+_GT_FREEZER = 9;
 
 
 
@@ -84,14 +85,34 @@ class PFTDecoder( metaclass=subject ):
   decimalnumber.setParseAction( _decode_decimalnumber );
 
 
-  handle = Word_( nums, nums ) | Literal( "__" );
-  def _decode_handle( str_, loc, toks ):
+  explicit_handle = Word_( nums, nums );
+  def _decode_explicit_handle( str_, loc, toks ):
     assert len(toks) == 1;
-    if toks[0] == "__":
-      return ( _GT_HANDLE, Handle() );
-    else:
-      return ( _GT_HANDLE, Handle( hid = int( toks[0] ) ) );
-  handle.setParseAction( _decode_handle );
+    return ( _GT_HANDLE, Handle( hid = int( toks[0] ) ) );
+  explicit_handle.setParseAction( _decode_explicit_handle );
+
+
+  anonymous_handle = Literal( "__" );
+  def _decode_anonymous_handle( str_, loc, toks ):
+    assert len(toks) == 1;
+    assert toks[0] == "__";
+    return ( _GT_HANDLE, Handle() );
+  anonymous_handle.setParseAction( _decode_anonymous_handle );
+  
+  
+  handle = ( explicit_handle | anonymous_handle );
+  
+
+  freezer = Forward();
+  freezer << Literal( "<" ) + ( freezer | handle ) + Literal( ">" );
+  def _decode_freezer( str_, loc, toks ):
+    assert len(toks) == 3;
+    assert toks[0] == "<";
+    assert toks[2] == ">";
+    ( type_, content ) = toks[1];
+    assert type_ in { _GT_FREEZER, _GT_HANDLE };
+    return ( _GT_FREEZER, Freezer( content=content ) );
+  freezer.setParseAction( _decode_freezer );
 
 
   variable = Word_( alphas, alphas+nums );
@@ -232,7 +253,8 @@ class PFTDecoder( metaclass=subject ):
   arguments_list.setParseAction( _decode_arguments_list );
 
   
-  predication = ( word | identifier ) + arguments_list;
+  predication = ( word | identifier ) + arguments_list + \
+                NotAny( handle | freezer | protoform );
   
   def _decode_predication( str_, loc, toks ):
     
@@ -263,7 +285,7 @@ class PFTDecoder( metaclass=subject ):
 
 
   quantification = ( word | identifier ) + variable + \
-                   ( handle | protoform ) + ( handle | protoform );
+                   ( handle | freezer | protoform ) + ( handle | freezer | protoform );
   
   def _decode_quantification( str_, loc, toks ):
     
@@ -294,13 +316,13 @@ class PFTDecoder( metaclass=subject ):
 
     assert len( toks ) > i;
     ( type_, rstr ) = toks[i];
-    assert type_ in { _GT_HANDLE, _GT_PROTOFORM };
+    assert type_ in { _GT_HANDLE, _GT_FREEZER, _GT_PROTOFORM };
     
     i += 1;
 
     assert len( toks ) > i;
     ( type_, body ) = toks[i];
-    assert type_ in { _GT_HANDLE, _GT_PROTOFORM };
+    assert type_ in { _GT_HANDLE, _GT_FREEZER, _GT_PROTOFORM };
     
     return ( _GT_QUANTIFICATION, Quantification(
                                      quantifier = Quantifier(
@@ -315,7 +337,7 @@ class PFTDecoder( metaclass=subject ):
 
 
   modification = ( word | identifier ) + arguments_list + \
-                 ( handle | protoform );
+                 ( handle | freezer | protoform );
   
   def _decode_modification( str_, loc, toks ):
     
@@ -344,7 +366,7 @@ class PFTDecoder( metaclass=subject ):
     
     assert len( toks ) > i;
     ( type_, scope ) = toks[i];
-    assert type_ in { _GT_HANDLE, _GT_PROTOFORM };
+    assert type_ in { _GT_HANDLE, _GT_FREEZER, _GT_PROTOFORM };
     
     return ( _GT_MODIFICATION, Modification(
                                    modality = Modality( referent=referent ),
@@ -359,17 +381,18 @@ class PFTDecoder( metaclass=subject ):
                Literal( "\\/" ) | Literal( "||" ) | \
                Literal( "->" );
 
-  connection = ( handle | protoform ) + ( connective | word ) + ( handle | protoform );
+  connection = ( handle | freezer | protoform ) + ( connective | word ) + \
+               ( handle | freezer | protoform );
   
   def _decode_connection( str_, loc, toks ):
     
     assert len( toks ) == 3;
     
     ( type_, lscope ) = toks[0];
-    assert type_ in { _GT_HANDLE, _GT_PROTOFORM };
+    assert type_ in { _GT_HANDLE, _GT_FREEZER, _GT_PROTOFORM };
 
     ( type_, rscope ) = toks[2];
-    assert type_ in { _GT_HANDLE, _GT_PROTOFORM };
+    assert type_ in { _GT_HANDLE, _GT_FREEZER, _GT_PROTOFORM };
     
     referent = None;
     if not isinstance( toks[1], str ):
@@ -412,10 +435,11 @@ class PFTDecoder( metaclass=subject ):
     return ( _GT_CONSTRAINT, Constraint( harg=harg, larg=larg ) );
   
   constraint.setParseAction( _decode_constraint );
-  
-  
-  item = ( Optional( handle + Literal(":") ) + \
-             ( predication | quantification | modification | connection ) ) | \
+
+
+  item = ( Optional( explicit_handle + Literal(":") ) + \
+             ( protoform | predication | quantification | modification |
+               connection  ) ) | \
          constraint;
 
   protoform << ( Literal( "{" ) + \
@@ -456,7 +480,7 @@ class PFTDecoder( metaclass=subject ):
         assert len( toks ) > i;
         
       elif type_ in { _GT_PREDICATION, _GT_QUANTIFICATION,
-                      _GT_MODIFICATION, _GT_CONNECTION }:
+                      _GT_MODIFICATION, _GT_CONNECTION, _GT_PROTOFORM }:
         
         if handle is None:
           handle = Handle();

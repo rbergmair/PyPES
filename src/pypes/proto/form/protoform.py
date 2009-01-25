@@ -37,7 +37,7 @@ class ProtoForm( ScopeBearer, metaclass=kls ):
       assert isinstance( root, Handle );
       
       subform = subforms[ root_ ]( sig=sig );
-      assert isinstance( subform, SubForm );
+      assert isinstance( subform, SubForm ) or isinstance( subform, ProtoForm );
       
       self.subforms[ root ] = subform;
       

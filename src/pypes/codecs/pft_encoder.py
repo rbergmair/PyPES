@@ -75,6 +75,11 @@ class PFTEncoder( metaclass=subject ):
     return str( inst.hid );
 
 
+  def _encode_freezer( self, inst ):
+    
+    return "<" + self._encode( inst.content ) + ">";
+
+
   def _encode_variable( self, inst ):
     
     sid = None;
@@ -287,6 +292,7 @@ class PFTEncoder( metaclass=subject ):
 
 PFTEncoder._item_encoders = {
     Handle : PFTEncoder._encode_handle,
+    Freezer : PFTEncoder._encode_freezer,
     Variable : PFTEncoder._encode_variable,
     Word : PFTEncoder._encode_word,
     Predication : PFTEncoder._encode_predication,

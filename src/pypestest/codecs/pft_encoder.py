@@ -91,7 +91,7 @@ class TestPFTEncoder( TestCase, metaclass=object_ ):
               self.check( stri, initf, TestQuantification.logify );
     
     check( "ALL x1 {} 1", TestQuantification.init_quant_1 );
-    check( "[every] x1 __ {}", TestQuantification.init_quant_2 );
+    check( "[every] x1 <__> {}", TestQuantification.init_quant_2 );
 
 
   def test_modification( self ):
@@ -127,13 +127,24 @@ class TestPFTEncoder( TestCase, metaclass=object_ ):
     check = lambda stri, initf: \
               self.check( stri, initf, TestProtoForm.logify );
 
-    PF = """{ 1: [Every:0:4] x1 { [man:6:8]( arg0=x1 ) } 2;
-              3: [a:16:16] x2 { [woman:18:23]( arg0=x2 ) } 4;
-              5: [loves:10:14]( arg1=x1, arg2=x2 );
-              3 >> 5;
-              1 >> 5 }""";
+    PF1 = """{ 1: [Every:0:4] x1 { [man:6:8]( arg0=x1 ) } 2;
+               3: [a:16:16] x2 { [woman:18:23]( arg0=x2 ) } 4;
+               5: [loves:10:14]( arg1=x1, arg2=x2 );
+               3 >> 5;
+               1 >> 5 }""";
+
+    PF2 = """{    [every:0:4] x1 1 { [lie:32:36]( arg1=x1 ) };
+               2: { __ /\ __;
+                    [witness:6:12]( arg0=x1 );
+                    [say:18:21]( arg1=x1 ) <3>
+                  };
+               4: [she:23:25] x2 { [she:23:25]( arg0=x2 ) }
+                                 { [lie:27:30]( arg1=x2 ) };
+               3 >> 4;
+               1 >> 2 }""";
     
-    check( PF, TestProtoForm.init_pf_2 );
+    check( PF1, TestProtoForm.init_pf_2 );
+    check( PF2, TestProtoForm.init_pf_3 );
 
 
 

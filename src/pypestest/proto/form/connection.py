@@ -81,6 +81,35 @@ class TestConnection( TestCase, metaclass=object_ ):
     
     self.check_conn_2( self.logify( self.init_conn_2() ) );
 
+  
+  def init_conn_3( self ):
+    
+    inst_ = Connection(
+                connective = Connective(
+                                 referent = Operator(
+                                                otype=Operator.OP_C_STRCON
+                                              )
+                               ),
+                lscope = ProtoForm(),
+                rscope = Freezer( content=Handle( hid=1 ) )
+              );
+    
+    return inst_;
+
+  def check_conn_3( self, inst, msg=None ):
+    
+    self.assert_( isinstance( inst.connective, Connective ), msg );
+    self.assert_( isinstance( inst.connective.referent, Operator ), msg );
+    self.assertEquals( inst.connective.referent.otype, Operator.OP_C_STRCON, msg );
+    self.assert_( isinstance( inst.lscope, ProtoForm ), msg );
+    self.assert_( isinstance( inst.rscope, Freezer ), msg );
+    self.assert_( isinstance( inst.rscope.content, Handle ), msg );
+    self.assertEquals( inst.rscope.content.hid, 1, msg );
+  
+  def test_3( self ):
+    
+    self.check_conn_3( self.logify( self.init_conn_3() ) );
+
 
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #

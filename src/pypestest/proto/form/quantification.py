@@ -69,7 +69,7 @@ class TestQuantification( TestCase, metaclass=object_ ):
                                  referent = Word( lemma="every" )
                                ),
                 var = Variable( sidvid=("x",1) ),
-                rstr = Handle(),
+                rstr = Freezer( content=Handle() ),
                 body = ProtoForm()
               );
               
@@ -84,8 +84,9 @@ class TestQuantification( TestCase, metaclass=object_ ):
     self.assertEquals( inst.var.vid, 1, msg );
     self.assert_( isinstance( inst.var.sort, Sort ), msg );
     self.assertEquals( inst.var.sort.sid, "x", msg );
-    self.assert_( isinstance( inst.rstr, Handle ), msg );
-    self.assertEquals( inst.rstr.hid, None, msg );
+    self.assert_( isinstance( inst.rstr, Freezer ), msg );
+    self.assert_( isinstance( inst.rstr.content, Handle ), msg );
+    self.assertEquals( inst.rstr.content.hid, None, msg );
     self.assert_( isinstance( inst.body, ProtoForm ), msg );
   
   def test_2( self ):

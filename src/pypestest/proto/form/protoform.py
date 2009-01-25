@@ -84,7 +84,6 @@ class TestProtoForm( TestCase, metaclass=object_ ):
               );
     
     return inst_;
-
       
   def check_pf_2( self, inst, msg=None ):
     
@@ -222,10 +221,84 @@ class TestProtoForm( TestCase, metaclass=object_ ):
     self.assert_( cons[ h1 ] is h5, msg );
     self.assert_( cons[ h3 ] is h5, msg );
   
-  
   def test_2( self ):
     
     self.check_pf_2( self.logify( self.init_pf_2() ) );
+
+
+  def init_pf_3( self ):
+    
+    inst_ = ProtoForm(
+                subforms = { Handle():
+                               Quantification(
+                                   quantifier = Quantifier( referent = Word( cspan=(0,4), lemma="every" ) ),
+                                   var = Variable( sidvid=("x",1) ),
+                                   rstr = Handle( hid=1 ),
+                                   body = ProtoForm(
+                                              subforms = { Handle():
+                                                             Predication(
+                                                                 predicate = Predicate( referent = Word( cspan=(32,36), lemma="lie" ) ),
+                                                                 args = { Argument( aid="arg1" ): Variable( sidvid=("x",1) ) }
+                                                               )
+                                                         }
+                                            )
+                                 ),
+                             Handle( hid=2 ):
+                               ProtoForm(
+                                   subforms = { Handle():
+                                                  Connection(
+                                                      connective = Connective( referent = Operator( otype=Operator.OP_C_WEACON ) ),
+                                                      lscope = Handle(),
+                                                      rscope = Handle()
+                                                    ),
+                                                Handle():
+                                                  Predication(
+                                                      predicate = Predicate( referent = Word( cspan=(6,12), lemma="witness" ) ),
+                                                      args = { Argument( aid="arg0" ): Variable( sidvid=("x",1) ) }
+                                                    ),
+                                                Handle():
+                                                  Modification(
+                                                      modality = Modality( referent = Word( cspan=(18,21), lemma="say" ) ),
+                                                      args = { Argument( aid="arg1" ): Variable( sidvid=("x",1) ) },
+                                                      scope = Freezer( content = Handle( hid=3 ) )
+                                                    )
+                                              }
+                                 ),
+                             Handle( hid=4 ):
+                               Quantification(
+                                   quantifier = Quantifier( referent = Word( cspan=(23,25), lemma="she" ) ),
+                                   var = Variable( sidvid=("x",2) ),
+                                   rstr = ProtoForm(
+                                              subforms = { Handle():
+                                                             Predication(
+                                                                 predicate = Predicate( referent = Word( cspan=(23,25), lemma="she" ) ),
+                                                                 args = { Argument( aid="arg0" ): Variable( sidvid=("x",2) ) }
+                                                               )
+                                                         }
+                                            ),
+                                   body = ProtoForm(
+                                              subforms = { Handle():
+                                                             Predication(
+                                                                 predicate = Predicate( referent = Word( cspan=(27,30), lemma="lie" ) ),
+                                                                 args = { Argument( aid="arg1" ): Variable( sidvid=("x",2) ) }
+                                                               )
+                                                         }
+                                            )
+                                 )
+                           },
+                constraints = { Constraint( harg = Handle( hid=1 ), larg = Handle( hid=2 ) ),
+                                Constraint( harg = Handle( hid=3 ), larg = Handle( hid=4 ) ) }
+              );
+    
+    return inst_;
+
+  def check_pf_3( self, inst, msg=None ):
+    
+    pass;
+
+  def test_3( self ):
+    
+    self.check_pf_3( self.logify( self.init_pf_3() ) );
 
 
 

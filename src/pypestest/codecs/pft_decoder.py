@@ -34,8 +34,9 @@ class TestPFTDecoder( TestCase, metaclass=object_ ):
     inst_ = None;
     with PFTDecoder( stri ) as dec:
       inst_ = dec.decode( type_ );
-  
-    chf( self, logifyf( self, inst_, stri ), stri );
+    
+    if chf is not None and logifyf is not None:
+      chf( self, logifyf( self, inst_, stri ), stri );
 
 
   def test_handle( self ):
@@ -96,7 +97,7 @@ class TestPFTDecoder( TestCase, metaclass=object_ ):
                                 );
     
     check( "ALL x1 {} 1", TestQuantification.check_quant_1 );
-    check( "[every] x1 __ {}", TestQuantification.check_quant_2 );
+    check( "[every] x1 <__> {}", TestQuantification.check_quant_2 );
     
     
   def test_modification( self ):
@@ -110,6 +111,9 @@ class TestPFTDecoder( TestCase, metaclass=object_ ):
            TestModification.check_modification_1 );
     check( "NECESSARILY() {}",
            TestModification.check_modification_2 );
+           
+    check( "[say:18:21]( arg1=x1 ) <3>", None );
+
 
 
   def test_connection( self ):
@@ -140,14 +144,24 @@ class TestPFTDecoder( TestCase, metaclass=object_ ):
                                   PFTDecoder.protoform
                                 );
     
-    PF = """{ 1: [Every:0:4] x1 { [man:6:8]( arg0=x1 ) } 2;
-              3: [a:16:16] x2 { [woman:18:23]( arg0=x2 ) } 4;
-              5: [loves:10:14]( arg1=x1, arg2=x2 );
-              3 >> 5;
-              1 >> 5 }""";
+    PF1 = """{ 1: [Every:0:4] x1 { [man:6:8]( arg0=x1 ) } 2;
+               3: [a:16:16] x2 { [woman:18:23]( arg0=x2 ) } 4;
+               5: [loves:10:14]( arg1=x1, arg2=x2 );
+               3 >> 5;
+               1 >> 5 }""";
+
+    PF2 = """{    [every:0:4] x1 1 { [lie:32:36]( arg1=x1 ) };
+               2: { __ /\ __;
+                    [witness:6:12]( arg0=x1 );
+                    [say:18:21]( arg1=x1 ) <3>
+                  };
+               4: [she:23:25] x2 { [she:23:25]( arg0=x2 ) }
+                                 { [lie:27:30]( arg1=x2 ) };
+               3 >> 4;
+               1 >> 2 }""";
     
-    check( PF, TestProtoForm.check_pf_2 );
-    check( PF, TestProtoForm.check_pf_2 );
+    check( PF1, TestProtoForm.check_pf_2 );
+    check( PF2, TestProtoForm.check_pf_3 );
 
 
 

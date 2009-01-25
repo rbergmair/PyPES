@@ -98,6 +98,30 @@ class TestModification( TestCase, metaclass=object_ ):
   def test_2( self ):
     
     self.check_modification_2( self.logify( self.init_modification_2() ) );
+
+
+  def init_modification_3( self ):
+    
+    inst_ = Modification(
+                modality = Modality(
+                               referent = Operator( otype=Operator.OP_M_NECESSITY )
+                             ),
+                scope = Freezer( content=Handle() )
+              );
+              
+    return inst_;
+  
+  def check_modification_3( self, inst, msg=None ):
+    
+    self.assert_( isinstance( inst.modality, Modality ), msg );
+    self.assert_( isinstance( inst.modality.referent, Operator ), msg );
+    self.assertEquals( inst.modality.referent.otype, Operator.OP_M_NECESSITY, msg );
+    self.assert_( isinstance( inst.scope, Freezer ), msg );
+    self.assert_( isinstance( inst.scope.content, Handle ), msg );
+  
+  def test_3( self ):
+    
+    self.check_modification_3( self.logify( self.init_modification_3() ) );
     
 
 

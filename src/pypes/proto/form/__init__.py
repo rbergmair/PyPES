@@ -6,7 +6,7 @@ __package__ = "pypes.proto";
 
 __all__ = [ "Connection", "Constraint", "Handle", "Modification",
             "Predication", "ProtoForm", "Quantification", "SubForm",
-            "ScopeBearer" ];
+            "ScopeBearer", "Freezer" ];
 
 from pypes.proto.form.connection import Connection;
 from pypes.proto.form.constraint import Constraint;
@@ -17,6 +17,7 @@ from pypes.proto.form.protoform import ProtoForm;
 from pypes.proto.form.quantification import Quantification;
 from pypes.proto.form.subform import SubForm;
 from pypes.proto.form.scopebearer import ScopeBearer;
+from pypes.proto.form.freezer import Freezer;
 
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #

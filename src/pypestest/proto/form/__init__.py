@@ -13,6 +13,7 @@ import pypestest.proto.form.modification;
 import pypestest.proto.form.predication;
 import pypestest.proto.form.protoform;
 import pypestest.proto.form.quantification;
+import pypestest.proto.form.freezer;
 
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
@@ -28,6 +29,7 @@ def suite():
   suite.addTests( pypestest.proto.form.predication.suite() );
   suite.addTests( pypestest.proto.form.protoform.suite() );
   suite.addTests( pypestest.proto.form.quantification.suite() );
+  suite.addTests( pypestest.proto.form.freezer.suite() );
 
   return suite;
 
