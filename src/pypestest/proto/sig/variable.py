@@ -18,7 +18,7 @@ from pypes.proto import *;
 class TestVariable( TestCase, metaclass=object_ ):
 
 
-  def thaw( self, inst_, msg=None ):
+  def logify( self, inst_, msg=None ):
 
     self.assertFalse( isinstance( inst_, Variable ), msg );
     
@@ -42,7 +42,7 @@ class TestVariable( TestCase, metaclass=object_ ):
   
   def test_1( self ):
     
-    self.check_var_1( self.thaw( self.init_var_1() ) );
+    self.check_var_1( self.logify( self.init_var_1() ) );
 
 
   def init_var_2( self ):
@@ -58,7 +58,7 @@ class TestVariable( TestCase, metaclass=object_ ):
   
   def test_2( self ):
     
-    self.check_var_2( self.thaw( self.init_var_2() ) );
+    self.check_var_2( self.logify( self.init_var_2() ) );
 
 
   def init_var_3( self ):
@@ -74,7 +74,7 @@ class TestVariable( TestCase, metaclass=object_ ):
   
   def test_3( self ):
     
-    self.check_var_3( self.thaw( self.init_var_3() ) );
+    self.check_var_3( self.logify( self.init_var_3() ) );
 
 
   def init_var_4( self ):
@@ -90,7 +90,7 @@ class TestVariable( TestCase, metaclass=object_ ):
   
   def test_4( self ):
     
-    self.check_var_4( self.thaw( self.init_var_4() ) );
+    self.check_var_4( self.logify( self.init_var_4() ) );
     
 
 

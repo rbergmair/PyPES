@@ -18,7 +18,7 @@ from pypes.proto import *;
 class TestConstant( TestCase, metaclass=object_ ):
 
 
-  def thaw( self, inst_, msg=None ):
+  def logify( self, inst_, msg=None ):
      
     self.assertFalse( isinstance( inst_, Constant ), msg );
 
@@ -42,7 +42,7 @@ class TestConstant( TestCase, metaclass=object_ ):
   
   def x_test_1( self ):
     
-    self.check_const_1( self.thaw( self.init_const_1() ) );
+    self.check_const_1( self.logify( self.init_const_1() ) );
     
 
 

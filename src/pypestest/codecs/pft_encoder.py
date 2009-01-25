@@ -31,9 +31,9 @@ from pypes.proto import *;
 class TestPFTEncoder( TestCase, metaclass=object_ ):
 
 
-  def check( self, stri, initf, thawf ):
+  def check( self, stri, initf, logifyf ):
 
-    inst = thawf( self, initf( self ), stri );
+    inst = logifyf( self, initf( self ), stri );
     with PFTEncoder( inst ) as encoder:
       rslt = encoder.encode();
       self.assert_( isinstance( rslt, str ) );
@@ -45,7 +45,7 @@ class TestPFTEncoder( TestCase, metaclass=object_ ):
   def test_handle( self ):
     
     check = lambda stri, initf: \
-              self.check( stri, initf, TestHandle.thaw );
+              self.check( stri, initf, TestHandle.logify );
     
     check( "42", TestHandle.init_handle_1 );
     check( "__", TestHandle.init_handle_2 );
@@ -54,7 +54,7 @@ class TestPFTEncoder( TestCase, metaclass=object_ ):
   def test_variable( self ):
     
     check = lambda stri, initf: \
-              self.check( stri, initf, TestVariable.thaw );
+              self.check( stri, initf, TestVariable.logify );
     
     check( "x1", TestVariable.init_var_1 );
     check( None, lambda self: Variable() );
@@ -63,7 +63,7 @@ class TestPFTEncoder( TestCase, metaclass=object_ ):
   def test_word( self ):
     
     check = lambda stri, initf: \
-              self.check( stri, initf, TestWord.thaw );
+              self.check( stri, initf, TestWord.logify );
     
     check( "[lemma]", TestWord.init_word_1 );
     check( "[+scf]", TestWord.init_word_2 );
@@ -79,7 +79,7 @@ class TestPFTEncoder( TestCase, metaclass=object_ ):
   def test_predication( self ):
 
     check = lambda stri, initf: \
-              self.check( stri, initf, TestPredication.thaw );
+              self.check( stri, initf, TestPredication.logify );
     
     check( "[cat:5:7]( arg1=x1 )", TestPredication.init_pred_1 );
     check( "EQUALS( ARG0=x1, ARG1=x2 )", TestPredication.init_pred_2 );
@@ -88,7 +88,7 @@ class TestPFTEncoder( TestCase, metaclass=object_ ):
   def test_quantification( self ):
 
     check = lambda stri, initf: \
-              self.check( stri, initf, TestQuantification.thaw );
+              self.check( stri, initf, TestQuantification.logify );
     
     check( "ALL x1 {} 1", TestQuantification.init_quant_1 );
     check( "[every] x1 __ {}", TestQuantification.init_quant_2 );
@@ -97,7 +97,7 @@ class TestPFTEncoder( TestCase, metaclass=object_ ):
   def test_modification( self ):
 
     check = lambda stri, initf: \
-              self.check( stri, initf, TestModification.thaw );
+              self.check( stri, initf, TestModification.logify );
     
     check( "[told:5:8]( arg1=x1, arg2=x2 ) 1",
            TestModification.init_modification_1 );
@@ -108,7 +108,7 @@ class TestPFTEncoder( TestCase, metaclass=object_ ):
   def test_connection( self ):
 
     check = lambda stri, initf: \
-              self.check( stri, initf, TestConnection.thaw );
+              self.check( stri, initf, TestConnection.logify );
     
     check( "{} && 1", TestConnection.init_conn_1 );
     check( "__ [and] {}", TestConnection.init_conn_2 );
@@ -117,7 +117,7 @@ class TestPFTEncoder( TestCase, metaclass=object_ ):
   def test_constraint( self ):
 
     check = lambda stri, initf: \
-              self.check( stri, initf, TestConstraint.thaw );
+              self.check( stri, initf, TestConstraint.logify );
     
     check( "1 >> 2", TestConstraint.init_constr_1 );
 
@@ -125,7 +125,7 @@ class TestPFTEncoder( TestCase, metaclass=object_ ):
   def test_protoform( self ):
 
     check = lambda stri, initf: \
-              self.check( stri, initf, TestProtoForm.thaw );
+              self.check( stri, initf, TestProtoForm.logify );
 
     PF = """{ 1: [Every:0:4] x1 { [man:6:8]( arg0=x1 ) } 2;
               3: [a:16:16] x2 { [woman:18:23]( arg0=x2 ) } 4;

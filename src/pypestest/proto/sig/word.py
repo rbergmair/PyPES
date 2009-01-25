@@ -18,7 +18,7 @@ from pypes.proto import *;
 class TestWord( TestCase, metaclass=object_ ):
 
 
-  def thaw( self, inst_, msg=None ):
+  def logify( self, inst_, msg=None ):
     
     self.assertFalse( isinstance( inst_, Word ), msg );
     
@@ -46,7 +46,7 @@ class TestWord( TestCase, metaclass=object_ ):
   
   def test_1( self ):
     
-    self.check_word_1( self.thaw( self.init_word_1() ) );
+    self.check_word_1( self.logify( self.init_word_1() ) );
 
 
   def init_word_2( self ):
@@ -66,7 +66,7 @@ class TestWord( TestCase, metaclass=object_ ):
   
   def test_2( self ):
     
-    self.check_word_2( self.thaw( self.init_word_2() ) );
+    self.check_word_2( self.logify( self.init_word_2() ) );
 
 
   def init_word_3( self ):
@@ -86,7 +86,7 @@ class TestWord( TestCase, metaclass=object_ ):
   
   def test_3( self ):
     
-    self.check_word_3( self.thaw( self.init_word_3() ) );
+    self.check_word_3( self.logify( self.init_word_3() ) );
 
 
   def init_word_4( self ):
@@ -106,7 +106,7 @@ class TestWord( TestCase, metaclass=object_ ):
   
   def test_4( self ):
     
-    self.check_word_4( self.thaw( self.init_word_4() ) );
+    self.check_word_4( self.logify( self.init_word_4() ) );
 
 
   def init_word_5( self ):
@@ -126,7 +126,7 @@ class TestWord( TestCase, metaclass=object_ ):
   
   def test_5( self ):
     
-    self.check_word_5( self.thaw( self.init_word_5() ) );
+    self.check_word_5( self.logify( self.init_word_5() ) );
 
 
   def init_word_6( self ):
@@ -146,7 +146,7 @@ class TestWord( TestCase, metaclass=object_ ):
   
   def test_6( self ):
     
-    self.check_word_6( self.thaw( self.init_word_6() ) );
+    self.check_word_6( self.logify( self.init_word_6() ) );
 
 
   def init_word_7( self ):
@@ -166,7 +166,7 @@ class TestWord( TestCase, metaclass=object_ ):
   
   def test_7( self ):
     
-    self.check_word_7( self.thaw( self.init_word_7() ) );
+    self.check_word_7( self.logify( self.init_word_7() ) );
 
 
   def init_word_8( self ):
@@ -192,7 +192,7 @@ class TestWord( TestCase, metaclass=object_ ):
   
   def test_8( self ):
     
-    self.check_word_8( self.thaw( self.init_word_8() ) );
+    self.check_word_8( self.logify( self.init_word_8() ) );
 
 
   def init_word_9( self ):
@@ -212,7 +212,7 @@ class TestWord( TestCase, metaclass=object_ ):
   
   def test_9( self ):
     
-    self.check_word_9( self.thaw( self.init_word_9() ) );
+    self.check_word_9( self.logify( self.init_word_9() ) );
     
     
 

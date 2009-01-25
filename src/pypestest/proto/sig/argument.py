@@ -29,7 +29,7 @@ class TestArgument( TestCase, metaclass=object_ ):
     self.assertEquals( inst.aid, "arg1", msg );
   
   
-  def thaw_1( self, inst_, msg=None ):
+  def logify_1( self, inst_, msg=None ):
 
     self.assertFalse( isinstance( inst_, Argument ), msg );
     
@@ -44,10 +44,10 @@ class TestArgument( TestCase, metaclass=object_ ):
 
   def test_1( self ):
     
-    self.check_arg( self.thaw_1( self.init_arg() ) );
+    self.check_arg( self.logify_1( self.init_arg() ) );
 
 
-  def thaw_2( self, inst_, msg=None ):
+  def logify_2( self, inst_, msg=None ):
 
     self.assertFalse( isinstance( inst_, Argument ), msg );
     
@@ -62,7 +62,7 @@ class TestArgument( TestCase, metaclass=object_ ):
   
   def test_2( self ):
     
-    self.check_arg( self.thaw_2( self.init_arg() ) );
+    self.check_arg( self.logify_2( self.init_arg() ) );
     
     
 

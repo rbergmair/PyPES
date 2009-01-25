@@ -18,7 +18,7 @@ from pypes.proto import *;
 class TestSort( TestCase, metaclass=object_ ):
 
 
-  def thaw( self, inst_, msg=None ):
+  def logify( self, inst_, msg=None ):
     
     self.assertFalse( isinstance( inst_, Sort ), msg );
     
@@ -42,7 +42,7 @@ class TestSort( TestCase, metaclass=object_ ):
   
   def test_1( self ):
     
-    self.check_sort_1( self.thaw( self.init_sort_1() ) );
+    self.check_sort_1( self.logify( self.init_sort_1() ) );
 
 
 

@@ -18,7 +18,7 @@ from pypes.proto import *;
 class TestConnective( TestCase, metaclass=object_ ):
   
   
-  def thaw( self, inst_, msg=None ):
+  def logify( self, inst_, msg=None ):
 
     self.assertFalse( isinstance( inst_, Connective ), msg );
     
@@ -45,7 +45,7 @@ class TestConnective( TestCase, metaclass=object_ ):
 
   def test_1( self ):
     
-    self.check_conn_1( self.thaw( self.init_conn_1() ) );
+    self.check_conn_1( self.logify( self.init_conn_1() ) );
 
 
   def init_conn_2( self ):
@@ -62,7 +62,7 @@ class TestConnective( TestCase, metaclass=object_ ):
 
   def test_2( self ):
     
-    self.check_conn_2( self.thaw( self.init_conn_2() ) );
+    self.check_conn_2( self.logify( self.init_conn_2() ) );
     
 
 

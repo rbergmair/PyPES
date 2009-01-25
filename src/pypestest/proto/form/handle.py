@@ -18,7 +18,7 @@ from pypes.proto import *;
 class TestHandle( TestCase, metaclass=object_ ):
   
   
-  def thaw( self, inst_, msg=None ):
+  def logify( self, inst_, msg=None ):
 
     self.assertFalse( isinstance( inst_, Handle ), msg );
     
@@ -42,7 +42,7 @@ class TestHandle( TestCase, metaclass=object_ ):
   
   def test_1( self ):
     
-    self.check_handle_1( self.thaw( self.init_handle_1() ) );
+    self.check_handle_1( self.logify( self.init_handle_1() ) );
 
 
   def init_handle_2( self ):
@@ -58,7 +58,7 @@ class TestHandle( TestCase, metaclass=object_ ):
   
   def test_2( self ):
     
-    self.check_handle_2( self.thaw( self.init_handle_2() ) );
+    self.check_handle_2( self.logify( self.init_handle_2() ) );
     
 
 

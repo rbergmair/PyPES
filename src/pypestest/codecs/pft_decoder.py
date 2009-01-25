@@ -29,19 +29,19 @@ from pypes.codecs.pft_decoder import PFTDecoder;
 class TestPFTDecoder( TestCase, metaclass=object_ ):
 
 
-  def check( self, stri, chf, thawf, type_ ):
+  def check( self, stri, chf, logifyf, type_ ):
 
     inst_ = None;
     with PFTDecoder( stri ) as dec:
       inst_ = dec.decode( type_ );
   
-    chf( self, thawf( self, inst_, stri ), stri );
+    chf( self, logifyf( self, inst_, stri ), stri );
 
 
   def test_handle( self ):
     
     check = lambda stri, chf: self.check(
-                                  stri, chf, TestHandle.thaw,
+                                  stri, chf, TestHandle.logify,
                                   PFTDecoder.handle
                                 );
     
@@ -52,7 +52,7 @@ class TestPFTDecoder( TestCase, metaclass=object_ ):
   def test_variable( self ):
 
     check = lambda stri, chf: self.check(
-                                  stri, chf, TestVariable.thaw,
+                                  stri, chf, TestVariable.logify,
                                   PFTDecoder.variable
                                 );
     
@@ -62,7 +62,7 @@ class TestPFTDecoder( TestCase, metaclass=object_ ):
   def test_word( self ):
     
     check = lambda stri, chf: self.check(
-                                  stri, chf, TestWord.thaw,
+                                  stri, chf, TestWord.logify,
                                   PFTDecoder.word
                                 );
     
@@ -80,7 +80,7 @@ class TestPFTDecoder( TestCase, metaclass=object_ ):
   def test_predication( self ):
 
     check = lambda stri, chf: self.check(
-                                  stri, chf, TestPredication.thaw,
+                                  stri, chf, TestPredication.logify,
                                   PFTDecoder.predication
                                 );
     
@@ -91,7 +91,7 @@ class TestPFTDecoder( TestCase, metaclass=object_ ):
   def test_quantification( self ):
 
     check = lambda stri, chf: self.check(
-                                  stri, chf, TestQuantification.thaw,
+                                  stri, chf, TestQuantification.logify,
                                   PFTDecoder.quantification
                                 );
     
@@ -102,7 +102,7 @@ class TestPFTDecoder( TestCase, metaclass=object_ ):
   def test_modification( self ):
 
     check = lambda stri, chf: self.check(
-                                  stri, chf, TestModification.thaw,
+                                  stri, chf, TestModification.logify,
                                   PFTDecoder.modification
                                 );
     
@@ -115,7 +115,7 @@ class TestPFTDecoder( TestCase, metaclass=object_ ):
   def test_connection( self ):
     
     check = lambda stri, chf: self.check(
-                                  stri, chf, TestConnection.thaw,
+                                  stri, chf, TestConnection.logify,
                                   PFTDecoder.connection
                                 );
     
@@ -126,7 +126,7 @@ class TestPFTDecoder( TestCase, metaclass=object_ ):
   def test_constraint( self ):
 
     check = lambda stri, chf: self.check(
-                                  stri, chf, TestConstraint.thaw,
+                                  stri, chf, TestConstraint.logify,
                                   PFTDecoder.constraint
                                 );
     
@@ -136,7 +136,7 @@ class TestPFTDecoder( TestCase, metaclass=object_ ):
   def test_protoform( self ):
 
     check = lambda stri, chf: self.check(
-                                  stri, chf, TestProtoForm.thaw,
+                                  stri, chf, TestProtoForm.logify,
                                   PFTDecoder.protoform
                                 );
     

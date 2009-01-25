@@ -18,7 +18,7 @@ from pypes.proto import *;
 class TestProtoForm( TestCase, metaclass=object_ ):
 
   
-  def thaw( self, inst_, msg=None ):
+  def logify( self, inst_, msg=None ):
 
     self.assertFalse( isinstance( inst_, ProtoForm ), msg );
     
@@ -40,7 +40,7 @@ class TestProtoForm( TestCase, metaclass=object_ ):
 
   def test_1( self ):
     
-    self.check_pf_1( self.thaw( self.init_pf_1() ) );
+    self.check_pf_1( self.logify( self.init_pf_1() ) );
     
 
   def init_pf_2( self ):
@@ -225,7 +225,7 @@ class TestProtoForm( TestCase, metaclass=object_ ):
   
   def test_2( self ):
     
-    self.check_pf_2( self.thaw( self.init_pf_2() ) );
+    self.check_pf_2( self.logify( self.init_pf_2() ) );
 
 
 
