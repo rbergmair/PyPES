@@ -19,7 +19,7 @@ class Modification( SubForm, metaclass=kls ):
   _superordinate_ = None;
   _key_ = None;
   
-  def __init__( self, sig, pf, modality, scope, args=None ):
+  def __init__( self, sig, modality, scope, args=None ):
     
     if args is None:
       args = {};
@@ -27,7 +27,7 @@ class Modification( SubForm, metaclass=kls ):
     self.modality = modality( sig=sig );
     assert isinstance( self.modality, Modality );
     
-    self.scope = scope( sig=sig, pf=pf );
+    self.scope = scope( sig=sig );
     assert isinstance( self.scope, ScopeBearer );
     
     self.args = {};

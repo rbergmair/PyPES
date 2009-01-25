@@ -23,8 +23,7 @@ class TestConnection( TestCase, metaclass=object_ ):
     self.assertFalse( isinstance( inst_, Connection ), msg );
     
     sig = ProtoSig();
-    pf = ProtoForm();
-    inst = inst_( sig=sig, pf=pf );
+    inst = inst_( sig=sig );
     self.assertTrue( isinstance( inst, Connection ), msg );
     
     return inst;

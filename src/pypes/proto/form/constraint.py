@@ -15,12 +15,12 @@ class Constraint( metaclass=kls ):
   _superordinate_ = None;
   _key_ = None;
   
-  def __init__( self, pf, harg, larg ):
+  def __init__( self, sig, harg, larg ):
     
-    self.harg = harg( pf=pf );
+    self.harg = harg( sig=sig );
     assert isinstance( self.harg, Handle );
     
-    self.larg = larg( pf=pf );
+    self.larg = larg( sig=sig );
     assert isinstance( self.larg, Handle );
 
 

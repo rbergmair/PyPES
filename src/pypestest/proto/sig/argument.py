@@ -34,7 +34,8 @@ class TestArgument( TestCase, metaclass=object_ ):
     self.assertFalse( isinstance( inst_, Argument ), msg );
     
     sig = ProtoSig();
-    pred = Predicate( referent = Word( cspan=(5,7), lemma="man" ) )( sig=sig );
+    pred_ = Predicate( referent = Word( cspan=(5,7), lemma="man" ) );
+    pred = pred_( sig=sig );
     inst = inst_( predmod=pred );
     self.assertTrue( isinstance( inst, Argument ), msg );
     
@@ -51,7 +52,8 @@ class TestArgument( TestCase, metaclass=object_ ):
     self.assertFalse( isinstance( inst_, Argument ), msg );
     
     sig = ProtoSig();
-    mod = Modality( referent = Word( cspan=(0,7), lemma="Possibly" ) );
+    mod_ = Modality( referent = Word( cspan=(0,7), lemma="Possibly" ) );
+    mod = mod_( sig=sig );
     inst = inst_( predmod=mod );
     self.assertTrue( isinstance( inst, Argument ), msg );
     

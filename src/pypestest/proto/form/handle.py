@@ -23,8 +23,7 @@ class TestHandle( TestCase, metaclass=object_ ):
     self.assertFalse( isinstance( inst_, Handle ), msg );
     
     sig = ProtoSig();
-    pf = ProtoForm()( sig=sig );
-    inst = inst_( sig=sig, pf=pf );
+    inst = inst_( sig=sig );
     self.assertTrue( isinstance( inst, Handle ), msg );
     
     return inst;

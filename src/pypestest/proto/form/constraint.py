@@ -22,8 +22,8 @@ class TestConstraint( TestCase, metaclass=object_ ):
 
     self.assertFalse( isinstance( inst_, Constraint ), msg );
     
-    form = ProtoForm();
-    inst = inst_( pf=form );
+    sig = ProtoSig();
+    inst = inst_( sig=sig );
     self.assertTrue( isinstance( inst, Constraint ), msg );
     
     return inst;

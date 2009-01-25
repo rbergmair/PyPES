@@ -11,10 +11,10 @@ from pypes.proto.form.scopebearer import ScopeBearer;
 
 class Handle( ScopeBearer, metaclass=kls ):
 
-  _superordinate_ = "pf";
+  _superordinate_ = "sig";
   _key_ = "hid";
   
-  def __init__( self, pf, hid=None, sig=None ):
+  def __init__( self, sig, hid=None ):
     
     self.hid = hid;
 

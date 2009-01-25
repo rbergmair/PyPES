@@ -18,7 +18,7 @@ class Predication( SubForm, metaclass=kls ):
   _superordinate_ = None;
   _key_ = None;
   
-  def __init__( self, sig, predicate, args, pf=None ):
+  def __init__( self, sig, predicate, args ):
     
     self.predicate = predicate( sig=sig );
     assert isinstance( self.predicate, Predicate );

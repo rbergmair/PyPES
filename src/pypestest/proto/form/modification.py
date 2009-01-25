@@ -23,8 +23,7 @@ class TestModification( TestCase, metaclass=object_ ):
     self.assertFalse( isinstance( inst_, Modification ), msg );
     
     sig = ProtoSig();
-    pf = ProtoForm();
-    inst = inst_( sig=sig, pf=pf );
+    inst = inst_( sig=sig );
     self.assertTrue( isinstance( inst, Modification ), msg );
     
     return inst;

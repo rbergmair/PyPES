@@ -23,8 +23,7 @@ class TestQuantification( TestCase, metaclass=object_ ):
     self.assertFalse( isinstance( inst_, Quantification ), msg );
     
     sig = ProtoSig();
-    pf = ProtoForm();
-    inst = inst_( sig=sig, pf=pf );
+    inst = inst_( sig=sig );
     self.assertTrue( isinstance( inst, Quantification ), msg );
     
     return inst;

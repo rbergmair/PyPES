@@ -21,7 +21,7 @@ class ProtoForm( ScopeBearer, metaclass=kls ):
   _superordinate_ = None;
   _key_ = None;
   
-  def __init__( self, sig, pf=None, subforms=None, constraints=None ):
+  def __init__( self, sig, subforms=None, constraints=None ):
     
     if subforms is None:
       subforms = {};
@@ -33,10 +33,10 @@ class ProtoForm( ScopeBearer, metaclass=kls ):
     
     for root_ in subforms:
       
-      root = root_( pf=self );
+      root = root_( sig=sig );
       assert isinstance( root, Handle );
       
-      subform = subforms[ root_ ]( sig=sig, pf=pf );
+      subform = subforms[ root_ ]( sig=sig );
       assert isinstance( subform, SubForm );
       
       self.subforms[ root ] = subform;
@@ -45,7 +45,7 @@ class ProtoForm( ScopeBearer, metaclass=kls ):
     
     for constraint_ in constraints:
       
-      constraint = constraint_( pf=self );
+      constraint = constraint_( sig=sig );
       assert isinstance( constraint, Constraint );
       
       self.constraints.add( constraint );

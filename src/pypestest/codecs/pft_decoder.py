@@ -29,42 +29,42 @@ from pypes.codecs.pft_decoder import PFTDecoder;
 class TestPFTDecoder( TestCase, metaclass=object_ ):
 
 
+  def check( self, stri, chf, thawf, type_ ):
+
+    inst_ = None;
+    with PFTDecoder( stri ) as dec:
+      inst_ = dec.decode( type_ );
+  
+    chf( self, thawf( self, inst_, stri ), stri );
+
+
   def test_handle( self ):
     
-    def check( stri, chf ):
-
-      inst_ = None;
-      with PFTDecoder( stri ) as dec:
-        inst_ = dec.decode( PFTDecoder.handle );
-  
-      chf( self, TestHandle.thaw( self, inst_, stri ), stri );
+    check = lambda stri, chf: self.check(
+                                  stri, chf, TestHandle.thaw,
+                                  PFTDecoder.handle
+                                );
     
     check( "42", TestHandle.check_handle_1 );
     check( "__", TestHandle.check_handle_2 );
   
 
   def test_variable( self ):
-    
-    def check( stri, chf ):
 
-      inst_ = None;
-      with PFTDecoder( stri ) as dec:
-        inst_ = dec.decode( PFTDecoder.variable );
-  
-      chf( self, TestVariable.thaw( self, inst_, stri ), stri );
+    check = lambda stri, chf: self.check(
+                                  stri, chf, TestVariable.thaw,
+                                  PFTDecoder.variable
+                                );
     
     check( "x1", TestVariable.check_var_1 );
 
 
   def test_word( self ):
-
-    def check( stri, chf ):
-
-      inst_ = None;
-      with PFTDecoder( stri ) as dec:
-        inst_ = dec.decode( PFTDecoder.word );
-  
-      chf( self, TestWord.thaw( self, inst_, stri ), stri );
+    
+    check = lambda stri, chf: self.check(
+                                  stri, chf, TestWord.thaw,
+                                  PFTDecoder.word
+                                );
     
     check( "[lemma]", TestWord.check_word_1 );
     check( "[+scf]", TestWord.check_word_2 );
@@ -79,13 +79,10 @@ class TestPFTDecoder( TestCase, metaclass=object_ ):
 
   def test_predication( self ):
 
-    def check( stri, chf ):
-
-      inst_ = None;
-      with PFTDecoder( stri ) as dec:
-        inst_ = dec.decode( PFTDecoder.predication );
-  
-      chf( self, TestPredication.thaw( self, inst_, stri ), stri );
+    check = lambda stri, chf: self.check(
+                                  stri, chf, TestPredication.thaw,
+                                  PFTDecoder.predication
+                                );
     
     check( "[cat:5:7]( arg1=x1 )", TestPredication.check_pred_1 );
     check( "EQUALS( ARG0=x1, ARG1=x2 )", TestPredication.check_pred_2 );
@@ -93,13 +90,10 @@ class TestPFTDecoder( TestCase, metaclass=object_ ):
     
   def test_quantification( self ):
 
-    def check( stri, chf ):
-
-      inst_ = None;
-      with PFTDecoder( stri ) as dec:
-        inst_ = dec.decode( PFTDecoder.quantification );
-  
-      chf( self, TestQuantification.thaw( self, inst_, stri ), stri );
+    check = lambda stri, chf: self.check(
+                                  stri, chf, TestQuantification.thaw,
+                                  PFTDecoder.quantification
+                                );
     
     check( "ALL x1 {} 1", TestQuantification.check_quant_1 );
     check( "[every] x1 __ {}", TestQuantification.check_quant_2 );
@@ -107,13 +101,10 @@ class TestPFTDecoder( TestCase, metaclass=object_ ):
     
   def test_modification( self ):
 
-    def check( stri, chf ):
-
-      inst_ = None;
-      with PFTDecoder( stri ) as dec:
-        inst_ = dec.decode( PFTDecoder.modification );
-  
-      chf( self, TestModification.thaw( self, inst_, stri ), stri );
+    check = lambda stri, chf: self.check(
+                                  stri, chf, TestModification.thaw,
+                                  PFTDecoder.modification
+                                );
     
     check( "[told:5:8]( arg1=x1, arg2=x2 ) 1",
            TestModification.check_modification_1 );
@@ -122,14 +113,11 @@ class TestPFTDecoder( TestCase, metaclass=object_ ):
 
 
   def test_connection( self ):
-
-    def check( stri, chf ):
-
-      inst_ = None;
-      with PFTDecoder( stri ) as dec:
-        inst_ = dec.decode( PFTDecoder.connection );
-  
-      chf( self, TestConnection.thaw( self, inst_, stri ), stri );
+    
+    check = lambda stri, chf: self.check(
+                                  stri, chf, TestConnection.thaw,
+                                  PFTDecoder.connection
+                                );
     
     check( "{} && 1", TestConnection.check_conn_1 );
     check( "__ [and] {}", TestConnection.check_conn_2 );
@@ -137,41 +125,29 @@ class TestPFTDecoder( TestCase, metaclass=object_ ):
 
   def test_constraint( self ):
 
-    def check( stri, chf ):
-
-      inst_ = None;
-      with PFTDecoder( stri ) as dec:
-        inst_ = dec.decode( PFTDecoder.constraint );
-  
-      chf( self, TestConstraint.thaw( self, inst_, stri ), stri );
+    check = lambda stri, chf: self.check(
+                                  stri, chf, TestConstraint.thaw,
+                                  PFTDecoder.constraint
+                                );
     
     check( "1 >> 2", TestConstraint.check_constr_1 );
   
   
   def test_protoform( self ):
 
-    def check( stri, chf ):
-
-      inst_ = None;
-      with PFTDecoder( stri ) as dec:
-        inst_ = dec.decode( PFTDecoder.protoform );
-  
-      chf( self, TestProtoForm.thaw( self, inst_, stri ), stri );
+    check = lambda stri, chf: self.check(
+                                  stri, chf, TestProtoForm.thaw,
+                                  PFTDecoder.protoform
+                                );
     
-    PF2_1 = """{ 1: [Every:0:4] x1 { 1: [man:6:8]( arg0=x1 ) } 2;
-                 3: [a:16:16] x2 { 1: [woman:18:23]( arg0=x2 ) } 4;
-                 5: [loves:10:14]( arg1=x1, arg2=x2 );
-                 1 >> 5;
-                 3 >> 5 }""";
-
-    PF2_2 = """{ 1: [Every:0:4] x1 { [man:6:8]( arg0=x1 ) } __;
-                 3: [a:16:16] x2 { [woman:18:23]( arg0=x2 ) } __;
-                 5: [loves:10:14]( arg1=x1, arg2=x2 );
-                 1 >> 5;
-                 3 >> 5 }""";
+    PF = """{ 1: [Every:0:4] x1 { [man:6:8]( arg0=x1 ) } 2;
+              3: [a:16:16] x2 { [woman:18:23]( arg0=x2 ) } 4;
+              5: [loves:10:14]( arg1=x1, arg2=x2 );
+              3 >> 5;
+              1 >> 5 }""";
     
-    check( PF2_1, TestProtoForm.check_pf_2 );
-    check( PF2_2, TestProtoForm.check_pf_2 );
+    check( PF, TestProtoForm.check_pf_2 );
+    check( PF, TestProtoForm.check_pf_2 );
 
 
 

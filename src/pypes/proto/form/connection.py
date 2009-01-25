@@ -17,15 +17,15 @@ class Connection( SubForm, metaclass=kls ):
   _superordinate_ = None;
   _key_ = None;
   
-  def __init__( self, sig, pf, connective, lscope, rscope ):
+  def __init__( self, sig, connective, lscope, rscope ):
     
     self.connective = connective( sig=sig );
     assert isinstance( self.connective, Connective );
     
-    self.lscope = lscope( sig=sig, pf=pf );
+    self.lscope = lscope( sig=sig );
     assert isinstance( self.lscope, ScopeBearer );
     
-    self.rscope = rscope( sig=sig, pf=pf );
+    self.rscope = rscope( sig=sig );
     assert isinstance( self.rscope, ScopeBearer );
     
 
