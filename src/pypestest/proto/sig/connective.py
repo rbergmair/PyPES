@@ -31,15 +31,14 @@ class TestConnective( TestCase, metaclass=object_ ):
   
   def init_conn_1( self ):
 
-    inst_ = Connective( referent = Word( cspan=(5,7), lemma="and" ) );
+    inst_ = Connective( referent = Word( wid=5, lemma="and" ) );
     return inst_;
 
 
   def check_conn_1( self, inst, msg=None ):
     
     self.assert_( isinstance( inst.referent, Word ), msg );
-    self.assertEquals( inst.referent.cfrom, 5, msg );
-    self.assertEquals( inst.referent.cto, 7, msg );
+    self.assertEquals( inst.referent.wid, 5, msg );
     self.assertEquals( inst.referent.lemma, "and", msg );
 
 

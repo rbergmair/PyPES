@@ -37,12 +37,11 @@ class TestWord( TestCase, metaclass=object_ ):
   def check_word_1( self, inst, msg=None ):
     
     self.assert_( isinstance( inst, Word ), msg );
+    self.assertEquals( inst.wid, None, msg );
     self.assertEquals( inst.lemma, "lemma", msg );
     self.assertEquals( inst.scf, None, msg );
     self.assertEquals( inst.pos, None, msg );
     self.assertEquals( inst.sense, None, msg );
-    self.assertEquals( inst.cfrom, None, msg );
-    self.assertEquals( inst.cto, None, msg );
   
   def test_1( self ):
     
@@ -57,12 +56,11 @@ class TestWord( TestCase, metaclass=object_ ):
   def check_word_2( self, inst, msg=None ):
     
     self.assert_( isinstance( inst, Word ), msg );
+    self.assertEquals( inst.wid, None, msg );
     self.assertEquals( inst.lemma, None, msg );
     self.assertEquals( inst.scf, "scf", msg );
     self.assertEquals( inst.pos, None, msg );
     self.assertEquals( inst.sense, None, msg );
-    self.assertEquals( inst.cfrom, None, msg );
-    self.assertEquals( inst.cto, None, msg );
   
   def test_2( self ):
     
@@ -77,12 +75,11 @@ class TestWord( TestCase, metaclass=object_ ):
   def check_word_3( self, inst, msg=None ):
     
     self.assert_( isinstance( inst, Word ), msg );
+    self.assertEquals( inst.wid, None, msg );
     self.assertEquals( inst.lemma, None, msg );
     self.assertEquals( inst.scf, None, msg );
     self.assertEquals( inst.pos, "p", msg );
     self.assertEquals( inst.sense, None, msg );
-    self.assertEquals( inst.cfrom, None, msg );
-    self.assertEquals( inst.cto, None, msg );
   
   def test_3( self ):
     
@@ -97,12 +94,11 @@ class TestWord( TestCase, metaclass=object_ ):
   def check_word_4( self, inst, msg=None ):
     
     self.assert_( isinstance( inst, Word ), msg );
+    self.assertEquals( inst.wid, None, msg );
     self.assertEquals( inst.lemma, None, msg );
     self.assertEquals( inst.scf, None, msg );
     self.assertEquals( inst.pos, None, msg );
     self.assertEquals( inst.sense, "1", msg );
-    self.assertEquals( inst.cfrom, None, msg );
-    self.assertEquals( inst.cto, None, msg );
   
   def test_4( self ):
     
@@ -111,68 +107,27 @@ class TestWord( TestCase, metaclass=object_ ):
 
   def init_word_5( self ):
     
-    inst_ = Word( cspan=(0,None) );
+    inst_ = Word( wid=1 );
     return inst_;
   
   def check_word_5( self, inst, msg=None ):
     
     self.assert_( isinstance( inst, Word ), msg );
+    self.assertEquals( inst.wid, 1, msg );
     self.assertEquals( inst.lemma, None, msg );
     self.assertEquals( inst.scf, None, msg );
     self.assertEquals( inst.pos, None, msg );
     self.assertEquals( inst.sense, None, msg );
-    self.assertEquals( inst.cfrom, 0, msg );
-    self.assertEquals( inst.cto, None, msg );
   
   def test_5( self ):
     
     self.check_word_5( self.logify( self.init_word_5() ) );
 
 
-  def init_word_6( self ):
-    
-    inst_ = Word( cspan=(None,4) );
-    return inst_;
-  
-  def check_word_6( self, inst, msg=None ):
-    
-    self.assert_( isinstance( inst, Word ), msg );
-    self.assertEquals( inst.lemma, None, msg );
-    self.assertEquals( inst.scf, None, msg );
-    self.assertEquals( inst.pos, None, msg );
-    self.assertEquals( inst.sense, None, msg );
-    self.assertEquals( inst.cfrom, None, msg );
-    self.assertEquals( inst.cto, 4, msg );
-  
-  def test_6( self ):
-    
-    self.check_word_6( self.logify( self.init_word_6() ) );
-
-
-  def init_word_7( self ):
-    
-    inst_ = Word( cspan=(0,4) );
-    return inst_;
-  
-  def check_word_7( self, inst, msg=None ):
-    
-    self.assert_( isinstance( inst, Word ), msg );
-    self.assertEquals( inst.lemma, None, msg );
-    self.assertEquals( inst.scf, None, msg );
-    self.assertEquals( inst.pos, None, msg );
-    self.assertEquals( inst.sense, None, msg );
-    self.assertEquals( inst.cfrom, 0, msg );
-    self.assertEquals( inst.cto, 4, msg );
-  
-  def test_7( self ):
-    
-    self.check_word_7( self.logify( self.init_word_7() ) );
-
-
   def init_word_8( self ):
     
     inst_ = Word(
-                cspan=(0,4),
+                wid=1,
                 lemma="lemma",
                 scf="scf",
                 pos="p",
@@ -183,12 +138,11 @@ class TestWord( TestCase, metaclass=object_ ):
   def check_word_8( self, inst, msg=None ):
     
     self.assert_( isinstance( inst, Word ), msg );
+    self.assertEquals( inst.wid, 1, msg );
     self.assertEquals( inst.lemma, "lemma", msg );
     self.assertEquals( inst.scf, "scf", msg );
     self.assertEquals( inst.pos, "p", msg );
     self.assertEquals( inst.sense, "1", msg );
-    self.assertEquals( inst.cfrom, 0, msg );
-    self.assertEquals( inst.cto, 4, msg );
   
   def test_8( self ):
     
@@ -203,12 +157,11 @@ class TestWord( TestCase, metaclass=object_ ):
   def check_word_9( self, inst, msg=None ):
     
     self.assert_( isinstance( inst, Word ), msg );
+    self.assertEquals( inst.wid, None, msg );
     self.assertEquals( inst.lemma, None, msg );
     self.assertEquals( inst.scf, None, msg );
     self.assertEquals( inst.pos, None, msg );
     self.assertEquals( inst.sense, None, msg );
-    self.assertEquals( inst.cfrom, None, msg );
-    self.assertEquals( inst.cto, None, msg );
   
   def test_9( self ):
     

@@ -11,15 +11,11 @@ from pypes.utils.mc import kls;
 class Word( metaclass=kls ):
 
   _superordinate_ = "sig";
-  _key_ = "cspan";
+  _key_ = "wid";
   
-  def __init__( self, sig, cspan=None, lemma=None, scf=None, pos=None, sense=None ):
+  def __init__( self, sig, wid=None, lemma=None, scf=None, pos=None, sense=None ):
     
-    if cspan is None:
-      cspan = ( None, None );
-    
-    ( self.cfrom, self.cto ) = cspan;
-    assert self.cfrom is None or isinstance( self.cfrom, int );
+    self.wid = wid;
     
     self.lemma = lemma;
     assert self.lemma is None or isinstance( self.lemma, str );

@@ -1,7 +1,7 @@
 # -*-  coding: ascii -*-  # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-__package__ = "pypestest.proto.sig";
-__all__ = [ "TestArgument", "suite", "main" ];
+__package__ = "pypestest.proto";
+__all__ = [ "TestLambdaifier", "suite", "main" ];
 
 import sys;
 import unittest;
@@ -9,62 +9,30 @@ import unittest;
 from pypes.utils.unittest_ import TestCase;
 from pypes.utils.mc import object_;
 
+from pypes.proto.lambdaifier import Lambdaifier;
+from pypes.codecs.pft_encoder import PFTEncoder;
 from pypes.proto import *;
+
+from pypestest.proto.form.protoform import TestProtoForm;
 
 
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-class TestArgument( TestCase, metaclass=object_ ):
-
+class TestLambdaifier( TestCase, metaclass=object_ ):
   
-  def init_arg( self ):
+  def test_lambdaifier( self ):
     
-    inst_ = Argument( aid="arg1" );
-    return inst_;
+    with Lambdaifier( TestProtoForm.init_logified_pf_4( self ) ) as lambdaifier:
+      
+      rslt_ = lambdaifier.lambdaify( rename_handles_p=False );
+      rslt = rslt_( sig=ProtoSig() );
+      
+      with PFTEncoder( rslt ) as encoder:
+        print();
+        print( encoder.encode() );
+      
 
-
-  def check_arg( self, inst, msg=None ):
-    
-    self.assertEquals( inst.aid, "arg1", msg );
-  
-  
-  def logify_1( self, inst_, msg=None ):
-
-    self.assertFalse( isinstance( inst_, Argument ), msg );
-    
-    sig = ProtoSig();
-    pred_ = Predicate( referent = Word( wid=5, lemma="man" ) );
-    pred = pred_( sig=sig );
-    inst = inst_( predmod=pred );
-    self.assertTrue( isinstance( inst, Argument ), msg );
-    
-    return inst;
-
-
-  def test_1( self ):
-    
-    self.check_arg( self.logify_1( self.init_arg() ) );
-
-
-  def logify_2( self, inst_, msg=None ):
-
-    self.assertFalse( isinstance( inst_, Argument ), msg );
-    
-    sig = ProtoSig();
-    mod_ = Modality( referent = Word( wid=0, lemma="Possibly" ) );
-    mod = mod_( sig=sig );
-    inst = inst_( predmod=mod );
-    self.assertTrue( isinstance( inst, Argument ), msg );
-    
-    return inst;
-  
-  
-  def test_2( self ):
-    
-    self.check_arg( self.logify_2( self.init_arg() ) );
-    
-    
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
@@ -73,7 +41,7 @@ def suite():
   suite = unittest.TestSuite();
 
   suite.addTests( unittest.TestLoader().loadTestsFromTestCase(
-      TestArgument
+      TestLambdaifier
     ) );
 
   return suite;

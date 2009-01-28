@@ -31,15 +31,14 @@ class TestPredicate( TestCase, metaclass=object_ ):
   
   def init_pred_1( self ):
     
-    inst_ = Predicate( referent = Word( cspan=(5,7), lemma="man" ) );
+    inst_ = Predicate( referent = Word( wid=5, lemma="man" ) );
     return inst_;
 
 
   def check_pred_1( self, inst, msg=None ):
     
     self.assert_( isinstance( inst.referent, Word ), msg );
-    self.assertEquals( inst.referent.cfrom, 5, msg );
-    self.assertEquals( inst.referent.cto, 7, msg );
+    self.assertEquals( inst.referent.wid, 5, msg );
     self.assertEquals( inst.referent.lemma, "man", msg );
 
 

@@ -154,17 +154,16 @@ class PFTDecoder( metaclass=subject ):
   
   lemmascf = _pair( "+", string );
   possense = _pair( "_", string );
-  cfromcto = _pair( ":", decimalnumber )
   
   word = Literal ( "[" ) + \
          lemmascf + \
          Optional( Literal( "_" ) + possense ) + \
-         Optional( Literal( ":" ) + cfromcto ) + \
+         Optional( Literal( ":" ) + decimalnumber ) + \
          Literal( "]" );
   
   def _decode_word( str_, loc, toks ):
     
-    ( lemma, scf, pos, sense, cfrom, cto ) = ( None, None, None, None, None, None );
+    ( lemma, scf, pos, sense, wid ) = ( None, None, None, None, None );
     
     i = 0;
 
@@ -190,14 +189,14 @@ class PFTDecoder( metaclass=subject ):
         i += 1;
         
         assert len( toks ) > i;
-        ( cfrom, cto ) = toks[i];
+        wid = toks[i];
         i += 1;
 
     assert len( toks ) > i;
     assert toks[i] == "]";
     
-    return ( _GT_WORD, Word( cspan = (cfrom,cto), lemma=lemma, scf=scf, \
-                            pos=pos, sense=sense ) );
+    return ( _GT_WORD, Word( wid=wid, lemma=lemma, scf=scf,
+                             pos=pos, sense=sense ) );
           
   word.setParseAction( _decode_word );
   

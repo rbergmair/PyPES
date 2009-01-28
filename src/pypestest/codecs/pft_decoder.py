@@ -71,10 +71,8 @@ class TestPFTDecoder( TestCase, metaclass=object_ ):
     check( "[+scf]", TestWord.check_word_2 );
     check( "[_p]", TestWord.check_word_3 );
     check( "[__1]", TestWord.check_word_4 );
-    check( "[:0]", TestWord.check_word_5 );
-    check( "[::4]", TestWord.check_word_6 );
-    check( "[:0:4]", TestWord.check_word_7 );
-    check( "[lemma+scf_p_1:0:4]", TestWord.check_word_8 );
+    check( "[:1]", TestWord.check_word_5 );
+    check( "[lemma+scf_p_1:1]", TestWord.check_word_8 );
     check( "[]", TestWord.check_word_9 );
 
 
@@ -85,7 +83,7 @@ class TestPFTDecoder( TestCase, metaclass=object_ ):
                                   PFTDecoder.predication
                                 );
     
-    check( "[cat:5:7]( arg1=x1 )", TestPredication.check_pred_1 );
+    check( "[cat:5]( arg1=x1 )", TestPredication.check_pred_1 );
     check( "EQUALS( ARG0=x1, ARG1=x2 )", TestPredication.check_pred_2 );
     
     
@@ -107,12 +105,12 @@ class TestPFTDecoder( TestCase, metaclass=object_ ):
                                   PFTDecoder.modification
                                 );
     
-    check( "[told:5:8]( arg1=x1, arg2=x2 ) 1",
+    check( "[told:5]( arg1=x1, arg2=x2 ) 1",
            TestModification.check_modification_1 );
     check( "NECESSARILY() {}",
            TestModification.check_modification_2 );
            
-    check( "[say:18:21]( arg1=x1 ) <3>", None );
+    check( "[say:18]( arg1=x1 ) <3>", None );
 
 
 
@@ -144,19 +142,18 @@ class TestPFTDecoder( TestCase, metaclass=object_ ):
                                   PFTDecoder.protoform
                                 );
     
-    PF1 = """{ 1: [Every:0:4] x1 { [man:6:8]( arg0=x1 ) } 2;
-               3: [a:16:16] x2 { [woman:18:23]( arg0=x2 ) } 4;
-               5: [loves:10:14]( arg1=x1, arg2=x2 );
+    PF1 = """{ 1: [Every:0] x1 { [man:6]( arg0=x1 ) } 2;
+               3: [a:16] x2 { [woman:18]( arg0=x2 ) } 4;
+               5: [loves:10]( arg1=x1, arg2=x2 );
                3 >> 5;
                1 >> 5 }""";
 
-    PF2 = """{    [every:0:4] x1 1 { [lie:32:36]( arg1=x1 ) };
+    PF2 = """{    [every:0] x1 1 { [lie:32]( arg1=x1 ) };
                2: { __ /\ __;
-                    [witness:6:12]( arg0=x1 );
-                    [say:18:21]( arg1=x1 ) <3>
+                    [witness:6]( arg0=x1 );
+                    [say:18]( arg1=x1 ) <3>
                   };
-               4: [she:23:25] x2 { [she:23:25]( arg0=x2 ) }
-                                 { [lie:27:30]( arg1=x2 ) };
+               4: [she:23] x2 { [she:23]( arg0=x2 ) }{ [lie:27]( arg1=x2 ) };
                3 >> 4;
                1 >> 2 }""";
     

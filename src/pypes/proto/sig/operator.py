@@ -11,7 +11,7 @@ from pypes.utils.mc import kls;
 class Operator( metaclass=kls ):
 
   _superordinate_ = "sig";
-  _key_ = "otype";
+  _key_ = None;
   
   OP_Q_UNIV = 0;
   OP_Q_EXIST = 1;

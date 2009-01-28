@@ -110,12 +110,8 @@ class PFTEncoder( metaclass=subject ):
         rslt += self._fmt_str( inst.pos );
       if inst.sense is not None:
         rslt += "_" + self._fmt_str( inst.sense );
-    if inst.cfrom is not None or inst.cto is not None:
-      rslt += ":";
-      if inst.cfrom is not None:
-        rslt += str(inst.cfrom);
-      if inst.cto is not None:
-        rslt += ":" + str(inst.cto);
+    if inst.wid is not None:
+      rslt += ":"+str(inst.wid);
     rslt += "]";
     
     return rslt;
@@ -266,20 +262,24 @@ class PFTEncoder( metaclass=subject ):
     
     rslt = "";
     indents = [];
+    curindent = -1;
     
     for idx in range( 0, len(stri) ):
       
       rslt += stri[idx];
+      curindent += 1;
       
       if stri[idx] == "{":
-        indents.append( idx+1 );
+        indents.append( curindent );
       elif stri[idx] == "}":
         if indents:
           indents.pop();
       elif stri[idx] == ";":
         rslt += "\n";
+        curindent = 0;
         if indents:
-          rslt += ( " " * indents[-1] );     
+          rslt += ( " " * (indents[-1]+1) ); 
+          curindent += indents[-1];
     
     return rslt;
 

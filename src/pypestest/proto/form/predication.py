@@ -33,7 +33,7 @@ class TestPredication( TestCase, metaclass=object_ ):
     
     inst_ = Predication(
                 predicate = Predicate(
-                                referent = Word( cspan=(5,7), lemma="cat" )
+                                referent = Word( wid=5, lemma="cat" )
                               ),
                 args = { Argument( aid="arg1" ):
                            Variable( sidvid=("x",1) )
@@ -45,8 +45,7 @@ class TestPredication( TestCase, metaclass=object_ ):
     
     self.assert_( isinstance( inst.predicate, Predicate ), msg );
     self.assert_( isinstance( inst.predicate.referent, Word ), msg );
-    self.assertEquals( inst.predicate.referent.cfrom, 5, msg );
-    self.assertEquals( inst.predicate.referent.cto, 7, msg );
+    self.assertEquals( inst.predicate.referent.wid, 5, msg );
     self.assertEquals( inst.predicate.referent.lemma, "cat", msg );
     labels = set();
     vars = set();
