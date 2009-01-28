@@ -60,7 +60,7 @@ class TestModification( TestCase, metaclass=object_ ):
       self.assert_( isinstance( arg.aid, str ), msg );
       labels.add( arg.aid );
       self.assert_( isinstance( inst.args[ arg ], Variable ), msg );
-      vars.add( inst.args[ arg ] );
+      vars.add( id( inst.args[ arg ] ) );
       self.assert_( isinstance( inst.args[ arg ].vid, int ), msg );
       self.assert_( isinstance( inst.args[ arg ].sort, Sort ), msg );
       self.assertEquals( inst.args[ arg ].sort.sid, "x", msg );
@@ -121,6 +121,25 @@ class TestModification( TestCase, metaclass=object_ ):
   def test_3( self ):
     
     self.check_modification_3( self.logify( self.init_modification_3() ) );
+  
+  
+  def test_cmp( self ):
+    
+    mod1 = self.logify( self.init_modification_1() );
+    mod2 = self.logify( self.init_modification_2() );
+    mod3 = self.logify( self.init_modification_3() );
+
+    mod1_ = self.logify( self.init_modification_1() );
+    mod2_ = self.logify( self.init_modification_2() );
+    mod3_ = self.logify( self.init_modification_3() );
+    
+    self.assertEquals( mod1, mod1_ );
+    self.assertEquals( mod2, mod2_ );
+    self.assertEquals( mod3, mod3_ );
+
+    self.assertNotEquals( mod1, mod2_ );
+    self.assertNotEquals( mod2, mod3_ );
+    self.assertNotEquals( mod3, mod1_ );
     
 
 

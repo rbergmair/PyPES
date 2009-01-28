@@ -49,6 +49,43 @@ class TestConstraint( TestCase, metaclass=object_ ):
   def test_1( self ):
     
     self.check_constr_1( self.logify( self.init_constr_1() ) );
+
+
+  def init_constr_2( self ):
+    
+    inst_ = Constraint(
+                harg = Handle( hid=2 ),
+                larg = Handle( hid=1 )
+              );
+    
+    return inst_;
+  
+  def check_constr_2( self, inst, msg=None ):
+    
+    self.assert_( isinstance( inst.harg, Handle ), msg );
+    self.assertEquals( inst.harg.hid, 2, msg );
+    self.assert_( isinstance( inst.larg, Handle ), msg );
+    self.assertEquals( inst.larg.hid, 1, msg );
+    self.assertFalse( inst.harg is inst.larg, msg );
+  
+  def test_2( self ):
+    
+    self.check_constr_2( self.logify( self.init_constr_2() ) );
+  
+  
+  def test_cmp( self ):
+    
+    constr1 = self.logify( self.init_constr_1() );
+    constr2 = self.logify( self.init_constr_2() );
+
+    constr1_ = self.logify( self.init_constr_1() );
+    constr2_ = self.logify( self.init_constr_2() );
+    
+    self.assertEquals( constr1, constr1_ );
+    self.assertEquals( constr2, constr2_ );
+    
+    self.assertNotEquals( constr1, constr2_ );
+    self.assertNotEquals( constr2, constr1_ );
     
 
 

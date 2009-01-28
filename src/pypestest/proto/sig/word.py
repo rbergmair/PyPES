@@ -166,8 +166,43 @@ class TestWord( TestCase, metaclass=object_ ):
   def test_9( self ):
     
     self.check_word_9( self.logify( self.init_word_9() ) );
+  
+  
+  def test_cmp( self ):
     
+    word1 = self.logify( self.init_word_1() );
+    word2 = self.logify( self.init_word_2() );
+    word3 = self.logify( self.init_word_3() );
+    word4 = self.logify( self.init_word_4() );
+    word5 = self.logify( self.init_word_5() );
+    word8 = self.logify( self.init_word_8() );
+    word9 = self.logify( self.init_word_9() );
+
+    word1_ = self.logify( self.init_word_1() );
+    word2_ = self.logify( self.init_word_2() );
+    word3_ = self.logify( self.init_word_3() );
+    word4_ = self.logify( self.init_word_4() );
+    word5_ = self.logify( self.init_word_5() );
+    word8_ = self.logify( self.init_word_8() );
+    word9_ = self.logify( self.init_word_9() );
     
+    self.assertEquals( word1, word1_ );
+    self.assertEquals( word2, word2_ );
+    self.assertEquals( word3, word3_ );
+    self.assertEquals( word4, word4_ );
+    self.assertEquals( word5, word5_ );
+    self.assertEquals( word8, word8_ );
+    self.assertEquals( word9, word9_ );
+
+    self.assertNotEquals( word1, word2_ );
+    self.assertNotEquals( word2, word3_ );
+    self.assertNotEquals( word3, word4_ );
+    self.assertNotEquals( word4, word5_ );
+    self.assertNotEquals( word5, word8_ );
+    self.assertNotEquals( word8, word9_ );
+    self.assertNotEquals( word9, word1_ );
+    
+
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 

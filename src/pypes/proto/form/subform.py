@@ -4,11 +4,12 @@ __package__ = "pypes.proto.form";
 __all__ = [ "SubForm" ];
 
 from pypes.utils.mc import kls;
+from pypes.proto.protobase import ProtoBase;
 
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-class SubForm( metaclass=kls ):
+class SubForm( ProtoBase, metaclass=kls ):
   
   pass;
 

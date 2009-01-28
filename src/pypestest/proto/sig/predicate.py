@@ -34,13 +34,11 @@ class TestPredicate( TestCase, metaclass=object_ ):
     inst_ = Predicate( referent = Word( wid=5, lemma="man" ) );
     return inst_;
 
-
   def check_pred_1( self, inst, msg=None ):
     
     self.assert_( isinstance( inst.referent, Word ), msg );
     self.assertEquals( inst.referent.wid, 5, msg );
     self.assertEquals( inst.referent.lemma, "man", msg );
-
 
   def test_1( self ):
     
@@ -52,16 +50,29 @@ class TestPredicate( TestCase, metaclass=object_ ):
     inst_ = Predicate( referent = Operator( otype=Operator.OP_R_EQUALITY ) );
     return inst_;
   
-  
   def check_pred_2( self, inst, msg=None ):
     
     self.assert_( isinstance( inst.referent, Operator ), msg );
     self.assertEquals( inst.referent.otype, Operator.OP_R_EQUALITY, msg );
 
-
   def test_2( self ):
     
     self.check_pred_2( self.logify( self.init_pred_2() ) );
+  
+  
+  def test_cmp( self ):
+    
+    pred1 = self.logify( self.init_pred_1() );
+    pred2 = self.logify( self.init_pred_2() );
+
+    pred1_ = self.logify( self.init_pred_1() );
+    pred2_ = self.logify( self.init_pred_2() );
+    
+    self.assertEquals( pred1, pred1_ );
+    self.assertEquals( pred2, pred2_ );
+
+    self.assertNotEquals( pred1, pred2_ );
+    self.assertNotEquals( pred2, pred1_ );
     
 
 

@@ -34,13 +34,11 @@ class TestQuantifier( TestCase, metaclass=object_ ):
     inst_ = Quantifier( referent = Word( wid=0, lemma="all" ) );
     return inst_;
 
-
   def check_quant_1( self, inst, msg=None ):
     
     self.assert_( isinstance( inst.referent, Word ), msg );
     self.assertEquals( inst.referent.wid, 0, msg );
     self.assertEquals( inst.referent.lemma, "all", msg );
-
 
   def test_1( self ):
     
@@ -51,17 +49,30 @@ class TestQuantifier( TestCase, metaclass=object_ ):
     
     inst_ = Quantifier( referent = Operator( otype=Operator.OP_Q_UNIV ) );
     return inst_;
-    
 
   def check_quant_2( self, inst, msg=None ):
     
     self.assert_( isinstance( inst.referent, Operator ), msg );
     self.assertEquals( inst.referent.otype, Operator.OP_Q_UNIV, msg );
   
-  
   def test_2( self ):
     
     self.check_quant_2( self.logify( self.init_quant_2() ) );
+  
+  
+  def test_cmp( self ):
+    
+    quant1 = self.logify( self.init_quant_1() );
+    quant2 = self.logify( self.init_quant_2() );
+
+    quant1_ = self.logify( self.init_quant_1() );
+    quant2_ = self.logify( self.init_quant_2() );
+    
+    self.assertEquals( quant1, quant1_ );
+    self.assertEquals( quant2, quant2_ );
+
+    self.assertNotEquals( quant1, quant2_ );
+    self.assertNotEquals( quant2, quant1_ );
 
 
 

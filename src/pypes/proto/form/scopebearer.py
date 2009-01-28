@@ -4,11 +4,12 @@ __package__ = "pypes.proto.form";
 __all__ = [ "ScopeBearer" ];
 
 from pypes.utils.mc import kls;
+from pypes.proto.protobase import ProtoBase;
 
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-class ScopeBearer( metaclass=kls ):
+class ScopeBearer( ProtoBase, metaclass=kls ):
   
   pass;
 

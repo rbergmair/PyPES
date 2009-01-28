@@ -34,15 +34,42 @@ class TestSort( TestCase, metaclass=object_ ):
     inst_ = Sort( sid="x" );
     return inst_;
   
-  
   def check_sort_1( self, inst, msg=None ):
     
     self.assertEquals( inst.sid, "x", msg );
   
-  
   def test_1( self ):
     
     self.check_sort_1( self.logify( self.init_sort_1() ) );
+
+
+  def init_sort_2( self ):
+    
+    inst_ = Sort( sid="y" );
+    return inst_;
+  
+  def check_sort_2( self, inst, msg=None ):
+    
+    self.assertEquals( inst.sid, "y", msg );
+  
+  def test_2( self ):
+    
+    self.check_sort_2( self.logify( self.init_sort_2() ) );
+  
+  
+  def test_cmp( self ):
+    
+    sort1 = self.logify( self.init_sort_1() );
+    sort2 = self.logify( self.init_sort_2() );
+
+    sort1_ = self.logify( self.init_sort_1() );
+    sort2_ = self.logify( self.init_sort_2() );
+    
+    self.assertEquals( sort1, sort1_ );
+    self.assertEquals( sort2, sort2_ );
+
+    self.assertNotEquals( sort1, sort2_ );
+    self.assertNotEquals( sort2, sort1_ );
 
 
 

@@ -91,6 +91,29 @@ class TestVariable( TestCase, metaclass=object_ ):
   def test_4( self ):
     
     self.check_var_4( self.logify( self.init_var_4() ) );
+  
+  
+  def test_cmp( self ):
+    
+    var1 = self.logify( self.init_var_1() );
+    var2 = self.logify( self.init_var_2() );
+    var3 = self.logify( self.init_var_3() );
+    var4 = self.logify( self.init_var_4() );
+
+    var1_ = self.logify( self.init_var_1() );
+    var2_ = self.logify( self.init_var_2() );
+    var3_ = self.logify( self.init_var_3() );
+    var4_ = self.logify( self.init_var_4() );
+    
+    self.assertEquals( var1, var1_ );
+    self.assertEquals( var2, var2_ );
+    self.assertEquals( var3, var3_ );
+    self.assertEquals( var4, var4_ );
+
+    self.assertNotEquals( var1, var2_ );
+    self.assertNotEquals( var2, var3_ );
+    self.assertNotEquals( var3, var4_ );
+    self.assertNotEquals( var4, var1_ );
     
 
 

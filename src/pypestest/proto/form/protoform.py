@@ -205,7 +205,8 @@ class TestProtoForm( TestCase, metaclass=object_ ):
 
     self.assertFalse( x1 is x2, msg );
     
-    self.assertEquals( len( { h1, h2, h3, h4, h5, h_, h__ } ), 7, msg );
+    self.assertEquals( len( { id(h1), id(h2), id(h3), id(h4), id(h5),
+                              id(h_), id(h__) } ), 7, msg );
     
     cons = {};
     for constraint in inst.constraints:
@@ -315,6 +316,26 @@ class TestProtoForm( TestCase, metaclass=object_ ):
     subform.rscope = pf3;
     
     return pf4;
+  
+  
+  def test_cmp( self ):
+    
+    pf1 = self.logify( self.init_pf_1() );
+    pf2 = self.logify( self.init_pf_2() );
+    pf3 = self.logify( self.init_pf_3() );
+
+    pf1_ = self.logify( self.init_pf_1() );
+    pf2_ = self.logify( self.init_pf_2() );
+    pf3_ = self.logify( self.init_pf_3() );
+    
+    self.assertEquals( pf1, pf1_ );
+    self.assertEquals( pf2, pf2_ );
+    self.assertEquals( pf3, pf3_ );
+    
+    self.assertNotEquals( pf1, pf2_ );
+    self.assertNotEquals( pf2, pf3_ );
+    self.assertNotEquals( pf3, pf1_ );
+    
 
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #

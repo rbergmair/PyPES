@@ -33,12 +33,10 @@ class TestHandle( TestCase, metaclass=object_ ):
     
     inst_ = Handle( hid=42 );
     return inst_;
-
   
   def check_handle_1( self, inst, msg=None ):
     
     self.assertEquals( inst.hid, 42, msg );
-  
   
   def test_1( self ):
     
@@ -49,16 +47,29 @@ class TestHandle( TestCase, metaclass=object_ ):
     
     inst_ = Handle();
     return inst_;
-
   
   def check_handle_2( self, inst, msg=None ):
     
     self.assertEquals( inst.hid, None, msg );
   
-  
   def test_2( self ):
     
     self.check_handle_2( self.logify( self.init_handle_2() ) );
+  
+  
+  def test_cmp( self ):
+    
+    hndl1 = self.logify( self.init_handle_1() );
+    hndl2 = self.logify( self.init_handle_2() );
+    
+    hndl1_ = self.logify( self.init_handle_1() );
+    hndl2_ = self.logify( self.init_handle_2() );
+    
+    self.assertEquals( hndl1, hndl1_ );
+    self.assertEquals( hndl2, hndl2_ );
+
+    self.assertNotEquals( hndl1, hndl2_ );
+    self.assertNotEquals( hndl2, hndl1_ );
     
 
 

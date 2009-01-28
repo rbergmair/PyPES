@@ -92,7 +92,7 @@ class TestPredication( TestCase, metaclass=object_ ):
       self.assert_( isinstance( arg.aid, str ), msg );
       labels.add( arg.aid );
       self.assert_( isinstance( inst.args[ arg ], Variable ), msg );
-      vars.add( inst.args[ arg ] );
+      vars.add( id( inst.args[ arg ] ) );
       self.assert_( isinstance( inst.args[ arg ].vid, int ), msg );
       self.assert_( isinstance( inst.args[ arg ].sort, Sort ), msg );
       self.assertEquals( inst.args[ arg ].sort.sid, "x", msg );
@@ -102,6 +102,21 @@ class TestPredication( TestCase, metaclass=object_ ):
   def test_2( self ):
     
     self.check_pred_2( self.logify( self.init_pred_2() ) );
+  
+  
+  def test_cmp( self ):
+    
+    pred1 = self.logify( self.init_pred_1() );
+    pred2 = self.logify( self.init_pred_2() );
+    
+    pred1_ = self.logify( self.init_pred_1() );
+    pred2_ = self.logify( self.init_pred_2() );
+    
+    self.assertEquals( pred1, pred1_ );
+    self.assertEquals( pred2, pred2_ );
+
+    self.assertNotEquals( pred1, pred2_ );
+    self.assertNotEquals( pred2, pred1_ );
     
 
 

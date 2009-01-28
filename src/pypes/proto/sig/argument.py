@@ -4,18 +4,41 @@ __package__ = "pypes.proto.sig";
 __all__ = [ "Argument" ];
 
 from pypes.utils.mc import kls;
+from pypes.proto.protobase import ProtoBase;
 
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-class Argument( metaclass=kls ):
+class Argument( ProtoBase, metaclass=kls ):
 
   _superordinate_ = "predmod";
   _key_ = "aid";
+  
+  def _init_init( self ):
+    
+    self.aid = None;
 
   def __init__( self, predmod, aid=None ):
     
-    self.aid = aid;
+    if aid is not None:
+      self.aid = aid;
+  
+  def __le__( self, obj ):
+    
+    if not isinstance( obj, Argument ):
+      return False;
+    
+    if self.aid is not None:
+      if obj.aid != self.aid:
+        return False;
+    return True;
+  
+  def __hash__( self ):
+    
+    # TODO: HACK!
+    return 1;
+    
+    
 
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #

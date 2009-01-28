@@ -60,8 +60,23 @@ class TestFreezer( TestCase, metaclass=object_ ):
   def test_2( self ):
     
     self.check_freezer_2( self.logify( self.init_freezer_2() ) );
+  
+  
+  def test_cmp( self ):
     
+    freezer1 = self.logify( self.init_freezer_1() );
+    freezer2 = self.logify( self.init_freezer_2() );
 
+    freezer1_ = self.logify( self.init_freezer_1() );
+    freezer2_ = self.logify( self.init_freezer_2() );
+    
+    self.assertEquals( freezer1, freezer1_ );
+    self.assertEquals( freezer2, freezer2_ );
+
+    self.assertNotEquals( freezer1, freezer2_ );
+    self.assertNotEquals( freezer2, freezer1_ );
+    
+    
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 

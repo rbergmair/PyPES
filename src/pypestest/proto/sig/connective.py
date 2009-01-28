@@ -62,6 +62,21 @@ class TestConnective( TestCase, metaclass=object_ ):
   def test_2( self ):
     
     self.check_conn_2( self.logify( self.init_conn_2() ) );
+  
+  
+  def test_cmp( self ):
+    
+    conn1 = self.logify( self.init_conn_1() );
+    conn2 = self.logify( self.init_conn_2() );
+
+    conn1_ = self.logify( self.init_conn_1() );
+    conn2_ = self.logify( self.init_conn_2() );
+    
+    self.assertEquals( conn1, conn1_ );
+    self.assertEquals( conn2, conn2_ );
+
+    self.assertNotEquals( conn1, conn2_ );
+    self.assertNotEquals( conn2, conn1_ );
     
 
 

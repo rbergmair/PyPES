@@ -34,13 +34,11 @@ class TestModality( TestCase, metaclass=object_ ):
     inst_ = Modality( referent = Word( wid=5, lemma="not" ) );
     return inst_;
 
-
   def check_mod_1( self, inst, msg=None ):
     
     self.assert_( isinstance( inst.referent, Word ), msg );
     self.assertEquals( inst.referent.wid, 5, msg );
     self.assertEquals( inst.referent.lemma, "not", msg );
-
 
   def test_1( self ):
     
@@ -52,17 +50,30 @@ class TestModality( TestCase, metaclass=object_ ):
     inst_ = Modality( referent = Operator( otype=Operator.OP_M_NECESSITY ) );
     return inst_;
   
-  
   def check_mod_2( self, inst, msg=None ):
     
     self.assert_( isinstance( inst.referent, Operator ), msg );
     self.assertEquals( inst.referent.otype, Operator.OP_M_NECESSITY, msg );
   
-  
   def test_2( self ):
     
     self.check_mod_2( self.logify( self.init_mod_2() ) );
+  
+  
+  def test_cmp( self ):
+    
+    mod1 = self.logify( self.init_mod_1() );
+    mod2 = self.logify( self.init_mod_2() );
 
+    mod1_ = self.logify( self.init_mod_1() );
+    mod2_ = self.logify( self.init_mod_2() );
+    
+    self.assertEquals( mod1, mod1_ );
+    self.assertEquals( mod2, mod2_ );
+
+    self.assertNotEquals( mod1, mod2_ );
+    self.assertNotEquals( mod2, mod1_ );
+    
 
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #

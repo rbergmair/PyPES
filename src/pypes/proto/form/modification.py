@@ -12,35 +12,72 @@ from pypes.proto.form.scopebearer import ScopeBearer;
 from pypes.proto.form.subform import SubForm;
 
 
+
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 class Modification( SubForm, metaclass=kls ):
 
   _superordinate_ = None;
   _key_ = None;
-  
-  def __init__( self, sig, modality, scope, args=None ):
+
+
+  def _init_init_( self ):
     
-    if args is None:
-      args = {};
-    
-    self.modality = modality( sig=sig );
-    assert isinstance( self.modality, Modality );
-    
-    self.scope = scope( sig=sig );
-    assert isinstance( self.scope, ScopeBearer );
-    
+    self.modality = None;
+    self.scope = None;
     self.args = {};
+  
+  
+  def __init__( self, sig, modality=None, scope=None, args=None ):
     
-    for arg_ in args:
+    if modality is not None:
       
-      arg = arg_( predmod=self.modality );
-      assert isinstance( arg, Argument );
+      self.modality = modality( sig=sig );
+      assert isinstance( self.modality, Modality );
+    
+    if scope is not None:
       
-      var = args[ arg_ ]( sig=sig );
-      assert isinstance( var, Variable );
+      self.scope = scope( sig=sig );
+      assert isinstance( self.scope, ScopeBearer );
+    
+    if args is not None:
       
-      self.args[ arg ] = var;
+      for arg_ in args:
+        
+        arg = arg_( predmod=self.modality );
+        assert isinstance( arg, Argument );
+        
+        var = args[ arg_ ]( sig=sig );
+        assert isinstance( var, Variable );
+        
+        self.args[ arg ] = var;
+  
+  
+  def __le__( self, obj ):
+    
+    if not isinstance( obj, Modification ):
+      return False;
+    
+    if self.modality is not None:
+      if not self.modality <= obj.modality:
+        return False;
+    if self.scope is not None:
+      if not self.scope <= obj.scope:
+        return False;
+    
+    for (arg,var) in self.args.items():
+      found = False;
+      for (arg_,var_) in obj.args.items():
+        if arg == arg_ and var <= var_:
+          found = True;
+          break;
+      if not found:
+        return False;
+    
+    return True;
+    
+      
+
 
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #

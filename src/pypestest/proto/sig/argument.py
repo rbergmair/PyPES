@@ -18,13 +18,12 @@ from pypes.proto import *;
 class TestArgument( TestCase, metaclass=object_ ):
 
   
-  def init_arg( self ):
+  def init_arg_1( self ):
     
     inst_ = Argument( aid="arg1" );
     return inst_;
 
-
-  def check_arg( self, inst, msg=None ):
+  def check_arg_1( self, inst, msg=None ):
     
     self.assertEquals( inst.aid, "arg1", msg );
   
@@ -41,10 +40,9 @@ class TestArgument( TestCase, metaclass=object_ ):
     
     return inst;
 
-
   def test_1( self ):
     
-    self.check_arg( self.logify_1( self.init_arg() ) );
+    self.check_arg_1( self.logify_1( self.init_arg_1() ) );
 
 
   def logify_2( self, inst_, msg=None ):
@@ -62,10 +60,31 @@ class TestArgument( TestCase, metaclass=object_ ):
   
   def test_2( self ):
     
-    self.check_arg( self.logify_2( self.init_arg() ) );
-    
-    
+    self.check_arg_1( self.logify_2( self.init_arg_1() ) );
 
+
+  def init_arg_2( self ):
+    
+    inst_ = Argument( aid="arg2" );
+    return inst_;
+  
+  
+  def test_cmp( self ):
+    
+    arg1 = self.logify_1( self.init_arg_1() );
+    arg2 = self.logify_1( self.init_arg_2() );
+
+    arg1_ = self.logify_1( self.init_arg_1() );
+    arg2_ = self.logify_1( self.init_arg_2() );
+    
+    self.assertEquals( arg1, arg1_ );
+    self.assertEquals( arg2, arg2_ );
+    
+    self.assertNotEquals( arg1, arg2_ );
+    self.assertNotEquals( arg2, arg1_ );
+    
+    
+    
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 def suite():

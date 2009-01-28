@@ -11,7 +11,8 @@ __all__ = [ "Connection", "Constraint", "Handle", "Modification",
             # "Constant",
             "Modality",
             "Predicate", "ProtoSig", "Quantifier", "Sort", "Variable",
-            "Operator", "Word" ];
+            "Operator", "Word",
+            "ProtoBase" ];
 
 from pypes.proto.sig import Argument;
 from pypes.proto.sig import Connective;
@@ -36,6 +37,7 @@ from pypes.proto.form import SubForm;
 from pypes.proto.form import ScopeBearer;
 from pypes.proto.form import Freezer;
 
+from pypes.proto.protobase import ProtoBase;
 
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #

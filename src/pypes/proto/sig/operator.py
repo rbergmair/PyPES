@@ -4,11 +4,12 @@ __package__ = "pypes.proto.sig";
 __all__ = [ "Operator" ];
 
 from pypes.utils.mc import kls;
+from pypes.proto.protobase import ProtoBase;
 
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-class Operator( metaclass=kls ):
+class Operator( ProtoBase, metaclass=kls ):
 
   _superordinate_ = "sig";
   _key_ = None;
@@ -37,11 +38,26 @@ class Operator( metaclass=kls ):
   OP_Rs = { OP_R_EQUALITY };
   
   OPs = OP_Qs | OP_Cs | OP_Ms | OP_Rs;
-  
-  def __init__( self, sig, otype ):
+
+  def _init_init_( self ):
     
-    assert otype in Operator.OPs;
-    self.otype = otype;
+    self.otype = None;
+  
+  def __init__( self, sig, otype=None ):
+    
+    if otype is not None:
+      assert otype in Operator.OPs;
+      self.otype = otype;
+  
+  def __le__( self, obj ):
+    
+    if not isinstance( obj, Operator ):
+      return False;
+    
+    if self.otype is not None:
+      if self.otype != obj.otype:
+        return False;
+    return True;
 
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #

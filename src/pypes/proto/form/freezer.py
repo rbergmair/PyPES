@@ -15,11 +15,26 @@ class Freezer( ScopeBearer, metaclass=kls ):
   _superordinate_ = "sig";
   _key_ = None;
   
-  def __init__( self, sig, content ):
+  def _init_init_( self ):
     
-    self.content = content( sig=sig );
-    assert isinstance( self.content, Handle ) or \
-           isinstance( self.content, Freezer );
+    self.content = None;
+  
+  def __init__( self, sig, content=None ):
+    
+    if content is not None:
+      self.content = content( sig=sig );
+      assert isinstance( self.content, Handle ) or \
+             isinstance( self.content, Freezer );
+  
+  def __le__( self, obj ):
+    
+    if not isinstance( obj, Freezer ):
+      return False;
+    
+    if self.content is not None:
+      if not self.content <= obj.content:
+        return False;
+    return True;
 
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #

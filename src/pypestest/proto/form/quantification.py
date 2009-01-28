@@ -92,6 +92,21 @@ class TestQuantification( TestCase, metaclass=object_ ):
   def test_2( self ):
     
     self.check_quant_2( self.logify( self.init_quant_2() ) );
+  
+  
+  def test_cmp( self ):
+    
+    quant1 = self.logify( self.init_quant_1() );
+    quant2 = self.logify( self.init_quant_2() );
+
+    quant1_ = self.logify( self.init_quant_1() );
+    quant2_ = self.logify( self.init_quant_2() );
+    
+    self.assertEquals( quant1, quant1_ );
+    self.assertEquals( quant2, quant2_ );
+
+    self.assertNotEquals( quant1, quant2_ );
+    self.assertNotEquals( quant2, quant1_ );
     
 
 

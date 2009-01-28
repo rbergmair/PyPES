@@ -11,29 +11,61 @@ from pypes.proto import Variable;
 from pypes.proto.form.subform import SubForm;
 
 
+
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 class Predication( SubForm, metaclass=kls ):
 
   _superordinate_ = None;
   _key_ = None;
-  
-  def __init__( self, sig, predicate, args ):
+
+
+  def _init_init_( self ):
     
-    self.predicate = predicate( sig=sig );
-    assert isinstance( self.predicate, Predicate );
-    
+    self.predicate = None;
     self.args = {};
+
+  
+  def __init__( self, sig, predicate=None, args=None ):
     
-    for arg_ in args:
-      
-      arg = arg_( predmod=self.predicate );
-      assert isinstance( arg, Argument );
-      
-      var = args[ arg_ ]( sig=sig );
-      assert isinstance( var, Variable );
-      
-      self.args[ arg ] = var;
+    if predicate is not None:
+
+      self.predicate = predicate( sig=sig );
+      assert isinstance( self.predicate, Predicate );
+    
+    if args is not None:
+        
+      for arg_ in args:
+        
+        arg = arg_( predmod=self.predicate );
+        assert isinstance( arg, Argument );
+        
+        var = args[ arg_ ]( sig=sig );
+        assert isinstance( var, Variable );
+        
+        self.args[ arg ] = var;
+  
+  
+  def __le__( self, obj ):
+    
+    if not isinstance( obj, Predication ):
+      return False;
+    
+    if self.predicate is not None:
+      if not self.predicate <= obj.predicate:
+        return False;
+    
+    for (arg,var) in self.args.items():
+      found = False;
+      for (arg_,var_) in obj.args.items():
+        if arg == arg_ and var <= var_:
+          found = True;
+          break;
+      if not found:
+        return False;
+    
+    return True;
+    
 
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #

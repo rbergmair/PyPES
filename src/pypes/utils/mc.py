@@ -171,6 +171,7 @@ class kls( type ):
     if parent is None:
 
       inst = cls.__orig_new( cls );
+      inst._init_init_();
       
     else:
       
@@ -187,11 +188,13 @@ class kls( type ):
       
       if key is None:
         inst = cls.__orig_new( cls );
+        inst._init_init_();
         superordinate[ id(inst) ] = inst;
       elif key in superordinate:
         inst = superordinate[ key ];
       else:
         inst = cls.__orig_new( cls );
+        inst._init_init_();
         superordinate[ key ] = inst;
     
     inst.__init__( **kwargs );
@@ -217,6 +220,11 @@ class kls( type ):
       cls.__new_2__;
     except AttributeError:
       cls.__new_2__ = kls.__new_2;
+      
+    try:
+      cls._init_init_;
+    except AttributeError:
+      cls._init_init_ = lambda *args, **kwargs: None;
 
     return cls;
 

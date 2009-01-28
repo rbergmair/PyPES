@@ -6,22 +6,48 @@ __all__ = [ "Constraint" ];
 
 from pypes.utils.mc import kls;
 from pypes.proto.form.handle import Handle;
+from pypes.proto.protobase import ProtoBase;
 
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-class Constraint( metaclass=kls ):
+class Constraint( ProtoBase, metaclass=kls ):
 
   _superordinate_ = None;
   _key_ = None;
   
-  def __init__( self, sig, harg, larg ):
+  def _init_init_( self ):
     
-    self.harg = harg( sig=sig );
-    assert isinstance( self.harg, Handle );
+    self.harg = None;
+    self.larg = None;
+  
+  def __init__( self, sig, harg=None, larg=None ):
     
-    self.larg = larg( sig=sig );
-    assert isinstance( self.larg, Handle );
+    if harg is not None:
+      self.harg = harg( sig=sig );
+      assert isinstance( self.harg, Handle );
+    
+    if larg is not None:
+      self.larg = larg( sig=sig );
+      assert isinstance( self.larg, Handle );
+  
+  def __le__( self, obj ):
+    
+    if not isinstance( obj, Constraint ):
+      return False;
+    
+    if self.harg is not None:
+      if not self.harg <= obj.harg:
+        return False;
+    if self.larg is not None:
+      if not self.larg <= obj.larg:
+        return False;
+    return True;
+
+  def __hash__( self ):
+    
+    # TODO: HACK!
+    return 1;
 
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #

@@ -34,15 +34,42 @@ class TestOperator( TestCase, metaclass=object_ ):
     inst_ = Operator( otype=Operator.OP_C_IMPL );
     return inst_;
   
-  
   def check_op_1( self, inst, msg=None ):
     
     self.assertEquals( inst.otype, Operator.OP_C_IMPL, msg );
   
-  
   def test_1( self ):
     
     self.check_op_1( self.logify( self.init_op_1() ) );
+
+
+  def init_op_2( self ):
+    
+    inst_ = Operator( otype=Operator.OP_C_WEACON );
+    return inst_;
+  
+  def check_op_2( self, inst, msg=None ):
+    
+    self.assertEquals( inst.otype, Operator.OP_C_WEACON, msg );
+  
+  def test_2( self ):
+    
+    self.check_op_2( self.logify( self.init_op_2() ) );
+  
+  
+  def test_cmp( self ):
+    
+    op1 = self.logify( self.init_op_1() )
+    op2 = self.logify( self.init_op_2() )
+
+    op1_ = self.logify( self.init_op_1() )
+    op2_ = self.logify( self.init_op_2() )
+    
+    self.assertEquals( op1, op1_ );
+    self.assertEquals( op2, op2_ );
+
+    self.assertNotEquals( op1, op2_ );
+    self.assertNotEquals( op2, op1_ );
     
 
 
