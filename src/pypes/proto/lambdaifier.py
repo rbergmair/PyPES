@@ -1,7 +1,7 @@
 # -*-  coding: ascii -*-
 
 __package__ = "pypes.proto";
-__all__ = [ "Lambdaifier", "lambdaify" ];
+__all__ = [ "Lambdaifier", "lambdaify", "sortseq" ];
 
 from pypes.utils.mc import subject;
 from pypes.proto.form import *;
@@ -414,3 +414,15 @@ def lambdaify( obj, rename_handles_p=True, rename_vars_p=True,
                                   rename_vars_p=rename_vars_p,
                                   rename_words_p=rename_words_p );
   return rslt;
+    
+
+
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+#                                                                             #
+#        PyPES: the python platform for experimentation with semantics        #
+#                                                                             #
+#                  (c) Copyright 2009 by Richard Bergmair                     #
+#       -----------------------------------------------------------------     #
+#       See LICENSE.txt for terms and conditions on use and reproduction.     #
+#                                                                             #
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #

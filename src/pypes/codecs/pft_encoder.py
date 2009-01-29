@@ -17,11 +17,18 @@ from pypes.proto import *;
 class PFTEncoder( metaclass=subject ):
 
 
-  ANONYMOUS_CHARS = "cdfghklmnorstuvwCDFGHKLMNORSTUVW";
-  ALPHANUMS = string.ascii_lowercase + string.ascii_uppercase + string.digits;
-  
-  
   def _enter_( self ):
+    
+    #sig = ProtoSig();
+    #self.obj = lambdaify( self._obj_ )( sig=self.sig );
+    #
+    #self._vids = set( sig._sos_[ Variable ].keys() );
+    #self._sids = set( sig._sos_[ Sort ].keys() );
+    #
+    ## for item in sig._sos_[ Predicate ].values() |
+    #
+    # self._aids = set( sig._sos_[ Variable ].keys() );
+    # self._vids = set( sig._sos_[ Variable ].keys() );
     
     self._vid = 0;
     self._sid = 0;
