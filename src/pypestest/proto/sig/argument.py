@@ -77,11 +77,11 @@ class TestArgument( TestCase, metaclass=object_ ):
     arg1_ = self.logify_1( self.init_arg_1() );
     arg2_ = self.logify_1( self.init_arg_2() );
     
-    self.assertEquals( arg1, arg1_ );
-    self.assertEquals( arg2, arg2_ );
+    self.assertEquals_( arg1, arg1_ );
+    self.assertEquals_( arg2, arg2_ );
     
-    self.assertNotEquals( arg1, arg2_ );
-    self.assertNotEquals( arg2, arg1_ );
+    self.assertNotEquals_( arg1, arg2_ );
+    self.assertNotEquals_( arg2, arg1_ );
     
     
     

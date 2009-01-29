@@ -120,13 +120,13 @@ class TestConnection( TestCase, metaclass=object_ ):
     conn2_ = self.logify( self.init_conn_2() );
     conn3_ = self.logify( self.init_conn_3() );
     
-    self.assertEquals( conn1, conn1_ );
-    self.assertEquals( conn2, conn2_ );
-    self.assertEquals( conn3, conn3_ );
+    self.assertEquals_( conn1, conn1_ );
+    self.assertEquals_( conn2, conn2_ );
+    self.assertEquals_( conn3, conn3_ );
 
-    self.assertNotEquals( conn1, conn2_ );
-    self.assertNotEquals( conn2, conn3_ );
-    self.assertNotEquals( conn3, conn1_ );
+    self.assertNotEquals_( conn1, conn2_ );
+    self.assertNotEquals_( conn2, conn3_ );
+    self.assertNotEquals_( conn3, conn1_ );
     
 
 

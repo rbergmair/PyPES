@@ -35,15 +35,15 @@ class Variable( ProtoBase, metaclass=kls ):
     if not isinstance( obj, Variable ):
       return False;
     
-    if self.sort is not None:
-      if not self.sort <= obj.sort:
+    if self.vid is not None:
+      if self.vid != obj.vid:
         return False;
-    return True;
-
-  def __hash__( self ):
     
-    # TODO: HACK!
-    return 1;
+    assert not self.sort is None;
+    if not self.sort <= obj.sort:
+      return False;
+
+    return True;
 
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #

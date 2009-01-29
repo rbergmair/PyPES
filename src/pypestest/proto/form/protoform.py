@@ -328,13 +328,13 @@ class TestProtoForm( TestCase, metaclass=object_ ):
     pf2_ = self.logify( self.init_pf_2() );
     pf3_ = self.logify( self.init_pf_3() );
     
-    self.assertEquals( pf1, pf1_ );
-    self.assertEquals( pf2, pf2_ );
-    self.assertEquals( pf3, pf3_ );
+    self.assertEquals_( pf1, pf1_ );
+    self.assertEquals_( pf2, pf2_ );
+    self.assertEquals_( pf3, pf3_ );
     
-    self.assertNotEquals( pf1, pf2_ );
-    self.assertNotEquals( pf2, pf3_ );
-    self.assertNotEquals( pf3, pf1_ );
+    self.assertNotEquals_( pf1, pf2_ );
+    self.assertNotEquals_( pf2, pf3_ );
+    self.assertNotEquals_( pf3, pf1_ );
     
 
 

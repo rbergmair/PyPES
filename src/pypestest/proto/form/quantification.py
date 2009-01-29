@@ -102,11 +102,11 @@ class TestQuantification( TestCase, metaclass=object_ ):
     quant1_ = self.logify( self.init_quant_1() );
     quant2_ = self.logify( self.init_quant_2() );
     
-    self.assertEquals( quant1, quant1_ );
-    self.assertEquals( quant2, quant2_ );
+    self.assertEquals_( quant1, quant1_ );
+    self.assertEquals_( quant2, quant2_ );
 
-    self.assertNotEquals( quant1, quant2_ );
-    self.assertNotEquals( quant2, quant1_ );
+    self.assertNotEquals_( quant1, quant2_ );
+    self.assertNotEquals_( quant2, quant1_ );
     
 
 

@@ -44,11 +44,6 @@ class Constraint( ProtoBase, metaclass=kls ):
         return False;
     return True;
 
-  def __hash__( self ):
-    
-    # TODO: HACK!
-    return 1;
-
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 #                                                                             #

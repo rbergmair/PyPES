@@ -133,13 +133,13 @@ class TestModification( TestCase, metaclass=object_ ):
     mod2_ = self.logify( self.init_modification_2() );
     mod3_ = self.logify( self.init_modification_3() );
     
-    self.assertEquals( mod1, mod1_ );
-    self.assertEquals( mod2, mod2_ );
-    self.assertEquals( mod3, mod3_ );
+    self.assertEquals_( mod1, mod1_ );
+    self.assertEquals_( mod2, mod2_ );
+    self.assertEquals_( mod3, mod3_ );
 
-    self.assertNotEquals( mod1, mod2_ );
-    self.assertNotEquals( mod2, mod3_ );
-    self.assertNotEquals( mod3, mod1_ );
+    self.assertNotEquals_( mod1, mod2_ );
+    self.assertNotEquals_( mod2, mod3_ );
+    self.assertNotEquals_( mod3, mod1_ );
     
 
 

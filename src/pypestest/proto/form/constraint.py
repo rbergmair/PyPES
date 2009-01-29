@@ -81,11 +81,11 @@ class TestConstraint( TestCase, metaclass=object_ ):
     constr1_ = self.logify( self.init_constr_1() );
     constr2_ = self.logify( self.init_constr_2() );
     
-    self.assertEquals( constr1, constr1_ );
-    self.assertEquals( constr2, constr2_ );
+    self.assertEquals_( constr1, constr1_ );
+    self.assertEquals_( constr2, constr2_ );
     
-    self.assertNotEquals( constr1, constr2_ );
-    self.assertNotEquals( constr2, constr1_ );
+    self.assertNotEquals_( constr1, constr2_ );
+    self.assertNotEquals_( constr2, constr1_ );
     
 
 

@@ -105,15 +105,15 @@ class TestVariable( TestCase, metaclass=object_ ):
     var3_ = self.logify( self.init_var_3() );
     var4_ = self.logify( self.init_var_4() );
     
-    self.assertEquals( var1, var1_ );
-    self.assertEquals( var2, var2_ );
-    self.assertEquals( var3, var3_ );
-    self.assertEquals( var4, var4_ );
+    self.assertEquals_( var1, var1_ );
+    self.assertEquals_( var2, var2_ );
+    self.assertEquals_( var3, var3_ );
+    self.assertEquals_( var4, var4_ );
 
-    self.assertNotEquals( var1, var2_ );
-    self.assertNotEquals( var2, var3_ );
-    self.assertNotEquals( var3, var4_ );
-    self.assertNotEquals( var4, var1_ );
+    self.assertNotEquals_( var1, var2_ );
+    self.assertNotEquals_( var2, var3_ );
+    self.assertNotEquals_( var3, var4_ );
+    self.assertNotEquals_( var4, var1_ );
     
 
 

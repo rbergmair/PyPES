@@ -68,7 +68,7 @@ class Modification( SubForm, metaclass=kls ):
     for (arg,var) in self.args.items():
       found = False;
       for (arg_,var_) in obj.args.items():
-        if arg == arg_ and var <= var_:
+        if arg <= arg_ and arg_ <= arg and var <= var_:
           found = True;
           break;
       if not found:

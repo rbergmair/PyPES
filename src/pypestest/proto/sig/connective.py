@@ -72,11 +72,11 @@ class TestConnective( TestCase, metaclass=object_ ):
     conn1_ = self.logify( self.init_conn_1() );
     conn2_ = self.logify( self.init_conn_2() );
     
-    self.assertEquals( conn1, conn1_ );
-    self.assertEquals( conn2, conn2_ );
+    self.assertEquals_( conn1, conn1_ );
+    self.assertEquals_( conn2, conn2_ );
 
-    self.assertNotEquals( conn1, conn2_ );
-    self.assertNotEquals( conn2, conn1_ );
+    self.assertNotEquals_( conn1, conn2_ );
+    self.assertNotEquals_( conn2, conn1_ );
     
 
 

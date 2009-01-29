@@ -68,11 +68,11 @@ class TestModality( TestCase, metaclass=object_ ):
     mod1_ = self.logify( self.init_mod_1() );
     mod2_ = self.logify( self.init_mod_2() );
     
-    self.assertEquals( mod1, mod1_ );
-    self.assertEquals( mod2, mod2_ );
+    self.assertEquals_( mod1, mod1_ );
+    self.assertEquals_( mod2, mod2_ );
 
-    self.assertNotEquals( mod1, mod2_ );
-    self.assertNotEquals( mod2, mod1_ );
+    self.assertNotEquals_( mod1, mod2_ );
+    self.assertNotEquals_( mod2, mod1_ );
     
 
 

@@ -1,41 +1,39 @@
 # -*-  coding: ascii -*-  # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-__package__ = "pypes.proto.form";
-__all__ = [ "Handle" ];
+__package__ = "pypes.proto";
+__all__ = [ "ProtoBase" ];
 
 from pypes.utils.mc import kls;
-from pypes.proto.form.scopebearer import ScopeBearer;
-from pypes.proto.form.handle import Handle;
 
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-class Freezer( ScopeBearer, metaclass=kls ):
+class ProtoBase( metaclass=kls ):
+  
+  def __init__( self ):
+    
+    pass;
+  
+  def __lt__( self, obj ):
+    
+    return self.__le__( obj ) and not obj.__le__( self );
+  
+  def __ge__( self, obj ):
+    
+    return obj.__le__( self );
+  
+  def __gt__( self, obj ):
+    
+    return obj.__lt__( self );
 
-  _superordinate_ = None;
-  _key_ = None;
-  
-  def _init_init_( self ):
+  def __eq__( self, obj ):
     
-    self.content = None;
-  
-  def __init__( self, sig, content=None ):
-    
-    if content is not None:
-      self.content = content( sig=sig );
-      assert isinstance( self.content, Handle ) or \
-             isinstance( self.content, Freezer );
-  
-  def __le__( self, obj ):
-    
-    if not isinstance( obj, Freezer ):
-      return False;
-    
-    if self.content is not None:
-      if not self.content <= obj.content:
-        return False;
-    return True;
+    return self is obj;
 
+  def __hash__( self ):
+    
+    return id( self );
+    
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 #                                                                             #

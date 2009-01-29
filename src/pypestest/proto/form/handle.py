@@ -65,11 +65,11 @@ class TestHandle( TestCase, metaclass=object_ ):
     hndl1_ = self.logify( self.init_handle_1() );
     hndl2_ = self.logify( self.init_handle_2() );
     
-    self.assertEquals( hndl1, hndl1_ );
-    self.assertEquals( hndl2, hndl2_ );
+    self.assertEquals_( hndl1, hndl1_ );
+    self.assertEquals_( hndl2, hndl2_ );
 
-    self.assertNotEquals( hndl1, hndl2_ );
-    self.assertNotEquals( hndl2, hndl1_ );
+    self.assertNotEquals_( hndl1, hndl2_ );
+    self.assertNotEquals_( hndl2, hndl1_ );
     
 
 

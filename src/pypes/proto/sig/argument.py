@@ -32,14 +32,8 @@ class Argument( ProtoBase, metaclass=kls ):
       if obj.aid != self.aid:
         return False;
     return True;
-  
-  def __hash__( self ):
-    
-    # TODO: HACK!
-    return 1;
     
     
-
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 #                                                                             #

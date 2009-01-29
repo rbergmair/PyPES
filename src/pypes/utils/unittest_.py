@@ -137,6 +137,15 @@ class TestCase( unittest.TestCase, metaclass=object_ ):
     
     if actual == expected:
       self._failSequenceComparison( actual, expected, msg, True );
+  
+  def assertEquals_( self, actual, expected, msg=None ):
+    
+    self.assert_( actual <= expected and expected <= actual, msg );
+
+  def assertNotEquals_( self, actual, expected, msg=None ):
+    
+    self.assert_( not( actual <= expected and expected <= actual ), msg );
+    
 
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #

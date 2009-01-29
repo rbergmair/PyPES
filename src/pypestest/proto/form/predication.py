@@ -112,11 +112,11 @@ class TestPredication( TestCase, metaclass=object_ ):
     pred1_ = self.logify( self.init_pred_1() );
     pred2_ = self.logify( self.init_pred_2() );
     
-    self.assertEquals( pred1, pred1_ );
-    self.assertEquals( pred2, pred2_ );
+    self.assertEquals_( pred1, pred1_ );
+    self.assertEquals_( pred2, pred2_ );
 
-    self.assertNotEquals( pred1, pred2_ );
-    self.assertNotEquals( pred2, pred1_ );
+    self.assertNotEquals_( pred1, pred2_ );
+    self.assertNotEquals_( pred2, pred1_ );
     
 
 

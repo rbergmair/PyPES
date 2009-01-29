@@ -11,7 +11,7 @@ from pypes.proto.protobase import ProtoBase;
 
 class Operator( ProtoBase, metaclass=kls ):
 
-  _superordinate_ = "sig";
+  _superordinate_ = None;
   _key_ = None;
   
   OP_Q_UNIV = 0;

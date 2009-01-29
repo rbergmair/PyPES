@@ -51,18 +51,23 @@ class Word( ProtoBase, metaclass=kls ):
     if self.wid is not None:
       if self.wid != obj.wid:
         return False;
+      
     if self.lemma is not None:
       if self.lemma != obj.lemma:
         return False;
+      
     if self.scf is not None:
       if self.scf != obj.scf:
         return False;
+      
     if self.pos is not None:
       if self.pos != obj.pos:
         return False;
+      
     if self.sense is not None:
       if self.sense != obj.sense:
         return False;
+      
     return True;
 
 

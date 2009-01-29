@@ -70,11 +70,11 @@ class TestFreezer( TestCase, metaclass=object_ ):
     freezer1_ = self.logify( self.init_freezer_1() );
     freezer2_ = self.logify( self.init_freezer_2() );
     
-    self.assertEquals( freezer1, freezer1_ );
-    self.assertEquals( freezer2, freezer2_ );
+    self.assertEquals_( freezer1, freezer1_ );
+    self.assertEquals_( freezer2, freezer2_ );
 
-    self.assertNotEquals( freezer1, freezer2_ );
-    self.assertNotEquals( freezer2, freezer1_ );
+    self.assertNotEquals_( freezer1, freezer2_ );
+    self.assertNotEquals_( freezer2, freezer1_ );
     
     
 

@@ -65,11 +65,11 @@ class TestSort( TestCase, metaclass=object_ ):
     sort1_ = self.logify( self.init_sort_1() );
     sort2_ = self.logify( self.init_sort_2() );
     
-    self.assertEquals( sort1, sort1_ );
-    self.assertEquals( sort2, sort2_ );
+    self.assertEquals_( sort1, sort1_ );
+    self.assertEquals_( sort2, sort2_ );
 
-    self.assertNotEquals( sort1, sort2_ );
-    self.assertNotEquals( sort2, sort1_ );
+    self.assertNotEquals_( sort1, sort2_ );
+    self.assertNotEquals_( sort2, sort1_ );
 
 
 

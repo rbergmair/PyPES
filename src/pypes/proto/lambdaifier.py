@@ -1,7 +1,7 @@
 # -*-  coding: ascii -*-
 
 __package__ = "pypes.proto";
-__all__ = [ "Lambdaifier" ];
+__all__ = [ "Lambdaifier", "lambdaify" ];
 
 from pypes.utils.mc import subject;
 from pypes.proto import *;
@@ -121,6 +121,7 @@ class Lambdaifier( metaclass=subject ):
     elif isinstance( obj, Quantification ):
 
       self._collect_index( obj.quantifier );
+      self._collect_index( obj.var );
       self._collect_index( obj.rstr );
       self._collect_index( obj.body );
     
@@ -249,8 +250,8 @@ class Lambdaifier( metaclass=subject ):
         for var in vars:
           assert self._variable_references[ var ] >= 1;
           if self._variable_references[ var ] <= 1:
-            self._sortvid_by_variable[ var ] = (var.sort,None);
-            sidvids.add( (var.sort.sid,None) );
+            self._sortvid_by_variable[ var ] = (var.sort,var.vid);
+            sidvids.add( (sid,var.vid) );
           else:
             reallocate_vars.add( var );
 
@@ -398,3 +399,17 @@ class Lambdaifier( metaclass=subject ):
 
     print( obj );
     assert False;
+
+
+
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+
+def lambdaify( obj, rename_handles_p=True, rename_vars_p=True,
+                 rename_words_p=True ):
+  
+  rslt = None;
+  with Lambdaifier( obj ) as lambdaifier:
+    rslt = lambdaifier.lambdaify( rename_handles_p=rename_handles_p,
+                                  rename_vars_p=rename_vars_p,
+                                  rename_words_p=rename_words_p );
+  return rslt;

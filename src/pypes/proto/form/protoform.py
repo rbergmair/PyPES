@@ -61,7 +61,7 @@ class ProtoForm( ScopeBearer, metaclass=kls ):
     for (root,subform) in self.subforms.items():
       found = False;
       for (root_,subform_) in obj.subforms.items():
-        if root == root_ and subform <= subform_:
+        if root <= root_ and root_ <= root and subform <= subform_:
           found = True;
           break;
       if not found:
@@ -70,18 +70,12 @@ class ProtoForm( ScopeBearer, metaclass=kls ):
     for constraint in self.constraints:
       constraint__ = None;
       for constraint_ in obj.constraints:
-        if constraint_ == constraint:
+        if constraint_ <= constraint and constraint <= constraint_:
           constraint__ = constraint_;
           break;
       if constraint__ is None:
         return False;
     return True;
-
-
-  def __hash__( self ):
-    
-    # TODO: HACK!
-    return 1;
   
 
 

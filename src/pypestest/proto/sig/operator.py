@@ -65,11 +65,11 @@ class TestOperator( TestCase, metaclass=object_ ):
     op1_ = self.logify( self.init_op_1() )
     op2_ = self.logify( self.init_op_2() )
     
-    self.assertEquals( op1, op1_ );
-    self.assertEquals( op2, op2_ );
+    self.assertEquals_( op1, op1_ );
+    self.assertEquals_( op2, op2_ );
 
-    self.assertNotEquals( op1, op2_ );
-    self.assertNotEquals( op2, op1_ );
+    self.assertNotEquals_( op1, op2_ );
+    self.assertNotEquals_( op2, op1_ );
     
 
 
