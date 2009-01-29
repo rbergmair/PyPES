@@ -12,7 +12,8 @@ __all__ = [ "Connection", "Constraint", "Handle", "Modification",
             "Modality",
             "Predicate", "ProtoSig", "Quantifier", "Sort", "Variable",
             "Operator", "Word",
-            "ProtoBase" ];
+            "ProtoBase",
+            "Lambdaifier", "lambdaify" ];
 
 from pypes.proto.sig import Argument;
 from pypes.proto.sig import Connective;
@@ -38,6 +39,10 @@ from pypes.proto.form import ScopeBearer;
 from pypes.proto.form import Freezer;
 
 from pypes.proto.protobase import ProtoBase;
+
+from pypes.proto.lambdaifier import Lambdaifier;
+from pypes.proto.lambdaifier import lambdaify;
+
 
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #

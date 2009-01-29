@@ -1,7 +1,7 @@
 # -*-  coding: ascii -*-
 
 __package__ = "pypes.codecs";
-__all__ = [ "PFTDecoder" ];
+__all__ = [ "PFTDecoder", "pft_decode" ];
 
 import ast;
 import re;
@@ -437,8 +437,8 @@ class PFTDecoder( metaclass=subject ):
 
 
   item = ( Optional( explicit_handle + Literal(":") ) + \
-             ( protoform | predication | quantification | modification |
-               connection  ) ) | \
+             ( ( protoform + NotAny( connective ) ) |
+               predication | quantification | modification | connection  ) ) | \
          constraint;
 
   protoform << ( Literal( "{" ) + \
@@ -495,4 +495,26 @@ class PFTDecoder( metaclass=subject ):
                               ) );
   
   protoform.setParseAction( _decode_protoform );
+
+
+
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+
+def pft_decode( pft_stri, item = PFTDecoder.protoform ):
   
+  rslt = None;
+  with PFTDecoder( pft_stri ) as decoder:
+    rslt = decoder.decode( item=item );
+  return rslt;
+
+    
+
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+#                                                                             #
+#        PyPES: the python platform for experimentation with semantics        #
+#                                                                             #
+#                  (c) Copyright 2009 by Richard Bergmair                     #
+#       -----------------------------------------------------------------     #
+#       See LICENSE.txt for terms and conditions on use and reproduction.     #
+#                                                                             #
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #

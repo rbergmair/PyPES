@@ -4,7 +4,8 @@ __package__ = "pypes.proto";
 __all__ = [ "Lambdaifier", "lambdaify" ];
 
 from pypes.utils.mc import subject;
-from pypes.proto import *;
+from pypes.proto.form import *;
+from pypes.proto.sig import *;
 
 
 

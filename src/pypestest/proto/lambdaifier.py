@@ -9,8 +9,8 @@ import unittest;
 from pypes.utils.unittest_ import TestCase;
 from pypes.utils.mc import object_;
 
-from pypes.proto.lambdaifier import Lambdaifier;
-from pypes.codecs.pft_encoder import PFTEncoder;
+from pypes.codecs import *;
+from pypes.proto import *;
 
 from pypestest.proto.form.connection import TestConnection;
 from pypestest.proto.form.constraint import TestConstraint;
@@ -30,47 +30,115 @@ from pypestest.proto.sig.word import TestWord;
 class TestLambdaifier( TestCase, metaclass=object_ ):
 
   
-  def x_test_lambdaifier( self ):
+  def test_lambdaifier_1( self ):
     
-    pf4 = TestProtoForm.init_logified_pf_4( self );
-    pf4__ = lambdaify( pf4 );
-    pf4_ = pf4__( sig=ProtoSig() );
+    init = TestProtoForm.init_logified_pf_4( self );
+    lambdaified = lambdaify( init );
+    logified = lambdaified( sig=ProtoSig() );
     
-    with PFTEncoder( pf4_ ) as encoder:
-      print();
-      print( encoder.encode() );
-      
-  
+    reference_ = pft_decode( """{ { 6: [Every:0] x4 { [man:6]( arg0=x4 ) } __;
+                                    7: [a:16] x3 { [woman:18]( arg0=x3 ) } __;
+                                    5: [loves:10]( arg1=x4, arg2=x3 );
+                                    7 >> 5;
+                                    6 >> 5 } /\ { [every] x1 1 { [lie:32]( arg1=x1 ) };
+                                                  2: { __ /\ __;
+                                                       [witness]( arg0=x1 );
+                                                       [say]( arg1=x1 ) <3> };
+                                                  4: [she:23] x2 { [she:23]( arg0=x2 ) } { [lie:27]( arg1=x2 ) };
+                                                  3 >> 4;
+                                                  1 >> 2 } }""" );
+    reference = reference_( sig=ProtoSig() );
+    
+    self.assertEquals_( logified, reference )
+
+
+  def test_lambdaifier_2( self ):
+    
+    init = TestProtoForm.init_logified_pf_4( self );
+    lambdaified = lambdaify( init, rename_handles_p=False );
+    logified = lambdaified( sig=ProtoSig() );
+    
+    reference_ = pft_decode( """{ { 1: [Every:0] x4 { [man:6]( arg0=x4 ) } 2;
+                                    3: [a:16] x3 { [woman:18]( arg0=x3 ) } 4;
+                                    5: [loves:10]( arg1=x4, arg2=x3 );
+                                    3 >> 5;
+                                    1 >> 5 } /\ { [every] x1 1 { [lie:32]( arg1=x1 ) };
+                                                  2: { __ /\ __;
+                                                       [witness]( arg0=x1 );
+                                                       [say]( arg1=x1 ) <3> };
+                                                  4: [she:23] x2 { [she:23]( arg0=x2 ) } { [lie:27]( arg1=x2 ) };
+                                                  3 >> 4;
+                                                  1 >> 2 } }""" );
+                                                  
+    reference = reference_( sig=ProtoSig() );
+    
+    self.assertEquals_( logified, reference )
+
+
+  def test_lambdaifier_3( self ):
+    
+    init = TestProtoForm.init_logified_pf_4( self );
+    lambdaified = lambdaify( init, rename_vars_p=False );
+    logified = lambdaified( sig=ProtoSig() );
+    
+    reference_ = pft_decode( """{ { 6: [Every:0] x1 { [man:6]( arg0=x1 ) } __;
+                                    7: [a:16] x2 { [woman:18]( arg0=x2 ) } __;
+                                    5: [loves:10]( arg1=x1, arg2=x2 );
+                                    7 >> 5;
+                                    6 >> 5 } /\ { [every] x1 1 { [lie:32]( arg1=x1 ) };
+                                                  2: { __ /\ __;
+                                                       [witness]( arg0=x1 );
+                                                       [say]( arg1=x1 ) <3> };
+                                                  4: [she:23] x2 { [she:23]( arg0=x2 ) } { [lie:27]( arg1=x2 ) };
+                                                  3 >> 4;
+                                                  1 >> 2 } }""" );
+                                                  
+    reference = reference_( sig=ProtoSig() );
+    
+    self.assertEquals_( logified, reference )
+
+
+  def test_lambdaifier_4( self ):
+    
+    init = TestProtoForm.init_logified_pf_4( self );
+    lambdaified = lambdaify( init, rename_words_p=False );
+    logified = lambdaified( sig=ProtoSig() );
+    
+    reference_ = pft_decode( """{ { 6: [every:0] x4 { [witness:6]( arg0=x4 ) } __;
+                                    7: [a:16] x3 { [say:18]( arg0=x3 ) } __;
+                                    5: [loves:10]( arg1=x4, arg2=x3 );
+                                    7 >> 5;
+                                    6 >> 5 } /\ { [every:0] x1 1 { [lie:32]( arg1=x1 ) };
+                                                  2: { __ /\ __;
+                                                       [witness:6]( arg0=x1 );
+                                                       [say:18]( arg1=x1 ) <3> };
+                                                  4: [she:23] x2 { [she:23]( arg0=x2 ) } { [lie:27]( arg1=x2 ) };
+                                                  3 >> 4;
+                                                  1 >> 2 } }""" );
+                                                  
+    reference = reference_( sig=ProtoSig() );
+    
+    self.assertEquals_( logified, reference )
+
   
   def dotest( self, logifyf, initf ):
     
     inst = logifyf( self, initf( self ) );
     
-    with Lambdaifier( inst ) as lambdaifier:
-      
-      inst__ = lambdaifier.lambdaify( inst );
-      inst_ = logifyf( self, inst__ );
-      
-      if not inst <= inst_ and inst >= inst_:
-        
-        with PFTEncoder( inst ) as encoder:
-          print();
-          print( encoder.encode() );
-        
-        with PFTEncoder( inst_ ) as encoder:
-          print();
-          print( encoder.encode() );
-          
-        print( lambdaifier._handle_by_hid );
-        print( lambdaifier._variable_by_sidvid );
-        print( lambdaifier._word_by_wid );
+    inst__ = lambdaify( inst );
+    inst_ = logifyf( self, inst__ );
     
-        print( lambdaifier._handle_references );
-        print( lambdaifier._variable_references );
-        print( lambdaifier._sort_references );
-        print( lambdaifier._word_references );
-        
-        self.fail();
+    if not inst <= inst_ and inst >= inst_:
+      
+      with PFTEncoder( inst ) as encoder:
+        print();
+        print( encoder.encode() );
+      
+      with PFTEncoder( inst_ ) as encoder:
+        print();
+        print( encoder.encode() );
+      
+      self.fail();
     
   
   def test_connection( self ):

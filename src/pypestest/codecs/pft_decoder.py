@@ -20,7 +20,7 @@ from pypestest.proto.form.quantification import TestQuantification;
 from pypestest.proto.sig.variable import TestVariable;
 from pypestest.proto.sig.word import TestWord;
 
-from pypes.codecs.pft_decoder import PFTDecoder;
+from pypes.codecs import *;
 
 
 
@@ -31,9 +31,7 @@ class TestPFTDecoder( TestCase, metaclass=object_ ):
 
   def check( self, stri, chf, logifyf, type_ ):
 
-    inst_ = None;
-    with PFTDecoder( stri ) as dec:
-      inst_ = dec.decode( type_ );
+    inst_ = pft_decode( stri, type_ );
     
     if chf is not None and logifyf is not None:
       chf( self, logifyf( self, inst_, stri ), stri );

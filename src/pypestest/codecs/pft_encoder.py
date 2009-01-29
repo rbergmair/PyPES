@@ -20,8 +20,7 @@ from pypestest.proto.form.quantification import TestQuantification;
 from pypestest.proto.sig.variable import TestVariable;
 from pypestest.proto.sig.word import TestWord;
 
-from pypes.codecs.pft_encoder import PFTEncoder;
-
+from pypes.codecs import *;
 from pypes.proto import *;
 
 
@@ -34,12 +33,10 @@ class TestPFTEncoder( TestCase, metaclass=object_ ):
   def check( self, stri, initf, logifyf ):
 
     inst = logifyf( self, initf( self ), stri );
-    with PFTEncoder( inst ) as encoder:
-      rslt = encoder.encode();
-      self.assert_( isinstance( rslt, str ) );
-      # print( rslt );
-      if stri is not None:
-        self.assertStringCrudelyEqual( encoder.encode(), stri, stri );
+    rslt = pft_encode( inst );
+    self.assert_( isinstance( rslt, str ) );
+    if stri is not None:
+      self.assertStringCrudelyEqual( rslt, stri, stri );
   
   
   def test_handle( self ):

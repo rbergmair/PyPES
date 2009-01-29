@@ -1,7 +1,7 @@
 # -*-  coding: ascii -*-
 
 __package__ = "pypes.codecs";
-__all__ = [ "PFTEncoder" ];
+__all__ = [ "PFTEncoder", "pft_encode" ];
 
 import re;
 import string;
@@ -287,7 +287,6 @@ class PFTEncoder( metaclass=subject ):
   def encode( self ):
     
     return self._indent( self._encode( self._obj_ ) );
-    
 
 
 PFTEncoder._item_encoders = {
@@ -302,3 +301,26 @@ PFTEncoder._item_encoders = {
     Constraint : PFTEncoder._encode_constraint,
     ProtoForm : PFTEncoder._encode_protoform
   };
+
+
+
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+
+def pft_encode( pfobj ):
+  
+  rslt = None;
+  with PFTEncoder( pfobj ) as encoder:
+    rslt = encoder.encode();
+  return rslt;
+
+    
+
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+#                                                                             #
+#        PyPES: the python platform for experimentation with semantics        #
+#                                                                             #
+#                  (c) Copyright 2009 by Richard Bergmair                     #
+#       -----------------------------------------------------------------     #
+#       See LICENSE.txt for terms and conditions on use and reproduction.     #
+#                                                                             #
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
