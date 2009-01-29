@@ -1,14 +1,29 @@
 # -*-  coding: ascii -*-
 
-__package__ = "pypes.codecs";
-__all__ = [ "PFTEncoder", "pft_encode" ];
+__package__ = "pypes.codecs_";
+__all__ = [ "PFTEncoder", "pft_encode",
+            "argseq", "sortseq",
+            "ALPHAS", "NUMS", "ALPHANUMS", "PRINTABLES" ];
 
 import re;
 import string;
 
+from itertools import chain;
+
 from pypes.utils.mc import subject;
 
 from pypes.proto import *;
+from pypes.proto.lambdaifier import sortseq;
+
+from pypes.codecs_.pft_decoder import ALPHAS, NUMS, ALPHANUMS, PRINTABLES;
+
+
+
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+
+def argseq( int_ ):
+  
+  return "arg" + str(int_);
 
 
 
@@ -19,51 +34,41 @@ class PFTEncoder( metaclass=subject ):
 
   def _enter_( self ):
     
-    #sig = ProtoSig();
-    #self.obj = lambdaify( self._obj_ )( sig=self.sig );
-    #
-    #self._vids = set( sig._sos_[ Variable ].keys() );
-    #self._sids = set( sig._sos_[ Sort ].keys() );
-    #
-    ## for item in sig._sos_[ Predicate ].values() |
-    #
-    # self._aids = set( sig._sos_[ Variable ].keys() );
-    # self._vids = set( sig._sos_[ Variable ].keys() );
+    sig = ProtoSig();
+    self.obj = lambdaify( self._obj_ )( sig=sig );
+
+    self._assigned_sortvids = set();
     
-    self._vid = 0;
-    self._sid = 0;
-    self._aid = 0;
-  
-  
-  def _next_vid( self ):
-    
-    self._vid += 1;
-    return self._vid;
-  
-  
-  @classmethod
-  def _anonymous_string( cls, int_ ):
-    
-    rslt = "";
-    while int_ > 0:
-      rest = int_ & 0x1F;
-      int_ = int_ >> 5;
-      rslt += cls.ANONYMOUS_CHARS[ rest ];
-    return rslt;
+    if hasattr( sig, "_sos_" ) and Variable in sig._sos_:
+      for vid in sig._sos_[ Variable ]:
+        var = sig._sos_[ Variable ][ vid ];
+        self._assigned_sortvids.add( (var.sort,var.vid) );
+
+    if hasattr( sig, "_sos_" ) and Sort in sig._sos_:
+      self._assigned_sids = set( sig._sos_[ Sort ].keys() );
+    else:
+      self._assigned_sids = set();
 
 
   def _next_sid( self ):
     
-    self._sid += 1;
-    return self._anonymous_string( self._sid );
+    sid = 1;
+    while sortseq( sid ) in self._assigned_sids:
+      sid += 1;
+    sid_ = sortseq( sid );
+    self._assigned_sids.add( sid_ );
+    return sid_;
   
   
-  def _next_aid( self ):
+  def _next_vid( self, sort ):
     
-    self._aid += 1;
-    return self._anonymous_string( self._aid );
+    vid = 1;
+    while (sort,vid) in self._assigned_sortvids:
+      vid += 1;
+    self._assigned_sortvids.add( (sort,vid) );
+    return vid;
   
-
+  
   re_regstr = re.compile( "["+ALPHANUMS+"]+" );
   
   @classmethod
@@ -97,7 +102,7 @@ class PFTEncoder( metaclass=subject ):
       
     vid = None;
     if inst.vid is None:
-      vid = self._next_vid();
+      vid = self._next_vid( inst.sort );
     else:
       vid = inst.vid;
 
@@ -124,16 +129,26 @@ class PFTEncoder( metaclass=subject ):
     return rslt;
   
   
-  def _encode_argslist( self, inst ):
+  def _encode_argslist( self, predmod, args ):
+    
+    if hasattr( predmod, "_sos_" ) and Argument in predmod._sos_:
+      assigned_aids = predmod._sos_[ Argument ].keys();
+    else:
+      assigned_aids = set();
+    
+    aid = 0;
     
     rslt = "(";
     
-    if inst:
+    if args:
       rslt += " ";
-      for arg in inst:
-        var = inst[ arg ];
+      for arg in args:
+        var = args[ arg ];
         if arg.aid is None:
-          rslt += self._next_aid();
+          while argseq(aid) in assigned_aids:
+            aid += 1;
+          rslt += argseq(aid);
+          aid += 1;
         else:
           rslt += str( arg.aid );
         rslt += "=" + self._encode( var );
@@ -157,7 +172,7 @@ class PFTEncoder( metaclass=subject ):
     else:
       assert False;
     
-    rslt += self._encode_argslist( inst.args );
+    rslt += self._encode_argslist( inst.predicate, inst.args );
     
     return rslt;
       
@@ -201,7 +216,7 @@ class PFTEncoder( metaclass=subject ):
     else:
       assert False;
       
-    rslt += self._encode_argslist( inst.args );
+    rslt += self._encode_argslist( inst.modality, inst.args );
     rslt += " " + self._encode( inst.scope );
     
     return rslt;

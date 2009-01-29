@@ -1,6 +1,6 @@
 # -*-  coding: ascii -*-  # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-__package__ = "pypestest.codecs";
+__package__ = "pypestest.codecs_";
 __all__ = [ "TestPFTDecoder", "suite", "main" ];
 
 import sys;
@@ -20,7 +20,7 @@ from pypestest.proto.form.quantification import TestQuantification;
 from pypestest.proto.sig.variable import TestVariable;
 from pypestest.proto.sig.word import TestWord;
 
-from pypes.codecs import *;
+from pypes.codecs_ import *;
 
 
 

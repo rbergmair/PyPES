@@ -9,7 +9,7 @@ import unittest;
 from pypes.utils.unittest_ import TestCase;
 from pypes.utils.mc import object_;
 
-from pypes.codecs import *;
+from pypes.codecs_ import *;
 from pypes.proto import *;
 
 from pypestest.proto.form.connection import TestConnection;

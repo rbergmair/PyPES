@@ -3,11 +3,11 @@
 __package__ = "pypes";
 __all__ = [ "PFTDecoder", "pft_decode", "PFTEncoder", "pft_encode" ];
 
-from pypes.codecs.pft_decoder import PFTDecoder;
-from pypes.codecs.pft_decoder import pft_decode;
+from pypes.codecs_.pft_decoder import PFTDecoder;
+from pypes.codecs_.pft_decoder import pft_decode;
 
-from pypes.codecs.pft_encoder import PFTEncoder;
-from pypes.codecs.pft_encoder import pft_encode;
+from pypes.codecs_.pft_encoder import PFTEncoder;
+from pypes.codecs_.pft_encoder import pft_encode;
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 #                                                                             #

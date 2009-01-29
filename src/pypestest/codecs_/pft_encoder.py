@@ -1,6 +1,6 @@
 # -*-  coding: ascii -*-  # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-__package__ = "pypestest.codecs";
+__package__ = "pypestest.codecs_";
 __all__ = [ "TestPFTEncoder", "suite", "main" ];
 
 import sys;
@@ -20,7 +20,7 @@ from pypestest.proto.form.quantification import TestQuantification;
 from pypestest.proto.sig.variable import TestVariable;
 from pypestest.proto.sig.word import TestWord;
 
-from pypes.codecs import *;
+from pypes.codecs_ import *;
 from pypes.proto import *;
 
 
@@ -78,6 +78,8 @@ class TestPFTEncoder( TestCase, metaclass=object_ ):
     
     check( "[cat:5]( arg1=x1 )", TestPredication.init_pred_1 );
     check( "EQUALS( ARG0=x1, ARG1=x2 )", TestPredication.init_pred_2 );
+    check( "[cat]( arg0=d1 )", TestPredication.init_pred_3 );
+    
 
 
   def test_quantification( self ):

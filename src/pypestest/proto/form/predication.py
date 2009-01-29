@@ -117,6 +117,19 @@ class TestPredication( TestCase, metaclass=object_ ):
 
     self.assertNotEquals_( pred1, pred2_ );
     self.assertNotEquals_( pred2, pred1_ );
+  
+  
+  def init_pred_3( self ):
+    
+    inst_ = Predication(
+                predicate = Predicate(
+                                referent = Word( lemma="cat" )
+                              ),
+                args = { Argument():
+                           Variable()
+                       }
+              );
+    return inst_;
     
 
 

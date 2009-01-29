@@ -14,7 +14,7 @@ class Argument( ProtoBase, metaclass=kls ):
   _superordinate_ = "predmod";
   _key_ = "aid";
   
-  def _init_init( self ):
+  def _init_init_( self ):
     
     self.aid = None;
 

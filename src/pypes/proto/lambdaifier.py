@@ -19,7 +19,7 @@ def sortseq( int_ ):
   while int_ > 0:
     rest = int_ & 0x1F;
     int_ = int_ >> 5;
-    rslt += cls.SORT_CHARS[ rest ];
+    rslt += SORT_CHARS[ rest ];
   return rslt;
 
 
@@ -235,7 +235,7 @@ class Lambdaifier( metaclass=subject ):
       
       else:
         
-        if sid is not None and vid is not None:
+        if vid is not None:
           var = None;
           for var_ in vars:
             if self._variable_references[ var_ ] > 1:
@@ -251,8 +251,8 @@ class Lambdaifier( metaclass=subject ):
         for var in vars:
           assert self._variable_references[ var ] >= 1;
           if self._variable_references[ var ] <= 1:
-            self._sortvid_by_variable[ var ] = (var.sort,var.vid);
-            sidvids.add( (sid,var.vid) );
+            self._sortvid_by_variable[ var ] = (var.sort,None);
+            sidvids.add( (sid,None) );
           else:
             reallocate_vars.add( var );
 

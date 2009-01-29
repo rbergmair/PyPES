@@ -1,7 +1,8 @@
 # -*-  coding: ascii -*-
 
-__package__ = "pypes.codecs";
-__all__ = [ "PFTDecoder", "pft_decode" ];
+__package__ = "pypes.codecs_";
+__all__ = [ "PFTDecoder", "pft_decode",
+            "ALPHAS", "NUMS", "ALPHANUMS", "PRINTABLES" ];
 
 import ast;
 import re;
@@ -10,13 +11,22 @@ from pyparsing import Literal;
 from pyparsing import Word as Word_;
 from pyparsing import ZeroOrMore, OneOrMore, Optional, NotAny;
 from pyparsing import Forward;
-from pyparsing import printables, alphas, nums, alphanums;
 from pyparsing import quotedString;
 
 from pypes.utils.mc import subject;
 
+import pyparsing;
+
 from pypes.proto import *;
 
+
+
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+
+ALPHAS = pyparsing.alphas;
+NUMS = pyparsing.nums;
+ALPHANUMS = pyparsing.alphanums;
+PRINTABLES = pyparsing.printables;
 
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
@@ -36,13 +46,15 @@ _GT_FREEZER = 9;
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-_variable_re = re.compile( "[" + alphas + "]+" + "[" + nums + "]+" );
+_variable_re = re.compile( "[" + ALPHAS + "]+" + "[" + NUMS + "]+" );
 
 
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 class PFTDecoder( metaclass=subject ):
+  
+  
 
   
   def decode( self, item=None ):
@@ -75,17 +87,17 @@ class PFTDecoder( metaclass=subject ):
   quoted.setParseAction( _decode_quoted );
 
 
-  string = quoted | Word_( alphanums, alphanums );
+  string = quoted | Word_( ALPHANUMS, ALPHANUMS );
 
   
-  decimalnumber = Word_( nums, nums );
+  decimalnumber = Word_( NUMS, NUMS );
   def _decode_decimalnumber( str_, loc, toks ):
     assert len(toks) == 1;
     return int( toks[0] );
   decimalnumber.setParseAction( _decode_decimalnumber );
 
 
-  explicit_handle = Word_( nums, nums );
+  explicit_handle = Word_( NUMS, NUMS );
   def _decode_explicit_handle( str_, loc, toks ):
     assert len(toks) == 1;
     return ( _GT_HANDLE, Handle( hid = int( toks[0] ) ) );
@@ -115,7 +127,7 @@ class PFTDecoder( metaclass=subject ):
   freezer.setParseAction( _decode_freezer );
 
 
-  variable = Word_( alphas, alphas+nums );
+  variable = Word_( ALPHAS, ALPHANUMS );
   def _decode_variable( str_, loc, toks ):
     assert len(toks) == 1;
     tok = toks[0];
@@ -201,7 +213,7 @@ class PFTDecoder( metaclass=subject ):
   word.setParseAction( _decode_word );
   
   
-  identifier = Word_( alphas+"_", alphanums+"_" );
+  identifier = Word_( ALPHAS+"_", ALPHANUMS+"_" );
   
   
   arguments_list = Literal( "(" ) + \

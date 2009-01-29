@@ -6,8 +6,8 @@ __all__ = [ "suite", "main" ];
 import sys;
 import unittest;
 
-import pypestest.codecs.pft_decoder;
-import pypestest.codecs.pft_encoder;
+import pypestest.codecs_.pft_decoder;
+import pypestest.codecs_.pft_encoder;
 
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
@@ -16,8 +16,8 @@ def suite():
 
   suite = unittest.TestSuite();
 
-  suite.addTests( pypestest.codecs.pft_decoder.suite() );
-  suite.addTests( pypestest.codecs.pft_encoder.suite() );
+  suite.addTests( pypestest.codecs_.pft_decoder.suite() );
+  suite.addTests( pypestest.codecs_.pft_encoder.suite() );
 
   return suite;
 
