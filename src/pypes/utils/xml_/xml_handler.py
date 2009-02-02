@@ -94,13 +94,12 @@ class XMLHandler( xml.sax.handler.ContentHandler, metaclass=subject ):
     if name in self.CLIENT_BYNAME:
       
       ( client, obj ) = self.CLIENT_BYNAME[ name ];
-      if obj is not None:
+      if obj is None:
+        obj = active_client;
+      else:
         obj = obj();
         if obj is None:
           obj = active_client._obj_;
-      else:
-        if active_client is not None:
-          obj = active_client;
           
       new_client_ctx = client( obj );
       new_client = new_client_ctx.__enter__();

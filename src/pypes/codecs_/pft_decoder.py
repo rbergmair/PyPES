@@ -55,14 +55,17 @@ _variable_re = re.compile( "[" + ALPHAS + "]+" + "[" + NUMS + "]+" );
 class PFTDecoder( metaclass=subject ):
   
   
-
-  
   def decode( self, item=None ):
     
     if item is None:
-      item = PFTDecoder.hndl;
+      item = PFTDecoder.protoform;
     
-    rslt = item.parseString( self._obj_ );
+    rslt = None;
+    if isinstance( self._obj_, str ):
+      rslt = item.parseString( self._obj_ );
+    else:
+      rslt = item.parseFile( self._obj_ );
+      
     assert len( rslt ) == 1;
     ( type_, inst ) = rslt[0];
     return inst;
@@ -512,10 +515,10 @@ class PFTDecoder( metaclass=subject ):
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-def pft_decode( pft_stri, item = PFTDecoder.protoform ):
+def pft_decode( pft, item=PFTDecoder.protoform ):
   
   rslt = None;
-  with PFTDecoder( pft_stri ) as decoder:
+  with PFTDecoder( pft ) as decoder:
     rslt = decoder.decode( item=item );
   return rslt;
 

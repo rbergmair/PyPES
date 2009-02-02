@@ -1,3 +1,11 @@
+# -*-  coding: ascii -*-
+
+__package__ = "pypestest.utils";
+
+
+
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+
 INDATA = r"""<?xml version="1.0" encoding="UTF-8"?>
 
   <!DOCTYPE html
@@ -23,6 +31,8 @@ INDATA = r"""<?xml version="1.0" encoding="UTF-8"?>
 
   </html>
   """;
+
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 OUTDATA = """<?xml version="1.0" encoding="UTF-8"?>
 
@@ -59,3 +69,15 @@ CONTENT = """HEADING: This is a test.
     This is a test.
     This is another test.
   """;
+
+
+
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+#                                                                             #
+#        PyPES: the python platform for experimentation with semantics        #
+#                                                                             #
+#                  (c) Copyright 2009 by Richard Bergmair                     #
+#       -----------------------------------------------------------------     #
+#       See LICENSE.txt for terms and conditions on use and reproduction.     #
+#                                                                             #
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
