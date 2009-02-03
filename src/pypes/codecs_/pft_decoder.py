@@ -339,10 +339,8 @@ class PFTDecoder( metaclass=subject ):
       ( type_, referent ) = toks[i];
       assert type_ == _GT_WORD;
     else:
-      if toks[i] == "EQUALS":
-        referent = Operator( otype=Operator.OP_R_EQUALITY );
-      else:
-        assert False;
+      assert toks[i] in Operator.OP_Ps;
+      referent = Operator( otype = Operator.OP_Ps[ toks[i] ] );
     i += 1;
 
     assert len( toks ) > i;
@@ -358,7 +356,8 @@ class PFTDecoder( metaclass=subject ):
 
 
   quantification = ( word | identifier ) + variable + \
-                   ( handle | freezer | protoform ) + ( handle | freezer | protoform );
+                   ( handle | freezer | protoform ) + \
+                   ( handle | freezer | protoform );
   
   def _decode_quantification( str_, loc, toks ):
     
@@ -370,14 +369,8 @@ class PFTDecoder( metaclass=subject ):
       ( type_, referent ) = toks[i];
       assert type_ == _GT_WORD;
     else:
-      if toks[i] == "ALL":
-        referent = Operator( otype=Operator.OP_Q_UNIV );
-      elif toks[i] == "SOME":
-        referent = Operator( otype=Operator.OP_Q_EXIST );
-      elif toks[i] == "THE":
-        referent = Operator( otype=Operator.OP_Q_DESCR );
-      else:
-        assert False;
+      assert toks[i] in Operator.OP_Qs;
+      referent = Operator( otype=Operator.OP_Qs[ toks[i] ] );
         
     i += 1;
 
@@ -422,12 +415,8 @@ class PFTDecoder( metaclass=subject ):
       ( type_, referent ) = toks[i];
       assert type_ == _GT_WORD;
     else:
-      if toks[i] == "NECESSARILY":
-        referent = Operator( otype=Operator.OP_M_NECESSITY );
-      elif toks[i] == "POSSIBLY":
-        referent = Operator( otype=Operator.OP_M_POSSIBILITY );
-      else:
-        assert False;
+      assert toks[i] in Operator.OP_Ms;
+      referent = Operator( otype = Operator.OP_Ms[ toks[i] ] );
         
     i += 1;
 
@@ -450,9 +439,11 @@ class PFTDecoder( metaclass=subject ):
   modification.setParseAction( _decode_modification );
   
   
-  connective = Literal( "/\\" ) | Literal( "&&" ) | \
-               Literal( "\\/" ) | Literal( "||" ) | \
-               Literal( "->" );
+  connective = Literal( Operator.OP_C_WEACON ) | \
+               Literal( Operator.OP_C_STRCON ) | \
+               Literal( Operator.OP_C_WEADIS ) | \
+               Literal( Operator.OP_C_STRDIS ) | \
+               Literal( Operator.OP_C_IMPL );
 
   connection = ( handle | freezer | protoform ) + ( connective | word ) + \
                ( handle | freezer | protoform );
@@ -471,16 +462,9 @@ class PFTDecoder( metaclass=subject ):
     if not isinstance( toks[1], str ):
       ( type_, referent ) = toks[1];
       assert type_ == _GT_WORD;
-    elif toks[1] == "/\\":
-      referent = Operator( otype=Operator.OP_C_WEACON );
-    elif toks[1] == "&&":
-      referent = Operator( otype=Operator.OP_C_STRCON );
-    elif toks[1] == "\\/":
-      referent = Operator( otype=Operator.OP_C_WEADIS );
-    elif toks[1] == "||":
-      referent = Operator( otype=Operator.OP_C_STRDIS );
-    elif toks[1] == "->":
-      referent = Operator( otype=Operator.OP_C_IMPL );
+    else:
+      assert toks[1] in Operator.OP_Cs;
+      referent = Operator( otype = Operator.OP_Cs[ toks[1] ] );
     
     return ( _GT_CONNECTION, Connection(
                                  connective = Connective( referent=referent ),

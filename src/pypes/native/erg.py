@@ -1,7 +1,28 @@
 # -*-  coding: ascii -*-  # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-__package__ = "";
-__all__ = [ "codecs_", "native", "proto", "utils" ];
+__package__ = "native";
+__all__ = [ "erg" ];
+
+from proto import Operator;
+
+
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+
+class ERGOperator( Operator ):
+  
+  OP_Q_PROPER = "PROPER_Q";
+  
+  OP_Qs = {};
+  
+  OP_Cs = {
+      Operator.OP_C_WEACON: Operator.OP_C_WEACON
+    };
+
+  OP_Ms = {};
+  
+  OP_P_NAMED = "NAMED";
+  OP_Ps = {};
+
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 #                                                                             #

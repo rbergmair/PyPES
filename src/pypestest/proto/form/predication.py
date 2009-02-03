@@ -70,7 +70,7 @@ class TestPredication( TestCase, metaclass=object_ ):
     
     inst_ = Predication(
                 predicate = Predicate(
-                                referent = Operator( otype=Operator.OP_R_EQUALITY )
+                                referent = Operator( otype=Operator.OP_P_EQUALITY )
                               ),
                 args = { Argument( aid="ARG0" ):
                            Variable( sidvid=("x",1) ),
@@ -84,7 +84,7 @@ class TestPredication( TestCase, metaclass=object_ ):
     
     self.assert_( isinstance( inst.predicate, Predicate ), msg );
     self.assert_( isinstance( inst.predicate.referent, Operator ), msg );
-    self.assertEquals( inst.predicate.referent.otype, Operator.OP_R_EQUALITY, msg );
+    self.assertEquals( inst.predicate.referent.otype, Operator.OP_P_EQUALITY, msg );
     labels = set();
     vars = set();
     for arg in inst.args:

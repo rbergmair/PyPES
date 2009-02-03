@@ -1,7 +1,8 @@
 # -*-  coding: ascii -*-  # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-__package__ = "";
-__all__ = [ "codecs_", "native", "proto", "utils" ];
+__package__ = "native";
+__all__ = [ "erg" ];
+
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 #                                                                             #

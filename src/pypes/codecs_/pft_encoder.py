@@ -194,8 +194,7 @@ class PFTEncoder( metaclass=subject ):
     if isinstance( inst.predicate.referent, Word ):
       rslt += self._encode( inst.predicate.referent );
     elif isinstance( inst.predicate.referent, Operator ):
-      assert inst.predicate.referent.otype == Operator.OP_R_EQUALITY;
-      rslt += "EQUALS";
+      rslt += inst.predicate.referent.otype;
     else:
       assert False;
     
@@ -210,14 +209,7 @@ class PFTEncoder( metaclass=subject ):
     if isinstance( inst.quantifier.referent, Word ):
       rslt += self._encode( inst.quantifier.referent );
     elif isinstance( inst.quantifier.referent, Operator ):
-      if inst.quantifier.referent.otype == Operator.OP_Q_UNIV:
-        rslt += "ALL";
-      elif inst.quantifier.referent.otype == Operator.OP_Q_EXIST:
-        rslt += "SOME";
-      elif inst.quantifier.referent.otype == Operator.OP_Q_DESCR:
-        rslt += "THE";
-      else:
-        assert False;
+      rslt += inst.quantifier.referent.otype;
     else:
       assert False;
     
@@ -234,12 +226,7 @@ class PFTEncoder( metaclass=subject ):
     if isinstance( inst.modality.referent, Word ):
       rslt += self._encode( inst.modality.referent );
     elif isinstance( inst.modality.referent, Operator ):
-      if inst.modality.referent.otype == Operator.OP_M_NECESSITY:
-        rslt += "NECESSARILY";
-      elif inst.modality.referent.otype == Operator.OP_M_POSSIBILITY:
-        rslt += "POSSIBLY";
-      else:
-        assert False;
+      rslt += inst.modality.referent.otype;
     else:
       assert False;
       
@@ -256,18 +243,7 @@ class PFTEncoder( metaclass=subject ):
     if isinstance( inst.connective.referent, Word ):
       rslt += self._encode( inst.connective.referent );
     elif isinstance( inst.connective.referent, Operator ):
-      if inst.connective.referent.otype == Operator.OP_C_WEACON:
-        rslt += "/\\";
-      elif inst.connective.referent.otype == Operator.OP_C_STRCON:
-        rslt += "&&";
-      elif inst.connective.referent.otype == Operator.OP_C_WEADIS:
-        rslt += "\\/";
-      elif inst.connective.referent.otype == Operator.OP_C_STRDIS:
-        rslt += "||";
-      elif inst.connective.referent.otype == Operator.OP_C_IMPL:
-        rslt += "->";
-      else:
-        assert False;
+      rslt += inst.connective.referent.otype;
     else:
       assert False;
 

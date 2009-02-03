@@ -47,13 +47,13 @@ class TestPredicate( TestCase, metaclass=object_ ):
 
   def init_pred_2( self ):
     
-    inst_ = Predicate( referent = Operator( otype=Operator.OP_R_EQUALITY ) );
+    inst_ = Predicate( referent = Operator( otype=Operator.OP_P_EQUALITY ) );
     return inst_;
   
   def check_pred_2( self, inst, msg=None ):
     
     self.assert_( isinstance( inst.referent, Operator ), msg );
-    self.assertEquals( inst.referent.otype, Operator.OP_R_EQUALITY, msg );
+    self.assertEquals( inst.referent.otype, Operator.OP_P_EQUALITY, msg );
 
   def test_2( self ):
     

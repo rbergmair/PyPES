@@ -13,6 +13,9 @@ from pypes.utils.unittest_ import TestCase;
 from pypes.utils.mc import object_;
 
 from pypes.codecs_.mrx_decoder import mrx_decode;
+from pypes.codecs_.pft_encoder import pft_encode;
+
+from pypes.proto import *;
 
 
 
@@ -25,9 +28,15 @@ class TestMRXDecoder( TestCase, metaclass=object_ ):
   def test_mrxdecoder( self ):
     
     for i in range( 1, 108 ):
+    #for i in { 2 }:
+    #for i in range( 1, 11 ):
       
       f = gzip.open( "{0}/mrs-{1}1.mrs.xml.gz".format( self._TESTMRSDIR, i ) );
-      mrx_decode( f );
+      r = mrx_decode( f )( sig=ProtoSig() );
+      print();
+      print( pft_encode( r ) );
+      print();
+      print();
       f.close();
 
 
