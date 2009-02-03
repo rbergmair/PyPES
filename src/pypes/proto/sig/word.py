@@ -7,12 +7,15 @@ from pypes.utils.mc import kls;
 from pypes.proto.protobase import ProtoBase;
 
 
+
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 class Word( ProtoBase, metaclass=kls ):
 
+
   _superordinate_ = "sig";
   _key_ = "wid";
+
 
   def _init_init_( self ):
     
@@ -21,8 +24,11 @@ class Word( ProtoBase, metaclass=kls ):
     self.scf = None;
     self.pos = None;
     self.sense = None;
+    self.feats = None;
+
   
-  def __init__( self, sig, wid=None, lemma=None, scf=None, pos=None, sense=None ):
+  def __init__( self, sig, wid=None, lemma=None, scf=None, pos=None,
+                      sense=None, feats=None ):
     
     if wid is not None:
       self.wid = wid;
@@ -42,6 +48,19 @@ class Word( ProtoBase, metaclass=kls ):
     if sense is not None:
       self.sense = sense;
       assert self.sense is None or isinstance( self.sense, str );
+    
+    if feats is not None:
+      self.feats = {};
+      for (key,val) in feats.items():
+        if key == "scf":
+          self.scf = val;
+        elif key == "pos":
+          self.pos = val;
+        elif key == "sense":
+          self.sense = val;
+        else:
+          self.feats[ key ] = val;
+        
   
   def __le__( self, obj ):
     
@@ -67,8 +86,18 @@ class Word( ProtoBase, metaclass=kls ):
     if self.sense is not None:
       if self.sense != obj.sense:
         return False;
+    
+    if self.feats is not None:
+      if obj.feats is None:
+        return False;
+      for feat in self.feats:
+        if not feat in obj.feats:
+          return False;
+        if self.feats[ feat ] != obj.feats[ feat ]:
+          return False;
       
     return True;
+
 
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #

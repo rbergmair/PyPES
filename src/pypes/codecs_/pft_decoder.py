@@ -48,6 +48,13 @@ _GT_FREEZER = 9;
 
 _variable_re = re.compile( "[" + ALPHAS + "]+" + "[" + NUMS + "]+" );
 
+_nonspecial = "";
+for ch in PRINTABLES:
+  if not ch in { "{", "}", "[", "]", "(", ")", "<", ">",
+                 '"', "'", "_", "+", ":", "=" }:
+    if not ch.isspace():
+      _nonspecial += ch;
+
 
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
@@ -88,9 +95,10 @@ class PFTDecoder( metaclass=subject ):
     assert isinstance( rslt, str );
     return rslt;
   quoted.setParseAction( _decode_quoted );
-
+  
 
   string = quoted | Word_( ALPHANUMS, ALPHANUMS );
+  identifier = Word_( ALPHAS, ALPHANUMS+"_"+"." );
 
   
   decimalnumber = Word_( NUMS, NUMS );
@@ -137,6 +145,51 @@ class PFTDecoder( metaclass=subject ):
     assert _variable_re.match( tok );
     return ( _GT_VARIABLE, Variable( sidvid = ( tok[0], int( tok[1:] ) ) ) );
   variable.setParseAction( _decode_variable );
+
+
+  features_list = Literal( "[" ) + \
+                    identifier + Literal("=") + string + \
+                    ZeroOrMore(
+                        Literal(",") + identifier + Literal("=") + string
+                      ) + \
+                  Literal( "]" );
+  
+  def _decode_features_list( str_, loc, toks ):
+    
+    i = 0;
+
+    assert len( toks ) > i;
+    assert toks[i] == "[";
+    i += 1;
+    
+    feats = {};
+    
+    assert len( toks ) > i;
+    while toks[i] != "]":
+      
+      assert isinstance( toks[i], str );
+      path = toks[i];
+      i+= 1;
+      
+      assert len( toks ) > i;
+      assert toks[i] == "=";
+      i+= 1;
+      
+      assert len( toks ) > i;
+      value = toks[i];
+      i += 1;
+      
+      feats[ path ] = value;
+      
+      assert len( toks ) > i;
+      if toks[i] == ",":
+        i += 1;
+
+      assert len( toks ) > i;
+    
+    return feats;
+  
+  features_list.setParseAction( _decode_features_list );
   
   
   def _pair( delim, type ):
@@ -174,11 +227,13 @@ class PFTDecoder( metaclass=subject ):
          lemmascf + \
          Optional( Literal( "_" ) + possense ) + \
          Optional( Literal( ":" ) + decimalnumber ) + \
+         Optional( features_list ) + \
          Literal( "]" );
   
   def _decode_word( str_, loc, toks ):
     
-    ( lemma, scf, pos, sense, wid ) = ( None, None, None, None, None );
+    ( lemma, scf, pos, sense, wid, feats ) = \
+      ( None, None, None, None, None, None );
     
     i = 0;
 
@@ -207,16 +262,20 @@ class PFTDecoder( metaclass=subject ):
         wid = toks[i];
         i += 1;
 
+    if toks[i] != "]":
+      assert isinstance( toks[i], dict );
+      feats = toks[i];
+      i += 1;
+      
     assert len( toks ) > i;
     assert toks[i] == "]";
     
     return ( _GT_WORD, Word( wid=wid, lemma=lemma, scf=scf,
-                             pos=pos, sense=sense ) );
+                             pos=pos, sense=sense, feats=feats ) );
           
   word.setParseAction( _decode_word );
   
   
-  identifier = Word_( ALPHAS+"_", ALPHANUMS+"_" );
   
   
   arguments_list = Literal( "(" ) + \

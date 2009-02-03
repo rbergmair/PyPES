@@ -69,15 +69,32 @@ class PFTEncoder( metaclass=subject ):
     return vid;
   
   
-  re_regstr = re.compile( "["+ALPHANUMS+"]+" );
+  re_string = re.compile( "["+ALPHANUMS+"]+" );
   
   @classmethod
-  def _fmt_str( cls, stri, sensitive=None ):
+  def _fmt_string( cls, stri, sensitive=None ):
     
-    if cls.re_regstr.match( stri ):
+    if not isinstance( stri, str ):
+      stri = str( stri );
+    
+    if cls.re_string.match( stri ):
       return stri;
     else:
       return repr( stri );
+  
+  
+  re_identifier = re.compile( "["+ALPHAS+"]["+ALPHANUMS+"_\.]+" );
+  
+  @classmethod
+  def _fmt_identifier( cls, stri, sensitive=None ):
+
+    if not isinstance( stri, str ):
+      stri = str( stri );
+    
+    if cls.re_identifier.match( stri ):
+      return stri;
+    else:
+      assert False;
 
 
   def _encode_handle( self, inst ):
@@ -113,17 +130,27 @@ class PFTEncoder( metaclass=subject ):
     
     rslt = "[";
     if inst.lemma is not None:
-      rslt += self._fmt_str( inst.lemma );
+      rslt += self._fmt_string( inst.lemma );
     if inst.scf is not None:
-      rslt += "+" + self._fmt_str( inst.scf );
+      rslt += "+" + self._fmt_string( inst.scf );
     if inst.pos is not None or inst.sense is not None:
       rslt += "_";
       if inst.pos is not None:
-        rslt += self._fmt_str( inst.pos );
+        rslt += self._fmt_string( inst.pos );
       if inst.sense is not None:
-        rslt += "_" + self._fmt_str( inst.sense );
+        rslt += "_" + self._fmt_string( inst.sense );
     if inst.wid is not None:
       rslt += ":"+str(inst.wid);
+    
+    if inst.feats is not None:
+      if inst.feats:
+        rslt += "["
+        for feat in inst.feats:
+          rslt += " " + self._fmt_identifier( feat ) + "=" + \
+                  self._fmt_string( inst.feats[feat] ) + ",";
+        rslt = rslt[ :-1 ];
+        rslt += " ]";
+    
     rslt += "]";
     
     return rslt;
@@ -147,10 +174,10 @@ class PFTEncoder( metaclass=subject ):
         if arg.aid is None:
           while argseq(aid) in assigned_aids:
             aid += 1;
-          rslt += argseq(aid);
+          rslt += self._fmt_identifier( argseq(aid) );
           aid += 1;
         else:
-          rslt += str( arg.aid );
+          rslt += self._fmt_identifier( arg.aid );
         rslt += "=" + self._encode( var );
         rslt += ", ";
       rslt = rslt[ :-2 ];

@@ -69,6 +69,7 @@ class TestPFTEncoder( TestCase, metaclass=object_ ):
     check( "[:1]", TestWord.init_word_5 );
     check( "[lemma+scf_p_1:1]", TestWord.init_word_8 );
     check( "[]", TestWord.init_word_9 );
+    check( "[lemma+scf:1[ pers=3, num=sg ]]", TestWord.init_word_10 );
 
 
   def test_predication( self ):
@@ -79,7 +80,6 @@ class TestPFTEncoder( TestCase, metaclass=object_ ):
     check( "[cat:5]( arg1=x1 )", TestPredication.init_pred_1 );
     check( "EQUALS( ARG0=x1, ARG1=x2 )", TestPredication.init_pred_2 );
     check( "[cat]( arg0=d1 )", TestPredication.init_pred_3 );
-    
 
 
   def test_quantification( self ):

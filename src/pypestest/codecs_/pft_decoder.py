@@ -72,6 +72,7 @@ class TestPFTDecoder( TestCase, metaclass=object_ ):
     check( "[:1]", TestWord.check_word_5 );
     check( "[lemma+scf_p_1:1]", TestWord.check_word_8 );
     check( "[]", TestWord.check_word_9 );
+    check( "[lemma:1[ scf=scf, pers=3, num=sg ]]", TestWord.check_word_10 );
 
 
   def test_predication( self ):
