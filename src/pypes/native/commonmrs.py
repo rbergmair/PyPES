@@ -127,7 +127,20 @@ class MRSInterpreter( metaclass=subject ):
     assert spred[-4:] == "_rel";
     spred = spred[:-4];
     
-    return self._sublng.Word( lemma = spred );
+    toks = spred.split( "_" );
+    lemmatoks = toks[0].split( "+" );
+    pos = None;
+    sense = None;
+    if len(toks) > 1 and toks[1] != "":
+      pos = toks[1];
+    if len(toks) > 2 and toks[2] != "":
+      sense = toks[2];
+    
+    return self._sublng.Word(
+               lemma = lemmatoks,
+               pos = pos,
+               sense = sense
+             );
   
   
   def _make_identifier( self, stri ):
