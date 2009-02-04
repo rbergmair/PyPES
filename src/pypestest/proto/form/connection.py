@@ -61,7 +61,7 @@ class TestConnection( TestCase, metaclass=object_ ):
     
     inst_ = Connection(
                 connective = Connective(
-                                 referent = Word( lemma="and" )
+                                 referent = Word( lemma = ["and"] )
                                ),
                 lscope = Handle(),
                 rscope = ProtoForm()
@@ -73,7 +73,7 @@ class TestConnection( TestCase, metaclass=object_ ):
     
     self.assert_( isinstance( inst.connective, Connective ), msg );
     self.assert_( isinstance( inst.connective.referent, Word ), msg );
-    self.assertEquals( inst.connective.referent.lemma, "and", msg );
+    self.assertEquals( inst.connective.referent.lemma, ["and"], msg );
     self.assert_( isinstance( inst.lscope, Handle ), msg );
     self.assert_( isinstance( inst.rscope, ProtoForm ), msg );
   

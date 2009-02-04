@@ -133,9 +133,9 @@ class PFTEncoder( metaclass=subject ):
     
     rslt = "[";
     if inst.lemma is not None:
-      rslt += self._fmt_string( inst.lemma );
-    if inst.scf is not None:
-      rslt += "+" + self._fmt_string( inst.scf );
+      for lemtok in inst.lemma:
+        rslt += self._fmt_string( lemtok ) + "+";
+        rslt = rslt[ :-1 ];
     if inst.pos is not None or inst.sense is not None:
       rslt += "_";
       if inst.pos is not None:

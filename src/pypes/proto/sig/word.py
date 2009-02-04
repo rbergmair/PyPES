@@ -21,13 +21,12 @@ class Word( ProtoBase, metaclass=kls ):
     
     self.wid = None;
     self.lemma = None;
-    self.scf = None;
     self.pos = None;
     self.sense = None;
     self.feats = None;
 
   
-  def __init__( self, sig, wid=None, lemma=None, scf=None, pos=None,
+  def __init__( self, sig, wid=None, lemma=None, pos=None,
                       sense=None, feats=None ):
     
     if wid is not None:
@@ -35,11 +34,7 @@ class Word( ProtoBase, metaclass=kls ):
     
     if lemma is not None:
       self.lemma = lemma;
-      assert self.lemma is None or isinstance( self.lemma, str );
-    
-    if scf is not None:
-      self.scf = scf;
-      assert self.scf is None or isinstance( self.scf, str );
+      assert self.lemma is None or isinstance( self.lemma, list );
     
     if pos is not None:
       self.pos = pos;
@@ -52,9 +47,7 @@ class Word( ProtoBase, metaclass=kls ):
     if feats is not None:
       self.feats = {};
       for (key,val) in feats.items():
-        if key == "scf":
-          self.scf = val;
-        elif key == "pos":
+        if key == "pos":
           self.pos = val;
         elif key == "sense":
           self.sense = val;
@@ -73,10 +66,6 @@ class Word( ProtoBase, metaclass=kls ):
       
     if self.lemma is not None:
       if self.lemma != obj.lemma:
-        return False;
-      
-    if self.scf is not None:
-      if self.scf != obj.scf:
         return False;
       
     if self.pos is not None:

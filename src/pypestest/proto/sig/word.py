@@ -31,15 +31,14 @@ class TestWord( TestCase, metaclass=object_ ):
   
   def init_word_1( self ):
     
-    inst_ = Word( lemma="lemma" );
+    inst_ = Word( lemma = ["lemma"] );
     return inst_;
   
   def check_word_1( self, inst, msg=None ):
     
     self.assert_( isinstance( inst, Word ), msg );
     self.assertEquals( inst.wid, None, msg );
-    self.assertEquals( inst.lemma, "lemma", msg );
-    self.assertEquals( inst.scf, None, msg );
+    self.assertEquals( inst.lemma, ["lemma"], msg );
     self.assertEquals( inst.pos, None, msg );
     self.assertEquals( inst.sense, None, msg );
   
@@ -50,15 +49,14 @@ class TestWord( TestCase, metaclass=object_ ):
 
   def init_word_2( self ):
     
-    inst_ = Word( scf="scf" );
+    inst_ = Word( lemma = ["lemma1","lemma2"] );
     return inst_;
   
   def check_word_2( self, inst, msg=None ):
     
     self.assert_( isinstance( inst, Word ), msg );
     self.assertEquals( inst.wid, None, msg );
-    self.assertEquals( inst.lemma, None, msg );
-    self.assertEquals( inst.scf, "scf", msg );
+    self.assertEquals( inst.lemma, ["lemma1","lemma2"], msg );
     self.assertEquals( inst.pos, None, msg );
     self.assertEquals( inst.sense, None, msg );
   
@@ -77,7 +75,6 @@ class TestWord( TestCase, metaclass=object_ ):
     self.assert_( isinstance( inst, Word ), msg );
     self.assertEquals( inst.wid, None, msg );
     self.assertEquals( inst.lemma, None, msg );
-    self.assertEquals( inst.scf, None, msg );
     self.assertEquals( inst.pos, "p", msg );
     self.assertEquals( inst.sense, None, msg );
   
@@ -96,7 +93,6 @@ class TestWord( TestCase, metaclass=object_ ):
     self.assert_( isinstance( inst, Word ), msg );
     self.assertEquals( inst.wid, None, msg );
     self.assertEquals( inst.lemma, None, msg );
-    self.assertEquals( inst.scf, None, msg );
     self.assertEquals( inst.pos, None, msg );
     self.assertEquals( inst.sense, "1", msg );
   
@@ -115,7 +111,6 @@ class TestWord( TestCase, metaclass=object_ ):
     self.assert_( isinstance( inst, Word ), msg );
     self.assertEquals( inst.wid, 1, msg );
     self.assertEquals( inst.lemma, None, msg );
-    self.assertEquals( inst.scf, None, msg );
     self.assertEquals( inst.pos, None, msg );
     self.assertEquals( inst.sense, None, msg );
   
@@ -128,8 +123,7 @@ class TestWord( TestCase, metaclass=object_ ):
     
     inst_ = Word(
                 wid=1,
-                lemma="lemma",
-                scf="scf",
+                lemma=["lemma"],
                 pos="p",
                 sense="1"
               );
@@ -139,8 +133,7 @@ class TestWord( TestCase, metaclass=object_ ):
     
     self.assert_( isinstance( inst, Word ), msg );
     self.assertEquals( inst.wid, 1, msg );
-    self.assertEquals( inst.lemma, "lemma", msg );
-    self.assertEquals( inst.scf, "scf", msg );
+    self.assertEquals( inst.lemma, ["lemma"], msg );
     self.assertEquals( inst.pos, "p", msg );
     self.assertEquals( inst.sense, "1", msg );
   
@@ -159,7 +152,6 @@ class TestWord( TestCase, metaclass=object_ ):
     self.assert_( isinstance( inst, Word ), msg );
     self.assertEquals( inst.wid, None, msg );
     self.assertEquals( inst.lemma, None, msg );
-    self.assertEquals( inst.scf, None, msg );
     self.assertEquals( inst.pos, None, msg );
     self.assertEquals( inst.sense, None, msg );
   
@@ -170,19 +162,17 @@ class TestWord( TestCase, metaclass=object_ ):
 
   def init_word_10( self ):
     
-    inst_ = Word( wid=1, lemma="lemma", feats={
-                                            "scf": "scf",
-                                            "pers": "3",
-                                            "num": "sg"
-                                          } );
+    inst_ = Word( wid=1, lemma=["lemma"], feats={
+                                              "pers": "3",
+                                              "num": "sg"
+                                            } );
     return inst_;
   
   def check_word_10( self, inst, msg=None ):
     
     self.assert_( isinstance( inst, Word ), msg );
     self.assertEquals( inst.wid, 1, msg );
-    self.assertEquals( inst.lemma, "lemma", msg );
-    self.assertEquals( inst.scf, "scf", msg );
+    self.assertEquals( inst.lemma, ["lemma"], msg );
     self.assert_( "pers" in inst.feats, msg );
     self.assert_( "num" in inst.feats, msg );
     self.assertEquals( len( inst.feats ), 2, msg );

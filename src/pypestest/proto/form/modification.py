@@ -33,7 +33,7 @@ class TestModification( TestCase, metaclass=object_ ):
 
     inst_ = Modification(
                 modality = Modality(
-                               referent = Word( wid=5, lemma="told" )
+                               referent = Word( wid=5, lemma = ["told"] )
                              ),
                 args = { Argument( aid="arg1" ):
                            Variable( sidvid=("x",1) ),
@@ -50,7 +50,7 @@ class TestModification( TestCase, metaclass=object_ ):
     self.assert_( isinstance( inst.modality, Modality ), msg );
     self.assert_( isinstance( inst.modality.referent, Word ), msg );
     self.assertEquals( inst.modality.referent.wid, 5, msg );
-    self.assertEquals( inst.modality.referent.lemma, "told", msg );
+    self.assertEquals( inst.modality.referent.lemma, ["told"], msg );
     
     labels = set();
     vars = set();

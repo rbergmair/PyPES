@@ -31,14 +31,14 @@ class TestQuantifier( TestCase, metaclass=object_ ):
   
   def init_quant_1( self ):
     
-    inst_ = Quantifier( referent = Word( wid=0, lemma="all" ) );
+    inst_ = Quantifier( referent = Word( wid=0, lemma = ["all"] ) );
     return inst_;
 
   def check_quant_1( self, inst, msg=None ):
     
     self.assert_( isinstance( inst.referent, Word ), msg );
     self.assertEquals( inst.referent.wid, 0, msg );
-    self.assertEquals( inst.referent.lemma, "all", msg );
+    self.assertEquals( inst.referent.lemma, ["all"], msg );
 
   def test_1( self ):
     

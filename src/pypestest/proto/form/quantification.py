@@ -66,7 +66,7 @@ class TestQuantification( TestCase, metaclass=object_ ):
         
     inst_ = Quantification(
                 quantifier = Quantifier(
-                                 referent = Word( lemma="every" )
+                                 referent = Word( lemma = ["every"] )
                                ),
                 var = Variable( sidvid=("x",1) ),
                 rstr = Freezer( content=Handle() ),
@@ -79,7 +79,7 @@ class TestQuantification( TestCase, metaclass=object_ ):
     
     self.assert_( isinstance( inst.quantifier, Quantifier ), msg );
     self.assert_( isinstance( inst.quantifier.referent, Word ), msg );
-    self.assertEquals( inst.quantifier.referent.lemma, "every", msg );
+    self.assertEquals( inst.quantifier.referent.lemma, ["every"], msg );
     self.assert_( isinstance( inst.var, Variable ), msg );
     self.assertEquals( inst.var.vid, 1, msg );
     self.assert_( isinstance( inst.var.sort, Sort ), msg );

@@ -63,13 +63,13 @@ class TestPFTEncoder( TestCase, metaclass=object_ ):
               self.check( stri, initf, TestWord.logify );
     
     check( "[lemma]", TestWord.init_word_1 );
-    check( "[+scf]", TestWord.init_word_2 );
+    check( "[lemma1+lemma2]", TestWord.init_word_2 );
     check( "[_p]", TestWord.init_word_3 );
     check( "[__1]", TestWord.init_word_4 );
     check( "[:1]", TestWord.init_word_5 );
-    check( "[lemma+scf_p_1:1]", TestWord.init_word_8 );
+    check( "[lemma_p_1:1]", TestWord.init_word_8 );
     check( "[]", TestWord.init_word_9 );
-    check( "[lemma+scf:1[ pers=3, num=sg ]]", TestWord.init_word_10 );
+    check( "[lemma:1[ pers=3, num=sg ]]", TestWord.init_word_10 );
 
 
   def test_predication( self ):

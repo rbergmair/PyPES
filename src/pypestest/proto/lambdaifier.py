@@ -206,7 +206,6 @@ class TestLambdaifier( TestCase, metaclass=object_ ):
     dotest = lambda initf: self.dotest( TestWord.logify, initf );
     
     dotest( TestWord.init_word_1 );
-    dotest( TestWord.init_word_2 );
     dotest( TestWord.init_word_3 );
     dotest( TestWord.init_word_4 );
     dotest( TestWord.init_word_5 );

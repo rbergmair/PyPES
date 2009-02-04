@@ -48,11 +48,11 @@ class TestProtoForm( TestCase, metaclass=object_ ):
     inst_ = ProtoForm(
                 subforms = { Handle( hid=1 ):
                                Quantification(
-                                   quantifier = Quantifier( referent = Word( wid=0, lemma="Every" ) ),
+                                   quantifier = Quantifier( referent = Word( wid=0, lemma = ["Every"] ) ),
                                    var = Variable( sidvid=("x",1) ),
                                    rstr = ProtoForm(
                                               subforms = { Handle():
-                                                             Predication( predicate = Predicate( referent = Word( wid=6, lemma="man" ) ),
+                                                             Predication( predicate = Predicate( referent = Word( wid=6, lemma = ["man"] ) ),
                                                                           args = { Argument( aid="arg0" ): Variable( sidvid=("x",1) ) } ),
                                                          }
                                             ),
@@ -60,11 +60,11 @@ class TestProtoForm( TestCase, metaclass=object_ ):
                                  ),
                              Handle( hid=3 ):
                                Quantification(
-                                   quantifier = Quantifier( referent = Word( wid=16, lemma="a" ) ),
+                                   quantifier = Quantifier( referent = Word( wid=16, lemma = ["a"] ) ),
                                    var = Variable( sidvid=("x",2) ),
                                    rstr = ProtoForm(
                                               subforms = { Handle():
-                                                             Predication( predicate = Predicate( referent = Word( wid=18, lemma="woman" ) ),
+                                                             Predication( predicate = Predicate( referent = Word( wid=18, lemma = ["woman"] ) ),
                                                                           args = { Argument( aid="arg0" ): Variable( sidvid=("x",2) ) } ),
                                                          }
                                             ),
@@ -72,7 +72,7 @@ class TestProtoForm( TestCase, metaclass=object_ ):
                                  ),
                              Handle( hid=5 ):
                                Predication(
-                                   predicate = Predicate( referent = Word( wid=10, lemma="loves" ) ),
+                                   predicate = Predicate( referent = Word( wid=10, lemma = ["loves"] ) ),
                                    args = { Argument( aid="arg1" ): Variable( sidvid=("x",1) ),
                                             Argument( aid="arg2" ): Variable( sidvid=("x",2) )
                                           }
@@ -112,7 +112,7 @@ class TestProtoForm( TestCase, metaclass=object_ ):
     self.assert_( isinstance( sf1.quantifier, Quantifier ), msg );
     self.assert_( isinstance( sf1.quantifier.referent, Word ), msg );
     self.assertEquals( sf1.quantifier.referent.wid, 0, msg );
-    self.assertEquals( sf1.quantifier.referent.lemma, "Every", msg );
+    self.assertEquals( sf1.quantifier.referent.lemma, ["Every"], msg );
     
     x1 = sf1.var;
 
@@ -134,7 +134,7 @@ class TestProtoForm( TestCase, metaclass=object_ ):
     self.assert_( isinstance( sf_.predicate, Predicate ), msg );
     self.assert_( isinstance( sf_.predicate.referent, Word ), msg );
     self.assertEquals( sf_.predicate.referent.wid, 6, msg );
-    self.assertEquals( sf_.predicate.referent.lemma, "man", msg );
+    self.assertEquals( sf_.predicate.referent.lemma, ["man"], msg );
     
     sf_args = {};
     for arg in sf_.args:
@@ -152,7 +152,7 @@ class TestProtoForm( TestCase, metaclass=object_ ):
     self.assert_( isinstance( sf3.quantifier, Quantifier ), msg );
     self.assert_( isinstance( sf3.quantifier.referent, Word ), msg );
     self.assertEquals( sf3.quantifier.referent.wid, 16, msg );
-    self.assertEquals( sf3.quantifier.referent.lemma, "a", msg );
+    self.assertEquals( sf3.quantifier.referent.lemma, ["a"], msg );
     
     x2 = sf3.var;
 
@@ -174,7 +174,7 @@ class TestProtoForm( TestCase, metaclass=object_ ):
     self.assert_( isinstance( sf__.predicate, Predicate ), msg );
     self.assert_( isinstance( sf__.predicate.referent, Word ), msg );
     self.assertEquals( sf__.predicate.referent.wid, 18, msg );
-    self.assertEquals( sf__.predicate.referent.lemma, "woman", msg );
+    self.assertEquals( sf__.predicate.referent.lemma, ["woman"], msg );
 
     sf__args = {};
     for arg in sf__.args:
@@ -192,7 +192,7 @@ class TestProtoForm( TestCase, metaclass=object_ ):
     self.assert_( isinstance( sf5.predicate, Predicate ), msg );
     self.assert_( isinstance( sf5.predicate.referent, Word ), msg );
     self.assertEquals( sf5.predicate.referent.wid, 10, msg );
-    self.assertEquals( sf5.predicate.referent.lemma, "loves", msg );
+    self.assertEquals( sf5.predicate.referent.lemma, ["loves"], msg );
     
     sf5args = {};
     for arg in sf5.args:
@@ -227,13 +227,13 @@ class TestProtoForm( TestCase, metaclass=object_ ):
     inst_ = ProtoForm(
                 subforms = { Handle():
                                Quantification(
-                                   quantifier = Quantifier( referent = Word( wid=0, lemma="every" ) ),
+                                   quantifier = Quantifier( referent = Word( wid=0, lemma = ["every"] ) ),
                                    var = Variable( sidvid=("x",1) ),
                                    rstr = Handle( hid=1 ),
                                    body = ProtoForm(
                                               subforms = { Handle():
                                                              Predication(
-                                                                 predicate = Predicate( referent = Word( wid=32, lemma="lie" ) ),
+                                                                 predicate = Predicate( referent = Word( wid=32, lemma = ["lie"] ) ),
                                                                  args = { Argument( aid="arg1" ): Variable( sidvid=("x",1) ) }
                                                                )
                                                          }
@@ -249,12 +249,12 @@ class TestProtoForm( TestCase, metaclass=object_ ):
                                                     ),
                                                 Handle():
                                                   Predication(
-                                                      predicate = Predicate( referent = Word( wid=6, lemma="witness" ) ),
+                                                      predicate = Predicate( referent = Word( wid=6, lemma = ["witness"] ) ),
                                                       args = { Argument( aid="arg0" ): Variable( sidvid=("x",1) ) }
                                                     ),
                                                 Handle():
                                                   Modification(
-                                                      modality = Modality( referent = Word( wid=18, lemma="say" ) ),
+                                                      modality = Modality( referent = Word( wid=18, lemma = ["say"] ) ),
                                                       args = { Argument( aid="arg1" ): Variable( sidvid=("x",1) ) },
                                                       scope = Freezer( content = Handle( hid=3 ) )
                                                     )
@@ -262,12 +262,12 @@ class TestProtoForm( TestCase, metaclass=object_ ):
                                  ),
                              Handle( hid=4 ):
                                Quantification(
-                                   quantifier = Quantifier( referent = Word( wid=23, lemma="she" ) ),
+                                   quantifier = Quantifier( referent = Word( wid=23, lemma = ["she"] ) ),
                                    var = Variable( sidvid=("x",2) ),
                                    rstr = ProtoForm(
                                               subforms = { Handle():
                                                              Predication(
-                                                                 predicate = Predicate( referent = Word( wid=23, lemma="she" ) ),
+                                                                 predicate = Predicate( referent = Word( wid=23, lemma = ["she"] ) ),
                                                                  args = { Argument( aid="arg0" ): Variable( sidvid=("x",2) ) }
                                                                )
                                                          }
@@ -275,7 +275,7 @@ class TestProtoForm( TestCase, metaclass=object_ ):
                                    body = ProtoForm(
                                               subforms = { Handle():
                                                              Predication(
-                                                                 predicate = Predicate( referent = Word( wid=27, lemma="lie" ) ),
+                                                                 predicate = Predicate( referent = Word( wid=27, lemma = ["lie"] ) ),
                                                                  args = { Argument( aid="arg1" ): Variable( sidvid=("x",2) ) }
                                                                )
                                                          }

@@ -31,14 +31,14 @@ class TestModality( TestCase, metaclass=object_ ):
   
   def init_mod_1( self ):
     
-    inst_ = Modality( referent = Word( wid=5, lemma="not" ) );
+    inst_ = Modality( referent = Word( wid=5, lemma = ["not"] ) );
     return inst_;
 
   def check_mod_1( self, inst, msg=None ):
     
     self.assert_( isinstance( inst.referent, Word ), msg );
     self.assertEquals( inst.referent.wid, 5, msg );
-    self.assertEquals( inst.referent.lemma, "not", msg );
+    self.assertEquals( inst.referent.lemma, ["not"], msg );
 
   def test_1( self ):
     

@@ -394,7 +394,6 @@ class Lambdaifier( metaclass=subject ):
       
       return obj.__class__( wid = self._wid_by_word[obj],
                             lemma = obj.lemma,
-                            scf = obj.scf,
                             pos = obj.pos,
                             sense = obj.sense );
 
