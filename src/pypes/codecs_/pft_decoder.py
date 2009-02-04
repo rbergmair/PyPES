@@ -98,7 +98,7 @@ class PFTDecoder( metaclass=subject ):
   
 
   string = quoted | Word_( ALPHANUMS, ALPHANUMS );
-  identifier = Word_( ALPHAS, ALPHANUMS+"_"+"." );
+  identifier = Word_( ALPHAS, ALPHANUMS+"." );
 
   
   decimalnumber = Word_( NUMS, NUMS );

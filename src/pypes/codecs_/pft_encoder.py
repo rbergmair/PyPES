@@ -77,13 +77,14 @@ class PFTEncoder( metaclass=subject ):
     if not isinstance( stri, str ):
       stri = str( stri );
     
-    if cls.re_string.match( stri ):
+    r = cls.re_string.match( stri )
+    if r is not None and r.start() == 0 and r.end() == len( stri ):
       return stri;
     else:
       return repr( stri );
   
   
-  re_identifier = re.compile( "["+ALPHAS+"]["+ALPHANUMS+"_\.]+" );
+  re_identifier = re.compile( "["+ALPHAS+"]["+ALPHANUMS+"\.]*" );
   
   @classmethod
   def _fmt_identifier( cls, stri, sensitive=None ):
@@ -91,9 +92,11 @@ class PFTEncoder( metaclass=subject ):
     if not isinstance( stri, str ):
       stri = str( stri );
     
-    if cls.re_identifier.match( stri ):
+    r = cls.re_identifier.match( stri );
+    if r is not None and r.start() == 0 and r.end() == len( stri ):
       return stri;
     else:
+      print( stri );
       assert False;
 
 
@@ -266,10 +269,12 @@ class PFTEncoder( metaclass=subject ):
       for root in inst.subforms:
         subform = inst.subforms[ root ];
         if root.hid is not None:
-          rslt += self._encode( root ) + ": ";
+          rslt += self._encode( root ).rjust(3) + ": ";
+        else:
+          rslt += "     ";
         rslt += self._encode( subform ) + "; ";
       for constraint in inst.constraints:
-        rslt += self._encode( constraint ) + "; ";
+        rslt += "     " + self._encode( constraint ) + "; ";
       rslt = rslt[ :-2 ];
       rslt += " ";
     
@@ -280,7 +285,28 @@ class PFTEncoder( metaclass=subject ):
 
   def _encode( self, inst ):
     
-    return self._item_encoders[ inst.__class__ ]( self, inst );
+    if isinstance( inst, Handle ):
+      return self._encode_handle( inst );
+    elif isinstance( inst, Freezer ):
+      return self._encode_freezer( inst );
+    elif isinstance( inst, Variable ):
+      return self._encode_variable( inst );
+    elif isinstance( inst, Word ):
+      return self._encode_word( inst );
+    elif isinstance( inst, Predication ):
+      return self._encode_predication( inst );
+    elif isinstance( inst, Quantification ):
+      return self._encode_quantification( inst );
+    elif isinstance( inst, Modification ):
+      return self._encode_modification( inst );
+    elif isinstance( inst, Connection ):
+      return self._encode_connection( inst );
+    elif isinstance( inst, Constraint ):
+      return self._encode_constraint( inst );
+    elif isinstance( inst, ProtoForm ):
+      return self._encode_protoform( inst );
+    else:
+      assert False;
   
   
   def _indent( self, stri ):
@@ -312,20 +338,6 @@ class PFTEncoder( metaclass=subject ):
   def encode( self ):
     
     return self._indent( self._encode( self._obj_ ) );
-
-
-PFTEncoder._item_encoders = {
-    Handle : PFTEncoder._encode_handle,
-    Freezer : PFTEncoder._encode_freezer,
-    Variable : PFTEncoder._encode_variable,
-    Word : PFTEncoder._encode_word,
-    Predication : PFTEncoder._encode_predication,
-    Quantification : PFTEncoder._encode_quantification,
-    Modification : PFTEncoder._encode_modification,
-    Connection : PFTEncoder._encode_connection,
-    Constraint : PFTEncoder._encode_constraint,
-    ProtoForm : PFTEncoder._encode_protoform
-  };
 
 
 

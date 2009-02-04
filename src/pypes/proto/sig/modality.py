@@ -28,7 +28,7 @@ class Modality( ProtoBase, metaclass=kls ):
       self.referent = referent( sig=sig );
       
       if isinstance( self.referent, Operator ):
-        assert self.referent.otype in Operator.OP_Ms;
+        assert self.referent.otype in self.referent.OP_Ms;
       else:
         assert isinstance( self.referent, Word );
 

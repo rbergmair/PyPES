@@ -1,15 +1,15 @@
 # -*-  coding: ascii -*-  # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 __package__ = "native";
-__all__ = [ "erg" ];
+__all__ = [ "Operator", "Word" ];
 
-from proto import Operator;
+import pypes.proto;
 
 
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-class ERGOperator( Operator ):
+class Operator( pypes.proto.Operator ):
 
 
   OP_Q_UDEF_Q = "UDEF_Q";
@@ -57,11 +57,21 @@ class ERGOperator( Operator ):
   
   
   OP_Cs = {
-      Operator.OP_C_WEACON: Operator.OP_C_WEACON
+      pypes.proto.Operator.OP_C_WEACON: pypes.proto.Operator.OP_C_WEACON
     };
-    
 
-  OP_Ms = {};
+
+  OP_M_CAN_V_MODAL = "CAN_V_MODAL";
+  OP_M_GOING_TO_V_MODAL = "GOING+TO_V_MODAL";
+  OP_M_NEG = "NEG";
+  OP_M_NOMINALIZATION = "NOMINALIZATION";
+
+  OP_Ms = {
+      OP_M_CAN_V_MODAL: OP_M_CAN_V_MODAL,
+      OP_M_GOING_TO_V_MODAL: OP_M_GOING_TO_V_MODAL,
+      OP_M_NEG: OP_M_NEG,
+      OP_M_NOMINALIZATION: OP_M_NOMINALIZATION
+    };
 
 
   OP_P_PRON = "PRON";
@@ -81,8 +91,6 @@ class ERGOperator( Operator ):
   OP_P_ON_P_TEMP = "ON_P_TEMP";
   OP_P_FROM_P_TO = "FROM_P_TO";
 
-  OP_P_CAN_V_MODAL = "CAN_V_MODAL";
-  OP_P_GOING_TO_V_MODAL = "GOING+TO_V_MODAL";
   OP_P_BE_V_THERE = "BE_V_THERE";
 
   OP_P_TIME_N = "TIME_N";
@@ -112,7 +120,6 @@ class ERGOperator( Operator ):
   OP_P_LOC_NONSP = "LOC_NONSP";
   OP_P_MEASURE = "MEASURE";
   OP_P_NE_X = "NE_X";
-  OP_P_NOMINALIZATION = "NOMINALIZATION";
   OP_P_PARG_D = "PARG_D";
   OP_P_PART_OF = "PART_OF";
   OP_P_PLUS = "PLUS";
@@ -141,7 +148,6 @@ class ERGOperator( Operator ):
   OP_P_ARGUMENT = "ARGUMENT";
 
   OP_P_SUBORD = "SUBORD"; #?
-  OP_P_NEG = "NEG"; #?
   OP_P_IMPLICIT_CONJ = "IMPLICIT_CONJ"; #?
   
   OP_Ps = {
@@ -158,8 +164,6 @@ class ERGOperator( Operator ):
       OP_P_OF_P: OP_P_OF_P,
       OP_P_ON_P_TEMP: OP_P_ON_P_TEMP,
       OP_P_FROM_P_TO: OP_P_FROM_P_TO,
-      OP_P_CAN_V_MODAL: OP_P_CAN_V_MODAL,
-      OP_P_GOING_TO_V_MODAL: OP_P_GOING_TO_V_MODAL,
       OP_P_BE_V_THERE: OP_P_BE_V_THERE,
       OP_P_TIME_N: OP_P_TIME_N,
       OP_P_PLACE_N: OP_P_PLACE_N,
@@ -180,7 +184,6 @@ class ERGOperator( Operator ):
       OP_P_LOC_NONSP: OP_P_LOC_NONSP,
       OP_P_MEASURE: OP_P_MEASURE,
       OP_P_NE_X: OP_P_NE_X,
-      OP_P_NOMINALIZATION: OP_P_NOMINALIZATION,
       OP_P_PARG_D: OP_P_PARG_D,
       OP_P_PART_OF: OP_P_PART_OF,
       OP_P_PLUS: OP_P_PLUS,
@@ -199,8 +202,19 @@ class ERGOperator( Operator ):
       OP_P_NAMED: OP_P_NAMED,
       OP_P_NAMED_UNK: OP_P_NAMED_UNK,
       OP_P_NAMED_N: OP_P_NAMED_N,
-      OP_P_ARGUMENT: OP_P_ARGUMENT
+      OP_P_ARGUMENT: OP_P_ARGUMENT,
+      
+      OP_P_SUBORD: OP_P_SUBORD,
+      OP_P_IMPLICIT_CONJ: OP_P_IMPLICIT_CONJ
     };
+
+
+
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+
+class Word( pypes.proto.Word ):
+  
+  pass;
 
 
 

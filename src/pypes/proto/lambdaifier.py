@@ -313,47 +313,47 @@ class Lambdaifier( metaclass=subject ):
       for cons in obj.constraints:
         constraints.add( self._lambdaify(cons) );
       
-      return ProtoForm( subforms=subforms, constraints=constraints );
+      return obj.__class__( subforms=subforms, constraints=constraints );
     
     elif isinstance( obj, Handle ):
       
-      return Handle( hid = self._hid_by_handle[obj] );
+      return obj.__class__( hid = self._hid_by_handle[obj] );
     
     elif isinstance( obj, Constraint ):
       
-      return Constraint( harg = self._lambdaify(obj.harg),
-                         larg = self._lambdaify(obj.larg) );
+      return obj.__class__( harg = self._lambdaify(obj.harg),
+                            larg = self._lambdaify(obj.larg) );
 
     elif isinstance( obj, Variable ):
       
       ( sort, vid ) = self._sortvid_by_variable[ obj ];
       sid = self._sid_by_sort[ sort ];
-      return Variable( sidvid = (sid,vid) );
+      return obj.__class__( sidvid = (sid,vid) );
 
     elif isinstance( obj, Quantification ):
       
-      return Quantification( quantifier = self._lambdaify(obj.quantifier),
-                             var = self._lambdaify(obj.var),
-                             rstr = self._lambdaify(obj.rstr),
-                             body = self._lambdaify(obj.body) );
+      return obj.__class__( quantifier = self._lambdaify(obj.quantifier),
+                            var = self._lambdaify(obj.var),
+                            rstr = self._lambdaify(obj.rstr),
+                            body = self._lambdaify(obj.body) );
     
     elif isinstance( obj, Quantifier ):
       
-      return Quantifier( referent = self._lambdaify(obj.referent) );
+      return obj.__class__( referent = self._lambdaify(obj.referent) );
     
     elif isinstance( obj, Connection ):
       
-      return Connection( connective = self._lambdaify(obj.connective),
-                         lscope = self._lambdaify(obj.lscope),
-                         rscope = self._lambdaify(obj.rscope) );
+      return obj.__class__( connective = self._lambdaify(obj.connective),
+                            lscope = self._lambdaify(obj.lscope),
+                            rscope = self._lambdaify(obj.rscope) );
     
     elif isinstance( obj, Connective ):
       
-      return Connective( referent = self._lambdaify(obj.referent) );
+      return obj.__class__( referent = self._lambdaify(obj.referent) );
     
     elif isinstance( obj, Argument ):
       
-      return Argument( aid=obj.aid );
+      return obj.__class__( aid=obj.aid );
     
     elif isinstance( obj, Predication ):
       
@@ -361,12 +361,12 @@ class Lambdaifier( metaclass=subject ):
       for arg in obj.args:
         args[ self._lambdaify(arg) ] = self._lambdaify( obj.args[arg] );
       
-      return Predication( predicate = self._lambdaify(obj.predicate),
-                          args = args );
+      return obj.__class__( predicate = self._lambdaify(obj.predicate),
+                            args = args );
     
     elif isinstance( obj, Predicate ):
       
-      return Predicate( referent = self._lambdaify(obj.referent) );
+      return obj.__class__( referent = self._lambdaify(obj.referent) );
     
     elif isinstance( obj, Modification ):
       
@@ -374,29 +374,29 @@ class Lambdaifier( metaclass=subject ):
       for arg in obj.args:
         args[ self._lambdaify(arg) ] = self._lambdaify( obj.args[arg] );
       
-      return Modification( modality = self._lambdaify(obj.modality),
-                           args = args,
-                           scope = self._lambdaify(obj.scope) );
+      return obj.__class__( modality = self._lambdaify(obj.modality),
+                            args = args,
+                            scope = self._lambdaify(obj.scope) );
     
     elif isinstance( obj, Modality ):
       
-      return Modality( referent = self._lambdaify(obj.referent) );
+      return obj.__class__( referent = self._lambdaify(obj.referent) );
     
     elif isinstance( obj, Freezer ):
       
-      return Freezer( content = self._lambdaify(obj.content) );
+      return obj.__class__( content = self._lambdaify(obj.content) );
     
     elif isinstance( obj, Operator ):
       
-      return Operator( otype=obj.otype );
+      return obj.__class__( otype=obj.otype );
     
     elif isinstance( obj, Word ):
       
-      return Word( wid = self._wid_by_word[obj],
-                   lemma = obj.lemma,
-                   scf = obj.scf,
-                   pos = obj.pos,
-                   sense = obj.sense );
+      return obj.__class__( wid = self._wid_by_word[obj],
+                            lemma = obj.lemma,
+                            scf = obj.scf,
+                            pos = obj.pos,
+                            sense = obj.sense );
 
     print( obj );
     assert False;

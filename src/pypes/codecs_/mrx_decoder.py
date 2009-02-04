@@ -5,9 +5,10 @@ __all__ = [ "MRXDecoder", "mrx_decode" ];
 
 from io import StringIO;
 
-from pypes.utils.mc import subject, object_;
+from pypes.utils.mc import subject;
 from pypes.utils.xml_.xml_handler import *;
-from pypes.proto import *;
+
+from pypes.native.commonmrs import *;
 
 
 
@@ -83,45 +84,6 @@ _MRS_DTD = """<!ELEMENT mrs-list (mrs)*>
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-def ep_to_subform( ep ):
-  
-  return Predication(
-             predicate = Predicate(
-                             referent = Word(
-                                            lemma = ( ep.spred or ep.pred )
-                                          )
-                           )
-           );
-
-
-# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
-
-def cons_to_constraint( cons ):
-  
-  return Constraint(
-             harg = Handle( hid=cons.hi.vid ),
-             larg = Handle( hid=cons.lo.vid )
-           );
-
-
-# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
-
-def mrs_to_pf( mrs ):
-  
-  subforms = {};
-  constraints = set();
-  
-  for ep in mrs.eps:
-    subforms[ Handle( hid=ep.lid ) ] = ep_to_subform( ep );
-  
-  for cons in mrs.cons:
-    constraints.add( cons_to_constraint( cons ) );
-  
-  return ProtoForm( subforms=subforms, constraints=constraints );
-
-
-# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
-
 class PathHandler( XMLPCharElementHandler, metaclass=subject ):
 
   XMLELEM = "path";
@@ -129,6 +91,7 @@ class PathHandler( XMLPCharElementHandler, metaclass=subject ):
   def endElement( self, name ):
     
     self._obj_.path = self._text;
+
 
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
@@ -142,6 +105,7 @@ class ValueHandler( XMLPCharElementHandler, metaclass=subject ):
     self._obj_.value = self._text;
 
 
+
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 class ExtrapairHandler( XMLElementHandler, metaclass=subject ):
@@ -153,20 +117,6 @@ class ExtrapairHandler( XMLElementHandler, metaclass=subject ):
     self.path = None;
     self.value = None;
 
-
-# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
-
-class MRSVariable( metaclass=object_ ):
-  
-  def __init__( self ):
-    
-    self.sid = None;
-    self.vid = None;
-    self.feats = {};
-  
-  def __repr__( self ):
-    
-    return str(self.sid) + str(self.vid) + str(self.feats);
 
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
@@ -191,18 +141,6 @@ class VariableHandler( XMLElementHandler, metaclass=subject ):
       self._obj_.feats[ obj.path ] = obj.value;
 
 
-# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
-
-class MRSConstant( metaclass=object_ ):
-  
-  def __init__( self ):
-    
-    self.constant = None;
-  
-  def __repr__( self ):
-    
-    return self.constant;
-
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
@@ -215,6 +153,7 @@ class ConstantHandler( XMLPCharElementHandler, metaclass=subject ):
     self._obj_.constant = self._text;
 
 
+
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 class RargnameHandler( XMLPCharElementHandler, metaclass=subject ):
@@ -224,6 +163,7 @@ class RargnameHandler( XMLPCharElementHandler, metaclass=subject ):
   def endElement( self, name ):
     
     self._obj_.rargname = self._text;
+
 
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
@@ -250,6 +190,7 @@ class FVPairHandler( XMLElementHandler, metaclass=subject ):
     self._obj_.args[ self.rargname ] = self.var;
 
 
+
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 class LabelHandler( XMLElementHandler, metaclass=subject ):
@@ -266,6 +207,7 @@ class LabelHandler( XMLElementHandler, metaclass=subject ):
         self._obj_.lid = attrs[ "vid" ];
 
 
+
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 class SPredHandler( XMLPCharElementHandler, metaclass=subject ):
@@ -275,6 +217,7 @@ class SPredHandler( XMLPCharElementHandler, metaclass=subject ):
   def endElement( self, name ):
     
     self._obj_.spred = self._text;
+
 
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
@@ -287,29 +230,6 @@ class PredHandler( XMLPCharElementHandler, metaclass=subject ):
     
     self._obj_.pred = self._text;
 
-
-# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
-
-class MRSElementaryPredication( metaclass=object_ ):
-
-  def __init__( self ):
-    
-    self.lid = None;
-    self.spred = None;
-    self.pred = None;
-    self.args = {};
-    self.cfrom = None;
-    self.cto = None;
-  
-  def __repr__( self ):
-    
-    return \
-        str(self.lid) + "\n" + \
-        str(self.spred) + "\n" + \
-        str(self.pred) + "\n" + \
-        str(self.cfrom) + "\n" + \
-        str(self.cto) + "\n" + \
-        str(self.args).replace( ",", ",\n  " ) + "\n";
 
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
@@ -330,19 +250,6 @@ class ElementaryPredicationHandler( XMLElementHandler, metaclass=subject ):
       self._obj_.cto = attrs[ "cto" ];
 
 
-# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
-
-class MRSConstraint( metaclass=object_ ):
-
-  def __init__( self ):
-    
-    self.hi = None;
-    self.lo = None;
-    
-  def __repr__( self ):
-    
-    return str(self.hi) + " qeq " + str(self.lo);
-
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
@@ -350,6 +257,7 @@ class ConstraintHandler( XMLElementHandler, metaclass=subject ):
   
   XMLELEM = "hcons";
   
+
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
@@ -363,6 +271,7 @@ class HiHandler( XMLElementHandler, metaclass=subject ):
       self._obj_.hi = obj;
 
 
+
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 class LoHandler( XMLElementHandler, metaclass=subject ):
@@ -374,19 +283,6 @@ class LoHandler( XMLElementHandler, metaclass=subject ):
     if isinstance( obj, MRSVariable ):
       self._obj_.lo = obj;
 
-
-# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
-
-class MRS( metaclass=object_ ):
-  
-  def __init__( self ):
-    
-    self.eps = set();
-    self.cons = set();
-  
-  def __str__( self ):
-    
-    return str( self.eps ) + str( self.cons );
 
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
@@ -402,6 +298,7 @@ class MRSHandler( XMLElementHandler, metaclass=subject ):
     elif isinstance( obj, MRSConstraint ):
       self._obj_.cons.add( obj );
   
+
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
@@ -449,10 +346,10 @@ class MRXDecoder( XMLHandler, metaclass=subject ):
   def handle( self, obj ):
     
     if isinstance( obj, MRS ):
-      self.rslt = mrs_to_pf( obj );
+      self.mrs = obj;
 
 
-  def decode( self ):
+  def decode( self, sublng ):
 
     f = self._obj_;
     self.feed( """<?xml version="1.1"?>""" );
@@ -470,17 +367,17 @@ class MRXDecoder( XMLHandler, metaclass=subject ):
       #  self.feed( x );
       self.feed( self._obj_.read() );
     
-    return self.rslt;
+    return mrs_to_pf( self.mrs, sublng );
 
 
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-def mrx_decode( mrx ):
+def mrx_decode( mrx, sublng ):
   
   rslt = None;
   with MRXDecoder( mrx ) as decoder:
-    rslt = decoder.decode();
+    rslt = decoder.decode( sublng );
   return rslt;
 
     

@@ -28,7 +28,7 @@ class Quantifier( ProtoBase, metaclass=kls ):
       self.referent = referent( sig=sig );
       
       if isinstance( self.referent, Operator ):
-        assert self.referent.otype in Operator.OP_Qs;
+        assert self.referent.otype in self.referent.OP_Qs;
       else:
         assert isinstance( self.referent, Word );
 

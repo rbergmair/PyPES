@@ -17,6 +17,8 @@ from pypes.codecs_.pft_encoder import pft_encode;
 
 from pypes.proto import *;
 
+import pypes.native.erg;
+
 
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
@@ -32,7 +34,9 @@ class TestMRXDecoder( TestCase, metaclass=object_ ):
     #for i in range( 1, 11 ):
       
       f = gzip.open( "{0}/mrs-{1}1.mrs.xml.gz".format( self._TESTMRSDIR, i ) );
-      r = mrx_decode( f )( sig=ProtoSig() );
+      r = mrx_decode( f, pypes.native.erg )( sig=ProtoSig() );
+      print();
+      print( i );
       print();
       print( pft_encode( r ) );
       print();
