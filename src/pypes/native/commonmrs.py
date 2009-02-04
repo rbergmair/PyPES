@@ -176,9 +176,9 @@ class MRSInterpreter( metaclass=subject ):
     for arg in ep.args:
       if not isinstance( ep.args[ arg ], MRSVariable ):
         assert isinstance( ep.args[ arg ], MRSConstant );
-      else:
-        if ep.args[ arg ].sid == "h":
-          return False;
+        return False;
+      elif ep.args[ arg ].sid == "h":
+        return False;
     
     return True;
   
@@ -207,6 +207,46 @@ class MRSInterpreter( metaclass=subject ):
                                referent = referent
                              ),
                args = self._extract_args( ep, dcargs )
+             );
+
+
+  def _is_const_predication( self, ep ):
+    
+    found = False;
+    
+    for arg in ep.args:
+      if not isinstance( ep.args[ arg ], MRSVariable ):
+        assert isinstance( ep.args[ arg ], MRSConstant );
+        found = True;
+      elif ep.args[ arg ].sid == "h":
+        return False;
+    
+    return found;
+  
+  
+  def _constpredep_to_subform( self, ep ):
+    
+    assert ep.spred is None;
+    
+    const = None;
+    arg = None;
+    for (arg_,var) in ep.args.items():
+      if not isinstance( var, MRSVariable ):
+        assert isinstance( var, MRSConstant );
+        const = var.constant;
+        arg = arg_;
+        
+    assert isinstance( const, str );
+    assert arg is not None;
+    del ep.args[ arg ];
+    
+    referent = Word( lemma = [const.lower()], pos = self._strip_pred( ep.pred ).lower() );
+    
+    return Predication(
+               predicate = Predicate(
+                               referent = referent
+                             ),
+               args = self._extract_args( ep, True )
              );
   
   
@@ -309,6 +349,8 @@ class MRSInterpreter( metaclass=subject ):
     
     if self._is_predication( ep ):
       return self._predep_to_subform( ep, lvl );
+    elif self._is_const_predication( ep ):
+      return self._constpredep_to_subform( ep );
     elif self._is_quantification( ep ):
       return self._quantep_to_subform( ep, lvl );
     elif self._is_modification( ep ):

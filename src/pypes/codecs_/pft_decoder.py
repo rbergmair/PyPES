@@ -42,6 +42,7 @@ _GT_CONSTRAINT = 7;
 _GT_PROTOFORM = 8;
 _GT_FREEZER = 9;
 _GT_LEMMATOKS = 10;
+_GT_OPERATOR = 11;
 
 
 
@@ -218,13 +219,13 @@ class PFTDecoder( metaclass=subject ):
   lemma.setParseAction( _decode_lemma );
 
   
-  word = Literal ( "[" ) + \
+  word = Literal ( "|" ) + \
          Optional( lemma ) + \
          Optional( Literal( "_" ) + Optional( string ) + \
                    Optional( Literal( "_" ) + Optional( string ) ) ) + \
          Optional( Literal( ":" ) + decimalnumber ) + \
          Optional( features_list ) + \
-         Literal( "]" );
+         Literal( "|" );
   
   def _decode_word( str_, loc, toks ):
     
@@ -234,7 +235,7 @@ class PFTDecoder( metaclass=subject ):
     i = 0;
 
     assert len( toks ) > i;
-    assert toks[i] == "[";
+    assert toks[i] == "|";
     i += 1;
     
     if len( toks ) > i:
@@ -270,13 +271,13 @@ class PFTDecoder( metaclass=subject ):
         wid = toks[i];
         i += 1;
 
-    if toks[i] != "]":
+    if toks[i] != "|":
       assert isinstance( toks[i], dict );
       feats = toks[i];
       i += 1;
       
     assert len( toks ) > i;
-    assert toks[i] == "]";
+    assert toks[i] == "|";
     
     return ( _GT_WORD, Word( wid=wid, lemma=lemma, pos=pos, sense=sense,
                              feats=feats ) );

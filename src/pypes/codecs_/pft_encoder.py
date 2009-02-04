@@ -131,11 +131,11 @@ class PFTEncoder( metaclass=subject ):
   
   def _encode_word( self, inst ):
     
-    rslt = "[";
+    rslt = "|";
     if inst.lemma is not None:
       for lemtok in inst.lemma:
         rslt += self._fmt_string( lemtok ) + "+";
-        rslt = rslt[ :-1 ];
+      rslt = rslt[ :-1 ];
     if inst.pos is not None or inst.sense is not None:
       rslt += "_";
       if inst.pos is not None:
@@ -154,7 +154,7 @@ class PFTEncoder( metaclass=subject ):
         rslt = rslt[ :-1 ];
         rslt += " ]";
     
-    rslt += "]";
+    rslt += "|";
     
     return rslt;
   
@@ -266,7 +266,15 @@ class PFTEncoder( metaclass=subject ):
     
     if inst.subforms or inst.constraints:
       rslt += " ";
-      for root in inst.subforms:
+      
+      roots = set();
+      for key in inst.subforms:
+        if key.hid is not None:
+          roots.add( ( int(key.hid), key ) );
+        else:
+          roots.add( ( 0, key ) );
+      
+      for ( hid_, root ) in sorted( roots ):
         subform = inst.subforms[ root ];
         if root.hid is not None:
           rslt += self._encode( root ).rjust(3) + ": ";

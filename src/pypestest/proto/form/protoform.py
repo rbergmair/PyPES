@@ -241,18 +241,18 @@ class TestProtoForm( TestCase, metaclass=object_ ):
                                  ),
                              Handle( hid=2 ):
                                ProtoForm(
-                                   subforms = { Handle():
+                                   subforms = { Handle( hid=5 ):
                                                   Connection(
                                                       connective = Connective( referent = Operator( otype=Operator.OP_C_WEACON ) ),
                                                       lscope = Handle(),
                                                       rscope = Handle()
                                                     ),
-                                                Handle():
+                                                Handle( hid=6 ):
                                                   Predication(
                                                       predicate = Predicate( referent = Word( wid=6, lemma = ["witness"] ) ),
                                                       args = { Argument( aid="arg0" ): Variable( sidvid=("x",1) ) }
                                                     ),
-                                                Handle():
+                                                Handle( hid=7 ):
                                                   Modification(
                                                       modality = Modality( referent = Word( wid=18, lemma = ["say"] ) ),
                                                       args = { Argument( aid="arg1" ): Variable( sidvid=("x",1) ) },
