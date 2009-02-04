@@ -388,14 +388,16 @@ class Lambdaifier( metaclass=subject ):
     
     elif isinstance( obj, Operator ):
       
-      return obj.__class__( otype=obj.otype );
+      return obj.__class__( otype=obj.otype,
+                            feats=obj.feats );
     
     elif isinstance( obj, Word ):
       
       return obj.__class__( wid = self._wid_by_word[obj],
                             lemma = obj.lemma,
                             pos = obj.pos,
-                            sense = obj.sense );
+                            sense = obj.sense,
+                            feats = obj.feats );
 
     print( obj );
     assert False;

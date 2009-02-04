@@ -36,14 +36,14 @@ class TestLambdaifier( TestCase, metaclass=object_ ):
     lambdaified = lambdaify( init );
     logified = lambdaified( sig=ProtoSig() );
     
-    reference_ = pft_decode( """{ { 6: |Every:0| x4 { |man:6|( arg0=x4 ) } __;
-                                    7: |a:16| x3 { |woman:18|( arg0=x3 ) } __;
+    reference_ = pft_decode( """{ { 8: |Every:0| x4 { |man:6|( arg0=x4 ) } __;
+                                    9: |a:16| x3 { |woman:18|( arg0=x3 ) } __;
                                     5: |loves:10|( arg1=x4, arg2=x3 );
-                                    7 >> 5;
-                                    6 >> 5 } /\ { |every| x1 1 { |lie:32|( arg1=x1 ) };
+                                    9 >> 5;
+                                    8 >> 5 } /\ { |every| x1 1 { |lie:32|( arg1=x1 ) };
                                                   2: { __ /\ __;
-                                                       |witness|( arg0=x1 );
-                                                       |say|( arg1=x1 ) <3> };
+                                                       6: |witness|( arg0=x1 );
+                                                       7: |say|( arg1=x1 ) <3> };
                                                   4: |she:23| x2 { |she:23|( arg0=x2 ) } { |lie:27|( arg1=x2 ) };
                                                   3 >> 4;
                                                   1 >> 2 } }""" );
@@ -63,15 +63,15 @@ class TestLambdaifier( TestCase, metaclass=object_ ):
                                     5: |loves:10|( arg1=x4, arg2=x3 );
                                     3 >> 5;
                                     1 >> 5 } /\ { |every| x1 1 { |lie:32|( arg1=x1 ) };
-                                                  2: { __ /\ __;
-                                                       |witness|( arg0=x1 );
-                                                       |say|( arg1=x1 ) <3> };
+                                                  2: { 5: __ /\ __;
+                                                       6: |witness|( arg0=x1 );
+                                                       7: |say|( arg1=x1 ) <3> };
                                                   4: |she:23| x2 { |she:23|( arg0=x2 ) } { |lie:27|( arg1=x2 ) };
                                                   3 >> 4;
                                                   1 >> 2 } }""" );
                                                   
     reference = reference_( sig=ProtoSig() );
-    
+
     self.assertEquals_( logified, reference )
 
 
@@ -81,21 +81,21 @@ class TestLambdaifier( TestCase, metaclass=object_ ):
     lambdaified = lambdaify( init, rename_vars_p=False );
     logified = lambdaified( sig=ProtoSig() );
     
-    reference_ = pft_decode( """{ { 6: |Every:0| x1 { |man:6|( arg0=x1 ) } __;
-                                    7: |a:16| x2 { |woman:18|( arg0=x2 ) } __;
+    reference_ = pft_decode( """{ { 8: |Every:0| x1 { |man:6|( arg0=x1 ) } __;
+                                    9: |a:16| x2 { |woman:18|( arg0=x2 ) } __;
                                     5: |loves:10|( arg1=x1, arg2=x2 );
-                                    7 >> 5;
-                                    6 >> 5 } /\ { |every| x1 1 { |lie:32|( arg1=x1 ) };
+                                    9 >> 5;
+                                    8 >> 5 } /\ { |every| x1 1 { |lie:32|( arg1=x1 ) };
                                                   2: { __ /\ __;
-                                                       |witness|( arg0=x1 );
-                                                       |say|( arg1=x1 ) <3> };
+                                                       6: |witness|( arg0=x1 );
+                                                       7: |say|( arg1=x1 ) <3> };
                                                   4: |she:23| x2 { |she:23|( arg0=x2 ) } { |lie:27|( arg1=x2 ) };
                                                   3 >> 4;
                                                   1 >> 2 } }""" );
                                                   
     reference = reference_( sig=ProtoSig() );
-    
-    self.assertEquals_( logified, reference )
+
+    self.assertEquals_( logified, reference );
 
 
   def test_lambdaifier_4( self ):
@@ -104,20 +104,20 @@ class TestLambdaifier( TestCase, metaclass=object_ ):
     lambdaified = lambdaify( init, rename_words_p=False );
     logified = lambdaified( sig=ProtoSig() );
     
-    reference_ = pft_decode( """{ { 6: |every:0| x4 { |witness:6|( arg0=x4 ) } __;
-                                    7: |a:16| x3 { |say:18|( arg0=x3 ) } __;
+    reference_ = pft_decode( """{ { 8: |every:0| x4 { |witness:6|( arg0=x4 ) } __;
+                                    9: |a:16| x3 { |say:18|( arg0=x3 ) } __;
                                     5: |loves:10|( arg1=x4, arg2=x3 );
-                                    7 >> 5;
-                                    6 >> 5 } /\ { |every:0| x1 1 { |lie:32|( arg1=x1 ) };
+                                    9 >> 5;
+                                    8 >> 5 } /\ { |every:0| x1 1 { |lie:32|( arg1=x1 ) };
                                                   2: { __ /\ __;
-                                                       |witness:6|( arg0=x1 );
-                                                       |say:18|( arg1=x1 ) <3> };
+                                                       6: |witness:6|( arg0=x1 );
+                                                       7: |say:18|( arg1=x1 ) <3> };
                                                   4: |she:23| x2 { |she:23|( arg0=x2 ) } { |lie:27|( arg1=x2 ) };
                                                   3 >> 4;
                                                   1 >> 2 } }""" );
                                                   
     reference = reference_( sig=ProtoSig() );
-    
+
     self.assertEquals_( logified, reference )
 
   

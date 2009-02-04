@@ -34,7 +34,11 @@ class TestQuantification( TestCase, metaclass=object_ ):
     inst_ = Quantification(
                 quantifier = Quantifier(
                                  referent = Operator(
-                                                otype=Operator.OP_Q_UNIV
+                                                otype=Operator.OP_Q_UNIV,
+                                                feats = {
+                                                    "pers": "3",
+                                                    "num": "sg"
+                                                  }
                                               )
                                ),
                 var = Variable( sidvid=("x",1) ),
@@ -49,6 +53,9 @@ class TestQuantification( TestCase, metaclass=object_ ):
     self.assert_( isinstance( inst.quantifier, Quantifier ), msg );
     self.assert_( isinstance( inst.quantifier.referent, Operator ), msg );
     self.assertEquals( inst.quantifier.referent.otype, Operator.OP_Q_UNIV, msg );
+    self.assertEquals( len( inst.quantifier.referent.feats ), 2, msg );
+    self.assertEquals( inst.quantifier.referent.feats[ "pers" ], "3", msg );
+    self.assertEquals( inst.quantifier.referent.feats[ "num" ], "sg", msg );
     self.assert_( isinstance( inst.var, Variable ), msg );
     self.assertEquals( inst.var.vid, 1, msg );
     self.assert_( isinstance( inst.var.sort, Sort ), msg );

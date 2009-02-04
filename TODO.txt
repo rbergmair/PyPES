@@ -3,3 +3,5 @@ instrument code for testing
     stdin/stdout rerouting, redo logger testing
 
 use hasattr instead of AttributeError
+
+lambdaification use coreferences AFTER renaming

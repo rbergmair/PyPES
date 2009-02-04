@@ -129,6 +129,29 @@ class PFTEncoder( metaclass=subject ):
     return str(sid) + str(vid);
   
   
+  def _encode_feats( self, feats ):
+    
+    rslt = "";
+
+    if feats:
+      rslt += "["
+      for feat in feats:
+        rslt += " " + self._fmt_identifier( feat ) + "=" + \
+                self._fmt_string( feats[feat] ) + ",";
+      rslt = rslt[ :-1 ];
+      rslt += " ]";
+    
+    return rslt;
+  
+  
+  def _encode_operator( self, inst ):
+    
+    rslt = inst.otype;
+    if inst.feats is not None:
+      rslt += self._encode_feats( inst.feats );
+    return rslt;
+  
+  
   def _encode_word( self, inst ):
     
     rslt = "|";
@@ -144,15 +167,8 @@ class PFTEncoder( metaclass=subject ):
         rslt += "_" + self._fmt_string( inst.sense );
     if inst.wid is not None:
       rslt += ":"+str(inst.wid);
-    
     if inst.feats is not None:
-      if inst.feats:
-        rslt += "["
-        for feat in inst.feats:
-          rslt += " " + self._fmt_identifier( feat ) + "=" + \
-                  self._fmt_string( inst.feats[feat] ) + ",";
-        rslt = rslt[ :-1 ];
-        rslt += " ]";
+      rslt += self._encode_feats( inst.feats );
     
     rslt += "|";
     
@@ -193,14 +209,7 @@ class PFTEncoder( metaclass=subject ):
   
   def _encode_predication( self, inst ):
     
-    rslt = "";
-    if isinstance( inst.predicate.referent, Word ):
-      rslt += self._encode( inst.predicate.referent );
-    elif isinstance( inst.predicate.referent, Operator ):
-      rslt += inst.predicate.referent.otype;
-    else:
-      assert False;
-    
+    rslt = self._encode( inst.predicate.referent );
     rslt += self._encode_argslist( inst.predicate, inst.args );
     
     return rslt;
@@ -208,14 +217,7 @@ class PFTEncoder( metaclass=subject ):
   
   def _encode_quantification( self, inst ):
     
-    rslt = "";
-    if isinstance( inst.quantifier.referent, Word ):
-      rslt += self._encode( inst.quantifier.referent );
-    elif isinstance( inst.quantifier.referent, Operator ):
-      rslt += inst.quantifier.referent.otype;
-    else:
-      assert False;
-    
+    rslt = self._encode( inst.quantifier.referent );
     rslt += " " + self._encode( inst.var );
     rslt += " " + self._encode( inst.rstr );
     rslt += " " + self._encode( inst.body );
@@ -225,14 +227,7 @@ class PFTEncoder( metaclass=subject ):
 
   def _encode_modification( self, inst ):
     
-    rslt = "";
-    if isinstance( inst.modality.referent, Word ):
-      rslt += self._encode( inst.modality.referent );
-    elif isinstance( inst.modality.referent, Operator ):
-      rslt += inst.modality.referent.otype;
-    else:
-      assert False;
-      
+    rslt = self._encode( inst.modality.referent );
     rslt += self._encode_argslist( inst.modality, inst.args );
     rslt += " " + self._encode( inst.scope );
     
@@ -242,14 +237,7 @@ class PFTEncoder( metaclass=subject ):
   def _encode_connection( self, inst ):
     
     rslt = self._encode( inst.lscope ) + " ";
-    
-    if isinstance( inst.connective.referent, Word ):
-      rslt += self._encode( inst.connective.referent );
-    elif isinstance( inst.connective.referent, Operator ):
-      rslt += inst.connective.referent.otype;
-    else:
-      assert False;
-
+    rslt += self._encode( inst.connective.referent );
     rslt += " " + self._encode( inst.rscope );
     
     return rslt;
@@ -301,6 +289,8 @@ class PFTEncoder( metaclass=subject ):
       return self._encode_variable( inst );
     elif isinstance( inst, Word ):
       return self._encode_word( inst );
+    elif isinstance( inst, Operator ):
+      return self._encode_operator( inst );
     elif isinstance( inst, Predication ):
       return self._encode_predication( inst );
     elif isinstance( inst, Quantification ):

@@ -59,6 +59,7 @@ class Operator( ProtoBase, metaclass=kls ):
   def _init_init_( self ):
     
     self.otype = None;
+    self.feats = None;
     self._ops = {};
     self._ops.update( self.OP_Qs );
     self._ops.update( self.OP_Cs );
@@ -66,11 +67,14 @@ class Operator( ProtoBase, metaclass=kls ):
     self._ops.update( self.OP_Ps );
 
   
-  def __init__( self, sig, otype=None ):
+  def __init__( self, sig, otype=None, feats=None ):
     
     if otype is not None:
       assert otype in self._ops;
       self.otype = otype;
+    
+    if feats is not None:
+      self.feats = feats;
 
   
   def __le__( self, obj ):
@@ -81,6 +85,15 @@ class Operator( ProtoBase, metaclass=kls ):
     if self.otype is not None:
       if self.otype != obj.otype:
         return False;
+    return True;
+    if self.feats is not None:
+      if obj.feats is None:
+        return False;
+      for feat in self.feats:
+        if not feat in obj.feats:
+          return False;
+        if self.feats[ feat ] != obj.feats[ feat ]:
+          return False;
     return True;
 
 

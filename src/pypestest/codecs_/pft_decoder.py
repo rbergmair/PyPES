@@ -93,7 +93,7 @@ class TestPFTDecoder( TestCase, metaclass=object_ ):
                                   PFTDecoder.quantification
                                 );
     
-    check( "ALL x1 {} 1", TestQuantification.check_quant_1 );
+    check( "ALL[ pers=3, num=sg ] x1 {} 1", TestQuantification.check_quant_1 );
     check( "|every| x1 <__> {}", TestQuantification.check_quant_2 );
     
     

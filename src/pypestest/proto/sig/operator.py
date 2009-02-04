@@ -45,12 +45,22 @@ class TestOperator( TestCase, metaclass=object_ ):
 
   def init_op_2( self ):
     
-    inst_ = Operator( otype=Operator.OP_C_WEACON );
+    inst_ = Operator(
+                otype = Operator.OP_C_WEACON,
+                feats = {
+                    "pers": "3",
+                    "num": "sg"
+                  }
+              );
+                                            
     return inst_;
   
   def check_op_2( self, inst, msg=None ):
     
     self.assertEquals( inst.otype, Operator.OP_C_WEACON, msg );
+    self.assertEquals( len( inst.feats ), 2, msg );
+    self.assertEquals( inst.feats[ "pers" ], "3", msg );
+    self.assertEquals( inst.feats[ "num" ], "sg", msg );
   
   def test_2( self ):
     

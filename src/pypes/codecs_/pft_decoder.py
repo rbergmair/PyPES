@@ -192,6 +192,30 @@ class PFTDecoder( metaclass=subject ):
     return feats;
   
   features_list.setParseAction( _decode_features_list );
+
+
+  operator = identifier + Optional( features_list );
+  
+  def _decode_operator( str_, loc, toks ):
+    
+    otype = None;
+    feats = None;
+    i = 0;
+
+    assert len( toks ) > i;
+    otype = toks[i];
+    i += 1;
+    
+    if len( toks ) > i:
+      assert isinstance( toks[i], dict );
+      feats = toks[i];
+    
+    return ( _GT_OPERATOR, Operator(
+                               otype = otype,
+                               feats = feats
+                             ) );
+  
+  operator.setParseAction( _decode_operator );
   
   
   lemma = string + ZeroOrMore( Literal( "+" ) + string );
@@ -217,7 +241,7 @@ class PFTDecoder( metaclass=subject ):
     return ( _GT_LEMMATOKS, lemma_toks );
   
   lemma.setParseAction( _decode_lemma );
-
+  
   
   word = Literal ( "|" ) + \
          Optional( lemma ) + \
@@ -335,7 +359,7 @@ class PFTDecoder( metaclass=subject ):
   arguments_list.setParseAction( _decode_arguments_list );
 
   
-  predication = ( word | identifier ) + arguments_list + \
+  predication = ( word | operator ) + arguments_list + \
                 NotAny( handle | freezer | protoform );
   
   def _decode_predication( str_, loc, toks ):
@@ -344,12 +368,9 @@ class PFTDecoder( metaclass=subject ):
     
     assert len( toks ) > i;
     referent = None;
-    if not isinstance( toks[i], str ):
-      ( type_, referent ) = toks[i];
-      assert type_ == _GT_WORD;
-    else:
-      assert toks[i] in Operator.OP_Ps;
-      referent = Operator( otype = Operator.OP_Ps[ toks[i] ] );
+    ( type_, referent ) = toks[i];
+    assert type_ in { _GT_WORD, _GT_OPERATOR };
+
     i += 1;
 
     assert len( toks ) > i;
@@ -364,7 +385,7 @@ class PFTDecoder( metaclass=subject ):
   predication.setParseAction( _decode_predication );
 
 
-  quantification = ( word | identifier ) + variable + \
+  quantification = ( word | operator ) + variable + \
                    ( handle | freezer | protoform ) + \
                    ( handle | freezer | protoform );
   
@@ -374,13 +395,9 @@ class PFTDecoder( metaclass=subject ):
     
     assert len( toks ) > i;
     referent = None;
-    if not isinstance( toks[i], str ):
-      ( type_, referent ) = toks[i];
-      assert type_ == _GT_WORD;
-    else:
-      assert toks[i] in Operator.OP_Qs;
-      referent = Operator( otype=Operator.OP_Qs[ toks[i] ] );
-        
+    ( type_, referent ) = toks[i];
+    assert type_ in { _GT_WORD, _GT_OPERATOR };
+
     i += 1;
 
     assert len( toks ) > i;
@@ -411,7 +428,7 @@ class PFTDecoder( metaclass=subject ):
   quantification.setParseAction( _decode_quantification );
 
 
-  modification = ( word | identifier ) + arguments_list + \
+  modification = ( word | operator ) + arguments_list + \
                  ( handle | freezer | protoform );
   
   def _decode_modification( str_, loc, toks ):
@@ -420,13 +437,9 @@ class PFTDecoder( metaclass=subject ):
     
     assert len( toks ) > i;
     referent = None;
-    if not isinstance( toks[i], str ):
-      ( type_, referent ) = toks[i];
-      assert type_ == _GT_WORD;
-    else:
-      assert toks[i] in Operator.OP_Ms;
-      referent = Operator( otype = Operator.OP_Ms[ toks[i] ] );
-        
+    ( type_, referent ) = toks[i];
+    assert type_ in { _GT_WORD, _GT_OPERATOR };
+
     i += 1;
 
     assert len( toks ) > i;
