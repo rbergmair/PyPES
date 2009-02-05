@@ -119,7 +119,7 @@ class MRSInterpreter( metaclass=subject ):
       return pred;
   
   
-  def _spred_to_word( self, spred ):
+  def _spred_to_word( self, spred, feats ):
     
     assert spred[0] == "_";
     spred = spred[1:];
@@ -139,7 +139,8 @@ class MRSInterpreter( metaclass=subject ):
     return self._sublng.Word(
                lemma = lemmatoks,
                pos = pos,
-               sense = sense
+               sense = sense,
+               feats = feats
              );
   
   
@@ -183,6 +184,19 @@ class MRSInterpreter( metaclass=subject ):
     return True;
   
   
+  def _cspanfeats( self, ep, feats=None ):
+    
+    if feats is None:
+      feats = {};
+    
+    if ep.cfrom is not None and ep.cfrom != "" and ep.cfrom != "-1":
+      feats[ "cfrom" ] = int( ep.cfrom );
+    if ep.cto is not None and ep.cto != "" and ep.cto != "-1":
+      feats[ "cto" ] = int( ep.cto );
+    
+    return feats;
+  
+  
   def _predep_to_subform( self, ep, lvl ):
     
     referent = None;
@@ -191,7 +205,11 @@ class MRSInterpreter( metaclass=subject ):
     if ep.spred is None:
       pred = self._strip_pred( ep.pred );
       assert pred is not None;
-      assert pred in self._sublng.Operator.OP_Ps;
+      try:
+        assert pred in self._sublng.Operator.OP_Ps;
+      except:
+        print( pred );
+        raise;
       referent = self._sublng.Operator(
                      otype = self._sublng.Operator.OP_Ps[ pred ]
                    );
@@ -199,7 +217,10 @@ class MRSInterpreter( metaclass=subject ):
     
     if ep.pred is None:
       assert ep.spred is not None;
-      referent = self._spred_to_word( ep.spred );
+      feats = {};
+      if "ARG0" in ep.args and ep.args[ "ARG0" ].sid == "e":
+        feats = ep.args[ "ARG0" ].feats;
+      referent = self._spred_to_word( ep.spred, self._cspanfeats( ep, feats ) );
       dcargs = True;
     
     return Predication(
@@ -240,7 +261,11 @@ class MRSInterpreter( metaclass=subject ):
     assert arg is not None;
     del ep.args[ arg ];
     
-    referent = Word( lemma = [const.lower()], pos = self._strip_pred( ep.pred ).lower() );
+    referent = Word(
+                   lemma = [const.lower()],
+                   pos = self._strip_pred( ep.pred ).lower(),
+                   feats = self._cspanfeats( ep )
+                 );
     
     return Predication(
                predicate = Predicate(
@@ -267,24 +292,26 @@ class MRSInterpreter( metaclass=subject ):
   def _quantep_to_subform( self, ep, lvl ):
     
     referent = None;
+
+    arg0 = ep.args[ "ARG0" ];
+    rstr = ep.args[ "RSTR" ];
+    body = ep.args[ "BODY" ];
     
     if ep.spred is None:
       pred = self._strip_pred( ep.pred );
       assert pred is not None;
       assert pred in self._sublng.Operator.OP_Qs;
       referent = self._sublng.Operator(
-                     otype = self._sublng.Operator.OP_Qs[ pred ]
+                     otype = self._sublng.Operator.OP_Qs[ pred ],
+                     feats = arg0.feats
                    );
     
     if ep.pred is None:
       assert ep.spred is not None;
-      referent = self._spred_to_word( ep.spred );
+      referent = self._spred_to_word( ep.spred, self._cspanfeats( ep, arg0.feats ) );
     
     assert referent is not None;
     
-    arg0 = ep.args[ "ARG0" ];
-    rstr = ep.args[ "RSTR" ];
-    body = ep.args[ "BODY" ];
     
     return Quantification(
                quantifier = Quantifier(
@@ -322,7 +349,7 @@ class MRSInterpreter( metaclass=subject ):
     
     if ep.pred is None:
       assert ep.spred is not None;
-      referent = self._spred_to_word( ep.spred );
+      referent = self._spred_to_word( ep.spred, self._cspanfeats( ep ) );
       dcargs = True;
     
     assert referent is not None;

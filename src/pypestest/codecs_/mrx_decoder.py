@@ -27,21 +27,33 @@ class TestMRXDecoder( TestCase, metaclass=object_ ):
   
   _TESTMRSDIR = "dta/simple";
   
+  
+  def doteston( self, filename ):
+
+    try:
+      f = gzip.open( filename );
+      try:
+        print( filename );
+        r = mrx_decode( f, pypes.native.erg )( sig=ProtoSig() );
+        print();
+        print();
+        print( pft_encode( r ) );
+        print();
+        print();
+      finally:
+        f.close();
+    except IOError:
+      pass;
+    
+  
   def test_mrxdecoder( self ):
     
-    for i in range( 1, 108 ):
-    #for i in { 2 }:
-    #for i in range( 1, 11 ):
+    #for i in range( 1, 108 ):
+    #  self.doteston( "{0}/mrs-{1}1.mrs.xml.gz".format( self._TESTMRSDIR, i ) );
+
+    for i in range( 1, 326 ):
+      self.doteston( "{0}/fracas-{1}.mrs.xml.gz".format( self._TESTMRSDIR, i ) );
       
-      f = gzip.open( "{0}/mrs-{1}1.mrs.xml.gz".format( self._TESTMRSDIR, i ) );
-      r = mrx_decode( f, pypes.native.erg )( sig=ProtoSig() );
-      print();
-      print( i );
-      print();
-      print( pft_encode( r ) );
-      print();
-      print();
-      f.close();
 
 
 
