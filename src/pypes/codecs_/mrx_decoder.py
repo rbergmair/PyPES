@@ -8,7 +8,7 @@ from io import StringIO;
 from pypes.utils.mc import subject;
 from pypes.utils.xml_.xml_handler import *;
 
-from pypes.native.commonmrs import *;
+from pypes.native.mrs import *;
 
 
 
@@ -349,7 +349,7 @@ class MRXDecoder( XMLHandler, metaclass=subject ):
       self.mrs = obj;
 
 
-  def decode( self, sublng ):
+  def decode( self, converter ):
 
     f = self._obj_;
     self.feed( """<?xml version="1.1"?>""" );
@@ -367,17 +367,17 @@ class MRXDecoder( XMLHandler, metaclass=subject ):
       #  self.feed( x );
       self.feed( self._obj_.read() );
     
-    return mrs_to_pf( self.mrs, sublng );
+    return converter( self.mrs );
 
 
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-def mrx_decode( mrx, sublng ):
+def mrx_decode( mrx, converter ):
   
   rslt = None;
   with MRXDecoder( mrx ) as decoder:
-    rslt = decoder.decode( sublng );
+    rslt = decoder.decode( converter );
   return rslt;
 
     

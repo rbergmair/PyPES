@@ -17,7 +17,7 @@ from pypes.codecs_.pft_encoder import pft_encode;
 
 from pypes.proto import *;
 
-import pypes.native.erg;
+import pypes.native.ergmrs;
 
 
 
@@ -34,7 +34,7 @@ class TestMRXDecoder( TestCase, metaclass=object_ ):
       f = gzip.open( filename );
       try:
         print( filename );
-        r = mrx_decode( f, pypes.native.erg )( sig=ProtoSig() );
+        r = mrx_decode( f, pypes.native.ergmrs.mrs_to_pf )( sig=ProtoSig() );
         print();
         print();
         print( pft_encode( r ) );

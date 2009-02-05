@@ -1,220 +1,379 @@
 # -*-  coding: ascii -*-  # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 __package__ = "native";
-__all__ = [ "Operator", "Word" ];
+__all__ = [ "ERGMRSInterpreter", "ergmrs_to_pf" ];
 
-import pypes.proto;
+import string;
+
+from pypes.utils.mc import subject, object_;
+
+from pypes.proto import *;
+from pypes.proto.lex.erg import *;
+
+from pypes.native.mrs import *;
 
 
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-class Operator( pypes.proto.Operator ):
-
-
-  OP_Q_UDEF_Q = "UDEF_Q";
-
-  OP_Q_PRONOUN_Q = "PRONOUN_Q";
-  OP_Q_PROPER_Q = "PROPER_Q";
-  
-  OP_Q_THE_Q = "THE_Q";
-  
-  OP_Q_A_Q = "A_Q";
-  OP_Q_EVERY_Q = "EVERY_Q";
-  OP_Q_NO_Q = "NO_Q";
-  OP_Q_SOME_Q = "SOME_Q";
-  
-  OP_Q_DEF_EXPLICIT_Q = "DEF_EXPLICIT_Q";
-  OP_Q_DEF_IMPLICIT_Q = "DEF_IMPLICIT_Q";
-  
-  OP_Q_SOME_Q_INDIV = "SOME_Q_INDIV";
-  OP_Q_THAT_Q_DEM = "THAT_Q_DEM";
-  OP_Q_WHICH_Q = "WHICH_Q";
-  OP_Q_FREE_RELATIVE_EVER_Q = "FREE_RELATIVE_EVER_Q";
-  
-  OP_Q_NUMBER_Q = "NUMBER_Q";
-  
-  OP_Q_IDIOM_Q_I = "IDIOM_Q_I";
-  
-  OP_Qs = {
-      OP_Q_UDEF_Q: OP_Q_UDEF_Q,
-      OP_Q_PRONOUN_Q: OP_Q_PRONOUN_Q,
-      OP_Q_PROPER_Q: OP_Q_PROPER_Q,
-      OP_Q_THE_Q: OP_Q_THE_Q,
-      OP_Q_A_Q: OP_Q_A_Q,
-      OP_Q_EVERY_Q: OP_Q_EVERY_Q,
-      OP_Q_NO_Q: OP_Q_NO_Q,
-      OP_Q_SOME_Q: OP_Q_SOME_Q,
-      OP_Q_DEF_EXPLICIT_Q: OP_Q_DEF_EXPLICIT_Q,
-      OP_Q_DEF_IMPLICIT_Q: OP_Q_DEF_IMPLICIT_Q,
-      OP_Q_SOME_Q_INDIV: OP_Q_SOME_Q_INDIV,
-      OP_Q_THAT_Q_DEM: OP_Q_THAT_Q_DEM,
-      OP_Q_WHICH_Q: OP_Q_WHICH_Q,
-      OP_Q_FREE_RELATIVE_EVER_Q: OP_Q_FREE_RELATIVE_EVER_Q,
-      OP_Q_NUMBER_Q: OP_Q_NUMBER_Q,
-      OP_Q_IDIOM_Q_I: OP_Q_IDIOM_Q_I
-    };
+class ERGMRSInterpreter( metaclass=subject ):
   
   
-  OP_Cs = {
-      pypes.proto.Operator.OP_C_WEACON: pypes.proto.Operator.OP_C_WEACON
-    };
+  def freeze( self, hid, lvl ):
+    
+    if lvl == 0:
+      return Handle( hid=hid );
+    else:
+      return Freezer( content = self.freeze( hid, lvl-1 ) );
 
 
-  OP_M_CAN_V_MODAL = "CAN_V_MODAL";
-  OP_M_GOING_TO_V_MODAL = "GOING+TO_V_MODAL";
-  OP_M_NEG = "NEG";
-  OP_M_NOMINALIZATION = "NOMINALIZATION";
-
-  OP_Ms = {
-      OP_M_CAN_V_MODAL: OP_M_CAN_V_MODAL,
-      OP_M_GOING_TO_V_MODAL: OP_M_GOING_TO_V_MODAL,
-      OP_M_NEG: OP_M_NEG,
-      OP_M_NOMINALIZATION: OP_M_NOMINALIZATION
-    };
-
-
-  OP_P_PRON = "PRON";
-  OP_P_NAMED = "NAMED";
-  OP_P_POSS = "POSS";
-
-  OP_P_CARD = "CARD";
-  OP_P_ORD = "CARD";
-
-  OP_P_PERSON = "PERSON";
-  OP_P_THING = "THING";
-
-  OP_P_AT_P_TEMP = "AT_P_TEMP";
-  OP_P_BY_P_MEANS = "BY_P_MEANS";
-  OP_P_IN_P = "IN_P";
-  OP_P_OF_P = "OF_P";
-  OP_P_ON_P_TEMP = "ON_P_TEMP";
-  OP_P_FROM_P_TO = "FROM_P_TO";
-
-  OP_P_BE_V_THERE = "BE_V_THERE";
-
-  OP_P_TIME_N = "TIME_N";
-  OP_P_PLACE_N = "PLACE_N";
-
-  OP_P_AND_C = "AND_C";
-
-  OP_P_NOW_A_1 = "NOW_A_1";
-  OP_P_MUCH_MANY_A = "MUCH-MANY_A";
-
-  OP_P_NUMBERED_HOUR = "NUMBERED_HOUR";
-
-  OP_P_MOFY = "MOFY";
-  OP_P_DOFM = "DOFM";
-  OP_P_DOFW = "DOFW";
-  OP_P_YOFC = "YOFC";
-
-  OP_P_APPOS = "APPOS";
-
-  OP_P_COMP = "COMP";
-  OP_P_COMP_EQUAL = "COMP_EQUAL";
-
-  OP_P_ELLIPSIS_REF = "ELLIPSIS_REF";
-
-  OP_P_ABSTR_DEG = "ABSTR_DEG";
-  OP_P_GENERIC_ENTITY = "GENERIC_ENTITY";
-  OP_P_LOC_NONSP = "LOC_NONSP";
-  OP_P_MEASURE = "MEASURE";
-  OP_P_NE_X = "NE_X";
-  OP_P_PARG_D = "PARG_D";
-  OP_P_PART_OF = "PART_OF";
-  OP_P_PLUS = "PLUS";
-  OP_P_TIMES = "TIMES";
-
-  OP_P_UNSPEC_MOD = "UNSPEC_MOD";
-  OP_P_UNSPEC_LOC = "UNSPEC_LOC";
+  def _strip_pred( self, pred ):
+    
+      if pred[0] == "_":
+        pred = pred[1:];
+      if pred[-4:] == "_REL":
+        pred = pred[ :-4 ];
+      return pred;
   
-  OP_P_TITLE_ID = "TITLE_ID";
-  OP_P_ID = "ID";
-
-  OP_P_COMPOUND = "COMPOUND";
-  OP_P_COMPOUND_NAME = "COMPOUND_NAME";
   
-  OP_P_UNKNOWN_VERB = "UNKNOWN_VERB";
-  OP_P_UNKNOWN_NOM = "UNKNOWN_NOM";
-  OP_P_UNKNOWN_ADJ = "UNKNOWN_ADJ";
-  OP_P_UNKNOWN_ADV = "UNKNOWN_ADV";
+  def _spred_to_word( self, spred, feats ):
+    
+    assert spred[0] == "_";
+    spred = spred[1:];
+    
+    assert spred[-4:] == "_rel";
+    spred = spred[:-4];
+    
+    toks = spred.split( "_" );
+    lemmatoks = toks[0].split( "+" );
+    pos = None;
+    sense = None;
+    if len(toks) > 1 and toks[1] != "":
+      pos = toks[1];
+    if len(toks) > 2 and toks[2] != "":
+      sense = toks[2];
+    
+    return Word(
+               lemma = lemmatoks,
+               pos = pos,
+               sense = sense,
+               feats = feats
+             );
   
-  OP_P_UNKNOWN = "UNKNOWN";
-
-  OP_P_NAMED = "NAMED";
-  OP_P_NAMED_UNK = "NAMED_UNK";
-  OP_P_NAMED_N = "NAMED_N";
-
-  OP_P_ARGUMENT = "ARGUMENT";
-
-  OP_P_SUBORD = "SUBORD"; #?
-  OP_P_IMPLICIT_CONJ = "IMPLICIT_CONJ"; #?
   
-  OP_Ps = {
-      OP_P_PRON: OP_P_PRON,
-      OP_P_NAMED: OP_P_NAMED,
-      OP_P_POSS: OP_P_POSS,
-      OP_P_CARD: OP_P_CARD,
-      OP_P_ORD: OP_P_ORD,
-      OP_P_PERSON: OP_P_PERSON,
-      OP_P_THING: OP_P_THING,
-      OP_P_AT_P_TEMP: OP_P_AT_P_TEMP,
-      OP_P_BY_P_MEANS: OP_P_BY_P_MEANS,
-      OP_P_IN_P: OP_P_IN_P,
-      OP_P_OF_P: OP_P_OF_P,
-      OP_P_ON_P_TEMP: OP_P_ON_P_TEMP,
-      OP_P_FROM_P_TO: OP_P_FROM_P_TO,
-      OP_P_BE_V_THERE: OP_P_BE_V_THERE,
-      OP_P_TIME_N: OP_P_TIME_N,
-      OP_P_PLACE_N: OP_P_PLACE_N,
-      OP_P_AND_C: OP_P_AND_C,
-      OP_P_NOW_A_1: OP_P_NOW_A_1,
-      OP_P_MUCH_MANY_A: OP_P_MUCH_MANY_A,
-      OP_P_NUMBERED_HOUR: OP_P_NUMBERED_HOUR,
-      OP_P_MOFY: OP_P_MOFY,
-      OP_P_DOFM: OP_P_DOFM,
-      OP_P_DOFW: OP_P_DOFW,
-      OP_P_YOFC: OP_P_YOFC,
-      OP_P_APPOS: OP_P_APPOS,
-      OP_P_COMP: OP_P_COMP,
-      OP_P_COMP_EQUAL: OP_P_COMP_EQUAL,
-      OP_P_ELLIPSIS_REF: OP_P_ELLIPSIS_REF,
-      OP_P_ABSTR_DEG: OP_P_ABSTR_DEG,
-      OP_P_GENERIC_ENTITY: OP_P_GENERIC_ENTITY,
-      OP_P_LOC_NONSP: OP_P_LOC_NONSP,
-      OP_P_MEASURE: OP_P_MEASURE,
-      OP_P_NE_X: OP_P_NE_X,
-      OP_P_PARG_D: OP_P_PARG_D,
-      OP_P_PART_OF: OP_P_PART_OF,
-      OP_P_PLUS: OP_P_PLUS,
-      OP_P_TIMES: OP_P_TIMES,
-      OP_P_UNSPEC_MOD: OP_P_UNSPEC_MOD,
-      OP_P_UNSPEC_LOC: OP_P_UNSPEC_LOC,
-      OP_P_TITLE_ID: OP_P_TITLE_ID,
-      OP_P_ID: OP_P_ID,
-      OP_P_COMPOUND: OP_P_COMPOUND,
-      OP_P_COMPOUND_NAME: OP_P_COMPOUND_NAME,
-      OP_P_UNKNOWN_VERB: OP_P_UNKNOWN_VERB,
-      OP_P_UNKNOWN_NOM: OP_P_UNKNOWN_NOM,
-      OP_P_UNKNOWN_ADJ: OP_P_UNKNOWN_ADJ,
-      OP_P_UNKNOWN_ADV: OP_P_UNKNOWN_ADV,
-      OP_P_UNKNOWN: OP_P_UNKNOWN,
-      OP_P_NAMED: OP_P_NAMED,
-      OP_P_NAMED_UNK: OP_P_NAMED_UNK,
-      OP_P_NAMED_N: OP_P_NAMED_N,
-      OP_P_ARGUMENT: OP_P_ARGUMENT,
+  def _make_identifier( self, stri ):
+    
+    stri_ = "";
+    if not stri[0] in string.ascii_letters + string.digits:
+      stri_ += "x";
+    for ch in stri:
+      if ch in string.ascii_letters + string.digits:
+        stri_ += ch;
+    return stri_;
+  
+  
+  def _extract_args( self, ep, dcargs ):
+    
+    args = {};
+    
+    for (arg,var) in ep.args.items():
+      if isinstance( var, MRSConstant ):
+        continue;
+      arg = self._make_identifier( arg );
+      if dcargs:
+        arg = arg.lower();
+      else:
+        arg = arg.upper();
+      args[ Argument( aid=arg ) ] = Variable( sidvid = (var.sid, var.vid) );
+    
+    return args;
+  
+  
+  def _is_predication( self, ep ):
+    
+    for arg in ep.args:
+      if not isinstance( ep.args[ arg ], MRSVariable ):
+        assert isinstance( ep.args[ arg ], MRSConstant );
+        return False;
+      elif ep.args[ arg ].sid == "h":
+        return False;
+    
+    return True;
+  
+  
+  def _cspanfeats( self, ep, feats=None ):
+    
+    if feats is None:
+      feats = {};
+    
+    if ep.cfrom is not None and ep.cfrom != "" and ep.cfrom != "-1":
+      feats[ "cfrom" ] = int( ep.cfrom );
+    if ep.cto is not None and ep.cto != "" and ep.cto != "-1":
+      feats[ "cto" ] = int( ep.cto );
+    
+    return feats;
+  
+  
+  def _predep_to_subform( self, ep, lvl ):
+    
+    referent = None;
+    dcargs = False;
+    
+    if ep.spred is None:
+      pred = self._strip_pred( ep.pred );
+      assert pred is not None;
+      try:
+        assert pred in Operator.OP_Ps;
+      except:
+        print( pred );
+        raise;
+      referent = Operator(
+                     otype = Operator.OP_Ps[ pred ]
+                   );
+      dcargs = False;
+    
+    if ep.pred is None:
+      assert ep.spred is not None;
+      feats = {};
+      if "ARG0" in ep.args and ep.args[ "ARG0" ].sid == "e":
+        feats = ep.args[ "ARG0" ].feats;
+      referent = self._spred_to_word( ep.spred, self._cspanfeats( ep, feats ) );
+      dcargs = True;
+    
+    return Predication(
+               predicate = Predicate(
+                               referent = referent
+                             ),
+               args = self._extract_args( ep, dcargs )
+             );
+
+
+  def _is_const_predication( self, ep ):
+    
+    found = False;
+    
+    for arg in ep.args:
+      if not isinstance( ep.args[ arg ], MRSVariable ):
+        assert isinstance( ep.args[ arg ], MRSConstant );
+        found = True;
+      elif ep.args[ arg ].sid == "h":
+        return False;
+    
+    return found;
+  
+  
+  def _constpredep_to_subform( self, ep ):
+    
+    assert ep.spred is None;
+    
+    const = None;
+    arg = None;
+    for (arg_,var) in ep.args.items():
+      if not isinstance( var, MRSVariable ):
+        assert isinstance( var, MRSConstant );
+        const = var.constant;
+        arg = arg_;
+        
+    assert isinstance( const, str );
+    assert arg is not None;
+    del ep.args[ arg ];
+    
+    referent = Word(
+                   lemma = [const.lower()],
+                   pos = self._strip_pred( ep.pred ).lower(),
+                   feats = self._cspanfeats( ep )
+                 );
+    
+    return Predication(
+               predicate = Predicate(
+                               referent = referent
+                             ),
+               args = self._extract_args( ep, True )
+             );
+  
+  
+  def _is_quantification( self, ep ):
+    
+    if ep.args.keys() != { "ARG0", "RSTR", "BODY" }:
+      return False;
+    
+    if not ep.args[ "RSTR" ].sid == "h":
+      return False;
+
+    if not ep.args[ "BODY" ].sid == "h":
+      return False;
+    
+    return True;
+
+
+  def _quantep_to_subform( self, ep, lvl ):
+    
+    referent = None;
+
+    arg0 = ep.args[ "ARG0" ];
+    rstr = ep.args[ "RSTR" ];
+    body = ep.args[ "BODY" ];
+    
+    if ep.spred is None:
+      pred = self._strip_pred( ep.pred );
+      assert pred is not None;
+      assert pred in Operator.OP_Qs;
+      referent = Operator(
+                     otype = Operator.OP_Qs[ pred ],
+                     feats = arg0.feats
+                   );
+    
+    if ep.pred is None:
+      assert ep.spred is not None;
+      referent = self._spred_to_word( ep.spred, self._cspanfeats( ep, arg0.feats ) );
+    
+    assert referent is not None;
+    
+    
+    return Quantification(
+               quantifier = Quantifier(
+                                referent = referent
+                              ),
+               var = Variable( sidvid = ( arg0.sid, arg0.vid ) ),
+               rstr = self.freeze( rstr.vid, lvl ),
+               body = self.freeze( body.vid, lvl )
+             );
+  
+  
+  def _is_modification( self, ep ):
+    
+    holes = 0;
+    for (arg,var) in ep.args.items():
+      if var.sid == "h":
+        holes += 1;
+    
+    return holes == 1;
+
+
+  def _modep_to_subform( self, ep, lvl ):
+    
+    referent = None;
+    dcargs = False;
+    
+    if ep.spred is None:
+      pred = self._strip_pred( ep.pred );
+      assert pred is not None;
+      assert pred in Operator.OP_Ms;
+      referent = Operator(
+                     otype = Operator.OP_Ms[ pred ]
+                   );
+      dcargs = False;
+    
+    if ep.pred is None:
+      assert ep.spred is not None;
+      referent = self._spred_to_word( ep.spred, self._cspanfeats( ep ) );
+      dcargs = True;
+    
+    assert referent is not None;
+    
+    scope_vid = None;
+    scope_arg = None;
+    for (arg,var) in ep.args.items():
+      if var.sid == "h":
+        scope_vid = var.vid;
+        scope_arg = arg;
+        break;
+    del ep.args[ scope_arg ];
+    
+    return Modification(
+               modality = Modality(
+                              referent = referent
+                            ),
+               scope = self.freeze( scope_vid, lvl ),
+               args = self._extract_args( ep, dcargs )
+             );
+
+
+  def _ep_to_subform( self, ep, lvl ):
+    
+    if self._is_predication( ep ):
+      return self._predep_to_subform( ep, lvl );
+    elif self._is_const_predication( ep ):
+      return self._constpredep_to_subform( ep );
+    elif self._is_quantification( ep ):
+      return self._quantep_to_subform( ep, lvl );
+    elif self._is_modification( ep ):
+      return self._modep_to_subform( ep, lvl );
+    else:
+      if ep.pred in { "PLUS_REL", "TIMES_REL", "_AND_C_REL", "NE_X_REL",
+                      "SUBORD_REL" }:
+        return Modification( modality = Modality( referent = Word() ),
+                             scope = ProtoForm() );
+      if ep.spred in { "_if_x_then_rel" }:
+        return Modification( modality = Modality( referent = Word() ),
+                             scope = ProtoForm() );
+      print( ep );
+      assert False;
       
-      OP_P_SUBORD: OP_P_SUBORD,
-      OP_P_IMPLICIT_CONJ: OP_P_IMPLICIT_CONJ
-    };
+
+  def _cons_to_constraint( self, cons ):
+    
+    return Constraint(
+               harg = Handle( hid=cons.hi.vid ),
+               larg = Handle( hid=cons.lo.vid )
+             );
+
+  
+  def to_pf( self ):
+    
+    subforms = {};
+    constraints = set();
+    
+    eps_by_lids = {};
+    
+    for ep in self._obj_.eps:
+      if not ep.lid in eps_by_lids:
+        eps_by_lids[ ep.lid ] = set();
+      eps_by_lids[ ep.lid ].add( ep );
+
+    for eps in eps_by_lids.values():
+      
+      if len( eps ) == 1:
+        
+        ep_ = eps.pop();
+        subforms[ Handle( hid=ep_.lid ) ] = self._ep_to_subform( ep_, 0 );
+        
+      else:
+        
+        subforms_ = {};
+        
+        for i in range( 0, len( eps )-1 ):
+          subforms_[ Handle() ] = \
+            Connection(
+                connective = Connective(
+                                 referent = Operator(
+                                                otype = Operator.OP_C_WEACON
+                                              )
+                               ),
+                lscope = Handle(),
+                rscope = Handle()
+              );
+            
+        for ep_ in eps:
+          subforms_[ Handle() ] = self._ep_to_subform( ep_, 1 );
+          
+        subforms[ Handle( hid=ep.lid ) ] = ProtoForm( subforms=subforms_ );
+    
+    for cons in self._obj_.cons:
+      constraints.add( self._cons_to_constraint( cons ) );
+    
+    return ProtoForm( subforms=subforms, constraints=constraints );
 
 
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-class Word( pypes.proto.Word ):
+def mrs_to_pf( mrs ):
   
-  pass;
+  rslt = None;
+  with ERGMRSInterpreter( mrs ) as int:
+    rslt = int.to_pf();
+  return rslt;
 
 
 
@@ -227,3 +386,4 @@ class Word( pypes.proto.Word ):
 #       See LICENSE.txt for terms and conditions on use and reproduction.     #
 #                                                                             #
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+
