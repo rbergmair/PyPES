@@ -22,8 +22,6 @@ from pypes.proto.sig import ProtoSig;
 from pypes.proto.sig import Quantifier;
 from pypes.proto.sig import Sort;
 from pypes.proto.sig import Variable;
-from pypes.proto.sig import Operator;
-from pypes.proto.sig import Word;
 
 from pypes.proto.form import Connection;
 from pypes.proto.form import Constraint;
@@ -36,11 +34,13 @@ from pypes.proto.form import SubForm;
 from pypes.proto.form import ScopeBearer;
 from pypes.proto.form import Freezer;
 
+from pypes.proto.lex import Operator;
+from pypes.proto.lex import Word;
+
 from pypes.proto.protobase import ProtoBase;
 
 from pypes.proto.lambdaifier import Lambdaifier;
 from pypes.proto.lambdaifier import lambdaify;
-
 
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #

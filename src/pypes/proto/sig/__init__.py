@@ -5,8 +5,7 @@ __package__ = "pypes.proto";
 __all__ = [ "Argument", "Connective",
             #"Constant",
             "Modality",
-            "Predicate", "ProtoSig", "Quantifier", "Sort", "Variable",
-            "Operator", "Word" ];
+            "Predicate", "ProtoSig", "Quantifier", "Sort", "Variable" ];
 
 from pypes.proto.sig.argument import Argument;
 from pypes.proto.sig.connective import Connective;
@@ -17,8 +16,6 @@ from pypes.proto.sig.protosig import ProtoSig;
 from pypes.proto.sig.quantifier import Quantifier;
 from pypes.proto.sig.sort import Sort;
 from pypes.proto.sig.variable import Variable;
-from pypes.proto.sig.operator import Operator;
-from pypes.proto.sig.word import Word;
 
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #

@@ -1,4 +1,4 @@
-# -*-  coding: ascii -*-
+# -*-  coding: ascii -*-  # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 __package__ = "pypes.codecs_";
 __all__ = [ "PFTDecoder", "pft_decode",

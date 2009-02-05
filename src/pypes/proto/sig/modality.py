@@ -5,8 +5,8 @@ __all__ = [ "Modality" ];
 
 from pypes.utils.mc import kls;
 
-from pypes.proto.sig.operator import Operator;
-from pypes.proto.sig.word import Word;
+from pypes.proto.lex.basic import Operator;
+from pypes.proto.lex.basic import Word;
 from pypes.proto.protobase import ProtoBase;
 
 

@@ -6,6 +6,7 @@ __all__ = [ "Lambdaifier", "lambdaify", "sortseq" ];
 from pypes.utils.mc import subject;
 from pypes.proto.form import *;
 from pypes.proto.sig import *;
+from pypes.proto.lex import *;
 
 
 

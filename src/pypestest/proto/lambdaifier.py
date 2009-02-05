@@ -21,7 +21,7 @@ from pypestest.proto.form.protoform import TestProtoForm;
 from pypestest.proto.form.quantification import TestQuantification;
 
 from pypestest.proto.sig.variable import TestVariable;
-from pypestest.proto.sig.word import TestWord;
+from pypestest.proto.lex.basic import TestWord;
 
 
 
