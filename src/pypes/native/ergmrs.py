@@ -36,15 +36,17 @@ class ERGMRSInterpreter( metaclass=subject ):
       return pred;
   
   
-  def _spred_to_word( self, spred, feats ):
+  def _predstr_to_word( self, predstr, feats ):
     
-    assert spred[0] == "_";
-    spred = spred[1:];
+    predstr = predstr.lower();
     
-    assert spred[-4:] == "_rel";
-    spred = spred[:-4];
+    assert predstr[0] == "_";
+    predstr = predstr[1:];
     
-    toks = spred.split( "_" );
+    assert predstr[-4:] == "_rel";
+    predstr = predstr[:-4];
+    
+    toks = predstr.split( "_" );
     lemmatoks = toks[0].split( "+" );
     pos = None;
     sense = None;
@@ -63,9 +65,9 @@ class ERGMRSInterpreter( metaclass=subject ):
   
   def _make_identifier( self, stri ):
     
+    assert stri[0] in string.ascii_letters + string.digits;
+    
     stri_ = "";
-    if not stri[0] in string.ascii_letters + string.digits:
-      stri_ += "x";
     for ch in stri:
       if ch in string.ascii_letters + string.digits:
         stri_ += ch;
@@ -79,6 +81,7 @@ class ERGMRSInterpreter( metaclass=subject ):
     for (arg,var) in ep.args.items():
       if isinstance( var, MRSConstant ):
         continue;
+      assert isinstance( var, MRSVariable );
       arg = self._make_identifier( arg );
       if dcargs:
         arg = arg.lower();
@@ -87,18 +90,6 @@ class ERGMRSInterpreter( metaclass=subject ):
       args[ Argument( aid=arg ) ] = Variable( sidvid = (var.sid, var.vid) );
     
     return args;
-  
-  
-  def _is_predication( self, ep ):
-    
-    for arg in ep.args:
-      if not isinstance( ep.args[ arg ], MRSVariable ):
-        assert isinstance( ep.args[ arg ], MRSConstant );
-        return False;
-      elif ep.args[ arg ].sid == "h":
-        return False;
-    
-    return True;
   
   
   def _cspanfeats( self, ep, feats=None ):
@@ -112,6 +103,18 @@ class ERGMRSInterpreter( metaclass=subject ):
       feats[ "cto" ] = int( ep.cto );
     
     return feats;
+
+
+  def _is_predication( self, ep ):
+    
+    for arg in ep.args:
+      if not isinstance( ep.args[ arg ], MRSVariable ):
+        assert isinstance( ep.args[ arg ], MRSConstant );
+        return False;
+      elif ep.args[ arg ].sid == "h":
+        return False;
+    
+    return True;
   
   
   def _predep_to_subform( self, ep, lvl ):
@@ -119,31 +122,25 @@ class ERGMRSInterpreter( metaclass=subject ):
     referent = None;
     dcargs = False;
     
-    if ep.spred is None:
+    feats = {};
+    if "ARG0" in ep.args and ep.args[ "ARG0" ].sid == "e":
+      feats = ep.args[ "ARG0" ].feats;
+    
+    if ep.spred is None and ep.pred[0] != "_":
       pred = self._strip_pred( ep.pred );
-      assert pred is not None;
-      try:
-        assert pred in Operator.OP_Ps;
-      except:
-        print( pred );
-        raise;
-      referent = Operator(
-                     otype = Operator.OP_Ps[ pred ]
-                   );
+      referent = Operator( otype = pred, feats = feats );
       dcargs = False;
     
-    if ep.pred is None:
-      assert ep.spred is not None;
-      feats = {};
-      if "ARG0" in ep.args and ep.args[ "ARG0" ].sid == "e":
-        feats = ep.args[ "ARG0" ].feats;
-      referent = self._spred_to_word( ep.spred, self._cspanfeats( ep, feats ) );
+    else:
+      referent = self._predstr_to_word(
+                     ep.spred or ep.pred, self._cspanfeats( ep, feats )
+                   );
       dcargs = True;
     
+    assert referent is not None;
+    
     return Predication(
-               predicate = Predicate(
-                               referent = referent
-                             ),
+               predicate = Predicate( referent = referent ),
                args = self._extract_args( ep, dcargs )
              );
 
@@ -164,7 +161,13 @@ class ERGMRSInterpreter( metaclass=subject ):
   
   def _constpredep_to_subform( self, ep ):
     
-    assert ep.spred is None;
+    try:
+      assert ep.args[ "ARG0" ].sid == "x";
+    except:
+      print( ep );
+      raise;
+
+    pred = ep.spred or ep.pred;
     
     const = None;
     arg = None;
@@ -180,14 +183,12 @@ class ERGMRSInterpreter( metaclass=subject ):
     
     referent = Word(
                    lemma = [const.lower()],
-                   pos = self._strip_pred( ep.pred ).lower(),
+                   pos = self._strip_pred( pred ).lower(),
                    feats = self._cspanfeats( ep )
                  );
     
     return Predication(
-               predicate = Predicate(
-                               referent = referent
-                             ),
+               predicate = Predicate( referent = referent ),
                args = self._extract_args( ep, True )
              );
   
@@ -197,10 +198,13 @@ class ERGMRSInterpreter( metaclass=subject ):
     if ep.args.keys() != { "ARG0", "RSTR", "BODY" }:
       return False;
     
-    if not ep.args[ "RSTR" ].sid == "h":
+    if ep.args[ "RSTR" ].sid != "h":
       return False;
 
-    if not ep.args[ "BODY" ].sid == "h":
+    if ep.args[ "BODY" ].sid != "h":
+      return False;
+
+    if ep.args[ "ARG0" ].sid == "h":
       return False;
     
     return True;
@@ -214,26 +218,19 @@ class ERGMRSInterpreter( metaclass=subject ):
     rstr = ep.args[ "RSTR" ];
     body = ep.args[ "BODY" ];
     
-    if ep.spred is None:
+    if ep.spred is None and ep.pred[0] != "_":
       pred = self._strip_pred( ep.pred );
-      assert pred is not None;
-      assert pred in Operator.OP_Qs;
-      referent = Operator(
-                     otype = Operator.OP_Qs[ pred ],
-                     feats = arg0.feats
-                   );
+      referent = Operator( otype = pred, feats = arg0.feats );
     
-    if ep.pred is None:
-      assert ep.spred is not None;
-      referent = self._spred_to_word( ep.spred, self._cspanfeats( ep, arg0.feats ) );
+    else:
+      referent = self._predstr_to_word(
+                     ep.spred or ep.pred, self._cspanfeats( ep, arg0.feats )
+                   );
     
     assert referent is not None;
     
-    
     return Quantification(
-               quantifier = Quantifier(
-                                referent = referent
-                              ),
+               quantifier = Quantifier( referent = referent ),
                var = Variable( sidvid = ( arg0.sid, arg0.vid ) ),
                rstr = self.freeze( rstr.vid, lvl ),
                body = self.freeze( body.vid, lvl )
@@ -255,18 +252,20 @@ class ERGMRSInterpreter( metaclass=subject ):
     referent = None;
     dcargs = False;
     
-    if ep.spred is None:
+    feats = {};
+    if "ARG0" in ep.args and ep.args[ "ARG0" ].sid == "e":
+      feats = ep.args[ "ARG0" ].feats;
+    
+    if ep.spred is None and ep.pred[0] != "_":
       pred = self._strip_pred( ep.pred );
-      assert pred is not None;
       assert pred in Operator.OP_Ms;
-      referent = Operator(
-                     otype = Operator.OP_Ms[ pred ]
-                   );
+      referent = Operator( otype = pred, feats = feats );
       dcargs = False;
     
-    if ep.pred is None:
-      assert ep.spred is not None;
-      referent = self._spred_to_word( ep.spred, self._cspanfeats( ep ) );
+    else:
+      referent = self._predstr_to_word(
+                     ep.spred or ep.pred, self._cspanfeats( ep, feats )
+                   );
       dcargs = True;
     
     assert referent is not None;
@@ -281,9 +280,7 @@ class ERGMRSInterpreter( metaclass=subject ):
     del ep.args[ scope_arg ];
     
     return Modification(
-               modality = Modality(
-                              referent = referent
-                            ),
+               modality = Modality( referent = referent ),
                scope = self.freeze( scope_vid, lvl ),
                args = self._extract_args( ep, dcargs )
              );
@@ -300,13 +297,6 @@ class ERGMRSInterpreter( metaclass=subject ):
     elif self._is_modification( ep ):
       return self._modep_to_subform( ep, lvl );
     else:
-      if ep.pred in { "PLUS_REL", "TIMES_REL", "_AND_C_REL", "NE_X_REL",
-                      "SUBORD_REL" }:
-        return Modification( modality = Modality( referent = Word() ),
-                             scope = ProtoForm() );
-      if ep.spred in { "_if_x_then_rel" }:
-        return Modification( modality = Modality( referent = Word() ),
-                             scope = ProtoForm() );
       print( ep );
       assert False;
       

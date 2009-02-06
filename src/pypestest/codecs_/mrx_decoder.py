@@ -51,8 +51,8 @@ class TestMRXDecoder( TestCase, metaclass=object_ ):
     for i in range( 1, 108 ):
       self.doteston( "{0}/mrs-{1}1.mrs.xml.gz".format( self._TESTMRSDIR, i ) );
 
-    #for i in range( 1, 326 ):
-    #  self.doteston( "{0}/fracas-{1}.mrs.xml.gz".format( self._TESTMRSDIR, i ) );
+    for i in range( 1, 326 ):
+      self.doteston( "{0}/fracas-{1}.mrs.xml.gz".format( self._TESTMRSDIR, i ) );
       
 
 
