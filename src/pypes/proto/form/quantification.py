@@ -7,6 +7,7 @@ __all__ = [ "Quantification" ];
 from pypes.utils.mc import kls;
 from pypes.proto import Quantifier;
 from pypes.proto import Variable;
+from pypes.proto import Constant;
 from pypes.proto.form.scopebearer import ScopeBearer;
 from pypes.proto.form.subform import SubForm;
 
@@ -36,7 +37,8 @@ class Quantification( SubForm, metaclass=kls ):
     
     if var is not None:
       self.var = var( sig=sig );
-      assert isinstance( self.var, Variable );
+      assert isinstance( self.var, Variable ) or \
+             isinstance( self.var, Constant );
     
     if rstr is not None:
       self.rstr = rstr( sig=sig );

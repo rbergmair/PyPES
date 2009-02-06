@@ -6,10 +6,11 @@ __all__ = [ "PFTDecoder", "pft_decode",
 
 import ast;
 import re;
+import copy;
 
 from pyparsing import Literal;
 from pyparsing import Word as Word_;
-from pyparsing import ZeroOrMore, OneOrMore, Optional, NotAny;
+from pyparsing import Group, ZeroOrMore, OneOrMore, Optional, NotAny;
 from pyparsing import Forward;
 from pyparsing import quotedString;
 
@@ -43,6 +44,7 @@ _GT_PROTOFORM = 8;
 _GT_FREEZER = 9;
 _GT_LEMMATOKS = 10;
 _GT_OPERATOR = 11;
+_GT_CONSTANT = 12;
 
 
 
@@ -147,6 +149,12 @@ class PFTDecoder( metaclass=subject ):
     assert _variable_re.match( tok );
     return ( _GT_VARIABLE, Variable( sidvid = ( tok[0], int( tok[1:] ) ) ) );
   variable.setParseAction( _decode_variable );
+  
+  
+  constant = Group( quoted );
+  def _decode_constant( str_, loc, toks ):
+    return ( _GT_CONSTANT, Constant( ident = toks[0][0] ) );
+  constant.setParseAction( _decode_constant );
 
 
   features_list = Literal( "[" ) + \
@@ -313,9 +321,10 @@ class PFTDecoder( metaclass=subject ):
   
   arguments_list = Literal( "(" ) + \
                    Optional( 
-                       identifier + Literal("=") + variable + \
+                       identifier + Literal("=") + ( variable | constant ) + \
                        ZeroOrMore(
-                           Literal(",") + identifier + Literal("=") + variable
+                           Literal(",") +
+                           identifier + Literal("=") + ( variable | constant )
                          )
                      ) + \
                    Literal( ")" );
@@ -342,11 +351,11 @@ class PFTDecoder( metaclass=subject ):
       i+= 1;
       
       assert len( toks ) > i;
-      ( type_, variable ) = toks[i];
-      assert type_ == _GT_VARIABLE;
+      ( type_, varconst ) = toks[i];
+      assert type_ in { _GT_VARIABLE, _GT_CONSTANT };
       i += 1;
       
-      args[ argument ] = variable;
+      args[ argument ] = varconst;
       
       assert len( toks ) > i;
       if toks[i] == ",":

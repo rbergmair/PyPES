@@ -18,6 +18,7 @@ from pypestest.proto.form.protoform import TestProtoForm;
 from pypestest.proto.form.quantification import TestQuantification;
 
 from pypestest.proto.sig.variable import TestVariable;
+from pypestest.proto.sig.constant import TestConstant;
 from pypestest.proto.lex.basic import TestWord;
 
 from pypes.codecs_ import *;
@@ -55,6 +56,15 @@ class TestPFTEncoder( TestCase, metaclass=object_ ):
     
     check( "x1", TestVariable.init_var_1 );
     check( None, lambda self: Variable() );
+    
+    
+  def test_constant( self ):
+
+    check = lambda stri, initf: \
+              self.check( stri, initf, TestConstant.logify );
+    
+    check( "'Jones'", TestConstant.init_const_1 );
+    check( "'Smith'", TestConstant.init_const_2 );
 
 
   def test_word( self ):
@@ -78,7 +88,7 @@ class TestPFTEncoder( TestCase, metaclass=object_ ):
               self.check( stri, initf, TestPredication.logify );
     
     check( "|cat:5|( arg1=x1 )", TestPredication.init_pred_1 );
-    check( "EQUALS( ARG0=x1, ARG1=x2 )", TestPredication.init_pred_2 );
+    check( "EQUALS( ARG0=x1, ARG1='Jones' )", TestPredication.init_pred_2 );
     check( "|cat|( arg0=d1 )", TestPredication.init_pred_3 );
 
 

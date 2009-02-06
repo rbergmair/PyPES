@@ -127,6 +127,11 @@ class PFTEncoder( metaclass=subject ):
       vid = inst.vid;
 
     return str(sid) + str(vid);
+
+
+  def _encode_constant( self, inst ):
+    
+    return repr( inst.ident );
   
   
   def _encode_feats( self, feats ):
@@ -287,6 +292,8 @@ class PFTEncoder( metaclass=subject ):
       return self._encode_freezer( inst );
     elif isinstance( inst, Variable ):
       return self._encode_variable( inst );
+    elif isinstance( inst, Constant ):
+      return self._encode_constant( inst );
     elif isinstance( inst, Word ):
       return self._encode_word( inst );
     elif isinstance( inst, Operator ):

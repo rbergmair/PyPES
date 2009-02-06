@@ -75,7 +75,7 @@ class TestPredication( TestCase, metaclass=object_ ):
                 args = { Argument( aid="ARG0" ):
                            Variable( sidvid=("x",1) ),
                          Argument( aid="ARG1" ):
-                           Variable( sidvid=("x",2) )
+                           Constant( ident="Jones" )
                        }
               );
     return inst_;
@@ -91,11 +91,16 @@ class TestPredication( TestCase, metaclass=object_ ):
       self.assert_( isinstance( arg, Argument ), msg );
       self.assert_( isinstance( arg.aid, str ), msg );
       labels.add( arg.aid );
-      self.assert_( isinstance( inst.args[ arg ], Variable ), msg );
       vars.add( id( inst.args[ arg ] ) );
-      self.assert_( isinstance( inst.args[ arg ].vid, int ), msg );
-      self.assert_( isinstance( inst.args[ arg ].sort, Sort ), msg );
-      self.assertEquals( inst.args[ arg ].sort.sid, "x", msg );
+      if arg.aid == "ARG0":
+        self.assert_( isinstance( inst.args[ arg ], Variable ), msg );
+        self.assert_( isinstance( inst.args[ arg ].vid, int ), msg );
+        self.assert_( isinstance( inst.args[ arg ].sort, Sort ), msg );
+        self.assertEquals( inst.args[ arg ].sort.sid, "x", msg );
+      elif arg.aid == "ARG1":
+        self.assert_( isinstance( inst.args[ arg ], Constant ), msg );
+        self.assertEquals( inst.args[ arg ].ident, "Jones", msg );
+        
     self.assertEquals( labels, { "ARG0", "ARG1" }, msg );
     self.assertEquals( len( vars ), 2, msg );
   

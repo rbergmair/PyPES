@@ -4,18 +4,14 @@ __package__ = "pypes";
 
 __all__ = [ "Connection", "Constraint", "Handle", "Modification",
             "Predication", "ProtoForm", "Quantification", "SubForm",
-            "ScopeBearer", "Freezer",
-            "Argument", "Connective",
-            # "Constant",
-            "Modality",
-            "Predicate", "ProtoSig", "Quantifier", "Sort", "Variable",
-            "Operator", "Word",
-            "ProtoBase",
+            "ScopeBearer", "Freezer", "Argument", "Connective",
+            "Constant", "Modality", "Predicate", "ProtoSig", "Quantifier",
+            "Sort", "Variable", "Operator", "Word", "ProtoBase",
             "Lambdaifier", "lambdaify" ];
 
 from pypes.proto.sig import Argument;
 from pypes.proto.sig import Connective;
-#from pypes.proto.sig import Constant;
+from pypes.proto.sig import Constant;
 from pypes.proto.sig import Modality;
 from pypes.proto.sig import Predicate;
 from pypes.proto.sig import ProtoSig;

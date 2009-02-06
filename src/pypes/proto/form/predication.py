@@ -8,6 +8,7 @@ from pypes.utils.mc import kls;
 from pypes.proto import Predicate;
 from pypes.proto import Argument;
 from pypes.proto import Variable;
+from pypes.proto import Constant;
 from pypes.proto.form.subform import SubForm;
 
 
@@ -41,7 +42,7 @@ class Predication( SubForm, metaclass=kls ):
         assert isinstance( arg, Argument );
         
         var = args[ arg_ ]( sig=sig );
-        assert isinstance( var, Variable );
+        assert isinstance( var, Variable ) or isinstance( var, Constant );
         
         self.args[ arg ] = var;
   

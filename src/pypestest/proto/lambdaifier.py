@@ -21,6 +21,7 @@ from pypestest.proto.form.protoform import TestProtoForm;
 from pypestest.proto.form.quantification import TestQuantification;
 
 from pypestest.proto.sig.variable import TestVariable;
+from pypestest.proto.sig.constant import TestConstant;
 from pypestest.proto.lex.basic import TestWord;
 
 
@@ -199,6 +200,14 @@ class TestLambdaifier( TestCase, metaclass=object_ ):
     dotest( TestVariable.init_var_2 );
     dotest( TestVariable.init_var_3 );
     dotest( TestVariable.init_var_4 );
+
+
+  def test_constant( self ):
+
+    dotest = lambda initf: self.dotest( TestConstant.logify, initf );
+    
+    dotest( TestConstant.init_const_1 );
+    dotest( TestConstant.init_const_2 );
 
 
   def test_word( self ):

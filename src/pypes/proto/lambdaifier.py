@@ -117,8 +117,10 @@ class Lambdaifier( metaclass=subject ):
       
       for arg in obj.args:
         var = obj.args[ arg ];
-        assert isinstance( var, Variable );
-        self._collect_index( var );
+        if isinstance( var, Variable ):
+          self._collect_index( var );
+        else:
+          assert isinstance( var, Constant );
 
     elif isinstance( obj, Quantification ):
 
@@ -330,6 +332,10 @@ class Lambdaifier( metaclass=subject ):
       ( sort, vid ) = self._sortvid_by_variable[ obj ];
       sid = self._sid_by_sort[ sort ];
       return obj.__class__( sidvid = (sid,vid) );
+
+    elif isinstance( obj, Constant ):
+      
+      return obj.__class__( ident = obj.ident );
 
     elif isinstance( obj, Quantification ):
       

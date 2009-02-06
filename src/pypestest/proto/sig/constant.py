@@ -34,16 +34,43 @@ class TestConstant( TestCase, metaclass=object_ ):
     inst_ = Constant( ident="Jones" );
     return inst_;
   
-  
-  def check_const_1( self, inst ):
+  def check_const_1( self, inst, msg=None ):
     
-    self.assertEquals( inst.ident, "Jones" );
+    self.assertEquals( inst.ident, "Jones", msg );
   
-  
-  def x_test_1( self ):
+  def test_1( self ):
     
     self.check_const_1( self.logify( self.init_const_1() ) );
+
+  
+  def init_const_2( self ):
     
+    inst_ = Constant( ident="Smith" );
+    return inst_;
+  
+  def check_const_2( self, inst, msg=None ):
+    
+    self.assertEquals( inst.ident, "Smith", msg );
+  
+  def test_2( self ):
+    
+    self.check_const_2( self.logify( self.init_const_2() ) );
+    
+
+  def test_cmp( self ):
+    
+    const1 = self.logify( self.init_const_1() );
+    const2 = self.logify( self.init_const_2() );
+
+    const1_ = self.logify( self.init_const_1() );
+    const2_ = self.logify( self.init_const_2() );
+    
+    self.assertEquals_( const1, const1_ );
+    self.assertEquals_( const2, const2_ );
+
+    self.assertNotEquals_( const1, const2_ );
+    self.assertNotEquals_( const2, const1_ );
+
 
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
