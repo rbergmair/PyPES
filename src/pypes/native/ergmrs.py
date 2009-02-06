@@ -79,15 +79,17 @@ class ERGMRSInterpreter( metaclass=subject ):
     args = {};
     
     for (arg,var) in ep.args.items():
-      if isinstance( var, MRSConstant ):
-        continue;
-      assert isinstance( var, MRSVariable );
       arg = self._make_identifier( arg );
       if dcargs:
         arg = arg.lower();
       else:
         arg = arg.upper();
-      args[ Argument( aid=arg ) ] = Variable( sidvid = (var.sid, var.vid) );
+      if isinstance( var, MRSVariable ):
+        args[ Argument( aid=arg ) ] = Variable( sidvid = ( var.sid, var.vid ) );
+      elif isinstance( var, MRSConstant ):
+        args[ Argument( aid=arg ) ] = Constant( ident = var.constant );
+      else:
+        assert False;
     
     return args;
   
@@ -108,10 +110,10 @@ class ERGMRSInterpreter( metaclass=subject ):
   def _is_predication( self, ep ):
     
     for arg in ep.args:
-      if not isinstance( ep.args[ arg ], MRSVariable ):
-        assert isinstance( ep.args[ arg ], MRSConstant );
-        return False;
-      elif ep.args[ arg ].sid == "h":
+      if isinstance( ep.args[ arg ], MRSConstant ):
+        continue;
+      assert isinstance( ep.args[ arg ], MRSVariable );
+      if ep.args[ arg ].sid == "h":
         return False;
     
     return True;
@@ -123,8 +125,10 @@ class ERGMRSInterpreter( metaclass=subject ):
     dcargs = False;
     
     feats = {};
-    if "ARG0" in ep.args and ep.args[ "ARG0" ].sid == "e":
-      feats = ep.args[ "ARG0" ].feats;
+    if "ARG0" in ep.args:
+      if isinstance( ep.args[ "ARG0" ], MRSVariable ):
+        if ep.args[ "ARG0" ].sid == "e":
+          feats = ep.args[ "ARG0" ].feats;
     
     if ep.spred is None and ep.pred[0] != "_":
       pred = self._strip_pred( ep.pred );
@@ -159,52 +163,27 @@ class ERGMRSInterpreter( metaclass=subject ):
     return found;
   
   
-  def _constpredep_to_subform( self, ep ):
-    
-    try:
-      assert ep.args[ "ARG0" ].sid == "x";
-    except:
-      print( ep );
-      raise;
-
-    pred = ep.spred or ep.pred;
-    
-    const = None;
-    arg = None;
-    for (arg_,var) in ep.args.items():
-      if not isinstance( var, MRSVariable ):
-        assert isinstance( var, MRSConstant );
-        const = var.constant;
-        arg = arg_;
-        
-    assert isinstance( const, str );
-    assert arg is not None;
-    del ep.args[ arg ];
-    
-    referent = Word(
-                   lemma = [const.lower()],
-                   pos = self._strip_pred( pred ).lower(),
-                   feats = self._cspanfeats( ep )
-                 );
-    
-    return Predication(
-               predicate = Predicate( referent = referent ),
-               args = self._extract_args( ep, True )
-             );
-  
-  
   def _is_quantification( self, ep ):
     
     if ep.args.keys() != { "ARG0", "RSTR", "BODY" }:
+      return False;
+    
+    if not isinstance( ep.args[ "ARG0" ], MRSVariable ):
+      return False;
+    
+    if not isinstance( ep.args[ "RSTR" ], MRSVariable ):
+      return False;
+    
+    if not isinstance( ep.args[ "BODY" ], MRSVariable ):
+      return False;
+
+    if ep.args[ "ARG0" ].sid == "h":
       return False;
     
     if ep.args[ "RSTR" ].sid != "h":
       return False;
 
     if ep.args[ "BODY" ].sid != "h":
-      return False;
-
-    if ep.args[ "ARG0" ].sid == "h":
       return False;
     
     return True;
@@ -241,7 +220,7 @@ class ERGMRSInterpreter( metaclass=subject ):
     
     holes = 0;
     for (arg,var) in ep.args.items():
-      if var.sid == "h":
+      if isinstance( var, MRSVariable ) and var.sid == "h":
         holes += 1;
     
     return holes == 1;
@@ -253,12 +232,13 @@ class ERGMRSInterpreter( metaclass=subject ):
     dcargs = False;
     
     feats = {};
-    if "ARG0" in ep.args and ep.args[ "ARG0" ].sid == "e":
-      feats = ep.args[ "ARG0" ].feats;
+    if "ARG0" in ep.args:
+      if isinstance( ep.args[ "ARG0" ], MRSVariable ):
+        if ep.args[ "ARG0" ].sid == "e":
+          feats = ep.args[ "ARG0" ].feats;
     
     if ep.spred is None and ep.pred[0] != "_":
       pred = self._strip_pred( ep.pred );
-      assert pred in Operator.OP_Ms;
       referent = Operator( otype = pred, feats = feats );
       dcargs = False;
     
@@ -273,10 +253,11 @@ class ERGMRSInterpreter( metaclass=subject ):
     scope_vid = None;
     scope_arg = None;
     for (arg,var) in ep.args.items():
-      if var.sid == "h":
-        scope_vid = var.vid;
-        scope_arg = arg;
-        break;
+      if isinstance( var, MRSVariable ):
+        if var.sid == "h":
+          scope_vid = var.vid;
+          scope_arg = arg;
+          break;
     del ep.args[ scope_arg ];
     
     return Modification(
