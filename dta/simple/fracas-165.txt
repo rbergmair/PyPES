@@ -1,1 +1,0 @@
-The ITEL-ZX is slower than 500 MIPS.
