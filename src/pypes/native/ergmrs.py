@@ -168,23 +168,12 @@ class ERGMRSInterpreter( metaclass=subject ):
     if ep.args.keys() != { "ARG0", "RSTR", "BODY" }:
       return False;
     
-    if not isinstance( ep.args[ "ARG0" ], MRSVariable ):
-      return False;
-    
-    if not isinstance( ep.args[ "RSTR" ], MRSVariable ):
-      return False;
-    
-    if not isinstance( ep.args[ "BODY" ], MRSVariable ):
-      return False;
-
-    if ep.args[ "ARG0" ].sid == "h":
-      return False;
-    
-    if ep.args[ "RSTR" ].sid != "h":
-      return False;
-
-    if ep.args[ "BODY" ].sid != "h":
-      return False;
+    assert isinstance( ep.args[ "ARG0" ], MRSVariable );
+    assert isinstance( ep.args[ "RSTR" ], MRSVariable );
+    assert isinstance( ep.args[ "BODY" ], MRSVariable );
+    assert ep.args[ "ARG0" ].sid != "h";
+    assert ep.args[ "RSTR" ].sid == "h";
+    assert ep.args[ "BODY" ].sid == "h";
     
     return True;
 
@@ -267,6 +256,104 @@ class ERGMRSInterpreter( metaclass=subject ):
              );
 
 
+  def _connep_to_subform( self, ep, lscope, rscope, lvl ):
+
+    referent = None;
+    
+    lhndl = ep.args[ lscope ];
+    rhndl = ep.args[ rscope ];
+    
+    if ep.spred is None and ep.pred[0] != "_":
+      pred = self._strip_pred( ep.pred );
+      referent = Operator( otype = pred );
+    
+    else:
+      referent = self._predstr_to_word(
+                     ep.spred or ep.pred, self._cspanfeats( ep )
+                   );
+    
+    conn = Connection(
+               connective = Connective( referent = referent ),
+               lscope = self.freeze( lhndl.vid, lvl+1 ),
+               rscope = self.freeze( rhndl.vid, lvl+1 )
+             );
+    
+    del ep.args[ lscope ];
+    del ep.args[ rscope ];
+    
+    assert self._is_predication( ep );
+    
+    pred = self._predep_to_subform( ep, lvl+1 );
+    
+    return ProtoForm(
+               subforms = {
+                   Handle():
+                     Connection(
+                         connective = Connective(
+                                          referent = Operator(
+                                                         otype = Operator.OP_C_WEACON
+                                                       )
+                                        ),
+                         lscope = Handle(),
+                         rscope = Handle(),
+                       ),
+                   Handle(): conn,
+                   Handle(): pred
+                 }
+             );
+
+
+  def _is_simple_connective( self, ep ):
+    
+    if ep.args.keys() != { "ARG0", "ARG1", "ARG2" }:
+      return False;
+    
+    if not isinstance( ep.args[ "ARG0" ], MRSVariable ):
+      return False;
+    if not isinstance( ep.args[ "ARG1" ], MRSVariable ):
+      return False;
+    if not isinstance( ep.args[ "ARG2" ], MRSVariable ):
+      return False;
+    
+    if ep.args[ "ARG0" ].sid == "h":
+      return False;
+    if ep.args[ "ARG1" ].sid != "h":
+      return False;
+    if ep.args[ "ARG2" ].sid != "h":
+      return False;
+    
+    return True;
+  
+  
+  def _simpleconnep_to_subform( self, ep, lvl ):
+    
+    return self._connep_to_subform( ep, "ARG1", "ARG2", lvl );
+
+  
+  def _is_coord_connective( self, ep ):
+    
+    if ep.args.keys() != { "ARG0", "L-INDEX", "L-HNDL", "R-INDEX", "R-HNDL" }:
+      return False;
+
+    assert isinstance( ep.args[ "ARG0" ], MRSVariable );
+    assert isinstance( ep.args[ "L-INDEX" ], MRSVariable );
+    assert isinstance( ep.args[ "L-HNDL" ], MRSVariable );
+    assert isinstance( ep.args[ "R-INDEX" ], MRSVariable );
+    assert isinstance( ep.args[ "R-HNDL" ], MRSVariable );
+    assert ep.args[ "ARG0" ].sid != "h";
+    assert ep.args[ "L-INDEX" ].sid != "h";
+    assert ep.args[ "L-HNDL" ].sid == "h";
+    assert ep.args[ "R-INDEX" ].sid != "h";
+    assert ep.args[ "R-HNDL" ].sid == "h";
+    
+    return True;
+  
+  
+  def _coordconnep_to_subform( self, ep, lvl ):
+    
+    return self._connep_to_subform( ep, "L-HNDL", "R-HNDL", lvl );
+
+
   def _ep_to_subform( self, ep, lvl ):
     
     if self._is_predication( ep ):
@@ -277,6 +364,10 @@ class ERGMRSInterpreter( metaclass=subject ):
       return self._quantep_to_subform( ep, lvl );
     elif self._is_modification( ep ):
       return self._modep_to_subform( ep, lvl );
+    elif self._is_simple_connective( ep ):
+      return self._simpleconnep_to_subform( ep, lvl );
+    elif self._is_coord_connective( ep ):
+      return self._coordconnep_to_subform( ep, lvl );
     else:
       print( ep );
       assert False;
@@ -302,12 +393,12 @@ class ERGMRSInterpreter( metaclass=subject ):
         eps_by_lids[ ep.lid ] = set();
       eps_by_lids[ ep.lid ].add( ep );
 
-    for eps in eps_by_lids.values():
+    for (lid,eps) in eps_by_lids.items():
       
       if len( eps ) == 1:
         
         ep_ = eps.pop();
-        subforms[ Handle( hid=ep_.lid ) ] = self._ep_to_subform( ep_, 0 );
+        subforms[ Handle( hid=lid ) ] = self._ep_to_subform( ep_, 0 );
         
       else:
         
@@ -328,7 +419,7 @@ class ERGMRSInterpreter( metaclass=subject ):
         for ep_ in eps:
           subforms_[ Handle() ] = self._ep_to_subform( ep_, 1 );
           
-        subforms[ Handle( hid=ep.lid ) ] = ProtoForm( subforms=subforms_ );
+        subforms[ Handle( hid=lid ) ] = ProtoForm( subforms=subforms_ );
     
     for cons in self._obj_.cons:
       constraints.add( self._cons_to_constraint( cons ) );
