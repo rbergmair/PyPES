@@ -1,0 +1,2581 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE ave-corpus SYSTEM "ave2007.dtd">
+<ave-corpus>
+	<q id="1" lang="DE">
+		<q_str>Wer übernahm in dem Film "Seven Years in Tibet" die Hauptrolle?</q_str>
+		<a id="1_1" value="REJECTED">
+			<a_str>Judy Garland</a_str>
+			<t_str doc="FR941218-002485">Judy Garland spielt die Hauptrolle.</t_str>
+		</a>
+		<a id="1_2" value="VALIDATED">
+			<a_str>Brad Pitt</a_str>
+			<t_str doc="SDA.950726.0142">Hollywood, 26. Juli (sda/dpa) Brad Pitt hat die Hauptrolle im Film "Seven Years in Tibet" übernommen.</t_str>
+		</a>
+	</q>
+	<q id="2" lang="DE">
+		<q_str>Wie hieß der Kommandant des Warschauer Aufstandes?</q_str>
+		<a id="2_1" value="VALIDATED">
+			<a_str>Tadeusz Bór-Komorowski</a_str>
+			<t_str doc="SDA.940729.0215">Die sterblichen Überreste von Tadeusz Bór-Komorowski , dem Kommandanten des Warschauer Aufstands von 1944 gegen die deutsche Besetzung , sind am Donnerstag aus Grossbritannien nach Polen heimgekehrt .</t_str>
+		</a>
+	</q>
+	<q id="3" lang="DE">
+		<q_str>Wie hieß die Hauptdarstellerin in dem Film "Sissi"?</q_str>
+		<a id="3_1" value="REJECTED">
+			<a_str>Juliette Binoche</a_str>
+			<t_str doc="SDA.940227.0062">Juliette Binoche wurde als beste Hauptdarstellerin in dem Film ausgezeichnet, der ausserdem Preise für Montage und Ton erhielt.</t_str>
+		</a>
+	</q>
+	<q id="4" lang="DE">
+		<q_str>Wer schrieb das phantastische Epos "Der Herr der Ringe"?</q_str>
+		<a id="4_1" value="REJECTED">
+			<a_str>Lord Mayor</a_str>
+			<t_str doc="FR940925-000721">In dieser Stadt, klagt der Lord Lord Mayor zwar, ist Radfahren ein gefährlicher und ungesunder Zeitvertrieb.</t_str>
+		</a>
+		<a id="4_2" value="VALIDATED">
+			<a_str>John Ronald R. Tolkien</a_str>
+			<t_str doc="FR940904-002658">*Geistiger Urvater aller Rollenspiele ist der Engländer John Ronald R. Tolkien: Mit seinem phantastischen Epos Der Herr der Ringe legte John Ronald R. Tolkien den Grundstein für die Geschichten der Spieler.</t_str>
+		</a>
+	</q>
+	<q id="5" lang="DE">
+		<q_str>Wie heißt die erste Frau, die ohne Sauerstoffgerät den Mount Everest bestieg?</q_str>
+		<a id="5_1" value="REJECTED">
+			<a_str>Reinhold Messner</a_str>
+			<t_str doc="SPIEGEL9495-011474">Vermißt Alison Hargreaves, 33. Alison Hargreaves hatte nach Reinhold Messner als erste Frau ohne Scherpas und ohne Sauerstoffgerät den höchsten Berg der Welt, den Mount Everest, bezwungen.</t_str>
+		</a>
+		<a id="5_2" value="VALIDATED">
+			<a_str>Alison Hargreaves</a_str>
+			<t_str doc="SPIEGEL9495-011474">33. Alison Hargreaves hatte nach Reinhold Messner als erste Frau ohne Scherpas und ohne Sauerstoffgerät den höchsten Berg der Welt, den Mount Everest, bezwungen.</t_str>
+		</a>
+	</q>
+	<q id="6" lang="DE">
+		<q_str>Wer wird als der "Eiserne Kanzler" bezeichnet?</q_str>
+		<a id="6_1" value="VALIDATED">
+			<a_str>Otto von Bismarck</a_str>
+			<t_str doc="FR940731-000577">Den historisch Bewanderten fällt prompt das Wort des Eisernen Kanzlers Otto von Bismarck ein: Wir Deutschen fürchten nur Gott und sonst nichts auf der Welt.</t_str>
+		</a>
+	</q>
+	<q id="7" lang="DE">
+		<q_str>Wer legte am 20. Juli 1944 eine Bombe in das Führerhauptquartier "Wolfsschanze" in Ostpreußen, um Hitler zu töten?</q_str>
+		<a id="7_1" value="REJECTED">
+			<a_str>Chirac</a_str>
+			<t_str doc="SPIEGEL9495-013637">"Chirac, die Bombe sind wir"</t_str>
+		</a>
+		<a id="7_2" value="REJECTED">
+			<a_str>Hitlers</a_str>
+			<t_str doc="FR940605-000267">Claus Graf Schenk von Stauffenberg hatte am 20. Juli 1944 in Hitlers Hauptquartier in Ostpreußen eine Bombe gezündet, die Hitler töten und einen Staatsstreich auslösen sollte. Der Anschlag mißlang, Hitler kam mit leichten Verletzungen davon. Nach dem Attentatsversuch wurden mehr als 200 Männer und Frauen aus dem Widerstand hingerichtet.</t_str>
+		</a>
+		<a id="7_3" value="REJECTED">
+			<a_str>Claus_Schenk_Graf_von_Stauffenberg</a_str>
+			<t_str doc="FR940724-000413">Der Präsident des polnischen Abgeordnetenhauses , Jozef_Oleksy , legte am Dienstag mit Bundestagspräsidentin Rita_Süssmuth im früheren Hauptquartier Adolf_Hitlers , der Wolfsschanze im polnischen Ketrzyn , einen Kranz zu Ehren von Claus_Schenk_Graf_von_Stauffenberg nieder , der dort vor 50 Jahren das mißglückte Attentat gegen Hitler ausgeführt hatte .</t_str>
+		</a>
+	</q>
+	<q id="8" lang="DE">
+		<q_str>In welchem Jahr ereignete sich die Katastrophe von Tschernobyl?</q_str>
+		<a id="8_1" value="REJECTED">
+			<a_str>1990</a_str>
+			<t_str doc="SDA.950814.0159">" 1238 jüdische Kinder im Alter von 6 bis 18 Jahren, darunter viele mit starken gesundheitlichen Beschwerden, hat die Organisation "Chabad's Children of Chernobyl" seit 1990 aus den Städten rund um den ukrainischen Reaktor nach Israel ausgeflogen.</t_str>
+		</a>
+		<a id="8_2" value="VALIDATED">
+			<a_str>26. April 1986</a_str>
+			<t_str doc="SDA.951101.0020">In Tschernobyl ereignete sich am 26. April 1986 die grösste Katastrophe in der zivilen Nutzung der Atomenergie.</t_str>
+		</a>
+		<a id="8_3" value="VALIDATED">
+			<a_str>am 26.4.1986</a_str>
+			<t_str doc="FR940508-000816">Am 26 . April 1986 ereignete sich die Reaktorkatastrophe von Tschernobyl .</t_str>
+		</a>
+	</q>
+	<q id="9" lang="DE">
+		<q_str>In welchem Jahr wurde Helmut Kohl geboren?</q_str>
+		<a id="9_1" value="REJECTED">
+			<a_str>1990</a_str>
+			<t_str doc="SPIEGEL9495-003170">1990 haben Helmut Kohl die Partei gewählt, die die Einheit laut und deutlich wollte und Helmut Kohl schnell herbeigeführt hat.</t_str>
+		</a>
+		<a id="9_2" value="REJECTED">
+			<a_str>2. Oktober 1990</a_str>
+			<t_str doc="SPIEGEL9495-012628">Gerade hatten sie mit Beethovens Ode an die Freude die DDR zu Grabe getragen am Abend des 2. Oktober 1990, da stahl sich Helmut Kohl vors Portal des Schauspielhauses am Berliner Gendarmenmarkt.</t_str>
+		</a>
+		<a id="9_3" value="VALIDATED">
+			<a_str>1930</a_str>
+			<t_str doc="SDA.941115.0177">Der am 3 . April 1930 in Ludwigshafen am Rhein geborene Kohl kam nach mehreren vergeblichen Anläufen 1982 nicht nach einer Parlamentswahl , sondern durch einen Koalitionswechsel an die Macht .</t_str>
+		</a>
+	</q>
+	<q id="10" lang="DE">
+		<q_str>An welchem Tag wurde die Berliner Mauer geöffnet?</q_str>
+		<a id="10_1" value="REJECTED">
+			<a_str>Februar 1989</a_str>
+			<t_str doc="FR940703-002174">Das auf dem Friedhof BERLIN-Baumschulenweg gelegene Grab des im Februar 1989 an der Berliner Mauer erschossenen Kellners Chris Gueffroy ist in der vergangenen Woche geschändet worden.</t_str>
+		</a>
+		<a id="10_2" value="VALIDATED">
+			<a_str>9. November</a_str>
+			<t_str doc="SPIEGEL9495-006901">Tag für Tag verlassen Tausende die DDR. 9. November: Am Abend kündigt Politbüro-Mitglied Günter Schabowski Reisefreiheit für die DDR-Bürger an. Die Mauer öffnet sich. Noch in der Nacht strömen die Ost-Berliner in Massen in den Westen.</t_str>
+		</a>
+		<a id="10_3" value="VALIDATED">
+			<a_str>am 9.11.1989</a_str>
+			<t_str doc="SDA.941107.0204">Die Öffnung der Berliner Mauer am 9 . November 1989 war Teil einer Kette historischer Ereignisse und Umwälzungen in den Ostblockstaaten im Jahr 1989 .</t_str>
+		</a>
+	</q>
+	<q id="11" lang="DE">
+		<q_str>In welchem Jahr sank die Titanic?</q_str>
+		<a id="11_1" value="REJECTED">
+			<a_str>1985</a_str>
+			<t_str doc="SDA.950828.0191">Ein Blick zurück: - Vor 10 Jahren (1985) ... . wurde das Wrack der 1912 gesunkenen "Titanic" von einer französisch-amerikanischen Suchmannschaft im Nordatlantik in 4000 Metern Tiefe geortet.</t_str>
+		</a>
+		<a id="11_2" value="VALIDATED">
+			<a_str>14. April 1912</a_str>
+			<t_str doc="SDA.940928.0149">14. April 1912 Der englische Luxusdampfer "Titanic" sinkt nach der Kollision mit einem Eisberg: 1503 Tote.</t_str>
+		</a>
+		<a id="11_3" value="VALIDATED">
+			<a_str>im Jahr 1912</a_str>
+			<t_str doc="SDA.940915.0180">Die Titanic war 1912 auf dem Weg von Grossbritannien nach New York nach der Kollision mit einem Eisberg mit 1500 Personen untergegangen .</t_str>
+		</a>
+	</q>
+	<q id="12" lang="DE">
+		<q_str>In welchem Jahr fand die erste Mondlandung statt?</q_str>
+		<a id="12_1" value="VALIDATED">
+			<a_str>20. Juli 1969</a_str>
+			<t_str doc="SPIEGEL9495-002977">Der kleine Hopser, mit dem Neil Armstrong am 20. Juli 1969 von der unteren Sprosse der Ausstiegsleiter den Mond betrat, von Neil Armstrong selbst als "großer Schritt für die Menschheit" apostrophiert, ging ziemlich folgenlos in die Annalen der Weltraumfahrt ein.</t_str>
+		</a>
+	</q>
+	<q id="13" lang="DE">
+		<q_str>In welchem Jahr wurde Martin Luther King ermordet?</q_str>
+		<a id="13_1" value="REJECTED">
+			<a_str>sechziger Jahren</a_str>
+			<t_str doc="SPIEGEL9495-005599">In den sechziger Jahren marschierte Gott mit Martin Luther King.</t_str>
+		</a>
+		<a id="13_2" value="REJECTED">
+			<a_str>1974</a_str>
+			<t_str doc="SDA.940317.0084">Flagellos bekanntestes Werk war das Oratorium "The Passion of Martin Luther King", das 1974 vom Nationalen Sinfonie-Orchester im Kennedy Center in Washington uraufgeführt wurde.</t_str>
+		</a>
+		<a id="13_3" value="REJECTED">
+			<a_str>1971</a_str>
+			<t_str doc="SDA.940102.0004">Auch die Witwe von Bürgerrechtler Martin_Luther_King , Coretta_Scott_King , und die Mutter von US- Präsident Bill_Clinton , Virginia_Clinton_Kelly , feierten die 51jährige Künstlerin , die unter Bühnenangst leidet und seit 1971 nur Privateinladungen zu kleineren Auftritten gefolgt war .</t_str>
+		</a>
+		<a id="13_4" value="VALIDATED">
+			<a_str>im Jahr 1968</a_str>
+			<t_str doc="SDA.940116.0003">Die Organisatoren hatten die Aktion am Geburtstag des 1968 ermordeten schwarzen Bürgerrechtlers Martin Luther King jedoch eher als symbolische Aktion zur Verringerung des Waffenbestandes bezeichnet .</t_str>
+		</a>
+	</q>
+	<q id="14" lang="DE">
+		<q_str>Wann wurde Papst Johannes Paul II. geboren?</q_str>
+		<a id="14_1" value="REJECTED">
+			<a_str>2. Juni</a_str>
+			<t_str doc="SDA.950602.0157">Papst Johannes Paul II. hat die Demission auf den 2. Juni angenommen.</t_str>
+		</a>
+		<a id="14_2" value="REJECTED">
+			<a_str>1982</a_str>
+			<t_str doc="SDA.940421.0175">1982 hatte Papst Johannes Paul II. das Opus in den Rang einer Personalprälatur erhoben und damit aufgewertet. Echevarria ist am 14. Juni 1932 in Madrid geboren. 1955 wurde der promovierte Kirchenrechtler zu Priester geweiht.</t_str>
+		</a>
+		<a id="14_3" value="REJECTED">
+			<a_str>28. Juni</a_str>
+			<t_str doc="SDA.940628.0142">Vatikanstadt , 28. Juni ( sda / Reuter ) Papst Johannes_Paul_II. hat am Dienstag den Erzbischof Andrea_Cordero Lanza di_Montezemolo zum ersten Botschafter des Vatikans in Israel ernannt .</t_str>
+		</a>
+	</q>
+	<q id="15" lang="DE">
+		<q_str>In welcher Stadt fanden 2002 die olympischen Winterspiele statt?</q_str>
+		<a id="15_1" value="REJECTED">
+			<a_str>Wallis</a_str>
+			<t_str doc="SDA.941214.0014">- mit 107:20 die Defizitgarantie von höchstens 30 Millionen für olympische Winterspiele 2002 im Wallis und mit 118 die dazu nötige Gesetzesänderung genehmigt;</t_str>
+		</a>
+		<a id="15_2" value="REJECTED">
+			<a_str>Rio_de_Janeiro</a_str>
+			<t_str doc="FR940612-002184">Dafür spricht , daß die Funktionäre bereits unter der Sonne von Rio_de_Janeiro laut über den olympischen Status des Snowboardfahrens im Jahre 2002 nachgedacht haben .</t_str>
+		</a>
+		<a id="15_3" value="REJECTED">
+			<a_str>Zürich</a_str>
+			<t_str doc="SDA.940812.0081">Auch während allfälligen olympischen Spielen im Wallis im Jahr 2002 würde die Fluglinie wieder ihren Betrieb zwischen den beiden Orten wieder vorübergehend aufnehmen . Nach Angaben des Bundesamtes_für_Zivilluftfahrt ( Bazl ) nahm die Passagierzahl zwischen Sitten und Zürich im Winter 1993 / 94 im Vergleich zum Vorjahr um 54 Prozent ab .</t_str>
+		</a>
+	</q>
+	<q id="16" lang="DE">
+		<q_str>In welchem Land wurde Papst Johannes Paul II. geboren?</q_str>
+		<a id="16_1" value="REJECTED">
+			<a_str>Zagreb</a_str>
+			<t_str doc="SDA.940910.0022">Papst Johannes Paul II. in Zagreb eingetroffen.</t_str>
+		</a>
+		<a id="16_2" value="REJECTED">
+			<a_str>Afrika</a_str>
+			<t_str doc="SDA.950912.0235">Vatikanstadt, 12. Sept. (sda/dpa) Papst Johannes Paul II. liebt Afrika. Für Johannes Paul II. ist es der Kontinent der Hoffnung. Doch wenn Johannes Paul II. am Donnerstag zu seiner 67.</t_str>
+		</a>
+		<a id="16_3" value="REJECTED">
+			<a_str>Schweiz</a_str>
+			<t_str doc="SDA.951029.0071">Bern / Rom , 29. Okt. ( sda ) Papst Johannes_Paul_II. hat am Sonntag_morgen in der Petersbasilika in Rom drei Schweizerinnen seliggesprochen . An den Feierlichkeiten nahmen die Schweizer Bischöfe , Ständeratspräsident Niklaus_Küchler als Vertreter des Bundesrats sowie gegen 4000 Gläubige aus der Schweiz teil .</t_str>
+		</a>
+	</q>
+	<q id="17" lang="DE">
+		<q_str>In welcher Stadt wurde Wolfgang Amadeus Mozart geboren?</q_str>
+		<a id="17_1" value="REJECTED">
+			<a_str>HANAU</a_str>
+			<t_str doc="FR940619-001639">HANAU. Die Organistin Mari Kodama gastiert am Sonntag, 19. Juni, um 17 Uhr in der Stadtpfarrkirche Mariae Namen. Die in Tokio geborene Japanerin spielt auf der Oberlinger Orgel Werke von Johann Sebastian Bach, Wolfgang Amadeus Mozart, Christian M. Widor und zwei eigene Kompositionen.</t_str>
+		</a>
+		<a id="17_2" value="REJECTED">
+			<a_str>Brüssel</a_str>
+			<t_str doc="SDA.941030.0081">Ausserdem stellte er in einem vom Publikum gestürmten Haus seine Produktion am Monnaie-Theater in Brüssel, Wolfgang Amadeus Mozarts Jugendoper "Lucio Silla" vor, der Wolfgang Amadeus Mozarts Jugendoper echtes Leben einhauchte.</t_str>
+		</a>
+		<a id="17_3" value="REJECTED">
+			<a_str>Kaiserslautern</a_str>
+			<t_str doc="FR940523-001524">Mit Wolfgang_Amadeus_Mozarts berühmtem Singspiel Die_Entführung_aus_dem_Serail endet die Spielzeit 1993 / 94 der Volksbühne am Montag , 23. Mai . Noch einmal gastiert das Pfalztheater Kaiserslautern in der Stadthalle , Beginn ist um 19 Uhr , Restkarten gibt es an der Abendkasse .</t_str>
+		</a>
+		<a id="17_4" value="VALIDATED">
+			<a_str>Salzburg</a_str>
+			<t_str doc="SDA.950119.0085">Salzburg, 19. Jan. (sda/apa) Das Salzburger Geburtshaus von Wolfgang Amadeus Mozart präsentiert sich ab Freitag restauriert den Besuchern.</t_str>
+		</a>
+	</q>
+	<q id="18" lang="DE">
+		<q_str>Oskar Lafontaine war Ministerpräsident welchen Bundeslandes?</q_str>
+		<a id="18_1" value="REJECTED">
+			<a_str>Frankreich</a_str>
+			<t_str doc="FR940605-001388">Kohl wurde von Außenminister Klaus Kinkel (FDP), Verteidigungsminister Volker Rühe (CDU) und Finanzminister Theo Waigel (CSU) sowie vom saarländischen Ministerpräsidenten Oskar Lafontaine (CSU) als dem Beauftragten der Bundesländer für die kulturelle Zusammenarbeit mit Frankreich begleitet.</t_str>
+		</a>
+		<a id="18_2" value="VALIDATED">
+			<a_str>Saarland</a_str>
+			<t_str doc="SDA.940310.0230">Der Ausschuss ist sehr disparat zusammengesetzt: Neben regionalpolitischen Grössen wie etwa den deutschen Ministerpräsidenten Oskar Lafontaine (Saarland), Johannes Rau (Nordrhein-Westfalen), Erwin Teufel (Baden-Württemberg) und Edmund Stoiber (Bayern) sitzen weit leichtgewichtigere kommunale Vertreter aus weniger föderal organisierten Staaten wie etwa Grossbritannien oder Portugal.</t_str>
+		</a>
+	</q>
+	<q id="19" lang="DE">
+		<q_str>In welcher Stadt wurde Karl Marx geboren?</q_str>
+		<a id="19_1" value="REJECTED">
+			<a_str>Chemnitz</a_str>
+			<t_str doc="FR940918-001159">Twin Twin markiert mit dem Titel auch ein durchgängiges Thema des 1965 in Chemnitz (ehemals Karl-Marx-Stadt) geborenen Carsten Nicolai</t_str>
+		</a>
+		<a id="19_2" value="REJECTED">
+			<a_str>Aus</a_str>
+			<t_str doc="FR940508-001872">Karl_Marx , Epigramm auf die Deutschen ( 1837 ) . Aus :</t_str>
+		</a>
+	</q>
+	<q id="20" lang="DE">
+		<q_str>In welchem Land fand 1998 die Fußball-WM statt?</q_str>
+		<a id="20_1" value="REJECTED">
+			<a_str>USA</a_str>
+			<t_str doc="FR940424-000421">Der Präsident des kolumbianischen Fußball- Verbandes , Francisco_Maturana , hat Weltverbands- Präsident Joao_Havelange wegen dessen Gedanken hinsichtlich einer Reform der WM- Endrunde ab 1998 scharf kritisiert . Havelange hatte im_Hinblick_auf seine angestrebte Wiederwahl verkündet , nach der WM in den USA sollten künftig 32 statt bisher 24 Mannschaften an WM- Endturnieren teilnehmen dürfen .</t_str>
+		</a>
+		<a id="20_2" value="VALIDATED">
+			<a_str>Frankreich</a_str>
+			<t_str doc="FR940523-002176">Die Fußball-WM 1998 in Frankreich wird laut Beschluß der FIFA mit 32 Mannschaften ausgetragen.</t_str>
+		</a>
+	</q>
+	<q id="21" lang="DE">
+		<q_str>In welcher Stadt finden die Filmfestspiele statt, bei denen die "Goldene Palme" verliehen wird?</q_str>
+		<a id="21_1" value="REJECTED">
+			<a_str>Cannes</a_str>
+			<t_str doc="FR941030-000291">Der 1962 in Südwestfrankreich vor dem Hintergrund des Algerienkriegs angesiedelte Film lief auf den vergangenen Filmfestspielen von Cannes .</t_str>
+		</a>
+		<a id="21_2" value="VALIDATED">
+			<a_str>Cannes</a_str>
+			<t_str doc="FR940530-000227">Filmfestspielen von Cannes mit der Goldenen Palme ausgezeichnet worden.</t_str>
+		</a>
+	</q>
+	<q id="22" lang="DE">
+		<q_str>In welcher Stadt wurde Johann Wolfgang von Goethe geboren?</q_str>
+		<a id="22_1" value="REJECTED">
+			<a_str>Frankfurt</a_str>
+			<t_str doc="FR940206-000675">Keine Frage, Johann Wolfgang Goethe hat viel für die Stadt Frankfurt getan.</t_str>
+		</a>
+		<a id="22_2" value="REJECTED">
+			<a_str>Aula der</a_str>
+			<t_str doc="FR941004-001159">Zu einer Feierstunde lädt der Physikalische Verein für Montag, 24. Oktober, um 17.30 Uhr, in die Aula der Johann-Wolfgang-Goethe-Universität (Mertonstraße 17-25) ein.ara</t_str>
+		</a>
+		<a id="22_3" value="REJECTED">
+			<a_str>Maintal</a_str>
+			<t_str doc="FR940710-002028">Das Literaturtelefon ( 06181 / 24141 ) stellt einen Auszug aus Johann_Wolfgang_von_Goethes Autobiographie Dichtung und Wahrheit vor . Maintal .</t_str>
+		</a>
+	</q>
+	<q id="23" lang="DE">
+		<q_str>In welcher Stadt kann man das Schiller-Nationalmuseum besuchen?</q_str>
+		<a id="23_1" value="REJECTED">
+			<a_str>Baden- Württemberg</a_str>
+			<t_str doc="SDA.950122.0069">Todestages Else Lasker-Schülers hat das Schiller-Nationalmuseum Marbach in Baden- Württemberg am Sonntag eine Ausstellung mit Zeichnungen der Künstlerin eröffnet.</t_str>
+		</a>
+		<a id="23_2" value="REJECTED">
+			<a_str>Berlin</a_str>
+			<t_str doc="FR940523-000919">In der Vitrine, die die Jahre in Berlin vorstellt, dominiert Schiller-Nationalmuseum Marbach dreibändiges Werk Im alten Reich. Lebensbilder deutscher Städte. Das ist der seltene Fall, wo aus der Gegenwart der modernen Metropole ein Traum zurück in die altdeutsche Vergangenheit geht.</t_str>
+		</a>
+		<a id="23_3" value="REJECTED">
+			<a_str>Athener</a_str>
+			<t_str doc="FR940123-000583">Die Tram soll die wichtigsten Punkte des Athener Zentrums miteinander verbinden : den betriebsamen Syntagmaplatz vor dem Parlamentsgebäude , die Akropolis , das Nationalmuseum , die Plaka , Athens Altstadt , den Larissa- Bahnhof und den quirligen Omonia- Platz .</t_str>
+		</a>
+	</q>
+	<q id="24" lang="DE">
+		<q_str>In welcher Partei war Marcel Reich-Ranicki früher Mitglied?</q_str>
+		<a id="24_1" value="REJECTED">
+			<a_str>WDR-Kulturweltspiegels</a_str>
+			<t_str doc="FR940605-000131">Reich-Ranicki widersprach damit einem Beitrag des WDR-Kulturweltspiegels (siehe FR v. 31. Mai). Marcel Reich-Ranicki sei seit 1945 überzeugtes Mitglied der kommunistischen Partei gewesen, ehe Marcel Reich-Ranicki 1950 nach der Rückberufung wegen parteifremdem Verhaltens ausgeschlossen wurde. Marcel Reich-Ranicki sei also nicht besonders linientreu gewesen.</t_str>
+		</a>
+		<a id="24_2" value="REJECTED">
+			<a_str>SPIEGEL</a_str>
+			<t_str doc="SPIEGEL9495-003760">Man warf, wie ein anderes, dem SPIEGEL vorliegendes Dokument belegt, Ranicki auch vor, die Partei betrogen zu haben, als Marcel Reich-Ranicki in einem Lebenslauf behauptete, Marcel Reich-Ranicki sei 1937 in Berlin der illegalen KPD beigetreten.</t_str>
+		</a>
+		<a id="24_3" value="VALIDATED">
+			<a_str>KPD</a_str>
+			<t_str doc="SPIEGEL9495-003760">Man warf, wie ein anderes, dem SPIEGEL vorliegendes Dokument belegt, Ranicki auch vor, die Partei betrogen zu haben, als Marcel Reich-Ranicki in einem Lebenslauf behauptete, Marcel Reich-Ranicki sei 1937 in Berlin der illegalen KPD beigetreten.</t_str>
+		</a>
+		<a id="24_4" value="VALIDATED">
+			<a_str>Kommunistischen_Partei</a_str>
+			<t_str doc="FR940717-000248">Der wegen seiner früheren Geheimdiensttätigkeit unter Druck geratene Literaturkritiker Marcel_Reich-Ranicki hat neue Vorwürfe im_Zusammenhang_mit seiner einstigen Mitgliedschaft in der Kommunistischen_Partei Polens zurückgewiesen .</t_str>
+		</a>
+	</q>
+	<q id="25" lang="DE">
+		<q_str>Welcher Partei gehört Bill Clinton an?</q_str>
+		<a id="25_1" value="REJECTED">
+			<a_str>Republikanischen Partei</a_str>
+			<t_str doc="SDA.941109.0188">Vor den Wahlen vom Dienstag kamen 56 der Senatoren aus den Reihen der Demokratischen Partei von Präsident Bill Clinton, 44 gehörten der Republikanischen Partei an.</t_str>
+		</a>
+		<a id="25_2" value="VALIDATED">
+			<a_str>Demokratische Partei</a_str>
+			<t_str doc="SDA.941109.0253">Die Wahl gilt für den demokratischen Präsidenten Bill Clinton als wichtiger Test zwei Jahren vor den nächsten Präsidentschaftswahlen. Wenn seine Partei ihre Mehrheit in Washingtoner Senat und Repräsentantenhaus verlieren sollte, könnte Bill Clinton nur noch schwer Gesetzesvorlagen durchbringen. Bisher hat die Demokratische Partei eine Mehrheit von 56 zu 44 Mandaten der Republikanischen Partei.</t_str>
+		</a>
+	</q>
+	<q id="26" lang="DE">
+		<q_str>Von welcher Organisation wird das Schloß "Sanssouci" als Weltkulturerbe eingestuft?</q_str>
+		<a id="26_1" value="REJECTED">
+			<a_str>UNESCO</a_str>
+			<t_str doc="SDA.940810.0019">Redner aus dem In- und Ausland betonten die kulturelle Einzigartigkeit des Schlosses, das von der UNESCO als Weltkulturerbe eingestuft ist.</t_str>
+		</a>
+		<a id="26_2" value="REJECTED">
+			<a_str>Zu den bekanntensten</a_str>
+			<t_str doc="SDA.950410.0163">Zu den bekanntensten gehören die Schlösser Sanssouci und Cecilenhof in Potsdam, das Berliner Schloss Charlottenburg sowie die Schlossanlage im nordbrandenburger Rheinsberg.</t_str>
+		</a>
+		<a id="26_3" value="REJECTED">
+			<a_str>am 1. Mai 1747</a_str>
+			<t_str doc="FR940612-000479">Am 13. Januar 1745 erging die Kabinettsordre zur Erbauung eines Lustschlosses, und der Kriegsrat Diterich, dem die Leitung übertragen wurde, machte sofort alle nur möglichen Bauanstalten, so daß am 14. April 1745 der Grundstein gelegt und am 1. Mai 1747 das Schloß Sanssouci eingeweiht werden konnte ganz fertig war es natürlich nicht, ganz fertig würde es, das wußte der König nicht, aber seine Baumeister ahnten es bereits, sowieso nie werden.</t_str>
+		</a>
+		<a id="26_4" value="REJECTED">
+			<a_str>europäischen</a_str>
+			<t_str doc="SPIEGEL9495-013119/46/264">Daß Seine_Königliche_Hoheit neben dem Schloßpark von Sanssouci und der Stralsunder Altstadt auch jene berüchtigten " Plattenbauten " in Augenschein nimmt , ist einem guten Bekannten des Prinzen zu danken . Der Londoner Architekt John_Thompson , der sich mit der Sanierung von Großsiedlungen in Manchester oder Belfast auch auf dem europäischen Festland einen Namen gemacht hat , ist an der Planung für die dringend nötige Urbanisierung der Hellersdorfer Schlafstadt beteiligt .</t_str>
+		</a>
+		<a id="26_5" value="VALIDATED">
+			<a_str>von der UNESCO</a_str>
+			<t_str doc="SDA.940810.0019">Brandenburger feiern 250 Jahre Schloss Sanssouci. Potsdam, 10. Aug. (sda/Reuter) Mit einem Festakt hat die brandenburgische Landeshauptstadt Potsdam am Mittwoch den 250 Jahrestag des Baubeginns von Schloss Sanssouci begangen. Redner aus dem In- und Ausland betonten die kulturelle Einzigartigkeit des Schlosses, das von der UNESCO als Weltkulturerbe eingestuft ist.</t_str>
+		</a>
+	</q>
+	<q id="27" lang="DE">
+		<q_str>Welche Organisation kümmert sich um Menschenrechte?</q_str>
+		<a id="27_1" value="REJECTED">
+			<a_str>UNO</a_str>
+			<t_str doc="SDA.940626.0026">In einem Aufruf an UNO-Generalsekretär Boutros-Ghali hiess es: "Die Anerkennung der Menschenwürde und gleicher und unveräusserlicher Rechte für alle Mitglieder der menschlichen Familie ist die Grundlage von Freiheit, Gleichheit und Frieden in aller Welt .</t_str>
+		</a>
+		<a id="27_2" value="REJECTED">
+			<a_str>UN</a_str>
+			<t_str doc="FR940821-001391">Um den ungedeckten Bedarf von Frauen an Menschenrechten, an der Einlösung von Grundbedürfnissen und Alterssicherung kümmert sich die Völkergemeinschaft außerhalb von UN-Konferenzen derzeit herzlich wenig. Die Frauenlobby intervenierte erfolgreich in die Verhandlungen vor Kairo mit ihrem Konzept der reproduktiven Rechte und des empowerment zumindest in der ersten Runde. Die feministische Diktion fand Eingang in das Konferenzdokument.</t_str>
+		</a>
+		<a id="27_3" value="VALIDATED">
+			<a_str>Amnesty International</a_str>
+			<t_str doc="SDA.951120.0177">Die Menschenrechtsorganisation Amnesty International weiss nichts von Menschenrechts-Verstössen, und Greenpeace könnte Sultan Kabus in den Rang eines Schutzpatrons erheben: Der Herrscher hat die Jagd grundsätzlich verboten, kümmert sich um das Wohlergehen der Meeresschildkröten ebenso wie um das der neu angesiedelten weissen Oryx-Antilopen und hält mit klugen Subventionen die kleinen Fischerdörfer und Farmen lebensfähig.</t_str>
+		</a>
+	</q>
+	<q id="28" lang="DE">
+		<q_str>Welcher Organisation gehörten die Geschwister Scholl an?</q_str>
+		<a id="28_1" value="REJECTED">
+			<a_str>Stadtteilbibliothek Klarenthal</a_str>
+			<t_str doc="FR940925-001212">Stadtteilbibliothek Klarenthal, Geschwister-Scholl-Schule, Geschwister-Scholl-Schule 10: Büchergarten, 15 Uhr.</t_str>
+		</a>
+		<a id="28_2" value="REJECTED">
+			<a_str>Bundeswehr</a_str>
+			<t_str doc="FR940612-000483">1994 schrieb Inge Aicher-Scholl einen Brief an Minister Volker Rühe:Sehr verehrter Herr Minister, lieber Herr Volker Rühe, als Schwester von Sophie, Hans und Werner Scholl beobachte ich seit vielen Jahren die Bundeswehr in ihrem Traditionsverständnis, ihrem Verhältnis zum nationalsozialistischen Unrechtsstaat und zur Wehrmacht.</t_str>
+		</a>
+		<a id="28_3" value="REJECTED">
+			<a_str>Stadtbücherei Klarenthal</a_str>
+			<t_str doc="FR940306-000876">WIESBADEN. Die Kompostausstellung Total verwurmt ist noch bis 25. März in der Stadtbücherei Klarenthal, Geschwister-Scholl-Straße 10, zu sehen.</t_str>
+		</a>
+		<a id="28_4" value="REJECTED">
+			<a_str>NGG</a_str>
+			<t_str doc="FR940424-001151">Condita-Backwerke gehört zu 60 Prozent dem Tiefkühlkost-Unternehmen Eismann, zu 30 Prozent der Firma Schöller-Eiscreme und zu zehn Prozent der Firma Oetker Weltkonzerne, die in Hülle und Fülle verdienen, wie der Geschäftsführer der Gewerkschaft Nahrung Genuß Gaststätten (NGG), Jürgen Hinzer, gestern in einem FR-Gespräch zornig formulierte.</t_str>
+		</a>
+		<a id="28_5" value="REJECTED">
+			<a_str>CDU</a_str>
+			<t_str doc="FR940313-002270">Für die CDU- Sozialausschüsse ist die Einigung ein Sieg für die Schwachen und eine schallende Ohrfeige für alle , die mit diesem Thema den Einstieg in den Ausstieg aus der Sozialversicherung proben wollten . Der baden- württembergische Ministerpräsident Erwin_Teufel ( CDU ) sprach von einem erneuten Beweis der Handlungs- und Kompromißfähigkeit der Regierung Kohl .</t_str>
+		</a>
+	</q>
+	<q id="29" lang="DE">
+		<q_str>Welcher Partei gehört der britische Premierminister Tony Blair an?</q_str>
+		<a id="29_1" value="REJECTED">
+			<a_str>Labour</a_str>
+			<t_str doc="SDA.950928.0175">Parteichef Tony_Blairs Vater zu Labour bekehrt</t_str>
+		</a>
+		<a id="29_2" value="VALIDATED">
+			<a_str>Labour-Partei</a_str>
+			<t_str doc="SDA.950622.0021">Der Chef der britischen Labour-Partei, Tony Blair, lag in den jüngsten Umfragen weit vor dem Premierminister.</t_str>
+		</a>
+	</q>
+	<q id="30" lang="DE">
+		<q_str>Wie viele Menschen sind unter der Schreckensherrschaft von Pol Pot gestorben?</q_str>
+		<a id="30_1" value="REJECTED">
+			<a_str>66_Millionen</a_str>
+			<t_str doc="FR940530-000751">Diese Armee hat 1945 derart schlimme Greuel an der überrollten unschuldigen Zivilbevölkerung angerichtet , daß sie seither nicht_einmal von Pol_Pot und den Verbrechern in Ruanda übertroffen werden konnten . Nachdem Stalin ( nach Angaben des russischen Humanisten Solschenyzin ) bereits 66_Millionen sowjetische Zivilisten ermordet hatte , wurden nun in den Einmarschgebieten planmäßig deutsche Frauen und Kinder auf bestialische Weise ermordet , gefoltert , vergewaltigt und schließlich aus ihren Dörfe</t_str>
+		</a>
+		<a id="30_2" value="VALIDATED">
+			<a_str>eine Million</a_str>
+			<t_str doc="SDA.940320.0051">Die Bewegung hatte von in der zweiten Hälfte der 70er Jahre unter Pol Pot eine Schreckensherrschaft errichtet, der rund eine Million Menschen zum Opfer gefallen sein sollen.</t_str>
+		</a>
+	</q>
+	<q id="31" lang="DE">
+		<q_str>Wie viele Bundesländer hat die Bundesrepublik Deutschland?</q_str>
+		<a id="31_1" value="REJECTED">
+			<a_str>23</a_str>
+			<t_str doc="SDA.940216.0032">Für RTL Deutschland, welches 23 Stunden des Programmes bestreitet, ist das deutsche Recht zuständig.</t_str>
+		</a>
+		<a id="31_2" value="REJECTED">
+			<a_str>ersten</a_str>
+			<t_str doc="SDA.940729.0175">Das Umweltministerium erklärte in einer ersten Stellungnahme, es werde in die Berufung gehen und das Urteil anfechten. Zum ersten Mal in der deutschen Geschichte Es ist das erste Mal in der Geschichte der Bundesrepublik Deutschland, dass der Staat von einem Bundesland vor Gericht Schadensersatz verlangt.</t_str>
+		</a>
+		<a id="31_3" value="VALIDATED">
+			<a_str>16</a_str>
+			<t_str doc="FR941009-000047">Den Kulturabkommen der Bundesrepublik Deutschland müssen alle 16 Bundesländer zustimmen.</t_str>
+		</a>
+	</q>
+	<q id="32" lang="DE">
+		<q_str>Wie hoch ist der Kangtschendsonga?</q_str>
+		<a id="32_1" value="VALIDATED">
+			<a_str>8585 Meter</a_str>
+			<t_str doc="FR941113-000293">Beim Versuch , den 8585 Meter hohen Himalaja- Gipfel Kangtschendsonga zu besteigen , sind wie erst jetzt bekannt wurde Mitte_Oktober drei Mitglieder einer bulgarisch- weißrussischen Expedition ums Leben gekommen .</t_str>
+		</a>
+	</q>
+	<q id="33" lang="DE">
+		<q_str>Wie viele Menschen wurden bei dem Bombenattentat auf das World Trade Center am 26. Februar 1993 getötet?</q_str>
+		<a id="33_1" value="REJECTED">
+			<a_str>hundert</a_str>
+			<t_str doc="SPIEGEL9495-002010/16/119">Beim Bombenanschlag auf das World_Trade_Center beispielsweise waren die Flure binnen Minuten voller Qualm , und die CNN-Live- Übertragung vom flammenden Inferno hat den Markt für ein neues Produkt angeheizt : " Hi- Rise Escape Pak " , ein Rettungspaket , , das nun eine Firma aus New_Jersey allen Vorsichtigen und Ängstlichen für hundert Dollar anbietet .</t_str>
+		</a>
+		<a id="33_2" value="VALIDATED">
+			<a_str>sechs</a_str>
+			<t_str doc="SDA.940901.0233">Bei dem Anschlag auf das World Trade Center in New York waren am 26. Februar 1993 sechs Menschen getötet und 1000 verletzt worden.</t_str>
+		</a>
+	</q>
+	<q id="34" lang="DE">
+		<q_str>Wie groß ist der Durchmesser des Mondes Titan, der den Saturn umkreist?</q_str>
+		<a id="34_1" value="REJECTED">
+			<a_str>3476</a_str>
+			<t_str doc="SDA.941107.0096">Titan, der grösste von ihnen, übertrifft mit einem Durchmesser von rund 5100 Kilometern sogar den des irdischen Mondes, der 3476 Kilometer gross ist. Die undurchsichtige Gashülle macht Titan gleichzeitig zu einem der geheimnisvollsten Monde überhaupt. Ein weiterer auffälliger Begleiter des Saturn ist der 500 Kilometer grosse Enceladus, der im wesentlichen aus Eis besteht.</t_str>
+		</a>
+		<a id="34_2" value="VALIDATED">
+			<a_str>5100 Kilometern</a_str>
+			<t_str doc="SDA.941107.0096">Titan , der grösste von ihnen , übertrifft mit einem Durchmesser von rund 5100 Kilometern sogar den des irdischen Mondes , der 3476 Kilometer gross ist . Die undurchsichtige Gashülle macht Titan gleichzeitig zu einem der geheimnisvollsten Monde überhaupt .</t_str>
+		</a>
+	</q>
+	<q id="35" lang="DE">
+		<q_str>Wie groß ist der Durchmesser des irdischen Mondes?</q_str>
+		<a id="35_1" value="REJECTED">
+			<a_str>mit einem Durchmesser</a_str>
+			<t_str doc="FR940327-000062">Dieser Ida-Mond mit einem Durchmesser von nur etwa eineinhalb Kilometern wurde von der US-amerikanischen Sonde Galileo entdeckt, berichtete am Mittwoch die Weltraumbehörde Nasa.</t_str>
+		</a>
+		<a id="35_2" value="REJECTED">
+			<a_str>eineinhalb Kilometern</a_str>
+			<t_str doc="FR940327-000062">Dieser Ida- Mond mit einem Durchmesser von nur etwa eineinhalb Kilometern wurde von der US- amerikanischen Sonde Galileo entdeckt , berichtete am Mittwoch die Weltraumbehörde Nasa. Galileo hatte auf dem Weg zum Jupiter den Asteroiden samt Begleiter bereits am 28. August vergangenen Jahres passiert und Fotos zur Erde gefunkt .</t_str>
+		</a>
+	</q>
+	<q id="36" lang="DE">
+		<q_str>Wieviele polnische Soldaten fielen im 2. Weltkrieg, nach der Eroberung Polens, in deutsche Kriegsgefangenschaft?</q_str>
+		<a id="36_1" value="REJECTED">
+			<a_str>Zweiten</a_str>
+			<t_str doc="SDA.940517.0268">Nach dem Besuch von Gymnasien in Bern und Berlin musste er im Zweiten Weltkrieg als Soldat in Polen und Russland kämpfen und wurde mehrfach verwundet.</t_str>
+		</a>
+		<a id="36_2" value="REJECTED">
+			<a_str>18400</a_str>
+			<t_str doc="FR941106-000423">Auf dem Gelände des ehemaligen nationalsozialistischen Vernichtungslagers Majdanek im Südosten Polens ist am Donnerstag der Massenhinrichtung von 18400 Juden am 3. November durch deutsche Soldaten gedacht worden.</t_str>
+		</a>
+		<a id="36_3" value="REJECTED">
+			<a_str>40</a_str>
+			<t_str doc="FR941204-002558">Der Unternehmer war nach seiner Entlassung aus der Kriegsgefangenschaft mehr_als 40 Jahre in der Geschäftsführung des Einrichtungshauses tätig .</t_str>
+		</a>
+	</q>
+	<q id="37" lang="DE">
+		<q_str>Wie viele alliierte Soldaten kamen bei der Landung in der Normandie in den ersten 24 Stunden ums Leben?</q_str>
+		<a id="37_1" value="REJECTED">
+			<a_str>50</a_str>
+			<t_str doc="SDA.940606.0087">Kassel/Caen, 6. Juni (sda/dpa) An den ehemaligen Kriegsschauplätzen in der Normandie werden 50 Jahre nach der Landung der alliierten Streitkräfte immer noch Skelette von Soldaten gefunden.</t_str>
+		</a>
+		<a id="37_2" value="REJECTED">
+			<a_str>75 000</a_str>
+			<t_str doc="SDA.940520.0220">Washington, 20. Mai (sda/Reuter) Das amerikanische Repräsentantenhaus hat am Donnerstag dafür gestimmt, bis zu 75 000 US-Soldaten aus Europa abzuziehen, sollten die europäischen Verbündeten nicht bis 1998 rund 75 000 Prozent der Stationierungkosten tragen.</t_str>
+		</a>
+		<a id="37_3" value="REJECTED">
+			<a_str>9000</a_str>
+			<t_str doc="SDA.940606.0173">Mit der Landung in der Normandie wurde vor fünfzig Jahren die Befreiung Frankreichs von deutscher Besatzung und das Ende der Nazi- Herrschaft in Europa eingeleitet. Dabei kamen allein in den ersten 24 Stunden mehr als 8500 alliierte Soldaten ums Leben. Die Zahl der gefallen Deutschen wird auf 4000 bis 9000 geschätzt.</t_str>
+		</a>
+		<a id="37_4" value="REJECTED">
+			<a_str>550_Millionen</a_str>
+			<t_str doc="SDA.950321.0014">Mit einem Grossprojekt will Frankreich den weltbekannten Klosterberg Mont-Saint-Michel an der Grenze zwischen Bretagne und Normandie vor der Versandung retten . Die Regierung gab am Dienstag in Paris grünes Licht für das insgesamt 550_Millionen Franc ( 132_Millionen Franken ) teure Unterfangen .</t_str>
+		</a>
+	</q>
+	<q id="38" lang="DE">
+		<q_str>Was ist bei AIDS-Kranken weltweit die häufigste Todesursache?</q_str>
+		<a id="38_1" value="REJECTED">
+			<a_str>Unter den in Rumänien derzeit 2291 gemeldeten Aids-Kranken sind 2085 Kinder - mehr als die Hälfte aller wegen Aids klinisch behandelten Kinder in ganz Europa.</a_str>
+			<t_str doc="SDA.951201.0258">Unter den in Rumänien derzeit 2291 gemeldeten Aids-Kranken sind 2085 Kinder - mehr als die Hälfte aller wegen Aids klinisch behandelten Kinder in ganz Europa.</t_str>
+		</a>
+		<a id="38_2" value="REJECTED">
+			<a_str>die Statuten</a_str>
+			<t_str doc="SDA.950425.0050">Es müsse genügen, dass die Statuten die wichtigen Gründe allgemein bezeichnen.</t_str>
+		</a>
+	</q>
+	<q id="39" lang="DE">
+		<q_str>Wer ist Gabriel Garcia Marquez?</q_str>
+		<a id="39_1" value="REJECTED">
+			<a_str>Gabriel_Garcia_Marquez</a_str>
+			<t_str doc="SDA.941013.0097">schreibt auf deutsch 1982 -- Gabriel_Garcia_Marquez , Kolumbien 1983 -- William_Golding , Grossbritannien 1984 -- Jaroslav_Seifert , Tschechoslowakei 1985 -- Claude_Simon , Frankreich 1986 -- Wolle Soyinka , Nigeria 1987 -- Joseph_Brodsky , Exil-Russe , lebt in den USA 1988 -- Nagib_Mahfuz , Ägypten 1989 -- Camilo_Jose_Cela , Spanien 1990 -- Octavio_Paz , Mexiko 1991 -- Nadine_Gordimer , Südafrika 1992 -- Derek_Walcott , St._Lucia , Westindien 1993 -- Toni_Morrison , USA 1994 -- Kenzaburo_Oe , Japan .</t_str>
+		</a>
+		<a id="39_2" value="VALIDATED">
+			<a_str>Der kolumbianische Schriftsteller und Literaturnobelpreisträger</a_str>
+			<t_str doc="SDA.940826.0004">Der kolumbianische Schriftsteller und Literaturnobelpreisträger Gabriel Garcia Marquez hatte sich bei der kubanischen Regierung für die Ausreise-Erlaubnis seines Kollegen eingesetzt.</t_str>
+		</a>
+		<a id="39_3" value="VALIDATED">
+			<a_str>ein lateinamerikanischer Cheferzähler</a_str>
+			<t_str doc="SPIEGEL9495-008834">Im internationalen Literaturbetrieb gilt sie als eine Art feministische Paperback-Ausgabe des lateinamerikanischen Chef-Erzählers Gabriel GarcIa Marquez .</t_str>
+		</a>
+	</q>
+	<q id="40" lang="DE">
+		<q_str>Wessen wurde O.J. Simpson angeklagt?</q_str>
+		<a id="40_1" value="REJECTED">
+			<a_str>Simpson</a_str>
+			<t_str doc="FR941120-000480">Die in den USA übliche TV- Übertragung von Gerichtsprozessen wie gegen den ehemaligen Football- Star O.J. Simpson hatte in Großbritannien eine Diskussion über den Zugang des Fernsehens zu den Gerichtssälen ausgelöst .</t_str>
+		</a>
+		<a id="40_2" value="VALIDATED">
+			<a_str>wegen Doppelmordes</a_str>
+			<t_str doc="SDA.950921.0247">Ebenfalls am Mittwoch erlitt die Verteidigung des wegen Doppelmordes angeklagten Ex-Footballstars O.J. Simpson noch einmal eine schwere Niederlage.</t_str>
+		</a>
+	</q>
+	<q id="41" lang="DE">
+		<q_str>Wie wird das "Down-Syndrom" auch genannt?</q_str>
+		<a id="41_1" value="REJECTED">
+			<a_str>in der Unfähigkeit</a_str>
+			<t_str doc="FR941127-001583">Damit bestünde das Syndrom in der Unfähigkeit der Babys, ungünstige Umweltbedingungen zu kompensieren.</t_str>
+		</a>
+		<a id="41_2" value="REJECTED">
+			<a_str>von Serben</a_str>
+			<t_str doc="SDA.940408.0216">Psychologen sprechen schon von einem "Vukovar-Syndrom", benannt nach der von Serben eroberten ostkroatischen Donaustadt Vukovar, wo es während der Kämpfe im Herbst 1991 neben den Verlusten unter den Soldaten auch Massaker an Zivilisten und einen wahren Raubfeldzug gegeben hatte.</t_str>
+		</a>
+		<a id="41_3" value="VALIDATED">
+			<a_str>fälschlich Mongolismus</a_str>
+			<t_str doc="FR940925-000628">Mit der neuen Untersuchungsmethode wollen die Wissenschaftler ausschließlich nach Chromosomenstörungen wie dem Down-Syndrom (im Volksmund fälschlich Mongolismus genannt) suchen.</t_str>
+		</a>
+	</q>
+	<q id="42" lang="DE">
+		<q_str>Wie nennt man Tibet?</q_str>
+		<a id="42_1" value="REJECTED">
+			<a_str>der Tibeter</a_str>
+			<t_str doc="SDA.950603.0049">Das Oberhaupt der Tibeter nannte die Demonstrationen für Demokratie aus dem Jahr 1989 "eins der ermutigendsten Ereignisse" der jüngeren chinesischen Geschichte.</t_str>
+		</a>
+		<a id="42_2" value="REJECTED">
+			<a_str>das Tibetische Totenbuch .</a_str>
+			<t_str doc="FR941023-003090">Zugrunde liegt das Tibetische Totenbuch.</t_str>
+		</a>
+		<a id="42_3" value="REJECTED">
+			<a_str>in Tibet</a_str>
+			<t_str doc="SDA.940114.0172">Die beiden Männer hatten in Lhasa Informationen über die Menschenrechtslage in Tibet an eine Delegation europäischer Botschafter übergeben wollen. Nach Ansicht der Exiltibeter will China mit der Freilassung möglicherweise die Debatte über die Menschenrechte in China beeinflussen. Fortschritte in dieser Frage hatte US-Präsident Bill Clinton zur Bedingung für eine Verlängerung der Zollvorteile nach der Meistbegünstigungsklausel gemacht und ausdrücklich Tibet genannt.</t_str>
+		</a>
+		<a id="42_4" value="REJECTED">
+			<a_str>zur Sprache</a_str>
+			<t_str doc="SDA.950411.0230">Bei Cottis China-Besuch wird das Vertrauenskapital besonders bei der Diskussion von heiklen Fragen wie Tibet und Menschenrechte wichtig sein, die neben den bilateralen Beziehungen zur Sprache kommen sollen.</t_str>
+		</a>
+	</q>
+	<q id="43" lang="DE">
+		<q_str>An welcher Krankheit erkrankt jeder dritte Deutsche?</q_str>
+		<a id="43_1" value="REJECTED">
+			<a_str>die Krankheit</a_str>
+			<t_str doc="SPIEGEL9495-013797">Die Alzheimersche Krankheit, warnt das Deutsche Ärzteblatt seine Leser, ist "die Krankheit des Jahrhunderts".</t_str>
+		</a>
+		<a id="43_2" value="REJECTED">
+			<a_str>um seinen Enkelkindern</a_str>
+			<t_str doc="FR940814-002044">Es würde höchstens im Falle einer Krankheit nach Deutschland zurückkehren oder um seinen Enkelkindern einmal Schnee zu zeigen.</t_str>
+		</a>
+		<a id="43_3" value="REJECTED">
+			<a_str>der Krankheit</a_str>
+			<t_str doc="SDA.950510.0028">Die Erkrankte starb allerdings nicht an den Folgen der Infektion, sondern erholte sich relativ schnell wieder. Dem Ebola-Virus ähnelt auch das Marburg-Virus, das 1967 in Deutschland auftrat. Deutsche Forscher hatten sich an aus Afrika importierten Schimpansen infiziert und waren an den Folgen der Krankheit verstorben.</t_str>
+		</a>
+		<a id="43_4" value="REJECTED">
+			<a_str>FSME</a_str>
+			<t_str doc="FR940724-000408">Allerdings erkrankt von zehn Infizierten nur einer schwer , etwa jede hundertste Erkrankung verläuft tödlich . Anders als bei der Borreliose gibt es gegen die FSME einen Impfstoff , der aber umstritten ist .</t_str>
+		</a>
+		<a id="43_5" value="VALIDATED">
+			<a_str>Krebs</a_str>
+			<t_str doc="FR941106-001087">Jeder dritte Deutsche erkrankt an Krebs und jeder vierte stirbt daran .</t_str>
+		</a>
+	</q>
+	<q id="44" lang="DE">
+		<q_str>Wer konsumiert vorwiegend Designer-Drogen?</q_str>
+		<a id="44_1" value="REJECTED">
+			<a_str>Fachverbandes Drogen und Rauschmittel</a_str>
+			<t_str doc="FR940710-000202">Rund vorwiegend junge Menschen in der Bundesrepublik konsumieren nach Schätzungen des Fachverbandes Drogen und Rauschmittel (FDR) regelmäßig sogenannte Designer-Drogen.</t_str>
+		</a>
+		<a id="44_2" value="REJECTED">
+			<a_str>LSD</a_str>
+			<t_str doc="SDA.940321.0185">Andere Drogen wie Crack, LSD und Designerdrogen spielen in der schweizerischen Drogenszene eine untergeordnete Rolle.</t_str>
+		</a>
+		<a id="44_3" value="REJECTED">
+			<a_str>SAARBRÜCKEN</a_str>
+			<t_str doc="FR940710-000202">Designer-Drogen SAARBRÜCKEN, 6. Juli (dpa). Rund vorwiegend junge Menschen in der Bundesrepublik konsumieren nach Schätzungen des Fachverbandes Drogen und Rauschmittel (FDR) regelmäßig sogenannte Designer-Drogen.</t_str>
+		</a>
+		<a id="44_4" value="REJECTED">
+			<a_str>Ecstasy</a_str>
+			<t_str doc="SDA.940813.0019">Denn trotz dem teils übermässigen Konsum von "Ecstasy" und anderen Designerdrogen, der der Szene immer wieder nachgesagt wird, sind die Techno-Verrückten in aller Regel gut integrierte und oft auch kaufkräftige junge Konsumentinnen und Konsumenten.</t_str>
+		</a>
+		<a id="44_5" value="REJECTED">
+			<a_str>Kinder</a_str>
+			<t_str doc="FR940130-000247">Designer- Babies Britischer Forscher plant Kinder aus Eiern toter Föten</t_str>
+		</a>
+	</q>
+	<q id="45" lang="DE">
+		<q_str>Wer war Gianni Versace?</q_str>
+		<a id="45_1" value="REJECTED">
+			<a_str>Gianni_Versace</a_str>
+			<t_str doc="FR941231-002054">Der italienische Modeschöpfer Gianni_Versace gestaltete farblich einen Opel_Corsa , teilte die Pressestelle des Rüsselsheimer Automobilherstellers mit .</t_str>
+		</a>
+		<a id="45_2" value="VALIDATED">
+			<a_str>Star-Designer</a_str>
+			<t_str doc="SDA.951005.0129">Den Auftakt machte der Star-Designer Gianni Versace mit ersten Trends aus seiner jugendlichen Zweitlinie "Versus".</t_str>
+		</a>
+		<a id="45_3" value="VALIDATED">
+			<a_str>ein italienischer Modeschöpfer</a_str>
+			<t_str doc="FR941231-002054">Der italienische Modeschöpfer Gianni Versace gestaltete farblich einen Opel Corsa , teilte die Pressestelle des Rüsselsheimer Automobilherstellers mit .</t_str>
+		</a>
+	</q>
+	<q id="46" lang="DE">
+		<q_str>Wer war Alfred Nobel?</q_str>
+		<a id="46_1" value="REJECTED">
+			<a_str>Alfred_Nobel</a_str>
+			<t_str doc="SDA.941009.0088">Wer sich aus dem Testament des Preisstifters Alfred_Nobel ( 1833-1896 ) Argumentationshilfen gegen diese Diskriminierung beschaffen will , wird eine Enttäuschung erleben .</t_str>
+		</a>
+		<a id="46_2" value="VALIDATED">
+			<a_str>Preisstifters</a_str>
+			<t_str doc="FR941016-000353">Der Friedensnobelpreis ist mit sieben Millionen Kronen (1,5 Millionen Mark) dotiert und wird am 10. Dezember, dem Todestag des Preisstifters Alfred Nobel () überreicht.</t_str>
+		</a>
+		<a id="46_3" value="VALIDATED">
+			<a_str>ein Preisstifter</a_str>
+			<t_str doc="FR941016-003084">Drei Preisträger also werden am 10 . Dezember , dem Todestag des Preisstifters Alfred Nobel , die Auszeichnung entgegennehmen .</t_str>
+		</a>
+	</q>
+	<q id="47" lang="DE">
+		<q_str>Wer ist Stephen Hawking?</q_str>
+		<a id="47_1" value="REJECTED">
+			<a_str>denkbar</a_str>
+			<t_str doc="SDA.951001.0087">Der 53jährige, der als einer der brilliantesten Wissenschafter der Gegenwart gilt, habe seine Meinung geändert, dass die Vorstellung von Zeitreisen lächerlich sei, berichtete die britische Wochenzeitung "Sunday Times" am Sonntag. Der wegen einer schweren Krankheit an den Rollstuhl gefesselte Professor der Universität Cambridge halte Ausflüge in der Zeit nicht nur für denkbar, Stephen Hawking sei nun auch der Meinung, die britische Regierung sollte Forschungsmittel für diesen Bereich zur Verfügung </t_str>
+		</a>
+		<a id="47_2" value="REJECTED">
+			<a_str>Stephen_Hawkings</a_str>
+			<t_str doc="FR940918-002124">Stephen_Hawkings wirre Thesen und der Widerspruch zwischen Quantenmechanik und Relativitätstheorie belegten , daßjuman die Welt ohne einen planenden Gott garnicht erklären könne .</t_str>
+		</a>
+		<a id="47_3" value="VALIDATED">
+			<a_str>Rollstuhl gefesselte  britische Astrophysiker</a_str>
+			<t_str doc="SDA.950915.0029">Cambridge, 15. Sept. (sda/Reuter) Der an den Rollstuhl gefesselte britische Astrophysiker Stephen Hawking hat am Freitag seine frühere Pflegerin Elaine Mason geheiratet.</t_str>
+		</a>
+		<a id="47_4" value="VALIDATED">
+			<a_str>ein britischer Physiker</a_str>
+			<t_str doc="SDA.950706.0241">Der britische Physiker Stephen Hawking wird laut dem Londoner " Daily Telegraph " seine Krankenschwester heiraten .</t_str>
+		</a>
+	</q>
+	<q id="48" lang="DE">
+		<q_str>Was ist die Yakuza?</q_str>
+		<a id="48_1" value="VALIDATED">
+			<a_str>japanische Mafia</a_str>
+			<t_str doc="SPIEGEL9495-006265">Viel zu ergründen gibt es nicht, zumindest die Auftraggeber sind bekannt: Die japanische Mafia, Yakuza genannt, schlägt neuerdings mit Waffen zu, die Polizei ist machtlos.</t_str>
+		</a>
+	</q>
+	<q id="49" lang="DE">
+		<q_str>Was ist das SAH?</q_str>
+		<a id="49_1" value="VALIDATED">
+			<a_str>Schweizerische Arbeiterhilfswerk</a_str>
+			<t_str doc="SDA.951018.0154">Vom Bundesbeitrag von 18,9 Mio. Franken profitieren die folgenden acht Hilfswerke: Caritas (3,3 Mio.), das Schweizerische Rote Kreuz (2,8 Mio.), das Hilfswerk der evangelischen Missionen, Heks (2,7 Mio.), Fastenopfer (2,5 Mio.), Brot für Alle (2,2 Mio.), das Schweizerische Arbeiterhilfswerk, SAH (2,1 Mio.), die Fédération Genevoise de Coopération (2 Mio.) und die Stiftung Hilfswerk Pestalozzi (1,3 Mio.).</t_str>
+		</a>
+	</q>
+	<q id="50" lang="DE">
+		<q_str>Was ist die WHO?</q_str>
+		<a id="50_1" value="VALIDATED">
+			<a_str>eine Weltgesundheitsorganisation</a_str>
+			<t_str doc="FR940710-000138">Die Weltgesundheits-Organisation ( WHO ) hat es sich zum Ziel gesetzt , die Lepra bis zum Jahr 2000 weitestgehend auszurotten .</t_str>
+		</a>
+	</q>
+	<q id="51" lang="DE">
+		<q_str>Was ist die Focker F100?</q_str>
+		<a id="51_1" value="REJECTED">
+			<a_str>am 18. November 1944</a_str>
+			<t_str doc="FR940807-001981">Einige 100 Liter Benzin und Öl verseuchten das Erdreich, als sich die Focke Wulf A-8 am 18. November 1944 am Ortsrand des Dorfes Eidengesäß in den damals noch morastigen Boden bohrte.</t_str>
+		</a>
+		<a id="51_2" value="REJECTED">
+			<a_str>ein Produkt</a_str>
+			<t_str doc="SPIEGEL9495-008787">Strenggenommen sind Dasa/Focker damit auf den jährlich für gerade 30 bis 40 Exemplare guten Markt der Flugzeuge für weniger als 100 Passagiere angewiesen. Den aber müssen sie sich mit einem Dutzend anderer Hersteller teilen. Fokkers hundertsitziger F-über 100-Jet, technisch noch ein Produkt der sechziger Jahre, wird dadurch weitgehend isoliert.</t_str>
+		</a>
+		<a id="51_3" value="REJECTED">
+			<a_str>vom Typ</a_str>
+			<t_str doc="FR940710-000007">Ursache des Absturzes war offenbar ein Sandsturm, in den die Maschine vom Typ Focker F-28 geraten war, als sie in der von Bergen umgebenen Stadt landen wollte.</t_str>
+		</a>
+	</q>
+	<q id="52" lang="DE">
+		<q_str>Was ist ein Pointer Stick?</q_str>
+		<a id="52_1" value="VALIDATED">
+			<a_str>"Pointer Stick" ist ein elektronisches Zeigesystem für Personal Computer ähnlich der "Maus" oder dem "Trackball", mit dem sich der Cursor am Bildschirm bewegen lässt.</a_str>
+			<t_str doc="SDA.940308.0091">"Pointer Stick" ist ein elektronisches Zeigesystem für Personal Computer ähnlich der "Maus" oder dem "Trackball", mit dem sich der Cursor am Bildschirm bewegen lässt.</t_str>
+		</a>
+	</q>
+	<q id="53" lang="DE">
+		<q_str>Was ist Euro-Disney?</q_str>
+		<a id="53_1" value="REJECTED">
+			<a_str>Philippe Bourguignon</a_str>
+			<t_str doc="SDA.940331.0019">Der Chef von Euro-Disney, Philippe Bourguignon, sagte in einem am Freitag veröffentlichten Interview des Fachblattes "L'Echo Touristique", ein bedeutsamer Anstieg des Umsatzes werde aber erst 1996 zu verzeichnen sein.</t_str>
+		</a>
+		<a id="53_2" value="VALIDATED">
+			<a_str>ein französischer Freizeitpark</a_str>
+			<t_str doc="SDA.940818.0168">Personalrochade an der Spitze des französischen Freizeitparks Euro-Disney SCA .</t_str>
+		</a>
+	</q>
+	<q id="54" lang="DE">
+		<q_str>Was ist Hapkido?</q_str>
+		<a id="54_1" value="VALIDATED">
+			<a_str>koreanische Kampfkunst</a_str>
+			<t_str doc="FR940703-001714">In Deutschland weniger verbreitet ist die koreanische Kampfkunst Hapkido, die Emil Gruber, Meister des Zweiten Dans, unterrichtet.</t_str>
+		</a>
+	</q>
+	<q id="55" lang="DE">
+		<q_str>Welche Schauspielerinnen spielen in dem Film Magnolien aus Stahl mit?</q_str>
+		<a id="55_1" value="VALIDATED">
+			<a_str>Sally_Field</a_str>
+			<t_str doc="FR941231-001668">Zur ersten Vorstellung in der Frauenfilmreihe 1995 laden die Rodgauer SPD- Frauen für Dienstag , 3. Januar , um 20.15 Uhr ins Saalbau- Kino in Jügesheim zu Magnolien_aus_Stahl ein . Sally_Field , Dolly_Parton , Shirley_McLaine , Daryl_Hannah , Olypia Dukakis und Julia_Roberts , sechs Frauen aus den Südstaaten der USA , philosophieren über das Leben , die Liebe und den Tod , klagen sich gegenseitig ihr Leid .</t_str>
+		</a>
+	</q>
+	<q id="56" lang="DE">
+		<q_str>In welchen Ländern wurde der Film "Schindlers Liste" nicht zugelassen?</q_str>
+		<a id="56_1" value="REJECTED">
+			<a_str>Israel</a_str>
+			<t_str doc="SDA.940304.0219">Tel Aviv, 4. März (sda/afp) Überlebende des Holocaust und führende Politiker des Landes haben am Donnerstag abend in Tel Aviv an der Israel-Premiere des Filmes "Schindlers Liste" teilgenommen.</t_str>
+		</a>
+		<a id="56_2" value="REJECTED">
+			<a_str>Jakarta</a_str>
+			<t_str doc="SDA.940602.0206">Zensoren in Jakarta verbieten den Film "Schindlers List". Jakarta, 2. Juni (sda/dpa/afp) "Schindlers List", der mit sieben Oskars ausgezeichnete Film über das Leiden der Juden unter den Nazis, darf in Indonesien nicht gezeigt werden. Nach wochenlanger Debatte haben die Zensoren des muslimischen Landes den Film von US-Regisseur Steven Spielberg verboten.</t_str>
+		</a>
+		<a id="56_3" value="REJECTED">
+			<a_str>Deutschland</a_str>
+			<t_str doc="FR940213-000196">Der amerikanische Regisseur Steven_Spielberg wird zur deutschen Erstaufführung seines Holocaust- Dramas Schindlers_Liste am 1. März nach Frankfurt ins Schauspielhaus am Willy-Brandt- Platz kommen . Die Premiere , unterstützt vom Zentralrat der Juden in Deutschland , stehe im Zeichen der Aktion wider das Vergessen , sagte der Kulturdezernent des Zentralrats , Michel_Friedman .</t_str>
+		</a>
+	</q>
+	<q id="57" lang="DE">
+		<q_str>Wer zählt zu den Trägern des Büchner-Preises?</q_str>
+		<a id="57_1" value="REJECTED">
+			<a_str>Akademie</a_str>
+			<t_str doc="SDA.951020.0097">Der Büchner-Preis wird von der Deutschen Akademie für Sprache und Dichtung vergeben.</t_str>
+		</a>
+		<a id="57_2" value="REJECTED">
+			<a_str>Friederike_Wagner</a_str>
+			<t_str doc="FR940123-001130">Im Büchner- Gymnasium hat schon am Montag ein Yoga- Kurs mit Friederike_Wagner begonnen .</t_str>
+		</a>
+		<a id="57_3" value="VALIDATED">
+			<a_str>Ernst Jandl</a_str>
+			<t_str doc="SDA.950727.0111">Ernst Jandl ist u.a. Träger des Grossen Österreichischen Staatspreises, des Georg-Büchner-Preises, des Mühlheimer Dramatikerpreises, des Georg-Büchner-Preises, des Frankfurter Hörspielpreises und des Deutschen Kleinkunstpreises.</t_str>
+		</a>
+		<a id="57_4" value="VALIDATED">
+			<a_str>Max Frisch</a_str>
+			<t_str doc="SDA.951021.0004">Grünbein ist nach Peter Handke der zweitjüngste Preisträger in der Geschichte des 1923 vom Land Hessen eingerichteten und seit 1951 von der Deutsche Akademie vergebenen Büchner-Preises. Zu seinen Trägern zählen Max Frisch, Günter Grass und Wolf Biermann. Auch spätere Literatur-Nobelpreisträger wie Heinrich Böll und Elias Canetti figurieren unter den bisherigen Büchner-Preisträgern.</t_str>
+		</a>
+		<a id="57_5" value="VALIDATED">
+			<a_str>Botho Strauß</a_str>
+			<t_str doc="FR941218-000823">Die Idee von Botho Strauß, seine Büchner-Preis-Summe an jene auszuwerfen, die Jahnn gelesen und darüber geschrieben haben, war gewiß die beste seiner bisherigen kulturpolitischen Aktivitäten.</t_str>
+		</a>
+	</q>
+	<q id="58" lang="DE">
+		<q_str>Was sind die Symptome der Parkinson-Krankheit?</q_str>
+		<a id="58_1" value="REJECTED">
+			<a_str>Die Ursachen</a_str>
+			<t_str doc="FR940925-000387">Die Ursachen der Kriminalität müßten bekämpfte werden, anstatt nur an Symptomen zu arbeiten.</t_str>
+		</a>
+		<a id="58_2" value="REJECTED">
+			<a_str>in jungen Jahren</a_str>
+			<t_str doc="FR941204-002907">Die Parkinson-Krankheit ist eine unheilbare Stoffwechsel-Störung im Gehirn, von der meistens ältere Menschen befallen werden. Ein Zehntel, etwa 25000 Menschen in Deutschland, leiden laut Schneckenhaus schon in jungen Jahren unter der Krankheit. Die Symptome sind Zittern, schmerzhafte Muskelanspannungen oder Bewegungsstarre.</t_str>
+		</a>
+	</q>
+	<q id="59" lang="DE">
+		<q_str>Wie heißt der aus Deutschland vertriebene Physiker, der bis zu seinem Tod 1955 am Institute for Advanced Study in Princeton forschte?</q_str>
+		<a id="59_1" value="REJECTED">
+			<a_str>am Liebesleben</a_str>
+			<t_str doc="SPIEGEL9495-007201">In der gerade abgedrehten Filmkomödie "I. Q." spielt Matthau den aus Deutschland vertriebenen Physiker als einen langmähnigen Graukopf, der lieber am Liebesleben seiner Nichte Anteil nimmt, als die Lichtgeschwindigkeit --- S.183 zu quadrieren. "Wir wären ganz toll miteinander ausgekommen", glaubt der Komödiant, "ich hätte Albert Einstein. jeden Tag jiddische Witze erzählt. " Und wie Einstein, der am Institute for Advanced Study in Princeton bis zu seinem Tod im Jahre 1955, da bereits 76, forschte, h</t_str>
+		</a>
+	</q>
+	<q id="60" lang="DE">
+		<q_str>Wo fanden 1994 die olympischen Winterspiele statt?</q_str>
+		<a id="60_1" value="REJECTED">
+			<a_str>Lillehammer</a_str>
+			<t_str doc="FR940116-000482">Unsere Vorbereitung ist zwar auf Lillehammer ausgerichtet , aber daß wir so schlecht sein würden , hätte ich nicht gedacht . Neben Fischer sorgten lediglich die beiden bislang nicht für die Winterspiele qualifizierten Jens_Steinigen und Mark_Kirchner für Lichtblicke .</t_str>
+		</a>
+		<a id="60_2" value="VALIDATED">
+			<a_str>in Lillehammer</a_str>
+			<t_str doc="FR941211-002631">Das für 24 Millionen Mark gebaute Presezentrum für die Olympischen Winterspiele 1994 in Lillehammer steht seit Olympia-Ende leer .</t_str>
+		</a>
+	</q>
+	<q id="61" lang="DE">
+		<q_str>Welche Umwelt-Organisation wurde 1971 gegründet?</q_str>
+		<a id="61_1" value="REJECTED">
+			<a_str>KPdSU</a_str>
+			<t_str doc="SPIEGEL9495-010883/30/118">war zu Sowjetzeiten 21 Jahre lang Vizechef der Internationalen ZK- Abteilung und damit faktisch ein Außenminister der KPdSU . In dieser Eigenschaft führte er seit 1971 sieben recht freimütige SPIEGEL- Gespräche ;</t_str>
+		</a>
+		<a id="61_2" value="VALIDATED">
+			<a_str>Greenpeace</a_str>
+			<t_str doc="FR941106-000401">Am Dienstag verabschiedeten die 105 Vertreter der nationalen Sektionen und der Greenpeace-Mitarbeiter bei der Jahresversammlung im tunesischen Tabarka einen dreijährigen Finanzplan für die Umwelt-Organisation. Er sieht Ausgabensenkungen von insgesamt drei Millionen Dollar (umgerechnet etwa 4,5 Millionem Mark) vor. Erstmals in der Geschichte der 1971 gegründeten Organisation gibt es damit eine auf drei Millionen Jahre ausgerichtete Ausgabenplanung.</t_str>
+		</a>
+	</q>
+	<q id="62" lang="DE">
+		<q_str>Wie viele Soldaten traten im Jahr 1914 an den Westgrenzen des deutschen Reiches an, um die französischen Truppen zu zerschlagen?</q_str>
+		<a id="62_1" value="REJECTED">
+			<a_str>sieben</a_str>
+			<t_str doc="FR940814-000975">Vor 80 Jahren, im August des Jahres 1914, traten mehr als 1,5 Millionen deutsche Soldaten, eingeteilt in sieben Armeen, an den Westgrenzen des Deutschen Reiches an, um in einer gigantischen militärischen Operation die Truppen Frankreichs zu zerschlagen.</t_str>
+		</a>
+		<a id="62_2" value="REJECTED">
+			<a_str>80</a_str>
+			<t_str doc="FR940814-000975">Vor 80 Jahren, im August des Jahres 1914, traten mehr als 1,5 Millionen deutsche Soldaten, eingeteilt in sieben Armeen, an den Westgrenzen des Deutschen Reiches an, um in einer gigantischen militärischen Operation die Truppen Frankreichs zu zerschlagen. Über die Hälfte der 80 deutschen Divisionen bildeten den offensiven rechten Flügel, der durch das neutrale Belgien hindurch tief in das Innere Nordfrankreichs stoßen sollte, um dann nach Süden einzuschwenken. Auf diese Weise, so hoffte die deutsche H</t_str>
+		</a>
+		<a id="62_3" value="REJECTED">
+			<a_str>20</a_str>
+			<t_str doc="SPIEGEL9495-011781/37/4">Über 20 Kinder und Jugendliche kamen bei Fluchtversuchen an der einstigen Westgrenze der DDR um .</t_str>
+		</a>
+		<a id="62_4" value="VALIDATED">
+			<a_str>1,5 Millionen</a_str>
+			<t_str doc="FR940814-000975">Vor 80 Jahren, im August des Jahres 1914, traten mehr als 1,5 Millionen deutsche Soldaten, eingeteilt in sieben Armeen, an den Westgrenzen des Deutschen Reiches an, um in einer gigantischen militärischen Operation die Truppen Frankreichs zu zerschlagen.</t_str>
+		</a>
+	</q>
+	<q id="63" lang="DE">
+		<q_str>Was wurde Adolf Hitler am 30. Januar 1933?</q_str>
+		<a id="63_1" value="REJECTED">
+			<a_str>am 30. Januar 1933</a_str>
+			<t_str doc="SPIEGEL9495-006358">"Tarnname Wolf" trat ein für allemal aus dem Schatten der Anonymität: Unter seinem richtigen Namen Adolf Hitler wurde er am 30. Januar 1933 zum deutschen Reichskanzler ernannt.</t_str>
+		</a>
+		<a id="63_2" value="VALIDATED">
+			<a_str>Reichskanzler</a_str>
+			<t_str doc="SPIEGEL9495-009076">Als Hitler am 30. Januar 1933 Reichskanzler wurde, feierte Roosevelt - gewählt, aber noch nicht im Amt - gerade seinen 51. Geburtstag.</t_str>
+		</a>
+	</q>
+	<q id="64" lang="DE">
+		<q_str>Welcher Dichter und Kritiker lebte von 1729 bis 1781?</q_str>
+		<a id="64_1" value="REJECTED">
+			<a_str>bis heute</a_str>
+			<t_str doc="FR940220-000769">Vorgetragen werden Werke wie zum das Streichsextett aus Capriccio von Richard Strauß, Melancholie Opus 13 von Paul Hindemith sowie das Streichsextett Melancholie Opus 36 G-Dur von Johannes Blumenröter Werke von Ravel, Debussy, Zender und Beethoven bringt das Kammer-Orchesters Merck am Freitag, 18. Februar, 20 Obwohl der Dichter und Kritiker Gotthold Ephraim Lessing (1729 bis 1781) sie bereits vor zweihundert Jahren geschrieben hat, hat sie bis heute nichts an Aktualität eingebüßt: seine Tragödie der</t_str>
+		</a>
+		<a id="64_2" value="REJECTED">
+			<a_str>Becker</a_str>
+			<t_str doc="FR940116-000835">12. Becker ( Leimen ) 1729 , . . .</t_str>
+		</a>
+	</q>
+	<q id="65" lang="DE">
+		<q_str>In welchem Land wurde zwischen 1989 und 1993 kein Todesurteil gefällt?</q_str>
+		<a id="65_1" value="REJECTED">
+			<a_str>Franken</a_str>
+			<t_str doc="SDA.940414.0182">Im Thurgau schwankten diese Einnahmen in den letzten zehn Jahren zwischen 24,9 Millionen Franken 1983, 102,9 Millionen 1989 und 42,7 Millionen Franken 1993.</t_str>
+		</a>
+		<a id="65_2" value="REJECTED">
+			<a_str>China</a_str>
+			<t_str doc="SDA.940504.0082">London, 4. Mai (sda/dpa/afp) In China sind nach Informationen der Menschenrechtsorganisation amnesty international (ai) im vergangenen Jahr soviele Menschen wie nie zuvor zum Tode verurteilt worden. Wie die Organisation am Donnerstag mitteilte, wurde 1993 in mindestens 2564 Fällen die Todesstrafe verhängt und 1419 Todesurteile vollstreckt. "Selbst diese Zahlen sind wahrscheinlich noch viel zu niedrig angesetzt, weil die chinesischen Behörden die wahren Zahlen als Staatsgeheimnis betrachten", heisst es </t_str>
+		</a>
+		<a id="65_3" value="REJECTED">
+			<a_str>Iran</a_str>
+			<t_str doc="FR940220-000028">Iran hat das von Ayatollah Ruhollah_Khomeiny erlassene Todesurteil gegen den indo- britischen Schriftsteller Salman_Rushdie bekräftigt .</t_str>
+		</a>
+	</q>
+	<q id="66" lang="DE">
+		<q_str>Für wen hat der Bremer Fußballmanager Willi Lemke von 1970 bis 1975 zum Schein gearbeitet?</q_str>
+		<a id="66_1" value="REJECTED">
+			<a_str>Willi Lemke</a_str>
+			<t_str doc="FR940213-002431">1971 wechselte Willi Lemke nach Bremen und trat der SPD bei.</t_str>
+		</a>
+		<a id="66_2" value="VALIDATED">
+			<a_str>KGB</a_str>
+			<t_str doc="FR940213-002431">Um so elektrisierter reagierten jetzt die Bremer, als Eckhard Stengel durch die Fernsehregionalsendung erstmals davon erfuhren, daß Willi Lemke, erfolgreicher und beliebter Manager des Fußballmeisters Werder Bremen, von 1970 bis 1975 für den sowjetischen Geheimdienst KGB gearbeitet hat.</t_str>
+		</a>
+	</q>
+	<q id="67" lang="DE">
+		<q_str>Wie viele Soldaten starben zwischen 1914 und 1918 an allen Fronten?</q_str>
+		<a id="67_1" value="REJECTED">
+			<a_str>neun</a_str>
+			<t_str doc="SPIEGEL9495-000430">" Auf der Vorderseite des gereimten Kartengrußes, abgeschickt im Kriegsjahr 1918 von "Vater Ruodi" und "Sohn Abiturient Walter" an einen Bekannten, zieht ein riesiger Soldat neun kleine hölzerne Esel - damals das Symbol für Abiturienten - an Bindfäden der Front entgegen.</t_str>
+		</a>
+		<a id="67_2" value="REJECTED">
+			<a_str>neun</a_str>
+			<t_str doc="SPIEGEL9495-000430/4/74">Auf der Vorderseite des gereimten Kartengrußes , abgeschickt im Kriegsjahr 1918 von " Vater Ruodi " und " Sohn Abiturient Walter " an einen Bekannten , zieht ein riesiger Soldat neun kleine hölzerne Esel - damals das Symbol für Abiturienten - an Bindfäden der Front entgegen .</t_str>
+		</a>
+	</q>
+	<q id="68" lang="DE">
+		<q_str>Was war Churchill von 1951 bis 1955?</q_str>
+		<a id="68_1" value="REJECTED">
+			<a_str>Italien 1960 -- Saint-John Perse ,</a_str>
+			<t_str doc="SDA.941013.0097">1950 -- Bertrand Russell, Grossbritannien 1951 -- Par Lagerkvist, Schweden 1952 -- Francois Mauriac, Frankreich 1953 -- Winston Churchill, Grossbritannien 1954 -- Ernest Hemingway, USA 1955 -- Halldor Laxness, Island 1956 -- J. R. Jimenez, Spanien 1957 -- Albert Camus, Frankreich 1958 -- Boris Pasternak, UdSSR (lehnte den Preis ab) 1959 -- Salvatore Quasimodo, Italien 1960 -- Saint-John Perse, Frankreich 1961 -- Ivo Andric, Jugoslawien 1962 -- John Steinbeck, USA 1963 -- Giorgos Seferis, Griechenland 1964</t_str>
+		</a>
+		<a id="68_2" value="REJECTED">
+			<a_str>Frankreich 1958 -- Boris Pasternak ,</a_str>
+			<t_str doc="SDA.941013.0097">Literatur-Nobelpreis an Japaner Kenzaburo Oe Liste der Träger des Nobelpreises für Literatur seit 1950 Separat. Wien, 13. Okt. (sda/apa) Seit 1950 Separat. ging der Nobelpreis für Literatur an folgende Autoren. 1950 -- Bertrand Russell, Grossbritannien 1951 -- Par Lagerkvist, Schweden 1952 -- Francois Mauriac, Frankreich 1953 -- Winston Churchill, Grossbritannien 1954 -- Ernest Hemingway, USA 1955 -- Halldor Laxness, Island 1956 -- J. R. Jimenez, Spanien 1957 -- Albert Camus, Frankreich 1958 -- Boris P</t_str>
+		</a>
+		<a id="68_3" value="REJECTED">
+			<a_str>ein britischer Premierminister</a_str>
+			<t_str doc="SDA.950505.0166">1943 wurde er von US-Präsident Franklin D . Roosevelt und vom britischen Premierminister Winston Churchill mit den Vorbereitungen für die Landung der Alliierten in der Normandie beauftragt .</t_str>
+		</a>
+	</q>
+	<q id="69" lang="DE">
+		<q_str>Wer wurde Bundeskanzler, nachdem er Ministerpräsident von Rheinland-Pfalz war?</q_str>
+		<a id="69_1" value="REJECTED">
+			<a_str>Kohl</a_str>
+			<t_str doc="SDA.940227.0065">Mainz, 27. Feb. (sda/dpa) Zum sechsten Mal ist Chef der Christdemokraten (CDU) und Bundeskanzler Kohl von seiner Partei in seinem Heimatland Rheinland-Pfalz mit grosser Mehrheit zum Spitzenkandidaten für die Bundestagswahl in Oktober nominiert worden.</t_str>
+		</a>
+		<a id="69_2" value="REJECTED">
+			<a_str>Stammland von Kanzler Kohl</a_str>
+			<t_str doc="SDA.940613.0079">In Rheinland-Pfalz, Stammland von Kanzler Kohl und seinem SPD- Herausforderer Rudolf Scharping, lag die CDU bei den Bürgermeisterwahlen vorn.</t_str>
+		</a>
+		<a id="69_3" value="REJECTED">
+			<a_str>Bernhard Vogel</a_str>
+			<t_str doc="FR941016-001208">Allerdings ist das Superwahljahr-Foto mindestens so alt wie das Landtagshandbuch von 1988 und die längst von einerjuSPD-FDP-Regierung abgelöste Unions-Ministerriege. Das SWF-Studio aus dem Heimatland des Ministerpräsidenten und SPD-Kanzlerkandidaten Rudolf Scharping und des Bundeskanzlers Helmut Kohl wirbt im 1994 mit längst Vergangenem aus Vorvereinigungstagen. Auf dem Werbebild ist die Kabinettsriege von CDU-Ministerpräsident Bernhard Vogel (Gott schütze Rheinland-Pfalz), Ende 1988 zurückgetreten</t_str>
+		</a>
+		<a id="69_4" value="REJECTED">
+			<a_str>Regine Hildebrandt</a_str>
+			<t_str doc="FR940911-001902">Was auch immer hier vorgestellt wird seien es die Arbeitnehmer aus dem rheinischen Braunkohlerevier (Warum wir für Garzweiler II kämpfen) oder aus dem Ortsverein Lahnstein in Rheinland-Pfalz (Der neue Kanzler kommt aus Lahnstein) Regine Hildebrandt machen alle zusammen den Eindruck, als täten Regine Hildebrandt dies überhaupt nicht unbedingt, um in Bonn an die Macht zu kommen, sondern weil es ihrer politischen Überzeugung und ihren sozialen Bedürfnissen entspricht.</t_str>
+		</a>
+		<a id="69_5" value="REJECTED">
+			<a_str>Johannes_Gerster</a_str>
+			<t_str doc="SPIEGEL9495-007939/9/24">Johannes_Gerster aus Mainz . Der will Ministerpräsident in Rheinland-Pfalz werden , und der weiß , auf die FDP setzen heißt , auf Sumpf setzen .</t_str>
+		</a>
+	</q>
+	<q id="70" lang="DE">
+		<q_str>In welcher Stadt fanden die Olympischen Winterspiele vor Salt Lake City statt?</q_str>
+		<a id="70_1" value="REJECTED">
+			<a_str>Sion</a_str>
+			<t_str doc="FR941016-000291">Die italienische Provinz Friaul, Slowenien und das österreichische Kärnten machen sich große Hoffungen, zumindest als Außenseiter neben Salt Lake City, Sion und Östersund gemeinsam in das Quartett der offiziellen Bewerber für die Olympischen Winterspielen 2002 vorzustoßen.</t_str>
+		</a>
+		<a id="70_2" value="REJECTED">
+			<a_str>in Budapest</a_str>
+			<t_str doc="SDA.950616.0008">Olympische Winterspiele 2002: Salt Lake City ist Sieger Trotz Enttäuschung will Wallis nochmals kommen Gesamtzusammenfassung Budapest/Sitten, 16. Juni (sda) Die Olympischen Winterspiele 2002 finden in Salt Lake City statt. Das Internationale Olympische Komitee (IOC) zog am Freitag in Budapest die amerikanische Stadt der Schweizer Kandidatur Sitten-Wallis, Quebec (Kanada) und Östersund (Schweden) vor.</t_str>
+		</a>
+		<a id="70_3" value="REJECTED">
+			<a_str>Sankt_Petersburg</a_str>
+			<t_str doc="SDA.941209.0097">Die Vertreter aus Sankt_Petersburg , Dakar , Neapel , Istanbul , Bangkok , Salt_Lake_City und anderen Ballungszentren berichteten von den jüngsten Opfern wachsender Verelendung .</t_str>
+		</a>
+	</q>
+	<q id="71" lang="DE">
+		<q_str>Welche Umweltorganisation verfolgte mit ihrem Schiff die Brent Spar, nachdem diese von den Ankerketten gesprengt wurde?</q_str>
+		<a id="71_1" value="REJECTED">
+			<a_str>Die Umweltorganisation Greenpeace</a_str>
+			<t_str doc="SDA.950608.0208">Die Umweltorganisation Greenpeace protestierte am Morgen mit der Aufstellung eines "Schanddenkmals" gegen die Versenkung der von Grossbritannien genehmigten Ölplattform "Brent Spar" im Atlantik.</t_str>
+		</a>
+		<a id="71_2" value="REJECTED">
+			<a_str>Greenpeace</a_str>
+			<t_str doc="SDA.950608.0102">Die Umweltorganisation Greenpeace, die auf der "Brent Spar" schon zweimal Besetzungsaktionen duchgeführt hatte, errichtete vor dem Konferenzzentrum ein "Schanddenkmal".</t_str>
+		</a>
+		<a id="71_3" value="REJECTED">
+			<a_str>von Greenpeace</a_str>
+			<t_str doc="SDA.950616.0027">Shell-Ölplattform "Brent Spar" erneut von Greenpeace besetzt Verwirrung um Versenkung - Medienkampagne in der Schweiz Zweite Zusammenfassung Hamburg/London, 16. Juni (sda/dpa/Reuter) Aktivisten der Umweltorganisation Greenpeace haben am Freitag zum dritten Mal die Plattform "Brent Spar" des Mineralölkonzerns Shell besetzt. In der Schweiz lancierte Greenpeace eine Medienkampagne.</t_str>
+		</a>
+		<a id="71_4" value="VALIDATED">
+			<a_str>Greenpeace</a_str>
+			<t_str doc="SDA.950610.0016">Die Greenpeace- Aktivisten hatten sich mit einer Rettungsinsel an eine der vier " Brent Spar"- Ankerketten gekettet . Ihre Rettungsinsel wurde nach Angaben von Greenpeace mehrfach von Mitarbeitern des Mineralölkonzerns in einem Beiboot gerammt und überfahren .</t_str>
+		</a>
+	</q>
+	<q id="72" lang="DE">
+		<q_str>Wie viele Dollar bezahlte Douglas Corrigan für ein Flugzeugwrack, mit dem er den Atlantik überflog?</q_str>
+		<a id="72_1" value="REJECTED">
+			<a_str>zwei</a_str>
+			<t_str doc="SDA.941119.0017">Das Haus brannte am Abend noch lichterloh , während die Explosionen der Bereitschaftsmunition im Flugzeugwrack ein Vordringen der Hilfsmannschaften in das Haus unmöglich machten . Am Freitag hatten zwei Flugzeuge des gleichen Typs nach UNPROFOR- Angaben über der Stadt Bihac eine Splitter- und eine Napalmbombe abgeworfen , die jedoch nicht explodierte .</t_str>
+		</a>
+		<a id="72_2" value="REJECTED">
+			<a_str>Vier</a_str>
+			<t_str doc="SDA.940823.0028">Innsbruck / Bern , 23. Aug. ( sda / apa ) Vier Schweizer - zwei Männer und zwei Frauen - sind am Montag in den Stubaier_Alpen beim Absturz eines Sportflugzeuges ums Leben gekommen . Die Leichen konnten am Dienstag von der Tiroler Bergrettung aus dem Flugzeugwrack geborgen werden .</t_str>
+		</a>
+		<a id="72_3" value="VALIDATED">
+			<a_str>310</a_str>
+			<t_str doc="SDA.951214.0078">New York, 14. Dez. (sda/dpa) Douglas Corrigan, der 1938 mit einer weitgehend selbstgebauten einmotorigen Maschine "irrtümlich" den Atlantik überflogen hatte und als "Wrong Way Corrigan" zu einer Berühmtheit wurde, ist im Alter von 88 Jahren gestorben. Nach einem Bericht der "New York Times" vom Donnerstag starb Douglas Corrigan am vergangenen Samstag in einem Spital in Orange (Kalifornien). Corrigan hatte 1935 für 310 Dollar ein Flugzeugwrack gekauft, es in jahrelanger Arbeit wieder flugtauglich gemac</t_str>
+		</a>
+	</q>
+	<q id="73" lang="DE">
+		<q_str>Welches Amt bekleidete Helmut Kohl, bevor er Bundeskanzler wurde?</q_str>
+		<a id="73_1" value="REJECTED">
+			<a_str>des Bundespräsidenten</a_str>
+			<t_str doc="SDA.940206.0105">Bundeskanzler Helmut Kohl scheiterte im vergangenen Jahr, als Bernhard Vogel den ostdeutschen CDU-Politiker Steffen Heitmann, Justizminister von Sachsen, als als Kandidaten für das Amt des Bundespräsidenten nominieren wollte.</t_str>
+		</a>
+		<a id="73_2" value="REJECTED">
+			<a_str>am Freitag</a_str>
+			<t_str doc="SPIEGEL9495-012071">Helmut Kohl versuchte am Freitag vergangener Woche, das "Mißverständnis" zwischen Bonn und Rom auszuräumen: "Die deutsche Position" sei klar, erklärte der Kanzler, "wir wollen keinen ausschließen".</t_str>
+		</a>
+		<a id="73_3" value="REJECTED">
+			<a_str>des Ministerpräsidenten</a_str>
+			<t_str doc="FR940703-001837">Die brüske Abweisung des hochqualifizierten und erfahrenen niederländischen Kandidaten Ruud Lubbers, bei der Bundeskanzler Helmut Kohl im Verein mit dem französischen Staatspräsidenten Franois Mitterrand eine Hauptrolle spielte, hat in politischen Kreisen der Niederlande böses Blut geweckt. Alle bedeutenden niederländischen Parteien von links bis rechts setzten sich für den angesehenen christdemokratischen Politiker Lubbers ein, der seit zwölf Jahren das Amt des Ministerpräsidenten bekleidet. Sie</t_str>
+		</a>
+	</q>
+	<q id="74" lang="DE">
+		<q_str>Welches Land wurde nach 30 Jahren Bürgerkrieg unabhängig?</q_str>
+		<a id="74_1" value="REJECTED">
+			<a_str>Algerien</a_str>
+			<t_str doc="SDA.950523.0169">Seit Mai 1993 wurden 33 Journalisten in Algerien Opfer von Anschlägen, die Fundamentalisten zugeschrieben werden. Ausserdem wurden seitdem rund 20 Richter und ein Dutzend Anwälte bei Anschlägen getötet. Bei dem Bürgerkrieg in Algerien zwischen der vom Militär gestützten Regierung und Fundamentalistengruppen starben in den vergangenenen drei Jahren nach unabhängigen Schätzungen mehr als 30 000 Menschen.</t_str>
+		</a>
+		<a id="74_2" value="VALIDATED">
+			<a_str>Eritrea</a_str>
+			<t_str doc="SDA.941118.0137">Eritrea wurde nach 30 Jahren Bürgerkrieg am 24. Mai 1993 unabhängig.</t_str>
+		</a>
+	</q>
+	<q id="75" lang="DE">
+		<q_str>Welcher König starb 1718?</q_str>
+		<a id="75_1" value="REJECTED">
+			<a_str>Faisal II.</a_str>
+			<t_str doc="SDA.950824.0101">König Husseins Cousin hatte bis 1958 als König Faisal II. im Nachbarland auf dem Thron gesessen, bevor er in einem blutigen Putsch in Bagdad gestürzt wurde.</t_str>
+		</a>
+		<a id="75_2" value="REJECTED">
+			<a_str>Fritz König</a_str>
+			<t_str doc="SDA.940216.0195">Mit 22 Jahren war König nach einer Handelsmatur und drei Jahren Berufspraxis in die Dienste des SSIV getreten, dessen Direktor Fritz König 1958 wurde und bis zu seiner Pensionierung 1973 blieb. Unter anderem bei der Suva und der Züspa sass König im Verwaltungsrat. Fritz König war auch Gründer und bis 1987 Präsident des Verbandes Schweizerischer Generalunternehmer (VSGU).</t_str>
+		</a>
+		<a id="75_3" value="REJECTED">
+			<a_str>Michael</a_str>
+			<t_str doc="FR940109-001231">SH- Gruppe von Betroffenen für Betroffene , 1718.30 Uhr , Schützenrain 9 , Kontakt- Tel . : 06031 / 61300 ( Michael ) .</t_str>
+		</a>
+	</q>
+	<q id="76" lang="DE">
+		<q_str>In welchem Jahr starb Charles de Gaulle?</q_str>
+		<a id="76_1" value="REJECTED">
+			<a_str>1966</a_str>
+			<t_str doc="SDA.951205.0163">Frankreich war unter Präsident Charles de Gaulle 1966 aus der integrierten militärischen Zusammenarbeit der NATO ausgetreten.</t_str>
+		</a>
+		<a id="76_2" value="REJECTED">
+			<a_str>1945</a_str>
+			<t_str doc="SDA.940317.0103">Am 25. August 1944 zog General Charles de Gaulle mit seiner "Provisorischen Regierung der Französischen Republik" in Paris ein. Marschall Pétain, der im Ersten Weltkrieg als Verteidiger von Verdun Ruhm erlangt hatte, wurde 1945 wegen Hoch- und Landesverrats zum Tod verurteilt. Charles de Gaulle wurde jedoch zu lebenslänglicher Haft begnadigt und auf die Insel Yeu vor der französischen Atlantikküste verbannt, wo Charles de Gaulle 1951 starb.</t_str>
+		</a>
+		<a id="76_3" value="REJECTED">
+			<a_str>1970</a_str>
+			<t_str doc="SDA.951109.0236">Frankreichs Staatschef Jacques Chirac hat die Verdienste des vor 25 Jahren gestorbenen Generals und Staatsmannes Charles de Gaulle gewürdigt .</t_str>
+		</a>
+		<a id="76_4" value="REJECTED">
+			<a_str>1966</a_str>
+			<t_str doc="FR940911-000410">Frankreich hat die Kommmandostruktur des westlichen Verteidigungsbündnisses 1966 verlassen . Der damalige Staatschef General Charles_de_Gaulle begründete dies mit einem zu starken Einfluß der USA .</t_str>
+		</a>
+	</q>
+	<q id="77" lang="DE">
+		<q_str>Wie hoch ist der Eiffelturm?</q_str>
+		<a id="77_1" value="REJECTED">
+			<a_str>eine 40</a_str>
+			<t_str doc="SDA.941201.0236">Als Zeichen der Solidarität leuchtet am Eiffelturm eine 40 Meter grosse, rote Aids-Schleife.</t_str>
+		</a>
+		<a id="77_2" value="REJECTED">
+			<a_str>das Gerüst</a_str>
+			<t_str doc="FR941113-000607">Nach einem Probeaufbau in Paris im Jahre 1876, für den Gustave Eiffel das Gerüst errichtete, wurde die gewichtige Dame zerlegt und in 200 Kisten verpackt nach Amerika verschifft.</t_str>
+		</a>
+		<a id="77_3" value="REJECTED">
+			<a_str>zweites</a_str>
+			<t_str doc="SPIEGEL9495-000981">Aber die Wandlungen der realen Stadt, ihren Aufbau und ihre Zerstörung, beschwört kein zweites Medium so packend-anschaulich und so kontrastreich wie das Foto. Hier schöpft die Ausstellung aus reichen Quellen, hält höchstes Niveau und kommt wie beiläufig zu schlagenden Inszenierungspointen. Eine muntere Schönheit, "Paris erobernd", auf dem Eiffelturm und ein steinerner Engel über der Trümmerwüste von Dresden - dieses Nebeneinander ist ein stiller Höhepunkt.</t_str>
+		</a>
+		<a id="77_4" value="REJECTED">
+			<a_str>in der Nähe</a_str>
+			<t_str doc="SDA.950517.0133">In den 240 Quadratmeter grossen Räumen in der Nähe des Eiffel-Turms werden ein Berater, zwei Sekretärinnen und eine Archivarin für ihn tätig sein.</t_str>
+		</a>
+		<a id="77_5" value="REJECTED">
+			<a_str>23_Millionen Mark</a_str>
+			<t_str doc="FR940904-000214">Eine Hauptrolle sollen bei dem Kongreß , der mindestens 80_Millionen Franc ( rund 23_Millionen Mark ) kostet , ungefähr 100 eingeladene Spitzenathleten spielen , darunter auch die deutschen Doppel- Olympiasieger Katarina_Witt und Markus_Wasmeier . Der alpine Skistar ist auch einer von 33 Sportlern , die am Montag in einem Staffellauf das im griechischen Olympia entzündete Olympische Feuer vom Eiffelturm nach Bercy tragen werden .</t_str>
+		</a>
+		<a id="77_6" value="REJECTED">
+			<a_str>zwei Kilometer</a_str>
+			<t_str doc="SDA.940712.0205">Die Truppenparade zum 14. Juli auf den Champs- Elysees gehört zu Frankreich wie der Eiffelturm zu Paris . Jedes Jahr säumen mehr_als 100.000 Menschen die Prachtstrasse , wenn Soldaten aller Waffengattungen mit ihrem neuesten Rüstungsmaterial die zwei Kilometer lange Strecke vom Triumphbogen bis_zur Ehrentribüne auf dem Concorde- Platz hinunterziehen .</t_str>
+		</a>
+	</q>
+	<q id="78" lang="DE">
+		<q_str>Was ist Atlantis?</q_str>
+		<a id="78_1" value="REJECTED">
+			<a_str>Troia</a_str>
+			<t_str doc="SPIEGEL9495-007654">In Ihrem unkritischen Beitrag wird suggeriert , Troia sei Atlantis .</t_str>
+		</a>
+		<a id="78_2" value="VALIDATED">
+			<a_str>Raumfähre "</a_str>
+			<t_str doc="SDA.950620.0248">Washington, 20. Juni (sda/afp) Wenige Tage vor dem geplanten Start der Raumfähre "Atlantis" zu einer der spektakulärsten Missionen in der Geschichte der Raumfahrt laufen die Vorbereitungen bei der US-Raumfahrtbehörde Nasa auf Hochtouren.</t_str>
+		</a>
+	</q>
+	<q id="79" lang="DE">
+		<q_str>Was ist Hubble?</q_str>
+		<a id="79_1" value="VALIDATED">
+			<a_str>Weltraumteleskop "</a_str>
+			<t_str doc="SDA.940717.0093">Vier Stunden nach dem ersten Aufprall, der in einem Tempo von 200 000 km/h erfolgte, kam ein eindrucksvolles Bild vom Weltraumteleskop "Hubble": In der Nähe des Jupiter-Südpols ist ein riesiger Krater zu sehen, der nach ersten Informationen 6000 km breit sein könnte.</t_str>
+		</a>
+		<a id="79_2" value="VALIDATED">
+			<a_str>ein Weltraumteleskop</a_str>
+			<t_str doc="FR941106-000102">Das ist das Ergebnis von Messungen , die eine internationale Forschergruppe mit dem Weltraumteleskop Hubble gemacht hat .</t_str>
+		</a>
+	</q>
+	<q id="80" lang="DE">
+		<q_str>Was ist Cäsium?</q_str>
+		<a id="80_1" value="REJECTED">
+			<a_str>70 Kilogramm</a_str>
+			<t_str doc="SDA.940130.0028">Für Hans-Peter Wächter, Leiter der Koordinationsstelle für Gesamtverteidigung und Katastrophenhilfe des Kantons St. Gallen, ist es schlicht unvorstellbar, dass 70 Kilogramm Cäsium mitgeführt worden wären.</t_str>
+		</a>
+		<a id="80_2" value="REJECTED">
+			<a_str>gewisser Wahrscheinlichkeit</a_str>
+			<t_str doc="SDA.940131.0036">Handel mit radioaktivem Material durch zwei Cessna-Insassen Mit "gewisser Wahrscheinlichkeit" Cäsium an Bord Zusammenfassung. St. Gallen, 31. Jan. (sda) Die vor Wochenfrist in den Bodensee gestürzte Cessna habe mit "gewisser Wahrscheinlichkeit" Cäsium an Bord mitgeführt. Dies erklärte Peter Grütter, Kommandant der St. Galler Kantonspolizei, am Montag nachmittag auf Anfrage der Nachrichtenagentur SDA.</t_str>
+		</a>
+	</q>
+	<q id="81" lang="DE">
+		<q_str>Was ist Lusa?</q_str>
+		<a id="81_1" value="VALIDATED">
+			<a_str>eine portugiesische Nachrichtenagentur</a_str>
+			<t_str doc="FR941127-000396">Nach einem Bericht der portugiesischen Nachrichtenagentur Lusa wollen der staatliche angolanische Rundfunk und der Unita-Sender die Kampfeinheiten auf beiden Seiten gleichzeitig dazu aufrufen , die Waffen niederzulegen .</t_str>
+		</a>
+	</q>
+	<q id="82" lang="DE">
+		<q_str>Was ist Top Quark?</q_str>
+		<a id="82_1" value="REJECTED">
+			<a_str>Das "Top-Quark" ist demnach rund 35mal schwerer als sein nächstleichterer "Bruder", das 1977 ebenfalls am Fermilab nachgewiesene "Bottom-Quark".</a_str>
+			<t_str doc="SDA.950301.0023">Das "Top-Quark" ist demnach rund 35mal schwerer als sein nächstleichterer "Bruder", das 1977 ebenfalls am Fermilab nachgewiesene "Bottom-Quark".</t_str>
+		</a>
+		<a id="82_2" value="REJECTED">
+			<a_str>Topfen</a_str>
+			<t_str doc="FR941231-002550">Mit der gleichen Rechtswirkung dürfen laut Beitrittsvereinbarungen in der Alpenrepublik Ausdrücke wie Grammeln (Grieben), Obers (Schlagsahne), Powidl (Pflaumenmus) und Topfen (Quark) für die bei den benachbarten Piefkes (Deutschen) üblichen Bezeichnungen verwendet werden.</t_str>
+		</a>
+		<a id="82_3" value="REJECTED">
+			<a_str>Dienstag</a_str>
+			<t_str doc="FR940501-000190">Physiker in aller Welt gaben am Dienstag Top-Quark Dabei handelt es sich um einen winzigen elementaren Baustein der Materie, nach dem Teilchenphysiker seit 1977 fieberhaft suchen.</t_str>
+		</a>
+	</q>
+	<q id="83" lang="DE">
+		<q_str>Was ist Lepra?</q_str>
+		<a id="83_1" value="REJECTED">
+			<a_str>Gründung</a_str>
+			<t_str doc="FR940206-000997">Wie viele Initiativen in Hessen Spenden sammeln, um Projekte, beispielsweise des Deutschen Aussätzigen-Hilfswerks (DAHW) in Würzburg, zu unterstützen, weiß selbst das DAHW nicht genau. Die GDM unterstützt schon seit Gründung Lepra-Projekte und, darauf ist Heinz-Walter Barthenheier ein wenig stolz, hat inzwischen auch schon Einzelprojekte zugewiesen bekommen, die direkt von seiner Missionshilfe betreut werden. Elendstourismus findet bei der GDM nicht statt, bekräftigt Dirk Altbürger.</t_str>
+		</a>
+		<a id="83_2" value="VALIDATED">
+			<a_str>Infektionskrankheit</a_str>
+			<t_str doc="SDA.940704.0168">Hanoi, 4. Juli (sda/afp) In der vietnamesischen Hauptstadt Hanoi hat am Montag eine Konferenz der Weltgesundheitsorganisation (WHO) über den Kampf gegen die Infektionskrankheit Lepra begonnen.</t_str>
+		</a>
+	</q>
+	<q id="84" lang="DE">
+		<q_str>Wer ist Klaus Pohl?</q_str>
+		<a id="84_1" value="REJECTED">
+			<a_str>Bern</a_str>
+			<t_str doc="FR940320-000086">Eine Hommage an den legendären Weltmeisterschafts- Torschützen von Bern , Helmut_Rahn , ist die jüngste Arbeit des Schauspielers und Dramatikers Klaus_Pohl .</t_str>
+		</a>
+		<a id="84_2" value="VALIDATED">
+			<a_str>Dramatiker</a_str>
+			<t_str doc="SPIEGEL9495-004460">Wie in dieser Woche im deutschen Nachrichtenmagazin DER SPIEGEL: Die Redaktion schickte den Dramatiker Klaus Pohl ("Die schöne Fremde", "Selbstmord in Madrid") auf die Reise durch die ehemalige DDR, um mal nach den armen Verwandten zu gucken.</t_str>
+		</a>
+		<a id="84_3" value="VALIDATED">
+			<a_str>ein deutscher Wahlemigrant</a_str>
+			<t_str doc="SPIEGEL9495-001915">Und Arthur Miller hat ihm geschrieben - irgendwann wird er , Klaus Pohl , der deutsche Wahlemigrant im großen New York , auch den Broadway erobern .</t_str>
+		</a>
+	</q>
+	<q id="85" lang="DE">
+		<q_str>Wer ist Kailash Satyarthi?</q_str>
+		<a id="85_1" value="REJECTED">
+			<a_str>Kailash_Satyarthi</a_str>
+			<t_str doc="SDA.950108.0084">Der bekannteste Verfechter der Rechte von Kindern in Indien , Kailash_Satyarthi , geht jedoch von mindestens 55_Millionen arbeitenden Kindern aus .</t_str>
+		</a>
+		<a id="85_2" value="VALIDATED">
+			<a_str>dem Vorsitzenden der South Asian Coalition Against Child Servitude</a_str>
+			<t_str doc="FR940424-000246">Nach Ansicht von Kailash Satyarthi, dem Vorsitzenden der South Asian Coalition Against Child Servitude, meinen es weder die indische Regierung noch die führenden Teppichhersteller ernst mit der Bekämpfung der Kinderarbeit.</t_str>
+		</a>
+		<a id="85_3" value="VALIDATED">
+			<a_str>dem Vorsitzenden der SouthAsian Coalition Against Child Servitude</a_str>
+			<t_str doc="FR940424-000246">Nach Ansicht von Kailash Satyarthi, dem Vorsitzenden der South Asian Coalition Against Child Servitude, meinen es weder die indische Regierung noch die führenden Teppichhersteller ernst mit der Bekämpfung der Kinderarbeit.</t_str>
+		</a>
+	</q>
+	<q id="86" lang="DE">
+		<q_str>Wer ist Vigdis Finnbogadottir?</q_str>
+		<a id="86_1" value="REJECTED">
+			<a_str>Vigdis_Finnbogadottir</a_str>
+			<t_str doc="SDA.951002.0045">Reykjavik , 2. Okt. ( sda / dpa ) Islands Präsidentin Vigdis_Finnbogadottir will 1996 nicht wieder kandidieren .</t_str>
+		</a>
+		<a id="86_2" value="VALIDATED">
+			<a_str>isländische Präsidentin</a_str>
+			<t_str doc="SDA.951127.0055">Bei der Eröffnung anwesend waren unter anderem Frankreichs First Lady Bernadette Chirac, die isländische Präsidentin Vigdis Finnbogadottir, Königin Noor von Jordanien, die schwedische Königin Sylvia, Suha Arafat, Prinzessin Caroline von Monaco und Naina Jelzin.</t_str>
+		</a>
+		<a id="86_3" value="VALIDATED">
+			<a_str>eine isländische Staatspräsidentin</a_str>
+			<t_str doc="SDA.940315.0176">In einem Brief bat sie die isländische Staatspräsidentin Vigdis Finnbogadottir , dafür zu sorgen , dass der Wal in Islands Gewässern wieder in die Freiheit zurückkehren kann .</t_str>
+		</a>
+	</q>
+	<q id="87" lang="DE">
+		<q_str>Wer ist Marc Forne?</q_str>
+		<a id="87_1" value="VALIDATED">
+			<a_str>ein liberaler Politiker</a_str>
+			<t_str doc="SDA.941207.0073">Der liberale Politiker Marc Forne ist am Mittwoch zum neuen Regierungschef des Pyrenäen-Kleinstaats Andorra gewählt worden .</t_str>
+		</a>
+	</q>
+	<q id="88" lang="DE">
+		<q_str>Was ist Airbus?</q_str>
+		<a id="88_1" value="REJECTED">
+			<a_str>Typs</a_str>
+			<t_str doc="SPIEGEL9495-008356">Bemerkenswert ist: Der wichtigste Deal, den die liechtensteinische IAL den Unterlagen zufolge befördern sollte, war ausgerechnet jenes Geschäft, das im Zentrum aller Schmiergeld-Spekulationen steht - ein 13 Milliarden Dollar teurer Auftrag, mit dem im Sommer 1988 die damals noch staatliche Fluggesellschaft Air Canada 34 Jets des Typs Airbus A 320 orderte und Optionen auf 20 weitere Maschinen vereinbarte.</t_str>
+		</a>
+	</q>
+	<q id="89" lang="DE">
+		<q_str>Was ist Christie's?</q_str>
+		<a id="89_1" value="REJECTED">
+			<a_str>34 Jahre alte  Linford</a_str>
+			<t_str doc="FR940821-002574">Da siegte über 100 m der 34 Jahre alte Linford Christie aus London, der immer den leisen Hohn von den Lippen seiner amerikanischen Gegner abliest in 10,05 Sekunden, bei einem Gegenwind von 1,4 m/sec, und der Weltrekordler Leroy Burrell wurde nur Siebter mit 10,39 Sekunden.</t_str>
+		</a>
+		<a id="89_2" value="REJECTED">
+			<a_str>Bogey-Fans</a_str>
+			<t_str doc="SDA.941125.0166">London, 25. Nov. (sda/Reuter) Humphrey Bogart-Fans sollten sich den 6. Dezember dick in ihren Termin-Kalendern anstreichen. Denn dann versteigert das Auktionshaus Christie"s die Originalstatue des Malteser aus dem gleichnamigen Film, der Bogart im Jahr 1941 in der Rolle des Privatdetektivs Sam Spade zum Durchbruch verhalf. Umgerechnet 63 000 Franken müssen die Bogey-Fans Christie"s zufolge schon bieten, wenn sie die Statue ersteigern wollen.</t_str>
+		</a>
+		<a id="89_3" value="VALIDATED">
+			<a_str>Auktionshauses</a_str>
+			<t_str doc="SDA.940920.0031">In Lugano ist die dritte Niederlassung des Auktionshauses Christie's in der Schweiz eröffnet worden.</t_str>
+		</a>
+	</q>
+	<q id="90" lang="DE">
+		<q_str>Was ist der Urknall?</q_str>
+		<a id="90_1" value="REJECTED">
+			<a_str>Beim Urknall vor rund 15 Milliarden Jahren sind alle Sechs Quarks entstanden, doch heute sind die meisten von ihnen - auch im Weltall - ausgestorben.</a_str>
+			<t_str doc="SDA.940425.0091">Beim Urknall vor rund 15 Milliarden Jahren sind alle Sechs Quarks entstanden, doch heute sind die meisten von ihnen - auch im Weltall - ausgestorben.</t_str>
+		</a>
+		<a id="90_2" value="REJECTED">
+			<a_str>Mit einem Knaller gehen die Sozialdemokraten in Etat-Verhandlungen mit der CDU. Die SPD will im Stadtteil Bieber ein neues Grundschulzentrum errichtet wissen, das zudem noch mit einer großen Turnhalle für alle Bieberer Grundschüler ausgestattet werden soll.</a_str>
+			<t_str doc="FR941120-002952">Mit einem Knaller gehen die Sozialdemokraten in Etat-Verhandlungen mit der CDU. Die SPD will im Stadtteil Bieber ein neues Grundschulzentrum errichtet wissen, das zudem noch mit einer großen Turnhalle für alle Bieberer Grundschüler ausgestattet werden soll.</t_str>
+		</a>
+	</q>
+	<q id="91" lang="DE">
+		<q_str>Was sind die kosmischen Strahlen?</q_str>
+		<a id="91_1" value="REJECTED">
+			<a_str>Strahlenbelastung ist höher Flugpersonal ist radioaktiven kosmischen Strahlen stärker ausgesetzt als bislang bekannt. Zu diesem Ergebnis kam das Institut für Strahlenbiologie der Universität Münster bei einer Untersuchung von elf Piloten und fünf Stewardessen.</a_str>
+			<t_str doc="FR940313-000001">Strahlenbelastung ist höher Flugpersonal ist radioaktiven kosmischen Strahlen stärker ausgesetzt als bislang bekannt. Zu diesem Ergebnis kam das Institut für Strahlenbiologie der Universität Münster bei einer Untersuchung von elf Piloten und fünf Stewardessen.</t_str>
+		</a>
+	</q>
+	<q id="92" lang="DE">
+		<q_str>Was ist das Internet?</q_str>
+		<a id="92_1" value="VALIDATED">
+			<a_str>globale Datennetz</a_str>
+			<t_str doc="SPIEGEL9495-007023">High-Tech-Grusel bescherte in der vergangenen Woche die britische Tageszeitung The Independent ihren Lesern: Ein 16jähriger Computerhacker aus dem Londoner Stadtteil Tottenham sei über das globale Datennetz Internet in US-Militärcomputer eingedrungen und habe dabei die "Verteidigungsbereitschaft beeinträchtigt", indem High-Tech-Grusel "Angaben über Raketenabschußrampen in Nordkorea, Vor-Ort-Berichte von Agenten und dergleichen" ausspionierte; anschließend habe High-Tech-Grusel die Geheimdaten im ö</t_str>
+		</a>
+	</q>
+	<q id="93" lang="DE">
+		<q_str>Was ist die Knesset?</q_str>
+		<a id="93_1" value="VALIDATED">
+			<a_str>ein israelisches Parlament</a_str>
+			<t_str doc="SDA.941027.0011">Vor der Knesset , dem israelischen Parlament in Jerusalem , sagte Clinton , Syrien meine es ernst mit seiner Friedensabsicht .</t_str>
+		</a>
+	</q>
+	<q id="94" lang="DE">
+		<q_str>Was ist Windows?</q_str>
+		<a id="94_1" value="REJECTED">
+			<a_str>ein neues Produkt</a_str>
+			<t_str doc="SDA.941020.0236">Microsoft werde seine neue Windows 95-Version im ersten Halbjahr nächsten Jahres herausbringen , teilte das Software-Haus weiter mit .</t_str>
+		</a>
+		<a id="94_2" value="VALIDATED">
+			<a_str>Programme</a_str>
+			<t_str doc="FR940904-002422">Die Programme Windows und Word für Windows erläutert das Frauenzentrum in seinem Wochendkurs Einführung in die Computertechnik, der am Samstag, 10. September, sowie am Samstag und Sonntag, 17. und 18. September, stattfindet.</t_str>
+		</a>
+		<a id="94_3" value="VALIDATED">
+			<a_str>Steuersoftware</a_str>
+			<t_str doc="SPIEGEL9495-001402">Moderne Arbeitsplatz-PC leiden unter Kontaktstörungen. Beim Einsatz der Steuersoftware "Windows", die eigentlich für Ausgleich zwischen gleichzeitig ablaufenden Anwendungen sorgen soll, blockieren sich ausgerechnet die Kommunikationsprogramme gegenseitig: Fax- und Datenübertragungs-Software können nicht gleichzeitig eingesetzt werden, --- S.253 die Telefonanwahl aus dem Bildschirm-Terminkalender wiederum funktioniert nicht, wenn die Fax-Software auf Anrufe wartet. Für Abhilfe sorgt nun "King Com" von</t_str>
+		</a>
+	</q>
+	<q id="95" lang="DE">
+		<q_str>Welche Länder gehören dem Golfkooperationsrat?</q_str>
+		<a id="95_1" value="REJECTED">
+			<a_str>Ägypten</a_str>
+			<t_str doc="SDA.940930.0048">So unterbrachen die Länder des Golfkooperationsrates sowie Ägypten, Jemen und Nepal den Flugverkehr mit Indien.</t_str>
+		</a>
+		<a id="95_2" value="REJECTED">
+			<a_str>Schweiz</a_str>
+			<t_str doc="SDA.940127.0063">Sein Land und auch andere Länder würden die Schweiz gerne als EU-Mitglied begrüssen.</t_str>
+		</a>
+		<a id="95_3" value="REJECTED">
+			<a_str>CEC</a_str>
+			<t_str doc="SDA.951101.0138">Das Kulturzentrum CEC zählt heute 700 Mitglieder aus 25 Ländern.</t_str>
+		</a>
+		<a id="95_4" value="REJECTED">
+			<a_str>Israel</a_str>
+			<t_str doc="FR941009-001913">Zank um Boykott gegen Israel Arabische Liga rügt Lockerung durch Golfkooperationsrat</t_str>
+		</a>
+	</q>
+	<q id="96" lang="DE">
+		<q_str>Nenne einige Welterbestätten.</q_str>
+		<a id="96_1" value="REJECTED">
+			<a_str>die UNESCO</a_str>
+			<t_str doc="SDA.951204.0172">Besonders gefährdete Welterbestätten hat die UNESCO auf eine "Rote Liste" gesetzt.</t_str>
+		</a>
+		<a id="96_2" value="REJECTED">
+			<a_str>die Welterbekonvention</a_str>
+			<t_str doc="SDA.951208.0190">Verpflichtung zu Schutzmassnahmen Insgesamt haben 143 Staaten die Welterbekonvention unterzeichnet. Sie verpflichten sich damit, ihre Welterbestätten durch gesetzliche, technische und andere Schutzmassnahmen langfristig zu erhalten.</t_str>
+		</a>
+	</q>
+	<q id="97" lang="DE">
+		<q_str>Wer entdeckte den Shoemaker-Levy-Komet?</q_str>
+		<a id="97_1" value="REJECTED">
+			<a_str>auf den Jupiter</a_str>
+			<t_str doc="SDA.940714.0167">Shoemaker-Levy 9 könnte vor Aufprall zerbersten. London, 14. Juli (sda/Reuter) Der für Samstag erwartete Aufprall des Kometen Shoemaker-Levy 9 auf den Jupiter könnte nach Ansicht von Astronomen statt eines grossen Knalls nur einen schwachen Plumps ergeben. Der ohnehin zerstückelte Komet könne vor dem Eintritt in die Athmosphäre weiter auseinanderbrechen, heisst es in zwei Berichten des Wissenschaftsmagazins "Nature" vom Donnerstag.</t_str>
+		</a>
+		<a id="97_2" value="REJECTED">
+			<a_str>KURZ</a_str>
+			<t_str doc="FR940731-000197">KURZ UND NEU Shoemaker-Levy gibt Rätsel auf</t_str>
+		</a>
+		<a id="97_3" value="VALIDATED">
+			<a_str>Carolyn</a_str>
+			<t_str doc="FR940227-000592">Denn wie ließe sich anders die jüngste Beobachtung der US-Astronomen Carolyn und Eugene Shoemaker erklären: Der von ihnen im vergangenen März entdeckte Komet Shoemaker-Levy 9 (SL9), so errechneten Carolyn jedenfalls, wird ausgerechnet zum 50. Jahrestag des fehlgeschlagenen Attentats auf Hitler, am 20. Juli 1994, den größten Planeten unseres Sonnensystems, den Jupiter, rammen... ANATOL JOHANSENsf1,13c5,s7,0.5,215m</t_str>
+		</a>
+	</q>
+	<q id="98" lang="DE">
+		<q_str>Welche Länder gelten als Atommächte?</q_str>
+		<a id="98_1" value="REJECTED">
+			<a_str>Hamburg</a_str>
+			<t_str doc="SDA.950412.0064">Hamburg, 12. April (sda/dpa) Mehrere Länder gelten als Kandidaten für den Status als Atommacht.</t_str>
+		</a>
+		<a id="98_2" value="REJECTED">
+			<a_str>Tokio</a_str>
+			<t_str doc="SPIEGEL9495-013782">Das rohstoffarme Land könne auf Kernenergie nicht verzichten, belehrte Yasuoki Urano, Chef der Behörde für Wissenschaft und Technik in Tokio, besorgte Lokalpolitiker.</t_str>
+		</a>
+		<a id="98_3" value="REJECTED">
+			<a_str>Schweiz</a_str>
+			<t_str doc="SDA.950519.0094">VSE-Präsident Kurt Küffer, Direktor der Nordostschweizerischen Kraftwerke (NOK), betonte in seiner Rede, die Schweiz verfüge dank dem direkten Übergang von der Wasserkraft zur Kernenergie im Vergleich zu anderen Ländern über eine nachhaltige, umweltschonende und CO2-freie Stromerzeugung.</t_str>
+		</a>
+		<a id="98_4" value="VALIDATED">
+			<a_str>Ukraine</a_str>
+			<t_str doc="SDA.940114.0198">Die Ukraine gilt als drittgrösste Atommacht der Welt. Transfermodalitäten und Kompensationszahlungen Die am Freitag in Moskau unterzeichneten Dokumente bekräftigen den von der Ukraine angestrebten Status als atomwaffenfreies Land.</t_str>
+		</a>
+		<a id="98_5" value="VALIDATED">
+			<a_str>Frankreich</a_str>
+			<t_str doc="FR940306-000222">Drei von vier Franzosen sind gegen eine Wiederaufnahme der seit 1992 unterbrochenen französischen Atomversuche , solange die anderen Atommächte sich auch an das Moratorium halten . Bei einer Umfrage des Ifop- Instituts im Auftrag der Zeitschrift Globe_Hebdo , die am Dienstag in Paris veröffentlicht wurde , sprachen sich 75 Prozent gegen eine einseitige Wiederaufnahme von Atomtests durch Frankreich aus .</t_str>
+		</a>
+	</q>
+	<q id="99" lang="DE">
+		<q_str>Nenne die drei baltischen Staaten.</q_str>
+		<a id="99_1" value="REJECTED">
+			<a_str>im estnischen Aussenministerium</a_str>
+			<t_str doc="SDA.940830.0103">Der im estnischen Aussenministerium für baltische Fragen zuständige Botschafter, Alar Olljum, sagte, "eine gemeinsame Zollerklärung zur Vereinfachung des Grenzverkehrs innerhalb des Baltikums ist vorgesehen.</t_str>
+		</a>
+		<a id="99_2" value="VALIDATED">
+			<a_str>Litauen</a_str>
+			<t_str doc="SDA.940111.0038">Die baltischen Staaten Litauen und Estland begrüssten die angebotene engere Zusammenarbeit.</t_str>
+		</a>
+	</q>
+	<q id="100" lang="DE">
+		<q_str>Welche Elemente wirken bei Photosynthese mit?</q_str>
+		<a id="100_1" value="REJECTED">
+			<a_str>Das Element</a_str>
+			<t_str doc="SDA.941118.0189">Das Element 110. ist das vierte bei der GSI entdeckte Element.</t_str>
+		</a>
+		<a id="100_2" value="REJECTED">
+			<a_str>bei denen</a_str>
+			<t_str doc="FR940703-000512">FRwas Beton zu bieten hat. Im Prinzip handelt es sich dabei um vorgefertige Platten und Elemente für die verschiedensten Einsatzmöglichkeiten, die spezielle und stets attraktive Oberflächenvariationen aufweisen. Es gibt Teile, die wie direkt aus dem Steinbruch, wirken und andere, bei denen das Oberflächenmaterial z. B. sandgestrahlt, scharriert, bossiert, ausgewaschen, fein geschliffen oder poliert ist.</t_str>
+		</a>
+		<a id="100_3" value="REJECTED">
+			<a_str>eine Paraphrase</a_str>
+			<t_str doc="FR940807-000637">Ihre Haupthandlung ist eine Paraphrase aus Elementen der Osterliturgie.</t_str>
+		</a>
+	</q>
+	<q id="101" lang="DE">
+		<q_str>Wie viele Goldmedaillen gewann Brian Goodel 1979 bei den Pan American Games?</q_str>
+		<a id="101_1" value="REJECTED">
+			<a_str>zwei</a_str>
+			<t_str doc="SDA.940204.0239">Die UNO- Sanktionen gegen Libyen waren verhängt worden , nachdem sich Tripolis geweigert hat , zwei verdächtige Libyer an die USA beziehungsweise Grossbritannien auszuliefern . Die beiden werden verdächtigt , 1988 an einem Bombenattentat auf eine PanAm- Maschine über dem schottischen Lockerbie beteiligt gewesen zu sein .</t_str>
+		</a>
+	</q>
+	<q id="102" lang="DE">
+		<q_str>Welcher Athlet gewann 18 Goldmedaillen und stellte 21 Weltrekorde auf?</q_str>
+		<a id="102_1" value="REJECTED">
+			<a_str>Helmut Digel</a_str>
+			<t_str doc="SPIEGEL9495-000466">Nun glaubt der Verband auch die "hausgemachten Fehler bei der Betreuung der Athleten" (Helmut Digel) korrigieren zu können.</t_str>
+		</a>
+		<a id="102_2" value="REJECTED">
+			<a_str>Ma</a_str>
+			<t_str doc="FR941016-000597">1993 hatten Läuferinnnen aus der 20 Athleten umfassenden Trainingsgruppe von Ma bei den Weltmeisterschaften in Stuttgart zunächst die Titel über 1500 m, 3000 m und 10000 m gewonnen und anschließend in Peking die Weltrekorde auf nicht für möglich gehaltene Zeiten geschraubt.</t_str>
+		</a>
+		<a id="102_3" value="REJECTED">
+			<a_str>Willi Wodzich</a_str>
+			<t_str doc="FR940424-000551">Ringen soll populärer werden Athletik-Club Victoria: Willi Wodzich ist Vorsitzender</t_str>
+		</a>
+		<a id="102_4" value="REJECTED">
+			<a_str>Jean-Michel_Moulin</a_str>
+			<t_str doc="FR940807-000202">Mit einem Wurf von 36,30 Metern ist der erst 14 Jahre alte Franzose Jean-Michel_Moulin neuer Weltmeister im Baskenmützen- Weitwurf geworden . Der Junge schlug damit am Sonntag beim WM- Finale im südfranzösischen Berzene nicht nur die ältere Konkurrenz aus dem Feld , sondern stellte nach Angaben der Veranstalter auch einem neuen Weltrekord auf .</t_str>
+		</a>
+	</q>
+	<q id="103" lang="DE">
+		<q_str>Wieviele sportliche Weltrekorde wurden 1995 aufgestellt?</q_str>
+		<a id="103_1" value="REJECTED">
+			<a_str>8,58</a_str>
+			<t_str doc="FR940828-000178">Rund 30000 Zuschauer konnten sich an einer ganzen Reihe erstklassiger Leistungen erfreuen: Weitsprung-Weltrekordler Mike Powell, der sich eine Leistenverletzung zuzog und um den Start beim Abschlußsportfest der Golden Four Meetings am Freitag in Berlin fürchten muß und mithin um den möglichen Gewinn von 20 Kilogramm Gold, sprang 8,58 m. Linford Christie (Großbritannien(10,03) und Gwen Torrence (USA/10,83) über 100 m, der US-amerikanische über 400-m-Weltmeister Michael Johnson (1995 greife ich den 2</t_str>
+		</a>
+		<a id="103_2" value="REJECTED">
+			<a_str>dritten</a_str>
+			<t_str doc="SDA.950127.0164">Swissaid-Kampagne 1995: Gesundheitsversorgung in der dritten Welt Hilfe bei Verbesserung der traditionellen Heilmethoden vor Ort.</t_str>
+		</a>
+		<a id="103_3" value="REJECTED">
+			<a_str>100</a_str>
+			<t_str doc="FR940828-000178">Nachdem sie am Mittwoch im Regen von Zürich gegen Inessa Krawets (Ukraine) verloren hatte, war diesmal wieder JJK (7,11 m) die Stärkere. Ich bin mit meinen 7,01 zufrieden, meinte Heike Drechsler Rund 30000 Zuschauer konnten sich an einer ganzen Reihe erstklassiger Leistungen erfreuen: Weitsprung-Weltrekordler Mike Powell, der sich eine Leistenverletzung zuzog und um den Start beim Abschlußsportfest der Golden Four Meetings am Freitag in Berlin fürchten muß und mithin um den möglichen Gewinn von 20 K</t_str>
+		</a>
+		<a id="103_4" value="REJECTED">
+			<a_str>6,97</a_str>
+			<t_str doc="FR940213-000493">Erfolglos verlief der Sturmlauf der Irina_Priwalowa auf den eigenen 60-m- Weltrekord . Die russische WM- Dritte über 200 m gewann in 6,97 Sekunden .</t_str>
+		</a>
+	</q>
+	<q id="104" lang="DE">
+		<q_str>Wo ist das Fermi National Accelerator Laboratory?</q_str>
+		<a id="104_1" value="REJECTED">
+			<a_str>Fermilab</a_str>
+			<t_str doc="SDA.950301.0023">Einem internationalen Team von Physikern am Teilchenbeschleuniger Fermi National Accelerator Laboratory (Fermilab) bei Chicago gelang es, die Erkenntnisse zu bestätigen, die Kollegen im April vergangenen Jahres bekanntgegeben hatten.</t_str>
+		</a>
+		<a id="104_2" value="REJECTED">
+			<a_str>Frankreichs</a_str>
+			<t_str doc="SDA.950301.0023">Das teilte das Atom-Energie- Kommissariat ( CEA ) Frankreichs am Mittwoch in Paris mit . Einem internationalen Team von Physikern am Teilchenbeschleuniger Fermi National Accelerator Laboratory ( Fermilab ) bei Chicago gelang es , die Erkenntnisse zu bestätigen , die Kollegen im April vergangenen Jahres bekanntgegeben hatten .</t_str>
+		</a>
+		<a id="104_3" value="VALIDATED">
+			<a_str>US</a_str>
+			<t_str doc="FR940501-000120">Zuvor hatte das Fermi National Accelerator Laboratory in Batavia (US-Bundesstaat Illinois) bei Chicago eine Entdeckung bestätigt, ohne Einzelheiten bekanntzugeben.</t_str>
+		</a>
+	</q>
+	<q id="105" lang="DE">
+		<q_str>Wie viele Passagiere befördert das Schiff "Canadian Empress"?</q_str>
+		<a id="105_1" value="REJECTED">
+			<a_str>zwei</a_str>
+			<t_str doc="SDA.950128.0093">Bern, 28. Jan. (sda) Die Schiffe auf den Schweizer Seen und Flüssen haben im vergangenen Jahr 12,1 Millionen Passagiere befördert - zwei Prozent mehr als 1993.</t_str>
+		</a>
+		<a id="105_2" value="REJECTED">
+			<a_str>50</a_str>
+			<t_str doc="SDA.940930.0231">Über 50 Passagiere sassen auf Flughäfen fest.</t_str>
+		</a>
+		<a id="105_3" value="REJECTED">
+			<a_str>24</a_str>
+			<t_str doc="FR940612-000426">Wenn die Mannschaft um Torhüter Craig_Forrest vom englischen Erstligisten Ipswich_Town schon nicht in den erlauchten Kreis der 24 Endrunden- Teilnehmer eintreten durfte , wird eben vor der Tür Geschäft gemacht . Dieser Boom überrascht angesichts einer Krise des nationalen Fußballs , der seit 1912 von der Canadian Soccer Association organisiert und verwaltet wird .</t_str>
+		</a>
+	</q>
+	<q id="106" lang="DE">
+		<q_str>Wo ist das Kreuzfahrtschiff "Oriana" gebaut worden?</q_str>
+		<a id="106_1" value="REJECTED">
+			<a_str>Nordsee</a_str>
+			<t_str doc="SPIEGEL9495-009451">Für die Schweißer, Elektriker oder Maschinenbauer des Naval Shipyard macht es keinen Unterschied, daß Meyer Kreuzfahrtschiffe, Fähren oder Gastanker baut und Familienbetrieb Meyer bislang Experten für _(* Die "Oriana" bei der Überführung in ) _(die Nordsee. ) Kriegsschiffe waren.</t_str>
+		</a>
+		<a id="106_2" value="REJECTED">
+			<a_str>Papenburg</a_str>
+			<t_str doc="SDA.950226.0019">Papenburg / Leer , 26. Feb. ( sda / Reuter ) Zehntausende Menschen haben am Sonntag an der Ems die erste Fahrt des Kreuzfahrtschiffes " Oriana " beobachtet .</t_str>
+		</a>
+		<a id="106_3" value="VALIDATED">
+			<a_str>auf der Meyer-Werft in Papenburg</a_str>
+			<t_str doc="SDA.950406.0126">Die auf der Meyer-Werft in Papenburg ( Niedersachsen ) gebaute " Oriana " der britischen Reederei P % O beginnt bereits am Wochenende ihre erste Kreuzfahrt zu den Kanarischen Inseln .</t_str>
+		</a>
+	</q>
+	<q id="107" lang="DE">
+		<q_str>Wer ist Großbritanniens erfolgreichster Segler aller Zeiten?</q_str>
+		<a id="107_1" value="REJECTED">
+			<a_str>UNO</a_str>
+			<t_str doc="SDA.941212.0220">traten die USA definitiv aus der UNO-Organisation für Erziehung, Wissenschaft und Kultur (Unesco) aus; Grossbritannien folgte kurze Zeit später.</t_str>
+		</a>
+		<a id="107_2" value="REJECTED">
+			<a_str>SPIEGEL</a_str>
+			<t_str doc="SPIEGEL9495-003824">SPIEGEL: Großbritannien als der Wachhund Europas?</t_str>
+		</a>
+		<a id="107_3" value="REJECTED">
+			<a_str>Peter Nonnenmacher</a_str>
+			<t_str doc="FR940925-002372">FA-2 In Großbritannien kommt, nach legereren Zeiten, die einheitliche Schulkleidung wieder in Mode Von Peter Nonnenmacher (London)</t_str>
+		</a>
+		<a id="107_4" value="REJECTED">
+			<a_str>Shell</a_str>
+			<t_str doc="SDA.950617.0055">Greenpeace-Boykottaufruf gegen Shell in Grossbritannien</t_str>
+		</a>
+		<a id="107_5" value="REJECTED">
+			<a_str>Hamburg</a_str>
+			<t_str doc="FR940220-002099">Beteiligen werden sich rund 40 Aussteller , darunter Jungwinzer von der Mosel sowie die Blütenkönigin Regina_Quast aus dem Alten Land bei Hamburg . Vorstellen wollen sich bei der Gelegenheit Briefmarkenfreunde , der Naturschutzbund Dudenhofen , der Landfrauenverein Dudenhofen , der Verein Plattdüütsch leevt , die Europa Union , die Rodgauer Segler .</t_str>
+		</a>
+	</q>
+	<q id="108" lang="DE">
+		<q_str>In welchem amerikanischen Staat befindet sich der Everglades Nationalpark?</q_str>
+		<a id="108_1" value="REJECTED">
+			<a_str>Jordanien</a_str>
+			<t_str doc="SDA.940621.0236">Israel und Jordanien hatten vor zwei Wochen zum ersten Mal Direktverhandlungen in den beiden Staaten selbst sowie weitere vertrauensbildende Massnahmen vereinbart, wie etwa die Errichtung eines grenzüberschreitenden Nationalparks.</t_str>
+		</a>
+		<a id="108_2" value="REJECTED">
+			<a_str>Everglades</a_str>
+			<t_str doc="FR941113-002431">Von den Everglades</t_str>
+		</a>
+	</q>
+	<q id="109" lang="DE">
+		<q_str>Welches ist das einzige der Sieben Weltwunder, das noch existiert?</q_str>
+		<a id="109_1" value="REJECTED">
+			<a_str>SPIEGEL</a_str>
+			<t_str doc="SPIEGEL9495-005700">SPIEGEL: Kein Wunder.</t_str>
+		</a>
+		<a id="109_2" value="REJECTED">
+			<a_str>Canal Grande</a_str>
+			<t_str doc="SPIEGEL9495-002306">Hilflos verfolgt auch Bolschoi-Generaldirektor Wladimir Kokonin Verfall und Ausblutung der historischen Stätte, die er "wie die Cheopspyramide oder den Canal Grande in Venedig" unter die Wunder der Welt einreiht.</t_str>
+		</a>
+		<a id="109_3" value="VALIDATED">
+			<a_str>der Pyramiden</a_str>
+			<t_str doc="FR940918-000252">%%Seit Jahrtausenden fasziniert der Anblick der Pyramiden von Gizeh, des einzigen noch erhaltenen der sieben Weltwunder aus antiker Zeit.</t_str>
+		</a>
+	</q>
+	<q id="110" lang="DE">
+		<q_str>Gegen welchen Planet stieß der Komet Shoemaker-Levy?</q_str>
+		<a id="110_1" value="REJECTED">
+			<a_str>eines ersten Bruchstücks</a_str>
+			<t_str doc="SDA.940717.0103">Weltraumteleskop "Hubble" sendet Bilder von Feuerball am Jupiter. Baltimore, 17. Juli (sda/afp) Bei der Kollision eines ersten Bruchstücks des Kometen Shoemaker-Levy 9 mit dem Planeten Jupiter ist am Samstag ein Feuerball mit einem Durchmesser von schätzungsweise 1800 Kilometern entstanden. Das Weltraumteleskop "Hubble" sandte drei Stunden nach der Kollision entsprechende Bilder an ein Observatorium in Baltimore (Maryland).</t_str>
+		</a>
+		<a id="110_2" value="REJECTED">
+			<a_str>errechneten Carolyn</a_str>
+			<t_str doc="FR940227-000592">Denn wie ließe sich anders die jüngste Beobachtung der US-Astronomen Carolyn und Eugene Shoemaker erklären: Der von ihnen im vergangenen März entdeckte Komet Shoemaker-Levy 9 (SL9), so errechneten Carolyn jedenfalls, wird ausgerechnet zum 50. Jahrestag des fehlgeschlagenen Attentats auf Hitler, am 20. Juli 1994, den größten Planeten unseres Sonnensystems, den Jupiter, rammen... ANATOL JOHANSENsf1,13c5,s7,0.5,215m</t_str>
+		</a>
+		<a id="110_3" value="VALIDATED">
+			<a_str>Jupiter</a_str>
+			<t_str doc="FR940227-000592">Denn wie ließe sich anders die jüngste Beobachtung der US-Astronomen Carolyn und Eugene Shoemaker erklären: Der von ihnen im vergangenen März entdeckte Komet Shoemaker-Levy 9 (SL9), so errechneten Carolyn jedenfalls, wird ausgerechnet zum 50. Jahrestag des fehlgeschlagenen Attentats auf Hitler, am 20. Juli 1994, den größten Planeten unseres Sonnensystems, den Jupiter, rammen... ANATOL JOHANSENsf1,13c5,s7,0.5,215m</t_str>
+		</a>
+	</q>
+	<q id="111" lang="DE">
+		<q_str>Aus welchem Land kommen die Gurkhas?</q_str>
+		<a id="111_1" value="REJECTED">
+			<a_str>Londons Sold</a_str>
+			<t_str doc="SDA.940519.0244">Auch die indische Armee darf vertraglich in Nepal Gurkhas rekrutieren, etwa 100 000 sollen es sein. Doch die Elite der Gurkha-Soldaten sind die zur Zeit noch 7500 in Londons Sold. Nach der Rückgabe Hongkongs - dort wurden die Gurkhas bisher ausgebildet - soll diese Truppe auf 2500 schrumpfen.</t_str>
+		</a>
+		<a id="111_2" value="REJECTED">
+			<a_str>Burma</a_str>
+			<t_str doc="SDA.940519.0114">Während der Kämpfe in Burma im Zweiten Weltkrieg schlug sich ein Gurkha , der seine Einheit verloren hatte , in tagelangen Gewaltmärschen durch unwegsamen Dschungel und durch die japanischen Linien , bis er einen britischen Stützpunkt in Indien erreichte .</t_str>
+		</a>
+		<a id="111_3" value="VALIDATED">
+			<a_str>Nepal</a_str>
+			<t_str doc="SDA.940519.0244">Auch die indische Armee darf vertraglich in Nepal Gurkhas rekrutieren, etwa 100 000 sollen es sein.</t_str>
+		</a>
+	</q>
+	<q id="112" lang="DE">
+		<q_str>Aus welcher Organisation trat Willy Claes als Generalsekretär zurück?</q_str>
+		<a id="112_1" value="REJECTED">
+			<a_str>NATO</a_str>
+			<t_str doc="SDA.940929.0125">Willy Claes neuer NATO-Generalsekretär.</t_str>
+		</a>
+		<a id="112_2" value="REJECTED">
+			<a_str>europäische</a_str>
+			<t_str doc="SDA.940527.0066">Er wird mit dem belgischen Aussenminister Willy_Claes Gespräche führen , in deren Zentrum die Integration und Sicherheit in Europa sowie die Lage im ehemaligen Jugoslawien und in Russland stehen . Der EDA- Vorsteher trifft zudem mit dem für europäische Fragen zuständigen Aussenhandelsminister Robert_Urbain zusammentrffen , wie das Eidgenössische Departement auswärtige Angelegenheiten am Freitag in einem Communiqué meldete .</t_str>
+		</a>
+	</q>
+	<q id="113" lang="DE">
+		<q_str>Wie viele Mitglieder hat die NATO?</q_str>
+		<a id="113_1" value="REJECTED">
+			<a_str>19</a_str>
+			<t_str doc="SDA.951220.0118">Die übrigen Truppenteile kommen aus 19 Staaten, die nicht Mitglied der NATO sind.</t_str>
+		</a>
+		<a id="113_2" value="REJECTED">
+			<a_str>zwölf</a_str>
+			<t_str doc="SPIEGEL9495-012110">Joulwan: Als der erste Nato-Oberbefehlshaber in Europa, General Dwight D. Eisenhower, 1951 in Paris das Wappen des Alliierten Hauptquartiers entwarf, machte Dwight D. Eisenhower zwölf silberne Speerspitzen auf grünem Grund zum Symbol für die damals zwölf Mitglieder. Seither hat die Nato mehrmals neue Mitglieder aufgenommen . . . SPIEGEL: . . . so auch Deutschland im Jahr 1955 . . .</t_str>
+		</a>
+		<a id="113_3" value="VALIDATED">
+			<a_str>16</a_str>
+			<t_str doc="SDA.951019.0027">Im NATO-Rat sitzen die Botschafter der 16 Mitglieder bei der Allianz.</t_str>
+		</a>
+	</q>
+	<q id="114" lang="DE">
+		<q_str>Welche Firma übernahm Baring nach ihrer Pleite im Februar 1995?</q_str>
+		<a id="114_1" value="REJECTED">
+			<a_str>Merchant Bank Barings für Schlagzeilen</a_str>
+			<t_str doc="SDA.951220.0284">Auf internationalem Parkett sorgt 1995 vor allem die Pleite der britischen Merchant Bank Barings für Schlagzeilen.</t_str>
+		</a>
+		<a id="114_2" value="REJECTED">
+			<a_str>Smith_Barney</a_str>
+			<t_str doc="SDA.950306.0214">Am Samstag hatten die Zwangsverwalter von Barings erklärt , sie hätten ein gemeinsames Kaufangebot der niederländischen Bank ABN_Amro und des US- amerikanischen Maklers Smith_Barney zur Übernahme von Barings erhalten .</t_str>
+		</a>
+	</q>
+	<q id="115" lang="DE">
+		<q_str>Wer war der Präsident Frankreichs während der Atomtests im Pazifik?</q_str>
+		<a id="115_1" value="REJECTED">
+			<a_str>Frankfurt</a_str>
+			<t_str doc="FR941030-000648">Ein Opernkönig auf der Galopprennbahn beim Preis von Eintracht Frankfurt . In den Fluten des Pazifiks zur Eisenfrau getauft Sabine Graf-Westhoff absolvierte auf Hawaii zum ersten Mal einen Ultra- Triathlon .</t_str>
+		</a>
+		<a id="115_2" value="VALIDATED">
+			<a_str>Chirac</a_str>
+			<t_str doc="SDA.950816.0072">Frankreichs Präsident Jacques Chirac hat am Mittwoch in einem Schreiben an die Staats- und Regierungschefs mehrere asiatischer, pazifischer und lateinamerikanischer Staaten bekräftigt, dass Frankreich ab Herbst 1996 keinerlei Atomtests mehr unternehmen will.</t_str>
+		</a>
+	</q>
+	<q id="116" lang="DE">
+		<q_str>Wann fand die Landung in der Normandie statt?</q_str>
+		<a id="116_1" value="REJECTED">
+			<a_str>21. März</a_str>
+			<t_str doc="SDA.950321.0014">Paris , 21. März ( sda / afp ) Mit einem Grossprojekt will Frankreich den weltbekannten Klosterberg Mont-Saint-Michel an der Grenze zwischen Bretagne und Normandie vor der Versandung retten .</t_str>
+		</a>
+		<a id="116_2" value="REJECTED">
+			<a_str>1991</a_str>
+			<t_str doc="SDA.940725.0172">Einige der finster dreinblickenden Männer am Tisch des Café Normandie drohen , die Amerikaner bei einem Einmarsch mit Vodoo- Magie und giftigen Pulvern zu bekämpfen . Weniger gesprächig sind die Anhänger des am 30. September 1991 gestürzten Staatschefs .</t_str>
+		</a>
+		<a id="116_3" value="VALIDATED">
+			<a_str>am 6.6.1944</a_str>
+			<t_str doc="FR940320-000300">Die Landung der Alliierten in der Normandie am 6 . Juni 1944 wird in Deutschland häufig als Invasion bezeichnet .</t_str>
+		</a>
+	</q>
+	<q id="117" lang="DE">
+		<q_str>Welcher Partei gehörte Willy Brandt an?</q_str>
+		<a id="117_1" value="REJECTED">
+			<a_str>SED</a_str>
+			<t_str doc="FR940227-001964">Diskussion über frühere Kontakte der Parteien zur SED weithin als überflüssig erachtetAusgelöst durch die Veröffentlichung von Aufzeichnungen des früheren Bundeskanzlers Willy Brandt, wird derzeit auch im Hinblick auf die bevorstehenden Wahlkämpfe darüber diskutiert, wie aus heutiger Sicht die Kontakte zu bewerten sind, die die Parteien seinerzeit im Rahmen der Ostpolitik mit der SED unterhalten haben.</t_str>
+		</a>
+		<a id="117_2" value="REJECTED">
+			<a_str>Agententätigkeit Guillaumes</a_str>
+			<t_str doc="FR940417-000380">Es sollen 26 Zeugen gehört werden, darunter auch der Kanzlerspion Christel Guillaume Der 65jährige Günther N. und der 66 Jahre alte Kurt G. waren laut Anklage jahrelang in der für die Ausspähung von westdeutschen Parteien zuständigen Abteilung II der HVA tätig. Günther N. habe die Agententätigkeit Guillaumes im Bundeskanzleramt unter Willy Brandt Anfang der 70er Jahre persönlich geleitet und verantwortlich überwacht.</t_str>
+		</a>
+		<a id="117_3" value="VALIDATED">
+			<a_str>SPD</a_str>
+			<t_str doc="FR940130-001295">Und trotz der tiefen Zuneigung, welche die Partei und die Öffentlichkeit gegenüber Willy Brandt gefaßt haben auch unter dessen Vorsitz noch trieb Wehner die SPD auf manches Gleis, vor dem die Mitglieder scheuten.</t_str>
+		</a>
+	</q>
+	<q id="118" lang="DE">
+		<q_str>Wer ist Lettlands Präsident?</q_str>
+		<a id="118_1" value="REJECTED">
+			<a_str>Litauens und Estlands</a_str>
+			<t_str doc="SDA.940706.0067">Auf dem Flughafen der lettischen Hauptstadt Riga wurde Bill Clinton von den Präsidenten Lettlands, Litauens und Estlands, Guntis Ulmanis, Algirdas Brazauskas und Lennart Meri, empfangen.</t_str>
+		</a>
+		<a id="118_2" value="REJECTED">
+			<a_str>Bill Clinton</a_str>
+			<t_str doc="SDA.940706.0067">Auf dem Flughafen der lettischen Hauptstadt Riga wurde Bill Clinton von den Präsidenten Lettlands, Litauens und Estlands, Guntis Ulmanis, Algirdas Brazauskas und Lennart Meri, empfangen.</t_str>
+		</a>
+		<a id="118_3" value="REJECTED">
+			<a_str>Karlis Ulmanis</a_str>
+			<t_str doc="SDA.941216.0229">Der lettische Präsident Karlis Ulmanis verhängte am 15 . Mai 1934 den Ausnahmezustand über das Land .</t_str>
+		</a>
+		<a id="118_4" value="REJECTED">
+			<a_str>Hakova</a_str>
+			<t_str doc="FR940123-001897">Volva ( Lettland ) 50:31,3 / 3 , 8 . Hakova ( Tschechische_Republik ) 50:34,7 / 2 , 9 .</t_str>
+		</a>
+	</q>
+	<q id="119" lang="DE">
+		<q_str>Wer ist der Generalsekretär von Interpol?</q_str>
+		<a id="119_1" value="REJECTED">
+			<a_str>Tripoli</a_str>
+			<t_str doc="SDA.950720.0182">Die bei der " Aktion Tripoli " zerschlagene Bande hatte sich auf das Verschieben von Luxusfahrzeugen nach Libyen spezialisiert . In Zusammenarbeit mit Interpol wurden mindestens zehn führende Bandenmitglieder festgenommen .</t_str>
+		</a>
+		<a id="119_2" value="VALIDATED">
+			<a_str>Raymond Kendall</a_str>
+			<t_str doc="SDA.940203.0018">Sabine Bergmann-Pohl sei gleichwohl sehr an den Ergebnissen aus Zürich interessiert. Interpolchef für Entkriminalisierung Im Sinne der Schweizer Politik hatte sich zuvor der Generalsekretär von Interpol, Raymond Kendall, einerseits für eine Verstärkung der Zusammenarbeit im Kampf gegen den Drogenhandel ausgesprochen, sich jedoch gleichzeitig für eine Entkriminalisierung der Drogensüchtigen eingesetzt.</t_str>
+		</a>
+	</q>
+	<q id="120" lang="DE">
+		<q_str>Wer ist bekannt als Hong Kongs "Eiserne Lady"?</q_str>
+		<a id="120_1" value="REJECTED">
+			<a_str>Ascom</a_str>
+			<t_str doc="SDA.941018.0188">Grossauftrag für Ascom in Hong Kong.</t_str>
+		</a>
+		<a id="120_2" value="REJECTED">
+			<a_str>Franz Blankart</a_str>
+			<t_str doc="SDA.940908.0065">Blankart besucht Australien, Neuseeland und Hong Kong. Bern, 8. Sept. (sda) Statssekretär Franz Blankart wird vom 14. bis 22. September zu einem offiziellen Besuch in Australien, Neuseeland und Hong Kong weilen.</t_str>
+		</a>
+		<a id="120_3" value="REJECTED">
+			<a_str>Thatcher</a_str>
+			<t_str doc="FR941120-000343">Thatcher , Tochter eines Lebensmittelhändlers , war von 1979 bis 1990britischePremierministerinundgingals Eiserne_Lady in die Geschichte ein .</t_str>
+		</a>
+	</q>
+	<q id="121" lang="DE">
+		<q_str>In welchem Jahr fand die Fußball-Weltmeisterschaft in den Vereinigten Staaten statt?</q_str>
+		<a id="121_1" value="REJECTED">
+			<a_str>1994</a_str>
+			<t_str doc="SPIEGEL9495-013483">Middelhoff: In den Vereinigten Staaten wurden 1994 erstmals mehr Personalcomputer verkauft als Fernsehgeräte.</t_str>
+		</a>
+		<a id="121_2" value="REJECTED">
+			<a_str>1</a_str>
+			<t_str doc="FR940626-002133">Die Nationalmannschaft des Gastgeberlandes USA schaffte mit einem 2:1.-Sieg über den Favoriten Kolumbien die erste große Sensation bei der Fußball-Weltmeisterschaft. WM-Organisationschef Rothenberg bezeichnete das 2:1. als den bisher größten Erfolg in der Geschichte des Soccer in den Vereinigten Staaten. Es war zugleich der erste Sieg eines US-Teams bei einer Weltmeisterschaft seit dem 1:0 gegen England vor 44 Jahren in der Schweiz.</t_str>
+		</a>
+		<a id="121_3" value="REJECTED">
+			<a_str>1990</a_str>
+			<t_str doc="SPIEGEL9495-008109">Insgesamt ging die Zahl der Gäste aus den Vereinigten Staaten seit 1990 um 21 Prozent zurück - und Besserung ist nicht in Sicht.</t_str>
+		</a>
+		<a id="121_4" value="VALIDATED">
+			<a_str>im Jahr 1994</a_str>
+			<t_str doc="FR940109-000144">Beim entscheidenden Qualifikationsspiel zur Weltmeisterschaft 1994 in den USA erlebten 75 von 125 Millionen Japanern an den Fernsehschirmen das 2 : 2 gegen den Irak , das in letzte Minute die Fahrkarte kostete .</t_str>
+		</a>
+	</q>
+	<q id="122" lang="DE">
+		<q_str>In welches Land marschierte der Irak 1990 ein?</q_str>
+		<a id="122_1" value="REJECTED">
+			<a_str>Irak</a_str>
+			<t_str doc="SDA.951113.0151">Diplomaten und Beobachter kommen zu einer klaren Antwort: Nur ein Ölboykott, wie Ken Saro-Wiwa gegen Irak 1990 nach der Kuwait-Invasion von der UNO verkündet wurde, könnte die Militärs Nigerias wirklich treffen.</t_str>
+		</a>
+		<a id="122_2" value="REJECTED">
+			<a_str>Japan</a_str>
+			<t_str doc="FR940904-000193">In der damaligen litauischen Hauptstadt Kaunas schrieb er , entgegen der Anweisungen seiner Regierung , für 8000 polnische und litauische Juden Visa nach Japan aus . Für sie war es die Rettung vor den deutschen Truppen , die im Sommer 1940 einmarschierten .</t_str>
+		</a>
+		<a id="122_3" value="VALIDATED">
+			<a_str>Kuwait</a_str>
+			<t_str doc="FR941016-000540">Die Vereinten Nationen (UN) hatten nach dem irakischen Einmarsch in Kuwait im August 1990 umfassende Sanktionen über Irak verhängt.</t_str>
+		</a>
+	</q>
+	<q id="123" lang="DE">
+		<q_str>Welcher europäische Monarch starb 1972?</q_str>
+		<a id="123_1" value="REJECTED">
+			<a_str>Federico Mayor</a_str>
+			<t_str doc="SDA.950129.0090">Die seit 1964 an Einzelpersonen und Organisationen vergebene Auszeichnung wurde dem Monarchen von UNESCO- Generaldirektor Federico Mayor übergeben.</t_str>
+		</a>
+		<a id="123_2" value="REJECTED">
+			<a_str>Federico Mayor übergeben.</a_str>
+			<t_str doc="SDA.950129.0090">Die seit 1964 an Einzelpersonen und Organisationen vergebene Auszeichnung wurde dem Monarchen von UNESCO- Generaldirektor Federico Mayor übergeben.</t_str>
+		</a>
+		<a id="123_3" value="REJECTED">
+			<a_str>Simone de Beauvoir</a_str>
+			<t_str doc="FR940313-001673">1972 starb, bekamen Hannes Gamillscheg statt einem von Margrethes unerträglich langweiligen Onkeln, eine junge, intelligente, gut ausgebildete Frau als Staatsoberhaupt. Und ihre Landsleute sind so zufrieden mit Hannes Gamillscheg, daß das monarchische System in einem Land, das sonst der Gleichheit huldigt, heutzutage völlig unangefochten akzeptiert wird. Ob Hannes Gamillscheg Bühnenbilder malt oder Hannes Gamillscheg der Dackel entläuft, ob Hannes Gamillscheg Simone de Beauvoir übersetzt oder den D�</t_str>
+		</a>
+	</q>
+	<q id="124" lang="DE">
+		<q_str>Welcher russische Schriftsteller ist 1974 aus der Sowjetunion ausgewiesen worden?</q_str>
+		<a id="124_1" value="VALIDATED">
+			<a_str>Alexander Solschenizyn</a_str>
+			<t_str doc="SDA.940527.0095">Es ist nicht bekannt, wann der Schriftsteller, der in Begleitung seiner Frau Natalja und seiner Söhne Ignat, Stepan und Jermolaj reist, sein neues Heim in Moskau beziehen wird. 1974 war der Regimekritiker aus der Sowjetunion ausgewiesen worden. Alexander Solschenizyn war zunächst in Westdeutschland von dem deutschen Autor Heinrich Böll aufgenommen worden, siedelte dann in die Schweiz über und liess sich 1976 im US-Bundesstaat Vermont nieder.</t_str>
+		</a>
+	</q>
+	<q id="125" lang="DE">
+		<q_str>Wer war 1995 katholischer Erzbischof von München?</q_str>
+		<a id="125_1" value="REJECTED">
+			<a_str>Herbig Verlag</a_str>
+			<t_str doc="SPIEGEL9495-012120">_(y 1995, Herbig Verlag, München. )</t_str>
+		</a>
+		<a id="125_2" value="REJECTED">
+			<a_str>Erzbischöfliche Ernestinische Seminarstiftung Bamberg</a_str>
+			<t_str doc="SPIEGEL9495-008088">Als der Sebaldus-Verlag im August 1990 zusammen mit dem Burda-Verlag das Wochenblatt Super Illu auf den ostdeutschen Markt warf, wurde es heikler. Sebaldus, einst von einem Prälaten gegründet, macht heute über eine Milliarde Mark Umsatz und ist zu 10,6 Prozent im Besitz der Erzdiözese Bamberg. Weitere Anteile halten eine Reihe katholischer Einrichtungen wie die Erzbischöfliche Ernestinische Seminarstiftung Bamberg, das Bischöfliche Seminar Sankt Willibald in Eichstätt oder das katholische Missionsw</t_str>
+		</a>
+		<a id="125_3" value="REJECTED">
+			<a_str>Georg_Sterzinsky</a_str>
+			<t_str doc="FR940710-000260">Kardinal Georg_Sterzinsky wurde zum Erzbischof des Bistums Berlin ernannt .</t_str>
+		</a>
+	</q>
+	<q id="126" lang="DE">
+		<q_str>Nenne einen der Nobelpreisträger für Literatur im Zeitraum von 1945 bis 1990.</q_str>
+		<a id="126_1" value="REJECTED">
+			<a_str>François Mauriac</a_str>
+			<t_str doc="SDA.950828.0191">. wurde das Wrack der 1912 gesunkenen "Titanic" von einer französisch-amerikanischen Suchmannschaft im Nordatlantik in 4000 Metern Tiefe geortet. - Vor 25 Jahren (1970) ... . starb der französische Schriftsteller und Literatur-Nobelpreisträger François Mauriac 85jährig in Paris.</t_str>
+		</a>
+		<a id="126_2" value="REJECTED">
+			<a_str>für Literatur</a_str>
+			<t_str doc="SDA.951211.0080">Soyinka wurde 1986 mit dem Nobelpreis für Literatur ausgezeichnet.</t_str>
+		</a>
+		<a id="126_3" value="VALIDATED">
+			<a_str>Hermann Hesse</a_str>
+			<t_str doc="SDA.941009.0078">Schweizer Literatur-Nobelpreisträger sind Carl Spitteler (1919) und Hermann Hesse (1946).</t_str>
+		</a>
+		<a id="126_4" value="VALIDATED">
+			<a_str>Soyinka</a_str>
+			<t_str doc="SDA.951211.0080">Soyinka wurde 1986 mit dem Nobelpreis für Literatur ausgezeichnet.</t_str>
+		</a>
+	</q>
+	<q id="127" lang="DE">
+		<q_str>Welches Land führte Roosevelt während des Zweiten Weltkriegs?</q_str>
+		<a id="127_1" value="REJECTED">
+			<a_str>USA</a_str>
+			<t_str doc="SPIEGEL9495-009076">Der entfernte Vetter Theodore ("Teddy") Roosevelt war von 1901 bis 1909 Präsident der USA und erhielt den Friedensnobelpreis.</t_str>
+		</a>
+	</q>
+	<q id="128" lang="DE">
+		<q_str>In welcher Stadt wurde der Läufer Ben Johnson während der Olympischen Spiele positiv auf Stanozolol getestet?</q_str>
+		<a id="128_1" value="REJECTED">
+			<a_str>Köln</a_str>
+			<t_str doc="FR940220-001779">Professor Manfred_Donike , der am Dienstag_nachmittag in seinem biochemischen Labor in Köln die B- Probe selbst auswertete , fand nach der A- Probe auch in ihr zweifelsfrei das Anabolikum Stanozolol .</t_str>
+		</a>
+		<a id="128_2" value="VALIDATED">
+			<a_str>Seoul</a_str>
+			<t_str doc="FR940220-001779">Die gleiche Substanz hatte schon Ben Johnson im Urin, als Ben Johnson bei den Olympischen Spielen 1988 in Seoul nach seinem 100-m-Olympiasieg auffällig wurde.</t_str>
+		</a>
+	</q>
+	<q id="129" lang="DE">
+		<q_str>In welcher Stadt fand das Eröffnungsspiel der Fußball-Weltmeisterschaft 1994 in den USA statt?</q_str>
+		<a id="129_1" value="REJECTED">
+			<a_str>USA</a_str>
+			<t_str doc="SDA.950502.0187">USA prangern zahlreiche Handelshemmnisse in der Schweiz an Handelsdefizit der USA 1994 nach einem Überschuss im Vorjahr.</t_str>
+		</a>
+		<a id="129_2" value="REJECTED">
+			<a_str>Kanada</a_str>
+			<t_str doc="SDA.940531.0244">Sie fanden in den USA, Kanada, Australien, Südafrika, aber auch in Westeuropa eine neue Heimat.</t_str>
+		</a>
+		<a id="129_3" value="REJECTED">
+			<a_str>Münchner</a_str>
+			<t_str doc="FR940814-001903">Die Veranstaltung ist mit den Münchner Maddogs und der Mannschaft aus dem russischen St._Petersburg hochkarätig besetzt . Falls die Löwen das Eröffnungsspiel gegen den Gastgeber AEV gewinnen , spielen sie am Montag um den Turniersieg .</t_str>
+		</a>
+	</q>
+	<q id="130" lang="DE">
+		<q_str>Von welchem Hafen aus brach der Flugzeugträger Eisenhower nach Haiti auf?</q_str>
+		<a id="130_1" value="REJECTED">
+			<a_str>Ha</a_str>
+			<t_str doc="SDA.940529.0099">Schon am 26. Mai teilte das legendäre " Büro Ha " mit , dass " in Kreisen alliierter Diplomaten der 3. / 4. Juni genannt " werde . Tatsächlich sollte die " Operation Overlord " schon am 5. Juni starten , musste aber von Eisenhower wegen schlechten Wetters in letzter Minute auf den 6. Juni verschoben werden .</t_str>
+		</a>
+	</q>
+	<q id="131" lang="DE">
+		<q_str>Bei welcher Organisation führte Primo Nebiolo den Vorsitz während der Leichtathletik-Weltmeisterschaften in Göteborg?</q_str>
+		<a id="131_1" value="REJECTED">
+			<a_str>IAAF</a_str>
+			<t_str doc="FR940523-000205">Es war ein Fehler der IAAF, daß Primo Nebiolo mich nicht bei den Olympischen Spielen Dezember 1992 in Barcelona starten ließ.</t_str>
+		</a>
+		<a id="131_2" value="REJECTED">
+			<a_str>Internationalen_Leichtathletik-Verband</a_str>
+			<t_str doc="FR940612-001068">400-m- Weltrekordler Harry Butch_Reynolds strebt nach Informationen aus den USA kommende Woche ein Gespräch mit Primo_Nebiolo an , um eine Einigung im Rechtsstreit um 27,3_Millionen Dollar mit dem Internationalen_Leichtathletik-Verband IAAF zu erzielen .</t_str>
+		</a>
+	</q>
+	<q id="132" lang="DE">
+		<q_str>Wer spielte 1994 gegen Boavista im UEFA-Cup?</q_str>
+		<a id="132_1" value="REJECTED">
+			<a_str>Julia</a_str>
+			<t_str doc="FR941127-001170">Die Insel Boavista beschreibt Julia als flach und sandig mit Palmen , die Ilha de Santiago als felsig und karg .</t_str>
+		</a>
+	</q>
+	<q id="133" lang="DE">
+		<q_str>Welcher berühmte Komet wurde zuletzt zwischen 1985 und 1986 in der Erdatmosphäre gesichtet?</q_str>
+		<a id="133_1" value="REJECTED">
+			<a_str>der Subbuteo-Brigade SB Komet Frankfurt</a_str>
+			<t_str doc="FR940424-000881">Bernhard Ihle ist Spieler der Subbuteo-Brigade SB Komet Frankfurt 1991.</t_str>
+		</a>
+		<a id="133_2" value="REJECTED">
+			<a_str>der Schweifstern-Zunft</a_str>
+			<t_str doc="FR940227-000592">Der Zerfall des sowjetischen Weltreichs ganz zu schweigen von der deutschen Wiedervereinigung scheint zwar nicht ganz mit dem Fahrplan der Kometen-Trümmer übereinzustimmen. Doch hat hier offenbar ein Kollege der Schweifstern-Zunft dem fragmentalisierten Weltraum-Riesen Amtshilfe gegeben: Rechtzeitig vor den weltpolitischen Umwälzungen erschien ja, wie erinnerlich, 1986 warnend, wenn auch nur mit matt schimmerndem Schweif, der berühmte Halley'sche Komet... Dabei ist die Affinität der verräterischen H</t_str>
+		</a>
+	</q>
+	<q id="134" lang="DE">
+		<q_str>Welche Stadt der Vereinigten Staaten wurde am 17. Januar 1994 von einem Erdbeben betroffen?</q_str>
+		<a id="134_1" value="REJECTED">
+			<a_str>Kalifornien</a_str>
+			<t_str doc="SDA.940302.0055">Washington, 2. März (sda/Reuter) Das Erdbeben in Kalifornien und der harte Winter in weiten Teilen der Vereinigten Staaten haben die US- Privateinkommen im Januar 1994 zum ersten Mal seit sechs Monaten gedrückt.</t_str>
+		</a>
+		<a id="134_2" value="REJECTED">
+			<a_str>Vereinigten Staaten</a_str>
+			<t_str doc="SDA.950414.0080">Washington, 14. April (sda/dpa) Im Südwesten der Vereinigten Staaten ist es am Donnerstag abend zu einem Erdbeben der Stärke 5,6 auf der Richterskala gekommen.</t_str>
+		</a>
+		<a id="134_3" value="REJECTED">
+			<a_str>Angra</a_str>
+			<t_str doc="FR940116-001510">Sieht Angra heute fast genauso aus wie vor dem Erdbeben und manche sagen , sogar besser , weil der Katastrophe auch ein_paar wenig schöne Neubauten zum Opfer fielen , so ist dies nicht nur einem planerischen , sondern auch einem finanziellen Kraftakt zu verdanken .</t_str>
+		</a>
+	</q>
+	<q id="135" lang="DE">
+		<q_str>Wer war Italiens König zwischen 1900 und 1946?</q_str>
+		<a id="135_1" value="REJECTED">
+			<a_str>Umberto II.</a_str>
+			<t_str doc="SDA.940406.0055">Den männlichen Nachkommen von König Umberto II. ist in der italienischen Verfassung nach der Abschaffung der Monarchie 1946 die Einreise nach Italien verwehrt worden.</t_str>
+		</a>
+		<a id="135_2" value="REJECTED">
+			<a_str>Victor Emanuel</a_str>
+			<t_str doc="FR941211-002217">Als ich ein Kind war , war einmaljuManöver in Ostheim , und der König von Italien , Victor Emanuel , kam .</t_str>
+		</a>
+		<a id="135_3" value="REJECTED">
+			<a_str>Napoleons</a_str>
+			<t_str doc="SDA.941026.0098">Ein Teil der Säle liegt in den ehemaligen Stallungen Napoleons III. Auf 1900 Quadratmetern werden insgesamt 405 Skulpturen aus Italien , Spanien und den nordeuropäischen Ländern in chronologischer Folge vom 6. bis 15. Jahrhundert ausgestellt .</t_str>
+		</a>
+	</q>
+	<q id="136" lang="DE">
+		<q_str>Wer war Schweizer Präsident 1995?</q_str>
+		<a id="136_1" value="REJECTED">
+			<a_str>Daniel C. Wagnière</a_str>
+			<t_str doc="SDA.950921.0106">Die chemische Industrie in der Schweiz habe im ersten Halbjahr 1995 nicht mehr an die guten Exportergebnisse der Vorjahre anknüpfen können, stellte Daniel C. Wagnière, Präsident der Schweizerischen Gesellschaft für Chemische Industrie (SGCI) an der Herbstpressekonferenz in Zürich fest.</t_str>
+		</a>
+		<a id="136_2" value="REJECTED">
+			<a_str>Schweizer Rück</a_str>
+			<t_str doc="SDA.950823.0080">Zürich, 23. Aug. (sda) Pierre Ozendo wird im Herbst 1995 in die Schweizer Rück-Gruppe eintreten und am 1. Januar 1996 die Aufgabe des Präsidenten der Geschäftsleitung der Union Rück übernehmen. Ozendo war bisher Chief Executive Officer (CEO) der General Re Europe. Der bisherige Direktionspräsident der Union Rück, Peter Colombo, wird bis Ende Herbst 1995 in seiner bisherigen Funktion verbleiben.</t_str>
+		</a>
+	</q>
+	<q id="137" lang="DE">
+		<q_str>Wo sank der Öltanker "Prestige"?</q_str>
+		<a id="137_1" value="REJECTED">
+			<a_str>Manila</a_str>
+			<t_str doc="SDA.941022.0081">Manila, 22. Okt. (sda/afp/dpa) Das Sinken eines Öltankers im südchinesichen Meer ist durch den Taifun "Teresa" verursacht worden.</t_str>
+		</a>
+		<a id="137_2" value="REJECTED">
+			<a_str>Seenot</a_str>
+			<t_str doc="SDA.951110.0124">Öltanker vor der Küste Omans in Seenot</t_str>
+		</a>
+		<a id="137_3" value="REJECTED">
+			<a_str>Zypern</a_str>
+			<t_str doc="FR940123-000655">Drei_Millionen Zugvögel würden Jahr_für_Jahr allein über Zypern abgeschossen , beklagt World_Watch außerdem . Chemikalien in der Landwirtschaft sowie Umweltkatastrophen wie havarierte Öltanker täten ein übriges .</t_str>
+		</a>
+	</q>
+	<q id="138" lang="DE">
+		<q_str>In welchem Land liegt das Konsortium "Alfa Group"?</q_str>
+		<a id="138_1" value="REJECTED">
+			<a_str>London</a_str>
+			<t_str doc="SDA.940124.0157">London, 24. Jan. (sda/dpa) Der britische Medienriese Mirror Group Newspapers hat ein Konsortium gebildet, um ein Angebot für die in finanzielle Bedrängnis geratene Zeitung "The Independent" zu unterbreiten.</t_str>
+		</a>
+		<a id="138_2" value="REJECTED">
+			<a_str>Italien</a_str>
+			<t_str doc="FR940828-000636">Verfolger Alessandro Nannini aus Italien (Alfa Romeo) verlor mit den Rängen acht und fünf weiter an Boden und liegt 39 Zähler zurück (135). Auf Rang drei hat van Ommmen (132) ebenfalls noch Titelchancen. Nach der bittersten Niederlage für Titelverteidiger Alfa machte Giorgio Pianta, Sportchef bei den Italienern, keinen Hehl aus seiner Enttäuschung: Für uns ist die Meisterschaft gelaufen.</t_str>
+		</a>
+		<a id="138_3" value="REJECTED">
+			<a_str>Burundi</a_str>
+			<t_str doc="SDA.951001.0066">Rom , 1. Okt. ( sda / Reuter ) Unbekannte haben in Burundi nach Berichten der italienischen Nachrichtenagentur Ansa drei Italiener getötet . Bei den Opfern habe sich um zwei katholische Missionare und eine Helferin gehandelt , meldete Ansa am Sonntag unter Berufung auf die Hilfsorganisation Alfa Zeta .</t_str>
+		</a>
+	</q>
+	<q id="139" lang="DE">
+		<q_str>Wo findet die Oscar-Verleihung statt?</q_str>
+		<a id="139_1" value="REJECTED">
+			<a_str>Kollwitzstraße</a_str>
+			<t_str doc="FR940206-001167">In lockerer Folge ohne fremdensitzliche Zeremonie lief eine heitere Mischung von gelungenen Vorträgen und Tanzeinlagen der Minigarde der Fidelen Eckenheimer übers Parkett des Bürgertreffs an der Kollwitzstraße.</t_str>
+		</a>
+		<a id="139_2" value="REJECTED">
+			<a_str>Schweiz</a_str>
+			<t_str doc="SDA.941029.0080">Die Entscheidung der Schweiz für den Auslands-Oscar steht noch aus. Die Oscar-Verleihung findet am 27. März 1995 in Los Angeles statt.</t_str>
+		</a>
+		<a id="139_3" value="REJECTED">
+			<a_str>Eckenheimer</a_str>
+			<t_str doc="FR940206-001167">In lockerer Folge ohne fremdensitzliche Zeremonie lief eine heitere Mischung von gelungenen Vorträgen und Tanzeinlagen der Minigarde der Fidelen Eckenheimer übers Parkett des Bürgertreffs an der Kollwitzstraße.</t_str>
+		</a>
+		<a id="139_4" value="REJECTED">
+			<a_str>Indien</a_str>
+			<t_str doc="FR940123-000084">Zu sehen sein werden unter_anderem die Produktion Dialogues with Madwomen von der Oscar- Preisträgerin Allie_Light sowie Soraya_Mires ' Fire Eyes über die Beschnweidung von Frauen in Afrika . Die deutsche Filmemacherin Mirjam_Quinte stellt in Rebellion einer Banditin den Widerstand einer Frau gegen die Kasten- Gesellschaft in Indien dar .</t_str>
+		</a>
+		<a id="139_5" value="VALIDATED">
+			<a_str>in Los Angeles</a_str>
+			<t_str doc="SDA.941029.0080">Die Oscar-Verleihung findet am 27 . März 1995 in Los Angeles statt .</t_str>
+		</a>
+	</q>
+	<q id="140" lang="DE">
+		<q_str>Wie heißt die Organisation erdölexportierender Länder?</q_str>
+		<a id="140_1" value="REJECTED">
+			<a_str>unter anderem</a_str>
+			<t_str doc="SDA.941031.0219">Die Landwirtschaft des kommunistisch regierten Landes leidet unter anderem unter dem Mangel an Treibstoffen und Pestiziden.</t_str>
+		</a>
+		<a id="140_2" value="VALIDATED">
+			<a_str>OPEC</a_str>
+			<t_str doc="SDA.940218.0109">Zudem wird nicht erwartet, dass die Organisation erdölexportierender Länder (OPEC) bei ihrem Ministertreffen am 25. März ihre Fördermengen senken wird.</t_str>
+		</a>
+	</q>
+	<q id="141" lang="DE">
+		<q_str>Welche Partei wurde von Karadzic gegründet?</q_str>
+		<a id="141_1" value="REJECTED">
+			<a_str>wegen Kriegsverbrechen</a_str>
+			<t_str doc="SDA.951120.0078">Vom UNO-Kriegsverbrechertribunal in Den Haag ist Karadzic wegen Kriegsverbrechen angeklagt. Karadzic wurde 1945 in Savnik in Montenegro geboren. Der diplomierte Psychiater gründete Dezember 1990 die Serbische Demokratische Partei (SDS) in Bosnien.</t_str>
+		</a>
+		<a id="141_2" value="REJECTED">
+			<a_str>UN</a_str>
+			<t_str doc="FR940717-000312">Karadzic-Partei baut vor gegen Friedensplan / Blockade vor UN-Hauptquartierin Zagreb</t_str>
+		</a>
+		<a id="141_3" value="REJECTED">
+			<a_str>Union</a_str>
+			<t_str doc="SDA.940820.0002">Das " Parlament " der bosnischen Serben hatte sich bereits am Donnerstag einstimmig für eine derartige Union ausgesprochen . " Wir sind überzeugt , dass ein vereinigter serbischer Staat ein Faktor der Stabilität auf dem Balkan darstellen wird " , sagte Karadzic nach dem Treffen .</t_str>
+		</a>
+		<a id="141_4" value="VALIDATED">
+			<a_str>SDS</a_str>
+			<t_str doc="SDA.950806.0050">Nachdem die Kommunisten ihr Machtmonopol aufgegeben hatten, wechselte Karadzic in die Politik und gründete 1990 die Serbische Demokratische Partei (SDS).</t_str>
+		</a>
+	</q>
+	<q id="142" lang="DE">
+		<q_str>Welche Organisation wird von Jassir Arafat geführt?</q_str>
+		<a id="142_1" value="REJECTED">
+			<a_str>Hamas</a_str>
+			<t_str doc="SPIEGEL9495-004660">Palästina "Kehre um, Jassir Arafat" Hamas-Führer Ibrahim el-Jasuri über die Friedenspolitik der PLO</t_str>
+		</a>
+		<a id="142_2" value="VALIDATED">
+			<a_str>Palästinensischen_Befreiungsorganisation_(_PLO_)</a_str>
+			<t_str doc="SDA.940124.0031">Der Chef der Palästinensischen_Befreiungsorganisation_(_PLO_) , Jassir_Arafat , ist am Montag in Riad mit dem saudi-arabischen König Fahd zusammengetroffen .</t_str>
+		</a>
+	</q>
+	<q id="143" lang="DE">
+		<q_str>Wer war 1994 Präsident von Kanada?</q_str>
+		<a id="143_1" value="REJECTED">
+			<a_str>Ernesto Zedillo</a_str>
+			<t_str doc="SDA.950416.0041">Marcos wurde vor 76 Jahren in Anenecuilco im Bundesstaat Morelos in einen Hinterhalt gelockt und ermordet. Zur Erinnerung an seinen Todestag hatten vor einer Woche mehrere zehntausend Arbeiter und Bauern in Mexiko-Stadt demonstriert und gegen das rigide Sparprogramm der Regierung von Präsident Ernesto Zedillo protestiert. Die zapatistischen Indianerrebellen hatten sich am 1. Januar 1994, dem Tag des Inkrafttretens des Nordamerikanischen Freihandelsabkommens (NAFTA) zwischen den USA, Kanada und Mexiko erh</t_str>
+		</a>
+	</q>
+	<q id="144" lang="DE">
+		<q_str>In welchem Jahr wurde Italien Republik?</q_str>
+		<a id="144_1" value="REJECTED">
+			<a_str>27. und 28. März</a_str>
+			<t_str doc="SDA.940316.0242">- Umfrage in Italien: Linke Favorit bei Parlamentswahlen - Das neue italienische Wahlsystem - Italien hebt am 27. und 28. März die "Zweite Republik"</t_str>
+		</a>
+		<a id="144_2" value="VALIDATED">
+			<a_str>1946</a_str>
+			<t_str doc="SDA.950913.0155">Bottai blieb Unterrichtsminister bis 1946, als Italien zur Republik wurde.</t_str>
+		</a>
+	</q>
+	<q id="145" lang="DE">
+		<q_str>Wer ist Direktor von OPEC?</q_str>
+		<a id="145_1" value="REJECTED">
+			<a_str>Wien</a_str>
+			<t_str doc="SDA.940207.0123">Wien , 7. Feb. ( sda ) In der ersten Februar- Woche hat sich der Preis für das Barrel OPEC- Öl über der 14-Dollar- Marke gefestigt .</t_str>
+		</a>
+	</q>
+	<q id="146" lang="DE">
+		<q_str>Wann wurde der Maastrichter Vertrag unterzeichnet?</q_str>
+		<a id="146_1" value="REJECTED">
+			<a_str>1999</a_str>
+			<t_str doc="SDA.940622.0259">Am 7. Februar 1992 wurde dann in Maastricht der Vertrag über die Wirtschafts- und Währungsunion unterzeichnet, der eine gemeinsame Währung spätestens für 1999, mehr Macht für das Europaparlament und eine gemeinsame europäische Aussen- und Sicherheitspolitik vorsieht.</t_str>
+		</a>
+		<a id="146_2" value="REJECTED">
+			<a_str>1995</a_str>
+			<t_str doc="SDA.950301.0171">Im September 1995 soll in Basel eine zweite Auflage der Maastrichter Kunst- und Antiquitätenmesse stattfinden .</t_str>
+		</a>
+		<a id="146_3" value="VALIDATED">
+			<a_str>im Jahr 1992</a_str>
+			<t_str doc="SDA.940426.0230">Dasselbe sieht der 1992 unterzeichnete Maastrichter Vertrag für die Wahlen auf kommunaler Ebene vor .</t_str>
+		</a>
+	</q>
+	<q id="147" lang="DE">
+		<q_str>Wann starb Stalin?</q_str>
+		<a id="147_1" value="REJECTED">
+			<a_str>1944</a_str>
+			<t_str doc="SDA.950131.0265">1944 waren Zehntausende Tschetschenen von Stalin nach Sibirien, Fernost und Kasachstan deportiert worden, wobei Tausende starben.</t_str>
+		</a>
+		<a id="147_2" value="REJECTED">
+			<a_str>25. Februar</a_str>
+			<t_str doc="FR940227-000368">WARSCHAU , 25. Februar ( rtr ) . Mehr_als 50 Jahre nach der von Stalin angeordneten Ermordung polnischer Offiziere im ukrainischen Katyn hat sich die russische Regierung bereit erklärt , die Opfer mit Ehren beizusetzen und die Errichtung von Denkmälern zu ihrem Gedenken zu unterstützen .</t_str>
+		</a>
+		<a id="147_3" value="VALIDATED">
+			<a_str>im Jahr 1953</a_str>
+			<t_str doc="SDA.950126.0290">Als Stalin 1953 starb , war der Machtbereich der UdSSR bis weit nach Mitteleuropa vorgeschoben .</t_str>
+		</a>
+	</q>
+	<q id="148" lang="DE">
+		<q_str>Welcher Anteil aller verkauften Milch wird für Frühstücksflocken verwendet?</q_str>
+		<a id="148_1" value="REJECTED">
+			<a_str>von Nestlé</a_str>
+			<t_str doc="SDA.940427.0127">Grösste Sparte von Nestlé sind die Milch- und Diätetikprodukte mit einem Anteil von 28 Prozent am Gesamtumsatz, gefolgt von den Getränken mit 27 Prozent und den Fertiggerichten und Produkten für die Küche mit 27 Prozent.</t_str>
+		</a>
+		<a id="148_2" value="REJECTED">
+			<a_str>das Verhältnis</a_str>
+			<t_str doc="SDA.940921.0109">Die Verkehrsproduktivität, das Verhältnis zwischen den effektiv verkauften Leistungen in Personen- und Tonnenkilometern und dem Personalbestand, nahm seit 1966 um 77 Prozent zu.</t_str>
+		</a>
+		<a id="148_3" value="REJECTED">
+			<a_str>die Beteiligung</a_str>
+			<t_str doc="SDA.940427.0127">Grösste Sparte von Nestlé sind die Milch- und Diätetikprodukte mit einem Anteil von 28 Prozent am Gesamtumsatz, gefolgt von den Getränken mit 27 Prozent und den Fertiggerichten und Produkten für die Küche mit 27 Prozent. Maucher unterstrich, dass die Beteiligung an l'Oréal nicht verändert werden soll. Nestlé hält 49 Prozent an der Gesparal, welche l'Oréal kontrolliert.</t_str>
+		</a>
+		<a id="148_4" value="REJECTED">
+			<a_str>den Winter-</a_str>
+			<t_str doc="SDA.940519.0124">Das Verhältnis der Verkäufe zwischen den Winter- und den Sommermonaten betrage in der Regel 45 zu 55 Prozent.</t_str>
+		</a>
+	</q>
+	<q id="149" lang="DE">
+		<q_str>Für welche Organisation ist Peter Anderson der Alkohol-Berater?</q_str>
+		<a id="149_1" value="REJECTED">
+			<a_str>die Konferenz</a_str>
+			<t_str doc="SDA.951212.0047">"Die gute Nachricht ist, dass man mit Alkohol vernünftig umgehen kann", betonte auch Peter Anderson., der die Konferenz organisierte.</t_str>
+		</a>
+		<a id="149_2" value="REJECTED">
+			<a_str>Europas Volkswirtschaften</a_str>
+			<t_str doc="SDA.951212.0047">Und das kommt Europas Volkswirtschaften teuer zu stehen. Denn die durch Alkohol bedingten Unfälle, Spitaleinweisungen oder Arbeitsausfälle entstehenden Kosten sind enorm. Auf zwei bis vier Prozent des Bruttosozialprodukts schätzt sie der Wissenschaftler Peter Anderson.</t_str>
+		</a>
+		<a id="149_3" value="REJECTED">
+			<a_str>europäischen</a_str>
+			<t_str doc="SDA.951212.0087">Auf der europäischen Alkohol- Konferenz in Paris wurde betont , dass allein 40 bis 60 Prozent aller schweren Unfälle und Gewalttaten auf Alkohol zurückzuführen seien . Daher müsse einer breiten Öffentlichkeit die Gefahr exzessiven Alkohol- Konsums nachdrücklicher bewusst gemacht werden , forderte der britische Wissenschafter Peter_Anderson am Dienstag .</t_str>
+		</a>
+	</q>
+	<q id="150" lang="DE">
+		<q_str>Was ist das längste deutsche Wort?</q_str>
+		<a id="150_1" value="REJECTED">
+			<a_str>Noch vor dem Grußwort des Vorsitzenden Erich Zinsheimer wird zitiert: Mit frischer Kraft ans Werk gegangen, mit frommer Liebe am Volk gehangen, mit frohem Sinn bei jeder Tat, das freie Wort im ernsten Rat, die deutsche Sitte treu bewahrt, das ist des rechten Turners Art.</a_str>
+			<t_str doc="FR941030-002570">Noch vor dem Grußwort des Vorsitzenden Erich Zinsheimer wird zitiert: Mit frischer Kraft ans Werk gegangen, mit frommer Liebe am Volk gehangen, mit frohem Sinn bei jeder Tat, das freie Wort im ernsten Rat, die deutsche Sitte treu bewahrt, das ist des rechten Turners Art.</t_str>
+		</a>
+		<a id="150_2" value="REJECTED">
+			<a_str>Mittel- und Osteuropa Da das nach den Worten Wissmanns "wirtschaftliche Gewicht" der Code-Sharing-Rechte der US-Unternehmen nach Mittel- und Osteuropa grösser ist, hat die deutsche Seite darauf bestanden, die Zahl der von der Lufthansa mit United vorgesehenen Angebote zu sämtlichen Flughäfen in den USA beschleunigt zu erhöhen. Begonnen wird am 1. Mai mit 140 Diensten.</a_str>
+			<t_str doc="SDA.940318.0106">Mittel- und Osteuropa Da das nach den Worten Wissmanns "wirtschaftliche Gewicht" der Code-Sharing-Rechte der US-Unternehmen nach Mittel- und Osteuropa grösser ist, hat die deutsche Seite darauf bestanden, die Zahl der von der Lufthansa mit United vorgesehenen Angebote zu sämtlichen Flughäfen in den USA beschleunigt zu erhöhen. Begonnen wird am 1. Mai mit 140 Diensten.</t_str>
+		</a>
+	</q>
+	<q id="151" lang="DE">
+		<q_str>Wo ist das Jet Propulsion Laboratory der NASA?</q_str>
+		<a id="151_1" value="REJECTED">
+			<a_str>Dort</a_str>
+			<t_str doc="SDA.941011.0009">Dort werde die Sonde im Laufe des Mittwoch zum grössten Teil verglühen , wie der Sprecher des Jet_Propulsion_Laboratory in Pasadena ( US- Bundesstaat Kalifornien ) , Jim_Doyle , am Dienstag bestätigte .</t_str>
+		</a>
+		<a id="151_2" value="VALIDATED">
+			<a_str>Pasadena</a_str>
+			<t_str doc="SDA.951210.0027">Die "Los Angeles Times" berichtete am Sonntag, die Fachleute im Jet Propulsion Laboratory der US-Raumfahrtbehörde NASA im kalifornischen Pasadena wollten sofort beginnen, die wichtigen digitalen Funkzeichen zu entschlüsseln.</t_str>
+		</a>
+	</q>
+	<q id="152" lang="DE">
+		<q_str>Wie heißt die lettische Währung?</q_str>
+		<a id="152_1" value="REJECTED">
+			<a_str>die Inflation</a_str>
+			<t_str doc="SDA.950627.0077">Die "Baltija Bank" zahlte ihren Kunden zehn Prozent Zinsen pro Monat, üblich sind in Lettland zwei Prozent. Für viele Letten bedeutet die vorübergehende Schliessung der Bank möglicherweise das Ende aller Träume, den Verlust aller Ersparnisse. Das wäre für einige bereits das zweite Mal, nachdem ihnen die Inflation nach dem Zusammenbruch der Sowjetunion und die Währungsreform vom Rubel zur lettischen Währung LAT schon einmal die Ersparnisse genommen hatte.</t_str>
+		</a>
+		<a id="152_2" value="VALIDATED">
+			<a_str>LAT</a_str>
+			<t_str doc="SDA.950627.0077">Für russische Geschäftsleute ist Lettland attraktiv, da die lettische Währung LAT sehr stabil ist, die Bankgesetze sehr liberal sind und das Geld innerhalb weniger Tage ins westliche Ausland überwiesen werden kann.</t_str>
+		</a>
+	</q>
+	<q id="153" lang="DE">
+		<q_str>Wie heißt die nationale Fluggesellschaft in Italien?</q_str>
+		<a id="153_1" value="REJECTED">
+			<a_str>In Italien</a_str>
+			<t_str doc="FR940918-001801">In Italien schon gar.</t_str>
+		</a>
+		<a id="153_2" value="VALIDATED">
+			<a_str>Alitalia</a_str>
+			<t_str doc="SDA.950517.0105">Rom, 17. Mai (sda/afp) Der Pilotenstreik bei der italienischen Fluggesellschaft Alitalia hat den Flugverkehr in Italien am Mittwoch teilweise lahmgelegt.</t_str>
+		</a>
+	</q>
+	<q id="154" lang="DE">
+		<q_str>Wann ist Ost-Timor von Indonesien annektiert worden?</q_str>
+		<a id="154_1" value="REJECTED">
+			<a_str>500</a_str>
+			<t_str doc="SDA.941118.0191">In Ost-Timor haben am Freitag rund 500 jugendliche Demonstranten gegen die Inhaftierung des Unabhängigkeitskämpfers Jose " Xanana " Gusmao protestiert .</t_str>
+		</a>
+		<a id="154_2" value="VALIDATED">
+			<a_str>1975</a_str>
+			<t_str doc="SDA.941122.0138">Indonesien hatte Ost-Timor 1975 annektiert.</t_str>
+		</a>
+		<a id="154_3" value="VALIDATED">
+			<a_str>im Jahr 1976</a_str>
+			<t_str doc="FR940220-000254">Indonesien hatte die frühere portugiesische Kolonie Osttimor 1976 annektiert .</t_str>
+		</a>
+	</q>
+	<q id="155" lang="DE">
+		<q_str>Velupillai Prabahkaran ist der Führer welcher Organisation?</q_str>
+		<a id="155_1" value="REJECTED">
+			<a_str>FDP</a_str>
+			<t_str doc="FR940206-001819">Haarschnitt kostet die Berliner FDP den Kopf.</t_str>
+		</a>
+		<a id="155_2" value="VALIDATED">
+			<a_str>LTTE</a_str>
+			<t_str doc="SDA.951102.0062">Gegründet wurde die LTTE 1976 von dem Angestellten Velupillai Prabahkaran, der aus Jaffna stammt.</t_str>
+		</a>
+	</q>
+	<q id="156" lang="DE">
+		<q_str>In welchem Jahr wurde Aung San Suu Kyi der Friedensnobelpreis verliehen?</q_str>
+		<a id="156_1" value="REJECTED">
+			<a_str>1988</a_str>
+			<t_str doc="SDA.951128.0199">Die Militärs , die seit 1988 in Birma an der Macht sind , hatten zugesagt , nach Verabschiedung einer Verfassung die Macht an eine zivile Regierung zu übertragen . Es war das erste Mal nach der Aufhebung des Hausarrests gegen die Oppositionspolitikerin und Friedensnobelpreisträgerin Aung_San_Suu_Kyi , dass der Nationalkonvent zusammentrat .</t_str>
+		</a>
+		<a id="156_2" value="VALIDATED">
+			<a_str>1991</a_str>
+			<t_str doc="SDA.940920.0083">Aung San Suu Kyi. erhielt 1991 den Friedensnobelpreis, den Suu Kyi. nicht selbst in Empfang nehmen konnte.</t_str>
+		</a>
+	</q>
+	<q id="157" lang="DE">
+		<q_str>Wer führt den Vorsitz der RAI?</q_str>
+		<a id="157_1" value="REJECTED">
+			<a_str>Marco Taradash</a_str>
+			<t_str doc="FR940612-001965">Die Attacke kam nicht aus dem heiteren Himmel: Schon vergangene Woche war Marco Taradash, langjähriger RAI-Kritiker und regierungsnaher Reformist der Panella-Partei, gerade zum Vorsitzenden der RAI-Aufsichtskommission gewählt, sofort mit Dokumenten über angebliche Gesetzesverstöße durch die TV-Anstalt zum Staatsanwalt gelaufen.</t_str>
+		</a>
+		<a id="157_2" value="REJECTED">
+			<a_str>Berlusconi</a_str>
+			<t_str doc="SDA.940608.0020">RAI-Mitarbeiter demonstrieren gegen Berlusconi Ausführliche Fassung.</t_str>
+		</a>
+		<a id="157_3" value="REJECTED">
+			<a_str>Leonardo - Dunga</a_str>
+			<t_str doc="FR940703-001103">Brasilien: Taffarel - Jorginho, Aldair, Marcio Santos, Leonardo - Dunga, Mauro Silva, Rai (82. Müller), Zinho (76. Paulo Sergio) - Bebeto, Romario.</t_str>
+		</a>
+		<a id="157_4" value="REJECTED">
+			<a_str>RAI</a_str>
+			<t_str doc="FR940116-001892">Nach Angaben des italienischen Fernsehsenders RAI liegt die Entscheidung über einen Wechsel von Darko_Pancev von Inter Mailand zum Fußball- Bundesligisten VfB Leipzig allein bei dem Stürmer .</t_str>
+		</a>
+	</q>
+	<q id="158" lang="DE">
+		<q_str>Wann wurde der Dalai Lama für den Friedensnobelpreis nominiert?</q_str>
+		<a id="158_1" value="REJECTED">
+			<a_str>1959</a_str>
+			<t_str doc="SDA.940429.0248">Der Dalai Lama. lebt seit 1959 im Exil.</t_str>
+		</a>
+		<a id="158_2" value="REJECTED">
+			<a_str>29. April</a_str>
+			<t_str doc="FR940530-000632">Schön wär's. Wo war die SPD, als der Dalai Lama am 29. April in Bonn war?</t_str>
+		</a>
+		<a id="158_3" value="REJECTED">
+			<a_str>9. März</a_str>
+			<t_str doc="FR940313-000172">PEKING , 9. März ( dpa ) . Zum 35. Jahrestag des fehlgeschlagenen tibetischen Aufstandes gegen die chinesische Herrschaft hat der geistige Führer der Tibeter , der Dalai_Lama , stärkeren internationalen Druck auf die Pekinger Regierung gefordert .</t_str>
+		</a>
+		<a id="158_4" value="VALIDATED">
+			<a_str>1989</a_str>
+			<t_str doc="SDA.940615.0079">Der Dalai Lama lebt seit einem missglückten Aufstand im Jahre 1959 im indischen Exil. 1989 erhielt Dalai Lama für sein Engagement für die Menschenrechte den Friedensnobelpreis. Berlusconi wäre den Berichten zufolge der erste europäische Regierungschef, der den Dalai Lama offiziell empfängt.</t_str>
+		</a>
+	</q>
+	<q id="159" lang="DE">
+		<q_str>An welchen Tag haben Jordanien und Israel den Friedensvertrag unterzeichnet?</q_str>
+		<a id="159_1" value="REJECTED">
+			<a_str>26. Okt.</a_str>
+			<t_str doc="SDA.941026.0140">Israelisch-jordanischer Friedensvertrag Israel und Jordanien unterzeichneten Friedensvertrag Übersicht 13.30 Uhr. Araba, 26. Okt. (sda/dpa/afp/Reuter) Israel und Jordanien haben am Mittwoch im Grenzgebiet zwischen beiden Ländern einen Friedensvertrag unterzeichnet.</t_str>
+		</a>
+		<a id="159_2" value="REJECTED">
+			<a_str>am 26.10.1994</a_str>
+			<t_str doc="SDA.941026.0140">Israel und Jordanien haben am Mittwoch im Grenzgebiet zwischen beiden Ländern einen Friedensvertrag unterzeichnet .</t_str>
+		</a>
+		<a id="159_3" value="REJECTED">
+			<a_str>10. April</a_str>
+			<t_str doc="SDA.940410.0069">Flor_del_Monte , 10. April ( sda / Reuter ) In Kolumbien haben rund 430 marxistische Rebellen ihre Waffen übergeben und einen Friedensvertrag mit der Regierung unterzeichnet .</t_str>
+		</a>
+		<a id="159_4" value="VALIDATED">
+			<a_str>Oktober 1994</a_str>
+			<t_str doc="SDA.950306.0169">Jordanien unterzeichnete im Oktober 1994 einen Friedensvertrag mit Israel.</t_str>
+		</a>
+	</q>
+	<q id="160" lang="DE">
+		<q_str>In welchem Jahr fand die russische Revolution statt?</q_str>
+		<a id="160_1" value="REJECTED">
+			<a_str>22. Januar 1905</a_str>
+			<t_str doc="FR940807-001636">Geboren wurde Cheryl Carolus. am 22. Januar 1905, dem Blutsonntag der ersten russischen Revolution, in Lodz, das zu Russisch-Polen gehörte, als Tochter des wohlhabenden Fabrikanten Maurycy Piotrkowski.</t_str>
+		</a>
+		<a id="160_2" value="REJECTED">
+			<a_str>20. Juni</a_str>
+			<t_str doc="FR940807-000786">Deubelbeiss spannt den Faden auf Kniehöhe. Das russische Volk sei reif für die Revolution. 20. Juni 1951.</t_str>
+		</a>
+		<a id="160_3" value="VALIDATED">
+			<a_str>1917</a_str>
+			<t_str doc="FR940612-000533">Die von der Russischen Revolution 1917 inspirierte Satire läßt den Traum von Freiheit und Gleichheit an den Menschen scheitern.</t_str>
+		</a>
+	</q>
+	<q id="161" lang="DE">
+		<q_str>In welcher Stadt befindet sich das Johnson Space Center?</q_str>
+		<a id="161_1" value="REJECTED">
+			<a_str>Sassari</a_str>
+			<t_str doc="SDA.940710.0030">Das zweite Modell wird laut TA in Zusammenarbeit mit der italienischen Universität Sassari und dem Johnson Space Center der US-Weltraumbehörde Nasa durchgeführt.</t_str>
+		</a>
+		<a id="161_2" value="REJECTED">
+			<a_str>Schweiz</a_str>
+			<t_str doc="SDA.950130.0060">Die Gegenwart erhält einen Raum für sich: Mitten im Neuenburgersee sollen Besucherinnen und Besucher auf der künstlichen Insel "Helvethèque" Spuren hinterlassen, die eine Momentaufnahme der Schweiz ergeben werden.</t_str>
+		</a>
+		<a id="161_3" value="REJECTED">
+			<a_str>Sassari</a_str>
+			<t_str doc="SDA.940710.0030">Das zweite Modell wird laut TA in Zusammenarbeit mit der italienischen Universität Sassari und dem Johnson_Space_Center der US- Weltraumbehörde Nasa durchgeführt .</t_str>
+		</a>
+	</q>
+	<q id="162" lang="DE">
+		<q_str>In welcher Stadt befindet sich das Opernhaus La Fenice?</q_str>
+		<a id="162_1" value="REJECTED">
+			<a_str>Alten Kapelle St. Martin</a_str>
+			<t_str doc="FR941016-003137">Von 20 Uhr an spielt das Ensemble La Fenice in der Alten Kapelle St. Martin unter anderem Werke von Ignation Donati, Mauzizio Cazzati und Salomone de Rossi.bhe</t_str>
+		</a>
+		<a id="162_2" value="VALIDATED">
+			<a_str>in Venedig</a_str>
+			<t_str doc="SDA.950803.0121">Musikalische Berühmtheit erlangte jedoch die Passage zu Beginn des Films, in der wir uns mitten im entscheidenden dritten Akt der Oper "Il Trovatore" von Giuseppe Verdi befinden. Die italienischen Nationalisten benutzen das Opern-Kampflied "All'armi! ", um selber gegen die österreichischen Besatzer loszuschlagen: Im Opernhaus "La Fenice" in Venedig kommt es zu Tumulten, und der Film nimmt seinen Anfang.</t_str>
+		</a>
+	</q>
+	<q id="163" lang="DE">
+		<q_str>In welchem Land befindet sich der Flughafen Nagoya?</q_str>
+		<a id="163_1" value="REJECTED">
+			<a_str>am Dienstag</a_str>
+			<t_str doc="FR940501-000040">Airbus-Maschine aus Taiwan sind am Dienstag auf dem japanischen Flughafen Nagoya 260 Menschen ums Leben gekom</t_str>
+		</a>
+		<a id="163_2" value="REJECTED">
+			<a_str>Japan</a_str>
+			<t_str doc="SDA.940427.0193">Toulouse / Nagoya , 27. April ( sda / dpa ) Keinerlei Hinweis auf die Ursache des schweren Flugzeugunglücks in Japan hat bislang der Hersteller des Flugzeugs , das europäische Konsortium Airbus_Industrie im französischen Toulouse .</t_str>
+		</a>
+		<a id="163_3" value="VALIDATED">
+			<a_str>Zentraljapan</a_str>
+			<t_str doc="SDA.950331.0118">Damals stürzte ein taiwanesischer Airbus A-300-600 beim Anflug auf den Flughafen von Nagoya in Zentraljapan ab.</t_str>
+		</a>
+	</q>
+	<q id="164" lang="DE">
+		<q_str>Wo befindet sich das Interpol-Generalsekretariat?</q_str>
+		<a id="164_1" value="REJECTED">
+			<a_str>Washington</a_str>
+			<t_str doc="SDA.941130.0152">In der ersten Jahreshälfte 1995 sollen mit Lyon ( Generalsekretariat Interpol ) und Washington die ersten beiden Destinationen besetzt werden .</t_str>
+		</a>
+		<a id="164_2" value="VALIDATED">
+			<a_str>in Lyon</a_str>
+			<t_str doc="SDA.951004.0023">Das Interpol-Generalsekretariat , das die Arbeit der nationalen Zentralpolizeibüros kooridiniert , befindet sich in Lyon .</t_str>
+		</a>
+	</q>
+	<q id="165" lang="DE">
+		<q_str>Welche Organisation machte einen Aufruf zur olympischen Waffenruhe?</q_str>
+		<a id="165_1" value="REJECTED">
+			<a_str>UNO</a_str>
+			<t_str doc="SDA.951010.0001">Der UNO-Sprecher machte die bosnischen Serben für die erneute Verschiebung der Waffenruhe verantwortlich.</t_str>
+		</a>
+		<a id="165_2" value="REJECTED">
+			<a_str>IOC</a_str>
+			<t_str doc="SPIEGEL9495-006917">Die Eiskunstläuferin verlangte vom Internationalen Olympischen Komitee (IOC), ein Gremium zu schaffen, das die Macht der Medien einschränke. Nur so sei "der olympische Geist zu retten". Der Appell ging ins Leere.</t_str>
+		</a>
+		<a id="165_3" value="VALIDATED">
+			<a_str>Internationale Olympische Komitee</a_str>
+			<t_str doc="FR940213-001256">Einen olympischen Waffenstillstand, wie einst die Griechen Mika Spiljak hielten, propagierte das Internationale Olympische Komitee (IOC) zusammen mit den Vereinten Nationen.</t_str>
+		</a>
+		<a id="165_4" value="VALIDATED">
+			<a_str>Internationale_Olympische_Komitee_(_IOC_)</a_str>
+			<t_str doc="FR940130-000150">Das Internationale_Olympische_Komitee_(_IOC_) hat am Montag in einer offiziellen Feier an seinem Sitz in Lausanne noch einmal zu einer olympischen Waffenruhe aufgerufen .</t_str>
+		</a>
+	</q>
+	<q id="166" lang="DE">
+		<q_str>Michel Camdessus ist Generaldirektor welcher Organisation?</q_str>
+		<a id="166_1" value="VALIDATED">
+			<a_str>IWF</a_str>
+			<t_str doc="SDA.951011.0152">Dies sagte IWF-Generaldirektor Michel Camdessus in Washington.</t_str>
+		</a>
+		<a id="166_2" value="VALIDATED">
+			<a_str>der internationale Währungsfonds</a_str>
+			<t_str doc="SDA.940112.0175">Der Generaldirektor des Internationalen Währungsfonds ( IWF ) , Michel Camdessus , hat die Abwertung des in 14 afrikanischen Ländern geltenden CFA-Franc um 50 Prozent begrüsst und sein " Vertrauen " in den neuen Wechselkurs bekundet .</t_str>
+		</a>
+	</q>
+	<q id="167" lang="DE">
+		<q_str>Cesar Gaviria ist Generalsekretär welcher Organisation?</q_str>
+		<a id="167_1" value="VALIDATED">
+			<a_str>OAS</a_str>
+			<t_str doc="SDA.950128.0044">Der Generalsekretär der Organisation Amerikanischer Staaten (OAS), Cesar Gaviria, begann eine Vermittlungsmission.</t_str>
+		</a>
+		<a id="167_2" value="VALIDATED">
+			<a_str>die Organisation amerikanischer Staaten</a_str>
+			<t_str doc="SDA.940327.0029">Neuer Generalsekretär der Organisation Amerikanischer Staaten ( OAS ) ist der kolumbianische Präsident Cesar Gaviria .</t_str>
+		</a>
+	</q>
+	<q id="168" lang="DE">
+		<q_str>Wie viele Formel 1 WM-Titel gewann Fangio?</q_str>
+		<a id="168_1" value="REJECTED">
+			<a_str>1</a_str>
+			<t_str doc="FR940313-000443">Auch im Alter von 82 Jahren hat Juan-Manuel Fangio seine Leidenschaft für die Formel 1 nicht verloren.</t_str>
+		</a>
+		<a id="168_2" value="REJECTED">
+			<a_str>20 Millionen</a_str>
+			<t_str doc="FR940313-000443">Schumacher ist schon jetzt einer der besten Piloten in der Formel 1. Schumacher soll so weitermachen, dann wird Schumacher auch den WM-Titel holen. Über die für Schumacher teilweise utopischen Gehälter von bis zu 20 Millionen Dollar, die pro Saison für einen Formel-1-Piloten bezahlt werden, sagt Fangio: Werbung und Fernsehen haben dieses Wunder vollbracht.</t_str>
+		</a>
+		<a id="168_3" value="REJECTED">
+			<a_str>47</a_str>
+			<t_str doc="SPIEGEL9495-010929/30/170">Als der Argentinier 1958 seine Rennfahrer- Karriere beendete , war er bereits 47 Jahre alt - was schon eine Leistung an_sich darstellte , weil in jenen Zeiten ohne Gurt und feuerfeste Kleidung viele von Fangios Kollegen ihrer gefährlichen Leidenschaft zum Opfer fielen .</t_str>
+		</a>
+		<a id="168_4" value="VALIDATED">
+			<a_str>fünf</a_str>
+			<t_str doc="SPIEGEL9495-010929">Der erfolgreichste Rennfahrer aller Zeiten, der fünf Weltmeisterschaften gewann, fuhr für alle großen Autohersteller der fünfziger Jahre (Ferrari, Maserati, Alfa Romeo) - doch im Ruhestand galt Gestorben Juan Manual Fangio stets als der ehemalige Mercedes-Pilot, der die legendären "Silberpfeile" 1954 und 1955 zum WM-Titel trieb.</t_str>
+		</a>
+	</q>
+	<q id="169" lang="DE">
+		<q_str>Wie hieß das erste Atom-U-Boot?</q_str>
+		<a id="169_1" value="REJECTED">
+			<a_str>Zehn Tote</a_str>
+			<t_str doc="SDA.940330.0071">Zehn Tote bei Unfall auf französischem Atom-U-Boot.</t_str>
+		</a>
+		<a id="169_2" value="REJECTED">
+			<a_str>der US-Marine</a_str>
+			<t_str doc="FR941106-000558">Ein Unterseeboot der US-Marine soll angeblich in russische Hoheitsgewässer eingedrungen sein.</t_str>
+		</a>
+		<a id="169_3" value="REJECTED">
+			<a_str>ums Leben</a_str>
+			<t_str doc="SDA.951017.0202">Tokio, 17. Okt. (sda/afp) Ein Atom-U-Boot Chinas soll 1983 nach einer Kollision mit einem sowjetischen Atom-U-Boot vor Wladiwostok gesunken. Alle 70 Besatzungsmitglieder des 4500-Tonnen-Bootes seien dabei ums Leben gekommen, meldete die Zeitung "Tokio Shimbun" am Dienstag unter Berufung auf einen Bericht der russischen Marine. Sechs Jahre nach dem Unfall sei in der Nähe des Unfallortes rund 100 Kilometer südöstlich von Wladiwostok eine extrem hohe Radioaktivität gemessen worden, hiess es weiter.</t_str>
+		</a>
+		<a id="169_4" value="REJECTED">
+			<a_str>ein feindliches Kriegschiff</a_str>
+			<t_str doc="SDA.950529.0171">Nach Jahrzehnten der Suche sind Taucher jetzt auf die legendäre "Hunley" gestossen: Das erste Unterseeboot der Welt, das ein feindliches Kriegschiff in Grund und Boden versenkte.</t_str>
+		</a>
+	</q>
+	<q id="170" lang="DE">
+		<q_str>Wer entdeckte die Acetylsalicylsäure?</q_str>
+		<a id="170_1" value="REJECTED">
+			<a_str>Melk Lehner</a_str>
+			<t_str doc="SDA.950609.0115">Saurer-Chef Melk Lehner tritt zurück Auftakt</t_str>
+		</a>
+		<a id="170_2" value="REJECTED">
+			<a_str>Tito Tettamanti</a_str>
+			<t_str doc="SDA.950609.0067">Eugène Patry, der interimistisch die Funktion Lehners einnimmt, wurde 1988, nach dem Einstieg des Tessiner Financiers Tito Tettamanti bei Saurer, Verwaltungsrat der Saurer Gruppe.</t_str>
+		</a>
+		<a id="170_3" value="REJECTED">
+			<a_str>Zabler</a_str>
+			<t_str doc="FR940424-000676">Dank der großen Eigeninitiative von Lehrern und Eltern und der Hilfe des Stadtschulamtes beim Umbau , gelang es der Schule dieses Kleinod zu erschaffen , wie Zabler die neue Bücherei nennt . Mit 5000 Mark bezuschußte die Arbeitsstelle der Stadtbücherei das Unternehmen für die Ausstattung , und der Verein der Freunde und Förderer der ASS stellte 1000 Mark zur Verfügung , die für Kleinigkeiten wie Archivierungsmaterial und Kissen verwendet wurden .</t_str>
+		</a>
+		<a id="170_4" value="VALIDATED">
+			<a_str>Felix Hoffmann</a_str>
+			<t_str doc="SPIEGEL9495-011582">Von dem Bayer-Apotheker Felix Hoffmann vor knapp hundert Jahren entdeckt, hat sich die Acetylsalicylsäure (erster Markenname: Aspirin) zu einem wahrhaften Jahrhundert-Medikament mit immer neuen Anwendungsmöglichkeiten entwickelt - etwa als Blutverdünner zur Infarkt-Prophylaxe oder zur Vorbeugung gegen Darmkrebs.</t_str>
+		</a>
+	</q>
+	<q id="171" lang="DE">
+		<q_str>Wem gehört der AC Mailand?</q_str>
+		<a id="171_1" value="REJECTED">
+			<a_str>FC</a_str>
+			<t_str doc="SPIEGEL9495-011219">Fußball: FC Bayern - AC Mailand</t_str>
+		</a>
+		<a id="171_2" value="REJECTED">
+			<a_str>Franco Baresi</a_str>
+			<t_str doc="FR941009-002388">Franco Baresi vom AC Mailand beendet seine Karriere in der italienischen Fußball-Nationalmannschaft.</t_str>
+		</a>
+		<a id="171_3" value="REJECTED">
+			<a_str>Nord</a_str>
+			<t_str doc="FR940123-000304">BUNDESLIGA- AUFSTIEGSRUNDE , 6. Kampftag , Gruppe Nord A : SG_Köln-Worringen SC_Berolina_Berlin 36:0 , Türkischer RV_Berlin AC Schaafheim 4:32. .</t_str>
+		</a>
+		<a id="171_4" value="VALIDATED">
+			<a_str>Silvio Berlusconi</a_str>
+			<t_str doc="SDA.941004.0109">Durchsucht wurden auch die Räume des Meisterklubs AC Mailand, der Ministerpräsident Silvio Berlusconi gehört.</t_str>
+		</a>
+	</q>
+	<q id="172" lang="DE">
+		<q_str>In welchem Film von Kevin Reynolds spielte Kevin Costner mit?</q_str>
+		<a id="172_1" value="REJECTED">
+			<a_str>Der Regisseur</a_str>
+			<t_str doc="SDA.950510.0239">Hamburg, 10. Mai (sda/dpa) Der Regisseur von Kevin Costners "Waterworld", Kevin Reynolds, hat in der Schnittphase des fertig gedrehten Films das Handtuch geworfen.</t_str>
+		</a>
+		<a id="172_2" value="REJECTED">
+			<a_str>Kevin Costners</a_str>
+			<t_str doc="SDA.950510.0239">Hamburg, 10. Mai (sda/dpa) Der Regisseur von Kevin Costners "Waterworld", Kevin Reynolds, hat in der Schnittphase des fertig gedrehten Films das Handtuch geworfen.</t_str>
+		</a>
+		<a id="172_3" value="REJECTED">
+			<a_str>Pech</a_str>
+			<t_str doc="SDA.950510.0239">Hamburg, 10. Mai (sda/dpa) Der Regisseur von Kevin Costners "Waterworld", Kevin Reynolds, hat in der Schnittphase des fertig gedrehten Films das Handtuch geworfen. Damit steht die vom Pech verfolgte Produktion, mit geschätzten Kosten von etwa 175 Millionen Dollar (200 Millionen Franken) der bisher teuerste Film aller Zeiten, vor einem neuen Problem. Nach einem Bericht der Zeitschrift "Blickpunkt: Film" hatte Reynolds offenbar Meinungsverschiedenheiten mit Superstar Costner, der nicht nur als Hauptdarstel</t_str>
+		</a>
+	</q>
+	<q id="173" lang="DE">
+		<q_str>Was misst ein Regenmesser?</q_str>
+		<a id="173_1" value="REJECTED">
+			<a_str>am Boden</a_str>
+			<t_str doc="SDA.950517.0177">Durch Vergleiche mit Daten von Regenmessern am Boden entwickle man Verfahren, um dies zu korrigieren, schreibt der Nationalfonds.</t_str>
+		</a>
+	</q>
+	<q id="174" lang="DE">
+		<q_str>Welchen Beruf übt Gianni Versace aus?</q_str>
+		<a id="174_1" value="REJECTED">
+			<a_str>der Bruder</a_str>
+			<t_str doc="SDA.950918.0201">Unter den Beschuldigten befinden sich auch der Bruder von Gianni Versace, Santo, und der Designer Girolamo Etro; insgesamt stehen 18 Personen in der Angelegenheit vor Gericht. Die Modepäpste berufen sich darauf, von korrupten Finanzinspektoren zur Zahlung der Schmiergelder gezwungen worden zu sein. Craxi mit im Spiel</t_str>
+		</a>
+		<a id="174_2" value="VALIDATED">
+			<a_str>Star-Designer</a_str>
+			<t_str doc="SDA.951005.0129">Den Auftakt machte der Star-Designer Gianni Versace mit ersten Trends aus seiner jugendlichen Zweitlinie "Versus".</t_str>
+		</a>
+		<a id="174_3" value="VALIDATED">
+			<a_str>ein italienischer Modeschöpfer</a_str>
+			<t_str doc="FR941231-002054">Der italienische Modeschöpfer Gianni Versace gestaltete farblich einen Opel Corsa , teilte die Pressestelle des Rüsselsheimer Automobilherstellers mit .</t_str>
+		</a>
+	</q>
+	<q id="175" lang="DE">
+		<q_str>Wo starb Kurt Cobain?</q_str>
+		<a id="175_1" value="REJECTED">
+			<a_str>Rom</a_str>
+			<t_str doc="SDA.940409.0088">Jetzt hat Kurt Cobain es, nachdem Kurt Cobain letzten Monat in Rom noch einmal ins Leben zurückgeholt worden war, getan.</t_str>
+		</a>
+		<a id="175_2" value="REJECTED">
+			<a_str>Europa</a_str>
+			<t_str doc="SPIEGEL9495-010334">Am Ende, als sich der Mann eine Kugel in die Stirn gejagt hatte ("Das Gehirn war herausgetrieben", notierte der Protokollant), war Kurt Cobain in halb Europa eine Art Popstar seiner Zeit - und seine Fans kleideten sich nicht nur wie Kurt Cobain in Stulpenstiefel zu blauem Frack und gelber Weste, sondern setzten ihrem Leben gleich dutzendweise ein ähnliches Ende: Goethes "junger Werther" aus dem Jahr 1774 gilt als erster Begründer eines Selbstmordkults in der neueren Kulturgeschichte.</t_str>
+		</a>
+		<a id="175_3" value="REJECTED">
+			<a_str>USA</a_str>
+			<t_str doc="FR940227-000758">Laurie_Anderson und Tom_Waits arbeiteten mit Burroughs , U2 luden den Autor vor zwei Jahren auf ihre Zoo-TV- Tour in den USA ein von den riesigen Video- Wänden zog er über die verottende Wohlstandsgesellschaft her . Auch Nirvana- Frontmann Kurt_Cobain konnte ihn als Partner gewinnen im vergangenen Jahr nahmen beide die CD The ,</t_str>
+		</a>
+		<a id="175_4" value="VALIDATED">
+			<a_str>in dem Haus in Seattle</a_str>
+			<t_str doc="FR940417-000006">Nirvana-Leadsänger Kurt Cobain erschoß sich in seinem Haus in Seattle .</t_str>
+		</a>
+	</q>
+	<q id="176" lang="DE">
+		<q_str>Wer war der erste Mensch auf dem Mond?</q_str>
+		<a id="176_1" value="REJECTED">
+			<a_str>Steffi Tetzlaff</a_str>
+			<t_str doc="FR940731-000989">Und Steffi Tetzlaff singen noch Lalilu, nur der Mann im Mond schaut zu, wenn die kleinen Drachen schlafen.</t_str>
+		</a>
+		<a id="176_2" value="REJECTED">
+			<a_str>Apollo</a_str>
+			<t_str doc="SDA.940718.0168">betrat der amerikanische Astronaut Armstrong von Apollo 11 als erster Menschen den Mond, sein Kollege Aldrin folgte kurz darauf. Das Ereignis wurde vom Fernsehen direkt übertragen. - Vor 40 Jahren (1954) ...</t_str>
+		</a>
+		<a id="176_3" value="REJECTED">
+			<a_str>Merc Rodoredas</a_str>
+			<t_str doc="FR941211-002774">Am Freitag, 9. Dezember, wird Lions-Präsident Bernd Kopp ein Exemplar von Merc Rodoredas Der Mann und der Mond an den Museumsleiter Christian Scheffler überreichen.</t_str>
+		</a>
+		<a id="176_4" value="REJECTED">
+			<a_str>Gerd_Dudenhöfer</a_str>
+			<t_str doc="FR940530-000917">Kabarett mit Gerd_Dudenhöfer Getreu dem Mond , 20 Uhr , Stadthalle .</t_str>
+		</a>
+		<a id="176_5" value="VALIDATED">
+			<a_str>Neil Armstrong</a_str>
+			<t_str doc="FR940619-002055">Neil Armstrong, der erste Mensch auf dem Mond, mußte für den Werbefeldzug ebenso herhalten, wie die heilige Kuh Football.</t_str>
+		</a>
+	</q>
+	<q id="177" lang="DE">
+		<q_str>Wer führte Regie im Film "Speed"?</q_str>
+		<a id="177_1" value="REJECTED">
+			<a_str>Robert Zemeckis ("Forrest Gump</a_str>
+			<t_str doc="SDA.950328.0165">Bester Film: "Forrest Gump" Beste Regie: Robert Zemeckis ("Forrest Gump") Beste männliche Hauptrolle: Tom Hanks ("Forrest Gump") Beste weibliche Hauptrolle: Jessica Lange ("Blue Sky") Bester ausländischer Film: "Soleil trompeur" (Russland) Beste männliche Nebenrolle: Martin Landau ("Ed Wood") Beste weibliche Nebenrolle: Dianne Wiest ("Bullets over Broadway") Bestes Originaldrehbuch: "Pulp Fiction" (Quentin Tarantino und Roger Avary) Bestes Drehbuch nach Romanvorlage: "Forrest Gump" (Eric Roth) Bester S</t_str>
+		</a>
+		<a id="177_2" value="REJECTED">
+			<a_str>Rausch</a_str>
+			<t_str doc="SPIEGEL9495-005476">Der Film ist reine Geschwindigkeit, ganz wie sein Titel verheißt, der zweifellos die gleichnamige Droge mitmeint: die Sucht, den Rausch und jenes High, das ein gelungener Trip - auch im Kino - auslösen kann.</t_str>
+		</a>
+		<a id="177_3" value="REJECTED">
+			<a_str>Forrest Gump</a_str>
+			<t_str doc="SDA.950328.0165">Oscar-Verleihung 1995 Die Liste aller Oscar-Preisträger Separat. Los Angeles, 28. März (sda) Nachfolgend die Liste der Oscar- Preisträger 1995, die am Montag in Los Angeles bei der 67. Oscarverleihung ausgezeichnet worden sind. Bester Film: "Forrest Gump" Beste Regie: Robert Zemeckis ("Forrest Gump") Beste männliche Hauptrolle: Tom Hanks ("Forrest Gump") Beste weibliche Hauptrolle: Jessica Lange ("Blue Sky") Bester ausländischer Film: "Soleil trompeur" (Russland) Beste männliche Nebenrolle: Martin L</t_str>
+		</a>
+		<a id="177_4" value="REJECTED">
+			<a_str>Speed</a_str>
+			<t_str doc="FR941016-001032">Speed ( Sa. 22.45 Uhr ) .</t_str>
+		</a>
+	</q>
+	<q id="178" lang="DE">
+		<q_str>Welchen Beruf übt Franz Fischler aus?</q_str>
+		<a id="178_1" value="VALIDATED">
+			<a_str>EU -Agrarkommissar</a_str>
+			<t_str doc="SDA.950627.0142">Er werde am Freitag in Brüssel mit EU-Agrarkommissar Franz Fischler über neue Modalitäten der Agrarförderung verhandeln, kündigte Landesrat Schwärzler an.</t_str>
+		</a>
+		<a id="178_2" value="VALIDATED">
+			<a_str>ein österreichischer Euagrarkommissar</a_str>
+			<t_str doc="SPIEGEL9495-013920">Wenn nicht , drohe der Abstieg in die " Ostliga " , warnt der österreichische EU-Agrarkommissar Franz Fischler .</t_str>
+		</a>
+	</q>
+	<q id="179" lang="DE">
+		<q_str>Wie alt war Rainer Ortleb, als er zurücktrat?</q_str>
+		<a id="179_1" value="REJECTED">
+			<a_str>28</a_str>
+			<t_str doc="SDA.940204.0103">Der deutsche Durchschnittsstudent verlässt den Hörsaal heute erst, wenn Rainer Ortleb 28 Jahre und damit älter ist als Hochschulabgänger in vielen Nachbarstaaten, Japan (über 23) oder in den USA (23 bis 26 Jahre).</t_str>
+		</a>
+		<a id="179_2" value="REJECTED">
+			<a_str>die Aufregung</a_str>
+			<t_str doc="FR940206-002439">Ich stehe überraschend vor der Situation, ein Ministeramt übertragen zu bekommen, bekannte Rainer Ortleb, und die Aufregung war Rainer Ortleb anzumerken.</t_str>
+		</a>
+		<a id="179_3" value="REJECTED">
+			<a_str>drei</a_str>
+			<t_str doc="SDA.950610.0059">Bohn löst den früheren Bildungsminister Rainer_Ortleb ab , der nicht mehr kandidierte . Als erste der drei stellvertretenden Partei- Vizen war zuvor die Ausländerbeautragte Cornelia_Schmalz-Jacobsen gewählt worden .</t_str>
+		</a>
+	</q>
+	<q id="180" lang="DE">
+		<q_str>Wie viele Journalisten hat Diego Maradona mit einem Luftgewehr verletzt?</q_str>
+		<a id="180_1" value="REJECTED">
+			<a_str>sechs</a_str>
+			<t_str doc="FR940530-001041">Boliviens Spitzenverein Bolivar will Diego_Maradona verpflichten . Für jedes der sechs geplanten Spiele bis_zum Finale der Meisterschaft soll der Argentinier Dollar , also insgesamt 1,5_Millionen Dollar erhalten .</t_str>
+		</a>
+		<a id="180_2" value="VALIDATED">
+			<a_str>fünf</a_str>
+			<t_str doc="FR940206-000045">Die Polizei hat Medienberichten zufolge am Mittwoch das in der Nähe von Buenos Aires gelegene Sommerhaus des argentinischen Fußballstars Diego Maradona durchsucht, nachdem berichtet worden war, daß mindestens fünf Journalisten vor seinem Anwesen von Luftgewehrkugeln getroffen worden seien.</t_str>
+		</a>
+		<a id="180_3" value="VALIDATED">
+			<a_str>vier</a_str>
+			<t_str doc="FR940213-000472">Der 33 Jahre alte Nationalspieler, Mitglied der Weltmeister-Mannschaft von 1986, hatte erst in der vorigen Woche nach seiner Entlassung bei seinem Klub Newell's Old Boys Rosario vor seinem Haus wartende Journalisten bei einem Amoklauf mit einem Luftgewehr beschossen und vier Medienvertreter leicht verletzt. Bis zur Klärung des Vorfalls darf Maradona, der nach seinen jüngsten Äußerungen auf jeden Fall bei der WM 1994 in den USA spielen will, sein Heimatland nicht verlassen. Beim ersten Anhörungstermin</t_str>
+		</a>
+	</q>
+	<q id="181" lang="DE">
+		<q_str>Nenne einen Film unter der Regie von Claude Lanzmann.</q_str>
+		<a id="181_1" value="REJECTED">
+			<a_str>Fredrik Schwenk</a_str>
+			<t_str doc="FR940424-000184">Einen Auftrag zur Fertigstellung des Werks verbunden mit 20000 Mark erhielten Hartmut Fladt (Berlin) für das szenische Oratorium Salomo, König der Könige, Peter Michael Hamel (Aschau) für Shoah nach dem gleichnamigen Film von Claude Lanzmann und Fredrik Schwenk (MÜNCHEN) für die Oper Pan in Oslo nach dem Roman von Knut Faldbacken.</t_str>
+		</a>
+		<a id="181_2" value="REJECTED">
+			<a_str>Eberhard Fechner</a_str>
+			<t_str doc="FR941113-003206">Um die Grenzen des Darstellbaren geht es auch Wolfram Schütte, der (ebenfalls im Literaturmagazin) Stevan Spielbergs Film Schindlers Liste auf seine Wahrheit befragt. Ist Volksaufklärung durch Fiktionen bei diesem Thema erlaubt? Nur indirekt dürfe vom Grauen berichtet werden, meint Schütte (mit Adorno), durch die Stimmen der Opfer und der Täter, wie Eberhard Fechner und Claude Lanzmann es versucht haben, durch Eingedenken, das sich kein Bild macht das nichts nachstellt und nachspielt: Spielbergs Vers</t_str>
+		</a>
+	</q>
+	<q id="182" lang="DE">
+		<q_str>In welchem Land fand die Präsidentschaftswahl im Oktober 1994 statt?</q_str>
+		<a id="182_1" value="REJECTED">
+			<a_str>Mexikos</a_str>
+			<t_str doc="FR940904-002821">Die Präsidentschaftswahl von 1994 markiert den Eintritt Mexikos in eine neue Epoche: in die Epoche der Wiederbelebung der Gesellschaft und des politischen Lebens.</t_str>
+		</a>
+		<a id="182_2" value="REJECTED">
+			<a_str>Russland</a_str>
+			<t_str doc="SDA.940422.0199">Hier eine Zusammenstellung der bisherigen Wahlbeobachtermissionen: Nov. 1989.: Namibia, UNTAG (UNO) Dez. 1990/Jan. 1991: Haiti, ONUVEH (UNO) April 1991: Albanien, Parlamentswahlen Sept. 1991: Armenien, Unabhängigkeits-Referendum Okt. April 1991: Bulgarien, Parlamentswahlen Feb. 1992: Rumänien, Lokalwahlen Feb./März 1992: Bosnien-Herzegowina, Unabhängigkeits-Referendum 1992: Albanien, Parlamentswahlen 1992: Äthiopien, Regionalwahlen 1992: Kongo, Präsidentschaftswahlen Sept. 1992: Angola, UNAVEM II (U</t_str>
+		</a>
+		<a id="182_3" value="REJECTED">
+			<a_str>Algeriens</a_str>
+			<t_str doc="SDA.950919.0154">Algier , 19. Sept. ( sda / dpa / afp ) Algeriens Staatsoberhaupt Liamine_Zeroual hat am Dienstag seine Kandidatur für die Präsidentschaftswahlen angekündigt .</t_str>
+		</a>
+		<a id="182_4" value="VALIDATED">
+			<a_str>Brasilien</a_str>
+			<t_str doc="SDA.940131.0206">In Brasilien ist Luis Inacio da Silva, genannt "Lula", für die Arbeiterpartei aussichtsreicher Kandidat in der Präsidentenwahl Ende 1994.</t_str>
+		</a>
+	</q>
+	<q id="183" lang="DE">
+		<q_str>Wem wurde 1995 der Nobelpreis für Literatur verliehen?</q_str>
+		<a id="183_1" value="REJECTED">
+			<a_str>Carl Gustaf</a_str>
+			<t_str doc="SDA.951210.0013">Nobelpreise 1995 in Stockholm und Oslo verliehen Zusammenfassung Stockholm/Oslo, 10. Dez. (sda/dpa/afp) Der schwedische König Carl Gustaf hat am Sonntag in Stockholm die Nobelpreise 1995 für Literatur, Medizin, Wirtschaftswissenschaften, Physik und Chemie überreicht.</t_str>
+		</a>
+		<a id="183_2" value="REJECTED">
+			<a_str>Solschenizyn</a_str>
+			<t_str doc="FR940523-000209">Der im Februar 1974 aus der Sowjetunion verbannte Solschenizyn , der mit der Erzählung über ein Zwangsarbeitslager ( Ein_Tag_im_Leben_des_Iwan_Denissowitsch ) bekannt wurde , hatte 1970 den Nobelpreis erhalten .</t_str>
+		</a>
+		<a id="183_3" value="VALIDATED">
+			<a_str>Seamus Henaney</a_str>
+			<t_str doc="SDA.951005.0142">Literatur-Nobelpreis 1995 geht an Iren Seamus Henaney</t_str>
+		</a>
+	</q>
+	<q id="184" lang="DE">
+		<q_str>Mit wem ist Aldrich Hazen Ames verheiratet?</q_str>
+		<a id="184_1" value="REJECTED">
+			<a_str>CIA</a_str>
+			<t_str doc="SDA.940228.0004">Lyssenko soll nach amerikanischen Angaben Führungsoffizier des CIA-Mitarbeiters Aldrich Hazen Ames gewesen sein.</t_str>
+		</a>
+	</q>
+	<q id="185" lang="DE">
+		<q_str>Wie hoch war Italiens Strafe für die Überschreitung der Milchquote?</q_str>
+		<a id="185_1" value="REJECTED">
+			<a_str>96</a_str>
+			<t_str doc="FR941120-000611">96: mit Italien, So.</t_str>
+		</a>
+		<a id="185_2" value="REJECTED">
+			<a_str>in Winterthur Bijouterie</a_str>
+			<t_str doc="SDA.950328.0016">Hohe Strafen für Raubüberfall mit Geiselnahmen in Winterthur Bijouterie überfallen, um in Italien neu anzufangen.</t_str>
+		</a>
+		<a id="185_3" value="REJECTED">
+			<a_str>zwölf</a_str>
+			<t_str doc="FR941023-003226">Außerdem verlangte auch Madrid eine Ermäßigung eines Bußgeldes wegen Überschreitung der Milchquoten. Die zwölf Finanzminister einigten sich darauf, daß die Geldbuße gegen Italien in Höhe von ursprünglich über sechs Milliarden Mark auf 3,8 Milliarden Mark dadurch ermäßigt wird, daß die Milchquote rückwirkend für die Jahre 1989 bis 1991 angehoben wird. Die von Spanien zu zahlende Buße wird entsprechend auf 2,5 Milliarden Mark gesenkt.</t_str>
+		</a>
+		<a id="185_4" value="REJECTED">
+			<a_str>1,24_Milliarden Mark</a_str>
+			<t_str doc="SPIEGEL9495-005142/40/16">Der Europäischen_Union_(_EU_) droht ein schwerer Konflikt unter den Mitgliedsstaaten um Milchquoten , Subventionsbetrug und Milliardenforderungen . Das Europäische_Parlament will Italien jetzt 646_Millionen Ecu ( 1,24_Milliarden Mark ) Fördermittel sperren .</t_str>
+		</a>
+	</q>
+	<q id="186" lang="DE">
+		<q_str>Wer ist der Regisseur des Films "Caro Diario"?</q_str>
+		<a id="186_1" value="REJECTED">
+			<a_str>Liebes Tagebuch</a_str>
+			<t_str doc="SDA.941127.0055">Die internationale Kritikervereinigung FIPRESCI verlieh am Sonntag in Berlin - unabhängig von den Nominierungen zum "Felix" - ihren diesjährigen Preis an den Film "Caro Diario" (Liebes Tagebuch) von dem italienischen Regisseur Nanni Moretto, der auf dem letzten Festival in Cannes den Regiepreis gewonnen hatte.</t_str>
+		</a>
+		<a id="186_2" value="REJECTED">
+			<a_str>Marco Müller</a_str>
+			<t_str doc="SDA.950813.0020">Marco Müller, der künstlerische Direktor, kam besonders wegen seines Wettbewerbs unter Beschuss: Es gab zwar eine Reihe von interessanten Filmen, wobei jedoch herausragende Arbeiten fehlten.</t_str>
+		</a>
+		<a id="186_3" value="REJECTED">
+			<a_str>Jean-Luc Godard</a_str>
+			<t_str doc="SPIEGEL9495-006145">Das erscheint so sagenhaft, als hätte Metro-Goldwyn-Mayer den Avantgarde-Filmer Jean-Luc Godard zum Direktor berufen.</t_str>
+		</a>
+		<a id="186_4" value="VALIDATED">
+			<a_str>Nanni_Morettis</a_str>
+			<t_str doc="FR940530-000228">Die Bartholomäusnacht und auf Nanni_Morettis ( Italien ) Caro_Diario für die beste Regie .</t_str>
+		</a>
+	</q>
+	<q id="187" lang="DE">
+		<q_str>Wo starb Ayrton Senna? </q_str>
+		<a id="187_1" value="REJECTED">
+			<a_str>Brasilien</a_str>
+			<t_str doc="SDA.940504.0185">Sterbliche Überreste von Ayrton Senna in Brasilien eingetroffen.</t_str>
+		</a>
+		<a id="187_2" value="REJECTED">
+			<a_str>Monaco</a_str>
+			<t_str doc="FR940515-000399">Wissen nicht, ob er überleben wird Es liegt ein Fluch über der Formel 1. Nur elf Tage nach der Tragödie von Imola, bei der Ayrton Senna und Roland Ratzenberger starben, schwebt der Österreicher Karl Wendlinger nach einem schweren Unfall am Donnerstag vormittag im freien Training zum Großen Preis von Monaco in Lebensgefahr.</t_str>
+		</a>
+	</q>
+</ave-corpus>

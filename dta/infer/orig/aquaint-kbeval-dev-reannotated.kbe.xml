@@ -1,0 +1,3686 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xml" href="kbe_to_html.xsl"?>
+<!-- We need to pick a sensible namespace URL; see the root tag below -->
+<root xmlns="http://bogusnamespace.com/inference_pilot_evaluation/annotation"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="InferencePilotEvaluation.xsd" >
+
+  <inference id="ATM1-1">
+    <passage>John took the plane from Paris to Baghdad.
+On the way the plane stopped in Rome. Steve, who was sitting
+next to John, got down in Rome.</passage>
+    <question>Is John in Baghdad?</question>
+    <provenance type="hand-crafted">[source]</provenance>
+    <answer id="1" polarity="true" force="plausible" source="linguistic">
+      <response>likely</response>
+      <because>In the absence of other information, the default is to assume that John continued to the destination.</because>
+    </answer>
+  </inference>
+  <inference id="ATM1-2">
+    <passage>John took the plane from Paris to Baghdad.
+On the way the plane stopped in Rome. Steve, who was sitting
+next to John, got down in Rome.</passage>
+    <question>Is John in Paris?</question>
+    <provenance type="hand-crafted">[source]</provenance>
+    <answer id="1" polarity="true" force="strict" source="linguistic">
+      <response>unlikely</response>
+    </answer>
+  </inference>
+  <inference id="ATM1-3">
+    <passage>John took the plane from Paris to Baghdad.
+On the way the plane stopped in Rome. Steve, who was sitting
+next to John, got down in Rome.</passage>
+    <question>Was John in Paris?</question>
+    <provenance type="hand-crafted">[source]</provenance>
+    <answer id="1" polarity="true" force="strict" source="linguistic">
+      <response>yes</response>
+    </answer>
+  </inference>
+  <inference id="ATM1-4">
+    <passage>John took the plane from Paris to Baghdad.
+On the way the plane stopped in Rome. Steve, who was sitting
+next to John, got down in Rome.</passage>
+    <question>Was John in Rome?</question>
+    <provenance type="hand-crafted">[source]</provenance>
+    <answer id="1" polarity="true" force="strict" source="linguistic">
+      <response>yes</response>
+    </answer>
+  </inference>
+  <inference id="ATM1-5">
+    <passage>John took the plane from Paris to Baghdad.
+On the way the plane stopped in Rome. Steve, who was sitting
+next to John, got down in Rome.</passage>
+    <question>Was John in the airport in Rome?</question>
+    <provenance type="hand-crafted">[source]</provenance>
+    <answer id="1" polarity="true" force="plausible" source="world">
+      <response>likely</response>
+      <because>Planes normally stop in the airports.</because>
+    </answer>
+  </inference>
+  <inference id="ATM1-6">
+    <passage>John took the plane from Paris to Baghdad.
+On the way the plane stopped in Rome. Steve, who was sitting
+next to John, got down in Rome.</passage>
+    <question>Did John pass through the Rome airport customs area? </question>
+    <provenance type="hand-crafted">[source]</provenance>
+    <answer id="1" polarity="true" force="plausible" source="world">
+      <response>unlikely</response>
+      <because>to pass through the customs area, the person should get off the plane.</because>
+    </answer>
+  </inference>
+  <inference id="ATM1-7">
+    <passage>John took the plane from Paris to Baghdad.
+On the way the plane stopped in Rome. Steve, who was sitting
+next to John, got down in Rome.</passage>
+    <question>Did Steve pass through the Rome airport customs area? </question>
+    <provenance type="hand-crafted">[source]</provenance>
+    <answer id="1" polarity="true" force="plausible" source="world">
+      <response>likely</response>
+      <because>If a person gets off an international flight, he needs to pass through the airport customs area.</because>
+    </answer>
+  </inference>
+  <inference id="ATM2-1">
+    <passage>John took the plane from Paris to Baghdad.
+On the way the plane stopped in Rome, where
+John was arrested.</passage>
+    <question>Is John in Baghdad?</question>
+    <provenance type="hand-crafted">[source]</provenance>
+    <answer id="1" polarity="true" force="strict" source="world">
+      <response>unlikely</response>
+      <because>typically if a person is arrested he/she is not allowed to continue on the flight.</because>
+    </answer>
+  </inference>
+  <inference id="ATM2-2">
+    <passage>John took the plane from Paris to Baghdad.
+On the way the plane stopped in Rome, where
+John was arrested.</passage>
+    <question>Is John in Rome?</question>
+    <provenance type="hand-crafted">[source]</provenance>
+    <answer id="1" polarity="true" force="strict" source="world">
+      <response>likely</response>
+      <because>if a person is arrested in a city, then the person should be in the city.</because>
+    </answer>
+  </inference>
+  <inference id="ATM2-3">
+    <passage>John took the plane from Paris to Baghdad.
+On the way the plane stopped in Rome, where
+John was arrested.</passage>
+    <question>Did John pass through the Rome airport customs? </question>
+    <provenance type="hand-crafted">[source]</provenance>
+    <answer id="1" polarity="true" force="plausible" source="world">
+      <response>unknown</response>
+      <because>If a person gets off an international flight, he must pass through customs. We assume this is also true for someone who is under arrest.</because>
+    </answer>
+  </inference>
+  <inference id="ATM2-4">
+    <passage>John took the plane from Paris to Baghdad.
+On the way the plane stopped in Rome, where
+John was arrested.</passage>
+    <question>Is the plane in Baghdad? </question>
+    <provenance type="hand-crafted">[source]</provenance>
+    <answer id="1" polarity="true" force="plausible" source="world">
+      <response>likely</response>
+      <because>planes normally fly their scheduled route by default.</because>
+    </answer>
+  </inference>
+  <inference id="ATM3-1">
+    <passage>John is a US citizen. He is in Boston on Dec 1.
+That day he applied for the passport.
+</passage>
+    <question>Can he go to Paris on Dec. 1? </question>
+    <provenance type="hand-crafted">[source]</provenance>
+    <answer id="1" polarity="true" force="plausible" source="world">
+      <response>unlikely</response>
+      <because>More than 1 day is required to obtain a passport.</because>
+    </answer>
+  </inference>
+  <inference id="ATM3-2">
+    <passage>John is a US citizen. He is in Boston on Dec 1.
+That day he applied for the passport.
+</passage>
+    <question>Can he go to Paris on Dec 14th? </question>
+    <provenance type="hand-crafted">[source]</provenance>
+    <answer id="1" polarity="true" force="plausible" source="world">
+      <response>unknown</response>
+      <because>it is unclear whether 2 weeks are enough to obtain a passport.</because>
+    </answer>
+  </inference>
+  <inference id="ATM3-3">
+    <passage>John is a US citizen. He is in Boston on Dec 1.
+That day he applied for the passport.
+</passage>
+    <question>Can he go to Paris on the Jan 10th? </question>
+    <provenance type="hand-crafted">[source]</provenance>
+    <answer id="1" polarity="true" force="plausible" source="world">
+      <response>likely</response>
+      <because>40 days are certainly enough to obtain a passport.</because>
+    </answer>
+  </inference>
+  <inference id="ATM4-1">
+    <passage>John, who always carries his laptop with him, took a flight
+from Boston to Paris on the morning of Dec 11th.
+</passage>
+    <question>Was John's laptop in Paris on the evening of Dec 10th?</question>
+    <provenance type="hand-crafted">[source]</provenance>
+    <answer id="1" polarity="true" force="plausible" source="world">
+      <response>unlikely</response>
+      <because>John is most likely in Boston with laptop in the evening of Dec 10th.</because>
+    </answer>
+  </inference>
+  <inference id="ATM4-2">
+    <passage>John, who always carries his laptop with him, took a flight
+from Boston to Paris on the morning of Dec 11th.
+</passage>
+    <question>Was John's laptop in Paris on the evening of Dec 11th? </question>
+    <provenance type="hand-crafted">[source]</provenance>
+    <answer id="1" polarity="true" force="plausible" source="world">
+      <response>likely</response>
+      <because>the fight from Boston to Pairs takes half a day</because>
+    </answer>
+  </inference>
+  <inference id="ATM5-1">
+    <passage>John, who travels abroad often, is at home in Boston
+and receives a call that he must immediately go to Paris.
+</passage>
+    <question>Can he just get on a plane and fly to Paris? </question>
+    <provenance type="hand-crafted">[source]</provenance>
+    <answer id="1" polarity="true" force="plausible" source="world">
+      <response>unknown</response>
+    </answer>
+  </inference>
+  <inference id="ATM5-2">
+    <passage>John, who travels abroad often, is at home in Boston
+and receives a call that he must immediately go to Paris.
+</passage>
+    <question>Did someone call John to tell him to go to Paris?</question>
+    <provenance type="hand-crafted">[source]</provenance>
+    <answer id="1" polarity="true" force="plausible" source="world">
+      <response>likely</response>
+    </answer>
+  </inference>
+  <inference id="ATM6-1">
+    <passage>John spent December 10 in Paris and took a plane to
+Baghdad the next morning. He was planning to meet Bob who was waiting
+for him there.
+</passage>
+    <question> Was John in the Middle East in mid-December? 
+</question>
+    <provenance type="hand-crafted">[source]</provenance>
+    <answer id="1" polarity="true" force="strict" source="world">
+      <response>likely</response>
+      <because>Baghdad is in the Middle East; plane probably (but not necessarily) landed there.</because>
+    </answer>
+  </inference>
+  <inference id="ATM6-2">
+    <passage>John spent December 10 in Paris and took a plane to
+Baghdad the next morning. He was planning to meet Bob who was waiting
+for him there.
+</passage>
+    <question> Did he meet Bob in the Middle East in mid-December? 
+</question>
+    <provenance type="hand-crafted">[source]</provenance>
+    <answer id="1" polarity="true" force="plausible" source="world">
+      <response>likely</response>
+      <because>Baghdad is in the Middle East. Since they had a plan, we assume in the absence of other information that the plan is carried out.</because>
+    </answer>
+  </inference>
+  <inference id="ATM7-1">
+    <passage>President Bush attended Pope John Paul II's funeral
+in Rome on the Morning of April 8.
+</passage>
+    <question> Was President Bush in Rome on April 8? 
+</question>
+    <provenance type="edited">[source]</provenance>
+    <answer id="1" polarity="true" force="strict" source="linguistic">
+      <response>yes</response>
+    </answer>
+  </inference>
+  <inference id="ATM7-2">
+    <passage>President Bush attended Pope John Paul II's funeral
+in Rome on the Morning of April 8.
+</passage>
+    <question>Was President Bush in Texas on the afternoon of April 8.?
+</question>
+    <provenance type="edited">[source]</provenance>
+    <answer id="1" polarity="true" force="plausible" source="world">
+      <response>unlikely</response>
+      <because>it takes time to fly from Rome to Texas.</because>
+    </answer>
+  </inference>
+  <inference id="ATM8-1">
+    <passage>A rainstorm caused cancellation of the important
+meeting on Thursday. Friday had beautiful weather.
+</passage>
+    <question>Did the meeting take place on Thursday? 
+</question>
+    <provenance type="hand-crafted">[source]</provenance>
+    <answer id="1" polarity="true" force="strict" source="linguistic">
+      <response>no</response>
+      <because>If a meeting is cancelled, then the meeting cannot be held.</because>
+    </answer>
+  </inference>
+  <inference id="ATM8-2">
+    <passage>A rainstorm caused cancellation of the important
+meeting on Thursday. Friday had beautiful weather.
+</passage>
+    <question>Did the meeting take place on Friday? 
+</question>
+    <provenance type="hand-crafted">[source]</provenance>
+    <answer id="1" polarity="true" force="plausible" source="world">
+      <response>unknown</response>
+      <because>If the meeting is important, it may have been scheduled as soon as possible. But this depends on the nature of the meeting.</because>
+    </answer>
+  </inference>
+  <inference id="ATM9-1">
+    <passage>A CH-47 Chinook, carrying 10 people,
+crashed near Ghazni while returning to
+Bagram Air Base near the capital. The pilot perished
+in the crash.
+</passage>
+    <question>Did the Chinook arrive at Bagram Air Base?
+</question>
+    <provenance type="edited">[source]</provenance>
+    <answer id="1" polarity="true" force="strict" source="world">
+      <response>no</response>
+      <because>A crashed plane cannot fly to the airport.</because>
+    </answer>
+  </inference>
+  <inference id="ATM9-2">
+    <passage>A CH-47 Chinook, carrying 10 people,
+crashed near Ghazni while returning to
+Bagram Air Base near the capital. The pilot perished
+in the crash.
+</passage>
+    <question> Is the Pilot alive?
+</question>
+    <provenance type="edited">[source]</provenance>
+    <answer id="1" polarity="true" force="strict" source="linguistic">
+      <response>no</response>
+      <because>a perished person is no longer alive.</because>
+    </answer>
+  </inference>
+  <inference id="ATM9-3">
+    <passage>A CH-47 Chinook, carrying 10 people,
+crashed near Ghazni while returning to
+Bagram Air Base near the capital. The pilot perished
+in the crash.
+</passage>
+    <question>Did at most 9 people surive?</question>
+    <provenance type="edited">[source]</provenance>
+    <answer id="1" polarity="unknown" force="strict" source="linguistic">
+      <response>yes</response>
+      <because>Others may have died.</because>
+    </answer>
+  </inference>
+  <inference id="ATM10-1">
+    <passage>A.Q. Khan of Pakistan  sold plans for a nuclear bomb to Iran.
+He also sold the XYZ-11, the key part necessary for the trigger.
+</passage>
+    <question> Does Iran have plans for a nuclear bomb? 
+</question>
+    <provenance type="edited">[source]</provenance>
+    <answer id="1" polarity="true" force="strict" source="linguistic">
+      <response>yes</response>
+    </answer>
+  </inference>
+  <inference id="ATM10-2">
+    <passage>A.Q. Khan of Pakistan  sold plans for a nuclear bomb to Iran.
+He also sold the XYZ-11, the key part necessary for the trigger.
+</passage>
+    <question>Does Pakistan have plans for a nuclear bomb? 
+</question>
+    <provenance type="edited">[source]</provenance>
+    <answer id="1" polarity="true" force="plausible" source="world">
+      <response>yes</response>
+      <because>the plan can be duplicated</because>
+    </answer>
+  </inference>
+  <inference id="ATM10-3">
+    <passage>A.Q. Khan of Pakistan  sold plans for a nuclear bomb to Iran.
+He also sold the XYZ-11, the key part necessary for the trigger.
+</passage>
+    <question>Does Iran have the XYZ-11? 
+</question>
+    <provenance type="edited">[source]</provenance>
+    <answer id="1" polarity="true" force="strict" source="linguistic">
+      <response>yes</response>
+    </answer>
+  </inference>
+  <inference id="ATM10-4">
+    <passage>A.Q. Khan of Pakistan  sold plans for a nuclear bomb to Iran.
+He also sold the XYZ-11, the key part necessary for the trigger.
+</passage>
+    <question>Does Pakistan have the XYZ-11?
+</question>
+    <provenance type="edited">[source]</provenance>
+    <answer id="1" polarity="true" force="plausible" source="world">
+      <response>likely</response>
+      <because>By default it can be assumed that Pakistan can produce many copies of the XYZ-11.</because>
+    </answer>
+  </inference>
+  <inference id="ATM11-1">
+    <passage>John was at the station in Washington D.C at 10:00 AM
+on March 15, 2005. His train to New York was scheduled to
+leave the station at 10:30.
+</passage>
+    <question>Was John in Washington at 10? 
+</question>
+    <provenance type="hand-crafted">[source]</provenance>
+    <answer id="1" polarity="true" force="strict" source="linguistic">
+      <response>yes</response>
+    </answer>
+  </inference>
+  <inference id="ATM11-2">
+    <passage>John was at the station in Washington D.C at 10:00 AM
+on March 15, 2005. His train to New York was scheduled to
+leave the station at 10:30.
+</passage>
+    <question>Was John in Washington at 10:15? 
+</question>
+    <provenance type="hand-crafted">[source]</provenance>
+    <answer id="1" polarity="true" force="plausible" source="world">
+      <response>likely</response>
+      <because>To follow the schedule, John should be in Washington D.C. at 10:15. The only scenarios where this is not the case (e.g. flying out on a helicoptor) are unlikely.</because>
+    </answer>
+  </inference>
+  <inference id="ATM11-3">
+    <passage>John was at the station in Washington D.C at 10:00 AM
+on March 15, 2005. His train to New York was scheduled to
+leave the station at 10:30.
+</passage>
+    <question>Was John in Washington at 10:30? 
+</question>
+    <provenance type="hand-crafted">[source]</provenance>
+    <answer id="1" polarity="true" force="plausible" source="world">
+      <response>likely</response>
+      <because>If John follows his schedule, he should be in the train at the station, in Washington.</because>
+    </answer>
+  </inference>
+  <inference id="ATM11-4">
+    <passage>John was at the station in Washington D.C at 10:00 AM
+on March 15, 2005. His train to New York was scheduled to
+leave the station at 10:30.
+</passage>
+    <question>Was John in Washington on March 15? 
+</question>
+    <provenance type="hand-crafted">[source]</provenance>
+    <answer id="1" polarity="true" force="strict" source="world">
+      <response>yes</response>
+      <because>10:00AM on March 15,2005 is within the day.</because>
+    </answer>
+  </inference>
+  <inference id="ATM11-5">
+    <passage>John was at the station in Washington D.C at 10:00 AM
+on March 15, 2005. His train to New York was scheduled to
+leave the station at 10:30.
+</passage>
+    <question>Was John in New York on March 15th?
+</question>
+    <provenance type="hand-crafted">[source]</provenance>
+    <answer id="1" polarity="true" force="plausible" source="world">
+      <response>likely</response>
+      <because>if he follows his schedule, he should be in New York.</because>
+    </answer>
+  </inference>
+  <inference id="ATM11-6">
+    <passage>John was at the station in Washington D.C at 10:00 AM
+on March 15, 2005. His train to New York was scheduled to
+leave the station at 10:30.
+</passage>
+    <question>Was John in California on March 15th? 
+</question>
+    <provenance type="hand-crafted">[source]</provenance>
+    <answer id="1" polarity="true" force="plausible" source="world">
+      <response>unlikely</response>
+      <because>It is unlikely that a person who is in Washington D.C. and has  a plan to travel to New York by train then leaves for California on the same day.</because>
+    </answer>
+  </inference>
+
+  <inference id="Brandeis-01.1">
+    <passage>StatesWest Airlines withdrew its offer to acquire Mesa Airlines.</passage>
+    <question>Was an offer made to acquire Mesa Airline?</question>
+    <provenance type="edited">TimeBank (wsj_0321_orig.tml)</provenance>
+    <answer force="strict" id="1" polarity="true" source="linguistic">
+      <response>yes</response>
+    </answer>
+  </inference>
+  <inference id="Brandeis-01.2">
+    <passage>StatesWest Airlines withdrew its offer to acquire Mesa Airlines.</passage>
+    <question>Did StatesWest ever plan to acquire Mesa Airlines?</question>
+    <provenance type="edited">TimeBank (wsj_0321_orig.tml</provenance>
+    <answer force="strict" id="1" polarity="true" source="linguistic">
+      <response>yes</response>
+      <comment>Lexical knowledge.</comment>
+    </answer>
+  </inference>
+  <inference id="Brandeis-01.3">
+    <passage>StatesWest Airlines withdrew its offer to acquire Mesa Airlines.</passage>
+    <question>Did StatesWest acquire Mesa Airlines?</question>
+    <provenance type="edited">TimeBank (wsj_0321_orig.tml</provenance>
+    <answer force="strict" id="1" polarity="true" source="linguistic">
+      <response>no</response>
+    </answer>
+  </inference>
+  <inference id="Brandeis-02">
+    <passage>Steynar Gil welcomed the release of prisoners imprisoned during the October 15-16 riots.</passage>
+    <question>Have prisoners imprisoned during October 15-16 riots been released?</question>
+    <provenance type="unedited">Google</provenance>
+    <answer force="strict" id="1" polarity="true" source="linguistic">
+      <response>yes</response>
+      <assumptions>One reading. There is another reading of the sentence in which there is a positive intention of release. </assumptions>
+    </answer>
+  </inference>
+  <inference id="Brandeis-03">
+    <passage>Program trading is hurting the market's efforts to bring back small investors.</passage>
+    <question>Are there any efforts to bring back small investors?</question>
+    <provenance type="edited">TimeBank (wsj_0585_orig.tml)</provenance>
+    <answer force="strict" id="1" polarity="true" source="linguistic">
+      <response>yes</response>
+    </answer>
+  </inference>
+  <inference id="Brandeis-04">
+    <passage>Thirty-two of the 159 U.N. members were honoring the sanctions against Iraq.</passage>
+    <question>Were there sanctions against Iraq?</question>
+    <provenance type="edited">TimeBank (AP900816-0139.tml)</provenance>
+    <answer force="strict" id="1" polarity="true" source="linguistic">
+      <response>yes</response>
+    </answer>
+  </inference>
+  <inference id="Brandeis-05.1">
+    <passage>Herbicide use in some areas of the U.S. was delayed earlier in the year by heavy rains.</passage>
+    <question>Were herbicides delayed in all areas of the U.S. this year?</question>
+    <provenance type="edited">TimeBank (wsj_0918_orig.tml)</provenance>
+    <answer force="strict" id="1" polarity="true" source="linguistic">
+      <response>unlikely</response>
+    </answer>
+  </inference>
+  <inference id="Brandeis-05.2">
+    <passage>Herbicide use in some areas of the U.S. was prevented this year because of heavy rains.</passage>
+    <question>Were herbicides used this year in the U.S.?</question>
+    <provenance type="edited">TimeBank (wsj_0918_orig.tml)</provenance>
+    <answer force="plausible" id="1" polarity="true" source="world">
+      <response>likely</response>
+      <because>Conversational implicature. Namely, if it is reported that p does not happen in some areas, that let us assume that p happens in other areas.</because>
+    </answer>
+  </inference>
+  <inference id="Brandeis-06">
+    <passage>The US is bolstering its military presence in the Gulf.</passage>
+    <question>Does the US have a military presence in the Gulf.</question>
+    <provenance type="edited">TimeBank (PRI19980205.2000.1890.tml)</provenance>
+    <answer force="strict" id="1" polarity="true" source="linguistic">
+      <response>yes</response>
+    </answer>
+  </inference>
+  <inference id="Brandeis-07">
+    <passage>The unemployed took to the streets of the German capital, Berlin, mirroring protests around the country.</passage>
+    <question>Were the protests only in Berlin?</question>
+    <provenance type="edited">TimeBank (PRI19980205.2000.1998.tml)</provenance>
+    <answer force="strict" id="1" polarity="true" source="linguistic">
+      <response>no</response>
+    </answer>
+  </inference>
+  <inference id="Brandeis-08.1">
+    <passage>The court nullified a standstill agreement between DPC Acquisition and Dataproducts.</passage>
+    <question>Was there any agreement between DPC Acquisition and Dataproducts?</question>
+    <provenance type="edited">TimeBank (wsj_0661_orig.tml)</provenance>
+    <answer force="strict" id="1" polarity="true" source="linguistic">
+      <response>yes</response>
+    </answer>
+  </inference>
+  <inference id="Brandeis-08.2">
+    <passage>The court nullified a standstill agreement between DPC Acquisition and Dataproducts.</passage>
+    <question>Are there any agreements between DCP Acquisition and Dataproducts?</question>
+    <provenance type="edited">TimeBank (wsj_0661_orig.tml)</provenance>
+    <answer force="strict" id="1" polarity="true" source="linguistic">
+      <response>unknown</response>
+    </answer>
+  </inference>
+  <inference id="Brandeis-09.1">
+    <passage>Sardar Patel faced imprisonment for the first time when he was assisting Gandhiji in the Salt Satyagraha.</passage>
+    <question>Was Sardar Patel ever in prison?</question>
+    <provenance type="edited">Google</provenance>
+    <answer force="strict" id="1" polarity="true" source="linguistic">
+      <response>likely</response>
+      <assumptions>One reading. We don't know whether he ended up in prison and the question refers to that possible imprisonment (see next interpretation).</assumptions>
+    </answer>
+  </inference>
+  <inference id="Brandeis-09.2">
+    <passage>Sardar Patel faced imprisonment for the first time when he was assisting Gandhiji in the Salt Satyagraha.</passage>
+    <question>Was Sardar Patel ever convicted of a crime?</question>
+    <provenance type="edited">Google</provenance>
+    <answer force="strict" id="1" polarity="true" source="linguistic">
+      <response>unknown</response>
+    </answer>
+  </inference>
+  <inference id="Brandeis-10.1">
+    <passage>Darryl Strawberry recently avoided imprisonment when a judge sentenced him to a drug treatment center for violating his probation.</passage>
+    <question>Was Darryl Strawberry ever in prison?</question>
+    <provenance type="edited">Google</provenance>
+    <answer force="strict" id="1" polarity="true" source="linguistic">
+      <response>unknown</response>
+    </answer>
+  </inference>
+  <inference id="Brandeis-10.2">
+    <passage>Darryl Strawberry recently avoided imprisonment when a judge sentenced him to a drug treatment center for violating his probation.</passage>
+    <question>Was Darryl imprisoned for violating his probation?</question>
+    <provenance type="edited">Google</provenance>
+    <answer force="strict" id="1" polarity="true" source="linguistic">
+      <response>no</response>
+    </answer>
+  </inference>
+  <inference id="Brandeis-11">
+    <passage>Three patients declined further surgery. </passage>
+    <question>Did the patients have any surgeries? </question>
+    <provenance type="unedited">Google</provenance>
+    <answer force="strict" id="1" polarity="true" source="linguistic">
+      <response>yes</response>
+    </answer>
+  </inference>
+  <inference id="Brandeis-12">
+    <passage>Foodstuffs are being blocked from entry into Iraq.</passage>
+    <question>Are foodstuffs getting into Iraq?</question>
+    <provenance type="edited">TimeBank (AP900816-0139.tml)</provenance>
+    <answer force="strict" id="1" polarity="true" source="linguistic">
+      <response>unlikely</response>
+    </answer>
+  </inference>
+  <inference id="Brandeis-13">
+    <passage>The new space allowed Compaq to increase the manufacturing capacity of its plant in Erskine, Scotland.</passage>
+    <question>Did Compaq increase its manufacturing capacity in the Erskine plant?</question>
+    <provenance type="edited">TimeBank (wsj_0904_orig.tml)</provenance>
+    <answer force="strict" id="1" polarity="true" source="linguistic">
+      <response>yes</response>
+    </answer>
+  </inference>
+  <inference id="Brandeis-14">
+    <passage>Holders of more than a majority of the stock of the company have approved the transaction by written consent.</passage>
+    <question>Has the transaction taken place?</question>
+    <provenance type="edited">TimeBank (wsj_0122_orig.tml)</provenance>
+    <answer force="strict" id="1" polarity="true" source="linguistic">
+      <response>unknown</response>
+    </answer>
+  </inference>
+  <inference id="Brandeis-15">
+    <passage>The transaction has been approved by Kyle's board but requires the approval of the company's shareholders.</passage>
+    <question>Has the transaction taken place?</question>
+    <provenance>TimeBank (wsj_0923_orig.tml)</provenance>
+    <answer force="strict" id="1" polarity="true" source="linguistic">
+      <response>no</response>
+    </answer>
+  </inference>
+  <inference id="Brandeis-16">
+    <passage>The company's board authorized the purchase of an additional one million shares.</passage>
+    <question>Has the company purchased additional shares?</question>
+    <provenance type="edited">TimeBank (wsj_0520_orig.tml)</provenance>
+    <answer force="strict" id="1" polarity="true" source="linguistic">
+      <response>unknown</response>
+    </answer>
+  </inference>
+  <inference id="Brandeis-17">
+    <passage>The purchase was subsequently rejected by regulators.</passage>
+    <question>Did the purchase take place?</question>
+    <provenance type="edited">TimeBank (wsj_0938_orig.tml)</provenance>
+    <answer force="strict" id="1" polarity="true" source="linguistic">
+      <response>no</response>
+    </answer>
+  </inference>
+  <inference id="Brandeis-18">
+    <passage>Analysts were predicting 1990 BellSouth earnings in the range of $3.90 a share.</passage>
+    <question>Has BellSouth experienced earnings in 1990?</question>
+    <provenance type="edited">TimeBank (wsj_0584_orig.tml)</provenance>
+    <answer force="strict" id="1" polarity="true" source="linguistic">
+      <response>unknown</response>
+    </answer>
+  </inference>
+  <inference id="Brandeis-19.1">
+    <passage>Milton Roy disclosed in May that it was approached for a possible acquisition by Thermo Electron.</passage>
+    <question>Was Milton Roy approached by Thermo Electron?</question>
+    <provenance type="unedited">TimeBank (wsj_0570_orig.tml)</provenance>
+    <answer force="strict" id="1" polarity="true" source="linguistic">
+      <response>yes</response>
+    </answer>
+  </inference>
+  <inference id="Brandeis-19.2">
+    <passage>Milton Roy disclosed in May that it was approached for a possible acquisition by Thermo Electron.</passage>
+    <question>Has Milton Roy been acquired by Thermo Electron?</question>
+    <provenance type="unedited">TimeBank (wsj_0570_orig.tml)</provenance>
+    <answer force="strict" id="1" polarity="true" source="linguistic">
+      <response>unknown</response>
+    </answer>
+  </inference>
+  <inference id="Brandeis-20">
+    <passage>Analysts noted that over the past 20 years, Mr. Fournier has built his company through astute stock-market activity.</passage>
+    <question>Has Mr. Fournier built his company through astute stock-market activity?</question>
+    <provenance type="unedited">TimeBank (wsj_0810_orig.tml)</provenance>
+    <answer force="strict" id="1" polarity="true" source="linguistic">
+      <response>likely</response>
+    </answer>
+  </inference>
+  <inference id="Brandeis-21.1">
+    <passage>I was pleased that Ms. Currie's lawyers stated unambiguously this morning that she's not aware of any unethical conduct.</passage>
+    <question>Is Ms. Currie aware of any unethical conduct on her part?</question>
+    <provenance type="edited">TimeBank (NYT19980206.0466.tml)</provenance>
+    <answer force="strict" id="1" polarity="true" source="linguistic">
+      <response>unlikely</response>
+    </answer>
+  </inference>
+  <inference id="Brandeis-21.2">
+    <passage>I was pleased that Ms. Currie's lawyers stated unambiguously this morning that she's not aware of any unethical conduct.</passage>
+    <question>Have Ms. Currie’s lawyers stated she’s not aware of any unethical conduct?</question>
+    <provenance type="edited">TimeBank (NYT19980206.0466.tml)</provenance>
+    <answer force="strict" id="1" polarity="true" source="linguistic">
+      <response>yes</response>
+    </answer>
+  </inference>
+  <inference id="Brandeis-22">
+    <passage>President Clinton and Blair will stand together on arresting the terrorists suspected of blowing up Pan Am flight 103 over Scotland.</passage>
+    <question>Has there been an explosion of a Pan Am flight over Scotland?</question>
+    <provenance type="edited">TimeBank (APW19980227.0476.tml)</provenance>
+    <answer force="strict" id="1" polarity="true" source="world">
+      <response>yes</response>
+      <because>There was a flight Pan Am 103 explosion.</because>
+    </answer>
+  </inference>
+  <inference id="Brandeis-23">
+    <passage>The accord helps RJR pay off debt.</passage>
+    <question>Does RJR have any debt?</question>
+    <provenance type="edited">TimeBank (wsj_0675_orig.tml)</provenance>
+    <answer force="strict" id="1" polarity="true" source="linguistic">
+      <response>yes</response>
+      <assumptions>In the non-generic interpretation of the proposition.</assumptions>
+    </answer>
+  </inference>
+  <inference id="Brandeis-24">
+    <passage>48 Kuwaiti jet fighters managed to escape the Iraqi invasion.</passage>
+    <question>Did any Kuwaiti jet fighters escape the Iraqi invasion?</question>
+    <provenance type="edited">TimeBank (WSJ900813-0157.tml)</provenance>
+    <answer force="strict" polarity="true" source="linguistic">
+      <response>yes</response>
+    </answer>
+  </inference>
+  <inference id="Brandeis-25">
+    <passage>It appears that allied troops haven't yet fully engaged Iraq's Republican Guard.</passage>
+    <question>Have allied troops engaged Iraq’s Republican Guard?</question>
+    <provenance type="edited">TimeBank (WSJ910225-0066.tml)</provenance>
+    <answer force="strict" id="1" polarity="true" source="linguistic">
+      <response>likely</response>
+      <comment>RR: Confusing; the response appears "bi-modal" depending on interpretation. 'unknown' feels like a worse answer
+      than both 'likely' and 'unlikely'. i assume a human would generally stick to either the 'likely' interpretation or the
+      'unlikely' interpretation...</comment>
+    </answer>
+  </inference>
+  <inference id="Brandeis-26.1">
+    <passage>British police officers concluded Howes had probably been killed soon after being captured.</passage>
+    <question>Did Howes die?</question>
+    <provenance type="edited">TimeBank (APW19980219.0476.tml)</provenance>
+    <answer force="strict" id="1" polarity="true" source="linguistic">
+      <response>unknown</response>
+      <assumptions>One interpretation: 'probably' scoping over the temporal relation between the killing and the capture.</assumptions>
+    </answer>
+  </inference>
+  <inference id="Brandeis-26.2">
+    <passage>British police officers concluded Howes had probably been killed soon after being captured.</passage>
+    <question>Was Howes killed soon after being captured?</question>
+    <provenance type="edited">TimeBank (APW19980219.0476.tml)</provenance>
+    <answer force="strict" id="1" polarity="true" source="linguistic">
+      <response>unknown</response>
+    </answer>
+  </inference>
+  <inference id="Brandeis-27">
+    <passage>The police allowed the crowd to demonstrate on nearby streets.</passage>
+    <question>Did the crowd demonstrate on nearby streets?</question>
+    <provenance type="edited">TimeBank (APW19980308.0201.tml)</provenance>
+    <answer force="strict" id="1" polarity="true" source="linguistic">
+      <response>likely</response>
+    </answer>
+  </inference>
+  <inference id="Brandeis-28.1">
+    <passage>In Pakistan, the Taliban have forbidden women to work.</passage>
+    <question>Do the Taliban want women to work in Pakistan?</question>
+    <provenance type="edited">TimeBank (VOA19980305.1800.2603.tml)</provenance>
+    <answer force="strict" id="1" polarity="true" source="linguistic">
+      <response>unlikely</response>
+    </answer>
+  </inference>
+  <inference id="Brandeis-28.2">
+    <passage>In Pakistan, the Taliban have forbidden women to work.</passage>
+    <question>Do women work in Pakistan?</question>
+    <provenance type="edited">TimeBank (VOA19980305.1800.2603.tml)</provenance>
+    <answer force="strict" id="1" polarity="true" source="linguistic">
+      <response>unknown</response>
+    </answer>
+  </inference>
+  <inference id="Brandeis-29">
+    <passage>The Administration is trying to decide whether Saddam Hussein has WMD.</passage>
+    <question>Is the administration deciding whether Saddam Hussein has WMD?</question>
+    <provenance type="edited">TimeBank (WSJ900813-0157.tml)</provenance>
+    <answer force="strict" id="1" polarity="true" source="linguistic">
+      <response>yes</response>
+    </answer>
+  </inference>
+  <inference id="Brandeis-30">
+    <passage>Helicopters are trying to locate people stranded without food.</passage>
+    <question>Are helicopters locating people stranded without food?</question>
+    <provenance type="edited">TimeBank (ed980111.1130.0089.tml)</provenance>
+    <answer force="strict" id="1" polarity="true" source="linguistic">
+      <response>unknown</response>
+    </answer>
+  </inference>
+  <inference id="Brandeis-31">
+    <passage>MCA agreed to wait on purchasing Cineplex.</passage>
+    <question>Is MCA waiting to purchase Cineplex?</question>
+    <provenance type="edited">TimeBank (wsj_0938_orig.tml)</provenance>
+    <answer force="strict" id="1" polarity="true" source="linguistic">
+      <response>likely</response>
+    </answer>
+  </inference>
+  <inference id="Brandeis-32">
+    <passage>MGM Grand Inc. has agreed to pay $93 million to buy 117 acres of land in Las Vegas.</passage>
+    <question>Has MGM Grand Inc. paid $93 million to buy 117 acres of land in Las Vegas?</question>
+    <provenance type="edited">TimeBank (wsj_0981_orig.tml)</provenance>
+    <answer force="strict" id="1" polarity="true" source="linguistic">
+      <response>unknown</response>
+    </answer>
+  </inference>
+
+  <inference id="Cycorp-001">
+    <passage>Sandy owns a Golden Retriever, Harley, with whom she has won a Dog World Award.</passage>
+    <question>Is Harley a herding dog?</question>
+    <provenance type="edited">unknown-source</provenance>
+    <answer id="1" polarity="true" force="strict" source="world">
+      <response>no</response>
+      <because> A golden retriever is a type of sporting dog, and sporting dog and herding dog are disjoint classifications.</because>
+    </answer>
+  </inference>
+
+  <inference id="Cycorp-002">
+    <passage>Many cellphones have built-in digital cameras.</passage>
+    <question>Can some cellphones be used to take pictures?</question>
+    <provenance type="edited">unknown-source</provenance>
+    <answer id="1" polarity="true" force="plausible" source="world">
+      <response>yes</response>
+      <because>Cameras can be used to take a picture.</because>
+      <comment> This is merely plausible (i.e. not a logical entailment) since it depends on the reasonable assumption that at least some of the cameras in these cell phones actually work.</comment>
+    </answer>
+  </inference>
+
+  <inference id="Cycorp-003">
+    <passage>One in four cellphones sold has a camera in it.</passage>
+    <question>Do most cell phones have a lens?</question>
+    <provenance type="edited">unknown-source</provenance>
+    <answer id="1" polarity="true" force="strict" source="world">
+      <response>unknown</response>
+      <because> A lens is not (typically) a part of a cellphone.</because>
+    </answer>
+  </inference>
+
+  <inference id="Cycorp-004">
+    <passage>Three in four cellphones sold has a camera in it.</passage>
+    <question>Do most cell phones have a lens?</question>
+    <provenance type="edited">unknown-source</provenance>
+    <answer id="1" polarity="true" force="strict" source="world">
+      <response>yes</response>
+      <because> A lens is (typically) a part of a camera.</because>
+    </answer>
+  </inference>
+
+  <inference id="Cycorp-005">
+    <passage>Mr. Radley ordered a 16 ounce slab of slowly roasted Black Angus Prime Rib.</passage>
+    <question>Is Radley a vegetarian?</question>
+    <provenance type="edited">unknown-source</provenance>
+    <answer id="1" polarity="true" force="plausible" source="world">
+      <response>unlikely</response>
+     <because> Vegetarians don't eat meat; and people usually intend to eat what they order.</because>
+    </answer>
+  </inference>
+
+<inference id="Cycorp-006">
+    <passage>Sue ran down to McDonald's and got a hamburger happy meal with a large Diet Coke.</passage>
+    <question>Did Sue get a cup?</question>
+    <provenance type="edited">unknown-source</provenance>
+    <answer id="1" polarity="true" force="plausible" source="world">
+      <response>likely</response>
+      <because> Beverages are usually served in cups; fast food orders are typically filled.</because>
+    </answer>
+  </inference>
+
+  <inference id="Cycorp-007">
+    <passage>Angela Drake will be moving to California with her husband, where she has accepted a full-time position with the San Diego Public Library.</passage>
+    <question>Does Angela Drake live in Los Angeles?</question>
+    <provenance type="edited">unknown-source</provenance>
+    <answer id="1" polarity="true" force="strict" source="world">
+      <response>no</response>
+      <because>Los Angeles is in California; the passage presupposes that she does not currently live in California.</because>
+    </answer>
+  </inference>
+
+  <inference id="Cycorp-008">
+    <passage>Ambassador Richard C. Holbrooke will visit Paris, France from Saturday, April 22 until Tuesday, April 25.</passage>
+    <question>Will Ambassador Holbrooke visit France in April?</question>
+    <provenance type="edited">unknown-source</provenance>
+    <answer id="1" polarity="true" force="strict" source="linguistic">
+      <response>yes</response>
+    </answer>
+  </inference>
+
+  <inference id="Cycorp-009">
+    <passage>A full-time administrative assistant, Janet Smith lives close to Long Beach, where she's worked for the past 12 years.</passage>
+    <question>Does Janet Smith live in Long Beach?</question>
+    <provenance type="edited">unknown-source</provenance>
+    <answer id="1" polarity="true" force="plausible" source="linguistic">
+      <response>unlikely</response>
+      <because>An assertion that someone lives close to a location normally implies that she doesn't live in that location.</because>
+    </answer>
+  </inference>
+
+  <inference id="Cycorp-010">
+    <passage>Bob Appleton, 33, lives in Sacramento but commutes to Davis in his silver Honda CRV.</passage>
+    <question>Does Appleton have a California Driver's license?</question>
+    <provenance type="edited">unknown-source</provenance>
+    <answer id="1" polarity="true" force="plausible" source="world">
+      <response>unknown</response>
+    <because>Sacramento is in California; people who commute typically have a driver's license for the state in which they reside.</because>
+    </answer>
+  </inference>
+
+  <inference id="Cycorp-011">
+    <passage>When they remodeled their house, the Kirchners transformed the original kitchen into a game room with dark cherry laminate flooring and cabinets. </passage>
+    <question>Does the Krichners' kitchen have cherry cabinets?</question>
+    <provenance type="edited">unknown-source</provenance>
+    <answer id="1" polarity="true" force="strict" source="linguistic">
+      <response>likely</response>
+    </answer>
+  </inference>
+
+  <inference id="Cycorp-012">
+    <passage>Mark Jacobs, who lives in Edmonds and works in Seattle, spends 2 hours a day commuting.</passage>
+    <question>Does Jacobs commute to work during rush hour?</question>
+    <provenance type="edited">unknown-source</provenance>
+    <answer id="1" polarity="true" force="plausible" source="world">
+      <response>unknown</response>
+    <because>One can drive from Edmonds to Seattle in under 40 minutes (without breaking the speed limit).</because>
+    </answer>
+  </inference>
+
+  <inference id="Cycorp-013">
+    <passage>Terry Parks married Robert Paulson in 1979.</passage>
+    <question>Is Terry Parks a man?</question>
+    <provenance type="edited">unknown-source</provenance>
+    <answer id="1" polarity="true" force="plausible" source="world">
+      <response>unknown</response>
+    <because>"Terry" is a more common name for a woman than "Robert"; assuming he's a man, Robert is most likely married to a woman. </because>
+    </answer>
+  </inference>
+
+  <inference id="Cycorp-014">
+    <passage>The Paulsons celebrated their 25th anniversary on June 14, 2004.</passage>
+    <question>Did the Paulsons get married on Flag Day?</question>
+    <provenance type="edited">unknown-source</provenance>
+    <answer id="1" polarity="true" force="plausible" source="world">
+      <response>likely</response>
+      <because>Flag Day is June 14th, but the celebration may have been observed on a different day than the actual anniversary.</because>
+      <assumptions>Whether one regards this response as strictly true or plausibly true depends on whether the passage is taken as describing an actual celebration--which may not have been observed on the anniversary date--or simply as a way of saying that this anniversary did in fact occur for the couple.</assumptions> 
+    </answer>
+  </inference>
+
+  <inference id="Cycorp-015">
+    <passage>The Island Nut Sampler includes an 8 ounce box of milk chocolate covered macadamia nuts and an 8 ounce box of white chocolate covered macadamia nuts.</passage>
+    <question>Does it include a pound of macadamia nuts?</question>
+    <provenance type="edited">unknown-source</provenance>
+    <answer id="1" polarity="true" force="strict" source="world">
+      <response>yes</response>
+    <because>There are 16 ounces in a pound</because>
+    </answer>
+  </inference>
+
+  <inference id="Cycorp-016">
+    <passage>Nanolab says it can't stay profitable if the demand for nanotubes decreases.</passage>
+    <question>Does Nanolab manufacture nanotubes?</question>
+    <provenance type="edited">unknown-source</provenance>
+    <answer id="1" polarity="true" force="strict" source="world">
+      <response>unlikely</response>
+    </answer>
+  </inference>
+
+  <inference id="Cycorp-017">
+    <passage>The Swedish Embassy in Bangkok will be closed April 13-17 during the Songkran Festival.</passage>
+    <question>Is the Songkran Festival a Swedish holiday?</question>
+    <provenance type="edited">unknown-source</provenance>
+    <answer id="1" polarity="true" force="strict" source="world">
+      <response>unknown</response>
+    </answer>
+  </inference>
+
+  <inference id="Cycorp-018">
+    <passage>The Nut Sampler set includes two 8 ounce boxes of chocolate covered nuts.</passage>
+    <question>Does this set contain milk chocolate covered nuts?</question>
+    <provenance type="edited">unknown-source</provenance>
+    <answer id="1" polarity="true" force="plausible" source="world">
+      <response>unknown</response>
+    </answer>
+  </inference>
+
+  <inference id="Cycorp-019">
+    <passage>The Mini Mac was introduced by Apple CEO Steve Jobs at his keynote address on January 11.</passage>
+    <question>Did Apple Computer release a new Macintosh in January?</question>
+    <provenance type="edited">unknown-source</provenance>
+    <answer id="1" polarity="true" force="plausible" source="linguistic">
+      <response>likely</response>
+    <because>Steve Jobs was presumably representing Apple Computer when he made this introduction; also "Mac" is a registered trademark of Apple Computer; so no one except Apple is likely to introduce a computer line with "Mac" in the name.</because>
+    </answer>
+  </inference>
+
+<inference id="Cycorp-020">
+    <passage>The Donald criticized President Bush over his decision to go to war with Iraq.</passage>
+    <question>Does Trump support W's decision to go to war?</question>
+    <provenance type="edited">unknown-source</provenance>
+    <answer id="1" polarity="true" force="plausible" source="linguistic">
+      <response>unlikely</response>
+    <because> George W. Bush is sometimes referred to as "W"; Donald Trump is sometimes referred to as "the Donald".</because>
+    </answer>
+  </inference>
+
+<inference id="Cycorp-021">
+    <passage>LEDs can last ten years, whereas an incandescent bulb typically lasts 5000 hours</passage>
+    <question>Do incandescent bulbs last longer than LEDs?</question>
+    <provenance type="edited">unknown-source</provenance>
+    <answer id="1" polarity="true" force="strict" source="world">
+      <response>unlikely</response>
+  <because>There are more than 500 hours in a year.</because>
+    </answer>
+  </inference>
+
+  <inference id="Cycorp-022">
+    <passage>The "Just Picture It" workshop, sponsored by Oceanside Photo and Video, Inc. and taught by portrait photographer Gale Carlson, has received rave reviews.</passage>
+    <question>Is "Just Picture It" a photography workshop?</question>
+    <provenance type="edited">unknown-source</provenance>
+    <answer id="1" polarity="true" force="plausible" source="world">
+      <response>likely</response>
+    <because>A workshop taught by a professional photographer is probably on photography; also "Just Picture It" would be a reasonably good name for a photography workshop.</because>
+    </answer>
+  </inference>
+
+  <inference id="Cycorp-023">
+    <passage>The equatorial diameter of Saturn is 10% larger than its polar diameter.</passage>
+    <question>Is Saturn an ellipsoid?</question>
+    <provenance type="edited">unknown-source</provenance>
+    <answer id="1" polarity="true" force="strict" source="linguistic">
+      <response>yes</response>
+    </answer>
+  </inference>
+
+  <inference id="Cycorp-024">
+    <passage>The equatorial diameter of Saturn is 10% larger than its polar diameter.</passage>
+    <question>Is Saturn a sphere?</question>
+    <provenance type="edited">unknown-source</provenance>
+    <answer id="1" polarity="true" force="strict" source="linguistic">
+      <response>no</response>
+    <because>The equatorial and polar diameters of sphere are equal.</because>
+    </answer>
+  </inference>
+
+  <inference id="Cycorp-025">
+    <passage>Charlotte Jones gave birth to a healthy baby boy, Johnathan Daniel, on March 14th, 2004.</passage>
+    <question>Was Charlotte Jones pregnant on December 14, 2003?</question>
+    <provenance type="edited">unknown-source</provenance>
+    <answer id="1" polarity="true" force="plausible" source="world">
+      <response>likely</response>
+    <because>Human pregnancy typically lasts nine months; the dates mentioned are three months apart; it is unlikely that a baby born 6 months premature could survive.</because>
+    </answer>
+  </inference>
+
+  <inference id="Cycorp-026">
+    <passage>Keikaimalu, a wholphin (whale-dolphin hybrid), has given birth to female calf.</passage>
+    <question>Did Keikaimalu gave birth to a ruminant?</question>
+    <provenance type="edited">unknown-source</provenance>
+    <answer id="1" polarity="true" force="strict" source="world">
+      <response>unlikely</response>
+    <because>Whales and dolphins are not ruminants.</because>
+    </answer>
+  </inference>
+
+  <inference id="Cycorp-027">
+    <passage>A wholphin is a whale-dolphin hybrid.</passage>
+    <question>Does the term "wholphin" refer to a type of hybrid?</question>
+    <provenance type="edited">unknown-source</provenance>
+    <answer id="1" polarity="true" force="strict" source="linguistic">
+      <response>yes</response>
+    </answer>
+  </inference>
+
+  <inference id="Cycorp-028">
+    <passage>Marilyn Connors had a very difficult pregnancy and died in childbirth yesterday.</passage>
+    <question>Is Marilyn Connors pregnant?</question>
+    <provenance type="edited">unknown-source</provenance>
+    <answer id="1" polarity="true" force="strict" source="world">
+      <response>no</response>
+   <because>Being dead generally precludes being pregnant.</because>
+    </answer>
+  </inference>
+
+  <inference id="Cycorp-029">
+    <passage>Serena Williams is a great tennis player, perhaps one of the best ever.</passage>
+    <question>Does Serena Williams play tennis well?</question>
+    <provenance type="edited">unknown-source</provenance>
+    <answer id="1" polarity="true" force="strict" source="linguistic">
+      <response>yes</response>
+    </answer>
+  </inference>
+
+
+  <inference id="Cycorp-30">
+    <passage>War and Peace is a very long novel.</passage>
+    <question>Does War and Peace contain more pages than the average novel?</question>
+    <provenance type="edited">unknown-source</provenance>
+    <answer id="1" polarity="true" force="strict" source="world">
+      <response>yes</response>
+    </answer>
+  </inference>
+
+  <inference id="Cycorp-031">
+    <passage>Ambassador Richard C. Holbrooke will visit Paris, France from Saturday, April 22 until Tuesday, April 25.</passage>
+    <question>Will Ambassador Holbrooke be in Paris on April 24th?</question>
+    <provenance type="edited">unknown-source</provenance>
+    <answer id="1" polarity="true" force="strict" source="world">
+      <response>likely</response>
+      <because> it's reasonable to assume his visit will not be interrupted; and April 24th occurs between April 22nd and April 25th.</because> 
+    </answer>
+  </inference>
+
+  <inference id="Cycorp-032">
+    <passage>The Island Nut Sampler includes an 8 ounce box of milk chocolate covered macadamia nuts and an 8 ounce box of white chocolate covered macadamia nuts.</passage>
+    <question>Does it include any dark-chocolate covered macadamia nuts?</question>
+    <provenance type="edited">unknown-source</provenance>
+    <answer id="1" polarity="true" force="plausible" source="world">
+      <response>unlikely</response>
+    <because>The passage will often be taken as implying that such nuts are not included.</because>
+    </answer>
+  </inference>
+
+  <inference id="Cycorp-033">
+    <passage>A quarter of all cellphones have built-in cameras.</passage>
+    <question>Do most cell phones have a lens?</question>
+    <provenance type="hand-crafted"></provenance>
+    <answer id="1" polarity="true" force="strict" source="world">
+      <response>unknown</response>
+      <because> A lens is not (typically) a part of a cellphone.</because>
+    </answer>
+  </inference>
+
+  <inference id="Cycorp-034">
+    <passage>Three quarters of all cellphones have a built-in camera.</passage>
+    <question>Do most cell phones have a lens?</question>
+    <provenance type="hand-crafted"></provenance>
+    <answer id="1" polarity="true" force="strict" source="world">
+      <response>yes</response>
+      <because> A lens is (typically) a part of a camera.</because>
+    </answer>
+  </inference>
+
+  <inference id="Cycorp-035">
+    <passage>Marilyn Connors had a very difficult pregnancy and died in childbirth yesterday.</passage>
+    <question>Was Marilyn Connors pregnant?</question>
+    <provenance type="edited">unknown-source</provenance>
+    <answer id="1" polarity="true" force="strict" source="linguistic">
+      <response>yes</response>
+    </answer>
+  </inference>
+
+  <inference id="Cycorp-036">
+    <passage>Marilyn Connors had a very difficult pregnancy and died in childbirth yesterday.</passage>
+    <question>Is Marilyn Connors dead?</question>
+    <provenance type="edited">unknown-source</provenance>
+    <answer id="1" polarity="true" force="strict" source="linguistic">
+      <response>yes</response>
+      <because>Generally, things that have died stay dead.</because>
+    </answer>
+  </inference>
+
+  <inference id="lcch_0001">
+    <passage>On 23 June 1996, the Sunday Telegraph reported about a "secret multi-million-pound deal with the Indian government which will supply banned materials used to manufacture poison gas." Under the deal, India will build a sophisticate chemical plant at Qazvin, which will be used produce phosphorous pentasulfide, a dual-use chemical that could be used to produce chemical weapons.</passage>
+    <question>Has India built dual-use chemical production plants in Iran?</question>
+    <provenance type="unedited">/CountryProfiles/Iran/Chemical/index.htm.txt</provenance>
+    <answer id="1" polarity="true" force="plausible" source="linguistic">
+      <response>unknown</response>
+      <because>A contract to build something does not necessarily entail that the thing was built.</because>
+    </answer>
+  </inference>
+  <inference id="lcch_0002">
+    <passage>On 23 June 1996, the Sunday Telegraph reported about a "secret multi-million-pound deal with the Indian government which will supply banned materials used to manufacture poison gas." Under the deal, India will build a sophisticate chemical plant at Qazvin, which will be used produce phosphorous pentasulfide, a dual-use chemical that could be used to produce chemical weapons.</passage>
+    <question>Has India agreed to to help Iran produce chemicals that could be used in weapons?</question>
+    <provenance type="unedited">/CountryProfiles/Iran/Chemical/index.htm.txt</provenance>
+    <answer id="1" polarity="true" force="strict" source="linguistic">
+      <response>likely</response>
+    </answer>
+  </inference>
+  <inference id="lcch_0003">
+    <passage>In January-February 1997, China supplied Iran with 40,000 barrels of calcium hypochlorite, a chemical-biological-radiological decontamination agent.[26]</passage>
+    <question>Has China provided Iran with decontamination materials?</question>
+    <provenance type="unedited">/CountryProfiles/Iran/Chemical/index.htm.txt</provenance>
+    <answer id="1" polarity="true" force="strict" source="linguistic">
+      <response>yes</response>
+      <because>Providing any amount of decontamination materials entails that some decontamination materials were provided.</because>
+    </answer>
+  </inference>
+  <inference id="lcch_0004">
+    <passage>Iran continues to deny any allegations that it is actively pursuing an offensive CW program. In 1996, it held the first regional seminar on the national implementation of the CWC in Tehran so that government authorities could familiarize themselves with their duties and obligations under the treaty.</passage>
+    <question>Has Iran denied developing CW?</question>
+    <provenance type="unedited">/CountryProfiles/Iran/Chemical/index.htm.txt</provenance>
+    <answer id="1" polarity="true" force="strict" source="linguistic">
+      <response>yes</response>
+    </answer>
+  </inference>
+  <inference id="lcch_0005">
+    <passage>Being one of the few countries in the world that has experienced chemical warfare (CW) on the battlefield, Iran ratified the Chemical Weapons Convention in 1997</passage>
+    <question>Is Iran a signatory to the Chemical Weapons Convention (CWC)?</question>
+    <provenance type="unedited">/CountryProfiles/Iran/Chemical/index.htm.txt</provenance>
+    <answer id="1" polarity="true" force="strict" source="linguistic">
+      <response>yes</response>
+      <because>Only signatories can ratify a treaty.</because>
+    </answer>
+  </inference>
+  <inference id="lcch_0006a">
+    <passage>Desperate for hard currency to prop up its sickly regime, North Korea has demanded $1 billion a year from America to end its destabilising missile sales to countries such as Iran, Syria, Libya, Egypt and Pakistan. That demand was reportedly knocked down by the Clinton administration to a series of satellite launches and some food aid, but the potential deal still lacked a key component-how to verify that North Korea was honouring the bargain-when the Clinton team ran out of time. So missile sales still flourish.</passage>
+    <question>Does North Korean still export missiles?</question>
+    <provenance type="unedited">/data/www.ransac.org/Projects%2520and%2520Publications/News/Nuclear%2520News/2002/02_05_02.html</provenance>
+    <answer id="1" polarity="true" force="strict" source="linguistic">
+      <response>yes</response>
+      <because>Flourishing missile sales to other countries entails the ongoing exportation of missiles.</because>
+    </answer>
+  </inference>
+  <inference id="lcch_0006b">
+    <passage>Desperate for hard currency to prop up its sickly regime, North Korea has demanded $1 billion a year from America to end its destabilising missile sales to countries such as Iran, Syria, Libya, Egypt and Pakistan. That demand was reportedly knocked down by the Clinton administration to a series of satellite launches and some food aid, but the potential deal still lacked a key component-how to verify that North Korea was honouring the bargain-when the Clinton team ran out of time. So missile sales still flourish.</passage>
+    <question>Did the Clinton administration agree to send $1 billion a year to end the DPRK's missile sales?</question>
+    <provenance type="unedited">/data/www.ransac.org/Projects%2520and%2520Publications/News/Nuclear%2520News/2002/02_05_02.html</provenance>
+    <answer id="1" polarity="true" force="strict" source="linguistic">
+      <response>no</response>
+      <because>Reducing demands implies that the original demands were not met.</because>
+    </answer>
+  </inference>
+  <inference id="lcch_0006c">
+    <passage>Desperate for hard currency to prop up its sickly regime, North Korea has demanded $1 billion a year from America to end its destabilising missile sales to countries such as Iran, Syria, Libya, Egypt and Pakistan. That demand was reportedly knocked down by the Clinton administration to a series of satellite launches and some food aid, but the potential deal still lacked a key component-how to verify that North Korea was honouring the bargain-when the Clinton team ran out of time. So missile sales still flourish.</passage>
+    <question>Has North Korea bought missiles from Iran?</question>
+    <provenance type="unedited">/data/www.ransac.org/Projects%2520and%2520Publications/News/Nuclear%2520News/2002/02_05_02.html</provenance>
+    <answer id="1" polarity="true" force="plausible" source="world">
+      <response>unlikely</response>
+      <because>Countries don't usually buy and sell the same goods to the same countries.</because>
+    </answer>
+  </inference>
+  <inference id="lcch_0007">
+    <passage>In October 2002, North Korea confirmed U.S. intelligence reports that it had a clandestine enriched uranium weapons program in violation of the Agreed Framework and the Nuclear Non-Proliferation Treaty.</passage>
+    <question>Has North Korea complied with the NPT?</question>
+    <provenance type="unedited">/CountryProfiles/NK/index.htm.txt</provenance>
+    <answer id="1" polarity="true" force="strict" source="linguistic">
+      <response>no</response>
+      <because>A party that is in violation of an agreement cannot be in compliance with the agreement at the same time.</because>
+    </answer>
+  </inference>
+  <inference id="lcch_0008">
+    <passage>In addition to aerial-delivered chemical ordnance (bombs, possibly other types of ordnance), DPRK military airfields (as of 1993) have posted a platoon of chemical defense personnel equipped decontamination and detection systems.</passage>
+    <question>Has North Korea taken steps to protect its military airfields from chemical weapons attacks?</question>
+    <provenance type="unedited">/CountryProfiles/NK/Chemical/51.htm.txt</provenance>
+    <answer id="1" polarity="true" force="plausible" source="world">
+      <response>likely</response>
+      <because>Posting CW personnel is one way to protect airfields (and airfield personnel) from CW attacks.</because>
+    </answer>
+  </inference>
+  <inference id="lcch_0009">
+    <passage>The continued willingness of the Democratic People's Republic of Korea (DPRK), the People's Republic of China (PRC), and Russia to provide Iran with both missiles and missile-related technology that at the very least exceed the intentions of the Missile Technology Control Regime (MTCR). This has been complemented, to a lesser extent, by the willingness of other nations (e.g., Libya and Syria) to cooperate within the realm of ballistic missile development.</passage>
+    <question>Has Iran provided missile-related technology to China?</question>
+    <provenance type="unedited">/CountryProfiles/Iran/Missile/3367.htm.txt</provenance>
+    <answer id="1" polarity="true" force="plausible" source="linguistic">
+      <response>unlikely</response>
+    </answer>
+  </inference>
+  <inference id="lcch_0010">
+    <passage>The continued willingness of the Democratic People's Republic of Korea (DPRK), the People's Republic of China (PRC), and Russia to provide Iran with both missiles and missile-related technology that at the very least exceed the intentions of the Missile Technology Control Regime (MTCR). This has been complemented, to a lesser extent, by the willingness of other nations (e.g., Libya and Syria) to cooperate within the realm of ballistic missile development.</passage>
+    <question>Does Iran cooperate with the MTRC?</question>
+    <provenance type="unedited">/CountryProfiles/Iran/Missile/3367.htm.txt</provenance>
+    <answer id="1" polarity="true" force="strict" source="world">
+      <response>unknown</response>
+    </answer>
+  </inference>
+  <inference id="lcch_0011">
+    <passage>However, DOD has no plans to help secure three other Russian nerve agent storage sites that store 65 percent of Russia's declared nerve agent stockpile.</passage>
+    <question>Does the US Department of Defense (DOD) plan to secure all of Russia's CW stockpiles?</question>
+    <provenance type="unedited">/nisprofs/russia/fulltext/gaorpts/d03482.pdf.txt</provenance>
+    <answer id="1" polarity="false" force="plausible" source="linguistic">
+      <response>no</response>
+      <because>Securing all stockpiles is equivalent to saying that 100% of stockpiles are secured.</because>
+    </answer>
+  </inference>
+  <inference id="lcch_0012">
+    <passage>Many of the chemical weapons storage facilities lack a basic automatic alarm system to warn of dangerous levels of
+agent in the air. Hence, the greatest danger posed by Russia's CW stockpile is that people living near the storage sites will be exposed
+to these agents.</passage>
+    <question>Do Russia's chemical weapons facilities have systems to detect the accidental release of chemical weapons?</question>
+    <provenance type="unedited">/NP_Review/vol06/63/black63.pdf.txt</provenance>
+    <answer id="1" polarity="true" force="plausible" source="linguistic">
+      <response>unlikely</response>
+      <because>Accidental release of CW is one way that dangerous levels of CW can put into the air.</because>
+    </answer>
+  </inference>
+  <inference id="lcch_0013">
+    <passage>In 1986, the Soviet government constructed a demonstration destruction facility in Chapayevsk that utilized neutralization and incineration technology. The facility, which was designed to destroy 350 tons of nerve agent yearly utilizing hydrolysis followed by incineration, cost 50 million rubles and took more than three years to build.</passage>
+    <question>Has Russia built facilities for the disposal of chemical weapons in the past?</question>
+    <provenance type="unedited">/NP_Review/vol06/63/black63.pdf.txt</provenance>
+    <answer id="1" polarity="true" force="plausible" source="world">
+      <response>yes</response>
+      <because>A demonstration facility is a valid type of facility.</because>
+    </answer>
+  </inference>
+  <inference id="lcch_0014">
+    <passage>Russia currently lacks the necessary capacity to dispose of its chemical munitions.</passage>
+    <question>Does Russia possess the infrastructure necessary to destroy chemical weapons?</question>
+    <provenance type="unedited">/NP_Review/vol06/63/black63.pdf.txt</provenance>
+    <answer id="1" polarity="true" force="strict" source="linguistic">
+      <response>no</response>
+      <because>Having a capacity to do something implies having the infrastructure to do something.</because>
+    </answer>
+  </inference>
+  <inference id="lcch_0015">
+    <passage>At Chapayevsk in the Samara Province, where lewisite and mustard gas were produced, tests performed in 1993-1994 reportedly found arsenic concentrations in the soil around the former plant to be 8,500 times the permissible concentration (two milligrams per kilogram); in areas of the surrounding town, they were two to ten times the permissible concentration.</passage>
+    <question>Is there evidence that Russia's chemical weapons programs have polluted Russia's environment?</question>
+    <provenance type="unedited">/NP_Review/vol06/63/black63.pdf.txt</provenance>
+    <answer id="1" polarity="true" force="plausible" source="world">
+      <response>likely</response>
+      <because>Pollution sometimes implies increase concentration of a pollutant.  Arsenic is often a pollutant.</because>
+    </answer>
+  </inference>
+  <inference id="lcch_0016">
+    <passage>Finally, and more importantly, Qadhafi has ordered kidnappings and both supported and employed international terrorism against Western nations.</passage>
+    <question>Has Libya sponsored acts of terrorism?</question>
+    <provenance type="unedited">/china/engdocs/dodproli/me_na.htm.txt</provenance>
+    <answer id="1" polarity="true" force="strict" source="linguistic">
+      <response>yes</response>
+      <because>Ordering, supporting, and employing terrorism are all ways to sponsor terrorism.  (Assume known Qadhafi *is* basically Libya.)</because>
+    </answer>
+  </inference>
+  <inference id="lcch_0017">
+    <passage>Russian scientists familiar with Moscow's chemical warfare development program have been publicizing information on a new generation of agents, sometimes referred to as "Novichoks." These scientists report that these compounds, some of which are binaries, were designed to circumvent the CWC and to defeat Western detection and protection measures. Furthermore, it is claimed that their production can be hidden within commercial chemical plants.</passage>
+    <question>Is Russia producing chemical weapons that can be concealed easily?</question>
+    <provenance type="unedited">/china/engdocs/dodpro01.pdf.txt</provenance>
+    <answer id="1" polarity="true" force="plausible" source="world">
+      <response>likely</response>
+      <because> Weapons designed to circumvent detection were designed to be concealed.  Concealing CW in commercial chemical plants is not considered to be difficult.</because>
+    </answer>
+  </inference>
+  <inference id="lcch_0018">
+    <passage>Tehran continues to seek considerable production technology, training, expertise, equipment and chemicals from entities in Russia and China that could be used to help Iran reach its goal [of] an indigenous nerve agent production capability.</passage>
+    <question>Does Iran want to be a self-sufficient producer of CW?</question>
+    <provenance type="unedited">/CountryProfiles/Iran/Chemical/2340_2965.htm.txt</provenance>
+    <answer id="1" polarity="true" force="plausible" source="world">
+      <response>yes</response>
+      <because>An entity that has a goal of achieving a certain state wants to bring about that state.</because>
+    </answer>
+  </inference>
+  <inference id="lcch_0019">
+    <passage>Early 1990s Iran reportedly acquires 120 tons of castor beans, used in the production of the toxin ricin.</passage>
+    <question>Is there evidence that Iran has attempted to produce ricin?</question>
+    <provenance type="unedited">/CountryProfiles/Iran/Biological/2308_2367.htm.txt</provenance>
+    <answer id="1" polarity="true" force="plausible" source="world">
+      <response>likely</response>
+      <because>Acquisition of a component of something is a necessary step in producing something.</because>
+    </answer>
+  </inference>
+  <inference id="lcch_0020">
+    <passage>Iran has ratified the Biological and Toxin Weapons Convention (BWC) and publicly decried all forms of weapons of mass destruction (WMD). At the same time, it does have a very sophisticated biotechnology infrastructure that includes leading research facilities and trained personnel. It has also participated in several scientific exchanges with foreign experts.</passage>
+    <question>Does Iran have the infrastructure necessary to produce bioweapons?</question>
+    <provenance type="unedited">/CountryProfiles/Iran/Biological/2299.htm.txt</provenance>
+    <answer id="1" polarity="true" force="plausible" source="linguistic">
+      <response>unknown</response>
+      <because>Having a biotechnology infrastructure does not always imply having the infrastructure necessary to produce BW.</because>
+    </answer>
+  </inference>
+  <inference id="lcch_0021">
+    <passage>8 January 1998 Iranian President Mohammad Khatami reaffirms his administration's desire to cooperate with the International Atomic Energy Agency (IAEA). He also declares that Iran is neither currently planning to build nuclear weapons nor will attempt to do so in the future, any nuclear technology will be applied to developing nuclear energy for peaceful purposes.</passage>
+    <provenance type="unedited">/CountryProfiles/Iran/Nuclear/1825_1875.htm.txt</provenance>
+    <question>Has Iran offered to cooperate with the IAEA?</question>
+    <answer id="1" polarity="true" force="strict" source="linguistic">
+      <response>yes</response>
+      <because>Declaring to cooperate is one way to offer to cooperate.</because>
+    </answer>
+  </inference>
+  <inference id="lcch_0022">
+    <passage>Russian officials do not deny research has continued but assert that it is for the purpose of developing defenses against chemical weapons, a purpose that is not banned by the CWC. Many of the components for new binary agents developed by the former Soviet Union are not on the CWC's schedules of chemicals and have legitimate civil applications, clouding their association with chemical weapons use. However, under the CWC, all chemical weapons are banned, whether or not they are on the CWC schedules.</passage>
+    <question>Is Russia still researching chemical weapons?</question>
+    <provenance type="unedited">/china/engdocs/dodprol2/fsu.htm.txt</provenance>
+    <answer id="1" polarity="true" force="strict" source="linguistic">
+      <response>yes</response>
+      <because>Researching CW can imply researching defenses against CW.  Public affirmation that CW research is ongoing can be seen as confirmation of active CW research program</because>
+    </answer>
+  </inference>
+  <inference id="lcch_0023">
+    <passage>Despite official statements by the governments of Russia, Ukraine, Kazakhstan, and Belarus that they are opposed to proliferation of NBC weapons and missiles, some sales have and are taking place.</passage>
+    <question>Is Russia selling NBC weapons?</question>
+    <provenance type="unedited">/china/engdocs/dodprol2/fsu.htm.txt</provenance>
+    <answer id="1" polarity="true" force="plausible" source="world">
+      <response>unknown</response>
+      <because>No evidence in this passage links Russia specifically to sale of missiles.</because>
+    </answer>
+  </inference>
+  <inference id="lcch_0024">
+    <passage> Libya has demonstrated a willingness to use its missile capabilities. In 1986, Qadhafi fired two Scuds at a U.S. facility on the Italian island of Lampedusa. This attack was conducted in retaliation for the U.S. bombing raid on Tripoli, which was carried out in the aftermath of Libyan terrorist activities in Germany. While the Scuds fell short of Lampedusa, they clearly illustrate how Qadhafi could use longer-range ballistic missiles to target NATO and Western interests in Europe and the Middle East.</passage>
+    <question> Has Libya used any of its ballistic missiles?</question>
+    <provenance type="unedited">/data/www.cdiss.org/col99apr27.htm</provenance>
+    <answer id="1" polarity="true" force="strict" source="world">
+      <response>yes</response>
+      <because>Firing a ballistic missile is one way to use a ballistic missile.</because>
+    </answer>
+  </inference>
+  <inference id="lcch_0025">
+    <passage>Iran has an ambitious missile program, with SCUD B, SCUD C, and CSS-8 (a Chinese surface-to-surface missile derived from a surface-to-air missile) missiles in its inventory. Having first acquired SCUD missiles from Libya and North Korea for use during the Iran-Iraq war, the Iranians are now able to produce the missile themselves.</passage>
+    <question>Does Iran produce SCUD missiles domestically?</question>
+    <provenance type="unedited">/china/engdocs/dodprol2/meafrica.htm.txt</provenance>
+    <answer id="1" polarity="true" force="strict" source="world">
+      <response>likely</response>
+    </answer>
+  </inference>
+  <inference id="lcch_0026">
+    <passage>Iran first acquired SCUD-B ballistic missiles from Libya and North Korea and used them during the Iran-Iraq war.</passage>
+    <question>Did Libya have SCUD-B missiles?</question>
+    <provenance type="unedited">/china/engdocs/dodproli/me_na.htm.txt</provenance>
+    <answer id="1" polarity="true" force="plausible" source="world">
+      <response>yes</response>
+      <because>A country must have access to something before providing it to another country.</because>
+    </answer>
+  </inference>
+  <inference id="lcch_0027">
+    <passage>Libya has tried, with limited success, to develop its own indigenous missile, and to extend the range of its aging SCUD force for many years under the Al Fatah and other missile programs.</passage>
+    <question>Has Libya developed its own domestic missile program?</question>
+    <provenance type="unedited">/china/engdocs/dodpro01.pdf.txt</provenance>
+    <answer id="1" polarity="true" force="plausible" source="world">
+      <response>yes</response>
+      <because>Limited success may or may not imply a successful domestic missile program.</because>
+    </answer>
+  </inference>
+  <inference id="lcch_0028">
+    <passage>Yet another delivery option would be to equip Libya's Su-24D "Fencer" advanced fighter aircraft with chemical bombs.77 Libya currently has
+only a primitive capability to refuel such aircraft in mid-air, although it could potentially strike at Israel</passage>
+    <question>Does Libya have other means of delivering chemical weapons besides from fighter aircraft?</question>
+    <provenance type="unedited">/NP_Review/vol04/43/sinai43.pdf.txt</provenance>
+    <answer id="1" polarity="true" force="strict" source="linguistic">
+      <response>unknown</response>
+    </answer>
+  </inference>
+  <inference id="lcch_0029">
+    <passage>On the other hand, Libya has declined to join the Chemical Weapons Convention, which was opened for signature in
+January 1993 and entered into force on April 29, 1997</passage>
+    <question>Has Libya ratified the Chemical Weapons Convention?</question>
+    <provenance type="unedited">/NP_Review/vol04/43/sinai43.pdf.txt</provenance>
+    <answer id="1" polarity="true" force="strict" source="linguistic">
+      <response>no</response>
+    </answer>
+    <because>Ratification implies that the entity has not declined to join the convention.</because>
+  </inference>
+  <inference id="lcch_0030">
+    <passage>Libya remains a significant proliferation concern. Libyan leader Muammar Qadhafi has shown that he is willing and capable of using chemical weapons and missiles against his enemies.</passage>
+    <question>Would Libya use CW offensively?</question>
+    <provenance type="unedited">/china/engdocs/dodproli/me_na.htm.txt</provenance>
+    <answer id="1" polarity="true" force="strict" source="world">
+      <response>unknown</response>
+      <because>Willingness to use weapons against enemies implies that offensive use is likely.</because>
+    </answer>
+  </inference>
+  <inference id="lcch_0031">
+    <passage>As with the other two plants, the Libyan government has claimed at various times that Tarhunah is a petrochemical complex or that the facility's tunnels are part of the Great Man-Made River Project to funnel water from Libya's southern acquifers to its coastal cities</passage>
+    <question>Does Libya acknowledge producing CW at its Tarhunah plant?</question>
+    <provenance type="unedited">NP_Review/vol04/43/sinai43.pdf.txt</provenance>
+    <answer id="1" polarity="true" force="plausible" source="world">
+      <response>unlikely</response>
+      <because>Claiming that Tarhunah is used for non-CW purposes implies that Libya has not acknowledged that it is a CW plant.</because>
+    </answer>
+  </inference>
+  <inference id="lcch_0032">
+    <passage>Indeed, Libya has already resorted to chemical warfare on a small scale as an assymetric response to conventional military inferiority. In 1987, Libya's military operation in Chad was near defeat following a series of dramatic reversals. When Chadian forces, with French support, launched a surprise attack on a military base inside Libya, Qadhafi ordered his forces to attack the Chadian troops by dropping Iranian-supplied mustard gas bombs from a transport aircraft.</passage>
+    <question>Has Libya ever used chemical weapons?</question>
+    <provenance type="unedited">/NP_Review/vol04/43/sinai43.pdf.txt</provenance>
+    <answer id="1" polarity="true" force="strict" source="world">
+      <response>yes</response>
+      <because>Mustard gas is a type of CW.  Dropping bombs is one way to use CW.</because>
+    </answer>
+  </inference>
+  <inference id="lcch_0033">
+    <passage>In April 1996, the U.S. announced that it had not ruled out using conventional weapons to stop Libya from completing what Washington claimed was a chemical weapons plant in Tarunah, near Tripoli. Libya has said the site is an irrigation project. Gaddafi said the missile would be developed to defend Libya against foreign aggression, including the threat of a nuclear attack.</passage>
+    <question>Has the U.S. threatened to take military action against Libya's chemical weapons facilities?</question>
+    <provenance type="unedited">/MissileAbstracts/1996/m9606169.htm.txt</provenance>
+    <answer id="1" polarity="true" force="strict" source="world">
+      <response>yes</response>
+      <because>Use of conventional weapons is one way to take military action against a target.</because>
+    </answer>
+  </inference>
+  <inference id="lcch_0034">
+    <passage>If so, security experts believe that Libya is several years away from acquiring a militarily significant indigenous BW capability. Libya's government strongly denies acquiring or producing BW.</passage>
+    <question>Has Libya admitted having stockpiles of biological weapons?</question>
+    <provenance type="unedited">/CountryProfiles/e1_libya_1.html.txt</provenance>
+    <answer id="1" polarity="true" force="plausible" source="linguistic">
+      <response>unlikely</response>
+      <because>Production and acquisition are the only two ways a country can build a stockpile of BW.</because>
+    </answer>
+  </inference>
+  <inference id="lcch_0035">
+    <passage>Since the late 1980's, blister and nerve agents have been produced at Rabta, but the production rate has been low, and plant is not being utilized due to fear of attack.</passage>
+    <question>Is Libya currently producing nerve agents at its plant in Rabta?</question>
+    <provenance type="unedited">/MissileAbstracts/1997/m9707922.htm.txt</provenance>
+    <answer id="1" polarity="true" force="strict" source="world">
+      <response>unlikely</response>
+      <because>Plants that are not being utilized cannot produce CW.</because>
+    </answer>
+  </inference>
+  <inference id="lcch_0036">
+    <passage>Libya claims it will not sign the CWC as long as other countries in the region possess NBC weapons. Libya almost certainly will keep its chemical warfare program as long as Qadhafi remains in power.</passage>
+    <question>Is Libya expected to sign the CWC?</question>
+    <provenance type="unedited">/china/engdocs/dodproli/me_na.htm.txt</provenance>
+    <answer id="1" polarity="true" force="plausible" source="world">
+      <response>no</response>
+      <because>Other countries possess NBC weapons.  Other countries are not likely to give up their NBC weapon stockpiles.</because>
+    </answer>
+  </inference>
+
+  <inference id="LCC-M-1">
+    <passage>Odds changers, or jinglers, attempt to gain favorable odds by dumping large amounts of money on a particular horse, then canceling the bet at the last moment in order to make a second bet at better odds.</passage>
+    <question>Do jinglers get better odds?</question>
+    <provenance type="edited">TREC Corpus: NYT19981128.0225</provenance>
+    <answer id="1" polarity="true" source="linguistic" force="strict">
+      <response>likely</response>
+      <context_type>PLANNING</context_type>
+      <confidence>medium</confidence>
+    </answer>
+  </inference>
+
+  <inference id="LCC-M-3">
+    <passage>As mentioned, IBM has opted for the mouse stick in the middle of the keyboard instead of the little trackball or the little panel you diddle with your finger.</passage>
+    <question>Do IBM keyboards have a mouse stick?</question>
+    <provenance type="edited">TREC Corpus: NYT19991220.0044</provenance>
+    <answer id="1" polarity="true" source="world" force="plausible">
+      <response>likely</response>
+      <because>When entities &quot;opt for&quot; something, they usually carry it out</because>
+      <assumptions>&quot;Has opted for&quot; occurs far enough in the past that IBM has already had time to implement the choice</assumptions>
+      <confidence>medium</confidence>
+    </answer>
+  </inference>
+
+  <inference id="LCC-M-6">
+    <passage>Born July 5, 1917, Catherine Wood Campbell left her native Atlanta, where she had attended Sacred Heart School and graduated from the Washington Seminary, in the 1930s.</passage>
+    <question>Was Catherine Wood Campbell born in Atlanta?</question>
+    <provenance type="edited">TREC Corpus: NYT19981231.0193</provenance>
+    <answer id="1" polarity="true" source="linguistic" force="strict">
+      <response>likely</response>
+      <confidence>high</confidence>
+      <comment>A location described as an entity&apos;s native location implies the entity was born at that location.</comment>
+    </answer>
+  </inference>
+
+  <inference id="LCC-M-7">
+    <passage>The Red Sox started wearing numbers on their backs in 1931, and first retired numbers May 29, 1984, when they honored Williams and Cronin.</passage>
+    <question>Did the Red Sox wear numbers on their backs in 1984?</question>
+    <provenance type="edited">TREC Corpus: NYT20000904.0052</provenance>
+    <answer id="1" polarity="true" source="world" force="strict">
+      <response>yes</response>
+      <because>Retiring something can mean to cease to use it.  Wearing is a kind of using.</because>
+      <context_type>TEMPORAL</context_type>
+      <confidence>medium</confidence>
+    </answer>
+  </inference>
+
+  <inference id="LCC-M-10">
+    <passage>Goldstein was born on Sept. 23, 1922, in Denver and died in Chicago on June 20, 1944.</passage>
+    <question>Was Goldstein born in Chicago?</question>
+    <provenance type="hand-crafted"></provenance>
+    <answer id="1" polarity="true" source="world" force="strict">
+      <response>no</response>
+      <because>An entity can only be born in one place.</because>
+      <confidence>high</confidence>
+    </answer>
+  </inference>
+
+  <inference id="LCC-M-13">
+    <passage>Walden thinks Lukas-trained Grand Slam, who is 4 for 4 at Belmont and 0 for 4 elsewhere, must be respected because of that statistic.</passage>
+    <question>Does Walden think Grand Slam deserves respect?</question>
+    <provenance type="edited">TREC Corpus: NYT19980604.0347</provenance>
+    <answer id="1" polarity="true" source="linguistic" force="strict">
+      <response>yes</response>
+      <confidence>high</confidence>
+    </answer>
+  </inference>
+
+  <inference id="LCC-M-14">
+    <passage>Lehr has become a major force on the Trojans&apos; pitching staff, despite the fact that his pitching career at this level is still in its infancy.</passage>
+    <question>Has Lehr had a short pitching career?</question>
+    <provenance type="edited">TREC Corpus: NYT19990506.0002</provenance>
+    <answer id="1" polarity="true" source="world" force="strict">
+      <response>unknown</response>
+      <because>Something in its infancy is relatively short [in lifespan/duration].</because>
+      <confidence>medium</confidence>
+    </answer>
+  </inference>
+
+  <inference id="LCC-M-17">
+    <passage>Planning for Islands of Adventure was already under way in 1990 when Universal Studios opened doors to its first Orlando park, Universal Studios Florida.</passage>
+    <question>Did planning for Islands of Adventure begin after Universal Studios Florida opened?</question>
+    <provenance type="edited">TREC Corpus: NYT19990521.0214</provenance>
+    <answer id="1" polarity="true" source="linguistic" force="strict">
+      <response>no</response>
+      <confidence>high</confidence>
+      <comment>&quot;Already under way&quot; implies &quot;has begun.&quot; Opening doors to something implies that the something is open.</comment>
+    </answer>
+  </inference>
+
+  <inference id="LCC-M-19">
+    <passage>If truth is the first casualty in war, then dignity was the first principle to keel over in the dirty little war in Washington.</passage>
+    <question>Is truth the first casualty in war?</question>
+    <provenance type="edited">TREC Corpus: NYT19990205.0092</provenance>
+    <answer id="1" polarity="true" source="linguistic" force="strict">
+      <response>likely</response>
+      <confidence>high</confidence>
+    </answer>
+  </inference>
+
+  <inference id="LCC-M-22">
+    <passage>The mistake most beginners make is in loading too much paint on the bristles.</passage>
+    <question>Do people who are new to painting often load too much paint on the brush?</question>
+    <provenance type="edited">TREC Corpus: NYT20000802.0213</provenance>
+    <answer id="1" polarity="true" source="world" force="strict">
+      <response>yes</response>
+      <because>&quot;X&apos;s mistake is Y&quot; implies that &quot;X is doing Y.&quot;</because>
+      <confidence>high</confidence>
+    </answer>
+  </inference>
+
+  <inference id="LCC-M-25">
+    <passage>In the next few decades, unless Japan somehow manages to arrest current trends, it may find that its share of global economic output has shrunk considerably.</passage>
+    <question>Will Japan&apos;s share of global economic output decrease in the next few decades?</question>
+    <provenance type="edited">TREC Corpus: NYT19990731.0084</provenance>
+    <answer id="1" polarity="true" source="linguistic" force="strict">
+      <response>unknown</response>
+      <context_type>CONDITIONAL and POSSIBILITY</context_type>
+      <confidence>high</confidence>
+    </answer>
+  </inference>
+
+  <inference id="LCC-M-27">
+    <passage>Fiscal hawks on Capitol Hill vowed Monday to vote against the embassy security measures unless they are paid for by cuts elsewhere in the administration&apos;s budget.</passage>
+    <question>Will fiscal hawks on Capitol Hill vote against the embassy security measures?</question>
+    <provenance type="edited">TREC Corpus: NYT19980921.0404</provenance>
+    <answer id="1" polarity="true" source="world" force="plausible">
+      <response>unknown</response>
+      <because>Vowing to do something is a strong indication it will be done.</because>
+      <confidence>high</confidence>
+    </answer>
+  </inference>
+
+  <inference id="LCC-M-28">
+    <passage>The FDA has no authority to regulate creatine unless it&apos;s first proved to be dangerous.</passage>
+    <question>Has creatine been proven to be dangerous?</question>
+    <provenance type="edited">TREC Corpus: NYT19980812.0145</provenance>
+    <answer id="1" polarity="true" source="linguistic" force="strict">
+      <response>unlikely</response>
+      <confidence>high</confidence>
+    </answer>
+  </inference>
+
+  <inference id="LCC-M-30">
+    <passage>American officials now say they believe that Muhammad was warned by someone in the Qatar government and that he was staying at the estate of Abdallah bin Khalid, a fundamentalist who has provided support for other Islamic radicals. A former American intelligence official said bin Laden also visited bin Khalid in Qatar twice in the mid-1990s.</passage>
+    <question>Was Muhammad staying at the estate of Abdallah bin Khalid?</question>
+    <provenance type="edited">TREC Corpus: NYT19990707.0365</provenance>
+    <answer id="1" polarity="true" source="linguistic" force="strict">
+      <response>likely</response>
+      <context_type>REPORT and BELIEF</context_type>
+      <confidence>medium</confidence>
+    </answer>
+  </inference>
+
+  <inference id="LCC-M-32">
+    <passage>Annabelle Irwin, a retired Iowa State English professor who drew on her experience as a high school teacher in collaborating on an acclaimed series of books for young teen-agers, died Sept. 13 at a daughter&apos;s home in Des Moines, Iowa.</passage>
+    <question>Did Irwin teach high school in Iowa?</question>
+    <provenance type="edited">TREC Corpus: NYT19980919.0143</provenance>
+    <answer id="1" polarity="true" source="world" force="plausible">
+      <response>unknown</response>
+      <because>An institution named -state- State is usually a public university from -state-.  A professor physically works at an educational institution.  A person that worked for a long time, retired and died in a single state probably lived there most of their life, including previous jobs.  Professors usually keep their jobs for a long time.</because>
+      <confidence>medium</confidence>
+      <comment>There is nothing in the text to even directly suggest the response to the question.  However, by default (in the absence of any other information), given the context in the passage, a human would likely assume this response. I don&apos;t know how any system could get this however without a long set of possibly contrived world knowledge.</comment>
+    </answer>
+  </inference>
+
+  <inference id="LCC-M-33">
+    <passage>The board frequently has engaged in public disputes and has been accused by the federal court of making decisions based on narrow agendas and meddling where it shouldn&apos;t.</passage>
+    <question>Does the board often make decisions based on narrow agendas?</question>
+    <provenance type="edited">TREC Corpus: NYT19991119.0016</provenance>
+    <answer id="1" polarity="true" source="world" force="plausible">
+      <response>unknown</response>
+      <because>&quot;Making decisions&quot; usually describes multiple events.  A statement about an event that occurs multiple times can sometimes be described as occurring &quot;often.&quot;  An accusation may plausibly considered to be true; but that is a weak and naive assumption.</because>
+      <context_type>BELIEF</context_type>
+      <confidence>medium</confidence>
+    </answer>
+  </inference>
+
+  <inference id="LCC-M-35">
+    <passage>Fabric awning prices are more varied than aluminum awning prices, according to Kevin Tatman, owner of Merit Awnings in Dayton.  Merit, in business since 1979, has always sold aluminum awnings and started selling Sunbrela brand fabric awnings about eight years ago.</passage>
+    <question>Are fabric awning prices more varied than aluminum awning prices?</question>
+    <provenance type="edited">TREC Corpus: NYT20000705.0326</provenance>
+    <answer id="1" polarity="true" source="world" force="plausible">
+      <response>likely</response>
+      <because>A person in a particular business/industry for a long time has strong credibility when making statements about that business/industry.</because>
+      <confidence>high</confidence>
+      <comment>The &quot;because&quot; field is too general to be applied directly here... not sure what else to add to it.</comment>
+    </answer>
+  </inference>
+
+  <inference id="LCC-M-37">
+    <passage>Increasingly, health experts and researchers are naming the nation&apos;s penchant for large portions and &quot;supersizing&quot; as a leading cause of obesity.</passage>
+    <question>Does supersizing cause obesity?</question>
+    <provenance type="edited">TREC Corpus: NYT20000704.0053</provenance>
+    <answer id="1" polarity="true" source="world" force="plausible">
+      <response>likely</response>
+      <because>Effects can have multiple causes.  Each cause can plausibly be said to &quot;cause&quot; the effect.  Experts and researchers are generally credible.</because>
+      <context_type>REPORT</context_type>
+      <confidence>medium</confidence>
+    </answer>
+  </inference>
+
+  <inference id="LCC-M-39">
+    <passage>Dual-core chips can do the same work that a single-core chip can, only faster, while consuming less power and at a cooler temperature.</passage>
+    <question>Do dual-core chips consume more power than single-core chips?</question>
+    <provenance type="edited">http://www.forbes.com/technology/personaltech/2005/04/08/cx_ah_0408amd.html</provenance>
+    <answer id="1" polarity="true" source="linguistic" force="strict">
+      <response>no</response>
+      <confidence>high</confidence>
+    </answer>
+  </inference>
+
+  <inference id="LCC-M-41">
+    <passage>Duke initially planned on giving every new student a free iPod, but now only plans on giving iPods to students in certain classes.</passage>
+    <question>Does Duke plan on giving every new student a free iPod?</question>
+    <provenance type="edited">http://news.designtechnica.com/article7065.html</provenance>
+    <answer id="1" polarity="true" source="linguistic" force="strict">
+      <response>no</response>
+      <confidence>high</confidence>
+    </answer>
+  </inference>
+
+  <inference id="LCC-M-43">
+    <passage>A US judge late on Thursday threw out Mr Kerkorian&apos;s claims that Daimler had fraudulently described the 1998 deal bringing together Daimler-Benz and Chrysler as a merger rather than a takeover to avoid paying a premium.</passage>
+    <question>Does the judge think Daimler fraudlently described the 1998 deal to avoid paying a premium?</question>
+    <provenance type="edited">http://news.ft.com/cms/s/ed4370a4-a84f-11d9-87a9-00000e2511c8.html</provenance>
+    <answer id="1" polarity="true" source="world" force="plausible">
+      <response>no</response>
+      <because>Judges dismiss claims if they are not made to believe their content/convinced by their content.</because>
+      <assumptions>The judge takes the decision to dismiss the claim. No jury is present.</assumptions>
+      <confidence>medium</confidence>
+    </answer>
+  </inference>
+
+  <inference id="LCC-M-44">
+    <passage>A US judge late on Thursday threw out Mr Kerkorian&apos;s claims that Daimler had fraudulently described the 1998 deal bringing together Daimler-Benz and Chrysler as a merger rather than a takeover to avoid paying a premium.</passage>
+    <question>Does Mr Kerkorian think Daimler fraudlently described the 1998 deal to avoid paying a premium?</question>
+    <provenance type="edited">http://news.ft.com/cms/s/ed4370a4-a84f-11d9-87a9-00000e2511c8.html</provenance>
+    <answer id="1" polarity="true" source="world" force="plausible">
+      <response>likely</response>
+      <because>If the judge threw out Mr Kerkorian&apos;s claims, then Mr Kerkorian (strongly) thought that Daimler fraudlently described the 1998 deal to avoid paying a premium and, most likely, he still thinks that.</because>
+      <assumptions>The claim in front of a judge shows the person&apos;s convinction.</assumptions>
+      <confidence>medium</confidence>
+    </answer>
+  </inference>
+
+  <inference id="LCC-M-46">
+    <passage>MG Rover is on the brink of collapse after Britain refused to provide $100 million in emergency funding and component suppliers withdrew their support, forcing the car-maker to halt production.</passage>
+    <question>Does MG Rover make cars?</question>
+    <provenance type="edited">http://www.thestatesman.net/page.news.php?clid=1&amp;theme=&amp;usrsess=1&amp;id=73525</provenance>
+    <answer id="1" polarity="true" source="linguistic" force="strict">
+      <response>yes</response>
+      <assumptions>MG Rover corefers with the car-maker and then present of &quot;is on the brink of collapse&quot; implies that they didn&apos;t collapse or halt production.</assumptions>         
+      <context_type>TEMPORAL</context_type>
+      <confidence>medium</confidence>
+    </answer>
+  </inference>
+
+  <inference id="LCC-M-49">
+    <passage>A World Trade Organization (WTO) appeals panel Thursday ruled that although the United States can continue with its restrictions on internet gambling, some of the rules imposed by the country were discriminatory to foreign operators.</passage>
+    <question>Does the United States have internet gambling restrictions?</question>
+    <provenance type="edited">http://www.newratings.com/analyst_news/article_768319.html</provenance>
+    <answer id="1" polarity="true" source="linguistic" force="strict">
+      <response>yes</response>
+      <confidence>high</confidence>
+    </answer>
+  </inference>
+
+  <inference id="LCC-M-50">
+    <passage>Video games have provided one of the last refuges from the ubiquitous advertising that hits consumers from every direction.</passage>
+    <question>Do video games contain advertisements?</question>
+    <provenance type="edited">http://www.mercurynews.com/mld/mercurynews/business/11364926.htm?template=contentModules/printstory.jsp</provenance>
+    <answer id="1" polarity="true" source="world" force="plausible">
+      <response>no</response>
+      <because>video games offer refuge from the omnipresent ads means that advertisement is not present in video games. In case of advertising and video games, &quot;is present&quot; translates in &quot;contains&quot;.</because>
+      <assumptions>The refuge from ads is still provided.</assumptions>
+      <confidence>high</confidence>
+    </answer>
+  </inference>
+
+  <inference id="LCC-M-53">
+    <passage>Bocelli grew up among the vineyards and olive groves of his estate in Lajatico, a community in rural Tuscany near Pisa.</passage>
+    <question>Does Bocelli have a home in Tuscany?</question>
+    <provenance type="edited">TREC Corpus: NYT19990120.0079</provenance>
+    <answer id="1" polarity="true" source="world" force="plausible">
+      <response>likely</response>
+      <because>Bocelli&apos;s estate in Tuscany includes a house.</because>
+      <assumptions>He didn&apos;t sell the house after growing up.</assumptions>
+      <confidence>medium</confidence>
+    </answer>
+  </inference>
+
+  <inference id="LCC-M-55">
+    <passage>Mike Campbell dented his car door in an accident on Friday.</passage>
+    <question>Does Mike&apos;s car have a dent?</question>
+    <provenance type="hand-crafted"></provenance>
+    <answer id="1" polarity="true" source="world" force="strict">
+      <response>likely</response>
+      <because>If the door has a dent, then the car has a dent.</because>
+      <assumptions>The car door wasn&apos;t fix in the meantime.</assumptions>
+      <context_type>TEMPORAL</context_type>
+      <confidence>medium</confidence>
+    </answer>
+  </inference>
+
+  <inference id="LCC-M-56">
+    <passage>Two sisters who know their mother had genetic testing before she died of ovarian cancer want to find out her test results.</passage>
+    <question>Did cancer cause their mother&apos;s death?</question>
+    <provenance type="edited">TREC Corpus: NYT20000720.0341</provenance>
+    <answer id="1" polarity="true" source="linguistic" force="strict">
+      <response>yes</response>
+      <confidence>high</confidence>
+    </answer>
+  </inference>
+
+  <inference id="LCC-M-58">
+    <passage>Marc Vaughn didn&apos;t kill the four hostages with a gun, he used a knife.</passage>
+    <question>Did Vaughn use a gun to kill the four hostages?</question>
+    <provenance type="hand-crafted"></provenance>
+    <answer id="1" polarity="true" source="linguistic" force="strict">
+      <response>no</response>
+      <confidence>high</confidence>
+    </answer>
+  </inference>
+
+  <inference id="LCC-M-60">
+    <passage>Early in the 1990s, Chinese officials made land available for a new hospital, and money for construction and operating costs.</passage>
+    <question>Did officials from China make land available for a new hospital?</question>
+    <provenance type="edited">TREC Corpus: NYT19980714.0077</provenance>
+    <answer id="1" polarity="true" source="linguistic" force="strict">
+      <response>yes</response>
+      <confidence>high</confidence>
+    </answer>
+  </inference>
+
+  <inference id="MIT-1">
+    <passage>
+      City workers pretended to be victims of the attack.
+    </passage>
+    <question>
+      Were the city workers harmed by the attack?
+    </question>
+    <provenance type="edited">
+      CNS CBW &amp; WMD Terrorism News Archive, CBW0918.DOC (1998), #3
+    </provenance>
+    <answer id="1" polarity="true" force="strict" source="linguistic">
+      <response>unlikely</response>
+      <because>
+        Pretending to be a victim implies not really being a victim.
+      </because>
+    </answer>
+  </inference>
+
+  <inference id="MIT-2">
+    <passage>
+      The Defense Department has awarded BioPort Corporation a 
+      contract to manufacture, test, bottle and store anthrax 
+      vaccine, the company has announced. 
+    </passage>
+    <question>
+      Does the Defense Department want BioPort Corporation
+      to manufacture anthrax vaccine?
+    </question>
+    <provenance type="unedited">
+      CNS CBW &amp; WMD Terrorism News Archive, CBW0928.DOC (1998), #1
+    </provenance>
+    <answer id="1" polarity="true" force="strict" source="linguistic">
+      <response>likely</response>
+      <because>
+        Awarding a contract to do something implies a desire for
+        the recipient to perform the specified task.
+      </because>
+      <context-type>report</context-type>
+    </answer>  
+  </inference>
+
+  <inference id="MIT-3">
+    <passage>
+      Chemical weapon projectiles contain a blasting tube which can
+      be seen in an X-ray.
+    </passage>
+    <question>
+      Is the blasting tube visible outside the projectile?
+    </question>
+    <provenance type="edited">
+      CNS CBW &amp; WMD Terrorism News Archive, CBW1016.DOC (1998), #1
+    </provenance>
+    <answer id="1" polarity="true" force="plausible" source="world">
+      <response>unlikely</response>
+      <because>
+        X-rays are usually used to peer inside opaque objects.
+        Projectiles are typically opaque.
+      </because>
+    </answer>
+  </inference>
+
+  <inference id="MIT-4">
+    <passage>
+      The incident at Mayak was the third shooting in recent weeks
+      involving nuclear weapons or facilities in Russia.
+    </passage>
+    <question>
+      Did the incident at Mayak involve nuclear weapons or
+      facilities?
+    </question>
+    <provenance type="unedited">
+      CNS CBW &amp; WMD Terrorism News Archive, CBW1021.DOC (1998), #2
+    </provenance>
+    <answer id="1" polarity="true" force="strict" source="linguistic">
+      <response>yes</response>
+      <because>
+        Semantic knowledge is used to associate "involving..."
+        with "shooting" rather than with "weeks"
+      </because>
+    </answer>
+  </inference>
+
+  <inference id="MIT-5">
+    <passage>
+      Utah's Dugway Proving Ground has been chosen as a site to
+      test military vaccines against germ warfare agents.
+    </passage>
+    <question>
+      Did the U.S. military choose the Dugway Proving Ground as a site to test vaccines?
+    </question>
+    <provenance type="unedited">
+      CNS CBW &amp; WMD Terrorism News Archive, cbw1211.doc (1998), #1
+    </provenance>
+    <answer id="1" polarity="true" force="plausible" source="world">
+      <response>likely</response>
+      <because>
+        Dugway Proving Ground is a U.S. military site, and decisions
+        regarding military sites are typically made by the U.S.
+        military.
+      </because>
+    </answer>
+  </inference>
+
+  <inference id="MIT-6">
+    <passage>
+      The Russian Emergencies Ministry predicts a further increase
+      in 1999 of the concentration of toxic agents in marine burials
+      of chemical weapons.
+    </passage>
+    <question>
+      Has the concentration of toxic agents in marine burials of
+      chemical weapons increased prior to 1999?
+    </question>
+    <provenance type="unedited">
+      CNS CBW &amp; WMD Terrorism News Archive, cbw1228.doc (1998), #2
+    </provenance>
+    <answer id="1" polarity="true" force="strict" source="linguistic">
+      <response>yes</response>
+      <because>
+        Prediction of a further increase presupposes a past increase.
+      </because>
+    </answer>  
+  </inference>
+
+  <inference id="MIT-7">
+    <passage>
+      The Army's chemical weapons incinerator has passed a
+      milestone, the destruction of 5 million pounds of GB nerve
+      agent.
+    </passage>
+    <question>
+      Did the Army destroy 5 million pounds of GB nerve agent?
+    </question>
+    <provenance type="unedited">
+      CNS CBW &amp; WMD Terrorism News Archive, CBW010899.doc, #1
+    </provenance>
+    <answer id="1" polarity="true" force="strict" source="linguistic">
+      <response>yes</response>
+      <because>
+        To pass a milestone implies being the agent of the
+        activity.
+      </because>
+    </answer>
+  </inference>
+
+  <inference id="MIT-8">
+    <passage>
+      The military is training for the day a terrorist sets off not
+      just a bomb, but a chemical or biological weapon that would
+      spew out an invisible death.
+    </passage>
+    <question>
+      Will a terrorist set off a chemical or biological weapon?
+    </question>
+    <provenance type="unedited">
+      CNS CBW &amp; WMD Terrorism News Archive, cbw012599.doc, #3
+    </provenance>
+    <answer id="1" polarity="true" force="strict" source="linguistic">
+      <response>unknown</response>
+      <because>
+        "...the day..." and "would" signal a hypothetical situation.
+      </because>
+    </answer>
+  </inference>
+
+  <inference id="MIT-9">
+    <passage>
+      Virginia is ill prepared for a large-scale terrorist attack
+      using chemical, biological or nuclear weapons, state officials
+      say. 
+    </passage>
+    <question>
+      Is Virginia prepared for a small-scale terrorist attack
+      using chemical, biological or nuclear weapons?
+    </question>
+    <provenance type="unedited">
+      CNS CBW &amp; WMD Terrorism News Archive, cbw030899.doc, #1A
+    </provenance>
+    <answer id="1" polarity="true" force="plausible" source="linguistic">
+      <response>unknown</response>
+      <because>
+        Inclusion of "large-scale" in the passage suggests that
+        the statement would not hold with that term omitted or
+        negated.
+      </because>
+      <context-type>report</context-type>
+    </answer>
+  </inference>
+
+  <inference id="MIT-10">
+    <passage>
+      Unlike nuclear or chemical weapons, biological weapons can be
+      made with readily available materials or equipment.
+    </passage>
+    <question>
+      Can nuclear weapons be made with readily available
+      materials or equipment?
+    </question>
+    <provenance type="unedited">
+      CNS CBW &amp; WMD Terrorism News Archive, cbw031099.doc, #3
+    </provenance>
+    <answer id="1" polarity="true" force="strict" source="linguistic">
+      <response>no</response>
+    </answer>
+  </inference>
+
+  <inference id="MIT-11">
+    <passage>
+      Sudan says it's ready to sign the international convention
+      banning chemical weapons.
+    </passage>
+    <question>
+      Will Sudan produce chemical weapons in the future?
+    </question>
+    <provenance type="unedited">
+      CNS CBW &amp; WMD Terrorism News Archive, cbw052199.doc, #3
+    </provenance>
+    <answer id="1" polarity="true" force="plausible" source="world">
+      <response>unknown</response>
+      <because>
+        Signing the convention suggests that Sudan will not produce
+        chemical weapons, but they might anyway.
+      </because>
+    </answer>
+  </inference>
+
+  <inference id="MIT-12">
+    <passage>
+      The Scud C has a range of 500 kilometers and is manufactured
+      in Syria with know-how from North Korea.
+    </passage>
+    <question>
+      Can a Scud C fly 500 kilometers?
+    </question>
+    <provenance type="unedited">
+      CNS CBW &amp; WMD Terrorism News Archive, cbw091599.doc, #6
+    </provenance>
+    <answer id="1" polarity="true" force="strict" source="world">
+      <response>likely</response>
+      <because>
+        A Scud C is a missile, not a ground vehicle, for
+        example, or a transmitter.
+      </because>
+    </answer>
+  </inference>
+
+  <inference id="MIT-13">
+    <passage>
+      Some of the 14 alleged bin Laden associates arrested in
+      Jordan in December have begun talking to investigators.
+    </passage>
+    <question>
+      Was an associate of bin Laden arrested in the Middle East?
+    </question>
+    <provenance type="edited">
+      CNS CBW &amp; WMD Terrorism News Archive, cbw020200.doc, #1B
+    </provenance>
+    <answer id="1" polarity="true" force="plausible" source="world">
+      <response>likely</response>
+      <because>
+        Jordan is in the Middle East, and "alleged" suggests a
+        likelihood of actually being a bin Laden associate.  Also,
+        talking to investigators suggests culpability.
+      </because>
+    </answer>
+  </inference>
+
+  <inference id="MIT-14">
+    <passage>
+      The U.S. Senate on Thursday unanimously approved legislation
+      designed to punish Russia and other countries if they help
+      Iran develop weapons of mass destruction.
+    </passage>
+    <question>
+      Will Russia help Iran develop weapons of mass destruction?
+    </question>
+    <provenance type="unedited">
+      CNS CBW &amp; WMD Terrorism News Archive, cbw022500.DOC, #2
+    </provenance>
+    <answer id="1" polarity="true" force="plausible" source="world">
+      <response>unknown</response>
+      <because>
+        If the U.S. Senate passes legislation to punish a country
+        for doing something, it is plausible to conclude that the
+        country will not do the specified thing.
+      </because>
+    </answer>
+  </inference>
+
+  <inference id="MIT-15">
+    <passage>
+      To date, Congress has authorized more than $4.7 billion for
+      U.S. programs aimed at helping Russia and other newly
+      independent states reduce the threats posed by their weapons
+      of mass destruction.
+    </passage>
+    <question>
+      Does the U.S. want the threat posed by Russia's
+      weapons of mass destruction to be reduced?
+    </question>
+    <provenance type="unedited">
+      CNS CBW &amp; WMD Terrorism News Archive, cbw031300.DOC, #1
+    </provenance>
+    <answer id="1" polarity="true" force="strict" source="linguistic">
+      <response>yes</response>
+      <because>
+        Authorizing money to help some entity undertake a task
+        implies a desire for the task to be carried out.
+      </because>
+    </answer>
+  </inference>
+
+  <inference id="MIT-16">
+    <passage>
+      A father and a son were admitted to hospital with strychnine
+      poisoning after consuming Herron products.
+    </passage>
+    <question>
+      Did the Herron products contain poison?
+    </question>
+    <provenance type="unedited">
+      CNS CBW &amp; WMD Terrorism News Archive, cbw031700.DOC, #4
+    </provenance>
+    <answer id="1" polarity="true" force="plausible" source="linguistic">
+      <response>likely</response>
+      <because>
+        Relies on formation of a commonsense explanation involving
+        the ingesting of a poison.
+      </because>
+    </answer>
+  </inference>
+
+  <inference id="MIT-17">
+    <passage>
+      About 400 of the more than 2,600 village residents were
+      hospitalized in July and August.
+    </passage>
+    <question>
+      Were some of the village residents not hospitalized in
+      July and August?
+    </question>
+    <provenance type="unedited">
+      CNS CBW &amp; WMD Terrorism News Archive, cbw092900.doc, #2
+    </provenance>
+    <answer id="1" polarity="true" force="strict" source="linguistic">
+      <response>yes</response>
+    </answer>
+  </inference>
+
+  <inference id="MIT-18">
+    <passage>
+      The only bacterial attack in America came in 1984, when a
+      cult poisoned a salad bar in Oregon with salmonella, sickening
+      700 people.
+    </passage>
+    <question>
+      Has a biological attack occurred in the U.S.?
+    </question>
+    <provenance type="unedited">
+      CNS CBW &amp; WMD Terrorism News Archive, cbw102700.doc, #2B
+    </provenance>
+    <answer id="1" polarity="true" force="strict" source="linguistic">
+      <response>yes</response>
+      <because>
+        A bacterial attack is a biological attack.  Also,
+        "came" means "occurred" for an event, and "America"
+        is synonymous with "the U.S.".
+      </because>
+    </answer>
+  </inference>
+
+  <inference id="MIT-19">
+    <passage>
+      Blix said the new weapons inspection team is composed of 
+      scientists from around the world, including South America, 
+      Thailand, Bangladesh and Eastern Europe. 
+    </passage>
+    <question>
+      Are scientists from Hungary members of the new weapons
+      inspection team?
+    </question>
+    <provenance type="unedited">
+      CNS CBW &amp; WMD Terrorism News Archive, cbw012201.doc, #1B
+    </provenance>
+    <answer id="1" polarity="true" force="strict" source="world">
+      <response>unknown</response>
+      <because>
+        The Eastern European scientists would not necessarily be
+        from Hungary.  Also, Thailand is not a part of Hungary, etc.
+      </because>
+      <context-type>report</context-type>
+    </answer>
+  </inference>
+
+  <inference id="MIT-20">
+    <passage>
+      Biological select agents include about 40 viruses, bacteria,
+      rickettsia, fungi, and toxins whose transfer within the United
+      States is controlled.
+    </passage>
+    <question>
+      Is the transfer of biological select agents within the United
+      States controlled?
+    </question>
+    <provenance type="unedited">
+      CNS CBW &amp; WMD Terrorism News Archive, cbw021201.DOC, #2B
+    </provenance>
+    <answer id="1" polarity="true" force="strict" source="linguistic">
+      <response>unknown</response>
+      <assumptions>
+        Interpreting "include" to mean that these are just some
+        of the biological select agents, not all of them.
+        Interpreting "transfer of biological select agents" in
+        the question to mean "transfer of all biological select
+        agents".
+      </assumptions>
+    </answer>
+  </inference>
+
+  <inference id="MIT-21">
+    <passage>
+      During his trip to five Arab capitals and Israel, which ended
+      last Monday, Powell proposed easing sanctions on Iraqi imports.
+    </passage>
+    <question>
+      Did Powell travel to Israel?
+    </question>
+    <provenance type="edited">
+      CNS CBW &amp; WMD Terrorism News Archive, cbw030501.DOC, #1B
+    </provenance>
+    <answer id="1" polarity="true" force="strict" source="linguistic">
+      <response>yes</response>
+      <assumptions>
+        "his trip" refers to Powell's trip.
+      </assumptions>
+    </answer>
+  </inference>
+
+  <inference id="MIT-22">
+    <passage>
+      The Chemlab, for instance, is about the size of a Palm Pilot
+      and will be able to detect a range of biological agents.
+    </passage>
+    <question>
+      Is the Chemlab a handheld device?
+    </question>
+    <provenance type="unedited">
+      CNS CBW &amp; WMD Terrorism News Archive, cbw050701.DOC, #4
+    </provenance>
+    <answer id="1" polarity="true" force="plausible" source="world">
+      <response>likely</response>
+      <because>
+        Comparing the Chemlab to a well-known handheld device
+        suggests that it may also be a handheld device.
+      </because>
+    </answer>
+  </inference>
+
+  <inference id="MIT-23">
+    <passage>
+      Russia could suspend the destruction of its stockpile of 
+      chemical weapons if foreign aid is not increased, a senior 
+      official and negotiator was quoted as saying by the AVN 
+      Military News agency. 
+    </passage>
+    <question>
+      Does Russia have a stockpile of chemical weapons?
+    </question>
+    <provenance type="edited">
+      CNS CBW &amp; WMD Terrorism News Archive, cbw051101.DOC, #2
+    </provenance>
+    <answer id="1" polarity="true" force="strict" source="linguistic">
+      <response>yes</response>
+      <because>
+        "its stockpile" presupposes the existence of a stockpile.
+      </because>
+      <context-type>report of a report</context-type>
+    </answer>
+  </inference>
+
+  <inference id="MIT-24">
+    <passage>
+      BioPort Corp. of Lansing, Michigan is the sole
+      U.S. manufacturer of an anthrax vaccine.
+    </passage>
+    <question>
+      Are there three U.S. manufacturers of anthrax vaccine?
+    </question>
+    <provenance type="edited">
+      CNS CBW &amp; WMD Terrorism News Archive, cbw092601.doc, #1E
+    </provenance>
+    <answer id="1" polarity="true" force="strict" source="linguistic">
+      <response>no</response>
+    </answer>
+  </inference>
+
+  <inference id="MIT-25">
+    <passage>
+      Two Al Qaeda computers have been found in Kabul.
+    </passage>
+    <question>
+      Did the computers belong to Al Qaeda?
+    </question>
+    <provenance type="edited">
+      CNS CBW &amp; WMD Terrorism News Archive, cbw010202.doc, #1
+    </provenance>
+    <answer id="1" polarity="true" force="plausible" source="world">
+      <response>likely</response>
+      <because>
+        Two Dell computers would most likely have been manufactured
+        by Dell.  Al Qaeda is not a computer manufacturer, but could
+        have owned the computers. However it is not clear that Al Qaeda
+  owns anything: it is not a real corporation or company.
+      </because>
+    </answer>
+  </inference>
+
+  <inference id="MIT-26">
+    <passage>
+      The White House has ordered a purge of information from
+      government agency websites that could be exploited by
+      terrorists seeking weapons of mass destruction.
+    </passage>
+    <question>
+      Do government agency websites contain information that
+      could be exploited by terrorists?
+    </question>
+    <provenance type="unedited">
+      CNS CBW &amp; WMD Terrorism News Archive, cbw032202.doc, #1
+    </provenance>
+    <answer id="1" polarity="true" force="plausible" source="linguistic">
+      <response>likely</response>
+      <because>
+        A purge suggests the existence of items to be purged.
+      </because>
+    </answer>
+  </inference>
+
+  <inference id="MIT-27">
+    <passage>
+      Agriculture accounts for 22 million jobs and 16.4 percent of
+      the nation's gross domestic product.
+    </passage>
+    <question>
+      Are 22 million people employed in agriculture?
+    </question>
+    <provenance type="edited">
+      CNS CBW &amp; WMD Terrorism News Archive, cbw032702.doc, #1B
+    </provenance>
+    <answer id="1" polarity="true" force="strict" source="linguistic">
+      <response>yes</response>
+    </answer>
+  </inference>
+
+  <inference id="MIT-28">
+    <passage>
+      The Pentagon is considering a resumption of anthrax
+      vaccinations for U.S. troops.
+    </passage>
+    <question>
+      Have anthrax vaccinations of U.S. troops occurred previously?
+    </question>
+    <provenance type="edited">
+      CNS CBW &amp; WMD Terrorism News Archive, cbw040302.doc, #4A
+    </provenance>
+    <answer id="1" polarity="true" force="strict" source="linguistic">
+      <response>yes</response>
+      <because>
+        Resumption of an activity implies a former occurrence
+        of the activity.
+      </because>
+    </answer>
+  </inference>
+
+  <inference id="MIT-29">
+    <passage>
+      Libya said on Wednesday it is not developing chemical,
+      biological or nuclear weapons, denying allegations made by a
+      US official.
+    </passage>
+    <question>
+      Did a U.S. official claim that Libya is developing
+      chemical, biological or nuclear weapons?
+    </question>
+    <provenance type="unedited">
+      CNS CBW &amp; WMD Terrorism News Archive, cbw050802.doc, #1B
+    </provenance>
+    <answer id="1" polarity="true" force="strict" source="linguistic">
+      <response>yes</response>
+    </answer>
+  </inference>
+
+  <inference id="MIT-30">
+    <passage>
+      Al Wafa is one of the organisations whose assets have been
+      frozen in the United States amid suspicions that it might be
+      giving support to Osama Bin Laden's al-Qaeda network.
+    </passage>
+    <question>
+      Did Al Wafa give support to al-Qaeda?
+    </question>
+    <provenance type="unedited">
+      CNS CBW &amp; WMD Terrorism News Archive, cbw082602.doc, #2
+    </provenance>
+    <answer id="1" polarity="true" force="plausible" source="world">
+      <response>unknown</response>
+      <because>
+        Freezing of assets in the United States must have been
+        done by a governmental entity.  That this action was
+        taken lends credence to the claim that al Wafa
+        supported al-Qaeda.
+      </because>
+    </answer>
+  </inference>
+
+<inference id="PARC-1">
+   <passage>Some students came to school by car.</passage>
+   <question>Did any students come to school?</question>
+   <answer id="1" polarity="true" force="strict" source="linguistic">
+      <response>yes</response>
+      <because>some implies at least one</because>
+   </answer>
+</inference>
+<inference id="PARC-2">
+   <passage>No students came to school by car.</passage>
+   <question>Did any students come to school?</question>
+   <answer id="1" polarity="true" force="strict" source="linguistic">
+      <response>unknown</response>
+      <because>Students could have come on foot, by bus, etc..</because>
+   </answer>
+</inference>
+<inference id="PARC-3">
+   <passage>Ed drove legally.</passage>
+   <question>Did Ed drive?</question>
+   <answer id="1" polarity="true" force="strict" source="linguistic">
+      <response>yes</response>
+      <because>"legally" is an intersective modifier?</because>
+   </answer>
+</inference>
+<inference id="PARC-4">
+   <passage>Ed drove predictably.</passage>
+   <question>Did Ed drive?</question>
+   <answer id="1" polarity="true" force="strict" source="linguistic">
+      <response>yes</response>
+      <because>the same?</because>
+   </answer>
+</inference>
+<inference id="PARC-5">
+   <passage>Legally, Ed could drive.</passage>
+   <question>Did Ed drive?</question>
+   <answer id="1" polarity="true" force="strict" source="linguistic">
+      <response>unknown</response>
+   </answer>
+</inference>
+<inference id="PARC-6">
+   <passage>Predictably, Ed drove.</passage>
+   <question>Did Ed drive?</question>
+   <answer id="1" polarity="true" force="strict" source="linguistic">
+      <response>yes</response>
+   </answer>
+</inference>
+<inference id="PARC-7">
+   <passage>The technician cooled the room.</passage>
+   <question>Did the technician lower the temperature of the room?</question>
+   <answer id="1" polarity="true" force="strict" source="linguistic">
+      <response>yes</response>
+      <because>cooling the room means lowering the temperature of the room</because>
+   </answer>
+</inference>
+<inference id="PARC-8">
+   <passage>The technician raised the temperature of the room.</passage>
+   <question>Did the technician cool the room?</question>
+   <answer id="1" polarity="true" force="strict" source="linguistic">
+      <response>no</response>
+      <because></because>
+   </answer>
+</inference>
+<inference id="PARC-9">
+   <passage>The president visited Iraq in September.</passage>
+   <question>Has the president gone to Iraq?</question>
+   <answer id="1" polarity="true" force="strict" source="linguistic">
+      <response>yes</response>
+      <because>if you visited in the past, you have been at the place visited</because>
+   </answer>
+</inference>
+<inference id="PARC-10">
+   <passage>Jones has visited Iraq.</passage>
+   <question>Did Jones visit Iraq in September?</question>
+   <answer id="1" polarity="true" force="strict" source="linguistic">
+      <response>unknown</response>
+      <because>don't know when Jones visited</because>
+   </answer>
+</inference>
+<inference id="PARC-11">
+   <passage>Jones arrived in Paris in September last year.</passage>
+   <question>Did Jones arrive in Paris last year?</question>
+   <answer id="1" polarity="true" force="strict" source="linguistic">
+      <response>yes</response>
+      <because></because>
+   </answer>
+</inference>
+<inference id="PARC-12">
+   <passage>Jones arrived in Paris in September last year.</passage>
+   <question>Did Jones arrive in Paris in September?</question>
+   <answer id="1" polarity="true" force="strict" source="linguistic">
+      <response>yes</response>
+      <because>PARC had this as unknown, claiming that "September" (full stop) means the most recent September; wcmac changed it to yes, claiming that "September" means "some September".</because>
+   </answer>
+</inference>
+<inference id="PARC-13">
+   <passage>Jones arrived on a Sunday in September.</passage>
+   <question>Did Jones arrive on a Sunday?</question>
+   <answer id="1" polarity="true" force="strict" source="linguistic">
+      <response>yes</response>
+      <because>you can always drop to the most specific temporal modifier?</because>
+   </answer>
+</inference>
+<inference id="PARC-14">
+   <passage>Jones arrived on a Sunday in September.</passage>
+   <question>Did Jones arrive in September?</question>
+   <answer id="1" polarity="true" force="strict" source="linguistic">
+      <response>yes</response>
+      <because></because>
+   </answer>
+</inference>
+<inference id="PARC-15">
+   <passage>The president left after the diplomat arrived.</passage>
+   <question>Did the diplomat arrive before the president left?</question>
+   <answer id="1" polarity="true" force="strict" source="linguistic">
+      <response>yes</response>
+      <because>problem with Mozart and his requiem</because>
+   </answer>
+</inference>
+<inference id="PARC-16">
+   <passage>No US congressman has visited Iraq since the war ended.</passage>
+   <question>Has Jones, a US Congressman, visited Iraq after the war ended?</question>
+   <answer id="1" polarity="true" force="strict" source="linguistic">
+      <response>no</response>
+      <because></because>
+   </answer>
+</inference>
+<inference id="PARC-17">
+   <passage>No US congressman has visited Iraq since the war.</passage>
+   <question>Did Jones, a US Congressman, visit Iraq before the war?</question>
+   <answer id="1" polarity="true" force="strict" source="linguistic">
+      <response>unknown</response>
+      <because>the premise only tells us about congressmen visits since the war, not before</because>
+   </answer>
+</inference>
+<inference id="PARC-18">
+   <passage>No US congressman visited Iraq until the war.</passage>
+   <question>Did any US congressman visit Iraq before the war?</question>
+   <answer id="1" polarity="true" force="strict" source="linguistic">
+      <response>no</response>
+      <because></because>
+   </answer>
+</inference>
+<inference id="PARC-19">
+   <passage>Some students arrived at the school on Sunday.</passage>
+   <question>Were there any students at the school on Sunday?</question>
+   <answer id="1" polarity="true" force="strict" source="linguistic">
+      <response>yes</response>
+      <because>if the students arrived at the school on Sunday, they were there at least for some part of Sunday--bar problems with arriving at midnight or such like</because>
+   </answer>
+</inference>
+<inference id="PARC-20">
+   <passage>No students arrived at the school on Sunday.</passage>
+   <question>Were there any students at the school on Sunday?</question>
+   <answer id="1" polarity="true" force="strict" source="linguistic">
+      <response>unknown</response>
+      <because>there might be lots of students that arrived before Sunday and were on the school on Sunday</because>
+   </answer>
+</inference>
+<inference id="PARC-21">
+   <passage>There were no students at the school on Sunday.</passage>
+   <question>Did any students arrive at the school on Sunday?</question>
+   <answer id="1" polarity="true" force="strict" source="linguistic">
+      <response>no</response>
+      <because>Had they arrived, they would be there on Sunday</because>
+   </answer>
+</inference>
+<inference id="PARC-22">
+   <passage>The diplomat left Baghdad last week.</passage>
+   <question>Has the diplomat been to Baghdad?</question>
+   <answer id="1" polarity="true" force="strict" source="linguistic">
+      <response>yes</response>
+      <because>To leave a place you must be there to begin with</because>
+   </answer>
+</inference>
+<inference id="PARC-23">
+   <passage>The diplomat will arrive in Baghdad next week.</passage>
+   <question>Has the diplomat been to Baghdad?</question>
+   <answer id="1" polarity="true" force="strict" source="linguistic">
+      <response>unknown</response>
+      <because>it could be his first visit or not</because>
+   </answer>
+</inference>
+<inference id="PARC-24">
+   <passage>The president knows that the diplomat left Baghdad.</passage>
+   <question>Has the diplomat been to Baghdad?</question>
+   <answer id="1" polarity="true" force="strict" source="linguistic">
+      <response>yes</response>
+      <because>if the president knows it, it's true and if it's true that the diplomat left Baghdad, s/he was there before leaving</because>
+   </answer>
+</inference>
+<inference id="PARC-25">
+   <passage>The president hasn't gone to Iraq since the diplomat left Baghdad.</passage>
+   <question>Has the diplomat been to Baghdad?</question>
+   <answer id="1" polarity="true" force="strict" source="linguistic">
+      <response>yes</response>
+      <because>since implies that the clause is true, if the diplomat left Baghdad s/he must have been there before</because>
+   </answer>
+</inference>
+<inference id="PARC-26">
+   <passage>The president hasn't gone to Iraq since the diplomat left Baghdad.</passage>
+   <question>Has the president been to Iraq?</question>
+   <answer id="1" polarity="true" force="strict" source="linguistic">
+      <response>likely</response>
+      <because>the president has not gone since time X, it might or not have been there before.</because>
+   </answer>
+</inference>
+<inference id="PARC-27">
+   <passage>The diplomat didn't manage to leave Baghdad.</passage>
+   <question>Has the diplomat been to Baghdad?</question>
+   <answer id="1" polarity="true" force="strict" source="linguistic">
+      <response>yes</response>
+      <because>manage presupposes that the embedded clause is true, so he could not leave Baghadad, hence he has been (and perhaps still is) in Bahghdad </because>
+   </answer>
+</inference>
+<inference id="PARC-28">
+   <passage>The diplomat hasn't managed to leave Baghdad.</passage>
+   <question>Is the diplomat in Baghdad now?</question>
+   <answer id="1" polarity="true" force="strict" source="linguistic">
+      <response>yes</response>
+      <because>same ?</because>
+   </answer>
+</inference>
+<inference id="PARC-29">
+   <passage>The room was full of intelligent women.</passage>
+   <question>Was the room full of women?</question>
+   <answer id="1" polarity="true" force="strict" source="linguistic">
+      <response>yes</response>
+      <because>being full of intelligent women entails being full of women each intelligent woman is a woman</because>
+   </answer>
+</inference>
+<inference id="PARC-30">
+   <passage>The room was full of women.</passage>
+   <question>Was the room full of intelligent women?</question>
+   <answer id="1" polarity="true" force="strict" source="linguistic">
+      <response>unknown</response>
+      <because>all the women could've been dumb. fat chance!</because>
+   </answer>
+</inference>
+<inference id="PARC-31">
+   <passage>Children are not admitted to the theatre.</passage>
+   <question>Are small children admitted to the theatre?</question>
+   <answer id="1" polarity="true" force="strict" source="linguistic">
+      <response>no</response>
+      <because>if children are not admitted, small children are not either</because>
+   </answer>
+</inference>
+<inference id="PARC-32">
+   <passage>Small children are not admitted to the theatre.</passage>
+   <question>Are children admitted to the theatre?</question>
+   <answer id="1" polarity="true" force="strict" source="linguistic">
+      <response>unknown</response>
+   </answer>
+</inference>
+<inference id="PARC-33">
+   <passage>All companies have to file annual reports.</passage>
+   <question>Do all Fortune 500 companies have to file annual reports?</question>
+   <answer id="1" polarity="true" force="strict" source="linguistic">
+      <response>yes</response>
+   </answer>
+</inference>
+<inference id="PARC-34">
+   <passage>All Fortune 500 companies have to file annual reports.</passage>
+   <question>Do all companies have to file annual reports?</question>
+   <answer id="1" polarity="true" force="strict" source="linguistic">
+      <response>unknown</response>
+   </answer>
+</inference>
+<inference id="PARC-35">
+   <passage>All companies have to file annual reports to the SEC.</passage>
+   <question>Do all companies have to file annual reports?</question>
+   <answer id="1" polarity="true" force="strict" source="linguistic">
+      <response>yes</response>
+   </answer>
+</inference>
+<inference id="PARC-36">
+   <passage>All companies have to file annual reports.</passage>
+   <question>Do all companies have to file annual reports to the SEC?</question>
+   <answer id="1" polarity="true" force="strict" source="linguistic">
+      <response>unknown</response>
+   </answer>
+</inference>
+<inference id="PARC-37">
+   <passage>No delegates finished the report.</passage>
+   <question>Did any delegate finish the report on time?</question>
+   <answer id="1" polarity="true" force="strict" source="linguistic">
+      <response>no</response>
+   </answer>
+</inference>
+<inference id="PARC-38">
+   <passage>The US troops stayed in Iraq although the war was over.</passage>
+   <question>Was the war over?</question>
+   <answer id="1" polarity="true" force="strict" source="linguistic">
+      <response>yes</response>
+   </answer>
+</inference>
+<inference id="PARC-39">
+   <passage>Since it was cold, he closed the window.</passage>
+   <question>Was it cold?</question>
+   <answer id="1" polarity="true" force="strict" source="linguistic">
+      <response>yes</response>
+   </answer>
+</inference>
+<inference id="PARC-40">
+   <passage>John didn't visit us after he returned from Spain.</passage>
+   <question>Did John return from Spain?</question>
+   <answer id="1" polarity="true" force="strict" source="linguistic">
+      <response>yes</response>
+   </answer>
+</inference>
+<inference id="PARC-41">
+   <passage>Hanssen, who sold FBI secrets to the Russians, could face the death penalty.</passage>
+   <question>Did Hanssen sell FBI secrets to the Russians?</question>
+   <answer id="1" polarity="true" force="strict" source="linguistic">
+      <response>yes</response>
+   </answer>
+</inference>
+<inference id="PARC-42">
+   <passage>The New York Times reported that Hanssen, who sold FBI secrets to the Russians, could face the death penalty.</passage>
+   <question>Did Hanssen sell FBI secrets to the Russians?</question>
+   <answer id="1" polarity="true" force="strict" source="linguistic">
+      <response>yes</response>
+   </answer>
+</inference>
+<inference id="PARC-43">
+   <passage>The New York Times reported that Hanssen sold FBI secrets to the Russians and could face the death penalty.</passage>
+   <question>Did Hanssen sell FBI secrets to the Russians?</question>
+   <answer id="1" polarity="true" force="strict" source="linguistic">
+      <response>likely</response>
+   </answer>
+</inference>
+<inference id="PARC-44">
+   <passage>Bush said that it was Khan who sold centrifuges to North Korea.</passage>
+   <question>Were centrifuges sold to North Korea?</question>
+   <answer id="1" polarity="true" force="strict" source="linguistic">
+      <response>yes</response>
+   </answer>
+</inference>
+<inference id="PARC-45">
+   <passage>Bush said that Khan sold centrifuges to North Korea.</passage>
+   <question>Were centrifuges sold to North Korea?</question>
+   <answer id="1" polarity="true" force="strict" source="linguistic">
+      <response>unknown</response>
+   </answer>
+</inference>
+<inference id="PARC-46">
+   <passage>What we found in Iraq was rusted shrapnel.</passage>
+   <question>Did we find anything in Iraq?</question>
+   <answer id="1" polarity="true" force="strict" source="linguistic">
+      <response>yes</response>
+   </answer>
+</inference>
+<inference id="PARC-47">
+   <passage>The fact that Bin Laden was in Tora Bora led to the suspicion that the Afghan campaign was mismanaged.</passage>
+   <question>Was Bin Laden in Tora Bora?</question>
+   <answer id="1" polarity="true" force="strict" source="linguistic">
+      <response>yes</response>
+   </answer>
+</inference>
+<inference id="PARC-48">
+   <passage>The fact that Bin Laden was in Tora Bora led to the suspicion that the Afghan campaign was mismanaged.</passage>
+   <question>Was the Afghan campaign mismanaged?</question>
+   <answer id="1" polarity="true" force="strict" source="linguistic">
+      <response>unknown</response>
+   </answer>
+</inference>
+<inference id="PARC-49">
+   <passage>The paper concluded that the election had been rigged.</passage>
+   <question>Was the election rigged?</question>
+   <answer id="1" polarity="true" force="strict" source="linguistic">
+      <response>unknown</response>
+   </answer>
+</inference>
+<inference id="PARC-50">
+   <passage>Ames was, as the press reported, a successful spy.</passage>
+   <question>Was Ames a successful spy?</question>
+   <answer id="1" polarity="true" force="strict" source="linguistic">
+      <response>yes</response>
+   </answer>
+</inference>
+<inference id="PARC-51">
+   <passage>The press reported that Ames was a successful spy.</passage>
+   <question>Was Ames a successful spy?</question>
+   <answer id="1" polarity="true" force="strict" source="linguistic">
+      <response>likely</response>
+   </answer>
+</inference>
+<inference id="PARC-52">
+   <passage>The US forgot that the Afghans speak several different languages.</passage>
+   <question>Do the Afghans speak several different languages?</question>
+   <answer id="1" polarity="true" force="strict" source="linguistic">
+      <response>yes</response>
+   </answer>
+</inference>
+<inference id="PARC-53">
+   <passage>Bush realized that the US Army had to be transformed to meet new threats.</passage>
+   <question>Did the US Army have to be transformed to meet new threats?</question>
+   <answer id="1" polarity="true" force="strict" source="linguistic">
+      <response>yes</response>
+   </answer>
+</inference>
+<inference id="PARC-54">
+   <passage>Bush didn't realize that Afghanistan is land-locked.</passage>
+   <question>Is Afghanistan land-locked?</question>
+   <answer id="1" polarity="true" force="strict" source="linguistic">
+      <response>yes</response>
+   </answer>
+</inference>
+<inference id="PARC-55">
+   <passage>There is a belief that the US will invade Syria.</passage>
+   <question>Will the US invade Syria?</question>
+   <answer id="1" polarity="true" force="strict" source="linguistic">
+      <response>unknown</response>
+   </answer>
+</inference>
+<inference id="PARC-56">
+   <passage>It is not surprising that Bush has the lead in Ohio.</passage>
+   <question>Does Bush have the lead in Ohio?</question>
+   <answer id="1" polarity="true" force="strict" source="linguistic">
+      <response>yes</response>
+   </answer>
+</inference>
+<inference id="PARC-57">
+   <passage>It is not likely that Bush has the lead in Ohio.</passage>
+   <question>Does Bush have the lead in Ohio?</question>
+   <answer id="1" polarity="true" force="strict" source="linguistic">
+      <response>unknown</response>
+   </answer>
+</inference>
+<inference id="PARC-58">
+   <passage>Kerry knew that Edwards would accept the nomination.</passage>
+   <question>Did Kerry know whether Edwards would accept the nomination?</question>
+   <answer id="1" polarity="true" force="strict" source="linguistic">
+      <response>yes</response>
+   </answer>
+</inference>
+<inference id="PARC-59">
+   <passage>Tom knows that Naples is in Campania.</passage>
+   <question>Does Tom know where Naples is?</question>
+   <answer id="1" polarity="true" force="strict" source="linguistic">
+      <response>yes</response>
+   </answer>
+</inference>
+<inference id="PARC-60">
+   <passage>We met in September during the feast.</passage>
+   <question>Did the feast take place in September?</question>
+   <answer id="1" polarity="true" force="strict" source="linguistic">
+      <response>yes</response>
+   </answer>
+</inference>
+<inference id="PARC-61">
+   <passage>It is false that Bin Laden was seen in Tora Bora.</passage>
+   <question>Was Bin Laden seen in Tora Bora?</question>
+   <answer id="1" polarity="true" force="strict" source="linguistic">
+      <response>no</response>
+   </answer>
+</inference>
+<inference id="PARC-62">
+   <passage>It follows that Bin Laden was in Tora Bora.</passage>
+   <question>Was Bin Laden in Tora Bora?</question>
+   <answer id="1" polarity="true" force="strict" source="linguistic">
+      <response>yes</response>
+      <because>wcmac: depends whether the foregoing was stated as factual?</because>
+   </answer>
+</inference>
+<inference id="PARC-63">
+   <passage>It is likely that Bin Laden was in Tora Bora.</passage>
+   <question>Was Bin Laden in Tora Bora?</question>
+   <answer id="1" polarity="true" force="strict" source="linguistic">
+      <response>unknown</response>
+   </answer>
+</inference>
+<inference id="PARC-64">
+   <passage>Tony Hall left Amman on Sunday.</passage>
+   <question>Was Tony Hall in Amman on Sunday?</question>
+   <answer id="1" polarity="true" force="strict" source="linguistic">
+      <response>yes</response>
+   </answer>
+</inference>
+<inference id="PARC-65">
+   <passage>Tony Hall left Amman on Sunday.</passage>
+   <question>Was Tony Hall in Amman on Saturday?</question>
+   <answer id="1" polarity="true" force="plausible" source="linguistic">
+      <response>likely</response>
+   </answer>
+</inference>
+<inference id="PARC-66">
+   <passage>Khan sold 10 centrifuges to North Korea.</passage>
+   <question>Did North Korea buy 10 centrifuges?</question>
+   <answer id="1" polarity="true" force="strict" source="linguistic">
+      <response>yes</response>
+   </answer>
+</inference>
+<inference id="PARC-67">
+   <passage>The US invasion of Afghanistan prevented Al-Qaida from attacking Ryad in 2002.</passage>
+   <question>Did Al-Qaida attack Ryad in 2002?</question>
+   <answer id="1" polarity="true" force="strict" source="linguistic">
+      <response>no</response>
+   </answer>
+</inference>
+<inference id="PARC-68">
+   <passage>The administration managed to track down the perpetrators.</passage>
+   <question>Did the administration track down the perpetrators?</question>
+   <answer id="1" polarity="true" force="strict" source="linguistic">
+      <response>yes</response>
+   </answer>
+</inference>
+<inference id="PARC-69">
+   <passage>The administration didn't manage to track down the perpetrators.</passage>
+   <question>Did the administration track down the perpetrators?</question>
+   <answer id="1" polarity="true" force="strict" source="linguistic">
+      <response>no</response>
+   </answer>
+</inference>
+<inference id="PARC-70">
+   <passage>Bush didn't have the time to read the report.</passage>
+   <question>Did Bush read the report?</question>
+   <answer id="1" polarity="true" force="strict" source="linguistic">
+      <response>no</response>
+   </answer>
+</inference>
+<inference id="PARC-71">
+   <passage>Bush had the time to read the report.</passage>
+   <question>Did Bush read the report?</question>
+   <answer id="1" polarity="true" force="plausible" source="linguistic">
+      <response>likely</response>
+   </answer>
+</inference>
+<inference id="PARC-72">
+   <passage>The president wasn't able to attend the meeting.</passage>
+   <question>Did the president attend the meeting?</question>
+   <answer id="1" polarity="true" force="strict" source="linguistic">
+      <response>no</response>
+   </answer>
+</inference>
+<inference id="PARC-73">
+   <passage>The president was able to attend the meeting.</passage>
+   <question>Did the president attend the meeting?</question>
+   <answer id="1" polarity="true" force="plausible" source="linguistic">
+      <response>likely</response>
+   </answer>
+</inference>
+<inference id="PARC-74">
+   <passage>Many soldiers were killed in the ambush.</passage>
+   <question>Were all soldiers killed in the ambush?</question>
+   <answer id="1" polarity="true" force="plausible" source="linguistic">
+      <response>unlikely</response>
+   </answer>
+</inference>
+<inference id="PARC-75">
+   <passage>The man had $20 in his pocket.</passage>
+   <question>Did the man have $40 in his pocket?</question>
+   <answer id="1" polarity="true" force="plausible" source="linguistic">
+      <response>unlikely</response>
+   </answer>
+</inference>
+<inference id="PARC-76">
+   <passage>The man had $20 in his pocket.</passage>
+   <question>Did the man have $10 in his pocket?</question>
+   <answer id="1" polarity="true" force="strict" source="linguistic">
+      <response>yes</response>
+   </answer>
+</inference>
+
+ <inference id="St001">
+    <passage>Abdul Galeel Nazeer Karori, a leading Islamist and member of Sudan's ruling National Congress party, said in Khartoum, "We will not allow any arrest or trial of a Sudanese official, unless they will arrest the 30 million Sudanese people and try them."</passage>
+    <question>Is Abdul Galeel Nazeer Karori a member of the Sudanese National Congress Party?</question>
+    <provenance type="edited">http://www.startribune.com/stories/484/5325919.html</provenance>
+    <answer id="1" polarity="true" force="strict" source="linguistic">
+      <response>yes</response>
+    </answer>
+ </inference>
+
+ <inference id="St002">
+    <passage>Abdul Galeel Nazeer Karori, a leading Islamist and member of Sudan's ruling National Congress party, said in Khartoum, "We will not allow any arrest or trial of a Sudanese official, unless they will arrest the 30 million Sudanese people and try them."</passage>
+    <question>Is Abdul Galeel Nazeer Karori the leader of the Sudanese National Congress Party?</question>
+    <provenance type="edited">http://www.startribune.com/stories/484/5325919.html</provenance>
+    <answer id="1" polarity="true" force="plausible" source="linguistic">
+      <response>unlikely</response>
+      <comment>Implicature. If Karori were the leader, he would have been called a leader of the party, not a "leading Islamist and member of the party"</comment>
+    </answer>
+ </inference>
+
+<inference id="St003">
+    <passage>Puerto Rican legislators who want their island to become a state said Monday they would try to override a veto of a bill they believe will help resolve the territory's relationship to the United States. Gov. Anibal Acevedo Vila on Sunday vetoed the bill, which would have asked Washington to honor any eventual decision for the island to become a state, increase its autonomy or become independent.</passage>
+    <question>Do Puerto Rico lawmakers aim to override the governor's veto?</question>
+    <provenance type="edited">http://24hour.startribune.com/24hour/nation/story/2303304p-10504917c.html</provenance>
+    <answer id="1" polarity="true" force="strict" source="linguistic">
+      <response>yes</response>
+    </answer>
+ </inference>
+
+<inference id="St004">
+    <passage>Luigi Accattoli, one of the most senior and respected Vatican beat reporters, wrote in Corriere della Sera that a petition has already been circulated among the cardinals seeking signatures for a fast-track canonization process for John Paul.</passage>
+    <question>Did the cardinals in Vatican sign a petition asking a future pope to "accelerate" the beatification of John Paul II?</question>
+    <provenance type="edited">http://www.nytimes.com/2005/04/12/international/worldspecial2/13saintcnd.html</provenance>
+    <answer id="1" polarity="true" force="strict" source="linguistic">
+      <response>unknown</response>
+    </answer>
+ </inference>
+
+<inference id="St005">
+    <passage>Cardinals meeting daily in Rome to discuss the main issues facing the Roman Catholic Church ahead of a conclave next week to elect a pope have signed a petition asking a future pope to "accelerate" the beatification of John Paul II.</passage>
+    <question>Has a petition already been circulated among the cardinals seeking signatures for a fast-track canonization process for John Paul?</question>
+    <provenance type="edited">http://www.news24.com/News24/World/News/0,,2-10-1462_1688760,00.html</provenance>
+    <answer id="1" polarity="true" force="plausible" source="world">
+      <response>yes</response>
+      <because>If a petition has been signed, it generally needs to have been circulated.</because>
+    </answer>
+</inference>
+
+<inference id="St006">
+    <passage>Several cardinals confirmed that the idea of rapid canonization was discussed the day after the pope's funeral, at their daily meeting.</passage>
+    <question>According to several cardinals, will Pope John Paul soon be canonized?</question>
+    <provenance type="edited">http://www.nytimes.com/2005/04/12/international/worldspecial2/13saintcnd.html</provenance>
+    <answer id="1" polarity="true" force="strict" source="linguistic">
+      <response>unknown</response>
+    </answer>
+</inference>
+
+<inference id="St007">
+    <passage>America's new deputy secretary of state, Robert Zoellick, attended a conference in Norway this week at which 60 nations pledged some $4.5 billion for rebuilding war-torn southern Sudan, where a separate 21-year conflict ended in January.</passage>
+    <question>Did an international donors' conference in Norway pledge the $3.5 billion target to help southern Sudan recover after two decades of civil war?</question>
+    <provenance type="edited">http://www.csmonitor.com/2005/0413/p07s01-woaf.html</provenance>
+    <answer id="1" polarity="true" force="plausible" source="world">
+      <response>likely</response>
+      <because>Such conferences are usually donors' conferences. A long conflict in a country might be a civil war.</because>
+    </answer>
+</inference>
+
+<inference id="St008">
+    <passage>China's Premier told Japan today to "face up to history" by admitting the suffering it caused in World War II, and seriously reconsider its bid for a UN Security Council seat after protests in China and elsewhere.</passage>
+    <question>Did the Chinese Premier say the protests should give Tokyo serious pause for thought about its bid for the UNSC?</question>
+    <provenance type="edited">http://www.telegraphindia.com/1050413/asp/foreign/story_4608872.asp</provenance>
+    <answer id="1" polarity="true" force="strict" source="linguistic">
+      <response>yes</response>
+    </answer>
+</inference>
+
+<inference id="St009">
+    <passage>Premier Wen Jiabao told Japan yesterday to "face up to history" and admit to the tremendous suffering it inflicted on people in China, Asia and the rest of the world during World War II.</passage>
+    <question>Did Japan admit to the suffering it caused in World War II?</question>
+    <provenance type="edited">http://www.telegraphindia.com/1050413/asp/foreign/story_4608872.asp</provenance>
+    <answer id="1" polarity="true" force="plausible" source="linguistic">
+      <response>unlikely</response>
+      <comment>Implicature: If person X asks entity Y to admit statement Z, then it might be because Y has not admitted Z yet.</comment>
+    </answer>
+</inference>
+
+<inference id="St010">
+    <passage>Marburg virus is a highly fatal pathogen spread through direct body contact. It attacks the gastrointestinal tract and kills rapidly. It has an incubation period of three to nine days with most deaths occurring within one week after the onset of symptoms.</passage>
+    <question>Does Marburg hemorrhagic fever spread through contact with bodily fluids and kill rapidly, usually by three days after the first symptoms?</question>
+    <provenance type="edited">http://www.medpagetoday.com/tbindex.cfm?tbid=873</provenance>
+    <answer id="1" polarity="true" force="strict" source="linguistic">
+      <response>no</response>
+    </answer>
+</inference>
+
+<inference id="St011">
+    <passage>The U.N. health agency says suspected cases of the Ebola-like Marburg virus in Angola must be detected and isolated sooner if the disease is to be brought under control.</passage>
+    <question>Could the outbreak of Marburg virus be stopped if infected people were isolated sooner?</question>
+    <provenance type="edited">http://news.xinhuanet.com/english/2005-04/13/content_2821597.htm</provenance>
+    <answer id="1" polarity="true" force="plausible" source="world">
+      <response>likely</response>
+      <because>The U.N. health agency is an authority on disease and health matters.</because>
+      <comment>"Stopped" might mean 'stopped from spreading rapidly', which is similar to the meaning of 'brought under control'.</comment>
+    </answer>
+</inference>
+
+<inference id="St012">
+    <passage>Apple has declared that Mac OS X version 10.4 "Tiger" will go on sale Friday, 29 April 2005, beginning at 6:00 p.m. during special events at Apple's retail stores and Apple Authorized Resellers.</passage>
+    <question>Did Apple announce that the Mac operating system, OS X Tiger, will be available beginning of April 2005?</question>
+    <provenance type="edited">http://www.geekzone.co.nz/content.asp?contentid=4352</provenance>
+    <answer id="1" polarity="true" force="strict" source="linguistic">
+      <response>no</response>
+    </answer>
+</inference>
+
+<inference id="St013">
+    <passage>Apple has declared that Mac OS X version 10.4 "Tiger" will go on sale Friday, 29 April 2005, beginning at 6:00 p.m. during special events at Apple's retail stores and Apple Authorized Resellers.</passage>
+    <question>Did Apple announce that the Mac operating system, OS X Tiger, will be available by the end of April 2005?</question>
+    <provenance type="edited">http://www.geekzone.co.nz/content.asp?contentid=4352</provenance>
+    <answer id="1" polarity="true" force="strict" source="linguistic">
+      <response>yes</response>
+    </answer>
+</inference>
+
+<inference id="St014">
+    <passage>Prime Minister Ariel Sharon of Israel urged President Bush to step up pressure on Iran to give up all elements of its nuclear program.</passage>
+    <question>Did Sharon urge the US leader to keep pressing Iran to give up its nuclear program altogether?</question>
+    <provenance type="edited">http://www.nytimes.com/2005/04/13/international/middleeast/13nuke.html?oref=login</provenance>
+    <answer id="1" polarity="true" force="plausible" source="world">
+      <response>yes</response>
+      <because>President Bush is the US President. Presidents are usually leaders in their country.</because>
+    </answer>
+</inference>
+
+<inference id="St015">
+    <passage>The United States and Israel have both accused Iran of using its atomic energy program as cover for a plan to develop nuclear arms.</passage>
+    <question>Is Iran running a secret weapons program under the cover of plans to build nuclear power plants for electricity?</question>
+    <provenance type="edited">http://www.iranmania.com/News/ArticleView/Default.asp?NewsCode=30884&amp;NewsKind=Current%20Affairs</provenance>
+    <answer id="1" polarity="true" force="strict" source="linguistic">
+      <response>unknown</response>
+    </answer>
+</inference>
+
+<inference id="St016">
+    <passage>A northern Indiana businessman has been kidnapped in Iraq and shown on a video broadcast Wednesday by the Al-Jazeera television station.</passage>
+    <question>Has Al-Jazeera television broadcasted a video that showed an American who had been kidnapped?</question>
+    <provenance type="edited">http://www.chicagotribune.com/news/nationworld/chi-050413kidnapping,1,6667705.story?coll=chi-news-hed&amp;ctrack=1&amp;cset=true</provenance>
+    <answer id="1" polarity="true" force="plausible" source="world">
+      <response>yes</response>
+      <because>Indiana is a state of the United States. An Indiana businessman might be a US citizen, and hence an American.</because>
+    </answer>
+</inference>
+
+<inference id="St017">
+    <passage>Clutching rosaries, medals and flowers, thousands of people filed past the simple white marble tomb of Pope John Paul II on Wednesday, as the Vatican reopened the grottoes beneath St. Peter's Basilica for the first time since the pope died.</passage>
+    <question>Did thousands of pilgrims flock to Pope John Paul II's tomb on Wednesday after the Vatican opened it to the public?</question>
+    <provenance type="edited">http://www.nytimes.com/aponline/international/AP-Pope.html</provenance>
+    <answer id="1" polarity="true" force="plausible" source="world">
+      <response>yes</response>
+      <because>Tombs of popes are generally in the grottoes beneath a church. St. Peter's Basilica is a church.</because>
+    </answer>
+</inference>
+
+<inference id="St018">
+    <passage>Prosecutors investigating an Iranian man who abducted four schoolgirls at knifepoint said on Wednesday they would petition the court to commit the man to a psychiatric institute.</passage>
+    <question>Did prosecutors say on Wednesday that the Iranian who kidnapped four schoolgirls would be taken to a psychiatric clinic for treatment?</question>
+    <provenance type="edited">http://www.expatica.com/source/site_article.asp?subchannel_id=52&amp;story_id=19054&amp;name=Child+abductor+may+be+committed+to+institute</provenance>
+    <answer id="1" polarity="true" force="plausible" source="linguistic">
+      <response>unlikely</response>
+      <comment>Implicature: If prosecutors knew that the Iranian man will be taken to a psychiatric clinic, they would have said this instead of the more complex statement that they would "petition the court".</comment>
+    </answer>
+</inference>
+
+<inference id="St019">
+    <passage>Four girls who had been taken hostage at knife point by an Iranian man were rescued by police in western Germany on Tuesday.</passage>
+    <question>Were the four girls who had been kidnapped by an Iranian man freed by police?</question>
+    <provenance type="edited">http://english.people.com.cn/200504/13/eng20050413_180852.html</provenance>
+    <answer id="1" polarity="true" force="strict" source="linguistic">
+      <response>yes</response>
+    </answer>
+</inference>
+
+<inference id="St020">
+    <passage>German police commandos slipped into a house where a knife-wielding man was holding four schoolgirls hostage Tuesday, surprising the suspect and taking him into custody while rescuing his captives after a five-hour standoff.</passage>
+    <question>Did German police overpower a man who was holding four schoolgirls at knifepoint for several hours on Tuesday?</question>
+    <provenance type="edited">http://www.guardian.co.uk/worldlatest/story/0,1280,-4932315,00.html</provenance>
+    <answer id="1" polarity="true" force="strict" source="linguistic">
+      <response>yes</response>
+    </answer>
+</inference>
+
+<inference id="St021">
+    <passage>Australian police have seized more than five million ecstasy tablets hidden inside a shipping container that arrived in Melbourne from Europe.</passage>
+    <question>Did the Australian Federal Police say that the five million ecstasy tablets seized in Melbourne was the largest seizure of street-ready tablets in the world?</question>
+    <provenance type="edited">http://news.bbc.co.uk/2/hi/asia-pacific/4447521.stm</provenance>
+    <answer id="1" polarity="true" force="strict" source="linguistic">
+      <response>unknown</response>
+    </answer>
+</inference>
+
+<inference id="St022">
+    <passage>The head of Germany's spy agency says the U-S made a mistake by letting Afghan militias chase after Osama bin Laden.</passage>
+    <question>Does the head of German intelligence believe the United States made errors in hunting Osama bin Laden?</question>
+    <provenance type="edited">http://www.whotv.com/Global/story.asp?S=3203932</provenance>
+    <answer id="1" polarity="true" force="plausible" source="world">
+      <response>likely</response>
+      <because>The US might have been letting Afghan militias chase after Osama bin Laden because they were trying to hunt (find) him. Implicature: Grice's maxim of quality says "Do not say what you believe to be false".</because>
+    </answer>
+</inference>
+
+<inference id="St023">
+    <passage>The Recording Industry Association of America and the Motion Picture Association of America on Wednesday separately will file lawsuits against college students that are allegedly using an Internet2 peer-to-peer service for illegal file trading.</passage>
+    <question>Do record label and movie studio investigators plan to sue college students who used a special high-speed network to copy songs and movies?</question>
+    <provenance type="edited">http://www.pcworld.com/news/article/0,aid,120425,00.asp</provenance>
+    <answer id="1" polarity="true" force="plausible" source="world">
+      <response>likely</response>
+      <because>The Recording Industry Association of America and the Motion Picture Association of America are record label and movie studio associations. A peer-to-peer service generally provides a high-speed network.</because>
+    </answer>
+</inference>
+
+<inference id="St024">
+    <passage>Designed for academic research, Internet2's extremely fast speed allows users to download a movie in five minutes or a song in less than 20 seconds.</passage>
+    <question>Has Internet2 been designed to allow users to download movies or songs?</question>
+    <provenance type="edited">http://www.telegraphindia.com/1050414/asp/foreign/story_4613533.asp</provenance>
+    <answer id="1" polarity="true" force="plausible" source="linguistic">
+      <response>unlikely</response>
+      <comment>Implicature. If "academic research" were not an exhaustive list of the design purpose, the speaker would have added the other purposes.</comment>
+    </answer>
+</inference>
+
+<inference id="St025">
+    <passage>Outside the northern Iraqi city of Kirkuk, at least nine police officers were killed and three were wounded when a bomb detonated on an oil pipeline as they were trying to defuse it.</passage>
+    <question>Did the bursting of an oil pipeline kill nine Iraqi officers?</question>
+    <provenance type="edited">http://www.nytimes.com/2005/04/13/international/middleeast/13cnd-iraq.html</provenance>
+    <answer id="1" polarity="true" force="plausible" source="world">
+      <response>unknown</response>
+      <because>If a bomb detonates on an oil pipeline, it might burst. However it is not clear that it is the bursting of the pipeline that causes the death.</because>
+    </answer>
+</inference>
+
+<inference id="St026">
+    <passage>Kenya's 1500m star Bernard Lagat, bronze medallist at the 2000 Olympics and silver medal winner in Athens, has taken out US citizenship.</passage>
+    <question>Did runner Lagat become an American citizen?</question>
+    <provenance type="edited">http://www.iol.co.za/index.php?set_id=6&amp;click_id=174&amp;art_id=qw1113398462140S163</provenance>
+    <answer id="1" polarity="true" force="plausible" source="world">
+      <response>yes</response>
+      <because>A US citizen is an American citizen. A 1500m star who competes at the Olympics might be a runner.</because>
+    </answer>
+</inference>
+
+<inference id="St027">
+    <passage>More than 25,000 residents have been evacuated as a rumbling volcano on Indonesia's Sumatra island sent out fire, smoke and ash. Mount Talang's violent awakening has coincided with a string of earthquakes on Sumatra and comes as another volcano on neighbouring Java, Tangkuban Perahu, has sprung to life and been declared off-limits.</passage>
+    <question>Have more than 25,000 residents been evacuated from the slopes of the volcano Tangkuban Perahu?</question>
+    <provenance type="edited">http://www.theaustralian.news.com.au/common/story_page/0,5744,12846760%255E2703,00.html</provenance>
+    <answer id="1" polarity="true" force="strict" source="linguistic">
+      <response>unknown</response>
+    </answer>
+</inference>
+
+<inference id="St028">
+    <passage>A snarling volcano spewing smoke and ash has forced the evacuation of 26,000 frightened residents on the troubled Indonesian island of Sumatra.</passage>
+    <question>Have more than 25,000 panicked residents been evacuated from the slopes of a volcano on Indonesia's Sumatra island?</question>
+    <provenance type="edited">http://www.heraldsun.news.com.au/common/story_page/0,5478,12847175%255E663,00.html</provenance>
+    <answer id="1" polarity="true" force="strict" source="world">
+      <response>likely</response>
+      <because>A volcano has slopes. An evacuation due to a volcano is from the neighborhood of the volcano. However, it is possible that some residents were evacuated from near by locations other than the slopes of the volcano.</because>
+    </answer>
+</inference>
+
+<inference id="St029">
+    <passage>Three dozen women in Western-style business suits crowded into the office of the man who would soon be Iraq's prime minister, Ibrahim al-Jaafari.</passage>
+    <question>Is Ibrahim al-Jaafari scheduled to be Iraq's prime minister?</question>
+    <provenance type="edited">http://www.nytimes.com/2005/04/13/international/middleeast/13women.html</provenance>
+    <answer id="1" polarity="true" force="strict" source="linguistic">
+      <response>yes</response>
+    </answer>
+</inference>
+
+<inference id="St030">
+    <passage>Theologians in Spain and elsewhere say Opus Dei is well ensconced in Rome and will probably emerge unscathed from the conclave, although this is far from certain.</passage>
+    <question>Is it certain that Opus Dei, well ensconced in Rome, will emerge unscathed from the conclave?</question>
+    <provenance type="edited">http://www.usatoday.com/news/religion/2005-04-12-pope-opus-dei_x.htm</provenance>
+    <answer id="1" polarity="true" force="strict" source="linguistic">
+      <response>no</response>
+    </answer>
+</inference>
+
+<inference id="UTD-ICSI-1">
+<passage> Iran purchased plans for building a nuclear reactor from A.Q. Khan.</passage>
+<question> Does Iran own plans for building a nuclear reactor ? </question>
+<provenance type="edited">   Google </provenance>
+<answer id="1" polarity="true" force="strict" source="linguistic">
+<response>yes</response>
+<because> Successful purchase entails the buyer having ownership of the goods.</because>
+</answer>
+</inference>
+
+<inference id="UTD-ICSI-2">
+<passage> Egypt has provided no evidence demonstrating the
+elimination of its biological warfare ability, which has existed since
+at least 1972.</passage>
+<question> Does Egypt have stockpiles of biological weapons? </question>
+<provenance type="edited">  cns2004/data/Country%20Profiles/Egypt/ </provenance>
+<answer id="1" polarity="true" force="strict" source="linguistic">
+<response>unknown</response>
+</answer>
+</inference>
+
+<inference id="UTD-ICSI-3">
+<passage> Egypt has suspended production of BW.</passage>
+<question> Is Egypt producing BW? </question> 
+<provenance type="edited"> cns2004/data/Country%20Profiles/Egypt/ </provenance>
+<answer id="1" polarity="true" force="strict" source="linguistic">
+<response>no</response>
+</answer>
+</inference>
+
+<inference id="UTD-ICSI-4">
+<passage> Egypt has suspended production of BW.</passage>
+<question> Has Egypt produced BW? </question> 
+<provenance type="edited"> cns2004/data/Country%20Profiles/Egypt/ </provenance>
+<answer id="1" polarity="true" force="strict" source="linguistic">
+<response>yes</response>
+</answer>
+</inference>
+
+<inference id="UTD-ICSI-5">
+<passage> Egypt suspended production of BW in 1985.</passage>
+<question> Does Egypt have stockpiles of BW? </question> 
+<provenance type="edited"> cns2004/data/Country%20Profiles/Egypt/ </provenance>
+<answer id="1" polarity="true" force="strict" source="linguistic">
+<response>unknown</response>
+</answer>
+</inference>
+
+<inference id="UTD-ICSI-6">
+<passage> Even if Iran possesses these biological agents, it faces a
+significant challenge in their weaponization and delivery. </passage>
+<question> Does Iran have the means to use biological weapons? </question>
+<provenance type="edited">   cns2004/data/Country%20Profiles/Iran/Biological/2299.htm </provenance>
+<answer id="1" polarity="true" force="strict" source="linguistic">
+<response>unknown</response> 
+</answer>
+</inference>
+
+<inference id="UTD-ICSI-7">
+<passage> There are indications that Iran has been trying to acquire
+BW delivery systems.  </passage>
+<question>  Does Iran have BW stockpiles? </question>
+<provenance type="edited">   cns2004/data/Country%20Profiles/Iran/Biological/2299.htm </provenance>
+<answer id="1" polarity="true" force="plausible" source="world">
+<response>unknown</response>
+<because> It is possible that Iran has stockpiles since they are trying to acquire delivery systems.</because>
+</answer>
+</inference>
+
+<inference id="UTD-ICSI-8">
+<passage> The US government discloses intelligence information
+that Russian entities are involved in transferring WMD technology to
+Iran.</passage>
+<question>  Does Iran have WMD capability? </question>
+<provenance type="edited">  cns2004/data/Country%20Profiles/Iran/Nuclear/1825_1875.htm </provenance>
+<answer id="1" polarity="true" force="plausible" source="world">
+<response>unknown</response>
+</answer>
+<because> Transfer of technology results in the technological sophistication required to produce WMD. </because>
+</inference>
+
+<inference id="UTD-ICSI-9">
+<passage> Iran took one step further in its attempts to acquire CW
+stockpiles.</passage> 
+<provenance type="edited"> cns2004/data/Country%20Profiles/Iran/ </provenance> 
+<question> Does Iran have WMD? </question>
+<answer id="1" polarity="true" force="plausible" source="world">
+<response>unknown</response>
+<because> Attempting to acquire stockpiles does not imply existence of stockpiles</because>
+</answer>
+</inference>
+
+<inference id="UTD-ICSI-10">
+<passage> The U.S. economy may be on the verge of falling back into recession after more than a year of
+half-hearted recovery that failed to generate either jobs or hope,
+according to economists.</passage> 
+<question> Is the US economy in recession? </question> 
+<provenance type="edited"> NYT August 24, 1993. </provenance>
+<answer id="1" polarity="true" force="strict" source="linguistic">
+<response>no</response>
+<because> On the verge implies likelihood of future recession</because>
+</answer>
+</inference>
+
+<inference id="UTD-ICSI-11">
+<passage> The U.S. economy may be on the verge of falling back into
+recession after more than a year of half-hearted recovery that failed
+to generate either jobs or hope, according to economists.</passage>
+<question> Is the US economy likely to be in recession? </question>
+<provenance type="edited">  NYT August 24, 1993 </provenance>
+<answer id="1" polarity="true" force="plausible" source="linguistic">
+<response>likely</response>
+<because> On the verge implies likelihood of future recession</because>
+</answer>
+</inference>
+
+<inference id="UTD-ICSI-12">
+<passage> The U.S. economy may be on the verge of falling back into
+recession after more than a year of half-hearted recovery that failed
+to generate either jobs or hope, according to economists.</passage>
+<question> Was the US economy in recession a year ago? </question>
+<provenance type="edited">  NYT August 24, 1993 </provenance>
+<answer id="1" polarity="true" force="strict" source="linguistic">
+<response>no</response>
+<because> The recovery has lasted more than a year </because>
+</answer>
+</inference>
+
+<inference id="UTD-ICSI-13">
+<passage> After five years of easy credit, the Fed has reversed course,
+leaving no doubt about its commitment to fighting inflation in an
+economy that has finally started to gain momentum.</passage>
+<question> Is the Economy growing? </question>
+<provenance type="edited">  San Francisco Chronicle, March 1995 </provenance>
+<answer id="1" polarity="true" force="plausible" source="linguistic">
+<response>yes</response>
+<because> The economy has started to gain momentum (sustained growth). Uses the
+Event Structure Metaphor.</because>
+</answer>
+</inference>
+
+<inference id="UTD-ICSI-14">
+<passage>After five years of easy credit, the Fed has reversed course,
+leaving no doubt about its commitment to fighting inflation in an
+economy that has finally started to gain momentum.</passage>
+<question>  Has the Fed raised interest rates? </question>
+<provenance type="edited">  San Francisco Chronicle, March 1995 </provenance>
+<answer id="1" polarity="true" force="plausible" source="world">
+<response>likely</response>
+<because> The Fed has reversed course from easy credit (low interest rates) </because>
+</answer>
+</inference>
+
+<inference id="UTD-ICSI-15">
+<passage>After five years of easy credit, the Fed has reversed course,
+leaving no doubt about its commitment to fighting inflation in an
+economy that has finally started to gain momentum.</passage>
+<question> Did the Fed have lower interest rates three years ago? </question>
+<provenance type="edited">  San Francisco Chronicle, March 1995 </provenance>
+<answer id="1" polarity="true" force="plausible" source="world">
+<response>likely</response>
+<because> Three years ago was still easy credit and now it is higher interest rates.</because>
+</answer>
+</inference>
+
+<inference id="UTD-ICSI-16">
+<passage>After five years of easy credit, the Fed has reversed course,
+leaving no doubt about its commitment to fighting inflation in an
+economy that has finally started to gain momentum.</passage>
+<question> Has the economy been growing rapidly? </question>
+<answer id="1" polarity="true" force="plausible" source="linguistic">
+<response>no</response>
+<because> The economy has just finally started to gain momentum </because>
+</answer>
+</inference>
+
+<inference id="UTD-ICSI-17">
+<passage>After five years of easy credit, the Fed has reversed course,
+leaving no doubt about its commitment to fighting inflation in an
+economy that has finally started to gain momentum.</passage>
+<question> Are inflation levels rising? </question>
+<answer id="1" polarity="true" force="plausible" source="world">
+<response>likely</response>
+<because> Fighting inflation starts when inflation is higher than acceptable </because>
+</answer>
+</inference>
+
+<inference id="UTD-ICSI-18">
+<passage> AUSTRIA, Once expected to waltz smoothly into the European
+Union, is elbowing its partners, treading on toes and pogo-dancing in a most un-Viennese manner.</passage>
+<question> Did Austria encounter any difficulty in becoming a member of the EU? </question>
+<provenance type="edited">  Reuters, March 1993. </provenance>
+<answer id="1" polarity="true" force="plausible" source="linguistic">
+<response>yes</response>
+<because> The entry has been rough. Uses the Event Structure Metaphor.</because>
+</answer>
+</inference>
+
+<inference id="UTD-ICSI-19">
+<passage> While Pakistan does not possess biological weapons (BW), 
+it has talented biomedical and biochemical scientists and well-equipped laboratories.</passage>
+<question> Does Pakistan possess biological weapons? </question>
+<provenance type="edited">  cns2004/data/Country%20Profiles/Pakistan/overview/index.htm  </provenance>
+<answer id="1" polarity="true" force="strict" source="linguistic">
+<response>no</response>
+<because> The premise of the while clause is assumed in the passage.</because>
+</answer>
+</inference>
+
+<inference id="UTD-ICSI-20">
+<passage> While Pakistan does not possess biological weapons
+(BW), it has talented biomedical and biochemical scientists and
+well-equipped laboratories.</passage>
+<question> Does Pakistan possess the technology to produce biological weapons? </question>
+<provenance type="edited">  cns2004/data/Country%20Profiles/Pakistan/overview/index.htm  </provenance>
+<answer id="1" polarity="true" force="plausible" source="world">
+<response>likely</response>
+<because> Scientific expertise and facilities are necessary but not sufficient preconditions (need facilities) for production. It
+is plausible </because>
+</answer>
+</inference>
+
+<inference id="UTD-ICSI-21"><passage> While Pakistan does not possess biological weapons
+(BW), it has talented biomedical and biochemical scientists and
+well-equipped laboratories.</passage>
+<question> Is Pakistan continuing to stockpile biological weapons? </question>
+<provenance type="edited">  cns2004/data/Country%20Profiles/e1_pakistan_1.html  </provenance>
+<answer id="1" polarity="true" force="strict" source="world">
+<response>no</response>
+<because> Possession is a precondition for stockpiling.</because>
+</answer>
+</inference>
+
+<inference id="UTD-ICSI-22">
+<passage>North Korea reportedly has cultures of the smallpox pathogen (variola
+major). North Korean soldiers have been recently vaccinated against smallpox.</passage>
+<question> Does North Korea possess the smallpox pathogen? </question>
+<provenance type="edited">   cns2004/data/Country%20Profiles/NK/Biological/index.htm  </provenance>
+<answer id="1" polarity="true" force="plausible" source="world">
+<response>yes</response>
+<context_type> Report </context_type>
+<because> Having cultures of the pathogen implies having the pathogen </because>
+</answer>
+</inference>
+
+<inference id="UTD-ICSI-23">
+<passage> There exists no evidence that Egypt has
+acquired biological weapons. </passage>
+<question> Is Egypt still stockpiling biological weapons? </question> 
+<provenance type="edited">  cns2004/data/Country%20Profiles/Egypt/ </provenance>
+<answer id="1" polarity="true" force="plausible" source="world">
+<response>unlikely</response>
+<because> Acquisition of weapons is a precondition to stockpiling weapons.</because>
+</answer>
+</inference>
+
+<inference id="UTD-ICSI-24">
+<passage> Iran purchased plans for building a nuclear reactor from A.Q. Khan.</passage>
+<question> Does Iran intend to build a nuclear reactor ? </question>
+<provenance type="edited">   Google </provenance>
+<answer id="1" polarity="true" force="plausible" source="world">
+<response>unknown</response>
+<because> Having the plans is a subgoal of building a nuclear reactor.</because>
+</answer>
+</inference>
+
+<inference id="UTD-ICSI-25">
+<passage> Iran purchased plans for building a nuclear reactor from A.Q. Khan.</passage>
+<question> Does Iran intend to become a Nuclear State? </question>
+<provenance type="edited">   Google </provenance>
+<answer id="1" polarity="true" force="plausible" source="world">
+<response>unknown</response>
+<because> Having plans is a precondition to building a nuclear reactor, in turn 
+one possible subgoal of becoming a nuclear state.</because>
+</answer>
+</inference>
+
+<inference id="UTD-ICSI-26">
+<passage> Iran recently bought weapons-grade fissile material.</passage>
+<question> Does Iran intend to produce nuclear weapons? </question>
+<provenance type="edited">  cns2004/data/Country%20Profiles/e1_pakistan_1.html  </provenance>
+<answer id="1" polarity="true" force="plausible" source="world">
+<response>unknown</response>
+<because> Weapons grade fissile materials are a resource for the goal of nuclear weapon production</because>
+</answer>
+</inference>
+
+<inference id="UTD-ICSI-27">
+<passage> The stimulus package will jumpstart the economy and make sure it
+doesn't slide into recession again.</passage>
+<question> Is the economy booming? </question>
+<provenance type="edited">  The Reuter Transcript Report, March 24, 1993, Wednesday, BC cycle </provenance>
+<answer id="1" polarity="true" force="strict" source="linguistic">
+<response>no</response>
+<because> The Economy is stalling (needs a jumpstart) and the stimulus package will jumpstart it (future). Uses the Event Structure Metaphor.</because>
+</answer>
+</inference>
+
+<inference id="UTD-ICSI-28">
+<passage> The stimulus package will jumpstart the economy and make sure it
+doesn't slide into recession again.</passage>
+<question> Is the economy in recession? </question>
+<provenance type="edited">  The Reuter Transcript Report, March 24, 1993, Wednesday, BC cycle </provenance>
+<answer id="1" polarity="true" force="plausible" source="linguistic">
+<response>unknown</response>
+<because> The Economy is stalling (no growth). Uses the Event Structure Metaphor.</because>
+</answer>
+</inference>
+
+<inference id="UTD-ICSI-29">
+<passage> The stimulus package will jumpstart the economy and make sure it
+doesn't slide into recession again.</passage>
+<question> Will the stimulus package cause rapid economic growth? </question>
+<provenance type="edited">  The Reuter Transcript Report, March 24, 1993, Wednesday, BC cycle </provenance>
+<answer id="1" polarity="true" force="plausible" source="linguistic">
+<response>unknown</response>
+<because> The stimulus package will only preclude future recession.</because>
+</answer>
+</inference>
+
+<inference id="UTD-ICSI-30">
+<passage> The stimulus package will jumpstart the economy and make sure it
+doesn't slide into recession again.</passage>
+<question> Is the economy weak? </question>
+<provenance type="edited">  The Reuter Transcript Report, March 24, 1993, Wednesday, BC cycle </provenance>
+<answer id="1" polarity="true" force="plausible" source="world">
+<response>yes</response>
+<because> The economy needs stimulation. Uses the Event Structure Metaphor. </because>
+</answer>
+</inference>
+
+<inference id="UTD-ICSI-31">
+<passage> The stimulus package will jumpstart the economy and make sure it
+doesn't slide into recession again.</passage>
+<question> Was the economy in recession? </question>
+<provenance type="edited">  The Reuter Transcript Report, March 24, 1993, Wednesday, BC cycle </provenance>
+<answer id="1" polarity="true" force="strict" source="linguistic">
+<response>yes</response>
+</answer>
+</inference>
+
+<inference id ="UTD-ICSI-32">
+<passage> The economy is moving ahead at the pace of a Clinton jog.</passage>
+<question> Is the economy in recession? </question>
+<provenance type="edited">  The Reuter Transcript Report, March 24, 1997, Wednesday, BC cycle </provenance>
+<answer id="1" polarity="true" force="plausible" source="world">
+<response>no</response>
+<because> It is moving ahead at a low rate of progress. Uses the Event Structure Metaphor. </because>
+</answer>
+</inference>
+
+
+<inference id="UTD-ICSI-33">
+<passage> Negotiations between Israel and the Palestinian authority
+have finally resumed. Many roadblocks remain and progress is likely to be
+painful and slow. </passage>
+<provenance type="edited"> Google news </provenance>
+<question> Is Israel and Palestinian authority negotiating? </question> 
+<answer id="1" polarity="true" force="strict" source="linguistic">
+<response>yes</response>
+</answer>
+</inference>
+
+<inference id="UTD-ICSI-34">
+<passage> Negotiations between Israel and the Palestinian authority
+have finally resumed. Many roadblocks remain and progress is likely to be
+painful and slow. </passage>
+<provenance type="edited"> Google news </provenance>
+<question> Have there been previous negotiations between Israel and the Palestinian authority? </question> 
+<answer id="1" polarity="true" force="strict" source="linguistic">
+<response>yes</response>
+</answer>
+</inference>
+
+<inference id="UTD-ICSI-35">
+<passage> Negotiations between Israel and the Palestinian authority
+have finally resumed. Many roadblocks remain and progress is likely to be
+painful and slow. </passage>
+<provenance type="edited"> Google news </provenance>
+<question> Have negotiations between Israel and the Palestinian authority been uninterrupted? </question> 
+<answer id="1" polarity="true" force="strict" source="linguistic">
+<response>no</response>
+</answer>
+</inference>
+
+<inference id="UTD-ICSI-36">
+<passage> Negotiations between Israel and the Palestinian authority
+have finally resumed. Many roadblocks remain and progress is likely to be
+painful and slow. </passage>
+<provenance type="edited"> Google news </provenance>
+<question> Are there any continuing impediments to progress in the negotiations between Israel and the Palestinian authority? </question> 
+<answer id="1" polarity="true" force="strict" source="linguistic">
+<response>yes</response>
+</answer>
+</inference>
+
+<inference id="UTD-ICSI-37"> 
+<passage> Negotiations between Israel and
+the Palestinian authority have finally resumed. Many roadblocks remain
+and progress is likely to be painful and slow. </passage> 
+<provenance type="edited"> Google news </provenance> 
+<question> Is there a clear path for future negotiations between Israel and the Palestinian
+authority? </question>
+<answer id="1" polarity="true" force="strict" source="linguistic">
+<response>unlikely</response>
+</answer>
+</inference>
+
+</root>

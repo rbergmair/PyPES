@@ -1,0 +1,664 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE entailment-corpus SYSTEM "rte.dtd">
+<entailment-corpus>
+<pair id="437" value="NO" task="QA">
+	<q lang="EN" src="clef2004" type="PERSON">Who is Jean-Bertrand Aristide?</q>
+	<t doc="LA021694-0179">  The Clinton Administration, clearly running out of patience, Tuesday called on ousted Haitian President Jean-Bertrand Aristide to accept a new proposal by members of the Haitian Parliament to install a coalition government as a step toward restoring democracy. </t>
+	<h>    Jean-Bertrand Aristide is Tuesday called on ousted Haitian President  </h>
+</pair>
+<pair id="438" value="NO" task="QA">
+	<q lang="EN" src="clef2004" type="PERSON">Who is Jean-Bertrand Aristide?</q>
+	<t doc="LA011794-0018">  Secretary of State Warren Christopher said exiled Haitian President Jean-Bertrand Aristide's Feb. 7 target for resuming power "probably is not workable.". </t>
+	<h>    Jean-Bertrand Aristide is Secretary of State Warren Christopher said exiled Haitian President Jean  </h>
+</pair>
+<pair id="439" value="NO" task="QA">
+	<q lang="EN" src="clef2004" type="PERSON">Who is Jean-Bertrand Aristide?</q>
+	<t doc="LA110394-0358">  U.S. combat troops took up sniper positions atop tombs Wednesday to guard President Jean-Bertrand Aristide as the former exile ventured out for a rare public visit -- kneeling at a cemetery and two churches to pray for Haitian priests, politicians and thousands of others who died for him and his democratic cause under three years of military rule. </t>
+	<h>    Jean-Bertrand Aristide is U.S. combat troops took up sniper positions atop tombs Wednesday to guard President Jean-Bertrand Aristide as the former exile ventured out for a rare public visit -- kneeling at a cemetery and two churches to pray for Haitian priests, politicians and thousands of others who died for him and his democratic cause under three years of military rule.  </h>
+</pair>
+<pair id="440" value="NO" task="QA">
+	<q lang="EN" src="clef2004" type="LOCATION">Where is the Al Aqsa Mosque?</q>
+	<t doc="LA072094-0135"> The Israeli maneuver became dramatically clear when Israel extended an invitation to Hussein to visit Jerusalem and pray at Al Aqsa mosque, whose golden dome he had re-gilded this year; the invitation was offered after Israel put off requests by Arafat and senior PLO officials to make the same pilgrimage. </t>
+	<h>    The Al Aqsa Mosque is in Israel  </h>
+</pair>
+<pair id="441" value="NO" task="QA">
+	<q lang="EN" src="clef2004" type="TIME">When did Bosnia's secession from Yugoslavia occur?</q>
+	<t doc="LA022094-0349">NATO defense ministers meeting in Aviano today NATO Nations Deployed for Possible Raids About 4,000 personnel from: Belgium Canada Denmark France Germany Italy The Netherlands Norway Spain Turkey Britain United States Firepower Includes (Fighters or fighter-bombers): F-15E F-16A Mirage 2000 Mirage F-1 Jaguars Super Etendard 4Ps F/A-18C F-16C A-6 Mirage F1 CTs F-3 Tornado Sea Harrier Other aircraft: E-3A KC-135 AC-130 CASA 212 (Spanish) AWACS K-1 Tristar refuelers Flight Times to Sarajevo: 45 minutes or less The Forces in Bosnia and What They're Seeking Background: About 200,000 people have been reported dead or missing in Bosnia since minority Serbs rebelled in April, 1992. </t>
+	<h>    Bosnia's secession from Yugoslavia occurred in April, 1992  </h>
+</pair>
+<pair id="442" value="NO" task="QA">
+	<q lang="EN" src="clef2004" type="TIME">When did the bomb attack at the World Trade Center occur?</q>
+	<t doc="LA030594-0001">  A federal jury on Friday found four militant Muslims guilty of conspiring to bomb the World Trade Center in what prosecutors called the worst terrorist attack in U.S. history. </t>
+	<h>    on Friday occurred the bomb attack at the World Trade Center  </h>
+</pair>
+<pair id="443" value="NO" task="QA">
+	<q lang="EN" src="clef2004" type="ORGANIZATION">What is the yakuza?</q>
+	<t doc="LA033194-0035"> I grieve for Go Matsuura and Takuma Ito, gunned down in a Los Angeles carjacking, as I grieved for Yoshi Hattori and for Masakazu Kuriyama, who was shot to death at a BART train station in Concord last August -- all victims of the senseless violence and ready availability of guns so prevalent in the United States. </t>
+	<h>    The yakuza is Mafia -  </h>
+</pair>
+<pair id="444" value="NO" task="QA">
+	<q lang="EN" src="clef2004" type="ORGANIZATION">What is the yakuza?</q>
+	<t doc="LA041094.0121">Despite such petty caveils, however, this is the most exhilarating, funny, and exciting Saturday night special you'll see until Tarantino's next movie, whenever that is. </t>
+	<h>    The yakuza is They have been further shocked by revelations that Japan's gangsters,  </h>
+</pair>
+<pair id="445" value="NO" task="QA">
+	<q lang="EN" src="clef2004" type="PERSON">Who is the Mayor of New York?</q>
+	<t doc="LA110994-0213">When the Republicans selected Pataki at their state convention in May, one New York City tabloid ran the headline, "What is a Pataki?" Pataki, the son of a mailman who attended Yale University and Columbia Law School on scholarships, was handpicked by D'Amato, who jubilantly declared that the voters sent a resounding message. </t>
+	<h>    The Mayor of New York is New York City 's Republican mayor W. Giuliani prompting Pataki  </h>
+</pair>
+<pair id="446" value="NO" task="QA">
+	<q lang="EN" src="clef2004" type="PERSON">What is the name of Kurt Cobain's wife?</q>
+	<t doc="GH950613-000113">SEATTLE: Singer Courtney Love was treated in hospital for a possible drug overdose, it was reported yesterday. </t>
+	<h>    Kurt Cobain's wife is Love  </h>
+</pair>
+<pair id="447" value="NO" task="QA">
+	<q lang="EN" src="clef2004" type="PERSON">What is the name of Kurt Cobain's wife?</q>
+	<t doc="LA061594-0240">Singer Courtney Love, widow of Kurt Cobain, was there in April when she called the front desk complaining of an allergic reaction to a prescription medication. </t>
+	<h>    Kurt Cobain's wife is Singer Courtney Love  </h>
+</pair>
+<pair id="448" value="NO" task="QA">
+	<q lang="EN" src="clef2004" type="TIME">In what year did the Yom Kippur War take place?</q>
+	<t doc="GH951106-000003">He was Prime Minister from June 1974, following the disastrous Yom Kippur War, to 1977 when he resigned both the party leadership and the premiership after his wife, whom he married when they were both in the Palmach, was involved in a scandal about currency infringement involving an undeclared US bank account. </t>
+	<h>    The Yom Kippur War took place in from June 1974  </h>
+</pair>
+<pair id="449" value="NO" task="QA">
+	<q lang="EN" src="clef2004" type="LOCATION">What is the highest active volcano in Europe?</q>
+	<t doc="LA112794-0143">Rainier is the highest volcano in the Cascade Range. </t>
+	<h>    The highest active volcano in Europe is Etna the highest active volcano in Europe  </h>
+</pair>
+<pair id="450" value="NO" task="QA">
+	<q lang="EN" src="clef2004" type="OTHER">What was Aldrich H. Ames accused of?</q>
+	<t doc="LA032494-0189">Ames, the longtime CIA official accused of spying for the Russians. </t>
+	<h>    Aldrich H. Ames was accused of the Russians  </h>
+</pair>
+<pair id="451" value="NO" task="QA">
+	<q lang="EN" src="clef2004" type="OTHER">What was Aldrich H. Ames accused of?</q>
+	<t doc="LA042294-0169">Ames spy case. </t>
+	<h>    Aldrich H. Ames was accused of the H. Ames spy case  </h>
+</pair>
+<pair id="452" value="NO" task="QA">
+	<q lang="EN" src="clef2004" type="OTHER">What was Aldrich H. Ames accused of?</q>
+	<t doc="LA101094-0160">They cite the case of convicted traitor Aldrich H. </t>
+	<h>    Aldrich H. Ames was accused of convicted traitor Aldrich H. Ames  </h>
+</pair>
+<pair id="453" value="NO" task="QA">
+	<q lang="EN" src="clef2004" type="OTHER">Tell me the name of a robot.</q>
+	<t doc="LA021894-0276"> Charlotte, a spider-like robot named after the clever arachnid in the book "Charlotte's Web," will soon be scurrying about in the heavens helping space shuttle astronauts do their chores. </t>
+	<h>    STAFF WRITER Charlotte is a name of a robot </h>
+</pair>
+<pair id="454" value="NO" task="QA">
+	<q lang="EN" src="clef2004" type="LOCATION">What continent is the ozone hole above?</q>
+	<t doc="LA110894-0047">  Michael Gunson, a scientist at NASA's Jet Propulsion Laboratory in Pasadena, Calif., said his ozone monitor aboard Atlantis confirms the findings of instruments on permanently orbiting satellites -- that there is very little ozone inside the Antarctic ozone hole at nearly all altitudes of the stratosphere. </t>
+	<h>    The ozone hole is above the Antarctic ozone hole  </h>
+</pair>
+<pair id="455" value="NO" task="QA">
+	<q lang="EN" src="clef2004" type="ORGANIZATION">What party won the first multi-racial elections of South Africa?</q>
+	<t doc="GH951228-000071">Patrick Laurence, in Johannesburg, examines the divisions emerging in the ANC's broad alliance, which could prove costly in a future South Africa without Nelson Mandela NELSON MANDELA's African National Congress stands over South Africa like a political colossus, having trounced its rivals in the November local government elections to record its second emphatic electoral triumph since April last year. </t>
+	<h>    The first multi-racial elections of South Africa was won by National Congress  </h>
+</pair>
+<pair id="456" value="NO" task="QA">
+	<q lang="EN" src="clef2004" type="PERSON">Who is Juan Antonio Samaranch?</q>
+	<t doc="LA021094-0151">Ulvang has frequently been critical of the International Olympic Committee and its president, Juan Antonio Samaranch, and repeated those criticisms Tuesday on Norwegian television. </t>
+	<h>    Juan Antonio Samaranch is International Olympic Committee and its president,  </h>
+</pair>
+<pair id="457" value="NO" task="QA">
+	<q lang="EN" src="clef2004" type="PERSON">Who is Juan Antonio Samaranch?</q>
+	<t doc="LA090794-0037">If she was not comfortable with Schiller as a potential member, then neither was IOC President Juan Antonio Samaranch. </t>
+	<h>    Juan Antonio Samaranch is If she was not comfortable with Schiller as a potential member then was IOC Juan Antonio Samaranch  </h>
+</pair>
+<pair id="458" value="NO" task="QA">
+	<q lang="EN" src="clef2004" type="PERSON">Who is Juan Antonio Samaranch?</q>
+	<t doc="GH950505-000092">A spokesman for the International Olympic Committee said president Juan Antonio Samaranch had sent an urgent message to the president of the Ethiopian Olympic Committee requesting a detailed report. </t>
+	<h>    Juan Antonio Samaranch is A spokesman for the International Olympic Committee said president Juan Antonio Samaranch had sent an urgent message to the president of the Ethiopian Olympic Committee requesting a detailed report.  </h>
+</pair>
+<pair id="459" value="NO" task="QA">
+	<q lang="EN" src="clef2004" type="PERSON">Who is Juan Antonio Samaranch?</q>
+	<t doc="LA021394-0349">What newness there was Saturday came in an appeal for peace in the former Olympic host city of Sarajevo by the president of the International Olympic Committee, Juan Antonio Samaranch, followed by a minute of silence for the embattled citizenry there. </t>
+	<h>    Juan Antonio Samaranch is the International Olympic Committee  </h>
+</pair>
+<pair id="460" value="NO" task="QA">
+	<q lang="EN" src="clef2004" type="ORGANIZATION">What does the abbreviation OAU stand for?</q>
+	<t doc="GH950626-000147">From NICHOLAS KOTCH, Addis Ababa, Sunday THE Organisation of African Unity is making desperate efforts to prevent Burundi from following its sister state Rwanda down the road to genocide, a crisis underlined by the resignation of the country's foreign minister. </t>
+	<h>    The abbreviation OAU stands for African Unity  </h>
+</pair>
+<pair id="461" value="NO" task="QA">
+	<q lang="EN" src="clef2004" type="ORGANIZATION">What does the abbreviation OAU stand for?</q>
+	<t doc="GH950411-000067">Nairobi, Monday THE Organisation of African Unity is sending a peace mission to Burundi, where diplomats fear ethnic violence threatens a bloodbath similar to last year's genocide in Rwanda. </t>
+	<h>    The abbreviation OAU stands for African Unity  </h>
+</pair>
+<pair id="462" value="NO" task="QA">
+	<q lang="EN" src="clef2004" type="ORGANIZATION">Which company has its headquarters in Armonk?</q>
+	<t doc="GH950407-000073">IBM Japan produces about 12% of the Armonk, New York-based company's overall revenues and provides important technical developments -- Reuter. </t>
+	<h>    The company IBM Japan has its headquarters in Armonk </h>
+</pair>
+<pair id="463" value="NO" task="QA">
+	<q lang="EN" src="clef2004" type="ORGANIZATION">Who committed the terrorist attack in the Tokyo underground?</q>
+	<t doc="GH950509-000108">They also started a nationwide search of hotels and other lodgings for Shoko Asahara, the mysterious leader of the Aum Shinri Kyo (Supreme Truth Sect). </t>
+	<h>    Shinri Kyo sect committed the terrorist attack in the Tokyo underground </h>
+</pair>
+<pair id="464" value="NO" task="QA">
+	<q lang="EN" src="clef2004" type="ORGANIZATION">What is the GIA?</q>
+	<t doc="GH950819-000071">It is probable that the GIA was behind the shooting in a Paris mosque on July 11 of an Imam, Abdel Baki Sahraoui, co-founder of the FIS. </t>
+	<h>     The GIA is probable the GIA was behind the shooting in a Paris mosque on July  </h>
+</pair>
+<pair id="465" value="NO" task="QA">
+	<q lang="EN" src="clef2004" type="ORGANIZATION">What is the GIA?</q>
+	<t doc="GH950727-000102">Last December GIA members hijacked an Air France Airbus from Algiers and forced the pilot to fly to Marseilles where the plane was stormed by French police commandos. </t>
+	<h>     The GIA is members hijacked an Air France Airbus  </h>
+</pair>
+<pair id="466" value="NO" task="QA">
+	<q lang="EN" src="clef2004" type="ORGANIZATION">What does "UAE" stand for?</q>
+	<t doc="GH950411-000144">The Mail on Sunday said the note, under an official photograph of the then Mrs Thatcher when Prime Minister, was addressed to Sheikh Zayed, ruler of Abu Dhabi and president of the United Arab Emirates. </t>
+	<h>    "UAE" stands for Arab  </h>
+</pair>
+<pair id="467" value="NO" task="QA">
+	<q lang="EN" src="clef2004" type="ORGANIZATION">Of what organisation was Pierre-Paul Schweitzer general manager?</q>
+	<t doc="LA010394-0176">In 1963 he began a 10-year stewardship of the IMF as secretary general. </t>
+	<h>    Pierre-Paul Schweitzer was general manager of Ex IMF Secretary General Dies  </h>
+</pair>
+<pair id="468" value="NO" task="QA">
+	<q lang="EN" src="clef2004" type="ORGANIZATION">What racing team is Flavio Briatore the manager of?</q>
+	<t doc="GH950718-000011">''Now I am very happy for one thing in particular,'' said Benetton managing director Flavio Briatore, reportedly visited by an apologetic Frank Williams on Sunday evening after his driver, Damon Hill, had collided with Schumacher in an abortive attempt to snatch the lead on lap 46. </t>
+	<h>    Flavio Briatore is the manager of Now I am very happy for thing in particular said Benetton Flavio Briatore  </h>
+</pair>
+<pair id="469" value="NO" task="QA">
+	<q lang="EN" src="clef2004" type="ORGANIZATION">Of what team is Bobby Robson coach?</q>
+	<t doc="GH951206-000130">Porto coach and former England manager Bobby Robson will be missing defender Jorge Costa, who is suspended. ``It's going to be a very tough task but we're going to play to win against Aalborg,'' Robson said. ``There could be a surprise in Nantes. </t>
+	<h>    Bobby Robson trains Porto coach and former England manager  </h>
+</pair>
+<pair id="470" value="NO" task="QA">
+	<q lang="EN" src="clef2004" type="MEASURE">How fast does light travel?</q>
+	<t doc="GH950819-000172">But McEwan realised the system could be used for objects travelling at a lot less than 186,000 miles a second. </t>
+	<h>    Light travels at 186,000 miles  </h>
+</pair>
+<pair id="471" value="NO" task="QA">
+	<q lang="EN" src="clef2005" type="ORGANIZATION">What is UNITA?</q>
+	<t doc="LA122294-0287">Savimbi recently emerged from hiding to reveal discord within the ranks of his 28-year-old National Union for the Total Independence of Angola, or UNITA, movement. </t>
+	<h>      UNITA is Union for the Total Independence of Angola  </h>
+</pair>
+<pair id="472" value="NO" task="QA">
+	<q lang="EN" src="clef2005" type="PERSON">Who is Javier Solana?</q>
+	<t doc="GH951211-000049">For months, his boss, Javier Solana, the class-act Spanish Foreign Minister who is about to become Nato's secretary-general, has been saying there is not much point in expecting significant agreement on streamlining Maastricht. </t>
+	<h>      Javier Solana is his boss,  </h>
+</pair>
+<pair id="473" value="NO" task="QA">
+	<q lang="EN" src="clef2005" type="PERSON">Who is Javier Solana?</q>
+	<t doc="GH951211-000049">For months, his boss, Javier Solana, the class-act Spanish Foreign Minister who is about to become Nato's secretary-general, has been saying there is not much point in expecting significant agreement on streamlining Maastricht. </t>
+	<h>      Javier Solana is the class-act  </h>
+</pair>
+<pair id="474" value="NO" task="QA">
+	<q lang="EN" src="clef2005" type="PERSON">Who was Yasser Arafat?</q>
+	<t doc="LA090694-0136">That means PLO Chairman Yasser Arafat will continue to govern the Gaza Strip and Jericho -- and some aspects of Palestinian life throughout the West Bank -- with a government that has no popular mandate. </t>
+	<h>      Yasser Arafat was That means PLO Chairman Yasser Arafat will continue to govern the Gaza Strip and Jericho -- and some aspects of Palestinian life throughout the West Bank -- with a government that has no popular mandate.  </h>
+</pair>
+<pair id="475" value="NO" task="QA">
+	<q lang="EN" src="clef2005" type="PERSON">Who was Yasser Arafat?</q>
+	<t doc="GH950221-000135">Paris, Monday PALESTINIAN leader Yasser Arafat said today the Middle East peace process had reached an impasse and called for outside help to move it forward. </t>
+	<h>      Yasser Arafat was Monday PALESTINIAN leader Yasser Arafat said today the Middle East peace process had reached an impasse and called for outside help to move it forward We have great need today for France for Europe for the European Union to give impetus to the peace process to pull it out of the impasse in which it is ' Arafat told reporters after  </h>
+</pair>
+<pair id="476" value="NO" task="QA">
+	<q lang="EN" src="clef2005" type="PERSON">Who is Giulio Andreotti?</q>
+	<t doc="GH950308-000104">Among the current cases based largely on turncoat testimony is the upcoming trial of former Prime Minister Giulio Andreotti. </t>
+	<h>      Giulio Andreotti is the upcoming trial of former Prime Minister  </h>
+</pair>
+<pair id="477" value="NO" task="QA">
+	<q lang="EN" src="clef2005" type="LOCATION">Name a building wrapped by Christo.</q>
+	<t doc="LA022694-0256">  Christo, who previously wrapped Paris' Pont Neuf, has been trying for 23 years to get permission for a "Wrapped Reichstag.". </t>
+	<h>       Christo who previously wrapped Paris Pont Neuf has been trying for 23 years to get permission for a Wrapped Reichstag Christo plans a two week Reichstag spectacle for spring 1995 just before workers begin refurbishing the building for Parliament to is a building wrapped by Christo </h>
+</pair>
+<pair id="478" value="NO" task="QA">
+	<q lang="EN" src="clef2005" type="LOCATION">Where is the ozone hole?</q>
+	<t doc="LA030194-0141">  In research that for the first time suggests that the thinning of the Earth's ozone layer directly harms wild animals, scientists reported Monday that frog eggs are being killed by ultraviolet radiation in the Pacific Northwest. </t>
+	<h>      The ozone hole is in the Earth  </h>
+</pair>
+<pair id="479" value="NO" task="QA">
+	<q lang="EN" src="clef2005" type="LOCATION">Where is the ozone hole?</q>
+	<t doc="GH950913-000097">And WMO special adviser Romen Bojkov told a news conference the trend -- although predicted -- reinforced arguments for developing countries and transition economies to cut their emissions of the ozone-destroying bromine chemical. ''The problem is that the effect is cumulative,'' he said. ''It is not dangerous at the moment but could be depending on how long these conditions continue.'' A WMO announcement said: ''The area with severely depleted ozone at present covers over 3.86 million square miles, about the size of Europe, and is twice the size of that during the 1993 and 1995 austral springs in the same period.' The ozone layer absorbs and blocks most ultraviolet rays coming from the Sun. </t>
+	<h>      The ozone hole is in A RECORD ozone hole' the size of Europe has formed over Antarctica threatening the Earth with increased exposure to ultraviolet radiation the United Nations weather monitoring body reported today The World Meteorological Organisation WMO said the ozone decline an annual  </h>
+</pair>
+<pair id="480" value="NO" task="QA">
+	<q lang="EN" src="clef2005" type="LOCATION">Name a city in which Giulio Andreotti was put on trial.</q>
+	<t doc="GH950307-000071">The trial in this Calabrian city, for the 1991 murder of Appeals Court Judge Antonio Scopelliti, is unrelated to the case in Palermo, Sicily, where Andreotti was indicted last week on charges of having ties with the Mafia. </t>
+	<h>       Sicily is a city in which Giulio Andreotti was put on trial </h>
+</pair>
+<pair id="481" value="NO" task="QA">
+	<q lang="EN" src="clef2005" type="MEASURE">What is the probability of children committing suicide before puberty?</q>
+	<t doc="LA022094-0219">Louis, who investigates use of psychiatric medicines in children, said psychiatrists have been concerned for several years about the possibility of sudden death in children taking desipramine. </t>
+	<h>       psychiatric medicines in children said psychiatrists have been concerned for several years about the possibility of sudden death in children taking desipramine is the probability of children committing suicide before puberty </h>
+</pair>
+<pair id="482" value="NO" task="QA">
+	<q lang="EN" src="clef2005" type="ORGANIZATION">Name a German car producer.</q>
+	<t doc="GH950117-000005">More recently, an AMG Mercedes won the German Touring Car Championship contested by the most highly modified racing saloons of the present day. </t>
+	<h>       an AMG Mercedes is a German car producer  </h>
+</pair>
+<pair id="483" value="NO" task="QA">
+	<q lang="EN" src="clef2005" type="ORGANIZATION">What is the IFP?</q>
+	<t doc="GH950606-000080">Police fired teargas and troops were moved in to keep the ANC marchers and supporters of the rival Inkatha Freedom Party (IFP) apart. ''It looks like the three deaths are all linked to today's march,'' said Warrant Officer Vish Naidoo. </t>
+	<h>      The IFP is Freedom Party  </h>
+</pair>
+<pair id="484" value="NO" task="QA">
+	<q lang="EN" src="clef2005" type="ORGANIZATION">What is the IFP?</q>
+	<t doc="GH950606-000080">Police fired teargas and troops were moved in to keep the ANC marchers and supporters of the rival Inkatha Freedom Party (IFP) apart. ''It looks like the three deaths are all linked to today's march,'' said Warrant Officer Vish Naidoo. </t>
+	<h>      The IFP is rival Inkatha Freedom Party (  </h>
+</pair>
+<pair id="485" value="NO" task="QA">
+	<q lang="EN" src="clef2005" type="PERSON">Who is Goodwill Zwelithini?</q>
+	<t doc="LA042094-0224">The deal actually gives him and Zulu King Goodwill Zwelithini, his nephew, less than they were offered by Mandela and De Klerk during an unsuccessful peace summit nearly two weeks ago at a game lodge in Kruger National Park. </t>
+	<h>      Goodwill Zwelithini is his nephew  </h>
+</pair>
+<pair id="486" value="NO" task="QA">
+	<q lang="EN" src="clef2005" type="PERSON">Who is Goodwill Zwelithini?</q>
+	<t doc="LA041794-0345"> Nelson Mandela hit the road Saturday for an important six-day campaign tour, hopping across the strife-torn Natal province to woo voters with praise for the Zulu king and promises of better houses and more jobs. </t>
+	<h>      Goodwill Zwelithini is KING GOODWILL  </h>
+</pair>
+<pair id="487" value="NO" task="QA">
+	<q lang="EN" src="clef2005" type="PERSON">Who is Goodwill Zwelithini?</q>
+	<t doc="LA042094-0224">The deal actually gives him and Zulu King Goodwill Zwelithini, his nephew, less than they were offered by Mandela and De Klerk during an unsuccessful peace summit nearly two weeks ago at a game lodge in Kruger National Park. </t>
+	<h>      Goodwill Zwelithini is The deal actually gives him and Zulu King  </h>
+</pair>
+<pair id="488" value="NO" task="QA">
+	<q lang="EN" src="clef2005" type="ORGANIZATION">What is the Camorra?</q>
+	<t doc="GH951206-000117">Among those held in Spain in Operation Goya was the alleged head of one of the notorious Camorra families. </t>
+	<h>      The Camorra is families.  </h>
+</pair>
+<pair id="489" value="NO" task="QA">
+	<q lang="EN" src="clef2005" type="ORGANIZATION">What is the Camorra?</q>
+	<t doc="LA112494-0214">The conference was held in Naples, infamous for its Camorra criminal gangs, to underline Italy's and the international community's determination to battle the mobs. </t>
+	<h>      The Camorra is infamous for its Camorra criminal gangs to  </h>
+</pair>
+<pair id="490" value="NO" task="QA">
+	<q lang="EN" src="clef2005" type="ORGANIZATION">What is Eurostat?</q>
+	<t doc="GH950124-000014">Data produced by Eurostat, the European Commission's statistical office in Luxembourg, shows that, on average, men in the UK work 45.1 hours a week, compared to a European average of 41.1 hours, and women work 40.2 hours a week as against an EU average of 38.7. </t>
+	<h>      Eurostat is Data produced by Eurostat, the European Commission's statistical office in Luxembourg, shows that, on average, men in the UK work 45.1 hours a week, compared to a European average of 41.1 hours, and women work 40.2 hours a week as against an EU average of 38.7. The UK is also shown to be the only country in the European Union where the working week for all employees is increasing -- by one hour between 1983 and 1992.  </h>
+</pair>
+<pair id="491" value="NO" task="QA">
+	<q lang="EN" src="clef2005" type="ORGANIZATION">What is Eurostat?</q>
+	<t doc="LA072294-0065">The book's simple design and broad distribution in all the Union's nine official languages has given it an impact far beyond the normally dry fare dished up by the statistical office, known as Eurostat. </t>
+	<h>      Eurostat is The book's simple design and broad distribution in all the Union's nine official languages has given it an impact far beyond the normally dry fare dished up by the statistical office, known as Eurostat.  </h>
+</pair>
+<pair id="492" value="NO" task="QA">
+	<q lang="EN" src="clef2005" type="ORGANIZATION">What is Eurostat?</q>
+	<t doc="LA072294-0065">These and thousands of other facts are tucked into a small 28-page booklet, published by the EU's statistical office in Luxembourg, designed and distributed to give voters in recent European Parliament elections a chance to see where their own country stood in comparison with neighboring nations. </t>
+	<h>      Eurostat is the  statistical office, known as  </h>
+</pair>
+<pair id="493" value="NO" task="QA">
+	<q lang="EN" src="clef2005" type="PERSON">Who chairs the European Parliament Committee on the Environment, Public Health, and Consumer Protection?</q>
+	<t doc="GH950622-000056">Ken Collins, Labour Euro-MP for Strathclyde East, who chairs the European parliament's environment committee, said: ''I am very pleased. </t>
+	<h>      The European Parliament Committee chairman on the Environment, Public Health, and Consumer Protection is Labour  </h>
+</pair>
+<pair id="494" value="NO" task="QA">
+	<q lang="EN" src="clef2005" type="PERSON">Who chairs the European Parliament Committee on the Environment, Public Health, and Consumer Protection?</q>
+	<t doc="GH951103-000093">Mr Collins, who is chairman of the European Parliament Committee on the Environment, Public Health, and Consumer Protection, told businessmen and women that a licensing system operating across the European Union was necessary to ensure a level playing field for all member states. </t>
+	<h>      The European Parliament Committee chairman on the Environment, Public Health, and Consumer Protection is fear from a European licensing system to ensure compliance with environmental regulation if they are genuinely as compliant as they claim to be the Strathclyde East Euro MP Ken Collins told members of CBI Scotland yesterday Mr Collins who is chairman of the European Parliament Committee on the Environment Public Health and Consumer Protection told businessmen and women that a licensing system operating across the European Union was necessary to ensure a level playing field for all member  </h>
+</pair>
+<pair id="495" value="NO" task="QA">
+	<q lang="EN" src="clef2005" type="PERSON">Which two scientists discovered "G proteins"?</q>
+	<t doc="LA101194-0225">Gilman, 53, of the University of Texas Southwestern Medical Center in Dallas and Martin Rodbell, 68, of the National Institute of Environmental Health Sciences in North Carolina shared the prize for their discovery of "G proteins," which turn biological processes inside cells on and off in response to signals from other cells. </t>
+	<h>      The two scientists who discovered "G proteins" were Gilman  </h>
+</pair>
+<pair id="496" value="NO" task="QA">
+	<q lang="EN" src="clef2005" type="PERSON">Who was Haiti's former military commander in chief?</q>
+	<t doc="LA012894-0140">Raoul Cedras, to stand aside and allow Aristide, the country's only democratically elected chief executive, to regain power. </t>
+	<h>       to coerce the Haitian military and its commander Lt. Raoul Cedras to stand aside and allow Aristide the country 's only democratically elected chief executive to regain was Haiti's former military commander in chief </h>
+</pair>
+<pair id="497" value="NO" task="QA">
+	<q lang="EN" src="clef2005" type="PERSON">Who were the two signatories to the peace treaty between Jordan and Israel?</q>
+	<t doc="LA072194-0298">Anticipating White House talks Monday in Washington between Jordan's King Hussein and Israeli Prime Minister Yitzhak Rabin, both sides hinted that they will announce an end to the state of belligerency that dates to Israel's creation in 1948. </t>
+	<h>      The two signatories to the peace treaty between Jordan and Israel were Hussein  </h>
+</pair>
+<pair id="498" value="NO" task="QA">
+	<q lang="EN" src="clef2005" type="PERSON">Who were the two signatories to the peace treaty between Jordan and Israel?</q>
+	<t doc="LA071694-0006">A peace treaty of this type between Israel and Jordan is rapidly taking shape. </t>
+	<h>      The two signatories to the peace treaty between Jordan and Israel were Jordan  </h>
+</pair>
+<pair id="499" value="NO" task="QA">
+	<q lang="EN" src="clef2005" type="PERSON">Who were the two signatories to the peace treaty between Jordan and Israel?</q>
+	<t doc="LA102394-0352">  Palestinian leader Yasser Arafat on Saturday ordered his foreign affairs chief to boycott the signing ceremony for the Israeli-Jordanian peace treaty, a senior official said, while in Tel Aviv, about 5,000 Israeli opponents of Prime Minister Yitzhak Rabin's peace policies rallied at the site of a bus bombing that killed 22 people Wednesday. </t>
+	<h>      The two signatories to the peace treaty between Jordan and Israel were Jordan  </h>
+</pair>
+<pair id="500" value="NO" task="QA">
+	<q lang="EN" src="clef2005" type="PERSON">Who continued to be supplied with contaminated blood products six months after an American blood-screening test and heat-treatment process were available in other countries?</q>
+	<t doc="LA012294-0218">An appeals court last July, in upholding the convictions, said Garretta had, in 1985, continued to supply contaminated blood products to French hemophiliacs at least six months after an American blood-screening test and heat-treatment process, which prevents contamination, were perfected and being used in other countries. </t>
+	<h>       French continued to be supplied with contaminated blood products  </h>
+</pair>
+<pair id="501" value="NO" task="QA">
+	<q lang="EN" src="clef2005" type="PERSON">Whose government broke off negotiations with the Tamil rebels, following Dissanayake's murder?</q>
+	<t doc="LA102694-0205">Following Dissanayake's murder, Kumaratunga's government broke off negotiations with the Tamil rebels, and said they will not resume until the bombing has been thoroughly investigated. </t>
+	<h>      The of Colombo where Dissanayake lived Buddhist monks in their saffron robes police officers in uniform and thousands of other mourners formed a line a mile long to pay their last respects to the 52 year old politician Following Dissanayake 's murder Kumaratunga 's government broke off negotiations with the Tamil rebels and said they government broke off negotiations with the Tamil rebels, following Dissanayake's murder </h>
+</pair>
+<pair id="502" value="NO" task="QA">
+	<q lang="EN" src="clef2005" type="PERSON">Who is Radwa Ashour?</q>
+	<t doc="LA120694-0031">We do not believe that normalization is possible for the simple reason that Israel is a colonial settler state which occupies Arab lands and practices all forms of violence and human rights violations," said Radwa Ashour, a Cairo novelist and professor who is active in the Committee to Protect the National Culture. </t>
+	<h> Radwa Ashour is rights violations said Radwa Ashour a Cairo novelist  </h>
+</pair>
+<pair id="503" value="NO" task="QA">
+	<q lang="EN" src="clef2005" type="PERSON">Who is Rolf Ekeus?</q>
+	<t doc="GH951013-000150">Baghdad Iraq today accused chief UN arms inspector Rolf Ekeus of lying and dug in for an extended period of economic sanctions. </t>
+	<h> Rolf Ekeus is Baghdad Iraq today accused chief UN arms inspector Rolf Ekeus of lying and dug in for an extended period of economic sanctions.  </h>
+</pair>
+<pair id="504" value="NO" task="QA">
+	<q lang="EN" src="clef2005" type="PERSON">Who is Rolf Ekeus?</q>
+	<t doc="GH950823-000002">Today Rolf Ekeus, the UN official in charge of eliminating Iraq's weapons of mass destruction, met him at a secret location in Jordan. </t>
+	<h> Rolf Ekeus is the UN official in charge of  </h>
+</pair>
+<pair id="505" value="NO" task="QA">
+	<q lang="EN" src="clef2005" type="PERSON">Who is Rolf Ekeus?</q>
+	<t doc="GH951012-000129">In a major six-month report to the Security Council, Rolf Ekeus, head of the UN Special Commission, gave no predictions, however, for when his inspection would be completed, saying that if Iraq co-operated the work could go forward quickly. ''The commission's preliminary analysis (reveals) that Iraq has been concealing proscribed activities and that, consequently, some of the assessments in the commission's earlier reports have to be reassessed,'' Ekeus said. ''If Iraq were genuinely to translate its statements into action, there would be a real hope for the completion of the task entrusted to the Special Commission within a reasonable time-frame,'' he said. </t>
+	<h>  Rolf Ekeus is head of the UN  </h>
+</pair>
+<pair id="506" value="NO" task="QA">
+	<q lang="EN" src="clef2005" type="PERSON">Who is Willy Claes?</q>
+	<t doc="LA111694-0081">At the urging of the United States, the North Atlantic Council, which is the policy-setting body of the North Atlantic Treaty Organization, completed an initial review of the plan in Brussels on Tuesday and sent the proposal on to NATO military headquarters in Mons, Belgium, for further consideration. </t>
+	<h>      Willy Claes is NATO '  </h>
+</pair>
+<pair id="507" value="NO" task="QA">
+	<q lang="EN" src="clef2005" type="PERSON">Who was Emiliano Zapata?</q>
+	<t doc="LA122494-0140">And the last major period of eruptions, from 1919 until 1927, began about the time Mexico's legendary freedom fighter Emiliano Zapata died. </t>
+	<h>      Emiliano Zapata was And the last major period of eruptions, from 1919 until 1927, began about the time Mexico's legendary freedom fighter Emiliano Zapata died.  </h>
+</pair>
+<pair id="508" value="NO" task="QA">
+	<q lang="EN" src="clef2005" type="PERSON">Who was Emiliano Zapata?</q>
+	<t doc="LA012694-0168">A little farther north, the Eastern Mexican Democratic Front Emiliano Zapata -- named for the same revolutionary hero the Chiapas guerrillas chose to honor but otherwise seemingly unrelated to them -- has also taken up arms. </t>
+	<h>      Emiliano Zapata was Eastern Mexican Democratic Front  </h>
+</pair>
+<pair id="509" value="NO" task="QA">
+	<q lang="EN" src="clef2005" type="PERSON">Who was Emiliano Zapata?</q>
+	<t doc="LA012694-0168">A little farther north, the Eastern Mexican Democratic Front Emiliano Zapata -- named for the same revolutionary hero the Chiapas guerrillas chose to honor but otherwise seemingly unrelated to them -- has also taken up arms. </t>
+	<h>      Emiliano Zapata was Mexican Democratic Front Emiliano Zapata named for the  </h>
+</pair>
+<pair id="510" value="NO" task="QA">
+	<q lang="EN" src="clef2005" type="PERSON">Who is Antonio Matarrese?</q>
+	<t doc="LA070694-0039">Italy was heading home in well-merited disgrace, bound surely to what Antonio Matarrese, that nation's soccer federation president, said would have been "summary judgment" as one of the 1994 Cup's top underachievers. </t>
+	<h>      Antonio Matarrese is that nation's soccer federation president  </h>
+</pair>
+<pair id="511" value="NO" task="QA">
+	<q lang="EN" src="clef2005" type="PERSON">Who is Antonio Matarrese?</q>
+	<t doc="LA071094-0113">"Everybody was criticizing us, everybody wanted us to bench Roberto Baggio, everybody was saying things about (Coach Arrigo) Sacchi," said Antonio Matarrese, president of the Italian Soccer Federation. </t>
+	<h>      Antonio Matarrese is president of the Italian Soccer  </h>
+</pair>
+<pair id="512" value="NO" task="QA">
+	<q lang="EN" src="clef2005" type="PERSON">Who is Antonio Matarrese?</q>
+	<t doc="GH950130-000121">However federation president Antonio Matarrese, who has called an emergency meeting with sports officials tomorrow to decide what measures to take, said closing the stadiums for one week would not solve the problem. ''Even with tears in our eyes, we are duty bound not to panic. </t>
+	<h>      Antonio Matarrese is However federation president  </h>
+</pair>
+<pair id="513" value="NO" task="QA">
+	<q lang="EN" src="clef2005" type="PERSON">Who is Antonio Matarrese?</q>
+	<t doc="LA070694-0039">Italy was heading home in well-merited disgrace, bound surely to what Antonio Matarrese, that nation's soccer federation president, said would have been "summary judgment" as one of the 1994 Cup's top underachievers. </t>
+	<h>      Antonio Matarrese is that nation' s soccer federation president  </h>
+</pair>
+<pair id="514" value="NO" task="QA">
+	<q lang="EN" src="clef2005" type="PERSON">Who is Michel Noir?</q>
+	<t doc="GH950421-000097">A FURORE over blame for destabilising the franc dominated final exchanges before Sunday's first round of the French presidential election, but seemed unlikely to dent Paris mayor Jacques Chirac's prospects of winning. </t>
+	<h>      Michel Noir is mayor of France '  </h>
+</pair>
+<pair id="515" value="NO" task="QA">
+	<q lang="EN" src="clef2005" type="PERSON">Who is Michel Noir?</q>
+	<t doc="GH950421-000097">In a reminder of the corruption scandals that have rocked French politics in the past two years, former Trade Minister Michel Noir, mayor of France's second city Lyon, was today given a 15-month suspended prison sentence and disqualified from standing for public office for five years. </t>
+	<h>      Michel Noir is mayor of France  </h>
+</pair>
+<pair id="516" value="NO" task="QA">
+	<q lang="EN" src="clef2005" type="PERSON">Who is Michel Noir?</q>
+	<t doc="GH950421-000097">A FURORE over blame for destabilising the franc dominated final exchanges before Sunday's first round of the French presidential election, but seemed unlikely to dent Paris mayor Jacques Chirac's prospects of winning. </t>
+	<h>      Michel Noir is former Trade Minister Michel Noir mayor of France 's second city Lyon was today given a 15 month suspended prison sentence and disqualified from standing for public office for five years The mayor of the Riviera resort of Cannes Michel Mouillot and France  </h>
+</pair>
+<pair id="517" value="NO" task="QA">
+	<q lang="EN" src="clef2005" type="PERSON">Who was Pibul?</q>
+	<t doc="LA041094-0046">(Thai people are often referred to only by their first name.) Pibul was Thailand's prime minister late in 1941. </t>
+	<h>      Pibul was Pibul was Thailand 's prime minister late in 1941 Pibul avoided him by  </h>
+</pair>
+<pair id="518" value="NO" task="QA">
+	<q lang="EN" src="clef2005" type="PERSON">Who is Yasushi Akashi?</q>
+	<t doc="GH950310-000101">Sarajevo, Thursday, CEASEFIRES in Bosnia and Croatia are beginning to unravel, according to United Nations special envoy Yasushi Akashi, who appealed to combatants today to avoid sliding back into war. </t>
+	<h>      Yasushi Akashi is Nations special envoy Yasushi Akashi who appealed to combatants today to avoid sliding back into war Bosnia 's current four month ceasefire is regarded as more unstable than Croatia 's which has generally held since 1992 and Akashi planned urgent talks  </h>
+</pair>
+<pair id="519" value="NO" task="QA">
+	<q lang="EN" src="clef2005" type="PERSON">Who was Andrei Kozyrev?</q>
+	<t doc="GH951219-000039">Among his policy priorities, he told the news conference, was securing the dismissal of Foreign Minister Andrei Kozyrev, accused by Communists of selling out Russian interests in the name of friendship with the West. </t>
+	<h>      Andrei Kozyrev was Among his policy priorities, he told the news conference, was securing the dismissal of Foreign Minister Andrei Kozyrev, accused by Communists of selling out Russian interests in the name of friendship with the West.  </h>
+</pair>
+<pair id="520" value="NO" task="QA">
+	<q lang="EN" src="clef2005" type="PERSON">Who was Andrei Kozyrev?</q>
+	<t doc="GH950123-000079">German Foreign Minister Klaus Kinkel issued a similar appeal after meeting Russian Foreign Minister Andrei Kozyrev in Berne. ''The bloodshed in Chechnya must stop immediately,'' he told reporters. </t>
+	<h>      Andrei Kozyrev was meeting Russian Foreign Minister  </h>
+</pair>
+<pair id="521" value="NO" task="QA">
+	<q lang="EN" src="clef2005" type="PERSON">Who was Andrei Kozyrev?</q>
+	<t doc="GH950220-000059">Belgrade, Sunday RUSSIAN Foreign Minister Andrei Kozyrev said today that Belgrade wanted peace in former Yugoslavia and that an easing of sanctions would help to extend the ceasefire in Bosnia. </t>
+	<h>      Andrei Kozyrev was Sunday RUSSIAN Foreign Minister Andrei  </h>
+</pair>
+<pair id="522" value="NO" task="QA">
+	<q lang="EN" src="clef2005" type="PERSON">Who was Andrei Kozyrev?</q>
+	<t doc="LA120394-0024">Russian Foreign Minister Andrei V. </t>
+	<h>      Andrei Kozyrev was Russian Foreign Minister Andrei V.  </h>
+</pair>
+<pair id="523" value="NO" task="QA">
+	<q lang="EN" src="clef2005" type="PERSON">Who was Andrei Kozyrev?</q>
+	<t doc="GH950220-000059">Belgrade, Sunday RUSSIAN Foreign Minister Andrei Kozyrev said today that Belgrade wanted peace in former Yugoslavia and that an easing of sanctions would help to extend the ceasefire in Bosnia. </t>
+	<h>      Andrei Kozyrev was RUSSIAN Foreign Minister Andrei Kozyrev said today that Belgrade wanted peace in former Yugoslavia and that an easing of sanctions would help to extend the ceasefire in Bosnia Kozyrev was speaking after  </h>
+</pair>
+<pair id="524" value="NO" task="QA">
+	<q lang="EN" src="clef2005" type="TIME">In which Age was olive oil first traded in Europe?</q>
+	<t doc="LA121194-0073">It's called the Bronze Age because in that period tin and copper were widely alloyed to make bronze for tools, weapons, pots and jewelry. </t>
+	<h>      In ARCHEOLOGIST RECREATES BRONZE AGE FARE Age was olive oil first traded in Europe </h>
+</pair>
+<pair id="525" value="NO" task="QA">
+	<q lang="EN" src="clef2005" type="TIME">When was the treaty on Conventional Forces in Europe signed?</q>
+	<t doc="GH951111-000090">THE 1990 treaty on Conventional Forces in Europe, an agreement signed by 30 states, should come into operation later next week. </t>
+	<h>      The treaty on Conventional Forces in Europe was signed in 1990 treaty on Conventional Forces in Europe an agreement signed by 30 states should come into operation later next week Basically a treaty providing for the reduction of Europe 's vast armouries  </h>
+</pair>
+<pair id="526" value="NO" task="QA">
+	<q lang="EN" src="clef2005" type="TIME">When was the treaty on Conventional Forces in Europe signed?</q>
+	<t doc="GH950120-000057">The CIA ranks the smuggling of fissile material from former Soviet republics as one of the biggest security threats the United States faces; the strategic nuclear cuts contained in the START II treaty are in trouble with nationalists in the Russian Duma; the Russian military is lobbying to get out of conventional-force limits imposed by the 1990 Conventional Forces in Europe Treaty; and the recent Chemical Weapons Convention is endangered by Yeltsin's inability -- or unwillingness -- to end biological and chemical warfare programs. </t>
+	<h>      The treaty on Conventional Forces in Europe was signed in the 1990  </h>
+</pair>
+<pair id="527" value="NO" task="QA">
+	<q lang="EN" src="clef2005" type="LOCATION">Name a traffic free resort in Switzerland.</q>
+	<t doc="GH951202-000067">As one who came under the latter heading on several occasions, my own requirements have been those traffic free resorts with lots of walks (usually with cross country Langlauf skiing) - Saas Fee in Switzerland being a perfect example, and Australian resorts within easy reach of Innsbruck or Salzburg, with good public transport. </t>
+	<h>       Saas is a traffic free resort in Switzerland  </h>
+</pair>
+<pair id="528" value="NO" task="QA">
+	<q lang="EN" src="clef2005" type="LOCATION">In which country is euthanasia permitted if requested by a patient suffering intolerable physical or mental pain?</q>
+	<t doc="GH951108-000153">Euthanasia, though formally illegal, is permitted in the Netherlands, if doctors act on an explicit request from a patient who is suffering intolerable physical or mental pain. </t>
+	<h>      In formally illegal is permitted in the Netherlands if doctors act on an explicit request from a patient who is suffering intolerable physical or mental pain If the Supreme Court upholds the earlier rulings immunity from prosecution in mercy killings will be extended to cases where patients are unable to euthanasia is permitted if requested by a patient suffering intolerable physical or mental pain </h>
+</pair>
+<pair id="529" value="NO" task="QA">
+	<q lang="EN" src="clef2005" type="ORGANIZATION">Which company led the consortium that signed an agreement to invest in the basin on China's western border?</q>
+	<t doc="LA020994-0043">  Texaco, Other Oil Companies Sign Tarim Basin Pact: In the second such contract, a consortium led by Agip, Italy's state-owned oil company, signed the agreement in Beijing to bring outside oil companies' investment and technology to explore the remote basin on China's western border with Russia and Kazakhstan. </t>
+	<h>       state-owned oil company led the consortium that signed an agreement to invest in the basin on China's western border </h>
+</pair>
+<pair id="530" value="NO" task="QA">
+	<q lang="EN" src="clef2005" type="ORGANIZATION">Which commission was responsible for ruling on whether Iraq had complied with UN resolutions?</q>
+	<t doc="GH950515-000048">Charles Duelfer, deputy executive chairman of the UN special commission, in charge of dismantling Iraq's dealiest weapons, said Iraqi declarations on past chemical warfare programmes were unsatisfactory and the UN regarded the chemical file as unclosed. </t>
+	<h>      The the UN commission was responsible for ruling on whether Iraq had complied with UN resolutions </h>
+</pair>
+<pair id="531" value="NO" task="QA">
+	<q lang="EN" src="clef2005" type="ORGANIZATION">Which commission was responsible for ruling on whether Iraq had complied with UN resolutions?</q>
+	<t doc="GH950821-000131">''Iraq has given very important, significant new information with regard mostly to its biological weapons programmes and also some important information on its missile programme,'' said Rolf Ekeus, head of the UN Special Commission in charge of disarming Iraq under the 1991 Gulf War ceasefire. </t>
+	<h>      The Iraq has given very important significant new information with regard mostly to its biological weapons programmes and also some important information on its missile programme ' said Rolf Ekeus head of the UN Special Commission in charge of disarming Iraq under the 1991 Gulf War ceasefire Ekeus said it seemed the Iraqi Government had now commission was responsible for ruling on whether Iraq had complied with UN resolutions </h>
+</pair>
+<pair id="532" value="NO" task="QA">
+	<q lang="EN" src="clef2005" type="ORGANIZATION">Which institution demanded the immediate withdrawal of Bosnian Serb forces from Srebrenica?</q>
+	<t doc="GH950713-000158">Last night, the United Nations Security Council demanded the immediate withdrawal of Bosnian Serb forces from Srebrenica. </t>
+	<h>       Nations Security Council demanded the immediate withdrawal of Bosnian Serb forces from Srebrenica  </h>
+</pair>
+<pair id="533" value="NO" task="QA">
+	<q lang="EN" src="clef2005" type="ORGANIZATION">Which institution initiated the European youth campaign against racism?</q>
+	<t doc="GH950704-000117">It was among six such trains leaving from around the continent to combat racism, xenophobia, anti-Semitism, and intolerance, as part of a youth campaign initiated by the Council of Europe with the slogan: ''all different, all equal''. ''The swastika is seen in some places again,'' said campaign co-ordinator Mireille Paulus-Levy. </t>
+	<h>       the Council initiated the European youth campaign against racism </h>
+</pair>
+<pair id="534" value="NO" task="QA">
+	<q lang="EN" src="clef2005" type="OTHER">Which symbol has been used to hallmark sterling silver in Scotland since 1473?</q>
+	<t doc="GH950329-000145">Both the Edinburgh Castle hallmark on gold and the lion rampant on sterling silver has been used in Scotland for more than 500 years. </t>
+	<h>      The symbol the Edinburgh Castle hallmark on gold and the lion rampant on sterling silver has been used in Scotland for more than 500 years The EU wants to allow manufacturers to mark precious metals themselves has been used to hallmark sterling silver in Scotland since 1473 </h>
+</pair>
+<pair id="535" value="NO" task="QA">
+	<q lang="EN" src="clef2005" type="ORGANIZATION">What is the OSCE?</q>
+	<t doc="GH950529-000124">Usman Imayev, chief Chechen negotiator in the talks sponsored by the Organisation for Security and Co-operation in Europe (OSCE), said Russia had attacked Vedeno, the Chechen military headquarters 30 miles south-east of Grozny. </t>
+	<h>      The OSCE is Usman Imayev, chief Chechen negotiator in the talks sponsored by the Organisation for Security and Co-operation in Europe (OSCE), said Russia had attacked Vedeno, the Chechen military headquarters 30 miles south-east of Grozny.  </h>
+</pair>
+<pair id="536" value="NO" task="QA">
+	<q lang="EN" src="clef2005" type="ORGANIZATION">What is the WEU?</q>
+	<t doc="GH950516-000069">Britain sees the WEU as a potentially useful link between Europe and Nato's European forces where the issues do not concern the US. </t>
+	<h>      The WEU is Britain sees the WEU as a potentially useful link between Europe and Nato 's European forces where the issues do not concern the US The French see the WEU as the way  </h>
+</pair>
+<pair id="537" value="NO" task="QA">
+	<q lang="EN" src="clef2005" type="ORGANIZATION">What is the PRI?</q>
+	<t doc="LA082394-0225">But the ruling Institutional Revolutionary Party (PRI) was leading by margins roughly equal to those in the presidential contest in congressional races in all but two of Mexico's 31 states and the Federal District of Mexico City. </t>
+	<h>      The PRI is Revolutionary Party  </h>
+</pair>
+<pair id="538" value="NO" task="QA">
+	<q lang="EN" src="clef2005" type="ORGANIZATION">What was the GATT?</q>
+	<t doc="LA071094-0285">"THIS IS INDEED A DEFINING MOMENT IN ECONOMIC HISTORY," declared Peter Sutherland, director general of the General Agreement on Tariffs and Trade (GATT). </t>
+	<h>      The GATT was "THIS IS INDEED A DEFINING MOMENT IN ECONOMIC HISTORY," declared Peter Sutherland, director general of the General Agreement on Tariffs and Trade (GATT).  </h>
+</pair>
+<pair id="539" value="NO" task="QA">
+	<q lang="EN" src="clef2005" type="ORGANIZATION">What is the EZLN?</q>
+	<t doc="LA032794-0099">Yet, the Zapatistas held the moral high ground, and public opinion turned in their favor. </t>
+	<h>      The EZLN is Zapatista  </h>
+</pair>
+<pair id="540" value="NO" task="QA">
+	<q lang="EN" src="clef2005" type="MEASURE">What percentage of road-traffic deaths are caused by alcohol?</q>
+	<t doc="GH950606-000103">The good news for the UK is that in alcohol consumption, Britain comes 13th out of 15 (above Finland and Sweden), while Luxembourg comes top (probably a distorted position as many people living in neighbouring countries travel to Luxembourg to take advantage of its lower taxes on alcoholic drinks) and France second. </t>
+	<h>       one in 10 deaths one in five male hospital admissions and one in five road traffic deaths are alcohol related The good news for the UK is that in alcohol consumption Britain comes 13th out of 15 above Finland and Sweden while Luxembourg comes top probably a distorted position as many people living in neighbouring countries travel to Luxembourg to take advantage of its lower taxes on alcoholic drinks and France percentage of road-traffic deaths are caused by alcohol </h>
+</pair>
+<pair id="541" value="NO" task="QA">
+	<q lang="EN" src="clef2005" type="MEASURE">How much will a European seed potato development project in Russia cost?</q>
+	<t doc="GH950923-000097">Luckily for us, Schell, a former writer for Joan Rivers, has managed to turn 11 years of flying into this lovably loose, delightfully irreverent show, directed by Stephen Hibbert at Theatre/Theater in Hollywood. </t>
+	<h>      A European seed potato development project in Russia will cost $60  </h>
+</pair>
+<pair id="542" value="NO" task="QA">
+	<q lang="EN" src="clef2005" type="MEASURE">How much will a European seed potato development project in Russia cost?</q>
+	<t doc="GH950923-000097">  Russia, Oil Consortium Sign Agreement: The government and an international consortium of companies will develop oil and gas reserves off Russia's Sakhalin Island.The project, called Sakhalin-2, is valued at $9 billion. </t>
+	<h>      A European seed potato development project in Russia will cost a $60m seed potato development project in Russia backed by the European Bank of Reconstruction and Development could have serious long term consequences for UK producers warns a top Scottish grower merchant The fact that European money is being used to improve potato production in Russia is fine but only if EU leaders also put more energy and effort in to the development of a European potato regime ' said Ron McArthur director of James Haggart and Sons Muthill Crieff who grow 480 acres of potatoes throughout Angus and  </h>
+</pair>
+<pair id="543" value="NO" task="QA">
+	<q lang="EN" src="clef2005" type="MEASURE">How often does El Nino occur?</q>
+	<t doc="LA030194-0077">Asked why El Nino shows up every so often, then disappears, usually for eight years or so, Basist chuckled. </t>
+	<h>      El Nino occurs each eight  </h>
+</pair>
+<pair id="544" value="NO" task="QA">
+	<q lang="EN" src="clef2005" type="MEASURE">How big was the Siberian oil spill according to environmentalists?</q>
+	<t doc="LA102694-0188">Environmentalists contended that the Siberian spill could have been as great as 200,000 tons; Greenpeace activist Ivan Blokov said that the leak near the Komi town of Usinsk "is unique because it is the first of such scale.". </t>
+	<h>      The Siberian oil spill  is 200,000 according to environmentalists </h>
+</pair>
+<pair id="545" value="NO" task="QA">
+	<q lang="EN" src="clef2005" type="MEASURE">How big was the Siberian oil spill according to environmentalists?</q>
+	<t doc="LA102694-0188">Environmentalists contended that the Siberian spill could have been as great as 200,000 tons; Greenpeace activist Ivan Blokov said that the leak near the Komi town of Usinsk "is unique because it is the first of such scale.". </t>
+	<h>      The Siberian oil spill  is 200,000 according to environmentalists </h>
+</pair>
+<pair id="546" value="NO" task="QA">
+	<q lang="EN" src="clef2005" type="MEASURE">How many scandals was Tapie implicated in, while boss at Marseille?</q>
+	<t doc="GH950317-000078">There have been no deaths.'' While boss at Marseille, Tapie said: ''I have been implicated in four scandals in seven years. </t>
+	<h>      Tapie implicated in While boss at Marseille Tapie said I have been implicated in four scandals in seven years Marseille was demoted to the second division over the scandal scandals, while boss at Marseille </h>
+</pair>
+<pair id="547" value="NO" task="QA">
+	<q lang="EN" src="clef2005" type="OTHER">Which was the first gene mutation responsible for breast cancer to be discovered?</q>
+	<t doc="GH951230-000006">Dr DONNIE BLACK, from Stornoway, has been involved in Scotland, England and America with the hunt for the gene mutations responsible for familial breast cancer, the first of which, BRCA1, was identified last year. </t>
+	<h>      The first gene mutation responsible for breast cancer to be discovered was BRCA  </h>
+</pair>
+<pair id="548" value="NO" task="QA">
+	<q lang="EN" src="clef2005" type="OTHER">Which enzyme acts on sugar to produce carbon dioxide and ethanol?</q>
+	<t doc="LA010294-0153">The yeast secretes an enzyme called zymase, which acts upon certain of the sugars -- principally dextrose and levulose -- to form carbon dioxide and a carbohydrate called ethanol or ethyl alcohol (C2H5OH), which is the kind of alcohol we drink. </t>
+	<h>       yeast secretes an enzyme called zymase which acts upon certain of the sugars principally dextrose and levulose to form carbon dioxide and a carbohydrate called ethanol or ethyl alcohol enzyme acts on sugar to produce carbon dioxide and ethanol </h>
+</pair>
+<pair id="549" value="NO" task="QA">
+	<q lang="EN" src="clef2005" type="PERSON">Who is Simon Wiesenthal?</q>
+	<t doc="LA081494-0318">Kingsley also played Nazi hunter Simon Wiesenthal in an HBO movie (1988). </t>
+	<h>       Simon Wiesenthal is Kingsley also played Nazi hunter Simon Wiesenthal in an HBO movie (1988).  </h>
+</pair>
+<pair id="550" value="NO" task="QA">
+	<q lang="EN" src="clef2005" type="PERSON">Who is Jacques Blanc?</q>
+	<t doc="GH950202-000134">Doubters about the wisdom of such a move are said to include Mr Jacques Blanc, the right-wing French CoR president, who is likely to support a call for the idea to be dropped temporarily or reconsidered when subsidiarity is discussed at a special committee conference in Montpellier next month. </t>
+	<h>      Jacques Blanc is the right-wing French CoR  </h>
+</pair>
+<pair id="551" value="NO" task="QA">
+	<q lang="EN" src="clef2005" type="PERSON">Who is Jacques Blanc?</q>
+	<t doc="GH951228-000032">Bolger said French ambassador Jacques le Blanc would again be called in to receive a strong protest, as he has after every previous test. </t>
+	<h>      Jacques Blanc is said French ambassador Jacques le Blanc would again be  </h>
+</pair>
+<pair id="552" value="NO" task="QA">
+	<q lang="EN" src="clef2005" type="ORGANIZATION">What is the G7?</q>
+	<t doc="GH950227-000125">The G7 states called for private investment to play a leading role, for open access to computer networks, competition, and an adaptable regulatory framework to replace the existing monopolies in communications, which are now being tackled by the EU. </t>
+	<h>      The G7 is The G7 states called for  </h>
+</pair>
+<pair id="553" value="NO" task="QA">
+	<q lang="EN" src="clef2005" type="ORGANIZATION">What is the UNAMIR?</q>
+	<t doc="LA091094-0189">  Like the numb and hollow-eyed gaze of the emaciated survivors of Treblinka or the mountains of skulls stacked up by Cambodia's Khmer Rouge, the shriek of pain of the people of Rwanda has seared itself onto the world's conscience. </t>
+	<h>      The UNAMIR is Rwanda  </h>
+</pair>
+<pair id="554" value="NO" task="QA">
+	<q lang="EN" src="clef2005" type="ORGANIZATION">What is the UNAMIR?</q>
+	<t doc="GH951205-000016">The mandate of the Unamir mission ends on Friday. </t>
+	<h>      The UNAMIR is mission ends on Friday.  </h>
+</pair>
+<pair id="555" value="NO" task="QA">
+	<q lang="EN" src="clef2005" type="PERSON">Who was the successor to Kim Il Sung?</q>
+	<t doc="LA081794-0026">The Korean Peninsula has been the recipient of intense and occasionally sensationalistic coverage over the last 18 months regarding the North Korean nuclear issue, the recent death of North Korean President Kim Il Sung and the succession of Kim Jong Il.However, an important element was often missing in this coverage -- that being the perceptions and policies of the South Korean people and their government. </t>
+	<h>       Jong Il.However was the successor to Kim Il Sung </h>
+</pair>
+<pair id="556" value="NO" task="QA">
+	<q lang="EN" src="clef2005" type="MEASURE">How far is Jupiter from the Earth?</q>
+	<t doc="LA040494-0009">With binoculars, sidewalk astronomers throughout Southern California can spot: Craters on the moon, 238,000 miles from Earth Phases of Venus, 144 million miles from Earth Moons of Jupiter, 414 million miles from Earth Orion Nebula, gaseous star cloud 1,600 light years from Earth Comet McNaught-Russell, 84 million miles from Earth TO GET INVOLVED For information about donations and volunteer opportunities at the Los Angeles Observatory, call Friends of the Observatory, (310) 559-9707. </t>
+	<h>      Jupiter is 414 million from the Earth  </h>
+</pair>
+<pair id="557" value="NO" task="QA">
+	<q lang="EN" src="clef2005" type="MEASURE">How far is Jupiter from the Earth?</q>
+	<t doc="GH951204-000031">Astronomers and scientists around the world are waiting with bated breath the arrival of the unmanned Galileo spacecraft at the massive planet after a 300 million-mile journey dogged by problems. </t>
+	<h>      Jupiter is 300 from the Earth  </h>
+</pair>
+<pair id="558" value="NO" task="QA">
+	<q lang="EN" src="clef2005" type="MEASURE">How far is Jupiter from the Earth?</q>
+	<t doc="LA071994-0249">Jupiter is 480 million miles from Earth, too far for the comet to have any influence here, scientists said. </t>
+	<h>      Jupiter is 480 million from the Earth  </h>
+</pair>
+<pair id="559" value="NO" task="QA">
+	<q lang="EN" src="clef2005" type="ORGANIZATION">Which terrorist group shot mortars during the attack on Heathrow Airport?</q>
+	<t doc="LA033194-0165">Earlier this month, IRA mortar attacks on London's Heathrow Airport disrupted flights at one of the world's busiest airports. </t>
+	<h>      The terrorist group time that the group which demands that the British leave Northern Ireland has called an Easter cease fire Earlier this month IRA mortar attacks on London 's Heathrow Airport disrupted flights shot mortars during the attack on Heathrow Airport </h>
+</pair>
+<pair id="560" value="NO" task="QA">
+	<q lang="EN" src="clef2005" type="OTHER">What minister was Silvio Berlusconi prior to his resignation?</q>
+	<t doc="GH950626-000089">ROME: Media magnate Rupert Murdoch has offered to buy a controlling interest in the commercial television empire of former Italian Prime Minister Silvio Berlusconi. </t>
+	<h>      Silvio Berlusconi Italian Prime Minister Silvio Berlusconi prior to his resignation </h>
+</pair>
+<pair id="561" value="NO" task="QA">
+	<q lang="EN" src="clef2005" type="PERSON">Who is Umberto Bossi?</q>
+	<t doc="LA032994-0244">Gianfranco Fini, leader of the National Alliance, easily won election to Parliament on Monday, as did Umberto Bossi, founder of the League. </t>
+	<h>      Umberto Bossi is Gianfranco Fini, leader of the National Alliance, easily won election to Parliament on Monday, as did Umberto Bossi, founder of the League.  </h>
+</pair>
+<pair id="562" value="NO" task="QA">
+	<q lang="EN" src="clef2005" type="PERSON">Who is Umberto Bossi?</q>
+	<t doc="LA123194-0204">The third coalition pillar, the Northern League -- led by populist-federalist Umberto Bossi, whose split with Berlusconi brought the government down -- wants a new coalition rather than elections. </t>
+	<h>      Umberto Bossi is the Northern League led by populist federalist  </h>
+</pair>
+<pair id="563" value="NO" task="QA">
+	<q lang="EN" src="clef2005" type="PERSON">Who is Joao Havelange?</q>
+	<t doc="GH951214-000098">It took a major gamble by FIFA's autocratic president, Joao Havelange, to face down the French Government - and the 79-year-old Brazilian won. </t>
+	<h>      Joao Havelange is It took a major gamble by FIFA's autocratic president, Joao Havelange, to face down the French Government - and the 79-year-old Brazilian won.  </h>
+</pair>
+<pair id="564" value="NO" task="QA">
+	<q lang="EN" src="clef2005" type="OTHER">What matters was Erkki Liikanen in charge of in the European Commission?</q>
+	<t doc="GH950322-000176">His talks were held with Mr Erkki Liikanen, European Commissioner in charge of the EU's #60bn annual budget. </t>
+	<h>      Erkki Liikanen was in charge of held with Mr Erkki Liikanen European Commissioner in charge of the EU 's 60bn annual budget Around the time his meeting with Mr Liikanen was taking place the Belgian police entered Commission offices searching for  </h>
+</pair>
+<pair id="565" value="NO" task="QA">
+	<q lang="EN" src="clef2005" type="ORGANIZATION">What kind of an organization is Hamas?</q>
+	<t doc="LA022594-0226">The army said the two men -- a third escaped -- belonged to the military wing of the Islamic Resistance Movement, known as Hamas, which vehemently opposes a peace deal between the Palestine Liberation Organization and Israel. </t>
+	<h>       Hamas is The army said the two men -- a third escaped -- belonged to the military wing of the Islamic Resistance Movement, known as Hamas, which vehemently opposes a peace deal between the Palestine Liberation Organization and Israel.  </h>
+</pair>
+<pair id="566" value="NO" task="QA">
+	<q lang="EN" src="clef2005" type="LOCATION">What country is Fiat from?</q>
+	<t doc="LA030194-0305">FIAT Country: Italy Provides some aluminum heads for some North American GM engines. 6. </t>
+	<h>      Fiat is from Italy Provides  </h>
+</pair>
+<pair id="567" value="NO" task="QA">
+	<q lang="EN" src="clef2005" type="PERSON">Who was Kurt Cobain?</q>
+	<t doc="LA061894-0109">Hole is fronted by Courtney Love, the widow of Nirvana leader Kurt Cobain, who died from a self-inflicted shotgun blast in April. </t>
+	<h>      Kurt Cobain was Hole is fronted by Courtney Love, the widow of Nirvana leader Kurt Cobain, who died from a self-inflicted shotgun blast in April.  </h>
+</pair>
+<pair id="568" value="NO" task="QA">
+	<q lang="EN" src="clef2005" type="PERSON">Who was Kurt Cobain?</q>
+	<t doc="LA010194-0176"> Nirvana's Kurt Cobain sang at times Thursday night at the Forum with an intensity so primal that he seemed fully capable of frightening physical acts. </t>
+	<h>      Kurt Cobain was Nirvana 's Kurt Cobain sang at times  </h>
+</pair>
+</entailment-corpus>

@@ -1,0 +1,565 @@
+<?xml version="1.0" ?>
+<?xml-stylesheet type="text/xml" href="http://nlp.stanford.edu/projects/infer/kbe_to_html.xml"?>
+<root xmlns="http://bogusnamespace.com/inference_pilot_evaluation/annotation">
+<inference id="PARC-1">
+   <passage>Some students came to school by car.</passage>
+   <question>Did any students come to school?</question>
+   <answer id="1" polarity="true" force="strict" source="linguistic">
+      <response>yes</response>
+      <because>some implies at least one</because>
+   </answer>
+</inference>
+<inference id="PARC-2">
+   <passage>No students came to school by car.</passage>
+   <question>Did any students come to school?</question>
+   <answer id="1" polarity="true" force="strict" source="linguistic">
+      <response>unknown</response>
+      <because>Students could have come on foot, by bus, etc..</because>
+   </answer>
+</inference>
+<inference id="PARC-3">
+   <passage>Ed drove legally.</passage>
+   <question>Did Ed drive?</question>
+   <answer id="1" polarity="true" force="strict" source="linguistic">
+      <response>yes</response>
+      <because>"legally" is an intersective modifier?</because>
+   </answer>
+</inference>
+<inference id="PARC-4">
+   <passage>Ed drove predictably.</passage>
+   <question>Did Ed drive?</question>
+   <answer id="1" polarity="true" force="strict" source="linguistic">
+      <response>yes</response>
+      <because>the same? </because>
+   </answer>
+</inference>
+<inference id="PARC-5">
+   <passage>Legally, Ed could drive.</passage>
+   <question>Did Ed drive?</question>
+   <answer id="1" polarity="true" force="strict" source="linguistic">
+      <response>unknown</response>
+   </answer>
+</inference>
+<inference id="PARC-6">
+   <passage>Predictably, Ed drove.</passage>
+   <question>Did Ed drive?</question>
+   <answer id="1" polarity="true" force="strict" source="linguistic">
+      <response>yes</response>
+   </answer>
+</inference>
+<inference id="PARC-7">
+   <passage>The technician cooled the room.</passage>
+   <question>Did the technician lower the temperature of the room?</question>
+   <answer id="1" polarity="true" force="strict" source="linguistic">
+      <response>yes</response>
+      <because>cooling the room means lowering the temperature of the room</because>
+   </answer>
+</inference>
+<inference id="PARC-8">
+   <passage>The technician raised the temperature of the room.</passage>
+   <question>Did the technician cool the room?</question>
+   <answer id="1" polarity="true" force="strict" source="linguistic">
+      <response>no</response>
+      <because></because>
+   </answer>
+</inference>
+<inference id="PARC-9">
+   <passage>The president visited Iraq in September.</passage>
+   <question>Has the president gone to Iraq?</question>
+   <answer id="1" polarity="true" force="strict" source="linguistic">
+      <response>yes</response>
+      <because>if you visited in the past, you have been at the place visited</because>
+   </answer>
+</inference>
+<inference id="PARC-10">
+   <passage>Jones has visited Iraq.</passage>
+   <question>Did Jones visit Iraq in September?</question>
+   <answer id="1" polarity="true" force="strict" source="linguistic">
+      <response>unknown</response>
+      <because>don't know when Jones visited</because>
+   </answer>
+</inference>
+<inference id="PARC-11">
+   <passage>Jones arrived in Paris in September last year.</passage>
+   <question>Did Jones arrive in Paris last year?</question>
+   <answer id="1" polarity="true" force="strict" source="linguistic">
+      <response>yes</response>
+      <because></because>
+   </answer>
+</inference>
+<inference id="PARC-12">
+   <passage>Jones arrived in Paris in September last year.</passage>
+   <question>Did Jones arrive in Paris in September?</question>
+   <answer id="1" polarity="true" force="strict" source="linguistic">
+      <response>unknown</response>
+      <because>If the questions is asked in September, the answer would have to be no, he arrived last year in September. "in September" send us to the closest one, which would then be interpreted as "this September".</because>
+   </answer>
+</inference>
+<inference id="PARC-13">
+   <passage>Jones arrived on a Sunday in September.</passage>
+   <question>Did Jones arrive on a Sunday?</question>
+   <answer id="1" polarity="true" force="strict" source="linguistic">
+      <response>yes</response>
+      <because>you can always drop to the most specific temporal modifier?</because>
+   </answer>
+</inference>
+<inference id="PARC-14">
+   <passage>Jones arrived on a Sunday in September.</passage>
+   <question>Did Jones arrive in September?</question>
+   <answer id="1" polarity="true" force="strict" source="linguistic">
+      <response>yes</response>
+      <because></because>
+   </answer>
+</inference>
+<inference id="PARC-15">
+   <passage>The president left after the diplomat arrived.</passage>
+   <question>Did the diplomat arrive before the president left?</question>
+   <answer id="1" polarity="true" force="strict" source="linguistic">
+      <response>yes</response>
+      <because>problem with Mozart and his requiem</because>
+   </answer>
+</inference>
+<inference id="PARC-16">
+   <passage>No US congressman has visited Iraq since the war ended.</passage>
+   <question>Has Jones, a US Congressman, visited Iraq after the war ended?</question>
+   <answer id="1" polarity="true" force="strict" source="linguistic">
+      <response>no</response>
+      <because></because>
+   </answer>
+</inference>
+<inference id="PARC-17">
+   <passage>No US congressman has visited Iraq since the war.</passage>
+   <question>Did Jones, a US Congressman, visit Iraq before the war?</question>
+   <answer id="1" polarity="true" force="strict" source="linguistic">
+      <response>unknown</response>
+      <because>the premise only tells us about congressmen visits since the war, not before</because>
+   </answer>
+</inference>
+<inference id="PARC-18">
+   <passage>No US congressman visited Iraq until the war.</passage>
+   <question>Did any US congressman visit Iraq before the war?</question>
+   <answer id="1" polarity="true" force="strict" source="linguistic">
+      <response>no</response>
+      <because></because>
+   </answer>
+</inference>
+<inference id="PARC-19">
+   <passage>Some students arrived at the school on Sunday.</passage>
+   <question>Were there any students at the school on Sunday?</question>
+   <answer id="1" polarity="true" force="strict" source="linguistic">
+      <response>yes</response>
+      <because>if the students arrived at the school on Sunday, they were there at least for some part of Sunday--bar problems with arriving at midnight or such like</because>
+   </answer>
+</inference>
+<inference id="PARC-20">
+   <passage>No students arrived at the school on Sunday.</passage>
+   <question>Were there any students at the school on Sunday?</question>
+   <answer id="1" polarity="true" force="strict" source="linguistic">
+      <response>unknown</response>
+      <because>there might be lots of students that arrived before Sunday and were on the school on Sunday</because>
+   </answer>
+</inference>
+<inference id="PARC-21">
+   <passage>There were no students at the school on Sunday.</passage>
+   <question>Did any students arrive at the school on Sunday?</question>
+   <answer id="1" polarity="true" force="strict" source="linguistic">
+      <response>no</response>
+      <because>Had they arrived, they would be there on Sunday</because>
+   </answer>
+</inference>
+<inference id="PARC-22">
+   <passage>The diplomat left Baghdad last week.</passage>
+   <question>Has the diplomat been to Baghdad?</question>
+   <answer id="1" polarity="true" force="strict" source="linguistic">
+      <response>yes</response>
+      <because>To leave a place you must be there to begin with</because>
+   </answer>
+</inference>
+<inference id="PARC-23">
+   <passage>The diplomat will arrive in Baghdad next week.</passage>
+   <question>Has the diplomat been to Baghdad?</question>
+   <answer id="1" polarity="true" force="strict" source="linguistic">
+      <response>unknown</response>
+      <because>it could be his first visit or not</because>
+   </answer>
+</inference>
+<inference id="PARC-24">
+   <passage>The president knows that the diplomat left Baghdad.</passage>
+   <question>Has the diplomat been to Baghdad?</question>
+   <answer id="1" polarity="true" force="strict" source="linguistic">
+      <response>yes</response>
+      <because>if the president knows it, it's true and if it's true that the diplomat left Baghdad, s/he was there before leaving</because>
+   </answer>
+</inference>
+<inference id="PARC-25">
+   <passage>The president hasn't gone to Iraq since the diplomat left Baghdad.</passage>
+   <question>Has the diplomat been to Baghdad?</question>
+   <answer id="1" polarity="true" force="strict" source="linguistic">
+      <response>yes</response>
+      <because>since implies that the clause is true, if the diplomat left Baghdad s/he must have been there before</because>
+   </answer>
+</inference>
+<inference id="PARC-26">
+   <passage>The president hasn't gone to Iraq since the diplomat left Baghdad.</passage>
+   <question>Has the president been to Iraq?</question>
+   <answer id="1" polarity="true" force="strict" source="linguistic">
+      <response>unknown</response>
+      <because>the president has not gone since time X, it might or not have been there before.</because>
+   </answer>
+</inference>
+<inference id="PARC-27">
+   <passage>The diplomat didn't manage to leave Baghdad.</passage>
+   <question>Has the diplomat been to Baghdad?</question>
+   <answer id="1" polarity="true" force="strict" source="linguistic">
+      <response>yes</response>
+      <because>manage presupposes that the embedded clause is true, so he could not leave Baghadad, hence he has been (and perhaps still is) in Bahghdad </because>
+   </answer>
+</inference>
+<inference id="PARC-28">
+   <passage>The diplomat hasn't managed to leave Baghdad.</passage>
+   <question>Is the diplomat in Baghdad now?</question>
+   <answer id="1" polarity="true" force="strict" source="linguistic">
+      <response>yes</response>
+      <because>same ?</because>
+   </answer>
+</inference>
+<inference id="PARC-29">
+   <passage>The room was full of intelligent women.</passage>
+   <question>Was the room full of women?</question>
+   <answer id="1" polarity="true" force="strict" source="linguistic">
+      <response>yes</response>
+      <because>being full of intelligent women entails being full of women each intelligent woman is a woman</because>
+   </answer>
+</inference>
+<inference id="PARC-30">
+   <passage>The room was full of women.</passage>
+   <question>Was the room full of intelligent women?</question>
+   <answer id="1" polarity="true" force="strict" source="linguistic">
+      <response>unknown</response>
+      <because>all the women could've been dumb. fat chance!</because>
+   </answer>
+</inference>
+<inference id="PARC-31">
+   <passage>Children are not admitted to the theatre.</passage>
+   <question>Are small children admitted to the theatre?</question>
+   <answer id="1" polarity="true" force="strict" source="linguistic">
+      <response>no</response>
+      <because>if children are not admitted, small children are not either</because>
+   </answer>
+</inference>
+<inference id="PARC-32">
+   <passage>Small children are not admitted to the theatre.</passage>
+   <question>Are children admitted to the theatre?</question>
+   <answer id="1" polarity="true" force="strict" source="linguistic">
+      <response>unknown</response>
+   </answer>
+</inference>
+<inference id="PARC-33">
+   <passage>All companies have to file annual reports.</passage>
+   <question>Do all Fortune 500 companies have to file annual reports?</question>
+   <answer id="1" polarity="true" force="strict" source="linguistic">
+      <response>yes</response>
+   </answer>
+</inference>
+<inference id="PARC-34">
+   <passage>All Fortune 500 companies have to file annual reports.</passage>
+   <question>Do all companies have to file annual reports?</question>
+   <answer id="1" polarity="true" force="strict" source="linguistic">
+      <response>unknown</response>
+   </answer>
+</inference>
+<inference id="PARC-35">
+   <passage>All companies have to file annual reports to the SEC.</passage>
+   <question>Do all companies have to file annual reports?</question>
+   <answer id="1" polarity="true" force="strict" source="linguistic">
+      <response>yes</response>
+   </answer>
+</inference>
+<inference id="PARC-36">
+   <passage>All companies have to file annual reports.</passage>
+   <question>Do all companies have to file annual reports to the SEC?</question>
+   <answer id="1" polarity="true" force="strict" source="linguistic">
+      <response>unknown</response>
+   </answer>
+</inference>
+<inference id="PARC-37">
+   <passage>No delegates finished the report.</passage>
+   <question>Did any delegate finish the report on time?</question>
+   <answer id="1" polarity="true" force="strict" source="linguistic">
+      <response>no</response>
+   </answer>
+</inference>
+<inference id="PARC-38">
+   <passage>The US troops stayed in Iraq although the war was over.</passage>
+   <question>Was the war over?</question>
+   <answer id="1" polarity="true" force="strict" source="linguistic">
+      <response>yes</response>
+   </answer>
+</inference>
+<inference id="PARC-39">
+   <passage>Since it was cold, he closed the window.</passage>
+   <question>Was it cold?</question>
+   <answer id="1" polarity="true" force="strict" source="linguistic">
+      <response>yes</response>
+   </answer>
+</inference>
+<inference id="PARC-40">
+   <passage>John didn't visit us after he returned from Spain.</passage>
+   <question>Did John return from Spain?</question>
+   <answer id="1" polarity="true" force="strict" source="linguistic">
+      <response>yes</response>
+   </answer>
+</inference>
+<inference id="PARC-41">
+   <passage>Hanssen, who sold FBI secrets to the Russians, could face the death penalty.</passage>
+   <question>Did Hanssen sell FBI secrets to the Russians?</question>
+   <answer id="1" polarity="true" force="strict" source="linguistic">
+      <response>yes</response>
+   </answer>
+</inference>
+<inference id="PARC-42">
+   <passage>The New York Times reported that Hanssen, who sold FBI secrets to the Russians, could face the death penalty.</passage>
+   <question>Did Hanssen sell FBI secrets to the Russians?</question>
+   <answer id="1" polarity="true" force="strict" source="linguistic">
+      <response>yes</response>
+   </answer>
+</inference>
+<inference id="PARC-43">
+   <passage>The New York Times reported that Hanssen sold FBI secrets to the Russians and could face the death penalty.</passage>
+   <question>Did Hanssen sell FBI secrets to the Russians?</question>
+   <answer id="1" polarity="true" force="strict" source="linguistic">
+      <response>unknown</response>
+   </answer>
+</inference>
+<inference id="PARC-44">
+   <passage>Bush said that it was Khan who sold centrifuges to North Korea.</passage>
+   <question>Were centrifuges sold to North Korea?</question>
+   <answer id="1" polarity="true" force="strict" source="linguistic">
+      <response>yes</response>
+   </answer>
+</inference>
+<inference id="PARC-45">
+   <passage>Bush said that Khan sold centrifuges to North Korea.</passage>
+   <question>Were centrifuges sold to North Korea?</question>
+   <answer id="1" polarity="true" force="strict" source="linguistic">
+      <response>unknown</response>
+   </answer>
+</inference>
+<inference id="PARC-46">
+   <passage>What we found in Iraq was rusted shrapnel.</passage>
+   <question>Did we find anything in Iraq?</question>
+   <answer id="1" polarity="true" force="strict" source="linguistic">
+      <response>yes</response>
+   </answer>
+</inference>
+<inference id="PARC-47">
+   <passage>The fact that Bin Laden was in Tora Bora led to the suspicion that the Afghan campaign was mismanaged.</passage>
+   <question>Was Bin Laden in Tora Bora?</question>
+   <answer id="1" polarity="true" force="strict" source="linguistic">
+      <response>yes</response>
+   </answer>
+</inference>
+<inference id="PARC-48">
+   <passage>The fact that Bin Laden was in Tora Bora led to the suspicion that the Afghan campaign was mismanaged.</passage>
+   <question>Was the Afghan campaign mismanaged?</question>
+   <answer id="1" polarity="true" force="strict" source="linguistic">
+      <response>unknown</response>
+   </answer>
+</inference>
+<inference id="PARC-49">
+   <passage>The paper concluded that the election had been rigged.</passage>
+   <question>Was the election rigged?</question>
+   <answer id="1" polarity="true" force="strict" source="linguistic">
+      <response>unknown</response>
+   </answer>
+</inference>
+<inference id="PARC-50">
+   <passage>Ames was, as the press reported, a successful spy.</passage>
+   <question>Was Ames a successful spy?</question>
+   <answer id="1" polarity="true" force="strict" source="linguistic">
+      <response>yes</response>
+   </answer>
+</inference>
+<inference id="PARC-51">
+   <passage>The press reported that Ames was a successful spy.</passage>
+   <question>Was Ames a successful spy?</question>
+   <answer id="1" polarity="true" force="strict" source="linguistic">
+      <response>unknown</response>
+   </answer>
+</inference>
+<inference id="PARC-52">
+   <passage>The US forgot that the Afghans speak several different languages.</passage>
+   <question>Do the Afghans speak several different languages?</question>
+   <answer id="1" polarity="true" force="strict" source="linguistic">
+      <response>yes</response>
+   </answer>
+</inference>
+<inference id="PARC-53">
+   <passage>Bush realized that the US Army had to be transformed to meet new threats.</passage>
+   <question>Did the US Army have to be transformed to meet new threats?</question>
+   <answer id="1" polarity="true" force="strict" source="linguistic">
+      <response>yes</response>
+   </answer>
+</inference>
+<inference id="PARC-54">
+   <passage>Bush didn't realize that Afghanistan is land-locked.</passage>
+   <question>Is Afghanistan land-locked?</question>
+   <answer id="1" polarity="true" force="strict" source="linguistic">
+      <response>yes</response>
+   </answer>
+</inference>
+<inference id="PARC-55">
+   <passage>There is a belief that the US will invade Syria.</passage>
+   <question>Will the US invade Syria?</question>
+   <answer id="1" polarity="true" force="strict" source="linguistic">
+      <response>unknown</response>
+   </answer>
+</inference>
+<inference id="PARC-56">
+   <passage>It is not surprising that Bush has the lead in Ohio.</passage>
+   <question>Does Bush have the lead in Ohio?</question>
+   <answer id="1" polarity="true" force="strict" source="linguistic">
+      <response>yes</response>
+   </answer>
+</inference>
+<inference id="PARC-57">
+   <passage>It is not likely that Bush has the lead in Ohio.</passage>
+   <question>Does Bush have the lead in Ohio?</question>
+   <answer id="1" polarity="true" force="strict" source="linguistic">
+      <response>unknown</response>
+   </answer>
+</inference>
+<inference id="PARC-58">
+   <passage>Kerry knew that Edwards would accept the nomination.</passage>
+   <question>Did Kerry know whether Edwards would accept the nomination?</question>
+   <answer id="1" polarity="true" force="strict" source="linguistic">
+      <response>yes</response>
+   </answer>
+</inference>
+<inference id="PARC-59">
+   <passage>Tom knows that Naples is in Campania.</passage>
+   <question>Does Tom know where Naples is?</question>
+   <answer id="1" polarity="true" force="strict" source="linguistic">
+      <response>yes</response>
+   </answer>
+</inference>
+<inference id="PARC-60">
+   <passage>We met in September during the feast.</passage>
+   <question>Did the feast take place in September?</question>
+   <answer id="1" polarity="true" force="strict" source="linguistic">
+      <response>yes</response>
+   </answer>
+</inference>
+<inference id="PARC-61">
+   <passage>It is false that Bin Laden was seen in Tora Bora.</passage>
+   <question>Was Bin Laden seen in Tora Bora?</question>
+   <answer id="1" polarity="true" force="strict" source="linguistic">
+      <response>no</response>
+   </answer>
+</inference>
+<inference id="PARC-62">
+   <passage>It follows that Bin Laden was in Tora Bora.</passage>
+   <question>Was Bin Laden in Tora Bora?</question>
+   <answer id="1" polarity="true" force="strict" source="linguistic">
+      <response>yes</response>
+   </answer>
+</inference>
+<inference id="PARC-63">
+   <passage>It is likely that Bin Laden was in Tora Bora.</passage>
+   <question>Was Bin Laden in Tora Bora?</question>
+   <answer id="1" polarity="true" force="strict" source="linguistic">
+      <response>unknown</response>
+   </answer>
+</inference>
+<inference id="PARC-64">
+   <passage>Tony Hall left Amman on Sunday.</passage>
+   <question>Was Tony Hall in Amman on Sunday?</question>
+   <answer id="1" polarity="true" force="strict" source="linguistic">
+      <response>yes</response>
+   </answer>
+</inference>
+<inference id="PARC-65">
+   <passage>Tony Hall left Amman on Sunday.</passage>
+   <question>Was Tony Hall in Amman on Saturday?</question>
+   <answer id="1" polarity="true" force="strict" source="linguistic">
+      <response>unknown</response>
+   </answer>
+</inference>
+<inference id="PARC-66">
+   <passage>Khan sold 10 centrifuges to North Korea.</passage>
+   <question>Did North Korea buy 10 centrifuges?</question>
+   <answer id="1" polarity="true" force="strict" source="linguistic">
+      <response>yes</response>
+   </answer>
+</inference>
+<inference id="PARC-67">
+   <passage>The US invasion of Afghanistan prevented Al-Qaida from attacking Ryad in 2002.</passage>
+   <question>Did Al-Qaida attack Ryad in 2002?</question>
+   <answer id="1" polarity="true" force="strict" source="linguistic">
+      <response>no</response>
+   </answer>
+</inference>
+<inference id="PARC-68">
+   <passage>The administration managed to track down the perpetrators.</passage>
+   <question>Did the administration track down the perpetrators?</question>
+   <answer id="1" polarity="true" force="strict" source="linguistic">
+      <response>yes</response>
+   </answer>
+</inference>
+<inference id="PARC-69">
+   <passage>The administration didn't manage to track down the perpetrators.</passage>
+   <question>Did the administration track down the perpetrators?</question>
+   <answer id="1" polarity="true" force="strict" source="linguistic">
+      <response>no</response>
+   </answer>
+</inference>
+<inference id="PARC-70">
+   <passage>Bush didn't have the time to read the report.</passage>
+   <question>Did Bush read the report?</question>
+   <answer id="1" polarity="true" force="strict" source="linguistic">
+      <response>no</response>
+   </answer>
+</inference>
+<inference id="PARC-71">
+   <passage>Bush had the time to read the report.</passage>
+   <question>Did Bush read the report?</question>
+   <answer id="1" polarity="true" force="plausible" source="linguistic">
+      <response>yes</response>
+   </answer>
+</inference>
+<inference id="PARC-72">
+   <passage>The president wasn't able to attend the meeting.</passage>
+   <question>Did the president attend the meeting?</question>
+   <answer id="1" polarity="true" force="strict" source="linguistic">
+      <response>no</response>
+   </answer>
+</inference>
+<inference id="PARC-73">
+   <passage>The president was able to attend the meeting.</passage>
+   <question>Did the president attend the meeting?</question>
+   <answer id="1" polarity="true" force="plausible" source="linguistic">
+      <response>yes</response>
+   </answer>
+</inference>
+<inference id="PARC-74">
+   <passage>Many soldiers were killed in the ambush.</passage>
+   <question>Were all soldiers killed in the ambush?</question>
+   <answer id="1" polarity="true" force="plausible" source="linguistic">
+      <response>no</response>
+   </answer>
+</inference>
+<inference id="PARC-75">
+   <passage>The man had $20 in his pocket.</passage>
+   <question>Did the man have $40 in his pocket?</question>
+   <answer id="1" polarity="true" force="plausible" source="linguistic">
+      <response>no</response>
+   </answer>
+</inference>
+<inference id="PARC-76">
+   <passage>The man had $20 in his pocket.</passage>
+   <question>Did the man have $10 in his pocket?</question>
+   <answer id="1" polarity="true" force="strict" source="linguistic">
+      <response>yes</response>
+   </answer>
+</inference>
+</root>
