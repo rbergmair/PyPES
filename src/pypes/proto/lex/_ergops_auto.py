@@ -24,7 +24,7 @@ class Operator( pypes.proto.Operator ):
   AM_PM = 'AM_PM';
   ANY_Q = 'ANY_Q';
   APPOS = 'APPOS';
-  APPOS_ABLE = 'APPOS-ABLE';
+  APPOS_ABLE = 'APPOS_ABLE';
   APPROX_GRAD = 'APPROX_GRAD';
   ARGUMENT = 'ARGUMENT';
   AUX_ARG1 = 'AUX_ARG1';
@@ -58,9 +58,9 @@ class Operator( pypes.proto.Operator ):
   BE_V_ID = 'BE_V_ID';
   BE_V_NV = 'BE_V_NV';
   BE_V_PRD = 'BE_V_PRD';
-  BE_V_PRD_OR_ID = 'BE_V_PRD-OR-ID';
-  BE_V_PRD_OR_NV = 'BE_V_PRD-OR-NV';
-  BE_V_PRD_OR_THERE = 'BE_V_PRD-OR-THERE';
+  BE_V_PRD_OR_ID = 'BE_V_PRD_OR_ID';
+  BE_V_PRD_OR_NV = 'BE_V_PRD_OR_NV';
+  BE_V_PRD_OR_THERE = 'BE_V_PRD_OR_THERE';
   BE_V_THERE = 'BE_V_THERE';
   BOTH_ALL_Q = 'BOTH_ALL_Q';
   BOTH_ALL_UDEF_Q = 'BOTH_ALL_UDEF_Q';
@@ -202,7 +202,7 @@ class Operator( pypes.proto.Operator ):
   JUST_ONLY_NOTVERY_DEG = 'JUST_ONLY_NOTVERY_DEG';
   JUST_ONLY_VERY_DEG = 'JUST_ONLY_VERY_DEG';
   LEX_IMP = 'LEX_IMP';
-  LITTLE_FEW_A = 'LITTLE-FEW_A';
+  LITTLE_FEW_A = 'LITTLE_FEW_A';
   LOC = 'LOC';
   LOC_ABSTR = 'LOC_ABSTR';
   LOC_NONSP = 'LOC_NONSP';
@@ -227,11 +227,11 @@ class Operator( pypes.proto.Operator ):
   MOFY = 'MOFY';
   MORE_DEG = 'MORE_DEG';
   MORE_OR_VERY_DEG = 'MORE_OR_VERY_DEG';
-  MUCH_MANY_A = 'MUCH-MANY_A';
+  MUCH_MANY_A = 'MUCH_MANY_A';
   MUCH_DEG = 'MUCH_DEG';
   MUCH_DEG_ONLY = 'MUCH_DEG_ONLY';
   MUCH_OR_VERY_DEG = 'MUCH_OR_VERY_DEG';
-  N_ED = 'N-ED';
+  N_ED = 'N_ED';
   NAMED = 'NAMED';
   NAMED_ABB = 'NAMED_ABB';
   NAMED_CITY = 'NAMED_CITY';
@@ -366,7 +366,7 @@ class Operator( pypes.proto.Operator ):
   SELECTED_ADJ = 'SELECTED_ADJ';
   SELECTED_ADV = 'SELECTED_ADV';
   SELECTED_PREP = 'SELECTED_PREP';
-  SOME_ANY_Q = 'SOME-ANY_Q';
+  SOME_ANY_Q = 'SOME_ANY_Q';
   SOME_Q = 'SOME_Q';
   STATE_LOC = 'STATE_LOC';
   SUBORD = 'SUBORD';
@@ -1136,7 +1136,7 @@ class Operator( pypes.proto.Operator ):
     MINUTE: None,
     MINUTE_OR_AMPM: {AM_PM},
     MINUTE_PREP_SEL: None,
-    MISCPREP: { COMP_DEG,
+    MISCPREP: {  COMP_DEG,
                  COMP_EQUAL,
                  COMP_LESS,
                  COMP_OR_SUPERL,

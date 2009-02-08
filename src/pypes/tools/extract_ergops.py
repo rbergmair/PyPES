@@ -11,6 +11,8 @@ from pyparsing import Word as Word_;
 from pyparsing import ZeroOrMore, OneOrMore;
 from pyparsing import printables;
 
+from pypes.native.ergmrs import ERGMRSInterpreter;
+
 
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
@@ -207,12 +209,13 @@ def write_ops( types, g ):
   g.write( """class Operator( pypes.proto.Operator ):\n""" );
   
   for type_ in sorted( types ):
-    g.write( "  " + type_.replace( "-", "_" ) + " = " + repr( type_ ) +";\n" );
+    type__ = ERGMRSInterpreter._predstr_to_operator( type_ );
+    g.write( "  " + type__ + " = " + repr( type__ ) +";\n" );
 
   g.write( "\n  OPs = {\n" );
 
   for type_ in sorted( types ):
-    type__ = type_.replace( "-", "_" );
+    type__ = ERGMRSInterpreter._predstr_to_operator( type_ );
     g.write( "    " + type__ + ": " + type__ + ",\n" );
 
   g.write( "  };\n" );
@@ -224,7 +227,6 @@ def write_ops( types, g ):
   g.write( types_ );
 
   g.write( ";\n" );
-  
 
 
 

@@ -3,7 +3,7 @@
 __package__ = "pypes.codecs_";
 __all__ = [ "PFTEncoder", "pft_encode",
             "argseq", "sortseq",
-            "ALPHAS", "NUMS", "ALPHANUMS", "PRINTABLES" ];
+            "ALPHANUMS", "IDENTFIRST", "IDENTNEXT" ];
 
 import re;
 import string;
@@ -15,7 +15,7 @@ from pypes.utils.mc import subject;
 from pypes.proto import *;
 from pypes.proto.lambdaifier import sortseq;
 
-from pypes.codecs_.pft_decoder import ALPHAS, NUMS, ALPHANUMS, PRINTABLES;
+from pypes.codecs_.pft_decoder import ALPHANUMS, IDENTFIRST, IDENTNEXT;
 
 
 
@@ -32,22 +32,24 @@ def argseq( int_ ):
 class PFTEncoder( metaclass=subject ):
 
 
-  def _enter_( self ):
-    
-    sig = ProtoSig();
-    self.obj = lambdaify( self._obj_ )( sig=sig );
+  def initialize( self, fast_mode=False ):
 
     self._assigned_sortvids = set();
+    self._assigned_sids = set();
     
-    if hasattr( sig, "_sos_" ) and Variable in sig._sos_:
-      for vid in sig._sos_[ Variable ]:
-        var = sig._sos_[ Variable ][ vid ];
-        self._assigned_sortvids.add( (var.sort,var.vid) );
-
-    if hasattr( sig, "_sos_" ) and Sort in sig._sos_:
-      self._assigned_sids = set( sig._sos_[ Sort ].keys() );
-    else:
-      self._assigned_sids = set();
+    if not fast_mode:
+      
+      sig = ProtoSig();
+      obj_ = lambdaify( self._obj_ );
+      self._obj_ = obj_( sig=sig );
+      
+      if hasattr( sig, "_sos_" ) and Variable in sig._sos_:
+        for vid in sig._sos_[ Variable ]:
+          var = sig._sos_[ Variable ][ vid ];
+          self._assigned_sortvids.add( (var.sort,var.vid) );
+  
+      if hasattr( sig, "_sos_" ) and Sort in sig._sos_:
+        self._assigned_sids = set( sig._sos_[ Sort ].keys() );
 
 
   def _next_sid( self ):
@@ -84,7 +86,7 @@ class PFTEncoder( metaclass=subject ):
       return repr( stri );
   
   
-  re_identifier = re.compile( "["+ALPHAS+"]["+ALPHANUMS+"\.]*" );
+  re_identifier = re.compile( "["+IDENTFIRST+"]["+IDENTNEXT+"\.]*" );
   
   @classmethod
   def _fmt_identifier( cls, stri, sensitive=None ):
@@ -340,19 +342,23 @@ class PFTEncoder( metaclass=subject ):
     return rslt;
 
   
-  def encode( self ):
+  def encode( self, fast_initialize=False, pretty_lines=True ):
     
-    return self._indent( self._encode( self._obj_ ) );
+    self.initialize( fast_initialize );
+    r = self._encode( self._obj_ );
+    if not pretty_lines:
+      return r;
+    return self._indent( r );
 
 
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-def pft_encode( pfobj ):
+def pft_encode( pfobj, fast_initialize=False, pretty_lines=True ):
   
   rslt = None;
   with PFTEncoder( pfobj ) as encoder:
-    rslt = encoder.encode();
+    rslt = encoder.encode( fast_initialize, pretty_lines );
   return rslt;
 
     

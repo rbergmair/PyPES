@@ -25,7 +25,7 @@ import pypes.native.ergmrs;
 
 class TestMRXDecoder( TestCase, metaclass=object_ ):
   
-  _TESTMRSDIR = "dta/simple";
+  _TESTMRSDIR = "dta/native";
   
   
   def doteston( self, filename ):
@@ -58,6 +58,8 @@ class TestMRXDecoder( TestCase, metaclass=object_ ):
       #  continue;
       
       self.doteston( "{0}/mrs-{1}1.mrs.xml.gz".format( self._TESTMRSDIR, i ) );
+      #if i == 10:
+      #  return;
 
     for i in range( 1, 326 ):
       

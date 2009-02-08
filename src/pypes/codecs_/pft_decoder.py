@@ -2,11 +2,13 @@
 
 __package__ = "pypes.codecs_";
 __all__ = [ "PFTDecoder", "pft_decode",
-            "ALPHAS", "NUMS", "ALPHANUMS", "PRINTABLES" ];
+            "ALPHAS", "NUMS", "ALPHANUMS", "PRINTABLES", "IDENTFIRST",
+            "IDENTNEXT" ];
 
 import ast;
 import re;
 import copy;
+import imp;
 
 from pyparsing import Literal;
 from pyparsing import Word as Word_;
@@ -20,6 +22,8 @@ import pyparsing;
 
 from pypes.proto import *;
 
+import pypes.proto.lex.basic;
+
 
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
@@ -27,7 +31,8 @@ from pypes.proto import *;
 ALPHAS = pyparsing.alphas;
 NUMS = pyparsing.nums;
 ALPHANUMS = pyparsing.alphanums;
-PRINTABLES = pyparsing.printables;
+IDENTFIRST = ALPHAS+"_";
+IDENTNEXT =  ALPHANUMS+"."+"_";
 
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
@@ -52,28 +57,32 @@ _GT_CONSTANT = 12;
 
 _variable_re = re.compile( "[" + ALPHAS + "]+" + "[" + NUMS + "]+" );
 
-_nonspecial = "";
-for ch in PRINTABLES:
-  if not ch in { "{", "}", "[", "]", "(", ")", "<", ">",
-                 '"', "'", "_", "+", ":", "=" }:
-    if not ch.isspace():
-      _nonspecial += ch;
-
 
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 class PFTDecoder( metaclass=subject ):
   
+  _lexicon = None;
   
-  def decode( self, item=None ):
+  
+  def decode( self, item=None, lexicon=None ):
+    
+    global _lexicon;
     
     if item is None:
       item = PFTDecoder.protoform;
+      
+    if lexicon is not None:
+      _lexicon = lexicon;
+    else:
+      _lexicon = pypes.proto.lex.basic;
     
     rslt = None;
     if isinstance( self._obj_, str ):
-      rslt = item.parseString( self._obj_ );
+      # rslt = item.parseString( self._obj_ );
+      for result in item.scanString( self._obj_ ):
+        return result;
     else:
       rslt = item.parseFile( self._obj_ );
       
@@ -102,7 +111,7 @@ class PFTDecoder( metaclass=subject ):
   
 
   string = quoted | Word_( ALPHANUMS, ALPHANUMS );
-  identifier = Word_( ALPHAS, ALPHANUMS+"." );
+  identifier = Word_( IDENTFIRST, IDENTNEXT );
 
   
   decimalnumber = Word_( NUMS, NUMS );
@@ -218,7 +227,7 @@ class PFTDecoder( metaclass=subject ):
       assert isinstance( toks[i], dict );
       feats = toks[i];
     
-    return ( _GT_OPERATOR, Operator(
+    return ( _GT_OPERATOR, _lexicon.Operator(
                                otype = otype,
                                feats = feats
                              ) );
@@ -311,8 +320,10 @@ class PFTDecoder( metaclass=subject ):
     assert len( toks ) > i;
     assert toks[i] == "|";
     
-    return ( _GT_WORD, Word( wid=wid, lemma=lemma, pos=pos, sense=sense,
-                             feats=feats ) );
+    return ( _GT_WORD, _lexicon.Word(
+                           wid=wid, lemma=lemma, pos=pos,
+                           sense=sense, feats=feats
+                         ) );
           
   word.setParseAction( _decode_word );
   
@@ -470,13 +481,14 @@ class PFTDecoder( metaclass=subject ):
   modification.setParseAction( _decode_modification );
   
   
-  connective = Literal( Operator.OP_C_WEACON ) | \
-               Literal( Operator.OP_C_STRCON ) | \
-               Literal( Operator.OP_C_WEADIS ) | \
-               Literal( Operator.OP_C_STRDIS ) | \
-               Literal( Operator.OP_C_IMPL );
-
-  connection = ( handle | freezer | protoform ) + ( connective | word ) + \
+  special_connective = Literal( Operator.OP_C_WEACON ) | \
+                       Literal( Operator.OP_C_STRCON ) | \
+                       Literal( Operator.OP_C_WEADIS ) | \
+                       Literal( Operator.OP_C_STRDIS ) | \
+                       Literal( Operator.OP_C_IMPL );
+  
+  connection = ( handle | freezer | protoform ) + \
+               ( special_connective | operator | word ) + \
                ( handle | freezer | protoform );
   
   def _decode_connection( str_, loc, toks ):
@@ -492,10 +504,9 @@ class PFTDecoder( metaclass=subject ):
     referent = None;
     if not isinstance( toks[1], str ):
       ( type_, referent ) = toks[1];
-      assert type_ == _GT_WORD;
+      assert type_ in { _GT_WORD, _GT_OPERATOR };
     else:
-      assert toks[1] in Operator.OP_Cs;
-      referent = Operator( otype = Operator.OP_Cs[ toks[1] ] );
+      referent = Operator( otype = toks[1] );
     
     return ( _GT_CONNECTION, Connection(
                                  connective = Connective( referent=referent ),
@@ -526,7 +537,7 @@ class PFTDecoder( metaclass=subject ):
 
 
   item = ( Optional( explicit_handle + Literal(":") ) + \
-             ( ( protoform + NotAny( connective ) ) |
+             ( protoform + NotAny( special_connective | operator | word ) |
                predication | quantification | modification | connection  ) ) | \
          constraint;
 
@@ -589,11 +600,14 @@ class PFTDecoder( metaclass=subject ):
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-def pft_decode( pft, item=PFTDecoder.protoform ):
+def pft_decode( pft, item=PFTDecoder.protoform, lexicon=None ):
   
   rslt = None;
   with PFTDecoder( pft ) as decoder:
-    rslt = decoder.decode( item=item );
+    rslt = decoder.decode( item=item, lexicon=lexicon );
+  del decoder;
+  # imp.reload( pyparsing );
+  
   return rslt;
 
     
