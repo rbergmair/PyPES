@@ -198,7 +198,41 @@ def suite():
 
 def main( argv=None ):
 
-  unittest.TextTestRunner( verbosity=2 ).run( suite() );
+    print();
+    print();
+    
+    gc.disable();
+
+    for i in range(0,5):
+
+      before = time.clock();
+      f = open( "/local/scratch/rb432/tmp/outp/outp.txt", "rt" );
+      j = 0;
+      for line in f:
+        
+        sys.stdout.write( "{0:5d}  ".format( len(line) ) );
+        sys.stdout.flush();
+        if ( j % 15 == 14 ):
+          sys.stdout.write( "\n" );
+          
+        try:
+          pft_decode( line, lexicon = pypes.proto.lex.erg );
+          j += 1;
+        except:
+          print( j );
+          print( line );
+          raise;
+      f.close();
+      after = time.clock();
+      gc.collect();
+
+      print();
+      print( "time to pftdecode: {0:1.5f}".format( after - before ) );
+      print();
+      print();
+      
+      
+      assert j == 268;
 
 if __name__ == '__main__':
   sys.exit( main( sys.argv ) );
