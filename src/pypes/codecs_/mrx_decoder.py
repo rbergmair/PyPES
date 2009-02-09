@@ -340,7 +340,6 @@ class MRXDecoder( XMLHandler, metaclass=subject ):
 
 
   IGNORE = [];
-  CHUNK_SIZE = 512;
 
   
   def handle( self, obj ):
@@ -360,12 +359,10 @@ class MRXDecoder( XMLHandler, metaclass=subject ):
     if isinstance( self._obj_, str ):
       self.feed( str );
     else:
-      #while True:
-      #  x = self._obj_.read( self.CHUNK_SIZE );
-      #  if x == "":
-      #    break;
-      #  self.feed( x );
-      self.feed( self._obj_.read() );
+      x = self._obj_.read( self.CHUNK_SIZE );
+      while x:
+        self.feed( x );
+        x = self._obj_.read( self.CHUNK_SIZE );
     
     return converter( self.mrs );
 

@@ -1,7 +1,7 @@
 # -*-  coding: ascii -*-  # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 __package__ = "pypes.tools";
-__all__ = [ "extract_ergops" ];
+__all__ = [ "extract_ergops", "main" ];
 
 import sys;
 import pprint;
@@ -32,8 +32,6 @@ typedef = LineStart() + \
           typename + \
           ZeroOrMore( Literal( "&" ) + typename ) + \
           ( ( Literal( "&" ) + Literal( "[" ) ) | Literal( "." ) );
-#typedef = LineStart() + OneOrMore( typename ) + Literal( "." );
-#typedef = OneOrMore( typename ) + Literal( "." );
 
 def _decode_typedef( str_, loc, toks ):
   

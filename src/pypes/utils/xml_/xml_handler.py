@@ -58,6 +58,8 @@ class XMLHandler( xml.sax.handler.ContentHandler, metaclass=subject ):
 
   CLIENT_BYNAME = {};
   IGNORE = [];
+  
+  CHUNK_SIZE = 512;
 
   
   def _enter_( self ):
@@ -95,7 +97,10 @@ class XMLHandler( xml.sax.handler.ContentHandler, metaclass=subject ):
       
       ( client, obj ) = self.CLIENT_BYNAME[ name ];
       if obj is None:
-        obj = active_client;
+        if active_client is not None:
+          obj = active_client;
+        else:
+          obj = self;
       else:
         obj = obj();
         if obj is None:
@@ -145,12 +150,16 @@ class XMLHandler( xml.sax.handler.ContentHandler, metaclass=subject ):
       active_client.endElement( name );
 
       if active_client_ctx is not None:
+        
+        obj = active_client;
+        if active_client._obj_ is not None:
+          obj = active_client._obj_;
 
         for i in range( len( self._active_clients ) - 1, -1, -1  ):
           ( client, ctx ) = self._active_clients[ i ];
-          client.handle( active_client._obj_ );
+          client.handle( obj );
         
-        if self.handle( active_client._obj_ ):
+        if self.handle( obj ):
           self._stop_parsing = True;
         
         active_client_ctx.__exit__( None, None, None );
