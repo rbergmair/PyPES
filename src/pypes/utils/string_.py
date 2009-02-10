@@ -1,4 +1,4 @@
-# -*-  coding: ascii -*-
+# -*-  coding: ascii -*-  # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 __package__ = "pypes.utils";
 __all__ = [ "crude_hashcode", "crude_match" ];

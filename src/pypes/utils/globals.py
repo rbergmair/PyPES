@@ -1,4 +1,4 @@
-# -*-  coding: ascii -*-
+# -*-  coding: ascii -*-  # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 __package__ = "pypes.utils";
 __all__ = [ "get_insttok", "get_guid", "get_runningno" ];

@@ -1,4 +1,4 @@
-# -*-  coding: ascii -*-
+# -*-  coding: ascii -*-  # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 __package__ = "pypes.utils.xml_";
 __all__ = [ "XMLElementHandler", "XMLPCharElementHandler", "XMLHandler" ];
