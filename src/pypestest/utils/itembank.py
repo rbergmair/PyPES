@@ -19,30 +19,66 @@ class TestItembank( TestCase, metaclass=object_ ):
     
     with TableManager( ( "/tmp/myitembank", "mybank" ) ) as tbl:
       
-      with tbl.by_id( None ) as rec:
-        self.assert_( rec.newly_created );
+      with tbl.create_record( None ) as rec:
         self.assertEquals( rec.id, 1 );
 
-      with tbl.by_id( None ) as rec:
-        self.assert_( rec.newly_created );
+      with tbl.create_record( None ) as rec:
         self.assertEquals( rec.id, 2 );
-        self.assert_( rec.set_ctx_str( "The dog barked." ) );
+        rec.set_ctx_str( "The dog barked." );
+        self.assertEquals( rec.length, 3 );
       
-      with tbl.by_id( 10 ) as rec:
-        self.assert_( rec.newly_created );
+      with tbl.create_record( 10 ) as rec:
         self.assertEquals( rec.id, 10 );
 
-      with tbl.by_id( 2 ) as rec:
-        self.assertFalse( rec.newly_created );
+      self.assertTrue( tbl.has_id( 10 ) );
+      
+      with tbl.record_by_id( 2 ) as rec:
         self.assertEquals( rec.id, 2 );
+        self.assertEquals( rec.length, 3 );
         self.assertEquals( rec.get_ctx_str(), "The dog barked." );
 
     with TableManager( ( "/tmp/myitembank", "mybank" ) ) as tbl:
 
-      with tbl.by_id( 2 ) as rec:
-        self.assertFalse( rec.newly_created );
+      with tbl.record_by_id( 2 ) as rec:
         self.assertEquals( rec.id, 2 );
+        self.assertEquals( rec.length, 3 );
         self.assertEquals( rec.get_ctx_str(), "The dog barked." );
+
+      with tbl.create_record( None ) as rec:
+        self.assertEquals( rec.id, 11 );
+        self.assertRaises( AssertionError, rec.set_ctx_str, "The dog barked."  );
+
+    with TableManager( ( "/tmp/myitembank", "mybank" ) ) as tbl:
+      
+      self.assert_( tbl.id_by_ctx_str( "The cat barked as well." ) is None );
+
+      with tbl.create_record( None ) as rec:
+        self.assertEquals( rec.id, 12 );
+        rec.set_ctx_str( "The cat barked as well." );
+        self.assertEquals( rec.get_ctx_str(), "The cat barked as well." );
+        self.assertEquals( rec.length, 5 );
+        
+      id = tbl.id_by_ctx_str( "The dog barked." );
+      self.assert_( id is not None );
+
+      with tbl.record_by_id( id ) as rec:
+        self.assertEquals( rec.id, 2 );
+        rec.set_ctx_str( "The dog barked loudly." );
+
+      id = tbl.id_by_ctx_str( "The dog barked." );
+      self.assert_( id is None );
+
+      with tbl.create_record( None ) as rec:
+        self.assertEquals( rec.id, 13 );
+        rec.set_ctx_str( "The dog barked." );
+
+      id = tbl.id_by_ctx_str( "The dog barked loudly." );
+      self.assert_( id is not None );
+
+      with tbl.record_by_id( 2 ) as rec:
+        self.assertEquals( rec.id, 2 );
+        self.assertEquals( rec.get_ctx_str(), "The dog barked loudly." );
+        
 
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #

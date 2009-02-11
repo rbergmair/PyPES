@@ -6,6 +6,7 @@ __all__ = [ "process_fracas", "main" ];
 import sys;
 
 from pypes.utils.mc import subject;
+from pypes.utils.itembank import *;
 from pypes.utils.xml_.xml_handler import *;
 
 
@@ -49,7 +50,7 @@ class CommentHandler( XMLPCharElementHandler, metaclass=subject ):
       self._obj_.tsfile.close();
 
     if self._obj_.afile is not None:
-      self._obj_.afile.write( "\n</annotation>\n" );
+      self._obj_.afile.write( "\n</annotations>\n" );
       self._obj_.afile.close();
       
     sect = self._text.split();
@@ -63,7 +64,8 @@ class CommentHandler( XMLPCharElementHandler, metaclass=subject ):
                             "w"
                           );
     
-    self._obj_.tsfile.write( "<testsuite>\n\n\n" );
+    self._obj_.tsfile.write( '<?xml version="1.0" encoding="UTF-8"?>\n\n' );
+    self._obj_.tsfile.write( '<testsuite>\n\n\n' );
 
     self._obj_.afile = open(
                            "{0}/fracas-{1}.tsa.xml".format(
@@ -72,8 +74,8 @@ class CommentHandler( XMLPCharElementHandler, metaclass=subject ):
                            "w"
                          );
                          
-    
-    self._obj_.afile.write( """<annotation confidence_ranked="False">\n\n\n""" );
+    self._obj_.afile.write( '<?xml version="1.0" encoding="UTF-8"?>\n\n' );
+    self._obj_.afile.write( """<annotations confidence_ranked="False">\n\n\n""" );
 
 
 
@@ -189,121 +191,65 @@ class ProblemHandler( XMLElementHandler, metaclass=subject ):
     self.fracas_answer = None;
     if "fracas_answer" in attrs:
       self.fracas_answer = attrs[ "fracas_answer" ];
+    self.fracas_nonstandard = None;
+    if "fracas_nonstandard" in attrs:
+      self.fracas_nonstandard = attrs[ "fracas_nonstandard" ];
     if "id" in attrs:
       self.id_attr = attrs[ "id" ];
+  
+  
+  def _concatenate_sents( self, sents ):
+    
+    try:
+      assert len( sents ) > 0;
+    except:
+      print( self.id_attr );
+      raise;
+    disc = sents[ 0 ];
+    for sent in sents[ 1: ]:
+      disc += "  " + sent;
+    return disc;
+  
+  
+  def _output_discourse( self, discourse ):
 
-
-  def endElement( self, name ):
-    
-    if name != self.XMLELEM:
-      return;
-    
-    sentids = [];
-    ids = set();
-    
-    for sent in self.antecedents:
-      id = None;
-      itemid = None;
-      if sent in self._obj_.sentences:
-        id = self._obj_.sentences.index( sent );
-        itemid = self._obj_.itemid_by_sentid[ id ];
-      else:
-        id = len( self._obj_.sentences );
-        self._obj_.sentences.append( sent );
-        itemid = self._obj_.itemid;
-        self._obj_.itemid += 1;
-        self._obj_.itemid_by_sentid[ id ] = itemid;
-      sentids.append( ( itemid, sent ) );
-      ids.add( id );
-    
-    antid = None;
-    if ids in self._obj_.discourses:
-      id = self._obj_.discourses.index( ids );
-      antid = self._obj_.itemid_by_discid[ id ];
-    else:
-      id = len( self._obj_.discourses );
-      self._obj_.discourses.append( antid );
-      antid = self._obj_.itemid;
-      self._obj_.itemid += 1;
-      self._obj_.itemid_by_discid[ id ] = antid;
-    
+    disc = self._concatenate_sents( discourse );
+    discid = self._obj_.discs.add_ctx_str( disc );
     self._obj_.tsfile.write(
-        """<discourse itemset="fracas" itemid="{0:d}">\n""".format( antid )
+        """<discourse discid="{0:d}">\n""".format( discid )
       );
     
-    for ( sentid, sent ) in sentids:
-      
-      self._obj_.sfile.write( "[{0}] {1}\n".format( sentid, sent ) );
-      
+    for sent in discourse:
+      sentid = self._obj_.sents.add_ctx_str( sent );
       self._obj_.tsfile.write(
-          """  <sentence itemset="fracas" itemid="{0:d}">""".format( sentid )
+          """  <sentence sentid="{0:d}">""".format( sentid )
         );
-      
       self._obj_.tsfile.write( sent );
       self._obj_.tsfile.write( "</sentence>\n" );
       
     self._obj_.tsfile.write( "</discourse>\n\n" );
     
-    sentid = None;
-    itemid = None;
-    sid = None;
-    if self.question in self._obj_.sentences:
-      sid = self._obj_.sentences.index( self.question );
-      sentid = self._obj_.itemid_by_sentid[ sid ];
-    else:
-      sid = len( self._obj_.sentences );
-      self._obj_.sentences.append( self.question );
-      sentid = self._obj_.itemid;
-      itemid = self._obj_.itemid;
-      self._obj_.itemid += 1;
-      self._obj_.itemid_by_sentid[ sid ] = itemid;
-    
-    conid = None;
-    if {sid} in self._obj_.discourses:
-      id = self._obj_.discourses.index( {sid} );
-      conid = self._obj_.itemid_by_discid[ id ];
-    else:
-      id = len( self._obj_.discourses );
-      self._obj_.discourses.append( {sid} );
-      conid = self._obj_.itemid;
-      self._obj_.itemid += 1;
-      self._obj_.itemid_by_discid[ id ] = conid;
-    
-    self._obj_.tsfile.write(
-        """<discourse itemset="fracas" itemid="{0:d}">\n""".format( conid )
-      );
-    
-    self._obj_.tsfile.write(
-        """  <sentence itemset="fracas" itemid="{0:d}">""".format( sentid )
-      );
-    
-    self._obj_.tsfile.write( self.question );
-    self._obj_.tsfile.write( "</sentence>\n" );
-    
-    self._obj_.tsfile.write( "</discourse>\n\n" );
-    
-    assert self._obj_.infid == int( self.id_attr );
-    self._obj_.infid += 1;
-    
-    infid = self._obj_.itemid;
-    self._obj_.itemid += 1;
-    
-    self._obj_.tsfile.write(
-        '<inference itemset="fracas" infid="{0}" oid="{1}">\n'.format( infid, self.id_attr )
-      );
+    return discid;
 
-    self._obj_.tsfile.write(
-        """  <antecedent itemset="fracas" itemid="{0}"/>\n""".format( antid )
-      );
-      
-    self._obj_.tsfile.write(
-        """  <consequent itemset="fracas" itemid="{0}"/>\n""".format( conid )
-      );
-      
-    self._obj_.tsfile.write( "</inference>\n\n\n" );
+
+  def _output_inference( self, inference, antid, conid ):
     
+    infdisc = self._concatenate_sents( inference );
+    infdiscid = self._obj_.discs.add_ctx_str( infdisc );
     
-    annotation = '<annotation itemset="fracas" infid="{0}" oid="{1}"'.format( infid, self.id_attr );
+    self._obj_.tsfile.write(
+        '<inference discid="{0}" infid="{1}">\n'.format(
+                                                     infdiscid, self.id_attr
+                                                   )
+      );
+    self._obj_.tsfile.write( '  <antecedent discid="{0}"/>\n'.format( antid ) );
+    self._obj_.tsfile.write( '  <consequent discid="{0}"/>\n'.format( conid ) );
+    self._obj_.tsfile.write( "</inference>\n\n" );
+  
+  
+  def _output_annotation( self ):
+
+    annotation = '<annotation infid="{0}"'.format( self.id_attr );
     
     if self.fracas_answer is not None:
       if self.fracas_answer == "undef":
@@ -322,6 +268,9 @@ class ProblemHandler( XMLElementHandler, metaclass=subject ):
     
     if self.answer is not None:
       attributes += '  <value attribute="original answer">{0}</value>\n'.format( self.answer );
+
+    if self.fracas_nonstandard is not None:
+      attributes += '  <value attribute="nonstandard">{0}</value>\n'.format( self.fracas_nonstandard );
     
     if self.why is not None:
       attributes += '  <value attribute="explanation">{0}</value>\n'.format( self.why );
@@ -336,6 +285,39 @@ class ProblemHandler( XMLElementHandler, metaclass=subject ):
     
     self._obj_.afile.write( annotation );
     self._obj_.afile.write( "\n" );
+
+
+  def endElement( self, name ):
+    
+    if name != self.XMLELEM:
+      return;
+    
+    if not self.antecedents:
+      return;
+    
+    if not self.question:
+      return;
+    
+    val = False;
+    for ant in self.antecedents:
+      if ant:
+        val = True;
+        break;
+    
+    if not val:
+      return;
+    
+    self._obj_.tsfile.write( "<group>\n\n" );
+
+    antid = self._output_discourse( self.antecedents );
+    conid = self._output_discourse( [ self.question ] );
+
+    self.antecedents.append( self.question );
+    self._output_inference( self.antecedents, antid, conid );
+    
+    self._output_annotation();
+
+    self._obj_.tsfile.write( "</group>\n\n\n" );
 
 
 
@@ -357,16 +339,22 @@ class ProblemsHandler( XMLElementHandler, metaclass=subject ):
     assert isinstance( self._obj_, FraCaSProcessor );
     self.datadir = self._obj_.datadir;
     self.anndir = self._obj_.anndir;
-    self.sfile = open( self._obj_.itemdir + "/fracas-sents.items", "wt" );
-    self.dfile = open( self._obj_.itemdir + "/fracas-discs.items", "wt" );
+    
+    self.sents_ctx_mgr = TableManager( ( self._obj_.itemdir, "sentence" ) );
+    self.sents = self.sents_ctx_mgr.__enter__();
+    self.discs_ctx_mgr = TableManager( ( self._obj_.itemdir, "discourse" ) );
+    self.discs = self.discs_ctx_mgr.__enter__();
     
     self.itemid = 1;
     self.infid = 1;
   
   def _exit_( self, exc_type, exc_val, exc_tb ):
-
-    self.dfile.close();
-    self.sfile.close();
+    
+    self.discs = None;
+    self.discs_ctx_mgr.__exit__( exc_type, exc_val, exc_tb );
+    
+    self.sents = None;
+    self.sents_ctx_mgr.__exit__( exc_type, exc_val, exc_tb );
     
     if self.tsfile is not None:
       self.tsfile.write( "\n</testsuite>\n" );
@@ -397,9 +385,7 @@ class FraCaSProcessor( XMLHandler, metaclass=subject ):
       NoteHandler.XMLELEM: ( NoteHandler, None )
     };
   
-  IGNORE = {
-      "why", "note"
-    };
+  IGNORE = {};
 
   
   def process( self, datadir, anndir, itemdir ):
@@ -432,7 +418,7 @@ def main( argv=None ):
     with FraCaSProcessor( f ) as proc:
       proc.process( "dta/infer/fracas/data",
                     "dta/infer/fracas/gold",
-                    "dta/items/text" );
+                    "dta/items/fracas" );
   finally:
     f.close();
   return 0;
