@@ -10,9 +10,9 @@ from pypes.utils.mc import subject, object_;
 from pypes.proto import *;
 from pypes.proto.lex.erg import *;
 
-from pypes.codecs_.pft_encoder import ALPHANUMS, IDENTFIRST, IDENTNEXT;
+from pypes.codecs_.pft.pft_encoder import ALPHANUMS, IDENTFIRST, IDENTNEXT;
 
-from pypes.native.mrs import *;
+from pypes.codecs_.mrs._mrs import *;
 
 
 

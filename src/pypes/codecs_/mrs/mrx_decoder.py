@@ -1,14 +1,15 @@
 # -*-  coding: ascii -*-  # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 __package__ = "pypes.codecs_";
-__all__ = [ "MRXDecoder", "mrx_decode" ];
+__all__ = [ "mrx_decode", "SEM_ERG" ];
 
 from io import StringIO;
 
 from pypes.utils.mc import subject;
 from pypes.utils.xml_.xml_handler import *;
 
-from pypes.native.mrs import *;
+from pypes.codecs_.mrs._mrs import *;
+from pypes.codecs_.mrs import _ergsem;
 
 
 
@@ -370,7 +371,15 @@ class MRXDecoder( XMLHandler, metaclass=subject ):
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-def mrx_decode( mrx, converter ):
+SEM_ERG = 0;
+
+def mrx_decode( mrx, sem ):
+  
+  converter = None;
+  if sem == SEM_ERG:
+    converter = _ergsem.mrs_to_pf;
+  else:
+    assert False;
   
   rslt = None;
   with MRXDecoder( mrx ) as decoder:

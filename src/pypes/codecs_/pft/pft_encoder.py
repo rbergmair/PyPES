@@ -15,7 +15,7 @@ from pypes.utils.mc import subject;
 from pypes.proto import *;
 from pypes.proto.lambdaifier import sortseq;
 
-from pypes.codecs_.pft_decoder import ALPHANUMS, IDENTFIRST, IDENTNEXT;
+from pypes.codecs_.pft.pft_decoder_pp import ALPHANUMS, IDENTFIRST, IDENTNEXT;
 
 
 
