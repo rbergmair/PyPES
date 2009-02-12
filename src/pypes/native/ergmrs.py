@@ -22,12 +22,19 @@ class ERGMRSInterpreter( metaclass=subject ):
   
   
   @classmethod
-  def freeze( cls, hid, lvl ):
+  def _freeze( cls, hid, lvl ):
     
     if lvl == 0:
       return Handle( hid=hid );
     else:
-      return Freezer( content = cls.freeze( hid, lvl-1 ) );
+      return Freezer( content = cls._freeze( hid, lvl-1 ) );
+
+
+  def _resolve_hole( self, hid, lvl ):
+    
+    if hid in self._eps_by_lids:
+      return self._eps_to_pf( self._eps_by_lids[ hid ], lvl, wrap_single=True );
+    return self._freeze( hid, lvl );
 
 
   @classmethod
@@ -161,21 +168,6 @@ class ERGMRSInterpreter( metaclass=subject ):
                predicate = Predicate( referent = referent ),
                args = cls._extract_args( ep, dcargs )
              );
-
-
-  @classmethod
-  def _is_const_predication( cls, ep ):
-    
-    found = False;
-    
-    for arg in ep.args:
-      if not isinstance( ep.args[ arg ], MRSVariable ):
-        assert isinstance( ep.args[ arg ], MRSConstant );
-        found = True;
-      elif ep.args[ arg ].sid == "h":
-        return False;
-    
-    return found;
   
   
   @classmethod
@@ -194,8 +186,7 @@ class ERGMRSInterpreter( metaclass=subject ):
     return True;
 
 
-  @classmethod
-  def _quantep_to_subform( cls, ep, lvl ):
+  def _quantep_to_subform( self, ep, lvl ):
     
     referent = None;
 
@@ -204,12 +195,12 @@ class ERGMRSInterpreter( metaclass=subject ):
     body = ep.args[ "BODY" ];
     
     if ep.spred is None and ep.pred[0] != "_":
-      pred = cls._predstr_to_operator( ep.pred );
+      pred = self._predstr_to_operator( ep.pred );
       referent = Operator( otype = pred, feats = arg0.feats );
     
     else:
-      referent = cls._predstr_to_word(
-                     ep.spred or ep.pred, cls._cspanfeats( ep, arg0.feats )
+      referent = self._predstr_to_word(
+                     ep.spred or ep.pred, self._cspanfeats( ep, arg0.feats )
                    );
     
     assert referent is not None;
@@ -217,8 +208,8 @@ class ERGMRSInterpreter( metaclass=subject ):
     return Quantification(
                quantifier = Quantifier( referent = referent ),
                var = Variable( sidvid = ( arg0.sid, arg0.vid ) ),
-               rstr = cls.freeze( rstr.vid, lvl ),
-               body = cls.freeze( body.vid, lvl )
+               rstr = self._resolve_hole( rstr.vid, lvl ),
+               body = self._resolve_hole( body.vid, lvl )
              );
   
   
@@ -233,8 +224,7 @@ class ERGMRSInterpreter( metaclass=subject ):
     return holes == 1;
 
 
-  @classmethod
-  def _modep_to_subform( cls, ep, lvl ):
+  def _modep_to_subform( self, ep, lvl ):
     
     referent = None;
     dcargs = False;
@@ -246,13 +236,13 @@ class ERGMRSInterpreter( metaclass=subject ):
           feats = ep.args[ "ARG0" ].feats;
     
     if ep.spred is None and ep.pred[0] != "_":
-      pred = cls._predstr_to_operator( ep.pred );
+      pred = self._predstr_to_operator( ep.pred );
       referent = Operator( otype = pred, feats = feats );
       dcargs = False;
     
     else:
-      referent = cls._predstr_to_word(
-                     ep.spred or ep.pred, cls._cspanfeats( ep, feats )
+      referent = self._predstr_to_word(
+                     ep.spred or ep.pred, self._cspanfeats( ep, feats )
                    );
       dcargs = True;
     
@@ -270,13 +260,12 @@ class ERGMRSInterpreter( metaclass=subject ):
     
     return Modification(
                modality = Modality( referent = referent ),
-               scope = cls.freeze( scope_vid, lvl ),
-               args = cls._extract_args( ep, dcargs )
+               scope = self._resolve_hole( scope_vid, lvl ),
+               args = self._extract_args( ep, dcargs )
              );
 
 
-  @classmethod
-  def _connep_to_subform( cls, ep, lscope, rscope, lvl ):
+  def _connep_to_subform( self, ep, lscope, rscope, lvl ):
 
     referent = None;
     
@@ -284,26 +273,26 @@ class ERGMRSInterpreter( metaclass=subject ):
     rhndl = ep.args[ rscope ];
     
     if ep.spred is None and ep.pred[0] != "_":
-      pred = cls._predstr_to_operator( ep.pred );
+      pred = self._predstr_to_operator( ep.pred );
       referent = Operator( otype = pred );
     
     else:
-      referent = cls._predstr_to_word(
-                     ep.spred or ep.pred, cls._cspanfeats( ep )
+      referent = self._predstr_to_word(
+                     ep.spred or ep.pred, self._cspanfeats( ep )
                    );
     
     conn = Connection(
                connective = Connective( referent = referent ),
-               lscope = cls.freeze( lhndl.vid, lvl+1 ),
-               rscope = cls.freeze( rhndl.vid, lvl+1 )
+               lscope = self._resolve_hole( lhndl.vid, lvl+1 ),
+               rscope = self._resolve_hole( rhndl.vid, lvl+1 )
              );
     
     del ep.args[ lscope ];
     del ep.args[ rscope ];
     
-    assert cls._is_predication( ep );
+    assert self._is_predication( ep );
     
-    pred = cls._predep_to_subform( ep, lvl+1 );
+    pred = self._predep_to_subform( ep, lvl+1 );
     
     return ProtoForm(
                subforms = {
@@ -346,10 +335,9 @@ class ERGMRSInterpreter( metaclass=subject ):
     return True;
   
   
-  @classmethod
-  def _simpleconnep_to_subform( cls, ep, lvl ):
+  def _simpleconnep_to_subform( self, ep, lvl ):
     
-    return cls._connep_to_subform( ep, "ARG1", "ARG2", lvl );
+    return self._connep_to_subform( ep, "ARG1", "ARG2", lvl );
 
   
   @classmethod
@@ -372,27 +360,23 @@ class ERGMRSInterpreter( metaclass=subject ):
     return True;
   
   
-  @classmethod
-  def _coordconnep_to_subform( cls, ep, lvl ):
+  def _coordconnep_to_subform( self, ep, lvl ):
     
-    return cls._connep_to_subform( ep, "L-HNDL", "R-HNDL", lvl );
+    return self._connep_to_subform( ep, "L-HNDL", "R-HNDL", lvl );
 
 
-  @classmethod
-  def _ep_to_subform( cls, ep, lvl ):
+  def _ep_to_subform( self, ep, lvl ):
     
-    if cls._is_predication( ep ):
-      return cls._predep_to_subform( ep, lvl );
-    elif cls._is_const_predication( ep ):
-      return cls._constpredep_to_subform( ep );
-    elif cls._is_quantification( ep ):
-      return cls._quantep_to_subform( ep, lvl );
-    elif cls._is_modification( ep ):
-      return cls._modep_to_subform( ep, lvl );
-    elif cls._is_simple_connective( ep ):
-      return cls._simpleconnep_to_subform( ep, lvl );
-    elif cls._is_coord_connective( ep ):
-      return cls._coordconnep_to_subform( ep, lvl );
+    if self._is_predication( ep ):
+      return self._predep_to_subform( ep, lvl );
+    elif self._is_quantification( ep ):
+      return self._quantep_to_subform( ep, lvl );
+    elif self._is_modification( ep ):
+      return self._modep_to_subform( ep, lvl );
+    elif self._is_simple_connective( ep ):
+      return self._simpleconnep_to_subform( ep, lvl );
+    elif self._is_coord_connective( ep ):
+      return self._coordconnep_to_subform( ep, lvl );
     else:
       print( ep );
       assert False;
@@ -407,13 +391,16 @@ class ERGMRSInterpreter( metaclass=subject ):
              );
 
              
-  @classmethod
-  def _eps_to_pf( cls, eps ):
+  def _eps_to_pf( self, eps, lvl, wrap_single=False ):
 
     if len( eps ) == 1:
       
       ep = eps.pop();
-      return cls._ep_to_subform( ep, 0 );
+      subf = self._ep_to_subform( ep, lvl );
+      if wrap_single:
+        return ProtoForm( subforms = { Handle() : subf } );
+      else:
+        return subf;
       
     subforms = {};
     
@@ -430,7 +417,7 @@ class ERGMRSInterpreter( metaclass=subject ):
           );
         
     for ep in eps:
-      subforms[ Handle() ] = cls._ep_to_subform( ep, 1 );
+      subforms[ Handle() ] = self._ep_to_subform( ep, 1 );
       
     return ProtoForm( subforms=subforms );
     
@@ -440,18 +427,21 @@ class ERGMRSInterpreter( metaclass=subject ):
     subforms = {};
     constraints = set();
     
-    eps_by_lids = {};
+    self._eps_by_lids = {};
+    self._hids = set();
     
     for ep in self._obj_.eps:
-      if not ep.lid in eps_by_lids:
-        eps_by_lids[ ep.lid ] = set();
-      eps_by_lids[ ep.lid ].add( ep );
+      if not ep.lid in self._eps_by_lids:
+        self._eps_by_lids[ ep.lid ] = set();
+      self._eps_by_lids[ ep.lid ].add( ep );
+      for var in ep.args.values():
+        if isinstance( var, MRSVariable ):
+          if var.sid == "h":
+            self._hids.add( var.vid );
 
-    for (lid,eps) in eps_by_lids.items():
-      #if not lid in self._obj_.hids:
-      subforms[ Handle( hid=lid ) ] = self._eps_to_pf( eps );
-      #else:
-      #  print( lid );
+    for (lid,eps) in self._eps_by_lids.items():
+      if not lid in self._hids:
+        subforms[ Handle( hid=lid ) ] = self._eps_to_pf( eps, 0 );
     
     for cons in self._obj_.cons:
       constraints.add( self._cons_to_constraint( cons ) );

@@ -31,7 +31,11 @@ class Connection( SubForm, metaclass=kls ):
     
     if lscope is not None:
       self.lscope = lscope( sig=sig );
-      assert isinstance( self.lscope, ScopeBearer );
+      try:
+        assert isinstance( self.lscope, ScopeBearer );
+      except:
+        print( self.lscope );
+        raise;
     
     if rscope is not None:
       self.rscope = rscope( sig=sig );

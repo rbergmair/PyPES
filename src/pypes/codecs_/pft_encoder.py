@@ -259,6 +259,12 @@ class PFTEncoder( metaclass=subject ):
     
     rslt = "{";
     
+    labeled = False;
+    for handle in inst.subforms:
+      if handle.hid is not None:
+        labeled = True;
+        break;
+    
     if inst.subforms or inst.constraints:
       rslt += " ";
       
@@ -274,7 +280,8 @@ class PFTEncoder( metaclass=subject ):
         if root.hid is not None:
           rslt += self._encode( root ).rjust(3) + ": ";
         else:
-          rslt += "     ";
+          if labeled:
+            rslt += "     ";
         rslt += self._encode( subform ) + "; ";
       for constraint in inst.constraints:
         rslt += "     " + self._encode( constraint ) + "; ";

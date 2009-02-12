@@ -48,8 +48,8 @@ class TestMRXDecoder( TestCase, metaclass=object_ ):
   
   def test_mrxdecoder( self ):
 
-    #for i in range( 1, 326 ):
-    for i in { 324 }:
+    #for i in { 324 }:
+    for i in range( 1, 326 ):
       
       # numbers
       if i in {}:
@@ -60,7 +60,7 @@ class TestMRXDecoder( TestCase, metaclass=object_ ):
       
       self.doteston( "{0}/fracas-{1}.mrs.xml.gz".format( self._TESTMRSDIR, i ) );
     
-    return;
+    #return;
     
     for i in range( 1, 108 ):
       
