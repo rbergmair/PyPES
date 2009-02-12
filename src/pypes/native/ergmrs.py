@@ -406,8 +406,36 @@ class ERGMRSInterpreter( metaclass=subject ):
                larg = Handle( hid=cons.lo.vid )
              );
 
-  
-  def to_pf( self ):
+             
+  @classmethod
+  def _eps_to_pf( cls, eps ):
+
+    if len( eps ) == 1:
+      
+      ep = eps.pop();
+      return cls._ep_to_subform( ep, 0 );
+      
+    subforms = {};
+    
+    for i in range( 0, len( eps )-1 ):
+      subforms[ Handle() ] = \
+        Connection(
+            connective = Connective(
+                             referent = Operator(
+                                            otype = Operator.OP_C_WEACON
+                                          )
+                           ),
+            lscope = Handle(),
+            rscope = Handle()
+          );
+        
+    for ep in eps:
+      subforms[ Handle() ] = cls._ep_to_subform( ep, 1 );
+      
+    return ProtoForm( subforms=subforms );
+    
+
+  def mrs_to_pf( self ):
     
     subforms = {};
     constraints = set();
@@ -420,32 +448,10 @@ class ERGMRSInterpreter( metaclass=subject ):
       eps_by_lids[ ep.lid ].add( ep );
 
     for (lid,eps) in eps_by_lids.items():
-      
-      if len( eps ) == 1:
-        
-        ep_ = eps.pop();
-        subforms[ Handle( hid=lid ) ] = self._ep_to_subform( ep_, 0 );
-        
-      else:
-        
-        subforms_ = {};
-        
-        for i in range( 0, len( eps )-1 ):
-          subforms_[ Handle() ] = \
-            Connection(
-                connective = Connective(
-                                 referent = Operator(
-                                                otype = Operator.OP_C_WEACON
-                                              )
-                               ),
-                lscope = Handle(),
-                rscope = Handle()
-              );
-            
-        for ep_ in eps:
-          subforms_[ Handle() ] = self._ep_to_subform( ep_, 1 );
-          
-        subforms[ Handle( hid=lid ) ] = ProtoForm( subforms=subforms_ );
+      #if not lid in self._obj_.hids:
+      subforms[ Handle( hid=lid ) ] = self._eps_to_pf( eps );
+      #else:
+      #  print( lid );
     
     for cons in self._obj_.cons:
       constraints.add( self._cons_to_constraint( cons ) );
@@ -460,7 +466,7 @@ def mrs_to_pf( mrs ):
   
   rslt = None;
   with ERGMRSInterpreter( mrs ) as int:
-    rslt = int.to_pf();
+    rslt = int.mrs_to_pf();
   return rslt;
 
 

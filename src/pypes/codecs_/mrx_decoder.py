@@ -204,7 +204,7 @@ class LabelHandler( XMLElementHandler, metaclass=subject ):
     
     if "vid" in attrs:
       if self._obj_ is not None:
-        self._obj_.lid = attrs[ "vid" ];
+        self._obj_.lid = int( attrs[ "vid" ] );
 
 
 
@@ -297,7 +297,7 @@ class MRSHandler( XMLElementHandler, metaclass=subject ):
       self._obj_.eps.add( obj );
     elif isinstance( obj, MRSConstraint ):
       self._obj_.cons.add( obj );
-  
+
 
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
