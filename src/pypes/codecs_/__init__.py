@@ -1,10 +1,11 @@
 # -*-  coding: ascii -*-  # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 __package__ = "pypes";
-__all__ = [ "pft_decode", "pft_encode", "mrx_decode", "SEM_ERG" ];
+__all__ = [ "pft_decode", "pft_decoder", "pft_encode", "pft_encoder",
+            "mrx_decode", "SEM_ERG" ];
 
-from pypes.codecs_.pft import pft_decode;
-from pypes.codecs_.pft import pft_encode;
+from pypes.codecs_.pft import pft_decode, pft_decoder;
+from pypes.codecs_.pft import pft_encode, pft_encoder;
 from pypes.codecs_.mrs import mrx_decode, SEM_ERG;
 
 

@@ -21,7 +21,7 @@ from pypestest.proto.sig.variable import TestVariable;
 from pypestest.proto.sig.constant import TestConstant;
 from pypestest.proto.lex.basic import TestWord;
 
-from pypes.codecs_ import *;
+from pypes.codecs_.pft import *;
 
 from pypes.proto import ProtoSig;
 
@@ -46,7 +46,7 @@ class TestPFTDecoder( TestCase, metaclass=object_ ):
     
     check = lambda stri, chf: self.check(
                                   stri, chf, TestHandle.logify,
-                                  PFTDecoder.handle
+                                  pft_decoder.handle
                                 );
     
     check( "42", TestHandle.check_handle_1 );
@@ -57,7 +57,7 @@ class TestPFTDecoder( TestCase, metaclass=object_ ):
 
     check = lambda stri, chf: self.check(
                                   stri, chf, TestVariable.logify,
-                                  PFTDecoder.variable
+                                  pft_decoder.variable
                                 );
     
     check( "x1", TestVariable.check_var_1 );
@@ -67,7 +67,7 @@ class TestPFTDecoder( TestCase, metaclass=object_ ):
 
     check = lambda stri, chf: self.check(
                                   stri, chf, TestConstant.logify,
-                                  PFTDecoder.constant
+                                  pft_decoder.constant
                                 );
     
     check( "'Jones'", TestConstant.check_const_1 );
@@ -78,7 +78,7 @@ class TestPFTDecoder( TestCase, metaclass=object_ ):
     
     check = lambda stri, chf: self.check(
                                   stri, chf, TestWord.logify,
-                                  PFTDecoder.word
+                                  pft_decoder.word
                                 );
     
     check( "|lemma|", TestWord.check_word_1 );
@@ -95,7 +95,7 @@ class TestPFTDecoder( TestCase, metaclass=object_ ):
 
     check = lambda stri, chf: self.check(
                                   stri, chf, TestPredication.logify,
-                                  PFTDecoder.predication
+                                  pft_decoder.predication
                                 );
     
     check( "|cat:5|( arg1=x1 )", TestPredication.check_pred_1 );
@@ -106,7 +106,7 @@ class TestPFTDecoder( TestCase, metaclass=object_ ):
 
     check = lambda stri, chf: self.check(
                                   stri, chf, TestQuantification.logify,
-                                  PFTDecoder.quantification
+                                  pft_decoder.quantification
                                 );
     
     check( "ALL[ pers=3, num=sg ] x1 {} 1", TestQuantification.check_quant_1 );
@@ -117,7 +117,7 @@ class TestPFTDecoder( TestCase, metaclass=object_ ):
 
     check = lambda stri, chf: self.check(
                                   stri, chf, TestModification.logify,
-                                  PFTDecoder.modification
+                                  pft_decoder.modification
                                 );
     
     check( "|told:5|( arg1=x1, arg2=x2 ) 1",
@@ -133,7 +133,7 @@ class TestPFTDecoder( TestCase, metaclass=object_ ):
     
     check = lambda stri, chf: self.check(
                                   stri, chf, TestConnection.logify,
-                                  PFTDecoder.connection
+                                  pft_decoder.connection
                                 );
     
     check( "{} && 1", TestConnection.check_conn_1 );
@@ -144,7 +144,7 @@ class TestPFTDecoder( TestCase, metaclass=object_ ):
 
     check = lambda stri, chf: self.check(
                                   stri, chf, TestConstraint.logify,
-                                  PFTDecoder.constraint
+                                  pft_decoder.constraint
                                 );
     
     check( "1 >> 2", TestConstraint.check_constr_1 );
@@ -154,7 +154,7 @@ class TestPFTDecoder( TestCase, metaclass=object_ ):
 
     check = lambda stri, chf: self.check(
                                   stri, chf, TestProtoForm.logify,
-                                  PFTDecoder.protoform
+                                  pft_decoder.protoform
                                 );
     
     PF1 = """{ 1: |Every:0| x1 { |man:6|( arg0=x1 ) } 2;

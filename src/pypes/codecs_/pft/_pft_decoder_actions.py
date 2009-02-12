@@ -1,7 +1,17 @@
 # -*-  coding: ascii -*-  # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 __package__ = "pypes.codecs_";
-__all__ = [];
+__all__ = [
+    "GT_HANDLE", "GT_VARIABLE", "GT_WORD", "GT_PREDICATION",
+    "GT_QUANTIFICATION", "GT_MODIFICATION", "GT_CONNECTION", "GT_CONSTRAINT",
+    "GT_PROTOFORM", "GT_FREEZER", "GT_LEMMATOKS", "GT_OPERATOR", "GT_CONSTANT",
+    "decode_quoted", "decode_decimalnumber", "decode_explicit_handle",
+    "decode_anonymous_handle", "decode_freezer", "decode_variable",
+    "decode_constant", "decode_features_list", "decode_operator",
+    "decode_lemma", "decode_word", "decode_arguments_list",
+    "decode_predication", "decode_quantification", "decode_modification",
+    "decode_connection", "decode_constraint", "decode_protoform"
+  ];
 
 import ast;
 
@@ -11,19 +21,25 @@ from pypes.proto import *;
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-_GT_HANDLE = 0;
-_GT_VARIABLE = 1;
-_GT_WORD = 2;
-_GT_PREDICATION = 3;
-_GT_QUANTIFICATION = 4;
-_GT_MODIFICATION = 5;
-_GT_CONNECTION = 6;
-_GT_CONSTRAINT = 7;
-_GT_PROTOFORM = 8;
-_GT_FREEZER = 9;
-_GT_LEMMATOKS = 10;
-_GT_OPERATOR = 11;
-_GT_CONSTANT = 12;
+GT_HANDLE = 0;
+GT_VARIABLE = 1;
+GT_WORD = 2;
+GT_PREDICATION = 3;
+GT_QUANTIFICATION = 4;
+GT_MODIFICATION = 5;
+GT_CONNECTION = 6;
+GT_CONSTRAINT = 7;
+GT_PROTOFORM = 8;
+GT_FREEZER = 9;
+GT_LEMMATOKS = 10;
+GT_OPERATOR = 11;
+GT_CONSTANT = 12;
+
+
+
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+
+lexicon = None;
 
 
 
@@ -53,14 +69,14 @@ def decode_decimalnumber( toks ):
 def decode_explicit_handle( toks ):
   
   assert len(toks) == 1;
-  return ( _GT_HANDLE, Handle( hid = int( toks[0] ) ) );
+  return ( GT_HANDLE, Handle( hid = int( toks[0] ) ) );
 
 
 def decode_anonymous_handle( toks ):
   
   assert len(toks) == 1;
   assert toks[0] == "__";
-  return ( _GT_HANDLE, Handle() );
+  return ( GT_HANDLE, Handle() );
   
   
 def decode_freezer( toks ):
@@ -69,21 +85,21 @@ def decode_freezer( toks ):
   assert toks[0] == "<";
   assert toks[2] == ">";
   ( type_, content ) = toks[1];
-  assert type_ in { _GT_FREEZER, _GT_HANDLE };
-  return ( _GT_FREEZER, Freezer( content=content ) );
+  assert type_ in { GT_FREEZER, GT_HANDLE };
+  return ( GT_FREEZER, Freezer( content=content ) );
 
 
 def decode_variable( toks ):
   
   assert len(toks) == 1;
   tok = toks[0];
-  assert _variable_re.match( tok );
-  return ( _GT_VARIABLE, Variable( sidvid = ( tok[0], int( tok[1:] ) ) ) );
+  # TODO: fix this!
+  return ( GT_VARIABLE, Variable( sidvid = ( tok[0], int( tok[1:] ) ) ) );
 
 
 def decode_constant( toks ):
   
-  return ( _GT_CONSTANT, Constant( ident = toks[0][0] ) );
+  return ( GT_CONSTANT, Constant( ident = toks[0][0] ) );
 
 
 def decode_features_list( toks ):
@@ -124,6 +140,8 @@ def decode_features_list( toks ):
 
 def decode_operator( toks ):
   
+  global lexicon;
+  
   otype = None;
   feats = None;
   i = 0;
@@ -136,7 +154,7 @@ def decode_operator( toks ):
     assert isinstance( toks[i], dict );
     feats = toks[i];
   
-  return ( _GT_OPERATOR, _lexicon.Operator(
+  return ( GT_OPERATOR, lexicon.Operator(
                              otype = otype,
                              feats = feats
                            ) );
@@ -160,10 +178,12 @@ def decode_lemma( toks ):
     lemma_toks.append( toks[i] );
     i += 1;
   
-  return ( _GT_LEMMATOKS, lemma_toks );
+  return ( GT_LEMMATOKS, lemma_toks );
 
 
 def decode_word( toks ):
+  
+  global lexicon;
   
   ( lemma, pos, sense, wid, feats ) = \
     ( None, None, None, None, None );
@@ -177,7 +197,7 @@ def decode_word( toks ):
   if len( toks ) > i:
     if isinstance( toks[i], tuple ) and len( toks[i] ) == 2:
       ( type_, r ) = toks[i];
-      if type_ == _GT_LEMMATOKS:
+      if type_ == GT_LEMMATOKS:
         assert isinstance( r, list );
         lemma = r;
         i += 1;
@@ -215,7 +235,7 @@ def decode_word( toks ):
   assert len( toks ) > i;
   assert toks[i] == "|";
   
-  return ( _GT_WORD, _lexicon.Word(
+  return ( GT_WORD, lexicon.Word(
                          wid=wid, lemma=lemma, pos=pos,
                          sense=sense, feats=feats
                        ) );
@@ -244,7 +264,7 @@ def decode_arguments_list( toks ):
     
     assert len( toks ) > i;
     ( type_, varconst ) = toks[i];
-    assert type_ in { _GT_VARIABLE, _GT_CONSTANT };
+    assert type_ in { GT_VARIABLE, GT_CONSTANT };
     i += 1;
     
     args[ argument ] = varconst;
@@ -265,7 +285,7 @@ def decode_predication( toks ):
   assert len( toks ) > i;
   referent = None;
   ( type_, referent ) = toks[i];
-  assert type_ in { _GT_WORD, _GT_OPERATOR };
+  assert type_ in { GT_WORD, GT_OPERATOR };
 
   i += 1;
 
@@ -273,7 +293,7 @@ def decode_predication( toks ):
   assert isinstance( toks[i], dict );
   args = toks[i];
   
-  return ( _GT_PREDICATION, Predication(
+  return ( GT_PREDICATION, Predication(
                                predicate = Predicate( referent=referent ),
                                args = args
                              ) );
@@ -286,27 +306,27 @@ def decode_quantification( toks ):
   assert len( toks ) > i;
   referent = None;
   ( type_, referent ) = toks[i];
-  assert type_ in { _GT_WORD, _GT_OPERATOR };
+  assert type_ in { GT_WORD, GT_OPERATOR };
 
   i += 1;
 
   assert len( toks ) > i;
   ( type_, var ) = toks[i];
-  assert type_ == _GT_VARIABLE;
+  assert type_ == GT_VARIABLE;
   
   i += 1;
 
   assert len( toks ) > i;
   ( type_, rstr ) = toks[i];
-  assert type_ in { _GT_HANDLE, _GT_FREEZER, _GT_PROTOFORM };
+  assert type_ in { GT_HANDLE, GT_FREEZER, GT_PROTOFORM };
   
   i += 1;
 
   assert len( toks ) > i;
   ( type_, body ) = toks[i];
-  assert type_ in { _GT_HANDLE, _GT_FREEZER, _GT_PROTOFORM };
+  assert type_ in { GT_HANDLE, GT_FREEZER, GT_PROTOFORM };
   
-  return ( _GT_QUANTIFICATION, Quantification(
+  return ( GT_QUANTIFICATION, Quantification(
                                    quantifier = Quantifier(
                                                     referent = referent
                                                   ),
@@ -323,7 +343,7 @@ def decode_modification( toks ):
   assert len( toks ) > i;
   referent = None;
   ( type_, referent ) = toks[i];
-  assert type_ in { _GT_WORD, _GT_OPERATOR };
+  assert type_ in { GT_WORD, GT_OPERATOR };
 
   i += 1;
 
@@ -335,9 +355,9 @@ def decode_modification( toks ):
   
   assert len( toks ) > i;
   ( type_, scope ) = toks[i];
-  assert type_ in { _GT_HANDLE, _GT_FREEZER, _GT_PROTOFORM };
+  assert type_ in { GT_HANDLE, GT_FREEZER, GT_PROTOFORM };
   
-  return ( _GT_MODIFICATION, Modification(
+  return ( GT_MODIFICATION, Modification(
                                  modality = Modality( referent=referent ),
                                  args = args,
                                  scope = scope
@@ -349,19 +369,19 @@ def decode_connection( toks ):
   assert len( toks ) == 3;
   
   ( type_, lscope ) = toks[0];
-  assert type_ in { _GT_HANDLE, _GT_FREEZER, _GT_PROTOFORM };
+  assert type_ in { GT_HANDLE, GT_FREEZER, GT_PROTOFORM };
 
   ( type_, rscope ) = toks[2];
-  assert type_ in { _GT_HANDLE, _GT_FREEZER, _GT_PROTOFORM };
+  assert type_ in { GT_HANDLE, GT_FREEZER, GT_PROTOFORM };
   
   referent = None;
   if not isinstance( toks[1], str ):
     ( type_, referent ) = toks[1];
-    assert type_ in { _GT_WORD, _GT_OPERATOR };
+    assert type_ in { GT_WORD, GT_OPERATOR };
   else:
     referent = Operator( otype = toks[1] );
   
-  return ( _GT_CONNECTION, Connection(
+  return ( GT_CONNECTION, Connection(
                                connective = Connective( referent=referent ),
                                lscope = lscope,
                                rscope = rscope
@@ -375,12 +395,12 @@ def decode_constraint( toks ):
   assert toks[1] == ">>";
 
   ( type_, harg ) = toks[0];
-  assert type_ == _GT_HANDLE;
+  assert type_ == GT_HANDLE;
   
   ( type_, larg ) = toks[2];
-  assert type_ == _GT_HANDLE;
+  assert type_ == GT_HANDLE;
   
-  return ( _GT_CONSTRAINT, Constraint( harg=harg, larg=larg ) );
+  return ( GT_CONSTRAINT, Constraint( harg=harg, larg=larg ) );
 
 
 def decode_protoform( toks ):
@@ -404,20 +424,20 @@ def decode_protoform( toks ):
     i += 1;
     assert len( toks ) > i;
     
-    if type_ == _GT_CONSTRAINT:
+    if type_ == GT_CONSTRAINT:
       constraints.add( inst );
       if toks[i] == ";":
         i += 1;
         assert len( toks ) > i;
         
-    elif type_ == _GT_HANDLE:
+    elif type_ == GT_HANDLE:
       handle = inst;
       assert toks[i] == ":";
       i  += 1;
       assert len( toks ) > i;
       
-    elif type_ in { _GT_PREDICATION, _GT_QUANTIFICATION,
-                    _GT_MODIFICATION, _GT_CONNECTION, _GT_PROTOFORM }:
+    elif type_ in { GT_PREDICATION, GT_QUANTIFICATION,
+                    GT_MODIFICATION, GT_CONNECTION, GT_PROTOFORM }:
       
       if handle is None:
         handle = Handle();
@@ -427,7 +447,7 @@ def decode_protoform( toks ):
         i += 1;
         assert len( toks ) > i;
   
-  return ( _GT_PROTOFORM, ProtoForm(
+  return ( GT_PROTOFORM, ProtoForm(
                               subforms = subforms,
                               constraints = constraints
                             ) );
