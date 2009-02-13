@@ -13,7 +13,7 @@ from pypes.proto import *;
 
 import pypes.proto.lex.basic;
 
-from pypes.codecs_.pft.pft_decoder_ply import PFTParser;
+from pypes.codecs_.pft._pft_parser_ply import PFTParser;
 
 
 

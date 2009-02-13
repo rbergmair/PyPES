@@ -21,15 +21,7 @@ from pyparsing import quotedString;
 
 import pypes.proto.lex.basic;
 
-
-
-# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
-
-ALPHAS = pyparsing.alphas;
-NUMS = pyparsing.nums;
-ALPHANUMS = pyparsing.alphanums;
-IDENTFIRST = ALPHAS+"_";
-IDENTNEXT =  ALPHANUMS+"."+"_";
+from  pypes.codecs_.pft._pft_basics import *;
 
 
 
