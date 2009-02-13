@@ -76,7 +76,11 @@ class PFTParser( PFTLexer, metaclass=subject ):
     
     ( lexicon, type_ ) = self._obj_;
     
-    self.start = type_;
+    if type_ is None:
+      self.start = self.GT_PROTOFORM;
+    else:
+      self.start = type_;
+      
     self._parser = yacc.yacc(
                        module=self,
                        debug=0,
