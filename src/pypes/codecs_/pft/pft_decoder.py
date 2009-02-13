@@ -2,10 +2,7 @@
 
 __package__ = "pypes.codecs_";
 __all__ = [
-    "GT_HANDLE", "GT_VARIABLE", "GT_WORD", "GT_PREDICATION",
-    "GT_QUANTIFICATION", "GT_MODIFICATION", "GT_CONNECTION", "GT_CONSTRAINT",
-    "GT_PROTOFORM", "GT_FREEZER", "GT_LEMMATOKS", "GT_OPERATOR", "GT_CONSTANT",
-    "PFTDecoder"
+    "PFTDecoder", "pft_decode"
   ];
 
 import ast;
@@ -16,37 +13,46 @@ from pypes.proto import *;
 
 import pypes.proto.lex.basic;
 
-
-
-# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
-
-GT_HANDLE = "handle";
-GT_VARIABLE = "variable";
-GT_WORD = "word";
-GT_PREDICATION = "predication";
-GT_QUANTIFICATION = "quantification";
-GT_MODIFICATION = "modification";
-GT_CONNECTION = "connection";
-GT_CONSTRAINT = "constraint";
-GT_PROTOFORM = "protoform";
-GT_FREEZER = "freezer";
-GT_LEMMATOKS = "lemmatoks";
-GT_OPERATOR = "operator";
-GT_CONSTANT = "constant";
+from pypes.codecs_.pft.pft_decoder_ply import PFTParser;
 
 
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-class PFTDecoder( metaclass=subject ):
-  
-  
-  def __init__( self ):
+class PFTDecoder( PFTParser, metaclass=subject ):
+
+
+  GT_HANDLE = "handle";
+  GT_VARIABLE = "variable";
+  GT_WORD = "word";
+  GT_PREDICATION = "predication";
+  GT_QUANTIFICATION = "quantification";
+  GT_MODIFICATION = "modification";
+  GT_CONNECTION = "connection";
+  GT_CONSTRAINT = "constraint";
+  GT_PROTOFORM = "protoform";
+  GT_FREEZER = "freezer";
+  GT_LEMMATOKS = "lemmatoks";
+  GT_OPERATOR = "operator";
+  GT_CONSTANT = "constant";
+
+
+  def _enter_( self ):
+
+    PFTParser._enter_( self );
     
-    if self._obj_ is None:
+    ( lexicon, type_ ) = self._obj_;
+    
+    if lexicon is None:
       self._lexicon = pypes.proto.lex.basic;
     else:
-      self._lexicon = self._obj_;
+      self._lexicon = lexicon;
+
+      
+  def _exit_( self, exc_type, exc_val, exc_tb ):
+    
+    PFTParser._exit_( self, exc_type, exc_val, exc_tb );
+    self._parser = None;
     
   
   @classmethod
@@ -76,7 +82,7 @@ class PFTDecoder( metaclass=subject ):
   def decode_explicit_handle( cls, toks ):
     
     assert len(toks) == 1;
-    return ( GT_HANDLE, Handle( hid = int( toks[0] ) ) );
+    return ( cls.GT_HANDLE, Handle( hid = int( toks[0] ) ) );
   
   
   @classmethod
@@ -84,7 +90,7 @@ class PFTDecoder( metaclass=subject ):
     
     assert len(toks) == 1;
     assert toks[0] == "__";
-    return ( GT_HANDLE, Handle() );
+    return ( cls.GT_HANDLE, Handle() );
     
     
   @classmethod
@@ -94,8 +100,8 @@ class PFTDecoder( metaclass=subject ):
     assert toks[0] == "<";
     assert toks[2] == ">";
     ( type_, content ) = toks[1];
-    assert type_ in { GT_FREEZER, GT_HANDLE };
-    return ( GT_FREEZER, Freezer( content=content ) );
+    assert type_ in { cls.GT_FREEZER, cls.GT_HANDLE };
+    return ( cls.GT_FREEZER, Freezer( content=content ) );
   
   
   @classmethod
@@ -104,13 +110,13 @@ class PFTDecoder( metaclass=subject ):
     assert len(toks) == 1;
     tok = toks[0];
     # TODO: fix this!
-    return ( GT_VARIABLE, Variable( sidvid = ( tok[0], int( tok[1:] ) ) ) );
+    return ( cls.GT_VARIABLE, Variable( sidvid = ( tok[0], int( tok[1:] ) ) ) );
   
   
   @classmethod
   def decode_constant( cls, toks ):
     
-    return ( GT_CONSTANT, Constant( ident = toks[0][0] ) );
+    return ( cls.GT_CONSTANT, Constant( ident = toks[0][0] ) );
   
   
   @classmethod
@@ -164,7 +170,7 @@ class PFTDecoder( metaclass=subject ):
       assert isinstance( toks[i], dict );
       feats = toks[i];
     
-    return ( GT_OPERATOR, self._lexicon.Operator(
+    return ( self.GT_OPERATOR, self._lexicon.Operator(
                                otype = otype,
                                feats = feats
                              ) );
@@ -189,7 +195,7 @@ class PFTDecoder( metaclass=subject ):
       lemma_toks.append( toks[i] );
       i += 1;
     
-    return ( GT_LEMMATOKS, lemma_toks );
+    return ( cls.GT_LEMMATOKS, lemma_toks );
   
   
   def decode_word( self, toks ):
@@ -206,7 +212,7 @@ class PFTDecoder( metaclass=subject ):
     if len( toks ) > i:
       if isinstance( toks[i], tuple ) and len( toks[i] ) == 2:
         ( type_, r ) = toks[i];
-        if type_ == GT_LEMMATOKS:
+        if type_ == self.GT_LEMMATOKS:
           assert isinstance( r, list );
           lemma = r;
           i += 1;
@@ -244,7 +250,7 @@ class PFTDecoder( metaclass=subject ):
     assert len( toks ) > i;
     assert toks[i] == "|";
     
-    return ( GT_WORD, self._lexicon.Word(
+    return ( self.GT_WORD, self._lexicon.Word(
                            wid=wid, lemma=lemma, pos=pos,
                            sense=sense, feats=feats
                          ) );
@@ -274,7 +280,7 @@ class PFTDecoder( metaclass=subject ):
       
       assert len( toks ) > i;
       ( type_, varconst ) = toks[i];
-      assert type_ in { GT_VARIABLE, GT_CONSTANT };
+      assert type_ in { cls.GT_VARIABLE, cls.GT_CONSTANT };
       i += 1;
       
       args[ argument ] = varconst;
@@ -296,7 +302,7 @@ class PFTDecoder( metaclass=subject ):
     assert len( toks ) > i;
     referent = None;
     ( type_, referent ) = toks[i];
-    assert type_ in { GT_WORD, GT_OPERATOR };
+    assert type_ in { cls.GT_WORD, cls.GT_OPERATOR };
   
     i += 1;
   
@@ -304,7 +310,7 @@ class PFTDecoder( metaclass=subject ):
     assert isinstance( toks[i], dict );
     args = toks[i];
     
-    return ( GT_PREDICATION, Predication(
+    return ( cls.GT_PREDICATION, Predication(
                                  predicate = Predicate( referent=referent ),
                                  args = args
                                ) );
@@ -318,27 +324,27 @@ class PFTDecoder( metaclass=subject ):
     assert len( toks ) > i;
     referent = None;
     ( type_, referent ) = toks[i];
-    assert type_ in { GT_WORD, GT_OPERATOR };
+    assert type_ in { cls.GT_WORD, cls.GT_OPERATOR };
   
     i += 1;
   
     assert len( toks ) > i;
     ( type_, var ) = toks[i];
-    assert type_ == GT_VARIABLE;
+    assert type_ == cls.GT_VARIABLE;
     
     i += 1;
   
     assert len( toks ) > i;
     ( type_, rstr ) = toks[i];
-    assert type_ in { GT_HANDLE, GT_FREEZER, GT_PROTOFORM };
+    assert type_ in { cls.GT_HANDLE, cls.GT_FREEZER, cls.GT_PROTOFORM };
     
     i += 1;
   
     assert len( toks ) > i;
     ( type_, body ) = toks[i];
-    assert type_ in { GT_HANDLE, GT_FREEZER, GT_PROTOFORM };
+    assert type_ in { cls.GT_HANDLE, cls.GT_FREEZER, cls.GT_PROTOFORM };
     
-    return ( GT_QUANTIFICATION, Quantification(
+    return ( cls.GT_QUANTIFICATION, Quantification(
                                      quantifier = Quantifier(
                                                       referent = referent
                                                     ),
@@ -356,7 +362,7 @@ class PFTDecoder( metaclass=subject ):
     assert len( toks ) > i;
     referent = None;
     ( type_, referent ) = toks[i];
-    assert type_ in { GT_WORD, GT_OPERATOR };
+    assert type_ in { cls.GT_WORD, cls.GT_OPERATOR };
   
     i += 1;
   
@@ -368,9 +374,9 @@ class PFTDecoder( metaclass=subject ):
     
     assert len( toks ) > i;
     ( type_, scope ) = toks[i];
-    assert type_ in { GT_HANDLE, GT_FREEZER, GT_PROTOFORM };
+    assert type_ in { cls.GT_HANDLE, cls.GT_FREEZER, cls.GT_PROTOFORM };
     
-    return ( GT_MODIFICATION, Modification(
+    return ( cls.GT_MODIFICATION, Modification(
                                    modality = Modality( referent=referent ),
                                    args = args,
                                    scope = scope
@@ -383,19 +389,19 @@ class PFTDecoder( metaclass=subject ):
     assert len( toks ) == 3;
     
     ( type_, lscope ) = toks[0];
-    assert type_ in { GT_HANDLE, GT_FREEZER, GT_PROTOFORM };
+    assert type_ in { cls.GT_HANDLE, cls.GT_FREEZER, cls.GT_PROTOFORM };
   
     ( type_, rscope ) = toks[2];
-    assert type_ in { GT_HANDLE, GT_FREEZER, GT_PROTOFORM };
+    assert type_ in { cls.GT_HANDLE, cls.GT_FREEZER, cls.GT_PROTOFORM };
     
     referent = None;
     if not isinstance( toks[1], str ):
       ( type_, referent ) = toks[1];
-      assert type_ in { GT_WORD, GT_OPERATOR };
+      assert type_ in { cls.GT_WORD, cls.GT_OPERATOR };
     else:
       referent = Operator( otype = toks[1] );
     
-    return ( GT_CONNECTION, Connection(
+    return ( cls.GT_CONNECTION, Connection(
                                  connective = Connective( referent=referent ),
                                  lscope = lscope,
                                  rscope = rscope
@@ -410,12 +416,12 @@ class PFTDecoder( metaclass=subject ):
     assert toks[1] == ">>";
   
     ( type_, harg ) = toks[0];
-    assert type_ == GT_HANDLE;
+    assert type_ == cls.GT_HANDLE;
     
     ( type_, larg ) = toks[2];
-    assert type_ == GT_HANDLE;
+    assert type_ == cls.GT_HANDLE;
     
-    return ( GT_CONSTRAINT, Constraint( harg=harg, larg=larg ) );
+    return ( cls.GT_CONSTRAINT, Constraint( harg=harg, larg=larg ) );
   
   
   @classmethod
@@ -440,20 +446,20 @@ class PFTDecoder( metaclass=subject ):
       i += 1;
       assert len( toks ) > i;
       
-      if type_ == GT_CONSTRAINT:
+      if type_ == cls.GT_CONSTRAINT:
         constraints.add( inst );
         if toks[i] == ";":
           i += 1;
           assert len( toks ) > i;
           
-      elif type_ == GT_HANDLE:
+      elif type_ == cls.GT_HANDLE:
         handle = inst;
         assert toks[i] == ":";
         i  += 1;
         assert len( toks ) > i;
         
-      elif type_ in { GT_PREDICATION, GT_QUANTIFICATION,
-                      GT_MODIFICATION, GT_CONNECTION, GT_PROTOFORM }:
+      elif type_ in { cls.GT_PREDICATION, cls.GT_QUANTIFICATION,
+                      cls.GT_MODIFICATION, cls.GT_CONNECTION, cls.GT_PROTOFORM }:
         
         if handle is None:
           handle = Handle();
@@ -463,10 +469,22 @@ class PFTDecoder( metaclass=subject ):
           i += 1;
           assert len( toks ) > i;
     
-    return ( GT_PROTOFORM, ProtoForm(
+    return ( cls.GT_PROTOFORM, ProtoForm(
                                 subforms = subforms,
                                 constraints = constraints
                               ) );
+    
+
+
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+
+def pft_decode( item, type_=None, lexicon=None ):
+  
+  rslt = None;
+  decoder = PFTDecoder( lexicon );
+  with PFTDecoder( ( lexicon, type_ ) ) as decoder:
+    rslt = decoder.decode( item );
+  return rslt;
 
     
 

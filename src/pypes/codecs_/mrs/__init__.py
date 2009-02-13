@@ -1,9 +1,9 @@
 # -*-  coding: ascii -*-  # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 __package__ = "pypes.codecs_";
-__all__ = [ "mrx_decode", "SEM_ERG" ];
+__all__ = [ "MRXDecoder", "mrx_decode" ];
 
-from pypes.codecs_.mrs.mrx_decoder import mrx_decode, SEM_ERG;
+from pypes.codecs_.mrs.mrx_decoder import MRXDecoder, mrx_decode;
 
 
 

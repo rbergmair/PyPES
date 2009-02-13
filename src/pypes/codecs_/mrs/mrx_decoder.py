@@ -1,7 +1,7 @@
 # -*-  coding: ascii -*-  # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 __package__ = "pypes.codecs_";
-__all__ = [ "mrx_decode", "SEM_ERG" ];
+__all__ = [ "MRXDecoder", "mrx_decode", "SEM_ERG" ];
 
 from io import StringIO;
 

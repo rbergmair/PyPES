@@ -23,7 +23,7 @@ from pypestest.proto.lex.basic import TestWord;
 
 from pypes.proto import ProtoSig;
 
-from pypes.codecs_.pft import pft_decoder_ply as pft_decoder;
+from pypes.codecs_ import PFTDecoder, pft_decode;
 
 import pypes.proto.lex.erg;
 
@@ -35,9 +35,8 @@ class TestPFTDecoder( TestCase, metaclass=object_ ):
 
 
   def check( self, stri, chf, logifyf, type_ ):
-
-    inst_ = pft_decoder.pft_decode( stri, type_ );
     
+    inst_ = pft_decode( stri, type_ );
     if chf is not None and logifyf is not None:
       chf( self, logifyf( self, inst_, stri ), stri );
 
@@ -46,7 +45,7 @@ class TestPFTDecoder( TestCase, metaclass=object_ ):
     
     check = lambda stri, chf: self.check(
                                   stri, chf, TestHandle.logify,
-                                  pft_decoder.GT_HANDLE
+                                  PFTDecoder.GT_HANDLE
                                 );
     
     check( "42", TestHandle.check_handle_1 );
@@ -218,7 +217,7 @@ class TestPFTDecoder( TestCase, metaclass=object_ ):
     r = r_( sig=ProtoSig() );
   
   
-  def test_mytest( self ):
+  def x_test_mytest( self ):
     
     print( pft_decoder.pft_decode( "123" ) );
 

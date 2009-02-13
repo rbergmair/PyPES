@@ -21,8 +21,6 @@ from pyparsing import quotedString;
 
 import pypes.proto.lex.basic;
 
-from pypes.codecs_.pft import _pft_decoder;
-
 
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #

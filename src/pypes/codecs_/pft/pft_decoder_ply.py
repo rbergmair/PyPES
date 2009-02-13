@@ -1,19 +1,12 @@
 # -*-  coding: ascii -*-  # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 __package__ = "pypes.codecs_";
-
-__all__ = [ "pft_decode",
-    "GT_HANDLE", "GT_VARIABLE", "GT_WORD", "GT_PREDICATION",
-    "GT_QUANTIFICATION", "GT_MODIFICATION", "GT_CONNECTION", "GT_CONSTRAINT",
-    "GT_PROTOFORM", "GT_FREEZER", "GT_LEMMATOKS", "GT_OPERATOR",
-    "GT_CONSTANT" ];
+__all__ = [ "PFTLexer", "PFTParser" ];
 
 import ply.lex as lex;
 import ply.yacc as yacc;
 
 from pypes.utils.mc import subject;
-
-from pypes.codecs_.pft._pft_decoder import *;
 
 
 
@@ -21,37 +14,31 @@ from pypes.codecs_.pft._pft_decoder import *;
 
 class PFTLexer( metaclass=subject ):
 
-  
+
   tokens = ( "NUMBERED_HANDLE", "ANONYMOUS_HANDLE" );
 
 
   def _enter_( self ):
     
-    ( decoder, type_ ) = self._obj_;
-    self._decoder_ctx = decoder;
-    self._decoder = decoder.__enter__();
     self._lexer = lex.lex( module=self );
     
     
   def _exit_( self, exc_type, exc_val, exc_tb ):
     
-    self._decoder = None;
-    self._decoder_ctx.__exit__( exc_type, exc_val, exc_tb );
-    self._decoder_ctx = None;
     self._lexer = None;
 
   
   def t_NUMBERED_HANDLE( self, t ):
     r"\d+"
     
-    t.value = self._decoder.decode_explicit_handle( [t.value] );
+    t.value = self.decode_explicit_handle( [t.value] );
     return t;
 
   
   def t_ANONYMOUS_HANDLE( self, t ):
     r"__"
     
-    t.value = self._decoder.decode_anonymous_handle( [t.value] );
+    t.value = self.decode_anonymous_handle( [t.value] );
     return t;
 
     
@@ -85,7 +72,7 @@ class PFTParser( PFTLexer, metaclass=subject ):
     
     PFTLexer._enter_( self );
     
-    ( decoder, type_ ) = self._obj_;
+    ( lexicon, type_ ) = self._obj_;
     
     self.start = type_;
     self._parser = yacc.yacc(
@@ -100,25 +87,15 @@ class PFTParser( PFTLexer, metaclass=subject ):
     self._parser = None;
   
   
-  def parse( self, txt ):
+  def parse( self, item ):
     
-    return self._parser.parse( txt, lexer = self._lexer );
-
-
-
-# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
-
-def pft_decode( pft, item=None, type_=None, lexicon=None ):
+    return self._parser.parse( item, lexer = self._lexer );
   
-  #lexer = PFTLexer();
-  #lexer.lexer().input( pft );
-  #return lexer.lexer().token();
-  rslt = None;
-  decoder = PFTDecoder( lexicon );
-  with PFTParser( ( decoder, type_ ) ) as parser:
-    rslt = parser.parse( pft );
-  ( type_, inst ) = rslt;
-  return inst;
+
+  def decode( self, item ):
+    
+    ( type_, inst ) = self.parse( item );
+    return inst;
 
 
 
