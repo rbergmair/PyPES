@@ -137,7 +137,7 @@ class PFTParser( metaclass=subject ):
     self.constraint.setParseAction( lambda str_, loc, toks: self.decode_constraint( toks ) );
     self.protoform.setParseAction( lambda str_, loc, toks: self.decode_protoform( toks ) );
 
-    
+
   def _exit_( self, exc_type, exc_val, exc_tb ):
     
     pass;

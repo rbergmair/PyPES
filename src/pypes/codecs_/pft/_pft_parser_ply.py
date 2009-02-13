@@ -29,27 +29,32 @@ class PFTLexer( metaclass=subject ):
     
     self._lexer = None;
 
-  
-  def t_NUMBERED_HANDLE( self, t ):
-    r"\d+"
-    
-    t.value = self.decode_explicit_handle( [t.value] );
-    return t;
 
-  
-  def t_ANONYMOUS_HANDLE( self, t ):
-    r"__"
-    
-    t.value = self.decode_anonymous_handle( [t.value] );
-    return t;
-
-    
   t_ignore  = " \t";
 
   
   def t_error( self, t ):
     
     assert False;
+
+  
+  def t_NUMBERED_HANDLE( self, t ):
+    r"\d+"
+    t.value = self.decode_explicit_handle( [t.value] );
+    return t;
+
+  
+  def t_ANONYMOUS_HANDLE( self, t ):
+    r"__"
+    t.value = self.decode_anonymous_handle( [t.value] );
+    return t;
+  
+  @TOKEN(identifier)
+  def t_VARIABLE( self, t ):
+    re_variable
+    t.value = self.decode_variable( [t.value] );
+
+    
 
 
 
@@ -63,13 +68,6 @@ class PFTParser( PFTLexer, metaclass=subject ):
     assert False;
 
   
-  def p_handle( self, p ):
-    r"""handle : NUMBERED_HANDLE
-               | ANONYMOUS_HANDLE"""
-               
-    p[0] = p[1];
-
-    
   def _enter_( self ):
     
     PFTLexer._enter_( self );
@@ -86,6 +84,7 @@ class PFTParser( PFTLexer, metaclass=subject ):
                        debug=0,
                        write_tables=0
                      );
+
                      
   def _exit_( self, exc_type, exc_val, exc_tb ):
     
@@ -102,6 +101,17 @@ class PFTParser( PFTLexer, metaclass=subject ):
     
     ( type_, inst ) = self.parse( item );
     return inst;
+
+
+  def p_handle( self, p ):
+    r"""handle : NUMBERED_HANDLE
+               | ANONYMOUS_HANDLE"""
+    p[0] = p[1];
+
+
+  def p_handle( self, p ):
+    r"""variable : VARIABLE"""
+    p[0] = p[1];
 
 
 

@@ -1,7 +1,8 @@
 # -*-  coding: ascii -*-  # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 __package__ = "pypes.codecs_.pft";
-__all__ = [ "ALPHAS", "NUMS", "ALPHANUMS", "IDENTFIRST", "IDENTNEXT" ];
+__all__ = [ "ALPHAS", "NUMS", "ALPHANUMS", "IDENTFIRST", "IDENTNEXT",
+            "re_variable" ];
 
 import string;
 
@@ -15,6 +16,9 @@ ALPHANUMS = ALPHAS + NUMS;
 IDENTFIRST = ALPHAS+"_";
 IDENTNEXT =  ALPHANUMS+"."+"_";
 
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+
+re_variable = "[" + ALPHAS + "]+" + "[" + NUMS + "]+";
 
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #

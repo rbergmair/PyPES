@@ -62,7 +62,7 @@ class TestPFTDecoder( TestCase, metaclass=object_ ):
     check( "x1", TestVariable.check_var_1 );
 
 
-  def test_constant( self ):
+  def x_test_constant( self ):
 
     check = lambda stri, chf: self.check(
                                   stri, chf, TestConstant.logify,
@@ -73,7 +73,7 @@ class TestPFTDecoder( TestCase, metaclass=object_ ):
     check( "'Smith'", TestConstant.check_const_2 );
 
 
-  def test_word( self ):
+  def x_test_word( self ):
     
     check = lambda stri, chf: self.check(
                                   stri, chf, TestWord.logify,
@@ -90,7 +90,7 @@ class TestPFTDecoder( TestCase, metaclass=object_ ):
     check( "|lemma:1[ pers=3, num=sg ]|", TestWord.check_word_10 );
 
 
-  def test_predication( self ):
+  def x_test_predication( self ):
 
     check = lambda stri, chf: self.check(
                                   stri, chf, TestPredication.logify,
@@ -101,7 +101,7 @@ class TestPFTDecoder( TestCase, metaclass=object_ ):
     check( "EQUALS( ARG0=x1, ARG1='Jones' )", TestPredication.check_pred_2 );
     
     
-  def test_quantification( self ):
+  def x_test_quantification( self ):
 
     check = lambda stri, chf: self.check(
                                   stri, chf, TestQuantification.logify,
@@ -112,7 +112,7 @@ class TestPFTDecoder( TestCase, metaclass=object_ ):
     check( "|every| x1 <__> {}", TestQuantification.check_quant_2 );
     
     
-  def test_modification( self ):
+  def x_test_modification( self ):
 
     check = lambda stri, chf: self.check(
                                   stri, chf, TestModification.logify,
@@ -127,7 +127,7 @@ class TestPFTDecoder( TestCase, metaclass=object_ ):
     check( "|say:18|( arg1=x1 ) <3>", None );
 
 
-  def test_connection( self ):
+  def x_test_connection( self ):
     
     check = lambda stri, chf: self.check(
                                   stri, chf, TestConnection.logify,
@@ -138,7 +138,7 @@ class TestPFTDecoder( TestCase, metaclass=object_ ):
     check( "__ |and| {}", TestConnection.check_conn_2 );
 
 
-  def test_constraint( self ):
+  def x_test_constraint( self ):
 
     check = lambda stri, chf: self.check(
                                   stri, chf, TestConstraint.logify,
@@ -148,7 +148,7 @@ class TestPFTDecoder( TestCase, metaclass=object_ ):
     check( "1 >> 2", TestConstraint.check_constr_1 );
   
   
-  def test_protoform( self ):
+  def x_test_protoform( self ):
 
     check = lambda stri, chf: self.check(
                                   stri, chf, TestProtoForm.logify,
@@ -174,7 +174,7 @@ class TestPFTDecoder( TestCase, metaclass=object_ ):
     check( PF2, TestProtoForm.check_pf_3 );
 
 
-  def test_protoform_2( self ):
+  def x_test_protoform_2( self ):
 
     r_ = pft_decode( """
              {   3: PROPER_Q[ PERS=3, IND='+', NUM=SG, SF=PROP ] x5 4 6;
@@ -191,7 +191,7 @@ class TestPFTDecoder( TestCase, metaclass=object_ ):
     r = r_( sig=ProtoSig() );
 
 
-  def test_protoform_3( self ):
+  def x_test_protoform_3( self ):
     
     r_ = pft_decode( """
              {   3: |be_v_id[ PERF='-', TENSE=PRES, PROG='-', cto=2, SF=QUES, cfrom=0, MOOD=INDICATIVE ]|( arg0=e2, arg1=x4, arg2=x5 );
