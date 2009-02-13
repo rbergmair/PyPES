@@ -14,7 +14,7 @@ from pypes.utils.mc import subject;
 from pypes.proto import *;
 from pypes.proto.lambdaifier import sortseq;
 
-from  pypes.codecs_.pft._pft_basics import *;
+from  pypes.codecs_.pft import _pft_parser;
 
 
 
@@ -70,7 +70,7 @@ class PFTEncoder( metaclass=subject ):
     return vid;
   
   
-  re_string = re.compile( "["+ALPHANUMS+"]+" );
+  re_string = re.compile( "["+_pft_parser.PFTParser.ALPHANUMS+"]+" );
   
   @classmethod
   def _fmt_string( cls, stri, sensitive=None ):
@@ -85,7 +85,7 @@ class PFTEncoder( metaclass=subject ):
       return repr( stri );
   
   
-  re_identifier = re.compile( "["+IDENTFIRST+"]["+IDENTNEXT+"\.]*" );
+  re_identifier = re.compile( "["+_pft_parser.PFTParser.IDENTFIRST+"]["+_pft_parser.PFTParser.IDENTNEXT+"\.]*" );
   
   @classmethod
   def _fmt_identifier( cls, stri, sensitive=None ):

@@ -1,24 +1,26 @@
 # -*-  coding: ascii -*-  # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 __package__ = "pypes.codecs_.pft";
-__all__ = [ "ALPHAS", "NUMS", "ALPHANUMS", "IDENTFIRST", "IDENTNEXT",
-            "re_variable" ];
+__all__ = [ "PFTParser" ];
 
 import string;
 
+from pypes.utils.mc import subject;
 
 
-# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
-
-ALPHAS = string.ascii_lowercase + string.ascii_uppercase;
-NUMS = string.digits;
-ALPHANUMS = ALPHAS + NUMS;
-IDENTFIRST = ALPHAS+"_";
-IDENTNEXT =  ALPHANUMS+"."+"_";
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-re_variable = "[" + ALPHAS + "]+" + "[" + NUMS + "]+";
+class PFTParser( metaclass=subject ):
+  
+  ALPHAS = string.ascii_lowercase + string.ascii_uppercase;
+  NUMS = string.digits;
+  ALPHANUMS = ALPHAS + NUMS;
+  IDENTFIRST = ALPHAS + "_";
+  IDENTNEXT =  ALPHANUMS + "." + "_";
+
+  TOK_VARIABLE = "[" + ALPHAS + "]+" + "[" + NUMS + "]+";
+
 
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #

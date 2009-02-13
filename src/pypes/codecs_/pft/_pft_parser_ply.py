@@ -4,20 +4,22 @@ __package__ = "pypes.codecs_";
 __all__ = [ "PFTLexer", "PFTParser" ];
 
 import ply.lex as lex;
+from ply.lex import TOKEN;
 import ply.yacc as yacc;
 
 from pypes.utils.mc import subject;
 
-from  pypes.codecs_.pft._pft_basics import *;
+from  pypes.codecs_.pft import _pft_parser;
 
 
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-class PFTLexer( metaclass=subject ):
+class PFTLexer( _pft_parser.PFTParser, metaclass=subject ):
 
 
-  tokens = ( "NUMBERED_HANDLE", "ANONYMOUS_HANDLE" );
+  tokens = ( "explicit_handle", "anonymous_handle",
+             "TOK_VARIABLE" );
 
 
   def _enter_( self ):
@@ -35,24 +37,25 @@ class PFTLexer( metaclass=subject ):
   
   def t_error( self, t ):
     
+    print( "Illegal character '{0}'".format( t.value[0] ) );
     assert False;
 
   
-  def t_NUMBERED_HANDLE( self, t ):
+  def t_explicit_handle( self, t ):
     r"\d+"
     t.value = self.decode_explicit_handle( [t.value] );
     return t;
 
   
-  def t_ANONYMOUS_HANDLE( self, t ):
+  def t_anonymous_handle( self, t ):
     r"__"
     t.value = self.decode_anonymous_handle( [t.value] );
     return t;
   
-  @TOKEN(identifier)
-  def t_VARIABLE( self, t ):
-    re_variable
+  @TOKEN( _pft_parser.PFTParser.TOK_VARIABLE )
+  def t_TOK_VARIABLE( self, t ):
     t.value = self.decode_variable( [t.value] );
+    return t;
 
     
 
@@ -63,11 +66,6 @@ class PFTLexer( metaclass=subject ):
 class PFTParser( PFTLexer, metaclass=subject ):
 
 
-  def p_error( self, p ):
-    
-    assert False;
-
-  
   def _enter_( self ):
     
     PFTLexer._enter_( self );
@@ -81,7 +79,7 @@ class PFTParser( PFTLexer, metaclass=subject ):
       
     self._parser = yacc.yacc(
                        module=self,
-                       debug=0,
+                       # debug=0,
                        write_tables=0
                      );
 
@@ -104,14 +102,21 @@ class PFTParser( PFTLexer, metaclass=subject ):
 
 
   def p_handle( self, p ):
-    r"""handle : NUMBERED_HANDLE
-               | ANONYMOUS_HANDLE"""
+    r"""handle : explicit_handle
+               | anonymous_handle""";
     p[0] = p[1];
 
 
-  def p_handle( self, p ):
-    r"""variable : VARIABLE"""
+  def p_variable( self, p ):
+    r"""variable : TOK_VARIABLE""";
     p[0] = p[1];
+
+
+  def p_error( self, p ):
+    
+    #print( "Syntax error at token", p.type );
+    print( p );
+    assert False;
 
 
 
