@@ -21,7 +21,7 @@ from pyparsing import quotedString;
 
 import pypes.proto.lex.basic;
 
-from pypes.codecs_.pft import _pft_decoder_actions;
+from pypes.codecs_.pft import _pft_decoder;
 
 
 
@@ -125,24 +125,24 @@ protoform << ( Literal( "{" ) + \
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-quoted.setParseAction( lambda str_, loc, toks: _pft_decoder_actions.decode_quoted( toks ) );
-decimalnumber.setParseAction( lambda str_, loc, toks: _pft_decoder_actions.decode_decimalnumber( toks ) );
-explicit_handle.setParseAction( lambda str_, loc, toks: _pft_decoder_actions.decode_explicit_handle( toks ) );
-anonymous_handle.setParseAction( lambda str_, loc, toks: _pft_decoder_actions.decode_anonymous_handle( toks ) );
-freezer.setParseAction( lambda str_, loc, toks: _pft_decoder_actions.decode_freezer( toks ) );
-variable.setParseAction( lambda str_, loc, toks: _pft_decoder_actions.decode_variable( toks ) );
-constant.setParseAction( lambda str_, loc, toks: _pft_decoder_actions.decode_constant( toks ) );
-features_list.setParseAction( lambda str_, loc, toks: _pft_decoder_actions.decode_features_list( toks ) );
-operator.setParseAction( lambda str_, loc, toks: _pft_decoder_actions.decode_operator( toks ) );
-lemma.setParseAction( lambda str_, loc, toks: _pft_decoder_actions.decode_lemma( toks ) );
-word.setParseAction( lambda str_, loc, toks: _pft_decoder_actions.decode_word( toks ) );
-arguments_list.setParseAction( lambda str_, loc, toks: _pft_decoder_actions.decode_arguments_list( toks ) );
-predication.setParseAction( lambda str_, loc, toks: _pft_decoder_actions.decode_predication( toks ) );
-quantification.setParseAction( lambda str_, loc, toks: _pft_decoder_actions.decode_quantification( toks ) );
-modification.setParseAction( lambda str_, loc, toks: _pft_decoder_actions.decode_modification( toks ) );
-connection.setParseAction( lambda str_, loc, toks: _pft_decoder_actions.decode_connection( toks ) );
-constraint.setParseAction( lambda str_, loc, toks: _pft_decoder_actions.decode_constraint( toks ) );
-protoform.setParseAction( lambda str_, loc, toks: _pft_decoder_actions.decode_protoform( toks ) );
+#quoted.setParseAction( lambda str_, loc, toks: _pft_decoder.decode_quoted( toks ) );
+#decimalnumber.setParseAction( lambda str_, loc, toks: _pft_decoder_actions.decode_decimalnumber( toks ) );
+#explicit_handle.setParseAction( lambda str_, loc, toks: _pft_decoder_actions.decode_explicit_handle( toks ) );
+#anonymous_handle.setParseAction( lambda str_, loc, toks: _pft_decoder_actions.decode_anonymous_handle( toks ) );
+#freezer.setParseAction( lambda str_, loc, toks: _pft_decoder_actions.decode_freezer( toks ) );
+#variable.setParseAction( lambda str_, loc, toks: _pft_decoder_actions.decode_variable( toks ) );
+#constant.setParseAction( lambda str_, loc, toks: _pft_decoder_actions.decode_constant( toks ) );
+#features_list.setParseAction( lambda str_, loc, toks: _pft_decoder_actions.decode_features_list( toks ) );
+#operator.setParseAction( lambda str_, loc, toks: _pft_decoder_actions.decode_operator( toks ) );
+#lemma.setParseAction( lambda str_, loc, toks: _pft_decoder_actions.decode_lemma( toks ) );
+#word.setParseAction( lambda str_, loc, toks: _pft_decoder_actions.decode_word( toks ) );
+#arguments_list.setParseAction( lambda str_, loc, toks: _pft_decoder_actions.decode_arguments_list( toks ) );
+#predication.setParseAction( lambda str_, loc, toks: _pft_decoder_actions.decode_predication( toks ) );
+#quantification.setParseAction( lambda str_, loc, toks: _pft_decoder_actions.decode_quantification( toks ) );
+#modification.setParseAction( lambda str_, loc, toks: _pft_decoder_actions.decode_modification( toks ) );
+#connection.setParseAction( lambda str_, loc, toks: _pft_decoder_actions.decode_connection( toks ) );
+#constraint.setParseAction( lambda str_, loc, toks: _pft_decoder_actions.decode_constraint( toks ) );
+#protoform.setParseAction( lambda str_, loc, toks: _pft_decoder_actions.decode_protoform( toks ) );
 
 
 

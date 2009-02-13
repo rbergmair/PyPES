@@ -78,6 +78,9 @@ class TestCase( unittest.TestCase, metaclass=object_ ):
 
   def run( self, result ):
 
+    #super( TestCase, TestCase ).run( self, result );
+    #return;
+
     try:
       gc.collect();
       # gc.set_debug( gc.DEBUG_UNCOLLECTABLE | gc.DEBUG_COLLECTABLE );

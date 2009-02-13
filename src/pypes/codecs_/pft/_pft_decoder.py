@@ -14,6 +14,8 @@ from pypes.utils.mc import subject;
 
 from pypes.proto import *;
 
+import pypes.proto.lex.basic;
+
 
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
@@ -39,9 +41,12 @@ GT_CONSTANT = "constant";
 class PFTDecoder( metaclass=subject ):
   
   
-  def __init__( self, lexicon ):
+  def __init__( self ):
     
-    self._lexicon = lexicon;
+    if self._obj_ is None:
+      self._lexicon = pypes.proto.lex.basic;
+    else:
+      self._lexicon = self._obj_;
     
   
   @classmethod
