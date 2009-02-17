@@ -1,6 +1,6 @@
 # -*-  coding: ascii -*-  # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-__package__ = "pypes.codecs_";
+__package__ = "pypes.codecs_.pft";
 __all__ = [ "PFTParser" ];
 
 import pyparsing;
@@ -16,58 +16,48 @@ from pypes.utils.mc import subject;
 
 import pypes.proto.lex.basic;
 
-from  pypes.codecs_.pft._pft_basics import *;
+from  pypes.codecs_.pft import _pft_parser;
 
 
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-class PFTParser( metaclass=subject ):
+class PFTParser( _pft_parser.PFTParser, metaclass=subject ):
+  
+  # lexer
 
-  protoform = Forward();
+  quoted = Regex( _pft_parser.PFTParser.RE_QUOTED );
   
-  quoted = quotedString;
+  bare_word = Regex( _pft_parser.PFTParser.RE_WORD );
+
+  identifier = Regex( _pft_parser.PFTParser.RE_IDENTIFIER );
+
+  variable = Regex( _pft_parser.PFTParser.RE_VARIABLE );
+
+  explicit_handle = Regex( _pft_parser.PFTParser.RE_EXPLICIT_HANDLE );
   
-  string = quoted | Word_( ALPHANUMS, ALPHANUMS );
+  anonymous_handle = Regex( _pft_parser.PFTParser.RE_ANONYMOUS_HANDLE );
   
-  identifier = Word_( IDENTFIRST, IDENTNEXT );
-  
-  decimalnumber = Word_( NUMS, NUMS );
-  
-  explicit_handle = Word_( NUMS, NUMS );
-  
-  anonymous_handle = Literal( "__" );
-  
+  bare_operator = Regex( _pft_parser.PFTParser.RE_OPERATOR );
+
+  # parser
+
+  constant = Group( quoted );
+
   handle = ( explicit_handle | anonymous_handle );
   
-  freezer = Forward();
-  
-  freezer << Literal( "<" ) + ( freezer | handle ) + Literal( ">" );
-  
-  variable = Regex( "[" + ALPHAS + "]+" + "[" + NUMS + "]+" );
-  
-  constant = Group( quoted );
-  
-  features_list = Literal( "[" ) + \
-                    identifier + Literal("=") + string + \
+  features_list = Literal("[") + \
+                    identifier + Literal("=") + quoted + \
                     ZeroOrMore(
-                        Literal(",") + identifier + Literal("=") + string
+                        Literal(",") + identifier + Literal("=") + quoted
                       ) + \
-                  Literal( "]" );
-  
-  operator = identifier + Optional( features_list );
-  
-  lemma = string + ZeroOrMore( Literal( "+" ) + string );
-  
-  word = Literal ( "|" ) + \
-         Optional( lemma ) + \
-         Optional( Literal( "_" ) + Optional( string ) + \
-                   Optional( Literal( "_" ) + Optional( string ) ) ) + \
-         Optional( Literal( ":" ) + decimalnumber ) + \
-         Optional( features_list ) + \
-         Literal( "|" );
-  
-  arguments_list = Literal( "(" ) + \
+                  Literal("]");
+
+  word = bare_word + Optional( features_list );
+
+  operator = bare_operator + Optional( features_list );
+
+  arguments_list = Literal("(") + \
                    Optional( 
                        identifier + Literal("=") + ( variable | constant ) + \
                        ZeroOrMore(
@@ -75,38 +65,40 @@ class PFTParser( metaclass=subject ):
                            identifier + Literal("=") + ( variable | constant )
                          )
                      ) + \
-                   Literal( ")" );
+                   Literal(")");
+
+  predication = Literal("\ue100") + ( word | operator ) + arguments_list;
+
+  protoform = Forward();
   
-  predication = ( word | operator ) + arguments_list + \
-                NotAny( handle | freezer | protoform );
+  freezer = Forward();
+  freezer << Literal("<") + ( freezer | handle ) + Literal(">");
   
-  quantification = ( word | operator ) + variable + \
-                   ( handle | freezer | protoform ) + \
-                   ( handle | freezer | protoform );
+  scopebearer = ( handle | freezer | protoform );
   
-  modification = ( word | operator ) + arguments_list + \
-                 ( handle | freezer | protoform );
+  quantification = Literal("\ue101") + \
+                   ( word | operator ) + variable + \
+                   scopebearer + scopebearer;
   
-  special_connective = Literal( pypes.proto.lex.basic.Operator.OP_C_WEACON ) | \
-                       Literal( pypes.proto.lex.basic.Operator.OP_C_STRCON ) | \
-                       Literal( pypes.proto.lex.basic.Operator.OP_C_WEADIS ) | \
-                       Literal( pypes.proto.lex.basic.Operator.OP_C_STRDIS ) | \
-                       Literal( pypes.proto.lex.basic.Operator.OP_C_IMPL );
+  modification = Literal("\ue102") + \
+                 ( word | operator ) + arguments_list + scopebearer;
+
+  connection = Literal("\ue103") + \
+               scopebearer + \
+               ( word | operator ) + \
+               scopebearer;
   
-  connection = ( handle | freezer | protoform ) + \
-               ( special_connective | operator | word ) + \
-               ( handle | freezer | protoform );
+  constraint = Literal("\ue104") + handle + Literal("^") + handle;
   
-  constraint = handle + Literal( ">>" ) + handle;
+  subform = ( predication | quantification | modification | connection  );
   
-  item = ( Optional( explicit_handle + Literal(":") ) + \
-             ( protoform + NotAny( special_connective | operator | word ) |
-               predication | quantification | modification | connection  ) ) | \
+  item = ( Optional( explicit_handle + Literal(":") ) +
+           ( protoform | subform ) ) | \
          constraint;
   
-  protoform << ( Literal( "{" ) + \
+  protoform << ( Literal("{") + \
                  Optional( item + ZeroOrMore( Literal(";") + item ) ) + \
-                 Literal( "}" ) );
+                 Literal("}") );
 
 
   def _enter_( self ):
@@ -118,24 +110,102 @@ class PFTParser( metaclass=subject ):
     else:
       self.start = eval( "self." + type_ );
     
-    self.quoted.setParseAction( lambda str_, loc, toks: self.decode_quoted( toks ) );
-    self.decimalnumber.setParseAction( lambda str_, loc, toks: self.decode_decimalnumber( toks ) );
-    self.explicit_handle.setParseAction( lambda str_, loc, toks: self.decode_explicit_handle( toks ) );
-    self.anonymous_handle.setParseAction( lambda str_, loc, toks: self.decode_anonymous_handle( toks ) );
-    self.freezer.setParseAction( lambda str_, loc, toks: self.decode_freezer( toks ) );
-    self.variable.setParseAction( lambda str_, loc, toks: self.decode_variable( toks ) );
-    self.constant.setParseAction( lambda str_, loc, toks: self.decode_constant( toks ) );
-    self.features_list.setParseAction( lambda str_, loc, toks: self.decode_features_list( toks ) );
-    self.operator.setParseAction( lambda str_, loc, toks: self.decode_operator( toks ) );
-    self.lemma.setParseAction( lambda str_, loc, toks: self.decode_lemma( toks ) );
-    self.word.setParseAction( lambda str_, loc, toks: self.decode_word( toks ) );
-    self.arguments_list.setParseAction( lambda str_, loc, toks: self.decode_arguments_list( toks ) );
-    self.predication.setParseAction( lambda str_, loc, toks: self.decode_predication( toks ) );
-    self.quantification.setParseAction( lambda str_, loc, toks: self.decode_quantification( toks ) );
-    self.modification.setParseAction( lambda str_, loc, toks: self.decode_modification( toks ) );
-    self.connection.setParseAction( lambda str_, loc, toks: self.decode_connection( toks ) );
-    self.constraint.setParseAction( lambda str_, loc, toks: self.decode_constraint( toks ) );
-    self.protoform.setParseAction( lambda str_, loc, toks: self.decode_protoform( toks ) );
+    # lexer
+
+    self.quoted.setParseAction(
+        lambda str_, loc, toks:
+          self._decode_quoted( toks )
+      );
+
+    self.bare_word.setParseAction(
+        lambda str_, loc, toks:
+          self._decode_bare_word(
+              _pft_parser.PFTParser._subtokenize_word( toks[0] )
+            )
+      );
+
+    self.variable.setParseAction(
+        lambda str_, loc, toks:
+          self._decode_variable(
+              _pft_parser.PFTParser._subtokenize_variable( toks[0] )
+            )
+      );
+
+    self.explicit_handle.setParseAction(
+        lambda str_, loc, toks:
+          self._decode_explicit_handle( toks )
+      );
+      
+    self.anonymous_handle.setParseAction(
+        lambda str_, loc, toks:
+          self._decode_anonymous_handle( toks )
+      );
+
+    # parser
+
+    self.constant.setParseAction(
+        lambda str_, loc, toks:
+          self._decode_constant( toks[0] )
+      );
+
+    self.features_list.setParseAction(
+        lambda str_, loc, toks:
+          self._decode_features_list( toks )
+      );
+
+    self.bare_operator.setParseAction(
+        lambda str_, loc, toks:
+          self._decode_bare_operator( toks )
+      );
+
+    self.word.setParseAction(
+        lambda str_, loc, toks:
+          self._decode_word( toks )
+      );
+
+    self.operator.setParseAction(
+        lambda str_, loc, toks:
+          self._decode_operator( toks )
+      );
+    
+    self.arguments_list.setParseAction(
+        lambda str_, loc, toks:
+          self._decode_arguments_list( toks )
+      );
+    
+    self.predication.setParseAction(
+        lambda str_, loc, toks:
+          self._decode_predication( toks )
+      );
+      
+    self.freezer.setParseAction(
+        lambda str_, loc, toks:
+          self._decode_freezer( toks )
+      );
+      
+    self.quantification.setParseAction(
+        lambda str_, loc, toks:
+          self._decode_quantification( toks )
+      );
+    
+    self.modification.setParseAction(
+        lambda str_, loc, toks:
+          self._decode_modification( toks )
+      );
+    
+    self.connection.setParseAction(
+        lambda str_, loc, toks:
+          self._decode_connection( toks )
+      );
+      
+    self.constraint.setParseAction(
+        lambda str_, loc, toks:
+          self._decode_constraint( toks )
+      );
+      
+    self.protoform.setParseAction(
+        lambda str_, loc, toks: self._decode_protoform( toks )
+      );
 
 
   def _exit_( self, exc_type, exc_val, exc_tb ):

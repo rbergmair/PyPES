@@ -1,11 +1,7 @@
 # -*-  coding: ascii -*-  # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-__package__ = "pypes.codecs_";
-__all__ = [
-    "PFTDecoder", "pft_decode"
-  ];
-
-import ast;
+__package__ = "pypes.codecs_.pft";
+__all__ = [ "PFTDecoder", "pft_decode" ];
 
 from pypes.utils.mc import subject;
 
@@ -13,7 +9,7 @@ from pypes.proto import *;
 
 import pypes.proto.lex.basic;
 
-from pypes.codecs_.pft._pft_parser_ply import PFTParser;
+from pypes.codecs_.pft._pft_parser_pp import PFTParser;
 
 
 
@@ -22,8 +18,9 @@ from pypes.codecs_.pft._pft_parser_ply import PFTParser;
 class PFTDecoder( PFTParser, metaclass=subject ):
 
 
-  GT_HANDLE = "handle";
   GT_VARIABLE = "variable";
+  GT_HANDLE = "handle";
+  
   GT_WORD = "word";
   GT_PREDICATION = "predication";
   GT_QUANTIFICATION = "quantification";
@@ -53,427 +50,413 @@ class PFTDecoder( PFTParser, metaclass=subject ):
     
     PFTParser._exit_( self, exc_type, exc_val, exc_tb );
     self._parser = None;
+
+
+  @classmethod
+  def _decode_bare_word( self, toks_ ):
     
+    lemma = None;
+    pos = None;
+    sense = None;
+    wid = None;
+      
+    toks = iter( toks_ );
+    
+    tok = next( toks );
+    
+    assert tok == "|";
+    
+    while True:
+      
+      tok = next( toks );
+      
+      if tok in { "_", ":", "|" }:
+        break;
+      
+      if tok == "+":
+        continue;
+      
+      if lemma is None:
+        lemma = [];
+      lemma.append( tok );
+    
+    if tok == "_":
+      
+      tok = next( toks );
+      
+      if tok not in { "_", ":", "|" }:
+        pos = tok;
+
+      tok = next( toks );
+      
+      if tok == "_":
+        tok = next( toks );
+      
+      if tok not in { ":", "|" }:
+        sense = tok;
+        tok = next( toks );
+        
+    if tok == ":":
+
+      tok = next( toks );
+      
+      if tok != "|":
+        wid = int( tok );
+        tok = next( toks );
+    
+    try:
+      assert tok == "|";
+    except:
+      print( tok );
+      raise;
+    
+    assert not next( toks, False );
+      
+    return ( lemma, pos, sense, wid );
+
+
+  @classmethod
+  def _decode_variable( cls, toks_ ):
+
+    toks = iter( toks_ );
+    
+    sid = next( toks );
+    vid = int( next(toks) );
+    
+    assert not next( toks, False );
+    
+    return ( cls.GT_VARIABLE, Variable( sidvid = ( sid, vid ) ) );
+
+
+  @classmethod
+  def _decode_constant( cls, toks_ ):
+
+    toks = iter( toks_ );
+    ident = next( toks );
+    assert not next( toks, False );
+    
+    return ( cls.GT_CONSTANT, Constant( ident = ident ) );
+  
   
   @classmethod
-  def decode_quoted( cls, toks ):
+  def _decode_explicit_handle( cls, toks_ ):
     
-    assert len(toks) == 1;
-    tok = toks[0];
-    if tok[0] == '"':
-      assert tok[-1] == "'";
-    elif tok[0] == "'":
-      assert tok[-1] == "'";
-    else:
-      assert False;
-    rslt = ast.literal_eval( tok );
-    assert isinstance( rslt, str );
-    return rslt;
-  
-  
+    toks = iter( toks_ );
+    
+    tok = next( toks );
+    hid = int( tok );
+    assert not next( toks, False );
+    
+    return ( cls.GT_HANDLE, Handle( hid = hid ) );
+
+
   @classmethod
-  def decode_decimalnumber( cls, toks ):
+  def _decode_anonymous_handle( cls, toks_ ):
+
+    toks = iter( toks_ );
     
-    assert len(toks) == 1;
-    return int( toks[0] );
-  
-  
-  @classmethod
-  def decode_explicit_handle( cls, toks ):
+    tok = next( toks );
+    assert tok == "__";
     
-    assert len(toks) == 1;
-    return ( cls.GT_HANDLE, Handle( hid = int( toks[0] ) ) );
-  
-  
-  @classmethod
-  def decode_anonymous_handle( cls, toks ):
-    
-    assert len(toks) == 1;
-    assert toks[0] == "__";
+    assert not next( toks, False );
+
     return ( cls.GT_HANDLE, Handle() );
-    
+
     
   @classmethod
-  def decode_freezer( cls, toks ):
+  def _decode_features_list( cls, toks_ ):
     
-    assert len(toks) == 3;
-    assert toks[0] == "<";
-    assert toks[2] == ">";
-    ( type_, content ) = toks[1];
-    assert type_ in { cls.GT_FREEZER, cls.GT_HANDLE };
-    return ( cls.GT_FREEZER, Freezer( content=content ) );
-  
-  
-  @classmethod
-  def decode_variable( cls, toks ):
+    toks = iter( toks_ );
     
-    assert len(toks) == 1;
-    tok = toks[0];
-    # TODO: fix this!
-    return ( cls.GT_VARIABLE, Variable( sidvid = ( tok[0], int( tok[1:] ) ) ) );
-  
-  
-  @classmethod
-  def decode_constant( cls, toks ):
-    
-    return ( cls.GT_CONSTANT, Constant( ident = toks[0][0] ) );
-  
-  
-  @classmethod
-  def decode_features_list( cls, toks ):
-    
-    i = 0;
-  
-    assert len( toks ) > i;
-    assert toks[i] == "[";
-    i += 1;
+    tok = next( toks );
+    assert tok == "[";
     
     feats = {};
     
-    assert len( toks ) > i;
-    while toks[i] != "]":
+    tok = next( toks );
+    
+    while tok != "]":
       
-      assert isinstance( toks[i], str );
-      path = toks[i];
-      i+= 1;
+      featname = tok;
+      tok = next( toks );
+      try:
+        assert tok == "=";
+      except:
+        print( tok );
+        raise;
+      value = next( toks );
       
-      assert len( toks ) > i;
-      assert toks[i] == "=";
-      i+= 1;
-      
-      assert len( toks ) > i;
-      value = toks[i];
-      i += 1;
-      
-      feats[ path ] = value;
-      
-      assert len( toks ) > i;
-      if toks[i] == ",":
-        i += 1;
-  
-      assert len( toks ) > i;
+      tok = next( toks );
+      if tok == ",":
+        tok = next( toks );
+
+      feats[ featname ] = value;
+
+    assert not next( toks, False );
     
     return feats;
-  
-  
-  def decode_operator( self, toks ):
-    
-    otype = None;
-    feats = None;
-    i = 0;
-  
-    assert len( toks ) > i;
-    otype = toks[i];
-    i += 1;
-    
-    if len( toks ) > i:
-      assert isinstance( toks[i], dict );
-      feats = toks[i];
-    
-    return ( self.GT_OPERATOR, self._lexicon.Operator(
-                               otype = otype,
-                               feats = feats
-                             ) );
-  
-  
+
+
   @classmethod
-  def decode_lemma( cls, toks ):
+  def _decode_bare_operator( self, toks_ ):
     
-    lemma_toks = [];
-    i = 0;
-  
-    assert len( toks ) > i;
-    lemma_toks.append( toks[i] );
-    i += 1;
-  
-    while len( toks ) > i:
-  
-      assert toks[i] == "+";
-      i += 1;
-      
-      assert len( toks ) > i;
-      lemma_toks.append( toks[i] );
-      i += 1;
+    toks = iter( toks_ );
+    otype = next( toks );
+    assert not next( toks, False );
     
-    return ( cls.GT_LEMMATOKS, lemma_toks );
+    return otype;
   
   
-  def decode_word( self, toks ):
+  def _decode_word( self, toks_ ):
+
+    toks = iter( toks_ );
+    bare_word = next( toks );
+    feats = next( toks, None );
+    assert not next( toks, False );
     
-    ( lemma, pos, sense, wid, feats ) = \
-      ( None, None, None, None, None );
-    
-    i = 0;
-  
-    assert len( toks ) > i;
-    assert toks[i] == "|";
-    i += 1;
-    
-    if len( toks ) > i:
-      if isinstance( toks[i], tuple ) and len( toks[i] ) == 2:
-        ( type_, r ) = toks[i];
-        if type_ == self.GT_LEMMATOKS:
-          assert isinstance( r, list );
-          lemma = r;
-          i += 1;
-    
-    if len( toks ) > i:
-      if toks[i] == "_":
-        i += 1;
-        
-        assert len( toks ) > i;
-        if toks[i] != "_":
-          pos = toks[i];
-          i += 1;
-  
-        if toks[i] == "_":
-          i += 1;
-          
-          assert len( toks ) > i;
-          if toks[i] != ":":
-            sense = toks[i];
-            i += 1;
-        
-    if len( toks ) > i:
-      if toks[i] == ":":
-        i += 1;
-        
-        assert len( toks ) > i;
-        wid = toks[i];
-        i += 1;
-  
-    if toks[i] != "|":
-      assert isinstance( toks[i], dict );
-      feats = toks[i];
-      i += 1;
-      
-    assert len( toks ) > i;
-    assert toks[i] == "|";
+    ( lemma, pos, sense, wid ) = bare_word;
     
     return ( self.GT_WORD, self._lexicon.Word(
-                           wid=wid, lemma=lemma, pos=pos,
-                           sense=sense, feats=feats
-                         ) );
-  
-  
+                               wid=wid, lemma=lemma, pos=pos,
+                               sense=sense, feats=feats
+                             ) );
+
+
+  def _decode_operator( self, toks_ ):
+    
+    toks = iter( toks_ );
+    otype = next( toks );
+    feats = next( toks, None );
+    assert not next( toks, False );
+    
+    return (  self.GT_OPERATOR, self._lexicon.Operator(
+                                    otype = otype,
+                                    feats = feats
+                                  ) );
+
+
   @classmethod
-  def decode_arguments_list( cls, toks ):
-  
-    i = 0;
-  
-    assert len( toks ) > i;
-    assert toks[i] == "(";
-    i += 1;
+  def _decode_arguments_list( cls, toks_ ):
+    
+    toks = iter( toks_ );
+    
+    assert next( toks ) == "(";
     
     args = {};
     
-    assert len( toks ) > i;
-    while toks[i] != ")":
+    tok = next( toks );
+    
+    while tok != ")":
       
-      assert isinstance( toks[i], str );
-      argument = Argument( aid=toks[i] );
-      i+= 1;
+      aid = tok;
+      assert next( toks ) == "=";
       
-      assert len( toks ) > i;
-      assert toks[i] == "=";
-      i+= 1;
-      
-      assert len( toks ) > i;
-      ( type_, varconst ) = toks[i];
+      ( type_, var ) =  next( toks );
       assert type_ in { cls.GT_VARIABLE, cls.GT_CONSTANT };
-      i += 1;
       
-      args[ argument ] = varconst;
-      
-      assert len( toks ) > i;
-      if toks[i] == ",":
-        i += 1;
-  
-      assert len( toks ) > i;
+      tok = next( toks );
+      if tok == ",":
+        tok = next( toks );
+
+      args[ Argument( aid=aid ) ] = var;
+
+    assert not next( toks, False );
     
     return args;
   
   
   @classmethod
-  def decode_predication( cls, toks ):
+  def _decode_predication( cls, toks_ ):
+
+    toks = iter( toks_ );
     
-    i = 0;
+    assert next( toks ) == "\ue100";
     
-    assert len( toks ) > i;
-    referent = None;
-    ( type_, referent ) = toks[i];
+    ( type_, referent ) = next( toks );
     assert type_ in { cls.GT_WORD, cls.GT_OPERATOR };
-  
-    i += 1;
-  
-    assert len( toks ) > i;
-    assert isinstance( toks[i], dict );
-    args = toks[i];
+    
+    args = next( toks );
+    assert isinstance( args, dict );
+    
+    assert not next( toks, False );
     
     return ( cls.GT_PREDICATION, Predication(
-                                 predicate = Predicate( referent=referent ),
-                                 args = args
-                               ) );
-  
-  
-  @classmethod
-  def decode_quantification( cls, toks ):
-    
-    i = 0;
-    
-    assert len( toks ) > i;
-    referent = None;
-    ( type_, referent ) = toks[i];
-    assert type_ in { cls.GT_WORD, cls.GT_OPERATOR };
-  
-    i += 1;
-  
-    assert len( toks ) > i;
-    ( type_, var ) = toks[i];
-    assert type_ == cls.GT_VARIABLE;
-    
-    i += 1;
-  
-    assert len( toks ) > i;
-    ( type_, rstr ) = toks[i];
-    assert type_ in { cls.GT_HANDLE, cls.GT_FREEZER, cls.GT_PROTOFORM };
-    
-    i += 1;
-  
-    assert len( toks ) > i;
-    ( type_, body ) = toks[i];
-    assert type_ in { cls.GT_HANDLE, cls.GT_FREEZER, cls.GT_PROTOFORM };
-    
-    return ( cls.GT_QUANTIFICATION, Quantification(
-                                     quantifier = Quantifier(
-                                                      referent = referent
-                                                    ),
-                                     var = var,
-                                     rstr = rstr,
-                                     body = body
+                                     predicate = Predicate( referent=referent ),
+                                     args = args
                                    ) );
+
+
+  @classmethod
+  def _decode_freezer( cls, toks_ ):
+    
+    toks = iter( toks_ );
+    
+    assert next( toks ) == "<";
+    
+    ( type_, content ) = next( toks );
+    assert type_ in { cls.GT_FREEZER, cls.GT_HANDLE };
+
+    assert next( toks ) == ">";
+
+    assert not next( toks, False );
+    
+    return ( cls.GT_FREEZER, Freezer( content=content ) );
   
   
   @classmethod
-  def decode_modification( cls, toks ):
+  def _decode_quantification( cls, toks_ ):
+
+    toks = iter( toks_ );
     
-    i = 0;
+    tok = next( toks );
+    try:
+      assert tok == "\ue101";
+    except:
+      print( tok );
+      raise;
     
-    assert len( toks ) > i;
-    referent = None;
-    ( type_, referent ) = toks[i];
+    ( type_, referent ) = next( toks );
     assert type_ in { cls.GT_WORD, cls.GT_OPERATOR };
-  
-    i += 1;
-  
-    assert len( toks ) > i;
-    assert isinstance( toks[i], dict );
-    args = toks[i];
-  
-    i += 1;
-    
-    assert len( toks ) > i;
-    ( type_, scope ) = toks[i];
+
+    ( type_, var ) = next( toks );
+    assert type_ == cls.GT_VARIABLE;
+
+    ( type_, rstr ) = next( toks );
     assert type_ in { cls.GT_HANDLE, cls.GT_FREEZER, cls.GT_PROTOFORM };
+
+    ( type_, body ) = next( toks );
+    assert type_ in { cls.GT_HANDLE, cls.GT_FREEZER, cls.GT_PROTOFORM };
+
+    assert not next( toks, False );
+  
+    return ( cls.GT_QUANTIFICATION, Quantification(
+                                        quantifier = Quantifier(
+                                                         referent = referent
+                                                       ),
+                                        var = var,
+                                        rstr = rstr,
+                                        body = body
+                                      ) );
+  
+  
+  @classmethod
+  def _decode_modification( cls, toks_ ):
+    
+    toks = iter( toks_ );
+
+    assert next( toks ) == "\ue102";
+    
+    ( type_, referent ) = next( toks );
+    assert type_ in { cls.GT_WORD, cls.GT_OPERATOR };
+
+    args = next( toks );
+    assert isinstance( args, dict );
+    
+    ( type_, scope ) = next( toks );
+    assert type_ in { cls.GT_HANDLE, cls.GT_FREEZER, cls.GT_PROTOFORM };
+
+    assert not next( toks, False );
     
     return ( cls.GT_MODIFICATION, Modification(
-                                   modality = Modality( referent=referent ),
-                                   args = args,
-                                   scope = scope
-                                 ) );
+                                      modality = Modality( referent=referent ),
+                                      args = args,
+                                      scope = scope
+                                    ) );
   
   
   @classmethod
-  def decode_connection( cls, toks ):
+  def _decode_connection( cls, toks_ ):
+
+    toks = iter( toks_ );
+
+    assert next( toks ) == "\ue103";
     
-    assert len( toks ) == 3;
-    
-    ( type_, lscope ) = toks[0];
+    ( type_, lscope ) = next( toks );
     assert type_ in { cls.GT_HANDLE, cls.GT_FREEZER, cls.GT_PROTOFORM };
+
+    ( type_, referent ) = next( toks );
+    assert type_ in { cls.GT_WORD, cls.GT_OPERATOR };
   
-    ( type_, rscope ) = toks[2];
+    ( type_, rscope ) = next( toks );
     assert type_ in { cls.GT_HANDLE, cls.GT_FREEZER, cls.GT_PROTOFORM };
-    
-    referent = None;
-    if not isinstance( toks[1], str ):
-      ( type_, referent ) = toks[1];
-      assert type_ in { cls.GT_WORD, cls.GT_OPERATOR };
-    else:
-      referent = Operator( otype = toks[1] );
+
+    assert not next( toks, False );
     
     return ( cls.GT_CONNECTION, Connection(
-                                 connective = Connective( referent=referent ),
-                                 lscope = lscope,
-                                 rscope = rscope
-                               ) );
+                                    connective = Connective( referent=referent ),
+                                    lscope = lscope,
+                                    rscope = rscope
+                                  ) );
   
   
   @classmethod
-  def decode_constraint( cls, toks ):
-    
-    assert len( toks ) == 3;
-    
-    assert toks[1] == ">>";
-  
-    ( type_, harg ) = toks[0];
+  def _decode_constraint( cls, toks_ ):
+
+    toks = iter( toks_ );
+
+    assert next( toks ) == "\ue104";
+
+    ( type_, harg ) = next( toks );
     assert type_ == cls.GT_HANDLE;
+
+    assert next( toks ) == "^";
     
-    ( type_, larg ) = toks[2];
+    ( type_, larg ) = next( toks );
     assert type_ == cls.GT_HANDLE;
+
+    assert not next( toks, False );
     
     return ( cls.GT_CONSTRAINT, Constraint( harg=harg, larg=larg ) );
   
   
   @classmethod
-  def decode_protoform( cls, toks ):
-    
-    i = 0;
-    assert len( toks ) > i;
-    
-    assert toks[i] == "{";
-    
-    i += 1;
-    assert len( toks ) > i;
+  def _decode_protoform( cls, toks_ ):
+
+    toks = iter( toks_ );
+
+    assert next( toks ) == "{";
     
     subforms = {};
     constraints = set();
     
     handle = None;
     
-    while toks[i] != "}":
+    tok = next( toks );
+    
+    while tok != "}":
       
-      ( type_, inst ) = toks[i];
-      i += 1;
-      assert len( toks ) > i;
+      ( type_, inst ) = tok;
+      
+      tok = next( toks );
       
       if type_ == cls.GT_CONSTRAINT:
+        
         constraints.add( inst );
-        if toks[i] == ";":
-          i += 1;
-          assert len( toks ) > i;
+        if tok == ";":
+          tok = next( toks );
           
       elif type_ == cls.GT_HANDLE:
+        
         handle = inst;
-        assert toks[i] == ":";
-        i  += 1;
-        assert len( toks ) > i;
+        assert tok == ":";
+        tok = next( toks );
         
       elif type_ in { cls.GT_PREDICATION, cls.GT_QUANTIFICATION,
-                      cls.GT_MODIFICATION, cls.GT_CONNECTION, cls.GT_PROTOFORM }:
+                      cls.GT_MODIFICATION, cls.GT_CONNECTION,
+                      cls.GT_PROTOFORM }:
         
         if handle is None:
           handle = Handle();
         subforms[ handle ] = inst;
         handle = None;
-        if toks[i] == ";":
-          i += 1;
-          assert len( toks ) > i;
+        if tok == ";":
+          tok = next( toks );
     
     return ( cls.GT_PROTOFORM, ProtoForm(
-                                subforms = subforms,
-                                constraints = constraints
-                              ) );
-    
+                                   subforms = subforms,
+                                   constraints = constraints
+                                 ) );
+
 
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
@@ -486,7 +469,7 @@ def pft_decode( item, type_=None, lexicon=None ):
     rslt = decoder.decode( item );
   return rslt;
 
-    
+
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 #                                                                             #

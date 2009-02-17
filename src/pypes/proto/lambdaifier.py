@@ -14,12 +14,12 @@ from pypes.proto.lex import *;
 
 def sortseq( int_ ):
 
-  SORT_CHARS = "cdfghklmnorstuvwCDFGHKLMNORSTUVW";
+  SORT_CHARS = "cdfghklmnorstuvw";
   
   rslt = "";
   while int_ > 0:
-    rest = int_ & 0x1F;
-    int_ = int_ >> 5;
+    rest = int_ & 0xF;
+    int_ = int_ >> 4;
     rslt += SORT_CHARS[ rest ];
   return rslt;
 

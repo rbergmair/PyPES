@@ -1,7 +1,7 @@
 # -*-  coding: ascii -*-  # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-__package__ = "native";
-__all__ = [ "ERGMRSInterpreter", "ergmrs_to_pf" ];
+__package__ = "pypes.codecs_.mrs";
+__all__ = [ "MRSInterpreter", "mrs_to_pf" ];
 
 import string;
 
@@ -10,7 +10,7 @@ from pypes.utils.mc import subject, object_;
 from pypes.proto import *;
 from pypes.proto.lex.erg import *;
 
-#from pypes.codecs_.pft.pft_encoder import ALPHANUMS, IDENTFIRST, IDENTNEXT;
+from pypes.codecs_.pft._pft_parser import PFTParser;
 
 from pypes.codecs_.mrs._mrs import *;
 
@@ -18,7 +18,7 @@ from pypes.codecs_.mrs._mrs import *;
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-class ERGMRSInterpreter( metaclass=subject ):
+class MRSInterpreter( metaclass=subject ):
   
   
   @classmethod
@@ -42,11 +42,11 @@ class ERGMRSInterpreter( metaclass=subject ):
 
     stri_ = "";
     
-    if not stri[0] in IDENTFIRST:
+    if not stri[0] in PFTParser.IDENTFIRST:
       stri_ += "_";
     
     for ch in stri:
-      if ch in IDENTNEXT:
+      if ch in PFTParser.IDENTNEXT:
         stri_ += ch;
       else:
         stri_ += "_";
@@ -455,7 +455,7 @@ class ERGMRSInterpreter( metaclass=subject ):
 def mrs_to_pf( mrs ):
   
   rslt = None;
-  with ERGMRSInterpreter( mrs ) as int:
+  with MRSInterpreter( mrs ) as int:
     rslt = int.mrs_to_pf();
   return rslt;
 

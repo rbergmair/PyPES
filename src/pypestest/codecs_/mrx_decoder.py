@@ -12,7 +12,7 @@ import gzip;
 from pypes.utils.unittest_ import TestCase;
 from pypes.utils.mc import object_;
 
-from pypes.codecs_ import mrx_decode, SEM_ERG;
+from pypes.codecs_ import mrx_decode, MRXDecoder;
 from pypes.codecs_ import pft_encode;
 
 from pypes.proto import *;
@@ -32,7 +32,7 @@ class TestMRXDecoder( TestCase, metaclass=object_ ):
       f = gzip.open( filename );
       try:
         print( filename );
-        r = mrx_decode( f, SEM_ERG )( sig=ProtoSig() );
+        r = mrx_decode( f, MRXDecoder.SEM_ERG )( sig=ProtoSig() );
         print();
         print();
         print( pft_encode( r ) );

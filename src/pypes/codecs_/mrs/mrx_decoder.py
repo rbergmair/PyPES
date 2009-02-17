@@ -1,7 +1,7 @@
 # -*-  coding: ascii -*-  # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-__package__ = "pypes.codecs_";
-__all__ = [ "MRXDecoder", "mrx_decode", "SEM_ERG" ];
+__package__ = "pypes.codecs_.mrs";
+__all__ = [ "MRXDecoder", "mrx_decode" ];
 
 from io import StringIO;
 
@@ -341,6 +341,8 @@ class MRXDecoder( XMLHandler, metaclass=subject ):
 
 
   IGNORE = [];
+  
+  SEM_ERG = 1;
 
   
   def handle( self, obj ):
@@ -349,7 +351,13 @@ class MRXDecoder( XMLHandler, metaclass=subject ):
       self.mrs = obj;
 
 
-  def decode( self, converter ):
+  def decode( self, sem=None ):
+    
+    converter = None;
+    if sem is None or sem == self.SEM_ERG:
+      converter = _ergsem.mrs_to_pf;
+    else:
+      assert False;
 
     f = self._obj_;
     self.feed( """<?xml version="1.1"?>""" );
@@ -371,19 +379,11 @@ class MRXDecoder( XMLHandler, metaclass=subject ):
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-SEM_ERG = 0;
-
-def mrx_decode( mrx, sem ):
-  
-  converter = None;
-  if sem == SEM_ERG:
-    converter = _ergsem.mrs_to_pf;
-  else:
-    assert False;
+def mrx_decode( mrx, sem=None ):
   
   rslt = None;
   with MRXDecoder( mrx ) as decoder:
-    rslt = decoder.decode( converter );
+    rslt = decoder.decode( sem );
   return rslt;
 
     

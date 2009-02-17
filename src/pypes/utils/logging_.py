@@ -5,7 +5,8 @@ __all__ = [ "LOG_CRITICAL", "LOG_ERROR", "LOG_WARNING", "LOG_INFO",
             "LOG_DEBUG_COARSE", "LOG_DEBUG", "LOG_NOTSET",
             "log_attach_stderr_logger", "log_attach_file_logger",
             "log_critical", "log_error", "log_warn", "log_info",
-            "log_error", "log_debug_coarse", "log_debug", "log" ];
+            "log_error", "log_debug_coarse", "log_debug", "log",
+            "get_logger" ];
 
 import logging;
 from sys import stderr;
@@ -190,6 +191,9 @@ def log_debug( sourceid, msg ):
 
 def log( sourceid, level, msg ):
   _LogController().get_logger( sourceid ).log( level, msg );
+
+def get_logger( sourceid ):
+  return _LogController().get_logger( sourceid );
 
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #

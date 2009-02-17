@@ -1,8 +1,7 @@
 # -*-  coding: ascii -*-  # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 __package__ = "pypes.codecs_";
-__all__ = [ "PFTEncoder", "pft_encode",
-            "argseq", "sortseq" ];
+__all__ = [ "PFTEncoder", "pft_encode", "argseq", "sortseq" ];
 
 import re;
 import string;
@@ -68,24 +67,35 @@ class PFTEncoder( metaclass=subject ):
       vid += 1;
     self._assigned_sortvids.add( (sort,vid) );
     return vid;
-  
-  
-  re_string = re.compile( "["+_pft_parser.PFTParser.ALPHANUMS+"]+" );
+
+
+  re_alphanum = re.compile( _pft_parser.PFTParser.RE_ALPHANUMs );
   
   @classmethod
-  def _fmt_string( cls, stri, sensitive=None ):
+  def _fmt_alphanum( cls, stri ):
+    
+    r = cls.re_alphanum.match( stri );
+    assert r is not None;
+    
+    return stri;
+  
+  
+  @classmethod
+  def _fmt_lemma( cls, stri, sensitive=None ):
     
     if not isinstance( stri, str ):
       stri = str( stri );
     
-    r = cls.re_string.match( stri )
-    if r is not None and r.start() == 0 and r.end() == len( stri ):
+    r = cls.re_alphanum.match( stri )
+    if r is None:
+      return repr( stri );
+    elif r.start() == 0 and r.end() == len( stri ):
       return stri;
     else:
       return repr( stri );
   
   
-  re_identifier = re.compile( "["+_pft_parser.PFTParser.IDENTFIRST+"]["+_pft_parser.PFTParser.IDENTNEXT+"\.]*" );
+  re_identifier = re.compile( _pft_parser.PFTParser.RE_IDENTIFIER );
   
   @classmethod
   def _fmt_identifier( cls, stri, sensitive=None ):
@@ -96,9 +106,20 @@ class PFTEncoder( metaclass=subject ):
     r = cls.re_identifier.match( stri );
     if r is not None and r.start() == 0 and r.end() == len( stri ):
       return stri;
-    else:
-      print( stri );
-      assert False;
+    
+    print( stri );
+    assert False;
+
+
+  re_word = re.compile( _pft_parser.PFTParser.RE_WORD );
+
+  @classmethod
+  def _fmt_word( cls, stri ):
+    
+    r = cls.re_word.match( stri );
+    assert r is not None;
+    
+    return stri;
 
 
   def _encode_handle( self, inst ):
@@ -143,7 +164,7 @@ class PFTEncoder( metaclass=subject ):
       rslt += "["
       for feat in feats:
         rslt += " " + self._fmt_identifier( feat ) + "=" + \
-                self._fmt_string( feats[feat] ) + ",";
+                repr( feats[feat] ) + ",";
       rslt = rslt[ :-1 ];
       rslt += " ]";
     
@@ -163,20 +184,20 @@ class PFTEncoder( metaclass=subject ):
     rslt = "|";
     if inst.lemma is not None:
       for lemtok in inst.lemma:
-        rslt += self._fmt_string( lemtok ) + "+";
+        rslt += self._fmt_lemma( lemtok ) + "+";
       rslt = rslt[ :-1 ];
     if inst.pos is not None or inst.sense is not None:
       rslt += "_";
       if inst.pos is not None:
-        rslt += self._fmt_string( inst.pos );
+        rslt += self._fmt_alphanum( inst.pos );
       if inst.sense is not None:
-        rslt += "_" + self._fmt_string( inst.sense );
+        rslt += "_" + self._fmt_alphanum( inst.sense );
     if inst.wid is not None:
       rslt += ":"+str(inst.wid);
+    rslt += "|";
+    rslt = self._fmt_word( rslt );
     if inst.feats is not None:
       rslt += self._encode_feats( inst.feats );
-    
-    rslt += "|";
     
     return rslt;
   
@@ -215,7 +236,8 @@ class PFTEncoder( metaclass=subject ):
   
   def _encode_predication( self, inst ):
     
-    rslt = self._encode( inst.predicate.referent );
+    rslt = "\ue100 ";
+    rslt += self._encode( inst.predicate.referent );
     rslt += self._encode_argslist( inst.predicate, inst.args );
     
     return rslt;
@@ -223,7 +245,8 @@ class PFTEncoder( metaclass=subject ):
   
   def _encode_quantification( self, inst ):
     
-    rslt = self._encode( inst.quantifier.referent );
+    rslt = "\ue101 ";
+    rslt += self._encode( inst.quantifier.referent );
     rslt += " " + self._encode( inst.var );
     rslt += " " + self._encode( inst.rstr );
     rslt += " " + self._encode( inst.body );
@@ -233,7 +256,8 @@ class PFTEncoder( metaclass=subject ):
 
   def _encode_modification( self, inst ):
     
-    rslt = self._encode( inst.modality.referent );
+    rslt = "\ue102 ";
+    rslt += self._encode( inst.modality.referent );
     rslt += self._encode_argslist( inst.modality, inst.args );
     rslt += " " + self._encode( inst.scope );
     
@@ -242,7 +266,8 @@ class PFTEncoder( metaclass=subject ):
 
   def _encode_connection( self, inst ):
     
-    rslt = self._encode( inst.lscope ) + " ";
+    rslt = "\ue103 ";
+    rslt += self._encode( inst.lscope ) + " ";
     rslt += self._encode( inst.connective.referent );
     rslt += " " + self._encode( inst.rscope );
     
@@ -251,7 +276,12 @@ class PFTEncoder( metaclass=subject ):
 
   def _encode_constraint( self, inst ):
     
-    return self._encode( inst.harg ) + " >> " + self._encode( inst.larg )
+    rslt = "\ue104 ";
+    rslt += self._encode( inst.harg );
+    rslt += " ^ ";
+    rslt += self._encode( inst.larg )
+    
+    return rslt;
 
 
   def _encode_protoform( self, inst ):

@@ -17,15 +17,12 @@ import time;
 from pypes.utils.unittest_ import TestCase;
 from pypes.utils.mc import object_;
 
-from pypes.codecs_.mrx_decoder import mrx_decode;
-from pypes.codecs_.pft_encoder import pft_encode;
-from pypes.codecs_.pft_decoder import pft_decode;
+from pypes.codecs_.mrs import *;
+from pypes.codecs_.pft import *;
 
 from pypes.proto import *;
 
 import pypes.proto.lex.erg;
-
-import pypes.native.ergmrs;
 
 
 
@@ -43,7 +40,7 @@ class TestIOTest( TestCase, metaclass=object_ ):
     try:
       f = gzip.open( filename );
       try:
-        r_ = mrx_decode( f, pypes.native.ergmrs.mrs_to_pf )
+        r_ = mrx_decode( f, MRXDecoder.SEM_ERG )
         r = r_( sig=ProtoSig() );
       finally:
         f.close();
@@ -132,45 +129,49 @@ class TestIOTest( TestCase, metaclass=object_ ):
     print();
     
     gc.disable();
-
+    
     for i in range(0,5):
 
-      before = time.clock();
-      f = open( "/local/scratch/rb432/tmp/outp/outp.txt", "rt" );
-      j = 0;
-      for line in f:
-        
-        sys.stdout.write( "{0:5d}  ".format( len(line) ) );
-        sys.stdout.flush();
-        if ( j % 15 == 14 ):
-          sys.stdout.write( "\n" );
+      with PFTDecoder( (pypes.proto.lex.erg,None) ) as decoder:
+  
+        before = time.clock();
+        f = open( "/local/scratch/rb432/tmp/outp/outp.txt", "rt" );
+        j = 0;
+        for line in f:
           
-        try:
-          pft_decode( line, lexicon = pypes.proto.lex.erg );
-          j += 1;
-        except:
-          print( j );
-          print( line );
-          raise;
-      f.close();
-      after = time.clock();
-      gc.collect();
-
-      print();
-      print( "time to pftdecode: {0:1.5f}".format( after - before ) );
-      print();
-      print();
+          sys.stdout.write( "{0:5d}  ".format( len(line) ) );
+          sys.stdout.flush();
+          if ( j % 15 == 14 ):
+            sys.stdout.write( "\n" );
+            
+          try:
+            decoder.decode( line );
+            j += 1;
+          except:
+            print( j );
+            print( line );
+            raise;
+        f.close();
+        after = time.clock();
+        
+        gc.collect();
+  
+        print();
+        print( "time to pftdecode: {0:1.5f}".format( after - before ) );
+        print();
+        print();
       
       
-      assert j == 268;
+      assert j == 255;
 
+    gc.enable();
     
     before = time.clock();
     
     for i in range(0,5):
       print( "." );
       f = open( "/local/scratch/rb432/tmp/outp/outp.pickle", "rb" );
-      for j in range(0,268):
+      for j in range(0,255):
         pickle.load( f );
       f.close();
 
@@ -198,41 +199,44 @@ def suite():
 
 def main( argv=None ):
 
+  unittest.TextTestRunner( verbosity=2 ).run( suite() );
+  return;
+
+  print();
+  print();
+  
+  gc.disable();
+
+  for i in range(0,5):
+
+    before = time.clock();
+    f = open( "/local/scratch/rb432/tmp/outp/outp.txt", "rt" );
+    j = 0;
+    for line in f:
+      
+      sys.stdout.write( "{0:5d}  ".format( len(line) ) );
+      sys.stdout.flush();
+      if ( j % 15 == 14 ):
+        sys.stdout.write( "\n" );
+        
+      try:
+        pft_decode( line, lexicon = pypes.proto.lex.erg );
+        j += 1;
+      except:
+        print( j );
+        print( line );
+        raise;
+    f.close();
+    after = time.clock();
+    gc.collect();
+
+    print();
+    print( "time to pftdecode: {0:1.5f}".format( after - before ) );
     print();
     print();
     
-    gc.disable();
-
-    for i in range(0,5):
-
-      before = time.clock();
-      f = open( "/local/scratch/rb432/tmp/outp/outp.txt", "rt" );
-      j = 0;
-      for line in f:
-        
-        sys.stdout.write( "{0:5d}  ".format( len(line) ) );
-        sys.stdout.flush();
-        if ( j % 15 == 14 ):
-          sys.stdout.write( "\n" );
-          
-        try:
-          pft_decode( line, lexicon = pypes.proto.lex.erg );
-          j += 1;
-        except:
-          print( j );
-          print( line );
-          raise;
-      f.close();
-      after = time.clock();
-      gc.collect();
-
-      print();
-      print( "time to pftdecode: {0:1.5f}".format( after - before ) );
-      print();
-      print();
-      
-      
-      assert j == 268;
+    
+    assert j == 268;
 
 if __name__ == '__main__':
   sys.exit( main( sys.argv ) );

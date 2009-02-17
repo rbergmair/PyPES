@@ -31,7 +31,7 @@ from pypestest.proto.lex.basic import TestWord;
 class TestLambdaifier( TestCase, metaclass=object_ ):
 
   
-  def test_lambdaifier_1( self ):
+  def x_test_lambdaifier_1( self ):
     
     init = TestProtoForm.init_logified_pf_4( self );
     lambdaified = lambdaify( init );
@@ -53,7 +53,7 @@ class TestLambdaifier( TestCase, metaclass=object_ ):
     self.assertEquals_( logified, reference )
 
 
-  def test_lambdaifier_2( self ):
+  def x_test_lambdaifier_2( self ):
     
     init = TestProtoForm.init_logified_pf_4( self );
     lambdaified = lambdaify( init, rename_handles_p=False );
@@ -76,7 +76,7 @@ class TestLambdaifier( TestCase, metaclass=object_ ):
     self.assertEquals_( logified, reference )
 
 
-  def test_lambdaifier_3( self ):
+  def x_test_lambdaifier_3( self ):
     
     init = TestProtoForm.init_logified_pf_4( self );
     lambdaified = lambdaify( init, rename_vars_p=False );
@@ -99,7 +99,7 @@ class TestLambdaifier( TestCase, metaclass=object_ ):
     self.assertEquals_( logified, reference );
 
 
-  def test_lambdaifier_4( self ):
+  def x_test_lambdaifier_4( self ):
     
     init = TestProtoForm.init_logified_pf_4( self );
     lambdaified = lambdaify( init, rename_words_p=False );

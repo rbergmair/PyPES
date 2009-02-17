@@ -19,7 +19,9 @@ from pypestest.proto.form.quantification import TestQuantification;
 
 from pypestest.proto.sig.variable import TestVariable;
 from pypestest.proto.sig.constant import TestConstant;
+
 from pypestest.proto.lex.basic import TestWord;
+from pypestest.proto.lex.basic import TestOperator;
 
 from pypes.codecs_ import *;
 from pypes.proto import *;
@@ -37,16 +39,17 @@ class TestPFTEncoder( TestCase, metaclass=object_ ):
     rslt = pft_encode( inst );
     self.assert_( isinstance( rslt, str ) );
     if stri is not None:
+      # print( rslt );
       self.assertStringCrudelyEqual( rslt, stri, stri );
-  
-  
-  def test_handle( self ):
-    
+
+
+  def test_constant( self ):
+
     check = lambda stri, initf: \
-              self.check( stri, initf, TestHandle.logify );
+              self.check( stri, initf, TestConstant.logify );
     
-    check( "42", TestHandle.init_handle_1 );
-    check( "__", TestHandle.init_handle_2 );
+    check( "'Jones'", TestConstant.init_const_1 );
+    check( "'Smith'", TestConstant.init_const_2 );
 
 
   def test_variable( self ):
@@ -56,15 +59,15 @@ class TestPFTEncoder( TestCase, metaclass=object_ ):
     
     check( "x1", TestVariable.init_var_1 );
     check( None, lambda self: Variable() );
+  
+  
+  def test_handle( self ):
     
-    
-  def test_constant( self ):
-
     check = lambda stri, initf: \
-              self.check( stri, initf, TestConstant.logify );
+              self.check( stri, initf, TestHandle.logify );
     
-    check( "'Jones'", TestConstant.init_const_1 );
-    check( "'Smith'", TestConstant.init_const_2 );
+    check( "42", TestHandle.init_handle_1 );
+    check( "__", TestHandle.init_handle_2 );
 
 
   def test_word( self ):
@@ -79,7 +82,16 @@ class TestPFTEncoder( TestCase, metaclass=object_ ):
     check( "|:1|", TestWord.init_word_5 );
     check( "|lemma_p_1:1|", TestWord.init_word_8 );
     check( "||", TestWord.init_word_9 );
-    check( "|lemma:1[ pers=3, num=sg ]|", TestWord.init_word_10 );
+    check( "|lemma:1|[ pers='3', num='sg' ]", TestWord.init_word_10 );
+
+
+  def test_operator( self ):
+
+    check = lambda stri, initf: \
+              self.check( stri, initf, TestOperator.logify );
+
+    check( r"->", TestOperator.init_op_1 );
+    check( r"/\[ pers='3', num='sg' ]", TestOperator.init_op_2 );
 
 
   def test_predication( self ):
@@ -87,9 +99,9 @@ class TestPFTEncoder( TestCase, metaclass=object_ ):
     check = lambda stri, initf: \
               self.check( stri, initf, TestPredication.logify );
     
-    check( "|cat:5|( arg1=x1 )", TestPredication.init_pred_1 );
-    check( "EQUALS( ARG0=x1, ARG1='Jones' )", TestPredication.init_pred_2 );
-    check( "|cat|( arg0=d1 )", TestPredication.init_pred_3 );
+    check( "\ue100 |cat:5|( arg1=x1 )", TestPredication.init_pred_1 );
+    check( "\ue100 EQUALS( ARG0=x1, ARG1='Jones' )", TestPredication.init_pred_2 );
+    check( "\ue100 |cat|( arg0=d1 )", TestPredication.init_pred_3 );
 
 
   def test_quantification( self ):
@@ -97,8 +109,8 @@ class TestPFTEncoder( TestCase, metaclass=object_ ):
     check = lambda stri, initf: \
               self.check( stri, initf, TestQuantification.logify );
     
-    check( "ALL[ pers=3, num=sg ] x1 {} 1", TestQuantification.init_quant_1 );
-    check( "|every| x1 <__> {}", TestQuantification.init_quant_2 );
+    check( "\ue101 ALL[ pers='3', num='sg' ] x1 {} 1", TestQuantification.init_quant_1 );
+    check( "\ue101 |every| x1 <__> {}", TestQuantification.init_quant_2 );
 
 
   def test_modification( self ):
@@ -106,9 +118,9 @@ class TestPFTEncoder( TestCase, metaclass=object_ ):
     check = lambda stri, initf: \
               self.check( stri, initf, TestModification.logify );
     
-    check( "|told:5|( arg1=x1, arg2=x2 ) 1",
+    check( "\ue102 |told:5|( arg1=x1, arg2=x2 ) 1",
            TestModification.init_modification_1 );
-    check( "NECESSARILY() {}",
+    check( "\ue102 NECESSARILY() {}",
            TestModification.init_modification_2 );
 
 
@@ -117,8 +129,8 @@ class TestPFTEncoder( TestCase, metaclass=object_ ):
     check = lambda stri, initf: \
               self.check( stri, initf, TestConnection.logify );
     
-    check( "{} && 1", TestConnection.init_conn_1 );
-    check( "__ |and| {}", TestConnection.init_conn_2 );
+    check( "\ue103 {} && 1", TestConnection.init_conn_1 );
+    check( "\ue103 __ |and| {}", TestConnection.init_conn_2 );
 
 
   def test_constraint( self ):
@@ -126,7 +138,7 @@ class TestPFTEncoder( TestCase, metaclass=object_ ):
     check = lambda stri, initf: \
               self.check( stri, initf, TestConstraint.logify );
     
-    check( "1 >> 2", TestConstraint.init_constr_1 );
+    check( "\ue104 1 ^ 2", TestConstraint.init_constr_1 );
 
 
   def test_protoform( self ):
@@ -134,19 +146,19 @@ class TestPFTEncoder( TestCase, metaclass=object_ ):
     check = lambda stri, initf: \
               self.check( stri, initf, TestProtoForm.logify );
 
-    PF1 = """{ 1: |Every:0| x1 { |man:6|( arg0=x1 ) } 2;
-               3: |a:16| x2 { |woman:18|( arg0=x2 ) } 4;
-               5: |loves:10|( arg1=x1, arg2=x2 );
-               3 >> 5;
-               1 >> 5 }""";
+    PF1 = """{ 1: \ue101 |Every:0| x1 { \ue100 |man:6|( arg0=x1 ) } 2;
+               3: \ue101 |a:16| x2 { \ue100 |woman:18|( arg0=x2 ) } 4;
+               5: \ue100 |loves:10|( arg1=x1, arg2=x2 );
+               \ue104 3 ^ 5;
+               \ue104 1 ^ 5 }""";
 
-    PF2 = """{    |every:0| x1 1 { |lie:32|( arg1=x1 ) };
-               2: { 5: __ /\ __;
-                    6: |witness:6|( arg0=x1 );
-                    7: |say:18|( arg1=x1 ) <3> };
-               4: |she:23| x2 { |she:23|( arg0=x2 ) } { |lie:27|( arg1=x2 ) };
-                  3 >> 4;
-                  1 >> 2 }""";
+    PF2 = """{    \ue101 |every:0| x1 1 { \ue100 |lie:32|( arg1=x1 ) };
+               2: { 5: \ue103 __ /\ __;
+                    6: \ue100 |witness:6|( arg0=x1 );
+                    7: \ue102 |say:18|( arg1=x1 ) <3> };
+               4: \ue101 |she:23| x2 { \ue100 |she:23|( arg0=x2 ) } { \ue100 |lie:27|( arg1=x2 ) };
+                  \ue104 3 ^ 4;
+                  \ue104 1 ^ 2 }""";
     
     check( PF1, TestProtoForm.init_pf_2 );
     check( PF2, TestProtoForm.init_pf_3 );

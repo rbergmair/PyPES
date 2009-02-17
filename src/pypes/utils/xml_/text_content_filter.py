@@ -17,8 +17,8 @@ from pypes.utils.mc import subject;
 class TextContentFilter( xml.sax.handler.ContentHandler, metaclass=subject ):
 
 
-  PRIVATE_LOWER = 0xE000;
-  PRIVATE_UPPER = 0xF8FF;
+  PRIVATE_LOWER = 0xE100;
+  PRIVATE_UPPER = 0xEFFF;
   PRIVATE_MIDDLE = PRIVATE_LOWER + ( (PRIVATE_UPPER-PRIVATE_LOWER) // 2 );
   PRIVATE_RANGE = PRIVATE_MIDDLE - PRIVATE_LOWER;
 

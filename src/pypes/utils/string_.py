@@ -14,8 +14,10 @@ def crude_hashcode( s ):
   i = -1;
     
   for ch in s:
-    if ord( ch ) > 32 and ch.isprintable() and not ch.isspace():
-      md5sum.update( ch.encode() );
+    if not ch.isspace():
+      if ch in { "\ue100", "\ue101", "\ue102", "\ue103", "\ue104" } or \
+         ch.isprintable():
+        md5sum.update( ch.encode() );
 
   return md5sum.digest();
 

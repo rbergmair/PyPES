@@ -19,7 +19,9 @@ from pypestest.proto.form.quantification import TestQuantification;
 
 from pypestest.proto.sig.variable import TestVariable;
 from pypestest.proto.sig.constant import TestConstant;
+
 from pypestest.proto.lex.basic import TestWord;
+from pypestest.proto.lex.basic import TestOperator;
 
 from pypes.proto import ProtoSig;
 
@@ -41,16 +43,16 @@ class TestPFTDecoder( TestCase, metaclass=object_ ):
       chf( self, logifyf( self, inst_, stri ), stri );
 
 
-  def test_handle( self ):
-    
+  def test_constant( self ):
+
     check = lambda stri, chf: self.check(
-                                  stri, chf, TestHandle.logify,
-                                  PFTDecoder.GT_HANDLE
+                                  stri, chf, TestConstant.logify,
+                                  PFTDecoder.GT_CONSTANT
                                 );
     
-    check( "42", TestHandle.check_handle_1 );
-    check( "__", TestHandle.check_handle_2 );
-  
+    check( "'Jones'", TestConstant.check_const_1 );
+    check( "'Smith'", TestConstant.check_const_2 );
+
 
   def test_variable( self ):
 
@@ -62,18 +64,18 @@ class TestPFTDecoder( TestCase, metaclass=object_ ):
     check( "x1", TestVariable.check_var_1 );
 
 
-  def x_test_constant( self ):
-
+  def test_handle( self ):
+    
     check = lambda stri, chf: self.check(
-                                  stri, chf, TestConstant.logify,
-                                  PFTDecoder.GT_CONSTANT
+                                  stri, chf, TestHandle.logify,
+                                  PFTDecoder.GT_HANDLE
                                 );
     
-    check( "'Jones'", TestConstant.check_const_1 );
-    check( "'Smith'", TestConstant.check_const_2 );
+    check( "42", TestHandle.check_handle_1 );
+    check( "__", TestHandle.check_handle_2 );
 
 
-  def x_test_word( self ):
+  def test_word( self ):
     
     check = lambda stri, chf: self.check(
                                   stri, chf, TestWord.logify,
@@ -87,89 +89,99 @@ class TestPFTDecoder( TestCase, metaclass=object_ ):
     check( "|:1|", TestWord.check_word_5 );
     check( "|lemma_p_1:1|", TestWord.check_word_8 );
     check( "||", TestWord.check_word_9 );
-    check( "|lemma:1[ pers=3, num=sg ]|", TestWord.check_word_10 );
+    check( "|lemma:1|[ pers='3', num='sg' ]", TestWord.check_word_10 );
 
 
-  def x_test_predication( self ):
+  def test_operator( self ):
+
+    check = lambda stri, chf: self.check(
+                                  stri, chf, TestOperator.logify,
+                                  PFTDecoder.GT_OPERATOR
+                                );
+
+    check( r"->", TestOperator.check_op_1 );
+    check( r"/\[ pers='3', num='sg' ]", TestOperator.check_op_2 );
+
+
+  def test_predication( self ):
 
     check = lambda stri, chf: self.check(
                                   stri, chf, TestPredication.logify,
                                   PFTDecoder.GT_PREDICATION
                                 );
     
-    check( "|cat:5|( arg1=x1 )", TestPredication.check_pred_1 );
-    check( "EQUALS( ARG0=x1, ARG1='Jones' )", TestPredication.check_pred_2 );
+    check( "\ue100 |cat:5|( arg1=x1 )", TestPredication.check_pred_1 );
+    check( "\ue100 EQUALS( ARG0=x1, ARG1='Jones' )", TestPredication.check_pred_2 );
     
     
-  def x_test_quantification( self ):
+  def test_quantification( self ):
 
     check = lambda stri, chf: self.check(
                                   stri, chf, TestQuantification.logify,
                                   PFTDecoder.GT_QUANTIFICATION
                                 );
     
-    check( "ALL[ pers=3, num=sg ] x1 {} 1", TestQuantification.check_quant_1 );
-    check( "|every| x1 <__> {}", TestQuantification.check_quant_2 );
+    check( "\ue101 ALL[ pers='3', num='sg' ] x1 {} 1", TestQuantification.check_quant_1 );
+    check( "\ue101 |every| x1 <__> {}", TestQuantification.check_quant_2 );
     
     
-  def x_test_modification( self ):
+  def test_modification( self ):
 
     check = lambda stri, chf: self.check(
                                   stri, chf, TestModification.logify,
                                   PFTDecoder.GT_MODIFICATION
                                 );
     
-    check( "|told:5|( arg1=x1, arg2=x2 ) 1",
+    check( "\ue102 |told:5|( arg1=x1, arg2=x2 ) 1",
            TestModification.check_modification_1 );
-    check( "NECESSARILY() {}",
+    check( "\ue102 NECESSARILY() {}",
            TestModification.check_modification_2 );
            
-    check( "|say:18|( arg1=x1 ) <3>", None );
+    check( "\ue102 |say:18|( arg1=x1 ) <3>", None );
 
 
-  def x_test_connection( self ):
+  def test_connection( self ):
     
     check = lambda stri, chf: self.check(
                                   stri, chf, TestConnection.logify,
                                   PFTDecoder.GT_CONNECTION
                                 );
     
-    check( "{} && 1", TestConnection.check_conn_1 );
-    check( "__ |and| {}", TestConnection.check_conn_2 );
+    check( "\ue103 {} && 1", TestConnection.check_conn_1 );
+    check( "\ue103 __ |and| {}", TestConnection.check_conn_2 );
 
 
-  def x_test_constraint( self ):
+  def test_constraint( self ):
 
     check = lambda stri, chf: self.check(
                                   stri, chf, TestConstraint.logify,
                                   PFTDecoder.GT_CONSTRAINT
                                 );
     
-    check( "1 >> 2", TestConstraint.check_constr_1 );
+    check( "\ue104 1 ^ 2", TestConstraint.check_constr_1 );
   
   
-  def x_test_protoform( self ):
+  def test_protoform( self ):
 
     check = lambda stri, chf: self.check(
                                   stri, chf, TestProtoForm.logify,
                                   PFTDecoder.GT_PROTOFORM
                                 );
     
-    PF1 = """{ 1: |Every:0| x1 { |man:6|( arg0=x1 ) } 2;
-               3: |a:16| x2 { |woman:18|( arg0=x2 ) } 4;
-               5: |loves:10|( arg1=x1, arg2=x2 );
-               3 >> 5;
-               1 >> 5 }""";
+    PF1 = """{ 1: \ue101 |Every:0| x1 { \ue100 |man:6|( arg0=x1 ) } 2;
+               3: \ue101 |a:16| x2 { \ue100 |woman:18|( arg0=x2 ) } 4;
+               5: \ue100 |loves:10|( arg1=x1, arg2=x2 );
+               \ue104 3 ^ 5;
+               \ue104 1 ^ 5 }""";
 
-    PF2 = """{    |every:0| x1 1 { |lie:32|( arg1=x1 ) };
-               2: { __ /\ __;
-                    |witness:6|( arg0=x1 );
-                    |say:18|( arg1=x1 ) <3>
-                  };
-               4: |she:23| x2 { |she:23|( arg0=x2 ) }{ |lie:27|( arg1=x2 ) };
-               3 >> 4;
-               1 >> 2 }""";
-    
+    PF2 = """{    \ue101 |every:0| x1 1 { \ue100 |lie:32|( arg1=x1 ) };
+               2: { 5: \ue103 __ /\ __;
+                    6: \ue100 |witness:6|( arg0=x1 );
+                    7: \ue102 |say:18|( arg1=x1 ) <3> };
+               4: \ue101 |she:23| x2 { \ue100 |she:23|( arg0=x2 ) } { \ue100 |lie:27|( arg1=x2 ) };
+                  \ue104 3 ^ 4;
+                  \ue104 1 ^ 2 }""";
+                  
     check( PF1, TestProtoForm.check_pf_2 );
     check( PF2, TestProtoForm.check_pf_3 );
 
@@ -177,15 +189,15 @@ class TestPFTDecoder( TestCase, metaclass=object_ ):
   def x_test_protoform_2( self ):
 
     r_ = pft_decode( """
-             {   3: PROPER_Q[ PERS=3, IND='+', NUM=SG, SF=PROP ] x5 4 6;
+             {   3: PROPER_Q[ PERS='3', IND='+', NUM='SG', SF='PROP' ] x5 4 6;
                  7: NAMED( ARG0=x5, CARG='Abrams' );
-                 8: |intend_v_for[ PERF='-', TENSE=PAST, PROG='-', cto=15, SF=PROP, cfrom=7, MOOD=INDICATIVE ]|( arg0=e2, arg1=x5 ) 9;
-                10: PROPER_Q[ PERS=3, IND='+', NUM=SG, SF=PROP ] x12 11 13;
+                 8: |intend_v_for[ PERF='-', TENSE='PAST', PROG='-', cto='15', SF='PROP', cfrom=7, MOOD='INDICATIVE' ]|( arg0=e2, arg1=x5 ) 9;
+                10: PROPER_Q[ PERS='3', IND='+', NUM='SG', SF='PROP' ] x12 11 13;
                 14: NAMED( ARG0=x12, CARG='Browne' );
-                15: |bark_v_1[ PERF='-', TENSE=UNTENSED, PROG='-', cto=31, SF='PROP-OR-QUES', cfrom=26, MOOD=INDICATIVE ]|( arg0=e16, arg1=x12 );
-                    11 >> 14;
-                    9 >> 15;
-                    4 >> 7 }
+                15: |bark_v_1[ PERF='-', TENSE='UNTENSED', PROG='-', cto='31', SF='PROP-OR-QUES', cfrom='26', MOOD='INDICATIVE' ]|( arg0=e16, arg1=x12 );
+                    11 ^ 14;
+                    9 ^ 15;
+                    4 ^ 7 }
            """, lexicon = pypes.proto.lex.erg
          );
     r = r_( sig=ProtoSig() );
@@ -194,23 +206,23 @@ class TestPFTDecoder( TestCase, metaclass=object_ ):
   def x_test_protoform_3( self ):
     
     r_ = pft_decode( """
-             {   3: |be_v_id[ PERF='-', TENSE=PRES, PROG='-', cto=2, SF=QUES, cfrom=0, MOOD=INDICATIVE ]|( arg0=e2, arg1=x4, arg2=x5 );
-                 6: PROPER_Q[ PERS=3, IND='+', NUM=SG, SF=PROP ] x4 7 8;
+             {   3: |be_v_id[ PERF='-', TENSE='PRES', PROG='-', cto='2', SF='QUES', cfrom='0', MOOD='INDICATIVE' ]|( arg0=e2, arg1=x4, arg2=x5 );
+                 6: PROPER_Q[ PERS='3', IND='+', NUM='SG', SF='PROP' ] x4 7 8;
                  9: NAMED( ARG0=x4, CARG='Pavarotti' );
-                10: |a_q[ PERS=3, NUM=SG, IND='+', cto=14, SF=PROP, cfrom=13 ]| x5 12 11;
-                13: {      |tenor_n_1[ cto=28, cfrom=23 ]|( arg0=x5 );
+                10: |a_q[ PERS='3', NUM='SG', IND='+', cto='14', SF='PROP', cfrom='13' ]| x5 12 11;
+                13: {      |tenor_n_1[ cto='28', cfrom='23' ]|( arg0=x5 );
                            {      <<18>> SUBORD <<17>>;
                                   __ /\ __;
-                                  SUBORD[ PROG='-', PERF='-', TENSE=UNTENSED, SF=PROP, MOOD=INDICATIVE ]( ARG0=e19 ) };
+                                  SUBORD[ PROG='-', PERF='-', TENSE='UNTENSED', SF='PROP', MOOD='INDICATIVE' ]( ARG0=e19 ) };
                            __ /\ __;
-                           |leading_a_1[ cto=22, SF=PROP, cfrom=15 ]|( arg0=e14, arg1=x5 );
+                           |leading_a_1[ cto='22', SF='PROP', cfrom='15' ]|( arg0=e14, arg1=x5 );
                            __ /\ __ };
-                15: |come_v_1[ PERF='-', TENSE=PRES, PROG='-', cto=38, SF=PROP, cfrom=33, MOOD=INDICATIVE ]|( arg0=e16, arg1=x5 );
-                20: |cheap_a_1[ cto=45, TENSE=UNTENSED, SF=PROP, cfrom=39, MOOD=INDICATIVE ]|( arg0=e22, arg1=i21 );
-                    17 >> 20;
-                    18 >> 15;
-                    7 >> 9;
-                    12 >> 13 }
+                15: |come_v_1[ PERF='-', TENSE='PRES', PROG='-', cto='38', SF='PROP', cfrom='33', MOOD='INDICATIVE' ]|( arg0=e16, arg1=x5 );
+                20: |cheap_a_1[ cto='45', TENSE='UNTENSED', SF='PROP', cfrom='39', MOOD='INDICATIVE' ]|( arg0=e22, arg1=i21 );
+                    17 ^ 20;
+                    18 ^ 15;
+                    7 ^ 9;
+                    12 ^ 13 }
            """, lexicon = pypes.proto.lex.erg
          );
     r = r_( sig=ProtoSig() );
