@@ -18,7 +18,7 @@ from pypes.utils.unittest_ import TestCase;
 from pypes.utils.mc import object_;
 
 from pypes.codecs_.mrs import *;
-from pypes.codecs_.pft import *;
+from pypes.codecs_.pft._pft_null_decoder import *;
 
 from pypes.proto import *;
 

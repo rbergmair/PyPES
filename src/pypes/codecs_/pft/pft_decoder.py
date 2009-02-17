@@ -9,7 +9,7 @@ from pypes.proto import *;
 
 import pypes.proto.lex.basic;
 
-from pypes.codecs_.pft._pft_parser_pp import PFTParser;
+from pypes.codecs_.pft._pft_parser_ply import PFTParser;
 
 
 
@@ -32,12 +32,10 @@ class PFTDecoder( PFTParser, metaclass=subject ):
   GT_LEMMATOKS = "lemmatoks";
   GT_OPERATOR = "operator";
   GT_CONSTANT = "constant";
+  
+  
+  def decoder_enter( self ):
 
-
-  def _enter_( self ):
-
-    PFTParser._enter_( self );
-    
     ( lexicon, type_ ) = self._obj_;
     
     if lexicon is None:
@@ -45,11 +43,22 @@ class PFTDecoder( PFTParser, metaclass=subject ):
     else:
       self._lexicon = lexicon;
 
+
+  def _enter_( self ):
+
+    PFTParser._enter_( self );
+    self.decoder_enter();
+
+
+  def decoder_exit( self, exc_type, exc_val, exc_tb ):
+    
+    self._parser = None;
+
       
   def _exit_( self, exc_type, exc_val, exc_tb ):
     
     PFTParser._exit_( self, exc_type, exc_val, exc_tb );
-    self._parser = None;
+    self.decoder_exit( exc_type, exc_val, exc_tb );
 
 
   @classmethod
