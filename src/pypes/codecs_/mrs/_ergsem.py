@@ -14,11 +14,13 @@ from pypes.codecs_.pft._pft_parser import PFTParser;
 
 from pypes.codecs_.mrs._mrs import *;
 
+from pypes.codecs_.mrs import _ergsem_auto;
+
 
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-class MRSInterpreter( metaclass=subject ):
+class MRSInterpreter( _ergsem_auto.MRSInterpreter, metaclass=subject ):
   
   
   @classmethod
