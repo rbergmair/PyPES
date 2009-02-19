@@ -161,7 +161,7 @@ printables = "".join( [ c for c in string.printable if c not in string.whitespac
 
 class ParseBaseException(Exception):
     """base exception class for all parsing runtime exceptions"""
-    __slots__ = ( "loc","msg","pstr","parserElement" )
+    # __slots__ = ( "loc","msg","pstr","parserElement" ) # rb432
     # Performance tuning: we construct a *lot* of these, so keep this
     # constructor as small and fast as possible
     def __init__( self, pstr, loc=0, msg=None, elem=None ):
