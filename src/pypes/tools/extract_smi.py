@@ -15,45 +15,46 @@ def read_sign( sign ):
   
   args = {};
   
-  sqbrexp = re.compile( r"(\{[^\}]*\}|\,|\s|\.)"  );
+  sqbrexp = re.compile( r"(\{[^\}]*\}|\,|\s|\.|\[|\])"  );
   
   one = None;
   two = None;
-  three = None;
+  feats = None;
   
-  read_feats = False;
+  optional = False;
   
-  for substr in sqbrexp.split( sign ):
+  sqbrexp_ = sqbrexp.split( sign );
+  
+  # print( sqbrexp_ );
+  
+  for substr in sqbrexp_:
     
     substr = substr.strip();
     if substr == "":
       continue;
     
-    one = two;
-    two = three;
-    three = substr;
+    # print( substr );
+    
+    if substr == "[":
+      optional = True;
+      continue;
 
-    if substr in { ",", "." }:
-      if not read_feats:
-        args[ one ] = ( two, None );
+    if substr in { ",", ".", "]" }:
+      if not ( one is None and two is None ):
+        args[ one ] = ( optional, two, feats );
         one = None;
         two = None;
-        three = None;
-        read_feats = False;
+        feats = None;
+      if substr == "]":
+        optional = False;
+      continue;
       
-    elif three[0] == "{" and substr[-1] == "}":
-      args[ one ] = ( two, three );
-      one = None;
-      two = None;
-      three = None;
-      read_feats = True;
-
-  if not read_feats:
-    args[ two ] = ( three, None );
-    one = None;
-    two = None;
-    three = None;
-    read_feats = False;
+    if substr[0] == "{" and substr[-1] == "}":
+      feats = substr;
+      continue;
+    
+    one = two;
+    two = substr;
     
   argnames = set( args.keys() );
   
@@ -63,7 +64,7 @@ def read_sign( sign ):
       del args[ argname ];
       continue;
     
-    ( sort, feats_ ) = args[ argname ];
+    ( optional, sort, feats_ ) = args[ argname ];
     
     if feats_ is None:
       continue;
@@ -76,16 +77,18 @@ def read_sign( sign ):
       featval = featval.strip();
       feats[ featname ] = featval;
     
-    args[ argname ] = ( sort, feats );
+    args[ argname ] = ( optional, sort, feats );
   
   return args;
 
 
+
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-def read_ops( f ):
+def read_preds( f ):
   
-  ops = {};
+  poss = {};
+  preds = {};
 
   active = True;
   
@@ -117,25 +120,45 @@ def read_ops( f ):
       
     ( predname, sign ) = line.split( ":" );
     
-    predname = predname.replace( "+", "_" );
-    predname = predname.replace( "-", "_" );
-    
     predname = predname.strip();
     if predname[0] == '"' or predname[-1] == '"':
       assert predname[0] == '"';
       assert predname[-1] == '"';
       predname = predname[1:-1];
+    if predname[0] == "'" or predname[-1] == "'":
+      assert predname[0] == "'";
+      assert predname[-1] == "'";
+      predname = predname[1:-1];
+      
     if predname[0] == "_":
-      continue;
-    assert predname[ -4: ] == "_rel";
-    predname = predname[ :-4 ];
-    predname = predname.upper();
+      x = predname.split( "_" );
+      if len(x) > 2:
+        pos = x[2];
+        if not len(pos) == 1:
+          print( "# " + predname );
+        else:
+          if not x[2] in poss:
+            poss[ x[2] ] = [];
+          if not len( poss[ x[2] ] ) > 10:
+            poss[ x[2] ].append( predname );
+          if pos in { "c", "p", "q", "x" }:
+            predname = ascii( predname )[ 1 : -1 ];
+            sign = read_sign( sign );
+            if predname not in preds:
+              preds[ predname ] = [];
+            preds[ predname ].append( sign );
+          else:
+            assert pos in { "n", "v", "a" };
+    else:
+      predname = ascii( predname )[ 1 : -1 ];
+      sign = read_sign( sign );
+      if predname not in preds:
+        preds[ predname ] = [];
+      preds[ predname ].append( sign );
     
-    sign = read_sign( sign );
-    
-    ops[ predname ] = sign;
+  # pprint.pprint( poss );
   
-  return ops;
+  return preds;
 
 
 
@@ -143,15 +166,34 @@ def read_ops( f ):
 
 def main( argv=None ):
   
-  ops = {};
+  preds = {};
   
   with open( "/local/scratch/rb432/delphin/erg/erg.smi" ) as f:
-    ops.update( read_ops( f ) );
+    preds.update( read_preds( f ) );
   with open( "/local/scratch/rb432/delphin/erg/core.smi" ) as f:
-    ops.update( read_ops( f ) );
+    preds.update( read_preds( f ) );
     
-  # print( len(ops) );
-  pprint.pprint( ops, width=72 );
+  print( """# -*-  coding: ascii -*-  # # # # # # # # # # # # # # # # # # # # # # # # # # #
+
+__package__ = "pypes.codecs_.mrs";
+__all__ = [ "MRSInterpreter" ];
+
+from pypes.utils.mc import subject;
+
+
+
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+
+class MRSInterpreter( metaclass=subject ):
+""");
+  
+  preds_ = pprint.pformat( preds, width=72 );
+  preds_ = preds_[ :-1 ];
+  preds_ = preds_.replace( "\n", "\n     " );
+  preds_ = "  PREDs = " + preds_;
+  preds_ = preds_ + "\n    };";
+  
+  print( preds_ );
 
 
 

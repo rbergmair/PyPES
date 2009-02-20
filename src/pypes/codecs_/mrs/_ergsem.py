@@ -22,7 +22,191 @@ from pypes.codecs_.mrs import _ergsem_auto;
 
 class MRSInterpreter( _ergsem_auto.MRSInterpreter, metaclass=subject ):
   
+
+  def _enter_( self ):
+    
+    for ep in self._obj_.eps:
+      
+      pred = None;
+      if ep.spred is not None:
+        pred = ep.spred;
+      if ep.pred is not None:
+        pred = ep.pred.lower();
+
+      for ( arg, var ) in ep.args.items():
+
+        assert isinstance( var, MRSVariable ) or isinstance( var, MRSConstant );
+        
+        try:
+          if arg == "ARG0":
+            assert var.sid in { "i", "e", "x" };
+          elif arg == "ARG1":
+            assert var.sid in { "u", "i", "p", "e", "x", "h" };
+          elif arg == "ARG2":
+            assert var.sid in { "u", "i", "p", "e", "x", "h" };
+          elif arg == "ARG3":
+            assert var.sid in { "u", "i", "p", "e", "x", "h" };
+          elif arg == "ARG4":
+            assert var.sid == "h";
+          elif arg == "ARG":
+            assert var.sid in { "u", "i", "p", "e", "x", "h" };
+          elif arg == "CARG":
+            assert isinstance( var, MRSConstant );
+          elif arg == "MARG":
+            assert var.sid == "h";
+          elif arg == "RSTR":
+            assert var.sid == "h";
+          elif arg == "BODY":
+            assert var.sid == "h";
+          elif arg == "L-HNDL":
+            assert var.sid == "h";
+            # assert var.sid in { "u", "i", "p", "e", "x", "h" };
+          elif arg == "L-INDEX":
+            assert var.sid in { "i", "e", "x" };
+          elif arg == "R-HNDL":
+            assert var.sid == "h";
+            # assert var.sid in { "u", "i", "p", "e", "x", "h" };
+          elif arg == "R-INDEX":
+            assert var.sid in { "i", "e", "x" };
+          elif arg == "PSV":
+            assert var.sid in { "u", "i", "p", "e", "x", "h" };
+          elif arg == "TPC":
+            assert var.sid in { "u", "i", "p", "e", "x", "h" };
+          else:
+            assert False;
+        except:
+          print( arg );
+          print( var );
+          raise;
+        
+        if isinstance( var, MRSConstant ):
+          continue;
+        
+        for ( feat, val ) in var.feats.items():
+          
+          val = val.lower();
+          
+          try:
+            if feat == "DIV":
+              assert val in { "+", "-" };
+            elif feat == "IND":
+              assert val in { "+", "-" };
+            elif feat == "PERF":
+              assert val in { "+", "-" };
+            elif feat == "PROG":
+              assert val in { "+", "-" };
+            elif feat == "MOOD":
+              assert val in { "subjunctive", "indicative" };
+            elif feat == "TENSE":
+              assert val in { "past", "pres", "fut", "tensed", "untensed" };
+            elif feat == "GEND":
+              assert val in { "m", "f", "n", "m-or-f" };
+            elif feat == "PERS":
+              assert val in { "1", "2", "3" };
+            elif feat == "NUM":
+              assert val in { "sg", "pl" };
+            elif feat == "PRONTYPE":
+              assert val in { "refl", "std_pron", "zero_pron" };
+            elif feat == "SF":
+              assert val in { "prop", "ques", "comm", "prop-or-ques" };
+            else:
+              assert False;
+          except:
+            print( feat );
+            print( val );
+            raise;
+      
+      if not pred in self.PREDs:
+        return;
+        
+      found = False;
+      
+      for sign in self.PREDs[ pred ]:
+
+        try:
+          
+          matched = set();
+          
+          for ( arg, val ) in sign.items():
   
+            ( optional, sort, feats ) = val;
+            
+            if not arg in ep.args:
+              assert optional;
+              
+            var = ep.args[ arg ];
+            matched.add( arg );
+            
+            if sort == "u":
+              assert var.sid in { "u", "i", "p", "e", "x", "h" };
+            elif sort == "i":
+              assert var.sid in { "i", "e", "x" };
+            elif sort == "p":
+              assert var.sid in { "p", "x", "h" };
+            elif sort == "e":
+              assert var.sid == "e";
+            elif sort == "x":
+              assert var.sid == "x";
+            elif sort == "h":
+              assert var.sid == "h";
+            
+            if feats is None:
+              continue;
+            
+            for (feat,val) in feats.items():
+              
+              val = val.lower();
+              
+              assert feat in var.feats;
+              val_ = var.feats[ feat ];
+              val_ = val_.lower();
+
+              if feat == "TENSE":
+                
+                if val == "tensed":
+                  assert val_ in { "tensed", "past", "pres", "fut" };
+                else:
+                  assert val == val_;
+                
+              elif feat == "GEND":
+                
+                if val == "m-or-f":
+                  assert val_ in { "m-or-f", "m", "f" };
+                else:
+                  assert val == val_;
+                
+              elif feat == "SF":
+                
+                if val == "prop-or-ques":
+                  assert val_ in { "prop-or-ques", "prop", "ques" };
+                else:
+                  assert val == val_;
+                
+              else:
+                
+                assert val == val_;
+          
+          # TODO: check this
+          if pred not in { "_and_c_rel" }:
+            epargs = len( ep.args );
+            if "CARG" in ep.args:
+              epargs -= 1;
+            assert epargs <= len( matched );
+          
+        except AssertionError:
+          pass;
+        
+        else:
+          found = True;
+      
+      try:
+        assert found;
+      except:
+        print( ep );
+        print( self.PREDs[ pred ] );
+        raise;
+  
+
   @classmethod
   def _freeze( cls, hid, lvl ):
     
@@ -56,6 +240,17 @@ class MRSInterpreter( _ergsem_auto.MRSInterpreter, metaclass=subject ):
 
 
   @classmethod
+  def _make_alphanum( cls, stri ):
+
+    stri_ = "";
+    
+    for ch in stri:
+      if ch in PFTParser.ALPHANUM:
+        stri_ += ch;
+    return stri_;
+
+
+  @classmethod
   def _predstr_to_operator( cls, pred ):
     
       if pred[0] == "_":
@@ -82,8 +277,13 @@ class MRSInterpreter( _ergsem_auto.MRSInterpreter, metaclass=subject ):
     sense = None;
     if len(toks) > 1 and toks[1] != "":
       pos = toks[1];
+      pos = cls._make_alphanum( pos );
     if len(toks) > 2 and toks[2] != "":
       sense = toks[2];
+      sense = cls._make_alphanum( sense );
+    
+    if len( feats ) == 0:
+      feats = None;
     
     return Word(
                lemma = lemmatoks,
@@ -121,9 +321,9 @@ class MRSInterpreter( _ergsem_auto.MRSInterpreter, metaclass=subject ):
       feats = {};
     
     if ep.cfrom is not None and ep.cfrom != "" and ep.cfrom != "-1":
-      feats[ "cfrom" ] = int( ep.cfrom );
+      feats[ "cfrom" ] = ep.cfrom;
     if ep.cto is not None and ep.cto != "" and ep.cto != "-1":
-      feats[ "cto" ] = int( ep.cto );
+      feats[ "cto" ] = ep.cto;
     
     return feats;
 

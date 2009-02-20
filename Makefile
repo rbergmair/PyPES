@@ -2,6 +2,7 @@ FIND=find
 RM=rm -f
 GREP=grep
 CAT=cat
+BASH=bash
 
 all:
 
@@ -17,6 +18,6 @@ cleandta:
   
 loc:
 	$(FIND) src -name "*.py" -exec $(GREP) -H --count -e "" {} \;
-	$(FIND) src -name "*.py" -exec $(CAT) {} \; | $(GREP) -e "" --count
+	$(FIND) src -name "*.py" | $(GREP) -v "_auto.py" | $(BASH) -c 'while read VAL; do $(CAT) $$VAL; done;' | $(GREP) -e "" --count
 
 .PHONY: all clean cleanpyc cleandta loc

@@ -117,7 +117,11 @@ class PFTEncoder( metaclass=subject ):
   def _fmt_word( cls, stri ):
     
     r = cls.re_word.match( stri );
-    assert r is not None;
+    try:
+      assert r is not None;
+    except:
+      print( stri );
+      raise;
     
     return stri;
 
@@ -163,8 +167,11 @@ class PFTEncoder( metaclass=subject ):
     if feats:
       rslt += "["
       for feat in feats:
+        brc = repr( feats[feat] );
+        if brc[0] != "'":
+          brc = "'"+brc+"'";
         rslt += " " + self._fmt_identifier( feat ) + "=" + \
-                repr( feats[feat] ) + ",";
+                brc + ",";
       rslt = rslt[ :-1 ];
       rslt += " ]";
     

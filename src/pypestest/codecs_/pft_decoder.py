@@ -1,4 +1,4 @@
-# -*-  coding: ascii -*-  # # # # # # # # # # # # # # # # # # # # # # # # # # #
+# -*-  coding: utf-8 -*-  # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 __package__ = "pypestest.codecs_";
 __all__ = [ "TestPFTDecoder", "suite", "main" ];
@@ -184,20 +184,29 @@ class TestPFTDecoder( TestCase, metaclass=object_ ):
                   
     check( PF1, TestProtoForm.check_pf_2 );
     check( PF2, TestProtoForm.check_pf_3 );
-
-
-  def x_test_protoform_2( self ):
+    
+    
+  def test_protoform_2( self ):
 
     r_ = pft_decode( """
-             {   3: PROPER_Q[ PERS='3', IND='+', NUM='SG', SF='PROP' ] x5 4 6;
-                 7: NAMED( ARG0=x5, CARG='Abrams' );
-                 8: |intend_v_for[ PERF='-', TENSE='PAST', PROG='-', cto='15', SF='PROP', cfrom=7, MOOD='INDICATIVE' ]|( arg0=e2, arg1=x5 ) 9;
-                10: PROPER_Q[ PERS='3', IND='+', NUM='SG', SF='PROP' ] x12 11 13;
-                14: NAMED( ARG0=x12, CARG='Browne' );
-                15: |bark_v_1[ PERF='-', TENSE='UNTENSED', PROG='-', cto='31', SF='PROP-OR-QUES', cfrom='26', MOOD='INDICATIVE' ]|( arg0=e16, arg1=x12 );
-                    11 ^ 14;
-                    9 ^ 15;
-                    4 ^ 7 }
+          {   3: {  CARD[ SF='PROP' ]( ARG0=e8, ARG1=x4, CARG='2' );
+                    __ /\ __;
+                    __ /\ __;
+                    __ /\ __;
+                    |be_v_id|[ PROG='-', SF='PROP', TENSE='PRES', MOOD='INDICATIVE', PERF='-' ]( arg0=e21, arg1=x18, arg2=x4 );
+                    GENERIC_ENTITY( ARG0=x4 );
+                    |out+of_p|[ TENSE='UNTENSED', SF='PROP', MOOD='INDICATIVE' ]( arg0=e9, arg1=x4, arg2=x10 ) };
+              5:  UDEF_Q[ PERS='3', NUM='PL' ] x4 6 7;
+             11:  NUMBER_Q[ PERS='3', NUM='SG' ] x10 12 13;
+             14:  CARD( ARG0=x10, ARG1=i15, CARG='10' );
+             16:  UDEF_Q[ PERS='3', IND='+', NUM='PL' ] x18 17 19;
+             20:  |machine_n_1|( arg0=x18 );
+             22: {  |mis_a_1|[ cto='35', cfrom='28' ]( arg0=i24, arg1=e2 );
+                    __ /\ __;
+                    |sing_v_1|[ PROG='-', SF='PROP', TENSE='PRES', MOOD='INDICATIVE', PERF='-' ]( arg0=e2, arg1=x4, arg2=p23 ) };
+                  17 ^ 20;
+                  12 ^ 14;
+                  6 ^ 3 }    
            """, lexicon = pypes.proto.lex.erg
          );
     r = r_( sig=ProtoSig() );

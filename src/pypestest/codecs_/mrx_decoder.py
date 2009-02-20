@@ -8,14 +8,18 @@ import os;
 import unittest;
 
 import gzip;
+import codecs;
 
 from pypes.utils.unittest_ import TestCase;
 from pypes.utils.mc import object_;
 
 from pypes.codecs_ import mrx_decode, MRXDecoder;
+from pypes.codecs_ import PFTDecoder;
 from pypes.codecs_ import pft_encode;
 
 from pypes.proto import *;
+
+import pypes.proto.lex.erg;
 
 
 
@@ -26,52 +30,111 @@ class TestMRXDecoder( TestCase, metaclass=object_ ):
   _TESTMRSDIR = "dta/native";
   
   
-  def doteston( self, filename ):
+  def write_testfiles( self, filename, decoder=None ):
 
     try:
       f = gzip.open( filename );
+      g = open( filename.replace( ".mrs.xml.gz", ".pft" ), "wt" );
       try:
         print( filename );
         r = mrx_decode( f, MRXDecoder.SEM_ERG )( sig=ProtoSig() );
+        r_ = pft_encode( r );
+        g.write( r_ );
+        g.write( "\n" );
         print();
         print();
-        print( pft_encode( r ) );
+        print( r_ );
         print();
         print();
       finally:
         f.close();
+        g.close();
     except IOError:
       pass;
+  
+  
+  def doteston( self, filename, decoder ):
+
+    try:
+      
+      f = gzip.open( filename );
+      try:
+        
+        try:
+          
+          g_ = gzip.open( filename.replace( ".mrs.xml.gz", ".pft.gz" ) );
+          try:
+            
+            r = None;
+            gstr = None;
+            r_ = None;
+            
+            try:
+              
+              cdc = codecs.getreader( "utf-8" );
+              g = cdc( g_ );
+              
+              print( filename );
+              
+              r = mrx_decode( f, MRXDecoder.SEM_ERG )( sig=ProtoSig() );
+              
+              gstr = g.read();
+              r_ = decoder.decode( gstr )( sig=ProtoSig() );
     
+              self.assertEquals_( r, r_, filename );
+              
+              g.close();
+            
+            except:
+
+              print( pft_encode( r ) );
+              print( gstr );
+              print( pft_encode( r_ ) );
+              raise;
+    
+          finally:
+            g_.close();
+          
+        except IOError:
+          pass;
+      
+      finally:
+        f.close();
+    
+    except IOError:
+      pass;
+
   
   def test_mrxdecoder( self ):
 
-    #for i in { 324 }:
-    for i in range( 1, 326 ):
+    with PFTDecoder( (pypes.proto.lex.erg,None) ) as decoder:
+  
+      #for i in { 324 }:
+      for i in range( 1, 550 ):
+        
+        # numbers
+        if i in { 334 }:
+          continue;
+        # strange connectives
+        #if i in { 26, 175, 247, 248, 321 }:
+        #  continue;
+        
+        self.doteston( "{0}/fracas-new-{1}.mrs.xml.gz".format( self._TESTMRSDIR, i ), decoder );
       
-      # numbers
-      if i in {}:
-        continue;
-      # strange connectives
-      #if i in { 26, 175, 247, 248, 321 }:
-      #  continue;
+      #return;
       
-      self.doteston( "{0}/fracas-{1}.mrs.xml.gz".format( self._TESTMRSDIR, i ) );
-    
-    #return;
-    
-    for i in range( 1, 108 ):
-      
-      # numbers
-      if i in { 63, 64 }:
-        continue;
-      # strange connectives
-      #if i in { 72 }:
-      #  continue;
-      
-      self.doteston( "{0}/mrs-{1}1.mrs.xml.gz".format( self._TESTMRSDIR, i ) );
-      #if i == 10:
-      #  return;
+      for i in range( 1, 108 ):
+        
+        # numbers
+        if i in { 63, 64 }:
+          continue;
+        # strange connectives
+        #if i in { 72 }:
+        #  continue;
+        
+        self.doteston( "{0}/mrs-{1}1.mrs.xml.gz".format( self._TESTMRSDIR, i ), decoder );
+        #if i == 10:
+        #  return;
 
 
 

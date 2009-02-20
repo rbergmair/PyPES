@@ -154,7 +154,10 @@ class PFTParser( PFTLexer, metaclass=subject ):
   
   def parse( self, item ):
     
-    return self._parser.parse( item, lexer = self._lexer );
+    if isinstance( item, str ):
+      return self._parser.parse( item, lexer = self._lexer );
+    else:
+      return self._parser.parse( item.read(), lexer = self._lexer );
   
 
   def decode( self, item ):

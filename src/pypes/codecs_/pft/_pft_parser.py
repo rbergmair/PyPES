@@ -107,7 +107,7 @@ class PFTParser( metaclass=subject ):
     for tok in cls._re_subtok_word.split( word ):
       if tok != "":
         if cls._re_quoted.match( tok ) is not None:
-          rslt.append( cls._decode_quoted( tok ) );
+          rslt.append( cls._decode_quoted( [ tok ] ) );
         else:
           rslt.append( tok );
     return rslt;

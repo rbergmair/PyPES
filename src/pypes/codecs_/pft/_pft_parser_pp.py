@@ -215,7 +215,10 @@ class PFTParser( _pft_parser.PFTParser, metaclass=subject ):
   
   def parse( self, item ):
     
-    rslt = self.start.parseString( item );
+    if isinstance( item, str ):
+      rslt = self.start.parseString( item );
+    else:
+      rslt = self.start.parseFile( item );
     assert len( rslt ) == 1;
     return rslt[0];
   
