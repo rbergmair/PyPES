@@ -171,16 +171,16 @@ class TestPFTDecoder( TestCase, metaclass=object_ ):
     PF1 = """{ 1: \ue101 |Every:0| x1 { \ue100 |man:6|( arg0=x1 ) } 2;
                3: \ue101 |a:16| x2 { \ue100 |woman:18|( arg0=x2 ) } 4;
                5: \ue100 |loves:10|( arg1=x1, arg2=x2 );
-               \ue104 3 ^ 5;
-               \ue104 1 ^ 5 }""";
+               \ue104 1 ^ 5;
+               \ue104 3 ^ 5 }""";
 
     PF2 = """{    \ue101 |every:0| x1 1 { \ue100 |lie:32|( arg1=x1 ) };
                2: { 5: \ue103 __ /\ __;
                     6: \ue100 |witness:6|( arg0=x1 );
                     7: \ue102 |say:18|( arg1=x1 ) <3> };
                4: \ue101 |she:23| x2 { \ue100 |she:23|( arg0=x2 ) } { \ue100 |lie:27|( arg1=x2 ) };
-                  \ue104 3 ^ 4;
-                  \ue104 1 ^ 2 }""";
+                  \ue104 1 ^ 2;
+                  \ue104 3 ^ 4 }""";
                   
     check( PF1, TestProtoForm.check_pf_2 );
     check( PF2, TestProtoForm.check_pf_3 );

@@ -209,28 +209,31 @@ class PFTEncoder( metaclass=subject ):
     return rslt;
   
   
-  def _encode_argslist( self, predmod, args ):
+  def _encode_argslist( self, predmod, args_ ):
     
     if hasattr( predmod, "_sos_" ) and Argument in predmod._sos_:
       assigned_aids = predmod._sos_[ Argument ].keys();
     else:
       assigned_aids = set();
     
+    args = [];
     aid = 0;
     
+    for (arg,var) in args_.items():
+      if arg.aid is None:
+        while argseq(aid) in assigned_aids:
+          aid += 1;
+        args.append( ( argseq(aid), arg, var ) );
+        aid += 1;
+      else:
+        args.append( ( arg.aid, arg, var ) );
+
     rslt = "(";
     
     if args:
       rslt += " ";
-      for arg in args:
-        var = args[ arg ];
-        if arg.aid is None:
-          while argseq(aid) in assigned_aids:
-            aid += 1;
-          rslt += self._fmt_identifier( argseq(aid) );
-          aid += 1;
-        else:
-          rslt += self._fmt_identifier( arg.aid );
+      for (aid,arg,var) in sorted( args ):
+        rslt += self._fmt_identifier( aid );
         rslt += "=" + self._encode( var );
         rslt += ", ";
       rslt = rslt[ :-2 ];
@@ -296,7 +299,7 @@ class PFTEncoder( metaclass=subject ):
     rslt = "{";
     
     labeled = False;
-    for handle in inst.subforms:
+    for ( handle, subf ) in inst.subforms:
       if handle.hid is not None:
         labeled = True;
         break;
@@ -304,20 +307,11 @@ class PFTEncoder( metaclass=subject ):
     if inst.subforms or inst.constraints:
       rslt += " ";
       
-      roots = set();
-      for key in inst.subforms:
-        if key.hid is not None:
-          roots.add( ( int(key.hid), key ) );
-        else:
-          roots.add( ( 0, key ) );
-      
-      for ( hid_, root ) in sorted( roots ):
-        subform = inst.subforms[ root ];
+      for ( root, subform ) in inst.subforms:
         if root.hid is not None:
           rslt += self._encode( root ).rjust(3) + ": ";
-        else:
-          if labeled:
-            rslt += "     ";
+        elif labeled:
+          rslt += "     ";
         rslt += self._encode( subform ) + "; ";
       for constraint in inst.constraints:
         rslt += "     " + self._encode( constraint ) + "; ";

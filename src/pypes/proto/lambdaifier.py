@@ -48,12 +48,10 @@ class Lambdaifier( metaclass=subject ):
     
     if isinstance( obj, ProtoForm ):
       
-      for handle in obj.subforms:
+      for ( handle, subform ) in obj.subforms:
         
-        assert isinstance( handle, Handle );
         self._collect_index( handle );
-        
-        self._collect_index( obj.subforms[handle] );
+        self._collect_index( subform );
         
       for constraint in obj.constraints:
         
@@ -61,10 +59,7 @@ class Lambdaifier( metaclass=subject ):
     
     elif isinstance( obj, Constraint ):
       
-      assert isinstance( obj.harg, Handle );
       self._collect_index( obj.harg );
-      
-      assert isinstance( obj.larg, Handle );
       self._collect_index( obj.larg );
         
     elif isinstance( obj, Handle ):
@@ -308,13 +303,12 @@ class Lambdaifier( metaclass=subject ):
     
     elif isinstance( obj, ProtoForm ):
       
-      subforms = {};
-      for hndl in obj.subforms:
-        subforms[ self._lambdaify( hndl ) ] = \
-          self._lambdaify( obj.subforms[hndl] );
-      constraints = set();
+      subforms = [];
+      for ( hndl, subf ) in obj.subforms:
+        subforms.append( ( self._lambdaify( hndl ),  self._lambdaify( subf ) ) );
+      constraints = [];
       for cons in obj.constraints:
-        constraints.add( self._lambdaify(cons) );
+        constraints.append( self._lambdaify(cons) );
       
       return obj.__class__( subforms=subforms, constraints=constraints );
     

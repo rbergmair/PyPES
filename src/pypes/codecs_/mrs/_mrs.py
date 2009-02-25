@@ -88,8 +88,8 @@ class MRS( metaclass=object_ ):
   
   def __init__( self ):
     
-    self.eps = set();
-    self.cons = set();
+    self.eps = [];
+    self.cons = [];
   
   def __str__( self ):
     

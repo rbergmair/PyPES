@@ -295,9 +295,11 @@ class MRSHandler( XMLElementHandler, metaclass=subject ):
   def handle( self, obj ):
     
     if isinstance( obj, MRSElementaryPredication ):
-      self._obj_.eps.add( obj );
+      if not obj in self._obj_.eps:
+        self._obj_.eps.append( obj );
     elif isinstance( obj, MRSConstraint ):
-      self._obj_.cons.add( obj );
+      if not obj in self._obj_.cons:
+        self._obj_.cons.append( obj );
 
 
 

@@ -133,6 +133,7 @@ class MRSInterpreter( _ergsem_auto.MRSInterpreter, metaclass=subject ):
             
             if not arg in ep.args:
               assert optional;
+              continue;
               
             var = ep.args[ arg ];
             matched.add( arg );
@@ -187,7 +188,7 @@ class MRSInterpreter( _ergsem_auto.MRSInterpreter, metaclass=subject ):
                 assert val == val_;
           
           # TODO: check this
-          if pred not in { "_and_c_rel" }:
+          if pred not in { "_and_c_rel", "_and+so_c_rel" }:
             epargs = len( ep.args );
             if "CARG" in ep.args:
               epargs -= 1;
@@ -218,8 +219,8 @@ class MRSInterpreter( _ergsem_auto.MRSInterpreter, metaclass=subject ):
 
   def _resolve_hole( self, hid, lvl ):
     
-    if hid in self._eps_by_lids:
-      return self._eps_to_pf( self._eps_by_lids[ hid ], lvl, wrap_single=True );
+    if hid in self._eps_by_lid:
+      return self._eps_to_pf( self._eps_by_lid[ hid ], lvl, wrap_single=True );
     return self._freeze( hid, lvl );
 
 
@@ -497,20 +498,20 @@ class MRSInterpreter( _ergsem_auto.MRSInterpreter, metaclass=subject ):
     pred = self._predep_to_subform( ep, lvl+1 );
     
     return ProtoForm(
-               subforms = {
-                   Handle():
-                     Connection(
-                         connective = Connective(
-                                          referent = Operator(
-                                                         otype = Operator.OP_C_WEACON
-                                                       )
-                                        ),
-                         lscope = Handle(),
-                         rscope = Handle(),
-                       ),
-                   Handle(): conn,
-                   Handle(): pred
-                 }
+               subforms = [
+                   ( Handle(), conn ),
+                   ( Handle(),
+                       Connection(
+                           connective = Connective(
+                                            referent = Operator(
+                                                           otype = Operator.OP_C_WEACON
+                                                         )
+                                          ),
+                           lscope = Handle(),
+                           rscope = Handle(),
+                         ) ),
+                   ( Handle(), pred )
+                 ]
              );
 
 
@@ -600,53 +601,59 @@ class MRSInterpreter( _ergsem_auto.MRSInterpreter, metaclass=subject ):
       ep = eps.pop();
       subf = self._ep_to_subform( ep, lvl );
       if wrap_single:
-        return ProtoForm( subforms = { Handle() : subf } );
+        return ProtoForm( subforms = [ ( Handle(), subf ) ] );
       else:
         return subf;
       
-    subforms = {};
+    subforms = [];
     
-    for i in range( 0, len( eps )-1 ):
-      subforms[ Handle() ] = \
-        Connection(
-            connective = Connective(
-                             referent = Operator(
-                                            otype = Operator.OP_C_WEACON
-                                          )
-                           ),
-            lscope = Handle(),
-            rscope = Handle()
-          );
-        
     for ep in eps:
-      subforms[ Handle() ] = self._ep_to_subform( ep, 1 );
+      subforms.append( ( Handle(), self._ep_to_subform( ep, 1 ) ) );
+      subforms.append( ( Handle(),
+          Connection(
+              connective = Connective(
+                               referent = Operator(
+                                              otype = Operator.OP_C_WEACON
+                                            )
+                             ),
+              lscope = Handle(),
+              rscope = Handle()
+            )
+        ) );
+    
+    subforms = subforms[ :-1 ];
       
     return ProtoForm( subforms=subforms );
     
 
   def mrs_to_pf( self ):
     
-    subforms = {};
-    constraints = set();
+    subforms = [];
+    constraints = [];
     
-    self._eps_by_lids = {};
+    lids = [];
+    self._eps_by_lid = {};
     self._hids = set();
     
     for ep in self._obj_.eps:
-      if not ep.lid in self._eps_by_lids:
-        self._eps_by_lids[ ep.lid ] = set();
-      self._eps_by_lids[ ep.lid ].add( ep );
+      if not ep.lid in lids:
+        lids.append( ep.lid );
+      if not ep.lid in self._eps_by_lid:
+        self._eps_by_lid[ ep.lid ] = [];
+      # if not ep in self._eps_by_lid[ ep.lid ]:
+      self._eps_by_lid[ ep.lid ].append( ep );
       for var in ep.args.values():
         if isinstance( var, MRSVariable ):
           if var.sid == "h":
             self._hids.add( var.vid );
 
-    for (lid,eps) in self._eps_by_lids.items():
+    for lid in lids:
+      eps = self._eps_by_lid[ lid ];
       if not lid in self._hids:
-        subforms[ Handle( hid=lid ) ] = self._eps_to_pf( eps, 0 );
+        subforms.append( ( Handle( hid=lid ), self._eps_to_pf( eps, 0 ) ) );
     
     for cons in self._obj_.cons:
-      constraints.add( self._cons_to_constraint( cons ) );
+      constraints.append( self._cons_to_constraint( cons ) );
     
     return ProtoForm( subforms=subforms, constraints=constraints );
 

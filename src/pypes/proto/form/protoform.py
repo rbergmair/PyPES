@@ -25,23 +25,23 @@ class ProtoForm( ScopeBearer, metaclass=kls ):
   
   def _init_init_( self ):
     
-    self.subforms = {};
-    self.constraints = set();
+    self.subforms = [];
+    self.constraints = [];
     
   
   def __init__( self, sig, subforms=None, constraints=None ):
     
     if subforms is not None:
       
-      for root_ in subforms:
+      for ( root_, subform_ ) in subforms:
         
         root = root_( sig=sig );
         assert isinstance( root, Handle );
         
-        subform = subforms[ root_ ]( sig=sig );
+        subform = subform_( sig=sig );
         assert isinstance( subform, SubForm ) or isinstance( subform, ProtoForm );
         
-        self.subforms[ root ] = subform;
+        self.subforms.append( (root,subform) );
         
     if constraints is not None:    
       
@@ -50,7 +50,7 @@ class ProtoForm( ScopeBearer, metaclass=kls ):
         constraint = constraint_( sig=sig );
         assert isinstance( constraint, Constraint );
         
-        self.constraints.add( constraint );
+        self.constraints.append( constraint );
   
   
   def __le__( self, obj ):
@@ -58,9 +58,9 @@ class ProtoForm( ScopeBearer, metaclass=kls ):
     if not isinstance( obj, ProtoForm ):
       return False;
     
-    for (root,subform) in self.subforms.items():
+    for (root,subform) in self.subforms:
       found = False;
-      for (root_,subform_) in obj.subforms.items():
+      for (root_,subform_) in obj.subforms:
         if root <= root_ and root_ <= root and subform <= subform_:
           found = True;
           break;

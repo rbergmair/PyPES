@@ -46,65 +46,52 @@ class TestProtoForm( TestCase, metaclass=object_ ):
   def init_pf_2( self ):
     
     inst_ = ProtoForm(
-                subforms = { Handle( hid=1 ):
-                               Quantification(
-                                   quantifier = Quantifier( referent = Word( wid=0, lemma = ["Every"] ) ),
-                                   var = Variable( sidvid=("x",1) ),
-                                   rstr = ProtoForm(
-                                              subforms = { Handle():
-                                                             Predication( predicate = Predicate( referent = Word( wid=6, lemma = ["man"] ) ),
-                                                                          args = { Argument( aid="arg0" ): Variable( sidvid=("x",1) ) } ),
-                                                         }
-                                            ),
-                                   body = Handle( hid=2 )
-                                 ),
-                             Handle( hid=3 ):
-                               Quantification(
-                                   quantifier = Quantifier( referent = Word( wid=16, lemma = ["a"] ) ),
-                                   var = Variable( sidvid=("x",2) ),
-                                   rstr = ProtoForm(
-                                              subforms = { Handle():
-                                                             Predication( predicate = Predicate( referent = Word( wid=18, lemma = ["woman"] ) ),
-                                                                          args = { Argument( aid="arg0" ): Variable( sidvid=("x",2) ) } ),
-                                                         }
-                                            ),
-                                   body = Handle( hid=4 )
-                                 ),
-                             Handle( hid=5 ):
-                               Predication(
-                                   predicate = Predicate( referent = Word( wid=10, lemma = ["loves"] ) ),
-                                   args = { Argument( aid="arg1" ): Variable( sidvid=("x",1) ),
-                                            Argument( aid="arg2" ): Variable( sidvid=("x",2) )
-                                          }
-                                 )
-                           },
-                constraints = { Constraint( harg = Handle( hid=1 ), larg = Handle( hid=5 ) ),
+                subforms = [ ( Handle( hid=1 ),
+                                 Quantification(
+                                     quantifier = Quantifier( referent = Word( wid=0, lemma = ["Every"] ) ),
+                                     var = Variable( sidvid=("x",1) ),
+                                     rstr = ProtoForm(
+                                                subforms = [ ( Handle(),
+                                                                 Predication( predicate = Predicate( referent = Word( wid=6, lemma = ["man"] ) ),
+                                                                              args = { Argument( aid="arg0" ): Variable( sidvid=("x",1) ) } ) ),
+                                                           ]
+                                              ),
+                                     body = Handle( hid=2 )
+                                   ) ),
+                             ( Handle( hid=3 ),
+                                 Quantification(
+                                     quantifier = Quantifier( referent = Word( wid=16, lemma = ["a"] ) ),
+                                     var = Variable( sidvid=("x",2) ),
+                                     rstr = ProtoForm(
+                                                subforms = [ ( Handle(),
+                                                                 Predication( predicate = Predicate( referent = Word( wid=18, lemma = ["woman"] ) ),
+                                                                              args = { Argument( aid="arg0" ): Variable( sidvid=("x",2) ) } ) )
+                                                           ]
+                                              ),
+                                     body = Handle( hid=4 )
+                                   ) ),
+                             ( Handle( hid=5 ),
+                                 Predication(
+                                     predicate = Predicate( referent = Word( wid=10, lemma = ["loves"] ) ),
+                                     args = { Argument( aid="arg1" ): Variable( sidvid=("x",1) ),
+                                              Argument( aid="arg2" ): Variable( sidvid=("x",2) )
+                                            }
+                                   ) )
+                           ],
+                constraints = [ Constraint( harg = Handle( hid=1 ), larg = Handle( hid=5 ) ),
                                 Constraint( harg = Handle( hid=3 ), larg = Handle( hid=5 ) )
-                              }
+                              ]
               );
     
     return inst_;
       
   def check_pf_2( self, inst, msg=None ):
     
-    subforms = {};
+    self.assertEquals( len( inst.subforms ), 3, msg );
     
-    for root in inst.subforms:
-      
-      subform = inst.subforms[ root ];
-      
-      if isinstance( subform, Quantification ):
-        subforms[ subform.quantifier.referent.wid ] = ( root, subform );
-      elif isinstance( subform, Predication ):
-        subforms[ subform.predicate.referent.wid ] = ( root, subform );
-      else:
-        self.fail();
-    
-    self.assertEquals( len(subforms), 3, msg );
-    
-    (h1,sf1) = subforms[ 0 ];
-    (h3,sf3) = subforms[ 16 ];
-    (h5,sf5) = subforms[ 10 ];
+    (h1,sf1) = inst.subforms[ 0 ];
+    (h3,sf3) = inst.subforms[ 1 ];
+    (h5,sf5) = inst.subforms[ 2 ];
     
     self.assert_( isinstance( h1, Handle ), msg );
     
@@ -124,9 +111,7 @@ class TestProtoForm( TestCase, metaclass=object_ ):
     self.assert_( isinstance( sf1.rstr, ProtoForm ), msg );
     self.assertEquals( len(sf1.rstr.subforms), 1, msg );
     
-    (h_,sf_) = (None,None)
-    for (x,y) in sf1.rstr.subforms.items():
-      (h_,sf_) = (x,y);
+    (h_,sf_) = sf1.rstr.subforms[ 0 ];
       
     self.assert_( isinstance( h_, Handle ), msg );
     
@@ -164,9 +149,7 @@ class TestProtoForm( TestCase, metaclass=object_ ):
     self.assert_( isinstance( sf3.rstr, ProtoForm ), msg );
     self.assertEquals( len(sf3.rstr.subforms), 1, msg );
 
-    (h__,sf__) = (None,None)
-    for (x,y) in sf3.rstr.subforms.items():
-      (h__,sf__) = (x,y);
+    (h__,sf__) = sf3.rstr.subforms[ 0 ];
 
     self.assert_( isinstance( h__, Handle ), msg );
     
@@ -208,14 +191,12 @@ class TestProtoForm( TestCase, metaclass=object_ ):
     self.assertEquals( len( { id(h1), id(h2), id(h3), id(h4), id(h5),
                               id(h_), id(h__) } ), 7, msg );
     
-    cons = {};
-    for constraint in inst.constraints:
-      self.assert_( isinstance( constraint, Constraint ), msg );
-      cons[ constraint.harg ] = constraint.larg;
-
-    self.assertEquals( len( cons ), 2, msg );
-    self.assert_( cons[ h1 ] is h5, msg );
-    self.assert_( cons[ h3 ] is h5, msg );
+    self.assertEquals( len( inst.constraints ), 2, msg );
+    
+    self.assert_( inst.constraints[0].harg is h1 );
+    self.assert_( inst.constraints[0].larg is h5 );
+    self.assert_( inst.constraints[1].harg is h3 );
+    self.assert_( inst.constraints[1].larg is h5 );
   
   def test_2( self ):
     
@@ -225,65 +206,65 @@ class TestProtoForm( TestCase, metaclass=object_ ):
   def init_pf_3( self ):
     
     inst_ = ProtoForm(
-                subforms = { Handle():
-                               Quantification(
-                                   quantifier = Quantifier( referent = Word( wid=0, lemma = ["every"] ) ),
-                                   var = Variable( sidvid=("x",1) ),
-                                   rstr = Handle( hid=1 ),
-                                   body = ProtoForm(
-                                              subforms = { Handle():
-                                                             Predication(
-                                                                 predicate = Predicate( referent = Word( wid=32, lemma = ["lie"] ) ),
-                                                                 args = { Argument( aid="arg1" ): Variable( sidvid=("x",1) ) }
-                                                               )
-                                                         }
-                                            )
-                                 ),
-                             Handle( hid=2 ):
-                               ProtoForm(
-                                   subforms = { Handle( hid=5 ):
-                                                  Connection(
-                                                      connective = Connective( referent = Operator( otype=Operator.OP_C_WEACON ) ),
-                                                      lscope = Handle(),
-                                                      rscope = Handle()
-                                                    ),
-                                                Handle( hid=6 ):
-                                                  Predication(
-                                                      predicate = Predicate( referent = Word( wid=6, lemma = ["witness"] ) ),
-                                                      args = { Argument( aid="arg0" ): Variable( sidvid=("x",1) ) }
-                                                    ),
-                                                Handle( hid=7 ):
-                                                  Modification(
-                                                      modality = Modality( referent = Word( wid=18, lemma = ["say"] ) ),
-                                                      args = { Argument( aid="arg1" ): Variable( sidvid=("x",1) ) },
-                                                      scope = Freezer( content = Handle( hid=3 ) )
-                                                    )
-                                              }
-                                 ),
-                             Handle( hid=4 ):
-                               Quantification(
-                                   quantifier = Quantifier( referent = Word( wid=23, lemma = ["she"] ) ),
-                                   var = Variable( sidvid=("x",2) ),
-                                   rstr = ProtoForm(
-                                              subforms = { Handle():
-                                                             Predication(
-                                                                 predicate = Predicate( referent = Word( wid=23, lemma = ["she"] ) ),
-                                                                 args = { Argument( aid="arg0" ): Variable( sidvid=("x",2) ) }
-                                                               )
-                                                         }
-                                            ),
-                                   body = ProtoForm(
-                                              subforms = { Handle():
-                                                             Predication(
-                                                                 predicate = Predicate( referent = Word( wid=27, lemma = ["lie"] ) ),
-                                                                 args = { Argument( aid="arg1" ): Variable( sidvid=("x",2) ) }
-                                                               )
-                                                         }
-                                            )
-                                 )
-                           },
-                constraints = { Constraint( harg = Handle( hid=1 ), larg = Handle( hid=2 ) ),
-                                Constraint( harg = Handle( hid=3 ), larg = Handle( hid=4 ) ) }
+                subforms = [ ( Handle(),
+                                 Quantification(
+                                     quantifier = Quantifier( referent = Word( wid=0, lemma = ["every"] ) ),
+                                     var = Variable( sidvid=("x",1) ),
+                                     rstr = Handle( hid=1 ),
+                                     body = ProtoForm(
+                                                subforms = [ ( Handle(),
+                                                                 Predication(
+                                                                     predicate = Predicate( referent = Word( wid=32, lemma = ["lie"] ) ),
+                                                                     args = { Argument( aid="arg1" ): Variable( sidvid=("x",1) ) }
+                                                                   ) )
+                                                           ]
+                                              )
+                                   ) ),
+                             ( Handle( hid=2 ),
+                                 ProtoForm(
+                                     subforms = [ ( Handle( hid=5 ),
+                                                      Connection(
+                                                          connective = Connective( referent = Operator( otype=Operator.OP_C_WEACON ) ),
+                                                          lscope = Handle(),
+                                                          rscope = Handle()
+                                                        ) ),
+                                                  ( Handle( hid=6 ),
+                                                      Predication(
+                                                          predicate = Predicate( referent = Word( wid=6, lemma = ["witness"] ) ),
+                                                          args = { Argument( aid="arg0" ): Variable( sidvid=("x",1) ) }
+                                                        ) ),
+                                                  ( Handle( hid=7 ),
+                                                      Modification(
+                                                          modality = Modality( referent = Word( wid=18, lemma = ["say"] ) ),
+                                                          args = { Argument( aid="arg1" ): Variable( sidvid=("x",1) ) },
+                                                          scope = Freezer( content = Handle( hid=3 ) )
+                                                        ) )
+                                                ]
+                                   ) ),
+                             ( Handle( hid=4 ),
+                                 Quantification(
+                                     quantifier = Quantifier( referent = Word( wid=23, lemma = ["she"] ) ),
+                                     var = Variable( sidvid=("x",2) ),
+                                     rstr = ProtoForm(
+                                                subforms = [ ( Handle(),
+                                                                 Predication(
+                                                                     predicate = Predicate( referent = Word( wid=23, lemma = ["she"] ) ),
+                                                                     args = { Argument( aid="arg0" ): Variable( sidvid=("x",2) ) }
+                                                                   ) )
+                                                           ]
+                                              ),
+                                     body = ProtoForm(
+                                                subforms = [ ( Handle(),
+                                                                 Predication(
+                                                                     predicate = Predicate( referent = Word( wid=27, lemma = ["lie"] ) ),
+                                                                     args = { Argument( aid="arg1" ): Variable( sidvid=("x",2) ) }
+                                                                   ) )
+                                                           ]
+                                              )
+                                   ) )
+                           ],
+                constraints = [ Constraint( harg = Handle( hid=1 ), larg = Handle( hid=2 ) ),
+                                Constraint( harg = Handle( hid=3 ), larg = Handle( hid=4 ) ) ]
               );
     
     return inst_;
@@ -302,14 +283,14 @@ class TestProtoForm( TestCase, metaclass=object_ ):
     pf2 = TestProtoForm.init_pf_2( self )( sig=ProtoSig() );
     pf3 = TestProtoForm.init_pf_3( self )( sig=ProtoSig() );
     
-    pf4 = ProtoForm( subforms = {
-                         Handle():
-                           Connection(
-                               connective = Connective( referent = Operator( otype=Operator.OP_C_WEACON ) ),
-                               lscope = ProtoForm(),
-                               rscope = ProtoForm()
-                             )
-                       } )( sig=ProtoSig() );
+    pf4 = ProtoForm( subforms = [
+                         ( Handle(),
+                             Connection(
+                                 connective = Connective( referent = Operator( otype=Operator.OP_C_WEACON ) ),
+                                 lscope = ProtoForm(),
+                                 rscope = ProtoForm()
+                               ) )
+                       ] )( sig=ProtoSig() );
     
     subform = set( pf4.subforms.values() ).pop();
     subform.lscope = pf2;

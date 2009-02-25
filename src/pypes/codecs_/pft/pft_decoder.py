@@ -425,8 +425,8 @@ class PFTDecoder( PFTParser, metaclass=subject ):
 
     assert next( toks ) == "{";
     
-    subforms = {};
-    constraints = set();
+    subforms = [];
+    constraints = [];
     
     handle = None;
     
@@ -440,7 +440,7 @@ class PFTDecoder( PFTParser, metaclass=subject ):
       
       if type_ == cls.GT_CONSTRAINT:
         
-        constraints.add( inst );
+        constraints.append( inst );
         if tok == ";":
           tok = next( toks );
           
@@ -456,7 +456,7 @@ class PFTDecoder( PFTParser, metaclass=subject ):
         
         if handle is None:
           handle = Handle();
-        subforms[ handle ] = inst;
+        subforms.append( (handle,inst) );
         handle = None;
         if tok == ";":
           tok = next( toks );
