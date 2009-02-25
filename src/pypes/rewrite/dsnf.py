@@ -20,7 +20,7 @@ class DSNFRewriter( metaclass=subject ):
     self._pf = self._obj_( sig=self._sig );
 
 
-  def _collect_subforms_by_var( self, pf );
+  def _collect_subforms_by_var( self, pf ):
 
     for subf in pf.subforms.values():
 
