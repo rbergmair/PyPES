@@ -8,6 +8,7 @@ import unittest;
 
 import pypestest.utils;
 import pypestest.proto;
+import pypestest.rewriting;
 import pypestest.codecs_;
 
 
@@ -19,6 +20,7 @@ def suite():
 
   suite.addTests( pypestest.utils.suite() );
   suite.addTests( pypestest.proto.suite() );
+  suite.addTests( pypestest.rewriting.suite() );
   suite.addTests( pypestest.codecs_.suite() );
 
   return suite;

@@ -12,7 +12,7 @@ from pypes.utils.mc import object_;
 from pypes.codecs_ import *;
 from pypes.proto import *;
 
-from pypes.rewrite.renaming_rewriter import *;
+from pypes.rewriting.renaming_rewriter import renaming_rewrite;
 
 from pypestest.proto.form.protoform import TestProtoForm;
 

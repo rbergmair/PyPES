@@ -1,6 +1,6 @@
 # -*-  coding: ascii -*-  # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-__package__ = "pypes.rewrite";
+__package__ = "pypes.rewriting";
 __all__ = [ "DSFRewriter", "dsf_rewrite" ];
 
 from pypes.utils.mc import subject;

@@ -17,7 +17,7 @@ from pypes.proto import *;
 
 from pypes.codecs_ import PFTDecoder, pft_encode;
 
-from pypes.rewrite.svf import SVFRewriter;
+from pypes.rewriting.svf_rewriter import svf_rewrite;
 
 import pypes.proto.lex.erg;
 
@@ -57,13 +57,11 @@ class TestSVFRewriter( TestCase, metaclass=object_ ):
               
               print( filename );
               
-              with SVFRewriter( pf1_ ) as rewriter:
-                
-                pf2 = rewriter.rewrite()( sig=ProtoSig() );
-                pstr = pft_encode( pf2 );
-                print( pstr );
-                g.write( pstr );
-                g.write( "\n" );
+              pf2 = svf_rewrite( pf1_ )( sig=ProtoSig() );
+              pstr = pft_encode( pf2 );
+              print( pstr );
+              g.write( pstr );
+              g.write( "\n" );
               
               f.close();
             

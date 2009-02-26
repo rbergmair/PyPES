@@ -1,6 +1,6 @@
 # -*-  coding: ascii -*-  # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-__package__ = "pypes.proto";
+__package__ = "pypes.rewriting";
 __all__ = [ "RenamingRewriter", "renaming_rewrite", "sortseq" ];
 
 from pypes.utils.mc import subject, Object;
@@ -11,7 +11,7 @@ from pypes.proto.lex import *;
 
 from pypes.proto.proto_processor import ProtoProcessor;
 
-from pypes.rewrite.null_rewriter import NullRewriter;
+from pypes.rewriting.null_rewriter import NullRewriter;
 
 
 

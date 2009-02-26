@@ -12,7 +12,9 @@ from pypes.utils.mc import subject;
 
 from pypes.proto import *;
 
-from  pypes.codecs_.pft import _pft_parser;
+from pypes.rewriting.renaming_rewriter import renaming_rewrite, sortseq;
+
+from pypes.codecs_.pft import _pft_parser;
 
 
 
@@ -37,6 +39,7 @@ class PFTEncoder( metaclass=subject ):
     if not fast_mode:
       
       sig = ProtoSig();
+      obj_ = renaming_rewrite( self._obj_ );
       self._obj_ = obj_( sig=sig );
       
       if hasattr( sig, "_sos_" ) and Variable in sig._sos_:

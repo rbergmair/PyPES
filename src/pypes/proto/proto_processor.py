@@ -391,7 +391,7 @@ class ProtoProcessor( metaclass=subject ):
              );
   
   
-  def _process_operator( self, inst, otype ):
+  def _process_operator( self, inst, otype, feats ):
     
     pass;
   
@@ -399,7 +399,8 @@ class ProtoProcessor( metaclass=subject ):
     
     return self._process_operator(
                inst = inst,
-               otype = inst.otype
+               otype = inst.otype,
+               feats = inst.feats
              );
     
 

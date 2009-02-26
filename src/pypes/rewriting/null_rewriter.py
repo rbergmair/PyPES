@@ -1,6 +1,6 @@
 # -*-  coding: ascii -*-  # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-__package__ = "pypes.proto";
+__package__ = "pypes.rewriting";
 __all__ = [ "NullRewriter", "null_rewrite" ];
 
 from pypes.utils.mc import subject;
@@ -139,10 +139,11 @@ class NullRewriter( ProtoProcessor, metaclass=subject ):
                feats = feats
              );
     
-  def _process_operator( self, inst, otype ):
+  def _process_operator( self, inst, otype, feats ):
     
     return inst.__class__(
-               otype = otype
+               otype = otype,
+               feats = feats
              );
 
 

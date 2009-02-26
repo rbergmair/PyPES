@@ -9,7 +9,7 @@ import unittest;
 from pypes.utils.unittest_ import TestCase;
 from pypes.utils.mc import object_;
 
-from pypes.rewrite.null_rewriter import null_rewrite;
+from pypes.rewriting.null_rewriter import null_rewrite;
 
 from pypestest.proto.form.connection import TestConnection;
 from pypestest.proto.form.constraint import TestConstraint;
