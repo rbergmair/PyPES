@@ -1,7 +1,7 @@
 # -*-  coding: ascii -*-  # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 __package__ = "pypes.rewrite";
-__all__ = [ "DSNFRewriter" ];
+__all__ = [ "DSFRewriter" ];
 
 from pypes.utils.mc import subject;
 
@@ -11,7 +11,7 @@ from pypes.proto import *;
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-class DSNFRewriter( metaclass=subject ):
+class DSFRewriter( metaclass=subject ):
 
 
   def _enter_( self ):
@@ -65,7 +65,7 @@ class DSNFRewriter( metaclass=subject ):
 
       for subf in self._subforms_by_var[ var ]:
         if isinstance( subf, Quantification ):
-          subf.quantifier.referent.
+          pass;
 
       assert len( quant ) == 1;
 

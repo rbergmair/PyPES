@@ -3,10 +3,13 @@
 __package__ = "pypes.proto";
 __all__ = [ "Lambdaifier", "lambdaify", "sortseq" ];
 
-from pypes.utils.mc import subject;
+from pypes.utils.mc import subject, Object;
+
 from pypes.proto.form import *;
 from pypes.proto.sig import *;
 from pypes.proto.lex import *;
+
+from pypes.proto.proto_processor import ProtoProcessor;
 
 
 
@@ -27,119 +30,77 @@ def sortseq( int_ ):
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
+class IndexCollector( ProtoProcessor, metaclass=subject ):
+
+  
+  def _enter_( self ):
+    
+    self._obj_._handle_references = {};
+    self._obj_._handle_by_hid = {};
+    
+    self._obj_._variable_references = {};
+    self._obj_._variable_by_sidvid = {};
+    
+    self._obj_._word_references = {};
+    self._obj_._word_by_wid = {};
+    
+    self._obj_._sort_references = {};
+  
+  
+  def _process_handle( self, inst, hid ):
+
+    if not inst in self._obj_._handle_references:
+      self._obj_._handle_references[ inst ] = 0;
+    self._obj_._handle_references[ inst ] += 1;  
+      
+    if not hid in self._obj_._handle_by_hid:
+      self._obj_._handle_by_hid[ hid ] = set();
+    self._obj_._handle_by_hid[ hid ].add( inst );
+    
+    
+  def _process_word( self, inst, wid, lemma, pos, sense, feats ):
+    
+    if not inst in self._obj_._word_references:
+      self._obj_._word_references[ inst ] = 0;
+    self._obj_._word_references[ inst ] += 1;
+    
+    if not wid in self._obj_._word_by_wid:
+      self._obj_._word_by_wid[ wid ] = set();
+    self._obj_._word_by_wid[ wid ].add( inst )
+
+
+  def _process_variable( self, inst, sid, vid ):
+
+    if not inst in self._obj_._variable_references:
+      self._obj_._variable_references[ inst ] = 0;
+    self._obj_._variable_references[ inst ] += 1;
+  
+    if not inst.sort in self._obj_._sort_references:
+      self._obj_._sort_references[ inst.sort ] = 0;
+    self._obj_._sort_references[ inst.sort ] += 1;  
+      
+    sidvid = ( sid, vid );
+    if not sidvid in self._obj_._variable_by_sidvid:
+      self._obj_._variable_by_sidvid[ sidvid ] = set();
+    self._obj_._variable_by_sidvid[ sidvid ].add( inst );
+    
+    
+    
+    
+
+
+
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+
 class Lambdaifier( metaclass=subject ):
   
   
   def _enter_( self ):
     
-    self._handle_by_hid = {};
-    self._variable_by_sidvid = {};
-    self._word_by_wid = {};
-    
-    self._handle_references = {};
-    self._variable_references = {};
-    self._sort_references = {};
-    self._word_references = {};
-    
-    self._collect_index( self._obj_ );
-  
-  
-  def _collect_index( self, obj ):
-    
-    if isinstance( obj, ProtoForm ):
-      
-      for ( handle, subform ) in obj.subforms:
-        
-        self._collect_index( handle );
-        self._collect_index( subform );
-        
-      for constraint in obj.constraints:
-        
-        self._collect_index( constraint );
-    
-    elif isinstance( obj, Constraint ):
-      
-      self._collect_index( obj.harg );
-      self._collect_index( obj.larg );
-        
-    elif isinstance( obj, Handle ):
-      
-      if not obj in self._handle_references:
-        self._handle_references[ obj ] = 0;
-      self._handle_references[ obj ] += 1;  
-        
-      if not obj.hid in self._handle_by_hid:
-        self._handle_by_hid[ obj.hid ] = set();
-      self._handle_by_hid[ obj.hid ].add( obj );
-    
-    elif isinstance( obj, Freezer ):
-      
-      self._collect_index( obj.content );
-
-    elif isinstance( obj, Connective ) or \
-         isinstance( obj, Quantifier ) or \
-         isinstance( obj, Modality ) or \
-         isinstance( obj, Predicate ):
-      
-      self._collect_index( obj.referent );
-    
-    elif isinstance( obj, Word ):
-      
-      if not obj in self._word_references:
-        self._word_references[ obj ] = 0;
-      self._word_references[ obj ] += 1;
-      
-      if not obj.wid in self._word_by_wid:
-        self._word_by_wid[ obj.wid ] = set();
-      self._word_by_wid[ obj.wid ].add( obj )
-    
-    elif isinstance( obj, Connection ):
-
-      self._collect_index( obj.connective );
-      self._collect_index( obj.lscope );
-      self._collect_index( obj.rscope );
-    
-    elif isinstance( obj, Modification ) or isinstance( obj, Predication ):
-
-      if isinstance( obj, Predication ):
-
-        self._collect_index( obj.predicate );
-        
-      elif isinstance( obj, Modification ):
-        
-        self._collect_index( obj.modality );
-        self._collect_index( obj.scope );
-      
-      for arg in obj.args:
-        var = obj.args[ arg ];
-        if isinstance( var, Variable ):
-          self._collect_index( var );
-        else:
-          assert isinstance( var, Constant );
-
-    elif isinstance( obj, Quantification ):
-
-      self._collect_index( obj.quantifier );
-      self._collect_index( obj.var );
-      self._collect_index( obj.rstr );
-      self._collect_index( obj.body );
-    
-    elif isinstance( obj, Variable ):
-      
-      if not obj in self._variable_references:
-        self._variable_references[ obj ] = 0;
-      self._variable_references[ obj ] += 1;
-
-      if not obj.sort in self._sort_references:
-        self._sort_references[ obj.sort ] = 0;
-      self._sort_references[ obj.sort ] += 1;  
-        
-      sid = obj.sort.sid;
-      vid = obj.vid;
-      sidvid = ( sid, vid );
-      if not sidvid in self._variable_by_sidvid:
-        self._variable_by_sidvid[ sidvid ] = set();
-      self._variable_by_sidvid[ sidvid ].add( obj );
+    self._index = Object();
+    with IndexCollector( self._index ) as coll:
+      coll.process( self._obj_ );
+      # print( repr( self._index._handle_by_hid ) );
   
   
   def _reallocate( self, invidx, reallocate_objs ):
@@ -208,21 +169,23 @@ class Lambdaifier( metaclass=subject ):
                      rename_words_p=True ):
 
     self._invert(
-        self._handle_by_hid, self._hid_by_handle,
-        self._handle_references, rename_handles_p
+        self._index._handle_by_hid, self._hid_by_handle,
+        self._index._handle_references, rename_handles_p
       );
+    
+    # print( repr( self._hid_by_handle ) );
 
     self._invert(
-        self._word_by_wid, self._wid_by_word,
-        self._word_references, rename_words_p
+        self._index._word_by_wid, self._wid_by_word,
+        self._index._word_references, rename_words_p
       );
     
     reallocate_vars = set();
     sidvids = set();
     
-    for (sid,vid) in self._variable_by_sidvid:
+    for (sid,vid) in self._index._variable_by_sidvid:
       
-      vars = self._variable_by_sidvid[ (sid,vid) ].copy();
+      vars = self._index._variable_by_sidvid[ (sid,vid) ].copy();
       
       if not rename_vars_p:
         
@@ -236,7 +199,7 @@ class Lambdaifier( metaclass=subject ):
         if vid is not None:
           var = None;
           for var_ in vars:
-            if self._variable_references[ var_ ] > 1:
+            if self._index._variable_references[ var_ ] > 1:
               var = var_;
           if var is None:
             var = vars.pop();
@@ -247,8 +210,8 @@ class Lambdaifier( metaclass=subject ):
           assert var.vid == vid;
           
         for var in vars:
-          assert self._variable_references[ var ] >= 1;
-          if self._variable_references[ var ] <= 1:
+          assert self._index._variable_references[ var ] >= 1;
+          if self._index._variable_references[ var ] <= 1:
             self._sortvid_by_variable[ var ] = (var.sort,None);
             sidvids.add( (sid,None) );
           else:
@@ -266,7 +229,7 @@ class Lambdaifier( metaclass=subject ):
     reallocate_sorts = set();
     
     for (sort,vid) in self._sortvid_by_variable.values():
-      if sort.sid is None and self._sort_references[ sort ] > 1:
+      if sort.sid is None and self._index._sort_references[ sort ] > 1:
         reallocate_sorts.add( sort );
       else:
         self._sid_by_sort[ sort ] = sort.sid;
@@ -291,9 +254,131 @@ class Lambdaifier( metaclass=subject ):
                         rename_vars_p=rename_vars_p,
                         rename_words_p=rename_words_p );
     
-    return self._lambdaify( self._obj_ );
-    #return None;
-  
+    return self.process( self._obj_ );
+
+
+  def _process_predication( self, inst, predicate, args ):
+    
+    return inst.__class__(
+               predicate = predicate,
+               args = args
+            );
+    
+  def _process_quantification( self, inst, quantifier, var, rstr, body ):
+    
+    return inst.__class__(
+               quantifier = quantifier,
+               var = var,
+               rstr = rstr,
+               body = body
+             );
+             
+  def _process_modification( self, inst, modality, args, scope ):
+    
+    return inst.__class__(
+               modality = modality,
+               args = args,
+               scope = scope
+             );
+    
+  def _process_connection( self, inst, connective, lscope, rscope ):
+    
+    return inst.__class__(
+               connective = connective,
+               lscope = lscope,
+               rscoep = rscope
+             );
+    
+  def _process_handle( self, inst, hid ):
+    
+    return inst.__class__(
+               hid = hid
+             );
+    
+  def _process_freezer( self, inst, content ):
+    
+    return inst.__class__(
+               content = content
+             );
+    
+  def _process_constraint( self, inst, harg, larg ):
+    
+    return inst.__class__(
+               harg = harg,
+               larg = larg
+             );
+    
+  def _process_protoform( self, inst, subforms, constraints ):
+    
+    return inst.__class__(
+               subforms = subforms,
+               constraints = constraints
+            );
+    
+  def _process_predicate( self, inst, referent ):
+    
+    return inst.__class__(
+                referent = referent
+             );
+    
+  def _process_quantifier( self, inst, referent ):
+    
+    return inst.__class__(
+               referent = referent
+             );
+    
+  def _process_modality( self, inst, referent ):
+    
+    return inst.__class__(
+               referent = referent
+            );
+    
+  def _process_connective( self, inst, referent ):
+    
+    return inst.__class__(
+               referent = referent
+             );
+    
+  def _process_argument( self, inst, aid ):
+    
+    return inst.__class__(
+               aid = aid
+             );
+    
+  def _process_variable( self, inst, sid, vid ):
+    
+    return inst.__class__(
+               sid = sid
+             );
+    
+  def _process_constant( self, inst, ident ):
+    
+    return inst.__class__(
+               ident = ident
+             );
+    
+  def _process_sort( self, inst, sid ):
+    
+    return inst.__class__(
+               sid = sid
+             );
+    
+  def _process_word( self, inst, wid, lemma, pos, sense, feats ):
+    
+    return inst.__class__(
+               wid = wid,
+               lemma = lemma,
+               pos = pos,
+               sense = sense,
+               feats = feats
+             );
+    
+  def _process_operator( self, inst, otype ):
+    
+    return inst.__class__(
+               otype = otype
+             );
+
   
   def _lambdaify( self, obj ):
     

@@ -1,7 +1,7 @@
 # -*-  coding: ascii -*-  # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 __package__ = "pypes.utils";
-__all__ = [ "object_", "subject", "singleton", "kls" ];
+__all__ = [ "object_", "subject", "singleton", "kls", "Object" ];
 
 import atexit;
 
@@ -22,6 +22,14 @@ class object_( type ):
       cls.__del__ = lambda *args, **kwargs: None;
       
     return cls;
+
+
+
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+
+class Object( metaclass=object_ ):
+  
+  pass;
 
 
 
