@@ -292,9 +292,8 @@ class TestProtoForm( TestCase, metaclass=object_ ):
                                ) )
                        ] )( sig=ProtoSig() );
     
-    subform = set( pf4.subforms.values() ).pop();
-    subform.lscope = pf2;
-    subform.rscope = pf3;
+    pf4.subforms[ 0 ][ 1 ].lscope = pf2;
+    pf4.subforms[ 0 ][ 1 ].rscope = pf3;
     
     return pf4;
   

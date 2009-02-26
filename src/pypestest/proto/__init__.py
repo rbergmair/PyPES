@@ -9,7 +9,6 @@ import unittest;
 import pypestest.proto.form;
 import pypestest.proto.sig;
 import pypestest.proto.lex;
-import pypestest.proto.lambdaifier;
 
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
@@ -21,7 +20,6 @@ def suite():
   suite.addTests( pypestest.proto.form.suite() );
   suite.addTests( pypestest.proto.sig.suite() );
   suite.addTests( pypestest.proto.lex.suite() );
-  suite.addTests( pypestest.proto.lambdaifier.suite() );
 
   return suite;
 

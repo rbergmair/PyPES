@@ -1,7 +1,7 @@
 # -*-  coding: ascii -*-  # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 __package__ = "pypes.rewrite";
-__all__ = [ "DSFRewriter" ];
+__all__ = [ "DSFRewriter", "dsf_rewrite" ];
 
 from pypes.utils.mc import subject;
 
@@ -69,13 +69,20 @@ class DSFRewriter( metaclass=subject ):
 
       assert len( quant ) == 1;
 
-      for subf in self._subforms_by_var
+      for subf in self._subforms_by_var:
+        pass;
 
-      
 
-    
+
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+
+def dsf_rewrite( obj ):
   
-
+  rslt = None;
+  with DSFRewriter( obj ) as rewriter:
+    rslt = rewriter.rewrite();
+  return rslt;
+    
 
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #

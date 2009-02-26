@@ -1,7 +1,7 @@
 # -*-  coding: ascii -*-  # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 __package__ = "pypestest.proto";
-__all__ = [ "TestLambdaifier", "suite", "main" ];
+__all__ = [ "TestNullRewriter", "suite", "main" ];
 
 import sys;
 import unittest;
@@ -9,8 +9,7 @@ import unittest;
 from pypes.utils.unittest_ import TestCase;
 from pypes.utils.mc import object_;
 
-from pypes.codecs_ import *;
-from pypes.proto import *;
+from pypes.rewrite.null_rewriter import null_rewrite;
 
 from pypestest.proto.form.connection import TestConnection;
 from pypestest.proto.form.constraint import TestConstraint;
@@ -28,105 +27,14 @@ from pypestest.proto.lex.basic import TestWord;
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-class TestLambdaifier( TestCase, metaclass=object_ ):
-
-  
-  def x_test_lambdaifier_1( self ):
-    
-    init = TestProtoForm.init_logified_pf_4( self );
-    lambdaified = lambdaify( init );
-    logified = lambdaified( sig=ProtoSig() );
-    
-    reference_ = pft_decode( """{ { 8: |Every:0| x4 { |man:6|( arg0=x4 ) } __;
-                                    9: |a:16| x3 { |woman:18|( arg0=x3 ) } __;
-                                    5: |loves:10|( arg1=x4, arg2=x3 );
-                                    9 >> 5;
-                                    8 >> 5 } /\ { |every| x1 1 { |lie:32|( arg1=x1 ) };
-                                                  2: { __ /\ __;
-                                                       6: |witness|( arg0=x1 );
-                                                       7: |say|( arg1=x1 ) <3> };
-                                                  4: |she:23| x2 { |she:23|( arg0=x2 ) } { |lie:27|( arg1=x2 ) };
-                                                  3 >> 4;
-                                                  1 >> 2 } }""" );
-    reference = reference_( sig=ProtoSig() );
-    
-    self.assertEquals_( logified, reference )
-
-
-  def x_test_lambdaifier_2( self ):
-    
-    init = TestProtoForm.init_logified_pf_4( self );
-    lambdaified = lambdaify( init, rename_handles_p=False );
-    logified = lambdaified( sig=ProtoSig() );
-    
-    reference_ = pft_decode( """{ { 1: |Every:0| x4 { |man:6|( arg0=x4 ) } 2;
-                                    3: |a:16| x3 { |woman:18|( arg0=x3 ) } 4;
-                                    5: |loves:10|( arg1=x4, arg2=x3 );
-                                    3 >> 5;
-                                    1 >> 5 } /\ { |every| x1 1 { |lie:32|( arg1=x1 ) };
-                                                  2: { 5: __ /\ __;
-                                                       6: |witness|( arg0=x1 );
-                                                       7: |say|( arg1=x1 ) <3> };
-                                                  4: |she:23| x2 { |she:23|( arg0=x2 ) } { |lie:27|( arg1=x2 ) };
-                                                  3 >> 4;
-                                                  1 >> 2 } }""" );
-                                                  
-    reference = reference_( sig=ProtoSig() );
-
-    self.assertEquals_( logified, reference )
-
-
-  def x_test_lambdaifier_3( self ):
-    
-    init = TestProtoForm.init_logified_pf_4( self );
-    lambdaified = lambdaify( init, rename_vars_p=False );
-    logified = lambdaified( sig=ProtoSig() );
-    
-    reference_ = pft_decode( """{ { 8: |Every:0| x1 { |man:6|( arg0=x1 ) } __;
-                                    9: |a:16| x2 { |woman:18|( arg0=x2 ) } __;
-                                    5: |loves:10|( arg1=x1, arg2=x2 );
-                                    9 >> 5;
-                                    8 >> 5 } /\ { |every| x1 1 { |lie:32|( arg1=x1 ) };
-                                                  2: { __ /\ __;
-                                                       6: |witness|( arg0=x1 );
-                                                       7: |say|( arg1=x1 ) <3> };
-                                                  4: |she:23| x2 { |she:23|( arg0=x2 ) } { |lie:27|( arg1=x2 ) };
-                                                  3 >> 4;
-                                                  1 >> 2 } }""" );
-                                                  
-    reference = reference_( sig=ProtoSig() );
-
-    self.assertEquals_( logified, reference );
-
-
-  def x_test_lambdaifier_4( self ):
-    
-    init = TestProtoForm.init_logified_pf_4( self );
-    lambdaified = lambdaify( init, rename_words_p=False );
-    logified = lambdaified( sig=ProtoSig() );
-    
-    reference_ = pft_decode( """{ { 8: |every:0| x4 { |witness:6|( arg0=x4 ) } __;
-                                    9: |a:16| x3 { |say:18|( arg0=x3 ) } __;
-                                    5: |loves:10|( arg1=x4, arg2=x3 );
-                                    9 >> 5;
-                                    8 >> 5 } /\ { |every:0| x1 1 { |lie:32|( arg1=x1 ) };
-                                                  2: { __ /\ __;
-                                                       6: |witness:6|( arg0=x1 );
-                                                       7: |say:18|( arg1=x1 ) <3> };
-                                                  4: |she:23| x2 { |she:23|( arg0=x2 ) } { |lie:27|( arg1=x2 ) };
-                                                  3 >> 4;
-                                                  1 >> 2 } }""" );
-                                                  
-    reference = reference_( sig=ProtoSig() );
-
-    self.assertEquals_( logified, reference )
+class TestNullRewriter( TestCase, metaclass=object_ ):
 
   
   def dotest( self, logifyf, initf ):
     
     inst = logifyf( self, initf( self ) );
     
-    inst__ = lambdaify( inst );
+    inst__ = null_rewrite( inst );
     inst_ = logifyf( self, inst__ );
     
     if not inst <= inst_ and inst >= inst_:
@@ -239,7 +147,7 @@ def suite():
   suite = unittest.TestSuite();
 
   suite.addTests( unittest.TestLoader().loadTestsFromTestCase(
-      TestLambdaifier
+      TestNullRewriter
     ) );
 
   return suite;

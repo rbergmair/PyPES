@@ -7,6 +7,9 @@ import sys;
 import unittest;
 
 import pypestest.rewrite.svf;
+import pypestest.rewrite.null_rewriter;
+import pypestest.rewrite.renaming_rewriter;
+import pypestest.rewrite.svf;
 
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #

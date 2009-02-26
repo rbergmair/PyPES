@@ -11,7 +11,6 @@ from itertools import chain;
 from pypes.utils.mc import subject;
 
 from pypes.proto import *;
-from pypes.proto.lambdaifier import sortseq;
 
 from  pypes.codecs_.pft import _pft_parser;
 
@@ -38,7 +37,6 @@ class PFTEncoder( metaclass=subject ):
     if not fast_mode:
       
       sig = ProtoSig();
-      obj_ = lambdaify( self._obj_ );
       self._obj_ = obj_( sig=sig );
       
       if hasattr( sig, "_sos_" ) and Variable in sig._sos_:

@@ -1,7 +1,7 @@
 # -*-  coding: ascii -*-  # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 __package__ = "pypes.rewrite";
-__all__ = [ "SVFRewriter" ];
+__all__ = [ "SVFRewriter", "svf_rewrite" ];
 
 from pypes.utils.mc import subject;
 
@@ -48,13 +48,24 @@ class SVFRewriter( metaclass=subject ):
   
   def _rewrite( self, form ):
     
-    
+    pass;
 
 
   def rewrite( self ):
 
     return self._rewrite( self._pf );
 
+
+
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+
+def svf_rewrite( obj ):
+  
+  rslt = None;
+  with SVFRewriter( obj ) as rewriter:
+    rslt = rewriter.rewrite();
+  return rslt;
+    
 
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #

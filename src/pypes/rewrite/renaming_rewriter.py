@@ -1,7 +1,7 @@
 # -*-  coding: ascii -*-  # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 __package__ = "pypes.proto";
-__all__ = [ "Lambdaifier", "lambdaify", "sortseq" ];
+__all__ = [ "RenamingRewriter", "renaming_rewrite", "sortseq" ];
 
 from pypes.utils.mc import subject, Object;
 
@@ -10,6 +10,8 @@ from pypes.proto.sig import *;
 from pypes.proto.lex import *;
 
 from pypes.proto.proto_processor import ProtoProcessor;
+
+from pypes.rewrite.null_rewriter import NullRewriter;
 
 
 
@@ -92,7 +94,7 @@ class IndexCollector( ProtoProcessor, metaclass=subject ):
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-class Lambdaifier( metaclass=subject ):
+class RenamingRewriter( NullRewriter, metaclass=subject ):
   
   
   def _enter_( self ):
@@ -242,7 +244,7 @@ class Lambdaifier( metaclass=subject ):
       newsid += 1;
 
  
-  def lambdaify( self, rename_handles_p=True, rename_vars_p=True,
+  def rewrite( self, rename_handles_p=True, rename_vars_p=True,
                  rename_words_p=True ):
     
     self._hid_by_handle = {};
@@ -250,256 +252,56 @@ class Lambdaifier( metaclass=subject ):
     self._sid_by_sort = {};
     self._wid_by_word = {};
     
-    self._invert_index( rename_handles_p=rename_handles_p,
-                        rename_vars_p=rename_vars_p,
-                        rename_words_p=rename_words_p );
+    self._invert_index(
+        rename_handles_p = rename_handles_p,
+        rename_vars_p = rename_vars_p,
+        rename_words_p = rename_words_p
+      );
     
     return self.process( self._obj_ );
 
 
-  def _process_predication( self, inst, predicate, args ):
-    
-    return inst.__class__(
-               predicate = predicate,
-               args = args
-            );
-    
-  def _process_quantification( self, inst, quantifier, var, rstr, body ):
-    
-    return inst.__class__(
-               quantifier = quantifier,
-               var = var,
-               rstr = rstr,
-               body = body
-             );
-             
-  def _process_modification( self, inst, modality, args, scope ):
-    
-    return inst.__class__(
-               modality = modality,
-               args = args,
-               scope = scope
-             );
-    
-  def _process_connection( self, inst, connective, lscope, rscope ):
-    
-    return inst.__class__(
-               connective = connective,
-               lscope = lscope,
-               rscoep = rscope
-             );
-    
   def _process_handle( self, inst, hid ):
     
     return inst.__class__(
-               hid = hid
+               hid = self._hid_by_handle[ inst ]
              );
-    
-  def _process_freezer( self, inst, content ):
-    
-    return inst.__class__(
-               content = content
-             );
-    
-  def _process_constraint( self, inst, harg, larg ):
-    
-    return inst.__class__(
-               harg = harg,
-               larg = larg
-             );
-    
-  def _process_protoform( self, inst, subforms, constraints ):
-    
-    return inst.__class__(
-               subforms = subforms,
-               constraints = constraints
-            );
-    
-  def _process_predicate( self, inst, referent ):
-    
-    return inst.__class__(
-                referent = referent
-             );
-    
-  def _process_quantifier( self, inst, referent ):
-    
-    return inst.__class__(
-               referent = referent
-             );
-    
-  def _process_modality( self, inst, referent ):
-    
-    return inst.__class__(
-               referent = referent
-            );
-    
-  def _process_connective( self, inst, referent ):
-    
-    return inst.__class__(
-               referent = referent
-             );
-    
-  def _process_argument( self, inst, aid ):
-    
-    return inst.__class__(
-               aid = aid
-             );
-    
+
+
   def _process_variable( self, inst, sid, vid ):
+
+    ( sort, vid_ ) = self._sortvid_by_variable[ inst ];
+    sid_ = self._sid_by_sort[ sort ];
     
     return inst.__class__(
-               sid = sid
+               sidvid = (sid_,vid_)
              );
-    
-  def _process_constant( self, inst, ident ):
-    
-    return inst.__class__(
-               ident = ident
-             );
-    
-  def _process_sort( self, inst, sid ):
-    
-    return inst.__class__(
-               sid = sid
-             );
-    
+
+
   def _process_word( self, inst, wid, lemma, pos, sense, feats ):
     
     return inst.__class__(
-               wid = wid,
+               wid = self._wid_by_word[ inst ],
                lemma = lemma,
                pos = pos,
                sense = sense,
                feats = feats
              );
-    
-  def _process_operator( self, inst, otype ):
-    
-    return inst.__class__(
-               otype = otype
-             );
-
-  
-  def _lambdaify( self, obj ):
-    
-    if obj is None:
-      
-      return None;
-    
-    elif isinstance( obj, ProtoForm ):
-      
-      subforms = [];
-      for ( hndl, subf ) in obj.subforms:
-        subforms.append( ( self._lambdaify( hndl ),  self._lambdaify( subf ) ) );
-      constraints = [];
-      for cons in obj.constraints:
-        constraints.append( self._lambdaify(cons) );
-      
-      return obj.__class__( subforms=subforms, constraints=constraints );
-    
-    elif isinstance( obj, Handle ):
-      
-      return obj.__class__( hid = self._hid_by_handle[obj] );
-    
-    elif isinstance( obj, Constraint ):
-      
-      return obj.__class__( harg = self._lambdaify(obj.harg),
-                            larg = self._lambdaify(obj.larg) );
-
-    elif isinstance( obj, Variable ):
-      
-      ( sort, vid ) = self._sortvid_by_variable[ obj ];
-      sid = self._sid_by_sort[ sort ];
-      return obj.__class__( sidvid = (sid,vid) );
-
-    elif isinstance( obj, Constant ):
-      
-      return obj.__class__( ident = obj.ident );
-
-    elif isinstance( obj, Quantification ):
-      
-      return obj.__class__( quantifier = self._lambdaify(obj.quantifier),
-                            var = self._lambdaify(obj.var),
-                            rstr = self._lambdaify(obj.rstr),
-                            body = self._lambdaify(obj.body) );
-    
-    elif isinstance( obj, Quantifier ):
-      
-      return obj.__class__( referent = self._lambdaify(obj.referent) );
-    
-    elif isinstance( obj, Connection ):
-      
-      return obj.__class__( connective = self._lambdaify(obj.connective),
-                            lscope = self._lambdaify(obj.lscope),
-                            rscope = self._lambdaify(obj.rscope) );
-    
-    elif isinstance( obj, Connective ):
-      
-      return obj.__class__( referent = self._lambdaify(obj.referent) );
-    
-    elif isinstance( obj, Argument ):
-      
-      return obj.__class__( aid=obj.aid );
-    
-    elif isinstance( obj, Predication ):
-      
-      args = {};
-      for arg in obj.args:
-        args[ self._lambdaify(arg) ] = self._lambdaify( obj.args[arg] );
-      
-      return obj.__class__( predicate = self._lambdaify(obj.predicate),
-                            args = args );
-    
-    elif isinstance( obj, Predicate ):
-      
-      return obj.__class__( referent = self._lambdaify(obj.referent) );
-    
-    elif isinstance( obj, Modification ):
-      
-      args = {};
-      for arg in obj.args:
-        args[ self._lambdaify(arg) ] = self._lambdaify( obj.args[arg] );
-      
-      return obj.__class__( modality = self._lambdaify(obj.modality),
-                            args = args,
-                            scope = self._lambdaify(obj.scope) );
-    
-    elif isinstance( obj, Modality ):
-      
-      return obj.__class__( referent = self._lambdaify(obj.referent) );
-    
-    elif isinstance( obj, Freezer ):
-      
-      return obj.__class__( content = self._lambdaify(obj.content) );
-    
-    elif isinstance( obj, Operator ):
-      
-      return obj.__class__( otype=obj.otype,
-                            feats=obj.feats );
-    
-    elif isinstance( obj, Word ):
-      
-      return obj.__class__( wid = self._wid_by_word[obj],
-                            lemma = obj.lemma,
-                            pos = obj.pos,
-                            sense = obj.sense,
-                            feats = obj.feats );
-
-    print( obj );
-    assert False;
 
 
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-def lambdaify( obj, rename_handles_p=True, rename_vars_p=True,
-                 rename_words_p=True ):
+def renaming_rewrite( obj, rename_handles_p=True, rename_vars_p=True,
+                      rename_words_p=True ):
   
   rslt = None;
-  with Lambdaifier( obj ) as lambdaifier:
-    rslt = lambdaifier.lambdaify( rename_handles_p=rename_handles_p,
-                                  rename_vars_p=rename_vars_p,
-                                  rename_words_p=rename_words_p );
+  with RenamingRewriter( obj ) as rewriter:
+    rslt = rewriter.rewrite(
+               rename_handles_p = rename_handles_p,
+               rename_vars_p = rename_vars_p,
+               rename_words_p = rename_words_p
+             );
   return rslt;
     
 
