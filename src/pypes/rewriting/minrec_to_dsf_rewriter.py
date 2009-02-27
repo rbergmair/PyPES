@@ -1,85 +1,80 @@
 # -*-  coding: ascii -*-  # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 __package__ = "pypes.rewriting";
-__all__ = [ "DSFRewriter", "dsf_rewrite" ];
+__all__ = [ "MinrecToDSFRewriter", "minrec_to_dsf_rewrite" ];
 
-from pypes.utils.mc import subject;
+from pypes.utils.mc import subject, Object;
 
 from pypes.proto import *;
+
+from pypes.rewriting.null_rewriter import NullRewriter;
 
 
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-class DSFRewriter( metaclass=subject ):
+class _IndexCollector( ProtoProcessor, metaclass=subject ):
+  
+  def _enter_( self ):
+    
+    self._obj_._quantified_vars = set();
+  
+  def _process_quantification( self, inst, quantifier, var, rstr, body ):
+    
+    self._obj_._quantified_vars.add( inst.var );
+
+
+
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+
+class MinrecToDSFRewriter( NullRewriter, metaclass=subject ):
 
 
   def _enter_( self ):
 
-    self._sig = ProtoSig();
-    self._pf = self._obj_( sig=self._sig );
-
-
-  def _collect_subforms_by_var( self, pf ):
-
-    for subf in pf.subforms.values():
-
-      if isinstance( subf, Predication ):
-
-        for arg in subf.args.values():
-          if isinstance( arg, Variable ):
-            if not arg in self._subforms_by_var:
-              self._subforms_by_var[ arg ] = set();
-            self._subforms_by_var[ arg ].add( subf );
-
-      elif isinstance( subf, Modification ):
-
-        for arg in subf.args.values():
-          if isinstance( arg, Variable ):
-            if not arg in self._subforms_by_var:
-              self._subforms_by_var[ arg ] = set();
-            self._subforms_by_var[ arg ].add( subf );
-
-        self._collect_subforms_by_var( subf.scope );
-
-      elif isinstance( subf, Quantification ):
-
-        self._collect_subforms_by_var( subf.rstr );
-        self._collect_subforms_by_var( subf.body );
-
-      elif isinstance( subf, Connection ):
-
-        self._collect_subforms_by_var( subf.lscope );
-        self._collect_subforms_by_var( subf.rscope );
+    self._index = Object();
+    with _IndexCollector( self._index ) as coll:
+      coll.process( self._obj_ );
+    
+    print( self._index._quantified_vars );
+  
+  
+  def _process_predication( self, inst, predicate, args ):
+    
+    const_args = {};
+    var_args = {};
+    
+    for (arg,val) in inst.args.items():
+      arg_ = self.process_argument( arg );
+      if isinstance( val, Constant ):
+        const_args[ arg_ ] = self.process_constant( val );
+        continue;
+      if val not in self._index._quantified_vars:
+        #ident = str(val.sort.sid) + str(val.vid);
+        #const_args[ arg_ ] = Constant( ident = ident );
+        continue;
+      var_args[ arg_ ] = self.process_variable( val );
+    
+    args_ = const_args;
+    args_.update( var_args );
+    return Predication(
+               predicate = predicate,
+               args = args_
+             );
 
 
   def rewrite( self ):
-
-    self._subforms_by_var = {};
-    self._collect_subforms_by_var( self._pf );
-    self._subform_quant = [];
-
-    for var in self._sig._sos_[ Variable ].values():
-
-      quant = [];
-
-      for subf in self._subforms_by_var[ var ]:
-        if isinstance( subf, Quantification ):
-          pass;
-
-      assert len( quant ) == 1;
-
-      for subf in self._subforms_by_var:
-        pass;
+    
+    return self.process( self._obj_ );
 
 
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-def dsf_rewrite( obj ):
+def minrec_to_dsf_rewrite( obj ):
   
   rslt = None;
-  with DSFRewriter( obj ) as rewriter:
+  with MinrecToDSFRewriter( obj ) as rewriter:
     rslt = rewriter.rewrite();
   return rslt;
     
