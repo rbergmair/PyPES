@@ -88,6 +88,7 @@ class TestMinrecToDSFRewriter( TestCase, metaclass=object_ ):
 
     with PFTDecoder( (pypes.proto.lex.erg,None) ) as decoder:
   
+      #for i in [ 10 ]:
       for i in range( 1, 550 ):
         
         self.write_testfiles( "{0}/fracas-new-{1}.pft.gz".format( self._TESTDTADIR, i ), decoder );
@@ -98,6 +99,7 @@ class TestMinrecToDSFRewriter( TestCase, metaclass=object_ ):
       return;
       
       for i in range( 1, 108 ):
+      #for i in []:
         
         self.write_testfiles( "{0}/mrs-{1}1.pft.gz".format( self._TESTDTADIR, i ), decoder );
 
