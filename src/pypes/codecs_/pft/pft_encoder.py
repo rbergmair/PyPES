@@ -28,10 +28,10 @@ def argseq( int_ ):
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-class PFTEncoder( metaclass=subject ):
+class PFTEncoder( ProtoProcessor, metaclass=subject ):
 
 
-  def initialize( self, fast_mode=False ):
+  def _initialize( self, fast_mode=False ):
 
     self._assigned_sortvids = set();
     self._assigned_sids = set();
@@ -82,18 +82,25 @@ class PFTEncoder( metaclass=subject ):
   
   
   @classmethod
+  def _fmt_quoted( cls, stri ):
+    
+    r = repr( stri );
+    if r[0] != "'" and r[0] != '"':
+      r = "'" + r + "'";
+    return r;
+  
+  
+  @classmethod
   def _fmt_lemma( cls, stri, sensitive=None ):
     
     if not isinstance( stri, str ):
       stri = str( stri );
     
     r = cls.re_alphanum.match( stri )
-    if r is None:
-      return repr( stri );
-    elif r.start() == 0 and r.end() == len( stri ):
+    if r is not None and r.start() == 0 and r.end() == len( stri ):
       return stri;
     else:
-      return repr( stri );
+      return cls._fmt_quoted( stri );
   
   
   re_identifier = re.compile( _pft_parser.PFTParser.RE_IDENTIFIER );
@@ -125,92 +132,88 @@ class PFTEncoder( metaclass=subject ):
       raise;
     
     return stri;
-
-
-  def _encode_handle( self, inst ):
+  
+  
+  def _process_handle( self, inst, hid ):
     
-    if inst.hid is None:
+    if hid is None:
       return "__";
-    return str( inst.hid );
+    return str( hid );
 
 
-  def _encode_freezer( self, inst ):
+  def _process_freezer( self, inst, content ):
     
-    return "<" + self._encode( inst.content ) + ">";
+    return "<" + content + ">";
 
 
-  def _encode_variable( self, inst ):
+  def _process_variable( self, inst, sid, vid ):
     
-    sid = None;
-    if inst.sort.sid is None:
+    if sid is None:
       sid = self._next_sid();
-    else:
-      sid = inst.sort.sid;
       
-    vid = None;
-    if inst.vid is None:
+    if vid is None:
       vid = self._next_vid( inst.sort );
-    else:
-      vid = inst.vid;
 
     return str(sid) + str(vid);
 
 
-  def _encode_constant( self, inst ):
+  def _process_constant( self, inst, ident ):
     
-    return repr( inst.ident );
+    return self._fmt_quoted( ident );
   
   
-  def _encode_feats( self, feats ):
+  def _process_feats( self, feats ):
     
     rslt = "";
 
     if feats:
       rslt += "["
       for feat in feats:
-        brc = repr( feats[feat] );
-        if brc[0] != "'":
-          brc = "'"+brc+"'";
         rslt += " " + self._fmt_identifier( feat ) + "=" + \
-                brc + ",";
+                self._fmt_quoted( feats[feat] ) + ",";
       rslt = rslt[ :-1 ];
       rslt += " ]";
     
     return rslt;
   
   
-  def _encode_operator( self, inst ):
+  def _process_operator( self, inst, otype, feats ):
     
-    rslt = inst.otype;
-    if inst.feats is not None:
-      rslt += self._encode_feats( inst.feats );
+    rslt = otype;
+    if feats is not None:
+      rslt += self._process_feats( feats );
     return rslt;
   
   
-  def _encode_word( self, inst ):
+  def _process_word( self, inst, wid, lemma, pos, sense, feats ):
     
     rslt = "|";
-    if inst.lemma is not None:
-      for lemtok in inst.lemma:
+    if lemma is not None:
+      for lemtok in lemma:
         rslt += self._fmt_lemma( lemtok ) + "+";
       rslt = rslt[ :-1 ];
-    if inst.pos is not None or inst.sense is not None:
+    if pos is not None or sense is not None:
       rslt += "_";
-      if inst.pos is not None:
-        rslt += self._fmt_alphanum( inst.pos );
-      if inst.sense is not None:
-        rslt += "_" + self._fmt_alphanum( inst.sense );
-    if inst.wid is not None:
-      rslt += ":"+str(inst.wid);
+      if pos is not None:
+        rslt += self._fmt_alphanum( pos );
+      if sense is not None:
+        rslt += "_" + self._fmt_alphanum( sense );
+    if wid is not None:
+      rslt += ":" + str(wid);
     rslt += "|";
     rslt = self._fmt_word( rslt );
-    if inst.feats is not None:
-      rslt += self._encode_feats( inst.feats );
+    if feats is not None:
+      rslt += self._process_feats( feats );
     
     return rslt;
+
+
+  def _process_argument( self, inst, aid ):
+    
+    return inst;
   
   
-  def _encode_argslist( self, predmod, args_ ):
+  def _process_argslist( self, predmod, args_ ):
     
     if hasattr( predmod, "_sos_" ) and Argument in predmod._sos_:
       assigned_aids = predmod._sos_[ Argument ].keys();
@@ -235,7 +238,7 @@ class PFTEncoder( metaclass=subject ):
       rslt += " ";
       for (aid,arg,var) in sorted( args ):
         rslt += self._fmt_identifier( aid );
-        rslt += "=" + self._encode( var );
+        rslt += "=" + var;
         rslt += ", ";
       rslt = rslt[ :-2 ];
       rslt += " ";
@@ -244,58 +247,74 @@ class PFTEncoder( metaclass=subject ):
     
     return rslt;
       
+
+  def _process_predicate( self, inst, referent ):
+    
+    return referent;
   
-  def _encode_predication( self, inst ):
+  def _process_predication( self, inst, predicate, args ):
     
     rslt = "\ue100 ";
-    rslt += self._encode( inst.predicate.referent );
-    rslt += self._encode_argslist( inst.predicate, inst.args );
+    rslt += predicate;
+    rslt += self._process_argslist( inst.predicate, args );
     
     return rslt;
       
+
+  def _process_quantifier( self, inst, referent ):
+    
+    return referent;
   
-  def _encode_quantification( self, inst ):
+  def _process_quantification( self, inst, quantifier, var, rstr, body ):
     
     rslt = "\ue101 ";
-    rslt += self._encode( inst.quantifier.referent );
-    rslt += " " + self._encode( inst.var );
-    rslt += " " + self._encode( inst.rstr );
-    rslt += " " + self._encode( inst.body );
+    rslt += quantifier;
+    rslt += " " + var;
+    rslt += " " + rstr;
+    rslt += " " + body;
     
     return rslt;
 
 
-  def _encode_modification( self, inst ):
+  def _process_modality( self, inst, referent ):
+    
+    return referent;
+
+  def _process_modification( self, inst, modality, args, scope ):
     
     rslt = "\ue102 ";
-    rslt += self._encode( inst.modality.referent );
-    rslt += self._encode_argslist( inst.modality, inst.args );
-    rslt += " " + self._encode( inst.scope );
+    rslt += modality;
+    rslt += self._process_argslist( inst.modality, args );
+    rslt += " " + scope;
     
     return rslt;
 
 
-  def _encode_connection( self, inst ):
+  def _process_connective( self, inst, referent ):
+    
+    return referent;
+
+  def _process_connection( self, inst, connective, lscope, rscope ):
     
     rslt = "\ue103 ";
-    rslt += self._encode( inst.lscope ) + " ";
-    rslt += self._encode( inst.connective.referent );
-    rslt += " " + self._encode( inst.rscope );
+    rslt += lscope + " ";
+    rslt += connective;
+    rslt += " " + rscope;
     
     return rslt;
 
 
-  def _encode_constraint( self, inst ):
+  def _process_constraint( self, inst, harg, larg ):
     
     rslt = "\ue104 ";
-    rslt += self._encode( inst.harg );
+    rslt += harg;
     rslt += " ^ ";
-    rslt += self._encode( inst.larg )
+    rslt += larg;
     
     return rslt;
 
 
-  def _encode_protoform( self, inst ):
+  def _process_protoform( self, inst, subforms, constraints ):
     
     rslt = "{";
     
@@ -308,50 +327,20 @@ class PFTEncoder( metaclass=subject ):
     if inst.subforms or inst.constraints:
       rslt += " ";
       
-      for ( root, subform ) in inst.subforms:
-        if root.hid is not None:
-          rslt += self._encode( root ).rjust(3) + ": ";
+      for ( root, subform ) in subforms:
+        if root != "__":
+          rslt += root.rjust(3) + ": ";
         elif labeled:
           rslt += "     ";
-        rslt += self._encode( subform ) + "; ";
-      for constraint in inst.constraints:
-        rslt += "     " + self._encode( constraint ) + "; ";
+        rslt += subform + "; ";
+      for constraint in constraints:
+        rslt += "     " + constraint + "; ";
       rslt = rslt[ :-2 ];
       rslt += " ";
     
     rslt += "}";
     
     return rslt;
-
-
-  def _encode( self, inst ):
-    
-    if isinstance( inst, Handle ):
-      return self._encode_handle( inst );
-    elif isinstance( inst, Freezer ):
-      return self._encode_freezer( inst );
-    elif isinstance( inst, Variable ):
-      return self._encode_variable( inst );
-    elif isinstance( inst, Constant ):
-      return self._encode_constant( inst );
-    elif isinstance( inst, Word ):
-      return self._encode_word( inst );
-    elif isinstance( inst, Operator ):
-      return self._encode_operator( inst );
-    elif isinstance( inst, Predication ):
-      return self._encode_predication( inst );
-    elif isinstance( inst, Quantification ):
-      return self._encode_quantification( inst );
-    elif isinstance( inst, Modification ):
-      return self._encode_modification( inst );
-    elif isinstance( inst, Connection ):
-      return self._encode_connection( inst );
-    elif isinstance( inst, Constraint ):
-      return self._encode_constraint( inst );
-    elif isinstance( inst, ProtoForm ):
-      return self._encode_protoform( inst );
-    else:
-      assert False;
   
   
   def _indent( self, stri ):
@@ -382,8 +371,8 @@ class PFTEncoder( metaclass=subject ):
   
   def encode( self, fast_initialize=False, pretty_lines=True ):
     
-    self.initialize( fast_initialize );
-    r = self._encode( self._obj_ );
+    self._initialize( fast_initialize );
+    r = self.process( self._obj_ );
     if not pretty_lines:
       return r;
     return self._indent( r );
