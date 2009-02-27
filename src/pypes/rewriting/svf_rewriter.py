@@ -3,57 +3,69 @@
 __package__ = "pypes.rewriting";
 __all__ = [ "SVFRewriter", "svf_rewrite" ];
 
-from pypes.utils.mc import subject;
+from pypes.utils.mc import subject, Object;
 
 from pypes.proto import *;
+
+from pypes.rewriting.null_rewriter import NullRewriter;
 
 
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-class SVFRewriter( metaclass=subject ):
+class _IndexCollector( ProtoProcessor, metaclass=subject ):
+  
+  def _enter_( self ):
+    
+    self._obj_._quantified_vars = set();
+  
+  def _process_quantification( self, inst, quantifier, var, rstr, body ):
+    
+    self._obj_._quantified_vars.add( inst.var );
+
+
+
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+
+class SVFRewriter( NullRewriter, metaclass=subject ):
 
 
   def _enter_( self ):
 
-    self._sig = ProtoSig();
-    self._pf = self._obj_( sig=self._sig );
-    self._quantified_vars = set();
-    self._collect_quantified_vars( self._pf );
-
-
-  def _collect_quantified_vars( self, form ):
-
-    if isinstance( form, Modification ):
-
-      self._collect_quantified_vars( form.scope );
-
-    elif isinstance( form, Quantification ):
-      
-      self._quantified_vars.add( form.var );
-
-      self._collect_quantified_vars( form.rstr );
-      self._collect_quantified_vars( form.body );
-
-    elif isinstance( form, Connection ):
-
-      self._collect_quantified_vars( form.lscope );
-      self._collect_quantified_vars( form.rscope );
+    self._index = Object();
+    with _IndexCollector( self._index ) as coll:
+      coll.process( self._obj_ );
     
-    elif isinstance( form, ProtoForm ):
-      
-      for ( root, subf ) in form.subforms:
-        self._collect_quantified_vars( subf );
+    print( self._index._quantified_vars );
   
   
-  def _rewrite( self, form ):
+  def _process_predication( self, inst, predicate, args ):
     
-    return ProtoForm();
+    const_args = {};
+    var_args = {};
+    
+    for (arg,val) in inst.args.items():
+      arg_ = self.process_argument( arg );
+      if isinstance( val, Constant ):
+        const_args[ arg_ ] = self.process_constant( val );
+        continue;
+      if val not in self._index._quantified_vars:
+        #ident = str(val.sort.sid) + str(val.vid);
+        #const_args[ arg_ ] = Constant( ident = ident );
+        continue;
+      var_args[ arg_ ] = self.process_variable( val );
+    
+    args_ = const_args;
+    args_.update( var_args );
+    return Predication(
+               predicate = predicate,
+               args = args_
+             );
 
 
   def rewrite( self ):
-
-    return self._rewrite( self._pf );
+    
+    return self.process( self._obj_ );
 
 
 

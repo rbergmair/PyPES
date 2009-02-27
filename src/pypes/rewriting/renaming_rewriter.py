@@ -32,7 +32,7 @@ def sortseq( int_ ):
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-class IndexCollector( ProtoProcessor, metaclass=subject ):
+class _IndexCollector( ProtoProcessor, metaclass=subject ):
 
   
   def _enter_( self ):
@@ -86,10 +86,6 @@ class IndexCollector( ProtoProcessor, metaclass=subject ):
       self._obj_._variable_by_sidvid[ sidvid ] = set();
     self._obj_._variable_by_sidvid[ sidvid ].add( inst );
     
-    
-    
-    
-
 
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
@@ -100,7 +96,7 @@ class RenamingRewriter( NullRewriter, metaclass=subject ):
   def _enter_( self ):
     
     self._index = Object();
-    with IndexCollector( self._index ) as coll:
+    with _IndexCollector( self._index ) as coll:
       coll.process( self._obj_ );
       # print( repr( self._index._handle_by_hid ) );
   

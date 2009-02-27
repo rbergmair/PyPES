@@ -53,11 +53,12 @@ class TestSVFRewriter( TestCase, metaclass=object_ ):
               fstr = f.read();
               pstr = None;
               
-              pf1_ = decoder.decode( fstr );
+              pf1 = decoder.decode( fstr )( sig=ProtoSig() );
               
               print( filename );
               
-              pf2 = svf_rewrite( pf1_ )( sig=ProtoSig() );
+              pf2 = svf_rewrite( pf1 )( sig=ProtoSig() );
+              
               pstr = pft_encode( pf2 );
               print( pstr );
               g.write( pstr );
