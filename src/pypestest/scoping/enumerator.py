@@ -67,12 +67,12 @@ class TestEnumerator( TestCase, metaclass=object_ ):
               
               i = 0;
               with Enumerator( pf1 ) as enumerator:
-                print( fstr );
-                print( "--" );
+                #print( fstr );
+                #print( "--" );
                 for solution in enumerator.enumerate( pf1 ):
                   pf = enumerator.generate_protoform( pf1, solution );
                   i += 1;
-                  print( "{0:3d}. {1}".format( i, pft_encode(pf) ) );
+                  print( "{0:3d}. {1}".format( i, pft_encode(pf).replace( "\n", "\n     " ) ) );
                   #pprint.pprint( solution );
                 print( "-------" );
               

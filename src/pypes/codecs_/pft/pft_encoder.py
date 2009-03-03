@@ -31,15 +31,18 @@ def argseq( int_ ):
 class PFTEncoder( ProtoProcessor, metaclass=subject ):
 
 
-  def _initialize( self, fast_mode=False ):
+  def _initialize( self ):
 
     self._assigned_sortvids = set();
     self._assigned_sids = set();
     
-    if not fast_mode:
+    if not self._fast_initialize:
       
       sig = ProtoSig();
-      obj_ = renaming_rewrite( self._obj_ );
+      obj_ = renaming_rewrite(
+                 self._obj_,
+                 force_rename_handles_p = not self._machine_readable
+               );
       self._obj_ = obj_( sig=sig );
       
       if hasattr( sig, "_sos_" ) and Variable in sig._sos_:
@@ -163,6 +166,9 @@ class PFTEncoder( ProtoProcessor, metaclass=subject ):
   
   
   def _process_feats( self, feats ):
+
+    if not self._machine_readable:
+      return "";
     
     rslt = "";
 
@@ -343,23 +349,35 @@ class PFTEncoder( ProtoProcessor, metaclass=subject ):
     return rslt;
   
   
-  def _indent( self, stri ):
+  def _format( self, stri ):
     
     rslt = "";
     indents = [];
     curindent = -1;
     
+    skip = False;
+    
     for idx in range( 0, len(stri) ):
       
-      rslt += stri[idx];
+      ch = stri[idx];
+      
+      if ch in { "\ue100", "\ue101", "\ue102", "\ue103", "\ue104" }:
+        skip = True;
+        continue;
+      
+      if skip:
+        skip = False;
+        continue;
+      
+      rslt += ch;
       curindent += 1;
       
-      if stri[idx] == "{":
+      if ch == "{":
         indents.append( curindent );
-      elif stri[idx] == "}":
+      elif ch == "}":
         if indents:
           indents.pop();
-      elif stri[idx] == ";":
+      elif ch == ";":
         rslt += "\n";
         curindent = 0;
         if indents:
@@ -369,23 +387,27 @@ class PFTEncoder( ProtoProcessor, metaclass=subject ):
     return rslt;
 
   
-  def encode( self, fast_initialize=False, pretty_lines=True ):
+  def encode( self, machine_readable=False, fast_initialize=False ):
     
-    self._initialize( fast_initialize );
+    if not machine_readable:
+      fast_initialize = False;
+    
+    self._fast_initialize = fast_initialize;
+    self._machine_readable = machine_readable;
+    
+    self._initialize();
     r = self.process( self._obj_ );
-    if not pretty_lines:
-      return r;
-    return self._indent( r );
+    return self._format( r );
 
 
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-def pft_encode( pfobj, fast_initialize=False, pretty_lines=True ):
+def pft_encode( pfobj, fast_initialize=False, machine_readable=False ):
   
   rslt = None;
   with PFTEncoder( pfobj ) as encoder:
-    rslt = encoder.encode( fast_initialize, pretty_lines );
+    rslt = encoder.encode( fast_initialize, machine_readable );
   return rslt;
 
     

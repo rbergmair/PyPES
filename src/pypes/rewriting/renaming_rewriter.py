@@ -111,7 +111,7 @@ class RenamingRewriter( NullRewriter, metaclass=subject ):
       newid += 1;
 
 
-  def _invert_renaming( self, idx, invidx, refs ):
+  def _invert_renaming( self, idx, invidx, refs, force_p=False ):
     
     reallocate_objs = set();
     
@@ -119,7 +119,7 @@ class RenamingRewriter( NullRewriter, metaclass=subject ):
       
       objs = idx[ id ].copy();
       
-      if id is not None:
+      if id is not None and not force_p:
         obj = None;
         for obj_ in objs:
           if refs[ obj_ ] > 1:
@@ -140,14 +140,14 @@ class RenamingRewriter( NullRewriter, metaclass=subject ):
     self._reallocate( invidx, reallocate_objs );
 
 
-  def _invert_merging( self, idx, invidx, refs ):
+  def _invert_merging( self, idx, invidx, refs, force_p=False ):
     
     reallocate_objs = set();
     
     for id in idx:
       objs = idx[ id ];
       for obj in objs:
-        if id is None and refs[ obj ] > 1:
+        if ( id is None and refs[ obj ] > 1 ) or force_p:
           reallocate_objs.add( obj );
         else:
           invidx[ obj ] = id;
@@ -155,20 +155,21 @@ class RenamingRewriter( NullRewriter, metaclass=subject ):
     self._reallocate( invidx, reallocate_objs );
   
   
-  def _invert( self, idx, invidx, refs, rename_p ):
+  def _invert( self, idx, invidx, refs, rename_p, force_p=False ):
     
     if rename_p:
-      self._invert_renaming( idx, invidx, refs );
+      self._invert_renaming( idx, invidx, refs, force_p );
     else:
-      self._invert_merging( idx, invidx, refs );
+      self._invert_merging( idx, invidx, refs, force_p );
   
   
   def _invert_index( self, rename_handles_p=True, rename_vars_p=True,
-                     rename_words_p=True ):
+                     rename_words_p=True, force_rename_handles_p=False ):
 
     self._invert(
         self._index._handle_by_hid, self._hid_by_handle,
-        self._index._handle_references, rename_handles_p
+        self._index._handle_references, rename_handles_p,
+        force_p = force_rename_handles_p
       );
     
     # print( repr( self._hid_by_handle ) );
@@ -241,7 +242,7 @@ class RenamingRewriter( NullRewriter, metaclass=subject ):
 
  
   def rewrite( self, rename_handles_p=True, rename_vars_p=True,
-                 rename_words_p=True ):
+                 rename_words_p=True, force_rename_handles_p=False ):
     
     self._hid_by_handle = {};
     self._sortvid_by_variable = {};
@@ -251,7 +252,8 @@ class RenamingRewriter( NullRewriter, metaclass=subject ):
     self._invert_index(
         rename_handles_p = rename_handles_p,
         rename_vars_p = rename_vars_p,
-        rename_words_p = rename_words_p
+        rename_words_p = rename_words_p,
+        force_rename_handles_p = force_rename_handles_p
       );
     
     return self.process( self._obj_ );
@@ -289,14 +291,15 @@ class RenamingRewriter( NullRewriter, metaclass=subject ):
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 def renaming_rewrite( obj, rename_handles_p=True, rename_vars_p=True,
-                      rename_words_p=True ):
+                      rename_words_p=True, force_rename_handles_p=False ):
   
   rslt = None;
   with RenamingRewriter( obj ) as rewriter:
     rslt = rewriter.rewrite(
                rename_handles_p = rename_handles_p,
                rename_vars_p = rename_vars_p,
-               rename_words_p = rename_words_p
+               rename_words_p = rename_words_p,
+               force_rename_handles_p = force_rename_handles_p
              );
   return rslt;
     
