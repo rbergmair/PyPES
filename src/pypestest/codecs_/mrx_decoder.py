@@ -110,7 +110,7 @@ class TestMRXDecoder( TestCase, metaclass=object_ ):
     with PFTDecoder( (pypes.proto.lex.erg,None) ) as decoder:
   
       #for i in { 324 }:
-      for i in range( 1, 550 ):
+      for i in range( 1, 641 ):
         
         # numbers
         if i in { 334 }:
@@ -119,7 +119,7 @@ class TestMRXDecoder( TestCase, metaclass=object_ ):
         #if i in { 26, 175, 247, 248, 321 }:
         #  continue;
         
-        self.doteston( "{0}/fracas-new-{1}.mrs.xml.gz".format( self._TESTMRSDIR, i ), decoder );
+        self.write_testfiles( "{0}/fracas-new-{1}.mrs.xml.gz".format( self._TESTMRSDIR, i ), decoder );
       
       #return;
       
@@ -132,7 +132,7 @@ class TestMRXDecoder( TestCase, metaclass=object_ ):
         #if i in { 72 }:
         #  continue;
         
-        self.doteston( "{0}/mrs-{1}1.mrs.xml.gz".format( self._TESTMRSDIR, i ), decoder );
+        self.write_testfiles( "{0}/mrs-{1}1.mrs.xml.gz".format( self._TESTMRSDIR, i ), decoder );
         #if i == 10:
         #  return;
 

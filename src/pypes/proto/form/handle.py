@@ -23,6 +23,13 @@ class Handle( ScopeBearer, metaclass=kls ):
     if hid is not None:
       self.hid = hid;
   
+  def __repr__( self ):
+    
+    if self.hid is None:
+      return "Handle()";
+    else:
+      return "Handle( hid={0} )".format( self.hid );
+  
   def __le__( self, obj ):
     
     if not isinstance( obj, Handle ):

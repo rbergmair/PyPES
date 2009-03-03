@@ -44,7 +44,11 @@ class ProtoProcessor( metaclass=subject ):
       return self.process_word( proto );
     if isinstance( proto, Operator ):
       return self.process_operator( proto );
-    assert False;
+    try:
+      assert False;
+    except:
+      print( proto );
+      raise;
 
 
   def process_subform( self, subform ):
@@ -241,7 +245,12 @@ class ProtoProcessor( metaclass=subject ):
       elif isinstance( subform, ProtoForm ):
         subform_ = self.process_protoform( subform );
       else:
-        assert False;
+        try:
+          assert False;
+        except:
+          print( root );
+          print( subform );
+          raise;
       subforms_.append( (root_,subform_) );
     
     constraints_ = [];

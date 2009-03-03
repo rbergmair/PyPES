@@ -30,7 +30,7 @@ class TestMinrecToDSFRewriter( TestCase, metaclass=object_ ):
   _TESTDTADIR = "dta/native";
   
   
-  def write_testfiles( self, filename, decoder ):
+  def write_testfile( self, filename, decoder ):
 
     try:
       
@@ -39,7 +39,7 @@ class TestMinrecToDSFRewriter( TestCase, metaclass=object_ ):
         
         try:
           
-          g = open( filename.replace( ".pft.gz", "-svf.pft.gz" ), "w" );
+          g = open( filename.replace( ".pft.gz", "-dsf.pft.gz" ), "w" );
           try:
 
             r = None;
@@ -91,7 +91,7 @@ class TestMinrecToDSFRewriter( TestCase, metaclass=object_ ):
       #for i in [ 10 ]:
       for i in range( 1, 550 ):
         
-        self.write_testfiles( "{0}/fracas-new-{1}.pft.gz".format( self._TESTDTADIR, i ), decoder );
+        self.write_testfile( "{0}/fracas-new-{1}.pft.gz".format( self._TESTDTADIR, i ), decoder );
         
         if i > 20:
           break;
@@ -101,7 +101,7 @@ class TestMinrecToDSFRewriter( TestCase, metaclass=object_ ):
       for i in range( 1, 108 ):
       #for i in []:
         
-        self.write_testfiles( "{0}/mrs-{1}1.pft.gz".format( self._TESTDTADIR, i ), decoder );
+        self.write_testfile( "{0}/mrs-{1}1.pft.gz".format( self._TESTDTADIR, i ), decoder );
 
 
 
