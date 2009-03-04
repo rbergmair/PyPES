@@ -38,7 +38,7 @@ class TestMRXDecoder( TestCase, metaclass=object_ ):
       try:
         print( filename );
         r = mrx_decode( f, MRXDecoder.SEM_ERG )( sig=ProtoSig() );
-        r_ = pft_encode( r );
+        r_ = pft_encode( r, pretty=False );
         g.write( r_ );
         g.write( "\n" );
         print();
@@ -111,6 +111,7 @@ class TestMRXDecoder( TestCase, metaclass=object_ ):
   
       #for i in { 324 }:
       for i in range( 1, 641 ):
+      #for i in { 363, 640 }:
         
         # numbers
         if i in { 334 }:
@@ -124,6 +125,7 @@ class TestMRXDecoder( TestCase, metaclass=object_ ):
       #return;
       
       for i in range( 1, 108 ):
+      #for i in { 77 }:
         
         # numbers
         if i in { 63, 64 }:

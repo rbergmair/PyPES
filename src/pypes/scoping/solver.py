@@ -24,20 +24,20 @@ class _QuantifiedVarsCollector( ProtoProcessor, metaclass=subject ):
     self._tlpf = inst;
     self.process( inst );
   
-  def process_protoform( self, inst ):
-    
-    if inst is self._tlpf:
-      super().process_protoform( inst );
-  
   def _process_quantification( self, inst, quantifier, var, rstr, body ):
     
-    return inst.var;
+    return { inst.var };
   
   def _process_protoform( self, inst, subforms, constraints ):
     
+    vars = set();
     for ( (root,subform), (root_,subform_) ) in zip( inst.subforms, subforms ):
       if subform_ is not None:
-        self._obj_.quantified_vars[ subform_ ] = root;
+        vars |= subform_;
+        if inst is self._tlpf:
+          for var in subform_:
+            self._obj_.quantified_vars[ var ] = root;
+    return vars;
 
 
 
@@ -60,10 +60,7 @@ class _ConstraintsCollector( ProtoProcessor, metaclass=subject ):
     for val in args.values():
       if val in self._obj_.quantified_vars:
         vars.add( val );
-    if len( vars ) == 0:
-      return None;
-    else:
-      return vars;
+    return vars;
 
   def _process_predication( self, inst, predicate, args ):
     
@@ -71,15 +68,29 @@ class _ConstraintsCollector( ProtoProcessor, metaclass=subject ):
 
   def _process_modification( self, inst, modality, args, scope ):
 
-    return self._process_args( inst.args );
+    vars = set();
+    if scope is not None:
+      vars |= scope;
+    vars |= self._process_args( inst.args );
+    return vars;
   
   def _process_quantification( self, inst, quantifier, var, rstr, body ):
     
-    return None;
+    vars = set();
+    if rstr is not None:
+      vars |= rstr;
+    if body is not None:
+      vars |= body;
+    return vars;
     
   def _process_connection( self, inst, connective, lscope, rscope ):
     
-    return None;
+    vars = set();
+    if lscope is not None:
+      vars |= lscope;
+    if rscope is not None:
+      vars |= rscope;
+    return vars;
   
   def _process_constraint( self, inst, harg, larg ):
     
@@ -89,11 +100,14 @@ class _ConstraintsCollector( ProtoProcessor, metaclass=subject ):
 
   def _process_protoform( self, inst, subforms, constraints ):
     
+    vars = set();
+    
     for ( (root,subform), (root_, subform_) ) in zip( inst.subforms, subforms ):
       if subform_ is not None:
         for var in subform_:
           if inst is not self._tlpf:
-            return subform_;
+            vars |= subform_;
+            continue;
           else:
             harg = self._obj_.quantified_vars[ var ];
             larg = root;
@@ -101,7 +115,7 @@ class _ConstraintsCollector( ProtoProcessor, metaclass=subject ):
               self._obj_.cons[ harg ] = set();
             self._obj_.cons[ harg ].add( larg );
     
-    return None;
+    return vars;
 
 
 
@@ -421,11 +435,10 @@ class Solver( metaclass=subject ):
       # print( "SPLIT: " + str( split ) );
       
       for component in split.values():
-        if not self.solve_component_recursively( component ):
+        if not self.solve_component_recursively( component, branching_factor ):
           return False;
       
       i += 1;
-      
       if branching_factor is not None and i >= branching_factor:
         break;
     

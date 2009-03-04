@@ -41,7 +41,7 @@ class PFTEncoder( ProtoProcessor, metaclass=subject ):
       sig = ProtoSig();
       obj_ = renaming_rewrite(
                  self._obj_,
-                 force_rename_handles_p = not self._machine_readable
+                 force_rename_handles_p = self._pretty
                );
       self._obj_ = obj_( sig=sig );
       
@@ -167,7 +167,7 @@ class PFTEncoder( ProtoProcessor, metaclass=subject ):
   
   def _process_feats( self, feats ):
 
-    if not self._machine_readable:
+    if self._pretty:
       return "";
     
     rslt = "";
@@ -351,6 +351,9 @@ class PFTEncoder( ProtoProcessor, metaclass=subject ):
   
   def _format( self, stri ):
     
+    if not self._pretty and not self._linebreaks:
+      return stri;
+    
     rslt = "";
     indents = [];
     curindent = -1;
@@ -361,9 +364,10 @@ class PFTEncoder( ProtoProcessor, metaclass=subject ):
       
       ch = stri[idx];
       
-      if ch in { "\ue100", "\ue101", "\ue102", "\ue103", "\ue104" }:
-        skip = True;
-        continue;
+      if self._pretty:
+        if ch in { "\ue100", "\ue101", "\ue102", "\ue103", "\ue104" }:
+          skip = True;
+          continue;
       
       if skip:
         skip = False;
@@ -387,13 +391,16 @@ class PFTEncoder( ProtoProcessor, metaclass=subject ):
     return rslt;
 
   
-  def encode( self, machine_readable=False, fast_initialize=False ):
+  def encode( self, pretty=True, fast_initialize=False, linebreaks=True ):
     
-    if not machine_readable:
-      fast_initialize = False;
-    
-    self._fast_initialize = fast_initialize;
-    self._machine_readable = machine_readable;
+    if pretty:
+      self._pretty = True;
+      self._fast_initialize = False;
+      self._linebreaks = True;
+    else:
+      self._pretty = False;
+      self._fast_initialize = fast_initialize;
+      self._linebreaks = linebreaks;
     
     self._initialize();
     r = self.process( self._obj_ );
@@ -403,11 +410,15 @@ class PFTEncoder( ProtoProcessor, metaclass=subject ):
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-def pft_encode( pfobj, fast_initialize=False, machine_readable=False ):
+def pft_encode( pfobj, pretty=True, fast_initialize=False, linebreaks=True ):
   
   rslt = None;
   with PFTEncoder( pfobj ) as encoder:
-    rslt = encoder.encode( fast_initialize, machine_readable );
+    rslt = encoder.encode(
+               pretty = pretty,
+               fast_initialize = fast_initialize,
+               linebreaks = linebreaks
+             );
   return rslt;
 
     

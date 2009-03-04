@@ -1,13 +1,9 @@
 # -*-  coding: ascii -*-  # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-__package__ = "pypes";
-__all__ = [ "PFTEncoder", "pft_encode", "PFTDecoder", "pft_decode",
-            "MRXDecoder", "mrx_decode", "TreeEncoder", "tree_encode" ];
+__package__ = "pypes.codecs_";
+__all__ = [ "TreeEncoder", "tree_encode" ];
 
-from pypes.codecs_.pft import PFTEncoder, pft_encode;
-from pypes.codecs_.pft import PFTDecoder, pft_decode;
-from pypes.codecs_.mrs import MRXDecoder, mrx_decode;
-from pypes.codecs_.tree import TreeEncoder, tree_encode;
+from pypes.codecs_.tree.tree_encoder import TreeEncoder, tree_encode;
 
 
 

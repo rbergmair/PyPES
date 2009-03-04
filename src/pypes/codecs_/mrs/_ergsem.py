@@ -599,16 +599,17 @@ class MRSInterpreter( _ergsem_auto.MRSInterpreter, metaclass=subject ):
     if len( eps ) == 1:
       
       ep = eps.pop();
-      subf = self._ep_to_subform( ep, lvl );
       if wrap_single:
+        subf = self._ep_to_subform( ep, lvl+1 );
         return ProtoForm( subforms = [ ( Handle(), subf ) ] );
       else:
+        subf = self._ep_to_subform( ep, lvl );
         return subf;
       
     subforms = [];
     
     for ep in eps:
-      subforms.append( ( Handle(), self._ep_to_subform( ep, 1 ) ) );
+      subforms.append( ( Handle(), self._ep_to_subform( ep, lvl+1 ) ) );
       subforms.append( ( Handle(),
           Connection(
               connective = Connective(

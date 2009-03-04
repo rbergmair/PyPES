@@ -48,6 +48,7 @@ class Enumerator( Solver, metaclass=subject ):
     except ValueError:
       pass;
     
+    # print( roots );
     assert idx is not None;
     
     solutions = [];
