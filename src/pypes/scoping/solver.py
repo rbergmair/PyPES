@@ -286,8 +286,6 @@ class Solver( metaclass=subject ):
     if rt in self._index.fragments_inv:
       return self._index.fragments_inv[ rt ];
     try:
-      # TODO: fix this!
-      # assert False;
       return None;
     except:
       print( rt );
