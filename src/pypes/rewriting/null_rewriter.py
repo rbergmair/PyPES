@@ -61,12 +61,6 @@ class NullRewriter( ProtoProcessor, metaclass=subject ):
                hid = hid
              );
     
-  def _process_freezer( self, inst, content ):
-    
-    return inst.__class__(
-               content = content
-             );
-    
   def _process_constraint( self, inst, harg, larg ):
     
     return inst.__class__(

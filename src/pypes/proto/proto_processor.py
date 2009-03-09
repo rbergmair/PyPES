@@ -68,8 +68,6 @@ class ProtoProcessor( metaclass=subject ):
     
     if isinstance( scope, Handle ):
       return self.process_handle( scope );
-    if isinstance( scope, Freezer ):
-      return self.process_freezer( scope );
     if isinstance( scope, ProtoForm ):
       return self.process_protoform( scope );
     assert False;
@@ -185,45 +183,18 @@ class ProtoProcessor( metaclass=subject ):
              );
   
   
-  def _process_freezer( self, inst, content ):
-    
-    pass;
-  
-  def process_freezer( self, inst ):
-    
-    if isinstance( inst.content, Freezer ):
-      content_ = self.process_freezer( inst.content );
-    elif isinstance( inst.content, Handle ):
-      content_ = self.process_handle( inst.content );
-    else:
-      assert False;
-    
-    return self._process_freezer(
-               inst = inst,
-               content = content_
-             );
-  
-  
   def _process_constraint( self, inst, harg, larg ):
     
     pass;
   
   def process_constraint( self, inst ):
     
-    if isinstance( inst.harg, Handle ):
-      harg_ = self.process_handle( inst.harg );
-    elif isinstance( inst.harg, Freezer ):
-      harg_ = self.process_freezer( inst.harg );
-    else:
-      assert False;
+    assert isinstance( inst.harg, Handle );
+    harg_ = self.process_handle( inst.harg );
 
-    if isinstance( inst.harg, Handle ):
-      larg_ = self.process_handle( inst.larg );
-    elif isinstance( inst.harg, Freezer ):
-      larg_ = self.process_freezer( inst.larg );
-    else:
-      assert False;
-    
+    assert isinstance( inst.harg, Handle );
+    larg_ = self.process_handle( inst.larg );
+
     return self._process_constraint(
                inst = inst,
                harg = harg_,
@@ -238,8 +209,16 @@ class ProtoProcessor( metaclass=subject ):
   def process_protoform( self, inst ):
     
     subforms_ = [];
-    for ( root, subform ) in inst.subforms:
+    
+    for ( root, holes, subform ) in inst.subforms:
+      
       root_ = self.process_handle( root );
+      
+      holes_ = set();
+      for hole in holes:
+        hole_ = self.process_handle( hole );
+        holes_.add( hole_ );
+      
       if isinstance( subform, SubForm ):
         subform_ = self.process_subform( subform );
       elif isinstance( subform, ProtoForm ):
@@ -251,7 +230,8 @@ class ProtoProcessor( metaclass=subject ):
           print( root );
           print( subform );
           raise;
-      subforms_.append( (root_,subform_) );
+        
+      subforms_.append( (root_,holes_,subform_) );
     
     constraints_ = [];
     for constraint in inst.constraints:

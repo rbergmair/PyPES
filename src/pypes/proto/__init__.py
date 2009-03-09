@@ -4,7 +4,7 @@ __package__ = "pypes";
 
 __all__ = [ "Connection", "Constraint", "Handle", "Modification",
             "Predication", "ProtoForm", "Quantification", "SubForm",
-            "ScopeBearer", "Freezer", "Argument", "Connective",
+            "ScopeBearer", "Argument", "Connective",
             "Constant", "Modality", "Predicate", "ProtoSig", "Quantifier",
             "Sort", "Variable", "Operator", "Word", "ProtoBase",
             "ProtoProcessor" ];
@@ -28,7 +28,6 @@ from pypes.proto.form import ProtoForm;
 from pypes.proto.form import Quantification;
 from pypes.proto.form import SubForm;
 from pypes.proto.form import ScopeBearer;
-from pypes.proto.form import Freezer;
 
 from pypes.proto.lex import Operator;
 from pypes.proto.lex import Word;

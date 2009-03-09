@@ -33,15 +33,21 @@ class ProtoForm( ScopeBearer, metaclass=kls ):
     
     if subforms is not None:
       
-      for ( root_, subform_ ) in subforms:
+      for ( root_, holes_, subform_ ) in subforms:
         
         root = root_( sig=sig );
         assert isinstance( root, Handle );
         
+        holes = set();
+        for hole_ in holes_:
+          hole = hole_( sig=sig );
+          assert isinstance( hole, Handle );
+          holes.add( hole );
+        
         subform = subform_( sig=sig );
         assert isinstance( subform, SubForm ) or isinstance( subform, ProtoForm );
         
-        self.subforms.append( (root,subform) );
+        self.subforms.append( (root,holes,subform) );
         
     if constraints is not None:    
       
