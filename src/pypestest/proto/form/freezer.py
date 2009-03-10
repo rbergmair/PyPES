@@ -33,12 +33,11 @@ class TestFreezer( TestCase, metaclass=object_ ):
     
     inst_ = Freezer( content = Handle() );
     return inst_;
-
   
   def check_freezer_1( self, inst, msg=None ):
     
     self.assert_( isinstance( inst.content, Handle ) );
-  
+    self.assertEquals( inst.freezelevel, 0 );
   
   def test_1( self ):
     
@@ -47,15 +46,13 @@ class TestFreezer( TestCase, metaclass=object_ ):
 
   def init_freezer_2( self ):
     
-    inst_ = Freezer( content = Freezer( content = Handle() ) );
+    inst_ = Freezer( content = Freezer( content=Handle() ) );
     return inst_;
-
   
   def check_freezer_2( self, inst, msg=None ):
     
-    self.assert_( isinstance( inst.content, Freezer ) );
-    self.assert_( isinstance( inst.content.content, Handle ) );
-  
+    self.assert_( isinstance( inst.content, Handle ) );
+    self.assertEquals( inst.freezelevel, 1 );
   
   def test_2( self ):
     

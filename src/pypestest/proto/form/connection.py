@@ -38,7 +38,7 @@ class TestConnection( TestCase, metaclass=object_ ):
                                               )
                                ),
                 lscope = ProtoForm(),
-                rscope = Handle( hid=1 )
+                rscope = Freezer( content = Handle( hid=1 ) )
               );
     
     return inst_;
@@ -51,6 +51,7 @@ class TestConnection( TestCase, metaclass=object_ ):
     self.assert_( isinstance( inst.lscope, ProtoForm ), msg );
     self.assert_( isinstance( inst.rscope, Handle ), msg );
     self.assertEquals( inst.rscope.hid, 1, msg );
+    self.assertEquals( inst.holes, {inst.rscope} );
   
   def test_1( self ):
     
@@ -63,7 +64,7 @@ class TestConnection( TestCase, metaclass=object_ ):
                 connective = Connective(
                                  referent = Word( lemma = ["and"] )
                                ),
-                lscope = Handle(),
+                lscope = Freezer( content = Handle() ),
                 rscope = ProtoForm()
               );
     
@@ -76,6 +77,7 @@ class TestConnection( TestCase, metaclass=object_ ):
     self.assertEquals( inst.connective.referent.lemma, ["and"], msg );
     self.assert_( isinstance( inst.lscope, Handle ), msg );
     self.assert_( isinstance( inst.rscope, ProtoForm ), msg );
+    self.assertEquals( inst.holes, {inst.lscope} );
   
   def test_2( self ):
     
@@ -91,7 +93,7 @@ class TestConnection( TestCase, metaclass=object_ ):
                                               )
                                ),
                 lscope = ProtoForm(),
-                rscope = Freezer( content=Handle( hid=1 ) )
+                rscope = Freezer( content = Freezer( content = Handle( hid=1 ) ) )
               );
     
     return inst_;
@@ -102,13 +104,14 @@ class TestConnection( TestCase, metaclass=object_ ):
     self.assert_( isinstance( inst.connective.referent, Operator ), msg );
     self.assertEquals( inst.connective.referent.otype, Operator.OP_C_STRCON, msg );
     self.assert_( isinstance( inst.lscope, ProtoForm ), msg );
-    self.assert_( isinstance( inst.rscope, Freezer ), msg );
-    self.assert_( isinstance( inst.rscope.content, Handle ), msg );
-    self.assertEquals( inst.rscope.content.hid, 1, msg );
+    self.assert_( isinstance( inst.rscope, Handle ), msg );
+    self.assertEquals( inst.rscope.hid, 1, msg );
+    self.assertEquals( inst.holes, set() );
   
   def test_3( self ):
     
     self.check_conn_3( self.logify( self.init_conn_3() ) );
+
   
   def test_cmp( self ):
     

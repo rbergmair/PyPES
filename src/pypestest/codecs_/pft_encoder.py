@@ -36,11 +36,10 @@ class TestPFTEncoder( TestCase, metaclass=object_ ):
   def check( self, stri, initf, logifyf ):
 
     inst = logifyf( self, initf( self ), stri );
-    rslt = pft_encode( inst );
+    rslt = pft_encode( inst, pretty=False );
     self.assert_( isinstance( rslt, str ) );
     if stri is not None:
-      # print( rslt );
-      self.assertStringCrudelyEqual( rslt, stri, stri );
+      self.assertStringCrudelyEqual( rslt, stri, rslt );
 
 
   def test_constant( self ):
@@ -110,7 +109,7 @@ class TestPFTEncoder( TestCase, metaclass=object_ ):
               self.check( stri, initf, TestQuantification.logify );
     
     check( "\ue101 ALL[ pers='3', num='sg' ] x1 {} 1", TestQuantification.init_quant_1 );
-    check( "\ue101 |every| x1 <__> {}", TestQuantification.init_quant_2 );
+    # check( "\ue101 |every| x1 <__> {}", TestQuantification.init_quant_2 );
 
 
   def test_modification( self ):

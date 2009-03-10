@@ -20,8 +20,6 @@ class ProtoProcessor( metaclass=subject ):
     
     if isinstance( proto, SubForm ):
       return self.process_subform( proto );
-    if isinstance( proto, ScopeBearer ):
-      return self.process_scopebearer( proto );
     if isinstance( proto, Constraint ):
       return self.process_constraint( proto );
     if isinstance( proto, Predicate ):
@@ -39,11 +37,13 @@ class ProtoProcessor( metaclass=subject ):
     if isinstance( proto, Sort ):
       return self.process_sort( proto );
     if isinstance( proto, Argument ):
-      return self.process_sort( argument );
+      return self.process_argument( proto );
     if isinstance( proto, Word ):
       return self.process_word( proto );
     if isinstance( proto, Operator ):
       return self.process_operator( proto );
+    if isinstance( proto, Handle ):
+      return self.process_handle( proto );
     try:
       assert False;
     except:
@@ -51,33 +51,49 @@ class ProtoProcessor( metaclass=subject ):
       raise;
 
 
-  def process_subform( self, subform ):
+  def process_subform( self, subform, holes=None ):
 
     if isinstance( subform, Predication ):
-      return self.process_predication( subform );
+      return self.process_predication( subform, holes );
     if isinstance( subform, Quantification ):
-      return self.process_quantification( subform );
+      return self.process_quantification( subform, holes );
     if isinstance( subform, Modification ):
-      return self.process_modification( subform );
+      return self.process_modification( subform, holes );
     if isinstance( subform, Connection ):
-      return self.process_connection( subform );
+      return self.process_connection( subform, holes );
+    if isinstance( subform, ProtoForm ):
+      return self.process_protoform( subform, holes );
     assert False;
-
-
-  def process_scopebearer( self, scope ):
+  
+  
+  def _process_freezer( self, content, freezelevel ):
     
-    if isinstance( scope, Handle ):
-      return self.process_handle( scope );
-    if isinstance( scope, ProtoForm ):
-      return self.process_protoform( scope );
-    assert False;
+    pass;
+  
+  def process_freezer( self, handle, freezelevel ):
+    
+    if freezelevel == -1:
+      return self._process_handle( handle, handle.hid );
+    else:
+      return self._process_freezer(
+                 self.process_freezer( handle, freezelevel-1 ),
+                 freezelevel
+               );
   
   
+  def process_scopebearer( self, inst, holes ):
+    
+    if isinstance( inst, ProtoForm ):
+      return self.process_protoform( inst, holes );
+    elif isinstance( inst, Handle ):
+      return self.process_freezer( inst, holes[ inst ] );
+
+
   def _process_predication( self, inst, predicate, args ):
     
     pass;
   
-  def process_predication( self, inst ):
+  def process_predication( self, inst, holes=None ):
     
     predicate_ = self.process_predicate( inst.predicate );
     
@@ -103,15 +119,20 @@ class ProtoProcessor( metaclass=subject ):
     
     pass;
   
-  def process_quantification( self, inst ):
+  def process_quantification( self, inst, holes=None ):
     
     quantifier_ = self.process_quantifier( inst.quantifier );
     
     var_ = self.process_variable( inst.var );
     
-    rstr_ = self.process_scopebearer( inst.rstr );
+    if holes is None:
+      holes = {};
+    for hole in inst.holes:
+      holes[ hole ] = 0;
     
-    body_ = self.process_scopebearer( inst.body );
+    rstr_ = self.process_scopebearer( inst.rstr, holes );
+    
+    body_ = self.process_scopebearer( inst.body, holes );
     
     return self._process_quantification(
                inst = inst,
@@ -126,7 +147,7 @@ class ProtoProcessor( metaclass=subject ):
     
     pass;
   
-  def process_modification( self, inst ):
+  def process_modification( self, inst, holes=None ):
     
     modality_ = self.process_modality( inst.modality );
     
@@ -140,8 +161,13 @@ class ProtoProcessor( metaclass=subject ):
       else:
         assert False;
       args_[ arg_ ] = val_;
+
+    if holes is None:
+      holes = {};
+    for hole in inst.holes:
+      holes[ hole ] = 0;
     
-    scope_ = self.process_scopebearer( inst.scope );
+    scope_ = self.process_scopebearer( inst.scope, holes );
     
     return self._process_modification(
                inst = inst,
@@ -155,13 +181,18 @@ class ProtoProcessor( metaclass=subject ):
     
     pass;
   
-  def process_connection( self, inst ):
+  def process_connection( self, inst, holes=None ):
     
     connective_ = self.process_connective( inst.connective );
+
+    if holes is None:
+      holes = {};
+    for hole in inst.holes:
+      holes[ hole ] = 0;
     
-    lscope_ = self.process_scopebearer( inst.lscope );
+    lscope_ = self.process_scopebearer( inst.lscope, holes );
     
-    rscope_ = self.process_scopebearer( inst.rscope );
+    rscope_ = self.process_scopebearer( inst.rscope, holes );
     
     return self._process_connection(
                inst = inst,
@@ -206,23 +237,24 @@ class ProtoProcessor( metaclass=subject ):
     
     pass;
   
-  def process_protoform( self, inst ):
+  def process_protoform( self, inst, holes=None ):
+    
+    holes_ = {};
+    if holes is not None:
+      for ( hole, freezelevel ) in holes.items():
+        holes_[ hole ] = freezelevel+1;
+    for hole in inst.holes:
+      holes_[ hole ] = 1;
     
     subforms_ = [];
     
-    for ( root, holes, subform ) in inst.subforms:
+    for root in inst.roots:
       
+      subform = inst.subforms[ root ];
       root_ = self.process_handle( root );
       
-      holes_ = set();
-      for hole in holes:
-        hole_ = self.process_handle( hole );
-        holes_.add( hole_ );
-      
       if isinstance( subform, SubForm ):
-        subform_ = self.process_subform( subform );
-      elif isinstance( subform, ProtoForm ):
-        subform_ = self.process_protoform( subform );
+        subform_ = self.process_subform( subform, holes_ );
       else:
         try:
           assert False;
@@ -231,7 +263,7 @@ class ProtoProcessor( metaclass=subject ):
           print( subform );
           raise;
         
-      subforms_.append( (root_,holes_,subform_) );
+      subforms_.append( (root_,subform_) );
     
     constraints_ = [];
     for constraint in inst.constraints:

@@ -21,7 +21,11 @@ class NullRewriter( ProtoProcessor, metaclass=subject ):
   def rewrite( self ):
     
     return self.process( self._obj_ );
-
+  
+  
+  def _process_freezer( self, content, freezelevel ):
+    
+    return Freezer( content=content );
 
   def _process_predication( self, inst, predicate, args ):
     

@@ -211,7 +211,7 @@ class MRSInterpreter( _ergsem_auto.MRSInterpreter, metaclass=subject ):
   @classmethod
   def _freeze( cls, hid, lvl ):
     
-    if lvl == 0:
+    if lvl == -1:
       return Handle( hid=hid );
     else:
       return Freezer( content = cls._freeze( hid, lvl-1 ) );
@@ -507,8 +507,8 @@ class MRSInterpreter( _ergsem_auto.MRSInterpreter, metaclass=subject ):
                                                            otype = Operator.OP_C_WEACON
                                                          )
                                           ),
-                           lscope = Handle(),
-                           rscope = Handle(),
+                           lscope = Freezer( content = Handle() ),
+                           rscope = Freezer( content = Handle() ),
                          ) ),
                    ( Handle(), pred )
                  ]
@@ -617,8 +617,8 @@ class MRSInterpreter( _ergsem_auto.MRSInterpreter, metaclass=subject ):
                                               otype = Operator.OP_C_WEACON
                                             )
                              ),
-              lscope = Handle(),
-              rscope = Handle()
+              lscope = Freezer( content = Handle() ),
+              rscope = Freezer( content = Handle() )
             )
         ) );
     

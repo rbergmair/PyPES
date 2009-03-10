@@ -8,7 +8,6 @@ import unittest;
 
 import pypestest.rewriting.null_rewriter;
 import pypestest.rewriting.renaming_rewriter;
-import pypestest.rewriting.svf_rewriter;
 
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
@@ -19,7 +18,6 @@ def suite():
 
   suite.addTests( pypestest.rewriting.null_rewriter.suite() );
   suite.addTests( pypestest.rewriting.renaming_rewriter.suite() );
-  suite.addTests( pypestest.rewriting.svf_rewriter.suite() );
 
   return suite;
 

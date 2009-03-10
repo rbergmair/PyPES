@@ -40,7 +40,7 @@ class TestModification( TestCase, metaclass=object_ ):
                          Argument( aid="arg2" ):
                            Variable( sidvid=("x",2) )
                        },
-                scope = Handle( hid=1 )
+                scope = Freezer( content = Handle( hid=1 ) )
               );
               
     return inst_;
@@ -70,6 +70,7 @@ class TestModification( TestCase, metaclass=object_ ):
       
     self.assert_( isinstance( inst.scope, Handle ), msg );
     self.assertEquals( inst.scope.hid, 1, msg );
+    self.assertEquals( inst.holes, {inst.scope} );
 
   def test_1( self ):
     
@@ -115,8 +116,9 @@ class TestModification( TestCase, metaclass=object_ ):
     self.assert_( isinstance( inst.modality, Modality ), msg );
     self.assert_( isinstance( inst.modality.referent, Operator ), msg );
     self.assertEquals( inst.modality.referent.otype, Operator.OP_M_NECESSITY, msg );
-    self.assert_( isinstance( inst.scope, Freezer ), msg );
-    self.assert_( isinstance( inst.scope.content, Handle ), msg );
+    self.assert_( isinstance( inst.scope, Handle ), msg );
+    self.assertEquals( inst.holes, {inst.scope} );
+    
   
   def test_3( self ):
     

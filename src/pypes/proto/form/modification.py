@@ -9,7 +9,8 @@ from pypes.proto import Modality;
 from pypes.proto import Argument;
 from pypes.proto import Variable;
 from pypes.proto import Constant;
-from pypes.proto.form.scopebearer import ScopeBearer;
+from pypes.proto.form.protoform import ProtoForm;
+from pypes.proto.form.freezer import Freezer;
 from pypes.proto.form.subform import SubForm;
 
 
@@ -24,6 +25,7 @@ class Modification( SubForm, metaclass=kls ):
 
   def _init_init_( self ):
     
+    super()._init_init_();
     self.modality = None;
     self.scope = None;
     self.args = {};
@@ -37,9 +39,8 @@ class Modification( SubForm, metaclass=kls ):
       assert isinstance( self.modality, Modality );
     
     if scope is not None:
-      
-      self.scope = scope( sig=sig );
-      assert isinstance( self.scope, ScopeBearer );
+
+      self.scope = self._register_scopebearer( scope( sig=sig ) );
     
     if args is not None:
       
@@ -57,6 +58,9 @@ class Modification( SubForm, metaclass=kls ):
   def __le__( self, obj ):
     
     if not isinstance( obj, Modification ):
+      return False;
+    
+    if not super().__le__( obj ):
       return False;
     
     if self.modality is not None:

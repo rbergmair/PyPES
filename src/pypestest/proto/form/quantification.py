@@ -43,7 +43,7 @@ class TestQuantification( TestCase, metaclass=object_ ):
                                ),
                 var = Variable( sidvid=("x",1) ),
                 rstr = ProtoForm(),
-                body = Handle( hid=1 )
+                body = Freezer( content = Handle( hid=1 ) )
               );
               
     return inst_;
@@ -63,6 +63,7 @@ class TestQuantification( TestCase, metaclass=object_ ):
     self.assert_( isinstance( inst.rstr, ProtoForm ), msg );
     self.assert_( isinstance( inst.body, Handle ), msg );
     self.assertEquals( inst.body.hid, 1, msg );
+    self.assertEquals( inst.holes, {inst.body} );
   
   def test_1( self ):
     
@@ -76,7 +77,7 @@ class TestQuantification( TestCase, metaclass=object_ ):
                                  referent = Word( lemma = ["every"] )
                                ),
                 var = Variable( sidvid=("x",1) ),
-                rstr = Freezer( content=Handle() ),
+                rstr = Freezer( content = Freezer( content=Handle() ) ),
                 body = ProtoForm()
               );
               
@@ -91,10 +92,11 @@ class TestQuantification( TestCase, metaclass=object_ ):
     self.assertEquals( inst.var.vid, 1, msg );
     self.assert_( isinstance( inst.var.sort, Sort ), msg );
     self.assertEquals( inst.var.sort.sid, "x", msg );
-    self.assert_( isinstance( inst.rstr, Freezer ), msg );
-    self.assert_( isinstance( inst.rstr.content, Handle ), msg );
-    self.assertEquals( inst.rstr.content.hid, None, msg );
+    self.assert_( isinstance( inst.rstr, Handle ), msg );
+    self.assertEquals( inst.rstr.hid, None, msg );
     self.assert_( isinstance( inst.body, ProtoForm ), msg );
+    self.assertEquals( inst.holes, set() );
+    
   
   def test_2( self ):
     

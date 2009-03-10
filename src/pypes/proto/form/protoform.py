@@ -7,7 +7,6 @@ __all__ = [ "ProtoForm" ];
 from pypes.utils.mc import kls;
 from pypes.proto.form.handle import Handle;
 from pypes.proto.form.subform import SubForm;
-from pypes.proto.form.scopebearer import ScopeBearer;
 from pypes.proto.form.constraint import Constraint;
 
 
@@ -17,7 +16,7 @@ from pypes.proto.form.constraint import Constraint;
 # In the fictional world of the Transformers, protoforms are "basic frames"
 # of a Cybertronian placed in stasis until a suitable form can be found.
 
-class ProtoForm( ScopeBearer, metaclass=kls ):
+class ProtoForm( SubForm, metaclass=kls ):
 
   _superordinate_ = None;
   _key_ = None;
@@ -25,7 +24,9 @@ class ProtoForm( ScopeBearer, metaclass=kls ):
   
   def _init_init_( self ):
     
-    self.subforms = [];
+    super()._init_init_();
+    self.roots = [];
+    self.subforms = {};
     self.constraints = [];
     
   
@@ -33,21 +34,23 @@ class ProtoForm( ScopeBearer, metaclass=kls ):
     
     if subforms is not None:
       
-      for ( root_, holes_, subform_ ) in subforms:
-        
+      for ( root_, subform_ ) in subforms:
+
         root = root_( sig=sig );
         assert isinstance( root, Handle );
         
-        holes = set();
-        for hole_ in holes_:
-          hole = hole_( sig=sig );
-          assert isinstance( hole, Handle );
-          holes.add( hole );
+        self.roots.append( root );
         
         subform = subform_( sig=sig );
-        assert isinstance( subform, SubForm ) or isinstance( subform, ProtoForm );
+        assert isinstance( subform, SubForm );
         
-        self.subforms.append( (root,holes,subform) );
+        self.subforms[ root ] = subform;
+        
+        for ( freezelevel, content ) in subform._holes.items():
+          freezelevel -= 1;
+          if not freezelevel in self._holes:
+            self._holes[ freezelevel ] = set();
+          self._holes[ freezelevel ] |= content;
         
     if constraints is not None:    
       
@@ -63,10 +66,13 @@ class ProtoForm( ScopeBearer, metaclass=kls ):
     
     if not isinstance( obj, ProtoForm ):
       return False;
+
+    if not super().__le__( obj ):
+      return False;
     
-    for (root,subform) in self.subforms:
+    for (root,subform) in self.subforms.items():
       found = False;
-      for (root_,subform_) in obj.subforms:
+      for (root_,subform_) in obj.subforms.items():
         if root <= root_ and root_ <= root and subform <= subform_:
           found = True;
           break;

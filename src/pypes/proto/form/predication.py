@@ -23,6 +23,7 @@ class Predication( SubForm, metaclass=kls ):
 
   def _init_init_( self ):
     
+    super()._init_init_();
     self.predicate = None;
     self.args = {};
 
@@ -50,6 +51,9 @@ class Predication( SubForm, metaclass=kls ):
   def __le__( self, obj ):
     
     if not isinstance( obj, Predication ):
+      return False;
+
+    if not super().__le__( obj ):
       return False;
     
     if self.predicate is not None:

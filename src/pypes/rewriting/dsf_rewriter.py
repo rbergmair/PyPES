@@ -1,7 +1,7 @@
 # -*-  coding: ascii -*-  # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 __package__ = "pypes.rewriting";
-__all__ = [ "MinrecToDSFRewriter", "minrec_to_dsf_rewrite" ];
+__all__ = [ "DSFRewriter", "dsf_rewrite" ];
 
 from pypes.utils.mc import subject, Object;
 
@@ -28,7 +28,7 @@ class _IndexCollector( ProtoProcessor, metaclass=subject ):
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-class MinrecToDSFRewriter( NullRewriter, metaclass=subject ):
+class DSFRewriter( NullRewriter, metaclass=subject ):
 
 
   def _enter_( self ):
@@ -219,10 +219,10 @@ class MinrecToDSFRewriter( NullRewriter, metaclass=subject ):
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-def minrec_to_dsf_rewrite( obj ):
+def dsf_rewrite( obj ):
   
   rslt = None;
-  with MinrecToDSFRewriter( obj ) as rewriter:
+  with DSFRewriter( obj ) as rewriter:
     rslt = rewriter.rewrite();
   return rslt;
     

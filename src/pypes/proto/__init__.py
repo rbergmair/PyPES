@@ -2,9 +2,9 @@
 
 __package__ = "pypes";
 
-__all__ = [ "Connection", "Constraint", "Handle", "Modification",
+__all__ = [ "Connection", "Constraint", "Handle", "Freezer", "Modification",
             "Predication", "ProtoForm", "Quantification", "SubForm",
-            "ScopeBearer", "Argument", "Connective",
+            "Argument", "Connective",
             "Constant", "Modality", "Predicate", "ProtoSig", "Quantifier",
             "Sort", "Variable", "Operator", "Word", "ProtoBase",
             "ProtoProcessor" ];
@@ -22,12 +22,12 @@ from pypes.proto.sig import Variable;
 from pypes.proto.form import Connection;
 from pypes.proto.form import Constraint;
 from pypes.proto.form import Handle;
+from pypes.proto.form import Freezer;
 from pypes.proto.form import Modification;
 from pypes.proto.form import Predication;
 from pypes.proto.form import ProtoForm;
 from pypes.proto.form import Quantification;
 from pypes.proto.form import SubForm;
-from pypes.proto.form import ScopeBearer;
 
 from pypes.proto.lex import Operator;
 from pypes.proto.lex import Word;

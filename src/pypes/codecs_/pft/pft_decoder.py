@@ -332,9 +332,13 @@ class PFTDecoder( PFTParser, metaclass=subject ):
 
     ( type_, rstr ) = next( toks );
     assert type_ in { cls.GT_HANDLE, cls.GT_FREEZER, cls.GT_PROTOFORM };
+    if type_ in { cls.GT_HANDLE, cls.GT_FREEZER }:
+      rstr = Freezer( content=rstr );
 
     ( type_, body ) = next( toks );
     assert type_ in { cls.GT_HANDLE, cls.GT_FREEZER, cls.GT_PROTOFORM };
+    if type_ in { cls.GT_HANDLE, cls.GT_FREEZER }:
+      body = Freezer( content=body );
 
     assert not next( toks, False );
   
@@ -363,6 +367,8 @@ class PFTDecoder( PFTParser, metaclass=subject ):
     
     ( type_, scope ) = next( toks );
     assert type_ in { cls.GT_HANDLE, cls.GT_FREEZER, cls.GT_PROTOFORM };
+    if type_ in { cls.GT_HANDLE, cls.GT_FREEZER }:
+      scope = Freezer( content=scope );
 
     assert not next( toks, False );
     
@@ -382,12 +388,16 @@ class PFTDecoder( PFTParser, metaclass=subject ):
     
     ( type_, lscope ) = next( toks );
     assert type_ in { cls.GT_HANDLE, cls.GT_FREEZER, cls.GT_PROTOFORM };
+    if type_ in { cls.GT_HANDLE, cls.GT_FREEZER }:
+      lscope = Freezer( content=lscope );
 
     ( type_, referent ) = next( toks );
     assert type_ in { cls.GT_WORD, cls.GT_OPERATOR };
   
     ( type_, rscope ) = next( toks );
     assert type_ in { cls.GT_HANDLE, cls.GT_FREEZER, cls.GT_PROTOFORM };
+    if type_ in { cls.GT_HANDLE, cls.GT_FREEZER }:
+      rscope = Freezer( content=rscope );
 
     assert not next( toks, False );
     

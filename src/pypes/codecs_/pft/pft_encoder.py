@@ -144,9 +144,12 @@ class PFTEncoder( ProtoProcessor, metaclass=subject ):
     return str( hid );
 
 
-  def _process_freezer( self, inst, content ):
+  def _process_freezer( self, content, freezelevel ):
     
-    return "<" + content + ">";
+    if freezelevel <= 0:
+      return content;
+    else:
+      return "<" + content + ">";
 
 
   def _process_variable( self, inst, sid, vid ):
@@ -325,8 +328,9 @@ class PFTEncoder( ProtoProcessor, metaclass=subject ):
     rslt = "{";
     
     labeled = False;
-    for ( handle, subf ) in inst.subforms:
-      if handle.hid is not None:
+    for root in inst.roots:
+      subf = inst.subforms[ root ];
+      if root.hid is not None:
         labeled = True;
         break;
     

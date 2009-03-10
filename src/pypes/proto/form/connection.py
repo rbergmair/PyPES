@@ -6,7 +6,8 @@ __all__ = [ "Connection" ];
 
 from pypes.utils.mc import kls;
 from pypes.proto import Connective;
-from pypes.proto.form.scopebearer import ScopeBearer;
+from pypes.proto.form.protoform import ProtoForm;
+from pypes.proto.form.freezer import Freezer;
 from pypes.proto.form.subform import SubForm;
 
 
@@ -19,6 +20,7 @@ class Connection( SubForm, metaclass=kls ):
   
   def _init_init_( self ):
     
+    super()._init_init_();
     self.connective = None;
     self.lscope = None;
     self.rscope = None;
@@ -30,20 +32,17 @@ class Connection( SubForm, metaclass=kls ):
       assert isinstance( self.connective, Connective );
     
     if lscope is not None:
-      self.lscope = lscope( sig=sig );
-      try:
-        assert isinstance( self.lscope, ScopeBearer );
-      except:
-        print( self.lscope );
-        raise;
+      self.lscope = self._register_scopebearer( lscope( sig=sig ) );
     
     if rscope is not None:
-      self.rscope = rscope( sig=sig );
-      assert isinstance( self.rscope, ScopeBearer );
+      self.rscope = self._register_scopebearer( rscope( sig=sig ) );
   
   def __le__( self, obj ):
     
     if not isinstance( obj, Connection ):
+      return False;
+    
+    if not super().__le__( obj ):
       return False;
     
     if self.connective is not None:

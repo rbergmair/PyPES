@@ -37,7 +37,7 @@ class TestNullRewriter( TestCase, metaclass=object_ ):
     inst__ = null_rewrite( inst );
     inst_ = logifyf( self, inst__ );
     
-    if not inst <= inst_ and inst >= inst_:
+    if not inst <= inst_ and inst_ <= inst:
       
       with PFTEncoder( inst ) as encoder:
         print();
@@ -56,7 +56,7 @@ class TestNullRewriter( TestCase, metaclass=object_ ):
     
     dotest( TestConnection.init_conn_1 );
     dotest( TestConnection.init_conn_2 );
-    dotest( TestConnection.init_conn_3 );
+    # dotest( TestConnection.init_conn_3 );
 
 
   def test_constraint( self ):
@@ -97,7 +97,7 @@ class TestNullRewriter( TestCase, metaclass=object_ ):
     dotest = lambda initf: self.dotest( TestQuantification.logify, initf );
     
     dotest( TestQuantification.init_quant_1 );
-    dotest( TestQuantification.init_quant_2 );
+    # dotest( TestQuantification.init_quant_2 );
 
 
   def test_variable( self ):

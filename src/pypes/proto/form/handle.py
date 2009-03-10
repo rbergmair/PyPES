@@ -4,12 +4,11 @@ __package__ = "pypes.proto.form";
 __all__ = [ "Handle" ];
 
 from pypes.utils.mc import kls;
-from pypes.proto.form.scopebearer import ScopeBearer;
 
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-class Handle( ScopeBearer, metaclass=kls ):
+class Handle( metaclass=kls ):
 
   _superordinate_ = "sig";
   _key_ = "hid";

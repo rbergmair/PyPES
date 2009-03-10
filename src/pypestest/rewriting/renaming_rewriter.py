@@ -52,8 +52,8 @@ class TestRenamingRewriter( TestCase, metaclass=object_ ):
     lambdaified = renaming_rewrite( init, rename_handles_p=False );
     logified = lambdaified( sig=ProtoSig() );
 
-    reference_ = pft_decode( """{ \ue103 { 1: \ue101 |Every:0| x4 { \ue100 |man:6|( arg0=x4 ) } __;
-                                           3: \ue101 |a:16| x3 { \ue100 |woman:18|( arg0=x3 ) } __;
+    reference_ = pft_decode( """{ \ue103 { 1: \ue101 |Every:0| x4 { \ue100 |man:6|( arg0=x4 ) } 2;
+                                           3: \ue101 |a:16| x3 { \ue100 |woman:18|( arg0=x3 ) } 4;
                                            5: \ue100 |loves:10|( arg1=x4, arg2=x3 );
                                            \ue104 3 ^ 5;
                                            \ue104 1 ^ 5 } /\ {    \ue101 |every| x1 1 { \ue100 |lie:32|( arg1=x1 ) };
@@ -65,7 +65,7 @@ class TestRenamingRewriter( TestCase, metaclass=object_ ):
                                                                \ue104 1 ^ 2 } }""" );
                                                   
     reference = reference_( sig=ProtoSig() );
-
+    
     self.assertEquals_( logified, reference )
 
 

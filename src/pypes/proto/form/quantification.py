@@ -8,7 +8,8 @@ from pypes.utils.mc import kls;
 from pypes.proto import Quantifier;
 from pypes.proto import Variable;
 from pypes.proto import Constant;
-from pypes.proto.form.scopebearer import ScopeBearer;
+from pypes.proto.form.protoform import ProtoForm;
+from pypes.proto.form.freezer import Freezer;
 from pypes.proto.form.subform import SubForm;
 
 
@@ -23,6 +24,7 @@ class Quantification( SubForm, metaclass=kls ):
 
   def _init_init_( self ):
     
+    super()._init_init_();
     self.quantifier = None;
     self.var = None;
     self.rstr = None;
@@ -41,17 +43,18 @@ class Quantification( SubForm, metaclass=kls ):
              isinstance( self.var, Constant );
     
     if rstr is not None:
-      self.rstr = rstr( sig=sig );
-      assert isinstance( self.rstr, ScopeBearer );
-    
+      self.rstr = self._register_scopebearer( rstr( sig=sig ) );
+
     if body is not None:
-      self.body = body( sig=sig );
-      assert isinstance( self.body, ScopeBearer );
+      self.body = self._register_scopebearer( body( sig=sig ) );
   
   
   def __le__( self, obj ):
     
     if not isinstance( obj, Quantification ):
+      return False;
+
+    if not super().__le__( obj ):
       return False;
     
     if self.var is not None:
@@ -61,7 +64,7 @@ class Quantification( SubForm, metaclass=kls ):
       if not self.rstr <= obj.rstr:
         return False;
     if self.body is not None:
-      if not self.rstr <= obj.rstr:
+      if not self.body <= obj.body:
         return False;
     return True;
 
