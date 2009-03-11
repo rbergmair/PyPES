@@ -94,7 +94,8 @@ class TreeEncoder( ProtoProcessor, metaclass=subject ):
     arg = "";
     rslt = "";
     used_refs = set();
-    for ( root_, subform_ ), ( root, subform ) in zip( subforms, inst.subforms ):
+    for ( root, ( root_, subform_ ) ) in zip( inst.roots, subforms ):
+      subform = inst.subforms[ root ];
       if isinstance( subform, Connection ):
         if     isinstance( subform.connective.referent, Operator ) \
            and ( subform.connective.referent.otype is Operator.OP_C_WEACON ):
@@ -111,7 +112,8 @@ class TreeEncoder( ProtoProcessor, metaclass=subject ):
     
     # print( used_refs );
 
-    for ( root_, subform_ ), ( root, subform ) in zip( subforms, inst.subforms ):
+    for ( root, ( root_, subform_ ) ) in zip( inst.roots, subforms ):
+      subform = inst.subforms[ root ];
       if isinstance( subform, Connection ):
         continue;
       pref = subform_.split( "(" )[ 0 ];

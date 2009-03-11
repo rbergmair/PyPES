@@ -31,7 +31,8 @@ class _QuantifiedVarsCollector( ProtoProcessor, metaclass=subject ):
   def _process_protoform( self, inst, subforms, constraints ):
     
     vars = set();
-    for ( (root,subform), (root_,subform_) ) in zip( inst.subforms, subforms ):
+    for ( root, (root_,subform_) ) in zip( inst.roots, subforms ):
+      subform = inst.subforms[ root ];
       if subform_ is not None:
         vars |= subform_;
         if inst is self._tlpf:
@@ -102,7 +103,8 @@ class _ConstraintsCollector( ProtoProcessor, metaclass=subject ):
     
     vars = set();
     
-    for ( (root,subform), (root_, subform_) ) in zip( inst.subforms, subforms ):
+    for ( root, (root_, subform_) ) in zip( inst.roots, subforms ):
+      subform = inst.subforms[ root ];
       if subform_ is not None:
         for var in subform_:
           if inst is not self._tlpf:
@@ -116,77 +118,6 @@ class _ConstraintsCollector( ProtoProcessor, metaclass=subject ):
             self._obj_.cons[ harg ].add( larg );
     
     return vars;
-
-
-
-# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
-
-class _FragmentCollector( ProtoProcessor, metaclass=subject ):
-  
-  def _enter_( self ):
-    
-    self._obj_.fragments = {};
-    self._obj_.roots = [];
-
-  def _visit_hole( self, hndl, lvl ):
-    
-    if isinstance( hndl, Handle ):
-      self._visited_holes[ lvl-1 ].add( hndl );
-    
-    elif isinstance( hndl, Freezer ):
-      self._visit_hole( hndl.content, lvl-1 );
-    
-  def _process_modification( self, inst, modality, args, scope ):
-    
-    self._visit_hole( inst.scope, 0 );
-  
-  def _process_quantification( self, inst, quantifier, var, rstr, body ):
-
-    self._visit_hole( inst.rstr, 0 );
-    self._visit_hole( inst.body, 0 );
-  
-  def _process_connection( self, inst, connective, lscope, rscope ):
-
-    self._visit_hole( inst.lscope, 0 );
-    self._visit_hole( inst.rscope, 0 );
-
-  def process_protoform( self, inst ):
-    
-    self._visited_holes.append( set() );
-    return super().process_protoform( inst );
-
-  def _process_protoform( self, inst, subforms, constraints ):
-    
-    self._visited_holes.pop();
-  
-  def collect( self, inst ):
-    
-    subforms_ = [];
-    
-    for ( root, subform ) in inst.subforms:
-
-      self._obj_.roots.append( root );
-      
-      self._visited_holes = [ set() ];
-      
-      root_ = self.process_handle( root );
-      if isinstance( subform, SubForm ):
-        subform_ = self.process_subform( subform );
-      elif isinstance( subform, ProtoForm ):
-        subform_ = self.process_protoform( subform );
-      else:
-        assert False;
-      subforms_.append( (root_,subform_) );
-      
-      assert len( self._visited_holes ) == 1;
-      holes = self._visited_holes.pop();
-
-      self._obj_.fragments[ root ] = holes;
-        
-    constraints_ = [];
-    for constraint in inst.constraints:
-      constraint_ = self.process_constraint( constraint );
-      constraints_.append( constraint_ );
 
     
 
@@ -202,11 +133,11 @@ class Solver( metaclass=subject ):
       coll.collect( self._obj_ );
     with _ConstraintsCollector( self._index ) as coll:
       coll.collect( self._obj_ );
-    with _FragmentCollector( self._index ) as coll:
-      coll.collect( self._obj_ );
     
-    # print( self._index.fragments );
-    
+    self._index.fragments = {};
+    for root in self._obj_.roots:
+      subf = self._obj_.subforms[ root ];
+      self._index.fragments[ root ] = subf.holes;
     
     self._index.fragments_inv = {};
     for ( root, holes ) in self._index.fragments.items():
@@ -234,7 +165,7 @@ class Solver( metaclass=subject ):
     
     return sorted(
                roots,
-               key = lambda root: self._index.roots.index( root ),
+               key = lambda root: self._obj_.roots.index( root ),
                reverse = False
              );
 
@@ -342,24 +273,17 @@ class Solver( metaclass=subject ):
     
     subpfs = {};
     
-    subforms = dict( pf.subforms );
-    
     for (hole,component) in split.items():
       
       subpf = ProtoForm()( sig = ProtoSig() );
       
-      for subpf_root in component:
-        subpf.subforms.append( ( subpf_root, subforms[ subpf_root ] ) ); 
+      for subpf_root in self._sortedroots( component ):
+        subpf.append_fragment( subpf_root, pf.subforms[subpf_root] );
       
       for cons in pf.constraints:
         if not cons.larg in component:
           continue;
-        if cons.harg in component:
-          subpf.constraints.append( cons );
-          continue;
-        if cons.harg not in self._index.fragments:
-          continue;
-        if cons.larg in self._index.fragments[ cons.harg ]:
+        if self._get_root( cons.harg ) in component:
           subpf.constraints.append( cons );
           continue;
       
@@ -367,12 +291,12 @@ class Solver( metaclass=subject ):
       
       subpfs[ hole ] = subpf;
     
-    rootform = subforms[ root ];
+    rootform = pf.subforms[ root ];
     
     with Binder( subpfs ) as binder:
       subform = binder.bind( rootform );
       pf = ProtoForm()( sig = ProtoSig() );
-      pf.subforms = [ ( root, subform ) ];
+      pf.append_fragment( root, subform );
       self._protoforms[ id(split) ] = pf;
       return pf;
 
@@ -411,7 +335,7 @@ class Solver( metaclass=subject ):
     
     roots = None;
     if pf is self._obj_:
-      roots = set( self._index.roots );
+      roots = set( self._obj_.roots );
     else:
       roots = self._components[ pf ];
 
@@ -451,7 +375,7 @@ class Solver( metaclass=subject ):
     
     roots = None;
     if pf is self._obj_:
-      roots = set( self._index.roots );
+      roots = set( self._obj_.roots );
     else:
       roots = self._components[ pf ];
 

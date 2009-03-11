@@ -17,7 +17,7 @@ from pypes.utils.mc import object_;
 
 from pypes.proto import *;
 
-from pypes.codecs_ import PFTDecoder, tree_encode;
+from pypes.codecs_ import PFTDecoder, tree_encode, pft_encode;
 
 from pypes.scoping.enumerator import Enumerator;
 
@@ -177,6 +177,8 @@ class TestEnumerator( TestCase, metaclass=object_ ):
                         for solution in enumerator.enumerate( pf1 ):
                           
                           pf = enumerator.generate_protoform( pf1, solution );
+                          
+                          # print( pft_encode( pf ) );
                           
                           myline_orig = tree_encode( pf );
                           mylines_orig.append( myline_orig );

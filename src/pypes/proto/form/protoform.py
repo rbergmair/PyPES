@@ -4,6 +4,9 @@ __package__ = "pypes.proto.form";
 __all__ = [ "ProtoForm" ];
 
 
+from copy import copy;
+
+
 from pypes.utils.mc import kls;
 from pypes.proto.form.handle import Handle;
 from pypes.proto.form.subform import SubForm;
@@ -28,7 +31,30 @@ class ProtoForm( SubForm, metaclass=kls ):
     self.roots = [];
     self.subforms = {};
     self.constraints = [];
+  
+  
+  def __getstate__( self ):
     
+    return ( copy( self.roots ), copy( self.subforms ),
+             copy( self.constraints ), copy( self._holes ) );
+  
+  
+  def __setstate__( self, state ):
+    
+    ( self.roots, self.subforms, self.constraints, self._holes ) = state;
+    
+  
+  def append_fragment( self, root, subform ):
+
+    self.roots.append( root );
+    self.subforms[ root ] = subform;
+    
+    for ( freezelevel, content ) in subform._holes.items():
+      freezelevel -= 1;
+      if not freezelevel in self._holes:
+        self._holes[ freezelevel ] = set();
+      self._holes[ freezelevel ] |= content;
+
   
   def __init__( self, sig, subforms=None, constraints=None ):
     
@@ -39,18 +65,10 @@ class ProtoForm( SubForm, metaclass=kls ):
         root = root_( sig=sig );
         assert isinstance( root, Handle );
         
-        self.roots.append( root );
-        
         subform = subform_( sig=sig );
         assert isinstance( subform, SubForm );
         
-        self.subforms[ root ] = subform;
-        
-        for ( freezelevel, content ) in subform._holes.items():
-          freezelevel -= 1;
-          if not freezelevel in self._holes:
-            self._holes[ freezelevel ] = set();
-          self._holes[ freezelevel ] |= content;
+        self.append_fragment( root, subform );
         
     if constraints is not None:    
       

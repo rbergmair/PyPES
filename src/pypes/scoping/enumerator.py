@@ -69,12 +69,9 @@ class Enumerator( Solver, metaclass=subject ):
     if not self.solve_recursively( pf, branching_factor ):
       return;
     
-    #pprint.pprint( self._chart_index );
-    #pprint.pprint( self._chart );
-    
     roots = None;
     if pf is self._obj_:
-      roots = set( self._index.roots );
+      roots = set( self._obj_.roots );
     else:
       roots = self._components[ pf ];
     
@@ -98,7 +95,7 @@ class Enumerator( Solver, metaclass=subject ):
     with Binder( binding ) as binder:
       subform = binder.bind( rootform );
       pf = ProtoForm()( sig = ProtoSig() );
-      pf.subforms = [ ( root, subform ) ];
+      pf.append_fragment( root, subform );
       return pf;
       
 

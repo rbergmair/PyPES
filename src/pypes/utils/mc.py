@@ -4,6 +4,7 @@ __package__ = "pypes.utils";
 __all__ = [ "object_", "subject", "singleton", "kls", "Object" ];
 
 import atexit;
+from copy import copy;
 
 
 
@@ -161,15 +162,16 @@ class singleton( type ):
 class kls( type ):
 
   
-  def __new( cls, **kwargs_outer ):
+  def __new_outer( cls, **kwargs_outer ):
     
     return \
-      lambda **kwargs_inner: cls.__new_2__( cls, kwargs_inner, kwargs_outer );
+      lambda **kwargs_inner: cls.__new_inner( kwargs_inner, kwargs_outer );
 
 
-  def __new_2( cls, kwargs_inner, kwargs_outer ):
+  def __new_inner( cls, kwargs_inner, kwargs_outer ):
     
-    kwargs = kwargs_inner;
+    kwargs = {};
+    kwargs.update( kwargs_inner );
     kwargs.update( kwargs_outer );
     
     inst = None;
@@ -178,14 +180,12 @@ class kls( type ):
     
     if parent is None:
 
-      inst = cls.__orig_new( cls );
+      inst = cls.__new_orig( cls );
       inst._init_init_();
       
     else:
       
-      try:
-        parent._sos_;
-      except AttributeError:
+      if not hasattr( parent, "_sos_" ):
         parent._sos_ = {};
       if not cls in parent._sos_:
         parent._sos_[ cls ] = {};
@@ -195,44 +195,97 @@ class kls( type ):
       key = kwargs_outer.get( cls._key_ );
       
       if key is None:
-        inst = cls.__orig_new( cls );
+        inst = cls.__new_orig( cls );
         inst._init_init_();
         superordinate[ id(inst) ] = inst;
       elif key in superordinate:
         inst = superordinate[ key ];
       else:
-        inst = cls.__orig_new( cls );
+        inst = cls.__new_orig( cls );
         inst._init_init_();
         superordinate[ key ] = inst;
     
     inst.__init__( **kwargs );
+    return inst;
+  
+  
+  def __getnewargs( self ):
+    
+    if self._key_ is not None:
+      return { self._key_: eval( "self." + self._key_ ) };
+    return {};
+  
+  
+  def __getstate( self ):
+    
+    return copy( self.__dict__ );
+  
+  
+  def __setstate( self, state ):
+    
+    self.__dict__ = copy( state );
+  
+  
+  def __copy_outer( self ):
+    
+    state = self.__getstate__();
+    kwargs_outer = self.__getnewargs__();
+    cls = self.__class__;
+    return lambda **kwargs_inner: cls.__copy_inner( state, kwargs_inner, kwargs_outer );
+  
+  
+  def __copy_inner( cls, state, kwargs_inner, kwargs_outer ):
+    
+    inst_ = cls.__new__( cls, **kwargs_outer );
+    inst = inst_( **kwargs_inner );
+    inst.__setstate__( state );
     return inst;
 
 
   def __new__( mcs, name, bases, dict ):
 
     cls = type.__new__( mcs, name, bases, dict );
-
+    
     try:
       cls.__del__;
     except AttributeError:
       cls.__del__ = lambda *args, **kwargs: None;
     
     try:
-      cls.__orig_new;
+      cls.__new_orig;
     except AttributeError:
-      cls.__orig_new = cls.__new__;
-      cls.__new__ = kls.__new;
-
+      cls.__new_orig = cls.__new__;
+      cls.__new__ = kls.__new_outer;
+    
     try:
-      cls.__new_2__;
+      cls.__new_inner;
     except AttributeError:
-      cls.__new_2__ = kls.__new_2;
-      
+      cls.__new_inner = kls.__new_inner;
+    
     try:
       cls._init_init_;
     except AttributeError:
       cls._init_init_ = lambda *args, **kwargs: None;
+      
+    try:
+      cls.__getnewargs__;
+    except AttributeError:
+      cls.__getnewargs__ = kls.__getnewargs;
+
+    try:
+      cls.__getstate__;
+    except AttributeError:
+      cls.__getstate__ = kls.__getstate;
+
+    try:
+      cls.__setstate__;
+    except AttributeError:
+      cls.__setstate__ = kls.__setstate;
+
+    try:
+      cls.__copy__;
+    except AttributeError:
+      cls.__copy__ = kls.__copy_outer;
 
     return cls;
 

@@ -5,6 +5,8 @@ __package__ = "pypestest.utils";
 import sys;
 import unittest;
 
+from copy import copy;
+
 from pypes.utils.mc import object_;
 from pypes.utils.mc import subject, singleton, kls;
 from pypes.utils.unittest_ import TestCase;
@@ -130,9 +132,10 @@ class MyKLS( metaclass=kls ):
   _superordinate_ = "parent";
   _key_ = "key";
   
-  def __init__( self, parent, x, key=None ):
+  def __init__( self, parent, x=None, key=None ):
     
-    pass;
+    self.x = x;
+    self.key = key;
 
 
 
@@ -155,43 +158,66 @@ class TestKLS( TestCase, metaclass=object_ ):
     
     myparent = MyParent();
     
-    kls1 = MyKLS( key=1 );
-    kls2 = MyKLS( key=2 );
+    kls1_ = MyKLS( key=1 );
+    kls2_ = MyKLS( key=2 );
     
-    kls1_ = kls1( parent=myparent, x="y" );
-    kls2_ = kls2( parent=myparent, x="y" );
+    kls1 = kls1_( parent=myparent, x="y" );
+    kls2 = kls2_( parent=myparent, x="y" );
     
-    self.assertFalse( kls1_ is kls2_ );
-    self.assertTrue( myparent._sos_[ MyKLS ][ 1 ] is kls1_ );
-    self.assertTrue( myparent._sos_[ MyKLS ][ 2 ] is kls2_ );
+    self.assertFalse( kls1 is kls2 );
+    self.assertTrue( myparent._sos_[ MyKLS ][ 1 ] is kls1 );
+    self.assertTrue( myparent._sos_[ MyKLS ][ 2 ] is kls2 );
 
 
   def test_identical( self ):
     
     myparent = MyParent();
     
-    kls1 = MyKLS( key=1 );
-    kls2 = MyKLS( key=1 );
+    kls1_ = MyKLS( key=1 );
+    kls2_ = MyKLS( key=1 );
     
-    kls1_ = kls1( parent=myparent, x="y" );
-    kls2_ = kls2( parent=myparent, x="y" );
+    kls1 = kls1_( parent=myparent, x="y" );
+    kls2 = kls2_( parent=myparent, x="y" );
     
-    self.assertTrue( kls1_ is kls2_ );
-    self.assertTrue( myparent._sos_[ MyKLS ][ 1 ] is kls1_ );
-    self.assertTrue( myparent._sos_[ MyKLS ][ 1 ] is kls2_ );
+    self.assertTrue( kls1 is kls2 );
+    self.assertTrue( myparent._sos_[ MyKLS ][ 1 ] is kls1 );
+    self.assertTrue( myparent._sos_[ MyKLS ][ 1 ] is kls2 );
 
 
   def test_nokey( self ):
     
     myparent = MyParent();
     
-    kls1 = MyKLS();
-    kls2 = MyKLS();
+    kls1_ = MyKLS();
+    kls2_ = MyKLS();
     
-    kls1_ = kls1( parent=myparent, x="y" );
-    kls2_ = kls2( parent=myparent, x="y" );
+    kls1 = kls1_( parent=myparent, x="y" );
+    kls2 = kls2_( parent=myparent, x="y" );
     
     self.assertFalse( kls1_ is kls2_ );
+
+
+  def test_copy_kls( self ):
+
+    myparent1 = MyParent();
+    kls1_ = MyKLS( key=1, x="x" );
+    kls1 = kls1_( parent=myparent1 );
+
+    myparent2 = MyParent();
+    kls2_ = copy( kls1 );
+    self.assertFalse( isinstance( kls2_, MyKLS ) );
+    kls2 = kls2_( parent=myparent2 );
+    self.assertTrue( isinstance( kls2, MyKLS ) );
+    
+    self.assertEquals( kls1.key, kls2.key );
+    self.assertEquals( kls1.x, kls2.x );
+    
+    self.assertFalse( kls1 is kls2 );
+    
+    kls3_ = copy( kls1 );
+    kls3 = kls2_( parent=myparent1 );
+
+    self.assertTrue( kls3 is kls1 );
 
     
   

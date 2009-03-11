@@ -3,6 +3,8 @@
 __package__ = "pypes.scoping";
 __all__ = [ "Binder" ];
 
+from copy import copy;
+
 from pypes.utils.mc import subject;
 
 from pypes.proto import *;
@@ -17,50 +19,48 @@ class Binder( ProtoProcessor, metaclass=subject ):
     
     if inst in self._obj_:
       return self._obj_[ inst ];
-    return None;
+    return inst;
   
-  def _process_freezer( self, inst, content ):
+  def _process_freezer( self, content, freezelevel ):
     
     return content;
   
   def _process_predication( self, inst, predicate, args ):
     
-    predication = Predication()( sig=ProtoSig() );
-    predication.predicate = inst.predicate;
-    predication.args = inst.args;
+    predication = copy( inst )( sig=ProtoSig() );
     return predication;
 
   def _process_quantification( self, inst, quantifier, var, rstr, body ):
     
-    quantification = Quantification()( sig=ProtoSig() );
-    quantification.quantifier = inst.quantifier;
-    quantification.var = inst.var;
-    quantification.rstr = rstr or inst.rstr;
-    quantification.body = body or inst.body;
+    quantification = copy( inst )( sig=ProtoSig() );
+    if rstr is not None:
+      quantification.rstr = rstr;
+    if body is not None:
+      quantification.body = body;
     return quantification;
 
   def _process_modification( self, inst, modality, args, scope ):
     
-    modification = Modification()( sig=ProtoSig() );
-    modification.modality = inst.modality;
-    modification.args = inst.args;
-    modification.scope = scope or inst.scope;
+    modification = copy( inst )( sig=ProtoSig() );
+    if scope:
+      modification.scope = scope;
     return modification;
     
   def _process_connection( self, inst, connective, lscope, rscope ):
     
-    connection = Connection()( sig=ProtoSig() );
-    connection.connective = inst.connective;
-    connection.lscope = lscope or inst.lscope;
-    connection.rscope = rscope or inst.rscope;
+    connection = copy( inst )( sig=ProtoSig() );
+    if lscope:
+      connection.lscope = lscope;
+    if rscope:
+      connection.rscope = rscope;
     return connection;
   
   def _process_protoform( self, inst, subforms, constraints ):
     
-    protoform = ProtoForm()( sig=ProtoSig() );
-    for ( (root,subform), (root_,subform_) ) in zip( inst.subforms, subforms ):
-      protoform.subforms.append( ( root, subform_ or subform ) );
-    protoform.constraints = inst.constraints;
+    protoform = copy( inst )( sig=ProtoSig() );
+    for ( root, (root_,subform_) ) in zip( inst.roots, subforms ):
+      if subform_:
+        protoform.subforms[ root ] = subform_;
     return protoform;
     
   def bind( self, subform ):
