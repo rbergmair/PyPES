@@ -328,9 +328,8 @@ class PFTEncoder( ProtoProcessor, metaclass=subject ):
     rslt = "{";
     
     labeled = False;
-    for root in inst.roots:
-      subf = inst.subforms[ root ];
-      if root.hid is not None:
+    for ( root, subform ) in subforms:
+      if root != "__":
         labeled = True;
         break;
     
@@ -339,12 +338,13 @@ class PFTEncoder( ProtoProcessor, metaclass=subject ):
       
       for ( root, subform ) in subforms:
         if root != "__":
-          rslt += root.rjust(3) + ": ";
+          rslt += root.rjust(2) + ": ";
         elif labeled:
-          rslt += "     ";
+          rslt += "    ";
+          pass;
         rslt += subform + "; ";
       for constraint in constraints:
-        rslt += "     " + constraint + "; ";
+        rslt += "    " + constraint + "; ";
       rslt = rslt[ :-2 ];
       rslt += " ";
     

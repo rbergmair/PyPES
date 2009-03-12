@@ -72,7 +72,7 @@ class TestSolver( TestCase, metaclass=object_ ):
                 for solution in solver.solve( pf1 ):
                   pf = solver.generate_protoform( pf1, solution );
                   i += 1;
-                  print( "{0:3d}. {1}".format( i, pft_encode(pf) ) );
+                  print( "{0:3d}. {1}".format( i, pft_encode(pf).replace( "\n", "\n     " ) ) );
                 #pprint.pprint(  );
 
               with Solver( pf1 ) as solver:
