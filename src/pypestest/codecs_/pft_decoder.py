@@ -212,27 +212,11 @@ class TestPFTDecoder( TestCase, metaclass=object_ ):
     r = r_( sig=ProtoSig() );
 
 
-  def x_test_protoform_3( self ):
+  def test_protoform_3( self ):
     
     r_ = pft_decode( """
-             {   3: |be_v_id[ PERF='-', TENSE='PRES', PROG='-', cto='2', SF='QUES', cfrom='0', MOOD='INDICATIVE' ]|( arg0=e2, arg1=x4, arg2=x5 );
-                 6: PROPER_Q[ PERS='3', IND='+', NUM='SG', SF='PROP' ] x4 7 8;
-                 9: NAMED( ARG0=x4, CARG='Pavarotti' );
-                10: |a_q[ PERS='3', NUM='SG', IND='+', cto='14', SF='PROP', cfrom='13' ]| x5 12 11;
-                13: {      |tenor_n_1[ cto='28', cfrom='23' ]|( arg0=x5 );
-                           {      <<18>> SUBORD <<17>>;
-                                  __ /\ __;
-                                  SUBORD[ PROG='-', PERF='-', TENSE='UNTENSED', SF='PROP', MOOD='INDICATIVE' ]( ARG0=e19 ) };
-                           __ /\ __;
-                           |leading_a_1[ cto='22', SF='PROP', cfrom='15' ]|( arg0=e14, arg1=x5 );
-                           __ /\ __ };
-                15: |come_v_1[ PERF='-', TENSE='PRES', PROG='-', cto='38', SF='PROP', cfrom='33', MOOD='INDICATIVE' ]|( arg0=e16, arg1=x5 );
-                20: |cheap_a_1[ cto='45', TENSE='UNTENSED', SF='PROP', cfrom='39', MOOD='INDICATIVE' ]|( arg0=e22, arg1=i21 );
-                    17 ^ 20;
-                    18 ^ 15;
-                    7 ^ 9;
-                    12 ^ 13 }
-           """, lexicon = pypes.proto.lex.erg
+             {   3:  |rain_v_1|[ PROG='-', SF='PROP', TENSE='PAST', MOOD='INDICATIVE', PERF='-' ]( arg0=e2 ) }
+           """
          );
     r = r_( sig=ProtoSig() );
 

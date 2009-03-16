@@ -27,14 +27,14 @@ class NullRewriter( ProtoProcessor, metaclass=subject ):
     
     return Freezer( content=content );
 
-  def _process_predication( self, inst, predicate, args ):
+  def _process_predication( self, inst, subform, predicate, args ):
     
     return inst.__class__(
                predicate = predicate,
                args = args
              );
     
-  def _process_quantification( self, inst, quantifier, var, rstr, body ):
+  def _process_quantification( self, inst, subform, quantifier, var, rstr, body ):
     
     return inst.__class__(
                quantifier = quantifier,
@@ -43,7 +43,7 @@ class NullRewriter( ProtoProcessor, metaclass=subject ):
                body = body
              );
              
-  def _process_modification( self, inst, modality, args, scope ):
+  def _process_modification( self, inst, subform, modality, args, scope ):
     
     return inst.__class__(
                modality = modality,
@@ -51,7 +51,7 @@ class NullRewriter( ProtoProcessor, metaclass=subject ):
                scope = scope
              );
     
-  def _process_connection( self, inst, connective, lscope, rscope ):
+  def _process_connection( self, inst, subform, connective, lscope, rscope ):
     
     return inst.__class__(
                connective = connective,
@@ -72,7 +72,7 @@ class NullRewriter( ProtoProcessor, metaclass=subject ):
                larg = larg
              );
     
-  def _process_protoform( self, inst, subforms, constraints ):
+  def _process_protoform( self, inst, subform, subforms, constraints ):
     
     return inst.__class__(
                subforms = subforms,

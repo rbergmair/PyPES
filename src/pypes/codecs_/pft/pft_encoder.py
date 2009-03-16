@@ -261,7 +261,7 @@ class PFTEncoder( ProtoProcessor, metaclass=subject ):
     
     return referent;
   
-  def _process_predication( self, inst, predicate, args ):
+  def _process_predication( self, inst, subform, predicate, args ):
     
     rslt = "\ue100 ";
     rslt += predicate;
@@ -274,7 +274,7 @@ class PFTEncoder( ProtoProcessor, metaclass=subject ):
     
     return referent;
   
-  def _process_quantification( self, inst, quantifier, var, rstr, body ):
+  def _process_quantification( self, inst, subform, quantifier, var, rstr, body ):
     
     rslt = "\ue101 ";
     rslt += quantifier;
@@ -289,7 +289,7 @@ class PFTEncoder( ProtoProcessor, metaclass=subject ):
     
     return referent;
 
-  def _process_modification( self, inst, modality, args, scope ):
+  def _process_modification( self, inst, subform, modality, args, scope ):
     
     rslt = "\ue102 ";
     rslt += modality;
@@ -303,7 +303,7 @@ class PFTEncoder( ProtoProcessor, metaclass=subject ):
     
     return referent;
 
-  def _process_connection( self, inst, connective, lscope, rscope ):
+  def _process_connection( self, inst, subform, connective, lscope, rscope ):
     
     rslt = "\ue103 ";
     rslt += lscope + " ";
@@ -323,7 +323,7 @@ class PFTEncoder( ProtoProcessor, metaclass=subject ):
     return rslt;
 
 
-  def _process_protoform( self, inst, subforms, constraints ):
+  def _process_protoform( self, inst, subform, subforms, constraints ):
     
     rslt = "{";
     

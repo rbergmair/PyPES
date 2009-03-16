@@ -3,89 +3,176 @@
 __package__ = "pypes.scoping";
 __all__ = [ "Recursivizer", "recursivize" ];
 
+from copy import copy;
+
 from pypes.utils.mc import subject;
 
 from pypes.proto import *;
-
-from pypes.scoping.solver import Solver;
-from pypes.scoping.binder import Binder;
 
 
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-class Recursivizer( Solver, metaclass=subject ):
+class _Binder( ProtoProcessor, metaclass=subject ):
+  
+  def _enter_( self ):
+    
+    self._bound_handles = set( self._obj_.keys() );
+
+  def _process_handle( self, inst, hid ):
+    
+    if inst in self._obj_:
+      return self._obj_[ inst ];
+    return inst;
+  
+  def _process_freezer( self, content, freezelevel ):
+    
+    return content;
+  
+  def _process_subform( self, inst, holes ):
+    
+    subform = copy( inst )( sig=ProtoSig() );
+    subform.holes = holes - self._bound_handles;
+    return subform;
+  
+  def _process_predication( self, inst, subform, predicate, args ):
+    
+    predication = subform;
+    return predication;
+
+  def _process_quantification( self, inst, subform, quantifier, var, rstr, body ):
+    
+    quantification = subform;
+    if rstr is not None:
+      quantification.rstr = rstr;
+    if body is not None:
+      quantification.body = body;
+    return quantification;
+
+  def _process_modification( self, inst, subform, modality, args, scope ):
+    
+    modification = subform;
+    if scope:
+      modification.scope = scope;
+    return modification;
+    
+  def _process_connection( self, inst, subform, connective, lscope, rscope ):
+    
+    connection = subform;
+    if lscope:
+      connection.lscope = lscope;
+    if rscope:
+      connection.rscope = rscope;
+    return connection;
+  
+  def _process_protoform( self, inst, subform, subforms, constraints ):
+    
+    protoform = subform;
+    for ( root, (root_,subform_) ) in zip( inst.roots, subforms ):
+      if subform_:
+        protoform.subforms[ root ] = subform_;
+    return protoform;
+    
+  def bind( self, subform ):
+    
+    return self.process( subform );
+
+
+
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+
+class Recursivizer( metaclass=subject ):
+  
+  
+  def _enter_( self ):
+
+    self._invariant_pluggings = None;
 
   
-  def _generate_binding( self, pf, top, roots ):
-
-    binding = {};
+  def _collect_invariant_pluggings( self, component ):
     
-    roots_ = set( roots );
+    global_pluggings = {};
     
-    for ( hole, component ) in self._invariant_pluggings.items():
-      if component < roots:
-        binding.update( self._generate_binding( pf, hole, component ) );
-        roots_ -= component;
-
-    #print( roots );
-    #print( pf.constraints );
-    
-    subforms = [];
-    for ( root, subform ) in pf.subforms:
-      if root not in roots_:
+    for i in range( 0, len( self._obj_.solution.chart_index ) ):
+      
+      subcomponent = self._obj_.solution.chart_index[ i ];
+      if not subcomponent <= component:
         continue;
-      subforms.append( (root,subform) );
-
-    constraints = [];
-    for constraint in pf.constraints:
-      if constraint.larg in roots_:
-        #print( "x" + str( self._get_root( constraint.harg ) ) );
-        if self._get_root( constraint.harg ) in roots_:
-          #print( constraint );
-          constraints.append( constraint );
-    
-    #print( constraints );
-    
-    pf_ = ProtoForm()( sig = ProtoSig() );
-    pf_.subforms = subforms;
-    pf_.constraints = constraints;
-    binding[ top ] = pf_;
-    
-    return binding;
-    
-  
-  def recursivize( self, pf, branching_factor=None ):
-    
-    if not self.solve_recursively( pf, branching_factor ):
-      return;
-    
-    self._invariant_pluggings = {};
-    
-    for splits in self._chart:
+      
+      splits = self._obj_.solution.chart[i];
+      
       for ( root, pluggings ) in splits.items():
         if pluggings is None:
           continue;
         for ( hole, subcomponent ) in pluggings.items():
-          if not hole in self._invariant_pluggings:
-            self._invariant_pluggings[ hole ] = list();
-          if not subcomponent in self._invariant_pluggings[ hole ]:
-            self._invariant_pluggings[ hole ].append( subcomponent );
+          if not hole in global_pluggings:
+            global_pluggings[ hole ] = list();
+          if not subcomponent in global_pluggings[ hole ]:
+            global_pluggings[ hole ].append( subcomponent );
     
-    holes = set( self._invariant_pluggings.keys() );
+    for ( hole, subcomponents ) in global_pluggings.items():
+      if len( subcomponents ) == 1:
+        ( self._invariant_pluggings[ hole ], ) = subcomponents;
+  
+  
+  def _generate_binding( self, top, component ):
+        
+    binding = {};
+    roots = set( component );
+    for ( hole, subcomponent ) in self._invariant_pluggings.items():
+      if subcomponent < component:
+        binding.update( self._generate_binding( hole, subcomponent ) );
+        roots -= subcomponent;
 
-    for hole in holes:
-      if len( self._invariant_pluggings[ hole ] ) != 1:
-        del self._invariant_pluggings[ hole ];
-      else:
-        self._invariant_pluggings[ hole ] = self._invariant_pluggings[ hole ].pop();
+    pf = ProtoForm()( sig = ProtoSig() );
+    for root in self._obj_.pf.roots:
+      if root not in roots:
+        continue;
+      subform = self._obj_.pf.subforms[ root ];
+      pf.append_fragment( root, subform );
 
-    binding = self._generate_binding( pf, None, set( self._index.roots ) );
+    for constraint in self._obj_.pf.constraints:
+      if constraint.larg in roots:
+        #print( "x" + str( self._get_root( constraint.harg ) ) );
+        if self._obj_._get_root( constraint.harg ) in roots:
+          #print( constraint );
+          pf.constraints.append( constraint );
     
-    pf_ = None;
-    with Binder( binding ) as binder:
-      pf_ = binder.bind( binding[None] );
-    return pf_;
+    #print( constraints );
+    
+    binding[ top ] = pf;
+    return binding;
+
+
+  def recursivize( self ):
+    
+    cur_component = self._obj_.solution.cur_component;
+    if cur_component is None:
+      cur_component = 0;
+      
+    self._invariant_pluggings = {};
+    binding = None;
+    
+    cur_root = self._obj_.solution.cur_root;
+
+    component = self._obj_.solution.chart_index[ cur_component ];
+    
+    if cur_root is None:
+      self._collect_invariant_pluggings( component );
+    
+    else:
+      pluggings = self._obj_.solution.chart[ cur_component ][ cur_root ];
+      for (hole,subcomponent) in pluggings.items():
+        self._collect_invariant_pluggings( subcomponent );
+        self._invariant_pluggings[ hole ] = subcomponent;
+
+    binding = self._generate_binding( cur_root, component );
+
+    pf = None;
+    with _Binder( binding ) as binder:
+      pf = binder.bind( binding[cur_root] );
+    return pf;
+    #return binding[cur_root];
       
 
 

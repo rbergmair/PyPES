@@ -4,6 +4,9 @@ __package__ = "pypes.proto.form";
 __all__ = [ "Quantification" ];
 
 
+from copy import copy;
+
+
 from pypes.utils.mc import kls;
 from pypes.proto import Quantifier;
 from pypes.proto import Variable;
@@ -29,6 +32,15 @@ class Quantification( SubForm, metaclass=kls ):
     self.var = None;
     self.rstr = None;
     self.body = None;
+
+    
+  def __getstate__( self ):
+    
+    return ( self.quantifier, self.var, self.rstr, self.body, copy(self.holes) );
+  
+  def __setstate__( self, state ):
+    
+    ( self.quantifier, self.var, self.rstr, self.body, self.holes ) = state;
 
   
   def __init__( self, sig, quantifier=None, var=None, rstr=None, body=None ):

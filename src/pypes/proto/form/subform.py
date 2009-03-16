@@ -16,12 +16,18 @@ class SubForm( ProtoBase, metaclass=kls ):
     
     self._holes = { 0: set() };
   
-  @property
+  holes = property();
+  
+  @holes.getter
   def holes( self ):
     #if isinstance( self._holes, dict ):
     #  self._holes = self._holes[ 0 ];
     #return self._holes;
     return self._holes[ 0 ];
+
+  @holes.setter
+  def holes( self, holes ):
+    self._holes[ 0 ] = holes;
   
   def _register_scopebearer( self, scope ):
 
@@ -47,20 +53,19 @@ class SubForm( ProtoBase, metaclass=kls ):
       
 
   def __le__( self, obj ):
-    
-    for ( freezelevel, content ) in self._holes.items():
-      if not freezelevel in obj._holes:
+
+    for handle in self.holes:
+      found = False;
+      objholes = set( obj.holes );
+      for objhandle in obj.holes:
+        if handle <= objhandle and objhandle <= handle:
+          objholes.remove( objhandle );
+          found = True;
+          break;
+      if not found:
+        #print( self.holes );
+        #print( obj.holes );
         return False;
-      for handle in content:
-        found = False;
-        objcontent = set( obj._holes[ freezelevel ] );
-        for objhandle in objcontent:
-          if handle <= objhandle and objhandle <= handle:
-            objcontent.remove( objhandle );
-            found = True;
-            break;
-        if not found:
-          return False;
     
     return True;
 

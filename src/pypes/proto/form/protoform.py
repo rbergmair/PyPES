@@ -35,13 +35,13 @@ class ProtoForm( SubForm, metaclass=kls ):
   
   def __getstate__( self ):
     
-    return ( copy( self.roots ), copy( self.subforms ),
-             copy( self.constraints ), copy( self._holes ) );
+    return ( copy(self.roots), copy(self.subforms),
+             copy(self.constraints), copy(self.holes) );
   
   
   def __setstate__( self, state ):
     
-    ( self.roots, self.subforms, self.constraints, self._holes ) = state;
+    ( self.roots, self.subforms, self.constraints, self.holes ) = state;
     
   
   def append_fragment( self, root, subform ):

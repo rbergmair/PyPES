@@ -4,6 +4,9 @@ __package__ = "pypes.proto.form";
 __all__ = [ "Connection" ];
 
 
+from copy import copy;
+
+
 from pypes.utils.mc import kls;
 from pypes.proto import Connective;
 from pypes.proto.form.protoform import ProtoForm;
@@ -24,6 +27,14 @@ class Connection( SubForm, metaclass=kls ):
     self.connective = None;
     self.lscope = None;
     self.rscope = None;
+  
+  def __getstate__( self ):
+    
+    return ( self.connective, self.lscope, self.rscope, copy(self.holes) );
+  
+  def __setstate__( self, state ):
+    
+    ( self.connective, self.lscope, self.rscope, self.holes ) = state;
   
   def __init__( self, sig, connective=None, lscope=None, rscope=None ):
     

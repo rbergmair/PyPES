@@ -4,6 +4,9 @@ __package__ = "pypes.proto.form";
 __all__ = [ "Predication" ];
 
 
+from copy import copy;
+
+
 from pypes.utils.mc import kls;
 from pypes.proto import Predicate;
 from pypes.proto import Argument;
@@ -26,6 +29,15 @@ class Predication( SubForm, metaclass=kls ):
     super()._init_init_();
     self.predicate = None;
     self.args = {};
+
+
+  def __getstate__( self ):
+    
+    return ( self.predicate, self.args, copy(self.holes) );
+  
+  def __setstate__( self, state ):
+    
+    ( self.predicate, self.args, self.holes ) = state;
 
   
   def __init__( self, sig, predicate=None, args=None ):

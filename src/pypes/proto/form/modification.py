@@ -4,6 +4,9 @@ __package__ = "pypes.proto.form";
 __all__ = [ "Modification" ];
 
 
+from copy import copy;
+
+
 from pypes.utils.mc import kls;
 from pypes.proto import Modality;
 from pypes.proto import Argument;
@@ -29,6 +32,15 @@ class Modification( SubForm, metaclass=kls ):
     self.modality = None;
     self.scope = None;
     self.args = {};
+
+
+  def __getstate__( self ):
+    
+    return ( self.modality, self.scope, copy(self.args), copy(self.holes) );
+  
+  def __setstate__( self, state ):
+    
+    ( self.modality, self.scope, self.args, self.holes ) = state;
   
   
   def __init__( self, sig, modality=None, scope=None, args=None ):
