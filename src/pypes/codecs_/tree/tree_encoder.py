@@ -65,6 +65,10 @@ class TreeEncoder( ProtoProcessor, metaclass=subject ):
   
   def _process_quantification( self, inst, subform, quantifier, var, rstr, body ):
     
+    if rstr is None:
+      return None;
+    if body is None:
+      return None;
     return quantifier + "( " + rstr + ", " + body + " )";
 
   def _process_modality( self, inst, referent ):
@@ -74,7 +78,7 @@ class TreeEncoder( ProtoProcessor, metaclass=subject ):
   def _process_modification( self, inst, subform, modality, args, scope ):
     
     if scope is None:
-      return;
+      return None;
     return modality + "( " + scope + " )";
 
   def _process_connective( self, inst, referent ):
@@ -84,52 +88,56 @@ class TreeEncoder( ProtoProcessor, metaclass=subject ):
   def _process_connection( self, inst, subform, connective, lscope, rscope ):
     
     if lscope is None:
-      return;
+      return None;
     if rscope is None:
-      return;
+      return None;
     return connective + "( " + lscope + ", " + rscope + " )";
 
   def _process_protoform( self, inst, subform, subforms, constraints ):
     
-    arg = "";
-    rslt = "";
-    used_refs = set();
-    for ( root, ( root_, subform_ ) ) in zip( inst.roots, subforms ):
-      subform = inst.subforms[ root ];
-      if isinstance( subform, Connection ):
-        if     isinstance( subform.connective.referent, Operator ) \
-           and ( subform.connective.referent.otype is Operator.OP_C_WEACON ):
+    try:
+      arg = "";
+      rslt = "";
+      used_refs = set();
+      for ( root, ( root_, subform_ ) ) in zip( inst.roots, subforms ):
+        subform = inst.subforms[ root ];
+        if isinstance( subform, Connection ):
+          if     isinstance( subform.connective.referent, Operator ) \
+             and ( subform.connective.referent.otype is Operator.OP_C_WEACON ):
+            continue;
+          pref = subform_.split( "(" )[ 0 ];
+          if not self._utool_style:
+            rslt += subform_ + " /\ ";
+          else:
+            rslt += pref + " /\ ";
+            r = subform_.find( "(" );
+            if r != -1:
+              arg += subform_[ r: ];
+          used_refs.add( pref );
+      
+      # print( used_refs );
+  
+      for ( root, ( root_, subform_ ) ) in zip( inst.roots, subforms ):
+        subform = inst.subforms[ root ];
+        if isinstance( subform, Connection ):
           continue;
         pref = subform_.split( "(" )[ 0 ];
-        if not self._utool_style:
-          rslt += subform_ + " /\ ";
-        else:
-          rslt += pref + " /\ ";
-          r = subform_.find( "(" );
-          if r != -1:
-            arg += subform_[ r: ];
-        used_refs.add( pref );
-    
-    # print( used_refs );
-
-    for ( root, ( root_, subform_ ) ) in zip( inst.roots, subforms ):
-      subform = inst.subforms[ root ];
-      if isinstance( subform, Connection ):
-        continue;
-      pref = subform_.split( "(" )[ 0 ];
-      if pref not in used_refs:
-        if not self._utool_style:
-          rslt += subform_ + " /\ ";
-        else:
-          rslt += pref + " /\ ";
-          r = subform_.find( "(" );
-          if r != -1:
-            arg += subform_[ r: ];
-    
-    rslt = rslt[ :-4 ];
-    rslt += arg;
-    
-    return rslt;    
+        if pref not in used_refs:
+          if not self._utool_style:
+            rslt += subform_ + " /\ ";
+          else:
+            rslt += pref + " /\ ";
+            r = subform_.find( "(" );
+            if r != -1:
+              arg += subform_[ r: ];
+      
+      rslt = rslt[ :-4 ];
+      rslt += arg;
+      
+      return rslt;  
+      
+    except:
+      return None;
   
   def encode( self, utool_style=False ):
     

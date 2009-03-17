@@ -3,101 +3,89 @@
 __package__ = "pypes.scoping";
 __all__ = [ "Enumerator" ];
 
-import pprint;
+from copy import copy;
 
 from pypes.utils.mc import subject, Object;
 
 from pypes.proto import *;
 
-from pypes.scoping.solver import Solver;
-from pypes.scoping.binder import Binder;
+from pypes.scoping.domcon import *;
 
 
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-class Enumerator( Solver, metaclass=subject ):
+class Enumerator( metaclass=subject ):
 
 
-  def enumerate_pluggings( self, pluggings, holes ):
+  def enumerate_subcomponents( self, pluggings, holes ):
     
     if len( holes ) == 0:
-      yield {};
+      # print( "a" );
+      yield DomConSolution();
       return;
     
-    solutions = [];
-    for subsolution1 in self.enumerate_component( holes[0], pluggings[ holes[0] ] ):
-      for subsolution2 in self.enumerate_pluggings( pluggings, holes[1:] ):
-        solution = {};
-        solution.update( subsolution1 );
-        solution.update( subsolution2 );
+    for subsolution1 in self.enumerate_component( pluggings[ holes[0] ] ):
+      for subsolution2 in self.enumerate_subcomponents( pluggings, holes[1:] ):
+        solution = DomConSolution();
+        solution.chart_index += subsolution1.chart_index;
+        solution.chart_index += subsolution2.chart_index;
+        solution.chart += subsolution1.chart;
+        solution.chart += subsolution2.chart;
+        # print( 1 );
         yield solution;
       
 
-  def enumerate_component( self, top, roots ):
+  def enumerate_component( self, component ):
+
+    #if len( component ) == 1:
+    #  solution = DomConSolution();
+    #  solution.chart_index = [ component ];
+    #  solution.chart = [ { 0: None } ];
+    #  yield solution;
+    #  return;
     
-    if len( roots ) == 1:
-      root = roots.pop();
-      roots.add( root );
-      yield { top: root };
-      return;
+    idx = self._obj_.solution.chart_index.index( component );
     
-    idx = None;
-    try:
-      idx = self._chart_index.index( roots )
-    except ValueError:
-      pass;
-    
-    # print( roots );
-    assert idx is not None;
-    
-    solutions = [];
-    
-    for ( root, pluggings ) in self._chart[ idx ].items():
+    for ( root, pluggings ) in self._obj_.solution.chart[ idx ].items():
       if pluggings is None:
         continue;
-      else:
-        for subsolution in self.enumerate_pluggings(
-                               pluggings, list( pluggings.keys() )
-                             ):
-          subsolution[ top ] = root;
-          yield subsolution;
+      for solution_ in self.enumerate_subcomponents( pluggings, list( pluggings.keys() ) ):
+        solution = DomConSolution();
+        solution.chart_index = [ component ] + solution_.chart_index;
+        solution.chart = [ { root: pluggings } ] + solution_.chart;
+        # print( 2 );
+        yield solution;
   
   
-  def enumerate( self, pf, branching_factor=None ):
+  def enumerate( self ):
     
-    if not self.solve_recursively( pf, branching_factor ):
-      return;
-    
-    roots = None;
-    if pf is self._obj_:
-      roots = set( self._obj_.roots );
-    else:
-      roots = self._components[ pf ];
-    
-    for solution in self.enumerate_component( None, roots ):
-      yield solution;
-
-
-  def generate_protoform( self, pf, solution, top=None ):
-    
-    root = solution[ top ];
-    subfs = dict( pf.subforms );
-    rootform = subfs[ root ];
-    
-    binding = {};
-    
-    for hole in self._index.fragments[ root ]:
-      binding[ hole ] = self.generate_protoform(
-                            pf, solution, hole
-                          );
-    
-    with Binder( binding ) as binder:
-      subform = binder.bind( rootform );
-      pf = ProtoForm()( sig = ProtoSig() );
-      pf.append_fragment( root, subform );
-      return pf;
+    cur_component = self._obj_.solution.cur_component;
+    if cur_component is None:
+      cur_component = 0;
       
+    cur_root = self._obj_.solution.cur_root;
+    
+    root_chart_index = [];
+    root_chart = [];
+    
+    solutions = None;
+    if cur_root is None:
+      solutions = self.enumerate_component( self._obj_.solution.chart_index[ cur_component ] );
+    else:
+      root_chart_index = [ cur_component ];
+      cur_pluggings = self._obj_.solution.chart[ cur_component ][ cur_root ];
+      root_chart = [ { cur_root: cur_pluggings } ];
+      solutions = self.enumerate_subcomponents( cur_pluggings, list( cur_pluggings.keys() ) );
+    
+    for solution_ in solutions:
+      solution = DomConSolution();
+      solution.chart_index = root_chart_index + solution_.chart_index;
+      solution.chart = root_chart + solution_.chart;
+      domcon = copy( self._obj_ );
+      domcon.solution = solution;
+      yield domcon;
+
 
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #

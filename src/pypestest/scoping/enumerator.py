@@ -10,7 +10,7 @@ import unittest;
 import gzip;
 import codecs;
 import re;
-import pprint;
+from pprint import pprint;
 
 from pypes.utils.unittest_ import TestCase;
 from pypes.utils.mc import object_;
@@ -19,7 +19,9 @@ from pypes.proto import *;
 
 from pypes.codecs_ import PFTDecoder, tree_encode, pft_encode;
 
+from pypes.scoping.solver import Solver;
 from pypes.scoping.enumerator import Enumerator;
+from pypes.scoping.recursivizer import Recursivizer;
 
 import pypes.proto.lex.erg;
 
@@ -169,23 +171,33 @@ class TestEnumerator( TestCase, metaclass=object_ ):
                       #g.write( pstr );
                       #g.write( "\n" );
                       
-                      with Enumerator( pf1 ) as enumerator:
-                        
-                        #print( fstr );
-                        #print( "--" );
-                        
-                        for solution in enumerator.enumerate( pf1 ):
-                          
-                          pf = enumerator.generate_protoform( pf1, solution );
-                          
-                          # print( pft_encode( pf ) );
-                          
-                          myline_orig = tree_encode( pf );
-                          mylines_orig.append( myline_orig );
-                          mylines_lkb.add( self._format_my_record( myline_orig ) );
-                          
-                          myline_utool = tree_encode( pf, utool_style=True );
-                          mylines_utool.add( self._format_my_record( myline_utool ) );
+                      # print( fstr );
+                      
+                      with Solver( pf1 ) as solver:
+                        solution = solver.solve_all();
+                        # pprint( solution.solution.chart_index );
+                        # pprint( solution.solution.chart );
+                        with Enumerator( solution ) as enumerator:
+                          for solution in enumerator.enumerate():
+                            # pprint( solution.solution.chart_index );
+                            # pprint( solution.solution.chart );
+                            with Recursivizer( solution ) as recursivizer:
+                              
+                              pf = recursivizer.recursivize();
+                              
+                              # print( pft_encode( pf ) );
+                              
+                              myline_orig = tree_encode( pf );
+                              if myline_orig is None:
+                                mylines_orig = [];
+                                mylines_lkb = [];
+                                mylines_utool = [];
+                                break;
+                              mylines_orig.append( myline_orig );
+                              mylines_lkb.add( self._format_my_record( myline_orig ) );
+                              
+                              myline_utool = tree_encode( pf, utool_style=True );
+                              mylines_utool.add( self._format_my_record( myline_utool ) );
                       
                       utoollines = set();
                       
@@ -247,18 +259,19 @@ class TestEnumerator( TestCase, metaclass=object_ ):
                       if utoolerr:
                         return;
                       
-                      succ = True;
-                      if not pypeserr and not utoolerr:
+                      succ = not pypeserr;
+                      if succ:
                         succ = succ and ( mylines_utool == utoollines );
-                      if not pypeserr and not lkberr:
-                        succ = succ and ( mylines_lkb == lkblines );
+                        if not lkberr:
+                          succ = succ and ( mylines_lkb == lkblines );
                         
                       if not succ:
                         print( fstr );
-                        pprint.pprint( mylines_lkb );
-                        pprint.pprint( utoollines );
-                        pprint.pprint( lkblines );
+                        pprint( mylines_lkb );
+                        pprint( utoollines );
+                        pprint( lkblines );
                         print( "------" );
+                        assert False;
                       
                       if not pypeserr:
                         g = open( filename.replace( ".pft.gz", ".trees.txt" ), "w" );
@@ -296,6 +309,73 @@ class TestEnumerator( TestCase, metaclass=object_ ):
     except IOError:
       pass;
 
+
+  def check_testfile( self, filename, decoder ):
+    
+    try:
+      
+      f_ = gzip.open( filename );
+      try:
+        
+        try:
+          
+          g_ = gzip.open( filename.replace( ".pft.gz", ".trees.txt.gz" ) );
+          try:
+
+            r = None;
+            gstr = None;
+            
+            try:
+
+              cdc = codecs.getreader( "utf-8" );
+              f = cdc( f_ );
+              cdc = codecs.getreader( "utf-8" );
+              g = cdc( g_ );
+
+              fstr = f.read();
+              
+              pf1 = decoder.decode( fstr )( sig=ProtoSig() );
+              
+              print( filename );
+              
+              with Solver( pf1 ) as solver:
+                solution = solver.solve_all();
+                with Enumerator( solution ) as enumerator:
+                  for solution in enumerator.enumerate():
+                    with Recursivizer( solution ) as recursivizer:
+                      
+                      pf = recursivizer.recursivize();
+                      tree = tree_encode( pf );
+                      assert tree is not None;
+                      
+                      gstr = g.readline();
+                      gstr = gstr[ :-1 ];
+                      
+                      print( tree );
+                      print( gstr );
+                      self.assertEquals( tree, gstr, filename );
+
+              g.close();
+              f.close();
+            
+            except:
+
+              print( fstr );
+              raise;
+    
+          finally:
+            g_.close();
+          
+        except IOError:
+          pass;
+      
+      finally:
+        f_.close();
+    
+    except IOError:
+      pass;
+    
+
   
   def test_enumerator( self ):
 
@@ -306,7 +386,7 @@ class TestEnumerator( TestCase, metaclass=object_ ):
       #for i in [ 72 ]:
       #for i in [ 77 ]:
         
-        self.write_testfile( "{0}/mrs-{1}1.pft.gz".format( self._TESTDTADIR, i ), decoder );
+        self.check_testfile( "{0}/mrs-{1}1.pft.gz".format( self._TESTDTADIR, i ), decoder );
 
         #if i > 20:
         #  break;
@@ -317,7 +397,7 @@ class TestEnumerator( TestCase, metaclass=object_ ):
       #for i in [ 10 ]:
 
         
-        self.write_testfile( "{0}/fracas-new-{1}.pft.gz".format( self._TESTDTADIR, i ), decoder );
+        self.check_testfile( "{0}/fracas-new-{1}.pft.gz".format( self._TESTDTADIR, i ), decoder );
         
         #if i > 20:
         #  break;

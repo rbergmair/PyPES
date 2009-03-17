@@ -5,11 +5,12 @@ __all__ = [ "Handle" ];
 
 from pypes.utils.mc import kls;
 from pypes.proto.form.handle import Handle;
+from pypes.proto.protobase import ProtoBase;
 
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-class Freezer( metaclass=kls ):
+class Freezer( ProtoBase, metaclass=kls ):
 
   _superordinate_ = None;
   _key_ = None;

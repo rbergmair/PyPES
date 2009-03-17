@@ -70,7 +70,7 @@ class _Binder( ProtoProcessor, metaclass=subject ):
     protoform = subform;
     for ( root, (root_,subform_) ) in zip( inst.roots, subforms ):
       if subform_:
-        protoform.subforms[ root ] = subform_;
+        protoform.subforms[ root ] = self.process( subform_ );
     return protoform;
     
   def bind( self, subform ):
@@ -119,15 +119,25 @@ class Recursivizer( metaclass=subject ):
         
     binding = {};
     roots = set( component );
-    for ( hole, subcomponent ) in self._invariant_pluggings.items():
-      if subcomponent < component:
-        binding.update( self._generate_binding( hole, subcomponent ) );
-        roots -= subcomponent;
+    
+    idx = self._obj_.solution.chart_index.index( component );
+    
+    for ( root, pluggings ) in self._obj_.solution.chart[ idx ].items():
+      if pluggings is None:
+        continue;
+      for ( hole, subcomponent ) in pluggings.items():
+        if len( subcomponent ) == 1:
+          # print( "aaa" );
+          binding.update( self._generate_binding( hole, subcomponent ) );
+          roots -= subcomponent;
+        elif hole in self._invariant_pluggings:
+          # print( "bbb" );
+          assert self._invariant_pluggings[ hole ] == subcomponent;
+          binding.update( self._generate_binding( hole, subcomponent ) );
+          roots -= subcomponent;
 
     pf = ProtoForm()( sig = ProtoSig() );
-    for root in self._obj_.pf.roots:
-      if root not in roots:
-        continue;
+    for root in roots:
       subform = self._obj_.pf.subforms[ root ];
       pf.append_fragment( root, subform );
 
@@ -168,6 +178,8 @@ class Recursivizer( metaclass=subject ):
 
     binding = self._generate_binding( cur_root, component );
 
+    # print( binding );
+    
     pf = None;
     with _Binder( binding ) as binder:
       pf = binder.bind( binding[cur_root] );
