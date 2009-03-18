@@ -3,6 +3,8 @@
 __package__ = "pypes.scoping";
 __all__ = [ "Solver" ];
 
+from pprint import pprint;
+
 from pypes.utils.mc import subject, object_, Object;
 
 from pypes.proto import *;
@@ -244,7 +246,7 @@ class Solver( metaclass=subject ):
     
   
   def solve_one( self, component=None ):
-    
+
     if component is None:
       component = self._obj_;
     if isinstance( component, ProtoForm ):
@@ -307,6 +309,7 @@ class Solver( metaclass=subject ):
     
     self._domcon.solution.cur_root = None;
     self._domcon.solution.cur_component = None;
+    
     return self._domcon;
 
 

@@ -341,7 +341,13 @@ class TestEnumerator( TestCase, metaclass=object_ ):
               with Solver( pf1 ) as solver:
                 solution = solver.solve_all();
                 with Enumerator( solution ) as enumerator:
+                  
+                  i = 0;
                   for solution in enumerator.enumerate():
+                    i += 1;
+                    if i > 100:
+                      break;
+                    
                     with Recursivizer( solution ) as recursivizer:
                       
                       pf = recursivizer.recursivize();
@@ -351,9 +357,12 @@ class TestEnumerator( TestCase, metaclass=object_ ):
                       gstr = g.readline();
                       gstr = gstr[ :-1 ];
                       
-                      print( tree );
-                      print( gstr );
-                      self.assertEquals( tree, gstr, filename );
+                      try:
+                        self.assertEquals( tree, gstr, filename );
+                      except:
+                        print( tree );
+                        print( gstr );
+                        raise;
 
               g.close();
               f.close();

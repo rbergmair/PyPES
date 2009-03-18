@@ -59,6 +59,8 @@ class TestSolver( TestCase, metaclass=object_ ):
               pf1 = decoder.decode( fstr )( sig=ProtoSig() );
               
               print( filename );
+
+              print( fstr );
               
               with Solver( pf1 ) as solver:
                 solution = solver.solve_all( pf1.roots );
@@ -70,8 +72,6 @@ class TestSolver( TestCase, metaclass=object_ ):
               
               i = 0;
               with Solver( pf1 ) as solver:
-                print( fstr );
-                print( "--" );
                 for solution in solver.solve_one( pf1.roots ):
                   #print( solution.solution.chart );
                   with Recursivizer( solution ) as recursivizer:
@@ -134,7 +134,7 @@ class TestSolver( TestCase, metaclass=object_ ):
               print( filename );
               
               with Solver( pf1 ) as solver:
-                solution = solver.solve_all( pf1.roots );
+                solution = solver.solve_all();
                 with Recursivizer( solution ) as recursivizer:
                   pf = recursivizer.recursivize();
                   refline = g.readline();
@@ -149,12 +149,12 @@ class TestSolver( TestCase, metaclass=object_ ):
                            
                     
               
-              with Solver( pf1 ) as solver:
-                for solution in solver.solve_one( pf1.roots ):
-                  with Recursivizer( solution ) as recursivizer:
-                    pf = recursivizer.recursivize();
-                    ref = decoder.decode( g.readline() )( sig=ProtoSig() );
-                    self.assertEquals_( pf, ref, filename );
+              #with Solver( pf1 ) as solver:
+              #  for solution in solver.solve_one( pf1.roots ):
+              #    with Recursivizer( solution ) as recursivizer:
+              #      pf = recursivizer.recursivize();
+              #      ref = decoder.decode( g.readline() )( sig=ProtoSig() );
+              #      self.assertEquals_( pf, ref, filename );
               
               g.close();
               f.close();

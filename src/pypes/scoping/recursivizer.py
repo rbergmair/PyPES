@@ -4,6 +4,7 @@ __package__ = "pypes.scoping";
 __all__ = [ "Recursivizer", "recursivize" ];
 
 from copy import copy;
+from pprint import pprint;
 
 from pypes.utils.mc import subject;
 
@@ -113,31 +114,21 @@ class Recursivizer( metaclass=subject ):
     for ( hole, subcomponents ) in global_pluggings.items():
       if len( subcomponents ) == 1:
         ( self._invariant_pluggings[ hole ], ) = subcomponents;
-  
-  
+
+
   def _generate_binding( self, top, component ):
         
     binding = {};
     roots = set( component );
-    
-    idx = self._obj_.solution.chart_index.index( component );
-    
-    for ( root, pluggings ) in self._obj_.solution.chart[ idx ].items():
-      if pluggings is None:
-        continue;
-      for ( hole, subcomponent ) in pluggings.items():
-        if len( subcomponent ) == 1:
-          # print( "aaa" );
-          binding.update( self._generate_binding( hole, subcomponent ) );
-          roots -= subcomponent;
-        elif hole in self._invariant_pluggings:
-          # print( "bbb" );
-          assert self._invariant_pluggings[ hole ] == subcomponent;
-          binding.update( self._generate_binding( hole, subcomponent ) );
-          roots -= subcomponent;
+    for ( hole, subcomponent ) in self._invariant_pluggings.items():
+      if subcomponent < component:
+        binding.update( self._generate_binding( hole, subcomponent ) );
+        roots -= subcomponent;
 
     pf = ProtoForm()( sig = ProtoSig() );
-    for root in roots:
+    for root in self._obj_.pf.roots:
+      if root not in roots:
+        continue;
       subform = self._obj_.pf.subforms[ root ];
       pf.append_fragment( root, subform );
 

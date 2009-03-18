@@ -16,6 +16,15 @@ from pypes.scoping.domcon import *;
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 class Enumerator( metaclass=subject ):
+  
+  
+  def _sortedroots( self, roots ):
+    
+    return sorted(
+               roots,
+               key = lambda root: self._obj_.pf.roots.index( root ),
+               reverse = False
+             );
 
 
   def enumerate_subcomponents( self, pluggings, holes ):
@@ -47,7 +56,10 @@ class Enumerator( metaclass=subject ):
     
     idx = self._obj_.solution.chart_index.index( component );
     
-    for ( root, pluggings ) in self._obj_.solution.chart[ idx ].items():
+    splits = self._obj_.solution.chart[ idx ];
+    
+    for root in self._sortedroots( splits.keys() ):
+      pluggings = splits[ root ];
       if pluggings is None:
         continue;
       for solution_ in self.enumerate_subcomponents( pluggings, list( pluggings.keys() ) ):
