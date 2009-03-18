@@ -181,11 +181,11 @@ class Recursivizer( metaclass=subject ):
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-def recursivize( pf, branching_factor=None ):
+def recursivize( solution ):
   
   rslt = None;
-  with Recursivizer( pf ) as recursivizer:
-    rslt = recursivizer.recursivize( pf=pf, branching_factor=branching_factor );
+  with Recursivizer( solution ) as recursivizer:
+    rslt = recursivizer.recursivize();
   return rslt;
 
 

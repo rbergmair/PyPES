@@ -97,6 +97,16 @@ class Enumerator( metaclass=subject ):
       domcon = copy( self._obj_ );
       domcon.solution = solution;
       yield domcon;
+      
+
+
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+
+def enumerate( solution ):
+  
+  with Enumerator( solution ) as enumerator:
+    for solution_ in enumerator.enumerate():
+      yield solution_;
 
 
 

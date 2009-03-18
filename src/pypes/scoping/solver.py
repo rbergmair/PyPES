@@ -278,6 +278,11 @@ class Solver( metaclass=subject ):
       yield self._domcon;
   
   
+  def _apply_cuts( self ):
+    
+    pass;
+  
+  
   def solve_all( self, component=None, branching_factor=None ):
     
     if component is None:
@@ -290,13 +295,18 @@ class Solver( metaclass=subject ):
     roots = [];
     for solution in self.solve_one( component ):
       roots.append( solution.solution.cur_root );
+    self._domcon.solution.cur_root = None;
     
     if len(roots) == 0:
       return None;
     
+    self._apply_cuts();
+    
     i = 0;
     splits = self._domcon.solution.chart[ self._domcon.solution.cur_component ];
     for root in roots:
+      if root not in splits:
+        continue;
       pluggings = splits[ root ];
       if pluggings is None:
         continue;
@@ -311,6 +321,27 @@ class Solver( metaclass=subject ):
     self._domcon.solution.cur_component = None;
     
     return self._domcon;
+      
+
+
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+
+def solve_one( pf, component=None ):
+  
+  with Solver( pf ) as solver:
+    for solution in solver.solve_one( component ):
+      yield solution;
+      
+
+
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+
+def solve_all( pf, component=None, branching_factor=None ):
+  
+  rslt = None;
+  with Solver( pf ) as solver:
+    rslt = solver.solve_all( component, branching_factor );
+  return rslt;
 
 
 
