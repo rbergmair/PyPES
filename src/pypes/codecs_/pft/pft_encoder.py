@@ -398,7 +398,7 @@ class PFTEncoder( ProtoProcessor, metaclass=subject ):
         if indents:
           indents.pop();
       la = _lookahead( idx );
-      if ch in { "}", ";" } and not la == "}":
+      if ( ch == ";" or ( ch == "}" and la != ";" ) ) and la != "}":
         rslt += "\n";
         curindent = 0;
         if indents:

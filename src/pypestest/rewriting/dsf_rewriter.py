@@ -91,6 +91,8 @@ class TestSolver( TestCase, metaclass=object_ ):
 
       for i in range( 1, 108 ):
         self.write_testfile( "{0}/mrs-{1}1.pft.gz".format( self._TESTDTADIR, i ), decoder );
+        if i > 10:
+          break;
       
       return;
 

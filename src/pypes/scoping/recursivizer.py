@@ -86,10 +86,10 @@ class Recursivizer( metaclass=subject ):
 
     self._invariant_pluggings = None;
     self._binding = None;
-
   
-  def _collect_invariant_pluggings( self, component ):
-    
+  
+  def _get_invariant_pluggings( self, component ):
+
     global_pluggings = {};
     
     for i in range( 0, len( self._obj_.solution.chart_index ) ):
@@ -109,9 +109,19 @@ class Recursivizer( metaclass=subject ):
           if not subcomponent in global_pluggings[ hole ]:
             global_pluggings[ hole ].append( subcomponent );
     
+    invariant_pluggings = {};
     for ( hole, subcomponents ) in global_pluggings.items():
       if len( subcomponents ) == 1:
-        ( self._invariant_pluggings[ hole ], ) = subcomponents;
+        ( invariant_pluggings[ hole ], ) = subcomponents;
+    
+    return invariant_pluggings;
+
+  
+  def _collect_invariant_pluggings( self, component ):
+    
+    self._invariant_pluggings.update(
+        self._get_invariant_pluggings( component )
+      );
 
 
   def _generate_binding( self, top, component ):
