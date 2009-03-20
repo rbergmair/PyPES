@@ -5,6 +5,8 @@ __all__ = [ "DSFRewriter", "dsf_rewrite" ];
 
 from copy import copy;
 
+from pprint import pprint;
+
 from pypes.utils.mc import subject, Object;
 from pypes.proto import *;
 from pypes.scoping import *;
@@ -54,53 +56,84 @@ class DSFRewriter( NullRewriter, metaclass=subject ):
 
       self._invariant_pluggings = {};
       
-      component = self._obj_.solution.chart_index[ 0 ];
-      self._collect_invariant_pluggings( component );
-      invariant_pluggings = copy( self._invariant_pluggings );
-      
-      invariant_pluggings[ None ] = component;
+      toplevel_component = self._obj_.solution.chart_index[ 0 ];
+      self._collect_invariant_pluggings( toplevel_component );
+      invariant_pluggings = self._invariant_pluggings;
+      invariant_pluggings[ None ] = toplevel_component;
       
       binding = {};
       
-      for ( top, component ) in self._invariant_pluggings.items:
+      # pprint( self._obj_.solution.chart );
+      
+      for ( top, component ) in invariant_pluggings.items():
 
         contains_quantifications = False;
-        idx = self._obj_.solution.cur_component;
+        idx = self._obj_.solution.chart_index.index( component );
         splits = self._obj_.solution.chart[ idx ];
+        
         for root in splits:
           subform = self._obj_.pf.subforms[ root ];
           if isinstance( subform, Quantification ):
             contains_quantifications = True;
         if not contains_quantifications:
           continue;
+
+        context = None;
         
         for root in self._obj_.pf.roots:
           
           if not root in splits:
             continue;
-          pluggings = splits[ root ];
           
-          for ( hole, subcomponent ) in pluggings:
-            self._invariant_pluggings = {};
-            self._binding = {};
+          pluggings = splits[ root ];
+
+          self._invariant_pluggings = {};
+          self._binding = {};
+          
+          for ( hole, subcomponent ) in pluggings.items():
             self._collect_invariant_pluggings( subcomponent );
             self._invariant_pluggings[ hole ] = subcomponent;
             self._generate_binding( hole, subcomponent );
 
           subf = self._obj_.pf.subforms[ root ];
-          pf = None;
-            
+          pf = ProtoForm()( sig=ProtoSig() );
+          newroot = Handle()( sig=ProtoSig() );
           with self._Binder( self._binding ) as binder:
-            subf = binder.bind( subf );
-            if isinstance( subf, ProtoForm ):
-              pf = subform;
-            else:
-              pf = ProtoForm()( sig=ProtoSig() );
-              pf.append_fragment( Handle()( sig=ProtoSig() ), subform );
+            pf.append_fragment( newroot, binder.bind(subf) );
             
-            
-            
-            
+          if context is None:
+            context = pf;
+            continue;
+          
+          newpf = ProtoForm(
+                      subforms = [
+                          ( Handle(),
+                              Connection(
+                                  connective = Connective(
+                                                   referent = Operator(
+                                                                  otype = Operator.OP_C_WEACON
+                                                                )
+                                                 )
+                                ) )
+                        ]
+                    )( sig=ProtoSig() );
+                  
+          newpf.subforms[ newpf.roots[0] ].lscope = context;
+          newpf.subforms[ newpf.roots[0] ].rscope = pf;
+          
+          context = newpf;
+        
+        assert context is not None;
+        binding[ top ] = context;
+          
+      self._invariant_pluggings = invariant_pluggings;
+      self._binding = binding;
+      self._generate_binding( None, toplevel_component );
+      
+      pf = None;
+      with self._Binder( self._binding ) as binder:
+        pf = binder.bind( self._binding[None] );
+      return pf;
 
 
   def _enter_( self ):
@@ -108,7 +141,8 @@ class DSFRewriter( NullRewriter, metaclass=subject ):
     self._orig = self._obj_;
     with self._Solver( self._orig ) as solver:
       solution = solver.solve_all();
-      self._obj_ = recursivize( solution );
+      with self._Recursivizer( solution ) as recursivizer:
+        self._obj_ = recursivizer.recursivize();
 
 
 

@@ -351,9 +351,21 @@ class PFTEncoder( ProtoProcessor, metaclass=subject ):
     rslt += "}";
     
     return rslt;
-  
+
   
   def _format( self, stri ):
+    
+    def _lookahead( idx ):
+      
+      i = idx+1;
+      while True:
+        if i >= len(stri):
+          return None;
+        ch = stri[i];
+        if ch.isspace():
+          i += 1;
+          continue;
+        return ch;
     
     if not self._pretty and not self._linebreaks:
       return stri;
@@ -382,15 +394,19 @@ class PFTEncoder( ProtoProcessor, metaclass=subject ):
       
       if ch == "{":
         indents.append( curindent );
-      elif ch == "}":
+      if ch == "}":
         if indents:
           indents.pop();
-      elif ch == ";":
+      la = _lookahead( idx );
+      if ch in { "}", ";" } and not la == "}":
         rslt += "\n";
         curindent = 0;
         if indents:
           rslt += ( " " * (indents[-1]+1) ); 
           curindent += indents[-1];
+          if ch == "}" and la == "{":
+            rslt += "  ";
+            curindent += 2;
     
     return rslt;
 

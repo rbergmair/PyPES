@@ -59,6 +59,7 @@ class TestSolver( TestCase, metaclass=object_ ):
               pf = dsf_rewrite( pf1 )( sig=ProtoSig() );
               
               print( filename );
+              print( fstr );
               print( pft_encode( pf ) );
               print( "-------" );
               
