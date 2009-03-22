@@ -36,11 +36,19 @@ class Modification( SubForm, metaclass=kls ):
 
   def __getstate__( self ):
     
-    return ( self.modality, self.scope, copy(self.args), copy(self.holes) );
+    return ( self.modality,
+             self.scope,
+             copy(self.args),
+             copy(self.holes),
+             copy(self.protoforms) );
   
   def __setstate__( self, state ):
     
-    ( self.modality, self.scope, self.args, self.holes ) = state;
+    ( self.modality,
+      self.scope,
+      self.args,
+      self.holes,
+      self.protoforms ) = state;
   
   
   def __init__( self, sig, modality=None, scope=None, args=None ):

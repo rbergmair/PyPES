@@ -10,76 +10,13 @@ from pypes.utils.mc import subject;
 
 from pypes.proto import *;
 
+from pypes.scoping import bind;
+
 
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 class Recursivizer( metaclass=subject ):
-
-
-  class _Binder( ProtoProcessor, metaclass=subject ):
-    
-    def _enter_( self ):
-      
-      self._bound_handles = set( self._obj_.keys() );
-  
-    def _process_handle( self, inst, hid ):
-      
-      if inst in self._obj_:
-        return self._obj_[ inst ];
-      return inst;
-    
-    def _process_freezer( self, content, freezelevel ):
-      
-      return content;
-    
-    def _process_subform( self, inst, holes ):
-      
-      subform = copy( inst )( sig=ProtoSig() );
-      subform.holes = holes - self._bound_handles;
-      return subform;
-    
-    def _process_predication( self, inst, subform, predicate, args ):
-      
-      predication = subform;
-      return predication;
-  
-    def _process_quantification( self, inst, subform, quantifier, var, rstr, body ):
-      
-      quantification = subform;
-      if rstr is not None:
-        quantification.rstr = rstr;
-      if body is not None:
-        quantification.body = body;
-      return quantification;
-  
-    def _process_modification( self, inst, subform, modality, args, scope ):
-      
-      modification = subform;
-      if scope:
-        modification.scope = scope;
-      return modification;
-      
-    def _process_connection( self, inst, subform, connective, lscope, rscope ):
-      
-      connection = subform;
-      if lscope:
-        connection.lscope = lscope;
-      if rscope:
-        connection.rscope = rscope;
-      return connection;
-    
-    def _process_protoform( self, inst, subform, subforms, constraints ):
-      
-      protoform = subform;
-      for ( root, (root_,subform_) ) in zip( inst.roots, subforms ):
-        if subform_:
-          protoform.subforms[ root ] = self.process( subform_ );
-      return protoform;
-      
-    def bind( self, subform ):
-      
-      return self.process( subform );
     
     
   def _enter_( self ):
@@ -191,11 +128,7 @@ class Recursivizer( metaclass=subject ):
 
     # print( binding );
     
-    pf = None;
-    with self._Binder( self._binding ) as binder:
-      pf = binder.bind( self._binding[cur_root] );
-    return pf;
-    #return binding[cur_root];
+    return bind( self._binding, self._binding[cur_root] );
       
 
 

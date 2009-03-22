@@ -35,13 +35,20 @@ class ProtoForm( SubForm, metaclass=kls ):
   
   def __getstate__( self ):
     
-    return ( copy(self.roots), copy(self.subforms),
-             copy(self.constraints), copy(self.holes) );
+    return ( copy(self.roots),
+             copy(self.subforms),
+             copy(self.constraints),
+             copy(self.holes),
+             copy(self.protoforms) );
   
   
   def __setstate__( self, state ):
     
-    ( self.roots, self.subforms, self.constraints, self.holes ) = state;
+    ( self.roots,
+      self.subforms,
+      self.constraints,
+      self.holes,
+      self.protoforms ) = state;
     
   
   def append_fragment( self, root, subform ):
@@ -54,6 +61,9 @@ class ProtoForm( SubForm, metaclass=kls ):
       if not freezelevel in self._holes:
         self._holes[ freezelevel ] = set();
       self._holes[ freezelevel ] |= content;
+    self.protoforms |= subform.protoforms;
+    if isinstance( subform, ProtoForm ):
+      self.protoforms.add( subform );
 
   
   def __init__( self, sig, subforms=None, constraints=None ):

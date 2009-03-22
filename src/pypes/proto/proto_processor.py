@@ -56,7 +56,7 @@ class ProtoProcessor( metaclass=subject ):
       raise;
 
 
-  def _process_subform( self, inst, holes ):
+  def _process_subform( self, inst, holes, protoforms ):
     
     pass;
 
@@ -66,7 +66,7 @@ class ProtoProcessor( metaclass=subject ):
     for hole in subform.holes:
       self.global_holes[ hole ] = 0;
       
-    subform_ = self._process_subform( subform, subform.holes );
+    subform_ = self._process_subform( subform, subform.holes, subform.protoforms );
 
     if isinstance( subform, Predication ):
       return self.process_predication( subform, subform_ );

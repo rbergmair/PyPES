@@ -49,6 +49,8 @@ class TestSolver( TestCase, metaclass=object_ ):
             
             try:
 
+              print( filename );
+
               cdc = codecs.getreader( "utf-8" );
               f = cdc( f_ );
 
@@ -58,7 +60,6 @@ class TestSolver( TestCase, metaclass=object_ ):
               pf1 = decoder.decode( fstr )( sig=ProtoSig() );
               pf = dsf_rewrite( pf1 )( sig=ProtoSig() );
               
-              print( filename );
               print( fstr );
               print( pft_encode( pf ) );
               print( "-------" );
@@ -90,14 +91,17 @@ class TestSolver( TestCase, metaclass=object_ ):
     with PFTDecoder( (pypes.proto.lex.erg,None) ) as decoder:
 
       for i in range( 1, 108 ):
+        if i in { 56, 102 }: # don't scope
+          continue;
         self.write_testfile( "{0}/mrs-{1}1.pft.gz".format( self._TESTDTADIR, i ), decoder );
-        if i > 10:
-          break;
       
-      return;
-
       for i in range( 1, 641 ):
-        self.check_testfile( "{0}/fracas-new-{1}.pft.gz".format( self._TESTDTADIR, i ), decoder );
+        if i in { 185, 186, 270, 272, 296, 298, 563, 620 }: # don't scope
+          continue;
+        #if i in { 369, 378, 579, 587, 639, 641 }: # VP coordination
+        #  continue;
+        self.write_testfile( "{0}/fracas-new-{1}.pft.gz".format( self._TESTDTADIR, i ), decoder );
+      
 
 
 

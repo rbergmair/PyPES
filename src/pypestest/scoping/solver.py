@@ -147,14 +147,12 @@ class TestSolver( TestCase, metaclass=object_ ):
                     print( pft_encode( ref, pretty=False ) );
                     raise;
                            
-                    
-              
-              #with Solver( pf1 ) as solver:
-              #  for solution in solver.solve_one( pf1.roots ):
-              #    with Recursivizer( solution ) as recursivizer:
-              #      pf = recursivizer.recursivize();
-              #      ref = decoder.decode( g.readline() )( sig=ProtoSig() );
-              #      self.assertEquals_( pf, ref, filename );
+              with Solver( pf1 ) as solver:
+                for solution in solver.solve_one( pf1.roots ):
+                  with Recursivizer( solution ) as recursivizer:
+                    pf = recursivizer.recursivize();
+                    ref = decoder.decode( g.readline() )( sig=ProtoSig() );
+                    self.assertEquals_( pf, ref, filename );
               
               g.close();
               f.close();

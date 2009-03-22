@@ -36,11 +36,21 @@ class Quantification( SubForm, metaclass=kls ):
     
   def __getstate__( self ):
     
-    return ( self.quantifier, self.var, self.rstr, self.body, copy(self.holes) );
+    return ( self.quantifier,
+             self.var,
+             self.rstr,
+             self.body,
+             copy(self.holes),
+             copy(self.protoforms) );
   
   def __setstate__( self, state ):
     
-    ( self.quantifier, self.var, self.rstr, self.body, self.holes ) = state;
+    ( self.quantifier,
+      self.var,
+      self.rstr,
+      self.body,
+      self.holes,
+      self.protoforms ) = state;
 
   
   def __init__( self, sig, quantifier=None, var=None, rstr=None, body=None ):

@@ -6,6 +6,7 @@ __all__ = [ "SubForm" ];
 from pypes.utils.mc import kls;
 from pypes.proto.protobase import ProtoBase;
 from pypes.proto.form.freezer import Freezer;
+from pypes.proto.form.handle import Handle;
 
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
@@ -15,6 +16,7 @@ class SubForm( ProtoBase, metaclass=kls ):
   def _init_init_( self ):
     
     self._holes = { 0: set() };
+    self.protoforms = set();
   
   holes = property();
   
@@ -30,10 +32,16 @@ class SubForm( ProtoBase, metaclass=kls ):
     self._holes[ 0 ] = holes;
   
   def _register_scopebearer( self, scope ):
+    
+    if scope is None:
+      return;
 
     from pypes.proto.form.protoform import ProtoForm;
     
-    if isinstance( scope, Freezer ):
+    if isinstance( scope, Handle ):
+      self.holes.add( scope );
+      return scope;
+    elif isinstance( scope, Freezer ):
       if not scope.freezelevel in self._holes:
         self._holes[ scope.freezelevel ] = set();
       self._holes[ scope.freezelevel ].add( scope.content );
@@ -43,6 +51,7 @@ class SubForm( ProtoBase, metaclass=kls ):
         if not freezelevel in self._holes:
           self._holes[ freezelevel ] = set();
         self._holes[ freezelevel ] |= content;
+      self.protoforms.add( scope );
       return scope;
     else:
       try:
@@ -50,6 +59,11 @@ class SubForm( ProtoBase, metaclass=kls ):
       except:
         print( scope );
         raise;
+
+  def _deregister_scopebearer( self, scope ):
+    
+    if scope is None:
+      return;
       
 
   def __le__( self, obj ):

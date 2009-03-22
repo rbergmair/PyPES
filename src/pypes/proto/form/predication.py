@@ -33,11 +33,14 @@ class Predication( SubForm, metaclass=kls ):
 
   def __getstate__( self ):
     
-    return ( self.predicate, copy(self.args), copy(self.holes) );
+    return ( self.predicate,
+             copy(self.args),
+             copy(self.holes),
+             copy(self.protoforms) );
   
   def __setstate__( self, state ):
     
-    ( self.predicate, self.args, self.holes ) = state;
+    ( self.predicate, self.args, self.holes, self.protoforms ) = state;
 
   
   def __init__( self, sig, predicate=None, args=None ):

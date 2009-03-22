@@ -7,7 +7,7 @@ from copy import copy;
 
 from pprint import pprint;
 
-from pypes.utils.mc import subject, Object;
+from pypes.utils.mc import subject, object_, Object;
 from pypes.proto import *;
 from pypes.scoping import *;
 from pypes.rewriting import RenamingRewriter;
@@ -17,38 +17,96 @@ from pypes.rewriting import RenamingRewriter;
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 class DSFRewriter( RenamingRewriter, metaclass=subject ):
+  
+  
+  
+  class _BinderIndex( metaclass=object_ ):
+    
+    CONNECTION = 3;
+    QUANTIFICATION = 2;
+    MODIFICATION = 1;
+    PREDICATION = 0;
+    ZERO = 0;
+    
+    
+    def __init__( self ):
+      
+      self.index = {};
+      self.holevars = {};
+
+
+
+  class _IndexCollector( ProtoProcessor, metaclass=subject ):
+    
+    def _enter_( self ):
+      
+      self._binder = {};
+      self._vars = {};
+    
+    def _process_connection( self, inst, subform, connective, lscope, rscope ):
+      
+      if isinstance( inst.lscope, Handle ):
+        self._binder[ inst.lscope ] = self._obj_.CONNECTION;
+      if isinstance( inst.rscope, Handle ):
+        self._binder[ inst.rscope ] = self._obj_.CONNECTION;
+      self._obj_.index[ inst ] = self._obj_.CONNECTION;
+    
+    def _process_quantification( self, inst, subform, quantifier, var, rstr, body ):
+      
+      if isinstance( inst.rstr, Handle ):
+        self._binder[ inst.rstr ] = self._obj_.QUANTIFICATION;
+        self._obj_.holevars[ inst.rstr ] = inst.var;
+      if isinstance( inst.body, Handle ):
+        self._binder[ inst.body ] = self._obj_.QUANTIFICATION;
+        self._obj_.holevars[ inst.body ] = inst.var;
+      self._obj_.index[ inst ] = self._obj_.QUANTIFICATION;
+    
+    def _process_modification( self, inst, subform, modality, args, scope ):
+      
+      if isinstance( inst.scope, Handle ):
+        self._binder[ inst.scope ] = self._obj_.MODIFICATION;
+      self._obj_.index[ inst ] = self._obj_.MODIFICATION;
+    
+    def _process_predication( self, inst, subform, predicate, args ):
+      
+      self._obj_.index[ inst ] = self._obj_.PREDICATION;
+    
+    def _process_protoform( self, inst, subform, subforms, constraints ):
+      
+      maxbinder = self._obj_.ZERO;
+      qvar = None;
+      for hole in inst.holes:
+        binder = self._binder[ hole ];
+        maxbinder = max( maxbinder, binder );
+      self._obj_.index[ inst ] = maxbinder;
 
 
 
   class _Solver( Solver, metaclass=subject ):
     
+    def _enter_( self ):
+      
+      ( self._index, self._obj_ ) = self._obj_;
+      super()._enter_();
     
     def _apply_cuts( self ):
-      
-      contains_connections = False;
-      contains_quantifications = False;
       
       idx = self._domcon.solution.cur_component;
       splits = self._domcon.solution.chart[ idx ];
       
       roots = set( splits.keys() );
       
-      for root in roots:
-        subform = self._obj_.subforms[ root ];
-        if isinstance( subform, Connection ):
-          contains_connections = True;
-          break;
-        elif isinstance( subform, Quantification ):
-          contains_quantifications = True;
+      maxbinder = self._index.ZERO;
       
       for root in roots:
         subform = self._obj_.subforms[ root ];
-        # print( subform );
-        if contains_connections and not isinstance( subform, Connection ):
-          # print( "!" );
-          del splits[ root ];
-        elif contains_quantifications and not isinstance( subform, Quantification ):
-          # print( "!!" );
+        binder = self._index.index[ subform ];
+        maxbinder = max( maxbinder, binder );
+      
+      for root in roots:
+        subform = self._obj_.subforms[ root ];
+        binder = self._index.index[ subform ];
+        if binder < maxbinder:
           del splits[ root ];
   
   
@@ -56,110 +114,166 @@ class DSFRewriter( RenamingRewriter, metaclass=subject ):
   class _Recursivizer( Recursivizer, metaclass=subject ):
     
     
-    def _filter_subform( self, var, subform, scope ):
+    def _enter_( self ):
+      
+      ( self._index, self._obj_ ) = self._obj_;
+      super()._enter_();
 
-      if isinstance( subform, Quantification ):
+
+    def _filter_subprotoform( self, var, pf ):
+      
+      conns = [];
+      nonconns = [];
+      for root in pf.roots:
+        subform = pf.subforms[ root ];
+        if not isinstance( subform, Connection ):
+          nonconns.append( subform );
+          continue;
+        if not isinstance( subform.connective.referent, Operator ):
+          nonconns.append( subform );
+          continue;
+        if not subform.connective.referent.otype == Operator.OP_C_WEACON:
+          nonconns.append( subform );
+          continue;
+        if not ( subform.lscope.hid is None and subform.rscope.hid is None ):
+          nonconns.append( subform );
+          continue;
+        conns.append( subform );
+      conns.append( None );
+      assert len( conns ) == len( nonconns );
+      assert len( pf.constraints ) == 0;
+      
+      newsubfs = [];
+      for ( nonconn, conn ) in zip( nonconns, conns ):
+        nonconn_ = self._filter_subform( var, nonconn );
+        if nonconn_ is None:
+          continue;
+        newsubfs.append( nonconn_ );
+        newsubfs.append( conn );
+      newsubfs = newsubfs[ :-1 ];
+      
+      if len( newsubfs ) == 0:
         return None;
+      
+      newpf = ProtoForm()( sig=ProtoSig() );
+      for subf in newsubfs:
+        newroot = Handle()( sig=ProtoSig() );
+        newpf.append_fragment( newroot, subf );
+      return newpf;
+
+    
+    def _filter_subform( self, var, subform ):
 
       if isinstance( subform, ProtoForm ):
-        return subform;
+        return self._filter_subprotoform( var, subform );
+      
+      if isinstance( subform, Connection ):
+        binding = {};
+        for protoform in subform.protoforms:
+          binding[ protoform ] = self._filter_subprotoform( var, protoform );
+        return bind( binding, subform );
+      
+      subform_ = copy( subform )( sig=ProtoSig() );
+      
+      var_occurs = False;
+      quantified_occurs = False;
+      
+      for (arg,var_) in subform.args.items():
+        if var_ is var:
+          var_occurs = True;
+        if var_ in self._obj_.quantified_vars:
+          quantified_occurs = True;
 
-      args = {};
-      
-      if var is not None:
-        
-        keep = scope is not None;
-      
+      subform_.args = {};
+
+      if isinstance( subform_, Modification ) or ( ( var is not None ) and var_occurs ):
         for (arg,var_) in subform.args.items():
-          if var_ is var:
-            keep = True;
-            args[ arg ] = var_;
-          elif var_ not in self._obj_.quantified_vars:
-            args[ arg ] = var_;
+          if ( var is var_ ) or ( var_ not in self._obj_.quantified_vars ):
+            subform_.args[ arg ] = var_;
+        return subform_;
       
-        if not keep:
-          return None;
-      
-      else:
-        
-        if isinstance( subform, Modification ):
-          keep = scope is not None;
-        else:
-          keep = True;
-        
+      if var is None and not quantified_occurs:
         for (arg,var_) in subform.args.items():
           if var_ not in self._obj_.quantified_vars:
-            args[ arg ] = var_;
-          else:
-            if not isinstance( subform, Modification ):
-              keep = False;
+            subform_.args[ arg ] = var_;
+        return subform_;
       
-        if not keep:
-          return None;
-      
-      predmodref = None;
-      
-      if isinstance( subform, Modification ):
-        predmodref = subform.modality.referent;
-      elif isinstance( subform, Predication ):
-        predmodref = subform.predicate.referent;
-      else:
-        assert False;
-      
-      rslt = None;
-      if scope is None:
-        rslt = Predication( predicate=Predicate() )( sig=ProtoSig() );
-        rslt.predicate.referent = predmodref;
-      else:
-        rslt = Modification( modality=Modality() )( sig=ProtoSig() )
-        rslt.modality.referent = predmodref;
-        rslt.scope = scope;
-      rslt.args = args;
-      return rslt;
+      return None;
 
       
-    def _filter( self, var, component ):
+    def _filter( self, var, pf, component ):
+
+      # print( component );
       
       roots = {};
+      invariant_pluggings = self._get_invariant_pluggings( component );
       
       for root in component:
         roots[ root ] = None;
+        continue;
 
-      invariant_pluggings = self._get_invariant_pluggings( component );
-      
-      scopes = {};
+      #print( invariant_pluggings );
+
+      binding = {};
       
       for root in component:
-        subform = self._obj_.pf.subforms[ root ];
-        if isinstance( subform, Modification ):
-          assert subform.scope in invariant_pluggings;
-          subcomponent = invariant_pluggings[ subform.scope ];
-          scopes[ subform ] = self._filter( var, subcomponent );
+        
+        subform = pf.subforms[ root ];
+
+        if self._index.index[ subform ] == self._index.QUANTIFICATION:
+          del roots[ root ];
+          continue;
+               
+        for hole in subform.holes:
+          
+          try:
+            assert hole in invariant_pluggings;
+          except:
+            print( pf.subforms );
+            print( subform );
+            print( var );
+            print( component );
+            print( hole );
+            raise;
+          
+          subcomponent = invariant_pluggings[ hole ];
+          subrslt = self._filter( var, pf, subcomponent );
+          # assert subrslt is not None;
+          binding[ hole ] = subrslt;
           for root in subcomponent:
             if root in roots:
               del roots[ root ];
+              
+        for protoform in subform.protoforms:
+          subrslt = self._filter_subprotoform( var, protoform );
+          binding[ protoform ] = subrslt;
       
-      pf = ProtoForm()( sig=ProtoSig() );
+      # print( binding );
       
-      for root in self._obj_.pf.roots:
+      pf_ = ProtoForm()( sig=ProtoSig() );
+      
+      for root in pf.roots:
         
         if not root in roots:
           continue;
         
-        subf = self._obj_.pf.subforms[ root ];
-        subf = self._filter_subform( var, subf, scopes.get( subf ) );
+        subf = pf.subforms[ root ];
+        subf = bind( binding, subf );
+        if subf is not None:
+          subf = self._filter_subform( var, subf );
+        
         if subf is None:
           del roots[ root ];
           continue;
         
         newroot = Handle()( sig=ProtoSig() );
         roots[ root ] = newroot;
-        pf.append_fragment( newroot, subf );
+        pf_.append_fragment( newroot, subf );
       
       if len( roots ) == 0:
         return None;
         
-      for constraint in self._obj_.pf.constraints:
+      for constraint in pf.constraints:
         if constraint.larg in roots:
           if self._obj_._get_root( constraint.harg ) in roots:
             cons = Constraint()( sig=ProtoSig() );
@@ -168,9 +282,9 @@ class DSFRewriter( RenamingRewriter, metaclass=subject ):
               cons.harg = roots[ constraint.harg ];
             else:
               cons.harg = constraint.harg;
-            pf.constraints.append( cons );
+            pf_.constraints.append( cons );
       
-      return pf;
+      return pf_;
 
 
     def recursivize( self ):
@@ -228,7 +342,7 @@ class DSFRewriter( RenamingRewriter, metaclass=subject ):
         
         for root in splits:
           subform = self._obj_.pf.subforms[ root ];
-          if isinstance( subform, Quantification ):
+          if self._index.index[ subform ] == self._index.QUANTIFICATION:
             contains_quantifications = True;
         if not contains_quantifications:
           continue;
@@ -241,40 +355,43 @@ class DSFRewriter( RenamingRewriter, metaclass=subject ):
             continue;
           
           pluggings = splits[ root ];
-          subf = copy( self._obj_.pf.subforms[ root ] )( sig=ProtoSig() );
+          subf = self._obj_.pf.subforms[ root ];
           
           try:
-            assert isinstance( subf, Quantification );
-            assert subf.rstr in pluggings;
-            assert subf.body in pluggings;
+            assert self._index.index[ subf ] == self._index.QUANTIFICATION;
+            for hole in subf.holes:
+              assert hole in pluggings;
           except:
             print( subf );
             raise;
-          
-          subf.rstr = self._filter( subf.var, pluggings[ subf.rstr ] );
-          subf.body = self._filter( subf.var, pluggings[ subf.body ] );
-          
-          pf = _conjunction( pf, subf );
 
-        pf = _conjunction( pf, self._filter( None, component ) );
-        
+          binding = {};
+          for hole in subf.holes:
+            subrslt = self._filter( self._index.holevars[ hole ], self._obj_.pf, pluggings[ hole ] );
+            # assert subrslt is not None;
+            binding[ hole ] = subrslt;
+          pf = _conjunction( pf, bind( binding, subf ) );
+
+        pf = _conjunction( pf, self._filter( None, self._obj_.pf, component ) );
         self._binding[ top ] = pf;
           
       self._generate_binding( None, toplevel_component );
       
-      pf = None;
-      with self._Binder( self._binding ) as binder:
-        pf = binder.bind( self._binding[None] );
-      return pf;
+      return bind( self._binding, self._binding[None] );
+
 
 
   def _enter_( self ):
     
-    self._orig = self._obj_;
-    with self._Solver( self._orig ) as solver:
+    index = self._BinderIndex();
+    with self._IndexCollector( index ) as index_collector:
+      index_collector.process( self._obj_ );
+      
+    with self._Solver( (index,self._obj_) ) as solver:
       solution = solver.solve_all();
-      with self._Recursivizer( solution ) as recursivizer:
+      with self._Recursivizer( (index,solution) ) as recursivizer:
         self._obj_ = recursivizer.recursivize();
+        
     super()._enter_();
 
 

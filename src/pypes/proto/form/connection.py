@@ -30,11 +30,19 @@ class Connection( SubForm, metaclass=kls ):
   
   def __getstate__( self ):
     
-    return ( self.connective, self.lscope, self.rscope, copy(self.holes) );
+    return ( self.connective,
+             self.lscope,
+             self.rscope,
+             copy(self.holes),
+             copy(self.protoforms) );
   
   def __setstate__( self, state ):
     
-    ( self.connective, self.lscope, self.rscope, self.holes ) = state;
+    ( self.connective,
+      self.lscope,
+      self.rscope,
+      self.holes,
+      self.protoforms ) = state;
   
   def __init__( self, sig, connective=None, lscope=None, rscope=None ):
     
