@@ -27,7 +27,7 @@ from pypes.rewriting.dsf_rewriter import dsf_rewrite;
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-class TestSolver( TestCase, metaclass=object_ ):
+class TestDSFRewriter( TestCase, metaclass=object_ ):
   
   _TESTDTADIR = "dta/native";
   
@@ -36,54 +36,74 @@ class TestSolver( TestCase, metaclass=object_ ):
 
     try:
       
-      f_ = gzip.open( filename );
+      x = open( self._TESTDTADIR+"/dsfs.txt", "a" );
+      
       try:
         
+        f_ = gzip.open( filename );
         try:
           
-          g = open( filename.replace( ".pft.gz", "-dsf.pft" ), "w" );
           try:
-
-            r = None;
-            gstr = None;
             
+            g = open( filename.replace( ".pft.gz", "-dsf.pft" ), "w" );
             try:
-
-              print( filename );
-
-              cdc = codecs.getreader( "utf-8" );
-              f = cdc( f_ );
-
-              fstr = f.read();
-              pstr = None;
+  
+              r = None;
+              gstr = None;
               
-              pf1 = decoder.decode( fstr )( sig=ProtoSig() );
-              pf = dsf_rewrite( pf1 )( sig=ProtoSig() );
+              try:
+  
+                print( filename );
+  
+                cdc = codecs.getreader( "utf-8" );
+                f = cdc( f_ );
+  
+                fstr = f.read();
+                pstr = None;
+                
+                pf1 = decoder.decode( fstr )( sig=ProtoSig() );
+                pf = dsf_rewrite( pf1 )( sig=ProtoSig() );
+                
+                pfstr = pft_encode( pf );
+                
+                print( fstr );
+                print( pfstr );
+                print( "-------" );
+                
+                k = open( filename.replace( ".pft.gz", ".txt" ) )
+                txt = k.read();
+                k.close();
+                
+                x.write( filename );
+                x.write( ": " );
+                x.write( txt );
+                x.write( "\n" );
+                x.write( pfstr );
+                x.write( "\n\f\n\n" );
+                
+                g.write( pft_encode( pf, pretty=False, fast_initialize=True ) );
+                
+                f.close();
               
-              print( fstr );
-              print( pft_encode( pf ) );
-              print( "-------" );
-              
-              g.write( pft_encode( pf, pretty=False, fast_initialize=True ) );
-              
-              f.close();
-            
-            except:
-
-              print( fstr );
-              raise;
-    
-          finally:
-            g.close();
-          
-        except IOError:
-          pass;
+              except:
+  
+                print( fstr );
+                raise;
       
-      finally:
-        f_.close();
+            finally:
+              g.close();
+            
+          except IOError:
+            pass;
+        
+        finally:
+          f_.close();
+      
+      except IOError:
+        pass;
     
-    except IOError:
-      pass;
+    finally:
+      x.close();
 
   
   def test_solver( self ):
@@ -104,7 +124,6 @@ class TestSolver( TestCase, metaclass=object_ ):
       
 
 
-
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 def suite():
@@ -112,7 +131,7 @@ def suite():
   suite = unittest.TestSuite();
 
   suite.addTests( unittest.TestLoader().loadTestsFromTestCase(
-      TestSolver
+      TestDSFRewriter
     ) );
 
   return suite;
