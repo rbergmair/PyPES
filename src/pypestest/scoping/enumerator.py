@@ -383,10 +383,51 @@ class TestEnumerator( TestCase, metaclass=object_ ):
     
     except IOError:
       pass;
+
+
+
+  def quicktest( self, filename, decoder ):
+    
+    try:
+      
+      f_ = gzip.open( filename );
+      try:
+        
+        cdc = codecs.getreader( "utf-8" );
+        f = cdc( f_ );
+  
+        fstr = f.read();
+        
+        pf1 = decoder.decode( fstr )( sig=ProtoSig() );
+        
+        print( filename );
+        
+        with Solver( pf1 ) as solver:
+          solution = solver.solve_all();
+          with Enumerator( solution ) as enumerator:
+            for solution in enumerator.enumerate():
+              with Recursivizer( solution ) as recursivizer:
+                
+                pf = recursivizer.recursivize();
+                print( pft_encode( pf ) );
+  
+        f.close();
+      
+      finally:
+        f_.close();
+    
+    except IOError:
+      pass;
     
 
+  def test_quick( self ):
+    
+    with PFTDecoder( (pypes.proto.lex.erg,None) ) as decoder:
+      
+      i = 102;
+      self.quicktest( "{0}/mrs-{1}1.pft.gz".format( self._TESTDTADIR, i ), decoder );
   
-  def test_enumerator( self ):
+  def x_test_enumerator( self ):
 
     with PFTDecoder( (pypes.proto.lex.erg,None) ) as decoder:
   
