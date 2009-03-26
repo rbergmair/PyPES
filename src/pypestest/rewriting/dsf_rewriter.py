@@ -16,6 +16,7 @@ from pypes.utils.unittest_ import TestCase;
 from pypes.utils.mc import object_;
 
 from pypes.proto import *;
+from pypes.scoping import *;
 
 from pypes.codecs_ import PFTDecoder, pft_encode;
 
@@ -62,11 +63,14 @@ class TestDSFRewriter( TestCase, metaclass=object_ ):
                 pstr = None;
                 
                 pf1 = decoder.decode( fstr )( sig=ProtoSig() );
+                pfr = recursivize( solve_all( pf1 ) );
                 pf = dsf_rewrite( pf1 )( sig=ProtoSig() );
                 
+                pfrstr = pft_encode( pfr );
                 pfstr = pft_encode( pf );
                 
                 print( fstr );
+                print( pfrstr );
                 print( pfstr );
                 print( "-------" );
                 
@@ -105,8 +109,16 @@ class TestDSFRewriter( TestCase, metaclass=object_ ):
     finally:
       x.close();
 
+
+  def test_quick( self ):
+
+    with PFTDecoder( (pypes.proto.lex.erg,None) ) as decoder:
+      
+      i = 8;
+      self.write_testfile( "{0}/mrs-{1}1.pft.gz".format( self._TESTDTADIR, i ), decoder );
+
   
-  def test_solver( self ):
+  def x_test_solver( self ):
 
     with PFTDecoder( (pypes.proto.lex.erg,None) ) as decoder:
 
