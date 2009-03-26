@@ -65,7 +65,7 @@ class TestDSFRewriter( TestCase, metaclass=object_ ):
                 pf1 = decoder.decode( fstr )( sig=ProtoSig() );
                 pfr = recursivize( solve_all( pf1 ) );
                 pf = dsf_rewrite( pf1 )( sig=ProtoSig() );
-                
+
                 pfrstr = pft_encode( pfr );
                 pfstr = pft_encode( pf );
                 
@@ -73,6 +73,8 @@ class TestDSFRewriter( TestCase, metaclass=object_ ):
                 print( pfrstr );
                 print( pfstr );
                 print( "-------" );
+
+                self.assert_( sanity_check( pf ) );
                 
                 k = open( filename.replace( ".pft.gz", ".txt" ) )
                 txt = k.read();
