@@ -120,6 +120,33 @@ class DSFRewriter( RenamingRewriter, metaclass=subject ):
       super()._enter_();
 
 
+    def _newconn( self, lscope=None, rscope=None ):
+
+      newconn = Connection(
+                    connective = Connective(
+                                     referent = Operator(
+                                                    otype = Operator.OP_C_WEACON
+                                                  )
+                                   )
+                  ) ( sig=ProtoSig() );
+  
+      if lscope is None:
+        newhndl = Handle()( sig=ProtoSig() );
+        newconn.lscope = newhndl;
+        newconn.holes.add( newhndl );
+      else:
+        newconn.lscope = lscope;
+      
+      if rscope is None:
+        newhndl = Handle()( sig=ProtoSig() );
+        newconn.rscope = newhndl;
+        newconn.holes.add( newhndl );
+      else:
+        newconn.rscope = rscope;
+      
+      return newconn;
+
+
     def _filter_subprotoform( self, var, pf ):
       
       conns = [];
@@ -135,13 +162,25 @@ class DSFRewriter( RenamingRewriter, metaclass=subject ):
         if not subform.connective.referent.otype == Operator.OP_C_WEACON:
           nonconns.append( subform );
           continue;
+        if not ( isinstance( subform.lscope, Handle ) and isinstance( subform.rscope, Handle ) ):
+          nonconns.append( subform );
+          continue;
         if not ( subform.lscope.hid is None and subform.rscope.hid is None ):
           nonconns.append( subform );
           continue;
+        #print( subform );
+        #print( subform.lscope );
+        #print( subform.rscope );
+        #print( "." );
         conns.append( subform );
       conns.append( None );
-      assert len( conns ) == len( nonconns );
-      assert len( pf.constraints ) == 0;
+      try:
+        assert len( conns ) == len( nonconns );
+        assert len( pf.constraints ) == 0;
+      except:
+        pprint( conns );
+        pprint( nonconns );
+        raise;
       
       newsubfs = [];
       for ( nonconn, conn ) in zip( nonconns, conns ):
@@ -149,6 +188,7 @@ class DSFRewriter( RenamingRewriter, metaclass=subject ):
         if nonconn_ is None:
           continue;
         newsubfs.append( nonconn_ );
+        # newsubfs.append( self._newconn() );
         newsubfs.append( conn );
       newsubfs = newsubfs[ :-1 ];
       
@@ -175,30 +215,23 @@ class DSFRewriter( RenamingRewriter, metaclass=subject ):
       
       subform_ = copy( subform )( sig=ProtoSig() );
       
-      var_occurs = False;
-      quantified_occurs = False;
+      var_occurs = isinstance( subform, Modification );
       
-      for (arg,var_) in subform.args.items():
-        if var_ is var:
-          var_occurs = True;
-        if var_ in self._obj_.quantified_vars:
-          quantified_occurs = True;
-
       subform_.args = {};
 
-      if isinstance( subform_, Modification ) or ( ( var is not None ) and var_occurs ):
-        for (arg,var_) in subform.args.items():
-          if ( var is var_ ) or ( var_ not in self._obj_.quantified_vars ):
-            subform_.args[ arg ] = var_;
-        return subform_;
+      for (arg,var_) in subform.args.items():
+        if ( var is var_ ) or ( var_ not in self._obj_.quantified_vars ):
+          if isinstance( var_, Variable ):
+            var_occurs = True;
+          subform_.args[ arg ] = var_;
       
-      if var is None and not quantified_occurs:
-        for (arg,var_) in subform.args.items():
-          if var_ not in self._obj_.quantified_vars:
-            subform_.args[ arg ] = var_;
-        return subform_;
+      if not var_occurs:
+        return None;
+      #
+      #if var is not None and not component_var_occurs:
+      #  return None;
       
-      return None;
+      return subform_;
 
       
     def _filter( self, var, pf, component ):
@@ -305,23 +338,10 @@ class DSFRewriter( RenamingRewriter, metaclass=subject ):
           return b;
         
         assert isinstance( a, ProtoForm );
-
-        newpf = ProtoForm(
-                    subforms = [
-                        ( Handle(),
-                            Connection(
-                                connective = Connective(
-                                                 referent = Operator(
-                                                                otype = Operator.OP_C_WEACON
-                                                              )
-                                               )
-                              ) )
-                      ]
-                  )( sig=ProtoSig() );
-                
-        newpf.subforms[ newpf.roots[0] ].lscope = a;
-        newpf.subforms[ newpf.roots[0] ].rscope = b;
         
+        newconn = self._newconn(a,b);
+        newpf = ProtoForm()( sig=ProtoSig() );
+        newpf.append_fragment( Handle()( sig=ProtoSig() ), newconn );
         return newpf;
 
       self._invariant_pluggings = {};

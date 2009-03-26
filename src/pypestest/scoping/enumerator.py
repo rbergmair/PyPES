@@ -420,14 +420,14 @@ class TestEnumerator( TestCase, metaclass=object_ ):
       pass;
     
 
-  def test_quick( self ):
+  def x_test_quick( self ):
     
     with PFTDecoder( (pypes.proto.lex.erg,None) ) as decoder:
       
       i = 102;
       self.quicktest( "{0}/mrs-{1}1.pft.gz".format( self._TESTDTADIR, i ), decoder );
   
-  def x_test_enumerator( self ):
+  def test_enumerator( self ):
 
     with PFTDecoder( (pypes.proto.lex.erg,None) ) as decoder:
   

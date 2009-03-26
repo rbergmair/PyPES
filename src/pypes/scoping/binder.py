@@ -124,18 +124,9 @@ class Binder( ProtoProcessor, metaclass=subject ):
 
   def _process_quantification( self, inst, subform, quantifier, var, rstr, body ):
     
-    if rstr is None and body is None:
-      return None;
-    
-    if rstr is None:
-      subform.rstr = ProtoForm()( sig=ProtoSig() );
-    else:
-      subform.rstr = rstr;
-      
-    if body is None:
-      subform.body = ProtoForm()( sig=ProtoSig() );
-    else:
-      subform.body = body;
+    assert rstr is not None and body is not None;
+    subform.rstr = rstr;
+    subform.body = body;
       
     return subform;
 
@@ -155,18 +146,9 @@ class Binder( ProtoProcessor, metaclass=subject ):
     
   def _process_connection( self, inst, subform, connective, lscope, rscope ):
     
-    if lscope is None and rscope is None:
-      return None;
-    
-    if lscope is None:
-      subform.lscope = ProtoForm()( sig=ProtoSig() );
-    else:
-      subform.lscope = lscope;
-      
-    if rscope is None:
-      subform.rscope = ProtoForm()( sig=ProtoSig() );
-    else:
-      subform.rscope = rscope;
+    assert lscope is not None and rscope is not None;
+    subform.lscope = lscope;
+    subform.rscope = rscope;
       
     return subform;
 

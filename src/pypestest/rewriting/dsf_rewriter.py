@@ -110,15 +110,16 @@ class TestDSFRewriter( TestCase, metaclass=object_ ):
       x.close();
 
 
-  def test_quick( self ):
+  def x_test_quick( self ):
 
     with PFTDecoder( (pypes.proto.lex.erg,None) ) as decoder:
       
-      i = 8;
-      self.write_testfile( "{0}/mrs-{1}1.pft.gz".format( self._TESTDTADIR, i ), decoder );
+      i = 363;
+      # self.write_testfile( "{0}/mrs-{1}1.pft.gz".format( self._TESTDTADIR, i ), decoder );
+      self.write_testfile( "{0}/fracas-new-{1}.pft.gz".format( self._TESTDTADIR, i ), decoder );
 
   
-  def x_test_solver( self ):
+  def test_rewriter( self ):
 
     with PFTDecoder( (pypes.proto.lex.erg,None) ) as decoder:
 
@@ -126,6 +127,8 @@ class TestDSFRewriter( TestCase, metaclass=object_ ):
         if i in { 56, 102 }: # don't scope
           continue;
         self.write_testfile( "{0}/mrs-{1}1.pft.gz".format( self._TESTDTADIR, i ), decoder );
+      
+      # return;
       
       for i in range( 1, 641 ):
         if i in { 185, 186, 270, 272, 296, 298, 563, 620 }: # don't scope
