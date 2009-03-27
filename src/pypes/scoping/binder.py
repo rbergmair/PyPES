@@ -115,6 +115,7 @@ class Binder( ProtoProcessor, metaclass=subject ):
           elif isinstance( new, Handle ):
             subform.holes.add( new );
           else:
+            print( self._obj_ );
             assert False;
     return subform;
   

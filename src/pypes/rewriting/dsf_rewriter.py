@@ -168,10 +168,6 @@ class DSFRewriter( RenamingRewriter, metaclass=subject ):
         if not ( subform.lscope.hid is None and subform.rscope.hid is None ):
           nonconns.append( subform );
           continue;
-        #print( subform );
-        #print( subform.lscope );
-        #print( subform.rscope );
-        #print( "." );
         conns.append( subform );
       conns.append( None );
       try:
@@ -182,81 +178,102 @@ class DSFRewriter( RenamingRewriter, metaclass=subject ):
         pprint( nonconns );
         raise;
       
-      newsubfs = [];
+      occurs = False;
+      newsubfs_occurs = [];
+      newsubfs_not_occurs = [];
       for ( nonconn, conn ) in zip( nonconns, conns ):
-        nonconn_ = self._filter_subform( var, nonconn );
+        ( occurs_, nonconn_ ) = self._filter_subform( var, nonconn );
         if nonconn_ is None:
           continue;
-        newsubfs.append( nonconn_ );
-        # newsubfs.append( self._newconn() );
-        newsubfs.append( conn );
-      newsubfs = newsubfs[ :-1 ];
+        # assert occurs_;
+        if occurs_:
+          occurs = True;
+          newsubfs_occurs.append( nonconn_ );
+          newsubfs_occurs.append( conn );
+          newsubfs_not_occurs.append( nonconn_ );
+          newsubfs_not_occurs.append( conn );
+        else:
+          newsubfs_not_occurs.append( nonconn_ );
+          newsubfs_not_occurs.append( conn );
+      newsubfs_occurs = newsubfs_occurs[ :-1 ];
+      newsubfs_not_occurs = newsubfs_not_occurs[ :-1 ];
       
-      if len( newsubfs ) == 0:
-        return None;
-      
-      newpf = ProtoForm()( sig=ProtoSig() );
-      for subf in newsubfs:
-        newroot = Handle()( sig=ProtoSig() );
-        newpf.append_fragment( newroot, subf );
-      return newpf;
+      if occurs:
+        newpf = ProtoForm()( sig=ProtoSig() );
+        for subf in newsubfs_occurs:
+          newroot = Handle()( sig=ProtoSig() );
+          newpf.append_fragment( newroot, subf );
+        return ( True, newpf );
+      else:
+        newpf = ProtoForm()( sig=ProtoSig() );
+        for subf in newsubfs_not_occurs:
+          newroot = Handle()( sig=ProtoSig() );
+          newpf.append_fragment( newroot, subf );
+        return ( False, newpf );
 
     
     def _filter_subform( self, var, subform ):
 
       if isinstance( subform, ProtoForm ):
-        return self._filter_subprotoform( var, subform );
+        ( occurs, rslt ) = self._filter_subprotoform( var, subform );
+        if len( rslt.roots ) == 1:
+          return ( occurs, rslt.subforms[ rslt.roots[0] ] );
+        else:
+          return ( occurs, rslt );
       
       if isinstance( subform, Connection ):
+        occurs = False;
         binding = {};
         for protoform in subform.protoforms:
-          binding[ protoform ] = self._filter_subprotoform( var, protoform );
-        return bind( binding, subform );
+          ( occurs_, binding[protoform] ) = self._filter_subprotoform( var, protoform );
+          if occurs_:
+            occurs = True;
+        if not occurs:
+          return ( False, None );
+        return ( True, bind(binding,subform) );
       
       subform_ = copy( subform )( sig=ProtoSig() );
       
-      var_occurs = isinstance( subform, Modification );
+      occurs = False;
+      var_occurs = False;
       
       subform_.args = {};
 
       for (arg,var_) in subform.args.items():
-        if ( var is var_ ) or ( var_ not in self._obj_.quantified_vars ):
+        if ( var_ is var ) or ( var_ not in self._obj_.quantified_vars ):
           if isinstance( var_, Variable ):
             var_occurs = True;
+          if var is var_:
+            occurs = True;
           subform_.args[ arg ] = var_;
       
-      if not var_occurs:
-        return None;
-      #
-      #if var is not None and not component_var_occurs:
-      #  return None;
+      if isinstance( subform, Predication ):
+        if not var_occurs:
+          return ( False, None );
+        if not occurs:
+          return ( False, subform_ );
       
-      return subform_;
+      return ( occurs, subform_ );
 
       
     def _filter( self, var, pf, component ):
 
-      # print( component );
-      
-      roots = {};
+      roots = set( component );
       invariant_pluggings = self._get_invariant_pluggings( component );
-      
-      for root in component:
-        roots[ root ] = None;
-        continue;
 
-      #print( invariant_pluggings );
+      binding_occurs = {};
+      binding_not_occurs = {};
+      subscope_occurs = set();
 
-      binding = {};
-      
-      for root in component:
+      for root in set( roots ):
         
         subform = pf.subforms[ root ];
 
         if self._index.index[ subform ] == self._index.QUANTIFICATION:
-          del roots[ root ];
+          if root in roots:
+            roots.remove( root );
           continue;
-               
+
         for hole in subform.holes:
           
           try:
@@ -270,54 +287,67 @@ class DSFRewriter( RenamingRewriter, metaclass=subject ):
             raise;
           
           subcomponent = invariant_pluggings[ hole ];
-          subrslt = self._filter( var, pf, subcomponent );
-          # assert subrslt is not None;
-          binding[ hole ] = subrslt;
+          
+          sig = ProtoSig();
+          subpf = ProtoForm()( sig=sig );
+          occurs = False;
+          for (occurs_,subsubform) in self._filter( var, pf, subcomponent ):
+            if subsubform is not None:
+              if occurs_:
+                occurs = True;
+              subpf.append_fragment( Handle()( sig=sig ), subsubform );
+          
+          if occurs:
+            binding_occurs[ hole ] = subpf;
+            binding_not_occurs[ hole ] = subpf;
+            subscope_occurs.add( subform );
+          else:
+            binding_occurs[ hole ] = None;
+            binding_not_occurs[ hole ] = subpf;
+            
+          #if var is not None:
           for root in subcomponent:
             if root in roots:
-              del roots[ root ];
+              roots.remove( root );
               
         for protoform in subform.protoforms:
-          subrslt = self._filter_subprotoform( var, protoform );
-          binding[ protoform ] = subrslt;
+          ( occurs_, subpf ) = self._filter_subprotoform( var, protoform );
+          if occurs_:
+            binding_occurs[ protoform ] = subpf;
+            binding_not_occurs[ protoform ] = subpf;
+            subscope_occurs.add( subform );
+          else:
+            binding_occurs[ protoform ] = None;
+            binding_not_occurs[ protoform ] = subpf;
+            
       
-      # print( binding );
+      newsubfs_occurs = {};
+      newsubfs_not_occurs = {};
       
-      pf_ = ProtoForm()( sig=ProtoSig() );
+      for root in roots:
+        
+        subform = pf.subforms[ root ];
+
+        ( occurs_, subf ) = self._filter_subform( var, subform );
+        
+        if occurs_ or subform in subscope_occurs:
+          if subf is not None:
+            subf = bind( binding_occurs, subf );
+          newsubfs_occurs[ root ] = subf;
+        else:
+          if subf is not None:
+            subf = bind( binding_not_occurs, subf );
+          newsubfs_not_occurs[ root ] = subf;
       
       for root in pf.roots:
         
         if not root in roots:
           continue;
-        
-        subf = pf.subforms[ root ];
-        subf = bind( binding, subf );
-        if subf is not None:
-          subf = self._filter_subform( var, subf );
-        
-        if subf is None:
-          del roots[ root ];
-          continue;
-        
-        newroot = Handle()( sig=ProtoSig() );
-        roots[ root ] = newroot;
-        pf_.append_fragment( newroot, subf );
-      
-      if len( roots ) == 0:
-        return None;
-        
-      for constraint in pf.constraints:
-        if constraint.larg in roots:
-          if self._obj_._get_root( constraint.harg ) in roots:
-            cons = Constraint()( sig=ProtoSig() );
-            cons.larg = roots[ constraint.larg ];
-            if constraint.harg in roots:
-              cons.harg = roots[ constraint.harg ];
-            else:
-              cons.harg = constraint.harg;
-            pf_.constraints.append( cons );
-      
-      return pf_;
+
+        if len( newsubfs_occurs ) == 0:
+          yield ( False, newsubfs_not_occurs[ root ] );
+        elif root in newsubfs_occurs:
+          yield ( True, newsubfs_occurs[ root ] );
 
 
     def recursivize( self ):
@@ -367,8 +397,20 @@ class DSFRewriter( RenamingRewriter, metaclass=subject ):
         if not contains_quantifications:
           continue;
 
-        pf = None;
-        
+        subfs = [];
+        for ( occurs, subform ) in self._filter( None, self._obj_.pf, component ):
+          assert not occurs;
+          if subform is None:
+            continue;
+          subfs.append( subform );
+          subfs.append( self._newconn() );
+        subfs = subfs[ :-1 ];
+        sig = ProtoSig();
+        pf = ProtoForm()( sig=sig );
+        for subf in subfs:
+          pf.append_fragment( Handle()( sig=sig ), subf );
+
+        pf_ = None;
         for root in self._obj_.pf.roots:
           
           if not root in splits:
@@ -376,23 +418,25 @@ class DSFRewriter( RenamingRewriter, metaclass=subject ):
           
           pluggings = splits[ root ];
           subf = self._obj_.pf.subforms[ root ];
-          
-          try:
-            assert self._index.index[ subf ] == self._index.QUANTIFICATION;
-            for hole in subf.holes:
-              assert hole in pluggings;
-          except:
-            print( subf );
-            raise;
 
           binding = {};
           for hole in subf.holes:
-            subrslt = self._filter( self._index.holevars[ hole ], self._obj_.pf, pluggings[ hole ] );
-            # assert subrslt is not None;
-            binding[ hole ] = subrslt;
-          pf = _conjunction( pf, bind( binding, subf ) );
-
-        pf = _conjunction( pf, self._filter( None, self._obj_.pf, component ) );
+            subpf = ProtoForm()( sig=sig );
+            for ( occurs, subsubform ) in self._filter(
+                                              self._index.holevars[ hole ],
+                                              self._obj_.pf,
+                                              pluggings[ hole ]
+                                            ):
+              assert occurs;
+              if subsubform is not None:
+                subpf.append_fragment( Handle()( sig=sig ), subsubform );
+            binding[ hole ] = subpf;
+          pf_ = _conjunction( pf_, bind( binding, subf ) );
+        
+        if pf_ is not None:
+          pf.append_fragment( Handle()( sig=sig ), self._newconn() );
+          pf.append_fragment( Handle()( sig=sig ), pf_ );
+          
         self._binding[ top ] = pf;
           
       self._generate_binding( None, toplevel_component );

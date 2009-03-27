@@ -63,14 +63,14 @@ class TestDSFRewriter( TestCase, metaclass=object_ ):
                 pstr = None;
                 
                 pf1 = decoder.decode( fstr )( sig=ProtoSig() );
-                pfr = recursivize( solve_all( pf1 ) );
+                # pfr = recursivize( solve_all( pf1 ) );
                 pf = dsf_rewrite( pf1 )( sig=ProtoSig() );
 
-                pfrstr = pft_encode( pfr );
+                # pfrstr = pft_encode( pfr );
                 pfstr = pft_encode( pf );
                 
                 print( fstr );
-                print( pfrstr );
+                # print( pfrstr );
                 print( pfstr );
                 print( "-------" );
 
@@ -116,9 +116,9 @@ class TestDSFRewriter( TestCase, metaclass=object_ ):
 
     with PFTDecoder( (pypes.proto.lex.erg,None) ) as decoder:
       
-      i = 363;
-      # self.write_testfile( "{0}/mrs-{1}1.pft.gz".format( self._TESTDTADIR, i ), decoder );
-      self.write_testfile( "{0}/fracas-new-{1}.pft.gz".format( self._TESTDTADIR, i ), decoder );
+      i = 75;
+      self.write_testfile( "{0}/mrs-{1}1.pft.gz".format( self._TESTDTADIR, i ), decoder );
+      #self.write_testfile( "{0}/fracas-new-{1}.pft.gz".format( self._TESTDTADIR, i ), decoder );
 
   
   def test_rewriter( self ):
@@ -129,9 +129,7 @@ class TestDSFRewriter( TestCase, metaclass=object_ ):
         if i in { 56, 102 }: # don't scope
           continue;
         self.write_testfile( "{0}/mrs-{1}1.pft.gz".format( self._TESTDTADIR, i ), decoder );
-      
-      # return;
-      
+
       for i in range( 1, 641 ):
         if i in { 185, 186, 270, 272, 296, 298, 563, 620 }: # don't scope
           continue;

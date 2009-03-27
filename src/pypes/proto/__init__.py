@@ -7,7 +7,7 @@ __all__ = [ "Connection", "Constraint", "Handle", "Freezer", "Modification",
             "Argument", "Connective",
             "Constant", "Modality", "Predicate", "ProtoSig", "Quantifier",
             "Sort", "Variable", "Operator", "Word", "ProtoBase",
-            "ProtoProcessor" ];
+            "ProtoProcessor", "SanityChecker", "sanity_check" ];
 
 from pypes.proto.sig import Argument;
 from pypes.proto.sig import Connective;
@@ -35,6 +35,9 @@ from pypes.proto.lex import Word;
 from pypes.proto.protobase import ProtoBase;
 
 from pypes.proto.proto_processor import ProtoProcessor;
+
+from pypes.proto.sanity_checker import SanityChecker;
+from pypes.proto.sanity_checker import sanity_check;
 
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
