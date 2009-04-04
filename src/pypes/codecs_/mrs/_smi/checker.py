@@ -27,12 +27,6 @@ class MRSInterpreter( _ergsem_auto.MRSInterpreter, metaclass=subject ):
     
     for ep in self._obj_.eps:
       
-      pred = None;
-      if ep.spred is not None:
-        pred = ep.spred;
-      if ep.pred is not None:
-        pred = ep.pred.lower();
-
       for ( arg, var ) in ep.args.items():
 
         assert isinstance( var, MRSVariable ) or isinstance( var, MRSConstant );
@@ -116,7 +110,7 @@ class MRSInterpreter( _ergsem_auto.MRSInterpreter, metaclass=subject ):
             print( val );
             raise;
       
-      if not pred in self.PREDs:
+      if not ep.pred in self.PREDs:
         return;
         
       found = False;

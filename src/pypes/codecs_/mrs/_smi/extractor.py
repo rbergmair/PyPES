@@ -7,6 +7,8 @@ import sys;
 import re;
 import pprint;
 
+from pypes.utils.mc import subject;
+
 import pypes.codecs_._ergsem;
 
 

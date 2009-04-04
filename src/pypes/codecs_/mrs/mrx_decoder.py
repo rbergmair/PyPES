@@ -217,7 +217,7 @@ class SPredHandler( XMLPCharElementHandler, metaclass=subject ):
   
   def endElement( self, name ):
     
-    self._obj_.spred = self._text;
+    self._obj_.pred = self._text.lower();
 
 
 

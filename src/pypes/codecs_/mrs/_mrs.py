@@ -49,7 +49,6 @@ class MRSElementaryPredication( metaclass=object_ ):
   def __init__( self ):
     
     self.lid = None;
-    self.spred = None;
     self.pred = None;
     self.args = {};
     self.cfrom = None;
@@ -59,7 +58,6 @@ class MRSElementaryPredication( metaclass=object_ ):
     
     return \
         str(self.lid) + "\n" + \
-        str(self.spred) + "\n" + \
         str(self.pred) + "\n" + \
         str(self.cfrom) + "\n" + \
         str(self.cto) + "\n" + \
