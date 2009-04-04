@@ -7,6 +7,8 @@ import sys;
 import re;
 import pprint;
 
+import pypes.codecs_._ergsem;
+
 
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
@@ -167,35 +169,108 @@ def read_preds( f ):
 def main( argv=None ):
   
   preds = {};
-  
+
   with open( "/local/scratch/rb432/delphin/erg/erg.smi" ) as f:
-    preds.update( read_preds( f ) );
-  with open( "/local/scratch/rb432/delphin/erg/core.smi" ) as f:
+    
     preds.update( read_preds( f ) );
     
-  print( """# -*-  coding: ascii -*-  # # # # # # # # # # # # # # # # # # # # # # # # # # #
-
-__package__ = "pypes.codecs_.mrs";
-__all__ = [ "MRSInterpreter" ];
-
-from pypes.utils.mc import subject;
-
-
-
-# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
-
-class MRSInterpreter( metaclass=subject ):
-""");
+  with open( "/local/scratch/rb432/delphin/erg/core.smi" ) as f:
+    
+    preds.update( read_preds( f ) );
   
-  preds_ = pprint.pformat( preds, width=72 );
-  preds_ = preds_[ :-1 ];
-  preds_ = preds_.replace( "\n", "\n     " );
-  preds_ = "  PREDs = " + preds_;
-  preds_ = preds_ + "\n    };";
+  with open( "/local/scratch/rb432/tmp/_ergsem_auto.py", "w" ) as f:
+      
+    f.write(
+        """# -*-  coding: ascii -*-  # # # # # # # # # # # # # # # # # # # # # # # # # # #\n"""
+        """__package__ = "pypes.codecs_.mrs";\n"""
+        """__all__ = [ "MRSInterpreter" ];\n"""
+        """from pypes.utils.mc import subject;\n"""
+        """\n"""
+        """\n"""
+        """\n"""
+        """# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #\n"""
+        """\n"""
+        """class MRSInterpreter( metaclass=subject ):\n"""
+      );
+
+    preds_ = pprint.pformat( preds, width=72 );
+    preds_ = preds_[ 1:-1 ];
+    preds_ = preds_.replace( "\n", "\n     " );
+    preds_ = "  PREDs = {\n" + preds_;
+    preds_ = preds_ + "\n    };";
+    
+    f.write( preds_ );
   
-  print( preds_ );
+  opqs = {};
+  oppms = {};
+  opcs = {};
+  
+  for ( pred, sign ) in preds.items():
+    
+    if ( "RSTR" in sign ) or ( "BODY" in sign ):
+      
+      assert sign.keys() == { "ARG0", "RSTR", "BODY" };
+      
+      assert sign[ "ARG0" ][ 0 ] == False;
+      assert sign[ "RSTR" ][ 0 ] == False;
+      assert sign[ "BODY" ][ 0 ] == False;
+      
+      assert sign[ "ARG0" ][ 1 ] == "x";
+      assert sign[ "RSTR" ][ 1 ] == "h";
+      assert sign[ "BODY" ][ 1 ] == "h";
+      
+      opqs[ pred ] = sign;
+      
+      continue;
+    
+    if ( "L-HNDL" in sign ) or ( "R-HNDL" in sign ):
+      
+      assert sign.keys() == { "ARG0", "L-INDEX", "L-HNDL", "R-INDEX", "R-HNDL" };
 
+      assert sign[ "ARG0" ][ 0 ] == False;
+      assert sign[ "L-INDEX" ][ 0 ] == False;
+      assert sign[ "L-HNDL" ][ 0 ] == False;
+      assert sign[ "R-INDEX" ][ 0 ] == False;
+      assert sign[ "R-HNDL" ][ 0 ] == False;
+      
+      assert sign[ "ARG0" ][ 1 ] in { "i", "e", "x" };
+      assert sign[ "L-INDEX" ][ 1 ] in { "i", "e", "x" };
+      assert sign[ "L-HNDL" ][ 1 ] not in { "i", "e", "x" };
+      assert sign[ "R-INDEX" ][ 1 ] in { "i", "e", "x" };
+      assert sign[ "R-HNDL" ][ 1 ] not in { "i", "e", "x" };
+      
+      opcs[ pred ] = sign;
+      
+      continue;
+    
+    holes = 0;
+    for argsig in sign.values():
+      if argsig[1] == "h":
+        holes += 1;
+    assert len( holes ) <= 1;
+    
+    oppms[ pred ] = sign;
+      
+      
+      
+      
 
+  with open( "/local/scratch/rb432/tmp/_ergops_auto.py", "w" ) as f:
+
+    f.write(
+        """# -*-  coding: ascii -*-  # # # # # # # # # # # # # # # # # # # # # # # # # # #\n"""
+        """__package__ = "pypes.proto.lex;\n\n"""
+        """__all__ = [ "Operator" ];\n"""
+        """from pypes.utils.mc import subject;\n"""
+        """\n"""
+        """\n"""
+        """\n"""
+        """# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #\n"""
+        """\n"""
+        """class Operator( metaclass=subject ):\n"""
+      );
+      
+      
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
