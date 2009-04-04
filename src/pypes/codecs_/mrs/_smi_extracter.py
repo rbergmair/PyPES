@@ -178,24 +178,22 @@ def main( argv=None ):
     
     preds.update( read_preds( f ) );
   
-  with open( "/local/scratch/rb432/tmp/_ergsem_auto.py", "w" ) as f:
+  with open( "/local/scratch/rb432/tmp/_smi_erg_auto.py", "w" ) as f:
       
     f.write(
-        """# -*-  coding: ascii -*-  # # # # # # # # # # # # # # # # # # # # # # # # # # #\n"""
+        """# -*-  coding: ascii -*-\n"""
         """__package__ = "pypes.codecs_.mrs";\n"""
         """__all__ = [ "MRSInterpreter" ];\n"""
         """from pypes.utils.mc import subject;\n"""
         """\n"""
         """\n"""
         """\n"""
-        """# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #\n"""
-        """\n"""
         """class MRSInterpreter( metaclass=subject ):\n"""
       );
 
     preds_ = pprint.pformat( preds, width=72 );
     preds_ = preds_[ 1:-1 ];
-    preds_ = preds_.replace( "\n", "\n     " );
+    preds_ = preds_.replace( "\n", "\n    " );
     preds_ = "  PREDs = {\n" + preds_;
     preds_ = preds_ + "\n    };";
     
@@ -258,14 +256,12 @@ def main( argv=None ):
   with open( "/local/scratch/rb432/tmp/_ergops_auto.py", "w" ) as f:
 
     f.write(
-        """# -*-  coding: ascii -*-  # # # # # # # # # # # # # # # # # # # # # # # # # # #\n"""
+        """# -*-  coding: ascii -*-\n"""
         """__package__ = "pypes.proto.lex;\n\n"""
         """__all__ = [ "Operator" ];\n"""
         """from pypes.utils.mc import subject;\n"""
         """\n"""
         """\n"""
-        """\n"""
-        """# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #\n"""
         """\n"""
         """class Operator( metaclass=subject ):\n"""
       );
