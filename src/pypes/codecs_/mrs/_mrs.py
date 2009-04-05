@@ -4,11 +4,7 @@ __package__ = "pypes.codecs_.mrs";
 __all__ = [ "MRSVariable", "MRSConstant", "MRSElementaryPredication",
             "MRSConstraint", "MRS" ];
 
-import string;
-
-from pypes.utils.mc import subject, object_;
-
-from pypes.proto import *;
+from pypes.utils.mc import object_;
 
 
 
