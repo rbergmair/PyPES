@@ -9,7 +9,7 @@ from pypes.utils.mc import subject;
 from pypes.utils.xml_.xml_handler import *;
 
 from pypes.codecs_.mrs._mrs import *;
-from pypes.codecs_.mrs import _ergsem;
+# from pypes.codecs_.mrs import _ergsem;
 
 
 

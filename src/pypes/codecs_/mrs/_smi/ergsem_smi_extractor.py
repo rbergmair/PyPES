@@ -1,279 +1,279 @@
 # -*-  coding: ascii -*-  # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-__package__ = "pypes.tools";
-__all__ = [ "extract_smi", "main" ];
+__package__ = "pypes.codecs_.mrs._smi";
+__all__ = [ "ERGSemSMIExtractor", "ergsem_smi_extract" ];
 
-import sys;
 import re;
-import pprint;
+from pprint import pformat;
 
 from pypes.utils.mc import subject;
 
-import pypes.codecs_._ergsem;
+from pypes.codecs_.mrs._ergsem_processor import ERGSemProcessor;
 
 
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-def read_sign( sign ):
+class ERGSemSMIExtractor( ERGSemProcessor, metaclass=subject ):
   
-  args = {};
   
-  sqbrexp = re.compile( r"(\{[^\}]*\}|\,|\s|\.|\[|\])"  );
-  
-  one = None;
-  two = None;
-  feats = None;
-  
-  optional = False;
-  
-  sqbrexp_ = sqbrexp.split( sign );
-  
-  # print( sqbrexp_ );
-  
-  for substr in sqbrexp_:
+  @classmethod
+  def read_sign( cls, sign ):
     
-    substr = substr.strip();
-    if substr == "":
-      continue;
+    args = {};
     
-    # print( substr );
+    sqbrexp = re.compile( r"(\{[^\}]*\}|\,|\s|\.|\[|\])"  );
     
-    if substr == "[":
-      optional = True;
-      continue;
-
-    if substr in { ",", ".", "]" }:
-      if not ( one is None and two is None ):
-        args[ one ] = ( optional, two, feats );
-        one = None;
-        two = None;
-        feats = None;
-      if substr == "]":
-        optional = False;
-      continue;
+    one = None;
+    two = None;
+    feats = None;
+    
+    optional = False;
+    
+    sqbrexp_ = sqbrexp.split( sign );
+    
+    # print( sqbrexp_ );
+    
+    for substr in sqbrexp_:
       
-    if substr[0] == "{" and substr[-1] == "}":
-      feats = substr;
-      continue;
-    
-    one = two;
-    two = substr;
-    
-  argnames = set( args.keys() );
-  
-  for argname in argnames:
-    
-    if argname is None:
-      del args[ argname ];
-      continue;
-    
-    ( optional, sort, feats_ ) = args[ argname ];
-    
-    if feats_ is None:
-      continue;
-    
-    feats = {};
-    
-    for val in feats_[1:-1].split( "," ):
-      ( featname, featval ) = val.split();
-      featname = featname.strip();
-      featval = featval.strip();
-      feats[ featname ] = featval;
-    
-    args[ argname ] = ( optional, sort, feats );
-  
-  return args;
-
-
-
-# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
-
-def read_preds( f ):
-  
-  poss = {};
-  preds = {};
-
-  active = True;
-  
-  i = 0;
-  
-  for line in f:
-    
-    line = line[ :-1 ];
-    line = line.strip();
-    
-    if not line:
-      continue;
-    
-    if line[0] == ";":
-      continue;
-    
-    if line[-1] == ":":
-      active = False;
+      substr = substr.strip();
+      if substr == "":
+        continue;
       
-    if line == "predicates:":
-      active = True;
-      continue;
-    
-    if line.startswith( "include:" ):
-      continue;
-    
-    if not active:
-      continue;
+      # print( substr );
       
-    ( predname, sign ) = line.split( ":" );
-    
-    predname = predname.strip();
-    if predname[0] == '"' or predname[-1] == '"':
-      assert predname[0] == '"';
-      assert predname[-1] == '"';
-      predname = predname[1:-1];
-    if predname[0] == "'" or predname[-1] == "'":
-      assert predname[0] == "'";
-      assert predname[-1] == "'";
-      predname = predname[1:-1];
+      if substr == "[":
+        optional = True;
+        continue;
+  
+      if substr in { ",", ".", "]" }:
+        if not ( one is None and two is None ):
+          args[ one ] = ( optional, two, feats );
+          one = None;
+          two = None;
+          feats = None;
+        if substr == "]":
+          optional = False;
+        continue;
+        
+      if substr[0] == "{" and substr[-1] == "}":
+        feats = substr;
+        continue;
       
-    if predname[0] == "_":
-      x = predname.split( "_" );
-      if len(x) > 2:
-        pos = x[2];
-        if not len(pos) == 1:
-          print( "# " + predname );
+      one = two;
+      two = substr;
+      
+    argnames = set( args.keys() );
+    
+    for argname in argnames:
+      
+      if argname is None:
+        del args[ argname ];
+        continue;
+      
+      ( optional, sort, feats_ ) = args[ argname ];
+      
+      if feats_ is None:
+        continue;
+      
+      feats = {};
+      
+      for val in feats_[1:-1].split( "," ):
+        ( featname, featval ) = val.split();
+        featname = featname.strip();
+        featval = featval.strip();
+        feats[ featname ] = featval;
+      
+      args[ argname ] = ( optional, sort, feats );
+    
+    return args;
+  
+  
+  @classmethod
+  def read_preds( cls, f ):
+    
+    semi = {};
+  
+    active = True;
+    
+    i = 0;
+    
+    for line in f:
+      
+      line = line[ :-1 ];
+      line = line.strip();
+      
+      if not line:
+        continue;
+      
+      if line[0] == ";":
+        continue;
+      
+      if line[-1] == ":":
+        active = False;
+        
+      if line == "predicates:":
+        active = True;
+        continue;
+      
+      if line.startswith( "include:" ):
+        continue;
+      
+      if not active:
+        continue;
+        
+      ( predstr, sign ) = line.split( ":" );
+      predstr = predstr.strip();
+
+      if predstr == "predsort":
+        continue;
+      
+      if predstr[0] == '"' or predstr[-1] == '"':
+        assert predstr[0] == '"';
+        assert predstr[-1] == '"';
+        predstr = predstr[1:-1];
+      if predstr[0] == "'" or predstr[-1] == "'":
+        assert predstr[0] == "'";
+        assert predstr[-1] == "'";
+        predstr = predstr[1:-1];
+      
+      predstr_as_operator = ERGSemProcessor._predstr_as_operator( predstr );
+      predstr_as_word = ERGSemProcessor._predstr_as_word( predstr );
+      
+      if predstr_as_operator is not None:
+        assert predstr_as_word is None;
+        predstr = predstr.upper();
+        predstr = ascii( predstr )[1:-1];
+      
+      if predstr_as_word is not None:
+        assert predstr_as_operator is None;
+        ( lemma, pos, sense ) = predstr_as_word;
+        assert pos in { "c", "p", "q", "x", "n", "v", "a" };
+        if pos in { "c", "p", "q", "x" }:
+          predstr = ascii( predstr )[1:-1];
         else:
-          if not x[2] in poss:
-            poss[ x[2] ] = [];
-          if not len( poss[ x[2] ] ) > 10:
-            poss[ x[2] ].append( predname );
-          if pos in { "c", "p", "q", "x" }:
-            predname = ascii( predname )[ 1 : -1 ];
-            sign = read_sign( sign );
-            if predname not in preds:
-              preds[ predname ] = [];
-            preds[ predname ].append( sign );
-          else:
-            assert pos in { "n", "v", "a" };
-    else:
-      predname = ascii( predname )[ 1 : -1 ];
-      sign = read_sign( sign );
-      if predname not in preds:
-        preds[ predname ] = [];
-      preds[ predname ].append( sign );
+          predstr = None;
+      
+      if not predstr is None:
+        sign = cls.read_sign( sign );
+        if predstr not in semi:
+          semi[ predstr ] = [];
+        semi[ predstr ].append( sign );
+      
+    return semi;
+
+
+  def extract( self, targetdir ):
     
-  # pprint.pprint( poss );
+    sourcedir = self._obj_;
+    
+    semi = {};
   
-  return preds;
-
-
-
+    with open( sourcedir + "/erg.smi" ) as f:
+      
+      semi.update( self.read_preds( f ) );
+      
+    with open( sourcedir + "/core.smi" ) as f:
+      
+      semi.update( self.read_preds( f ) );
+    
+    with open( targetdir + "/_ergsem_smi_checker_auto.py", "w" ) as f:
+        
+      f.write(
+          """# -*-  coding: ascii -*-\n"""
+          """__package__ = "pypes.codecs_.mrs";\n"""
+          """__all__ = [ "ERGSemSMIChecker" ];\n"""
+          """from pypes.utils.mc import subject;\n"""
+          """from pypes.codecs_.mrs._ergsem_processor import ERGSemProcessor;\n"""
+          """class ERGSemSMIChecker( ERGSemProcessor, metaclass=subject ):\n"""
+        );
+  
+      semi_ = pformat( semi, width=72 );
+      semi_ = "\n " + semi_[ 1:-1 ];
+      semi_ = semi_.replace( "\n", "\n     " );
+      semi_ = "  SEMI = {" + semi_;
+      semi_ = semi_ + "\n    };";
+      
+      f.write( semi_ );
+        
+    with open( targetdir + "/_ergops_auto.py", "w" ) as f:
+  
+      f.write(
+          """# -*-  coding: ascii -*-\n"""
+          """__package__ = "pypes.proto.lex";\n"""
+          """__all__ = [ "Operator" ];\n"""
+          """from pypes.utils.mc import kls;\n"""
+          """class Operator( metaclass=kls ):\n"""
+        );
+        
+      ops = {};
+      opqs = set();
+      opcs = set();
+      oppms = set();
+      
+      
+      for predstr in sorted( semi.keys() ):
+        
+        otype = ERGSemProcessor._predstr_as_operator( predstr );
+        if otype is None:
+          continue;
+        
+        is_quantification = False;
+        is_connection = False;
+        is_modification = False;
+        is_predication = False;
+        
+        for sign in semi[ predstr ]:
+          
+          args = {};
+          for (arg,(opt,sort,feats)) in sign.items():
+            args[ arg ] = sort;
+        
+          if self._is_quantification( args, strict=False ):
+            is_quantification = True;
+          if self._is_verbal_coordination( args, strict=False ):
+            is_connection = True;
+          if self._is_nominal_coordination( args, strict=False ):
+            is_predication = True;
+          if self._is_connection( args, strict=False ):
+            is_connection = True;
+          if self._is_modification( args, strict=False ):
+            is_modification = True;
+          if self._is_predication( args, strict=False ):
+            is_predication = True;
+        
+        ops[ otype ] = otype;
+        if is_quantification:
+          opqs.add( otype );
+        if is_connection:
+          opcs.add( otype );
+        if is_modification or is_predication:
+          oppms.add( otype );
+      
+      f.write( "  OPs = {" );
+      f.write( ( "\n " + pformat( ops, width=74 )[1:-1] ).replace( "\n", "\n   " ) );
+      f.write( "};\n" );
+      
+      f.write( "  OP_Qs = {" );
+      f.write( ( "\n " + pformat( opqs, width=74 )[1:-1] ).replace( "\n", "\n   " ) );
+      f.write( "};\n" );
+      
+      f.write( "  OP_Cs = {" );
+      f.write( ( "\n " + pformat( opcs, width=74 )[1:-1] ).replace( "\n", "\n   " ) );
+      f.write( "};\n" );
+      
+      f.write( "  OP_PMs = {" );
+      f.write( ( "\n " + pformat( oppms, width=74 )[1:-1] ).replace( "\n", "\n   " ) );
+      f.write( "};\n" );
+          
+        
+        
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-def main( argv=None ):
+def ergsem_smi_extract( sourcedir, targetdir ):
   
-  preds = {};
-
-  with open( "/local/scratch/rb432/delphin/erg/erg.smi" ) as f:
-    
-    preds.update( read_preds( f ) );
-    
-  with open( "/local/scratch/rb432/delphin/erg/core.smi" ) as f:
-    
-    preds.update( read_preds( f ) );
-  
-  with open( "/local/scratch/rb432/tmp/_smi_erg_auto.py", "w" ) as f:
-      
-    f.write(
-        """# -*-  coding: ascii -*-\n"""
-        """__package__ = "pypes.codecs_.mrs";\n"""
-        """__all__ = [ "MRSInterpreter" ];\n"""
-        """from pypes.utils.mc import subject;\n"""
-        """\n"""
-        """\n"""
-        """\n"""
-        """class MRSInterpreter( metaclass=subject ):\n"""
-      );
-
-    preds_ = pprint.pformat( preds, width=72 );
-    preds_ = preds_[ 1:-1 ];
-    preds_ = preds_.replace( "\n", "\n    " );
-    preds_ = "  PREDs = {\n" + preds_;
-    preds_ = preds_ + "\n    };";
-    
-    f.write( preds_ );
-  
-  opqs = {};
-  oppms = {};
-  opcs = {};
-  
-  for ( pred, sign ) in preds.items():
-    
-    if ( "RSTR" in sign ) or ( "BODY" in sign ):
-      
-      assert sign.keys() == { "ARG0", "RSTR", "BODY" };
-      
-      assert sign[ "ARG0" ][ 0 ] == False;
-      assert sign[ "RSTR" ][ 0 ] == False;
-      assert sign[ "BODY" ][ 0 ] == False;
-      
-      assert sign[ "ARG0" ][ 1 ] == "x";
-      assert sign[ "RSTR" ][ 1 ] == "h";
-      assert sign[ "BODY" ][ 1 ] == "h";
-      
-      opqs[ pred ] = sign;
-      
-      continue;
-    
-    if ( "L-HNDL" in sign ) or ( "R-HNDL" in sign ):
-      
-      assert sign.keys() == { "ARG0", "L-INDEX", "L-HNDL", "R-INDEX", "R-HNDL" };
-
-      assert sign[ "ARG0" ][ 0 ] == False;
-      assert sign[ "L-INDEX" ][ 0 ] == False;
-      assert sign[ "L-HNDL" ][ 0 ] == False;
-      assert sign[ "R-INDEX" ][ 0 ] == False;
-      assert sign[ "R-HNDL" ][ 0 ] == False;
-      
-      assert sign[ "ARG0" ][ 1 ] in { "i", "e", "x" };
-      assert sign[ "L-INDEX" ][ 1 ] in { "i", "e", "x" };
-      assert sign[ "L-HNDL" ][ 1 ] not in { "i", "e", "x" };
-      assert sign[ "R-INDEX" ][ 1 ] in { "i", "e", "x" };
-      assert sign[ "R-HNDL" ][ 1 ] not in { "i", "e", "x" };
-      
-      opcs[ pred ] = sign;
-      
-      continue;
-    
-    holes = 0;
-    for argsig in sign.values():
-      if argsig[1] == "h":
-        holes += 1;
-    assert len( holes ) <= 1;
-    
-    oppms[ pred ] = sign;
-      
-      
-      
-      
-
-  with open( "/local/scratch/rb432/tmp/_ergops_auto.py", "w" ) as f:
-
-    f.write(
-        """# -*-  coding: ascii -*-\n"""
-        """__package__ = "pypes.proto.lex;\n\n"""
-        """__all__ = [ "Operator" ];\n"""
-        """from pypes.utils.mc import subject;\n"""
-        """\n"""
-        """\n"""
-        """\n"""
-        """class Operator( metaclass=subject ):\n"""
-      );
-      
-      
-
-# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
-
-if __name__ == '__main__':
-  sys.exit( main( sys.argv ) );
+  with ERGSemSMIExtractor( sourcedir ) as extractor:
+    extractor.extract( targetdir );
 
 
 
