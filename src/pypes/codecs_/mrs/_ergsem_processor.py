@@ -196,7 +196,7 @@ class ERGSemProcessor( metaclass=subject ):
     total = len( args );
     
     if strict:
-      assert holes + nonholes == total;
+      assert holes + nonholes <= total;
     else:
       assert holes + nonholes >= total;
     

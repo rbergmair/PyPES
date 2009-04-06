@@ -9,7 +9,7 @@ from pypes.utils.mc import subject;
 from pypes.utils.xml_.xml_handler import *;
 
 from pypes.codecs_.mrs._mrs import *;
-# from pypes.codecs_.mrs import _ergsem;
+from pypes.codecs_.mrs import _ergsem_interpreter;
 
 
 
@@ -357,7 +357,7 @@ class MRXDecoder( XMLHandler, metaclass=subject ):
     
     converter = None;
     if sem is None or sem == self.SEM_ERG:
-      converter = _ergsem.mrs_to_pf;
+      converter = _ergsem_interpreter.mrs_to_pf;
     else:
       assert False;
 
