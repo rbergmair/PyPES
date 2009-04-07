@@ -173,7 +173,12 @@ class ERGSemSMIExtractor( ERGSemProcessor, metaclass=subject ):
 
       if predstr_as_word is not None:
         ( lemma, pos, sense ) = predstr_as_word;
-        assert pos in { "c", "p", "q", "x", "n", "v", "a" };
+        try:
+          assert pos in { "c", "p", "q", "x", "n", "v", "a" };
+        except:
+          # TODO: activate;
+          return;
+          
         if pos in { "c", "p", "q", "x" }:
           interesting = True;
         lemma_ = [];
@@ -315,15 +320,15 @@ class ERGSemSMIExtractor( ERGSemProcessor, metaclass=subject ):
       f.write( "\n" );
       f.write( "class Word( basic.Word, metaclass=kls ):\n\n" );
 
-      f.write( "  WRD_Qs = basic.Word.WRD_Qs | [" );
+      f.write( "  WRD_Qs = basic.Word.WRD_Qs + [" );
       f.write( ( "\n " + pformat( self._wqs, width=74 )[1:-1] ).replace( "\n", "\n   " ) );
       f.write( "];\n\n" );
 
-      f.write( "  WRD_Cs = basic.Word.WRD_Cs | [" );
+      f.write( "  WRD_Cs = basic.Word.WRD_Cs + [" );
       f.write( ( "\n " + pformat( self._wcs, width=74 )[1:-1] ).replace( "\n", "\n   " ) );
       f.write( "];\n\n" );
 
-      f.write( "  WRD_Ps = basic.Word.WRD_Cs | [" );
+      f.write( "  WRD_Ps = basic.Word.WRD_Ps + [" );
       f.write( ( "\n " + pformat( self._wps, width=74 )[1:-1] ).replace( "\n", "\n   " ) );
       f.write( "];\n\n" );
           

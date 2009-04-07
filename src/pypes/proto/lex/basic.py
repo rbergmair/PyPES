@@ -15,6 +15,10 @@ class Word( ProtoBase, metaclass=kls ):
 
   _superordinate_ = None;
   _key_ = None;
+  
+  WRD_Qs = [];
+  WRD_Cs = [];
+  WRD_Ps = [];
 
 
   def _init_init_( self ):

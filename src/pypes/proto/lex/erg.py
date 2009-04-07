@@ -3,14 +3,14 @@
 __package__ = "native";
 __all__ = [ "Operator", "Word" ];
 
-from pypes.proto.lex import _ergops_auto;
+from pypes.proto.lex import _erg_auto;
 from pypes.proto.lex import basic;
 
 
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-class Operator( _ergops_auto.Operator ):
+class Operator( _erg_auto.Operator ):
   
   pass;
 
@@ -18,7 +18,7 @@ class Operator( _ergops_auto.Operator ):
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-class Word( basic.Word ):
+class Word( _erg_auto.Word ):
   
   pass;
 
