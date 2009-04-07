@@ -432,25 +432,10 @@ class TestEnumerator( TestCase, metaclass=object_ ):
     with PFTDecoder( (pypes.proto.lex.erg,None) ) as decoder:
   
       for i in range( 1, 108 ):
-      #for i in range( 85, 108 ):
-      #for i in [ 72 ]:
-      #for i in [ 77 ]:
-        
-        self.check_testfile( "{0}/mrs-{1}1.pft.gz".format( self._TESTDTADIR, i ), decoder );
-
-        #if i > 20:
-        #  break;
-
-      # return;
+        self.write_testfile( "{0}/mrs-{1}1.pft.gz".format( self._TESTDTADIR, i ), decoder );
 
       for i in range( 1, 641 ):
-      #for i in [ 10 ]:
-
-        
-        self.check_testfile( "{0}/fracas-new-{1}.pft.gz".format( self._TESTDTADIR, i ), decoder );
-        
-        #if i > 20:
-        #  break;
+        self.write_testfile( "{0}/fracas-new-{1}.pft.gz".format( self._TESTDTADIR, i ), decoder );
 
 
 

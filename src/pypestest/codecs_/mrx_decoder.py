@@ -38,7 +38,6 @@ class TestMRXDecoder( TestCase, metaclass=object_ ):
       try:
         print( filename );
         r__ = mrx_decode( f, MRXDecoder.SEM_ERG );
-        return;
         r = r__( sig=ProtoSig() );
         r_ = pft_encode( r, pretty=False );
         g.write( r_ );
@@ -55,7 +54,7 @@ class TestMRXDecoder( TestCase, metaclass=object_ ):
       pass;
   
   
-  def doteston( self, filename, decoder ):
+  def check_testfiles( self, filename, decoder ):
 
     try:
       
@@ -89,9 +88,9 @@ class TestMRXDecoder( TestCase, metaclass=object_ ):
             
             except:
 
-              print( pft_encode( r ) );
+              print( pft_encode( r, pretty=False, linebreaks=True ) );
               print( gstr );
-              print( pft_encode( r_ ) );
+              print( pft_encode( r_, pretty=False, linebreaks=True ) );
               raise;
     
           finally:
@@ -117,7 +116,7 @@ class TestMRXDecoder( TestCase, metaclass=object_ ):
         if i in { 185, 186, 270, 272, 334 }:
           continue;
         
-        self.write_testfiles( "{0}/fracas-new-{1}.mrs.xml.gz".format( self._TESTMRSDIR, i ), decoder );
+        self.check_testfiles( "{0}/fracas-new-{1}.mrs.xml.gz".format( self._TESTMRSDIR, i ), decoder );
       
       #return;
       
@@ -127,7 +126,7 @@ class TestMRXDecoder( TestCase, metaclass=object_ ):
         if i in { 63, 64 }:
           continue;
         
-        self.write_testfiles( "{0}/mrs-{1}1.mrs.xml.gz".format( self._TESTMRSDIR, i ), decoder );
+        self.check_testfiles( "{0}/mrs-{1}1.mrs.xml.gz".format( self._TESTMRSDIR, i ), decoder );
         
         #if i == 10:
         #  return;

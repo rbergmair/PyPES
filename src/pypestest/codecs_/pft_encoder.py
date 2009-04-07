@@ -119,7 +119,7 @@ class TestPFTEncoder( TestCase, metaclass=object_ ):
     
     check( "\ue102 |told:5|( arg1=x1, arg2=x2 ) 1",
            TestModification.init_modification_1 );
-    check( "\ue102 NECESSARILY() {}",
+    check( "\ue102 NULL() {}",
            TestModification.init_modification_2 );
 
 

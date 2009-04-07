@@ -47,13 +47,13 @@ class TestModality( TestCase, metaclass=object_ ):
 
   def init_mod_2( self ):
     
-    inst_ = Modality( referent = Operator( otype=Operator.OP_M_NECESSITY ) );
+    inst_ = Modality( referent = Operator( otype=Operator.OP_M_NULL ) );
     return inst_;
   
   def check_mod_2( self, inst, msg=None ):
     
     self.assert_( isinstance( inst.referent, Operator ), msg );
-    self.assertEquals( inst.referent.otype, Operator.OP_M_NECESSITY, msg );
+    self.assertEquals( inst.referent.otype, Operator.OP_M_NULL, msg );
   
   def test_2( self ):
     

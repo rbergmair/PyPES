@@ -56,8 +56,8 @@ class Word( ProtoBase, metaclass=kls ):
         
   
   def __le__( self, obj ):
-    
-    if not isinstance( obj, Word ):
+
+    if not isinstance( obj, self.__class__ ):
       return False;
     
     if self.wid is not None:
@@ -75,9 +75,9 @@ class Word( ProtoBase, metaclass=kls ):
     if self.sense is not None:
       if self.sense != obj.sense:
         return False;
-    
-    if self.feats is not None:
-      if obj.feats is None:
+
+    if self.feats is not None and len( self.feats ) > 0:
+      if obj.feats is None or len( obj.feats ) <= 0:
         return False;
       for feat in self.feats:
         if not feat in obj.feats:
@@ -94,19 +94,15 @@ class Word( ProtoBase, metaclass=kls ):
 class Operator( ProtoBase, metaclass=kls ):
 
 
-  _superordinate_ = None;
-  _key_ = None;
+  _superordinate_ = "sig";
+  _key_ = "otype";
 
   
   OP_Q_UNIV = "ALL";
   OP_Q_EXIST = "SOME";
   OP_Q_DESCR = "THE";
   
-  OP_Qs = {
-      OP_Q_UNIV: OP_Q_UNIV,
-      OP_Q_EXIST: OP_Q_EXIST,
-      OP_Q_DESCR: OP_Q_DESCR
-    };
+  OP_Qs = { OP_Q_UNIV, OP_Q_EXIST, OP_Q_DESCR };
 
   OP_C_STRCON = "&&";
   OP_C_WEACON = "/\\";
@@ -114,27 +110,15 @@ class Operator( ProtoBase, metaclass=kls ):
   OP_C_WEADIS = "\\/";
   OP_C_IMPL = "->";
   
-  OP_Cs = {
-      OP_C_STRCON: OP_C_STRCON,
-      OP_C_WEACON: OP_C_WEACON,
-      OP_C_STRDIS: OP_C_STRDIS,
-      OP_C_WEADIS: OP_C_WEADIS,
-      OP_C_IMPL: OP_C_IMPL
-    };
+  OP_Cs = { OP_C_STRCON, OP_C_WEACON, OP_C_STRDIS, OP_C_WEADIS, OP_C_IMPL };
   
-  OP_M_NECESSITY = "NECESSARILY";
-  OP_M_POSSIBILITY = "POSSIBLY";
+  OP_M_NULL = "NULL";
   
-  OP_Ms = {
-      OP_M_NECESSITY: OP_M_NECESSITY,
-      OP_M_POSSIBILITY: OP_M_POSSIBILITY
-    };
+  OP_Ms = { OP_M_NULL };
 
   OP_P_EQUALITY = "EQUALS";
   
-  OP_Ps = {
-      OP_P_EQUALITY: OP_P_EQUALITY
-    };
+  OP_Ps = { OP_P_EQUALITY };
   
   OPs = {
       OP_Q_UNIV: OP_Q_UNIV,
@@ -145,8 +129,7 @@ class Operator( ProtoBase, metaclass=kls ):
       OP_C_STRDIS: OP_C_STRDIS,
       OP_C_WEADIS: OP_C_WEADIS,
       OP_C_IMPL: OP_C_IMPL,
-      OP_M_NECESSITY: OP_M_NECESSITY,
-      OP_M_POSSIBILITY: OP_M_POSSIBILITY,
+      OP_M_NULL: OP_M_NULL,
       OP_P_EQUALITY: OP_P_EQUALITY
     };
 

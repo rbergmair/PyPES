@@ -203,13 +203,15 @@ class ERGSemSMIExtractor( ERGSemProcessor, metaclass=subject ):
           """__package__ = "pypes.proto.lex";\n"""
           """__all__ = [ "Operator" ];\n"""
           """from pypes.utils.mc import kls;\n"""
-          """class Operator( metaclass=kls ):\n"""
+          """from pypes.proto.lex import basic;\n"""
+          """class Operator( basic.Operator, metaclass=kls ):\n"""
         );
         
       ops = {};
       opqs = set();
       opcs = set();
-      oppms = set();
+      opms = set();
+      opps = set();
       
       
       for predstr in sorted( semi.keys() ):
@@ -247,23 +249,34 @@ class ERGSemSMIExtractor( ERGSemProcessor, metaclass=subject ):
           opqs.add( otype );
         if is_connection:
           opcs.add( otype );
-        if is_modification or is_predication:
-          oppms.add( otype );
+        if is_modification:
+          opms.add( otype );
+        if is_predication:
+          opps.add( otype );
       
-      f.write( "  OPs = {" );
-      f.write( ( "\n " + pformat( ops, width=74 )[1:-1] ).replace( "\n", "\n   " ) );
+      for otype in sorted( ops.keys() ):
+        f.write( "  " + otype + " = '" + otype + "';\n" );
+      
+      f.write( "  OPs = {};\n" );
+      f.write( "  OPs.update( basic.Operator.OPs );\n" );
+      f.write( "  OPs.update( {" );
+      f.write( ( "\n " + pformat( ops, width=74 )[1:-1] ).replace( "\n", "\n   " ).replace( "'", "" ) );
+      f.write( "} );\n" );
+      
+      f.write( "  OP_Qs = basic.Operator.OP_Qs | {" );
+      f.write( ( "\n " + pformat( opqs, width=74 )[1:-1] ).replace( "\n", "\n   " ).replace( "'", "" ) );
       f.write( "};\n" );
       
-      f.write( "  OP_Qs = {" );
-      f.write( ( "\n " + pformat( opqs, width=74 )[1:-1] ).replace( "\n", "\n   " ) );
+      f.write( "  OP_Cs = basic.Operator.OP_Cs | {" );
+      f.write( ( "\n " + pformat( opcs, width=74 )[1:-1] ).replace( "\n", "\n   " ).replace( "'", "" ) );
       f.write( "};\n" );
       
-      f.write( "  OP_Cs = {" );
-      f.write( ( "\n " + pformat( opcs, width=74 )[1:-1] ).replace( "\n", "\n   " ) );
+      f.write( "  OP_Ms = basic.Operator.OP_Ms | {" );
+      f.write( ( "\n " + pformat( opms, width=74 )[1:-1] ).replace( "\n", "\n   " ).replace( "'", "" ) );
       f.write( "};\n" );
-      
-      f.write( "  OP_PMs = {" );
-      f.write( ( "\n " + pformat( oppms, width=74 )[1:-1] ).replace( "\n", "\n   " ) );
+
+      f.write( "  OP_Ps = basic.Operator.OP_Ps | {" );
+      f.write( ( "\n " + pformat( opps, width=74 )[1:-1] ).replace( "\n", "\n   " ).replace( "'", "" ) );
       f.write( "};\n" );
           
         

@@ -54,9 +54,11 @@ class ERGSemProcessor( metaclass=subject ):
     
     if predstr[0] == "_":
       return None;
+    
+    predstr = predstr.upper();
 
     try:
-      assert predstr[-4:] in { "_REL", "_rel" };
+      assert predstr[-4:] == "_REL";
     except:
       print( predstr );
       raise;
@@ -72,15 +74,22 @@ class ERGSemProcessor( metaclass=subject ):
     
     if predstr[0] != "_":
       return None;
+    
+    predstr = predstr.lower();
 
-    assert predstr[-4:] == "_rel";
+    try:
+      assert predstr[-4:] == "_rel";
+    except:
+      print( predstr );
+      raise;
+      
     predstr = predstr[1:-4];
     predstr_ = predstr.lower();
     assert predstr_ == predstr;
     
     toks = predstr.split( "_" );
     
-    lemmatoks = toks[0].split( "+" );
+    lemma = toks[0].split( "+" );
     pos = None;
     sense = None;
     if len(toks) > 1 and toks[1] != "":
@@ -90,7 +99,7 @@ class ERGSemProcessor( metaclass=subject ):
       sense = toks[2];
       sense = cls._make_alphanum( sense );
     
-    return ( lemmatoks, pos, sense );
+    return ( lemma, pos, sense );
 
 
   @classmethod

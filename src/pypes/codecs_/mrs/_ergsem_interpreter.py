@@ -19,28 +19,59 @@ from pypes.codecs_.mrs._smi.ergsem_smi_checker import ergsem_smi_check;
 
 class MRSInterpreter( ERGSemProcessor, metaclass=subject ):
   
+  ARGs = {
+      "ARG0": 0,
+      "ARG1": 1,
+      "ARG2": 2,
+      "ARG3": 3,
+      "ARG4": 4,
+      "ARG": 5,
+      "CARG": 6,
+      "MARG": 7,
+      "RSTR": 8,
+      "BODY": 9,
+      "L-HNDL": 10,
+      "L-INDEX": 11,
+      "R-HNDL": 12,
+      "R-INDEX": 13,
+      "PSV": 14,
+      "TPC": 15
+    };
+  
 
   def _enter_( self ):
     
     ergsem_smi_check( self._obj_ );
 
-    for ep in self._obj_.eps:
-      
-      try:
-        args = {};
-        for ( arg, var ) in ep.args.items():
-          if isinstance( var, MRSVariable ):
-            args[ arg ] = var.sid;
-          
-        self._is_quantification( args, strict=True );
-        self._is_verbal_coordination( args, strict=True );
-        self._is_nominal_coordination( args, strict=True );
-        self._is_connection( args, strict=True );
-        self._is_modification( args, strict=True );
-        self._is_predication( args, strict=True );
-      except:
-        print( ep );
-        raise;
+
+  @classmethod
+  def _predstr_as_referent( cls, predstr, feats=None ):
+    
+    predstr_as_operator = cls._predstr_as_operator( predstr );
+    predstr_as_word = cls._predstr_as_word( predstr );
+    rslt = None;
+    dcargs = False;
+    
+    if predstr_as_operator is not None:
+      assert rslt is None;
+      assert predstr_as_word is None;
+      rslt = Operator( otype = predstr_as_operator, feats = feats );
+      dcargs = False;
+    
+    if predstr_as_word is not None:
+      assert rslt is None;
+      assert predstr_as_operator is None;
+      ( lemma, pos, sense ) = predstr_as_word;
+      rslt = Word(
+                 lemma = lemma,
+                 pos = pos,
+                 sense = sense,
+                 feats = feats
+               );
+      dcargs = True;
+    
+    assert rslt is not None;
+    return ( rslt, dcargs );
     
     
   @classmethod
@@ -59,25 +90,32 @@ class MRSInterpreter( ERGSemProcessor, metaclass=subject ):
     return self._freeze( hid, lvl );
 
 
-  @classmethod
-  def _extract_args( cls, ep, dcargs ):
+  def _extract_args( self, ep, dcargs, lvl ):
     
-    args = {};
+    nonscopal_args = {};
+    scopal_args = [];
     
-    for (arg,var) in ep.args.items():
-      arg = cls._make_identifier( arg );
+    args = sorted( ep.args, key = lambda key: self.ARGs[ key ] );
+    
+    for arg in args:
+      var = ep.args[ arg ];
+      arg = self._make_identifier( arg );
       if dcargs:
         arg = arg.lower();
       else:
-        arg = arg.upper();
+        arg_ = arg.upper();
+        assert arg_ == arg;
       if isinstance( var, MRSVariable ):
-        args[ Argument( aid=arg ) ] = Variable( sidvid = ( var.sid, var.vid ) );
+        if var.sid == self.SORT_HOLE:
+          scopal_args.append( self._resolve_hole( var.vid, lvl ) );
+        else:
+          nonscopal_args[ Argument( aid=arg ) ] = Variable( sidvid = ( var.sid, var.vid ) );
       elif isinstance( var, MRSConstant ):
-        args[ Argument( aid=arg ) ] = Constant( ident = var.constant );
+        nonscopal_args[ Argument( aid=arg ) ] = Constant( ident = var.constant );
       else:
         assert False;
     
-    return args;
+    return ( nonscopal_args, scopal_args );
   
   
   @classmethod
@@ -95,132 +133,86 @@ class MRSInterpreter( ERGSemProcessor, metaclass=subject ):
 
 
   @classmethod
-  def _predep_to_subform( cls, ep, lvl ):
-    
-    referent = None;
-    dcargs = False;
+  def _extract_event_feats( cls, ep ):
     
     feats = {};
     if "ARG0" in ep.args:
       if isinstance( ep.args[ "ARG0" ], MRSVariable ):
-        if ep.args[ "ARG0" ].sid == "e":
-          feats = ep.args[ "ARG0" ].feats;
+        if ep.args[ "ARG0" ].sid == cls.SORT_EVENT:
+          feats.update( ep.args[ "ARG0" ].feats );
+    feats = cls._cspanfeats( ep, feats );
+    return feats;
+  
+  
+  def _predep_to_subform( self, ep, lvl ):
     
-    if ep.spred is None and ep.pred[0] != "_":
-      pred = cls._predstr_to_operator( ep.pred );
-      referent = Operator( otype = pred, feats = feats );
-      dcargs = False;
-    
-    else:
-      referent = cls._predstr_to_word(
-                     ep.spred or ep.pred, cls._cspanfeats( ep, feats )
-                   );
-      dcargs = True;
-    
-    assert referent is not None;
+    feats = self._extract_event_feats( ep );
+    ( referent, dcargs ) = self._predstr_as_referent( ep.pred, feats );
+    ( nonscopal_args, scopal_args ) = self._extract_args( ep, dcargs, lvl );
+    try:
+      assert len( scopal_args ) == 0;
+    except:
+      print( ep );
+      raise;
     
     return Predication(
                predicate = Predicate( referent = referent ),
-               args = cls._extract_args( ep, dcargs )
+               args = nonscopal_args
              );
 
 
   def _quantep_to_subform( self, ep, lvl ):
     
-    referent = None;
-
-    arg0 = ep.args[ "ARG0" ];
-    rstr = ep.args[ "RSTR" ];
-    body = ep.args[ "BODY" ];
+    feats = self._cspanfeats( ep, ep.args[ "ARG0" ].feats );
+    ( referent, dcargs ) = self._predstr_as_referent( ep.pred, feats );
+    ( nonscopal_args, scopal_args ) = self._extract_args( ep, dcargs, lvl );
     
-    if ep.spred is None and ep.pred[0] != "_":
-      pred = self._predstr_to_operator( ep.pred );
-      referent = Operator( otype = pred, feats = arg0.feats );
+    assert len( nonscopal_args ) == 1;
+    assert len( scopal_args ) == 2;
     
-    else:
-      referent = self._predstr_to_word(
-                     ep.spred or ep.pred, self._cspanfeats( ep, arg0.feats )
-                   );
-    
-    assert referent is not None;
+    ((arg,var),) = nonscopal_args.items();
     
     return Quantification(
                quantifier = Quantifier( referent = referent ),
-               var = Variable( sidvid = ( arg0.sid, arg0.vid ) ),
-               rstr = self._resolve_hole( rstr.vid, lvl ),
-               body = self._resolve_hole( body.vid, lvl )
+               var = var,
+               rstr = scopal_args[ 0 ],
+               body = scopal_args[ 1 ]
              );
 
 
   def _modep_to_subform( self, ep, lvl ):
     
-    referent = None;
-    dcargs = False;
-    
-    feats = {};
-    if "ARG0" in ep.args:
-      if isinstance( ep.args[ "ARG0" ], MRSVariable ):
-        if ep.args[ "ARG0" ].sid == "e":
-          feats = ep.args[ "ARG0" ].feats;
-    
-    if ep.spred is None and ep.pred[0] != "_":
-      pred = self._predstr_to_operator( ep.pred );
-      referent = Operator( otype = pred, feats = feats );
-      dcargs = False;
-    
-    else:
-      referent = self._predstr_to_word(
-                     ep.spred or ep.pred, self._cspanfeats( ep, feats )
-                   );
-      dcargs = True;
-    
-    assert referent is not None;
-    
-    scope_vid = None;
-    scope_arg = None;
-    for (arg,var) in ep.args.items():
-      if isinstance( var, MRSVariable ):
-        if var.sid == "h":
-          scope_vid = var.vid;
-          scope_arg = arg;
-          break;
-    del ep.args[ scope_arg ];
+    feats = self._extract_event_feats( ep );
+    ( referent, dcargs ) = self._predstr_as_referent( ep.pred, feats );
+    ( nonscopal_args, scopal_args ) = self._extract_args( ep, dcargs, lvl );
+
+    assert len( scopal_args ) == 1;
     
     return Modification(
                modality = Modality( referent = referent ),
-               scope = self._resolve_hole( scope_vid, lvl ),
-               args = self._extract_args( ep, dcargs )
+               scope = scopal_args[ 0 ],
+               args = nonscopal_args
              );
 
 
-  def _connep_to_subform( self, ep, lscope, rscope, lvl ):
+  def _connep_to_subform( self, ep, lvl ):
 
-    referent = None;
-    
-    lhndl = ep.args[ lscope ];
-    rhndl = ep.args[ rscope ];
-    
-    if ep.spred is None and ep.pred[0] != "_":
-      pred = self._predstr_to_operator( ep.pred );
-      referent = Operator( otype = pred );
-    
-    else:
-      referent = self._predstr_to_word(
-                     ep.spred or ep.pred, self._cspanfeats( ep )
-                   );
+    feats = self._extract_event_feats( ep );
+    ( referent, dcargs ) = self._predstr_as_referent( ep.pred, feats );
+    ( nonscopal_args, scopal_args ) = self._extract_args( ep, dcargs, lvl+1 );
+
+    assert len( scopal_args ) == 2;
     
     conn = Connection(
                connective = Connective( referent = referent ),
-               lscope = self._resolve_hole( lhndl.vid, lvl+1 ),
-               rscope = self._resolve_hole( rhndl.vid, lvl+1 )
+               lscope = scopal_args[ 0 ],
+               rscope = scopal_args[ 1 ]
              );
     
-    del ep.args[ lscope ];
-    del ep.args[ rscope ];
-    
-    assert self._is_predication( ep );
-    
-    pred = self._predep_to_subform( ep, lvl+1 );
+    pred = Predication(
+               predicate = Predicate( referent = referent ),
+               args = nonscopal_args
+             );
     
     return ProtoForm(
                subforms = [
@@ -240,31 +232,42 @@ class MRSInterpreter( ERGSemProcessor, metaclass=subject ):
              );
              
              
-  def _simpleconnep_to_subform( self, ep, lvl ):
-    
-    return self._connep_to_subform( ep, "ARG1", "ARG2", lvl );
-
-  
-  def _coordconnep_to_subform( self, ep, lvl ):
-    
-    return self._connep_to_subform( ep, "L-HNDL", "R-HNDL", lvl );
-
-
   def _ep_to_subform( self, ep, lvl ):
     
-    if self._is_predication( ep ):
-      return self._predep_to_subform( ep, lvl );
-    elif self._is_quantification( ep ):
-      return self._quantep_to_subform( ep, lvl );
-    elif self._is_modification( ep ):
-      return self._modep_to_subform( ep, lvl );
-    elif self._is_simple_connective( ep ):
-      return self._simpleconnep_to_subform( ep, lvl );
-    elif self._is_coord_connective( ep ):
-      return self._coordconnep_to_subform( ep, lvl );
-    else:
-      print( ep );
-      assert False;
+    args = {};
+    for ( arg, var ) in ep.args.items():
+      if isinstance( var, MRSVariable ):
+        args[ arg ] = var.sid;
+    
+    rslt = None;
+    
+    if self._is_quantification( args, strict=True ):
+      assert rslt is None;
+      rslt = self._quantep_to_subform( ep, lvl );
+      
+    if self._is_verbal_coordination( args, strict=True ):
+      assert rslt is None;
+      rslt = self._connep_to_subform( ep, lvl );
+      
+    if self._is_nominal_coordination( args, strict=True ):
+      assert rslt is None;
+      rslt = self._predep_to_subform( ep, lvl );
+      
+    if self._is_connection( args, strict=True ):
+      assert rslt is None;
+      rslt = self._connep_to_subform( ep, lvl );
+      
+    if self._is_modification( args, strict=True ):
+      assert rslt is None;
+      rslt = self._modep_to_subform( ep, lvl );
+      
+    if self._is_predication( args, strict=True ):
+      assert rslt is None;
+      rslt = self._predep_to_subform( ep, lvl );
+    
+    assert rslt is not None;
+    
+    return rslt;
       
 
   @classmethod
@@ -327,7 +330,7 @@ class MRSInterpreter( ERGSemProcessor, metaclass=subject ):
       self._eps_by_lid[ ep.lid ].append( ep );
       for var in ep.args.values():
         if isinstance( var, MRSVariable ):
-          if var.sid == "h":
+          if var.sid == self.SORT_HOLE:
             self._hids.add( var.vid );
 
     for lid in lids:
@@ -348,8 +351,7 @@ def mrs_to_pf( mrs ):
   
   rslt = None;
   with MRSInterpreter( mrs ) as int:
-    # rslt = int.mrs_to_pf();
-    pass;
+    rslt = int.mrs_to_pf();
   return rslt;
 
 

@@ -81,7 +81,7 @@ class TestModification( TestCase, metaclass=object_ ):
     
     inst_ = Modification(
                 modality = Modality(
-                               referent = Operator( otype=Operator.OP_M_NECESSITY )
+                               referent = Operator( otype=Operator.OP_M_NULL )
                              ),
                 scope = ProtoForm()
               );
@@ -92,7 +92,7 @@ class TestModification( TestCase, metaclass=object_ ):
     
     self.assert_( isinstance( inst.modality, Modality ), msg );
     self.assert_( isinstance( inst.modality.referent, Operator ), msg );
-    self.assertEquals( inst.modality.referent.otype, Operator.OP_M_NECESSITY, msg );
+    self.assertEquals( inst.modality.referent.otype, Operator.OP_M_NULL, msg );
     self.assert_( isinstance( inst.scope, ProtoForm ), msg );
   
   def test_2( self ):
@@ -104,7 +104,7 @@ class TestModification( TestCase, metaclass=object_ ):
     
     inst_ = Modification(
                 modality = Modality(
-                               referent = Operator( otype=Operator.OP_M_NECESSITY )
+                               referent = Operator( otype=Operator.OP_M_NULL )
                              ),
                 scope = Freezer( content=Handle() )
               );
@@ -115,7 +115,7 @@ class TestModification( TestCase, metaclass=object_ ):
     
     self.assert_( isinstance( inst.modality, Modality ), msg );
     self.assert_( isinstance( inst.modality.referent, Operator ), msg );
-    self.assertEquals( inst.modality.referent.otype, Operator.OP_M_NECESSITY, msg );
+    self.assertEquals( inst.modality.referent.otype, Operator.OP_M_NULL, msg );
     self.assert_( isinstance( inst.scope, Handle ), msg );
     self.assertEquals( inst.holes, {inst.scope} );
     

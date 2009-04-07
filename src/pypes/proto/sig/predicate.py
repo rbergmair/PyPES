@@ -28,7 +28,8 @@ class Predicate( ProtoBase, metaclass=kls ):
       self.referent = referent( sig=sig );
       
       if isinstance( self.referent, Operator ):
-        assert self.referent.otype in self.referent.OP_Ps;
+        assert self.referent.otype in self.referent.OP_Ps or \
+               self.referent.otype in self.referent.OP_Ms;
       else:
         assert isinstance( self.referent, Word );
 
