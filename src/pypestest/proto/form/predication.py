@@ -32,7 +32,7 @@ class TestPredication( TestCase, metaclass=object_ ):
   def init_pred_1( self ):
     
     inst_ = Predication(
-                predicate = Predicate(
+                predicate = Functor(
                                 referent = Word( wid=5, lemma = ["cat"] )
                               ),
                 args = { Argument( aid="arg1" ):
@@ -43,7 +43,7 @@ class TestPredication( TestCase, metaclass=object_ ):
   
   def check_pred_1( self, inst, msg=None ):
     
-    self.assert_( isinstance( inst.predicate, Predicate ), msg );
+    self.assert_( isinstance( inst.predicate, Functor ), msg );
     self.assert_( isinstance( inst.predicate.referent, Word ), msg );
     self.assertEquals( inst.predicate.referent.wid, 5, msg );
     self.assertEquals( inst.predicate.referent.lemma, ["cat"], msg );
@@ -70,7 +70,7 @@ class TestPredication( TestCase, metaclass=object_ ):
   def init_pred_2( self ):
     
     inst_ = Predication(
-                predicate = Predicate(
+                predicate = Functor(
                                 referent = Operator( otype=Operator.OP_P_EQUALITY )
                               ),
                 args = { Argument( aid="ARG0" ):
@@ -83,7 +83,7 @@ class TestPredication( TestCase, metaclass=object_ ):
   
   def check_pred_2( self, inst, msg=None ):
     
-    self.assert_( isinstance( inst.predicate, Predicate ), msg );
+    self.assert_( isinstance( inst.predicate, Functor ), msg );
     self.assert_( isinstance( inst.predicate.referent, Operator ), msg );
     self.assertEquals( inst.predicate.referent.otype, Operator.OP_P_EQUALITY, msg );
     labels = set();
@@ -129,7 +129,7 @@ class TestPredication( TestCase, metaclass=object_ ):
   def init_pred_3( self ):
     
     inst_ = Predication(
-                predicate = Predicate(
+                predicate = Functor(
                                 referent = Word( lemma = ["cat"] )
                               ),
                 args = { Argument():

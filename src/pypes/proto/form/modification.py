@@ -8,10 +8,10 @@ from copy import copy;
 
 
 from pypes.utils.mc import kls;
-from pypes.proto import Modality;
-from pypes.proto import Argument;
-from pypes.proto import Variable;
-from pypes.proto import Constant;
+from pypes.proto.sig import Argument;
+from pypes.proto.sig import Constant;
+from pypes.proto.sig import Functor;
+from pypes.proto.sig import Variable;
 from pypes.proto.form.protoform import ProtoForm;
 from pypes.proto.form.freezer import Freezer;
 from pypes.proto.form.subform import SubForm;
@@ -56,7 +56,7 @@ class Modification( SubForm, metaclass=kls ):
     if modality is not None:
       
       self.modality = modality( sig=sig );
-      assert isinstance( self.modality, Modality );
+      assert isinstance( self.modality, Functor );
     
     if scope is not None:
 

@@ -4,20 +4,9 @@ __package__ = "pypes";
 
 __all__ = [ "Connection", "Constraint", "Handle", "Freezer", "Modification",
             "Predication", "ProtoForm", "Quantification", "SubForm",
-            "Argument", "Connective",
-            "Constant", "Modality", "Predicate", "ProtoSig", "Quantifier",
-            "Sort", "Variable", "Operator", "Word", "ProtoBase",
-            "ProtoProcessor", "SanityChecker", "sanity_check" ];
-
-from pypes.proto.sig import Argument;
-from pypes.proto.sig import Connective;
-from pypes.proto.sig import Constant;
-from pypes.proto.sig import Modality;
-from pypes.proto.sig import Predicate;
-from pypes.proto.sig import ProtoSig;
-from pypes.proto.sig import Quantifier;
-from pypes.proto.sig import Sort;
-from pypes.proto.sig import Variable;
+            "Argument", "Constant", "Functor", "ProtoSig", "Sort", "Variable",
+            "Operator", "Word",
+            "ProtoBase", "ProtoProcessor", "SanityChecker", "sanity_check" ];
 
 from pypes.proto.form import Connection;
 from pypes.proto.form import Constraint;
@@ -28,6 +17,13 @@ from pypes.proto.form import Predication;
 from pypes.proto.form import ProtoForm;
 from pypes.proto.form import Quantification;
 from pypes.proto.form import SubForm;
+
+from pypes.proto.sig.argument import Argument;
+from pypes.proto.sig.constant import Constant;
+from pypes.proto.sig.functor import Functor;
+from pypes.proto.sig.protosig import ProtoSig;
+from pypes.proto.sig.sort import Sort;
+from pypes.proto.sig.variable import Variable;
 
 from pypes.proto.lex import Operator;
 from pypes.proto.lex import Word;

@@ -79,30 +79,12 @@ class NullRewriter( ProtoProcessor, metaclass=subject ):
                constraints = constraints
             );
     
-  def _process_predicate( self, inst, referent ):
+  def _process_functor( self, inst, referent ):
     
     return inst.__class__(
                 referent = referent
              );
-    
-  def _process_quantifier( self, inst, referent ):
-    
-    return inst.__class__(
-               referent = referent
-             );
-    
-  def _process_modality( self, inst, referent ):
-    
-    return inst.__class__(
-               referent = referent
-            );
-    
-  def _process_connective( self, inst, referent ):
-    
-    return inst.__class__(
-               referent = referent
-             );
-    
+             
   def _process_argument( self, inst, aid ):
     
     return inst.__class__(

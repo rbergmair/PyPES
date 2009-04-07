@@ -290,7 +290,7 @@ class PFTDecoder( PFTParser, metaclass=subject ):
     assert not next( toks, False );
     
     return ( cls.GT_PREDICATION, Predication(
-                                     predicate = Predicate( referent=referent ),
+                                     predicate = Functor( referent=referent ),
                                      args = args
                                    ) );
 
@@ -343,7 +343,7 @@ class PFTDecoder( PFTParser, metaclass=subject ):
     assert not next( toks, False );
   
     return ( cls.GT_QUANTIFICATION, Quantification(
-                                        quantifier = Quantifier(
+                                        quantifier = Functor(
                                                          referent = referent
                                                        ),
                                         var = var,
@@ -373,7 +373,7 @@ class PFTDecoder( PFTParser, metaclass=subject ):
     assert not next( toks, False );
     
     return ( cls.GT_MODIFICATION, Modification(
-                                      modality = Modality( referent=referent ),
+                                      modality = Functor( referent=referent ),
                                       args = args,
                                       scope = scope
                                     ) );
@@ -402,7 +402,7 @@ class PFTDecoder( PFTParser, metaclass=subject ):
     assert not next( toks, False );
     
     return ( cls.GT_CONNECTION, Connection(
-                                    connective = Connective( referent=referent ),
+                                    connective = Functor( referent=referent ),
                                     lscope = lscope,
                                     rscope = rscope
                                   ) );

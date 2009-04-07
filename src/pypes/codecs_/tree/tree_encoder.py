@@ -50,7 +50,7 @@ class TreeEncoder( ProtoProcessor, metaclass=subject ):
     
     return "";
 
-  def _process_predicate( self, inst, referent ):
+  def _process_functor( self, inst, referent ):
     
     return referent;
   
@@ -58,10 +58,6 @@ class TreeEncoder( ProtoProcessor, metaclass=subject ):
     
     if predicate is not None:
       return predicate + self._process_argslist( inst.args, args );
-
-  def _process_quantifier( self, inst, referent ):
-    
-    return referent;
   
   def _process_quantification( self, inst, subform, quantifier, var, rstr, body ):
     
@@ -71,19 +67,11 @@ class TreeEncoder( ProtoProcessor, metaclass=subject ):
       return None;
     return quantifier + "( " + rstr + ", " + body + " )";
 
-  def _process_modality( self, inst, referent ):
-    
-    return referent;
-
   def _process_modification( self, inst, subform, modality, args, scope ):
     
     if scope is None:
       return None;
     return modality + "( " + scope + " )";
-
-  def _process_connective( self, inst, referent ):
-    
-    return referent;
 
   def _process_connection( self, inst, subform, connective, lscope, rscope ):
     

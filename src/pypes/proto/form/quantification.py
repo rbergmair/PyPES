@@ -8,9 +8,9 @@ from copy import copy;
 
 
 from pypes.utils.mc import kls;
-from pypes.proto import Quantifier;
-from pypes.proto import Variable;
-from pypes.proto import Constant;
+from pypes.proto.sig import Functor;
+from pypes.proto.sig import Variable;
+from pypes.proto.sig import Constant;
 from pypes.proto.form.protoform import ProtoForm;
 from pypes.proto.form.freezer import Freezer;
 from pypes.proto.form.subform import SubForm;
@@ -57,7 +57,7 @@ class Quantification( SubForm, metaclass=kls ):
     
     if quantifier is not None:
       self.quantifier = quantifier( sig=sig );
-      assert isinstance( self.quantifier, Quantifier );
+      assert isinstance( self.quantifier, Functor );
     
     if var is not None:
       self.var = var( sig=sig );

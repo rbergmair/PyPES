@@ -32,7 +32,7 @@ class TestModification( TestCase, metaclass=object_ ):
   def init_modification_1( self ):
 
     inst_ = Modification(
-                modality = Modality(
+                modality = Functor(
                                referent = Word( wid=5, lemma = ["told"] )
                              ),
                 args = { Argument( aid="arg1" ):
@@ -47,7 +47,7 @@ class TestModification( TestCase, metaclass=object_ ):
   
   def check_modification_1( self, inst, msg=None ):
     
-    self.assert_( isinstance( inst.modality, Modality ), msg );
+    self.assert_( isinstance( inst.modality, Functor ), msg );
     self.assert_( isinstance( inst.modality.referent, Word ), msg );
     self.assertEquals( inst.modality.referent.wid, 5, msg );
     self.assertEquals( inst.modality.referent.lemma, ["told"], msg );
@@ -80,7 +80,7 @@ class TestModification( TestCase, metaclass=object_ ):
   def init_modification_2( self ):
     
     inst_ = Modification(
-                modality = Modality(
+                modality = Functor(
                                referent = Operator( otype=Operator.OP_M_NULL )
                              ),
                 scope = ProtoForm()
@@ -90,7 +90,7 @@ class TestModification( TestCase, metaclass=object_ ):
   
   def check_modification_2( self, inst, msg=None ):
     
-    self.assert_( isinstance( inst.modality, Modality ), msg );
+    self.assert_( isinstance( inst.modality, Functor ), msg );
     self.assert_( isinstance( inst.modality.referent, Operator ), msg );
     self.assertEquals( inst.modality.referent.otype, Operator.OP_M_NULL, msg );
     self.assert_( isinstance( inst.scope, ProtoForm ), msg );
@@ -103,7 +103,7 @@ class TestModification( TestCase, metaclass=object_ ):
   def init_modification_3( self ):
     
     inst_ = Modification(
-                modality = Modality(
+                modality = Functor(
                                referent = Operator( otype=Operator.OP_M_NULL )
                              ),
                 scope = Freezer( content=Handle() )
@@ -113,7 +113,7 @@ class TestModification( TestCase, metaclass=object_ ):
   
   def check_modification_3( self, inst, msg=None ):
     
-    self.assert_( isinstance( inst.modality, Modality ), msg );
+    self.assert_( isinstance( inst.modality, Functor ), msg );
     self.assert_( isinstance( inst.modality.referent, Operator ), msg );
     self.assertEquals( inst.modality.referent.otype, Operator.OP_M_NULL, msg );
     self.assert_( isinstance( inst.scope, Handle ), msg );

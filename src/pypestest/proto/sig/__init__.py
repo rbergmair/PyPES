@@ -7,12 +7,9 @@ import sys;
 import unittest;
 
 import pypestest.proto.sig.argument;
-import pypestest.proto.sig.connective;
 import pypestest.proto.sig.constant;
-import pypestest.proto.sig.modality;
-import pypestest.proto.sig.predicate;
+import pypestest.proto.sig.functor;
 import pypestest.proto.sig.protosig;
-import pypestest.proto.sig.quantifier;
 import pypestest.proto.sig.sort;
 import pypestest.proto.sig.variable;
 
@@ -24,12 +21,9 @@ def suite():
   suite = unittest.TestSuite();
 
   suite.addTests( pypestest.proto.sig.argument.suite() );
-  suite.addTests( pypestest.proto.sig.connective.suite() );
   suite.addTests( pypestest.proto.sig.constant.suite() );
-  suite.addTests( pypestest.proto.sig.modality.suite() );
-  suite.addTests( pypestest.proto.sig.predicate.suite() );
+  suite.addTests( pypestest.proto.sig.functor.suite() );
   suite.addTests( pypestest.proto.sig.protosig.suite() );
-  suite.addTests( pypestest.proto.sig.quantifier.suite() );
   suite.addTests( pypestest.proto.sig.sort.suite() );
   suite.addTests( pypestest.proto.sig.variable.suite() );
 

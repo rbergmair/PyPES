@@ -8,7 +8,7 @@ from copy import copy;
 
 
 from pypes.utils.mc import kls;
-from pypes.proto import Connective;
+from pypes.proto.sig import Functor;
 from pypes.proto.form.protoform import ProtoForm;
 from pypes.proto.form.freezer import Freezer;
 from pypes.proto.form.subform import SubForm;
@@ -48,7 +48,7 @@ class Connection( SubForm, metaclass=kls ):
     
     if connective is not None:
       self.connective = connective( sig=sig );
-      assert isinstance( self.connective, Connective );
+      assert isinstance( self.connective, Functor );
     
     if lscope is not None:
       self.lscope = self._register_scopebearer( lscope( sig=sig ) );

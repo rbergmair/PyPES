@@ -32,7 +32,7 @@ class TestConnection( TestCase, metaclass=object_ ):
   def init_conn_1( self ):
     
     inst_ = Connection(
-                connective = Connective(
+                connective = Functor(
                                  referent = Operator(
                                                 otype=Operator.OP_C_STRCON
                                               )
@@ -45,7 +45,7 @@ class TestConnection( TestCase, metaclass=object_ ):
 
   def check_conn_1( self, inst, msg=None ):
     
-    self.assert_( isinstance( inst.connective, Connective ), msg );
+    self.assert_( isinstance( inst.connective, Functor ), msg );
     self.assert_( isinstance( inst.connective.referent, Operator ), msg );
     self.assertEquals( inst.connective.referent.otype, Operator.OP_C_STRCON, msg );
     self.assert_( isinstance( inst.lscope, ProtoForm ), msg );
@@ -61,7 +61,7 @@ class TestConnection( TestCase, metaclass=object_ ):
   def init_conn_2( self ):
     
     inst_ = Connection(
-                connective = Connective(
+                connective = Functor(
                                  referent = Word( lemma = ["and"] )
                                ),
                 lscope = Freezer( content = Handle() ),
@@ -72,7 +72,7 @@ class TestConnection( TestCase, metaclass=object_ ):
 
   def check_conn_2( self, inst, msg=None ):
     
-    self.assert_( isinstance( inst.connective, Connective ), msg );
+    self.assert_( isinstance( inst.connective, Functor ), msg );
     self.assert_( isinstance( inst.connective.referent, Word ), msg );
     self.assertEquals( inst.connective.referent.lemma, ["and"], msg );
     self.assert_( isinstance( inst.lscope, Handle ), msg );
@@ -87,7 +87,7 @@ class TestConnection( TestCase, metaclass=object_ ):
   def init_conn_3( self ):
     
     inst_ = Connection(
-                connective = Connective(
+                connective = Functor(
                                  referent = Operator(
                                                 otype=Operator.OP_C_STRCON
                                               )
@@ -100,7 +100,7 @@ class TestConnection( TestCase, metaclass=object_ ):
 
   def check_conn_3( self, inst, msg=None ):
     
-    self.assert_( isinstance( inst.connective, Connective ), msg );
+    self.assert_( isinstance( inst.connective, Functor ), msg );
     self.assert_( isinstance( inst.connective.referent, Operator ), msg );
     self.assertEquals( inst.connective.referent.otype, Operator.OP_C_STRCON, msg );
     self.assert_( isinstance( inst.lscope, ProtoForm ), msg );

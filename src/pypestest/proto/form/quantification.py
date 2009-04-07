@@ -32,7 +32,7 @@ class TestQuantification( TestCase, metaclass=object_ ):
   def init_quant_1( self ):
         
     inst_ = Quantification(
-                quantifier = Quantifier(
+                quantifier = Functor(
                                  referent = Operator(
                                                 otype=Operator.OP_Q_UNIV,
                                                 feats = {
@@ -50,7 +50,7 @@ class TestQuantification( TestCase, metaclass=object_ ):
   
   def check_quant_1( self, inst, msg=None ):
     
-    self.assert_( isinstance( inst.quantifier, Quantifier ), msg );
+    self.assert_( isinstance( inst.quantifier, Functor ), msg );
     self.assert_( isinstance( inst.quantifier.referent, Operator ), msg );
     self.assertEquals( inst.quantifier.referent.otype, Operator.OP_Q_UNIV, msg );
     self.assertEquals( len( inst.quantifier.referent.feats ), 2, msg );
@@ -73,7 +73,7 @@ class TestQuantification( TestCase, metaclass=object_ ):
   def init_quant_2( self ):
         
     inst_ = Quantification(
-                quantifier = Quantifier(
+                quantifier = Functor(
                                  referent = Word( lemma = ["every"] )
                                ),
                 var = Variable( sidvid=("x",1) ),
@@ -85,7 +85,7 @@ class TestQuantification( TestCase, metaclass=object_ ):
   
   def check_quant_2( self, inst, msg=None ):
     
-    self.assert_( isinstance( inst.quantifier, Quantifier ), msg );
+    self.assert_( isinstance( inst.quantifier, Functor ), msg );
     self.assert_( isinstance( inst.quantifier.referent, Word ), msg );
     self.assertEquals( inst.quantifier.referent.lemma, ["every"], msg );
     self.assert_( isinstance( inst.var, Variable ), msg );

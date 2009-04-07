@@ -8,10 +8,10 @@ from copy import copy;
 
 
 from pypes.utils.mc import kls;
-from pypes.proto import Predicate;
-from pypes.proto import Argument;
-from pypes.proto import Variable;
-from pypes.proto import Constant;
+from pypes.proto.sig import Functor;
+from pypes.proto.sig import Argument;
+from pypes.proto.sig import Variable;
+from pypes.proto.sig import Constant;
 from pypes.proto.form.subform import SubForm;
 
 
@@ -48,7 +48,7 @@ class Predication( SubForm, metaclass=kls ):
     if predicate is not None:
 
       self.predicate = predicate( sig=sig );
-      assert isinstance( self.predicate, Predicate );
+      assert isinstance( self.predicate, Functor );
     
     if args is not None:
         

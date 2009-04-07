@@ -156,7 +156,7 @@ class MRSInterpreter( ERGSemProcessor, metaclass=subject ):
       raise;
     
     return Predication(
-               predicate = Predicate( referent = referent ),
+               predicate = Functor( referent = referent ),
                args = nonscopal_args
              );
 
@@ -173,7 +173,7 @@ class MRSInterpreter( ERGSemProcessor, metaclass=subject ):
     ((arg,var),) = nonscopal_args.items();
     
     return Quantification(
-               quantifier = Quantifier( referent = referent ),
+               quantifier = Functor( referent = referent ),
                var = var,
                rstr = scopal_args[ 0 ],
                body = scopal_args[ 1 ]
@@ -189,7 +189,7 @@ class MRSInterpreter( ERGSemProcessor, metaclass=subject ):
     assert len( scopal_args ) == 1;
     
     return Modification(
-               modality = Modality( referent = referent ),
+               modality = Functor( referent = referent ),
                scope = scopal_args[ 0 ],
                args = nonscopal_args
              );
@@ -204,13 +204,13 @@ class MRSInterpreter( ERGSemProcessor, metaclass=subject ):
     assert len( scopal_args ) == 2;
     
     conn = Connection(
-               connective = Connective( referent = referent ),
+               connective = Functor( referent = referent ),
                lscope = scopal_args[ 0 ],
                rscope = scopal_args[ 1 ]
              );
     
     pred = Predication(
-               predicate = Predicate( referent = referent ),
+               predicate = Functor( referent = referent ),
                args = nonscopal_args
              );
     
@@ -219,7 +219,7 @@ class MRSInterpreter( ERGSemProcessor, metaclass=subject ):
                    ( Handle(), conn ),
                    ( Handle(),
                        Connection(
-                           connective = Connective(
+                           connective = Functor(
                                             referent = Operator(
                                                            otype = Operator.OP_C_WEACON
                                                          )
@@ -297,7 +297,7 @@ class MRSInterpreter( ERGSemProcessor, metaclass=subject ):
       subforms.append( ( Handle(), self._ep_to_subform( ep, lvl+1 ) ) );
       subforms.append( ( Handle(),
           Connection(
-              connective = Connective(
+              connective = Functor(
                                referent = Operator(
                                               otype = Operator.OP_C_WEACON
                                             )

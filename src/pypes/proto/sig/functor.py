@@ -1,7 +1,7 @@
 # -*-  coding: ascii -*-  # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 __package__ = "pypes.proto.sig";
-__all__ = [ "Quantifier" ];
+__all__ = [ "Functor" ];
 
 from pypes.utils.mc import kls;
 
@@ -12,7 +12,7 @@ from pypes.proto.protobase import ProtoBase;
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-class Quantifier( ProtoBase, metaclass=kls ):
+class Functor( ProtoBase, metaclass=kls ):
 
   _superordinate_ = "sig";
   _key_ = "referent";
@@ -27,14 +27,12 @@ class Quantifier( ProtoBase, metaclass=kls ):
   
       self.referent = referent( sig=sig );
       
-      if isinstance( self.referent, Operator ):
-        assert self.referent.otype in self.referent.OP_Qs;
-      else:
-        assert isinstance( self.referent, Word );
+      assert isinstance( self.referent, Operator ) or \
+             isinstance( self.referent, Word );
 
   def __le__( self, obj ):
     
-    if not isinstance( obj, Quantifier ):
+    if not isinstance( obj, Functor ):
       return False;
     
     if self.referent is not None:

@@ -1,7 +1,7 @@
 # -*-  coding: ascii -*-  # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 __package__ = "pypestest.proto.sig";
-__all__ = [ "TestConnective", "suite", "main" ];
+__all__ = [ "TestPredicate", "suite", "main" ];
 
 import sys;
 import unittest;
@@ -15,68 +15,64 @@ from pypes.proto import *;
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-class TestConnective( TestCase, metaclass=object_ ):
+class TestPredicate( TestCase, metaclass=object_ ):
   
   
   def logify( self, inst_, msg=None ):
 
-    self.assertFalse( isinstance( inst_, Connective ), msg );
+    self.assertFalse( isinstance( inst_, Functor ), msg );
     
     sig = ProtoSig();
     inst = inst_( sig=sig );
-    self.assertTrue( isinstance( inst, Connective ), msg );
+    self.assertTrue( isinstance( inst, Functor ), msg );
     
     return inst;
   
   
-  def init_conn_1( self ):
-
-    inst_ = Connective( referent = Word( wid=5, lemma = ["and"] ) );
+  def init_pred_1( self ):
+    
+    inst_ = Functor( referent = Word( wid=5, lemma = ["man"] ) );
     return inst_;
 
-
-  def check_conn_1( self, inst, msg=None ):
+  def check_pred_1( self, inst, msg=None ):
     
     self.assert_( isinstance( inst.referent, Word ), msg );
     self.assertEquals( inst.referent.wid, 5, msg );
-    self.assertEquals( inst.referent.lemma, ["and"], msg );
-
+    self.assertEquals( inst.referent.lemma, ["man"], msg );
 
   def test_1( self ):
     
-    self.check_conn_1( self.logify( self.init_conn_1() ) );
+    self.check_pred_1( self.logify( self.init_pred_1() ) );
 
 
-  def init_conn_2( self ):
-
-    inst_ = Connective( referent = Operator( otype=Operator.OP_C_STRCON ) );
+  def init_pred_2( self ):
+    
+    inst_ = Functor( referent = Operator( otype=Operator.OP_P_EQUALITY ) );
     return inst_;
   
-  
-  def check_conn_2( self, inst, msg=None ):
+  def check_pred_2( self, inst, msg=None ):
     
     self.assert_( isinstance( inst.referent, Operator ), msg );
-    self.assertEquals( inst.referent.otype, Operator.OP_C_STRCON, msg );
-
+    self.assertEquals( inst.referent.otype, Operator.OP_P_EQUALITY, msg );
 
   def test_2( self ):
     
-    self.check_conn_2( self.logify( self.init_conn_2() ) );
+    self.check_pred_2( self.logify( self.init_pred_2() ) );
   
   
   def test_cmp( self ):
     
-    conn1 = self.logify( self.init_conn_1() );
-    conn2 = self.logify( self.init_conn_2() );
+    pred1 = self.logify( self.init_pred_1() );
+    pred2 = self.logify( self.init_pred_2() );
 
-    conn1_ = self.logify( self.init_conn_1() );
-    conn2_ = self.logify( self.init_conn_2() );
+    pred1_ = self.logify( self.init_pred_1() );
+    pred2_ = self.logify( self.init_pred_2() );
     
-    self.assertEquals_( conn1, conn1_ );
-    self.assertEquals_( conn2, conn2_ );
+    self.assertEquals_( pred1, pred1_ );
+    self.assertEquals_( pred2, pred2_ );
 
-    self.assertNotEquals_( conn1, conn2_ );
-    self.assertNotEquals_( conn2, conn1_ );
+    self.assertNotEquals_( pred1, pred2_ );
+    self.assertNotEquals_( pred2, pred1_ );
     
 
 
@@ -87,7 +83,7 @@ def suite():
   suite = unittest.TestSuite();
 
   suite.addTests( unittest.TestLoader().loadTestsFromTestCase(
-      TestConnective
+      TestPredicate
     ) );
 
   return suite;

@@ -21,38 +21,32 @@ class ProtoProcessor( metaclass=subject ):
     self.global_holes = {};
   
   
-  def process( self, proto ):
+  def process( self, inst ):
     
-    if isinstance( proto, SubForm ):
-      return self.process_subform( proto );
-    if isinstance( proto, Constraint ):
-      return self.process_constraint( proto );
-    if isinstance( proto, Predicate ):
-      return self.process_predicate( proto );
-    if isinstance( proto, Quantifier ):
-      return self.process_quantifier( proto );
-    if isinstance( proto, Modality ):
-      return self.process_modality( proto );
-    if isinstance( proto, Connective ):
-      return self.process_connective( proto );
-    if isinstance( proto, Variable ):
-      return self.process_variable( proto );
-    if isinstance( proto, Constant ):
-      return self.process_constant( proto );
-    if isinstance( proto, Sort ):
-      return self.process_sort( proto );
-    if isinstance( proto, Argument ):
-      return self.process_argument( proto );
-    if isinstance( proto, Word ):
-      return self.process_word( proto );
-    if isinstance( proto, Operator ):
-      return self.process_operator( proto );
-    if isinstance( proto, Handle ):
-      return self.process_handle( proto );
+    if isinstance( inst, SubForm ):
+      return self.process_subform( inst );
+    if isinstance( inst, Constraint ):
+      return self.process_constraint( inst );
+    if isinstance( inst, Functor ):
+      return self.process_functor( inst );
+    if isinstance( inst, Variable ):
+      return self.process_variable( inst );
+    if isinstance( inst, Constant ):
+      return self.process_constant( inst );
+    if isinstance( inst, Sort ):
+      return self.process_sort( inst );
+    if isinstance( inst, Argument ):
+      return self.process_argument( inst );
+    if isinstance( inst, Word ):
+      return self.process_word( inst );
+    if isinstance( inst, Operator ):
+      return self.process_operator( inst );
+    if isinstance( inst, Handle ):
+      return self.process_handle( inst );
     try:
       assert False;
     except:
-      print( proto );
+      print( inst );
       raise;
 
 
@@ -113,7 +107,7 @@ class ProtoProcessor( metaclass=subject ):
   
   def process_predication( self, inst, subform ):
     
-    predicate_ = self.process_predicate( inst.predicate );
+    predicate_ = self.process_functor( inst.predicate );
     
     args_ = {};
     for ( arg, val ) in inst.args.items():
@@ -140,7 +134,7 @@ class ProtoProcessor( metaclass=subject ):
   
   def process_quantification( self, inst, subform ):
     
-    quantifier_ = self.process_quantifier( inst.quantifier );
+    quantifier_ = self.process_functor( inst.quantifier );
     
     var_ = self.process_variable( inst.var );
     
@@ -164,7 +158,7 @@ class ProtoProcessor( metaclass=subject ):
   
   def process_modification( self, inst, subform ):
     
-    modality_ = self.process_modality( inst.modality );
+    modality_ = self.process_functor( inst.modality );
     
     args_ = {};
     for ( arg, val ) in inst.args.items():
@@ -194,7 +188,7 @@ class ProtoProcessor( metaclass=subject ):
   
   def process_connection( self, inst, subform ):
     
-    connective_ = self.process_connective( inst.connective );
+    connective_ = self.process_functor( inst.connective );
 
     lscope_ = self.process_scopebearer( inst.lscope );
     
@@ -287,74 +281,23 @@ class ProtoProcessor( metaclass=subject ):
              );
   
   
-  def _process_predicate( self, inst, referent ):
+  def _process_functor( self, inst, referent ):
     
     pass;
   
-  def process_predicate( self, inst ):
+  def process_functor( self, inst ):
     
     if isinstance( inst.referent, Word ):
       referent_ = self.process_word( inst.referent );
     elif isinstance( inst.referent, Operator ):
       referent_ = self.process_operator( inst.referent );
     
-    return self._process_predicate(
+    return self._process_functor(
                inst = inst,
                referent = referent_
             );
-  
-  
-  def _process_quantifier( self, inst, referent ):
-    
-    pass;
-  
-  def process_quantifier( self, inst ):
-    
-    if isinstance( inst.referent, Word ):
-      referent_ = self.process_word( inst.referent );
-    elif isinstance( inst.referent, Operator ):
-      referent_ = self.process_operator( inst.referent );
-    
-    return self._process_quantifier(
-               inst = inst,
-               referent = referent_
-            );
-  
-  
-  def _process_modality( self, inst, referent ):
-    
-    pass;
-  
-  def process_modality( self, inst ):
-    
-    if isinstance( inst.referent, Word ):
-      referent_ = self.process_word( inst.referent );
-    elif isinstance( inst.referent, Operator ):
-      referent_ = self.process_operator( inst.referent );
-    
-    return self._process_modality(
-               inst = inst,
-               referent = referent_
-            );
-  
-  
-  def _process_connective( self, inst, referent ):
-    
-    pass;
-  
-  def process_connective( self, inst ):
-    
-    if isinstance( inst.referent, Word ):
-      referent_ = self.process_word( inst.referent );
-    elif isinstance( inst.referent, Operator ):
-      referent_ = self.process_operator( inst.referent );
-    
-    return self._process_connective(
-               inst = inst,
-               referent = referent_
-             );
-  
-  
+            
+            
   def _process_argument( self, inst, aid ):
     
     pass;
