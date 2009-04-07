@@ -7,7 +7,7 @@ from copy import copy;
 
 from pprint import pprint;
 
-from pypes.utils.mc import subject, object_, Object;
+from pypes.utils.mc import subject, object_;
 from pypes.proto import *;
 from pypes.scoping import *;
 from pypes.rewriting import RenamingRewriter;
@@ -123,7 +123,7 @@ class DSFRewriter( RenamingRewriter, metaclass=subject ):
     def _newconn( self, lscope=None, rscope=None ):
 
       newconn = Connection(
-                    connective = Connective(
+                    connective = Functor(
                                      referent = Operator(
                                                     otype = Operator.OP_C_WEACON
                                                   )

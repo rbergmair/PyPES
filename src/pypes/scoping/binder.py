@@ -134,10 +134,10 @@ class Binder( ProtoProcessor, metaclass=subject ):
   def _process_modification( self, inst, subform, modality, args, scope ):
     
     if scope is None:
-      rslt = Predication( predicate=modality )( sig=ProtoSig() );
+      rslt = Predication()( sig=ProtoSig() );
       rslt.holes = subform.holes;
       rslt.protoforms = subform.protoforms;
-      rslt.predicate.referent = subform.modality.referent;
+      rslt.predicate = subform.modality;
       rslt.args = subform.args;
       return rslt;
     else:
