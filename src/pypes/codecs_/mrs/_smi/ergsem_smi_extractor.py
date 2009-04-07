@@ -17,8 +17,23 @@ from pypes.codecs_.mrs._ergsem_processor import ERGSemProcessor;
 class ERGSemSMIExtractor( ERGSemProcessor, metaclass=subject ):
   
   
+  def _enter_( self ):
+    
+    self._semi = {};
+    
+    self._ops = {};
+    self._opqs = set();
+    self._opcs = set();
+    self._opms = set();
+    self._opps = set();
+    
+    self._wqs = [];
+    self._wcs = [];
+    self._wps = [];
+  
+  
   @classmethod
-  def read_sign( cls, sign ):
+  def _read_sign( cls, sign ):
     
     args = {};
     
@@ -89,11 +104,8 @@ class ERGSemSMIExtractor( ERGSemProcessor, metaclass=subject ):
     return args;
   
   
-  @classmethod
-  def read_preds( cls, f ):
+  def _read_preds( self, f ):
     
-    semi = {};
-  
     active = True;
     
     i = 0;
@@ -140,42 +152,108 @@ class ERGSemSMIExtractor( ERGSemProcessor, metaclass=subject ):
       predstr_as_operator = ERGSemProcessor._predstr_as_operator( predstr );
       predstr_as_word = ERGSemProcessor._predstr_as_word( predstr );
       
+      assert predstr_as_operator is not None or predstr_as_word is not None;
+      
       if predstr_as_operator is not None:
         assert predstr_as_word is None;
         predstr = predstr.upper();
-        predstr = ascii( predstr )[1:-1];
       
       if predstr_as_word is not None:
         assert predstr_as_operator is None;
+
+      predstr = ascii( predstr )[1:-1];
+      
+      sign = self._read_sign( sign );
+      
+      interesting = False;
+
+      args = {};
+      for (arg,(opt,sort,feats)) in sign.items():
+        args[ arg ] = sort;
+
+      if predstr_as_word is not None:
         ( lemma, pos, sense ) = predstr_as_word;
         assert pos in { "c", "p", "q", "x", "n", "v", "a" };
         if pos in { "c", "p", "q", "x" }:
-          predstr = ascii( predstr )[1:-1];
-        else:
-          predstr = None;
-      
-      if not predstr is None:
-        sign = cls.read_sign( sign );
-        if predstr not in semi:
-          semi[ predstr ] = [];
-        semi[ predstr ].append( sign );
-      
-    return semi;
+          interesting = True;
+        lemma_ = [];
+        for tok in lemma:
+          lemma_.append( ascii( tok )[1:-1] );
+        lemma = lemma_;
+        sense = ascii( sense )[1:-1];
+        predstr_as_word = ( lemma, pos, sense );
+
+      if predstr_as_operator is not None:
+        self._ops[ predstr_as_operator ] = predstr_as_operator;
+
+      if self._is_quantification( args, strict=False ):
+        interesting = True;
+        if predstr_as_operator is not None:
+          self._opqs.add( predstr_as_operator );
+        if predstr_as_word is not None:
+          assert pos in { "q" };
+          if not predstr_as_word in self._wqs:
+            self._wqs.append( predstr_as_word );
+          
+      if self._is_verbal_coordination( args, strict=False ):
+        interesting = True;
+        if predstr_as_operator is not None:
+          self._opcs.add( predstr_as_operator );
+        if predstr_as_word is not None:
+          assert pos in { "c" };
+          if not predstr_as_word in self._wcs:
+            self._wcs.append( predstr_as_word );
+          
+      if self._is_nominal_coordination( args, strict=False ):
+        interesting = True;
+        if predstr_as_operator is not None:
+          self._opps.add( predstr_as_operator );
+        if predstr_as_word is not None:
+          assert pos in { "c" };
+          if not predstr_as_word in self._wps:
+            self._wps.append( predstr_as_word );
+
+      if self._is_connection( args, strict=False ):
+        interesting = True;
+        if predstr_as_operator is not None:
+          self._opcs.add( predstr_as_operator );
+        if predstr_as_word is not None:
+          assert pos in { "v", "p", "a", "x" };
+          if pos in { "p", "x" }:
+            if not predstr_as_word in self._wcs:
+              self._wcs.append( predstr_as_word );
+        
+      if self._is_modification( args, strict=False ):
+        if predstr_as_operator is not None:
+          interesting = True;
+          self._opms.add( predstr_as_operator );
+        if predstr_as_word is not None:
+          assert pos in { "a", "c", "v", "p", "x", "n" };
+        
+      if self._is_predication( args, strict=False ):
+        if predstr_as_operator is not None:
+          interesting = True;
+          self._opps.add( predstr_as_operator );
+        if predstr_as_word is not None:
+          assert pos != "q";
+
+      if interesting:
+        if predstr not in self._semi:
+          self._semi[ predstr ] = [];
+        self._semi[ predstr ].append( sign );
 
 
   def extract( self, targetdir ):
     
     sourcedir = self._obj_;
     
-    semi = {};
-  
     with open( sourcedir + "/erg.smi" ) as f:
       
-      semi.update( self.read_preds( f ) );
+      self._read_preds( f );
       
     with open( sourcedir + "/core.smi" ) as f:
       
-      semi.update( self.read_preds( f ) );
+      self._read_preds( f );
     
     with open( targetdir + "/_ergsem_smi_checker_auto.py", "w" ) as f:
         
@@ -188,96 +266,66 @@ class ERGSemSMIExtractor( ERGSemProcessor, metaclass=subject ):
           """class ERGSemSMIChecker( ERGSemProcessor, metaclass=subject ):\n"""
         );
   
-      semi_ = pformat( semi, width=72 );
-      semi_ = "\n " + semi_[ 1:-1 ];
-      semi_ = semi_.replace( "\n", "\n     " );
-      semi_ = "  SEMI = {" + semi_;
-      semi_ = semi_ + "\n    };";
+      semi = pformat( self._semi, width=72 );
+      semi = "\n " + semi[ 1:-1 ];
+      semi = semi.replace( "\n", "\n     " );
+      semi = "  SEMI = {" + semi;
+      semi = semi + "\n    };";
       
-      f.write( semi_ );
+      f.write( semi );
         
-    with open( targetdir + "/_ergops_auto.py", "w" ) as f:
+    with open( targetdir + "/_erg_auto.py", "w" ) as f:
   
       f.write(
-          """# -*-  coding: ascii -*-\n"""
+          """# -*-  coding: ascii -*-\n\n"""
           """__package__ = "pypes.proto.lex";\n"""
-          """__all__ = [ "Operator" ];\n"""
+          """__all__ = [ "Operator" ];\n\n"""
           """from pypes.utils.mc import kls;\n"""
-          """from pypes.proto.lex import basic;\n"""
-          """class Operator( basic.Operator, metaclass=kls ):\n"""
+          """from pypes.proto.lex import basic;\n\n"""
+          """class Operator( basic.Operator, metaclass=kls ):\n\n"""
         );
         
-      ops = {};
-      opqs = set();
-      opcs = set();
-      opms = set();
-      opps = set();
-      
-      
-      for predstr in sorted( semi.keys() ):
-        
-        otype = ERGSemProcessor._predstr_as_operator( predstr );
-        if otype is None:
-          continue;
-        
-        is_quantification = False;
-        is_connection = False;
-        is_modification = False;
-        is_predication = False;
-        
-        for sign in semi[ predstr ]:
-          
-          args = {};
-          for (arg,(opt,sort,feats)) in sign.items():
-            args[ arg ] = sort;
-        
-          if self._is_quantification( args, strict=False ):
-            is_quantification = True;
-          if self._is_verbal_coordination( args, strict=False ):
-            is_connection = True;
-          if self._is_nominal_coordination( args, strict=False ):
-            is_predication = True;
-          if self._is_connection( args, strict=False ):
-            is_connection = True;
-          if self._is_modification( args, strict=False ):
-            is_modification = True;
-          if self._is_predication( args, strict=False ):
-            is_predication = True;
-        
-        ops[ otype ] = otype;
-        if is_quantification:
-          opqs.add( otype );
-        if is_connection:
-          opcs.add( otype );
-        if is_modification:
-          opms.add( otype );
-        if is_predication:
-          opps.add( otype );
-      
-      for otype in sorted( ops.keys() ):
+      for otype in sorted( self._ops.keys() ):
         f.write( "  " + otype + " = '" + otype + "';\n" );
+
+      f.write( "\n" );
       
       f.write( "  OPs = {};\n" );
       f.write( "  OPs.update( basic.Operator.OPs );\n" );
       f.write( "  OPs.update( {" );
-      f.write( ( "\n " + pformat( ops, width=74 )[1:-1] ).replace( "\n", "\n   " ).replace( "'", "" ) );
-      f.write( "} );\n" );
+      f.write( ( "\n " + pformat( self._ops, width=74 )[1:-1] ).replace( "\n", "\n   " ).replace( "'", "" ) );
+      f.write( "} );\n\n" );
       
       f.write( "  OP_Qs = basic.Operator.OP_Qs | {" );
-      f.write( ( "\n " + pformat( opqs, width=74 )[1:-1] ).replace( "\n", "\n   " ).replace( "'", "" ) );
-      f.write( "};\n" );
+      f.write( ( "\n " + pformat( self._opqs, width=74 )[1:-1] ).replace( "\n", "\n   " ).replace( "'", "" ) );
+      f.write( "};\n\n" );
       
       f.write( "  OP_Cs = basic.Operator.OP_Cs | {" );
-      f.write( ( "\n " + pformat( opcs, width=74 )[1:-1] ).replace( "\n", "\n   " ).replace( "'", "" ) );
-      f.write( "};\n" );
+      f.write( ( "\n " + pformat( self._opcs, width=74 )[1:-1] ).replace( "\n", "\n   " ).replace( "'", "" ) );
+      f.write( "};\n\n" );
       
       f.write( "  OP_Ms = basic.Operator.OP_Ms | {" );
-      f.write( ( "\n " + pformat( opms, width=74 )[1:-1] ).replace( "\n", "\n   " ).replace( "'", "" ) );
-      f.write( "};\n" );
+      f.write( ( "\n " + pformat( self._opms, width=74 )[1:-1] ).replace( "\n", "\n   " ).replace( "'", "" ) );
+      f.write( "};\n\n" );
 
       f.write( "  OP_Ps = basic.Operator.OP_Ps | {" );
-      f.write( ( "\n " + pformat( opps, width=74 )[1:-1] ).replace( "\n", "\n   " ).replace( "'", "" ) );
-      f.write( "};\n" );
+      f.write( ( "\n " + pformat( self._opps, width=74 )[1:-1] ).replace( "\n", "\n   " ).replace( "'", "" ) );
+      f.write( "};\n\n" );
+
+      f.write( "\n" );
+      f.write( "class Word( basic.Word, metaclass=kls ):\n\n" );
+
+      f.write( "  WRD_Qs = basic.Word.WRD_Qs | [" );
+      f.write( ( "\n " + pformat( self._wqs, width=74 )[1:-1] ).replace( "\n", "\n   " ) );
+      f.write( "];\n\n" );
+
+      f.write( "  WRD_Cs = basic.Word.WRD_Cs | [" );
+      f.write( ( "\n " + pformat( self._wcs, width=74 )[1:-1] ).replace( "\n", "\n   " ) );
+      f.write( "];\n\n" );
+
+      f.write( "  WRD_Ps = basic.Word.WRD_Cs | [" );
+      f.write( ( "\n " + pformat( self._wps, width=74 )[1:-1] ).replace( "\n", "\n   " ) );
+      f.write( "];\n\n" );
           
         
         

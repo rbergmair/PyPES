@@ -1,9 +1,13 @@
 # -*-  coding: ascii -*-
+
 __package__ = "pypes.proto.lex";
 __all__ = [ "Operator" ];
+
 from pypes.utils.mc import kls;
 from pypes.proto.lex import basic;
+
 class Operator( basic.Operator, metaclass=kls ):
+
   ABSTR_DEG = 'ABSTR_DEG';
   ADDRESSEE = 'ADDRESSEE';
   ALL_TOO = 'ALL_TOO';
@@ -122,6 +126,7 @@ class Operator( basic.Operator, metaclass=kls ):
   WHICH_Q = 'WHICH_Q';
   WITH_P = 'WITH_P';
   YOFC = 'YOFC';
+
   OPs = {};
   OPs.update( basic.Operator.OPs );
   OPs.update( {
@@ -243,6 +248,7 @@ class Operator( basic.Operator, metaclass=kls ):
     WHICH_Q: WHICH_Q,
     WITH_P: WITH_P,
     YOFC: YOFC} );
+
   OP_Qs = basic.Operator.OP_Qs | {
     DEF_EXPLICIT_Q,
     DEF_IMPLICIT_Q,
@@ -262,6 +268,7 @@ class Operator( basic.Operator, metaclass=kls ):
     SOME_Q,
     UDEF_Q,
     WHICH_Q};
+
   OP_Cs = basic.Operator.OP_Cs | {
     ADDRESSEE,
     ALL_TOO,
@@ -290,6 +297,7 @@ class Operator( basic.Operator, metaclass=kls ):
     TIMES,
     UNSPEC_LOC,
     WITH_P};
+
   OP_Ms = basic.Operator.OP_Ms | {
     ADDRESSEE,
     ALL_TOO,
@@ -345,6 +353,7 @@ class Operator( basic.Operator, metaclass=kls ):
     UNSPEC_MANNER,
     WITH_P,
     YOFC};
+
   OP_Ps = basic.Operator.OP_Ps | {
     ABSTR_DEG,
     ADDRESSEE,
@@ -434,3 +443,172 @@ class Operator( basic.Operator, metaclass=kls ):
     V_EVENT,
     WITH_P,
     YOFC};
+
+
+class Word( basic.Word, metaclass=kls ):
+
+  WRD_Qs = basic.Word.WRD_Qs | [
+    (['a', 'bit'], 'q', 'on'),
+    (['a', 'great', 'many'], 'q', 'on'),
+    (['a', 'little'], 'q', 'on'),
+    (['all'], 'q', 'on'),
+    (['another'], 'q', 'on'),
+    (['any', 'more'], 'q', 'on'),
+    (['any'], 'q', 'on'),
+    (['a'], 'q', 'on'),
+    (['both'], 'q', 'on'),
+    (['each'], 'q', 'on'),
+    (['either'], 'q', 'on'),
+    (['enough'], 'q', 'on'),
+    (['every'], 'q', 'on'),
+    (['half'], 'q', 'on'),
+    (['less'], 'q', 'on'),
+    (['many', 'a'], 'q', 'on'),
+    (['most'], 'q', 'on'),
+    (['neither'], 'q', 'on'),
+    (['no', 'more'], 'q', 'on'),
+    (['no'], 'q', 'on'),
+    (['part'], 'q', 'on'),
+    (['some'], 'q', 'indiv'),
+    (['some'], 'q', 'on'),
+    (['such', 'a'], 'q', 'on'),
+    (['such'], 'q', 'on'),
+    (['that'], 'q', 'dem'),
+    (['the', 'most'], 'q', 'on'),
+    (['these'], 'q', 'dem'),
+    (['the'], 'q', 'on'),
+    (['this'], 'q', 'dem'),
+    (['those'], 'q', 'dem'),
+    (['twice'], 'q', 'on'),
+    (['umpteen'], 'q', 'on'),
+    (['what', 'a'], 'q', 'on'),
+    (['which'], 'q', 'on')];
+
+  WRD_Cs = basic.Word.WRD_Cs | [
+    (['after'], 'c', 'on'),
+    (['as'], 'p', 'comp'),
+    (['colon'], 'p', 'namely'),
+    (['e', 'g'], 'p', 'on'),
+    (['except'], 'p', 'on'),
+    (['for'], 'p', 'on'),
+    (['from'], 'p', 'on'),
+    (['i', 'e'], 'p', 'on'),
+    (['in'], 'p', 'on'),
+    (['namely'], 'p', 'on'),
+    (['notwithstanding'], 'p', 'on'),
+    (['on'], 'p', 'on'),
+    (['other', 'than'], 'p', 'on'),
+    (['over'], 'p', 'on'),
+    (['rather', 'than'], 'p', 'on'),
+    (['such', 'as'], 'p', 'on'),
+    (['until'], 'p', 'on'),
+    (['up', 'until'], 'p', 'on'),
+    (['viz'], 'p', 'on'),
+    (['whence'], 'p', 'on'),
+    (['whither'], 'p', 'on'),
+    (['after'], 'x', 'h'),
+    (['albeit'], 'x', 'on'),
+    (['all', 'the', 'while'], 'x', 'on'),
+    (['although'], 'x', 'on'),
+    (['and', 'neither'], 'x', 'subord'),
+    (['and', 'so'], 'x', 'subord'),
+    (['as', 'far', 'as'], 'x', 'on'),
+    (['as', 'if'], 'x', 'on'),
+    (['as', 'in'], 'x', 'on'),
+    (['as', 'long', 'as'], 'x', 'on'),
+    (['as', 'though'], 'x', 'on'),
+    (['as'], 'x', 'prd'),
+    (['as'], 'x', 'subord'),
+    (['because'], 'x', 'on'),
+    (['before'], 'x', 'h'),
+    (['but', 'neither'], 'x', 'subord'),
+    (['but', 'so'], 'x', 'subord'),
+    (['even', 'if'], 'x', 'on'),
+    (['even', 'though'], 'x', 'on'),
+    (['even', 'when'], 'x', 'on'),
+    (['ever', 'since'], 'x', 'subord'),
+    (['except', 'to'], 'x', 'on'),
+    (['except'], 'x', 'h'),
+    (['for'], 'x', 'cause'),
+    (['for'], 'x', 'cond'),
+    (['how', 'about'], 'x', 'on'),
+    (['how', 'long'], 'x', 'on'),
+    (['if', 'and', 'when'], 'x', 'on'),
+    (['if', 'only'], 'x', 'on'),
+    (['if'], 'x', 'then'),
+    (['in', 'case'], 'x', 'on'),
+    (['in', 'order', 'to'], 'x', 'on'),
+    (['in', 'so', 'far', 'as'], 'x', 'on'),
+    (['in', 'that'], 'x', 'on'),
+    (['in', 'the', 'event'], 'x', 'on'),
+    (['inasmuch', 'as'], 'x', 'subord'),
+    (['lest'], 'x', 'on'),
+    (['like'], 'x', 'preph'),
+    (['not', 'that'], 'x', 'on'),
+    (['now', 'that'], 'x', 'on'),
+    (['of'], 'x', 'subord'),
+    (['once'], 'x', 'subord'),
+    (['provided'], 'x', 'on'),
+    (['providing'], 'x', 'on'),
+    (['since'], 'x', 'subord'),
+    (['so', 'as', 'to'], 'x', 'on'),
+    (['so', 'long', 'as'], 'x', 'on'),
+    (['so', 'much', 'so', 'that'], 'x', 'on'),
+    (['so', 'that'], 'x', 'on'),
+    (['such', 'as'], 'x', 'h'),
+    (['such', 'that'], 'x', 'on'),
+    (['therefore'], 'x', 'on'),
+    (['though'], 'x', 'on'),
+    (['unless'], 'x', 'on'),
+    (['until'], 'x', 'h'),
+    (['what', 'of'], 'x', 'on'),
+    (['when'], 'x', 'subord'),
+    (['whenever'], 'x', 'subord'),
+    (['where'], 'x', 'subord'),
+    (['whereas'], 'x', 'on'),
+    (['whereby'], 'x', 'on'),
+    (['wherever'], 'x', 'subord'),
+    (['whether', 'or', 'not'], 'x', 'on'),
+    (['whether'], 'x', 'on'),
+    (['while'], 'x', 'on'),
+    (['whilst'], 'x', 'on'),
+    (['why', 'not'], 'x', 'on'),
+    (['why'], 'x', 'on'),
+    (['with'], 'x', 'subord')];
+
+  WRD_Ps = basic.Word.WRD_Cs | [
+    (['albeit'], 'c', 'on'),
+    (['and', 'also'], 'c', 'on'),
+    (['and', 'finally'], 'c', 'on'),
+    (['and', 'not'], 'c', 'on'),
+    (['and', 'so'], 'c', 'on'),
+    (['and', 'then'], 'c', 'on'),
+    (['and', 'thus'], 'c', 'on'),
+    (['and', 'yet'], 'c', 'on'),
+    (['and'], 'c', 'on'),
+    (['as', 'well', 'as'], 'c', 'on'),
+    (['but', 'also'], 'c', 'on'),
+    (['but', 'not'], 'c', 'on'),
+    (['but', 'then'], 'c', 'on'),
+    (['but'], 'c', 'on'),
+    (['even'], 'c', 'on'),
+    (['except', 'that'], 'c', 'on'),
+    (['except'], 'c', 'on'),
+    (['if', 'not'], 'c', 'on'),
+    (['instead', 'of'], 'c', 'on'),
+    (['let', 'alone'], 'c', 'on'),
+    (['minus'], 'c', 'on'),
+    (['much', 'less'], 'c', 'on'),
+    (['nor'], 'c', 'on'),
+    (['not', 'to', 'mention'], 'c', 'on'),
+    (['not'], 'c', 'on'),
+    (['or', 'else'], 'c', 'on'),
+    (['or'], 'c', 'on'),
+    (['plus-minus'], 'c', 'on'),
+    (['plus'], 'c', 'on'),
+    (['rather', 'than'], 'c', 'on'),
+    (['so'], 'c', 'on'),
+    (['then'], 'c', 'on'),
+    (['versus'], 'c', 'on'),
+    (['yet'], 'c', 'on')];
+
