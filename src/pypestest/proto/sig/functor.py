@@ -1,7 +1,7 @@
 # -*-  coding: ascii -*-  # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 __package__ = "pypestest.proto.sig";
-__all__ = [ "TestPredicate", "suite", "main" ];
+__all__ = [ "TestFunctor", "suite", "main" ];
 
 import sys;
 import unittest;
@@ -15,7 +15,7 @@ from pypes.proto import *;
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-class TestPredicate( TestCase, metaclass=object_ ):
+class TestFunctor( TestCase, metaclass=object_ ):
   
   
   def logify( self, inst_, msg=None ):
@@ -29,50 +29,50 @@ class TestPredicate( TestCase, metaclass=object_ ):
     return inst;
   
   
-  def init_pred_1( self ):
+  def init_funct_1( self ):
     
-    inst_ = Functor( referent = Word( wid=5, lemma = ["man"] ) );
+    inst_ = Functor( fid=5, referent = Word( lemma = ["man"] ) );
     return inst_;
 
-  def check_pred_1( self, inst, msg=None ):
+  def check_funct_1( self, inst, msg=None ):
     
     self.assert_( isinstance( inst.referent, Word ), msg );
-    self.assertEquals( inst.referent.wid, 5, msg );
+    self.assertEquals( inst.fid, 5, msg );
     self.assertEquals( inst.referent.lemma, ["man"], msg );
 
   def test_1( self ):
     
-    self.check_pred_1( self.logify( self.init_pred_1() ) );
+    self.check_funct_1( self.logify( self.init_funct_1() ) );
 
 
-  def init_pred_2( self ):
+  def init_funct_2( self ):
     
     inst_ = Functor( referent = Operator( otype=Operator.OP_P_EQUALITY ) );
     return inst_;
   
-  def check_pred_2( self, inst, msg=None ):
+  def check_funct_2( self, inst, msg=None ):
     
     self.assert_( isinstance( inst.referent, Operator ), msg );
     self.assertEquals( inst.referent.otype, Operator.OP_P_EQUALITY, msg );
 
   def test_2( self ):
     
-    self.check_pred_2( self.logify( self.init_pred_2() ) );
+    self.check_funct_2( self.logify( self.init_funct_2() ) );
   
   
   def test_cmp( self ):
     
-    pred1 = self.logify( self.init_pred_1() );
-    pred2 = self.logify( self.init_pred_2() );
+    funct1 = self.logify( self.init_funct_1() );
+    funct2 = self.logify( self.init_funct_2() );
 
-    pred1_ = self.logify( self.init_pred_1() );
-    pred2_ = self.logify( self.init_pred_2() );
+    funct1_ = self.logify( self.init_funct_1() );
+    funct2_ = self.logify( self.init_funct_2() );
     
-    self.assertEquals_( pred1, pred1_ );
-    self.assertEquals_( pred2, pred2_ );
+    self.assertEquals_( funct1, funct1_ );
+    self.assertEquals_( funct2, funct2_ );
 
-    self.assertNotEquals_( pred1, pred2_ );
-    self.assertNotEquals_( pred2, pred1_ );
+    self.assertNotEquals_( funct1, funct2_ );
+    self.assertNotEquals_( funct2, funct1_ );
     
 
 
@@ -83,7 +83,7 @@ def suite():
   suite = unittest.TestSuite();
 
   suite.addTests( unittest.TestLoader().loadTestsFromTestCase(
-      TestPredicate
+      TestFunctor
     ) );
 
   return suite;

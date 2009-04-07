@@ -79,9 +79,10 @@ class NullRewriter( ProtoProcessor, metaclass=subject ):
                constraints = constraints
             );
     
-  def _process_functor( self, inst, referent ):
+  def _process_functor( self, inst, fid, referent ):
     
     return inst.__class__(
+                fid = fid,
                 referent = referent
              );
              
@@ -109,10 +110,9 @@ class NullRewriter( ProtoProcessor, metaclass=subject ):
                sid = sid
              );
     
-  def _process_word( self, inst, wid, lemma, pos, sense, feats ):
+  def _process_word( self, inst, lemma, pos, sense, feats ):
     
     return inst.__class__(
-               wid = wid,
                lemma = lemma,
                pos = pos,
                sense = sense,

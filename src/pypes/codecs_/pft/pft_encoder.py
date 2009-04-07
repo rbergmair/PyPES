@@ -194,7 +194,7 @@ class PFTEncoder( ProtoProcessor, metaclass=subject ):
     return rslt;
   
   
-  def _process_word( self, inst, wid, lemma, pos, sense, feats ):
+  def _process_word( self, inst, lemma, pos, sense, feats ):
     
     rslt = "|";
     if lemma is not None:
@@ -207,8 +207,6 @@ class PFTEncoder( ProtoProcessor, metaclass=subject ):
         rslt += self._fmt_alphanum( pos );
       if sense is not None:
         rslt += "_" + self._fmt_alphanum( sense );
-    if wid is not None:
-      rslt += ":" + str(wid);
     rslt += "|";
     rslt = self._fmt_word( rslt );
     if feats is not None:
@@ -257,16 +255,19 @@ class PFTEncoder( ProtoProcessor, metaclass=subject ):
     return rslt;
       
 
-  def _process_functor( self, inst, referent ):
+  def _process_functor( self, inst, fid, referent ):
     
-    return referent;
+    rslt = referent;
+    if inst.fid is not None:
+      rslt += ":" + str(inst.fid);
+    return rslt;
 
   
   def _process_predication( self, inst, subform, predicate, args ):
     
     rslt = "\ue100 ";
     rslt += predicate;
-    rslt += self._process_argslist( inst.predicate, args );
+    rslt += self._process_argslist( predicate, args );
     
     return rslt;
 
@@ -286,7 +287,7 @@ class PFTEncoder( ProtoProcessor, metaclass=subject ):
     
     rslt = "\ue102 ";
     rslt += modality;
-    rslt += self._process_argslist( inst.modality, args );
+    rslt += self._process_argslist( modality, args );
     rslt += " " + scope;
     
     return rslt;

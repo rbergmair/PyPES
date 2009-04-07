@@ -33,7 +33,8 @@ class TestModification( TestCase, metaclass=object_ ):
 
     inst_ = Modification(
                 modality = Functor(
-                               referent = Word( wid=5, lemma = ["told"] )
+                               fid = 5,
+                               referent = Word( lemma = ["told"] )
                              ),
                 args = { Argument( aid="arg1" ):
                            Variable( sidvid=("x",1) ),
@@ -48,8 +49,8 @@ class TestModification( TestCase, metaclass=object_ ):
   def check_modification_1( self, inst, msg=None ):
     
     self.assert_( isinstance( inst.modality, Functor ), msg );
+    self.assertEquals( inst.modality.fid, 5, msg );
     self.assert_( isinstance( inst.modality.referent, Word ), msg );
-    self.assertEquals( inst.modality.referent.wid, 5, msg );
     self.assertEquals( inst.modality.referent.lemma, ["told"], msg );
     
     labels = set();

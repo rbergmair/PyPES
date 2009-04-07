@@ -78,10 +78,9 @@ class TestPFTEncoder( TestCase, metaclass=object_ ):
     check( "|lemma1+lemma2|", TestWord.init_word_2 );
     check( "|_p|", TestWord.init_word_3 );
     check( "|__1|", TestWord.init_word_4 );
-    check( "|:1|", TestWord.init_word_5 );
-    check( "|lemma_p_1:1|", TestWord.init_word_8 );
+    check( "|lemma_p_1|", TestWord.init_word_8 );
     check( "||", TestWord.init_word_9 );
-    check( "|lemma:1|[ pers='3', num='sg' ]", TestWord.init_word_10 );
+    check( "|lemma|[ pers='3', num='sg' ]", TestWord.init_word_10 );
 
 
   def test_operator( self ):
@@ -98,7 +97,7 @@ class TestPFTEncoder( TestCase, metaclass=object_ ):
     check = lambda stri, initf: \
               self.check( stri, initf, TestPredication.logify );
     
-    check( "\ue100 |cat:5|( arg1=x1 )", TestPredication.init_pred_1 );
+    check( "\ue100 |cat|:5( arg1=x1 )", TestPredication.init_pred_1 );
     check( "\ue100 EQUALS( ARG0=x1, ARG1='Jones' )", TestPredication.init_pred_2 );
     check( "\ue100 |cat|( arg0=d1 )", TestPredication.init_pred_3 );
 
@@ -117,7 +116,7 @@ class TestPFTEncoder( TestCase, metaclass=object_ ):
     check = lambda stri, initf: \
               self.check( stri, initf, TestModification.logify );
     
-    check( "\ue102 |told:5|( arg1=x1, arg2=x2 ) 1",
+    check( "\ue102 |told|:5( arg1=x1, arg2=x2 ) 1",
            TestModification.init_modification_1 );
     check( "\ue102 NULL() {}",
            TestModification.init_modification_2 );
@@ -145,17 +144,17 @@ class TestPFTEncoder( TestCase, metaclass=object_ ):
     check = lambda stri, initf: \
               self.check( stri, initf, TestProtoForm.logify );
 
-    PF1 = """{ 1: \ue101 |Every:0| x1 { \ue100 |man:6|( arg0=x1 ) } 2;
-               3: \ue101 |a:16| x2 { \ue100 |woman:18|( arg0=x2 ) } 4;
-               5: \ue100 |loves:10|( arg1=x1, arg2=x2 );
+    PF1 = """{ 1: \ue101 |Every|:0 x1 { \ue100 |man|:6( arg0=x1 ) } 2;
+               3: \ue101 |a|:16 x2 { \ue100 |woman|:18( arg0=x2 ) } 4;
+               5: \ue100 |loves|:10( arg1=x1, arg2=x2 );
                \ue104 1 ^ 5;
                \ue104 3 ^ 5 }""";
 
-    PF2 = """{    \ue101 |every:0| x1 1 { \ue100 |lie:32|( arg1=x1 ) };
+    PF2 = """{    \ue101 |every|:0 x1 1 { \ue100 |lie|:32( arg1=x1 ) };
                2: { 5: \ue103 __ /\ __;
-                    6: \ue100 |witness:6|( arg0=x1 );
-                    7: \ue102 |say:18|( arg1=x1 ) <3> };
-               4: \ue101 |she:23| x2 { \ue100 |she:23|( arg0=x2 ) } { \ue100 |lie:27|( arg1=x2 ) };
+                    6: \ue100 |witness|:6( arg0=x1 );
+                    7: \ue102 |say|:18( arg1=x1 ) <3> };
+               4: \ue101 |she|:23 x2 { \ue100 |she|:23( arg0=x2 ) } { \ue100 |lie|:27( arg1=x2 ) };
                   \ue104 1 ^ 2;
                   \ue104 3 ^ 4 }""";
     

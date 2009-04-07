@@ -20,7 +20,7 @@ class TreeEncoder( ProtoProcessor, metaclass=subject ):
     
     return otype;
   
-  def _process_word( self, inst, wid, lemma, pos, sense, feats ):
+  def _process_word( self, inst, lemma, pos, sense, feats ):
     
     rslt = "_";
     if lemma is not None:
@@ -50,9 +50,12 @@ class TreeEncoder( ProtoProcessor, metaclass=subject ):
     
     return "";
 
-  def _process_functor( self, inst, referent ):
+  def _process_functor( self, inst, fid, referent ):
     
-    return referent;
+    rslt = referent;
+    if fid is not None:
+      rslt += ":" + str(fid);
+    return rslt;
   
   def _process_predication( self, inst, subform, predicate, args ):
     

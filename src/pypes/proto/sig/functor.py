@@ -15,13 +15,16 @@ from pypes.proto.protobase import ProtoBase;
 class Functor( ProtoBase, metaclass=kls ):
 
   _superordinate_ = "sig";
-  _key_ = "referent";
+  _key_ = "fid";
   
   def _init_init_( self ):
     
+    self.fid = None;
     self.referent = None;
   
-  def __init__( self, sig, referent=None ):
+  def __init__( self, sig, fid=None, referent=None ):
+    
+    self.fid = fid;
     
     if referent is not None:
   

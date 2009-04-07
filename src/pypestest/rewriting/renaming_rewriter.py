@@ -29,19 +29,25 @@ class TestRenamingRewriter( TestCase, metaclass=object_ ):
     lambdaified = renaming_rewrite( init );
     logified = lambdaified( sig=ProtoSig() );
     
-    reference_ = pft_decode( """{ \ue103 { 8: \ue101 |Every:0| x4 { \ue100 |man:6|( arg0=x4 ) } __;
-                                           9: \ue101 |a:16| x3 { \ue100 |woman:18|( arg0=x3 ) } __;
-                                           5: \ue100 |loves:10|( arg1=x4, arg2=x3 );
+    reference_ = pft_decode( """{ \ue103 { 8: \ue101 |Every|:0 x4 { \ue100 |man|:6( arg0=x4 ) } __;
+                                           9: \ue101 |a|:16 x3 { \ue100 |woman|:18( arg0=x3 ) } __;
+                                           5: \ue100 |loves|:10( arg1=x4, arg2=x3 );
                                            \ue104 9 ^ 5;
-                                           \ue104 8 ^ 5 } /\ {    \ue101 |every| x1 1 { \ue100 |lie:32|( arg1=x1 ) };
+                                           \ue104 8 ^ 5 } /\ {    \ue101 |every| x1 1 { \ue100 |lie|:32( arg1=x1 ) };
                                                                2: {    \ue103 __ /\ __;
                                                                     6: \ue100 |witness|( arg0=x1 );
                                                                     7: \ue102 |say|( arg1=x1 ) <3> };
-                                                               4: \ue101 |she:23| x2 { \ue100 |she:23|( arg0=x2 ) } { \ue100 |lie:27|( arg1=x2 ) };
+                                                               4: \ue101 |she|:23 x2 { \ue100 |she|:23( arg0=x2 ) } { \ue100 |lie|:27( arg1=x2 ) };
                                                                \ue104 3 ^ 4;
                                                                \ue104 1 ^ 2 } }""" );
     
     reference = reference_( sig=ProtoSig() );
+    
+    #print();
+    #print( "++" );
+    #print( pft_encode( init, pretty=False, fast_initialize=True, linebreaks=True,  ) );
+    #print( pft_encode( logified, pretty=False, fast_initialize=True, linebreaks=True ) );
+    #print( "--" );
     
     self.assertEquals_( logified, reference );
 
@@ -52,15 +58,15 @@ class TestRenamingRewriter( TestCase, metaclass=object_ ):
     lambdaified = renaming_rewrite( init, rename_handles_p=False );
     logified = lambdaified( sig=ProtoSig() );
 
-    reference_ = pft_decode( """{ \ue103 { 1: \ue101 |Every:0| x4 { \ue100 |man:6|( arg0=x4 ) } 2;
-                                           3: \ue101 |a:16| x3 { \ue100 |woman:18|( arg0=x3 ) } 4;
-                                           5: \ue100 |loves:10|( arg1=x4, arg2=x3 );
+    reference_ = pft_decode( """{ \ue103 { 1: \ue101 |Every|:0 x4 { \ue100 |man|:6( arg0=x4 ) } 2;
+                                           3: \ue101 |a|:16 x3 { \ue100 |woman|:18( arg0=x3 ) } 4;
+                                           5: \ue100 |loves|:10( arg1=x4, arg2=x3 );
                                            \ue104 3 ^ 5;
-                                           \ue104 1 ^ 5 } /\ {    \ue101 |every| x1 1 { \ue100 |lie:32|( arg1=x1 ) };
+                                           \ue104 1 ^ 5 } /\ {    \ue101 |every| x1 1 { \ue100 |lie|:32( arg1=x1 ) };
                                                                2: { 5: \ue103 __ /\ __;
                                                                     6: \ue100 |witness|( arg0=x1 );
                                                                     7: \ue102 |say|( arg1=x1 ) <3> };
-                                                               4: \ue101 |she:23| x2 { \ue100 |she:23|( arg0=x2 ) } { \ue100 |lie:27|( arg1=x2 ) };
+                                                               4: \ue101 |she|:23 x2 { \ue100 |she|:23( arg0=x2 ) } { \ue100 |lie|:27( arg1=x2 ) };
                                                                \ue104 3 ^ 4;
                                                                \ue104 1 ^ 2 } }""" );
                                                   
@@ -75,15 +81,15 @@ class TestRenamingRewriter( TestCase, metaclass=object_ ):
     lambdaified = renaming_rewrite( init, rename_vars_p=False );
     logified = lambdaified( sig=ProtoSig() );
 
-    reference_ = pft_decode( """{ \ue103 { 8: \ue101 |Every:0| x1 { \ue100 |man:6|( arg0=x1 ) } __;
-                                           9: \ue101 |a:16| x2 { \ue100 |woman:18|( arg0=x2 ) } __;
-                                           5: \ue100 |loves:10|( arg1=x1, arg2=x2 );
+    reference_ = pft_decode( """{ \ue103 { 8: \ue101 |Every|:0 x1 { \ue100 |man|:6( arg0=x1 ) } __;
+                                           9: \ue101 |a|:16 x2 { \ue100 |woman|:18( arg0=x2 ) } __;
+                                           5: \ue100 |loves|:10( arg1=x1, arg2=x2 );
                                            \ue104 9 ^ 5;
-                                           \ue104 8 ^ 5 } /\ {    \ue101 |every| x1 1 { \ue100 |lie:32|( arg1=x1 ) };
+                                           \ue104 8 ^ 5 } /\ {    \ue101 |every| x1 1 { \ue100 |lie|:32( arg1=x1 ) };
                                                                2: {    \ue103 __ /\ __;
                                                                     6: \ue100 |witness|( arg0=x1 );
                                                                     7: \ue102 |say|( arg1=x1 ) <3> };
-                                                               4: \ue101 |she:23| x2 { \ue100 |she:23|( arg0=x2 ) } { \ue100 |lie:27|( arg1=x2 ) };
+                                                               4: \ue101 |she|:23 x2 { \ue100 |she|:23( arg0=x2 ) } { \ue100 |lie|:27( arg1=x2 ) };
                                                                \ue104 3 ^ 4;
                                                                \ue104 1 ^ 2 } }""" );
                                                   
@@ -95,18 +101,18 @@ class TestRenamingRewriter( TestCase, metaclass=object_ ):
   def test_renaming_rewriter_4( self ):
     
     init = TestProtoForm.init_logified_pf_4( self );
-    lambdaified = renaming_rewrite( init, rename_words_p=False );
+    lambdaified = renaming_rewrite( init, rename_functs_p=False );
     logified = lambdaified( sig=ProtoSig() );
 
-    reference_ = pft_decode( """{ \ue103 { 8: \ue101 |every:0| x4 { \ue100 |witness:6|( arg0=x4 ) } __;
-                                           9: \ue101 |a:16| x3 { \ue100 |say:18|( arg0=x3 ) } __;
-                                           5: \ue100 |loves:10|( arg1=x4, arg2=x3 );
+    reference_ = pft_decode( """{ \ue103 { 8: \ue101 |every|:0 x4 { \ue100 |witness|:6( arg0=x4 ) } __;
+                                           9: \ue101 |a|:16 x3 { \ue100 |say|:18( arg0=x3 ) } __;
+                                           5: \ue100 |loves|:10( arg1=x4, arg2=x3 );
                                            \ue104 9 ^ 5;
-                                           \ue104 8 ^ 5 } /\ {    \ue101 |every| x1 1 { \ue100 |lie:32|( arg1=x1 ) };
+                                           \ue104 8 ^ 5 } /\ {    \ue101 |every| x1 1 { \ue100 |lie|:32( arg1=x1 ) };
                                                                2: {    \ue103 __ /\ __;
-                                                                    6: \ue100 |witness:6|( arg0=x1 );
-                                                                    7: \ue102 |say:18|( arg1=x1 ) <3> };
-                                                               4: \ue101 |she:23| x2 { \ue100 |she:23|( arg0=x2 ) } { \ue100 |lie:27|( arg1=x2 ) };
+                                                                    6: \ue100 |witness|:6( arg0=x1 );
+                                                                    7: \ue102 |say|:18( arg1=x1 ) <3> };
+                                                               4: \ue101 |she|:23 x2 { \ue100 |she|:23( arg0=x2 ) } { \ue100 |lie|:27( arg1=x2 ) };
                                                                \ue104 3 ^ 4;
                                                                \ue104 1 ^ 2 } }""" );
                                                   

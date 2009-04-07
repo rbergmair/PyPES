@@ -43,8 +43,8 @@ class _IndexCollector( ProtoProcessor, metaclass=subject ):
     self._obj_._variable_references = {};
     self._obj_._variable_by_sidvid = {};
     
-    self._obj_._word_references = {};
-    self._obj_._word_by_wid = {};
+    self._obj_._funct_references = {};
+    self._obj_._funct_by_fid = {};
     
     self._obj_._sort_references = {};
   
@@ -62,15 +62,15 @@ class _IndexCollector( ProtoProcessor, metaclass=subject ):
     self._obj_._handle_by_hid[ hid ].add( inst );
     
     
-  def _process_word( self, inst, wid, lemma, pos, sense, feats ):
+  def _process_functor( self, inst, fid, referent ):
     
-    if not inst in self._obj_._word_references:
-      self._obj_._word_references[ inst ] = 0;
-    self._obj_._word_references[ inst ] += 1;
+    if not inst in self._obj_._funct_references:
+      self._obj_._funct_references[ inst ] = 0;
+    self._obj_._funct_references[ inst ] += 1;
     
-    if not wid in self._obj_._word_by_wid:
-      self._obj_._word_by_wid[ wid ] = set();
-    self._obj_._word_by_wid[ wid ].add( inst )
+    if not fid in self._obj_._funct_by_fid:
+      self._obj_._funct_by_fid[ fid ] = set();
+    self._obj_._funct_by_fid[ fid ].add( inst )
 
 
   def _process_variable( self, inst, sid, vid ):
@@ -173,7 +173,7 @@ class RenamingRewriter( NullRewriter, metaclass=subject ):
   
   
   def _invert_index( self, rename_handles_p=True, rename_vars_p=True,
-                     rename_words_p=True, force_rename_handles_p=False ):
+                     rename_functs_p=True, force_rename_handles_p=False ):
 
     self._invert(
         self._index._handle_by_hid, self._hid_by_handle,
@@ -184,9 +184,11 @@ class RenamingRewriter( NullRewriter, metaclass=subject ):
     # print( repr( self._hid_by_handle ) );
 
     self._invert(
-        self._index._word_by_wid, self._wid_by_word,
-        self._index._word_references, rename_words_p
+        self._index._funct_by_fid, self._fid_by_funct,
+        self._index._funct_references, rename_functs_p
       );
+
+    # print( repr( self._fid_by_funct ) );
     
     reallocate_vars = set();
     sidvids = set();
@@ -251,31 +253,31 @@ class RenamingRewriter( NullRewriter, metaclass=subject ):
 
  
   def rewrite( self, rename_handles_p=True, rename_vars_p=True,
-                 rename_words_p=True, force_rename_handles_p=False ):
+                 rename_functs_p=True, force_rename_handles_p=False ):
     
     self._hid_by_handle = {};
     self._sortvid_by_variable = {};
     self._sid_by_sort = {};
-    self._wid_by_word = {};
+    self._fid_by_funct = {};
     
     self._invert_index(
         rename_handles_p = rename_handles_p,
         rename_vars_p = rename_vars_p,
-        rename_words_p = rename_words_p,
+        rename_functs_p = rename_functs_p,
         force_rename_handles_p = force_rename_handles_p
       );
     
     return self.process( self._obj_ );
 
 
-  def _process_handle( self, inst, hid ):
+  def process_handle( self, inst ):
     
     return inst.__class__(
                hid = self._hid_by_handle[ inst ]
              );
 
 
-  def _process_variable( self, inst, sid, vid ):
+  def process_variable( self, inst ):
 
     ( sort, vid_ ) = self._sortvid_by_variable[ inst ];
     sid_ = self._sid_by_sort[ sort ];
@@ -285,14 +287,11 @@ class RenamingRewriter( NullRewriter, metaclass=subject ):
              );
 
 
-  def _process_word( self, inst, wid, lemma, pos, sense, feats ):
+  def process_functor( self, inst ):
     
     return inst.__class__(
-               wid = self._wid_by_word[ inst ],
-               lemma = lemma,
-               pos = pos,
-               sense = sense,
-               feats = feats
+               fid = self._fid_by_funct[ inst ],
+               referent = self.process( inst.referent )
              );
 
 
@@ -300,14 +299,14 @@ class RenamingRewriter( NullRewriter, metaclass=subject ):
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 def renaming_rewrite( obj, rename_handles_p=True, rename_vars_p=True,
-                      rename_words_p=True, force_rename_handles_p=False ):
+                      rename_functs_p=True, force_rename_handles_p=False ):
   
   rslt = None;
   with RenamingRewriter( obj ) as rewriter:
     rslt = rewriter.rewrite(
                rename_handles_p = rename_handles_p,
                rename_vars_p = rename_vars_p,
-               rename_words_p = rename_words_p,
+               rename_functs_p = rename_functs_p,
                force_rename_handles_p = force_rename_handles_p
              );
   return rslt;

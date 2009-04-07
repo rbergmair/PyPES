@@ -125,7 +125,6 @@ class TestNullRewriter( TestCase, metaclass=object_ ):
     dotest( TestWord.init_word_1 );
     dotest( TestWord.init_word_3 );
     dotest( TestWord.init_word_4 );
-    dotest( TestWord.init_word_5 );
     dotest( TestWord.init_word_8 );
     dotest( TestWord.init_word_9 );
 

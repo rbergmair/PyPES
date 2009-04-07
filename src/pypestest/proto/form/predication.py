@@ -33,7 +33,8 @@ class TestPredication( TestCase, metaclass=object_ ):
     
     inst_ = Predication(
                 predicate = Functor(
-                                referent = Word( wid=5, lemma = ["cat"] )
+                                fid = 5,
+                                referent = Word( lemma = ["cat"] )
                               ),
                 args = { Argument( aid="arg1" ):
                            Variable( sidvid=("x",1) )
@@ -44,8 +45,8 @@ class TestPredication( TestCase, metaclass=object_ ):
   def check_pred_1( self, inst, msg=None ):
     
     self.assert_( isinstance( inst.predicate, Functor ), msg );
+    self.assertEquals( inst.predicate.fid, 5, msg );
     self.assert_( isinstance( inst.predicate.referent, Word ), msg );
-    self.assertEquals( inst.predicate.referent.wid, 5, msg );
     self.assertEquals( inst.predicate.referent.lemma, ["cat"], msg );
     labels = set();
     vars = set();

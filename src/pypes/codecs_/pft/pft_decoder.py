@@ -32,6 +32,7 @@ class PFTDecoder( PFTParser, metaclass=subject ):
   GT_LEMMATOKS = "lemmatoks";
   GT_OPERATOR = "operator";
   GT_CONSTANT = "constant";
+  GT_FUNCTOR = "functor";
   
   
   def decoder_enter( self ):
@@ -79,7 +80,7 @@ class PFTDecoder( PFTParser, metaclass=subject ):
       
       tok = next( toks );
       
-      if tok in { "_", ":", "|" }:
+      if tok in { "_", "|" }:
         break;
       
       if tok == "+":
@@ -93,7 +94,7 @@ class PFTDecoder( PFTParser, metaclass=subject ):
       
       tok = next( toks );
       
-      if tok not in { "_", ":", "|" }:
+      if tok not in { "_", "|" }:
         pos = tok;
 
       tok = next( toks );
@@ -101,18 +102,10 @@ class PFTDecoder( PFTParser, metaclass=subject ):
       if tok == "_":
         tok = next( toks );
       
-      if tok not in { ":", "|" }:
+      if tok != "|":
         sense = tok;
         tok = next( toks );
         
-    if tok == ":":
-
-      tok = next( toks );
-      
-      if tok != "|":
-        wid = int( tok );
-        tok = next( toks );
-    
     try:
       assert tok == "|";
     except:
@@ -121,7 +114,7 @@ class PFTDecoder( PFTParser, metaclass=subject ):
     
     assert not next( toks, False );
       
-    return ( lemma, pos, sense, wid );
+    return ( lemma, pos, sense );
 
 
   @classmethod
@@ -223,10 +216,10 @@ class PFTDecoder( PFTParser, metaclass=subject ):
     feats = next( toks, None );
     assert not next( toks, False );
     
-    ( lemma, pos, sense, wid ) = bare_word;
+    ( lemma, pos, sense ) = bare_word;
     
     return ( self.GT_WORD, self._lexicon.Word(
-                               wid=wid, lemma=lemma, pos=pos,
+                               lemma=lemma, pos=pos,
                                sense=sense, feats=feats
                              ) );
 
@@ -272,6 +265,21 @@ class PFTDecoder( PFTParser, metaclass=subject ):
     assert not next( toks, False );
     
     return args;
+
+
+  @classmethod
+  def _decode_functor( cls, toks_ ):
+    
+    toks = iter( toks_ );
+    
+    ( type_, referent ) = next( toks );
+    assert type_ in { cls.GT_WORD, cls.GT_OPERATOR };
+
+    fid = next( toks, None );
+
+    assert not next( toks, False );
+    
+    return ( cls.GT_FUNCTOR, Functor( referent = referent, fid = fid ) );
   
   
   @classmethod
@@ -281,8 +289,8 @@ class PFTDecoder( PFTParser, metaclass=subject ):
     
     assert next( toks ) == "\ue100";
     
-    ( type_, referent ) = next( toks );
-    assert type_ in { cls.GT_WORD, cls.GT_OPERATOR };
+    ( type_, predicate ) = next( toks );
+    assert type_ == cls.GT_FUNCTOR;
     
     args = next( toks );
     assert isinstance( args, dict );
@@ -290,7 +298,7 @@ class PFTDecoder( PFTParser, metaclass=subject ):
     assert not next( toks, False );
     
     return ( cls.GT_PREDICATION, Predication(
-                                     predicate = Functor( referent=referent ),
+                                     predicate = predicate,
                                      args = args
                                    ) );
 
@@ -324,8 +332,8 @@ class PFTDecoder( PFTParser, metaclass=subject ):
       print( tok );
       raise;
     
-    ( type_, referent ) = next( toks );
-    assert type_ in { cls.GT_WORD, cls.GT_OPERATOR };
+    ( type_, quantifier ) = next( toks );
+    assert type_ == cls.GT_FUNCTOR;
 
     ( type_, var ) = next( toks );
     assert type_ == cls.GT_VARIABLE;
@@ -343,9 +351,7 @@ class PFTDecoder( PFTParser, metaclass=subject ):
     assert not next( toks, False );
   
     return ( cls.GT_QUANTIFICATION, Quantification(
-                                        quantifier = Functor(
-                                                         referent = referent
-                                                       ),
+                                        quantifier = quantifier,
                                         var = var,
                                         rstr = rstr,
                                         body = body
@@ -359,8 +365,8 @@ class PFTDecoder( PFTParser, metaclass=subject ):
 
     assert next( toks ) == "\ue102";
     
-    ( type_, referent ) = next( toks );
-    assert type_ in { cls.GT_WORD, cls.GT_OPERATOR };
+    ( type_, modality ) = next( toks );
+    assert type_ == cls.GT_FUNCTOR;
 
     args = next( toks );
     assert isinstance( args, dict );
@@ -373,7 +379,7 @@ class PFTDecoder( PFTParser, metaclass=subject ):
     assert not next( toks, False );
     
     return ( cls.GT_MODIFICATION, Modification(
-                                      modality = Functor( referent=referent ),
+                                      modality = modality,
                                       args = args,
                                       scope = scope
                                     ) );
@@ -391,8 +397,8 @@ class PFTDecoder( PFTParser, metaclass=subject ):
     if type_ in { cls.GT_HANDLE, cls.GT_FREEZER }:
       lscope = Freezer( content=lscope );
 
-    ( type_, referent ) = next( toks );
-    assert type_ in { cls.GT_WORD, cls.GT_OPERATOR };
+    ( type_, connective ) = next( toks );
+    assert type_ == cls.GT_FUNCTOR;
   
     ( type_, rscope ) = next( toks );
     assert type_ in { cls.GT_HANDLE, cls.GT_FREEZER, cls.GT_PROTOFORM };
@@ -402,7 +408,7 @@ class PFTDecoder( PFTParser, metaclass=subject ):
     assert not next( toks, False );
     
     return ( cls.GT_CONNECTION, Connection(
-                                    connective = Functor( referent=referent ),
+                                    connective = connective,
                                     lscope = lscope,
                                     rscope = rscope
                                   ) );

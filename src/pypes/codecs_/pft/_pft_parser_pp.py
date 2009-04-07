@@ -31,6 +31,8 @@ class PFTParser( _pft_parser.PFTParser, metaclass=subject ):
   bare_word = Regex( _pft_parser.PFTParser.RE_WORD );
 
   identifier = Regex( _pft_parser.PFTParser.RE_IDENTIFIER );
+  
+  fid = Regex( _pft_parser.PFTParser.RE_FID );
 
   variable = Regex( _pft_parser.PFTParser.RE_VARIABLE );
 
@@ -67,7 +69,9 @@ class PFTParser( _pft_parser.PFTParser, metaclass=subject ):
                      ) + \
                    Literal(")");
 
-  predication = Literal("\ue100") + ( word | operator ) + arguments_list;
+  functor = ( word | operator ) + Optional( fid );
+
+  predication = Literal("\ue100") + functor + arguments_list;
 
   protoform = Forward();
   
@@ -77,15 +81,15 @@ class PFTParser( _pft_parser.PFTParser, metaclass=subject ):
   scopebearer = ( handle | freezer | protoform );
   
   quantification = Literal("\ue101") + \
-                   ( word | operator ) + variable + \
+                   functor + variable + \
                    scopebearer + scopebearer;
   
   modification = Literal("\ue102") + \
-                 ( word | operator ) + arguments_list + scopebearer;
+                 functor + arguments_list + scopebearer;
 
   connection = Literal("\ue103") + \
                scopebearer + \
-               ( word | operator ) + \
+               functor + \
                scopebearer;
   
   constraint = Literal("\ue104") + handle + Literal("^") + handle;
@@ -122,6 +126,11 @@ class PFTParser( _pft_parser.PFTParser, metaclass=subject ):
           self._decode_bare_word(
               _pft_parser.PFTParser._subtokenize_word( toks[0] )
             )
+      );
+
+    self.fid.setParseAction(
+        lambda str_, loc, toks:
+          self._decode_fid( toks )
       );
 
     self.variable.setParseAction(
@@ -171,6 +180,11 @@ class PFTParser( _pft_parser.PFTParser, metaclass=subject ):
     self.arguments_list.setParseAction(
         lambda str_, loc, toks:
           self._decode_arguments_list( toks )
+      );
+
+    self.functor.setParseAction(
+        lambda str_, loc, toks:
+          self._decode_functor( toks )
       );
     
     self.predication.setParseAction(

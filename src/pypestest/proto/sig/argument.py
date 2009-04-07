@@ -33,7 +33,7 @@ class TestArgument( TestCase, metaclass=object_ ):
     self.assertFalse( isinstance( inst_, Argument ), msg );
     
     sig = ProtoSig();
-    pred_ = Functor( referent = Word( wid=5, lemma = ["man"] ) );
+    pred_ = Functor( fid=5, referent = Word( lemma = ["man"] ) );
     pred = pred_( sig=sig );
     inst = inst_( predmod=pred );
     self.assertTrue( isinstance( inst, Argument ), msg );
@@ -50,7 +50,7 @@ class TestArgument( TestCase, metaclass=object_ ):
     self.assertFalse( isinstance( inst_, Argument ), msg );
     
     sig = ProtoSig();
-    mod_ = Functor( referent = Word( wid=0, lemma = ["Possibly"] ) );
+    mod_ = Functor( referent = Word( lemma = ["Possibly"] ) );
     mod = mod_( sig=sig );
     inst = inst_( predmod=mod );
     self.assertTrue( isinstance( inst, Argument ), msg );

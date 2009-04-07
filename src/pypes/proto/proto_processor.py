@@ -85,7 +85,7 @@ class ProtoProcessor( metaclass=subject ):
       freezelevel = self.global_holes[ handle ];
     
     if freezelevel == -1:
-      return self._process_handle( handle, handle.hid );
+      return self.process_handle( handle );
     else:
       return self._process_freezer(
                  self.process_freezer( handle, freezelevel-1 ),
@@ -281,7 +281,7 @@ class ProtoProcessor( metaclass=subject ):
              );
   
   
-  def _process_functor( self, inst, referent ):
+  def _process_functor( self, inst, fid, referent ):
     
     pass;
   
@@ -294,6 +294,7 @@ class ProtoProcessor( metaclass=subject ):
     
     return self._process_functor(
                inst = inst,
+               fid = inst.fid,
                referent = referent_
             );
             
@@ -349,7 +350,7 @@ class ProtoProcessor( metaclass=subject ):
              );
   
   
-  def _process_word( self, inst, wid, lemma, pos, sense, feats ):
+  def _process_word( self, inst, lemma, pos, sense, feats ):
     
     pass;
   
@@ -357,7 +358,6 @@ class ProtoProcessor( metaclass=subject ):
     
     return self._process_word(
                inst = inst,
-               wid = inst.wid,
                lemma = inst.lemma,
                pos = inst.pos,
                sense = inst.sense,

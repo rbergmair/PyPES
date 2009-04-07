@@ -37,7 +37,6 @@ class TestWord( TestCase, metaclass=object_ ):
   def check_word_1( self, inst, msg=None ):
     
     self.assert_( isinstance( inst, Word ), msg );
-    self.assertEquals( inst.wid, None, msg );
     self.assertEquals( inst.lemma, ["lemma"], msg );
     self.assertEquals( inst.pos, None, msg );
     self.assertEquals( inst.sense, None, msg );
@@ -55,7 +54,6 @@ class TestWord( TestCase, metaclass=object_ ):
   def check_word_2( self, inst, msg=None ):
     
     self.assert_( isinstance( inst, Word ), msg );
-    self.assertEquals( inst.wid, None, msg );
     self.assertEquals( inst.lemma, ["lemma1","lemma2"], msg );
     self.assertEquals( inst.pos, None, msg );
     self.assertEquals( inst.sense, None, msg );
@@ -73,7 +71,6 @@ class TestWord( TestCase, metaclass=object_ ):
   def check_word_3( self, inst, msg=None ):
     
     self.assert_( isinstance( inst, Word ), msg );
-    self.assertEquals( inst.wid, None, msg );
     self.assertEquals( inst.lemma, None, msg );
     self.assertEquals( inst.pos, "p", msg );
     self.assertEquals( inst.sense, None, msg );
@@ -91,7 +88,6 @@ class TestWord( TestCase, metaclass=object_ ):
   def check_word_4( self, inst, msg=None ):
     
     self.assert_( isinstance( inst, Word ), msg );
-    self.assertEquals( inst.wid, None, msg );
     self.assertEquals( inst.lemma, None, msg );
     self.assertEquals( inst.pos, None, msg );
     self.assertEquals( inst.sense, "1", msg );
@@ -101,28 +97,9 @@ class TestWord( TestCase, metaclass=object_ ):
     self.check_word_4( self.logify( self.init_word_4() ) );
 
 
-  def init_word_5( self ):
-    
-    inst_ = Word( wid=1 );
-    return inst_;
-  
-  def check_word_5( self, inst, msg=None ):
-    
-    self.assert_( isinstance( inst, Word ), msg );
-    self.assertEquals( inst.wid, 1, msg );
-    self.assertEquals( inst.lemma, None, msg );
-    self.assertEquals( inst.pos, None, msg );
-    self.assertEquals( inst.sense, None, msg );
-  
-  def test_5( self ):
-    
-    self.check_word_5( self.logify( self.init_word_5() ) );
-
-
   def init_word_8( self ):
     
     inst_ = Word(
-                wid=1,
                 lemma=["lemma"],
                 pos="p",
                 sense="1"
@@ -132,7 +109,6 @@ class TestWord( TestCase, metaclass=object_ ):
   def check_word_8( self, inst, msg=None ):
     
     self.assert_( isinstance( inst, Word ), msg );
-    self.assertEquals( inst.wid, 1, msg );
     self.assertEquals( inst.lemma, ["lemma"], msg );
     self.assertEquals( inst.pos, "p", msg );
     self.assertEquals( inst.sense, "1", msg );
@@ -150,7 +126,6 @@ class TestWord( TestCase, metaclass=object_ ):
   def check_word_9( self, inst, msg=None ):
     
     self.assert_( isinstance( inst, Word ), msg );
-    self.assertEquals( inst.wid, None, msg );
     self.assertEquals( inst.lemma, None, msg );
     self.assertEquals( inst.pos, None, msg );
     self.assertEquals( inst.sense, None, msg );
@@ -162,16 +137,15 @@ class TestWord( TestCase, metaclass=object_ ):
 
   def init_word_10( self ):
     
-    inst_ = Word( wid=1, lemma=["lemma"], feats={
-                                              "pers": "3",
-                                              "num": "sg"
-                                            } );
+    inst_ = Word( lemma=["lemma"], feats={
+                                       "pers": "3",
+                                       "num": "sg"
+                                     } );
     return inst_;
   
   def check_word_10( self, inst, msg=None ):
     
     self.assert_( isinstance( inst, Word ), msg );
-    self.assertEquals( inst.wid, 1, msg );
     self.assertEquals( inst.lemma, ["lemma"], msg );
     self.assert_( "pers" in inst.feats, msg );
     self.assert_( "num" in inst.feats, msg );
@@ -190,7 +164,6 @@ class TestWord( TestCase, metaclass=object_ ):
     word2 = self.logify( self.init_word_2() );
     word3 = self.logify( self.init_word_3() );
     word4 = self.logify( self.init_word_4() );
-    word5 = self.logify( self.init_word_5() );
     word8 = self.logify( self.init_word_8() );
     word9 = self.logify( self.init_word_9() );
     word10 = self.logify( self.init_word_10() );
@@ -199,7 +172,6 @@ class TestWord( TestCase, metaclass=object_ ):
     word2_ = self.logify( self.init_word_2() );
     word3_ = self.logify( self.init_word_3() );
     word4_ = self.logify( self.init_word_4() );
-    word5_ = self.logify( self.init_word_5() );
     word8_ = self.logify( self.init_word_8() );
     word9_ = self.logify( self.init_word_9() );
     word10_ = self.logify( self.init_word_10() );
@@ -208,7 +180,6 @@ class TestWord( TestCase, metaclass=object_ ):
     self.assertEquals_( word2, word2_ );
     self.assertEquals_( word3, word3_ );
     self.assertEquals_( word4, word4_ );
-    self.assertEquals_( word5, word5_ );
     self.assertEquals_( word8, word8_ );
     self.assertEquals_( word9, word9_ );
     self.assertEquals_( word10, word10_ );
@@ -216,8 +187,7 @@ class TestWord( TestCase, metaclass=object_ ):
     self.assertNotEquals_( word1, word2_ );
     self.assertNotEquals_( word2, word3_ );
     self.assertNotEquals_( word3, word4_ );
-    self.assertNotEquals_( word4, word5_ );
-    self.assertNotEquals_( word5, word8_ );
+    self.assertNotEquals_( word4, word8_ );
     self.assertNotEquals_( word8, word9_ );
     self.assertNotEquals_( word9, word10_ );
     self.assertNotEquals_( word10, word1_ );

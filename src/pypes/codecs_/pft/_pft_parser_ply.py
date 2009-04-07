@@ -27,7 +27,7 @@ class PFTLexer( _pft_parser.PFTParser, metaclass=subject ):
 
   tokens = [ "QUOTED", "BARE_WORD",
              "LPAR", "RPAR", "LBRACK", "RBRACK", "COMMA",
-             "IDENTIFIER", "VARIABLE",
+             "IDENTIFIER", "FID", "VARIABLE",
              "EXPLICIT_HANDLE", "ANONYMOUS_HANDLE",
              "BARE_OPERATOR" ];
   
@@ -96,6 +96,11 @@ class PFTLexer( _pft_parser.PFTParser, metaclass=subject ):
   @TOKEN( _pft_parser.PFTParser.RE_IDENTIFIER )
   def t_ident_IDENTIFIER( self, t ):
     self._lexer.begin( "INITIAL" );
+    return t;
+  
+  @TOKEN( _pft_parser.PFTParser.RE_FID )
+  def t_FID( self, t ):
+    t.value = self._decode_fid( [t.value] );
     return t;
 
   @TOKEN( _pft_parser.PFTParser.RE_VARIABLE )
@@ -244,10 +249,18 @@ class PFTParser( PFTLexer, metaclass=subject ):
     r"""word_or_operator : word
                          | operator"""
     p[0] = p[1];
-
+  
+  
+  def p_functor_1( self, p ):
+    r"""functor : word_or_operator"""
+    p[0] = self._decode_functor( [ p[1] ] );
+  def p_functor_2( self, p ):
+    r"""functor : word_or_operator FID"""
+    p[0] = self._decode_functor( [ p[1], p[2] ] );
+  
   
   def p_predication( self, p ):
-    r"""predication : '\ue100' word_or_operator arguments_list"""
+    r"""predication : '\ue100' functor arguments_list"""
     p[0] = self._decode_predication( [ p[1], p[2], p[3] ] );
 
 
@@ -265,17 +278,17 @@ class PFTParser( PFTLexer, metaclass=subject ):
   
   
   def p_quantification( self, p ):
-    r"""quantification : '\ue101' word_or_operator variable scopebearer scopebearer"""
+    r"""quantification : '\ue101' functor variable scopebearer scopebearer"""
     p[0] = self._decode_quantification( [ p[1], p[2], p[3], p[4], p[5] ] );
 
 
   def p_modification( self, p ):
-    r"""modification : '\ue102' word_or_operator arguments_list scopebearer"""
+    r"""modification : '\ue102' functor arguments_list scopebearer"""
     p[0] = self._decode_modification( [ p[1], p[2], p[3], p[4] ] );
 
 
   def p_connection( self, p ):
-    r"""connection : '\ue103' scopebearer word_or_operator scopebearer"""
+    r"""connection : '\ue103' scopebearer functor scopebearer"""
     p[0] = self._decode_connection( [ p[1], p[2], p[3], p[4] ] );
 
 

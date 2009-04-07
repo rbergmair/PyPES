@@ -13,24 +13,19 @@ from pypes.proto.protobase import ProtoBase;
 class Word( ProtoBase, metaclass=kls ):
 
 
-  _superordinate_ = "sig";
-  _key_ = "wid";
+  _superordinate_ = None;
+  _key_ = None;
 
 
   def _init_init_( self ):
     
-    self.wid = None;
     self.lemma = None;
     self.pos = None;
     self.sense = None;
     self.feats = None;
 
   
-  def __init__( self, sig, wid=None, lemma=None, pos=None,
-                      sense=None, feats=None ):
-    
-    if wid is not None:
-      self.wid = wid;
+  def __init__( self, sig, lemma=None, pos=None, sense=None, feats=None ):
     
     if lemma is not None:
       self.lemma = lemma;
@@ -60,10 +55,6 @@ class Word( ProtoBase, metaclass=kls ):
     if not isinstance( obj, self.__class__ ):
       return False;
     
-    if self.wid is not None:
-      if self.wid != obj.wid:
-        return False;
-      
     if self.lemma is not None:
       if self.lemma != obj.lemma:
         return False;

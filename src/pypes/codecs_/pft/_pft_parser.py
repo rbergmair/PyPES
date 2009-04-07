@@ -46,12 +46,11 @@ class PFTParser( metaclass=subject ):
               r"(?:" + \
                 r"\_" + RE_ALPHANUMs + "?" + \
               r"){0,2}" + \
-              r"(?:" + \
-                r":" + RE_DIGITs + \
-              r")?" + \
             r"\|)";
 
   RE_IDENTIFIER = r"(?:[" + IDENTFIRST + r"][" + IDENTNEXT + r"]+)";
+  
+  RE_FID = r"(?::" + RE_DIGITs + ")";
 
   RE_VARIABLE = r"(?:" + RE_LOWERs + RE_DIGITs + ")";
   
@@ -90,14 +89,25 @@ class PFTParser( metaclass=subject ):
     assert isinstance( rslt, str );
     return rslt;
 
+
+  @classmethod
+  def _decode_fid( cls, toks_ ):
+
+    toks = iter( toks_ );
+    tok = next( toks );
+    assert not next( toks, False );
+    
+    assert tok[0] == ":";
+    return int(tok[1:]);
+
             
   _re_subtok_word = re.compile(
                         r"(" + RE_QUOTED + \
                         r"|" + RE_ALPHANUMs + \
-                        r"|[:_\+\|]" + \
+                        r"|[_\+\|]" + \
                         r")"
                       );
-                      
+
   _re_quoted = re.compile( RE_QUOTED );
   
   @classmethod
