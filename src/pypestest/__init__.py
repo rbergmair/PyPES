@@ -10,6 +10,7 @@ import pypestest.utils;
 import pypestest.proto;
 import pypestest.rewriting;
 import pypestest.codecs_;
+import pypestest.scoping;
 
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
@@ -22,6 +23,7 @@ def suite():
   suite.addTests( pypestest.proto.suite() );
   suite.addTests( pypestest.rewriting.suite() );
   suite.addTests( pypestest.codecs_.suite() );
+  suite.addTests( pypestest.scoping.suite() );
 
   return suite;
 

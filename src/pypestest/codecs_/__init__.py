@@ -8,6 +8,7 @@ import unittest;
 
 import pypestest.codecs_.pft_decoder;
 import pypestest.codecs_.pft_encoder;
+import pypestest.codecs_.mrx_decoder;
 
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
@@ -18,6 +19,7 @@ def suite():
 
   suite.addTests( pypestest.codecs_.pft_decoder.suite() );
   suite.addTests( pypestest.codecs_.pft_encoder.suite() );
+  suite.addTests( pypestest.codecs_.mrx_decoder.suite() );
 
   return suite;
 

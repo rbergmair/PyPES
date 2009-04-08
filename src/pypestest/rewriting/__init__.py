@@ -1,6 +1,6 @@
 # -*-  coding: ascii -*-  # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-__package__ = "pypestest.rewriting";
+__package__ = "pypestest";
 __all__ = [ "suite", "main" ];
 
 import sys;
