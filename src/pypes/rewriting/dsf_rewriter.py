@@ -468,7 +468,7 @@ def dsf_rewrite( obj ):
   with DSFRewriter( obj ) as rewriter:
     rslt = rewriter.rewrite();
   return rslt;
-    
+
 
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
