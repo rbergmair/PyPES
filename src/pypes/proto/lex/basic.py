@@ -89,8 +89,8 @@ class Word( ProtoBase, metaclass=kls ):
 class Operator( ProtoBase, metaclass=kls ):
 
 
-  _superordinate_ = "sig";
-  _key_ = "otype";
+  _superordinate_ = None;
+  _key_ = None;
 
   
   OP_Q_UNIV = "ALL";
