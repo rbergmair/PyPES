@@ -99,6 +99,8 @@ class ERGSemProcessor( metaclass=subject ):
       sense = toks[2];
       sense = cls._make_alphanum( sense );
     
+    # print( ( lemma, pos, sense ) );
+    
     return ( lemma, pos, sense );
 
 

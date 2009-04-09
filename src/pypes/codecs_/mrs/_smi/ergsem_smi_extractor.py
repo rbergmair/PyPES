@@ -189,7 +189,10 @@ class ERGSemSMIExtractor( ERGSemProcessor, metaclass=subject ):
         for tok in lemma:
           lemma_.append( ascii( tok )[1:-1] );
         lemma = lemma_;
-        sense = ascii( sense )[1:-1];
+        if sense is None:
+          sense = "";
+        else:
+          sense = ascii( sense )[1:-1];
         predstr_as_word = ( lemma, pos, sense );
 
         if pos in { "c", "p", "q", "x" }:
@@ -338,19 +341,19 @@ class ERGSemSMIExtractor( ERGSemProcessor, metaclass=subject ):
       f.write( "class Word( basic.Word, metaclass=kls ):\n\n" );
 
       f.write( "  WRD_Qs = basic.Word.WRD_Qs + [" );
-      f.write( ( "\n " + pformat( sorted( self._wqs ), width=74 )[1:-1] ).replace( "\n", "\n   " ) );
+      f.write( ( "\n " + pformat( sorted( self._wqs ), width=74 )[1:-1] ).replace( "\n", "\n   " ).replace( "''", "None" ) );
       f.write( "];\n\n" );
 
       f.write( "  WRD_Cs = basic.Word.WRD_Cs + [" );
-      f.write( ( "\n " + pformat( sorted( self._wcs ), width=74 )[1:-1] ).replace( "\n", "\n   " ) );
+      f.write( ( "\n " + pformat( sorted( self._wcs ), width=74 )[1:-1] ).replace( "\n", "\n   " ).replace( "''", "None" ) );
       f.write( "];\n\n" );
 
       f.write( "  WRD_Ms = basic.Word.WRD_Ms + [" );
-      f.write( ( "\n " + pformat( sorted( self._wms ), width=74 )[1:-1] ).replace( "\n", "\n   " ) );
+      f.write( ( "\n " + pformat( sorted( self._wms ), width=74 )[1:-1] ).replace( "\n", "\n   " ).replace( "''", "None" ) );
       f.write( "];\n\n" );
 
       f.write( "  WRD_Ps = basic.Word.WRD_Ps + [" );
-      f.write( ( "\n " + pformat( sorted( self._wps ), width=74 )[1:-1] ).replace( "\n", "\n   " ) );
+      f.write( ( "\n " + pformat( sorted( self._wps ), width=74 )[1:-1] ).replace( "\n", "\n   " ).replace( "''", "None" ) );
       f.write( "];\n\n" );
 
 
