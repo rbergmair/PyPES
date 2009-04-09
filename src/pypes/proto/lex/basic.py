@@ -157,15 +157,16 @@ class Operator( ProtoBase, metaclass=kls ):
     if self.otype is not None:
       if self.otype != obj.otype:
         return False;
-    return True;
-    if self.feats is not None:
-      if obj.feats is None:
+
+    if self.feats is not None and len( self.feats ) > 0:
+      if obj.feats is None or len( obj.feats ) <= 0:
         return False;
       for feat in self.feats:
         if not feat in obj.feats:
           return False;
         if self.feats[ feat ] != obj.feats[ feat ]:
           return False;
+      
     return True;
 
 

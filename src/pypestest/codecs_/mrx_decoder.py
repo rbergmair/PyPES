@@ -89,7 +89,7 @@ class TestMRXDecoder( TestCase, metaclass=object_ ):
             except:
 
               print( pft_encode( r, pretty=False, linebreaks=True ) );
-              print( gstr );
+              #print( gstr );
               print( pft_encode( r_, pretty=False, linebreaks=True ) );
               raise;
     
@@ -104,6 +104,14 @@ class TestMRXDecoder( TestCase, metaclass=object_ ):
     
     except IOError:
       pass;
+
+
+  def x_test_quick( self ):
+    
+    with PFTDecoder( (pypes.proto.lex.erg,None) ) as decoder:
+      
+      i = 192;
+      self.write_testfiles( "{0}/fracas-new-{1}.mrs.xml.gz".format( self._TESTMRSDIR, i ), decoder );
 
   
   def test_mrxdecoder( self ):
