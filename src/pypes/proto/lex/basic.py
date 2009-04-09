@@ -18,6 +18,7 @@ class Word( ProtoBase, metaclass=kls ):
   
   WRD_Qs = [];
   WRD_Cs = [];
+  WRD_Ms = [];
   WRD_Ps = [];
 
 

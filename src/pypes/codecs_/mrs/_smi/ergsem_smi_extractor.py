@@ -20,6 +20,7 @@ class ERGSemSMIExtractor( ERGSemProcessor, metaclass=subject ):
   def _enter_( self ):
     
     self._semi = {};
+    self._semi_interesting = set();
     
     self._ops = {};
     self._opqs = set();
@@ -29,6 +30,7 @@ class ERGSemSMIExtractor( ERGSemProcessor, metaclass=subject ):
     
     self._wqs = [];
     self._wcs = [];
+    self._wms = [];
     self._wps = [];
   
   
@@ -171,16 +173,18 @@ class ERGSemSMIExtractor( ERGSemProcessor, metaclass=subject ):
       for (arg,(opt,sort,feats)) in sign.items():
         args[ arg ] = sort;
 
+      if predstr_as_operator is not None:
+        self._ops[ predstr_as_operator ] = predstr_as_operator;
+
       if predstr_as_word is not None:
+        
         ( lemma, pos, sense ) = predstr_as_word;
         try:
           assert pos in { "c", "p", "q", "x", "n", "v", "a" };
         except:
           # TODO: activate;
-          return;
+          continue;
           
-        if pos in { "c", "p", "q", "x" }:
-          interesting = True;
         lemma_ = [];
         for tok in lemma:
           lemma_.append( ascii( tok )[1:-1] );
@@ -188,8 +192,8 @@ class ERGSemSMIExtractor( ERGSemProcessor, metaclass=subject ):
         sense = ascii( sense )[1:-1];
         predstr_as_word = ( lemma, pos, sense );
 
-      if predstr_as_operator is not None:
-        self._ops[ predstr_as_operator ] = predstr_as_operator;
+        if pos in { "c", "p", "q", "x" }:
+          interesting = True;
 
       if self._is_quantification( args, strict=False ):
         interesting = True;
@@ -234,18 +238,27 @@ class ERGSemSMIExtractor( ERGSemProcessor, metaclass=subject ):
           self._opms.add( predstr_as_operator );
         if predstr_as_word is not None:
           assert pos in { "a", "c", "v", "p", "x", "n" };
+          if pos in { "c", "x" }:
+            interesting = True;
+            self._wms.append( predstr_as_word );
         
       if self._is_predication( args, strict=False ):
         if predstr_as_operator is not None:
           interesting = True;
           self._opps.add( predstr_as_operator );
         if predstr_as_word is not None:
+          # print( predstr_as_word );
           assert pos != "q";
+          if pos == "c":
+            interesting = True;
+            self._wps.append( predstr_as_word );
+
+      if predstr not in self._semi:
+        self._semi[ predstr ] = [];
+      self._semi[ predstr ].append( sign );
 
       if interesting:
-        if predstr not in self._semi:
-          self._semi[ predstr ] = [];
-        self._semi[ predstr ].append( sign );
+        self._semi_interesting.add( predstr );
 
 
   def extract( self, targetdir ):
@@ -259,6 +272,10 @@ class ERGSemSMIExtractor( ERGSemProcessor, metaclass=subject ):
     with open( sourcedir + "/core.smi" ) as f:
       
       self._read_preds( f );
+
+    for pred in set( self._semi.keys() ):
+      if pred not in self._semi_interesting:
+        del self._semi[ pred ];
     
     with open( targetdir + "/_ergsem_smi_checker_auto.py", "w" ) as f:
         
@@ -270,7 +287,7 @@ class ERGSemSMIExtractor( ERGSemProcessor, metaclass=subject ):
           """from pypes.codecs_.mrs._ergsem_processor import ERGSemProcessor;\n"""
           """class ERGSemSMIChecker( ERGSemProcessor, metaclass=subject ):\n"""
         );
-  
+      
       semi = pformat( self._semi, width=72 );
       semi = "\n " + semi[ 1:-1 ];
       semi = semi.replace( "\n", "\n     " );
@@ -321,19 +338,23 @@ class ERGSemSMIExtractor( ERGSemProcessor, metaclass=subject ):
       f.write( "class Word( basic.Word, metaclass=kls ):\n\n" );
 
       f.write( "  WRD_Qs = basic.Word.WRD_Qs + [" );
-      f.write( ( "\n " + pformat( self._wqs, width=74 )[1:-1] ).replace( "\n", "\n   " ) );
+      f.write( ( "\n " + pformat( sorted( self._wqs ), width=74 )[1:-1] ).replace( "\n", "\n   " ) );
       f.write( "];\n\n" );
 
       f.write( "  WRD_Cs = basic.Word.WRD_Cs + [" );
-      f.write( ( "\n " + pformat( self._wcs, width=74 )[1:-1] ).replace( "\n", "\n   " ) );
+      f.write( ( "\n " + pformat( sorted( self._wcs ), width=74 )[1:-1] ).replace( "\n", "\n   " ) );
+      f.write( "];\n\n" );
+
+      f.write( "  WRD_Ms = basic.Word.WRD_Ms + [" );
+      f.write( ( "\n " + pformat( sorted( self._wms ), width=74 )[1:-1] ).replace( "\n", "\n   " ) );
       f.write( "];\n\n" );
 
       f.write( "  WRD_Ps = basic.Word.WRD_Ps + [" );
-      f.write( ( "\n " + pformat( self._wps, width=74 )[1:-1] ).replace( "\n", "\n   " ) );
+      f.write( ( "\n " + pformat( sorted( self._wps ), width=74 )[1:-1] ).replace( "\n", "\n   " ) );
       f.write( "];\n\n" );
-          
-        
-        
+
+
+
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 def ergsem_smi_extract( sourcedir, targetdir ):
