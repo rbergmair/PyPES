@@ -15,8 +15,6 @@ class Operator( basic.Operator, metaclass=kls ):
   APPROX_GRAD = 'APPROX_GRAD';
   ARGUMENT = 'ARGUMENT';
   BASIC_CARD = 'BASIC_CARD';
-  BASIC_NUMBERED_HOUR = 'BASIC_NUMBERED_HOUR';
-  BASIC_YOFC = 'BASIC_YOFC';
   CARD = 'CARD';
   CARD_OF = 'CARD_OF';
   COMP = 'COMP';
@@ -28,7 +26,6 @@ class Operator( basic.Operator, metaclass=kls ):
   COMP_SO = 'COMP_SO';
   COMP_TOO = 'COMP_TOO';
   DAY = 'DAY';
-  DEFEQUAL_V = 'DEFEQUAL_V';
   DEF_EXPLICIT_Q = 'DEF_EXPLICIT_Q';
   DEF_IMPLICIT_Q = 'DEF_IMPLICIT_Q';
   DEF_Q = 'DEF_Q';
@@ -55,7 +52,6 @@ class Operator( basic.Operator, metaclass=kls ):
   GENERIC_VERB = 'GENERIC_VERB';
   GEN_NUMVAL = 'GEN_NUMVAL';
   GREET = 'GREET';
-  GUESS = 'GUESS';
   HOLIDAY = 'HOLIDAY';
   HOUR_PREP = 'HOUR_PREP';
   ID = 'ID';
@@ -85,6 +81,7 @@ class Operator( basic.Operator, metaclass=kls ):
   NONTEMP_SP_OR_NONSP = 'NONTEMP_SP_OR_NONSP';
   NOT_X_DEG = 'NOT_X_DEG';
   NUMBERED_HOUR = 'NUMBERED_HOUR';
+  NUMBERED_HOUR_UNK = 'NUMBERED_HOUR_UNK';
   NUMBER_Q = 'NUMBER_Q';
   NUM_SEQ = 'NUM_SEQ';
   OF_P = 'OF_P';
@@ -107,6 +104,7 @@ class Operator( basic.Operator, metaclass=kls ):
   REASON = 'REASON';
   RECIP_PRO = 'RECIP_PRO';
   REFL_MOD = 'REFL_MOD';
+  REJECT_X_1 = 'REJECT_X_1';
   SEASON = 'SEASON';
   SOME_Q = 'SOME_Q';
   SUBORD = 'SUBORD';
@@ -139,8 +137,6 @@ class Operator( basic.Operator, metaclass=kls ):
     APPROX_GRAD: APPROX_GRAD,
     ARGUMENT: ARGUMENT,
     BASIC_CARD: BASIC_CARD,
-    BASIC_NUMBERED_HOUR: BASIC_NUMBERED_HOUR,
-    BASIC_YOFC: BASIC_YOFC,
     CARD: CARD,
     CARD_OF: CARD_OF,
     COMP: COMP,
@@ -152,7 +148,6 @@ class Operator( basic.Operator, metaclass=kls ):
     COMP_SO: COMP_SO,
     COMP_TOO: COMP_TOO,
     DAY: DAY,
-    DEFEQUAL_V: DEFEQUAL_V,
     DEF_EXPLICIT_Q: DEF_EXPLICIT_Q,
     DEF_IMPLICIT_Q: DEF_IMPLICIT_Q,
     DEF_Q: DEF_Q,
@@ -179,7 +174,6 @@ class Operator( basic.Operator, metaclass=kls ):
     GENERIC_VERB: GENERIC_VERB,
     GEN_NUMVAL: GEN_NUMVAL,
     GREET: GREET,
-    GUESS: GUESS,
     HOLIDAY: HOLIDAY,
     HOUR_PREP: HOUR_PREP,
     ID: ID,
@@ -209,6 +203,7 @@ class Operator( basic.Operator, metaclass=kls ):
     NONTEMP_SP_OR_NONSP: NONTEMP_SP_OR_NONSP,
     NOT_X_DEG: NOT_X_DEG,
     NUMBERED_HOUR: NUMBERED_HOUR,
+    NUMBERED_HOUR_UNK: NUMBERED_HOUR_UNK,
     NUMBER_Q: NUMBER_Q,
     NUM_SEQ: NUM_SEQ,
     OF_P: OF_P,
@@ -231,6 +226,7 @@ class Operator( basic.Operator, metaclass=kls ):
     REASON: REASON,
     RECIP_PRO: RECIP_PRO,
     REFL_MOD: REFL_MOD,
+    REJECT_X_1: REJECT_X_1,
     SEASON: SEASON,
     SOME_Q: SOME_Q,
     SUBORD: SUBORD,
@@ -276,7 +272,6 @@ class Operator( basic.Operator, metaclass=kls ):
   OP_Cs = basic.Operator.OP_Cs | {
     ADDRESSEE,
     ALL_TOO,
-    BASIC_NUMBERED_HOUR,
     COMP,
     COMP_ENOUGH,
     COMP_EQUAL,
@@ -292,6 +287,7 @@ class Operator( basic.Operator, metaclass=kls ):
     NONTEMP_LOC_SP,
     NONTEMP_SP_OR_NONSP,
     NUMBERED_HOUR,
+    NUMBERED_HOUR_UNK,
     PLUS,
     POSS,
     SUBORD,
@@ -306,8 +302,6 @@ class Operator( basic.Operator, metaclass=kls ):
     ADDRESSEE,
     ALL_TOO,
     APPOS,
-    BASIC_NUMBERED_HOUR,
-    BASIC_YOFC,
     COMP,
     COMPOUND,
     COMPOUND_NAME,
@@ -316,7 +310,6 @@ class Operator( basic.Operator, metaclass=kls ):
     COMP_LESS,
     COMP_SO,
     COMP_TOO,
-    DEFEQUAL_V,
     DELETE_X_1,
     ELLIPSIS,
     ELLIPSIS_EXPL,
@@ -338,12 +331,14 @@ class Operator( basic.Operator, metaclass=kls ):
     NONTEMP_SP_OR_NONSP,
     NOT_X_DEG,
     NUMBERED_HOUR,
+    NUMBERED_HOUR_UNK,
     OF_P,
     PARENTHETICAL,
     PARG_D,
     POLITE,
     POSS,
     PRPSTN_TO_PROP,
+    REJECT_X_1,
     SUPERL,
     TEMP_LOC_SP,
     TEMP_LOC_X,
@@ -363,8 +358,6 @@ class Operator( basic.Operator, metaclass=kls ):
     APPROX_GRAD,
     ARGUMENT,
     BASIC_CARD,
-    BASIC_NUMBERED_HOUR,
-    BASIC_YOFC,
     CARD,
     CARD_OF,
     COMP,
@@ -375,7 +368,6 @@ class Operator( basic.Operator, metaclass=kls ):
     COMP_SO,
     COMP_TOO,
     DAY,
-    DEFEQUAL_V,
     DOFM,
     DOFW,
     ELLIPSIS,
@@ -391,7 +383,6 @@ class Operator( basic.Operator, metaclass=kls ):
     GENERIC_VERB,
     GEN_NUMVAL,
     GREET,
-    GUESS,
     HOLIDAY,
     HOUR_PREP,
     ID,
@@ -415,6 +406,7 @@ class Operator( basic.Operator, metaclass=kls ):
     NONTEMP_SP_OR_NONSP,
     NOT_X_DEG,
     NUMBERED_HOUR,
+    NUMBERED_HOUR_UNK,
     NUM_SEQ,
     OF_P,
     ORD,
@@ -454,6 +446,7 @@ class Word( basic.Word, metaclass=kls ):
   WRD_Qs = basic.Word.WRD_Qs + [
     (['a'], 'q', None),
     (['a', 'bit'], 'q', None),
+    (['a', 'great', 'many'], 'q', None),
     (['a', 'little'], 'q', None),
     (['all'], 'q', None),
     (['another'], 'q', None),
@@ -721,6 +714,7 @@ class Word( basic.Word, metaclass=kls ):
     (['quite'], 'x', None),
     (['rather'], 'x', None),
     (['real'], 'x', 'deg'),
+    (['really'], 'x', 'deg'),
     (['reasonably'], 'x', 'deg'),
     (['regularly'], 'x', None),
     (['relatively'], 'x', 'deg'),

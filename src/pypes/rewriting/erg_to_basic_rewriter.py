@@ -10,6 +10,48 @@ from pypes.utils.mc import subject, object_;
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 class ERGtoBasicRewriter( metaclass=subject ):
+
+  OP_Qs = {
+           
+      UDEF_Q,
+  
+      PRONOUN_Q,
+      PROPER_Q,
+  
+      DEF_EXPLICIT_Q,
+      DEF_IMPLICIT_Q,
+  
+      SOME_Q,
+      EVERY_Q,
+  
+      NUMBER_Q,
+      WHICH_Q,
+
+    };
+
+  OP_Cs = {
+             
+      NE_X,
+      SUBORD,
+      
+    };
+
+
+  OP_Ps = {
+
+      ADDRESSEE,
+      COMP,
+      COMP_EQUAL,
+      IMPLICIT_CONJ,
+      LOC_NONSP,
+      MEASURE,
+      NE_X,
+      NUMBERED_HOUR,
+      POSS,
+      SUBORD,
+      
+    };
+
   
   def rewrite( self ):
     
