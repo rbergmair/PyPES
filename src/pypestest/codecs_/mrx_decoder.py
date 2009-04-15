@@ -27,7 +27,7 @@ import pypes.proto.lex.erg;
 
 class TestMRXDecoder( TestCase, metaclass=object_ ):
   
-  _TESTMRSDIR = "dta/native";
+  _TESTMRSDIR = "dta/test";
   
   
   def write_testfiles( self, filename, decoder=None ):
@@ -111,7 +111,7 @@ class TestMRXDecoder( TestCase, metaclass=object_ ):
     with PFTDecoder( (pypes.proto.lex.erg,None) ) as decoder:
       
       i = 192;
-      self.write_testfiles( "{0}/fracas-new-{1}.mrs.xml.gz".format( self._TESTMRSDIR, i ), decoder );
+      self.write_testfiles( "{0}/fracas-{1}.mrs.xml.gz".format( self._TESTMRSDIR, i ), decoder );
 
   
   def test_mrxdecoder( self ):
@@ -121,18 +121,18 @@ class TestMRXDecoder( TestCase, metaclass=object_ ):
       for i in range( 1, 641 ):
         
         # numbers
-        if i in { 185, 186, 270, 272, 334 }:
-          continue;
+        # if i in { 185, 186, 270, 272, 334 }:
+        #   continue;
         
-        self.check_testfiles( "{0}/fracas-new-{1}.mrs.xml.gz".format( self._TESTMRSDIR, i ), decoder );
+        self.check_testfiles( "{0}/fracas-{1}.mrs.xml.gz".format( self._TESTMRSDIR, i ), decoder );
       
       #return;
       
       for i in range( 1, 108 ):
         
         # numbers
-        if i in { 63, 64 }:
-          continue;
+        # if i in { 63, 64 }:
+        #   continue;
         
         self.check_testfiles( "{0}/mrs-{1}1.mrs.xml.gz".format( self._TESTMRSDIR, i ), decoder );
         

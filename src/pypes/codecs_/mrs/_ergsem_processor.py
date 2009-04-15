@@ -128,6 +128,9 @@ class ERGSemProcessor( metaclass=subject ):
     if not { "L-HNDL", "R-HNDL" } & args.keys():
       return False;
     
+    if not args[ "L-HNDL" ] == cls.SORT_HOLE:
+      return False;
+    
     assert args.keys() == { "ARG0", "L-INDEX", "L-HNDL", "R-INDEX", "R-HNDL" };
     
     assert args[ "ARG0" ] in cls.SORTs_NONHOLE;
@@ -140,7 +143,6 @@ class ERGSemProcessor( metaclass=subject ):
     assert args[ "ARG0" ] == "e";
     assert args[ "L-INDEX" ] == "e";
     assert args[ "R-INDEX" ] == "e";
-    assert args[ "L-HNDL" ] == cls.SORT_HOLE;
     assert args[ "R-HNDL" ] == cls.SORT_HOLE;
     
     return True;
@@ -156,6 +158,9 @@ class ERGSemProcessor( metaclass=subject ):
       return False;
     
     if not { "L-INDEX", "R-INDEX" } & args.keys():
+      return False;
+    
+    if { "L-HNDL", "R-HNDL" } & args.keys():
       return False;
     
     assert args.keys() == { "ARG0", "L-INDEX", "R-INDEX" };

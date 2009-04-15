@@ -30,7 +30,7 @@ from pypes.rewriting.dsf_rewriter import dsf_rewrite;
 
 class TestDSFRewriter( TestCase, metaclass=object_ ):
   
-  _TESTDTADIR = "dta/native";
+  _TESTDTADIR = "dta/test";
   
   
   def write_testfile( self, filename, decoder ):
@@ -60,17 +60,13 @@ class TestDSFRewriter( TestCase, metaclass=object_ ):
                 f = cdc( f_ );
   
                 fstr = f.read();
-                pstr = None;
+                print( fstr );
                 
                 pf1 = decoder.decode( fstr )( sig=ProtoSig() );
-                # pfr = recursivize( solve_all( pf1 ) );
-                pf = dsf_rewrite( pf1 )( sig=ProtoSig() );
 
-                # pfrstr = pft_encode( pfr );
+                pf = dsf_rewrite( pf1 )( sig=ProtoSig() );
                 pfstr = pft_encode( pf );
                 
-                print( fstr );
-                # print( pfrstr );
                 print( pfstr );
                 print( "-------" );
 
@@ -126,16 +122,12 @@ class TestDSFRewriter( TestCase, metaclass=object_ ):
     with PFTDecoder( (pypes.proto.lex.erg,None) ) as decoder:
 
       for i in range( 1, 108 ):
-        if i in { 56, 102 }: # don't scope
-          continue;
         self.write_testfile( "{0}/mrs-{1}1.pft.gz".format( self._TESTDTADIR, i ), decoder );
 
-      for i in range( 1, 641 ):
-        if i in { 185, 186, 270, 272, 296, 298, 563, 620 }: # don't scope
+      for i in range( 180, 641 ):
+        if i in { 185, 186, 473 }: # disconnected structures
           continue;
-        #if i in { 369, 378, 579, 587, 639, 641 }: # VP coordination
-        #  continue;
-        self.write_testfile( "{0}/fracas-new-{1}.pft.gz".format( self._TESTDTADIR, i ), decoder );
+        self.write_testfile( "{0}/fracas-{1}.pft.gz".format( self._TESTDTADIR, i ), decoder );
       
 
 

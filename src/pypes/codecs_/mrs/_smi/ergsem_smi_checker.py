@@ -43,8 +43,8 @@ class ERGSemSMIChecker( _ergsem_smi_checker_auto.ERGSemSMIChecker, metaclass=sub
           elif arg == "BODY":
             assert var.sid == "h";
           elif arg == "L-HNDL":
-            assert var.sid == "h";
-            # assert var.sid in { "u", "i", "p", "e", "x", "h" };
+            # assert var.sid == "h";
+            assert var.sid in { "u", "i", "p", "e", "x", "h" };
           elif arg == "L-INDEX":
             assert var.sid in { "i", "e", "x" };
           elif arg == "R-HNDL":
