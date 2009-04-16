@@ -100,14 +100,45 @@ class Operator( ProtoBase, metaclass=kls ):
   
   OP_Qs = { OP_Q_UNIV, OP_Q_EXIST, OP_Q_DESCR };
 
+
   OP_C_STRCON = "&&";
   OP_C_WEACON = "/\\";
   OP_C_STRDIS = "||";
   OP_C_WEADIS = "\\/";
   OP_C_IMPL = "->";
+  OP_C_CIMPL = "<-";
+
+  OP_C_NSTRCON = "~&&";
+  OP_C_NWEACON = "~/\\";
+  OP_C_NSTRDIS = "~||";
+  OP_C_NWEADIS = "~\\/";
+  OP_C_NIMPL = "~->";
+  OP_C_NCIMPL = "~<-";
+
+  OP_C_DA_STRCON = "*&&*";
+  OP_C_DA_WEACON = "*/\\*";
+  OP_C_DA_STRDIS = "*||*";
+  OP_C_DA_WEADIS = "*\\/*";
+  OP_C_DA_IMPL = "*->*";
+  OP_C_DA_CIMPL = "*<-*";
+
+  OP_C_DA_NSTRCON = "~&&*";
+  OP_C_DA_NWEACON = "~/\\*";
+  OP_C_DA_NSTRDIS = "~||*";
+  OP_C_DA_NWEADIS = "~\\/*";
+  OP_C_DA_NIMPL = "~->*";
+  OP_C_DA_NCIMPL = "~<-*";
   
-  OP_Cs = { OP_C_STRCON, OP_C_WEACON, OP_C_STRDIS, OP_C_WEADIS, OP_C_IMPL };
-  
+  OP_Cs = {
+      OP_C_STRCON, OP_C_NSTRCON, OP_C_DA_STRCON, OP_C_DA_NSTRCON,
+      OP_C_WEACON, OP_C_NWEACON, OP_C_DA_WEACON, OP_C_DA_NWEACON,
+      OP_C_STRDIS, OP_C_NSTRDIS, OP_C_DA_STRDIS, OP_C_DA_NSTRDIS,
+      OP_C_WEADIS, OP_C_NWEADIS, OP_C_DA_WEADIS, OP_C_DA_NWEADIS,
+      OP_C_IMPL, OP_C_NIMPL, OP_C_DA_IMPL, OP_C_DA_NIMPL,
+      OP_C_CIMPL, OP_C_NCIMPL, OP_C_DA_CIMPL, OP_C_DA_NCIMPL
+    };
+
+
   OP_M_NULL = "NULL";
   
   OP_Ms = { OP_M_NULL };
@@ -117,16 +148,45 @@ class Operator( ProtoBase, metaclass=kls ):
   OP_Ps = { OP_P_EQUALITY };
   
   OPs = {
+         
       OP_Q_UNIV: OP_Q_UNIV,
       OP_Q_EXIST: OP_Q_EXIST,
       OP_Q_DESCR: OP_Q_DESCR,
+      
       OP_C_STRCON: OP_C_STRCON,
+      OP_C_NSTRCON: OP_C_NSTRCON,
+      OP_C_DA_STRCON: OP_C_DA_STRCON,
+      OP_C_DA_NSTRCON: OP_C_DA_NSTRCON,
+      
       OP_C_WEACON: OP_C_WEACON,
+      OP_C_NWEACON: OP_C_NWEACON,
+      OP_C_DA_WEACON: OP_C_DA_WEACON,
+      OP_C_DA_NWEACON: OP_C_DA_NWEACON,
+      
       OP_C_STRDIS: OP_C_STRDIS,
+      OP_C_NSTRDIS: OP_C_NSTRDIS,
+      OP_C_DA_STRDIS: OP_C_DA_STRDIS,
+      OP_C_DA_NSTRDIS: OP_C_DA_NSTRDIS,
+      
       OP_C_WEADIS: OP_C_WEADIS,
+      OP_C_NWEADIS: OP_C_NWEADIS,
+      OP_C_DA_WEADIS: OP_C_DA_WEADIS,
+      OP_C_DA_NWEADIS: OP_C_DA_NWEADIS,
+      
       OP_C_IMPL: OP_C_IMPL,
+      OP_C_NIMPL: OP_C_NIMPL,
+      OP_C_DA_IMPL: OP_C_DA_IMPL,
+      OP_C_DA_NIMPL: OP_C_DA_NIMPL,
+      
+      OP_C_CIMPL: OP_C_CIMPL,
+      OP_C_NCIMPL: OP_C_NCIMPL,
+      OP_C_DA_CIMPL: OP_C_DA_CIMPL,
+      OP_C_DA_NCIMPL: OP_C_DA_NCIMPL,
+
       OP_M_NULL: OP_M_NULL,
+      
       OP_P_EQUALITY: OP_P_EQUALITY
+      
     };
 
 
