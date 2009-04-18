@@ -15,6 +15,7 @@ from pypes.proto.sig import Variable;
 from pypes.proto.form.protoform import ProtoForm;
 from pypes.proto.form.freezer import Freezer;
 from pypes.proto.form.subform import SubForm;
+from pypes.proto.lex import Operator;
 
 
 
@@ -57,7 +58,9 @@ class Modification( SubForm, metaclass=kls ):
       
       self.modality = modality( sig=sig );
       assert isinstance( self.modality, Functor );
-    
+      if isinstance( self.modality.referent, Operator ):
+        assert self.modality.referent.otype in self.modality.referent.OP_Ms;
+
     if scope is not None:
 
       self.scope = self._register_scopebearer( scope( sig=sig ) );

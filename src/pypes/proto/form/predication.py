@@ -13,6 +13,7 @@ from pypes.proto.sig import Argument;
 from pypes.proto.sig import Variable;
 from pypes.proto.sig import Constant;
 from pypes.proto.form.subform import SubForm;
+from pypes.proto.lex import Operator;
 
 
 

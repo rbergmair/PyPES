@@ -97,8 +97,10 @@ class Operator( ProtoBase, metaclass=kls ):
   OP_Q_UNIV = "ALL";
   OP_Q_EXIST = "SOME";
   OP_Q_DESCR = "THE";
+  OP_Q_UNIV_NEG = "NOTSOME";
+  OP_Q_EXIST_NEG = "NOTALL";
   
-  OP_Qs = { OP_Q_UNIV, OP_Q_EXIST, OP_Q_DESCR };
+  OP_Qs = { OP_Q_UNIV, OP_Q_EXIST, OP_Q_DESCR, OP_Q_UNIV_NEG, OP_Q_EXIST_NEG };
 
   OP_C_STRCON = "&&";
   OP_C_WEACON = "/\\";
@@ -113,20 +115,28 @@ class Operator( ProtoBase, metaclass=kls ):
   OP_Ms = { OP_M_NULL };
 
   OP_P_EQUALITY = "EQUALS";
+  OP_P_TAUTOLOGY = "TAUTOLOGY";
+  OP_P_AND = "AND";
+  OP_P_OR = "OR";
   
-  OP_Ps = { OP_P_EQUALITY };
+  OP_Ps = { OP_P_EQUALITY, OP_P_TAUTOLOGY, OP_P_AND, OP_P_OR };
   
   OPs = {
       OP_Q_UNIV: OP_Q_UNIV,
       OP_Q_EXIST: OP_Q_EXIST,
       OP_Q_DESCR: OP_Q_DESCR,
+      OP_Q_UNIV_NEG: OP_Q_UNIV_NEG,
+      OP_Q_EXIST_NEG: OP_Q_EXIST_NEG,
       OP_C_STRCON: OP_C_STRCON,
       OP_C_WEACON: OP_C_WEACON,
       OP_C_STRDIS: OP_C_STRDIS,
       OP_C_WEADIS: OP_C_WEADIS,
       OP_C_IMPL: OP_C_IMPL,
       OP_M_NULL: OP_M_NULL,
-      OP_P_EQUALITY: OP_P_EQUALITY
+      OP_P_EQUALITY: OP_P_EQUALITY,
+      OP_P_TAUTOLOGY: OP_P_TAUTOLOGY,
+      OP_P_AND: OP_P_AND,
+      OP_P_OR: OP_P_OR,
     };
 
 

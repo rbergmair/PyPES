@@ -12,6 +12,7 @@ from pypes.proto.sig import Functor;
 from pypes.proto.form.protoform import ProtoForm;
 from pypes.proto.form.freezer import Freezer;
 from pypes.proto.form.subform import SubForm;
+from pypes.proto.lex import Operator;
 
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
@@ -49,6 +50,8 @@ class Connection( SubForm, metaclass=kls ):
     if connective is not None:
       self.connective = connective( sig=sig );
       assert isinstance( self.connective, Functor );
+      if isinstance( self.connective.referent, Operator ):
+        assert self.connective.referent.otype in self.connective.referent.OP_Cs;
     
     if lscope is not None:
       self.lscope = self._register_scopebearer( lscope( sig=sig ) );

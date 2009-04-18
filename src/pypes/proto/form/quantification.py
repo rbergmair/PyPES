@@ -14,6 +14,7 @@ from pypes.proto.sig import Constant;
 from pypes.proto.form.protoform import ProtoForm;
 from pypes.proto.form.freezer import Freezer;
 from pypes.proto.form.subform import SubForm;
+from pypes.proto.lex import Operator;
 
 
 
@@ -58,6 +59,8 @@ class Quantification( SubForm, metaclass=kls ):
     if quantifier is not None:
       self.quantifier = quantifier( sig=sig );
       assert isinstance( self.quantifier, Functor );
+      if isinstance( self.quantifier.referent, Operator ):
+        assert self.quantifier.referent.otype in self.quantifier.referent.OP_Qs;
     
     if var is not None:
       self.var = var( sig=sig );
