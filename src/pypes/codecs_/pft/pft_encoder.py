@@ -242,8 +242,24 @@ class PFTEncoder( ProtoProcessor, metaclass=subject ):
     rslt = "(";
     
     if args:
+      
+      args.sort();
+      
+      idx = None;
+      val = None;
+      
+      for i in range( 0, len(args) ):
+        (aid,arg,var) = args[i];
+        if aid == "KEY":
+          idx = i;
+          val = (aid,arg,var);
+          
+      if idx is not None:
+        del args[ idx ];
+        args.insert( 0, val );
+      
       rslt += " ";
-      for (aid,arg,var) in sorted( args ):
+      for (aid,arg,var) in args:
         rslt += self._fmt_identifier( aid );
         rslt += "=" + var;
         rslt += ", ";

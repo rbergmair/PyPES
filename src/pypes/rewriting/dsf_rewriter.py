@@ -203,12 +203,15 @@ class DSFRewriter( RenamingRewriter, metaclass=subject ):
         for subf in newsubfs_occurs:
           newroot = Handle()( sig=ProtoSig() );
           newpf.append_fragment( newroot, subf );
+        assert len( newpf.roots ) > 0;
         return ( True, newpf );
       else:
         newpf = ProtoForm()( sig=ProtoSig() );
         for subf in newsubfs_not_occurs:
           newroot = Handle()( sig=ProtoSig() );
           newpf.append_fragment( newroot, subf );
+        if len( newpf.roots ) == 0:
+          return ( False, None );
         return ( False, newpf );
 
     
@@ -216,7 +219,7 @@ class DSFRewriter( RenamingRewriter, metaclass=subject ):
 
       if isinstance( subform, ProtoForm ):
         ( occurs, rslt ) = self._filter_subprotoform( var, subform );
-        if len( rslt.roots ) == 1:
+        if rslt is not None and len( rslt.roots ) == 1:
           return ( occurs, rslt.subforms[ rslt.roots[0] ] );
         else:
           return ( occurs, rslt );
@@ -434,7 +437,8 @@ class DSFRewriter( RenamingRewriter, metaclass=subject ):
           pf_ = _conjunction( pf_, bind( binding, subf ) );
         
         if pf_ is not None:
-          pf.append_fragment( Handle()( sig=sig ), self._newconn() );
+          if len( pf.roots ) > 0:
+            pf.append_fragment( Handle()( sig=sig ), self._newconn() );
           pf.append_fragment( Handle()( sig=sig ), pf_ );
           
         self._binding[ top ] = pf;
