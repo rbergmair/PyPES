@@ -3,6 +3,10 @@
 __package__ = "pypes.rewriting";
 __all__ = [ "ERGtoBasicRewriter", "erg_to_basic_rewrite" ];
 
+from copy import copy;
+
+from pypes.proto import ProtoProcessor, ProtoSig, Operator, Word;
+
 from pypes.utils.mc import subject, object_;
 from pypes.proto.lex import basic, erg;
 
@@ -10,7 +14,7 @@ from pypes.proto.lex import basic, erg;
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-class ERGtoBasicRewriter( metaclass=subject ):
+class ERGtoBasicRewriter( ProtoProcessor, metaclass=subject ):
   
   
   OP_Qs = {
@@ -29,36 +33,36 @@ class ERGtoBasicRewriter( metaclass=subject ):
       
       erg.Operator.UDEF_Q: basic.Operator.OP_Q_EXIST,
       erg.Operator.DEF_EXPLICIT_Q: basic.Operator.OP_Q_EXIST,
-      erg.Operator.DEF_IMPLICIT_Q: basic.Operator.OP_Q_EXIST
+      erg.Operator.DEF_IMPLICIT_Q: basic.Operator.OP_Q_EXIST,
       
     };
   
   WRD_Qs = {
             
-      (['all'], 'q', None): basic.Operator.OP_Q_UNIV,
-      (['both'], 'q', None): basic.Operator.OP_Q_UNIV,
-      (['each'], 'q', None): basic.Operator.OP_Q_UNIV,
-      (['either'], 'q', None): basic.Operator.OP_Q_UNIV,
-      (['every'], 'q', None): basic.Operator.OP_Q_UNIV,
-      (['most'], 'q', None): basic.Operator.OP_Q_UNIV,
+      erg.Word.ALL_Q: basic.Operator.OP_Q_UNIV,
+      erg.Word.BOTH_Q: basic.Operator.OP_Q_UNIV,
+      erg.Word.EACH_Q: basic.Operator.OP_Q_UNIV,
+      erg.Word.EITHER_Q: basic.Operator.OP_Q_UNIV,
+      erg.Word.EVERY_Q: basic.Operator.OP_Q_UNIV,
+      erg.Word.MOST_Q: basic.Operator.OP_Q_UNIV,
 
-      (['neither'], 'q', None): basic.Operator.OP_Q_UNIV_NEG,
-      (['no'], 'q', None): basic.Operator.OP_Q_UNIV_NEG,
+      erg.Word.NEITHER_Q: basic.Operator.OP_Q_UNIV_NEG,
+      erg.Word.NO_Q: basic.Operator.OP_Q_UNIV_NEG,
       
-      (['another'], 'q', None): basic.Operator.OP_Q_EXIST,
-      (['any'], 'q', None): basic.Operator.OP_Q_EXIST,
-      (['a'], 'q', None): basic.Operator.OP_Q_EXIST,
-      (['half'], 'q', None): basic.Operator.OP_Q_EXIST,
-      (['some'], 'q', None): basic.Operator.OP_Q_EXIST,
-      (['some'], 'q', 'indiv'): basic.Operator.OP_Q_EXIST,
+      erg.Word.ANOTHER_Q: basic.Operator.OP_Q_EXIST,
+      erg.Word.ANY_Q: basic.Operator.OP_Q_EXIST,
+      erg.Word.A_Q: basic.Operator.OP_Q_EXIST,
+      erg.Word.HALF_Q: basic.Operator.OP_Q_EXIST,
+      erg.Word.SOME_Q: basic.Operator.OP_Q_EXIST,
+      erg.Word.SOME_Q_INDIV: basic.Operator.OP_Q_EXIST,
       
-      (['that'], 'q', 'dem'): basic.Operator.OP_Q_DESCR,
-      (['this'], 'q', 'dem'): basic.Operator.OP_Q_DESCR,
-      (['which'], 'q', None): basic.Operator.OP_Q_DESCR,
+      erg.Word.THAT_Q_DEM: basic.Operator.OP_Q_DESCR,
+      erg.Word.THIS_Q_DEM: basic.Operator.OP_Q_DESCR,
+      erg.Word.WHICH_Q: basic.Operator.OP_Q_DESCR,
 
       # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-      (['the'], 'q', None): basic.Operator.OP_Q_DESCR, # possibly plural
+      erg.Word.THE_Q: basic.Operator.OP_Q_DESCR, # possibly plural
       
     };
 
@@ -71,27 +75,31 @@ class ERGtoBasicRewriter( metaclass=subject ):
       erg.Operator.TIMES: basic.Operator.OP_C_WEACON,
       
       erg.Operator.SUBORD: basic.Operator.OP_C_WEACON,
-      
+
+      # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+      erg.Operator.IMPLICIT_CONJ: basic.Operator.OP_C_WEACON,
+
     };
   
   WRD_Cs = {
             
-      (['after'], 'x', 'h'): basic.Operator.OP_C_WEACON,
-      (['since'], 'x', 'subord'): basic.Operator.OP_C_WEACON,
+      erg.Word.AFTER_X_H: basic.Operator.OP_C_WEACON,
+      erg.Word.SINCE_X_SUBORD: basic.Operator.OP_C_WEACON,
 
-      (['before'], 'x', 'h'): basic.Operator.OP_C_WEACON,
-      (['in', 'order', 'to'], 'x', None): basic.Operator.OP_C_WEACON,
+      erg.Word.BEFORE_X_H: basic.Operator.OP_C_WEACON,
+      erg.Word.IN_ORDER_TO_X: basic.Operator.OP_C_WEACON,
 
-      (['until'], 'p', None): basic.Operator.OP_C_WEACON,
+      erg.Word.UNTIL_X_H: basic.Operator.OP_C_WEACON,
 
-      (['if'], 'x', 'then'): basic.Operator.OP_C_IMPL,
+      erg.Word.IF_X_THEN: basic.Operator.OP_C_IMPL,
       
-      (['and'], 'c', None): basic.Operator.OP_C_DA_WEACON,
-      (['and', 'so'], 'x', 'subord'): basic.Operator.OP_C_DA_WEACON,
+      erg.Word.AND_C: basic.Operator.OP_C_WEACON,
+      erg.Word.AND_SO_X_SUBORD: basic.Operator.OP_C_WEACON,
       
-      (['or'], 'c', None): basic.Operator.OP_C_DA_WEADIS,
-      (['when'], 'x', 'subord'): basic.Operator.OP_C_DA_WEADIS,
-      (['while'], 'x', None): basic.Operator.OP_C_DA_WEADIS
+      erg.Word.OR_C: basic.Operator.OP_C_WEADIS,
+      erg.Word.WHEN_X_SUBORD: basic.Operator.OP_C_WEADIS,
+      erg.Word.WHILE_X: basic.Operator.OP_C_WEADIS
       
     };
 
@@ -100,13 +108,17 @@ class ERGtoBasicRewriter( metaclass=subject ):
            
       erg.Operator.COMP: basic.Operator.OP_M_NULL,
       erg.Operator.NOMINALIZATION: basic.Operator.OP_M_NULL,
+
+      # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+      erg.Operator.NEG: basic.Operator.OP_M_NULL,
       
     };
 
   WRD_Ms = {
             
-      (['and'], 'c', None): basic.Operator.OP_M_NULL,
-      (['but'], 'c', None): basic.Operator.OP_M_NULL,
+      erg.Word.AND_C: basic.Operator.OP_M_NULL,
+      erg.Word.BUT_C: basic.Operator.OP_M_NULL,
       
     };
   
@@ -147,6 +159,8 @@ class ERGtoBasicRewriter( metaclass=subject ):
       erg.Operator.COMP: None,
       erg.Operator.SUPERL: None,
       
+      erg.Operator.PART_OF: None,
+      
       erg.Operator.MEASURE: None,
       erg.Operator.PERSON: None,
       erg.Operator.TIME_N: None,
@@ -166,55 +180,182 @@ class ERGtoBasicRewriter( metaclass=subject ):
       # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
       
       erg.Operator.PRON: basic.Operator.OP_P_TAUTOLOGY,
+
+      erg.Operator.IMPLICIT_CONJ: basic.Operator.OP_P_AND,
       
       erg.Operator.CARD: None,
       erg.Operator.ORD: None,
       
-      LITTLE_FEW_A: None,
-      MUCH_MANY_A: None,
+      erg.Operator.LITTLE_FEW_A: None,
+      erg.Operator.MUCH_MANY_A: None,
       
     };
 
   WRD_Ps = {
       
-      (['after'], 'x', 'h'): None,
-      (['since'], 'x', 'subord'): None,
+      erg.Word.AFTER_C: None,
+      erg.Word.SINCE_X_SUBORD: None,
       
-      (['before'], 'x', 'h'): None,
-      (['in', 'order', 'to'], 'x', None): None,
+      erg.Word.BEFORE_X_H: None,
+      erg.Word.IN_ORDER_TO_X: None,
       
-      (['until'], 'p', None): None,
+      erg.Word.UNTIL_P: None,
       
-      (['if'], 'x', 'then'): None,
+      erg.Word.IF_X_THEN: None,
       
-      (['and'], 'c', None): basic.Operator.OP_P_AND,
-      (['and', 'so'], 'x', 'subord'): None,
+      erg.Word.AND_C: basic.Operator.OP_P_AND,
+      erg.Word.AND_SO_C: None,
       
-      (['or'], 'c', None): basic.Operator.OP_P_OR,
-      (['when'], 'x', 'subord'): None,
-      (['while'], 'x', None): None,
+      erg.Word.OR_C: basic.Operator.OP_P_OR,
+      erg.Word.WHEN_X_SUBORD: None,
+      erg.Word.WHILE_X: None,
       
-      (['for'], 'p', None): None,
-      (['from'], 'p', None): None,
-      (['in'], 'p', None): None,
-      (['on'], 'p', None): None,
+      erg.Word.FOR_P: None,
+      erg.Word.FROM_P: None,
+      erg.Word.IN_P: None,
+      erg.Word.ON_P: None,
       
       # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
       
-      (['at', 'least'], 'x', 'deg'): None,
-      (['at', 'most'], 'x', 'deg'): None,
-      (['exactly'], 'x', 'deg'): None,
-      (['just'], 'x', 'deg'): None,
-      (['nearly'], 'x', 'deg'): None,
-      (['really'], 'x', 'deg'): None,
-      (['twice'], 'x', 'deg'): None,
-      (['very'], 'x', 'deg'): None,
+      erg.Word.AT_LEAST_X_DEG: None,
+      erg.Word.AT_MOST_X_DEG: None,
+      erg.Word.EXACTLY_X_DEG: None,
+      erg.Word.JUST_X_DEG: None,
+      erg.Word.NEARLY_X_DEG: None,
+      erg.Word.REALLY_X_DEG: None,
+      erg.Word.TWICE_X_DEG: None,
+      erg.Word.VERY_X_DEG: None,
       
     };
-
   
+  
+  def _map_functor( self, functor, ops, wrds ):
+
+    rslt = copy( functor )( sig=ProtoSig() );
+    
+    if isinstance( rslt.referent, Operator ):
+      
+      oldotype = rslt.referent.otype;
+      if oldotype in basic.Operator.OPs:
+        return rslt;
+        
+      try:
+        assert oldotype in ops;
+      except:
+        print( oldotype );
+        raise;
+      
+      newotype = ops[ oldotype ];
+      if newotype is None:
+        return None;
+      
+      rslt.referent = basic.Operator( otype = newotype )( sig=ProtoSig() );
+      return rslt;
+    
+    assert isinstance( rslt.referent, Word );
+    
+    oldwrd = rslt.referent.word;
+    
+    if oldwrd is None:
+      return None;
+    
+    if oldwrd not in wrds:
+      return None;
+    
+    newop = wrds[oldwrd];
+    if newop is None:
+      return None;
+      
+    rslt.referent = basic.Operator( otype = newop )( sig=ProtoSig() );
+    return rslt;
+
+
+  def _process_quantification( self, inst, subform, quantifier, var, rstr, body ):
+
+    functor = self._map_functor(
+                  inst.quantifier,
+                  self.OP_Qs,
+                  self.WRD_Qs
+                );
+    
+    if functor is not None:
+      inst.quantifier = functor;
+      return;
+    
+    assert False;
+
+
+  def _process_connection( self, inst, subform, connective, lscope, rscope ):
+
+    functor = self._map_functor(
+                  inst.connective,
+                  self.OP_Cs,
+                  self.WRD_Cs
+                );
+
+    if functor is not None:
+      inst.connective = functor;
+      return;
+
+    assert False;
+
+
+  def _process_modification( self, inst, subform, modality, args, scope ):
+
+    functor = self._map_functor(
+                  inst.modality,
+                  self.OP_Ms,
+                  self.WRD_Ms
+                );
+
+    if functor is not None:
+      inst.modality = functor;
+      return;
+    
+    if isinstance( inst.modality.referent, Operator ):
+      assert False;
+    
+    functor = copy( inst.modality )( sig=ProtoSig() );
+    functor.referent = basic.Operator(
+                           otype = basic.Operator.OP_M_NULL
+                         )( sig=ProtoSig() );
+    inst.modality = functor;
+
+
+  def _process_predication( self, inst, subform, predicate, args ):
+    
+    functor = self._map_functor(
+                  inst.predicate,
+                  self.OP_Ps,
+                  self.WRD_Ps
+                );
+
+    if functor is not None:
+      inst.predicate = functor;
+      return;
+
+    functor = copy( inst.predicate )( sig=ProtoSig() );
+    
+    if isinstance( functor.referent, Operator ):
+      
+      functor.referent = basic.Operator(
+                             otype = functor.referent.otype
+                           )( sig=ProtoSig() );
+      
+    else:
+      assert isinstance( functor.referent, Word );
+      functor.referent = basic.Word(
+                             lemma = functor.referent.lemma,
+                             pos = functor.referent.pos,
+                             sense = functor.referent.sense
+                           )( sig=ProtoSig() );
+                         
+    inst.predicate = functor;
+  
+
   def rewrite( self ):
     
+    self.process( self._obj_ );
     return self._obj_;
 
 

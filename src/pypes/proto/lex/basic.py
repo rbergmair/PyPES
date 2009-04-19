@@ -149,12 +149,10 @@ class Operator( ProtoBase, metaclass=kls ):
   def __init__( self, sig, otype=None, feats=None ):
     
     if otype is not None:
-      try:
-        assert otype in self.OPs;
-      except:
-        print( otype );
-        raise;
-      self.otype = self.OPs[ otype ];
+      if otype in self.OPs:
+        self.otype = self.OPs[ otype ];
+      else:
+        self.otype = otype;
     
     if feats is not None:
       self.feats = feats;

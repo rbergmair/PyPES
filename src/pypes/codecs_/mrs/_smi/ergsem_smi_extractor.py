@@ -4,6 +4,8 @@ __package__ = "pypes.codecs_.mrs._smi";
 __all__ = [ "ERGSemSMIExtractor", "ergsem_smi_extract" ];
 
 import re;
+from itertools import chain;
+
 from pprint import pformat;
 
 from pypes.utils.mc import subject;
@@ -22,7 +24,6 @@ class ERGSemSMIExtractor( ERGSemProcessor, metaclass=subject ):
     self._semi = {};
     self._semi_interesting = set();
     
-    self._ops = {};
     self._opqs = set();
     self._opcs = set();
     self._opms = set();
@@ -173,9 +174,6 @@ class ERGSemSMIExtractor( ERGSemProcessor, metaclass=subject ):
       for (arg,(opt,sort,feats)) in sign.items():
         args[ arg ] = sort;
 
-      if predstr_as_operator is not None:
-        self._ops[ predstr_as_operator ] = predstr_as_operator;
-
       if predstr_as_word is not None:
         
         ( lemma, pos, sense ) = predstr_as_word;
@@ -230,7 +228,11 @@ class ERGSemSMIExtractor( ERGSemProcessor, metaclass=subject ):
         if predstr_as_operator is not None:
           self._opcs.add( predstr_as_operator );
         if predstr_as_word is not None:
-          assert pos in { "v", "p", "a", "x" };
+          try:
+            assert pos in { "c", "v", "p", "a", "x" };
+          except:
+            print( pos );
+            raise;
           if pos in { "p", "x" }:
             if not predstr_as_word in self._wcs:
               self._wcs.append( predstr_as_word );
@@ -298,6 +300,32 @@ class ERGSemSMIExtractor( ERGSemProcessor, metaclass=subject ):
       semi = semi + "\n    };";
       
       f.write( semi );
+      
+    ops = {};
+    for op in chain( self._opqs, self._opcs, self._opms, self._opps ):
+      ops[ op ] = op;
+    
+    wrdids = [];
+    wrds = [];
+    
+    for wrd in sorted( chain( self._wqs, self._wcs, self._wms, self._wps ) ):
+      
+      if wrd in wrds:
+        continue;
+      
+      wrdid = "";
+      ( lemma, pos, sense ) = wrd;
+      for tok in lemma:
+        wrdid += self._make_identifier( tok.upper() );
+        wrdid += "_";
+      wrdid = wrdid[ :-1 ];
+      if pos is not None and pos != "":
+        wrdid += "_" + pos.upper();
+      if sense is not None and sense != "":
+        wrdid += "_" + sense.upper();
+      
+      wrdids.append( wrdid );
+      wrds.append( wrd );
         
     with open( targetdir + "/_erg_auto.py", "w" ) as f:
   
@@ -310,7 +338,7 @@ class ERGSemSMIExtractor( ERGSemProcessor, metaclass=subject ):
           """class Operator( basic.Operator, metaclass=kls ):\n\n"""
         );
         
-      for otype in sorted( self._ops.keys() ):
+      for otype in sorted( ops.keys() ):
         f.write( "  " + otype + " = '" + otype + "';\n" );
 
       f.write( "\n" );
@@ -318,7 +346,7 @@ class ERGSemSMIExtractor( ERGSemProcessor, metaclass=subject ):
       f.write( "  OPs = {};\n" );
       f.write( "  OPs.update( basic.Operator.OPs );\n" );
       f.write( "  OPs.update( {" );
-      f.write( ( "\n " + pformat( self._ops, width=74 )[1:-1] ).replace( "\n", "\n   " ).replace( "'", "" ) );
+      f.write( ( "\n " + pformat( ops, width=74 )[1:-1] ).replace( "\n", "\n   " ).replace( "'", "" ) );
       f.write( "} );\n\n" );
       
       f.write( "  OP_Qs = basic.Operator.OP_Qs | {" );
@@ -339,22 +367,60 @@ class ERGSemSMIExtractor( ERGSemProcessor, metaclass=subject ):
 
       f.write( "\n" );
       f.write( "class Word( basic.Word, metaclass=kls ):\n\n" );
-
-      f.write( "  WRD_Qs = basic.Word.WRD_Qs + [" );
-      f.write( ( "\n " + pformat( sorted( self._wqs ), width=74 )[1:-1] ).replace( "\n", "\n   " ).replace( "''", "None" ) );
+      
+      f.write( "  WRDs = [" );
+      f.write( ( "\n " + pformat( wrds, width=74 )[1:-1] ).replace( "\n", "\n   " ).replace( "''", "None" ) );
       f.write( "];\n\n" );
+      
+      k = 0;
+      
+      for wrdid in wrdids:
+        
+        f.write( "  " + wrdid + " = " + str(k) + ";\n" );
+        
+        try:
+          i = self._wqs.index( wrds[k] );
+          self._wqs[i] = wrdid;
+        except ValueError:
+          pass;
+        
+        try:
+          i = self._wcs.index( wrds[k] );
+          self._wcs[i] = wrdid;
+        except ValueError:
+          pass;
+        
+        try:
+          i = self._wms.index( wrds[k] );
+          self._wms[i] = wrdid;
+        except ValueError:
+          pass;
 
-      f.write( "  WRD_Cs = basic.Word.WRD_Cs + [" );
-      f.write( ( "\n " + pformat( sorted( self._wcs ), width=74 )[1:-1] ).replace( "\n", "\n   " ).replace( "''", "None" ) );
-      f.write( "];\n\n" );
+        try:
+          i = self._wps.index( wrds[k] );
+          self._wps[i] = wrdid;
+        except ValueError:
+          pass;
 
-      f.write( "  WRD_Ms = basic.Word.WRD_Ms + [" );
-      f.write( ( "\n " + pformat( sorted( self._wms ), width=74 )[1:-1] ).replace( "\n", "\n   " ).replace( "''", "None" ) );
-      f.write( "];\n\n" );
+        k += 1;
 
-      f.write( "  WRD_Ps = basic.Word.WRD_Ps + [" );
-      f.write( ( "\n " + pformat( sorted( self._wps ), width=74 )[1:-1] ).replace( "\n", "\n   " ).replace( "''", "None" ) );
-      f.write( "];\n\n" );
+      f.write( "\n" );
+
+      f.write( "  WRD_Qs = {" );
+      f.write( ( "\n " + pformat( sorted(self._wqs), width=74 )[1:-1] ).replace( "\n", "\n   " ).replace( "'", "" ) );
+      f.write( "};\n\n" );
+
+      f.write( "  WRD_Cs = {" );
+      f.write( ( "\n " + pformat( sorted(self._wcs), width=74 )[1:-1] ).replace( "\n", "\n   " ).replace( "'", "" ) );
+      f.write( "};\n\n" );
+
+      f.write( "  WRD_Ms = {" );
+      f.write( ( "\n " + pformat( sorted(self._wms), width=74 )[1:-1] ).replace( "\n", "\n   " ).replace( "'", "" ) );
+      f.write( "};\n\n" );
+
+      # f.write( "  WRD_Ps = {" );
+      # f.write( ( "\n " + pformat( sorted(self._wps), width=74 )[1:-1] ).replace( "\n", "\n   " ).replace( "'", "" ) );
+      # f.write( "};\n\n" );
 
 
 

@@ -19,8 +19,15 @@ class Operator( _erg_auto.Operator ):
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 class Word( _erg_auto.Word ):
-  
-  pass;
+
+  def __init__( self, sig, lemma=None, pos=None, sense=None, feats=None ):
+    
+    super().__init__( sig=sig, lemma=lemma, pos=pos, sense=sense, feats=feats );
+    
+    try:
+      self.word = self.WRDs.index( (lemma,pos,sense) );
+    except ValueError:
+      self.word = None;
 
 
 

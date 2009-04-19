@@ -30,86 +30,68 @@ from pypes.rewriting.erg_to_basic_rewriter import erg_to_basic_rewrite;
 
 class TestERGtoBasicRewriter( TestCase, metaclass=object_ ):
   
-  _TESTDTADIR = "dta/native";
+  _TESTDTADIR = "dta/test";
   
   
   def write_testfile( self, filename, decoder ):
 
     try:
       
-      x = open( self._TESTDTADIR+"/dsfs.txt", "a" );
-      
+      f_ = gzip.open( filename );
       try:
         
-        f_ = gzip.open( filename );
         try:
           
+          g = open( filename.replace( ".pft.gz", "-basic.pft" ), "w" );
           try:
+
+            r = None;
+            gstr = None;
             
-            g = open( filename.replace( ".pft.gz", "-basic.pft" ), "w" );
             try:
-  
-              r = None;
-              gstr = None;
-              
-              try:
-  
-                print( filename );
-  
-                cdc = codecs.getreader( "utf-8" );
-                f = cdc( f_ );
-  
-                fstr = f.read();
-                pstr = None;
-                
-                pf1 = decoder.decode( fstr )( sig=ProtoSig() );
-                # pfr = recursivize( solve_all( pf1 ) );
-                pf = erg_to_basic_rewrite( pf1 );
 
-                # pfrstr = pft_encode( pfr );
-                pfstr = pft_encode( pf );
-                
-                print( fstr );
-                # print( pfrstr );
-                print( pfstr );
-                print( "-------" );
+              print( filename );
 
-                self.assert_( sanity_check( pf ) );
-                
-                k = open( filename.replace( ".pft.gz", ".txt" ) )
-                txt = k.read();
-                k.close();
-                
-                x.write( filename );
-                x.write( ": " );
-                x.write( txt );
-                x.write( "\n" );
-                x.write( pfstr );
-                x.write( "\n\f\n\n" );
-                
-                g.write( pft_encode( pf, pretty=False, fast_initialize=True ) );
-                
-                f.close();
+              cdc = codecs.getreader( "utf-8" );
+              f = cdc( f_ );
+
+              fstr = f.read();
+              pstr = None;
               
-              except:
-  
-                print( fstr );
-                raise;
-      
-            finally:
-              g.close();
+              pf1 = decoder.decode( fstr )( sig=ProtoSig() );
+              # pfr = recursivize( solve_all( pf1 ) );
+              pf = erg_to_basic_rewrite( pf1 );
+
+              # pfrstr = pft_encode( pfr );
+              pfstr = pft_encode( pf );
+              
+              print( fstr );
+              # print( pfrstr );
+              print( pfstr );
+              print( "-------" );
+
+              self.assert_( sanity_check( pf ) );
+              
+              g.write( pft_encode( pf, pretty=False, fast_initialize=True ) );
+              
+              f.close();
             
-          except IOError:
-            pass;
-        
-        finally:
-          f_.close();
-      
-      except IOError:
-        pass;
+            except:
+
+              print( fstr );
+              raise;
     
-    finally:
-      x.close();
+          finally:
+            g.close();
+          
+        except IOError:
+          pass;
+      
+      finally:
+        f_.close();
+    
+    except IOError:
+      pass;
 
 
   def x_test_quick( self ):
