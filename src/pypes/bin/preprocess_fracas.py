@@ -10,7 +10,7 @@ from pypes.infer._preprocess.fracas import FraCaSProcessor;
 
 def main( argv=None ):
   
-  f = open( "dta/infer/orig/fracas.bmc.xml" );
+  f = open( "dta/infer/edited/fracas.bmc.xml" );
   try:
     with FraCaSProcessor( f ) as proc:
       proc.process( "dta/infer/fracas/data",
