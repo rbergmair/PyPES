@@ -410,29 +410,6 @@ class FraCaSProcessor( XMLHandler, metaclass=subject ):
 
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
-
-def main( argv=None ):
-  
-  f = open( "dta/infer/orig/fracas.bmc.xml" );
-  try:
-    with FraCaSProcessor( f ) as proc:
-      proc.process( "dta/infer/fracas/data",
-                    "dta/infer/fracas/gold",
-                    "dta/items/fracas" );
-  finally:
-    f.close();
-  return 0;
-
-
-
-# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
-
-if __name__ == '__main__':
-  sys.exit( main( sys.argv ) );
-
-
-
-# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 #                                                                             #
 #        PyPES: the python platform for experimentation with semantics        #
 #                                                                             #
