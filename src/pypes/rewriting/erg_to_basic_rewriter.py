@@ -159,6 +159,8 @@ class ERGtoBasicRewriter( ProtoProcessor, metaclass=subject ):
       erg.Operator.COMP: None,
       erg.Operator.SUPERL: None,
       
+      erg.Operator.NOMINALIZATION: None,
+      
       erg.Operator.PART_OF: None,
       
       erg.Operator.MEASURE: None,
@@ -188,6 +190,8 @@ class ERGtoBasicRewriter( ProtoProcessor, metaclass=subject ):
       
       erg.Operator.LITTLE_FEW_A: None,
       erg.Operator.MUCH_MANY_A: None,
+      
+      erg.Operator.NEG: None,
       
     };
 
@@ -279,6 +283,7 @@ class ERGtoBasicRewriter( ProtoProcessor, metaclass=subject ):
                 );
     
     if functor is not None:
+      functor.fid = None;
       inst.quantifier = functor;
       return;
     
@@ -294,6 +299,7 @@ class ERGtoBasicRewriter( ProtoProcessor, metaclass=subject ):
                 );
 
     if functor is not None:
+      functor.fid = None;
       inst.connective = functor;
       return;
 
@@ -309,6 +315,7 @@ class ERGtoBasicRewriter( ProtoProcessor, metaclass=subject ):
                 );
 
     if functor is not None:
+      functor.fid = None;
       inst.modality = functor;
       return;
     
@@ -319,6 +326,7 @@ class ERGtoBasicRewriter( ProtoProcessor, metaclass=subject ):
     functor.referent = basic.Operator(
                            otype = basic.Operator.OP_M_NULL
                          )( sig=ProtoSig() );
+    functor.fid = None;
     inst.modality = functor;
 
 
@@ -331,6 +339,7 @@ class ERGtoBasicRewriter( ProtoProcessor, metaclass=subject ):
                 );
 
     if functor is not None:
+      functor.fid = None;
       inst.predicate = functor;
       return;
 
@@ -341,6 +350,7 @@ class ERGtoBasicRewriter( ProtoProcessor, metaclass=subject ):
       functor.referent = basic.Operator(
                              otype = functor.referent.otype
                            )( sig=ProtoSig() );
+      functor.fid = None;
       
     else:
       assert isinstance( functor.referent, Word );
@@ -349,6 +359,7 @@ class ERGtoBasicRewriter( ProtoProcessor, metaclass=subject ):
                              pos = functor.referent.pos,
                              sense = functor.referent.sense
                            )( sig=ProtoSig() );
+      functor.fid = None;
                          
     inst.predicate = functor;
   

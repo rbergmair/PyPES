@@ -37,61 +37,79 @@ class TestERGtoDSFRewriter( TestCase, metaclass=object_ ):
 
     try:
       
-      f_ = gzip.open( filename );
+      x = open( self._TESTDTADIR+"/dsfdsfs.txt", "a" );
+  
       try:
         
+        f_ = gzip.open( filename );
         try:
           
-          g = open( filename.replace( ".pft.gz", "-dsfdsf.pft" ), "w" );
           try:
-
-            r = None;
-            gstr = None;
             
+            g = open( filename.replace( ".pft.gz", "-dsfdsf.pft" ), "w" );
             try:
-
-              print( filename );
-
-              cdc = codecs.getreader( "utf-8" );
-              f = cdc( f_ );
-
-              fstr = f.read();
-              pstr = None;
+  
+              r = None;
+              gstr = None;
               
-              pf1 = decoder.decode( fstr )( sig=ProtoSig() );
-              # pfr = recursivize( solve_all( pf1 ) );
-              pf = erg_to_dsf_rewrite( pf1 );
+              try:
+  
+                print( filename );
+  
+                cdc = codecs.getreader( "utf-8" );
+                f = cdc( f_ );
+  
+                fstr = f.read();
+                pstr = None;
+                
+                pf1 = decoder.decode( fstr )( sig=ProtoSig() );
+                # pfr = recursivize( solve_all( pf1 ) );
+                pf = erg_to_dsf_rewrite( pf1 );
+  
+                # pfrstr = pft_encode( pfr );
+                pfstr = pft_encode( pf );
+                
+                print( fstr );
+                # print( pfrstr );
+                print( pfstr );
+                print( "-------" );
+  
+                self.assert_( sanity_check( pf ) );
 
-              # pfrstr = pft_encode( pfr );
-              pfstr = pft_encode( pf );
+                k = open( filename.replace( ".pft.gz", ".txt" ) )
+                txt = k.read();
+                k.close();
+                
+                x.write( filename );
+                x.write( ": " );
+                x.write( txt );
+                x.write( "\n" );
+                x.write( pfstr );
+                x.write( "\n\f\n\n" );
+                
+                g.write( pft_encode( pf, pretty=False, fast_initialize=True ) );
+                
+                f.close();
               
-              print( fstr );
-              # print( pfrstr );
-              print( pfstr );
-              print( "-------" );
-
-              self.assert_( sanity_check( pf ) );
-              
-              g.write( pft_encode( pf, pretty=False, fast_initialize=True ) );
-              
-              f.close();
-            
-            except:
-
-              print( fstr );
-              raise;
-    
-          finally:
-            g.close();
-          
-        except IOError:
-          pass;
+              except:
+  
+                print( fstr );
+                raise;
       
-      finally:
-        f_.close();
-    
-    except IOError:
-      pass;
+            finally:
+              g.close();
+            
+          except IOError:
+            pass;
+        
+        finally:
+          f_.close();
+      
+      except IOError:
+        pass;
+      
+    finally:
+      x.close();
 
 
   def x_test_quick( self ):
@@ -114,7 +132,6 @@ class TestERGtoDSFRewriter( TestCase, metaclass=object_ ):
         if i in { 185, 186, 473 }: # disconnected structures
           continue;
         self.write_testfile( "{0}/fracas-{1}.pft.gz".format( self._TESTDTADIR, i ), decoder );
-      
 
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #

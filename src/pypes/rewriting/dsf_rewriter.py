@@ -248,7 +248,11 @@ class DSFRewriter( RenamingRewriter, metaclass=subject ):
             var_occurs = True;
           if var is var_:
             occurs = True;
-          subform_.args[ arg ] = var_;
+          if not ( var is not None and
+                   isinstance( var_, Variable ) and
+                   var_ not in self._obj_.quantified_vars and
+                   arg.aid != "KEY" ):
+            subform_.args[ arg ] = var_;
       
       if isinstance( subform, Predication ):
         if not var_occurs:

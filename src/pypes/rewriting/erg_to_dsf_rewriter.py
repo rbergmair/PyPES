@@ -10,6 +10,7 @@ from pypes.utils.mc import subject;
 from pypes.proto import *;
 
 from pypes.rewriting.dsf_rewriter import DSFRewriter;
+from pypes.rewriting.erg_to_basic_rewriter import ERGtoBasicRewriter;
 
 
 
@@ -62,17 +63,74 @@ class ERGtoDSFRewriter( ProtoProcessor, metaclass=subject ):
   
       self._process_argslist( inst.args );
 
+
+  class _FuncsCollector( ProtoProcessor, metaclass=subject ):
+    
+    def _process_modification( self, inst, subform, modality, args, scope ):
+      
+      if inst.modality not in self._obj_:
+        self._obj_[ inst.modality ] = set();
+      self._obj_[ inst.modality ].add( inst );
+    
+    def _process_predication( self, inst, subform, predicate, args ):
+    
+      if inst.predicate not in self._obj_:
+        self._obj_[ inst.predicate ] = set();
+      self._obj_[ inst.predicate ].add( inst );
+
+
+  class _PostDSFRewriter( ProtoProcessor, metaclass=subject ):
+    
+    def _process_modification( self, inst, subform, modality, args, scope ):
+      
+      pass;
+      
+    def _process_predication( self, inst, subform, predicate, args ):
   
+      pass;
+  
+  
+  def _rewrite( self ):
+    
+    for ( func, subfs ) in self._funcs.items():
+      if len( subfs ) <= 1:
+        continue;
+      keyvar = None;
+      for subf in subfs:
+        for (arg,var) in subf.args.items():
+          if arg.aid == "KEY":
+            assert keyvar is None or keyvar is var;
+            keyvar = var;
+      if keyvar is None:
+        keyvar = Variable( sidvid=("k",self._vid) )( sig=ProtoSig() );
+        self._vid += 1;
+      for subf in subfs:
+        if keyvar not in subf.args.values():
+          subf.args[ Argument( aid="KEY" )( predmod=subf ) ] = keyvar;
+    
+    
   def rewrite( self, pf ):
     
     self._vars = {};
     
     with self._VarsCollector( self._vars ) as coll:
       coll.process( pf );
-    with self._PreDSFRewriter( self._vars ) as coll:
-      coll.process( pf );
+    with self._PreDSFRewriter( self._vars ) as pdr:
+      pdr.process( pf );
+      
     with DSFRewriter( pf ) as rewriter:
       pf = rewriter.rewrite()( sig=ProtoSig() );
+
+    self._funcs = {};
+    
+    with self._FuncsCollector( self._funcs ) as coll:
+      coll.process( pf );
+
+    self._vid = 1;
+    self._rewrite();
+
+    with ERGtoBasicRewriter( pf ) as rewriter:
+      pf = rewriter.rewrite();
     
     return pf;
 
