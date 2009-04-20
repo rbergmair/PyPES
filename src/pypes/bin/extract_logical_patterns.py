@@ -97,27 +97,16 @@ class LogpatExtractor( ProtoProcessor, metaclass=subject ):
     
     assert isinstance( referent, Word );
     
-    for wrd in chain(
-                   referent.WRD_Qs,
-                   referent.WRD_Cs,
-                   referent.WRD_Ms,
-                   referent.WRD_Ps
-                ):
-    
-      ( lemma, pos, sense ) = wrd;
-      
-      if lemma == referent.lemma and \
-         pos == referent.pos and  \
-         sense == referent.sense:
-        pred = "";
-        for tok in lemma:
-          pred += tok + "+";
-        pred = pred[ :-1 ];
-        if pos is not None:
-          pred += "_" + pos;
-        if sense is not None:
-          pred += "_" + sense;
-        self._logpats.add( ( logpat_type, pred ) );
+    if referent.word is not None:
+      pred = "";
+      for tok in referent.lemma:
+        pred += tok + "+";
+      pred = pred[ :-1 ];
+      if referent.pos is not None:
+        pred += "_" + referent.pos;
+      if referent.sense is not None:
+        pred += "_" + referent.sense;
+      self._logpats.add( ( logpat_type, pred ) );
   
   def _process_predication( self, inst, subform, predicate, args ):
     

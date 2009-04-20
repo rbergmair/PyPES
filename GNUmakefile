@@ -68,6 +68,7 @@ cleanpyc:
 	$(FIND) src -name "*.pyc" -exec $(RM) {} \;
 
 cleandta:
+	$(RM) dta/pat/*
 	$(RM) dta/items/fracas/*
 	$(RM) dta/infer/fracas/data/*
 	$(RM) dta/infer/fracas/gold/*
