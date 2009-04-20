@@ -1,6 +1,6 @@
 # module pyparsing.py
 #
-# Copyright (c) 2003-2008  Paul T. McGuire
+# Copyright (c) 2003-2009  Paul T. McGuire
 #
 # Permission is hereby granted, free of charge, to any person obtaining
 # a copy of this software and associated documentation files (the
@@ -34,7 +34,7 @@ provides a library of classes that you use to construct the grammar directly in 
 
 Here is a program to parse "Hello, World!" (or any greeting of the form "<salutation>, <addressee>!")::
 
-    from pyparsing import Word, alphas
+    from pyparsing_py3 import Word, alphas
 
     # define grammar of a greeting
     greet = Word( alphas ) + "," + Word( alphas ) + "!"
@@ -58,8 +58,8 @@ The pyparsing module handles some of the problems that are typically vexing when
  - embedded comments
 """
 
-__version__ = "1.5.1"
-__versionTime__ = "2 October 2008 00:44"
+__version__ = "1.5.2.Py3"
+__versionTime__ = "9 April 2009 12:21"
 __author__ = "Paul McGuire <ptmcg@users.sourceforge.net>"
 
 import string
@@ -91,25 +91,29 @@ __all__ = [
 'indentedBlock', 'originalTextFor',
 ]
 
-
 """
 Detect if we are running version 3.X and make appropriate changes
 Robert A. Clark
 """
-if sys.version_info[0] > 2:
-    _PY3K = True
+_PY3K = sys.version_info[0] > 2
+if _PY3K:
     _MAX_INT = sys.maxsize
     basestring = str
+    unichr = chr
+    _ustr = str
+    _str2dict = set
+    alphas = string.ascii_lowercase + string.ascii_uppercase
 else:
-    _PY3K = False
     _MAX_INT = sys.maxint
 
-if not _PY3K:
     def _ustr(obj):
         """Drop-in replacement for str(obj) that tries to be Unicode friendly. It first tries
            str(obj). If that fails with a UnicodeEncodeError, then it tries unicode(obj). It
            then < returns the unicode object | encodes it with the default encoding | ... >.
         """
+        if isinstance(obj,unicode):
+            return obj
+
         try:
             # If this works, then _ustr(obj) has the same behaviour as str(obj), so
             # it won't break any existing code.
@@ -128,13 +132,12 @@ if not _PY3K:
             # Replace unprintables with question marks?
             #return unicode(obj).encode(sys.getdefaultencoding(), 'replace')
             # ...
-else:
-    _ustr = str
-    unichr = chr
+            
+    def _str2dict(strg):
+        return dict( [(c,0) for c in strg] )
+            
+    alphas = string.lowercase + string.uppercase
 
-def _str2dict(strg):
-    return dict( [(c,0) for c in strg] )
-    #~ return set( [c for c in strg] )
 
 def _xml_escape(data):
     """Escape &, <, >, ", ', etc. in a string of data."""
@@ -149,19 +152,14 @@ def _xml_escape(data):
 class _Constants(object):
     pass
 
-if not _PY3K:
-    alphas     = string.lowercase + string.uppercase
-else:
-    alphas     = string.ascii_lowercase + string.ascii_uppercase
 nums       = string.digits
 hexnums    = nums + "ABCDEFabcdef"
 alphanums  = alphas + nums
-_bslash = chr(92)
+_bslash    = chr(92)
 printables = "".join( [ c for c in string.printable if c not in string.whitespace ] )
 
 class ParseBaseException(Exception):
     """base exception class for all parsing runtime exceptions"""
-    # __slots__ = ( "loc","msg","pstr","parserElement" ) # rb432
     # Performance tuning: we construct a *lot* of these, so keep this
     # constructor as small and fast as possible
     def __init__( self, pstr, loc=0, msg=None, elem=None ):
@@ -307,7 +305,7 @@ class ParseResults(object):
                 else:
                     try:
                         self[name] = toklist[0]
-                    except (KeyError,TypeError):
+                    except (KeyError,TypeError,IndexError):
                         self[name] = toklist
 
     def __getitem__( self, i ):
@@ -578,14 +576,11 @@ class ParseResults(object):
             out.append( "%s%s- %s: " % (indent,('  '*depth), k) )
             if isinstance(v,ParseResults):
                 if v.keys():
-                    #~ out.append('\n')
                     out.append( v.dump(indent,depth+1) )
-                    #~ out.append('\n')
                 else:
                     out.append(_ustr(v))
             else:
                 out.append(_ustr(v))
-        #~ out.append('\n')
         return "".join(out)
 
     # add support for pickle protocol
@@ -923,11 +918,15 @@ class ParserElement(object):
                     loc,tokens = self.parseImpl( instring, preloc, doActions )
                 except IndexError:
                     raise ParseException( instring, len(instring), self.errmsg, self )
-            except ParseBaseException as err:
+            except ParseBaseException:
                 #~ print ("Exception raised:", err)
+                err = None
                 if self.debugActions[2]:
+                    err = sys.exc_info()[1]
                     self.debugActions[2]( instring, tokensStart, self, err )
                 if self.failAction:
+                    if err is None:
+                        err = sys.exc_info()[1]
                     self.failAction( instring, tokensStart, self, err )
                 raise
         else:
@@ -957,9 +956,10 @@ class ParserElement(object):
                                                       self.resultsName,
                                                       asList=self.saveAsList and isinstance(tokens,(ParseResults,list)),
                                                       modal=self.modalResults )
-                except ParseBaseException as err:
+                except ParseBaseException:
                     #~ print "Exception raised in user parse action:", err
                     if (self.debugActions[2] ):
+                        err = sys.exc_info()[1]
                         self.debugActions[2]( instring, tokensStart, self, err )
                     raise
             else:
@@ -998,7 +998,8 @@ class ParserElement(object):
                 value = self._parseNoCache( instring, loc, doActions, callPreParse )
                 ParserElement._exprArgCache[ lookup ] = (value[0],value[1].copy())
                 return value
-            except ParseBaseException as pe:
+            except ParseBaseException:
+                pe = sys.exc_info()[1]
                 ParserElement._exprArgCache[ lookup ] = pe
                 raise
 
@@ -1020,7 +1021,7 @@ class ParserElement(object):
 
            This speedup may break existing programs that use parse actions that
            have side-effects.  For this reason, packrat parsing is disabled when
-           you first import pyparsing.  To activate the packrat feature, your
+           you first import pyparsing_py3 as pyparsing.  To activate the packrat feature, your
            program must call the class method ParserElement.enablePackrat().  If
            your program uses psyco to "compile as you go", you must call
            enablePackrat before calling psyco.full().  If you do not do this,
@@ -1062,11 +1063,17 @@ class ParserElement(object):
             e.streamline()
         if not self.keepTabs:
             instring = instring.expandtabs()
-        loc, tokens = self._parse( instring, 0 )
-        if parseAll:
-            loc = self.preParse( instring, loc )
-            StringEnd()._parse( instring, loc )
-        return tokens
+        try:
+            loc, tokens = self._parse( instring, 0 )
+            if parseAll:
+                loc = self.preParse( instring, loc )
+                StringEnd()._parse( instring, loc )
+        except ParseBaseException:
+            exc = sys.exc_info()[1]
+            # catch and re-raise exception from here, clears out pyparsing internal stack trace
+            raise exc
+        else:
+            return tokens
 
     def scanString( self, instring, maxMatches=_MAX_INT ):
         """Scan the input string for expression matches.  Each match will return the
@@ -1089,16 +1096,23 @@ class ParserElement(object):
         parseFn = self._parse
         ParserElement.resetCache()
         matches = 0
-        while loc <= instrlen and matches < maxMatches:
-            try:
-                preloc = preparseFn( instring, loc )
-                nextLoc,tokens = parseFn( instring, preloc, callPreParse=False )
-            except ParseException:
-                loc = preloc+1
-            else:
-                matches += 1
-                yield tokens, preloc, nextLoc
-                loc = nextLoc
+        try:
+            while loc <= instrlen and matches < maxMatches:
+                try:
+                    preloc = preparseFn( instring, loc )
+                    nextLoc,tokens = parseFn( instring, preloc, callPreParse=False )
+                except ParseException:
+                    loc = preloc+1
+                else:
+                    if nextLoc > loc:
+                        matches += 1
+                        yield tokens, preloc, nextLoc
+                        loc = nextLoc
+                    else:
+                        loc = preloc+1
+        except ParseBaseException:
+            pe = sys.exc_info()[1]
+            raise pe
 
     def transformString( self, instring ):
         """Extension to scanString, to modify matching text with modified tokens that may
@@ -1112,25 +1126,33 @@ class ParserElement(object):
         # force preservation of <TAB>s, to minimize unwanted transformation of string, and to
         # keep string locs straight between transformString and scanString
         self.keepTabs = True
-        for t,s,e in self.scanString( instring ):
-            out.append( instring[lastE:s] )
-            if t:
-                if isinstance(t,ParseResults):
-                    out += t.asList()
-                elif isinstance(t,list):
-                    out += t
-                else:
-                    out.append(t)
-            lastE = e
-        out.append(instring[lastE:])
-        return "".join(map(_ustr,out))
+        try:
+            for t,s,e in self.scanString( instring ):
+                out.append( instring[lastE:s] )
+                if t:
+                    if isinstance(t,ParseResults):
+                        out += t.asList()
+                    elif isinstance(t,list):
+                        out += t
+                    else:
+                        out.append(t)
+                lastE = e
+            out.append(instring[lastE:])
+            return "".join(map(_ustr,out))
+        except ParseBaseException:
+            pe = sys.exc_info()[1]
+            raise pe
 
     def searchString( self, instring, maxMatches=_MAX_INT ):
         """Another extension to scanString, simplifying the access to the tokens found
            to match the given parse expression.  May be called with optional
            maxMatches argument, to clip searching after 'n' matches are found.
         """
-        return ParseResults([ t for t,s,e in self.scanString( instring, maxMatches ) ])
+        try:
+            return ParseResults([ t for t,s,e in self.scanString( instring, maxMatches ) ])
+        except ParseBaseException:
+            pe = sys.exc_info()[1]
+            raise pe
 
     def __add__(self, other ):
         """Implementation of + operator - returns And"""
@@ -1383,7 +1405,12 @@ class ParserElement(object):
             f = open(file_or_filename, "rb")
             file_contents = f.read()
             f.close()
-        return self.parseString(file_contents, parseAll)
+        try:
+            return self.parseString(file_contents, parseAll)
+        except ParseBaseException:
+            # catch and re-raise exception from here, clears out pyparsing internal stack trace
+            exc = sys.exc_info()[1]
+            raise exc
 
     def getException(self):
         return ParseException("",0,self.errmsg,self)
@@ -1396,9 +1423,11 @@ class ParserElement(object):
             raise AttributeError("no such attribute " + aname)
 
     def __eq__(self,other):
-        if isinstance(other, basestring):
+        if isinstance(other, ParserElement):
+            return self is other or self.__dict__ == other.__dict__
+        elif isinstance(other, basestring):
             try:
-                (self + StringEnd()).parseString(_ustr(other))
+                self.parseString(_ustr(other), parseAll=True)
                 return True
             except ParseBaseException:
                 return False
@@ -1963,7 +1992,7 @@ class White(Token):
     """Special matching class for matching whitespace.  Normally, whitespace is ignored
        by pyparsing grammars.  This class is included when some whitespace structures
        are significant.  Define with a string containing the whitespace characters to be
-       matched; default is " \\t\\n".  Also takes optional min, max, and exact arguments,
+       matched; default is " \\t\\r\\n".  Also takes optional min, max, and exact arguments,
        as defined for the Word class."""
     whiteStrs = {
         " " : "<SPC>",
@@ -2197,7 +2226,10 @@ class ParseExpression(ParserElement):
         elif isinstance( exprs, basestring ):
             self.exprs = [ Literal( exprs ) ]
         else:
-            self.exprs = [ exprs ]
+            try:
+                self.exprs = list( exprs )
+            except TypeError:
+                self.exprs = [ exprs ]
         self.callPreparse = False
 
     def __getitem__( self, i ):
@@ -2317,9 +2349,10 @@ class And(ParseExpression):
                     loc, exprtokens = e._parse( instring, loc, doActions )
                 except ParseSyntaxException:
                     raise
-                except ParseBaseException as pe:
+                except ParseBaseException:
+                    pe = sys.exc_info()[1]
                     raise ParseSyntaxException(pe)
-                except IndexError as ie:
+                except IndexError:
                     raise ParseSyntaxException( ParseException(instring, len(instring), self.errmsg, self) )
             else:
                 loc, exprtokens = e._parse( instring, loc, doActions )
@@ -2369,7 +2402,8 @@ class Or(ParseExpression):
         for e in self.exprs:
             try:
                 loc2 = e.tryParse( instring, loc )
-            except ParseException as err:
+            except ParseException:
+                err = sys.exc_info()[1]
                 if err.loc > maxExcLoc:
                     maxException = err
                     maxExcLoc = err.loc
@@ -2520,7 +2554,7 @@ class Each(ParseExpression):
             raise ParseException(instring,loc,"Missing one or more required elements (%s)" % missing )
 
         # add any unmatched Optionals, in case they have default values defined
-        matchOrder += [ e for e in self.exprs if isinstance(e,Optional) and e.expr in tmpOpt ]
+        matchOrder += list(e for e in self.exprs if isinstance(e,Optional) and e.expr in tmpOpt)
 
         resultlist = []
         for e in matchOrder:
@@ -2795,15 +2829,14 @@ class Optional(ParseElementEnhance):
 
 class SkipTo(ParseElementEnhance):
     """Token for skipping over all undefined text until the matched expression is found.
-       If include is set to true, the matched expression is also consumed.  The ignore
+       If include is set to true, the matched expression is also parsed (the skipped text
+       and matched expression are returned as a 2-element list).  The ignore
        argument is used to define grammars (typically quoted strings and comments) that
        might contain false matches.
     """
     def __init__( self, other, include=False, ignore=None, failOn=None ):
         super( SkipTo, self ).__init__( other )
-        if ignore is not None:
-            self.expr = self.expr.copy()
-            self.expr.ignore(ignore)
+        self.ignoreExpr = ignore
         self.mayReturnEmpty = True
         self.mayIndexError = False
         self.includeMatch = include
@@ -2823,10 +2856,21 @@ class SkipTo(ParseElementEnhance):
         while loc <= instrlen:
             try:
                 if self.failOn:
-                    failParse = True
-                    self.failOn.tryParse(instring, loc)
+                    try:
+                        self.failOn.tryParse(instring, loc)
+                    except ParseBaseException:
+                        pass
+                    else:
+                        failParse = True
+                        raise ParseException(instring, loc, "Found expression " + str(self.failOn))
                     failParse = False
-                loc = expr._skipIgnorables( instring, loc )
+                if self.ignoreExpr is not None:
+                    while 1:
+                        try:
+                            loc = self.ignoreExpr.tryParse(instring,loc)
+                            # print("found ignoreExpr, advance to", loc)
+                        except ParseBaseException:
+                            break
                 expr._parse( instring, loc, doActions=False, callPreParse=False )
                 skipText = instring[startLoc:loc]
                 if self.includeMatch:
@@ -3050,7 +3094,8 @@ def traceParseAction(f):
         sys.stderr.write( ">>entering %s(line: '%s', %d, %s)\n" % (thisFunc,line(l,s),l,t) )
         try:
             ret = f(*paArgs)
-        except Exception as exc:
+        except Exception:
+            exc = sys.exc_info()[1]
             sys.stderr.write( "<<leaving %s (exception: %s)\n" % (thisFunc,exc) )
             raise
         sys.stderr.write( "<<leaving %s (ret: %s)\n" % (thisFunc,ret) )
@@ -3179,7 +3224,7 @@ def oneOf( strs, caseless=False, useRegex=True ):
         parseElementClass = Literal
 
     if isinstance(strs,(list,tuple)):
-        symbols = strs[:]
+        symbols = list(strs[:])
     elif isinstance(strs,basestring):
         symbols = strs.split()
     else:
@@ -3605,7 +3650,7 @@ alphas8bit = srange(r"[\0xc0-\0xd6\0xd8-\0xf6\0xf8-\0xff]")
 punc8bit = srange(r"[\0xa1-\0xbf\0xd7\0xf7]")
 
 anyOpenTag,anyCloseTag = makeHTMLTags(Word(alphas,alphanums+"_:"))
-commonHTMLEntity = Combine(_L("&") + oneOf("gt lt amp nbsp quot").setResultsName("entity") +";")
+commonHTMLEntity = Combine(_L("&") + oneOf("gt lt amp nbsp quot").setResultsName("entity") +";").streamline()
 _htmlEntityMap = dict(zip("gt lt amp nbsp quot".split(),'><& "'))
 replaceHTMLEntity = lambda t : t.entity in _htmlEntityMap and _htmlEntityMap[t.entity] or None
 
@@ -3637,7 +3682,8 @@ if __name__ == "__main__":
             print ("tokens.columns = " + str(tokens.columns))
             print ("tokens.tables = "  + str(tokens.tables))
             print (tokens.asXML("SQL",True))
-        except ParseBaseException as err:
+        except ParseBaseException:
+            err = sys.exc_info()[1]
             print (teststring + "->")
             print (err.line)
             print (" "*(err.column-1) + "^")
