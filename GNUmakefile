@@ -37,10 +37,8 @@ INFERDTA_ORIG=\
   dta/infer/orig/ave-08-en-dev.ave.xml \
   dta/infer/orig/ave-08-en-tst.ave.xml \
   dta/infer/orig/fracas.bmc.xml \
-  dta/infer/orig/rte-05-dev.edits.sed \
   dta/infer/orig/rte-05-dev.rte.xml \
   dta/infer/orig/rte-05-tst.rte.xml \
-  dta/infer/orig/rte-06-dev.edits.sed \
   dta/infer/orig/rte-06-dev.rte.xml \
   dta/infer/orig/rte-06-tst.rte.xml \
   dta/infer/orig/rte-07-dev-2w.rte.xml \

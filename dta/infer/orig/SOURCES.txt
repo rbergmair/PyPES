@@ -110,12 +110,6 @@ http://www.nist.gov/tac/protected/2008/RTE4_TEST-SET_GOLD.xml.gz
   rte-08.rte.xml
 
 
-original content:
-
-  rte-05-dev.edits.sed
-  rte-06-dev.edits.sed
-
-
 
 FRACAS DATA
 -----------------------------------------------------------------------------
