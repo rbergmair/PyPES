@@ -1,7 +1,7 @@
 # -*-  coding: ascii -*-  # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 __package__ = "pypestest.codecs_";
-__all__ = [ "TestMRXDecoder", "suite", "main" ];
+__all__ = [ "TestMRSDecoder", "suite", "main" ];
 
 import sys;
 import os;
@@ -13,7 +13,7 @@ import codecs;
 from pypes.utils.unittest_ import TestCase;
 from pypes.utils.mc import object_;
 
-from pypes.codecs_ import mrx_decode, MRXDecoder;
+from pypes.codecs_ import mrs_decode, MRSDecoder;
 from pypes.codecs_ import PFTDecoder;
 from pypes.codecs_ import pft_encode;
 
@@ -25,7 +25,7 @@ import pypes.proto.lex.erg;
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-class TestMRXDecoder( TestCase, metaclass=object_ ):
+class TestMRSDecoder( TestCase, metaclass=object_ ):
   
   _TESTMRSDIR = "dta/test";
   
@@ -34,10 +34,11 @@ class TestMRXDecoder( TestCase, metaclass=object_ ):
 
     try:
       f = gzip.open( filename );
-      g = open( filename.replace( ".mrs.xml.gz", ".pft" ), "wt" );
+      g = open( filename.replace( ".mrs.gz", ".pft" ), "wt" );
       try:
         print( filename );
-        r__ = mrx_decode( f, MRXDecoder.SEM_ERG );
+        r__ = mrs_decode( f, MRSDecoder.SEM_ERG );
+        return;
         r = r__( sig=ProtoSig() );
         r_ = pft_encode( r, pretty=False );
         g.write( r_ );
@@ -106,38 +107,23 @@ class TestMRXDecoder( TestCase, metaclass=object_ ):
       pass;
 
 
-  def x_test_quick( self ):
+  def test_quick( self ):
     
     with PFTDecoder( (pypes.proto.lex.erg,None) ) as decoder:
       
-      i = 192;
-      self.write_testfiles( "{0}/fracas-{1}.mrs.xml.gz".format( self._TESTMRSDIR, i ), decoder );
+      i = 10;
+      self.write_testfiles( "{0}/mrs-{1}1.mrs.gz".format( self._TESTMRSDIR, i ), decoder );
 
   
-  def test_mrxdecoder( self ):
+  def x_test_mrsdecoder( self ):
 
     with PFTDecoder( (pypes.proto.lex.erg,None) ) as decoder:
   
       for i in range( 1, 641 ):
-        
-        # numbers
-        # if i in { 185, 186, 270, 272, 334 }:
-        #   continue;
-        
-        self.check_testfiles( "{0}/fracas-{1}.mrs.xml.gz".format( self._TESTMRSDIR, i ), decoder );
-      
-      #return;
+        self.check_testfiles( "{0}/fracas-{1}.mrs.gz".format( self._TESTMRSDIR, i ), decoder );
       
       for i in range( 1, 108 ):
-        
-        # numbers
-        # if i in { 63, 64 }:
-        #   continue;
-        
-        self.check_testfiles( "{0}/mrs-{1}1.mrs.xml.gz".format( self._TESTMRSDIR, i ), decoder );
-        
-        #if i == 10:
-        #  return;
+        self.check_testfiles( "{0}/mrs-{1}1.mrs.gz".format( self._TESTMRSDIR, i ), decoder );
 
 
 
@@ -148,7 +134,7 @@ def suite():
   suite = unittest.TestSuite();
 
   suite.addTests( unittest.TestLoader().loadTestsFromTestCase(
-      TestMRXDecoder
+      TestMRSDecoder
     ) );
 
   return suite;

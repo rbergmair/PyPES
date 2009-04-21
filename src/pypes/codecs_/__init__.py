@@ -2,11 +2,13 @@
 
 __package__ = "pypes";
 __all__ = [ "PFTEncoder", "pft_encode", "PFTDecoder", "pft_decode",
-            "MRXDecoder", "mrx_decode", "TreeEncoder", "tree_encode" ];
+            "MRXDecoder", "mrx_decode", "MRSDecoder", "mrs_decode",
+            "TreeEncoder", "tree_encode" ];
 
 from pypes.codecs_.pft import PFTEncoder, pft_encode;
 from pypes.codecs_.pft import PFTDecoder, pft_decode;
 from pypes.codecs_.mrs import MRXDecoder, mrx_decode;
+from pypes.codecs_.mrs import MRSDecoder, mrs_decode;
 from pypes.codecs_.tree import TreeEncoder, tree_encode;
 
 
