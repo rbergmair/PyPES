@@ -1,0 +1,375 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xml" href="http://nlp.stanford.edu/projects/infer/kbe_to_html.xml"?>
+<root
+  xmlns="http://bogusnamespace.com/inference_pilot_evaluation/annotation"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+>
+  <inference id="Brandeis-01.1">
+    <passage>StatesWest Airlines withdrew its offer to acquire Mesa Airlines.</passage>
+    <question>Was an offer made to acquire Mesa Airline?</question>
+    <provenance type="edited">TimeBank (wsj_0321_orig.tml)</provenance>
+    <answer force="strict" id="1" polarity="true" source="linguistic">
+      <response>Yes</response>
+    </answer>
+  </inference>
+  <inference id="Brandeis-01.2">
+    <passage>StatesWest Airlines withdrew its offer to acquire Mesa Airlines.</passage>
+    <question>Did StatesWest ever plan to acquire Mesa Airlines?</question>
+    <provenance type="edited">TimeBank (wsj_0321_orig.tml</provenance>
+    <answer force="strict" id="1" polarity="true" source="linguistic">
+      <response>Yes</response>
+      <comment>Lexical knowledge.</comment>
+    </answer>
+  </inference>
+  <inference id="Brandeis-01.3">
+    <passage>StatesWest Airlines withdrew its offer to acquire Mesa Airlines.</passage>
+    <question>Did StatesWest acquire Mesa Airlines?</question>
+    <provenance type="edited">TimeBank (wsj_0321_orig.tml</provenance>
+    <answer force="strict" id="1" polarity="true" source="linguistic">
+      <response>No</response>
+    </answer>
+  </inference>
+  <inference id="Brandeis-02">
+    <passage>Steynar Gil welcomed the release of prisoners imprisoned during the October 15-16 riots.</passage>
+    <question>Have prisoners imprisoned during October 15-16 riots been released?</question>
+    <provenance type="unedited">Google</provenance>
+    <answer force="strict" id="1" polarity="true" source="linguistic">
+      <response>Yes</response>
+      <assumptions>One reading. There is another reading of the sentence in which there is a positive intention of release. </assumptions>
+    </answer>
+  </inference>
+  <inference id="Brandeis-03">
+    <passage>Program trading is hurting the market's efforts to bring back small investors.</passage>
+    <question>Are there any efforts to bring back small investors?</question>
+    <provenance type="edited">TimeBank (wsj_0585_orig.tml)</provenance>
+    <answer force="strict" id="1" polarity="true" source="linguistic">
+      <response>Yes</response>
+    </answer>
+  </inference>
+  <inference id="Brandeis-04">
+    <passage>Thirty-two of the 159 U.N. members were honoring the sanctions against Iraq.</passage>
+    <question>Were there sanctions against Iraq?</question>
+    <provenance type="edited">TimeBank (AP900816-0139.tml)</provenance>
+    <answer force="strict" id="1" polarity="true" source="linguistic">
+      <response>Yes</response>
+    </answer>
+  </inference>
+  <inference id="Brandeis-05.1">
+    <passage>Herbicide use in some areas of the U.S. was delayed earlier in the year by heavy rains.</passage>
+    <question>Were herbicides delayed in all areas of the U.S. this year?</question>
+    <provenance type="edited">TimeBank (wsj_0918_orig.tml)</provenance>
+    <answer force="strict" id="1" polarity="true" source="linguistic">
+      <response>No</response>
+    </answer>
+  </inference>
+  <inference id="Brandeis-05.2">
+    <passage>Herbicide use in some areas of the U.S. was prevented this year because of heavy rains.</passage>
+    <question>Were herbicides used this year in the U.S.?</question>
+    <provenance type="edited">TimeBank (wsj_0918_orig.tml)</provenance>
+    <answer force="plausible" id="1" polarity="true" source="world">
+      <response>Yes</response>
+      <because>Conversational implicature. Namely, if it is reported that p does not happen in some areas, that let us assume that p happens in other areas.</because>
+    </answer>
+  </inference>
+  <inference id="Brandeis-06">
+    <passage>The US is bolstering its military presence in the Gulf.</passage>
+    <question>Does the US have a military presence in the Gulf.</question>
+    <provenance type="edited">TimeBank (PRI19980205.2000.1890.tml)</provenance>
+    <answer force="strict" id="1" polarity="true" source="linguistic">
+      <response>Yes</response>
+    </answer>
+  </inference>
+  <inference id="Brandeis-07">
+    <passage>The unemployed took to the streets of the German capital, Berlin, mirroring protests around the country.</passage>
+    <question>Were the protests only in Berlin?</question>
+    <provenance type="edited">TimeBank (PRI19980205.2000.1998.tml)</provenance>
+    <answer force="strict" id="1" polarity="true" source="linguistic">
+      <response>No</response>
+    </answer>
+  </inference>
+  <inference id="Brandeis-08.1">
+    <passage>The court nullified a standstill agreement between DPC Acquisition and Dataproducts.</passage>
+    <question>Was there any agreement between DPC Acquisition and Dataproducts?</question>
+    <provenance type="edited">TimeBank (wsj_0661_orig.tml)</provenance>
+    <answer force="strict" id="1" polarity="true" source="linguistic">
+      <response>Yes</response>
+    </answer>
+  </inference>
+  <inference id="Brandeis-08.2">
+    <passage>The court nullified a standstill agreement between DPC Acquisition and Dataproducts.</passage>
+    <question>Are there any agreements between DCP Acquisition and Dataproducts?</question>
+    <provenance type="edited">TimeBank (wsj_0661_orig.tml)</provenance>
+    <answer force="strict" id="1" polarity="unknown" source="linguistic">
+      <response>No</response>
+    </answer>
+    <answer force="strict" id="2" polarity="true" source="linguistic">
+      <response>No</response>
+    </answer>
+  </inference>
+  <inference id="Brandeis-09.1">
+    <passage>Sardar Patel faced imprisonment for the first time when he was assisting Gandhiji in the Salt Satyagraha.</passage>
+    <question>Was Sardar Patel ever in prison?</question>
+    <provenance type="edited">Google</provenance>
+    <answer force="strict" id="1" polarity="true" source="linguistic">
+      <response>Don't know</response>
+      <assumptions>One reading. We don't know whether he ended up in prison and the question refers to that possible imprisonment (see next interpretation).</assumptions>
+    </answer>
+    <answer force="strict" id="2" polarity="true" source="linguistic">
+      <response>No</response>
+      <assumptions>One reading. The question has an implicit 'before' and therefore is asking about previous possible imprisonments that hadn't taken place.</assumptions>
+    </answer>
+  </inference>
+  <inference id="Brandeis-09.2">
+    <passage>Sardar Patel faced imprisonment for the first time when he was assisting Gandhiji in the Salt Satyagraha.</passage>
+    <question>Was Sardar Patel ever convicted of a crime?</question>
+    <provenance type="edited">Google</provenance>
+    <answer force="strict" id="1" polarity="unknown" source="linguistic">
+      <response>Yes</response>
+    </answer>
+    <answer force="plausible" id="2" polarity="true" source="world">
+      <response>Yes</response>
+      <because>Usually when you are imprisoned you are convicted of something.</because>
+    </answer>
+  </inference>
+  <inference id="Brandeis-10.1">
+    <passage>Darryl Strawberry recently avoided imprisonment when a judge sentenced him to a drug treatment center for violating his probation.</passage>
+    <question>Was Darryl Strawberry ever in prison?</question>
+    <provenance type="edited">Google</provenance>
+    <answer force="strict" id="1" polarity="unknown" source="linguistic">
+      <response>No</response>
+    </answer>
+  </inference>
+  <inference id="Brandeis-10.2">
+    <passage>Darryl Strawberry recently avoided imprisonment when a judge sentenced him to a drug treatment center for violating his probation.</passage>
+    <question>Was Darryl imprisoned for violating his probation?</question>
+    <provenance type="edited">Google</provenance>
+    <answer force="strict" id="1" polarity="true" source="linguistic">
+      <response>No</response>
+    </answer>
+  </inference>
+  <inference id="Brandeis-11">
+    <passage>Three patients declined further surgery. </passage>
+    <question>Did the patients have any surgeries? </question>
+    <provenance type="unedited">Google</provenance>
+    <answer force="strict" id="1" polarity="true" source="linguistic">
+      <response>Yes</response>
+    </answer>
+  </inference>
+  <inference id="Brandeis-12">
+    <passage>Foodstuffs are being blocked from entry into Iraq.</passage>
+    <question>Are foodstuffs getting into Iraq?</question>
+    <provenance type="edited">TimeBank (AP900816-0139.tml)</provenance>
+    <answer force="strict" id="1" polarity="unknown" source="linguistic">
+      <response>No</response>
+    </answer>
+  </inference>
+  <inference id="Brandeis-13">
+    <passage>The new space allowed Compaq to increase the manufacturing capacity of its plant in Erskine, Scotland.</passage>
+    <question>Did Compaq increase its manufacturing capacity in the Erskine plant?</question>
+    <provenance type="edited">TimeBank (wsj_0904_orig.tml)</provenance>
+    <answer force="strict" id="1" polarity="true" source="linguistic">
+      <response>Yes</response>
+    </answer>
+  </inference>
+  <inference id="Brandeis-14">
+    <passage>Holders of more than a majority of the stock of the company have approved the transaction by written consent.</passage>
+    <question>Has the transaction taken place?</question>
+    <provenance type="edited">TimeBank (wsj_0122_orig.tml)</provenance>
+    <answer force="strict" id="1" polarity="unknown" source="linguistic">
+      <response>Yes</response>
+    </answer>
+  </inference>
+  <inference id="Brandeis-15">
+    <passage>The transaction has been approved by Kyle's board but requires the approval of the company's shareholders.</passage>
+    <question>Has the transaction taken place?</question>
+    <provenance>TimeBank (wsj_0923_orig.tml)</provenance>
+    <answer force="strict" id="1" polarity="true" source="linguistic">
+      <response>No</response>
+    </answer>
+  </inference>
+  <inference id="Brandeis-16">
+    <passage>The company's board authorized the purchase of an additional one million shares.</passage>
+    <question>Has the company purchased additional shares?</question>
+    <provenance type="edited">TimeBank (wsj_0520_orig.tml)</provenance>
+    <answer force="strict" id="1" polarity="true" source="linguistic">
+      <response>Don't know</response>
+    </answer>
+    <answer force="plausible" id="2" polarity="true" source="world">
+      <response>Yes</response>
+      <comment>Usually authorization of a purchase usually leads to the actual purchase.</comment>
+    </answer>
+  </inference>
+  <inference id="Brandeis-17">
+    <passage>The purchase was subsequently rejected by regulators.</passage>
+    <question>Did the purchase take place?</question>
+    <provenance type="edited">TimeBank (wsj_0938_orig.tml)</provenance>
+    <answer force="strict" id="1" polarity="true" source="linguistic">
+      <response>No</response>
+    </answer>
+  </inference>
+  <inference id="Brandeis-18">
+    <passage>Analysts were predicting 1990 BellSouth earnings in the range of $3.90 a share.</passage>
+    <question>Has BellSouth experienced earnings in 1990?</question>
+    <provenance type="edited">TimeBank (wsj_0584_orig.tml)</provenance>
+    <answer force="strict" id="1" polarity="true" source="linguistic">
+      <response>Don't know</response>
+    </answer>
+  </inference>
+  <inference id="Brandeis-19.1">
+    <passage>Milton Roy disclosed in May that it was approached for a possible acquisition by Thermo Electron.</passage>
+    <question>Was Milton Roy approached by Thermo Electron?</question>
+    <provenance type="unedited">TimeBank (wsj_0570_orig.tml)</provenance>
+    <answer force="strict" id="1" polarity="true" source="linguistic">
+      <response>Yes</response>
+    </answer>
+  </inference>
+  <inference id="Brandeis-19.2">
+    <passage>Milton Roy disclosed in May that it was approached for a possible acquisition by Thermo Electron.</passage>
+    <question>Has Milton Roy been acquired by Thermo Electron?</question>
+    <provenance type="unedited">TimeBank (wsj_0570_orig.tml)</provenance>
+    <answer force="strict" id="1" polarity="true" source="linguistic">
+      <response>Don't know</response>
+    </answer>
+  </inference>
+  <inference id="Brandeis-20">
+    <passage>Analysts noted that over the past 20 years, Mr. Fournier has built his company through astute stock-market activity.</passage>
+    <question>Has Mr. Fournier built his company through astute stock-market activity?</question>
+    <provenance type="unedited">TimeBank (wsj_0810_orig.tml)</provenance>
+    <answer force="strict" id="1" polarity="unknown" source="linguistic">
+      <response>Yes</response>
+    </answer>
+    <answer force="plausible" id="2" polarity="true" source="world">
+      <response>Yes</response>
+    </answer>
+  </inference>
+  <inference id="Brandeis-21.1">
+    <passage>I was pleased that Ms. Currie's lawyers stated unambiguously this morning that she's not aware of any unethical conduct.</passage>
+    <question>Is Ms. Currie aware of any unethical conduct on her part?</question>
+    <provenance type="edited">TimeBank (NYT19980206.0466.tml)</provenance>
+    <answer force="strict" id="1" polarity="true" source="linguistic">
+      <response>Don't know</response>
+    </answer>
+    <answer force="plausible" id="2" polarity="true" source="world">
+      <response>No</response>
+    </answer>
+  </inference>
+  <inference id="Brandeis-21.2">
+    <passage>I was pleased that Ms. Currie's lawyers stated unambiguously this morning that she's not aware of any unethical conduct.</passage>
+    <question>Have Ms. Currie’s lawyers stated she’s not aware of any unethical conduct?</question>
+    <provenance type="edited">TimeBank (NYT19980206.0466.tml)</provenance>
+    <answer force="strict" id="1" polarity="true" source="linguistic">
+      <response>Yes</response>
+    </answer>
+  </inference>
+  <inference id="Brandeis-22">
+    <passage>President Clinton and Blair will stand together on arresting the terrorists suspected of blowing up Pan Am flight 103 over Scotland.</passage>
+    <question>Has there been an explosion of a Pan Am flight over Scotland?</question>
+    <provenance type="edited">TimeBank (APW19980227.0476.tml)</provenance>
+    <answer force="strict" id="1" polarity="true" source="world">
+      <response>Yes</response>
+      <because>There was a flight Pan Am 103 explosion.</because>
+    </answer>
+  </inference>
+  <inference id="Brandeis-23">
+    <passage>The accord helps RJR pay off debt.</passage>
+    <question>Does RJR have any debt?</question>
+    <provenance type="edited">TimeBank (wsj_0675_orig.tml)</provenance>
+    <answer force="strict" id="1" polarity="true" source="linguistic">
+      <response>Yes</response>
+      <assumptions>In the non-generic interpretation of the proposition.</assumptions>
+    </answer>
+  </inference>
+  <inference id="Brandeis-24">
+    <passage>48 Kuwaiti jet fighters managed to escape the Iraqi invasion.</passage>
+    <question>Did any Kuwaiti jet fighters escape the Iraqi invasion?</question>
+    <provenance type="edited">TimeBank (WSJ900813-0157.tml)</provenance>
+    <answer force="strict" polarity="true" source="linguistic">
+      <response>Yes</response>
+    </answer>
+  </inference>
+  <inference id="Brandeis-25">
+    <passage>It appears that allied troops haven't yet fully engaged Iraq's Republican Guard.</passage>
+    <question>Have allied troops engaged Iraq’s Republican Guard?</question>
+    <provenance type="edited">TimeBank (WSJ910225-0066.tml)</provenance>
+    <answer force="strict" id="1" polarity="true" source="linguistic">
+      <response>Don't know</response>
+    </answer>
+  </inference>
+  <inference id="Brandeis-26.1">
+    <passage>British police officers concluded Howes had probably been killed soon after being captured.</passage>
+    <question>Did Howes die?</question>
+    <provenance type="edited">TimeBank (APW19980219.0476.tml)</provenance>
+    <answer force="strict" id="1" polarity="true" source="linguistic">
+      <response>Yes</response>
+      <assumptions>One interpretation: 'probably' scoping over the temporal relation between the killing and the capture.</assumptions>
+    </answer>
+  </inference>
+  <inference id="Brandeis-26.2">
+    <passage>British police officers concluded Howes had probably been killed soon after being captured.</passage>
+    <question>Was Howes killed soon after being captured?</question>
+    <provenance type="edited">TimeBank (APW19980219.0476.tml)</provenance>
+    <answer force="strict" id="1" polarity="unknown" source="linguistic">
+      <response>Yes</response>
+    </answer>
+  </inference>
+  <inference id="Brandeis-27">
+    <passage>The police allowed the crowd to demonstrate on nearby streets.</passage>
+    <question>Did the crowd demonstrate on nearby streets?</question>
+    <provenance type="edited">TimeBank (APW19980308.0201.tml)</provenance>
+    <answer force="strict" id="1" polarity="true" source="linguistic">
+      <response>Yes</response>
+    </answer>
+  </inference>
+  <inference id="Brandeis-28.1">
+    <passage>In Pakistan, the Taliban have forbidden women to work.</passage>
+    <question>Do the Taliban want women to work in Pakistan?</question>
+    <provenance type="edited">TimeBank (VOA19980305.1800.2603.tml)</provenance>
+    <answer force="strict" id="1" polarity="unknown" source="linguistic">
+      <response>No</response>
+    </answer>
+    <answer force="plausible" id="2" polarity="true" source="world">
+      <response>No</response>
+      <comment>Conventional implicature.</comment>
+    </answer>
+  </inference>
+  <inference id="Brandeis-28.2">
+    <passage>In Pakistan, the Taliban have forbidden women to work.</passage>
+    <question>Do women work in Pakistan?</question>
+    <provenance type="edited">TimeBank (VOA19980305.1800.2603.tml)</provenance>
+    <answer force="strict" id="1" polarity="unknown" source="linguistic">
+      <response>No</response>
+    </answer>
+  </inference>
+  <inference id="Brandeis-29">
+    <passage>The Administration is trying to decide whether Saddam Hussein has WMD.</passage>
+    <question>Is the administration deciding whether Saddam Hussein has WMD?</question>
+    <provenance type="edited">TimeBank (WSJ900813-0157.tml)</provenance>
+    <answer force="strict" id="1" polarity="true" source="linguistic">
+      <response>Yes</response>
+    </answer>
+  </inference>
+  <inference id="Brandeis-30">
+    <passage>Helicopters are trying to locate people stranded without food.</passage>
+    <question>Are helicopters locating people stranded without food?</question>
+    <provenance type="edited">TimeBank (ed980111.1130.0089.tml)</provenance>
+    <answer force="strict" id="1" polarity="true" source="linguistic">
+      <response>Don't know</response>
+    </answer>
+  </inference>
+  <inference id="Brandeis-31">
+    <passage>MCA agreed to wait on purchasing Cineplex.</passage>
+    <question>Is MCA waiting to purchase Cineplex?</question>
+    <provenance type="edited">TimeBank (wsj_0938_orig.tml)</provenance>
+    <answer force="strict" id="1" polarity="true" source="linguistic">
+      <response>Yes</response>
+    </answer>
+  </inference>
+  <inference id="Brandeis-32">
+    <passage>MGM Grand Inc. has agreed to pay $93 million to buy 117 acres of land in Las Vegas.</passage>
+    <question>Has MGM Grand Inc. paid $93 million to buy 117 acres of land in Las Vegas?</question>
+    <provenance type="edited">TimeBank (wsj_0981_orig.tml)</provenance>
+    <answer force="strict" id="1" polarity="true" source="linguistic">
+      <response>Don't know</response>
+    </answer>
+  </inference>
+</root>

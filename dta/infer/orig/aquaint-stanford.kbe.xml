@@ -1,0 +1,731 @@
+<?xml version="1.0"?>
+<?xml-stylesheet type="text/xml" href="http://nlp.stanford.edu/projects/infer/kbe_to_html.xml"?>
+
+<root xmlns="http://bogusnamespace.com/inference_pilot_evaluation/annotation">
+
+ <inference id="St001">
+    <passage>Abdul Galeel Nazeer Karori, a leading Islamist and member of Sudan's ruling National Congress party, said in Khartoum, "We will not allow any arrest or trial of a Sudanese official, unless they will arrest the 30 million Sudanese people and try them."</passage>
+    <question>Is Abdul Galeel Nazeer Karori a member of the Sudanese National Congress Party?</question>
+    <provenance type="edited">http://www.startribune.com/stories/484/5325919.html</provenance>
+    <answer id="1" polarity="true" force="strict" source="linguistic">
+      <response>Yes</response>
+    </answer>
+    <answer id="2" polarity="false" force="strict" source="linguistic">
+      <response>No</response>
+    </answer>
+    <answer id="3" polarity="false" force="strict" source="linguistic">
+      <response>Don't know</response>
+    </answer>
+ </inference>
+
+ <inference id="St002">
+    <passage>Abdul Galeel Nazeer Karori, a leading Islamist and member of Sudan's ruling National Congress party, said in Khartoum, "We will not allow any arrest or trial of a Sudanese official, unless they will arrest the 30 million Sudanese people and try them."</passage>
+    <question>Is Abdul Galeel Nazeer Karori the leader of the Sudanese National Congress Party?</question>
+    <provenance type="edited">http://www.startribune.com/stories/484/5325919.html</provenance>
+    <answer id="1" polarity="unknown" force="strict" source="linguistic">
+      <response>Yes</response>
+    </answer>
+    <answer id="2" polarity="false" force="plausible" source="linguistic">
+      <response>Yes</response>
+      <comment>Implicature. If Karori were the leader, he would have been called a leader of the party, not a "leading Islamist and member of the party"</comment>
+    </answer>
+    <answer id="3" polarity="false" force="plausible" source="world">
+      <response>Yes</response>
+      <because>Lt. Gen. Umar Hasan Ahmad al-BASHIR is the president of Sudan's National Congress party.</because>
+    </answer>
+    <answer id="4" polarity="unknown" force="strict" source="linguistic">
+      <response>No</response>
+    </answer>
+    <answer id="5" polarity="true" force="strict" source="linguistic">
+      <response>Don't know</response>
+    </answer>
+    <answer id="6" polarity="true" force="plausible" source="linguistic">
+      <response>No</response>
+      <comment>Implicature. If Karori were the leader, he would have been called a leader of the party, not a "leading Islamist and member of the party"</comment>
+    </answer>
+    <answer id="7" polarity="false" force="plausible" source="linguistic">
+      <response>Don't know</response>
+      <comment>Implicature. If Karori were the leader, he would have been called a leader of the party, not a "leading Islamist and member of the party"</comment>
+    </answer>
+    <answer id="8" polarity="true" force="plausible" source="world">
+      <response>No</response>
+      <because>Lt. Gen. Umar Hasan Ahmad al-BASHIR is the president of Sudan's National Congress party.</because>
+    </answer>
+ </inference>
+
+ <inference id="St003">
+    <passage>Puerto Rican legislators who want their island to become a state said Monday they would try to override a veto of a bill they believe will help resolve the territory's relationship to the United States. Gov. Anibal Acevedo Vila on Sunday vetoed the bill, which would have asked Washington to honor any eventual decision for the island to become a state, increase its autonomy or become independent.</passage>
+    <question>Do Puerto Rico lawmakers aim to override the governor's veto?</question>
+    <provenance type="edited">http://24hour.startribune.com/24hour/nation/story/2303304p-10504917c.html</provenance>
+    <answer id="1" polarity="unknown" force="strict" source="linguistic">
+      <response>Yes</response>
+    </answer>
+    <answer id="2" polarity="true" force="strict" source="linguistic">
+      <response>Yes</response>
+      <context-type>report</context-type>
+    </answer>
+    <answer id="3" polarity="true" force="plausible" source="linguistic">
+      <response>Yes</response>
+      <comment>Implicature. Grice's maxim of quality says "do not say what you believe to be false"</comment>
+    </answer>
+    <answer id="4" polarity="true" force="plausible" source="world">
+      <response>Yes</response>
+      <because>People that say they will try to do something might aim to do that thing.</because>
+    </answer>
+    <answer id="5" polarity="unknown" force="strict" source="linguistic">
+      <response>No</response>
+    </answer>
+    <answer id="6" polarity="true" force="strict" source="linguistic">
+      <response>Don't know</response>
+    </answer>
+    <answer id="7" polarity="false" force="strict" source="linguistic">
+      <response>No</response>
+      <context-type>report</context-type>
+    </answer>
+    <answer id="8" polarity="false" force="strict" source="linguistic">
+      <response>Don't know</response>
+      <context-type>report</context-type>
+    </answer>
+    <answer id="9" polarity="false" force="plausible" source="linguistic">
+      <response>No</response>
+      <comment>Implicature. Grice's maxim of quality says "do not say what you believe to be false"</comment>
+    </answer>
+    <answer id="10" polarity="false" force="plausible" source="linguistic">
+      <response>Don't know</response>
+      <comment>Implicature. Grice's maxim of quality says "do not say what you believe to be false"</comment>
+    </answer>
+    <answer id="11" polarity="false" force="plausible" source="world">
+      <response>No</response>
+      <because>People that say they will try to do something might aim to do that thing.</because>
+    </answer>
+ </inference>
+
+<inference id="St004">
+    <passage>Luigi Accattoli, one of the most senior and respected Vatican beat reporters, wrote in Corriere della Sera that a petition has already been circulated among the cardinals seeking signatures for a fast-track canonization process for John Paul.</passage>
+    <question>Did the cardinals in Vatican sign a petition asking a future pope to "accelerate" the beatification of John Paul II?</question>
+    <provenance type="edited">http://www.nytimes.com/2005/04/12/international/worldspecial2/13saintcnd.html</provenance>
+    <answer id="1" polarity="unknown" force="strict" source="linguistic">
+      <response>Yes</response>
+    </answer>
+    <answer id="2" polarity="false" force="plausible" source="world">
+      <response>Yes</response>
+      <because>If a petition has been signed, it generally needs to have been circulated. Implicature: If the petition had been signed and not just circulated, the speaker would have said so.</because>
+    </answer>
+    <answer id="3" polarity="unknown" force="strict" source="linguistic">
+      <response>No</response>
+    </answer>
+    <answer id="4" polarity="true" force="strict" source="linguistic">
+      <response>Don't know</response>
+    </answer>
+    <answer id="5" polarity="true" force="plausible" source="world">
+      <response>No</response>
+      <because>If a petition has been signed, it generally needs to have been circulated. Implicature: If the petition had been signed and not just circulated, the speaker would have said so.</because>
+    </answer>
+ </inference>
+
+<inference id="St005">
+    <passage>Cardinals meeting daily in Rome to discuss the main issues facing the Roman Catholic Church ahead of a conclave next week to elect a pope have signed a petition asking a future pope to "accelerate" the beatification of John Paul II.</passage>
+    <question>Has a petition already been circulated among the cardinals seeking signatures for a fast-track canonization process for John Paul?</question>
+    <provenance type="edited">http://www.news24.com/News24/World/News/0,,2-10-1462_1688760,00.html</provenance>
+    <answer id="1" polarity="unknown" force="strict" source="linguistic">
+      <response>Yes</response>
+    </answer>
+    <answer id="2" polarity="true" force="plausible" source="world">
+      <response>Yes</response>
+      <because>If a petition has been signed, it generally needs to have been circulated.</because>
+    </answer>
+    <answer id="3" polarity="true" force="strict" source="world">
+      <response>Yes</response>
+      <because>If a petition has been signed, it needs to have been circulated.</because>
+    </answer>
+    <answer id="4" polarity="unknown" force="strict" source="linguistic">
+      <response>No</response>
+    </answer>
+    <answer id="5" polarity="true" force="strict" source="linguistic">
+      <response>Don't know</response>
+    </answer>
+    <answer id="6" polarity="false" force="plausible" source="world">
+      <response>No</response>
+      <because>If a petition has been signed, it generally needs to have been circulated.</because>
+    </answer>
+    <answer id="7" polarity="false" force="strict" source="world">
+      <response>No</response>
+      <because>If a petition has been signed, it needs to have been circulated.</because>
+    </answer>
+</inference>
+
+<inference id="St006">
+    <passage>Several cardinals confirmed that the idea of rapid canonization was discussed the day after the pope's funeral, at their daily meeting.</passage>
+    <question>According to several cardinals, will Pope John Paul soon be canonized?</question>
+    <provenance type="edited">http://www.nytimes.com/2005/04/12/international/worldspecial2/13saintcnd.html</provenance>
+    <answer id="1" polarity="unknown" force="strict" source="linguistic">
+      <response>Yes</response>
+    </answer>
+    <answer id="2" polarity="unknown" force="strict" source="linguistic">
+      <response>No</response>
+    </answer>
+    <answer id="3" polarity="true" force="strict" source="linguistic">
+      <response>Don't know</response>
+    </answer>
+</inference>
+
+<inference id="St007">
+    <passage>America's new deputy secretary of state, Robert Zoellick, attended a conference in Norway this week at which 60 nations pledged some $4.5 billion for rebuilding war-torn southern Sudan, where a separate 21-year conflict ended in January.</passage>
+    <question>Did an international donors' conference in Norway pledge the $3.5 billion target to help southern Sudan recover after two decades of civil war?</question>
+    <provenance type="edited">http://www.csmonitor.com/2005/0413/p07s01-woaf.html</provenance>
+    <answer id="1" polarity="unknown" force="strict" source="linguistic">
+      <response>Yes</response>
+    </answer>
+    <answer id="2" polarity="true" force="plausible" source="world">
+      <response>Yes</response>
+      <because>Such conferences are usually donors' conferences. A long conflict in a country might be a civil war.</because>
+    </answer>
+    <answer id="3" polarity="true" force="strict" source="world">
+      <response>Yes</response>
+      <because>A conference in which many nations donate money is an international donors' conference. The long conflict in Sudan is a civil war.</because>
+    </answer>
+    <answer id="4" polarity="unknown" force="strict" source="linguistic">
+      <response>No</response>
+    </answer>
+    <answer id="5" polarity="true" force="strict" source="linguistic">
+      <response>Don't know</response>
+    </answer>
+    <answer id="6" polarity="false" force="plausible" source="world">
+      <response>No</response>
+      <because>Such conferences are usually donors' conferences. A long conflict in a country might be a civil war.</because>
+    </answer>
+    <answer id="7" polarity="false" force="strict" source="world">
+      <response>No</response>
+      <because>A conference in which many nations donate money is an international donors' conference. The long conflict in Sudan is a civil war.</because>
+    </answer>
+</inference>
+
+<inference id="St008">
+    <passage>China's Premier told Japan today to "face up to history" by admitting the suffering it caused in World War II, and seriously reconsider its bid for a UN Security Council seat after protests in China and elsewhere.</passage>
+    <question>Did the Chinese Premier say the protests should give Tokyo serious pause for thought about its bid for the UNSC?</question>
+    <provenance type="edited">http://www.telegraphindia.com/1050413/asp/foreign/story_4608872.asp</provenance>
+    <answer id="1" polarity="true" force="strict" source="linguistic">
+      <response>Yes</response>
+    </answer>
+    <answer id="2" polarity="false" force="strict" source="linguistic">
+      <response>No</response>
+    </answer>
+    <answer id="3" polarity="false" force="strict" source="linguistic">
+      <response>Don't know</response>
+    </answer>
+</inference>
+
+<inference id="St009">
+    <passage>Premier Wen Jiabao told Japan yesterday to "face up to history" and admit to the tremendous suffering it inflicted on people in China, Asia and the rest of the world during World War II.</passage>
+    <question>Did Japan admit to the suffering it caused in World War II?</question>
+    <provenance type="edited">http://www.telegraphindia.com/1050413/asp/foreign/story_4608872.asp</provenance>
+    <answer id="1" polarity="unknown" force="strict" source="linguistic">
+      <response>Yes</response>
+    </answer>
+    <answer id="2" polarity="false" force="plausible" source="linguistic">
+      <response>Yes</response>
+      <comment>Implicature: If person X asks entity Y to admit statement Z, then it might be because Y has not admitted Z yet.</comment>
+    </answer>
+    <answer id="3" polarity="false" force="strict" source="world">
+      <response>Yes</response>
+      <because>Japan has not admitted to the suffering it caused in World War II.</because>
+    </answer>
+    <answer id="4" polarity="unknown" force="strict" source="linguistic">
+      <response>No</response>
+    </answer>
+    <answer id="5" polarity="true" force="strict" source="linguistic">
+      <response>Don't know</response>
+    </answer>
+    <answer id="6" polarity="true" force="plausible" source="linguistic">
+      <response>No</response>
+      <comment>Implicature: If person X asks entity Y to admit statement Z, then it might be because Y has not admitted Z yet.</comment>
+    </answer>
+    <answer id="7" polarity="false" force="plausible" source="linguistic">
+      <response>Don't know</response>
+      <comment>Implicature: If person X asks entity Y to admit statement Z, then it might be because Y has not admitted Z yet.</comment>
+    </answer>
+    <answer id="8" polarity="true" force="strict" source="world">
+      <response>No</response>
+      <because>Japan has not admitted to the suffering it caused in World War II.</because>
+    </answer>
+</inference>
+
+<inference id="St010">
+    <passage>Marburg virus is a highly fatal pathogen spread through direct body contact. It attacks the gastrointestinal tract and kills rapidly. It has an incubation period of three to nine days with most deaths occurring within one week after the onset of symptoms.</passage>
+    <question>Does Marburg hemorrhagic fever spread through contact with bodily fluids and kill rapidly, usually by three days after the first symptoms?</question>
+    <provenance type="edited">http://www.medpagetoday.com/tbindex.cfm?tbid=873</provenance>
+    <answer id="1" polarity="false" force="strict" source="linguistic">
+      <response>Yes</response>
+    </answer>
+    <answer id="2" polarity="true" force="strict" source="linguistic">
+      <response>No</response>
+    </answer>
+    <answer id="3" polarity="false" force="strict" source="linguistic">
+      <response>Don't know</response>
+    </answer>
+</inference>
+
+<inference id="St011">
+    <passage>The U.N. health agency says suspected cases of the Ebola-like Marburg virus in Angola must be detected and isolated sooner if the disease is to be brought under control.</passage>
+    <question>Could the outbreak of Marburg virus be stopped if infected people were isolated sooner?</question>
+    <provenance type="edited">http://news.xinhuanet.com/english/2005-04/13/content_2821597.htm</provenance>
+    <answer id="1" polarity="unknown" force="strict" source="linguistic">
+      <response>Yes</response>
+    </answer>
+    <answer id="2" polarity="true" force="plausible" source="world">
+      <response>Yes</response>
+      <because>The U.N. health agency is an authority on disease and health matters.</because>
+      <comment>"Stopped" might mean 'stopped from spreading rapidly', which is similar to the meaning of 'brought under control'.</comment>
+    </answer>
+    <answer id="3" polarity="unknown" force="strict" source="linguistic">
+      <response>No</response>
+    </answer>
+    <answer id="4" polarity="true" force="strict" source="linguistic">
+      <response>Don't know</response>
+    </answer>
+    <answer id="5" polarity="false" force="plausible" source="world">
+      <response>No</response>
+      <because>The U.N. health agency is an authority on disease and health matters.</because>
+      <comment>"Stopped" might mean 'stopped from spreading rapidly', which is similar to the meaning of 'brought under control'.</comment>
+    </answer>
+</inference>
+
+<inference id="St012">
+    <passage>Apple has declared that Mac OS X version 10.4 "Tiger" will go on sale Friday, 29 April 2005, beginning at 6:00 p.m. during special events at Apple's retail stores and Apple Authorized Resellers.</passage>
+    <question>Did Apple announce that the Mac operating system, OS X Tiger, will be available beginning of April 2005?</question>
+    <provenance type="edited">http://www.geekzone.co.nz/content.asp?contentid=4352</provenance>
+    <answer id="1" polarity="false" force="strict" source="linguistic">
+      <response>Yes</response>
+    </answer>
+    <answer id="2" polarity="true" force="strict" source="linguistic">
+      <response>No</response>
+    </answer>
+    <answer id="3" polarity="false" force="strict" source="linguistic">
+      <response>Don't know</response>
+    </answer>
+</inference>
+
+<inference id="St013">
+    <passage>Apple has declared that Mac OS X version 10.4 "Tiger" will go on sale Friday, 29 April 2005, beginning at 6:00 p.m. during special events at Apple's retail stores and Apple Authorized Resellers.</passage>
+    <question>Did Apple announce that the Mac operating system, OS X Tiger, will be available by the end of April 2005?</question>
+    <provenance type="edited">http://www.geekzone.co.nz/content.asp?contentid=4352</provenance>
+    <answer id="1" polarity="true" force="strict" source="linguistic">
+      <response>Yes</response>
+    </answer>
+    <answer id="2" polarity="false" force="strict" source="linguistic">
+      <response>No</response>
+    </answer>
+    <answer id="3" polarity="false" force="strict" source="linguistic">
+      <response>Don't know</response>
+    </answer>
+</inference>
+
+<inference id="St014">
+    <passage>Prime Minister Ariel Sharon of Israel urged President Bush to step up pressure on Iran to give up all elements of its nuclear program.</passage>
+    <question>Did Sharon urge the US leader to keep pressing Iran to give up its nuclear program altogether?</question>
+    <provenance type="edited">http://www.nytimes.com/2005/04/13/international/middleeast/13nuke.html?oref=login</provenance>
+    <answer id="1" polarity="unknown" force="strict" source="linguistic">
+      <response>Yes</response>
+    </answer>
+    <answer id="2" polarity="true" force="plausible" source="world">
+      <response>Yes</response>
+      <because>President Bush is the US President. Presidents are usually leaders in their country.</because>
+    </answer>
+    <answer id="3" polarity="true" force="strict" source="world">
+      <response>Yes</response>
+      <because>President Bush is the US leader.</because>
+    </answer>
+    <answer id="4" polarity="unknown" force="strict" source="linguistic">
+      <response>No</response>
+    </answer>
+    <answer id="5" polarity="true" force="strict" source="linguistic">
+      <response>Don't know</response>
+    </answer>
+    <answer id="6" polarity="false" force="plausible" source="world">
+      <response>No</response>
+      <because>President Bush is the US President. Presidents are usually leaders in their country.</because>
+    </answer>
+    <answer id="7" polarity="false" force="strict" source="world">
+      <response>No</response>
+      <because>President Bush is the US leader.</because>
+    </answer>
+</inference>
+
+<inference id="St015">
+    <passage>The United States and Israel have both accused Iran of using its atomic energy program as cover for a plan to develop nuclear arms.</passage>
+    <question>Is Iran running a secret weapons program under the cover of plans to build nuclear power plants for electricity?</question>
+    <provenance type="edited">http://www.iranmania.com/News/ArticleView/Default.asp?NewsCode=30884&amp;NewsKind=Current%20Affairs</provenance>
+    <answer id="1" polarity="unknown" force="strict" source="linguistic">
+      <response>Yes</response>
+    </answer>
+    <answer id="2" polarity="unknown" force="strict" source="linguistic">
+      <response>No</response>
+    </answer>
+    <answer id="3" polarity="true" force="strict" source="linguistic">
+      <response>Don't know</response>
+    </answer>
+</inference>
+
+<inference id="St016">
+    <passage>A northern Indiana businessman has been kidnapped in Iraq and shown on a video broadcast Wednesday by the Al-Jazeera television station.</passage>
+    <question>Has Al-Jazeera television broadcasted a video that showed an American who had been kidnapped?</question>
+    <provenance type="edited">http://www.chicagotribune.com/news/nationworld/chi-050413kidnapping,1,6667705.story?coll=chi-news-hed&amp;ctrack=1&amp;cset=true</provenance>
+    <answer id="1" polarity="unknown" force="strict" source="linguistic">
+      <response>Yes</response>
+    </answer>
+    <answer id="2" polarity="true" force="plausible" source="world">
+      <response>Yes</response>
+      <because>Indiana is a state of the United States. An Indiana businessman might be a US citizen, and hence an American.</because>
+    </answer>
+    <answer id="3" polarity="true" force="plausible" source="world">
+      <response>Yes</response>
+      <because>Indiana is a state of the United States. A person doing business in Indiana might be considered American.</because>
+    </answer>
+    <answer id="4" polarity="unknown" force="strict" source="linguistic">
+      <response>No</response>
+    </answer>
+    <answer id="5" polarity="true" force="strict" source="linguistic">
+      <response>Don't know</response>
+    </answer>
+    <answer id="6" polarity="false" force="plausible" source="world">
+      <response>No</response>
+      <because>Indiana is a state of the United States. An Indiana businessman might be a US citizen, and hence an American.</because>
+    </answer>
+    <answer id="7" polarity="false" force="plausible" source="world">
+      <response>No</response>
+      <because>Indiana is a state of the United States. A person doing business in Indiana might be considered American.</because>
+    </answer>
+</inference>
+
+<inference id="St017">
+    <passage>Clutching rosaries, medals and flowers, thousands of people filed past the simple white marble tomb of Pope John Paul II on Wednesday, as the Vatican reopened the grottoes beneath St. Peter's Basilica for the first time since the pope died.</passage>
+    <question>Did thousands of pilgrims flock to Pope John Paul II's tomb on Wednesday after the Vatican opened it to the public?</question>
+    <provenance type="edited">http://www.nytimes.com/aponline/international/AP-Pope.html</provenance>
+    <answer id="1" polarity="unknown" force="strict" source="linguistic">
+      <response>Yes</response>
+    </answer>
+    <answer id="2" polarity="true" force="plausible" source="world">
+      <response>Yes</response>
+      <because>Tombs of popes are generally in the grottoes beneath a church. St. Peter's Basilica is a church.</because>
+    </answer>
+    <answer id="3" polarity="true" force="strict" source="world">
+      <response>Yes</response>
+      <because>The tomb of Pope John Paul II is in the grottoes beneath St. Peter's Basilica.</because>
+    </answer>
+    <answer id="4" polarity="unknown" force="strict" source="linguistic">
+      <response>No</response>
+    </answer>
+    <answer id="5" polarity="true" force="strict" source="linguistic">
+      <response>Don't know</response>
+    </answer>
+    <answer id="6" polarity="false" force="plausible" source="world">
+      <response>No</response>
+      <because>Tombs of popes are generally in the grottoes beneath a church. St. Peter's Basilica is a church.</because>
+    </answer>
+    <answer id="7" polarity="false" force="strict" source="world">
+      <response>No</response>
+      <because>The tomb of Pope John Paul II is in the grottoes beneath St. Peter's Basilica.</because>
+    </answer>
+</inference>
+
+<inference id="St018">
+    <passage>Prosecutors investigating an Iranian man who abducted four schoolgirls at knifepoint said on Wednesday they would petition the court to commit the man to a psychiatric institute.</passage>
+    <question>Did prosecutors say on Wednesday that the Iranian who kidnapped four schoolgirls would be taken to a psychiatric clinic for treatment?</question>
+    <provenance type="edited">http://www.expatica.com/source/site_article.asp?subchannel_id=52&amp;story_id=19054&amp;name=Child+abductor+may+be+committed+to+institute</provenance>
+    <answer id="1" polarity="unknown" force="strict" source="linguistic">
+      <response>Yes</response>
+    </answer>
+    <answer id="2" polarity="false" force="plausible" source="linguistic">
+      <response>Yes</response>
+      <comment>Implicature: If prosecutors knew that the Iranian man will be taken to a psychiatric clinic, they would have said this instead of the more complex statement that they would "petition the court".</comment>
+    </answer>
+    <answer id="3" polarity="unknown" force="strict" source="linguistic">
+      <response>No</response>
+    </answer>
+    <answer id="4" polarity="true" force="strict" source="linguistic">
+      <response>Don't know</response>
+    </answer>
+    <answer id="5" polarity="true" force="plausible" source="linguistic">
+      <response>No</response>
+      <comment>Implicature: If prosecutors knew that the Iranian man will be taken to a psychiatric clinic, they would have said this instead of the more complex statement that they would "petition the court".</comment>
+    </answer>
+    <answer id="6" polarity="false" force="plausible" source="linguistic">
+      <response>Don't know</response>
+      <comment>Implicature: If prosecutors knew that the Iranian man will be taken to a psychiatric clinic, they would have said this instead of the more complex statement that they would "petition the court".</comment>
+    </answer>
+</inference>
+
+<inference id="St019">
+    <passage>Four girls who had been taken hostage at knife point by an Iranian man were rescued by police in western Germany on Tuesday.</passage>
+    <question>Were the four girls who had been kidnapped by an Iranian man freed by police?</question>
+    <provenance type="edited">http://english.people.com.cn/200504/13/eng20050413_180852.html</provenance>
+    <answer id="1" polarity="true" force="strict" source="linguistic">
+      <response>Yes</response>
+    </answer>
+    <answer id="2" polarity="false" force="strict" source="linguistic">
+      <response>No</response>
+    </answer>
+    <answer id="3" polarity="false" force="strict" source="linguistic">
+      <response>Don't know</response>
+    </answer>
+</inference>
+
+<inference id="St020">
+    <passage>German police commandos slipped into a house where a knife-wielding man was holding four schoolgirls hostage Tuesday, surprising the suspect and taking him into custody while rescuing his captives after a five-hour standoff.</passage>
+    <question>Did German police overpower a man who was holding four schoolgirls at knifepoint for several hours on Tuesday?</question>
+    <provenance type="edited">http://www.guardian.co.uk/worldlatest/story/0,1280,-4932315,00.html</provenance>
+    <answer id="1" polarity="true" force="strict" source="linguistic">
+      <response>Yes</response>
+    </answer>
+    <answer id="2" polarity="false" force="strict" source="linguistic">
+      <response>No</response>
+    </answer>
+    <answer id="3" polarity="false" force="strict" source="linguistic">
+      <response>Don't know</response>
+    </answer>
+</inference>
+
+<inference id="St021">
+    <passage>Australian police have seized more than five million ecstasy tablets hidden inside a shipping container that arrived in Melbourne from Europe.</passage>
+    <question>Did the Australian Federal Police say that the five million ecstasy tablets seized in Melbourne was the largest seizure of street-ready tablets in the world?</question>
+    <provenance type="edited">http://news.bbc.co.uk/2/hi/asia-pacific/4447521.stm</provenance>
+    <answer id="1" polarity="unknown" force="strict" source="linguistic">
+      <response>Yes</response>
+    </answer>
+    <answer id="2" polarity="unknown" force="strict" source="linguistic">
+      <response>No</response>
+    </answer>
+    <answer id="3" polarity="true" force="strict" source="linguistic">
+      <response>Don't know</response>
+    </answer>
+</inference>
+
+<inference id="St022">
+    <passage>The head of Germany's spy agency says the U-S made a mistake by letting Afghan militias chase after Osama bin Laden.</passage>
+    <question>Does the head of German intelligence believe the United States made errors in hunting Osama bin Laden?</question>
+    <provenance type="edited">http://www.whotv.com/Global/story.asp?S=3203932</provenance>
+    <answer id="1" polarity="unknown" force="strict" source="linguistic">
+      <response>Yes</response>
+    </answer>
+    <answer id="2" polarity="true" force="plausible" source="world">
+      <response>Yes</response>
+      <because>The US might have been letting Afghan militias chase after Osama bin Laden because they were trying to hunt (find) him. Implicature: Grice's maxim of quality says "Do not say what you believe to be false".</because>
+    </answer>
+    <answer id="3" polarity="unknown" force="strict" source="linguistic">
+      <response>No</response>
+    </answer>
+    <answer id="4" polarity="true" force="strict" source="linguistic">
+      <response>Don't know</response>
+    </answer>
+    <answer id="5" polarity="false" force="plausible" source="world">
+      <response>No</response>
+      <because>The US might have been letting Afghan militias chase after Osama bin Laden because they were trying to hunt (find) him. Implicature: Grice's maxim of quality says "Do not say what you believe to be false".</because>
+    </answer>
+</inference>
+
+<inference id="St023">
+    <passage>The Recording Industry Association of America and the Motion Picture Association of America on Wednesday separately will file lawsuits against college students that are allegedly using an Internet2 peer-to-peer service for illegal file trading.</passage>
+    <question>Do record label and movie studio investigators plan to sue college students who used a special high-speed network to copy songs and movies?</question>
+    <provenance type="edited">http://www.pcworld.com/news/article/0,aid,120425,00.asp</provenance>
+    <answer id="1" polarity="unknown" force="strict" source="linguistic">
+      <response>Yes</response>
+    </answer>
+    <answer id="2" polarity="true" force="plausible" source="world">
+      <response>Yes</response>
+      <because>The Recording Industry Association of America and the Motion Picture Association of America are record label and movie studio associations. A peer-to-peer service generally provides a high-speed network.</because>
+    </answer>
+    <answer id="3" polarity="true" force="strict" source="world">
+      <response>Yes</response>
+      <because>The Recording Industry Association of America and the Motion Picture Association of America are record label and movie studio associations. The Internet2 peer-to-peer service constitutes a high-speed network.</because>
+    </answer>
+    <answer id="4" polarity="unknown" force="strict" source="linguistic">
+      <response>No</response>
+    </answer>
+    <answer id="5" polarity="true" force="strict" source="linguistic">
+      <response>Don't know</response>
+    </answer>
+    <answer id="6" polarity="false" force="plausible" source="world">
+      <response>No</response>
+      <because>The Recording Industry Association of America and the Motion Picture Association of America are record label and movie studio associations. A peer-to-peer service generally provides a high-speed network.</because>
+    </answer>
+    <answer id="7" polarity="false" force="strict" source="world">
+      <response>No</response>
+      <because>The Recording Industry Association of America and the Motion Picture Association of America are record label and movie studio associations. The Internet2 peer-to-peer service constitutes a high-speed network.</because>
+    </answer>
+</inference>
+
+<inference id="St024">
+    <passage>Designed for academic research, Internet2's extremely fast speed allows users to download a movie in five minutes or a song in less than 20 seconds.</passage>
+    <question>Has Internet2 been designed to allow users to download movies or songs?</question>
+    <provenance type="edited">http://www.telegraphindia.com/1050414/asp/foreign/story_4613533.asp</provenance>
+    <answer id="1" polarity="unknown" force="strict" source="linguistic">
+      <response>Yes</response>
+    </answer>
+    <answer id="2" polarity="false" force="plausible" source="linguistic">
+      <response>Yes</response>
+      <comment>Implicature. If "academic research" were not an exhaustive list of the design purpose, the speaker would have added the other purposes.</comment>
+    </answer>
+    <answer id="3" polarity="false" force="plausible" source="world">
+      <response>Yes</response>
+      <because>Academic research generally does not consist of downloading movies or songs.</because>
+    </answer>
+    <answer id="4" polarity="false" force="strict" source="world">
+      <response>Yes</response>
+      <because>Academic research does not consist of downloading movies or songs.</because>
+    </answer>
+    <answer id="5" polarity="unknown" force="strict" source="linguistic">
+      <response>No</response>
+    </answer>
+    <answer id="6" polarity="true" force="strict" source="linguistic">
+      <response>Don't know</response>
+    </answer>
+    <answer id="7" polarity="true" force="plausible" source="linguistic">
+      <response>No</response>
+      <comment>Implicature. If "academic research" were not an exhaustive list of the design purpose, the speaker would have added the other purposes.</comment>
+    </answer>
+    <answer id="8" polarity="false" force="plausible" source="linguistic">
+      <response>Don't know</response>
+      <comment>Implicature. If "academic research" were not an exhaustive list of the design purpose, the speaker would have added the other purposes.</comment>
+    </answer>
+    <answer id="9" polarity="true" force="plausible" source="world">
+      <response>No</response>
+      <because>Academic research generally does not consist of downloading movies or songs.</because>
+    </answer>
+    <answer id="10" polarity="true" force="strict" source="world">
+      <response>No</response>
+      <because>Academic research does not consist of downloading movies or songs.</because>
+    </answer>
+</inference>
+
+<inference id="St025">
+    <passage>Outside the northern Iraqi city of Kirkuk, at least nine police officers were killed and three were wounded when a bomb detonated on an oil pipeline as they were trying to defuse it.</passage>
+    <question>Did the bursting of an oil pipeline kill nine Iraqi officers?</question>
+    <provenance type="edited">http://www.nytimes.com/2005/04/13/international/middleeast/13cnd-iraq.html</provenance>
+    <answer id="1" polarity="unknown" force="strict" source="linguistic">
+      <response>Yes</response>
+    </answer>
+    <answer id="2" polarity="true" force="plausible" source="world">
+      <response>Yes</response>
+      <because>If a bomb detonates on an oil pipeline, it might burst. Implicature: If the detonation was not the cause of the deaths, the speaker would have mentioned the actual cause instead of the detonation to denote the event of the killing; Grice's maxims: "Make your contribution as informative as is required", "Be relevant".</because>
+    </answer>
+    <answer id="3" polarity="false" force="plausible" source="world">
+      <response>Yes</response>
+      <because>If a bomb detonates and people are killed, they might have been killed directly due to the bomb, and not because of the consequences of the detonation. The bursting of the pipeline here is a consequence of the detonation of the bomb.</because>
+    </answer>
+    <answer id="4" polarity="unknown" force="strict" source="linguistic">
+      <response>No</response>
+    </answer>
+    <answer id="5" polarity="true" force="strict" source="linguistic">
+      <response>Don't know</response>
+    </answer>
+    <answer id="6" polarity="false" force="plausible" source="world">
+      <response>No</response>
+      <because>If a bomb detonates on an oil pipeline, it might burst. Implicature: If the detonation was not the cause of the deaths, the speaker would have mentioned the actual cause instead of the detonation to denote the event of the killing; Grice's maxims: "Make your contribution as informative as is required", "Be relevant".</because>
+    </answer>
+    <answer id="7" polarity="true" force="plausible" source="world">
+      <response>No</response>
+      <because>If a bomb detonates and people are killed, they might have been killed directly due to the bomb, and not because of the consequences of the detonation. The bursting of the pipeline here is a consequence of the detonation of the bomb.</because>
+    </answer>
+</inference>
+
+<inference id="St026">
+    <passage>Kenya's 1500m star Bernard Lagat, bronze medallist at the 2000 Olympics and silver medal winner in Athens, has taken out US citizenship.</passage>
+    <question>Did runner Lagat become an American citizen?</question>
+    <provenance type="edited">http://www.iol.co.za/index.php?set_id=6&amp;click_id=174&amp;art_id=qw1113398462140S163</provenance>
+    <answer id="1" polarity="unknown" force="strict" source="linguistic">
+      <response>Yes</response>
+    </answer>
+    <answer id="2" polarity="true" force="plausible" source="world">
+      <response>Yes</response>
+      <because>A US citizen is an American citizen. A 1500m star who competes at the Olympics might be a runner.</because>
+    </answer>
+    <answer id="3" polarity="true" force="plausible" source="world">
+      <response>Yes</response>
+      <because>A US citizen is an American citizen. Kenya is famous for long-distance runners (as opposed to long-distance swimmers). A 1500m event is a kind of race.</because>
+    </answer>
+    <answer id="4" polarity="unknown" force="strict" source="linguistic">
+      <response>No</response>
+    </answer>
+    <answer id="5" polarity="true" force="strict" source="linguistic">
+      <response>Don't know</response>
+    </answer>
+    <answer id="6" polarity="false" force="plausible" source="world">
+      <response>No</response>
+      <because>A US citizen is an American citizen. A 1500m star who competes at the Olympics might be a runner.</because>
+    </answer>
+    <answer id="7" polarity="false" force="plausible" source="world">
+      <response>No</response>
+      <because>A US citizen is an American citizen. Kenya is famous for long-distance runners (as opposed to long-distance swimmers). A 1500m event is a kind of race.</because>
+    </answer>
+</inference>
+
+<inference id="St027">
+    <passage>More than 25,000 residents have been evacuated as a rumbling volcano on Indonesia's Sumatra island sent out fire, smoke and ash. Mount Talang's violent awakening has coincided with a string of earthquakes on Sumatra and comes as another volcano on neighbouring Java, Tangkuban Perahu, has sprung to life and been declared off-limits.</passage>
+    <question>Have more than 25,000 residents been evacuated from the slopes of the volcano Tangkuban Perahu?</question>
+    <provenance type="edited">http://www.theaustralian.news.com.au/common/story_page/0,5744,12846760%255E2703,00.html</provenance>
+    <answer id="1" polarity="unknown" force="strict" source="linguistic">
+      <response>Yes</response>
+    </answer>
+    <answer id="2" polarity="unknown" force="strict" source="linguistic">
+      <response>No</response>
+    </answer>
+    <answer id="3" polarity="true" force="strict" source="linguistic">
+      <response>Don't know</response>
+    </answer>
+</inference>
+
+<inference id="St028">
+    <passage>A snarling volcano spewing smoke and ash has forced the evacuation of 26,000 frightened residents on the troubled Indonesian island of Sumatra.</passage>
+    <question>Have more than 25,000 panicked residents been evacuated from the slopes of a volcano on Indonesia's Sumatra island?</question>
+    <provenance type="edited">http://www.heraldsun.news.com.au/common/story_page/0,5478,12847175%255E663,00.html</provenance>
+    <answer id="1" polarity="unknown" force="strict" source="linguistic">
+      <response>Yes</response>
+    </answer>
+    <answer id="2" polarity="true" force="strict" source="world">
+      <response>Yes</response>
+      <because>A volcano has slopes. An evacuation due to a volcano is from the neighborhood of the volcano.</because>
+    </answer>
+    <answer id="3" polarity="unknown" force="strict" source="linguistic">
+      <response>No</response>
+    </answer>
+    <answer id="4" polarity="true" force="strict" source="linguistic">
+      <response>Don't know</response>
+    </answer>
+    <answer id="5" polarity="false" force="strict" source="world">
+      <response>No</response>
+      <because>A volcano has slopes. An evacuation due to a volcano is from the neighborhood of the volcano.</because>
+    </answer>
+</inference>
+
+<inference id="St029">
+    <passage>Three dozen women in Western-style business suits crowded into the office of the man who would soon be Iraq's prime minister, Ibrahim al-Jaafari.</passage>
+    <question>Is Ibrahim al-Jaafari scheduled to be Iraq's prime minister?</question>
+    <provenance type="edited">http://www.nytimes.com/2005/04/13/international/middleeast/13women.html</provenance>
+    <answer id="1" polarity="true" force="strict" source="linguistic">
+      <response>Yes</response>
+    </answer>
+    <answer id="2" polarity="false" force="strict" source="linguistic">
+      <response>No</response>
+    </answer>
+    <answer id="3" polarity="false" force="strict" source="linguistic">
+      <response>Don't know</response>
+    </answer>
+</inference>
+
+<inference id="St030">
+    <passage>Theologians in Spain and elsewhere say Opus Dei is well ensconced in Rome and will probably emerge unscathed from the conclave, although this is far from certain.</passage>
+    <question>Is it certain that Opus Dei, well ensconced in Rome, will emerge unscathed from the conclave?</question>
+    <provenance type="edited">http://www.usatoday.com/news/religion/2005-04-12-pope-opus-dei_x.htm</provenance>
+    <answer id="1" polarity="false" force="strict" source="linguistic">
+      <response>Yes</response>
+    </answer>
+    <answer id="2" polarity="true" force="strict" source="linguistic">
+      <response>No</response>
+    </answer>
+    <answer id="3" polarity="false" force="strict" source="linguistic">
+      <response>Don't know</response>
+    </answer>
+</inference>
+
+</root>
+
