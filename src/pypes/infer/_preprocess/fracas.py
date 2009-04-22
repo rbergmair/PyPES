@@ -1,7 +1,7 @@
 # -*-  coding: ascii -*-  # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-__package__ = "pypes.tools";
-__all__ = [ "process_fracas", "main" ];
+__package__ = "pypes.infer._preprocess";
+__all__ = [ "FracasProcessor" ];
 
 import sys;
 
