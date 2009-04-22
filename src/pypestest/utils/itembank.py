@@ -78,9 +78,35 @@ class TestItembank( TestCase, metaclass=object_ ):
       with tbl.record_by_id( 2 ) as rec:
         self.assertEquals( rec.id, 2 );
         self.assertEquals( rec.get_ctx_str(), "The dog barked loudly." );
+
+    with TableManager( ( "/tmp/myitembank", "mybank" ) ) as tbl:
+      
+      with tbl.record_by_id( 2 ) as rec:
+        rec.reset( "myfield" );
+      with tbl.record_by_id( 13 ) as rec:
+        rec.append_to( "myfield", "barked" );
+        rec.append_to( "myfield", "barked 13 times" );
+        self.assertEquals( rec.fetch_first( "myfield" ), "barked" );
+      with tbl.record_by_id( 13 ) as rec:
+        self.assertEquals( rec.fetch_first( "myfield" ), "barked" );
+      with tbl.record_by_id( 2 ) as rec:
+        rec.append_to( "myfield", "barked loudly 17 times" );
+      
+    with TableManager( ( "/tmp/myitembank", "mybank" ) ) as tbl:
+
+      with tbl.record_by_id( 2 ) as rec:
+        subitem = iter( rec.fetch_all( "myfield" ) );
+        self.assertEquals( next( subitem ), "barked loudly 17 times" );
+        self.assertFalse( next( subitem, False ) );
+      
+      with tbl.record_by_id( 13 ) as rec:
+        subitem = iter( rec.fetch_all( "myfield" ) );
+        self.assertEquals( next( subitem ), "barked" );
+        self.assertEquals( next( subitem ), "barked 13 times" );
+        self.assertFalse( next( subitem, False ) );
         
-
-
+        
+        
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 def suite():

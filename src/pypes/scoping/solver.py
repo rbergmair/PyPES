@@ -311,7 +311,7 @@ class Solver( metaclass=subject ):
       if pluggings is None:
         continue;
       i += 1;
-      if branching_factor is not None and i >= branching_factor:
+      if branching_factor is not None and i > branching_factor:
         break;
       for subcomponent in pluggings.values():
         if self.solve_all( subcomponent, branching_factor ) is None:

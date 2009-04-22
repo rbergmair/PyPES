@@ -54,6 +54,9 @@ class Enumerator( metaclass=subject ):
     #  yield solution;
     #  return;
     
+    if not component in self._obj_.solution.chart_index:
+      return;
+    
     idx = self._obj_.solution.chart_index.index( component );
     
     splits = self._obj_.solution.chart[ idx ];
