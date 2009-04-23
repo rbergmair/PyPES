@@ -13,8 +13,7 @@ def main( argv=None ):
   f = open( "dta/infer/edited/fracas.bmc.xml" );
   try:
     with FraCaSProcessor( f ) as proc:
-      proc.process( "dta/infer/fracas/data",
-                    "dta/infer/fracas/gold",
+      proc.process( "dta/infer/fracas",
                     "dta/items/fracas" );
   finally:
     f.close();

@@ -4,13 +4,28 @@ __package__ = "pypes.infer";
 __all__ = [ "InferenceRunner" ];
 
 from pypes.utils.mc import subject;
+from pypes.utils.xml_.xml_handler import *;
+
+
+
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+
+class GroupHandler( XMLElementHandler, metaclass=subject ):
+  
+  XMLELEM = "group";
+  
+  def _enter_( self ):
+    
+    self.disc = {};
+    self.sent = {};
+    
 
 
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 class InferenceRunner( metaclass=subject ):
-
+  
   
   def _enter_( self ):
     

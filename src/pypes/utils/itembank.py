@@ -184,6 +184,17 @@ class RecordManager( metaclass=subject ):
         ( subid_, subitem )  = self._strip_id( item );
         assert subid_ == subid;
         yield subitem;
+  
+  
+  def set( self, field, val ):
+    
+    self._fields[ field ] = val;
+    self.sync();
+  
+  
+  def get( self, field ):
+    
+    return self._fields[ field ];
     
     
     

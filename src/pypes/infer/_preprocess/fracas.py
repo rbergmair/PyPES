@@ -58,8 +58,9 @@ class CommentHandler( XMLPCharElementHandler, metaclass=subject ):
     sect = sect.replace( ".", "-" );
     
     self._obj_.tsfile = open(
-                            "{0}/fracas-{1}.ts.xml".format(
-                                  self._obj_.datadir, sect
+                            "{0}/fracas-{1}/data.ts.xml".format(
+                                  self._obj_.datadir,
+                                  sect
                                 ),
                             "w"
                           );
@@ -68,8 +69,9 @@ class CommentHandler( XMLPCharElementHandler, metaclass=subject ):
     self._obj_.tsfile.write( '<testsuite>\n\n\n' );
 
     self._obj_.afile = open(
-                           "{0}/fracas-{1}.tsa.xml".format(
-                               self._obj_.anndir, sect
+                           "{0}/fracas-{1}/gold.tsa.xml".format(
+                               self._obj_.datadir,
+                               sect
                              ),
                            "w"
                          );
@@ -249,17 +251,17 @@ class ProblemHandler( XMLElementHandler, metaclass=subject ):
   
   def _output_annotation( self ):
 
-    annotation = '<annotation infid="{0}"'.format( self.id_attr );
+    answer = None;
     
     if self.fracas_answer is not None:
       if self.fracas_answer == "undef":
         pass;
       elif self.fracas_answer == "unknown":
-        annotation += ' decision="unknown"';
+        answer = "unknown";
       elif self.fracas_answer == "yes":
-        annotation += ' decision="entailment"';
+        answer = "entailment";
       elif self.fracas_answer == "no":
-        annotation += ' decision="contradiction"';
+        answer = "contradiction";
       else:
         print( self.fracas_answer );
         assert False;
@@ -277,6 +279,12 @@ class ProblemHandler( XMLElementHandler, metaclass=subject ):
 
     if self.note is not None:
       attributes += '  <value attribute="note">{0}</value>\n'.format( self.note );
+
+
+    annotation = '<annotation infid="{0}"'.format( self.id_attr );
+    
+    if answer is not None:
+      annotation += ' decision="' + answer + '"';
     
     if attributes == "":
       annotation += "/>\n";
@@ -338,7 +346,6 @@ class ProblemsHandler( XMLElementHandler, metaclass=subject ):
     
     assert isinstance( self._obj_, FraCaSProcessor );
     self.datadir = self._obj_.datadir;
-    self.anndir = self._obj_.anndir;
     
     self.sents_ctx_mgr = TableManager( ( self._obj_.itemdir, "sentence" ) );
     self.sents = self.sents_ctx_mgr.__enter__();
@@ -388,10 +395,9 @@ class FraCaSProcessor( XMLHandler, metaclass=subject ):
   IGNORE = {};
 
   
-  def process( self, datadir, anndir, itemdir ):
+  def process( self, datadir, itemdir ):
     
     self.datadir = datadir;
-    self.anndir = anndir;
     self.itemdir = itemdir;
     
     xmldecl = self._obj_.readline();

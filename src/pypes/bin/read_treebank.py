@@ -59,6 +59,7 @@ def main( argv=None ):
               pf = mrs_decode( mrs, MRSDecoder.SEM_ERG )( sig=ProtoSig() );
             except:
               print( "   can't convert." );
+              rec.set( "status", "converr" );
               converrs.add( id );
               continue;
             
@@ -75,6 +76,7 @@ def main( argv=None ):
             
             if pfrec is None:
               print( "   can't scope." );
+              rec.set( "status", "scoerr" );
               scoerrs.add( id );
               continue;
             
@@ -83,6 +85,7 @@ def main( argv=None ):
               pfrw = erg_to_dsf_rewrite( pf );
             except:
               print( "   can't rewrite." );
+              rec.set( "status", "rewerr" );
               rewerrs.add( id );
               raise;
               continue;
@@ -98,7 +101,12 @@ def main( argv=None ):
     finally:
       f_.close();
 
+
     gramerrs = set( range( 1, tbl.max_id+1 ) ) - succ;
+    
+    for id in gramerrs:
+      with tbl.record_by_id( id ) as rec:
+        rec.set( "status", "gramerr" );
     
     n_total = tbl.max_id;
     
@@ -117,23 +125,33 @@ def main( argv=None ):
     n_succ = len( succ );
     p_succ = int( n_succ*100 / n_total )
     
-    print( "\n--- SUMMARY ---" );
-    
-    print( "total number of items: {0:d}".format( tbl.max_id ) );
-    
-    print( "syntax errors: {0:d} ({1:d}% good)".format( n_gramerrs, p_gram ) );
-    if gramerrs:
-      print( "  " + repr( gramerrs ) );
-    
-    print( "scoping errors: {0:d} ({1:d}% good)".format( n_scoerrs, p_sco ) );
-    if scoerrs:
-      print( "  " + repr( scoerrs ) );
+    with open( "dta/items/fracas/summary.txt", "wt" ) as f:
       
-    print( "rewriting errors: {0:d} ({1:d}% good)".format( n_rewerrs, p_rew ) );
-    if rewerrs:
-      print( "  " + repr( rewerrs ) );
+      print( "\n--- SUMMARY ---" );
       
-    print( "total number of processed items: {0:d} ({1:d}% good)".format( n_succ, p_succ ) );
+      print( "total number of items: {0:d}".format( tbl.max_id ) );
+      print( "total number of items: {0:d}".format( tbl.max_id ), file=f );
+      
+      print( "syntax errors: {0:d} ({1:d}% good)".format( n_gramerrs, p_gram ) );
+      print( "syntax errors: {0:d} ({1:d}% good)".format( n_gramerrs, p_gram ), file=f );
+      if gramerrs:
+        print( "  " + repr( gramerrs ) );
+        print( "  " + repr( gramerrs ), file=f );
+      
+      print( "scoping errors: {0:d} ({1:d}% good)".format( n_scoerrs, p_sco ) );
+      print( "scoping errors: {0:d} ({1:d}% good)".format( n_scoerrs, p_sco ), file=f );
+      if scoerrs:
+        print( "  " + repr( scoerrs ) );
+        print( "  " + repr( scoerrs ), file=f );
+        
+      print( "rewriting errors: {0:d} ({1:d}% good)".format( n_rewerrs, p_rew ) );
+      print( "rewriting errors: {0:d} ({1:d}% good)".format( n_rewerrs, p_rew ), file=f );
+      if rewerrs:
+        print( "  " + repr( rewerrs ) );
+        print( "  " + repr( rewerrs ), file=f );
+        
+      print( "total number of processed items: {0:d} ({1:d}% good)".format( n_succ, p_succ ) );
+      print( "total number of processed items: {0:d} ({1:d}% good)".format( n_succ, p_succ ), file=f );
 
 
 
