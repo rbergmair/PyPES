@@ -2,30 +2,23 @@
 
 import sys;
 
-from pypes.infer._preprocessing.fracas import FraCaSProcessor;
-
+from pypes.infer._evaluation.comparer import compare;
 
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 def main( argv=None ):
   
-  f = open( "dta/infer/edited/fracas.bmc.xml" );
-  try:
-    with FraCaSProcessor( f ) as proc:
-      proc.process( "dta/infer/fracas",
-                    "dta/items/fracas" );
-  finally:
-    f.close();
-  return 0;
-
+  compare(
+     "dta/infer/fracas/fracas-1-1/gold.tsa",
+     "YesInferenceAgent.tsa.xml"
+    );
 
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 if __name__ == '__main__':
   sys.exit( main( sys.argv ) );
-
 
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #

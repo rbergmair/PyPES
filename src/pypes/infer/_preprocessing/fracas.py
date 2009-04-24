@@ -3,8 +3,6 @@
 __package__ = "pypes.infer._preprocess";
 __all__ = [ "FracasProcessor" ];
 
-import sys;
-
 from pypes.utils.mc import subject;
 from pypes.utils.itembank import *;
 from pypes.utils.xml_.xml_handler import *;

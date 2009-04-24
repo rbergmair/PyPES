@@ -1,30 +1,17 @@
 # -*-  coding: ascii -*-  # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-import sys;
+__package__ = "pypes.infer._evaluation";
+__all__ = [ "compare" ];
 
-from pypes.infer._preprocessing.fracas import FraCaSProcessor;
+from pypes.utils.mc import subject;
 
 
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-def main( argv=None ):
+def compare( referencefile, objectfile ):
   
-  f = open( "dta/infer/edited/fracas.bmc.xml" );
-  try:
-    with FraCaSProcessor( f ) as proc:
-      proc.process( "dta/infer/fracas",
-                    "dta/items/fracas" );
-  finally:
-    f.close();
-  return 0;
-
-
-
-# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
-
-if __name__ == '__main__':
-  sys.exit( main( sys.argv ) );
+  pass;
 
 
 
