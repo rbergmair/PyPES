@@ -1,7 +1,7 @@
 # -*-  coding: ascii -*-  # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 __package__ = "pypes.infer";
-__all__ = [ "InferenceEngine" ];
+__all__ = [ "InferenceAgent" ];
 
 from pypes.utils.mc import subject;
 
@@ -9,9 +9,21 @@ from pypes.utils.mc import subject;
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-class InferenceEngine( metaclass=subject ):
+class InferenceAgent( metaclass=subject ):
+
+  def reset( self ):
+    
+    pass;
   
-  def infer( self, theory, conclusion ):
+  def process_sentence( self, sentid, rec, text ):
+    
+    pass;
+
+  def process_discourse( self, discid, rec, sents, inf=False ):
+    
+    pass;
+  
+  def infer( self, disc, antecedent, consequent ):
     
     pass;
 

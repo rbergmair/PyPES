@@ -78,8 +78,8 @@ class TestCase( unittest.TestCase, metaclass=object_ ):
 
   def run( self, result ):
 
-    super( TestCase, TestCase ).run( self, result );
-    return;
+    #super( TestCase, TestCase ).run( self, result );
+    #return;
 
     try:
       gc.collect();

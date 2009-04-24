@@ -1,30 +1,31 @@
 # -*-  coding: ascii -*-  # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 __package__ = "pypes.infer";
-__all__ = [ "YesInferenceEngine", "NoInferenceEngine" ];
+__all__ = [ "YesInferenceAgent", "NoInferenceAgent" ];
 
 from pypes.utils.mc import subject;
-from pypes.infer.infeng import InferenceEngine;
+from pypes.infer.infeng import InferenceAgent;
 
 
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-class YesInferenceEngine( InferenceEngine, metaclass=subject ):
+class YesInferenceAgent( InferenceAgent, metaclass=subject ):
   
-  def infer( self, theory, conclusion ):
+  
+  def infer( self, disc, antecedent, consequent ):
     
-    return 1.0;
+    return ( 1.0, 0.0 );
 
 
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-class NoInferenceEngine( InferenceEngine, metaclass=subject ):
+class NoInferenceAgent( InferenceAgent, metaclass=subject ):
   
-  def infer( self, theory, conclusion ):
+  def infer( self, disc, antecedent, consequent ):
     
-    return 0.0;
+    return ( 0.0, 1.0 );
 
 
 
