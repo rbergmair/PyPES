@@ -2,7 +2,7 @@
 
 import sys;
 
-from pypes.infer._evaluation.comparer import compare;
+from pypes.infer._evaluation.comparison import compare;
 
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
@@ -10,8 +10,8 @@ from pypes.infer._evaluation.comparer import compare;
 def main( argv=None ):
   
   compare(
-     "dta/infer/fracas/fracas-1-1/gold.tsa",
-     "YesInferenceAgent.tsa.xml"
+      "dta/infer/fracas/fracas-1-1/gold.tsa.xml",
+      "dta/infer/fracas/fracas-1-1/YesInferenceAgent.tsa.xml"
     );
 
 

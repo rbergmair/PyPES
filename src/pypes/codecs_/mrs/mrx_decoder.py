@@ -368,7 +368,7 @@ class MRXDecoder( XMLHandler, metaclass=subject ):
     self.feed( """              ] >""" );
     
     if isinstance( self._obj_, str ):
-      self.feed( str );
+      self.feed( self._obj_ );
     else:
       x = self._obj_.read( self.CHUNK_SIZE );
       while x:
