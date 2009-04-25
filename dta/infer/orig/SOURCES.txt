@@ -104,6 +104,10 @@ http://www.nist.gov/tac/tracks/2008/rte/past_data/RTE3_test_3class_gold.txt
 
   rte-07-tst-3w.txt
 
+http://nlp.stanford.edu/RTE3-pilot/
+
+  rte-07-tst-pilotsys-*.txt
+
 
 http://www.nist.gov/tac/protected/2008/RTE4_TEST-SET_GOLD.xml.gz
 
