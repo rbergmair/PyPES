@@ -5,6 +5,11 @@ CAT = cat
 BASH = bash
 SED = sed
 CP = cp
+ENV = env
+
+PYTHONPATH = src
+
+PYTHON = $(ENV) PYTHONPATH="$(PYTHONPATH)" python3.0
 
 
 INFERDTA = \
@@ -63,6 +68,8 @@ INFERDTA = \
 
 INFERDTA_ORIG = $(patsubst %, dta/infer/orig/%, $(INFERDTA))
 
+INFERDTA_SANITIZED = $(patsubst %, dta/infer/sanitized/%, $(INFERDTA))
+
 INFERDTA_EDITED = $(patsubst %, dta/infer/edited/%, $(INFERDTA))
 
 
@@ -86,21 +93,31 @@ FRACAS_PROCESSED = \
 
 all:
 
-edited: $(INFERDTA_EDITED)
+data: $(INFERDTA_SANITIZED) $(INFERDTA_EDITED)
 
-dta/infer/edited/%: dta/infer/orig/% dta/infer/edits/%.sed
-	$(CAT) dta/infer/orig/$* | $(SED) -f dta/infer/edits/$*.sed > dta/infer/edited/$*
 
-dta/infer/edited/%: dta/infer/orig/%
-	$(CP) dta/infer/orig/$* dta/infer/edited/$*
+dta/infer/edited/%: dta/infer/sanitized/% dta/infer/edits/%.sed
+	$(CAT) dta/infer/sanitized/$* | $(SED) -f dta/infer/edits/$*.sed > dta/infer/edited/$*
 
-clean: cleanpyc cleandta
+dta/infer/edited/%: dta/infer/sanitized/%
+	$(CP) dta/infer/sanitized/$* dta/infer/edited/$*
+
+
+dta/infer/sanitized/rte-%.rte.xml: dta/infer/orig/rte-%.rte.xml
+	$(PYTHON) src/pypes/bin/sanitize_rte.py dta/infer/orig/rte-$*.rte.xml dta/infer/sanitized/rte-$*.rte.xml
+
+dta/infer/sanitized/%: dta/infer/orig/%
+	$(CP) dta/infer/orig/$* dta/infer/sanitized/$*
+
+
+clean: cleanpyc cleandata
 
 cleanpyc:
 	$(FIND) src -name "*.pyc" -exec $(RM) {} \;
 
-cleandta:
+cleandata:
 	$(RM) dta/pat/*
+	$(RM) $(INFERDTA_SANITIZED)
 	$(RM) $(INFERDTA_EDITED)
 	$(RM) dta/items/fracas/*
 	$(RM) $(FRACAS_PROCESSED)
@@ -110,4 +127,5 @@ loc:
 	$(FIND) src -name "*.py" | $(GREP) -v "_auto.py" | $(BASH) -c 'while read VAL; do $(CAT) $$VAL; done;' | $(GREP) -e "" --count
 	$(FIND) src/pypes -name "*.py" | $(GREP) -v "_auto.py" | $(BASH) -c 'while read VAL; do $(CAT) $$VAL; done;' | $(GREP) -e "" --count
 
-.PHONY: all edited clean cleanpyc cleandta loc
+
+.PHONY: all data clean cleanpyc cleandata loc

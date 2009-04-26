@@ -109,4 +109,4 @@ s/I know the media is fascinated with this story but.../*I know the media is fas
 
 s/(£m) //
 
-s/<headline>Renminbi<\/headline>RMB (commonly used in China),/Renminbi (RMB), commonly used in China,/
+s/<headline>Renminbi ― <\/headline>RMB (commonly used in China),/Renminbi (RMB), commonly used in China,/
