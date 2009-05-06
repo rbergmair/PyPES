@@ -90,6 +90,10 @@ FRACAS_PROCESSED = \
   $(patsubst %, %/data.ts.xml, $(FRACAS)) \
   $(patsubst %, %/gold.tsa.xml, $(FRACAS))
 
+FRACAS_RESULTS = \
+  $(patsubst %, %/NoInferenceAgent.tsa.xml, $(FRACAS)) \
+  $(patsubst %, %/YesInferenceAgent.tsa.xml, $(FRACAS))
+
 
 all:
 
@@ -110,7 +114,7 @@ dta/infer/sanitized/%: dta/infer/orig/%
 	$(CP) dta/infer/orig/$* dta/infer/sanitized/$*
 
 
-clean: cleanpyc cleandata
+clean: cleanpyc cleandata cleanresults
 
 cleanpyc:
 	$(FIND) src -name "*.pyc" -exec $(RM) {} \;
@@ -121,6 +125,10 @@ cleandata:
 	$(RM) $(INFERDTA_EDITED)
 	$(RM) dta/items/fracas/*
 	$(RM) $(FRACAS_PROCESSED)
+
+cleanresults:
+	$(RM) $(FRACAS_RESULTS)
+
   
 loc:
 	$(FIND) src -name "*.py" -exec $(GREP) -H --count -e "" {} \;

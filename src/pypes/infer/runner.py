@@ -3,10 +3,13 @@
 __package__ = "pypes.infer";
 __all__ = [ "TestsuiteRunner", "run_testsuite" ];
 
+import sys;
+
 from pypes.utils.mc import subject;
 from pypes.utils.xml_.xml_handler import *;
 
 from pypes.infer.biet import YesInferenceAgent, NoInferenceAgent;
+from pypes.infer.mcpiet.mcpiet import McPIETAgent;
 
 from pypes.utils.itembank import *;
 
@@ -84,6 +87,8 @@ class TestsuiteRunner( XMLHandler, metaclass=subject ):
           self._obj_._antecedent,
           self._obj_._consequent
         );
+      
+      # sys.exit( 0 );
 
 
   class _GroupHandler( XMLElementHandler, metaclass=subject ):
@@ -125,8 +130,6 @@ class TestsuiteRunner( XMLHandler, metaclass=subject ):
 
     self._discs_tbl_ctx = TableManager( ( self._itemsdir, "discourse" ) );
     self._discs_tbl = self._discs_tbl_ctx.__enter__();
-    
-    self._reset();
     
     self._ofile = {};
     
@@ -223,6 +226,8 @@ class TestsuiteRunner( XMLHandler, metaclass=subject ):
   
   def run( self ):
     
+    self._reset();
+    
     with open( self._tsdir + "/data.ts.xml" ) as f:
       
       x = f.read( self.CHUNK_SIZE );
@@ -240,6 +245,7 @@ def run_testsuite( tsdir, itemsdir ):
     
     runner.add_agent( YesInferenceAgent );
     runner.add_agent( NoInferenceAgent );
+    runner.add_agent( McPIETAgent );
     runner.run();
 
 

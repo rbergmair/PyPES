@@ -11,7 +11,7 @@ def main( argv=None ):
   
   compare(
       "dta/infer/fracas/fracas-1-1/gold.tsa.xml",
-      "dta/infer/fracas/fracas-1-1/YesInferenceAgent.tsa.xml"
+      "dta/infer/fracas/fracas-1-1/McPIETAgent.tsa.xml"
     );
 
 
