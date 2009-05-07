@@ -13,7 +13,7 @@ from pypes.proto.protobase import ProtoBase;
 class Word( ProtoBase, metaclass=kls ):
 
 
-  _superordinate_ = None;
+  _superordinate_ = "sig";
   _key_ = None;
   
   WRD_Qs = [];
@@ -61,8 +61,13 @@ class Word( ProtoBase, metaclass=kls ):
       return False;
     
     if self.lemma is not None:
-      if self.lemma != obj.lemma:
+      if obj.lemma is None:
         return False;
+      if len( self.lemma ) != len( obj.lemma ):
+        return False;
+      for i in range( 0, len(self.lemma) ):
+        if self.lemma[ i ].upper() != obj.lemma[ i ].upper():
+          return False;
       
     if self.pos is not None:
       if self.pos != obj.pos:
@@ -90,7 +95,7 @@ class Word( ProtoBase, metaclass=kls ):
 class Operator( ProtoBase, metaclass=kls ):
 
 
-  _superordinate_ = None;
+  _superordinate_ = "sig";
   _key_ = None;
 
   

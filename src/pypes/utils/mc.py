@@ -182,16 +182,34 @@ class kls( type ):
 
       inst = cls.__new_orig( cls );
       inst._init_init_();
+      inst.__init__( **kwargs );
+      return inst;
       
+    if not hasattr( parent, "_sos_" ):
+      parent._sos_ = {};
+    if not cls in parent._sos_:
+      parent._sos_[ cls ] = {};
+    
+    superordinate = parent._sos_[ cls ];
+    
+    if cls._key_ is None:
+
+      inst = cls.__new_orig( cls );
+      inst._init_init_();
+      inst.__init__( **kwargs );
+      foundinst = None;
+      for inst_ in superordinate.values():
+        if inst_ <= inst or inst <= inst_:
+          assert foundinst is None;
+          foundinst = inst_;
+      if foundinst is None:
+        superordinate[ id(inst) ] = inst;
+      else:
+        inst = foundinst;
+        inst.__init__( **kwargs );
+    
     else:
-      
-      if not hasattr( parent, "_sos_" ):
-        parent._sos_ = {};
-      if not cls in parent._sos_:
-        parent._sos_[ cls ] = {};
-      
-      superordinate = parent._sos_[ cls ];
-      
+    
       key = kwargs_outer.get( cls._key_ );
       
       if key is None:
@@ -204,8 +222,9 @@ class kls( type ):
         inst = cls.__new_orig( cls );
         inst._init_init_();
         superordinate[ key ] = inst;
-    
-    inst.__init__( **kwargs );
+  
+      inst.__init__( **kwargs );
+      
     return inst;
   
   

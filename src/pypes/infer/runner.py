@@ -88,7 +88,7 @@ class TestsuiteRunner( XMLHandler, metaclass=subject ):
           self._obj_._consequent
         );
       
-      # sys.exit( 0 );
+      sys.exit( 0 );
 
 
   class _GroupHandler( XMLElementHandler, metaclass=subject ):

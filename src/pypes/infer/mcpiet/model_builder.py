@@ -41,8 +41,8 @@ class ModelBuilder( ProtoProcessor, metaclass=subject ):
   
   def build( self ):
     
-    # pprint( self._schema.preds );
-    # pprint( self._schema.args );
+    pprint( self._schema.preds );
+    pprint( self._schema.args );
     return;
 
 
