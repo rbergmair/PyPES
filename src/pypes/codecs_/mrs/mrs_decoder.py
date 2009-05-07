@@ -52,6 +52,7 @@ class MRSDecoder( metaclass=subject ):
     
   def _exit_( self, exc_type, exc_val, exc_tb ):
     
+    self._parser = None;
     self._lexer = None;
 
     

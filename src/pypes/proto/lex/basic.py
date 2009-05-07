@@ -27,10 +27,9 @@ class Word( ProtoBase, metaclass=kls ):
     self.lemma = None;
     self.pos = None;
     self.sense = None;
-    self.feats = None;
 
   
-  def __init__( self, sig, lemma=None, pos=None, sense=None, feats=None ):
+  def __init__( self, sig, lemma=None, pos=None, sense=None ):
     
     if lemma is not None:
       self.lemma = lemma;
@@ -43,16 +42,6 @@ class Word( ProtoBase, metaclass=kls ):
     if sense is not None:
       self.sense = sense;
       assert self.sense is None or isinstance( self.sense, str );
-    
-    if feats is not None:
-      self.feats = {};
-      for (key,val) in feats.items():
-        if key == "pos":
-          self.pos = val;
-        elif key == "sense":
-          self.sense = val;
-        else:
-          self.feats[ key ] = val;
         
   
   def __le__( self, obj ):
@@ -60,31 +49,23 @@ class Word( ProtoBase, metaclass=kls ):
     if not isinstance( obj, self.__class__ ):
       return False;
     
+    if self.lemma is None:
+      if obj.lemma is not None:
+        return False;
     if self.lemma is not None:
       if obj.lemma is None:
         return False;
-      if len( self.lemma ) != len( obj.lemma ):
-        return False;
-      for i in range( 0, len(self.lemma) ):
-        if self.lemma[ i ].upper() != obj.lemma[ i ].upper():
-          return False;
-      
-    if self.pos is not None:
-      if self.pos != obj.pos:
+    if len( self.lemma ) != len( obj.lemma ):
+      return False;
+    for i in range( 0, len(self.lemma) ):
+      if self.lemma[ i ].upper() != obj.lemma[ i ].upper():
         return False;
       
-    if self.sense is not None:
-      if self.sense != obj.sense:
-        return False;
-
-    if self.feats is not None and len( self.feats ) > 0:
-      if obj.feats is None or len( obj.feats ) <= 0:
-        return False;
-      for feat in self.feats:
-        if not feat in obj.feats:
-          return False;
-        if self.feats[ feat ] != obj.feats[ feat ]:
-          return False;
+    if self.pos != obj.pos:
+      return False;
+      
+    if self.sense != obj.sense:
+      return False;
       
     return True;
 
@@ -148,19 +129,15 @@ class Operator( ProtoBase, metaclass=kls ):
   def _init_init_( self ):
     
     self.otype = None;
-    self.feats = None;
 
   
-  def __init__( self, sig, otype=None, feats=None ):
+  def __init__( self, sig, otype=None ):
     
     if otype is not None:
       if otype in self.OPs:
         self.otype = self.OPs[ otype ];
       else:
         self.otype = otype;
-    
-    if feats is not None:
-      self.feats = feats;
 
   
   def __le__( self, obj ):
@@ -171,15 +148,6 @@ class Operator( ProtoBase, metaclass=kls ):
     if self.otype is not None:
       if self.otype != obj.otype:
         return False;
-
-    if self.feats is not None and len( self.feats ) > 0:
-      if obj.feats is None or len( obj.feats ) <= 0:
-        return False;
-      for feat in self.feats:
-        if not feat in obj.feats:
-          return False;
-        if self.feats[ feat ] != obj.feats[ feat ]:
-          return False;
       
     return True;
 

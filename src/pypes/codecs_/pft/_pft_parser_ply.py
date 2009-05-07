@@ -10,7 +10,7 @@ import ply.yacc as yacc;
 from pypes.utils.mc import subject;
 from pypes.utils.logging_ import *;
 
-from  pypes.codecs_.pft import _pft_parser;
+from pypes.codecs_.pft import _pft_parser;
 
 
 
@@ -25,11 +25,11 @@ log_attach_stderr_logger( "pypes.codecs_.pft", LOG_ERROR );
 class PFTLexer( _pft_parser.PFTParser, metaclass=subject ):
 
 
-  tokens = [ "QUOTED", "BARE_WORD",
+  tokens = [ "QUOTED", "WORD",
              "LPAR", "RPAR", "LBRACK", "RBRACK", "COMMA",
              "IDENTIFIER", "FID", "VARIABLE",
              "EXPLICIT_HANDLE", "ANONYMOUS_HANDLE",
-             "BARE_OPERATOR" ];
+             "OPERATOR" ];
   
   literals = "<>{}=:;^\ue100\ue101\ue102\ue103\ue104";
   
@@ -87,8 +87,8 @@ class PFTLexer( _pft_parser.PFTParser, metaclass=subject ):
     return t;
 
   @TOKEN( _pft_parser.PFTParser.RE_WORD )
-  def t_BARE_WORD( self, t ):
-    t.value = self._decode_bare_word(
+  def t_WORD( self, t ):
+    t.value = self._decode_word(
                   _pft_parser.PFTParser._subtokenize_word( t.value )
                 );
     return t;
@@ -121,8 +121,8 @@ class PFTLexer( _pft_parser.PFTParser, metaclass=subject ):
     return t;
   
   @TOKEN( _pft_parser.PFTParser.RE_OPERATOR )
-  def t_BARE_OPERATOR( self, t ):
-    t.value = self._decode_bare_operator( [t.value] );
+  def t_OPERATOR( self, t ):
+    t.value = self._decode_operator( [t.value] );
     return t;
 
 
@@ -211,22 +211,6 @@ class PFTParser( PFTLexer, metaclass=subject ):
     p[0] = self._decode_features_list( [ p[1] ] + p[2] + [ p[3] ] );
 
 
-  def p_word_1( self, p ):
-    r"""word : BARE_WORD"""
-    p[0] = self._decode_word( [ p[1] ] );
-  def p_word_2( self, p ):
-    r"""word : BARE_WORD features_list"""
-    p[0] = self._decode_word( [ p[1] , p[2] ] );
-
-
-  def p_operator_1( self, p ):
-    r"""operator : BARE_OPERATOR"""
-    p[0] = self._decode_operator( [ p[1] ] );
-  def p_operator_2( self, p ):
-    r"""operator : BARE_OPERATOR features_list"""
-    p[0] = self._decode_operator( [ p[1] , p[2] ] );
-
-
   def p_arguments_list_item( self, p ):
     r"""arguments_list_item : IDENTIFIER '=' variable
                             | IDENTIFIER '=' constant"""
@@ -244,7 +228,13 @@ class PFTParser( PFTLexer, metaclass=subject ):
     r"""arguments_list : LPAR arguments_list_list RPAR"""
     p[0] = self._decode_arguments_list( [ p[1] ] + p[2] + [ p[3] ] );
 
-  
+
+  def p_word( self, p ):
+    r"""word : WORD"""
+    p[0] = p[1];
+  def p_operator( self, p ):
+    r"""operator : OPERATOR"""
+    p[0] = p[1];
   def p_word_or_operator( self, p ):
     r"""word_or_operator : word
                          | operator"""
@@ -257,6 +247,12 @@ class PFTParser( PFTLexer, metaclass=subject ):
   def p_functor_2( self, p ):
     r"""functor : word_or_operator FID"""
     p[0] = self._decode_functor( [ p[1], p[2] ] );
+  def p_functor_3( self, p ):
+    r"""functor : word_or_operator features_list"""
+    p[0] = self._decode_functor( [ p[1], p[2] ] );
+  def p_functor_4( self, p ):
+    r"""functor : word_or_operator FID features_list"""
+    p[0] = self._decode_functor( [ p[1], p[2], p[3] ] );
   
   
   def p_predication( self, p ):

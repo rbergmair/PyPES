@@ -58,12 +58,22 @@ class PFTDecoder( PFTParser, metaclass=subject ):
       
   def _exit_( self, exc_type, exc_val, exc_tb ):
     
-    PFTParser._exit_( self, exc_type, exc_val, exc_tb );
     self.decoder_exit( exc_type, exc_val, exc_tb );
+    PFTParser._exit_( self, exc_type, exc_val, exc_tb );
 
 
-  @classmethod
-  def _decode_bare_word( self, toks_ ):
+  def _decode_operator( self, toks_ ):
+    
+    toks = iter( toks_ );
+    otype = next( toks );
+    assert not next( toks, False );
+
+    return (  self.GT_OPERATOR, self._lexicon.Operator(
+                                    otype = otype
+                                  ) );
+
+
+  def _decode_word( self, toks_ ):
     
     lemma = None;
     pos = None;
@@ -114,7 +124,11 @@ class PFTDecoder( PFTParser, metaclass=subject ):
     
     assert not next( toks, False );
       
-    return ( lemma, pos, sense );
+    return ( self.GT_WORD, self._lexicon.Word(
+                               lemma=lemma,
+                               pos=pos,
+                               sense=sense
+                             ) );
 
 
   @classmethod
@@ -200,44 +214,6 @@ class PFTDecoder( PFTParser, metaclass=subject ):
 
 
   @classmethod
-  def _decode_bare_operator( self, toks_ ):
-    
-    toks = iter( toks_ );
-    otype = next( toks );
-    assert not next( toks, False );
-    
-    return otype;
-  
-  
-  def _decode_word( self, toks_ ):
-
-    toks = iter( toks_ );
-    bare_word = next( toks );
-    feats = next( toks, None );
-    assert not next( toks, False );
-    
-    ( lemma, pos, sense ) = bare_word;
-    
-    return ( self.GT_WORD, self._lexicon.Word(
-                               lemma=lemma, pos=pos,
-                               sense=sense, feats=feats
-                             ) );
-
-
-  def _decode_operator( self, toks_ ):
-    
-    toks = iter( toks_ );
-    otype = next( toks );
-    feats = next( toks, None );
-    assert not next( toks, False );
-    
-    return (  self.GT_OPERATOR, self._lexicon.Operator(
-                                    otype = otype,
-                                    feats = feats
-                                  ) );
-
-
-  @classmethod
   def _decode_arguments_list( cls, toks_ ):
     
     toks = iter( toks_ );
@@ -275,11 +251,27 @@ class PFTDecoder( PFTParser, metaclass=subject ):
     ( type_, referent ) = next( toks );
     assert type_ in { cls.GT_WORD, cls.GT_OPERATOR };
 
-    fid = next( toks, None );
-
-    assert not next( toks, False );
+    fid = None;
+    feats = None;
     
-    return ( cls.GT_FUNCTOR, Functor( referent = referent, fid = fid ) );
+    tok = next( toks, None );
+    
+    if isinstance( tok, int ):
+      fid = tok;
+      tok = next( toks, None );
+    
+    if tok is not None:
+      assert isinstance( tok, dict );
+      feats = tok;
+      tok = next( toks, None );
+
+    assert tok is None;
+    
+    return ( cls.GT_FUNCTOR, Functor(
+                                 referent = referent,
+                                 fid = fid,
+                                 feats = feats
+                               ) );
   
   
   @classmethod

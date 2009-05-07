@@ -67,8 +67,8 @@ class TestDSFRewriter( TestCase, metaclass=object_ ):
                 pf = dsf_rewrite( pf1 )( sig=ProtoSig() );
                 pfstr = pft_encode( pf );
                 
-                print( pfstr );
-                print( "-------" );
+                # print( pfstr );
+                # print( "-------" );
 
                 self.assert_( sanity_check( pf ) );
                 

@@ -424,7 +424,7 @@ class TestEnumerator( TestCase, metaclass=object_ ):
     
     with PFTDecoder( (pypes.proto.lex.erg,None) ) as decoder:
       
-      i = 185;
+      i = 520;
       self.quicktest( "{0}/fracas-{1}.pft.gz".format( self._TESTDTADIR, i ), decoder );
   
   def test_enumerator( self ):

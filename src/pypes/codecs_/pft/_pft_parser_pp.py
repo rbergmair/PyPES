@@ -28,7 +28,7 @@ class PFTParser( _pft_parser.PFTParser, metaclass=subject ):
 
   quoted = Regex( _pft_parser.PFTParser.RE_QUOTED );
   
-  bare_word = Regex( _pft_parser.PFTParser.RE_WORD );
+  word = Regex( _pft_parser.PFTParser.RE_WORD );
 
   identifier = Regex( _pft_parser.PFTParser.RE_IDENTIFIER );
   
@@ -40,7 +40,7 @@ class PFTParser( _pft_parser.PFTParser, metaclass=subject ):
   
   anonymous_handle = Regex( _pft_parser.PFTParser.RE_ANONYMOUS_HANDLE );
   
-  bare_operator = Regex( _pft_parser.PFTParser.RE_OPERATOR );
+  operator = Regex( _pft_parser.PFTParser.RE_OPERATOR );
 
   # parser
 
@@ -55,10 +55,6 @@ class PFTParser( _pft_parser.PFTParser, metaclass=subject ):
                       ) + \
                   Literal("]");
 
-  word = bare_word + Optional( features_list );
-
-  operator = bare_operator + Optional( features_list );
-
   arguments_list = Literal("(") + \
                    Optional( 
                        identifier + Literal("=") + ( variable | constant ) + \
@@ -69,7 +65,7 @@ class PFTParser( _pft_parser.PFTParser, metaclass=subject ):
                      ) + \
                    Literal(")");
 
-  functor = ( word | operator ) + Optional( fid );
+  functor = ( word | operator ) + Optional( fid ) + Optional( features_list );
 
   predication = Literal("\ue100") + functor + arguments_list;
 
@@ -121,11 +117,16 @@ class PFTParser( _pft_parser.PFTParser, metaclass=subject ):
           self._decode_quoted( toks )
       );
 
-    self.bare_word.setParseAction(
+    self.word.setParseAction(
         lambda str_, loc, toks:
-          self._decode_bare_word(
+          self._decode_word(
               _pft_parser.PFTParser._subtokenize_word( toks[0] )
             )
+      );
+
+    self.operator.setParseAction(
+        lambda str_, loc, toks:
+          self._decode_operator( toks )
       );
 
     self.fid.setParseAction(
@@ -162,21 +163,6 @@ class PFTParser( _pft_parser.PFTParser, metaclass=subject ):
           self._decode_features_list( toks )
       );
 
-    self.bare_operator.setParseAction(
-        lambda str_, loc, toks:
-          self._decode_bare_operator( toks )
-      );
-
-    self.word.setParseAction(
-        lambda str_, loc, toks:
-          self._decode_word( toks )
-      );
-
-    self.operator.setParseAction(
-        lambda str_, loc, toks:
-          self._decode_operator( toks )
-      );
-    
     self.arguments_list.setParseAction(
         lambda str_, loc, toks:
           self._decode_arguments_list( toks )

@@ -186,16 +186,15 @@ class PFTEncoder( ProtoProcessor, metaclass=subject ):
     return rslt;
   
   
-  def _process_operator( self, inst, otype, feats ):
+  def _process_operator( self, inst, otype ):
     
     rslt = otype;
-    if feats is not None:
-      rslt += self._process_feats( feats );
     return rslt;
   
   
-  def _process_word( self, inst, lemma, pos, sense, feats ):
+  def _process_word( self, inst, lemma, pos, sense ):
     
+    # TODO: check this
     rslt = "|";
     if lemma is not None:
       for lemtok in lemma:
@@ -209,8 +208,6 @@ class PFTEncoder( ProtoProcessor, metaclass=subject ):
         rslt += "_" + self._fmt_alphanum( sense );
     rslt += "|";
     rslt = self._fmt_word( rslt );
-    if feats is not None:
-      rslt += self._process_feats( feats );
     
     return rslt;
 
@@ -271,11 +268,13 @@ class PFTEncoder( ProtoProcessor, metaclass=subject ):
     return rslt;
       
 
-  def _process_functor( self, inst, fid, referent ):
+  def _process_functor( self, inst, fid, referent, feats ):
     
     rslt = referent;
     if inst.fid is not None:
       rslt += ":" + str(inst.fid);
+    if feats is not None:
+      rslt += self._process_feats( feats );
     return rslt;
 
   

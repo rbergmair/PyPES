@@ -8,6 +8,9 @@ import unittest;
 
 import pypestest.rewriting.null_rewriter;
 import pypestest.rewriting.renaming_rewriter;
+import pypestest.rewriting.dsf_rewriter;
+import pypestest.rewriting.erg_to_basic_rewriter;
+import pypestest.rewriting.erg_to_dsf_rewriter;
 
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
@@ -18,6 +21,9 @@ def suite():
 
   suite.addTests( pypestest.rewriting.null_rewriter.suite() );
   suite.addTests( pypestest.rewriting.renaming_rewriter.suite() );
+  suite.addTests( pypestest.rewriting.dsf_rewriter.suite() );
+  suite.addTests( pypestest.rewriting.erg_to_basic_rewriter.suite() );
+  suite.addTests( pypestest.rewriting.erg_to_dsf_rewriter.suite() );
 
   return suite;
 

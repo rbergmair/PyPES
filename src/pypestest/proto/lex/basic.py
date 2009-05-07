@@ -135,29 +135,6 @@ class TestWord( TestCase, metaclass=object_ ):
     self.check_word_9( self.logify( self.init_word_9() ) );
 
 
-  def init_word_10( self ):
-    
-    inst_ = Word( lemma=["lemma"], feats={
-                                       "pers": "3",
-                                       "num": "sg"
-                                     } );
-    return inst_;
-  
-  def check_word_10( self, inst, msg=None ):
-    
-    self.assert_( isinstance( inst, Word ), msg );
-    self.assertEquals( inst.lemma, ["lemma"], msg );
-    self.assert_( "pers" in inst.feats, msg );
-    self.assert_( "num" in inst.feats, msg );
-    self.assertEquals( len( inst.feats ), 2, msg );
-    self.assertEquals( inst.feats[ "pers" ], "3", msg );
-    self.assertEquals( inst.feats[ "num" ], "sg", msg );
-  
-  def test_10( self ):
-    
-    self.check_word_10( self.logify( self.init_word_10() ) );
-  
-  
   def test_cmp( self ):
     
     word1 = self.logify( self.init_word_1() );
@@ -166,7 +143,6 @@ class TestWord( TestCase, metaclass=object_ ):
     word4 = self.logify( self.init_word_4() );
     word8 = self.logify( self.init_word_8() );
     word9 = self.logify( self.init_word_9() );
-    word10 = self.logify( self.init_word_10() );
 
     word1_ = self.logify( self.init_word_1() );
     word2_ = self.logify( self.init_word_2() );
@@ -174,7 +150,6 @@ class TestWord( TestCase, metaclass=object_ ):
     word4_ = self.logify( self.init_word_4() );
     word8_ = self.logify( self.init_word_8() );
     word9_ = self.logify( self.init_word_9() );
-    word10_ = self.logify( self.init_word_10() );
     
     self.assertEquals_( word1, word1_ );
     self.assertEquals_( word2, word2_ );
@@ -182,15 +157,13 @@ class TestWord( TestCase, metaclass=object_ ):
     self.assertEquals_( word4, word4_ );
     self.assertEquals_( word8, word8_ );
     self.assertEquals_( word9, word9_ );
-    self.assertEquals_( word10, word10_ );
 
     self.assertNotEquals_( word1, word2_ );
     self.assertNotEquals_( word2, word3_ );
     self.assertNotEquals_( word3, word4_ );
     self.assertNotEquals_( word4, word8_ );
     self.assertNotEquals_( word8, word9_ );
-    self.assertNotEquals_( word9, word10_ );
-    self.assertNotEquals_( word10, word1_ );
+    self.assertNotEquals_( word9, word1_ );
 
 
 
@@ -227,11 +200,7 @@ class TestOperator( TestCase, metaclass=object_ ):
   def init_op_2( self ):
     
     inst_ = Operator(
-                otype = Operator.OP_C_WEACON,
-                feats = {
-                    "pers": "3",
-                    "num": "sg"
-                  }
+                otype = Operator.OP_C_WEACON
               );
                                             
     return inst_;
@@ -239,9 +208,6 @@ class TestOperator( TestCase, metaclass=object_ ):
   def check_op_2( self, inst, msg=None ):
     
     self.assertEquals( inst.otype, Operator.OP_C_WEACON, msg );
-    self.assertEquals( len( inst.feats ), 2, msg );
-    self.assertEquals( inst.feats[ "pers" ], "3", msg );
-    self.assertEquals( inst.feats[ "num" ], "sg", msg );
   
   def test_2( self ):
     

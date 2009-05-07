@@ -16,11 +16,11 @@ from pypes.proto import *;
 
 class TreeEncoder( ProtoProcessor, metaclass=subject ):
 
-  def _process_operator( self, inst, otype, feats ):
+  def _process_operator( self, inst, otype ):
     
     return otype;
   
-  def _process_word( self, inst, lemma, pos, sense, feats ):
+  def _process_word( self, inst, lemma, pos, sense ):
     
     rslt = "_";
     if lemma is not None:
@@ -50,7 +50,7 @@ class TreeEncoder( ProtoProcessor, metaclass=subject ):
     
     return "";
 
-  def _process_functor( self, inst, fid, referent ):
+  def _process_functor( self, inst, fid, referent, feats ):
     
     rslt = referent;
     if fid is not None:

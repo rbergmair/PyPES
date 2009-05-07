@@ -62,7 +62,7 @@ class _IndexCollector( ProtoProcessor, metaclass=subject ):
     self._obj_._handle_by_hid[ hid ].add( inst );
     
     
-  def _process_functor( self, inst, fid, referent ):
+  def _process_functor( self, inst, fid, referent, feats ):
     
     if not inst in self._obj_._funct_references:
       self._obj_._funct_references[ inst ] = 0;
@@ -291,7 +291,8 @@ class RenamingRewriter( NullRewriter, metaclass=subject ):
     
     return inst.__class__(
                fid = self._fid_by_funct[ inst ],
-               referent = self.process( inst.referent )
+               referent = self.process( inst.referent ),
+               feats = inst.feats
              );
 
 

@@ -281,7 +281,7 @@ class ProtoProcessor( metaclass=subject ):
              );
   
   
-  def _process_functor( self, inst, fid, referent ):
+  def _process_functor( self, inst, fid, referent, feats ):
     
     pass;
   
@@ -295,7 +295,8 @@ class ProtoProcessor( metaclass=subject ):
     return self._process_functor(
                inst = inst,
                fid = inst.fid,
-               referent = referent_
+               referent = referent_,
+               feats = inst.feats
             );
             
             
@@ -350,7 +351,7 @@ class ProtoProcessor( metaclass=subject ):
              );
   
   
-  def _process_word( self, inst, lemma, pos, sense, feats ):
+  def _process_word( self, inst, lemma, pos, sense ):
     
     pass;
   
@@ -360,12 +361,11 @@ class ProtoProcessor( metaclass=subject ):
                inst = inst,
                lemma = inst.lemma,
                pos = inst.pos,
-               sense = inst.sense,
-               feats = inst.feats
+               sense = inst.sense
              );
   
   
-  def _process_operator( self, inst, otype, feats ):
+  def _process_operator( self, inst, otype ):
     
     pass;
   
@@ -373,8 +373,7 @@ class ProtoProcessor( metaclass=subject ):
     
     return self._process_operator(
                inst = inst,
-               otype = inst.otype,
-               feats = inst.feats
+               otype = inst.otype
              );
     
 

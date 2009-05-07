@@ -88,7 +88,6 @@ class TestPFTDecoder( TestCase, metaclass=object_ ):
     check( "|__1|", TestWord.check_word_4 );
     check( "|lemma_p_1|", TestWord.check_word_8 );
     check( "||", TestWord.check_word_9 );
-    check( "|lemma|[ pers='3', num='sg' ]", TestWord.check_word_10 );
 
 
   def test_operator( self ):
@@ -99,7 +98,7 @@ class TestPFTDecoder( TestCase, metaclass=object_ ):
                                 );
 
     check( r"->", TestOperator.check_op_1 );
-    check( r"/\[ pers='3', num='sg' ]", TestOperator.check_op_2 );
+    check( "/\\", TestOperator.check_op_2 );
 
 
   def test_predication( self ):

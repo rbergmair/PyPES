@@ -45,7 +45,7 @@ class MRSInterpreter( ERGSemProcessor, metaclass=subject ):
 
 
   @classmethod
-  def _predstr_as_referent( cls, predstr, feats=None ):
+  def _predstr_as_referent( cls, predstr ):
     
     predstr_as_operator = cls._predstr_as_operator( predstr );
     predstr_as_word = cls._predstr_as_word( predstr );
@@ -55,7 +55,7 @@ class MRSInterpreter( ERGSemProcessor, metaclass=subject ):
     if predstr_as_operator is not None:
       assert rslt is None;
       assert predstr_as_word is None;
-      rslt = Operator( otype = predstr_as_operator, feats = feats );
+      rslt = Operator( otype = predstr_as_operator );
       dcargs = False;
     
     if predstr_as_word is not None:
@@ -65,8 +65,7 @@ class MRSInterpreter( ERGSemProcessor, metaclass=subject ):
       rslt = Word(
                  lemma = lemma,
                  pos = pos,
-                 sense = sense,
-                 feats = feats
+                 sense = sense
                );
       dcargs = True;
     
@@ -147,7 +146,7 @@ class MRSInterpreter( ERGSemProcessor, metaclass=subject ):
   def _predep_to_subform( self, ep, lvl ):
     
     feats = self._extract_event_feats( ep );
-    ( referent, dcargs ) = self._predstr_as_referent( ep.pred, feats );
+    ( referent, dcargs ) = self._predstr_as_referent( ep.pred );
     ( nonscopal_args, scopal_args ) = self._extract_args( ep, dcargs, lvl );
     try:
       assert len( scopal_args ) == 0;
@@ -156,7 +155,7 @@ class MRSInterpreter( ERGSemProcessor, metaclass=subject ):
       raise;
     
     return Predication(
-               predicate = Functor( referent = referent ),
+               predicate = Functor( referent = referent, feats = feats ),
                args = nonscopal_args
              );
 
@@ -164,7 +163,7 @@ class MRSInterpreter( ERGSemProcessor, metaclass=subject ):
   def _quantep_to_subform( self, ep, lvl ):
     
     feats = self._cspanfeats( ep, ep.args[ "ARG0" ].feats );
-    ( referent, dcargs ) = self._predstr_as_referent( ep.pred, feats );
+    ( referent, dcargs ) = self._predstr_as_referent( ep.pred );
     ( nonscopal_args, scopal_args ) = self._extract_args( ep, dcargs, lvl );
     
     assert len( nonscopal_args ) == 1;
@@ -173,7 +172,7 @@ class MRSInterpreter( ERGSemProcessor, metaclass=subject ):
     ((arg,var),) = nonscopal_args.items();
     
     return Quantification(
-               quantifier = Functor( referent = referent ),
+               quantifier = Functor( referent = referent, feats = feats ),
                var = var,
                rstr = scopal_args[ 0 ],
                body = scopal_args[ 1 ]
@@ -183,13 +182,13 @@ class MRSInterpreter( ERGSemProcessor, metaclass=subject ):
   def _modep_to_subform( self, ep, lvl ):
     
     feats = self._extract_event_feats( ep );
-    ( referent, dcargs ) = self._predstr_as_referent( ep.pred, feats );
+    ( referent, dcargs ) = self._predstr_as_referent( ep.pred );
     ( nonscopal_args, scopal_args ) = self._extract_args( ep, dcargs, lvl );
 
     assert len( scopal_args ) == 1;
     
     return Modification(
-               modality = Functor( referent = referent ),
+               modality = Functor( referent = referent, feats = feats ),
                scope = scopal_args[ 0 ],
                args = nonscopal_args
              );
@@ -198,19 +197,19 @@ class MRSInterpreter( ERGSemProcessor, metaclass=subject ):
   def _connep_to_subform( self, ep, lvl ):
 
     feats = self._extract_event_feats( ep );
-    ( referent, dcargs ) = self._predstr_as_referent( ep.pred, feats );
+    ( referent, dcargs ) = self._predstr_as_referent( ep.pred );
     ( nonscopal_args, scopal_args ) = self._extract_args( ep, dcargs, lvl+1 );
 
     assert len( scopal_args ) == 2;
     
     conn = Connection(
-               connective = Functor( referent = referent ),
+               connective = Functor( referent = referent, feats = feats ),
                lscope = scopal_args[ 0 ],
                rscope = scopal_args[ 1 ]
              );
     
     pred = Predication(
-               predicate = Functor( referent = referent ),
+               predicate = Functor( referent = referent, feats = feats ),
                args = nonscopal_args
              );
     

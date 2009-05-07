@@ -80,7 +80,6 @@ class TestPFTEncoder( TestCase, metaclass=object_ ):
     check( "|__1|", TestWord.init_word_4 );
     check( "|lemma_p_1|", TestWord.init_word_8 );
     check( "||", TestWord.init_word_9 );
-    check( "|lemma|[ pers='3', num='sg' ]", TestWord.init_word_10 );
 
 
   def test_operator( self ):
@@ -89,7 +88,7 @@ class TestPFTEncoder( TestCase, metaclass=object_ ):
               self.check( stri, initf, TestOperator.logify );
 
     check( r"->", TestOperator.init_op_1 );
-    check( r"/\[ pers='3', num='sg' ]", TestOperator.init_op_2 );
+    check( "/\\", TestOperator.init_op_2 );
 
 
   def test_predication( self ):
@@ -108,7 +107,6 @@ class TestPFTEncoder( TestCase, metaclass=object_ ):
               self.check( stri, initf, TestQuantification.logify );
     
     check( "\ue101 ALL[ pers='3', num='sg' ] x1 {} 1", TestQuantification.init_quant_1 );
-    # check( "\ue101 |every| x1 <__> {}", TestQuantification.init_quant_2 );
 
 
   def test_modification( self ):
