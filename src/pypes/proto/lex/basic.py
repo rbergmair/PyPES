@@ -52,14 +52,15 @@ class Word( ProtoBase, metaclass=kls ):
     if self.lemma is None:
       if obj.lemma is not None:
         return False;
+      
     if self.lemma is not None:
       if obj.lemma is None:
         return False;
-    if len( self.lemma ) != len( obj.lemma ):
-      return False;
-    for i in range( 0, len(self.lemma) ):
-      if self.lemma[ i ].upper() != obj.lemma[ i ].upper():
+      if len( self.lemma ) != len( obj.lemma ):
         return False;
+      for i in range( 0, len(self.lemma) ):
+        if self.lemma[ i ].upper() != obj.lemma[ i ].upper():
+          return False;
       
     if self.pos != obj.pos:
       return False;

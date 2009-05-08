@@ -50,6 +50,10 @@ class Functor( ProtoBase, metaclass=kls ):
     if self.referent is not None:
       if not self.referent <= obj.referent:
         return False;
+    
+    if self.fid is not None:
+      if not self.fid == obj.fid:
+        return False;
 
     if self.feats is not None and len( self.feats ) > 0:
       if obj.feats is None or len( obj.feats ) <= 0:

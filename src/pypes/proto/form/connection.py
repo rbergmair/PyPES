@@ -70,6 +70,7 @@ class Connection( SubForm, metaclass=kls ):
     if self.connective is not None:
       if not self.connective <= obj.connective:
         return False;
+      
     if self.lscope is not None:
       if not self.lscope <= obj.lscope:
         return False;
