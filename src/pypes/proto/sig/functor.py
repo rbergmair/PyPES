@@ -39,12 +39,7 @@ class Functor( ProtoBase, metaclass=kls ):
     if feats is not None:
       self.feats = {};
       for (key,val) in feats.items():
-        if key == "pos":
-          self.pos = val;
-        elif key == "sense":
-          self.sense = val;
-        else:
-          self.feats[ key ] = val;
+        self.feats[ key ] = val;
 
 
   def __le__( self, obj ):
