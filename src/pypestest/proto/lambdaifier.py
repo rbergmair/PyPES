@@ -1,15 +1,13 @@
 # -*-  coding: ascii -*-  # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 __package__ = "pypestest.proto";
-__all__ = [ "TestNullRewriter", "suite", "main" ];
+__all__ = [ "TestLambdaifier", "suite", "main" ];
 
 import sys;
 import unittest;
 
 from pypes.utils.unittest_ import TestCase;
 from pypes.utils.mc import object_;
-
-from pypes.rewriting.null_rewriter import null_rewrite;
 
 from pypestest.proto.form.connection import TestConnection;
 from pypestest.proto.form.constraint import TestConstraint;
@@ -23,18 +21,20 @@ from pypestest.proto.sig.variable import TestVariable;
 from pypestest.proto.sig.constant import TestConstant;
 from pypestest.proto.lex.basic import TestWord;
 
+from pypes.proto import lambdaify;
+
 
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-class TestNullRewriter( TestCase, metaclass=object_ ):
+class TestLambdaifier( TestCase, metaclass=object_ ):
 
   
   def dotest( self, logifyf, initf ):
     
     inst = logifyf( self, initf( self ) );
     
-    inst__ = null_rewrite( inst );
+    inst__ = lambdaify( inst );
     inst_ = logifyf( self, inst__ );
     
     if not inst <= inst_ and inst_ <= inst:
@@ -146,7 +146,7 @@ def suite():
   suite = unittest.TestSuite();
 
   suite.addTests( unittest.TestLoader().loadTestsFromTestCase(
-      TestNullRewriter
+      TestLambdaifier
     ) );
 
   return suite;

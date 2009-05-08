@@ -1,7 +1,7 @@
 # -*-  coding: ascii -*-  # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 __package__ = "pypes.rewriting";
-__all__ = [ "NullRewriter", "null_rewrite" ];
+__all__ = [ "Lambdaifier", "lambdaify" ];
 
 from pypes.utils.mc import subject;
 
@@ -15,10 +15,10 @@ from pypes.proto.proto_processor import ProtoProcessor;
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-class NullRewriter( ProtoProcessor, metaclass=subject ):
+class Lambdaifier( ProtoProcessor, metaclass=subject ):
   
   
-  def rewrite( self ):
+  def lambdaify( self ):
     
     return self.process( self._obj_ );
   
@@ -129,11 +129,11 @@ class NullRewriter( ProtoProcessor, metaclass=subject ):
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-def null_rewrite( obj ):
+def lambdaify( obj ):
   
   rslt = None;
-  with NullRewriter( obj ) as rewriter:
-    rslt = rewriter.rewrite();
+  with Lambdaifier( obj ) as lambdaifier:
+    rslt = lambdaifier.lambdaify();
   return rslt;
     
 

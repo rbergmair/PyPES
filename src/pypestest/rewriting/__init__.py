@@ -6,7 +6,6 @@ __all__ = [ "suite", "main" ];
 import sys;
 import unittest;
 
-import pypestest.rewriting.null_rewriter;
 import pypestest.rewriting.renaming_rewriter;
 import pypestest.rewriting.dsf_rewriter;
 import pypestest.rewriting.erg_to_basic_rewriter;
@@ -19,7 +18,6 @@ def suite():
 
   suite = unittest.TestSuite();
 
-  suite.addTests( pypestest.rewriting.null_rewriter.suite() );
   suite.addTests( pypestest.rewriting.renaming_rewriter.suite() );
   suite.addTests( pypestest.rewriting.dsf_rewriter.suite() );
   suite.addTests( pypestest.rewriting.erg_to_basic_rewriter.suite() );

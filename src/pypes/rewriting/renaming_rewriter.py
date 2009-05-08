@@ -11,8 +11,6 @@ from pypes.proto.lex import *;
 
 from pypes.proto.proto_processor import ProtoProcessor;
 
-from pypes.rewriting.null_rewriter import NullRewriter;
-
 
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
@@ -92,7 +90,7 @@ class _IndexCollector( ProtoProcessor, metaclass=subject ):
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-class RenamingRewriter( NullRewriter, metaclass=subject ):
+class RenamingRewriter( metaclass=subject ):
   
 
   def _enter_( self ):

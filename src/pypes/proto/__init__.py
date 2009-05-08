@@ -6,7 +6,9 @@ __all__ = [ "Connection", "Constraint", "Handle", "Freezer", "Modification",
             "Predication", "ProtoForm", "Quantification", "SubForm",
             "Argument", "Constant", "Functor", "ProtoSig", "Sort", "Variable",
             "Operator", "Word",
-            "ProtoBase", "ProtoProcessor", "SanityChecker", "sanity_check" ];
+            "ProtoBase", "ProtoProcessor",
+            "Lambdaifier", "lambdaify",
+            "SanityChecker", "sanity_check" ];
 
 from pypes.proto.form import Connection;
 from pypes.proto.form import Constraint;
@@ -31,6 +33,9 @@ from pypes.proto.lex import Word;
 from pypes.proto.protobase import ProtoBase;
 
 from pypes.proto.proto_processor import ProtoProcessor;
+
+from pypes.proto.lambdaifier import Lambdaifier;
+from pypes.proto.lambdaifier import lambdaify;
 
 from pypes.proto.sanity_checker import SanityChecker;
 from pypes.proto.sanity_checker import sanity_check;
