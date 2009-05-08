@@ -39,11 +39,10 @@ class PFTEncoder( ProtoProcessor, metaclass=subject ):
     if not self._fast_initialize:
       
       sig = ProtoSig();
-      obj_ = renaming_rewrite(
+      self._obj_ = renaming_rewrite(
                  self._obj_,
                  force_rename_handles_p = self._pretty
                );
-      self._obj_ = obj_( sig=sig );
       
       if hasattr( sig, "_sos_" ) and Variable in sig._sos_:
         for vid in sig._sos_[ Variable ]:

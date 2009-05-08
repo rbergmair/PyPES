@@ -65,10 +65,10 @@ class TestERGtoBasicRewriter( TestCase, metaclass=object_ ):
               # pfrstr = pft_encode( pfr );
               pfstr = pft_encode( pf );
               
-              print( fstr );
-              # print( pfrstr );
-              print( pfstr );
-              print( "-------" );
+              # print( fstr );
+              # # print( pfrstr );
+              # print( pfstr );
+              # print( "-------" );
 
               self.assert_( sanity_check( pf ) );
               

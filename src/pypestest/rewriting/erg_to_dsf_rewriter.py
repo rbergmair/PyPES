@@ -33,83 +33,76 @@ class TestERGtoDSFRewriter( TestCase, metaclass=object_ ):
   _TESTDTADIR = "dta/test";
   
   
-  def write_testfile( self, filename, decoder ):
+  def write_testfile( self, filename, decoder, x=None ):
 
     try:
       
-      x = open( self._TESTDTADIR+"/dsfdsfs.txt", "a" );
-  
+      f_ = gzip.open( filename );
       try:
         
-        f_ = gzip.open( filename );
         try:
           
+          g = open( filename.replace( ".pft.gz", "-dsfdsf.pft" ), "w" );
           try:
-            
-            g = open( filename.replace( ".pft.gz", "-dsfdsf.pft" ), "w" );
-            try:
-  
-              r = None;
-              gstr = None;
-              
-              try:
-  
-                print( filename );
-  
-                cdc = codecs.getreader( "utf-8" );
-                f = cdc( f_ );
-  
-                fstr = f.read();
-                pstr = None;
-                
-                pf1 = decoder.decode( fstr )( sig=ProtoSig() );
-                # pfr = recursivize( solve_all( pf1 ) );
-                pf = erg_to_dsf_rewrite( pf1 );
-  
-                # pfrstr = pft_encode( pfr );
-                pfstr = pft_encode( pf );
-                
-                print( fstr );
-                # print( pfrstr );
-                print( pfstr );
-                print( "-------" );
-  
-                self.assert_( sanity_check( pf ) );
 
-                k = open( filename.replace( ".pft.gz", ".txt" ) )
-                txt = k.read();
-                k.close();
-                
-                x.write( filename );
-                x.write( ": " );
-                x.write( txt );
-                x.write( "\n" );
-                x.write( pfstr );
-                x.write( "\n\f\n\n" );
-                
-                g.write( pft_encode( pf, pretty=False, fast_initialize=True ) );
-                
-                f.close();
-              
-              except:
-  
-                print( fstr );
-                raise;
-      
-            finally:
-              g.close();
+            r = None;
+            gstr = None;
             
-          except IOError:
-            pass;
-        
-        finally:
-          f_.close();
+            try:
+
+              print( filename );
+
+              cdc = codecs.getreader( "utf-8" );
+              f = cdc( f_ );
+
+              fstr = f.read();
+              pstr = None;
+              
+              pf1 = decoder.decode( fstr )( sig=ProtoSig() );
+              # pfr = recursivize( solve_all( pf1 ) );
+              pf = erg_to_dsf_rewrite( pf1 );
+
+              # pfrstr = pft_encode( pfr );
+              pfstr = pft_encode( pf );
+              
+              # print( fstr );
+              # # print( pfrstr );
+              # print( pfstr );
+              # print( "-------" );
+
+              self.assert_( sanity_check( pf ) );
+
+              k = open( filename.replace( ".pft.gz", ".txt" ) )
+              txt = k.read();
+              k.close();
+              
+              x.write( filename );
+              x.write( ": " );
+              x.write( txt );
+              x.write( "\n" );
+              x.write( pfstr );
+              x.write( "\n\f\n\n" );
+              
+              g.write( pft_encode( pf, pretty=False, fast_initialize=True ) );
+              
+              f.close();
+            
+            except:
+
+              print( fstr );
+              raise;
+    
+          finally:
+            g.close();
+          
+        except IOError:
+          pass;
       
-      except IOError:
-        pass;
-      
-    finally:
-      x.close();
+      finally:
+        f_.close();
+    
+    except IOError:
+      pass;
 
 
   def x_test_quick( self ):
@@ -122,16 +115,18 @@ class TestERGtoDSFRewriter( TestCase, metaclass=object_ ):
 
   
   def test_rewriter( self ):
-
-    with PFTDecoder( (pypes.proto.lex.erg,None) ) as decoder:
-
-      for i in range( 1, 108 ):
-        self.write_testfile( "{0}/mrs-{1}1.pft.gz".format( self._TESTDTADIR, i ), decoder );
-
-      for i in range( 0, 641 ):
-        if i in { 185, 186, 473 }: # disconnected structures
-          continue;
-        self.write_testfile( "{0}/fracas-{1}.pft.gz".format( self._TESTDTADIR, i ), decoder );
+    
+    with open( self._TESTDTADIR+"/bdsfs.txt", "w" ) as x:
+    
+      with PFTDecoder( (pypes.proto.lex.erg,None) ) as decoder:
+    
+        for i in range( 1, 108 ):
+          self.write_testfile( "{0}/mrs-{1}1.pft.gz".format( self._TESTDTADIR, i ), decoder, x );
+    
+        for i in range( 0, 641 ):
+          if i in { 185, 186, 473 }: # disconnected structures
+            continue;
+          self.write_testfile( "{0}/fracas-{1}.pft.gz".format( self._TESTDTADIR, i ), decoder, x );
 
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #

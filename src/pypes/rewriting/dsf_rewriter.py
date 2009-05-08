@@ -16,7 +16,7 @@ from pypes.rewriting import RenamingRewriter;
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-class DSFRewriter( RenamingRewriter, metaclass=subject ):
+class DSFRewriter( metaclass=subject ):
   
   
   
@@ -453,7 +453,9 @@ class DSFRewriter( RenamingRewriter, metaclass=subject ):
 
 
 
-  def _enter_( self ):
+  def rewrite( self ):
+    
+    rslt = None;
     
     index = self._BinderIndex();
     with self._IndexCollector( index ) as index_collector:
@@ -462,9 +464,9 @@ class DSFRewriter( RenamingRewriter, metaclass=subject ):
     with self._Solver( (index,self._obj_) ) as solver:
       solution = solver.solve_all();
       with self._Recursivizer( (index,solution) ) as recursivizer:
-        self._obj_ = recursivizer.recursivize();
+        rslt = recursivizer.recursivize();
         
-    super()._enter_();
+    return rslt;
 
 
 

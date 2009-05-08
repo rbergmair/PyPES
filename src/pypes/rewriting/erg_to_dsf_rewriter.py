@@ -119,7 +119,7 @@ class ERGtoDSFRewriter( ProtoProcessor, metaclass=subject ):
       pdr.process( pf );
       
     with DSFRewriter( pf ) as rewriter:
-      pf = rewriter.rewrite()( sig=ProtoSig() );
+      pf = rewriter.rewrite();
 
     self._funcs = {};
     

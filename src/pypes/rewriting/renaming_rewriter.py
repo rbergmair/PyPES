@@ -90,7 +90,7 @@ class _IndexCollector( ProtoProcessor, metaclass=subject ):
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-class RenamingRewriter( metaclass=subject ):
+class RenamingRewriter( ProtoProcessor, metaclass=subject ):
   
 
   def _enter_( self ):
@@ -98,11 +98,21 @@ class RenamingRewriter( metaclass=subject ):
     self._index = Object();
     self._collector_ctx = _IndexCollector( self._index );
     self._collector = self._collector_ctx.__enter__();
+
+    self._hid_by_handle = {};
+    self._sortvid_by_variable = {};
+    self._sid_by_sort = {};
+    self._fid_by_funct = {};
     
   def _exit_( self, exc_type, exc_val, exc_tb ):
     
     self._collector = None;
     self._collector_ctx.__exit__( exc_type, exc_val, exc_tb );
+
+
+  def process_pf( self, pf ):
+    
+    self._collector.process( pf );
   
   
   def _reallocate( self, invidx, reallocate_objs ):
@@ -174,7 +184,7 @@ class RenamingRewriter( metaclass=subject ):
       self._invert_merging( idx, invidx, refs, force_p );
   
   
-  def _invert_index( self, rename_handles_p=True, rename_vars_p=True,
+  def invert( self, rename_handles_p=True, rename_vars_p=True,
                      rename_functs_p=True, force_rename_handles_p=False ):
 
     self._invert(
@@ -254,56 +264,26 @@ class RenamingRewriter( metaclass=subject ):
       newsid += 1;
 
 
-  def process_handle( self, inst ):
+  def _process_handle( self, inst, hid ):
     
-    return inst.__class__(
-               hid = self._hid_by_handle[ inst ]
-             );
+    inst.hid = self._hid_by_handle[ inst ];
 
 
-  def process_variable( self, inst ):
-
-    ( sort, vid_ ) = self._sortvid_by_variable[ inst ];
-    sid_ = self._sid_by_sort[ sort ];
+  def _process_variable( self, inst, sid, vid ):
     
-    return inst.__class__(
-               sidvid = (sid_,vid_)
-             );
+    ( sort, inst.vid ) = self._sortvid_by_variable[ inst ];
+    inst.sort.sid = self._sid_by_sort[ sort ];
 
 
-  def process_functor( self, inst ):
+  def _process_functor( self, inst, fid, referent, feats ):
     
-    return inst.__class__(
-               fid = self._fid_by_funct[ inst ],
-               referent = self.process( inst.referent ),
-               feats = inst.feats
-             );
-
-
-  def process_pf( self, pf ):
-    
-    self._collector.process( pf );
+    inst.fid = self._fid_by_funct[ inst ];
   
   
-  def invert( self, rename_handles_p=True, rename_vars_p=True,
-              rename_functs_p=True, force_rename_handles_p=False ):
-    
-    self._hid_by_handle = {};
-    self._sortvid_by_variable = {};
-    self._sid_by_sort = {};
-    self._fid_by_funct = {};
-    
-    self._invert_index(
-        rename_handles_p = rename_handles_p,
-        rename_vars_p = rename_vars_p,
-        rename_functs_p = rename_functs_p,
-        force_rename_handles_p = force_rename_handles_p
-      );
-
-      
   def rewrite( self, pf ):
       
-    return self.process( pf );
+    self.process( pf );
+    return pf;
 
 
 
