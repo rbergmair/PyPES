@@ -3,30 +3,47 @@
 __package__ = "pypes.infer";
 __all__ = [ "Schema" ];
 
-from pypes.utils.mc import object_;
+from pypes.utils.mc import object_, subject;
+from pypes.proto import *;
+from pypes.proto.lex import basic;
 
 
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 class Schema( metaclass=object_ ):
-
+  
   
   def __init__( self ):
     
-    self.preds = set();
-    self.args = {};
+    self.preds = {};
     
-
-  def add_pred( self, pred, args ):
     
-    self.preds.add( pred );
+  def _add_pred( self, pred, args ):
     
-    if not pred in self.args:
-      self.args[ pred ] = [];
+    if not pred in self.preds:
+      self.preds[ pred ] = [];
     for arg in args:
-      if not arg in self.args[ pred ]:
-        self.args[ pred ].append( arg );
+      if not arg.aid in self.preds[ pred ]:
+        self.preds[ pred ].append( arg.aid );
+
+
+  class _PFReader( ProtoProcessor, metaclass=subject ):
+    
+    def _process_predication( self, inst, subform, predicate, args ):
+      
+      referent = inst.predicate.referent;
+      if isinstance( referent, Operator ):
+        if referent.otype in basic.Operator.OPs:
+          return;
+      
+      self._obj_._add_pred( referent, inst.args.keys() );
+  
+  
+  def accommodate_for_form( self, pf ):
+    
+    with self._PFReader( self ) as reader:
+      reader.process( pf );
 
 
 

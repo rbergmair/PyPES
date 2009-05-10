@@ -10,8 +10,20 @@ from pypes.utils.mc import object_;
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 class Model( metaclass=object_ ):
+
   
-  pass;
+  def __init__( self, schema ):
+    
+    self._schema = schema;
+    self._matrices = None;
+  
+  @property
+  def matrices( self ):
+    return self._matrices;
+  
+  @matrix.setter
+  def _set_matrices( self, value ):
+    self._matrices = value;
 
 
 

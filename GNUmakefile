@@ -49,19 +49,10 @@ INFERDTA = \
   rte-07-dev-2w.rte.xml \
   rte-07-dev-3w.rte.xml \
   rte-07-tst-2w.rte.xml \
+  rte-07-tst-3w-results.tar.gz \
   rte-07-tst-3w.txt \
-  rte-07-tst-pilotsys-A.txt \
-  rte-07-tst-pilotsys-B.txt \
-  rte-07-tst-pilotsys-C.txt \
-  rte-07-tst-pilotsys-D.txt \
-  rte-07-tst-pilotsys-E.txt \
-  rte-07-tst-pilotsys-F.txt \
-  rte-07-tst-pilotsys-G.txt \
-  rte-07-tst-pilotsys-H.txt \
-  rte-07-tst-pilotsys-I.txt \
-  rte-07-tst-pilotsys-J.txt \
-  rte-07-tst-pilotsys-K.txt \
-  rte-07-tst-pilotsys-L.txt \
+  rte-08-2w-results.tar.gz \
+  rte-08-3w-results.tar.gz \
   rte-08.rte.xml \
   rte-wang-birth.rte.xml \
   rte-wang-kill.rte.xml
