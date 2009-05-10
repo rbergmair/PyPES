@@ -90,7 +90,7 @@ class _IndexCollector( ProtoProcessor, metaclass=subject ):
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-class RenamingRewriter( ProtoProcessor, metaclass=subject ):
+class Renamer( ProtoProcessor, metaclass=subject ):
   
 
   def _enter_( self ):
@@ -280,7 +280,7 @@ class RenamingRewriter( ProtoProcessor, metaclass=subject ):
     inst.fid = self._fid_by_funct[ inst ];
   
   
-  def rewrite( self, pf ):
+  def rename( self, pf ):
       
     self.process( pf );
     return pf;
@@ -289,19 +289,19 @@ class RenamingRewriter( ProtoProcessor, metaclass=subject ):
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-def renaming_rewrite( obj, rename_handles_p=True, rename_vars_p=True,
-                      rename_functs_p=True, force_rename_handles_p=False ):
+def rename( obj, rename_handles_p=True, rename_vars_p=True,
+                 rename_functs_p=True, force_rename_handles_p=False ):
   
   rslt = None;
-  with RenamingRewriter( None ) as rewriter:
-    rewriter.process_pf( obj );
-    rewriter.invert(
+  with Renamer() as renamer:
+    renamer.process_pf( obj );
+    renamer.invert(
         rename_handles_p = rename_handles_p,
         rename_vars_p = rename_vars_p,
         rename_functs_p = rename_functs_p,
         force_rename_handles_p = force_rename_handles_p
       );
-    rslt = rewriter.rewrite( obj );
+    rslt = renamer.rename( obj );
   return rslt;
     
 

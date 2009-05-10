@@ -1,7 +1,7 @@
 # -*-  coding: ascii -*-  # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 __package__ = "pypestest.proto";
-__all__ = [ "TestRenamingRewriter", "suite", "main" ];
+__all__ = [ "TestRenamer", "suite", "main" ];
 
 import sys;
 import unittest;
@@ -12,7 +12,7 @@ from pypes.utils.mc import object_;
 from pypes.codecs_ import *;
 from pypes.proto import *;
 
-from pypes.rewriting.renaming_rewriter import RenamingRewriter, renaming_rewrite;
+from pypes.rewriting.renamer import Renamer, rename;
 
 from pypestest.proto.form.protoform import TestProtoForm;
 
@@ -20,13 +20,13 @@ from pypestest.proto.form.protoform import TestProtoForm;
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-class TestRenamingRewriter( TestCase, metaclass=object_ ):
+class TestRenamer( TestCase, metaclass=object_ ):
 
   
-  def test_renaming_rewriter_1( self ):
+  def test_renamer_1( self ):
     
     init = TestProtoForm.init_logified_pf_4( self );
-    rslt = renaming_rewrite( init );
+    rslt = rename( init );
     
     ref = pft_decode( """{ \ue103 { 8: \ue101 |Every|:0 x4 { \ue100 |man|:6( arg0=x4 ) } __;
                                     9: \ue101 |a|:16 x3 { \ue100 |woman|:18( arg0=x3 ) } __;
@@ -43,18 +43,18 @@ class TestRenamingRewriter( TestCase, metaclass=object_ ):
     self.assertEquals_( rslt, ref );
 
   
-  def test_renaming_rewriter_1x( self ):
+  def test_renamer_1x( self ):
     
     init2 = TestProtoForm.init_pf_2( self )( sig=ProtoSig() );
     init3 = TestProtoForm.init_pf_3( self )( sig=ProtoSig() );
     
-    with RenamingRewriter( None ) as rewriter:
+    with Renamer() as renamer:
       
-      rewriter.process_pf( init2 );
-      rewriter.process_pf( init3 );
-      rewriter.invert();
+      renamer.process_pf( init2 );
+      renamer.process_pf( init3 );
+      renamer.invert();
       
-      rslt = rewriter.rewrite( init2 );
+      rslt = renamer.rename( init2 );
       
       ref = pft_decode( """{ 8: \ue101 |Every|:0 x4 { \ue100 |man|:6( arg0=x4 ) } __;
                              9: \ue101 |a|:16 x3 { \ue100 |woman|:18( arg0=x3 ) } __;
@@ -64,7 +64,7 @@ class TestRenamingRewriter( TestCase, metaclass=object_ ):
     
       self.assertEquals_( rslt, ref );
 
-      rslt = rewriter.rewrite( init3 );
+      rslt = renamer.rename( init3 );
       
       ref = pft_decode( """{ \ue101 |every| x1 1 { \ue100 |lie|:32( arg1=x1 ) };
                                                             2: {    \ue103 __ /\ __;
@@ -77,10 +77,10 @@ class TestRenamingRewriter( TestCase, metaclass=object_ ):
       self.assertEquals_( rslt, ref );
     
     
-  def test_renaming_rewriter_2( self ):
+  def test_renamer_2( self ):
     
     init = TestProtoForm.init_logified_pf_4( self );
-    rslt = renaming_rewrite( init, rename_handles_p=False );
+    rslt = rename( init, rename_handles_p=False );
 
     ref = pft_decode( """{ \ue103 { 1: \ue101 |Every|:0 x4 { \ue100 |man|:6( arg0=x4 ) } 2;
                                     3: \ue101 |a|:16 x3 { \ue100 |woman|:18( arg0=x3 ) } 4;
@@ -97,18 +97,18 @@ class TestRenamingRewriter( TestCase, metaclass=object_ ):
     self.assertEquals_( rslt, ref );
 
 
-  def test_renaming_rewriter_2x( self ):
+  def test_renamer_2x( self ):
     
     init2 = TestProtoForm.init_pf_2( self )( sig=ProtoSig() );
     init3 = TestProtoForm.init_pf_3( self )( sig=ProtoSig() );
     
-    with RenamingRewriter( None ) as rewriter:
+    with Renamer() as renamer:
       
-      rewriter.process_pf( init2 );
-      rewriter.process_pf( init3 );
-      rewriter.invert( rename_handles_p=False );
+      renamer.process_pf( init2 );
+      renamer.process_pf( init3 );
+      renamer.invert( rename_handles_p=False );
       
-      rslt = rewriter.rewrite( init2 );
+      rslt = renamer.rename( init2 );
       
       ref = pft_decode( """{ 1: \ue101 |Every|:0 x4 { \ue100 |man|:6( arg0=x4 ) } 2;
                              3: \ue101 |a|:16 x3 { \ue100 |woman|:18( arg0=x3 ) } 4;
@@ -118,7 +118,7 @@ class TestRenamingRewriter( TestCase, metaclass=object_ ):
     
       self.assertEquals_( rslt, ref );
 
-      rslt = rewriter.rewrite( init3 );
+      rslt = renamer.rename( init3 );
       
       ref = pft_decode( """{    \ue101 |every| x1 1 { \ue100 |lie|:32( arg1=x1 ) };
                              2: { 5: \ue103 __ /\ __;
@@ -131,10 +131,10 @@ class TestRenamingRewriter( TestCase, metaclass=object_ ):
       self.assertEquals_( rslt, ref );
 
 
-  def test_renaming_rewriter_3( self ):
+  def test_renamer_3( self ):
     
     init = TestProtoForm.init_logified_pf_4( self );
-    rslt = renaming_rewrite( init, rename_vars_p=False );
+    rslt = rename( init, rename_vars_p=False );
 
     ref = pft_decode( """{ \ue103 { 8: \ue101 |Every|:0 x1 { \ue100 |man|:6( arg0=x1 ) } __;
                                     9: \ue101 |a|:16 x2 { \ue100 |woman|:18( arg0=x2 ) } __;
@@ -151,18 +151,18 @@ class TestRenamingRewriter( TestCase, metaclass=object_ ):
     self.assertEquals_( rslt, ref );
 
 
-  def test_renaming_rewriter_3x( self ):
+  def test_renamer_3x( self ):
     
     init2 = TestProtoForm.init_pf_2( self )( sig=ProtoSig() );
     init3 = TestProtoForm.init_pf_3( self )( sig=ProtoSig() );
     
-    with RenamingRewriter( None ) as rewriter:
+    with Renamer() as renamer:
       
-      rewriter.process_pf( init2 );
-      rewriter.process_pf( init3 );
-      rewriter.invert( rename_vars_p=False );
+      renamer.process_pf( init2 );
+      renamer.process_pf( init3 );
+      renamer.invert( rename_vars_p=False );
       
-      rslt = rewriter.rewrite( init2 );
+      rslt = renamer.rename( init2 );
       
       ref = pft_decode( """{ 8: \ue101 |Every|:0 x1 { \ue100 |man|:6( arg0=x1 ) } __;
                              9: \ue101 |a|:16 x2 { \ue100 |woman|:18( arg0=x2 ) } __;
@@ -172,7 +172,7 @@ class TestRenamingRewriter( TestCase, metaclass=object_ ):
     
       self.assertEquals_( rslt, ref );
 
-      rslt = rewriter.rewrite( init3 );
+      rslt = renamer.rename( init3 );
       
       ref = pft_decode( """{    \ue101 |every| x1 1 { \ue100 |lie|:32( arg1=x1 ) };
                              2: {    \ue103 __ /\ __;
@@ -185,18 +185,18 @@ class TestRenamingRewriter( TestCase, metaclass=object_ ):
       self.assertEquals_( rslt, ref );
 
 
-  def test_renaming_rewriter_4x( self ):
+  def test_renamer_4x( self ):
     
     init2 = TestProtoForm.init_pf_2( self )( sig=ProtoSig() );
     init3 = TestProtoForm.init_pf_3( self )( sig=ProtoSig() );
     
-    with RenamingRewriter( None ) as rewriter:
+    with Renamer() as renamer:
       
-      rewriter.process_pf( init2 );
-      rewriter.process_pf( init3 );
-      rewriter.invert( rename_functs_p=False );
+      renamer.process_pf( init2 );
+      renamer.process_pf( init3 );
+      renamer.invert( rename_functs_p=False );
       
-      rslt = rewriter.rewrite( init2 );
+      rslt = renamer.rename( init2 );
 
       ref = pft_decode( """{ 8: \ue101 |Every|:0 x4 { \ue100 |man|:6( arg0=x4 ) } __;
                              9: \ue101 |a|:16 x3 { \ue100 |woman|:18( arg0=x3 ) } __;
@@ -206,7 +206,7 @@ class TestRenamingRewriter( TestCase, metaclass=object_ ):
     
       self.assertEquals_( rslt, ref );
 
-      rslt = rewriter.rewrite( init3 );
+      rslt = renamer.rename( init3 );
       
       ref = pft_decode( """{    \ue101 |every|:0 x1 1 { \ue100 |lie|:32( arg1=x1 ) };
                              2: {    \ue103 __ /\ __;
@@ -227,7 +227,7 @@ def suite():
   suite = unittest.TestSuite();
 
   suite.addTests( unittest.TestLoader().loadTestsFromTestCase(
-      TestRenamingRewriter
+      TestRenamer
     ) );
 
   return suite;

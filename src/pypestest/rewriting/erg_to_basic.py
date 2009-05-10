@@ -1,7 +1,7 @@
 # -*-  coding: ascii -*-  # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 __package__ = "pypestest.rewriting";
-__all__ = [ "TestERGtoBasicRewriter", "suite", "main" ];
+__all__ = [ "TestERGtoBasic", "suite", "main" ];
 
 import sys;
 import os;
@@ -22,13 +22,13 @@ from pypes.codecs_ import PFTDecoder, pft_encode;
 
 import pypes.proto.lex.erg;
 
-from pypes.rewriting.erg_to_basic_rewriter import erg_to_basic_rewrite;
+from pypes.rewriting.erg_to_basic import erg_to_basic;
 
 
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-class TestERGtoBasicRewriter( TestCase, metaclass=object_ ):
+class TestERGtoBasic( TestCase, metaclass=object_ ):
   
   _TESTDTADIR = "dta/test";
   
@@ -60,7 +60,7 @@ class TestERGtoBasicRewriter( TestCase, metaclass=object_ ):
               
               pf1 = decoder.decode( fstr )( sig=ProtoSig() );
               # pfr = recursivize( solve_all( pf1 ) );
-              pf = erg_to_basic_rewrite( pf1 );
+              pf = erg_to_basic( pf1 );
 
               # pfrstr = pft_encode( pfr );
               pfstr = pft_encode( pf );
@@ -124,7 +124,7 @@ def suite():
   suite = unittest.TestSuite();
 
   suite.addTests( unittest.TestLoader().loadTestsFromTestCase(
-      TestERGtoBasicRewriter
+      TestERGtoBasic
     ) );
 
   return suite;

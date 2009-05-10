@@ -1,7 +1,7 @@
 # -*-  coding: ascii -*-  # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 __package__ = "pypes.rewriting";
-__all__ = [ "ERGtoBasicRewriter", "erg_to_basic_rewrite" ];
+__all__ = [ "ERGtoBasic", "erg_to_basic" ];
 
 from copy import copy;
 
@@ -14,7 +14,7 @@ from pypes.proto.lex import basic, erg;
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-class ERGtoBasicRewriter( ProtoProcessor, metaclass=subject ):
+class ERGtoBasic( ProtoProcessor, metaclass=subject ):
   
   
   OP_Qs = {
@@ -373,10 +373,10 @@ class ERGtoBasicRewriter( ProtoProcessor, metaclass=subject ):
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-def erg_to_basic_rewrite( obj ):
+def erg_to_basic( obj ):
   
   rslt = None;
-  with ERGtoBasicRewriter( obj ) as rewriter:
+  with ERGtoBasic( obj ) as rewriter:
     rslt = rewriter.rewrite();
   return rslt;
 

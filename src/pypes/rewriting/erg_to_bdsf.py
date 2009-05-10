@@ -1,7 +1,7 @@
 # -*-  coding: ascii -*-  # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 __package__ = "pypes.rewriting";
-__all__ = [ "ERGtoDSFRewriter", "erg_to_dsf_rewrite" ];
+__all__ = [ "ERGtoBDSF", "erg_to_bdsf" ];
 
 from copy import copy;
 
@@ -9,14 +9,14 @@ from pypes.utils.mc import subject;
 
 from pypes.proto import *;
 
-from pypes.rewriting.dsf_rewriter import DSFRewriter;
-from pypes.rewriting.erg_to_basic_rewriter import ERGtoBasicRewriter;
+from pypes.rewriting.mr_to_dsf import MRtoDSF;
+from pypes.rewriting.erg_to_basic import ERGtoBasic;
 
 
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-class ERGtoDSFRewriter( ProtoProcessor, metaclass=subject ):
+class ERGtoBDSF( ProtoProcessor, metaclass=subject ):
   
   
   class _VarsCollector( ProtoProcessor, metaclass=subject ):
@@ -118,7 +118,7 @@ class ERGtoDSFRewriter( ProtoProcessor, metaclass=subject ):
     with self._PreDSFRewriter( self._vars ) as pdr:
       pdr.process( pf );
       
-    with DSFRewriter( pf ) as rewriter:
+    with MRtoDSF( pf ) as rewriter:
       pf = rewriter.rewrite();
 
     self._funcs = {};
@@ -129,7 +129,7 @@ class ERGtoDSFRewriter( ProtoProcessor, metaclass=subject ):
     self._vid = 1;
     self._rewrite();
 
-    with ERGtoBasicRewriter( pf ) as rewriter:
+    with ERGtoBasic( pf ) as rewriter:
       pf = rewriter.rewrite();
     
     return pf;
@@ -138,10 +138,10 @@ class ERGtoDSFRewriter( ProtoProcessor, metaclass=subject ):
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-def erg_to_dsf_rewrite( obj ):
+def erg_to_bdsf( obj ):
   
   rslt = None;
-  with ERGtoDSFRewriter( None ) as rewriter:
+  with ERGtoBDSF() as rewriter:
     rslt = rewriter.rewrite( obj );
   return rslt;
 

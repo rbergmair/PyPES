@@ -1,7 +1,7 @@
 # -*-  coding: ascii -*-  # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 __package__ = "pypes.rewriting";
-__all__ = [ "DSFRewriter", "dsf_rewrite" ];
+__all__ = [ "MRtoDSF", "mr_to_dsf" ];
 
 from copy import copy;
 
@@ -10,13 +10,12 @@ from pprint import pprint;
 from pypes.utils.mc import subject, object_;
 from pypes.proto import *;
 from pypes.scoping import *;
-from pypes.rewriting import RenamingRewriter;
 
 
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-class DSFRewriter( metaclass=subject ):
+class MRtoDSF( metaclass=subject ):
   
   
   
@@ -472,10 +471,10 @@ class DSFRewriter( metaclass=subject ):
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-def dsf_rewrite( obj ):
+def mr_to_dsf( obj ):
   
   rslt = None;
-  with DSFRewriter( obj ) as rewriter:
+  with MRtoDSF( obj ) as rewriter:
     rslt = rewriter.rewrite();
   return rslt;
 

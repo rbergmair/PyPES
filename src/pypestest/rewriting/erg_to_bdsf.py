@@ -1,7 +1,7 @@
 # -*-  coding: ascii -*-  # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 __package__ = "pypestest.rewriting";
-__all__ = [ "TestERGtoBasicRewriter", "suite", "main" ];
+__all__ = [ "TestERGtoBDSF", "suite", "main" ];
 
 import sys;
 import os;
@@ -22,13 +22,13 @@ from pypes.codecs_ import PFTDecoder, pft_encode;
 
 import pypes.proto.lex.erg;
 
-from pypes.rewriting.erg_to_dsf_rewriter import erg_to_dsf_rewrite;
+from pypes.rewriting.erg_to_bdsf import erg_to_bdsf;
 
 
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-class TestERGtoDSFRewriter( TestCase, metaclass=object_ ):
+class TestERGtoBDSF( TestCase, metaclass=object_ ):
   
   _TESTDTADIR = "dta/test";
   
@@ -42,7 +42,7 @@ class TestERGtoDSFRewriter( TestCase, metaclass=object_ ):
         
         try:
           
-          g = open( filename.replace( ".pft.gz", "-dsfdsf.pft" ), "w" );
+          g = open( filename.replace( ".pft.gz", "-bdsf.pft" ), "w" );
           try:
 
             r = None;
@@ -60,7 +60,7 @@ class TestERGtoDSFRewriter( TestCase, metaclass=object_ ):
               
               pf1 = decoder.decode( fstr )( sig=ProtoSig() );
               # pfr = recursivize( solve_all( pf1 ) );
-              pf = erg_to_dsf_rewrite( pf1 );
+              pf = erg_to_bdsf( pf1 );
 
               # pfrstr = pft_encode( pfr );
               pfstr = pft_encode( pf );
@@ -136,7 +136,7 @@ def suite():
   suite = unittest.TestSuite();
 
   suite.addTests( unittest.TestLoader().loadTestsFromTestCase(
-      TestERGtoDSFRewriter
+      TestERGtoBDSF
     ) );
 
   return suite;

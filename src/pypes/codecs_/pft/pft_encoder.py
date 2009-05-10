@@ -12,7 +12,7 @@ from pypes.utils.mc import subject;
 
 from pypes.proto import *;
 
-from pypes.rewriting.renaming_rewriter import renaming_rewrite, sortseq;
+from pypes.rewriting.renamer import rename, sortseq;
 
 from pypes.codecs_.pft import _pft_parser;
 
@@ -39,7 +39,7 @@ class PFTEncoder( ProtoProcessor, metaclass=subject ):
     if not self._fast_initialize:
       
       sig = ProtoSig();
-      self._obj_ = renaming_rewrite(
+      self._obj_ = rename(
                  self._obj_,
                  force_rename_handles_p = self._pretty
                );

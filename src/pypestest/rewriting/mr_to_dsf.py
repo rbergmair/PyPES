@@ -1,7 +1,7 @@
 # -*-  coding: ascii -*-  # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 __package__ = "pypestest.rewriting";
-__all__ = [ "TestDSFRewriter", "suite", "main" ];
+__all__ = [ "TestMRtoDSF", "suite", "main" ];
 
 import sys;
 import os;
@@ -22,13 +22,13 @@ from pypes.codecs_ import PFTDecoder, pft_encode;
 
 import pypes.proto.lex.erg;
 
-from pypes.rewriting.dsf_rewriter import dsf_rewrite;
+from pypes.rewriting.mr_to_dsf import mr_to_dsf;
 
 
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-class TestDSFRewriter( TestCase, metaclass=object_ ):
+class TestMRtoDSF( TestCase, metaclass=object_ ):
   
   _TESTDTADIR = "dta/test";
   
@@ -60,7 +60,7 @@ class TestDSFRewriter( TestCase, metaclass=object_ ):
               
               pf1 = decoder.decode( fstr )( sig=ProtoSig() );
   
-              pf = dsf_rewrite( pf1 );
+              pf = mr_to_dsf( pf1 );
               pfstr = pft_encode( pf );
               
               # print( pfstr );
@@ -133,7 +133,7 @@ def suite():
   suite = unittest.TestSuite();
 
   suite.addTests( unittest.TestLoader().loadTestsFromTestCase(
-      TestDSFRewriter
+      TestMRtoDSF
     ) );
 
   return suite;
