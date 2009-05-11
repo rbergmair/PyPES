@@ -106,7 +106,7 @@ class ERGtoBDSF( ProtoProcessor, metaclass=subject ):
         self._vid += 1;
       for subf in subfs:
         if keyvar not in subf.args.values():
-          subf.args[ Argument( aid="KEY" )( predmod=subf ) ] = keyvar;
+          subf.args[ Argument( aid="KEY" )( predmod=func ) ] = keyvar;
     
     
   def rewrite( self, pf ):
