@@ -201,6 +201,8 @@ class TestsuiteRunner( XMLHandler, metaclass=subject ):
 
     for agent in self._agent:
       
+      agent.preprocess();
+      
       (r1, r2) = agent.infer( discid, antecedent, consequent );
       decision = "unknown";
       

@@ -22,6 +22,10 @@ class InferenceAgent( metaclass=subject ):
   def process_discourse( self, discid, rec, sents, inf=False ):
     
     pass;
+
+  def preprocess( self ):
+    
+    pass;
   
   def infer( self, disc, antecedent, consequent ):
     

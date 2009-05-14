@@ -21,7 +21,7 @@ class Model( metaclass=object_ ):
   def matrices( self ):
     return self._matrices;
   
-  @matrix.setter
+  @matrices.setter
   def _set_matrices( self, value ):
     self._matrices = value;
 

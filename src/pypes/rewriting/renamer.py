@@ -185,7 +185,7 @@ class Renamer( ProtoProcessor, metaclass=subject ):
   
   
   def invert( self, rename_handles_p=True, rename_vars_p=True,
-                     rename_functs_p=True, force_rename_handles_p=False ):
+                    rename_functs_p=True, force_rename_handles_p=False ):
 
     self._invert(
         self._index._handle_by_hid, self._hid_by_handle,

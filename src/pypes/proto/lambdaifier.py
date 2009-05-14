@@ -18,9 +18,9 @@ from pypes.proto.proto_processor import ProtoProcessor;
 class Lambdaifier( ProtoProcessor, metaclass=subject ):
   
   
-  def lambdaify( self ):
+  def lambdaify( self, pf ):
     
-    return self.process( self._obj_ );
+    return self.process( pf );
   
   
   def _process_freezer( self, content, freezelevel ):
@@ -129,11 +129,11 @@ class Lambdaifier( ProtoProcessor, metaclass=subject ):
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-def lambdaify( obj ):
+def lambdaify( pf ):
   
   rslt = None;
-  with Lambdaifier( obj ) as lambdaifier:
-    rslt = lambdaifier.lambdaify();
+  with Lambdaifier() as lambdaifier:
+    rslt = lambdaifier.lambdaify( pf );
   return rslt;
     
 
