@@ -123,7 +123,7 @@ class FuncMerger( ProtoProcessor, metaclass=subject ):
     for i in range( 0, len( funcgroups ) ):
       group = funcgroups[ i ];
       for functor in group:
-        self._fid_by_functor[ functor ] = i;
+        self._fid_by_functor[ functor ] = i+1;
 
 
   def _process_functor( self, inst, fid, referent, feats ):

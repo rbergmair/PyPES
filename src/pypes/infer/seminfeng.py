@@ -21,23 +21,22 @@ from pypes.infer.infeng import InferenceAgent;
 class SemanticInferenceAgent( InferenceAgent, metaclass=subject ):
   
   
-  class _SortMerger( ProtoProcessor, metaclass=subject ):
+  class _PreProcessor( ProtoProcessor, metaclass=subject ):
     
     def _process_sort( self, inst, sid ):
       
       if inst.sid != "x":
         inst.sid = "e";
-        
-    def merge( self, pf ):
+
+    def _process_functor( self, inst, fid, referent, feats ):
       
-      self.process( pf );
-      return pf;
+      inst.feats = {};
 
 
   def _enter_( self ):
     
-    self._sort_merger_ctx = self._SortMerger( self );
-    self._sort_merger = self._sort_merger_ctx.__enter__();
+    self._pp_ctx = self._PreProcessor( self );
+    self._pp = self._pp_ctx.__enter__();
     self._renamer_ctx = Renamer();
     self._renamer = self._renamer_ctx.__enter__();
     self._func_merger_ctx = FuncMerger();
@@ -49,8 +48,8 @@ class SemanticInferenceAgent( InferenceAgent, metaclass=subject ):
     self._func_merger_ctx.__exit__( exc_type, exc_val, exc_tb );
     self._renamer = None;
     self._renamer_ctx.__exit__( exc_type, exc_val, exc_tb );
-    self._sort_merger = None;
-    self._sort_merger_ctx.__exit__( exc_type, exc_val, exc_tb );
+    self._pp = None;
+    self._pp_ctx.__exit__( exc_type, exc_val, exc_tb );
     
 
   def reset( self ):
@@ -80,9 +79,7 @@ class SemanticInferenceAgent( InferenceAgent, metaclass=subject ):
 
     for ( sentid, pf ) in self._pfs.items():
       
-      pf = self._sort_merger.merge( pf );
-      self._pfs[ sentid ] = pf;
-      
+      self._pp.process( pf );
       self._renamer.process_pf( pf );
 
     self._renamer.invert();

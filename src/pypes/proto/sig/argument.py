@@ -32,6 +32,10 @@ class Argument( ProtoBase, metaclass=kls ):
       if obj.aid != self.aid:
         return False;
     return True;
+  
+  def __repr__( self ):
+    
+    return "Argument( aid=" + repr( self.aid ) + ")";
     
     
 

@@ -69,6 +69,15 @@ class Word( ProtoBase, metaclass=kls ):
       return False;
       
     return True;
+  
+  
+  def __repr__( self ):
+    
+    return "Word( " + \
+               "lemma=" + repr( self.lemma ) + ", " + \
+               "pos=" + repr( self.pos ) + ", " + \
+               "sense=" + repr( self.sense ) + " " + \
+             ")";
 
 
 
@@ -151,6 +160,11 @@ class Operator( ProtoBase, metaclass=kls ):
         return False;
       
     return True;
+  
+  
+  def __repr__( self ):
+    
+    return "Operator( otype=" + repr( self.otype ) + " )";
 
 
 

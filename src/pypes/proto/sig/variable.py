@@ -44,6 +44,10 @@ class Variable( ProtoBase, metaclass=kls ):
       return False;
 
     return True;
+  
+  def __repr__( self ):
+    
+    return "Variable( sidvid=" + repr( (self.sort.sid,self.vid) )  + " )";
 
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #

@@ -65,6 +65,15 @@ class Functor( ProtoBase, metaclass=kls ):
           return False;
       
     return True;
+  
+  
+  def __repr__( self ):
+    
+    return "Functor( " + \
+               "fid=" + repr( self.fid ) + ", " + \
+               "referent=" + repr( self.referent ) + ", " + \
+               "feats=" + repr( self.feats ) + " " + \
+             ")";
 
 
 

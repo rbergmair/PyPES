@@ -33,6 +33,10 @@ class Constant( ProtoBase, metaclass=kls ):
         return False;
     
     return True;
+  
+  def __repr__( self ):
+    
+    return "Constant( ident=" + repr( self.ident ) + " )";
     
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
