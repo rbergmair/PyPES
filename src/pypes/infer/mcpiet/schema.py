@@ -19,25 +19,16 @@ class Schema( metaclass=object_ ):
     self.preds = {};
     
     
-  def _add_pred( self, pred, args ):
-    
-    if not pred in self.preds:
-      self.preds[ pred ] = [];
-    for arg in args:
-      if not arg.aid in self.preds[ pred ]:
-        self.preds[ pred ].append( arg.aid );
-
-
   class _PFReader( ProtoProcessor, metaclass=subject ):
     
     def _process_predication( self, inst, subform, predicate, args ):
       
-      referent = inst.predicate.referent;
-      if isinstance( referent, Operator ):
-        if referent.otype in basic.Operator.OPs:
-          return;
-      
-      self._obj_._add_pred( referent, inst.args.keys() );
+      pred = inst.predicate;
+      if not pred in self._obj_.preds:
+        self._obj_.preds[ pred ] = [];
+      for arg in inst.args:
+        if not arg in self._obj_.preds[ pred ]:
+          self._obj_.preds[ pred ].append( arg );
   
   
   def accommodate_for_form( self, pf ):
