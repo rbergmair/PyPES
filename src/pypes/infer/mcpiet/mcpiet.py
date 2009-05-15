@@ -57,7 +57,6 @@ class McPIETAgent( InferenceAgent, metaclass=subject ):
     assert rec.get_ctx_str() == text;
     pf = pft_decode( rec.fetch_first( "sem" ) )( sig = ProtoSig() );
     self._pfs[ sentid ] = pf;
-    self._renamer.process_pf( pf );
 
   
   def process_discourse( self, discid, rec, sents, inf=False ):
@@ -71,16 +70,36 @@ class McPIETAgent( InferenceAgent, metaclass=subject ):
     if self._preprocessed:
       return;
 
-    self._sig = ProtoSig();
-    self._schema = Schema();
-    self._renamer.invert();
-    
     for ( sentid, pf ) in self._pfs.items():
+      
+      self._renamer.process_pf( pf );
+
+    self._renamer.invert();
+
+    self._sig = ProtoSig();
+
+    for ( sentid, pf ) in self._pfs.items():
+      
       pf = self._renamer.rename( pf );
-      #pf = self._sfmerger.rewrite( pf );
       pf_ = lambdaify( pf );
       pf = pf_( sig = self._sig );
       self._pfs[ sentid ] = pf;
+      
+      self._sfmerger.process_pf( pf );
+
+    self._sfmerger.invert();
+
+    self._sig = ProtoSig();
+
+    for ( sentid, pf ) in self._pfs.items():
+      
+      pf = self._sfmerger.merge( pf );
+      pf_ = lambdaify( pf );
+      pf = pf_( sig = self._sig );
+      self._pfs[ sentid ] = pf;
+
+    self._schema = Schema();
+    for ( sentid, pf ) in self._pfs.items():
       self._schema.accommodate_for_form( pf );
 
     self._preprocessed = True;

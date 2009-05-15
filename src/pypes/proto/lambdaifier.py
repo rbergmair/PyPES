@@ -15,7 +15,68 @@ from pypes.proto.proto_processor import ProtoProcessor;
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-class Lambdaifier( ProtoProcessor, metaclass=subject ):
+class LambdaifyingProcessor( ProtoProcessor, metaclass=subject ):
+  
+  
+  def __init__( self ):
+    
+    self.global_holes = {};
+  
+  
+  def process_subform( self, subform ):
+
+    for hole in subform.holes:
+      self.global_holes[ hole ] = 0;
+    
+    return super().process_subform( subform );
+  
+  
+  def _process_freezer( self, content, freezelevel ):
+    
+    pass;
+  
+  def process_freezer( self, handle, freezelevel=None ):
+    
+    if freezelevel is None:
+      freezelevel = self.global_holes[ handle ];
+    
+    if freezelevel == -1:
+      return self.process_handle( handle );
+    else:
+      return self._process_freezer(
+                 self.process_freezer( handle, freezelevel-1 ),
+                 freezelevel
+               );
+  
+  
+  def process_scopebearer( self, inst ):
+    
+    if isinstance( inst, ProtoForm ):
+      return self.process_subform( inst );
+    elif isinstance( inst, Handle ):
+      return self.process_freezer( inst );
+
+    
+  def process_protoform( self, inst, subform ):
+    
+    for hole in self.global_holes:
+      self.global_holes[ hole ] += 1;
+    
+    rslt = super().process_protoform( inst, subform );
+    
+    holes = set( self.global_holes );
+    for hole in holes:
+      self.global_holes[ hole ] -= 1;
+      if self.global_holes[ hole ] < 0:
+        del self.global_holes[ hole ];
+    
+    return rslt;
+  
+  
+  
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+
+class Lambdaifier( LambdaifyingProcessor, metaclass=subject ):
   
   
   def lambdaify( self, pf ):

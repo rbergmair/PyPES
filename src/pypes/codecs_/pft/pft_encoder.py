@@ -28,7 +28,7 @@ def argseq( int_ ):
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-class PFTEncoder( ProtoProcessor, metaclass=subject ):
+class PFTEncoder( LambdaifyingProcessor, metaclass=subject ):
 
 
   def _initialize( self ):

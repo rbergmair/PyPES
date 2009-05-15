@@ -16,11 +16,6 @@ from pypes.proto.lex import *;
 class ProtoProcessor( metaclass=subject ):
   
   
-  def __init__( self ):
-    
-    self.global_holes = {};
-  
-  
   def process( self, inst ):
     
     if isinstance( inst, SubForm ):
@@ -57,9 +52,6 @@ class ProtoProcessor( metaclass=subject ):
 
   def process_subform( self, subform ):
 
-    for hole in subform.holes:
-      self.global_holes[ hole ] = 0;
-      
     subform_ = self._process_subform( subform, subform.holes, subform.protoforms );
 
     if isinstance( subform, Predication ):
@@ -81,9 +73,6 @@ class ProtoProcessor( metaclass=subject ):
   
   def process_freezer( self, handle, freezelevel=None ):
     
-    if freezelevel is None:
-      freezelevel = self.global_holes[ handle ];
-    
     if freezelevel == -1:
       return self.process_handle( handle );
     else:
@@ -98,7 +87,7 @@ class ProtoProcessor( metaclass=subject ):
     if isinstance( inst, ProtoForm ):
       return self.process_subform( inst );
     elif isinstance( inst, Handle ):
-      return self.process_freezer( inst );
+      return self.process_handle( inst );
 
 
   def _process_predication( self, inst, subform, predicate, args ):
@@ -240,9 +229,6 @@ class ProtoProcessor( metaclass=subject ):
   
   def process_protoform( self, inst, subform ):
     
-    for hole in self.global_holes:
-      self.global_holes[ hole ] += 1;
-    
     subforms_ = [];
     
     for root in inst.roots:
@@ -262,12 +248,6 @@ class ProtoProcessor( metaclass=subject ):
         
       subforms_.append( (root_,subform_) );
 
-    holes = set( self.global_holes );
-    for hole in holes:
-      self.global_holes[ hole ] -= 1;
-      if self.global_holes[ hole ] < 0:
-        del self.global_holes[ hole ];
-    
     constraints_ = [];
     for constraint in inst.constraints:
       constraint_ = self.process_constraint( constraint );

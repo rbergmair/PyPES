@@ -5,23 +5,17 @@ __all__ = [ "SFMerger" ];
 
 from pypes.utils.mc import subject;
 
-from pypes.proto import ProtoProcessor, Lambdaifier;
+from pypes.proto import ProtoProcessor, Variable, Constant;
 
 
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-class SFMerger( metaclass=subject ):
+class SFMerger( ProtoProcessor, metaclass=subject ):
 
 
   class _IndexCollector( ProtoProcessor, metaclass=subject ):
     
-    def __init__( self ):
-      
-      super().__init__();
-      self._obj_._argsort_by_functor = {};
-      self._obj_._functor_by_referent = {};
-
     def _process_predmod_functor( self, inst ):
       
       if inst.referent not in self._obj_._functor_by_referent:
@@ -37,9 +31,9 @@ class SFMerger( metaclass=subject ):
         argsort = self._obj_._argsort_by_functor[ functor ];
       
       for (arg,var) in args.items():
-        if arg in argsort:
-          assert argsort[ arg ] == var.sort;
-        argsort[ arg ] = var.sort;
+        if arg.aid in argsort:
+          assert argsort[ arg.aid ] == var;
+        argsort[ arg.aid ] = var;
       
       self._obj_._argsort_by_functor[ functor ] = argsort;
 
@@ -52,40 +46,22 @@ class SFMerger( metaclass=subject ):
       self._process_functor_args( inst.modality, inst.args );
   
   
-  class _Lambdaifier( Lambdaifier, metaclass=subject ):
-    
-    pass;
-  
-  
   def _enter_( self ):
     
     self._idx_collector_ctx = self._IndexCollector( self );
     self._idx_collector = self._idx_collector_ctx.__enter__();
-    self._lambdaifier_ctx = self._Lambdaifier( self );
-    self._lambdaifier = self._lambdaifier_ctx.__enter__();
   
   
   def _exit_( self, exc_type, exc_val, exc_tb ):
 
-    self._lambdaifier = None;
-    self._lambdaifier_ctx.__exit__( exc_type, exc_val, exc_tb );
     self._idx_collector = None;
     self._idx_collector_ctx.__exit__( exc_type, exc_val, exc_tb );
-
+  
   
   def __init__( self ):
     
-    self._sig = None;
-    self._fid = 1;
-
-  
-  def _get_sig( self ):
-    return self._sig;
-  
-  def _set_sig( self, sig ):
-    self._sig = sig;
-    
-  sig = property( _get_sig, _set_sig );
+    self._argsort_by_functor = {};
+    self._functor_by_referent = {};
     
   
   def process_pf( self, pf ):
@@ -93,8 +69,8 @@ class SFMerger( metaclass=subject ):
     self._idx_collector.process( pf );
   
   
-  def merge( self ):
-    
+  def invert( self ):
+
     funcgroups = [];
     assigned = set();
     
@@ -108,7 +84,8 @@ class SFMerger( metaclass=subject ):
         as1 = self._argsort_by_functor[ functor1 ];
         
         assigned.add( functor1 );
-        group = { functor1 };
+        group = set();
+        group.add( functor1 );
         
         for functor2 in functors:
           
@@ -119,13 +96,20 @@ class SFMerger( metaclass=subject ):
           
           merge = True;
           
-          if not( as1.keys() <= as2.keys() or as2.keys() <= as1.keys() ):
+          if not ( ( as1.keys() <= as2.keys() ) or ( as2.keys() <= as1.keys() ) ):
             merge = False;
           else:
             for arg in as1.keys() & as2.keys():
-              if as1[ arg ] != as2[ arg ]:
-                merge = False;
-                break;
+              arg1 = as1[ arg ];
+              arg2 = as2[ arg ];
+              if isinstance( arg1, Variable ) and isinstance( arg2, Variable ):
+                if arg1.sort is not arg2.sort:
+                  merge = False;
+                  break;
+              if isinstance( arg1, Constant ) and isinstance( arg2, Constant ):
+                if arg1 is not arg2:
+                  merge = False;
+                  break;
           
           if merge:
             assigned.add( functor2 );
@@ -133,17 +117,24 @@ class SFMerger( metaclass=subject ):
         
         funcgroups.append( group );
       
-      self._fid_by_functor = {};
-      for i in range( 0, len( funcgroups ) ):
-        group = funcgroups[ i ];
-        for functor in group:
-          self._fid_by_functor[ functor ] = i;
-  
-  
-  def rewrite( self, pf ):
+    self._fid_by_functor = {};
     
-    pf_ = self._lambdaifier.lambdaify( pf );
-    return pf_( sig = self._sig );
+    for i in range( 0, len( funcgroups ) ):
+      group = funcgroups[ i ];
+      for functor in group:
+        self._fid_by_functor[ functor ] = i;
+
+
+  def _process_functor( self, inst, fid, referent, feats ):
+    
+    if inst in self._fid_by_functor:
+      inst.fid = self._fid_by_functor[ inst ];
+  
+  
+  def merge( self, pf ):
+    
+    self.process( pf );
+    return pf;
 
 
 
