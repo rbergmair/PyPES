@@ -1,7 +1,7 @@
 # -*-  coding: ascii -*-  # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 __package__ = "pypes.rewriting";
-__all__ = [ "SFMerger" ];
+__all__ = [ "FuncMerger" ];
 
 from pypes.utils.mc import subject;
 
@@ -11,7 +11,7 @@ from pypes.proto import ProtoProcessor, Variable, Constant;
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-class SFMerger( ProtoProcessor, metaclass=subject ):
+class FuncMerger( ProtoProcessor, metaclass=subject ):
 
 
   class _IndexCollector( ProtoProcessor, metaclass=subject ):
@@ -19,8 +19,9 @@ class SFMerger( ProtoProcessor, metaclass=subject ):
     def _process_predmod_functor( self, inst ):
       
       if inst.referent not in self._obj_._functor_by_referent:
-        self._obj_._functor_by_referent[ inst.referent ] = set();
-      self._obj_._functor_by_referent[ inst.referent ].add( inst );
+        self._obj_._functor_by_referent[ inst.referent ] = [];
+      if inst not in self._obj_._functor_by_referent[ inst.referent ]:
+        self._obj_._functor_by_referent[ inst.referent ].append( inst );
 
     def _process_functor_args( self, functor, args ):
       

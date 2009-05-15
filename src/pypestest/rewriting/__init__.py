@@ -10,6 +10,7 @@ import pypestest.rewriting.erg_to_basic;
 import pypestest.rewriting.erg_to_bdsf;
 import pypestest.rewriting.mr_to_dsf;
 import pypestest.rewriting.renamer;
+import pypestest.rewriting.func_merger;
 
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
@@ -22,6 +23,7 @@ def suite():
   suite.addTests( pypestest.rewriting.erg_to_bdsf.suite() );
   suite.addTests( pypestest.rewriting.mr_to_dsf.suite() );
   suite.addTests( pypestest.rewriting.renamer.suite() );
+  suite.addTests( pypestest.rewriting.func_merger.suite() );
 
   return suite;
 

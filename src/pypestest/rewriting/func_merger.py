@@ -1,7 +1,7 @@
 # -*-  coding: ascii -*-  # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 __package__ = "pypestest.proto";
-__all__ = [ "TestRenamer", "suite", "main" ];
+__all__ = [ "TestFuncMerger", "suite", "main" ];
 
 import sys;
 import unittest;
@@ -12,13 +12,13 @@ from pypes.utils.mc import object_;
 from pypes.proto import ProtoSig, lambdaify;
 from pypes.codecs_ import *;
 
-from pypes.rewriting.sfmerger import SFMerger;
+from pypes.rewriting.func_merger import FuncMerger;
 
 
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-class TestSFMerger( TestCase, metaclass=object_ ):
+class TestFuncMerger( TestCase, metaclass=object_ ):
 
   
   def test_merge_1( self ):
@@ -36,21 +36,21 @@ class TestSFMerger( TestCase, metaclass=object_ ):
                                \ue104 3 ^ 4;
                                \ue104 1 ^ 2 } }""" )( sig=ProtoSig() );
     
-    y = pft_decode( """{ \ue103 { 8: \ue101 |every| x4 { \ue100 |man|:2( arg0=x4 ) } __;
+    y = pft_decode( """{ \ue103 { 8: \ue101 |every| x4 { \ue100 |man|:5( arg0=x4 ) } __;
                                   9: \ue101 |a| x3 { \ue100 |woman|:0( arg0=x3 ) } __;
-                                  5: \ue100 |loves|:1( arg1=x4, arg2=x3 );
+                                  5: \ue100 |loves|:4( arg1=x4, arg2=x3 );
                                   \ue104 9 ^ 5;
                                   \ue104 8 ^ 5 }
-                          /\ {    \ue101 |every| x1 1 { \ue100 |lie|:4( arg1=x1 ) };
+                          /\ {    \ue101 |every| x1 1 { \ue100 |lie|:1( arg1=x1 ) };
                                2: {     \ue103 __ /\ __;
-                                     6: \ue100 |man|:2( arg0=x1 );
-                                     7: \ue102 |say|:6( arg1=x1 ) <3> };
-                               4: \ue101 |she| x2 { \ue100 |she|:3( arg0=x2 ) }
-                                           { \ue100 |lie|:5( arg1=p2 ) };
+                                     6: \ue100 |man|:5( arg0=x1 );
+                                     7: \ue102 |say|:3( arg1=x1 ) <3> };
+                               4: \ue101 |she| x2 { \ue100 |she|:6( arg0=x2 ) }
+                                           { \ue100 |lie|:2( arg1=p2 ) };
                                   \ue104 3 ^ 4;
                                   \ue104 1 ^ 2 } }""" )( sig=ProtoSig() );
     
-    with SFMerger() as merger:
+    with FuncMerger() as merger:
       
       merger.process_pf( x );
       merger.invert();
@@ -68,7 +68,7 @@ def suite():
   suite = unittest.TestSuite();
 
   suite.addTests( unittest.TestLoader().loadTestsFromTestCase(
-      TestSFMerger
+      TestFuncMerger
     ) );
 
   return suite;
