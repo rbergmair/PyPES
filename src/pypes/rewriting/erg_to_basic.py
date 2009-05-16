@@ -234,8 +234,8 @@ class ERGtoBasic( ProtoProcessor, metaclass=subject ):
   
   
   def _map_functor( self, functor, ops, wrds ):
-
-    rslt = copy( functor )( sig=ProtoSig() );
+    
+    rslt = functor;
     
     if isinstance( rslt.referent, Operator ):
       
@@ -276,8 +276,10 @@ class ERGtoBasic( ProtoProcessor, metaclass=subject ):
 
   def _process_quantification( self, inst, subform, quantifier, var, rstr, body ):
 
+    func = copy( inst.quantifier )( sig=ProtoSig() );
+
     functor = self._map_functor(
-                  inst.quantifier,
+                  func,
                   self.OP_Qs,
                   self.WRD_Qs
                 );
@@ -292,8 +294,10 @@ class ERGtoBasic( ProtoProcessor, metaclass=subject ):
 
   def _process_connection( self, inst, subform, connective, lscope, rscope ):
 
+    func = copy( inst.connective )( sig=ProtoSig() );
+
     functor = self._map_functor(
-                  inst.connective,
+                  func,
                   self.OP_Cs,
                   self.WRD_Cs
                 );
