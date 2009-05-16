@@ -58,6 +58,7 @@ class McPIETAgent( SemanticInferenceAgent, metaclass=subject ):
   def infer( self, disc, antecedent, consequent ):
     
     pprint( self._schema.preds );
+    pprint( self._schema.sorts );
 
     model = self._builder.build( self._schema );
     

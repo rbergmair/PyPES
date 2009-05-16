@@ -17,13 +17,13 @@ class Model( metaclass=object_ ):
     self._schema = schema;
     self._matrices = None;
   
-  @property
-  def matrices( self ):
+  def _get_matrices( self ):
     return self._matrices;
   
-  @matrices.setter
   def _set_matrices( self, value ):
     self._matrices = value;
+  
+  matrices = property( _get_matrices, _set_matrices );
 
 
 
