@@ -5,7 +5,7 @@ __all__ = [ "ERGtoBasic", "erg_to_basic" ];
 
 from copy import copy;
 
-from pypes.proto import ProtoProcessor, ProtoSig, Operator, Word;
+from pypes.proto import ProtoProcessor, ProtoSig, Operator, Word, Variable;
 
 from pypes.utils.mc import subject, object_;
 from pypes.proto.lex import basic, erg;
@@ -233,11 +233,57 @@ class ERGtoBasic( ProtoProcessor, metaclass=subject ):
     };
   
   
+  class _VarsCollector( ProtoProcessor, metaclass=subject ):
+    
+    def _process_modification( self, inst, subform, modality, args, scope ):
+    
+      for var in inst.args.values():
+        if isinstance( var, Variable ):
+          if not var in self._obj_:
+            self._obj_[ var ] = 0;
+          self._obj_[ var ] += 1;
+    
+    def _process_predication( self, inst, subform, predicate, args ):
+    
+      for var in inst.args.values():
+        if isinstance( var, Variable ):
+          if not var in self._obj_:
+            self._obj_[ var ] = 0;
+          self._obj_[ var ] += 1;
+
+
+  def _process_argslist( self, args ):
+
+    for (arg,var) in set( args.items() ):
+      
+      if isinstance( var, Variable ):
+        
+        if var.sort.sid != "e":
+          if var in self._vars and self._vars[ var ] <= 1:
+            del args[ arg ];
+            continue;
+
+        if var.sort.sid != "x":
+          if arg.aid in { "ARG0", "arg0" }:
+            arg.aid = "KEY";
+    
+    return args;
+
+
+  def _process_modification( self, inst, subform, modality, args, scope ):
+    
+    self._process_argslist( inst.args );
+    
+  def _process_predication( self, inst, subform, predicate, args ):
+
+    self._process_argslist( inst.args );
+
+
   def _map_functor( self, functor, ops, wrds ):
     
     rslt = functor;
     
-    if isinstance( rslt.referent, Operator ):
+    if isinstance( rslt.referent, erg.Operator ):
       
       oldotype = rslt.referent.otype;
       if oldotype in basic.Operator.OPs:
@@ -254,23 +300,23 @@ class ERGtoBasic( ProtoProcessor, metaclass=subject ):
         return None;
       
       rslt.referent = basic.Operator( otype = newotype )( sig=ProtoSig() );
-      return rslt;
     
-    assert isinstance( rslt.referent, Word );
-    
-    oldwrd = rslt.referent.word;
-    
-    if oldwrd is None:
-      return None;
-    
-    if oldwrd not in wrds:
-      return None;
-    
-    newop = wrds[oldwrd];
-    if newop is None:
-      return None;
+    elif isinstance( rslt.referent, erg.Word ):
       
-    rslt.referent = basic.Operator( otype = newop )( sig=ProtoSig() );
+      oldwrd = rslt.referent.word;
+      
+      if oldwrd is None:
+        return None;
+      
+      if oldwrd not in wrds:
+        return None;
+      
+      newop = wrds[oldwrd];
+      if newop is None:
+        return None;
+        
+      rslt.referent = basic.Operator( otype = newop )( sig=ProtoSig() );
+    
     return rslt;
 
 
@@ -288,6 +334,8 @@ class ERGtoBasic( ProtoProcessor, metaclass=subject ):
       functor.fid = None;
       inst.quantifier = functor;
       return;
+    
+    print( inst.quantifier );
     
     assert False;
 
@@ -317,6 +365,8 @@ class ERGtoBasic( ProtoProcessor, metaclass=subject ):
                   self.OP_Ms,
                   self.WRD_Ms
                 );
+    
+    inst.args = self._process_argslist( inst.args );
 
     if functor is not None:
       functor.fid = None;
@@ -326,7 +376,7 @@ class ERGtoBasic( ProtoProcessor, metaclass=subject ):
     if isinstance( inst.modality.referent, Operator ):
       assert False;
     
-    functor = copy( inst.modality )( sig=ProtoSig() );
+    functor = inst.modality;
     functor.referent = basic.Operator(
                            otype = basic.Operator.OP_M_NULL
                          )( sig=ProtoSig() );
@@ -342,12 +392,14 @@ class ERGtoBasic( ProtoProcessor, metaclass=subject ):
                   self.WRD_Ps
                 );
 
+    inst.args = self._process_argslist( inst.args );
+
     if functor is not None:
       functor.fid = None;
       inst.predicate = functor;
       return;
 
-    functor = copy( inst.predicate )( sig=ProtoSig() );
+    functor = inst.predicate;
     
     if isinstance( functor.referent, Operator ):
       
@@ -366,10 +418,25 @@ class ERGtoBasic( ProtoProcessor, metaclass=subject ):
       functor.fid = None;
                          
     inst.predicate = functor;
+
+
+  def _enter_( self ):
+    
+    self._vars = {};
+    self._vars_collector_ctx = self._VarsCollector( self._vars );
+    self._vars_collector = self._vars_collector_ctx.__enter__();
+
+
+  def _exit_( self, exc_type, exc_val, exc_tb ):
+
+    self._vars_collector = None;
+    self._vars_collector_ctx.__exit__( exc_type, exc_val, exc_tb );
   
 
   def rewrite( self ):
     
+    self._vars.clear();
+    self._vars_collector.process( self._obj_ );
     self.process( self._obj_ );
     return self._obj_;
 

@@ -35,7 +35,7 @@ class Argument( ProtoBase, metaclass=kls ):
   
   def __repr__( self ):
     
-    return "Argument( aid=" + repr( self.aid ) + ")";
+    return "Argument( aid=" + repr( self.aid ) + " )";
     
     
 

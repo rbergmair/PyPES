@@ -17,51 +17,6 @@ from pypes.rewriting.erg_to_basic import ERGtoBasic;
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 class ERGtoBDSF( ProtoProcessor, metaclass=subject ):
-  
-  
-  class _VarsCollector( ProtoProcessor, metaclass=subject ):
-    
-    def _process_modification( self, inst, subform, modality, args, scope ):
-    
-      for var in inst.args.values():
-        if isinstance( var, Variable ):
-          if not var in self._obj_:
-            self._obj_[ var ] = 0;
-          self._obj_[ var ] += 1;
-    
-    def _process_predication( self, inst, subform, predicate, args ):
-    
-      for var in inst.args.values():
-        if isinstance( var, Variable ):
-          if not var in self._obj_:
-            self._obj_[ var ] = 0;
-          self._obj_[ var ] += 1;
-  
-  
-  class _PreDSFRewriter( ProtoProcessor, metaclass=subject ):
-    
-    def _process_argslist( self, args ):
-  
-      for (arg,var) in set( args.items() ):
-        
-        if isinstance( var, Variable ):
-          
-          if var.sort.sid != "e":
-            if var in self._obj_ and self._obj_[ var ] <= 1:
-              del args[ arg ];
-              continue;
-  
-          if var.sort.sid != "x":
-            if arg.aid in { "ARG0", "arg0" }:
-              arg.aid = "KEY";
-  
-    def _process_modification( self, inst, subform, modality, args, scope ):
-      
-      self._process_argslist( inst.args );
-      
-    def _process_predication( self, inst, subform, predicate, args ):
-  
-      self._process_argslist( inst.args );
 
 
   class _FuncsCollector( ProtoProcessor, metaclass=subject ):
@@ -111,13 +66,6 @@ class ERGtoBDSF( ProtoProcessor, metaclass=subject ):
     
   def rewrite( self, pf ):
     
-    self._vars = {};
-    
-    with self._VarsCollector( self._vars ) as coll:
-      coll.process( pf );
-    with self._PreDSFRewriter( self._vars ) as pdr:
-      pdr.process( pf );
-      
     with MRtoDSF( pf ) as rewriter:
       pf = rewriter.rewrite();
 
