@@ -11,7 +11,8 @@ from pypes.scoping.solver import Solver;
 from pypes.scoping.enumerator import Enumerator;
 from pypes.scoping.recursivizer import Recursivizer;
 
-from pypes.rewriting.erg_to_dsf_rewriter import erg_to_dsf_rewrite;
+from pypes.rewriting.erg_to_bdsf import erg_to_bdsf;
+from pypes.rewriting.erg_to_basic import erg_to_basic;
 
 from pypes.proto import *;
 
@@ -80,20 +81,33 @@ def main( argv=None ):
               scoerrs.add( id );
               continue;
             
-            pfrw = None;
+            basic = None;
             try:
-              pfrw = erg_to_dsf_rewrite( pf );
+              basic = erg_to_basic( pfrec );
             except:
-              print( "   can't rewrite." );
-              rec.set( "status", "rewerr" );
+              print( "   can't rewrite to basic." );
+              rec.set( "status", "basicerr" );
+              rewerrs.add( id );
+              raise;
+              continue;
+
+            pft = pft_encode( basic, pretty=False, fast_initialize=True, linebreaks=False )
+            rec.append_to( "basic", pft );
+            
+            bdsf = None;
+            try:
+              bdsf = erg_to_bdsf( pf );
+            except:
+              print( "   can't rewrite to bdsf." );
+              rec.set( "status", "bdsferr" );
               rewerrs.add( id );
               raise;
               continue;
 
             succ.add( id );
             
-            pft = pft_encode( pfrw, pretty=False, fast_initialize=True, linebreaks=False )
-            rec.append_to( "sem", pft );
+            pft = pft_encode( bdsf, pretty=False, fast_initialize=True, linebreaks=False )
+            rec.append_to( "bdsf", pft );
 
       finally:
         f.close();

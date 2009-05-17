@@ -20,6 +20,8 @@ from pypes.infer.infeng import InferenceAgent;
 
 class SemanticInferenceAgent( InferenceAgent, metaclass=subject ):
   
+  SEMFIELD = None;
+  
   
   class _PreProcessor( ProtoProcessor, metaclass=subject ):
     
@@ -31,6 +33,11 @@ class SemanticInferenceAgent( InferenceAgent, metaclass=subject ):
     def _process_functor( self, inst, fid, referent, feats ):
       
       inst.feats = {};
+  
+  
+  class _PostProcessor( self ):
+    
+    pass;
 
 
   def _enter_( self ):
@@ -62,7 +69,7 @@ class SemanticInferenceAgent( InferenceAgent, metaclass=subject ):
   def process_sentence( self, sentid, rec, text ):
     
     assert rec.get_ctx_str() == text;
-    pf = pft_decode( rec.fetch_first( "sem" ) )( sig = ProtoSig() );
+    pf = pft_decode( rec.fetch_first( self.SEMFIELD ) )( sig = ProtoSig() );
     self._pfs[ sentid ] = pf;
 
 

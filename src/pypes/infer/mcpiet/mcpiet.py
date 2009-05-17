@@ -20,6 +20,8 @@ from pypes.infer.mcpiet.schema import Schema;
 
 class McPIETAgent( SemanticInferenceAgent, metaclass=subject ):
   
+  SEMFIELD = "basic";
+  
   
   def _enter_( self ):
     
