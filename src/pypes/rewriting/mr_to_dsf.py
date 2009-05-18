@@ -5,7 +5,7 @@ __all__ = [ "MRtoDSF", "mr_to_dsf" ];
 
 from copy import copy;
 
-from pprint import pprint;
+# from pprint import pprint;
 
 from pypes.utils.mc import subject, object_;
 from pypes.proto import *;
@@ -148,34 +148,17 @@ class MRtoDSF( metaclass=subject ):
 
     def _filter_subprotoform( self, var, pf ):
       
-      conns = [];
-      nonconns = [];
-      for root in pf.roots:
-        subform = pf.subforms[ root ];
-        if not isinstance( subform, Connection ):
-          nonconns.append( subform );
-          continue;
-        if not isinstance( subform.connective.referent, Operator ):
-          nonconns.append( subform );
-          continue;
-        if not subform.connective.referent.otype == Operator.OP_C_WEACON:
-          nonconns.append( subform );
-          continue;
-        if not ( isinstance( subform.lscope, Handle ) and isinstance( subform.rscope, Handle ) ):
-          nonconns.append( subform );
-          continue;
-        if not ( subform.lscope.hid is None and subform.rscope.hid is None ):
-          nonconns.append( subform );
-          continue;
-        conns.append( subform );
-      conns.append( None );
-      try:
-        assert len( conns ) == len( nonconns );
-        assert len( pf.constraints ) == 0;
-      except:
-        pprint( conns );
-        pprint( nonconns );
-        raise;
+      conns = None;
+      nonconns = None;
+      
+      if len( pf.roots ) == 1:
+        nonconns = [ pf.subforms[ pf.roots[0] ] ];
+        conns = [ None ];
+      else:
+        rc = analyze_as_conjunction_pf( pf );
+        assert rc is not None;
+        ( conns, nonconns ) = rc;
+        conns.append( None );
       
       occurs = False;
       newsubfs_occurs = [];

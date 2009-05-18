@@ -1,7 +1,8 @@
 # -*-  coding: ascii -*-  # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 __package__ = "pypes.proto";
-__all__ = [ "SanityChecker", "sanity_check" ];
+__all__ = [ "SanityChecker", "sanity_check",
+            "analyze_as_conjunction_pf" ];
 
 from pypes.utils.mc import subject;
 
@@ -50,7 +51,45 @@ def sanity_check( obj ):
   with SanityChecker( obj ) as checker:
     rslt = checker.check();
   return rslt;
-    
+
+
+
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+
+def analyze_as_conjunction_pf( pf ):
+  
+  conns = [];
+  nonconns = [];
+  for root in pf.roots:
+    subform = pf.subforms[ root ];
+    if not isinstance( subform, Connection ):
+      nonconns.append( subform );
+      continue;
+    if not isinstance( subform.connective.referent, Operator ):
+      nonconns.append( subform );
+      continue;
+    if not subform.connective.referent.otype == Operator.OP_C_WEACON:
+      nonconns.append( subform );
+      continue;
+    if not ( isinstance( subform.lscope, Handle ) and isinstance( subform.rscope, Handle ) ):
+      nonconns.append( subform );
+      continue;
+    if not ( subform.lscope.hid is None and subform.rscope.hid is None ):
+      nonconns.append( subform );
+      continue;
+    conns.append( subform );
+  
+  if len( conns ) < 1:
+    return None;
+  
+  if len( pf.constraints ) > 0:
+    return None;
+  
+  if not len(conns) + 1 == len(nonconns):
+    return None;
+  
+  return ( conns, nonconns );
+  
 
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
