@@ -3,8 +3,6 @@
 __package__ = "pypes.infer";
 __all__ = [ "ModelBuilder" ];
 
-import random;
-
 from pypes.utils.mc import subject;
 from pypes.proto import *;
 from pypes.proto.lex import basic;
@@ -17,6 +15,14 @@ from pypes.infer.mcpiet.logic import *;
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 class ModelBuilder( metaclass=subject ):
+
+  def __init__( self ):
+    
+    self.reset();
+
+  def reset( self ):
+    
+    pass;
   
   def _build_matrix( self, argsorts ):
     

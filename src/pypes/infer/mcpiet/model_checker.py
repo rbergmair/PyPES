@@ -5,15 +5,31 @@ __all__ = [ "ModelChecker" ];
 
 from pypes.utils.mc import subject;
 
+from pypes.proto import ProtoProcessor;
+
 
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 class ModelChecker( metaclass=subject ):
   
-  pass;
-
-
+  def __init__( self ):
+    
+    self.reset();
+    
+  def reset( self ):
+    
+    self._pfs = {};
+  
+  def process_form( self, pf ):
+    
+    self._pfs[ pf ] = pf;
+  
+  def check( self, model ):
+    
+    pass;
+    
+    
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 #                                                                             #
