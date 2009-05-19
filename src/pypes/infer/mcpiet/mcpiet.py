@@ -49,12 +49,15 @@ class McPIETAgent( SemanticInferenceAgent, metaclass=subject ):
   
   def preprocess( self ):
     
-    super().preprocess();
+    rslt = super().preprocess();
+    
     self._schema = Schema();
     for ( sentid, pf ) in self._pfs.items():
       self._schema.accommodate_for_form( pf );
 
     self._preprocessed = True;
+    
+    return rslt;
     
   
   def infer( self, disc, antecedent, consequent ):

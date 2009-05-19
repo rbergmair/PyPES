@@ -29,11 +29,14 @@ class Schema( metaclass=object_ ):
         self._obj_.preds[ pred ] = [];
         
       for arg in inst.args:
+
+        var = inst.args[ arg ];
+        if not isinstance( var, Variable ):
+          continue;
         
         if not arg in self._obj_.preds[ pred ]:
           self._obj_.preds[ pred ].append( arg );
           
-        var = inst.args[ arg ];
         sort = var.sort;
         if arg in self._obj_.sorts:
           assert self._obj_.sorts[ arg ] == sort;

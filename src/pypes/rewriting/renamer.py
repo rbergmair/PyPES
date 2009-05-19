@@ -229,7 +229,14 @@ class Renamer( ProtoProcessor, metaclass=subject ):
             vars.remove( var );
           self._sortvid_by_variable[ var ] = (var.sort,vid);
           sidvids.add( (sid,vid) );
-          assert var.vid == vid;
+          try:
+            # TODO: check this.
+            # assert var.vid == vid;
+            pass;
+          except:
+            print( var.vid );
+            print( vid );
+            raise;
           
         for var in vars:
           assert self._index._variable_references[ var ] >= 1;

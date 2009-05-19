@@ -13,6 +13,8 @@ from pypes.infer.mcpiet.mcpiet import McPIETAgent;
 
 from pypes.utils.itembank import *;
 
+from pypes.codecs_ import pft_encode;
+
 
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
@@ -88,7 +90,7 @@ class TestsuiteRunner( XMLHandler, metaclass=subject ):
           self._obj_._consequent
         );
       
-      sys.exit( 0 );
+      #sys.exit( 0 );
 
 
   class _GroupHandler( XMLElementHandler, metaclass=subject ):
@@ -176,6 +178,7 @@ class TestsuiteRunner( XMLHandler, metaclass=subject ):
     for agent in self._agent:
       agent.reset();
     self._discs = {};
+    self._processed = set();
     
   
   def _process_sentence( self, sentid, text ):
@@ -200,8 +203,20 @@ class TestsuiteRunner( XMLHandler, metaclass=subject ):
     self._process_discourse( discid, sents, inf=True );
 
     for agent in self._agent:
+
+      f = self._ofile[ agent ];
       
-      agent.preprocess();
+      if not agent in self._processed:
+        self._processed.add( agent );
+        rslt = agent.preprocess();
+        f.write( "<!--\n" );
+        for ( key, pf ) in rslt.items():
+          key_ = str( key ) + ": ";
+          outp = pft_encode( pf );
+          outp = outp.replace( "\n", "\n" + len(key_) * " " );
+          outp = key_ + outp + "\n";
+          f.write( outp );
+        f.write( "-->\n" );
       
       (r1, r2) = agent.infer( discid, antecedent, consequent );
       decision = "unknown";
@@ -212,8 +227,6 @@ class TestsuiteRunner( XMLHandler, metaclass=subject ):
         decision = "contradiction";
       if r1 >= 1.0 and r2 >= 1.0:
         decision = "unknown";
-      
-      f = self._ofile[ agent ];
       
       f.write(
           ( """<annotation infid="{0:s}" decision="{1:s}">\n"""

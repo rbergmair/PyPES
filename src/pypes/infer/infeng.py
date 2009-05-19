@@ -25,7 +25,7 @@ class InferenceAgent( metaclass=subject ):
 
   def preprocess( self ):
     
-    pass;
+    return {};
   
   def infer( self, disc, antecedent, consequent ):
     

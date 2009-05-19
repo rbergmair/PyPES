@@ -5,7 +5,7 @@ __all__ = [ "SemanticInferenceAgent" ];
 
 from pypes.utils.mc import subject;
 
-from pypes.proto import ProtoSig, lambdaify, ProtoProcessor;
+from pypes.proto import *;
 
 from pypes.codecs_ import pft_decode, pft_encode;
 
@@ -35,9 +35,47 @@ class SemanticInferenceAgent( InferenceAgent, metaclass=subject ):
       inst.feats = {};
   
   
-  class _PostProcessor( self ):
+  class _PostProcessor( ProtoProcessor, metaclass=subject ):
     
-    pass;
+    def _process_protoform( self, inst, subform, subforms, constraints ):
+      
+      def wrap( subform ):
+        
+        pf = ProtoForm()( sig = ProtoSig() );
+        root = Handle()( sig = ProtoSig() );
+        pf.append_fragment( root, subform );
+        return pf;
+      
+      r = analyze_as_conjunction_pf( inst );
+      if r is None:
+        return;
+      
+      ( conns, nonconns ) = r;
+      
+      print( conns );
+      print( nonconns );
+      
+      cur = conns[0];
+      
+      conns = conns[1:];
+
+      cur.lscope = wrap( nonconns[0] );
+      cur.rscope = wrap( nonconns[1] );
+
+      nonconns = nonconns[2:];
+      
+      for ( nonconn, conn ) in zip( nonconns, conns ):
+        print( "!" );
+        
+        conn.lscope = wrap( cur );
+        conn.rscope = wrap( nonconn );
+        cur = conn;
+      
+      newroot = Handle()( sig = ProtoSig() );
+      inst.roots = [ newroot ];
+      inst.subforms = { newroot: cur };
+      
+      return inst;
 
 
   def _enter_( self ):
@@ -48,9 +86,13 @@ class SemanticInferenceAgent( InferenceAgent, metaclass=subject ):
     self._renamer = self._renamer_ctx.__enter__();
     self._func_merger_ctx = FuncMerger();
     self._func_merger = self._func_merger_ctx.__enter__();
+    self._postp_ctx = self._PostProcessor( self );
+    self._postp = self._postp_ctx.__enter__();
 
   def _exit_( self, exc_type, exc_val, exc_tb ):
 
+    self._postp = None;
+    self._postp_ctx.__exit__( exc_type, exc_val, exc_tb );
     self._func_merger = None;
     self._func_merger_ctx.__exit__( exc_type, exc_val, exc_tb );
     self._renamer = None;
@@ -63,7 +105,6 @@ class SemanticInferenceAgent( InferenceAgent, metaclass=subject ):
     
     self._pfs = {};
     self._discs = {};
-    self._preprocessed = False;
     
   
   def process_sentence( self, sentid, rec, text ):
@@ -81,9 +122,6 @@ class SemanticInferenceAgent( InferenceAgent, metaclass=subject ):
 
   def preprocess( self ):
     
-    if self._preprocessed:
-      return;
-
     for ( sentid, pf ) in self._pfs.items():
       
       self._pp.process( pf );
@@ -112,6 +150,11 @@ class SemanticInferenceAgent( InferenceAgent, metaclass=subject ):
       pf_ = lambdaify( pf );
       pf = pf_( sig = self._sig );
       self._pfs[ sentid ] = pf;
+
+    for pf in self._pfs.values():
+      self._postp.process( pf );
+    
+    return self._pfs;
 
   
   def infer( self, disc, antecedent, consequent ):
