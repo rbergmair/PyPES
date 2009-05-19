@@ -78,6 +78,7 @@ class McPIETAgent( SemanticInferenceAgent, metaclass=subject ):
     self._schema = Schema();
     for ( sentid, pf ) in self._pfs.items():
       self._schema.accommodate_for_form( pf );
+      self._checker.preprocess( sentid, pf );
 
     self._preprocessed = True;
     
@@ -86,14 +87,18 @@ class McPIETAgent( SemanticInferenceAgent, metaclass=subject ):
   
   def infer( self, disc, antecedent, consequent ):
     
-    pprint( self._schema.preds );
-    pprint( self._schema.sorts );
+    # pprint( self._schema.preds );
+    # pprint( self._schema.sorts );
 
     model = self._builder.build( self._schema );
     antdisc = self._discs[ antecedent ];
-    ant = self._pfs[ antdisc[0] ];
-    self._checker.process_form( ant );
-    self._checker.check( model );
+    ant = antdisc[0];
+    try:
+      print( self._checker.check( ant, model ) );
+    except:
+      print( antdisc );
+      print( ant );
+      raise;
     
     return ( 1.0, 0.0 );
 

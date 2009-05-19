@@ -16,7 +16,7 @@ class Schema( metaclass=object_ ):
   
   def __init__( self ):
     
-    self.preds = {};
+    self.args = {};
     self.sorts = {};
     
     
@@ -25,8 +25,8 @@ class Schema( metaclass=object_ ):
     def _process_predication( self, inst, subform, predicate, args ):
       
       pred = inst.predicate;
-      if not pred in self._obj_.preds:
-        self._obj_.preds[ pred ] = [];
+      if not pred in self._obj_.args:
+        self._obj_.args[ pred ] = [];
         
       for arg in inst.args:
 
@@ -34,8 +34,8 @@ class Schema( metaclass=object_ ):
         if not isinstance( var, Variable ):
           continue;
         
-        if not arg in self._obj_.preds[ pred ]:
-          self._obj_.preds[ pred ].append( arg );
+        if not arg in self._obj_.args[ pred ]:
+          self._obj_.args[ pred ].append( arg );
           
         sort = var.sort;
         if arg in self._obj_.sorts:

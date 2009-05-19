@@ -49,12 +49,12 @@ class ModelBuilder( metaclass=subject ):
     
     model = Model( schema );
     matrices = {};
-    for ( functor, args ) in schema.preds.items():
+    for ( functor, args ) in schema.args.items():
       matrices[ functor ] = self._build_matrix(
                                 [ ( arg, schema.sorts[ arg ] ) for arg in args ]
                               );
     model.matrices = matrices;
-    return matrices;
+    return model;
 
 
 

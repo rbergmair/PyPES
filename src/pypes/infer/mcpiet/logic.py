@@ -43,4 +43,33 @@ def is_undesignated( t ):
   return _TV_MAXFALSE + 1 <= t <= _TV_MINTRUE - 1;
 
 
+
+def neg( p ):
+  return _TV_MAX - p;
+
+def strcon( p, q ):
+  return max( _TV_MIN, p + q - _TV_MAX );
+
+def weacon( p, q ):
+  return min( p, q );
+
+def strdis( p, q ):
+  return min( _TV_MAX, p + q );
+
+def weadis( p, q ):
+  return max( p, q );
+
+def imp( p, q ):
+  return min( _TV_MAX, _TV_MAX - p + q );
+
+
+
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+#                                                                             #
+#        PyPES: the python platform for experimentation with semantics        #
+#                                                                             #
+#                  (c) Copyright 2009 by Richard Bergmair                     #
+#       -----------------------------------------------------------------     #
+#       See LICENSE.txt for terms and conditions on use and reproduction.     #
+#                                                                             #
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #

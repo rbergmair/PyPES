@@ -52,9 +52,6 @@ class SemanticInferenceAgent( InferenceAgent, metaclass=subject ):
       
       ( conns, nonconns ) = r;
       
-      print( conns );
-      print( nonconns );
-      
       cur = conns[0];
       
       conns = conns[1:];
@@ -65,7 +62,6 @@ class SemanticInferenceAgent( InferenceAgent, metaclass=subject ):
       nonconns = nonconns[2:];
       
       for ( nonconn, conn ) in zip( nonconns, conns ):
-        print( "!" );
         
         conn.lscope = wrap( cur );
         conn.rscope = wrap( nonconn );
