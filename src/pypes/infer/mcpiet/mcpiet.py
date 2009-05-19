@@ -14,6 +14,8 @@ from pypes.infer.mcpiet.model_builder import ModelBuilder;
 from pypes.infer.mcpiet.model_checker import ModelChecker;
 from pypes.infer.mcpiet.schema import Schema;
 
+from pypes.infer.mcpiet import logic as dfltlogic;
+
 
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
@@ -23,12 +25,32 @@ class McPIETAgent( SemanticInferenceAgent, metaclass=subject ):
   SEMFIELD = "basic";
   
   
+  def __init__( self, paramid=None, logic=None, builder=None, checker=None ):
+    
+    super().__init__( paramid );
+    
+    if logic is None:
+      self._logic = dfltlogic;
+    else:
+      self._logic = logic;
+      
+    if builder is None:
+      self._builder_new = ModelBuilder;
+    else:
+      self._builder_new = builder;
+    
+    if checker is None:
+      self._checker_new = ModelChecker;
+    else:
+      self._checker_new = checker;
+  
+  
   def _enter_( self ):
     
     super()._enter_();
-    self._builder_ctx = ModelBuilder();
+    self._builder_ctx = self._builder_new();
     self._builder = self._builder_ctx.__enter__();
-    self._checker_ctx = ModelChecker();
+    self._checker_ctx = self._checker_new();
     self._checker = self._checker_ctx.__enter__();
     
 

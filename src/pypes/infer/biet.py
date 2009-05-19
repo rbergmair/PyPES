@@ -12,7 +12,6 @@ from pypes.infer.infeng import InferenceAgent;
 
 class YesInferenceAgent( InferenceAgent, metaclass=subject ):
   
-  
   def infer( self, disc, antecedent, consequent ):
     
     return ( 1.0, 0.0 );

@@ -142,7 +142,12 @@ class TestsuiteRunner( XMLHandler, metaclass=subject ):
     self._agent_ctx.append( inst_ctx );
     self._agent.append( inst );
     
-    f = open( self._tsdir + "/" + agent.__name__ + ".tsa.xml", "wt" );
+    filename = self._tsdir + "/" + inst.__class__.__name__;
+    if inst.paramid is not None:
+      filename += "-" + inst.paramid;
+    filename += ".tsa.xml";
+    
+    f = open( filename, "wt" );
     self._ofile[ inst ] = f;
     
     f.write(
@@ -258,6 +263,7 @@ def run_testsuite( tsdir, itemsdir ):
   
   with TestsuiteRunner( (tsdir,itemsdir) ) as runner:
     
+    #runner.add_agent( lambda: YesInferenceAgent( paramid="ASDF" ) );
     runner.add_agent( YesInferenceAgent );
     runner.add_agent( NoInferenceAgent );
     runner.add_agent( McPIETAgent );

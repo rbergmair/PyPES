@@ -39,14 +39,15 @@ class Object( metaclass=object_ ):
 class _SubjectCtxMgr( metaclass=object_ ):
 
 
-  def __init__( self, subj ):
+  def __init__( self, subj, kwargs ):
 
     self._subj = subj;
+    self._kwargs = kwargs;
 
 
   def __enter__( self ):
 
-    self._subj._subject__orig_init( self._subj );
+    self._subj._subject__orig_init( self._subj, **self._kwargs );
     
     enter = None;
     try:
@@ -83,13 +84,13 @@ class _SubjectCtxMgr( metaclass=object_ ):
 class subject( type ):
 
 
-  def __new( cls, obj=None ):
+  def __new( cls, obj=None, **kwargs ):
 
     inst = cls.__orig_new( cls );
     inst.__orig_init = cls.__init__;
     inst.__init__ = lambda *args, **kwargs: None;
     inst._obj_ = obj;
-    return _SubjectCtxMgr( inst );
+    return _SubjectCtxMgr( inst, kwargs );
 
 
   def __new__( mcs, name, bases, dict ):

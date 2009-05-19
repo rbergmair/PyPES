@@ -7,8 +7,9 @@ from pypes.utils.mc import subject;
 from pypes.proto import *;
 from pypes.proto.lex import basic;
 
+from pypes.infer.mcpiet import logic as dfltlogic;
+
 from pypes.infer.mcpiet.model import Model;
-from pypes.infer.mcpiet.logic import *;
 
 
 
@@ -16,18 +17,26 @@ from pypes.infer.mcpiet.logic import *;
 
 class ModelBuilder( metaclass=subject ):
 
-  def __init__( self ):
+
+  def __init__( self, logic=None ):
+
+    if logic is None:
+      self._logic = dfltlogic;
+    else:
+      self._logic = logic;
     
     self.reset();
+
 
   def reset( self ):
     
     pass;
+
   
   def _build_matrix( self, argsorts ):
     
     if len( argsorts ) == 0:
-      return rand();
+      return self._logic.rand();
     
     argss = argsorts[ 1: ];
     return [

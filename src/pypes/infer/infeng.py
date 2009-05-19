@@ -10,6 +10,10 @@ from pypes.utils.mc import subject;
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 class InferenceAgent( metaclass=subject ):
+  
+  def __init__( self, paramid=None ):
+    
+    self.paramid = paramid;
 
   def reset( self ):
     
