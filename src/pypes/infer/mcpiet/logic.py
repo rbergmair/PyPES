@@ -43,6 +43,10 @@ def is_undesignated( t ):
   return _TV_MAXFALSE + 1 <= t <= _TV_MINTRUE - 1;
 
 
+def to_float( t ):
+  return t / _TV_MAX;
+
+
 
 def neg( p ):
   return _TV_MAX - p;
