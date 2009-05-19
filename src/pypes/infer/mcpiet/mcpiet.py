@@ -66,6 +66,8 @@ class McPIETAgent( SemanticInferenceAgent, metaclass=subject ):
     pprint( self._schema.sorts );
 
     model = self._builder.build( self._schema );
+    ant = self._pfs[ antecedent ];
+    self._checker.check( model, ant );
     
     return ( 1.0, 0.0 );
 

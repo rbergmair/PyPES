@@ -25,6 +25,11 @@ class Model( metaclass=object_ ):
   
   matrices = property( _get_matrices, _set_matrices );
 
+  def _get_schema( self ):
+    return self._schema;
+  
+  schema = property( _get_schema );
+
 
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
