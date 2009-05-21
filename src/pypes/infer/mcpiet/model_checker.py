@@ -37,8 +37,24 @@ class ModelChecker( metaclass=subject ):
 
 
     def _process_predication( self, inst, subform, predicate, args ):
-
-      def pred( model, binding ):
+      
+      def equality( model, binding ):
+        
+        ref = None;
+        
+        for var in inst.args.values():
+          if var.sort.sid != "x":
+            continue;
+          indiv = binding[ var ];
+          if ref is None:
+            ref = indiv;
+          else:
+            if indiv != ref:
+              return self._obj_._logic.rand_false();
+        
+        return self._obj_._logic.rand_true();
+      
+      def open_pred( model, binding ):
         
         matrix = model._matrices[ inst.predicate ];
         args = model._schema.args[ inst.predicate ];
@@ -94,7 +110,21 @@ class ModelChecker( metaclass=subject ):
         
         return r;
       
-      return pred;
+      if not isinstance( inst.predicate.referent, Operator ):
+        return open_pred;
+      if not inst.predicate.referent.otype in Operator.OPs:
+        return open_pred;
+      
+      p = inst.predicate.referent.otype;
+      
+      if p == Operator.OP_P_EQUALITY:
+        return equality;
+      elif p == Operator.OP_P_TAUTOLOGY:
+        return lambda model, binding: self._obj_._logic.rand_true();
+      elif p == Operator.OP_P_AND:
+        return lambda model, binding: self._obj_._logic.rand_true();
+      elif p == Operator.OP_P_OR:
+        return lambda model, binding: self._obj_._logic.rand_true();
 
     
     def _process_quantification( self, inst, subform, quantifier, var, rstr, body ):

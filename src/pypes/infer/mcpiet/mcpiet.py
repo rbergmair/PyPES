@@ -96,7 +96,7 @@ class McPIETAgent( SemanticInferenceAgent, metaclass=subject ):
     #print( antdisc );
     #print( condisc );
     
-    for i in range( 0, 1 << 7 ):
+    for i in range( 0, 1 << 11 ):
   
       model = self._builder.build( self._schema );
       
@@ -108,14 +108,14 @@ class McPIETAgent( SemanticInferenceAgent, metaclass=subject ):
         if ant is None:
           ant = r;
         else:
-          ant = self._logic.weacon( ant, r );
+          ant = self._logic.strcon( ant, r );
   
       for sent in condisc:
         r = self._checker.check( sent, model );
         if con is None:
           con = r;
         else:
-          con = self._logic.weacon( con, r );
+          con = self._logic.strcon( con, r );
       
       #print( ant );
       #print( con );
@@ -131,8 +131,8 @@ class McPIETAgent( SemanticInferenceAgent, metaclass=subject ):
       else:
         r2 += self._logic.imp( ant, self._logic.neg( con ) );
     
-    r1 >>= 7;
-    r2 >>= 7;
+    r1 >>= 11;
+    r2 >>= 11;
     
     return ( self._logic.to_float(r1), self._logic.to_float(r2) );
 

@@ -2,6 +2,8 @@
 
 import sys;
 
+from pypes.utils.os_ import listsubdirs;
+
 from pypes.infer.runner import run_testsuite;
 
 
@@ -9,7 +11,19 @@ from pypes.infer.runner import run_testsuite;
 
 def main( argv=None ):
   
-  run_testsuite( "dta/infer/fracas/fracas-1-1", "dta/items/fracas" );
+  datadir = None;
+  itemsdir = None;
+  
+  if argv is None or len( argv ) < 3:
+    datadir = "dta/infer/fracas/fracas-1";
+    itemsdir = "dta/items/fracas";
+  else:
+    datadir = argv[1];
+    itemsdir = argv[2];
+  
+  for subdir in listsubdirs( datadir ):
+    print( subdir );
+    run_testsuite( subdir, itemsdir );
 
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #

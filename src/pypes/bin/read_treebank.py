@@ -53,6 +53,9 @@ def main( argv=None ):
           assert tbl.has_id( id );
           with tbl.record_by_id( id ) as rec:
             
+            rec.reset( "basic" );
+            rec.reset( "bdsf" );
+            
             print( "{0:3d}: {1:s}".format( id, rec.get_ctx_str() ) );
 
             pf = None;

@@ -2,6 +2,8 @@
 
 import sys;
 
+from pypes.utils.os_ import listsubdirs;
+
 from pypes.infer._evaluation.comparison import compare;
 
 
@@ -9,10 +11,24 @@ from pypes.infer._evaluation.comparison import compare;
 
 def main( argv=None ):
   
-  compare(
-      "dta/infer/fracas/fracas-1-1/gold.tsa.xml",
-      "dta/infer/fracas/fracas-1-1/McPIETAgent.tsa.xml"
-    );
+  datadir = None;
+  reference = None;
+  object = None;
+  
+  if argv is None or len( argv ) < 4:
+    datadir = "dta/infer/fracas/fracas-1";
+    reference = "gold.tsa.xml";
+    object = "McPIETAgent.tsa.xml";
+  else:
+    datadir = argv[1];
+    reference = argv[2];
+    object = argv[3];
+  
+  for subdir in listsubdirs( datadir ):
+    compare( subdir + "/" + reference, subdir + "/" + object );
+    print();
+    print();
+    print();
 
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #

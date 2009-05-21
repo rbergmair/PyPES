@@ -5,7 +5,6 @@ __all__ = [ "Schema" ];
 
 from pypes.utils.mc import object_, subject;
 from pypes.proto import *;
-from pypes.proto.lex import basic;
 
 
 
@@ -25,6 +24,10 @@ class Schema( metaclass=object_ ):
     def _process_predication( self, inst, subform, predicate, args ):
       
       pred = inst.predicate;
+      ref = pred.referent;
+      if isinstance( ref, Operator ) and ref.otype in Operator.OPs:
+        return;
+      
       if not pred in self._obj_.args:
         self._obj_.args[ pred ] = [];
         

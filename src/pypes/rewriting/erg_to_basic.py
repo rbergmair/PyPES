@@ -232,6 +232,12 @@ class ERGtoBasic( ProtoProcessor, metaclass=subject ):
       
     };
   
+  NONCTRL_WRD_Ps = [
+      ( (['be'], 'v', 'there'), basic.Operator.OP_P_TAUTOLOGY ),
+      ( (['be'], 'v', 'id'), basic.Operator.OP_P_EQUALITY )
+    ];
+  
+  
   
   class _VarsCollector( ProtoProcessor, metaclass=subject ):
     
@@ -410,12 +416,27 @@ class ERGtoBasic( ProtoProcessor, metaclass=subject ):
       
     else:
       assert isinstance( functor.referent, Word );
-      functor.referent = basic.Word(
-                             lemma = functor.referent.lemma,
-                             pos = functor.referent.pos,
-                             sense = functor.referent.sense
-                           )( sig=ProtoSig() );
-      functor.fid = None;
+      lemma = functor.referent.lemma;
+      pos = functor.referent.pos;
+      sense = functor.referent.sense;
+      refkey = ( lemma, pos, sense );
+      
+      found = False;
+      for ( key, replacement ) in self.NONCTRL_WRD_Ps:
+        if refkey == key:
+          functor.referent = basic.Operator(
+                                 otype = replacement
+                               )( sig=ProtoSig() );
+          functor.fid = None;
+          found = True;
+      
+      if not found:
+        functor.referent = basic.Word(
+                               lemma = functor.referent.lemma,
+                               pos = functor.referent.pos,
+                               sense = functor.referent.sense
+                             )( sig=ProtoSig() );
+        functor.fid = None;
                          
     inst.predicate = functor;
 
