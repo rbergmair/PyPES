@@ -215,7 +215,8 @@ class TestsuiteRunner( XMLHandler, metaclass=subject ):
         self._processed.add( agent );
         rslt = agent.preprocess();
         f.write( "<!--\n" );
-        for ( key, pf ) in rslt.items():
+        for key in sorted( rslt.keys() ):
+          pf = rslt[ key ];
           key_ = str( key ) + ": ";
           outp = pft_encode( pf );
           outp = outp.replace( "\n", "\n" + len(key_) * " " );

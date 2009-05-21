@@ -42,9 +42,10 @@ class ERGtoBasic( ProtoProcessor, metaclass=subject ):
       erg.Word.ALL_Q: basic.Operator.OP_Q_UNIV,
       erg.Word.BOTH_Q: basic.Operator.OP_Q_UNIV,
       erg.Word.EACH_Q: basic.Operator.OP_Q_UNIV,
-      erg.Word.EITHER_Q: basic.Operator.OP_Q_UNIV,
       erg.Word.EVERY_Q: basic.Operator.OP_Q_UNIV,
       erg.Word.MOST_Q: basic.Operator.OP_Q_UNIV,
+
+      erg.Word.EITHER_Q: basic.Operator.OP_Q_EXIST,
 
       erg.Word.NEITHER_Q: basic.Operator.OP_Q_UNIV_NEG,
       erg.Word.NO_Q: basic.Operator.OP_Q_UNIV_NEG,
@@ -221,14 +222,14 @@ class ERGtoBasic( ProtoProcessor, metaclass=subject ):
       
       # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
       
-      erg.Word.AT_LEAST_X_DEG: None,
-      erg.Word.AT_MOST_X_DEG: None,
-      erg.Word.EXACTLY_X_DEG: None,
-      erg.Word.JUST_X_DEG: None,
-      erg.Word.NEARLY_X_DEG: None,
-      erg.Word.REALLY_X_DEG: None,
-      erg.Word.TWICE_X_DEG: None,
-      erg.Word.VERY_X_DEG: None,
+      erg.Word.AT_LEAST_X_DEG: basic.Operator.OP_P_TAUTOLOGY,
+      erg.Word.AT_MOST_X_DEG: basic.Operator.OP_P_TAUTOLOGY,
+      erg.Word.EXACTLY_X_DEG: basic.Operator.OP_P_TAUTOLOGY,
+      erg.Word.JUST_X_DEG: basic.Operator.OP_P_TAUTOLOGY,
+      erg.Word.NEARLY_X_DEG: basic.Operator.OP_P_TAUTOLOGY,
+      erg.Word.REALLY_X_DEG: basic.Operator.OP_P_TAUTOLOGY,
+      erg.Word.TWICE_X_DEG: basic.Operator.OP_P_TAUTOLOGY,
+      erg.Word.VERY_X_DEG: basic.Operator.OP_P_TAUTOLOGY
       
     };
   
