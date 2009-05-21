@@ -15,7 +15,7 @@ def main( argv=None ):
   itemsdir = None;
   
   if argv is None or len( argv ) < 3:
-    datadir = "dta/infer/fracas/fracas-1";
+    datadir = "dta/infer/fracas/fracas-2";
     itemsdir = "dta/items/fracas";
   else:
     datadir = argv[1];

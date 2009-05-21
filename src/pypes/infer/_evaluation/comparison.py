@@ -36,14 +36,20 @@ def compare( referencefile, objectfile ):
   
   print( "      | {0:23s} | {1:23s}".format( "REFERENCE", "OBJECT" ) )
   
-  print( "-" *59 );
+  print( "-" * 59 );
   
   right = 0;
   wrong = 0;
+  error = 0;
   
   for ( infid, ( ref_decision, ref_vals ) ) in refdata:
     
     if ref_decision is None:
+      continue;
+    
+    if infid not in objdata:
+      error += 1;
+      print( "{0} {1:3s} | {2:23s} | {3:23s}".format( " ", infid, ref_decision, "-" ) );
       continue;
     
     ( obj_decision, obj_vals ) = objdata[ infid ];
@@ -59,12 +65,16 @@ def compare( referencefile, objectfile ):
     print( "{0} {1:3s} | {2:23s} | {3:23s}".format( ch, infid, ref_decision, obj_decision ) );
 
   print( "-" *59 );
+  
+  total = right + wrong;
 
   print();
   print( "right:           {0:2d}".format( right ) );
   print( "wrong:           {0:2d}".format( wrong ) );
-  print( "total:           {0:2d}".format( right+wrong ) );
-  print( "accuracy:       {0:2d}%".format( int( right*100 / (right+wrong) ) ) );
+  print( "total:           {0:2d}".format( total ) );
+  print( "accuracy:       {0:2d}%".format( int( (right*100) / total ) ) );
+  print( "error:           {0:2d}".format( error ) );
+  print( "coverage:       {0:2d}%".format( int( (total*100) / (total+error) ) ) );
     
 
 

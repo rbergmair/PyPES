@@ -2,6 +2,7 @@
 
 __package__ = "pypes.proto";
 __all__ = [ "SanityChecker", "sanity_check",
+            "RecursionChecker", "recursion_check",
             "analyze_as_conjunction_pf" ];
 
 from pypes.utils.mc import subject;
@@ -89,6 +90,44 @@ def analyze_as_conjunction_pf( pf ):
     return None;
   
   return ( conns, nonconns );
+
+
+
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+
+class RecursionChecker( ProtoProcessor, metaclass=subject ):
+  
+  
+  def __init__( self ):
+    
+    self._insane = False;
+    super().__init__();
+  
+  
+  def check( self ):
+    
+    self.process( self._obj_ );
+    return not self._insane;
+  
+  
+  def _process_protoform( self, inst, subform, subforms, constraints ):
+    
+    if len( subforms ) == 1:
+      return;
+    
+    if analyze_as_conjunction_pf( inst ) is None:
+      self._insane = True;
+
+
+
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+
+def recursion_check( obj ):
+  
+  rslt = None;
+  with RecursionChecker( obj ) as checker:
+    rslt = checker.check();
+  return rslt;
   
 
 

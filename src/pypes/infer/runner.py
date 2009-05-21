@@ -184,28 +184,38 @@ class TestsuiteRunner( XMLHandler, metaclass=subject ):
       agent.reset();
     self._discs = {};
     self._processed = set();
+    self._error = False;
     
   
   def _process_sentence( self, sentid, text ):
     
     with self._sents_tbl.record_by_id( sentid ) as rec:
-      for agent in self._agent:
-        assert rec.get_ctx_str() == text;
-        agent.process_sentence( sentid, rec, text );
+      if rec.get( "status" ) != "succ":
+        self._error = True;
+      else:
+        for agent in self._agent:
+          assert rec.get_ctx_str() == text;
+          agent.process_sentence( sentid, rec, text );
   
   
   def _process_discourse( self, discid, sents, inf=False ):
 
     self._discs[ discid ] = sents;
     with self._discs_tbl.record_by_id( discid ) as rec:
-      for agent in self._agent:
-        agent.process_discourse( discid, rec, sents, inf=inf );
+      if rec.get( "status" ) != "succ":
+        self._error = True;
+      else:
+        for agent in self._agent:
+          agent.process_discourse( discid, rec, sents, inf=inf );
   
   
   def _infer( self, infid, discid, antecedent, consequent ):
     
     sents = self._discs[ antecedent ] + self._discs[ consequent ];
     self._process_discourse( discid, sents, inf=True );
+    
+    if self._error:
+      return;
 
     for agent in self._agent:
 

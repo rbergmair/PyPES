@@ -233,7 +233,7 @@ class ModelChecker( metaclass=subject ):
                    
       elif c == Operator.OP_C_IMPL:
         return lambda model, binding: \
-                 self._obj_._logic.impl(
+                 self._obj_._logic.imp(
                      lscope( model, binding ),
                      rscope( model, binding )
                    );
@@ -273,7 +273,13 @@ class ModelChecker( metaclass=subject ):
   
   def preprocess( self, pfid, pf ):
     
-    self._pfs[ pfid ] = self._compiler.process( pf );
+    try:
+      self._pfs[ pfid ] = self._compiler.process( pf );
+    except:
+      from pypes.codecs_ import pft_encode;
+      print( pfid );
+      print( pft_encode( pf ) );
+      raise;
 
   
   def check( self, pfid, model ):

@@ -21,6 +21,11 @@ from pypes.proto import *;
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 def main( argv=None ):
+
+  with TableManager( ( "dta/items/fracas", "discourse" ) ) as tbl:
+    for i in range( 1, tbl.max_id+1 ):
+      with tbl.record_by_id( i ) as rec:
+        rec.set( "status", "succ" );
   
   with TableManager( ( "dta/items/fracas", "sentence" ) ) as tbl:
     
@@ -77,6 +82,14 @@ def main( argv=None ):
                     with Recursivizer( solution ) as recursivizer:
                       assert pfrec is None;
                       pfrec = recursivizer.recursivize();
+                      
+            if pfrec is not None:
+              if not sanity_check( pfrec ):
+                pfrec = None;
+                
+            if pfrec is not None:
+              if not recursion_check( pfrec ):
+                pfrec = None;
             
             if pfrec is None:
               print( "   can't scope." );
@@ -100,17 +113,21 @@ def main( argv=None ):
             bdsf = None;
             try:
               bdsf = erg_to_bdsf( pf );
+              assert sanity_check( bdsf );
+              assert recursion_check( bdsf );
             except:
               print( "   can't rewrite to bdsf." );
               rec.set( "status", "bdsferr" );
               rewerrs.add( id );
-              raise;
+              # raise;
               continue;
 
             succ.add( id );
             
             pft = pft_encode( bdsf, pretty=False, fast_initialize=True, linebreaks=False )
             rec.append_to( "bdsf", pft );
+
+            rec.set( "status", "succ" );
 
       finally:
         f.close();

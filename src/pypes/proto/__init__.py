@@ -9,7 +9,9 @@ __all__ = [ "Connection", "Constraint", "Handle", "Freezer", "Modification",
             "ProtoBase",
             "ProtoProcessor",
             "LambdaifyingProcessor", "Lambdaifier", "lambdaify",
-            "SanityChecker", "sanity_check", "analyze_as_conjunction_pf" ];
+            "SanityChecker", "sanity_check",
+            "RecursionChecker", "recursion_check",
+            "analyze_as_conjunction_pf" ];
 
 from pypes.proto.form import Connection;
 from pypes.proto.form import Constraint;
@@ -39,8 +41,8 @@ from pypes.proto.lambdaifier import LambdaifyingProcessor;
 from pypes.proto.lambdaifier import Lambdaifier;
 from pypes.proto.lambdaifier import lambdaify;
 
-from pypes.proto.utils import SanityChecker;
-from pypes.proto.utils import sanity_check;
+from pypes.proto.utils import SanityChecker, sanity_check;
+from pypes.proto.utils import RecursionChecker, recursion_check;
 
 from pypes.proto.utils import analyze_as_conjunction_pf;
 
