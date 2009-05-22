@@ -52,20 +52,19 @@ class ModelChecker( metaclass=subject ):
 
     def _process_predication( self, inst, subform, predicate, args ):
       
-      matrix = model._matrices[ inst.predicate ];
-      args = model._schema.args[ inst.predicate ];
+      args = self._schema.args[ inst.predicate ];
       
       dropped_args = [];
   
       for arg in args:
-        sort = model._schema.sorts[ arg ];
+        sort = self._schema.sorts[ arg ];
         if arg not in predication.args:
           dropped_args.append( arg );
           # TODO: look into
           # assert sort.sid == "x";
       
       if not isinstance( inst.predicate.referent, Operator ):
-        return open_pred;
+        return self._logic.fo_open_pred;
       if not inst.predicate.referent.otype in Operator.OPs:
         return open_pred;
       
