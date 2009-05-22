@@ -1,9 +1,18 @@
+# -*-  coding: ascii -*-  # # # # # # # # # # # # # # # # # # # # # # # # # # #
+
+__package__ = "pypes.infer.mcpiet.logic";
+__all__ = [ "FirstOrderModelTheory" ];
+
+from pypes.infer.mcpiet.logic.prop_model_theory import PropositionalModelTheory;
+
+
+
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-class FirstOrderModelTheory:
+class FirstOrderModelTheory( PropositionalModelTheory ):
 
   @classmethod
-  def equality( model, binding, predication, logic ):
+  def equality( cls, model, binding, predication ):
     
     ref = None;
     
@@ -20,7 +29,7 @@ class FirstOrderModelTheory:
     return logic.rand_false();
   
   @classmethod
-  def open_pred( model, binding, predication, logic, dropped_args ):
+  def open_pred( cls, model, binding, predication, logic, dropped_args ):
     
     matrix = model._matrices[ predication.predicate ];
     args = model._schema.args[ predication.predicate ];
@@ -78,4 +87,14 @@ class FirstOrderModelTheory:
     
     return r;
 
+
+
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+#                                                                             #
+#        PyPES: the python platform for experimentation with semantics        #
+#                                                                             #
+#                  (c) Copyright 2009 by Richard Bergmair                     #
+#       -----------------------------------------------------------------     #
+#       See LICENSE.txt for terms and conditions on use and reproduction.     #
+#                                                                             #
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
