@@ -23,9 +23,14 @@ class FuncMerger( ProtoProcessor, metaclass=subject ):
       if inst not in self._obj_._functor_by_referent[ inst.referent ]:
         self._obj_._functor_by_referent[ inst.referent ].append( inst );
 
-    def _process_functor_args( self, functor, args ):
+    def _process_functor_args( self, functor, ftype, args ):
       
       self._process_predmod_functor( functor );
+      
+      if functor in self._obj_._ftype_by_functor:
+        assert self._obj_._ftype_by_functor[ functor ] == ftype;
+      else:
+        self._obj_._ftype_by_functor[ functor ] = ftype;
 
       argsort = {};
       if functor in self._obj_._argsort_by_functor:
@@ -40,11 +45,11 @@ class FuncMerger( ProtoProcessor, metaclass=subject ):
 
     def _process_predication( self, inst, subform, predicate, args ):
       
-      self._process_functor_args( inst.predicate, inst.args );
+      self._process_functor_args( inst.predicate, "P", inst.args );
       
     def _process_modification( self, inst, subform, modality, args, scope ):
 
-      self._process_functor_args( inst.modality, inst.args );
+      self._process_functor_args( inst.modality, "M", inst.args );
   
   
   def _enter_( self ):
@@ -62,6 +67,7 @@ class FuncMerger( ProtoProcessor, metaclass=subject ):
   def __init__( self ):
     
     self._argsort_by_functor = {};
+    self._ftype_by_functor = {};
     self._functor_by_referent = {};
     
   
@@ -83,6 +89,7 @@ class FuncMerger( ProtoProcessor, metaclass=subject ):
           continue;
         
         as1 = self._argsort_by_functor[ functor1 ];
+        t1 = self._ftype_by_functor[ functor1 ];
         
         assigned.add( functor1 );
         group = set();
@@ -94,8 +101,9 @@ class FuncMerger( ProtoProcessor, metaclass=subject ):
             continue;
           
           as2 = self._argsort_by_functor[ functor2 ];
+          t2 = self._ftype_by_functor[ functor2 ];
           
-          merge = True;
+          merge = ( t1 == t2 );
           
           if not ( ( as1.keys() <= as2.keys() ) or ( as2.keys() <= as1.keys() ) ):
             merge = False;

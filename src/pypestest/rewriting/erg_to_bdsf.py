@@ -76,12 +76,13 @@ class TestERGtoBDSF( TestCase, metaclass=object_ ):
               txt = k.read();
               k.close();
               
-              x.write( filename );
-              x.write( ": " );
-              x.write( txt );
-              x.write( "\n" );
-              x.write( pfstr );
-              x.write( "\n\f\n\n" );
+              if x is not None:
+                x.write( filename );
+                x.write( ": " );
+                x.write( txt );
+                x.write( "\n" );
+                x.write( pfstr );
+                x.write( "\n\f\n\n" );
               
               g.write( pft_encode( pf, pretty=False, fast_initialize=True ) );
               
@@ -109,9 +110,9 @@ class TestERGtoBDSF( TestCase, metaclass=object_ ):
 
     with PFTDecoder( (pypes.proto.lex.erg,None) ) as decoder:
       
-      i = 75;
-      self.write_testfile( "{0}/mrs-{1}1.pft.gz".format( self._TESTDTADIR, i ), decoder );
-      #self.write_testfile( "{0}/fracas-new-{1}.pft.gz".format( self._TESTDTADIR, i ), decoder );
+      i = 41;
+      #self.write_testfile( "{0}/mrs-{1}1.pft.gz".format( self._TESTDTADIR, i ), decoder );
+      self.write_testfile( "{0}/fracas-{1}.pft.gz".format( self._TESTDTADIR, i ), decoder );
 
   
   def test_rewriter( self ):

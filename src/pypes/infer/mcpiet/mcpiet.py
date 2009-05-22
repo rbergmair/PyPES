@@ -22,7 +22,7 @@ from pypes.infer.mcpiet import logic as dfltlogic;
 
 class McPIETAgent( SemanticInferenceAgent, metaclass=subject ):
   
-  SEMFIELD = "basic";
+  SEMFIELD = "bdsf";
   
   
   def __init__( self, paramid=None, logic=None, builder=None, checker=None ):

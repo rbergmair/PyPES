@@ -16,7 +16,7 @@ def main( argv=None ):
   object = None;
   
   if argv is None or len( argv ) < 4:
-    datadir = "dta/infer/fracas/fracas-2";
+    datadir = "dta/infer/fracas/fracas-1";
     reference = "gold.tsa.xml";
     object = "McPIETAgent.tsa.xml";
   else:

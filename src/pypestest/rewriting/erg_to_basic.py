@@ -98,9 +98,9 @@ class TestERGtoBasic( TestCase, metaclass=object_ ):
 
     with PFTDecoder( (pypes.proto.lex.erg,None) ) as decoder:
       
-      i = 75;
-      self.write_testfile( "{0}/mrs-{1}1.pft.gz".format( self._TESTDTADIR, i ), decoder );
-      #self.write_testfile( "{0}/fracas-new-{1}.pft.gz".format( self._TESTDTADIR, i ), decoder );
+      i = 41;
+      #self.write_testfile( "{0}/mrs-{1}1.pft.gz".format( self._TESTDTADIR, i ), decoder );
+      self.write_testfile( "{0}/fracas-{1}.pft.gz".format( self._TESTDTADIR, i ), decoder );
 
   
   def test_rewriter( self ):

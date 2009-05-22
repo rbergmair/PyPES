@@ -109,6 +109,8 @@ def main( argv=None ):
 
             pft = pft_encode( basic, pretty=False, fast_initialize=True, linebreaks=False )
             rec.append_to( "basic", pft );
+
+            pf = mrs_decode( mrs, MRSDecoder.SEM_ERG )( sig=ProtoSig() );
             
             bdsf = None;
             try:

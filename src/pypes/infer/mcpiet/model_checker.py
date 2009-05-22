@@ -7,8 +7,9 @@ from itertools import product;
 
 from pypes.utils.mc import subject;
 
-from pypes.proto import ProtoProcessor, Operator;
-from pypes.proto import Variable, Constant;
+#from pypes.proto import ProtoProcessor, Operator;
+#from pypes.proto import Variable, Constant;
+from pypes.proto import *;
 
 from pypes.infer.mcpiet import logic as dfltlogic;
 
@@ -20,6 +21,15 @@ class ModelChecker( metaclass=subject ):
   
   
   class _FormCompiler( ProtoProcessor, metaclass=subject ):
+
+
+    def process_scopebearer( self, inst ):
+      
+      if isinstance( inst, ProtoForm ):
+        return super().process_scopebearer( inst );
+      elif isinstance( inst, Handle ):
+        assert False;
+        return super().process_scopebearer( inst );
 
 
     def _process_protoform( self, inst, subform, subforms, constraints ):
@@ -65,7 +75,8 @@ class ModelChecker( metaclass=subject ):
           sort = model._schema.sorts[ arg ];
           if arg not in inst.args:
             dropped_args.append( arg );
-            assert sort.sid == "x";
+            # TODO: look into
+            # assert sort.sid == "x";
         
         r = None;
 
@@ -125,6 +136,12 @@ class ModelChecker( metaclass=subject ):
         return lambda model, binding: self._obj_._logic.rand_true();
       elif p == Operator.OP_P_OR:
         return lambda model, binding: self._obj_._logic.rand_true();
+      else:
+        try:
+          assert False;
+        except:
+          print( p );
+          raise;
 
     
     def _process_quantification( self, inst, subform, quantifier, var, rstr, body ):
@@ -269,12 +286,14 @@ class ModelChecker( metaclass=subject ):
   def reset( self ):
     
     self._pfs = {};
+    self._checkers = {};
 
   
   def preprocess( self, pfid, pf ):
     
     try:
-      self._pfs[ pfid ] = self._compiler.process( pf );
+      self._pfs[ pfid ] = pf;
+      self._checkers[ pfid ] = self._compiler.process( pf );
     except:
       from pypes.codecs_ import pft_encode;
       print( pfid );
@@ -283,9 +302,19 @@ class ModelChecker( metaclass=subject ):
 
   
   def check( self, pfid, model ):
+
+    checker = self._checkers[ pfid ];
+    r = None;
+
+    try:
+      r = checker( model, {} );
+    except:
+      from pypes.codecs_ import pft_encode;
+      print( pfid );
+      print( pft_encode( self._pfs[ pfid ] ) );
+      raise;
     
-    checker = self._pfs[ pfid ];
-    return checker( model, {} );
+    return r;
     
     
 

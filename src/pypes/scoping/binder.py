@@ -137,7 +137,8 @@ class Binder( ProtoProcessor, metaclass=subject ):
       rslt = Predication()( sig=ProtoSig() );
       rslt.holes = subform.holes;
       rslt.protoforms = subform.protoforms;
-      rslt.predicate = subform.modality;
+      rslt.predicate = copy( subform.modality )( sig=ProtoSig() );
+      # rslt.predicate.referent = copy( subform.modality.referent )( sig=ProtoSig() );
       rslt.args = subform.args;
       return rslt;
     else:

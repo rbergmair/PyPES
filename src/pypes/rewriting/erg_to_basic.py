@@ -170,8 +170,8 @@ class ERGtoBasic( ProtoProcessor, metaclass=subject ):
       erg.Operator.PLACE_N: None,
       erg.Operator.REASON: None,
 
-      erg.Operator.NUMBERED_HOUR: 'NUMBERED_HOUR',
-      erg.Operator.NUMBERED_HOUR_UNK: 'NUMBERED_HOUR',
+      erg.Operator.NUMBERED_HOUR: "NUMBERED_HOUR",
+      erg.Operator.NUMBERED_HOUR_UNK: "NUMBERED_HOUR",
       erg.Operator.MINUTE: None,
       
       erg.Operator.DOFW: None,
@@ -235,7 +235,8 @@ class ERGtoBasic( ProtoProcessor, metaclass=subject ):
   
   NONCTRL_WRD_Ps = [
       ( (['be'], 'v', 'there'), basic.Operator.OP_P_TAUTOLOGY ),
-      ( (['be'], 'v', 'id'), basic.Operator.OP_P_EQUALITY )
+      ( (['be'], 'v', 'id'), basic.Operator.OP_P_EQUALITY ),
+      ( (['people'], 'n', 'of'), erg.Operator.PERSON ),
     ];
   
   

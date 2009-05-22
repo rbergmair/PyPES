@@ -67,21 +67,6 @@ class ProtoProcessor( metaclass=subject ):
     assert False;
   
   
-  def _process_freezer( self, content, freezelevel ):
-    
-    pass;
-  
-  def process_freezer( self, handle, freezelevel=None ):
-    
-    if freezelevel == -1:
-      return self.process_handle( handle );
-    else:
-      return self._process_freezer(
-                 self.process_freezer( handle, freezelevel-1 ),
-                 freezelevel
-               );
-  
-  
   def process_scopebearer( self, inst ):
     
     if isinstance( inst, ProtoForm ):
