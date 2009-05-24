@@ -25,26 +25,22 @@ class Schema( metaclass=object_ ):
       
       pred = inst.predicate;
       ref = pred.referent;
-      if isinstance( ref, Operator ) and ref.otype in Operator.OPs:
-        return;
       
       if not pred in self._obj_.args:
         self._obj_.args[ pred ] = [];
         
-      for arg in inst.args:
+      for ( arg, var ) in inst.args.items():
 
-        var = inst.args[ arg ];
         if not isinstance( var, Variable ):
           continue;
         
         if not arg in self._obj_.args[ pred ]:
           self._obj_.args[ pred ].append( arg );
-          
-        sort = var.sort;
+        
         if arg in self._obj_.sorts:
-          assert self._obj_.sorts[ arg ] == sort;
+          assert self._obj_.sorts[ arg ] == var.sort;
         else:
-          self._obj_.sorts[ arg ] = sort;
+          self._obj_.sorts[ arg ] = var.sort;
   
   
   def accommodate_for_form( self, pf ):

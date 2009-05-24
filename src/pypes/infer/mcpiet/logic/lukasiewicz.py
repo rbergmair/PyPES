@@ -1,39 +1,35 @@
 # -*-  coding: ascii -*-  # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 __package__ = "pypes.infer.mcpiet.logic";
-__all__ = [ "PropositionalModelTheory" ];
+__all__ = [ "PropositionalLogic" ];
 
-from pypes.infer.mcpiet.logic.model_theory import ModelTheory;
+from pypes.utils.mc import subject;
+
+from pypes.infer.mcpiet.logic.fuzzy import Logic;
 
 
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-class PropositionalModelTheory( ModelTheory ):
+class PropositionalLogic( Logic, metaclass=subject ):
   
-  @classmethod
-  def p_neg( cls, p ):
-    return cls._TV_MAX - p;
+  def p_neg( self, p ):
+    return self.TV_TRUE - p;
   
-  @classmethod
-  def p_strcon( cls, p, q ):
-    return max( cls._TV_MIN, p + q - cls._TV_MAX );
+  def p_strcon( self, p, q ):
+    return max( self.TV_FALSE, p + q - self.TV_TRUE );
   
-  @classmethod
-  def p_weacon( cls, p, q ):
+  def p_weacon( self, p, q ):
     return min( p, q );
   
-  @classmethod
-  def p_strdis( cls, p, q ):
-    return min( cls._TV_MAX, p + q );
+  def p_strdis( self, p, q ):
+    return min( self.TV_TRUE, p + q );
   
-  @classmethod
-  def p_weadis( cls, p, q ):
+  def p_weadis( self, p, q ):
     return max( p, q );
   
-  @classmethod
-  def p_imp( cls, p, q ):
-    return min( cls._TV_MAX, cls._TV_MAX - p + q );
+  def p_imp( self, p, q ):
+    return min( self.TV_TRUE, self.TV_TRUE - p + q );
 
 
 

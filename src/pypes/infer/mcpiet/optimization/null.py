@@ -3,8 +3,6 @@
 __package__ = "pypes.infer.mcpiet.logic";
 __all__ = [ "Optimizer" ];
 
-from itertools import product;
-
 from pypes.utils.mc import subject;
 
 
@@ -16,17 +14,10 @@ class Optimizer( metaclass=subject ):
   @classmethod
   def optimize( cls, arg_range, free_args, args, function ):
     
-    max_rslt = None;
+    for arg in free_args:
+      args[ arg ] = arg_range[0];
     
-    free_args_ = list( free_args );
-    for val in product( arg_range, repeat = len(free_args) ):
-      for idx in range( 0, len(free_args) ):
-        args[ free_args_[idx] ] = val[idx];
-      rslt = function( args );
-      if max_rslt is None or rslt > max_rslt:
-        max_rslt = rslt;
-    
-    return max_rslt;
+    return function( args );
     
     
 

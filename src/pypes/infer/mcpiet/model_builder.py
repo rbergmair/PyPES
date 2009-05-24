@@ -7,8 +7,6 @@ from pypes.utils.mc import subject;
 from pypes.proto import *;
 from pypes.proto.lex import basic;
 
-from pypes.infer.mcpiet import logic as dfltlogic;
-
 from pypes.infer.mcpiet.model import Model;
 
 
@@ -18,14 +16,15 @@ from pypes.infer.mcpiet.model import Model;
 class ModelBuilder( metaclass=subject ):
 
 
-  def __init__( self, logic=None ):
+  def __init__( self, logic, entity_range, event_range ):
 
-    if logic is None:
-      self._logic = dfltlogic;
-    else:
-      self._logic = logic;
-    
+    self._logic = logic;
+    self._entity_range = entity_range;
+    self._event_range = event_range;
     self.reset();
+
+    assert set( self._entity_range ) == { 0, 1, 2 };
+    assert set( self._event_range ) == { 0, 1, 2 };
 
 
   def reset( self ):
@@ -36,7 +35,7 @@ class ModelBuilder( metaclass=subject ):
   def _build_matrix( self, argsorts ):
     
     if len( argsorts ) == 0:
-      return self._logic.rand();
+      return self._logic.tv();
     
     argss = argsorts[ 1: ];
     return [
@@ -44,15 +43,17 @@ class ModelBuilder( metaclass=subject ):
         self._build_matrix( argss ),
         self._build_matrix( argss )
       ];
+
   
   def build( self, schema ):
     
     model = Model( schema );
     matrices = {};
     for ( functor, args ) in schema.args.items():
-      matrices[ functor ] = self._build_matrix(
-                                [ ( arg, schema.sorts[ arg ] ) for arg in args ]
-                              );
+      if isinstance( functor.referent, Operator ):
+        if functor.referent.otype in Operator.OPs:
+          continue;
+      matrices[ functor ] = self._build_matrix( args );
     model.matrices = matrices;
     return model;
 

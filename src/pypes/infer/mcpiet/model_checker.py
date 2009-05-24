@@ -20,21 +20,12 @@ class ModelChecker( metaclass=subject ):
   
   
   class _FormCompiler( ProtoProcessor, metaclass=subject ):
-    
+
     
     def _process_variable( self, inst, sid, vid ):
       
       self._vars.add( inst );
       
-
-    def process_scopebearer( self, inst ):
-      
-      if isinstance( inst, ProtoForm ):
-        return super().process_scopebearer( inst );
-      elif isinstance( inst, Handle ):
-        assert False;
-        return super().process_scopebearer( inst );
-
 
     def _process_protoform( self, inst, subform, subforms, constraints ):
       
@@ -51,110 +42,115 @@ class ModelChecker( metaclass=subject ):
 
 
     def _process_predication( self, inst, subform, predicate, args ):
+
+      p = None;
+      if isinstance( inst.predicate.referent, Operator ) and \
+         inst.predicate.referent.otype in Operator.OPs:
+        p = inst.predicate.referent.otype;
       
-      args = self._schema.args[ inst.predicate ];
+      if p == Operator.OP_P_TAUTOLOGY:
+        return lambda model, binding: \
+                 self._obj_._logic.tv_true();
+                 
+      if p == Operator.OP_P_AND:
+        return lambda model, binding: \
+                 self._obj_._logic.tv_true();
+
+      if p == Operator.OP_P_OR:
+        return lambda model, binding: \
+                 self._obj_._logic.tv_true();
+
+      dropped_entity_args = [];
       
-      dropped_args = [];
-  
-      for arg in args:
-        sort = self._schema.sorts[ arg ];
-        if arg not in predication.args:
-          dropped_args.append( arg );
-          # TODO: look into
-          # assert sort.sid == "x";
+      arg_by_var = {};
       
-      if not isinstance( inst.predicate.referent, Operator ):
-        return self._logic.fo_open_pred;
-      if not inst.predicate.referent.otype in Operator.OPs:
-        return open_pred;
+      entity_var = set();
+      entity_arg_by_var = {};
       
-      p = inst.predicate.referent.otype;
-      
+      for arg in self._obj_._schema.args[ inst.predicate ]:
+        
+        if arg not in inst.args:
+          if self._obj_._schema.sorts[ arg ]:
+            dropped_entity_args.append( arg );
+          continue;
+        
+        var = inst.args[ arg ];
+        arg_by_var[ var ] = arg;
+        
+        if var.sort.sid == "x":
+          entity_var.add( var );
+          entity_arg_by_var[ var ] = arg;
+
       if p == Operator.OP_P_EQUALITY:
-        return equality;
-      elif p == Operator.OP_P_TAUTOLOGY:
-        return lambda model, binding: self._obj_._logic.rand_true();
-      elif p == Operator.OP_P_AND:
-        return lambda model, binding: self._obj_._logic.rand_true();
-      elif p == Operator.OP_P_OR:
-        return lambda model, binding: self._obj_._logic.rand_true();
-      else:
-        try:
-          assert False;
-        except:
-          print( p );
-          raise;
+        assert not dropped_entity_args;
+        return lambda model, binding: \
+                 self._obj_._logic.fo_pred_equals(
+                     model = model,
+                     indiv_by_arg = { arg: binding[ var ] \
+                                        for (var,arg) in entity_arg_by_var.items() },
+                     predication = inst
+                   );
+      
+      if p is None:
+        return lambda model, binding: \
+                 self._obj_._inner_optimizer.optimize(
+                     arg_range = self._obj_._entity_range,
+                     free_args = dropped_entity_args,
+                     args = { arg: binding[ var ] \
+                                for (var,arg) in arg_by_var.items() },
+                     function = lambda indiv_by_arg: \
+                                   self._obj_._logic.fo_pred_open(
+                                       model, indiv_by_arg, inst
+                                     )
+                   );
+
+      try:
+        assert False;
+      except:
+        print( p );
+        raise;
 
     
     def _process_quantification( self, inst, subform, quantifier, var, rstr, body ):
       
       assert isinstance( inst.quantifier.referent, Operator );
       q = inst.quantifier.referent.otype;
-      
-      def quant( model, binding, outer, inner ):
-        
-        binding[ inst.var ] = 0;
-        tv = inner(
-                 rstr( model, binding ),
-                 body( model, binding )
-               );
-               
-        for i in [ 1, 2 ]:
-          binding[ var ] = i;
-          nv = inner(
-                 rstr( model, binding ),
-                 body( model, binding )
-               );
-          tv = outer( tv, nv );
-          
-        return tv;
-      
-      def descr( model, binding ):
-        
-        return quant(
-                   model, binding,
-                   self._obj_._logic.weadis, self._obj_._logic.weacon
-                 );
-      
+
       if q == Operator.OP_Q_UNIV:
         return lambda model, binding: \
-                 quant(
-                     model, binding,
-                     self._obj_._logic.weacon, self._obj_._logic.imp
+                 self._obj_._logic.fo_quant_univ(
+                     model, binding, inst, rstr, body
                    );
                    
-      elif q == Operator.OP_Q_EXIST:
+      if q == Operator.OP_Q_EXIST:
         return lambda model, binding: \
-                 quant(
-                     model, binding,
-                     self._obj_._logic.weadis, self._obj_._logic.weacon
+                 self._obj_._logic.fo_quant_exist(
+                     model, binding, inst, rstr, body
                    );
                    
-      elif q == Operator.OP_Q_DESCR:
-        return descr;
+      if q == Operator.OP_Q_DESCR:
+        return lambda model, binding: \
+                 self._obj_._logic.fo_quant_descr(
+                     model, binding, inst, rstr, body
+                   );
       
-      elif q == Operator.OP_Q_UNIV_NEG:
+      if q == Operator.OP_Q_UNIV_NEG:
         return lambda model, binding: \
-                 self._obj_._logic.neg(
-                     quant(
-                         model, binding,
-                         self._obj_._logic.weadis, self._obj_._logic.weacon
+                 self._obj_._logic.p_neg(
+                     self._obj_._logic.fo_quant_exist(
+                         model, binding, inst, rstr, body
                        )
                    );
                    
-      elif q == Operator.OP_Q_EXIST_NEG:
+      if q == Operator.OP_Q_EXIST_NEG:
         return lambda model, binding: \
-                 self._obj_._logic.neg(
-                     quant(
-                         model, binding,
-                         self._obj_._logic.weacon, self._obj_._logic.imp
+                 self._obj_._logic.p_neg(
+                     self._obj_._logic.fo_quant_univ(
+                         model, binding, inst, rstr, body
                        )
                    );
                  
-      else:
-        assert False;
-      
-      return None;
+      assert False;
 
                
     def _process_connection( self, inst, subform, connective, lscope, rscope ):
@@ -164,43 +160,40 @@ class ModelChecker( metaclass=subject ):
       
       if c == Operator.OP_C_STRCON:
         return lambda model, binding: \
-                 self._obj_._logic.strcon(
+                 self._obj_._logic.p_strcon(
                      lscope( model, binding ),
                      rscope( model, binding )
                    );
                    
-      elif c == Operator.OP_C_WEACON:
+      if c == Operator.OP_C_WEACON:
         return lambda model, binding: \
-                 self._obj_._logic.weacon(
+                 self._obj_._logic.p_weacon(
                      lscope( model, binding ),
                      rscope( model, binding )
                    );
                    
-      elif c == Operator.OP_C_STRDIS:
+      if c == Operator.OP_C_STRDIS:
         return lambda model, binding: \
-                 self._obj_._logic.strdis(
+                 self._obj_._logic.p_strdis(
                      lscope( model, binding ),
                      rscope( model, binding )
                    );
                    
-      elif c == Operator.OP_C_WEADIS:
+      if c == Operator.OP_C_WEADIS:
         return lambda model, binding: \
-                 self._obj_._logic.weadis(
+                 self._obj_._logic.p_weadis(
                      lscope( model, binding ),
                      rscope( model, binding )
                    );
                    
-      elif c == Operator.OP_C_IMPL:
+      if c == Operator.OP_C_IMPL:
         return lambda model, binding: \
-                 self._obj_._logic.imp(
+                 self._obj_._logic.p_imp(
                      lscope( model, binding ),
                      rscope( model, binding )
                    );
                    
-      else:
-        assert False;
-      
-      return None;
+      assert False;
   
   
     def compile( self, pf, schema ):
@@ -212,18 +205,24 @@ class ModelChecker( metaclass=subject ):
       for var in self._vars:
         if var.sort.sid != "x":
           eventvars.append( var );
-      print( len( eventvars ) );
       
-      return 
+      return lambda model, binding: \
+               self._obj_._outer_optimizer.optimize(
+                   arg_range = self._obj_._event_range,
+                   free_args = eventvars,
+                   args = binding,
+                   function = lambda binding_: \
+                                 pf_( model, binding_ )
+                 );
       
 
-  def __init__( self, logic=None ):
+  def __init__( self, logic, inner_optimizer, outer_optimizer, entity_range, event_range ):
 
-    if logic is None:
-      self._logic = dfltlogic;
-    else:
-      self._logic = logic;
-    
+    self._logic = logic;
+    self._inner_optimizer = inner_optimizer;
+    self._outer_optimizer = outer_optimizer;
+    self._entity_range = entity_range;
+    self._event_range = event_range;
     self.reset();
 
 
@@ -241,15 +240,17 @@ class ModelChecker( metaclass=subject ):
 
   def reset( self ):
     
+    self._schema = None;
     self._pfs = {};
     self._checkers = {};
 
   
-  def preprocess( self, pfid, pf ):
+  def preprocess( self, pfid, pf, schema ):
     
     try:
+      self._schema = schema;
       self._pfs[ pfid ] = pf;
-      self._checkers[ pfid ] = self._compiler.compile( pf );
+      self._checkers[ pfid ] = self._compiler.compile( pf, schema );
     except:
       from pypes.codecs_ import pft_encode;
       print( pfid );

@@ -1,92 +1,104 @@
 # -*-  coding: ascii -*-  # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 __package__ = "pypes.infer.mcpiet.logic";
-__all__ = [ "FirstOrderModelTheory" ];
+__all__ = [ "FirstOrderLogic" ];
 
-from pypes.infer.mcpiet.logic.prop_model_theory import PropositionalModelTheory;
+from pypes.utils.mc import subject;
+
+from pypes.infer.mcpiet.logic.lukasiewicz import PropositionalLogic;
 
 
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-class FirstOrderModelTheory( PropositionalModelTheory ):
+class FirstOrderLogic( PropositionalLogic, metaclass=subject ):
+  
+  
+  def __init__( self, entity_range ):
+    
+    self._entity_range = entity_range;
 
-  @classmethod
-  def equality( cls, model, binding, predication ):
+
+  def fo_pred_open( self, model, indiv_by_arg, predication ):
+
+    # print( predication.predicate );
+    
+    submatrix = model.matrices[ predication.predicate ];
+    
+    for arg in model._schema.args[ predication.predicate ]:
+      indiv = indiv_by_arg[ arg ];
+      submatrix = submatrix[ indiv ];
+      
+    assert isinstance( submatrix, int );
+    return submatrix;
+
+
+  def fo_pred_equals( self, model, indiv_by_arg, predication ):
+
+    # print( predication.predicate );
     
     ref = None;
     
-    for var in predication.args.values():
-      if var.sort.sid != "x":
-        continue;
-      indiv = binding[ var ];
+    for indiv in indiv_by_arg.values():
       if ref is None:
         ref = indiv;
-      else:
-        if indiv != ref:
-          return logic.rand_false();
+      if indiv != ref:
+        return self.tv_false();
     
-    return logic.rand_false();
+    return self.TV_TRUE;
+
+
+  def fo_quant( self, model, indiv_by_var, quantification, rstr, body, outer, inner ):
+    
+    # print( quantification.quantifier );
+    
+    binding = indiv_by_var;
+    
+    entity = iter( self._entity_range );
+    
+    binding[ quantification.var ] = next( entity );
+    
+    tv = inner(
+             rstr( model, binding ),
+             body( model, binding )
+           );
+           
+    for indiv in entity:
+
+      binding[ quantification.var ] = indiv;
+      
+      nv = inner(
+             rstr( model, binding ),
+             body( model, binding )
+           );
+           
+      tv = outer( tv, nv );
+      
+    return tv;
   
-  @classmethod
-  def open_pred( cls, model, binding, predication, logic, dropped_args ):
+  
+  def fo_quant_univ( self, model, indiv_by_var, quantification, rstr, body ):
     
-    matrix = model._matrices[ predication.predicate ];
-    args = model._schema.args[ predication.predicate ];
-    
-    dropped_args = [];
+    return self.fo_quant(
+               model, indiv_by_var, quantification, rstr, body,
+               self.p_weacon, self.p_imp
+             );
+  
+  
+  def fo_quant_exist( self, model, indiv_by_var, quantification, rstr, body ):
 
-    for arg in args:
-      sort = model._schema.sorts[ arg ];
-      if arg not in predication.args:
-        dropped_args.append( arg );
-        # TODO: look into
-        # assert sort.sid == "x";
-    
-    r = None;
+    return self.fo_quant(
+               model, indiv_by_var, quantification, rstr, body,
+               self.p_weadis, self.p_weacon
+             );
 
-    for dropped_indivs in product( [ 0, 1, 2 ], repeat = len(dropped_args) ):
-      
-      curidv = 0;
-      submatrix = matrix;
-      
-      for arg in args:
-        
-        sort = model._schema.sorts[ arg ];
-        
-        indiv = None;
-        
-        if arg not in inst.args:
-          indiv = dropped_indivs[ curidv ];
-          curidv += 1;
-          
-        else:
-          
-          var = inst.args[ arg ];
-          
-          assert var.sort is sort;
-          if not isinstance( var, Variable ):
-            assert isinstance( var, Constant );
-            continue;
-        
-          ## TODO: fix
-          #if sort != "x":
-          #  indiv = 0;
-          #else:
-          #  indiv = binding[ var ];
-          indiv = binding[ var ];
-          
-        submatrix = submatrix[ indiv ];
-        
-      assert isinstance( submatrix, int );
-      
-      if r is None:
-        r = submatrix;
-      else:
-        r = self._obj_._logic.weadis( r, submatrix );
-    
-    return r;
+  
+  def fo_quant_descr( self, model, indiv_by_var, quantification, rstr, body ):
 
+    return self.fo_quant(
+               model, indiv_by_var, quantification, rstr, body,
+               self.p_weadis, self.p_weacon
+             );
 
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #

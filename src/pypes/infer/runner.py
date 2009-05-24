@@ -216,6 +216,8 @@ class TestsuiteRunner( XMLHandler, metaclass=subject ):
     
     if self._error:
       return;
+    
+    print( "   "+infid );
 
     for agent in self._agent:
 
