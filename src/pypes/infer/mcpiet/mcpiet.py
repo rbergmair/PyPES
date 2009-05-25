@@ -6,6 +6,7 @@ __all__ = [ "McPIETAgent" ];
 from pprint import pprint;
 
 from pypes.utils.mc import subject;
+from pypes.utils.logging_ import print_dot;
 
 from pypes.proto import *;
 
@@ -14,7 +15,7 @@ from pypes.infer.mcpiet.schema import Schema;
 
 from pypes.infer.mcpiet.logic.first_order import FirstOrderLogic;
 
-from pypes.infer.mcpiet.optimization import exhaustive, null;
+from pypes.infer.mcpiet.optimization import exhaustive, null, tarski;
 
 from pypes.infer.mcpiet.model_builder import ModelBuilder;
 from pypes.infer.mcpiet.model_checker import ModelChecker;
@@ -30,7 +31,7 @@ class McPIETAgent( SemanticInferenceAgent, metaclass=subject ):
   
   
   def __init__( self, paramid=None, logic=None, builder=None, checker=None,
-                entity_range=None, event_range=None, log2_iterations=None ):
+                log2_iterations=None ):
     
     super().__init__( paramid );
     
@@ -49,18 +50,8 @@ class McPIETAgent( SemanticInferenceAgent, metaclass=subject ):
     else:
       self._checker_new = checker;
     
-    if entity_range is None:
-      self._entity_range = range( 0, 3 );
-    else:
-      self._entity_range = entity_range;
-    
-    if event_range is None:
-      self._event_range = range( 0, 3 );
-    else:
-      self._event_range = event_range;
-    
     if log2_iterations is None:
-      self._log2_iterations = 11;
+      self._log2_iterations = 10;
     else:
       self._log2_iterations = log2_iterations;
   
@@ -68,9 +59,7 @@ class McPIETAgent( SemanticInferenceAgent, metaclass=subject ):
     
     super()._enter_();
     
-    self._logic_ctx = self._logic_new(
-                          entity_range = self._entity_range
-                        );
+    self._logic_ctx = self._logic_new();
     self._logic = self._logic_ctx.__enter__();
     
     self._exhaustive_optimizer_ctx = exhaustive.Optimizer();
@@ -79,19 +68,18 @@ class McPIETAgent( SemanticInferenceAgent, metaclass=subject ):
     self._null_optimizer_ctx = null.Optimizer();
     self._null_optimizer = self._null_optimizer_ctx.__enter__();
     
+    self._tarski_optimizer_ctx = tarski.Optimizer();
+    self._tarski_optimizer = self._tarski_optimizer_ctx.__enter__();
+    
     self._builder_ctx = self._builder_new(
-                            logic = self._logic,
-                            entity_range = self._entity_range,
-                            event_range = self._event_range
+                            logic = self._logic
                           );
     self._builder = self._builder_ctx.__enter__();
     
     self._checker_ctx = self._checker_new(
                             logic = self._logic,
                             inner_optimizer = self._exhaustive_optimizer,
-                            outer_optimizer = self._null_optimizer,
-                            entity_range = self._entity_range,
-                            event_range = self._event_range
+                            outer_optimizer = self._null_optimizer
                           );
     self._checker = self._checker_ctx.__enter__();
     
@@ -103,6 +91,9 @@ class McPIETAgent( SemanticInferenceAgent, metaclass=subject ):
     
     self._builder = None;
     self._builder_ctx.__exit__( exc_type, exc_val, exc_tb );
+    
+    self._tarski_optimzer = None;
+    self._tarski_optimizer_ctx.__exit__( exc_type, exc_val, exc_tb );
 
     self._null_optimizer = None;
     self._null_optimizer_ctx.__exit__( exc_type, exc_val, exc_tb );
@@ -128,12 +119,11 @@ class McPIETAgent( SemanticInferenceAgent, metaclass=subject ):
     
     rslt = super().preprocess();
     
-    self._schema = Schema();
     for ( sentid, pf ) in self._pfs.items():
       self._schema.accommodate_for_form( pf );
+    
     for ( sentid, pf ) in self._pfs.items():
       self._checker.preprocess( sentid, pf, self._schema );
-      #self._checker.preprocess( sentid, pf );
 
     self._preprocessed = True;
     
@@ -152,6 +142,8 @@ class McPIETAgent( SemanticInferenceAgent, metaclass=subject ):
     #print( condisc );
     
     for i in range( 0, 1 << self._log2_iterations ):
+      
+      # print_dot();
   
       model = self._builder.build( self._schema );
       

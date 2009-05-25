@@ -94,7 +94,7 @@ class ModelChecker( metaclass=subject ):
       if p is None:
         return lambda model, binding: \
                  self._obj_._inner_optimizer.optimize(
-                     arg_range = self._obj_._entity_range,
+                     arg_range = self._schema.entity_range,
                      free_args = dropped_entity_args,
                      args = { arg: binding[ var ] \
                                 for (var,arg) in arg_by_var.items() },
@@ -119,26 +119,26 @@ class ModelChecker( metaclass=subject ):
       if q == Operator.OP_Q_UNIV:
         return lambda model, binding: \
                  self._obj_._logic.fo_quant_univ(
-                     model, binding, inst, rstr, body
+                     model, binding, inst, rstr, body, self._schema.entity_range
                    );
                    
       if q == Operator.OP_Q_EXIST:
         return lambda model, binding: \
                  self._obj_._logic.fo_quant_exist(
-                     model, binding, inst, rstr, body
+                     model, binding, inst, rstr, body, self._schema.entity_range
                    );
                    
       if q == Operator.OP_Q_DESCR:
         return lambda model, binding: \
                  self._obj_._logic.fo_quant_descr(
-                     model, binding, inst, rstr, body
+                     model, binding, inst, rstr, body, self._schema.entity_range
                    );
       
       if q == Operator.OP_Q_UNIV_NEG:
         return lambda model, binding: \
                  self._obj_._logic.p_neg(
                      self._obj_._logic.fo_quant_exist(
-                         model, binding, inst, rstr, body
+                         model, binding, inst, rstr, body, self._schema.entity_range
                        )
                    );
                    
@@ -146,7 +146,7 @@ class ModelChecker( metaclass=subject ):
         return lambda model, binding: \
                  self._obj_._logic.p_neg(
                      self._obj_._logic.fo_quant_univ(
-                         model, binding, inst, rstr, body
+                         model, binding, inst, rstr, body, self._schema.entity_range
                        )
                    );
                  
@@ -208,21 +208,19 @@ class ModelChecker( metaclass=subject ):
       
       return lambda model, binding: \
                self._obj_._outer_optimizer.optimize(
-                   arg_range = self._obj_._event_range,
+                   arg_range = self._schema.event_range,
                    free_args = eventvars,
                    args = binding,
                    function = lambda binding_: \
-                                 pf_( model, binding_ )
+                                pf_( model, binding_ )
                  );
       
 
-  def __init__( self, logic, inner_optimizer, outer_optimizer, entity_range, event_range ):
+  def __init__( self, logic, inner_optimizer, outer_optimizer ):
 
     self._logic = logic;
     self._inner_optimizer = inner_optimizer;
     self._outer_optimizer = outer_optimizer;
-    self._entity_range = entity_range;
-    self._event_range = event_range;
     self.reset();
 
 

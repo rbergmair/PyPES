@@ -16,15 +16,10 @@ from pypes.infer.mcpiet.model import Model;
 class ModelBuilder( metaclass=subject ):
 
 
-  def __init__( self, logic, entity_range, event_range ):
+  def __init__( self, logic ):
 
     self._logic = logic;
-    self._entity_range = entity_range;
-    self._event_range = event_range;
     self.reset();
-
-    assert set( self._entity_range ) == { 0, 1, 2 };
-    assert set( self._event_range ) == { 0, 1, 2 };
 
 
   def reset( self ):

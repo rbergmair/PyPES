@@ -17,6 +17,8 @@ class Schema( metaclass=object_ ):
     
     self.args = {};
     self.sorts = {};
+    self.event_range = range( 0, 3 );
+    self.entity_range = range( 0, 3 );
     
     
   class _PFReader( ProtoProcessor, metaclass=subject ):

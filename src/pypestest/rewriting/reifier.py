@@ -12,7 +12,7 @@ from pypes.utils.mc import object_;
 from pypes.proto import ProtoSig, lambdaify;
 from pypes.codecs_ import *;
 
-from pypes.rewriting.func_merger import FuncMerger;
+from pypes.rewriting.reifier import Reifier;
 
 
 
@@ -37,28 +37,27 @@ class TestFuncMerger( TestCase, metaclass=object_ ):
                                \ue104 1 ^ 2 } }""" )( sig=ProtoSig() );
     
     y = pft_decode( """{ \ue103 { 8: \ue101 |every| x4 { \ue100 |man|:5( arg0=x4 ) } __;
-                                  9: \ue101 |a| x3 { \ue100 |woman|:0( arg0=x3 ) } __;
-                                  5: \ue100 |loves|:4( arg1=x4, arg2=x3 );
+                                  9: \ue101 |a| x3 { \ue100 |woman|:1( arg0=x3 ) } __;
+                                  5: \ue100 |loves|:2( arg1=x4, arg2=x3 );
                                   \ue104 9 ^ 5;
                                   \ue104 8 ^ 5 }
-                          /\ {    \ue101 |every| x1 1 { \ue100 |lie|:1( arg1=x1 ) };
+                          /\ {    \ue101 |every| x1 1 { \ue100 |lie|:3( arg1=x1 ) };
                                2: {     \ue103 __ /\ __;
                                      6: \ue100 |man|:5( arg0=x1 );
-                                     7: \ue102 |say|:3( arg1=x1 ) <3> };
+                                     7: \ue102 |say|:7( arg1=x1 ) <3> };
                                4: \ue101 |she| x2 { \ue100 |she|:6( arg0=x2 ) }
-                                           { \ue100 |lie|:2( arg1=p2 ) };
+                                           { \ue100 |lie|:4( arg1=p2 ) };
                                   \ue104 3 ^ 4;
                                   \ue104 1 ^ 2 } }""" )( sig=ProtoSig() );
     
-    with FuncMerger() as merger:
+    with Reifier() as reifier:
       
-      merger.process_pf( x );
-      merger.invert();
-      y_ = merger.merge( x );
-      #print( pft_encode( y, pretty=False, fast_initialize=True ) );
-      #print( pft_encode( y_, pretty=False, fast_initialize=True ) );
-      # TODO: fix
-      # self.assertEquals_( y, y_ );
+      reifier.process_pf( x );
+      reifier.invert();
+      y_ = reifier.reify( x );
+      # print( pft_encode( y, pretty=False, fast_initialize=True ) );
+      # print( pft_encode( y_, pretty=False, fast_initialize=True ) );
+      self.assertEquals_( y, y_ );
 
 
 

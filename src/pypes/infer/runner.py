@@ -217,7 +217,7 @@ class TestsuiteRunner( XMLHandler, metaclass=subject ):
     if self._error:
       return;
     
-    print( "   "+infid );
+    sys.stdout.write( "   {0:3s}    ".format(infid) );
 
     for agent in self._agent:
 
@@ -254,6 +254,8 @@ class TestsuiteRunner( XMLHandler, metaclass=subject ):
         );
       
       f.flush();
+
+    sys.stdout.write( "\n" );
   
   
   

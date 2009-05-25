@@ -14,11 +14,6 @@ from pypes.infer.mcpiet.logic.lukasiewicz import PropositionalLogic;
 class FirstOrderLogic( PropositionalLogic, metaclass=subject ):
   
   
-  def __init__( self, entity_range ):
-    
-    self._entity_range = entity_range;
-
-
   def fo_pred_open( self, model, indiv_by_arg, predication ):
 
     # print( predication.predicate );
@@ -48,13 +43,13 @@ class FirstOrderLogic( PropositionalLogic, metaclass=subject ):
     return self.TV_TRUE;
 
 
-  def fo_quant( self, model, indiv_by_var, quantification, rstr, body, outer, inner ):
+  def fo_quant( self, model, indiv_by_var, quantification, rstr, body, var_range, outer, inner ):
     
     # print( quantification.quantifier );
     
     binding = indiv_by_var;
     
-    entity = iter( self._entity_range );
+    entity = iter( var_range );
     
     binding[ quantification.var ] = next( entity );
     
@@ -77,26 +72,26 @@ class FirstOrderLogic( PropositionalLogic, metaclass=subject ):
     return tv;
   
   
-  def fo_quant_univ( self, model, indiv_by_var, quantification, rstr, body ):
+  def fo_quant_univ( self, model, indiv_by_var, quantification, rstr, body, var_range ):
     
     return self.fo_quant(
-               model, indiv_by_var, quantification, rstr, body,
+               model, indiv_by_var, quantification, rstr, body, var_range,
                self.p_weacon, self.p_imp
              );
   
   
-  def fo_quant_exist( self, model, indiv_by_var, quantification, rstr, body ):
+  def fo_quant_exist( self, model, indiv_by_var, quantification, rstr, body, var_range ):
 
     return self.fo_quant(
-               model, indiv_by_var, quantification, rstr, body,
+               model, indiv_by_var, quantification, rstr, body, var_range,
                self.p_weadis, self.p_weacon
              );
 
   
-  def fo_quant_descr( self, model, indiv_by_var, quantification, rstr, body ):
+  def fo_quant_descr( self, model, indiv_by_var, quantification, rstr, body, var_range ):
 
     return self.fo_quant(
-               model, indiv_by_var, quantification, rstr, body,
+               model, indiv_by_var, quantification, rstr, body, var_range,
                self.p_weadis, self.p_weacon
              );
 

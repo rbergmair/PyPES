@@ -10,7 +10,7 @@ from pypes.proto import *;
 from pypes.codecs_ import pft_decode, pft_encode;
 
 from pypes.rewriting.renamer import Renamer;
-from pypes.rewriting.func_merger import FuncMerger;
+from pypes.rewriting.reifier import Reifier;
 
 from pypes.infer.infeng import InferenceAgent;
 
@@ -80,8 +80,8 @@ class SemanticInferenceAgent( InferenceAgent, metaclass=subject ):
     self._pp = self._pp_ctx.__enter__();
     self._renamer_ctx = Renamer();
     self._renamer = self._renamer_ctx.__enter__();
-    self._func_merger_ctx = FuncMerger();
-    self._func_merger = self._func_merger_ctx.__enter__();
+    self._reifier_ctx = Reifier();
+    self._reifier = self._reifier_ctx.__enter__();
     self._postp_ctx = self._PostProcessor( self );
     self._postp = self._postp_ctx.__enter__();
 
@@ -89,8 +89,8 @@ class SemanticInferenceAgent( InferenceAgent, metaclass=subject ):
 
     self._postp = None;
     self._postp_ctx.__exit__( exc_type, exc_val, exc_tb );
-    self._func_merger = None;
-    self._func_merger_ctx.__exit__( exc_type, exc_val, exc_tb );
+    self._reifier = None;
+    self._reifier_ctx.__exit__( exc_type, exc_val, exc_tb );
     self._renamer = None;
     self._renamer_ctx.__exit__( exc_type, exc_val, exc_tb );
     self._pp = None;
@@ -134,15 +134,15 @@ class SemanticInferenceAgent( InferenceAgent, metaclass=subject ):
       pf = pf_( sig = self._sig );
       self._pfs[ sentid ] = pf;
       
-      self._func_merger.process_pf( pf );
+      self._reifier.process_pf( pf );
 
-    self._func_merger.invert();
+    self._reifier.invert();
 
     self._sig = ProtoSig();
 
     for ( sentid, pf ) in self._pfs.items():
       
-      pf = self._func_merger.merge( pf );
+      pf = self._reifier.reify( pf );
       pf_ = lambdaify( pf );
       pf = pf_( sig = self._sig );
       self._pfs[ sentid ] = pf;

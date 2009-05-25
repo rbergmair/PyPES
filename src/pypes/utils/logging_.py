@@ -9,7 +9,7 @@ __all__ = [ "LOG_CRITICAL", "LOG_ERROR", "LOG_WARNING", "LOG_INFO",
             "get_logger" ];
 
 import logging;
-from sys import stderr;
+from sys import stderr, stdout;
 from os import mkdir;
 
 from pypes.utils.mc import singleton;
@@ -194,6 +194,21 @@ def log( sourceid, level, msg ):
 
 def get_logger( sourceid ):
   return _LogController().get_logger( sourceid );
+
+nodots = 0;
+
+def print_dot( ):
+  
+  global nodots;
+  
+  stdout.write( "." );
+  nodots += 1;
+  if nodots % 5 == 0:
+    stdout.write( " " );
+  if nodots == 70:
+    stdout.write( "\n          " );
+    nodots = 0;
+  stdout.flush();
 
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #

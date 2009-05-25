@@ -1,7 +1,7 @@
 # -*-  coding: ascii -*-  # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 __package__ = "pypes.rewriting";
-__all__ = [ "FuncMerger" ];
+__all__ = [ "Reifier" ];
 
 from pypes.utils.mc import subject;
 
@@ -11,7 +11,7 @@ from pypes.proto import ProtoProcessor, Variable, Constant;
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-class FuncMerger( ProtoProcessor, metaclass=subject ):
+class Reifier( ProtoProcessor, metaclass=subject ):
 
 
   class _IndexCollector( ProtoProcessor, metaclass=subject ):
@@ -140,11 +140,24 @@ class FuncMerger( ProtoProcessor, metaclass=subject ):
       inst.fid = self._fid_by_functor[ inst ];
   
   
-  def merge( self, pf ):
+  def reify( self, pf ):
     
     self.process( pf );
     return pf;
 
+
+
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+
+def reify( obj ):
+  
+  rslt = None;
+  with Reifier() as reifier:
+    reifier.process_pf( obj );
+    reifier.invert();
+    rslt = reifier.reify( obj );
+  return rslt;
+    
 
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
