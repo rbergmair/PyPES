@@ -36,8 +36,6 @@ class ModelChecker( metaclass=subject ):
 
     def _process_modification( self, inst, subform, modality, args, scope ):
       
-      assert isinstance( inst.modality.referent, Operator );
-      assert inst.modality.referent.otype == Operator.OP_M_NULL;
       return scope;
 
 

@@ -3,7 +3,6 @@
 __package__ = "pypes.scoping";
 __all__ = [ "Recursivizer", "recursivize" ];
 
-from copy import copy;
 from pprint import pprint;
 
 from pypes.utils.mc import subject;

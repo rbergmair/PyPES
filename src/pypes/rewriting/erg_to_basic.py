@@ -364,12 +364,49 @@ class ERGtoBasic( ProtoProcessor, metaclass=subject ):
       return;
 
     assert False;
+  
+  
+  def _map_to_default_referent( self, referent ):
+    
+    if isinstance( referent, basic.Word ) and not isinstance( referent, erg.Word ):
+      return referent;
+    
+    if isinstance( referent, basic.Operator ) and not isinstance( referent, erg.Operator ):
+      return referent;
+    
+    if isinstance( referent, Operator ):
+      
+      return basic.Operator(
+                 otype = referent.otype
+               )( sig=ProtoSig() );
+      
+    assert isinstance( referent, Word );
+    
+    lemma = referent.lemma;
+    pos = referent.pos;
+    sense = referent.sense;
+    refkey = ( lemma, pos, sense );
+    
+    found = False;
+    for ( key, replacement ) in self.NONCTRL_WRD_Ps:
+      if refkey == key:
+        return basic.Operator(
+                   otype = replacement
+                 )( sig=ProtoSig() );
+      
+    return basic.Word(
+               lemma = lemma,
+               pos = pos,
+               sense = sense
+             )( sig=ProtoSig() );
 
 
   def _process_modification( self, inst, subform, modality, args, scope ):
+    
+    func = copy( inst.modality )( sig=ProtoSig() );
 
     functor = self._map_functor(
-                  inst.modality,
+                  func,
                   self.OP_Ms,
                   self.WRD_Ms
                 );
@@ -380,22 +417,21 @@ class ERGtoBasic( ProtoProcessor, metaclass=subject ):
       functor.fid = None;
       inst.modality = functor;
       return;
-    
-    if isinstance( inst.modality.referent, Operator ):
-      assert False;
-    
+
     functor = inst.modality;
-    functor.referent = basic.Operator(
-                           otype = basic.Operator.OP_M_NULL
-                         )( sig=ProtoSig() );
-    functor.fid = None;
-    inst.modality = functor;
+    
+    if isinstance( functor.referent, Operator ):
+      assert False;
+      
+    functor.referent = self._map_to_default_referent( functor.referent );
 
 
   def _process_predication( self, inst, subform, predicate, args ):
+
+    func = copy( inst.predicate )( sig=ProtoSig() );
     
     functor = self._map_functor(
-                  inst.predicate,
+                  func,
                   self.OP_Ps,
                   self.WRD_Ps
                 );
@@ -408,39 +444,7 @@ class ERGtoBasic( ProtoProcessor, metaclass=subject ):
       return;
 
     functor = inst.predicate;
-    
-    if isinstance( functor.referent, Operator ):
-      
-      functor.referent = basic.Operator(
-                             otype = functor.referent.otype
-                           )( sig=ProtoSig() );
-      functor.fid = None;
-      
-    else:
-      assert isinstance( functor.referent, Word );
-      lemma = functor.referent.lemma;
-      pos = functor.referent.pos;
-      sense = functor.referent.sense;
-      refkey = ( lemma, pos, sense );
-      
-      found = False;
-      for ( key, replacement ) in self.NONCTRL_WRD_Ps:
-        if refkey == key:
-          functor.referent = basic.Operator(
-                                 otype = replacement
-                               )( sig=ProtoSig() );
-          functor.fid = None;
-          found = True;
-      
-      if not found:
-        functor.referent = basic.Word(
-                               lemma = functor.referent.lemma,
-                               pos = functor.referent.pos,
-                               sense = functor.referent.sense
-                             )( sig=ProtoSig() );
-        functor.fid = None;
-                         
-    inst.predicate = functor;
+    functor.referent = self._map_to_default_referent( functor.referent );
 
 
   def _enter_( self ):

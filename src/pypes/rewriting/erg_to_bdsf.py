@@ -3,8 +3,6 @@
 __package__ = "pypes.rewriting";
 __all__ = [ "ERGtoBDSF", "erg_to_bdsf" ];
 
-from copy import copy;
-
 from pypes.utils.mc import subject;
 
 from pypes.proto import *;
