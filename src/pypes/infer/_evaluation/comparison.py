@@ -72,9 +72,9 @@ def compare( referencefile, objectfile ):
   print( "right:           {0:2d}".format( right ) );
   print( "wrong:           {0:2d}".format( wrong ) );
   print( "total:           {0:2d}".format( total ) );
-  print( "accuracy:       {0:2d}%".format( int( (right*100) / total ) ) );
+  print( "accuracy:      {0:3d}%".format( int( (right*100) / total ) ) );
   print( "error:           {0:2d}".format( error ) );
-  print( "coverage:       {0:2d}%".format( int( (total*100) / (total+error) ) ) );
+  print( "coverage:      {0:3d}%".format( int( (total*100) / (total+error) ) ) );
     
 
 
