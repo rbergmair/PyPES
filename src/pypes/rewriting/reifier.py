@@ -5,7 +5,7 @@ __all__ = [ "Reifier" ];
 
 from pypes.utils.mc import subject;
 
-from pypes.proto import ProtoProcessor, Variable, Constant;
+from pypes.proto import ProtoProcessor, Variable, Constant, ProtoSig;
 
 
 
@@ -23,33 +23,28 @@ class Reifier( ProtoProcessor, metaclass=subject ):
       if inst not in self._obj_._functor_by_referent[ inst.referent ]:
         self._obj_._functor_by_referent[ inst.referent ].append( inst );
 
-    def _process_functor_args( self, functor, ftype, args ):
+    def _process_functor_args( self, functor, args ):
       
       self._process_predmod_functor( functor );
       
-      if functor in self._obj_._ftype_by_functor:
-        assert self._obj_._ftype_by_functor[ functor ] == ftype;
-      else:
-        self._obj_._ftype_by_functor[ functor ] = ftype;
-
-      argsort = {};
-      if functor in self._obj_._argsort_by_functor:
-        argsort = self._obj_._argsort_by_functor[ functor ];
+      args_ = {};
+      if functor in self._obj_._args_by_functor:
+        args_ = self._obj_._args_by_functor[ functor ];
       
       for (arg,var) in args.items():
-        if arg.aid in argsort:
-          assert argsort[ arg.aid ] == var;
-        argsort[ arg.aid ] = var;
+        if arg.aid in args_:
+          assert args_[ arg.aid ] == var;
+        args_[ arg.aid ] = var;
       
-      self._obj_._argsort_by_functor[ functor ] = argsort;
+      self._obj_._args_by_functor[ functor ] = args_;
 
     def _process_predication( self, inst, subform, predicate, args ):
       
-      self._process_functor_args( inst.predicate, "P", inst.args );
+      self._process_functor_args( inst.predicate, inst.args );
       
     def _process_modification( self, inst, subform, modality, args, scope ):
 
-      self._process_functor_args( inst.modality, "M", inst.args );
+      self._process_functor_args( inst.modality, inst.args );
   
   
   def _enter_( self ):
@@ -66,9 +61,9 @@ class Reifier( ProtoProcessor, metaclass=subject ):
   
   def __init__( self ):
     
-    self._argsort_by_functor = {};
-    self._ftype_by_functor = {};
+    self._args_by_functor = {};
     self._functor_by_referent = {};
+    self._const_by_event = {};
     
   
   def process_pf( self, pf ):
@@ -76,7 +71,36 @@ class Reifier( ProtoProcessor, metaclass=subject ):
     self._idx_collector.process( pf );
   
   
-  def invert( self ):
+  def _is_mergable( self, functor1, functor2 ):
+    
+    args1 = self._args_by_functor[ functor1 ];
+    args2 = self._args_by_functor[ functor2 ];
+    
+    if not ( ( args1.keys() <= args2.keys() ) or ( args2.keys() <= args1.keys() ) ):
+      return False;
+
+    for arg in args1.keys() & args2.keys():
+      
+      arg1 = args1[ arg ];
+      if arg1 in self._const_by_event:
+        arg1 = self._const_by_event[ arg1 ];
+      
+      arg2 = args2[ arg ];
+      if arg2 in self._const_by_event:
+        arg2 = self._const_by_event[ arg2 ];
+      
+      if isinstance( arg1, Variable ) and isinstance( arg2, Variable ):
+        if arg1.sort is not arg2.sort:
+          return False;
+
+      if isinstance( arg1, Constant ) and isinstance( arg2, Constant ):
+        if arg1 is not arg2:
+          return False;
+    
+    return True;
+
+
+  def _find_mergable_functorgroups( self ):
 
     funcgroups = [];
     assigned = set();
@@ -88,9 +112,6 @@ class Reifier( ProtoProcessor, metaclass=subject ):
         if functor1 in assigned:
           continue;
         
-        as1 = self._argsort_by_functor[ functor1 ];
-        t1 = self._ftype_by_functor[ functor1 ];
-        
         assigned.add( functor1 );
         group = set();
         group.add( functor1 );
@@ -100,32 +121,34 @@ class Reifier( ProtoProcessor, metaclass=subject ):
           if functor2 in assigned:
             continue;
           
-          as2 = self._argsort_by_functor[ functor2 ];
-          t2 = self._ftype_by_functor[ functor2 ];
-          
-          merge = ( t1 == t2 );
-          
-          if not ( ( as1.keys() <= as2.keys() ) or ( as2.keys() <= as1.keys() ) ):
-            merge = False;
-          else:
-            for arg in as1.keys() & as2.keys():
-              arg1 = as1[ arg ];
-              arg2 = as2[ arg ];
-              if isinstance( arg1, Variable ) and isinstance( arg2, Variable ):
-                if arg1.sort is not arg2.sort:
-                  merge = False;
-                  break;
-              if isinstance( arg1, Constant ) and isinstance( arg2, Constant ):
-                if arg1 is not arg2:
-                  merge = False;
-                  break;
-          
-          if merge:
+          if self._is_mergable( functor1, functor2 ):
             assigned.add( functor2 );
             group.add( functor2 );
         
         funcgroups.append( group );
+    
+    return funcgroups;  
+
       
+  def invert( self ):
+
+    self._const_by_event = {};
+    
+    funcgroups = self._find_mergable_functorgroups();
+    
+    cid = 0;
+    
+    for group in funcgroups:
+      keyvars = set();
+      for functor in group:
+        for ( arg, var ) in self._args_by_functor[ functor ].items():
+          if arg == "KEY":
+            keyvars.add( var );
+      if len( keyvars ) > 0:
+        cid += 1;
+        for var in keyvars:
+          self._const_by_event[ var ] = Constant( ident = "c"+str(cid) )( sig=ProtoSig() );
+
     self._fid_by_functor = {};
     
     for i in range( 0, len( funcgroups ) ):
@@ -138,6 +161,21 @@ class Reifier( ProtoProcessor, metaclass=subject ):
     
     if inst in self._fid_by_functor:
       inst.fid = self._fid_by_functor[ inst ];
+  
+  def _process_functor_args( self, functor, args ):
+    
+    for arg in args:
+      var = args[ arg ];
+      if var in self._const_by_event:
+        args[ arg ] = self._const_by_event[ var ];
+
+  def _process_predication( self, inst, subform, predicate, args ):
+    
+    self._process_functor_args( inst.predicate, inst.args );
+    
+  def _process_modification( self, inst, subform, modality, args, scope ):
+
+    self._process_functor_args( inst.modality, inst.args );
   
   
   def reify( self, pf ):

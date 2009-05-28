@@ -80,7 +80,8 @@ class ModelChecker( metaclass=subject ):
           entity_arg_by_var[ var ] = arg;
 
       if p == Operator.OP_P_EQUALITY:
-        assert not dropped_entity_args;
+        # TODO: fix
+        # assert not dropped_entity_args;
         return lambda model, binding: \
                  self._obj_._logic.fo_pred_equals(
                      model = model,
@@ -203,6 +204,8 @@ class ModelChecker( metaclass=subject ):
       for var in self._vars:
         if var.sort.sid != "x":
           eventvars.append( var );
+      
+      assert len( eventvars ) == 0;
       
       return lambda model, binding: \
                self._obj_._outer_optimizer.optimize(

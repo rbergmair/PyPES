@@ -122,9 +122,9 @@ cleanresults:
 
   
 loc:
-	$(FIND) src -name "*.py" -exec $(GREP) -H --count -e "" {} \;
-	$(FIND) src -name "*.py" | $(GREP) -v "_auto.py" | $(BASH) -c 'while read VAL; do $(CAT) $$VAL; done;' | $(GREP) -e "" --count
-	$(FIND) src/pypes -name "*.py" | $(GREP) -v "_auto.py" | $(BASH) -c 'while read VAL; do $(CAT) $$VAL; done;' | $(GREP) -e "" --count
+	$(FIND) src -name "*.py" -exec $(GREP) -H --count -v "^[:space:]*$$" {} \;
+	$(FIND) src -name "*.py" | $(GREP) -v "_auto.py" | $(BASH) -c 'while read VAL; do $(CAT) $$VAL; done;' | $(GREP) -v "^#" | $(GREP) -v "^[:space:]*$$" --count
+	$(FIND) src/pypes -name "*.py" | $(GREP) -v "_auto.py" | $(BASH) -c 'while read VAL; do $(CAT) $$VAL; done;' | $(GREP) -v "^#" | $(GREP) -v "^[:space:]*$$" --count
 
 
 .PHONY: all data clean cleanpyc cleandata loc

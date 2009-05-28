@@ -55,8 +55,7 @@ class ERGtoBDSF( ProtoProcessor, metaclass=subject ):
             assert keyvar is None or keyvar is var;
             keyvar = var;
       if keyvar is None:
-        keyvar = Variable( sidvid=("k",self._vid) )( sig=ProtoSig() );
-        self._vid += 1;
+        keyvar = Variable( sidvid=("e",None) )( sig=ProtoSig() );
       for subf in subfs:
         if keyvar not in subf.args.values():
           subf.args[ Argument( aid="KEY" )( predmod=func ) ] = keyvar;
@@ -72,7 +71,6 @@ class ERGtoBDSF( ProtoProcessor, metaclass=subject ):
     with self._FuncsCollector( self._funcs ) as coll:
       coll.process( pf );
 
-    self._vid = 1;
     self._rewrite();
 
     with ERGtoBasic( pf ) as rewriter:

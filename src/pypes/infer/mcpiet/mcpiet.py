@@ -27,7 +27,7 @@ from pypes.infer.mcpiet.model_checker import ModelChecker;
 
 class McPIETAgent( SemanticInferenceAgent, metaclass=subject ):
   
-  SEMFIELD = "basic";
+  SEMFIELD = "bdsf";
   
   
   def __init__( self, paramid=None, logic=None, builder=None, checker=None,
