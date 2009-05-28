@@ -110,12 +110,13 @@ class Operator( ProtoBase, metaclass=kls ):
   
   OP_Ms = { OP_M_NULL };
 
+  OP_P_COPULA = "COPULA";
   OP_P_EQUALITY = "EQUALS";
   OP_P_TAUTOLOGY = "TAUTOLOGY";
   OP_P_AND = "AND";
   OP_P_OR = "OR";
   
-  OP_Ps = { OP_P_EQUALITY, OP_P_TAUTOLOGY, OP_P_AND, OP_P_OR };
+  OP_Ps = { OP_P_COPULA, OP_P_EQUALITY, OP_P_TAUTOLOGY, OP_P_AND, OP_P_OR };
   
   OPs = {
       OP_Q_UNIV: OP_Q_UNIV,
@@ -129,6 +130,7 @@ class Operator( ProtoBase, metaclass=kls ):
       OP_C_WEADIS: OP_C_WEADIS,
       OP_C_IMPL: OP_C_IMPL,
       OP_M_NULL: OP_M_NULL,
+      OP_P_COPULA: OP_P_COPULA,
       OP_P_EQUALITY: OP_P_EQUALITY,
       OP_P_TAUTOLOGY: OP_P_TAUTOLOGY,
       OP_P_AND: OP_P_AND,

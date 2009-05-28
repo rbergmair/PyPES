@@ -62,6 +62,9 @@ class ERGtoBDSF( ProtoProcessor, metaclass=subject ):
     
     
   def rewrite( self, pf ):
+
+    with ERGtoBasic( pf ) as rewriter:
+      pf = rewriter.rewrite();
     
     with MRtoDSF( pf ) as rewriter:
       pf = rewriter.rewrite();
@@ -73,9 +76,6 @@ class ERGtoBDSF( ProtoProcessor, metaclass=subject ):
 
     self._rewrite();
 
-    with ERGtoBasic( pf ) as rewriter:
-      pf = rewriter.rewrite();
-    
     return pf;
 
 

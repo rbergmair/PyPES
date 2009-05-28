@@ -237,7 +237,8 @@ class ERGtoBasic( ProtoProcessor, metaclass=subject ):
                     
       ( (['be'], 'v', 'there'), basic.Operator.OP_P_TAUTOLOGY ),
       
-      ( (['be'], 'v', 'id'), basic.Operator.OP_P_EQUALITY ),
+      ( (['be'], 'v', 'id'), basic.Operator.OP_P_COPULA ),
+      
       ( (['lot'], 'n', 'of'), basic.Operator.OP_P_EQUALITY ),
       
       ( (['people'], 'n', 'of'), erg.Operator.PERSON )
