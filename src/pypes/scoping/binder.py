@@ -133,6 +133,11 @@ class Binder( ProtoProcessor, metaclass=subject ):
 
   def _process_modification( self, inst, subform, modality, args, scope ):
     
+    # TODO: HACK!
+    if isinstance( scope, ProtoForm ):
+      if len( scope.subforms ) == 0:
+        scope = None;
+    
     if scope is None:
       rslt = Predication()( sig=ProtoSig() );
       rslt.holes = subform.holes;

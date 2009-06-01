@@ -1,7 +1,7 @@
 # -*-  coding: ascii -*-  # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 __package__ = "pypestest.proto";
-__all__ = [ "TestEqualityResolver", "suite", "main" ];
+__all__ = [ "TestCopulaResolver", "suite", "main" ];
 
 import sys;
 import unittest;
@@ -12,47 +12,48 @@ from pypes.utils.mc import object_;
 from pypes.proto import ProtoSig, lambdaify;
 from pypes.codecs_ import *;
 
-from pypes.rewriting.equality_resolver import EqualityResolver;
+from pypes.rewriting.copula_resolver import CopulaResolver;
 
 
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-class TestEqualityResolver( TestCase, metaclass=object_ ):
+class TestCopulaResolver( TestCase, metaclass=object_ ):
 
   
   def test_resolve_1( self ):
     
-    x = pft_decode( """{ \ue103 { 8: \ue101 |Every| x4 { \ue100 |man|( arg0=x4 ) } __;
-                                  9: \ue101 |a| x3 { \ue100 |woman|( arg0=x3 ) } __;
-                                  5: \ue100 |loves|( arg1=x4, arg2=x3 );
-                                  \ue104 9 ^ 5;
-                                  \ue104 8 ^ 5 }
-                          /\ {    \ue101 |every| x1 1 { \ue100 |lie|( arg1=x1 ) };
-                               2: {    \ue103 __ /\ __;
-                                    6: \ue100 |man|( arg0=x1 );
-                                    7: \ue102 |say|( arg1=x1 ) <3> };
-                               4: \ue101 |she| x2 { \ue100 |she|( arg0=x2 ) } { \ue100 |lie|( arg1=p2 ) };
-                               \ue104 3 ^ 4;
-                               \ue104 1 ^ 2 } }""" )( sig=ProtoSig() );
+    x = pft_decode( """{     \ue101 ALL[ PERS='3', NUM='SG', cfrom='0', cto='4' ] x4 4 __;
+                          1: { \ue100 |italian_a_1|[ cto='12', TENSE='UNTENSED', SF='PROP', cfrom='6', MOOD='INDICATIVE' ]( KEY=e8, arg1=x4 );
+                               \ue103 __ /\ __;
+                               \ue100 |man_n_1|[ cto='16', cfrom='14' ]( arg0=x4 ) };
+                             \ue102 |want_v_1|[ MOOD='INDICATIVE', TENSE='PRES', PROG='-', cto='22', SF='PROP', cfrom='18', PERF='-' ]( KEY=e2, arg1=x4 ) 3;
+                          2: \ue100 COPULA[ MOOD='INDICATIVE', TENSE='UNTENSED', PROG='-', cto='28', SF='PROP-OR-QUES', cfrom='27', PERF='-' ]( KEY=e12, arg1=x4, arg2=x13 );
+                             \ue101 SOME[ PERS='3', IND='+', NUM='SG', cfrom='30', cto='30' ] x13 6 __;
+                          5: { \ue100 |great_a_for|[ cto='36', TENSE='UNTENSED', SF='PROP', cfrom='32', MOOD='INDICATIVE' ]( KEY=e18, arg1=x13 );
+                               \ue103 __ /\ __;
+                               \ue100 |tenor_n_1|[ cto='43', cfrom='38' ]( arg0=x13 ) };
+                             \ue104 6 ^ 5;
+                             \ue104 3 ^ 2;
+                             \ue104 4 ^ 1 }""" )( sig=ProtoSig() );
     
-    y = pft_decode( """{ \ue103 { 8: \ue101 |every| x4 { \ue100 |man|:5( arg0=x4 ) } __;
-                                  9: \ue101 |a| x3 { \ue100 |woman|:1( arg0=x3 ) } __;
-                                  5: \ue100 |loves|:2( arg1=x4, arg2=x3 );
-                                  \ue104 9 ^ 5;
-                                  \ue104 8 ^ 5 }
-                          /\ {    \ue101 |every| x1 1 { \ue100 |lie|:3( arg1=x1 ) };
-                               2: {     \ue103 __ /\ __;
-                                     6: \ue100 |man|:5( arg0=x1 );
-                                     7: \ue102 |say|:7( arg1=x1 ) <3> };
-                               4: \ue101 |she| x2 { \ue100 |she|:6( arg0=x2 ) }
-                                           { \ue100 |lie|:4( arg1=p2 ) };
-                                  \ue104 3 ^ 4;
-                                  \ue104 1 ^ 2 } }""" )( sig=ProtoSig() );
+    y = pft_decode( """{     \ue101 ALL[ PERS='3', NUM='SG', cfrom='0', cto='4' ] x4 4 __;
+                          1: { \ue100 |italian_a_1|[ cto='12', TENSE='UNTENSED', SF='PROP', cfrom='6', MOOD='INDICATIVE' ]( KEY=e8, arg1=x4 );
+                               \ue103 __ /\ __;
+                               \ue100 |man_n_1|[ cto='16', cfrom='14' ]( arg0=x4 ) };
+                             \ue102 |want_v_1|[ MOOD='INDICATIVE', TENSE='PRES', PROG='-', cto='22', SF='PROP', cfrom='18', PERF='-' ]( KEY=e2, arg1=x4 ) 3;
+                          2: \ue100 COPULA[ MOOD='INDICATIVE', TENSE='UNTENSED', PROG='-', cto='28', SF='PROP-OR-QUES', cfrom='27', PERF='-' ]( KEY=e12, arg1=x4, arg2=x13 );
+                             \ue101 SOME[ PERS='3', IND='+', NUM='SG', cfrom='30', cto='30' ] x13 6 __;
+                          5: { \ue100 |great_a_for|[ cto='36', TENSE='UNTENSED', SF='PROP', cfrom='32', MOOD='INDICATIVE' ]( KEY=e18, arg1=x13 );
+                               \ue103 __ /\ __;
+                               \ue100 |tenor_n_1|[ cto='43', cfrom='38' ]( arg0=x13 ) };
+                             \ue104 6 ^ 5;
+                             \ue104 3 ^ 2;
+                             \ue104 4 ^ 1 }""" )( sig=ProtoSig() );
     
-    with EqualityResolver() as eqres:
+    with CopulaResolver() as cpres:
       
-      y_ = eqres.resolve( x );
+      y_ = cpres.resolve( x );
       print( pft_encode( y, pretty=False, fast_initialize=True ) );
       print( pft_encode( y_, pretty=False, fast_initialize=True ) );
       #pft_encode( y, pretty=False, fast_initialize=True );
@@ -69,7 +70,7 @@ def suite():
   suite = unittest.TestSuite();
 
   suite.addTests( unittest.TestLoader().loadTestsFromTestCase(
-      TestEqualityResolver
+      TestCopulaResolver
     ) );
 
   return suite;

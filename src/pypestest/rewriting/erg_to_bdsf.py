@@ -70,7 +70,11 @@ class TestERGtoBDSF( TestCase, metaclass=object_ ):
               # print( pfstr );
               # print( "-------" );
 
-              self.assert_( sanity_check( pf ) );
+              try:
+                self.assert_( sanity_check( pf ) );
+              except:
+                print( pft_encode( pf, pretty=False, fast_initialize=True ) );
+                raise;
 
               k = open( filename.replace( ".pft.gz", ".txt" ) )
               txt = k.read();

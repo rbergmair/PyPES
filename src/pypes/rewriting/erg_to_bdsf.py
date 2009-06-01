@@ -9,6 +9,7 @@ from pypes.proto import *;
 
 from pypes.rewriting.mr_to_dsf import MRtoDSF;
 from pypes.rewriting.erg_to_basic import ERGtoBasic;
+from pypes.rewriting.copula_resolver import CopulaResolver;
 
 
 
@@ -65,6 +66,9 @@ class ERGtoBDSF( ProtoProcessor, metaclass=subject ):
 
     with ERGtoBasic( pf ) as rewriter:
       pf = rewriter.rewrite();
+      
+    with CopulaResolver() as resolver:
+      pf = resolver.resolve( pf );
     
     with MRtoDSF( pf ) as rewriter:
       pf = rewriter.rewrite();
