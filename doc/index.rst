@@ -11,6 +11,7 @@ Contents:
    :maxdepth: 2
 
    guidelines.rst
+   test.rst
 
 Indices and tables
 ==================

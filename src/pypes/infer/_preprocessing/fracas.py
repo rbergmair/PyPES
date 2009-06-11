@@ -392,7 +392,7 @@ class FraCaSProcessor( XMLHandler, metaclass=subject ):
   
   IGNORE = {};
 
-  
+
   def process( self, datadir, itemdir ):
     
     self.datadir = datadir;
@@ -403,14 +403,7 @@ class FraCaSProcessor( XMLHandler, metaclass=subject ):
     doctype = self._obj_.readline();
     stylesheet = self._obj_.readline();
     
-    if isinstance( self._obj_, str ):
-      self.feed( str );
-    else:
-      x = self._obj_.read( self.CHUNK_SIZE );
-      while x:
-        self.feed( x );
-        x = self._obj_.read( self.CHUNK_SIZE );
-
+    super().process();
 
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #

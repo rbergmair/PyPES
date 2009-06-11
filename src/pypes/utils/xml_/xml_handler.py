@@ -165,6 +165,17 @@ class XMLHandler( xml.sax.handler.ContentHandler, metaclass=subject ):
         active_client_ctx.__exit__( None, None, None );
 
 
+  def process( self ):
+    
+    if isinstance( self._obj_, str ):
+      self.feed( str );
+    else:
+      x = self._obj_.read( self.CHUNK_SIZE );
+      while x:
+        self.feed( x );
+        x = self._obj_.read( self.CHUNK_SIZE );
+
+
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 #                                                                             #
