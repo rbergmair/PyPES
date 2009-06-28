@@ -103,11 +103,19 @@ class CorpusHandler( XMLElementHandler, metaclass=subject ):
   
   def _enter_( self ):
     
-    self._afile = open( "dta/infer/rte/rte-{0}/gold.tsa.xml".format(self._obj_.dataset), "w" );
+    self._afile = open( "dta/infer/rte/rte-{0}/gold.tsa.xml".format(self._obj_.dataset), "wt", encoding="utf-8" );
     self._afile.write( '<?xml version="1.0" encoding="UTF-8"?>\n\n' );
     self._afile.write( """<annotations confidence_ranked="False">\n""" );
+    
+    self._tsfile = open( "dta/infer/rte/rte-{0}/data.ts.xml".format(self._obj_.dataset), "wt", encoding="utf-8" );
+    self._tsfile.write( '<?xml version="1.0" encoding="UTF-8"?>\n\n' );
+    self._tsfile.write( '<testsuite>\n\n' );
   
   def _exit_( self, exc_type, exc_val, exc_tb ):
+
+    self._tsfile.write( "</testsuite>\n" );
+    self._tsfile.close();
+    self._tsfile = None;
 
     self._afile.write( "</annotations>\n" );
     self._afile.close();
@@ -122,6 +130,9 @@ class CorpusHandler( XMLElementHandler, metaclass=subject ):
       return;
     
     self._afile.write( '  <annotation infid="{0}" decision="{1}"/>\n'.format( obj.id, obj.ent ) );
+
+    self._tsfile.write( '  <group>\n' );
+    self._tsfile.write( '    <discourse discid="{0}t">\n' );
 
 
 

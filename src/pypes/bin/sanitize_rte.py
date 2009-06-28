@@ -10,8 +10,8 @@ from pypes.infer._preprocessing.rte_sanitizer import sanitize_rte;
 
 def main( argv=None ):
   
-  with open( argv[1] ) as f:
-    with open( argv[2], "w" ) as g:
+  with open( argv[1], mode="rt", encoding="utf-8" ) as f:
+    with open( argv[2], mode="wt", encoding="utf-8" ) as g:
       sanitize_rte( f, g );
 
 
