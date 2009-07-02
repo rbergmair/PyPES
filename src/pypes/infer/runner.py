@@ -147,7 +147,7 @@ class TestsuiteRunner( XMLHandler, metaclass=subject ):
       filename += "-" + inst.paramid;
     filename += ".tsa.xml";
     
-    f = open( filename, "wt" );
+    f = open( filename, "wt", encoding="utf-8" );
     self._ofile[ inst ] = f;
     
     f.write(
@@ -263,7 +263,7 @@ class TestsuiteRunner( XMLHandler, metaclass=subject ):
     
     self._reset();
     
-    with open( self._tsdir + "/data.ts.xml" ) as f:
+    with open( self._tsdir + "/data.ts.xml", "rb" ) as f:
       
       x = f.read( self.CHUNK_SIZE );
       while x:

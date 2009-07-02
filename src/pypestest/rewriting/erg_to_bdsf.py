@@ -37,12 +37,12 @@ class TestERGtoBDSF( TestCase, metaclass=object_ ):
 
     try:
       
-      f_ = gzip.open( filename );
+      f_ = gzip.open( filename, "rb" );
       try:
         
         try:
           
-          g = open( filename.replace( ".pft.gz", "-bdsf.pft" ), "w" );
+          g = open( filename.replace( ".pft.gz", "-bdsf.pft" ), "wt", encoding="utf-8" );
           try:
 
             r = None;
@@ -76,7 +76,7 @@ class TestERGtoBDSF( TestCase, metaclass=object_ ):
                 print( pft_encode( pf, pretty=False, fast_initialize=True ) );
                 raise;
 
-              k = open( filename.replace( ".pft.gz", ".txt" ) )
+              k = open( filename.replace( ".pft.gz", ".txt" ), "wt", encoding="utf-8" )
               txt = k.read();
               k.close();
               
@@ -121,7 +121,7 @@ class TestERGtoBDSF( TestCase, metaclass=object_ ):
   
   def test_rewriter( self ):
     
-    with open( self._TESTDTADIR+"/bdsfs.txt", "w" ) as x:
+    with open( self._TESTDTADIR+"/bdsfs.txt", "wt", encoding="utf-8" ) as x:
     
       with PFTDecoder( (pypes.proto.lex.erg,None) ) as decoder:
     

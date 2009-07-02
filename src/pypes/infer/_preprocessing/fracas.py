@@ -60,7 +60,8 @@ class CommentHandler( XMLPCharElementHandler, metaclass=subject ):
                                   self._obj_.datadir,
                                   sect
                                 ),
-                            "w"
+                            "wt",
+                            encoding="utf-8"
                           );
     
     self._obj_.tsfile.write( '<?xml version="1.0" encoding="UTF-8"?>\n\n' );
@@ -71,7 +72,8 @@ class CommentHandler( XMLPCharElementHandler, metaclass=subject ):
                                self._obj_.datadir,
                                sect
                              ),
-                           "w"
+                           "wt",
+                           encoding="utf-8"
                          );
                          
     self._obj_.afile.write( '<?xml version="1.0" encoding="UTF-8"?>\n\n' );

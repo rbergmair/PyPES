@@ -37,12 +37,12 @@ class TestSolver( TestCase, metaclass=object_ ):
 
     try:
       
-      f_ = gzip.open( filename );
+      f_ = gzip.open( filename, "rb" );
       try:
         
         try:
           
-          g = open( filename.replace( ".pft.gz", "-solved.pft" ), "w" );
+          g = open( filename.replace( ".pft.gz", "-solved.pft" ), "wt", encoding="utf-8" );
           try:
 
             r = None;
@@ -110,12 +110,12 @@ class TestSolver( TestCase, metaclass=object_ ):
     
     try:
       
-      f_ = gzip.open( filename );
+      f_ = gzip.open( filename, "rb" );
       try:
         
         try:
           
-          g_ = gzip.open( filename.replace( ".pft.gz", "-solved.pft.gz" ) );
+          g_ = gzip.open( filename.replace( ".pft.gz", "-solved.pft.gz" ), "rb" );
           try:
 
             r = None;
@@ -183,7 +183,7 @@ class TestSolver( TestCase, metaclass=object_ ):
     
     try:
       
-      f_ = gzip.open( filename );
+      f_ = gzip.open( filename, "rb" );
       try:
         
         cdc = codecs.getreader( "utf-8" );

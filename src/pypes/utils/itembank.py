@@ -65,7 +65,7 @@ class RecordManager( metaclass=subject ):
     except:
       mode = "wt";
     
-    f = open( filename, mode );
+    f = open( filename, mode, encoding="utf-8" );
     f.seek( 0, os.SEEK_END );
     return f;
   
@@ -73,7 +73,7 @@ class RecordManager( metaclass=subject ):
   def _read_file( self, field ):
 
     filename = self._filename( field );
-    return open( filename, "rt" );
+    return open( filename, "rt", encoding="utf-8" );
   
   
   def _strip_id( self, data ):

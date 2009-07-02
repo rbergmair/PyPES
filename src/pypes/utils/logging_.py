@@ -55,7 +55,7 @@ class _LogController( metaclass=singleton ):
     except:
       pass;
 
-    f = open( logdir+"/"+loggername+".log", "w" );
+    f = open( logdir+"/"+loggername+".log", "wt", encoding="utf-8" );
 
     handler = logging.StreamHandler( f );
     handler.setLevel( level );

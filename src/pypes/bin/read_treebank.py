@@ -34,7 +34,7 @@ def main( argv=None ):
     rewerrs = set();
     succ = set();
 
-    f_ = gzip.open( "/local/scratch/rb432/delphin/erg/gold/fracas/result.gz" );
+    f_ = gzip.open( "/local/scratch/rb432/delphin/erg/gold/fracas/result.gz", "rb" );
     
     try:
       

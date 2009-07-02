@@ -37,12 +37,12 @@ class TestERGtoBasic( TestCase, metaclass=object_ ):
 
     try:
       
-      f_ = gzip.open( filename );
+      f_ = gzip.open( filename, "rb" );
       try:
         
         try:
           
-          g = open( filename.replace( ".pft.gz", "-basic.pft" ), "w" );
+          g = open( filename.replace( ".pft.gz", "-basic.pft" ), "wt", encoding="utf-8" );
           try:
 
             r = None;

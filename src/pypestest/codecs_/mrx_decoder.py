@@ -33,23 +33,30 @@ class TestMRXDecoder( TestCase, metaclass=object_ ):
   def write_testfile( self, filename, decoder=None ):
 
     try:
-      f = gzip.open( filename );
-      g = open( filename.replace( ".mrs.xml.gz", ".pft" ), "wt" );
+      f_ = gzip.open( filename, "rb" );
       try:
-        print( filename );
-        r__ = mrx_decode( f, MRXDecoder.SEM_ERG );
-        r = r__( sig=ProtoSig() );
-        r_ = pft_encode( r, pretty=False );
-        g.write( r_ );
-        g.write( "\n" );
-        print();
-        print();
-        print( r_ );
-        print();
-        print();
+        cdc = codecs.getreader( "utf-8" );
+        f = cdc( f_ );
+        try:
+          g = open( filename.replace( ".mrs.xml.gz", ".pft" ), "wt", encoding="utf-8" );
+          try:
+            print( filename );
+            r__ = mrx_decode( f, MRXDecoder.SEM_ERG );
+            r = r__( sig=ProtoSig() );
+            r_ = pft_encode( r, pretty=False );
+            g.write( r_ );
+            g.write( "\n" );
+            print();
+            print();
+            print( r_ );
+            print();
+            print();
+          finally:
+            g.close();
+        finally:
+          f.close();
       finally:
-        f.close();
-        g.close();
+        f_.close();
     except IOError:
       pass;
   
@@ -58,49 +65,59 @@ class TestMRXDecoder( TestCase, metaclass=object_ ):
 
     try:
       
-      f = gzip.open( filename );
+      f_ = gzip.open( filename, "rb" );
+      
       try:
+        
+        cdc = codecs.getreader( "utf-8" );
+        f = cdc( f_ );
         
         try:
           
-          g_ = gzip.open( filename.replace( ".mrs.xml.gz", ".pft.gz" ) );
           try:
             
-            r = None;
-            gstr = None;
-            r_ = None;
+            g_ = gzip.open( filename.replace( ".mrs.xml.gz", ".pft.gz" ), "rb" );
             
             try:
               
-              cdc = codecs.getreader( "utf-8" );
-              g = cdc( g_ );
+              r = None;
+              gstr = None;
+              r_ = None;
               
-              print( filename );
-              
-              r = mrx_decode( f, MRXDecoder.SEM_ERG )( sig=ProtoSig() );
-              
-              gstr = g.read();
-              r_ = decoder.decode( gstr )( sig=ProtoSig() );
-    
-              self.assertEquals_( r, r_, filename );
-              
-              g.close();
-            
-            except:
-
-              print( pft_encode( r, pretty=False, linebreaks=True ) );
-              #print( gstr );
-              print( pft_encode( r_, pretty=False, linebreaks=True ) );
-              raise;
-    
-          finally:
-            g_.close();
-          
-        except IOError:
-          pass;
+              try:
+                
+                cdc = codecs.getreader( "utf-8" );
+                g = cdc( g_ );
+                
+                print( filename );
+                
+                r = mrx_decode( f, MRXDecoder.SEM_ERG )( sig=ProtoSig() );
+                
+                gstr = g.read();
+                r_ = decoder.decode( gstr )( sig=ProtoSig() );
       
+                self.assertEquals_( r, r_, filename );
+                
+                g.close();
+              
+              except:
+  
+                print( pft_encode( r, pretty=False, linebreaks=True ) );
+                #print( gstr );
+                print( pft_encode( r_, pretty=False, linebreaks=True ) );
+                raise;
+      
+            finally:
+              g_.close();
+            
+          except IOError:
+            pass;
+        
+        finally:
+          f.close();
+          
       finally:
-        f.close();
+        f_.close();
     
     except IOError:
       pass;

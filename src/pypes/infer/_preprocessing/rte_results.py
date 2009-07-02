@@ -21,7 +21,7 @@ class RTEResultsProcessor( metaclass=subject ):
     
     self._2wfile = tarfile.open(
                        "dta/infer/orig/rte-{0}-2w-results.tar.gz",
-                       "f"
+                       "r"
                      );
     
     

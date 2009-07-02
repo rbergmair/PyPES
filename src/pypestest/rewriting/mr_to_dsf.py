@@ -37,12 +37,12 @@ class TestMRtoDSF( TestCase, metaclass=object_ ):
 
     try:
       
-      f_ = gzip.open( filename );
+      f_ = gzip.open( filename, "rb" );
       try:
         
         try:
           
-          g = open( filename.replace( ".pft.gz", "-dsf.pft" ), "w" );
+          g = open( filename.replace( ".pft.gz", "-dsf.pft" ), "wt", encoding="utf-8" );
           try:
   
             r = None;
@@ -68,7 +68,7 @@ class TestMRtoDSF( TestCase, metaclass=object_ ):
   
               self.assert_( sanity_check( pf ) );
               
-              k = open( filename.replace( ".pft.gz", ".txt" ) )
+              k = open( filename.replace( ".pft.gz", ".txt" ), "rt", encoding="utf-8" )
               txt = k.read();
               k.close();
               
@@ -112,7 +112,7 @@ class TestMRtoDSF( TestCase, metaclass=object_ ):
   
   def test_rewriter( self ):
 
-    with open( self._TESTDTADIR+"/dsfs.txt", "w" ) as x:
+    with open( self._TESTDTADIR+"/dsfs.txt", "wt", encoding="utf-8" ) as x:
 
       with PFTDecoder( (pypes.proto.lex.erg,None) ) as decoder:
   

@@ -18,10 +18,10 @@ def compare( referencefile, objectfile ):
   refdata = None;
   objdata = None;
   
-  with open( referencefile ) as f:
+  with open( referencefile, "rb" ) as f:
     refdata = read_annotation( f );
   
-  with open( objectfile ) as f:
+  with open( objectfile, "rb" ) as f:
     objdata = read_annotation( f );
   
   ( refdata_ranked, refdata ) = refdata;

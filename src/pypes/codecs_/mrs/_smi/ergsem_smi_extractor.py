@@ -272,13 +272,13 @@ class ERGSemSMIExtractor( ERGSemProcessor, metaclass=subject ):
     sourcedir = self._obj_;
 
     
-    with open( sourcedir + "/erg.smi" ) as f:
+    with open( sourcedir + "/erg.smi", "rt", encoding="utf-8" ) as f:
       self._read_preds( f );
       
-    with open( sourcedir + "/core.smi" ) as f:
+    with open( sourcedir + "/core.smi", "rt", encoding="utf-8" ) as f:
       self._read_preds( f );
 
-    with open( sourcedir + "/mine.smi" ) as f:
+    with open( sourcedir + "/mine.smi", "rt", encoding="utf-8" ) as f:
       self._read_preds( f );
 
 
@@ -287,7 +287,7 @@ class ERGSemSMIExtractor( ERGSemProcessor, metaclass=subject ):
         del self._semi[ pred ];
 
     
-    with open( targetdir + "/_ergsem_smi_checker_auto.py", "w" ) as f:
+    with open( targetdir + "/_ergsem_smi_checker_auto.py", "wt", encoding="ascii" ) as f:
         
       f.write(
           """# -*-  coding: ascii -*-\n"""
@@ -338,7 +338,7 @@ class ERGSemSMIExtractor( ERGSemProcessor, metaclass=subject ):
           wrds.append( wrd );
       
         
-    with open( targetdir + "/_erg_auto.py", "w" ) as f:
+    with open( targetdir + "/_erg_auto.py", "wt", encoding="ascii" ) as f:
   
       f.write(
           """# -*-  coding: ascii -*-\n\n"""

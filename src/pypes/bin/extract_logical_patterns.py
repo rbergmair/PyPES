@@ -45,7 +45,7 @@ class LogpatExtractor( ProtoProcessor, metaclass=subject ):
     
     try:
       
-      f_ = gzip.open( filename );
+      f_ = gzip.open( filename, "rb" );
       
       try:
         

@@ -1,5 +1,7 @@
 # -*-  coding: ascii -*-  # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
+import sys;
+
 __package__ = "";
 __all__ = [ "codecs_", "native", "proto", "utils" ];
 

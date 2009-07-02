@@ -10,7 +10,7 @@ from pypes.infer._preprocessing.rte import RTEProcessor;
 
 def main( argv=None ):
   
-  f = open( "dta/infer/edited/rte-08.rte.xml", "rt", encoding="utf-8" );
+  f = open( "dta/infer/edited/rte-08.rte.xml", "rb" );
   try:
     with RTEProcessor( f, dataset="08" ) as proc:
       proc.process();
