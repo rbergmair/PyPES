@@ -4,12 +4,12 @@ __package__ = "pypes.proto.sig";
 __all__ = [ "Constant" ];
 
 from pypes.utils.mc import kls;
-from pypes.proto.protobase import ProtoBase;
+from pypes.proto.sig.argument_value import ArgumentValue;
 
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-class Constant( ProtoBase, metaclass=kls ):
+class Constant( ArgumentValue, metaclass=kls ):
 
   _superordinate_ = "sig";
   _key_ = "ident";

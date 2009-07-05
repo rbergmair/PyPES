@@ -1,46 +1,20 @@
 # -*-  coding: ascii -*-  # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 __package__ = "pypes.proto.form";
-__all__ = [ "Handle" ];
+__all__ = [ "ScopeBearer" ];
 
 from pypes.utils.mc import kls;
-from pypes.proto.form.scope_bearer import ScopeBearer;
+from pypes.proto.protobase import ProtoBase;
+
 
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-class Handle( ScopeBearer, metaclass=kls ):
+class ScopeBearer( ProtoBase, metaclass=kls ):
+  
+  pass;
 
-  _superordinate_ = "sig";
-  _key_ = "hid";
 
-  def _init_init_( self ):
-    
-    self.hid = None;
-  
-  def __init__( self, sig, hid=None ):
-    
-    if hid is not None:
-      self.hid = hid;
-  
-  def __repr__( self ):
-    
-    if self.hid is None:
-      return "Handle()";
-    else:
-      return "Handle( hid={0} )".format( self.hid );
-  
-  def __le__( self, obj ):
-    
-    if not isinstance( obj, Handle ):
-      return False;
-    
-    if self.hid is not None:
-      if self.hid != obj.hid:
-        return False;
-    return True;
-  
-      
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 #                                                                             #

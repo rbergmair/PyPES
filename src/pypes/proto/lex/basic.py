@@ -1,7 +1,7 @@
 # -*-  coding: ascii -*-  # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 __package__ = "pypes.proto.lex";
-__all__ = [ "Word", "Operator" ];
+__all__ = [ "Word", "Operator", "Referent" ];
 
 from pypes.utils.mc import kls;
 from pypes.proto.protobase import ProtoBase;
@@ -10,7 +10,15 @@ from pypes.proto.protobase import ProtoBase;
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-class Word( ProtoBase, metaclass=kls ):
+class Referent( ProtoBase, metaclass=kls ):
+  
+  pass;
+
+
+
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+
+class Word( Referent, metaclass=kls ):
 
 
   _superordinate_ = "sig";
@@ -83,7 +91,7 @@ class Word( ProtoBase, metaclass=kls ):
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-class Operator( ProtoBase, metaclass=kls ):
+class Operator( Referent, metaclass=kls ):
 
 
   _superordinate_ = "sig";
