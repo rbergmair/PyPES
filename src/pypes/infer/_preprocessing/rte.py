@@ -26,6 +26,8 @@ class PairHandler( XMLElementHandler, metaclass=subject ):
     
     self.id = attrs.get( "id" );
     self.ent = attrs.get( "entailment" );
+    if self.ent is None:
+      self.ent = attrs.get( "value" );
     self.task = attrs.get( "task" );
     self.t = None;
     self.h = None;
@@ -74,6 +76,11 @@ class HHandler( XMLPCharElementHandler, metaclass=subject ):
 class CorpusHandler( XMLElementHandler, metaclass=subject ):
 
   XMLELEM = "entailment-corpus";
+  
+  
+  def __init__( self ):
+    
+    self.labelset = "three-way";
 
   
   def _enter_( self ):
@@ -163,8 +170,15 @@ class CorpusHandler( XMLElementHandler, metaclass=subject ):
                   "wt",
                   encoding="utf-8"
                 );
+                
       afile.write( '<?xml version="1.0" encoding="UTF-8"?>\n\n' );
-      afile.write( '<annotations confidence_ranked="False">\n' );
+      
+      afile.write(
+          '<annotations labelset="{0}">\n'.format(
+              self.labelset
+            )
+        );
+        
       self._afiles[ obj.task ] = afile;
     
     if not obj.task in self._tsfiles:

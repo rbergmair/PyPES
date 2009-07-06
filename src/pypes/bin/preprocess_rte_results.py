@@ -1,6 +1,7 @@
 # -*-  coding: ascii -*-  # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 import sys;
+import tarfile;
 
 from pypes.infer._preprocessing.rte_results import RTEResultsProcessor;
 
@@ -9,10 +10,21 @@ from pypes.infer._preprocessing.rte_results import RTEResultsProcessor;
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 def main( argv=None ):
-  
-  for subset in [ "2w", "3w" ]:
-    with RTEResultsProcessor( dataset="08", datasubset=subset ) as proc:
+
+  f = tarfile.open( "dta/infer/orig/rte-08-3w-results.tar.gz", "r" );
+  try:
+    with RTEResultsProcessor( f=f, dataset="08", datasubset="3w" ) as proc:
       proc.process();
+  finally:
+    f.close();
+
+  f = tarfile.open( "dta/infer/orig/rte-08-2w-results.tar.gz", "r" );
+  try:
+    with RTEResultsProcessor( f=f, dataset="08", datasubset="2w" ) as proc:
+      proc.process();
+  finally:
+    f.close();
+  
   return 0; 
 
 

@@ -77,7 +77,7 @@ class CommentHandler( XMLPCharElementHandler, metaclass=subject ):
                          );
                          
     self._obj_.afile.write( '<?xml version="1.0" encoding="UTF-8"?>\n\n' );
-    self._obj_.afile.write( """<annotations confidence_ranked="False">\n\n\n""" );
+    self._obj_.afile.write( """<annotations>\n\n\n""" );
 
 
 

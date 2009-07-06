@@ -18,7 +18,6 @@ class AnnotationReader( XMLHandler, metaclass=subject ):
     
     def startElement( self, name, attrs ):
       
-      self._obj_.confranked = str( attrs[ "confidence_ranked" ] );
       self._obj_.annotations = [];
   
   

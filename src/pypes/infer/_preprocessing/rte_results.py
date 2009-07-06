@@ -6,9 +6,10 @@ __all__ = [ "RTEResultsProcessor" ];
 import tarfile;
 import tempfile;
 import os;
+import re;
 
 from pypes.utils.mc import subject;
-
+from pypes.utils.os_ import listsubdirs;
 
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
@@ -16,8 +17,9 @@ from pypes.utils.mc import subject;
 class RTEResultsProcessor( metaclass=subject ):
 
 
-  def __init__( self, dataset, datasubset ):
+  def __init__( self, f, dataset, datasubset ):
     
+    self._tarfile = f;
     self._dataset = dataset;
     self._datasubset = datasubset;
 
@@ -25,12 +27,6 @@ class RTEResultsProcessor( metaclass=subject ):
   def _enter_( self ):
     
     self._tempdir = tempfile.mkdtemp( "-pypes" );
-    self._tarfile = tarfile.open(
-                        "dta/infer/orig/rte-{0}-{1}-results.tar.gz".format(
-                            self._dataset, self._datasubset
-                          ),
-                        "r"
-                      );
     self._tarfile.extractall( path = self._tempdir );
     names = iter( self._tarfile.getnames() );
     self._directoryname = next( names );
@@ -53,55 +49,69 @@ class RTEResultsProcessor( metaclass=subject ):
   
   def process_file( self, f, filename ):
     
-    with open(
-             "dta/infer/rte/rte-{0}/{1}-{2}.tsa.xml".format(
-                 self._dataset,
-                 filename.lower(),
-                 self._datasubset
-               ),
-             "wt",
-             encoding="utf-8"
-           ) as g:
+    lines = iter( f );
+    ranked_ = next( lines );
+    
+    assert ( ranked_ == "ranked: YES\n" ) or ( ranked_ == "ranked: NO\n" );
+    ranked = ranked_ == "ranked: YES\n";
+    
+    decision = {};
+
+    line = next( lines, False );
+    rank = 1;
+    while line:
       
-      g.write( '<?xml version="1.0" encoding="UTF-8"?>\n\n' );
+      assert line[ len(line)-1 ] == "\n";
+      line = line[ : len(line)-1 ];
+      i = line.find( " " );
       
-      lines = iter( f );
-      ranked = next( lines );
+      infid = line[ :i ];
+      decision_ = line[ i+1: ];
       
-      g.write( '<annotations descriptor="{0}" labelset="'.format( filename ) );
+      assert decision_ in { "ENTAILMENT", "NO_ENTAILMENT",
+                            "UNKNOWN", "CONTRADICTION" };
       
-      assert self._directoryname == "two-way" or self._directoryname == "three-way";
-      g.write( self._directoryname );
-  
-      assert ( ranked == "ranked: YES\n" ) or ( ranked == "ranked: NO\n" );
-      g.write( '" confidence_ranked="{0}">\n'.format( ranked == "ranked: YES\n" ) );
+      decision[ infid ] = ( decision_.replace( "_", " " ).lower(), rank );
       
       line = next( lines, False );
-      while line:
-        
-        assert line[ len(line)-1 ] == "\n";
-        line = line[ : len(line)-1 ];
-        i = line.find( " " );
-        
-        infid = line[ :i ];
-        decision_ = line[ i+1: ];
-        
-        # print( "{0}: {1}".format( infid, decision_ ) );
-        
-        assert decision_ in { "ENTAILMENT", "NO_ENTAILMENT",
-                              "UNKNOWN", "CONTRADICTION" };
-        
-        decision = decision_.replace( "_", " " ).lower();
-        
-        g.write(
-            '  <annotation infid="{0}" decision="{1}"/>\n'.format(
-                infid,
-                decision
-          ) ); 
-        
-        line = next( lines, False );
+      rank += 1;
+    
+    infidre = re.compile( r'(?:<annotation infid=")([0-9]+)[^>]*>\n' );
+    
+    for subdir in listsubdirs( "dta/infer/rte/rte-" + self._dataset ):
       
-      g.write( "</annotations>\n" );
+      gold = "";
+      with open( subdir + "/gold.tsa.xml", "rt", encoding="utf-8" ) as g:
+        gold = g.read();
+        
+      with open( subdir + "/" + filename + "-" + self._datasubset + ".tsa.xml", "wt", encoding="utf-8" ) as g:
+      
+        g.write( '<?xml version="1.0" encoding="UTF-8"?>\n\n' );
+        g.write( '<annotations descriptor="{0}" labelset="'.format( filename ) );
+        
+        assert self._directoryname == "two-way" or self._directoryname == "three-way";
+        g.write( self._directoryname );
+        g.write( '">\n' );
+  
+        for infid in infidre.findall( gold ):
+      
+          ( decision_, confidence ) = decision[ infid ];
+          
+          if ranked:
+            g.write(
+                '  <annotation infid="{0}" decision="{1}" confidence="-{2}"/>\n'.format(
+                    infid,
+                    decision_,
+                    confidence
+              ) ); 
+          else:
+            g.write(
+                '  <annotation infid="{0}" decision="{1}"/>\n'.format(
+                    infid,
+                    decision_
+              ) ); 
+      
+        g.write( "</annotations>\n" );
 
 
   def process( self ):
