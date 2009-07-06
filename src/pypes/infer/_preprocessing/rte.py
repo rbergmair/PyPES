@@ -25,36 +25,10 @@ class PairHandler( XMLElementHandler, metaclass=subject ):
       return;
     
     self.id = attrs.get( "id" );
-    
-    self.ent = None;
-    ent = attrs.get( "entailment" );
-    
-    if ent == "ENTAILMENT" or ent == "entailment":
-      self.ent = "entailment";
-    elif ent == "UNKNOWN" or ent == "unknown":
-      self.ent = "unknown";
-    elif ent == "CONTRADICTION" or ent == "contradiction":
-      self.ent = "contradiction";
-    else:
-      assert False;
-    
-    self.task = None;
-    task = attrs.get( "task" );
-    
-    if task == "IR" or task == "ir":
-      self.task = "ir";
-    elif task == "QA" or task == "qa":
-      self.task = "qa";
-    elif task == "SUM" or task == "sum":
-      self.task = "sum";
-    elif task == "IE" or task == "ie":
-      self.task = "ie";
-    else:
-      assert False;
-    
+    self.ent = attrs.get( "entailment" );
+    self.task = attrs.get( "task" );
     self.t = None;
     self.h = None;
-    
     self.finished = False;
 
 
@@ -100,26 +74,74 @@ class HHandler( XMLPCharElementHandler, metaclass=subject ):
 class CorpusHandler( XMLElementHandler, metaclass=subject ):
 
   XMLELEM = "entailment-corpus";
+
   
   def _enter_( self ):
     
-    self._afile = open( "dta/infer/rte/rte-{0}/gold.tsa.xml".format(self._obj_.dataset), "wt", encoding="utf-8" );
-    self._afile.write( '<?xml version="1.0" encoding="UTF-8"?>\n\n' );
-    self._afile.write( """<annotations confidence_ranked="False">\n""" );
+    self._afiles = {};
+    self._tsfiles = {};
+
     
-    self._tsfile = open( "dta/infer/rte/rte-{0}/data.ts.xml".format(self._obj_.dataset), "wt", encoding="utf-8" );
-    self._tsfile.write( '<?xml version="1.0" encoding="UTF-8"?>\n\n' );
-    self._tsfile.write( '<testsuite>\n\n' );
-  
   def _exit_( self, exc_type, exc_val, exc_tb ):
+    
+    for tsfile in self._tsfiles.values():
+      tsfile.write( "</testsuite>\n" );
+      tsfile.close();
+    self._tsfiles = None;
+    
+    for afile in self._afiles.values():
+      afile.write( "</annotations>\n" );
+      afile.close();
+    self._afiles = None;
+  
+  
+  def interpret_ent( self, obj ):
+    
+    ent_ = obj.ent.lower();
+    ent = None;
 
-    self._tsfile.write( "</testsuite>\n" );
-    self._tsfile.close();
-    self._tsfile = None;
+    if ent_ == "entailment":
+      ent = "entailment";
+    elif ent_ == "unknown":
+      ent = "unknown";
+    elif ent_ == "contradiction":
+      ent = "contradiction";
+    else:
+      assert False;
+    
+    obj.ent = ent;
+    
+    return obj;
 
-    self._afile.write( "</annotations>\n" );
-    self._afile.close();
-    self._afile = None;
+
+  def interpret_task( self, obj ):
+    
+    task_ = obj.task.lower();
+    task = None;
+    
+    if task_ == "ir":
+      task = "ir";
+    elif task_ == "qa":
+      task = "qa";
+    elif task_ == "sum":
+      task = "sum";
+    elif task_ == "ie":
+      task = "ie";
+    else:
+      assert False;
+    
+    obj.task = task;
+    
+    return obj;
+  
+  
+  def interpret( self, obj ):
+    
+    obj = self.interpret_ent( obj )
+    obj = self.interpret_task( obj )
+    
+    return obj;
+
   
   def handle( self, obj ):
     
@@ -129,17 +151,50 @@ class CorpusHandler( XMLElementHandler, metaclass=subject ):
     if not obj.finished:
       return;
     
-    self._afile.write( '  <annotation infid="{0}" decision="{1}"/>\n'.format( obj.id, obj.ent ) );
+    obj = self.interpret( obj );
+    
+    if not obj.task in self._afiles:
+      
+      afile = open(
+                  "dta/infer/rte/rte-{0}-{1}/gold.tsa.xml".format(
+                      self._obj_.dataset,
+                      obj.task
+                    ),
+                  "wt",
+                  encoding="utf-8"
+                );
+      afile.write( '<?xml version="1.0" encoding="UTF-8"?>\n\n' );
+      afile.write( '<annotations confidence_ranked="False">\n' );
+      self._afiles[ obj.task ] = afile;
+    
+    if not obj.task in self._tsfiles:
 
-    self._tsfile.write( '  <group>\n' );
-    self._tsfile.write( '    <discourse discid="{0}t">\n' );
+      tsfile = open(
+                   "dta/infer/rte/rte-{0}-{1}/data.ts.xml".format(
+                       self._obj_.dataset,
+                       obj.task
+                     ),
+                   "wt",
+                   encoding="utf-8"
+                 );
+      tsfile.write( '<?xml version="1.0" encoding="UTF-8"?>\n\n' );
+      tsfile.write( '<testsuite>\n\n' );
+      self._tsfiles[ obj.task ] = tsfile;
+    
+    afile = self._afiles[ obj.task ];
+    tsfile = self._tsfiles[ obj.task ]; 
+    
+    afile.write( '  <annotation infid="{0}" decision="{1}"/>\n'.format( obj.id, obj.ent ) );
+
+    #tsfile.write( '  <group>\n' );
+    #tsfile.write( '    <discourse discid="{0}t">\n' );
+    tsfile.write( ' data goes here\n' );
 
 
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 class RTEProcessor( XMLHandler, metaclass=subject ):
-
 
   CLIENT_BYNAME = {
       CorpusHandler.XMLELEM: ( CorpusHandler, None ),
@@ -155,8 +210,6 @@ class RTEProcessor( XMLHandler, metaclass=subject ):
     self.dataset = dataset;
     
     
-
-
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 #                                                                             #

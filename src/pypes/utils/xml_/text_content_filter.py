@@ -8,6 +8,7 @@ import xml.sax.saxutils;
 import xml.sax.handler;
 
 import string;
+import codecs;
 
 from pypes.utils.mc import subject;
 
@@ -201,6 +202,8 @@ class TextContentFilter( xml.sax.handler.ContentHandler, metaclass=subject ):
     self._filters = filters;
   
     self._ofile = ofile;
+    ofilebuf = b"";
+    utf8decode = codecs.getdecoder( "utf-8" );
 
     self._tagstack = None;
     self._taginfo = None;
@@ -211,30 +214,39 @@ class TextContentFilter( xml.sax.handler.ContentHandler, metaclass=subject ):
   
     reading_indent = True;
     reading_tag = False;
-
     
     while True:
       
       ch = ifile.read( 1 );
-      if ch == "":
+      if ch == b"":
         break;
       
-      if ch == "<":
+      if ch == b"<":
         reading_tag = True;
-        self._tag = "";
+        self._tag = b"";
       if reading_tag:
         self._tag += ch;
 
       if self._copythrough:
         if not reading_tag:
-          self._ofile.write( ch );
+          ofilebuf += ch;
+      
+      if len( ofilebuf ) > 0:
+        ( unich, lc ) = utf8decode( ofilebuf )
+        ofile.write( unich );
+        ofilebuf = ofilebuf[ lc: ];
       
       parser.feed( ch );
 
-      if ch == ">":
+      if ch == b">":
         reading_tag = False;
         if self._copythrough:
-          self._ofile.write( self._tag );
+          ofilebuf += self._tag;
+
+      if len( ofilebuf ) > 0:
+        ( unich, lc ) = utf8decode( ofilebuf )
+        ofile.write( unich );
+        ofilebuf = ofilebuf[ lc: ];
 
 
 
