@@ -5,7 +5,7 @@ __package__ = "pypestest.utils";
 import sys;
 import unittest;
 
-from io import StringIO;
+from io import StringIO, BytesIO;
 
 from pypes.utils.unittest_ import TestCase;
 from pypes.utils.mc import object_;
@@ -21,7 +21,7 @@ class TestTextContentFilter( TestCase, metaclass=object_ ):
 
   def test_textcontent_filter( self ):
 
-    with StringIO( INDATA ) as ifile:
+    with BytesIO( INDATA ) as ifile:
       with StringIO() as ofile:
         with TextContentFilter() as ftc:
           ftc.filter_textcontent(

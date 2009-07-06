@@ -229,7 +229,12 @@ class TextContentFilter( xml.sax.handler.ContentHandler, metaclass=subject ):
 
       if self._copythrough:
         if not reading_tag:
-          ofilebuf += ch;
+          try:
+            ofilebuf += ch;
+          except:
+            print( type( ofilebuf ) );
+            print( type( ch ) );
+            raise;
       
       if len( ofilebuf ) > 0:
         ( unich, lc ) = utf8decode( ofilebuf )
