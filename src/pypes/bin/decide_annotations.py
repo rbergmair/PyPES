@@ -1,37 +1,39 @@
 # -*-  coding: ascii -*-  # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-__package__ = "pypes.infer._evaluation";
-__all__ = [ "RTEScorer", "score" ];
+import sys;
 
-from pypes.utils.mc import subject;
+from pypes.utils.os_ import listsubdirs;
 
-from pypes.infer._evaluation.rte_score import RTEScore;
-
+from pypes.infer._evaluation.decision import decide;
 
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-class RTEScorer( metaclass=subject ):
+def main( argv=None ):
   
-  def __init__( self, prefix ):
-    
-    self._prefix = prefix;
+  datadir = None;
+  reference = None;
+  object = None;
   
-  def score( self ):
-    
-    with open( "dta/infer/rte/rte-08-qa/gold.tsa.xml", "rb" ) as r:
-      with open( "dta/infer/rte/rte-08-qa/stanford1-3w.tsa.xml", "rb" ) as o:
-        score = RTEScore( r, o );
-
+  if argv is None or len( argv ) < 4:
+    datadir = "dta/infer/fracas/fracas-1";
+    reference = "gold.tsa.xml";
+    infile = "McPIETAgent.tsa.xml";
+    outfile = "McPIETAgent-reconsidered.tsa.xml";
+  else:
+    datadir = argv[1];
+    reference = argv[2];
+    infile = argv[3];
+    outfile = argv[3];
+  
+  for subdir in listsubdirs( datadir ):
+    decide( subdir + "/" + infile, subdir + "/" + outfile );
 
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-def score( prefix ):
-  
-  with RTEScorer( prefix=prefix ) as sc:
-    sc.score();
-
+if __name__ == '__main__':
+  sys.exit( main( sys.argv ) );
 
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #

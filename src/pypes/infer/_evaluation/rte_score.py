@@ -1,37 +1,39 @@
 # -*-  coding: ascii -*-  # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 __package__ = "pypes.infer._evaluation";
-__all__ = [ "RTEScorer", "score" ];
+__all__ = [ "RTEScore" ];
 
-from pypes.utils.mc import subject;
-
-from pypes.infer._evaluation.rte_score import RTEScore;
-
-
-
-# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
-
-class RTEScorer( metaclass=subject ):
-  
-  def __init__( self, prefix ):
-    
-    self._prefix = prefix;
-  
-  def score( self ):
-    
-    with open( "dta/infer/rte/rte-08-qa/gold.tsa.xml", "rb" ) as r:
-      with open( "dta/infer/rte/rte-08-qa/stanford1-3w.tsa.xml", "rb" ) as o:
-        score = RTEScore( r, o );
+from pypes.utils.mc import object_;
+from pypes.infer._evaluation.annotation_reader import read_annotation;
 
 
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-def score( prefix ):
+class RTEScore( metaclass=object_ ):
   
-  with RTEScorer( prefix=prefix ) as sc:
-    sc.score();
+  
+  def _run_statistics( self, refdata, objdata ):
+    
+    assert refdata.keys() == objdata.keys();
 
+
+  def __init__( self, reffile=None, objfile=None ):
+    
+    self._refdata = {};
+    self._objdata = {};
+    
+    if reffile is not None and objfile is not None:
+      self._run_statistics( read_annotation( reffile ), read_annotation( objfile ) );
+    
+    print( self._refdata );
+    print( self._objdata );
+  
+  
+  def concatenate( self, score ):
+    
+    self._run_statistics( score._refdata, score._objdata );
+    
 
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #

@@ -1,36 +1,24 @@
 # -*-  coding: ascii -*-  # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-__package__ = "pypes.infer._evaluation";
-__all__ = [ "RTEScorer", "score" ];
+import sys;
 
-from pypes.utils.mc import subject;
-
-from pypes.infer._evaluation.rte_score import RTEScore;
+from pypes.infer._evaluation.rte_scorer import score;
 
 
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-class RTEScorer( metaclass=subject ):
+def main( argv=None ):
   
-  def __init__( self, prefix ):
-    
-    self._prefix = prefix;
-  
-  def score( self ):
-    
-    with open( "dta/infer/rte/rte-08-qa/gold.tsa.xml", "rb" ) as r:
-      with open( "dta/infer/rte/rte-08-qa/stanford1-3w.tsa.xml", "rb" ) as o:
-        score = RTEScore( r, o );
+  score( "dta/infer/rte/rte-08" );
+  return 0;
 
 
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-def score( prefix ):
-  
-  with RTEScorer( prefix=prefix ) as sc:
-    sc.score();
+if __name__ == '__main__':
+  sys.exit( main( sys.argv ) );
 
 
 

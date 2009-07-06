@@ -84,7 +84,7 @@ class RTEResultsProcessor( metaclass=subject ):
       with open( subdir + "/gold.tsa.xml", "rt", encoding="utf-8" ) as g:
         gold = g.read();
         
-      with open( subdir + "/" + filename + "-" + self._datasubset + ".tsa.xml", "wt", encoding="utf-8" ) as g:
+      with open( subdir + "/" + filename.lower() + "-" + self._datasubset + ".tsa.xml", "wt", encoding="utf-8" ) as g:
       
         g.write( '<?xml version="1.0" encoding="UTF-8"?>\n\n' );
         g.write( '<annotations descriptor="{0}" labelset="'.format( filename ) );

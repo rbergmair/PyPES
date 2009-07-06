@@ -3,6 +3,8 @@
 __package__ = "pypes.infer._evaluation";
 __all__ = [ "AnnotationReader", "read_annotation" ];
 
+from ast import literal_eval;
+
 from pypes.utils.mc import subject;
 from pypes.utils.xml_.xml_handler import *;
 
@@ -18,7 +20,7 @@ class AnnotationReader( XMLHandler, metaclass=subject ):
     
     def startElement( self, name, attrs ):
       
-      self._obj_.annotations = [];
+      self._obj_.annotations = {};
   
   
   class _AnnotationHandler( XMLElementHandler, metaclass=subject ):
@@ -28,17 +30,20 @@ class AnnotationReader( XMLHandler, metaclass=subject ):
     def startElement( self, name, attrs ):
       
       self.infid = attrs[ "infid" ];
+      
+      self.decision = None;
       if "decision" in attrs:
         self.decision = attrs[ "decision" ];
-      else:
-        self.decision = None;
+        
+      self.confidence = None;
+      if "confidence" in attrs:
+        self.confidence = literal_eval( attrs[ "confidence" ] );
+
       self.vals = {};
 
     def endElement( self, name ):
       
-      self._obj_.annotations.append(
-          ( self.infid, ( self.decision, self.vals ) )
-        );
+      self._obj_.annotations[ self.infid ] = ( self.decision, self.confidence, self.vals );  
   
   
   class _ValueHandler( XMLPCharElementHandler, metaclass=subject ):
@@ -73,7 +78,7 @@ class AnnotationReader( XMLHandler, metaclass=subject ):
         self.feed( x );
         x = self._obj_.read( self.CHUNK_SIZE );
     
-    return ( self.confranked, self.annotations );
+    return self.annotations;
 
 
 

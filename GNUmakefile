@@ -75,6 +75,14 @@ FRACAS_SECTIONS = \
   8-1 8-2 \
   9-1 9-2
 
+RTE_SUBSETS = \
+  05-dev-cd 05-dev-ie 05-dev-ir 05-dev-mt 05-dev-pp 05-dev-qa 05-dev-rc \
+  05-tst-cd 05-tst-ie 05-tst-ir 05-tst-mt 05-tst-pp 05-tst-qa 05-tst-rc \
+  06-dev-ie 06-dev-ir 06-dev-qa 06-dev-sum 06-tst-ie 06-tst-ir 06-tst-qa 06-tst-sum \
+  07-dev-ie 07-dev-ir 07-dev-qa 07-dev-sum 07-tst-ie 07-tst-ir 07-tst-qa 07-tst-sum \
+  08-ie 08-ir 08-qa 08-sum
+
+
 FRACAS = $(patsubst %, dta/infer/fracas/fracas-%, $(FRACAS_SECTIONS))
 
 FRACAS_PROCESSED = \
@@ -84,6 +92,8 @@ FRACAS_PROCESSED = \
 FRACAS_RESULTS = \
   $(patsubst %, %/NoInferenceAgent.tsa.xml, $(FRACAS)) \
   $(patsubst %, %/YesInferenceAgent.tsa.xml, $(FRACAS))
+
+RTE = $(patsubst %, dta/infer/rte/rte-%/*, $(RTE_SUBSETS))
 
 
 all:
@@ -116,6 +126,7 @@ cleandata:
 	$(RM) $(INFERDTA_EDITED)
 	$(RM) dta/items/fracas/*
 	$(RM) $(FRACAS_PROCESSED)
+	$(RM) $(RTE)
 
 cleanresults:
 	$(RM) $(FRACAS_RESULTS)
