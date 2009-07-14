@@ -87,6 +87,7 @@ class CorpusHandler( XMLElementHandler, metaclass=subject ):
     
     self._afiles = {};
     self._tsfiles = {};
+    self._qfile = open( "/tmp/gold-" + self._obj_.dataset + ".txt", "wt" );
 
     
   def _exit_( self, exc_type, exc_val, exc_tb ):
@@ -100,6 +101,8 @@ class CorpusHandler( XMLElementHandler, metaclass=subject ):
       afile.write( "</annotations>\n" );
       afile.close();
     self._afiles = None;
+
+    self._qfile.close();
   
   
   def interpret_ent( self, obj ):
@@ -203,6 +206,8 @@ class CorpusHandler( XMLElementHandler, metaclass=subject ):
     #tsfile.write( '  <group>\n' );
     #tsfile.write( '    <discourse discid="{0}t">\n' );
     tsfile.write( ' data goes here\n' );
+    
+    self._qfile.write( obj.id + " " + obj.ent + "\n" );
 
 
 

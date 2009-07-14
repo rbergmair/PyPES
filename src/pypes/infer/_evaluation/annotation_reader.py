@@ -14,6 +14,7 @@ from pypes.utils.xml_.xml_handler import *;
 
 class AnnotationReader( XMLHandler, metaclass=subject ):
   
+  
   class _AnnotationsHandler( XMLElementHandler, metaclass=subject ):
     
     XMLELEM = "annotations";
@@ -21,6 +22,8 @@ class AnnotationReader( XMLHandler, metaclass=subject ):
     def startElement( self, name, attrs ):
       
       self._obj_.annotations = {};
+      self._obj_.descriptor = attrs.get( "descriptor" );
+      self._obj_.labelset = attrs.get( "labelset" );
   
   
   class _AnnotationHandler( XMLElementHandler, metaclass=subject ):
@@ -43,7 +46,9 @@ class AnnotationReader( XMLHandler, metaclass=subject ):
 
     def endElement( self, name ):
       
-      self._obj_.annotations[ self.infid ] = ( self.decision, self.confidence, self.vals );  
+      self._obj_.annotations[ self.infid ] = (
+          self.decision, self.confidence, self.vals
+        );  
   
   
   class _ValueHandler( XMLPCharElementHandler, metaclass=subject ):
@@ -78,7 +83,7 @@ class AnnotationReader( XMLHandler, metaclass=subject ):
         self.feed( x );
         x = self._obj_.read( self.CHUNK_SIZE );
     
-    return self.annotations;
+    return ( self.descriptor, self.labelset, self.annotations );
 
 
 
