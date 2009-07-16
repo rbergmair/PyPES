@@ -22,6 +22,9 @@ class BinaryProtoProcessor( metaclass=subject ):
   
   def process_constant( self, inst1, inst2 ):
     
+    assert isinstance( inst1, Constant );
+    assert isinstance( inst2, Constant );
+    
     return self.process_constant_(
                inst1 = inst1,
                inst2 = inst2,
@@ -30,11 +33,14 @@ class BinaryProtoProcessor( metaclass=subject ):
              );
 
 
-  def process_sort_( self, inst1, isnt2, sid1, sid2 ):
+  def process_sort_( self, inst1, inst2, sid1, sid2 ):
     
     pass;
   
   def process_sort( self, inst1, inst2 ):
+    
+    assert isinstance( inst1, Sort );
+    assert isinstance( inst2, Sort );
     
     return self.process_sort_(
                inst1 = inst1,
@@ -44,33 +50,35 @@ class BinaryProtoProcessor( metaclass=subject ):
              );
 
 
-  def process_variable_( self, inst1, inst2, sid1, sid2, vid1, vid2 ):
+  def process_variable_( self, inst1, inst2, vid1, vid2, sort ):
     
     pass;
   
   def process_variable( self, inst1, inst2 ):
     
-    self.process_sort( inst1.sort, inst2.sort );
+    assert isinstance( inst1, Variable );
+    assert isinstance( inst2, Variable );
+    
+    sort_ = self.process_sort( inst1.sort, inst2.sort );
     
     return self.process_variable_(
                inst1 = inst1,
                inst2 = inst2,
-               sid1 = inst1.sort.sid,
-               sid2 = inst2.sort.sid,
                vid1 = inst1.vid,
-               vid2 = inst2.vid
+               vid2 = inst2.vid,
+               sort = sort_
              );
   
   
   def process_argument_value( self, inst1, inst2 ):
     
-    if isinstance( inst1, Variable ):
-      assert isinstance( inst2, Variable );
-      return process_variable( inst1, inst2 );
+    assert isinstance( inst1, ArgumentValue );
+    assert isinstance( inst2, ArgumentValue );
     
+    if isinstance( inst1, Variable ):
+      return self.process_variable( inst1, inst2 );
     if isinstance( inst1, Constant ):
-      assert isinstance( inst2, Constant );
-      return process_constant( inst1, inst2 );
+      return self.process_constant( inst1, inst2 );
     
     try:
       assert False;
@@ -86,6 +94,9 @@ class BinaryProtoProcessor( metaclass=subject ):
   
   def process_argument( self, inst1, inst2 ):
     
+    assert isinstance( inst1, Argument );
+    assert isinstance( inst2, Argument );
+    
     return self.process_argument_(
                inst1 = inst1,
                inst2 = inst2,
@@ -100,6 +111,9 @@ class BinaryProtoProcessor( metaclass=subject ):
   
   def process_word( self, inst1, inst2 ):
     
+    assert isinstance( inst1, Word );
+    assert isinstance( inst2, Word );
+    
     return self.process_word_(
                inst1 = inst1,
                inst2 = inst2,
@@ -107,7 +121,8 @@ class BinaryProtoProcessor( metaclass=subject ):
                lemma2 = inst2.lemma,
                pos1 = inst1.pos,
                pos2 = inst2.pos,
-               sense = inst.sense
+               sense1 = inst1.sense,
+               sense2 = inst2.sense
              );
   
   
@@ -116,6 +131,9 @@ class BinaryProtoProcessor( metaclass=subject ):
     pass;
   
   def process_operator( self, inst1, inst2 ):
+    
+    assert isinstance( inst1, Operator );
+    assert isinstance( inst2, Operator );
     
     return self.process_operator_(
                inst1 = inst1,
@@ -127,13 +145,13 @@ class BinaryProtoProcessor( metaclass=subject ):
   
   def process_referent( self, inst1, inst2 ):
     
-    if isinstance( inst1, Word ):
-      assert isinstance( inst2, Word );
-      return process_word( inst1, inst2 );
+    assert isinstance( inst1, Referent );
+    assert isinstance( inst2, Referent );
     
+    if isinstance( inst1, Word ):
+      return self.process_word( inst1, inst2 );
     if isinstance( inst1, Operator ):
-      assert isinstance( inst2, Word );
-      return process_operator( inst1, inst2 );
+      return self.process_operator( inst1, inst2 );
 
     try:
       assert False;
@@ -148,6 +166,9 @@ class BinaryProtoProcessor( metaclass=subject ):
     pass;
   
   def process_functor( self, inst1, inst2 ):
+    
+    assert isinstance( inst1, Functor );
+    assert isinstance( inst2, Functor );
     
     referent_ = self.process_referent( inst1.referent, inst2.referent );
     
@@ -168,16 +189,18 @@ class BinaryProtoProcessor( metaclass=subject ):
   
   def process_predication( self, inst1, inst2, subform ):
     
+    assert isinstance( inst1, Predication );
+    assert isinstance( inst2, Predication );
+    
     predicate_ = self.process_functor( inst1.predicate, inst2.predicate );
     
     args_ = [];
     for ( arg1, val1 ) in inst1.args.items():
-      args__ = [];
       for ( arg2, val2 ) in inst2.args.items():
         arg_ = self.process_argument( arg1, arg2 );
         val_ = self.process_argument_value( val1, val2 );
-        args__.append( (arg_,val_) );
-      args_.append( args__ );
+        if not ( arg_ is None or val_ is None ):
+          args_.append( ( (arg1,arg2,arg_), (val1,val2,val_) ) );
     
     return self.process_predication_(
                inst1 = inst1,
@@ -193,6 +216,9 @@ class BinaryProtoProcessor( metaclass=subject ):
     pass;
   
   def process_quantification( self, inst1, inst2, subform ):
+    
+    assert isinstance( inst1, Quantification );
+    assert isinstance( inst2, Quantification );
     
     quantifier_ = self.process_functor( inst1.quantifier, inst2.quantifier );
     
@@ -219,18 +245,20 @@ class BinaryProtoProcessor( metaclass=subject ):
   
   def process_modification( self, inst1, inst2, subform ):
     
+    assert isinstance( inst1, Modification );
+    assert isinstance( inst2, Modification );
+    
     modality_ = self.process_functor( inst1.modality, inst2.modality );
     
     args_ = [];
     for ( arg1, val1 ) in inst1.args.items():
-      args__ = [];
       for ( arg2, val2 ) in inst2.args.items():
         arg_ = self.process_argument( arg1, arg2 );
         val_ = self.process_argument_value( val1, val2 );
-        args__.append( (arg_,val_) );
-      args_.append( args__ );
+        if not ( arg_ is None or val_ is None ):
+          args_.append( ( (arg1,arg2,arg_), (val1,val2,val_) ) );
 
-    scope_ = self.process_scopebearer( inst.scope );
+    scope_ = self.process_scopebearer( inst1.scope, inst2.scope );
     
     return self.process_modification_(
                inst1 = inst1,
@@ -247,6 +275,9 @@ class BinaryProtoProcessor( metaclass=subject ):
     pass;
   
   def process_connection( self, inst1, inst2, subform ):
+    
+    assert isinstance( inst1, Connection );
+    assert isinstance( inst2, Connection );
     
     connective_ = self.process_functor( inst1.connective, inst2.connective );
 
@@ -270,6 +301,9 @@ class BinaryProtoProcessor( metaclass=subject ):
   
   def process_handle( self, inst1, inst2 ):
     
+    assert isinstance( inst1, Handle );
+    assert isinstance( inst2, Handle );
+    
     return self.process_handle_(
                inst1 = inst1,
                inst2 = inst2,
@@ -284,21 +318,26 @@ class BinaryProtoProcessor( metaclass=subject ):
 
   def process_subform( self, inst1, inst2 ):
     
+    assert isinstance( inst1, SubForm );
+    try:
+      assert isinstance( inst2, SubForm );
+    except:
+      print( inst2 );
+      raise;
+    
     holes_ = [];
     for hole1 in inst1.holes:
-      holes__ = [];
       for hole2 in inst2.holes:
         hole_ = self.process_handle( hole1, hole2 );
-        holes__.append( hole_ );
-      holes_.append( holes__ );
+        if hole_ is not None:
+          holes_.append( (hole1,hole2,hole_) );
 
     protoforms_ = [];
-    for protoform1 in subform1.protoforms:
-      protoforms__ = [];
-      for protoform2 in subform2.protoforms:
+    for protoform1 in inst1.protoforms:
+      for protoform2 in inst2.protoforms:
         protoform_ = self.process_subform( protoform1, protoform2 );
-        protoforms__.append( protoform_ );
-      protoforms_.append( protoforms__ );
+        if protoform_ is not None:
+          protoforms_.append( (protoform1,protoform2,protoform_) );
 
     subform_ = self.process_subform_(
                    inst1 = inst1,
@@ -308,23 +347,14 @@ class BinaryProtoProcessor( metaclass=subject ):
                  );
 
     if isinstance( inst1, Predication ):
-      assert isinstance( inst2, Predication );
       return self.process_predication( inst1, inst2, subform_ );
-    
     if isinstance( inst1, Quantification ):
-      assert isinstance( inst2, Quantification );
       return self.process_quantification( inst1, inst2, subform_ );
-    
     if isinstance( inst1, Modification ):
-      assert isinstance( inst2, Modification );
       return self.process_modification( inst1, inst2, subform_ );
-    
     if isinstance( inst1, Connection ):
-      assert isinstance( inst2, Connection );
       return self.process_connection( inst1, inst2, subform_ );
-    
     if isinstance( inst1, ProtoForm ):
-      assert isinstance( inst2, ProtoForm );
       return self.process_protoform( inst1, inst2, subform_ );
     
     try:
@@ -340,6 +370,9 @@ class BinaryProtoProcessor( metaclass=subject ):
     pass;
   
   def process_constraint( self, inst1, inst2 ):
+    
+    assert isinstance( inst1, Constraint );
+    assert isinstance( inst2, Constraint );
     
     harg_ = self.process_handle( inst1.harg, inst2.harg );
     larg_ = self.process_handle( inst1.larg, inst2.larg  );
@@ -358,37 +391,32 @@ class BinaryProtoProcessor( metaclass=subject ):
   
   def process_protoform( self, inst1, inst2, subform ):
     
+    assert isinstance( inst1, SubForm );
+    assert isinstance( inst2, SubForm );
+    
     subforms_ = [];
     
     for root1 in inst1.roots:
       
-      subform1 = inst1.subforms[ root ];
-      
-      subforms__ = [];
+      subform1 = inst1.subforms[ root1 ];
       
       for root2 in inst2.roots:
         
-        subform2 = inst2.subforms[ root ];
+        subform2 = inst2.subforms[ root2 ];
         
         root_ = self.process_handle( root1, root2 );
         subform_ = self.process_subform( subform1, subform2 );
         
-        subforms__.append( (root_, subform_) );
+        if not ( root_ is None or subform_ is None ):
+          subforms_.append( ( (root1,root2,root_), (subform1,subform2,subform_) ) );
       
-      subforms_.append( subforms__ );
-    
     constraints_ = [];
     
     for constraint1 in inst1.constraints:
-      
-      constraints__ = [];
-       
       for constraint2 in inst1.constraints:
-        
         constraint_ = self.process_constraint( constraint1, constraint2 );
-        constraints__.append( constraint_ );
-      
-      constraints_.append( constraints__ );
+        if constraint_ is not None:
+          constraints_.append( (constraint1,constraint2,constraint_) );
     
     return self.process_protoform_(
                inst1 = inst1,
@@ -401,12 +429,12 @@ class BinaryProtoProcessor( metaclass=subject ):
 
   def process_scopebearer( self, inst1, inst2 ):
     
-    if isinstance( inst1, ProtoForm ):
-      assert isinstance( inst2, ProtoForm );
-      return self.process_subform( inst1, inst2 );
+    assert isinstance( inst1, ScopeBearer );
+    assert isinstance( inst2, ScopeBearer );
     
+    if isinstance( inst1, ProtoForm ):
+      return self.process_subform( inst1, inst2 );
     if isinstance( inst1, Handle ):
-      assert isinstance( inst2, Handle );
       return self.process_handle( inst1, inst2 );
 
     try:
@@ -417,46 +445,25 @@ class BinaryProtoProcessor( metaclass=subject ):
       raise;
 
 
-  def compare( self, inst1, inst2 ):
+  def process( self, inst1, inst2 ):
     
     if isinstance( inst1, SubForm ):
-      assert isinstance( inst2, SubForm );
       return self.process_subform( inst1, inst2 );
-    
+    if isinstance( inst1, ScopeBearer ):
+      return self.process_scopebearer( inst1, inst2 );
     if isinstance( inst1, Constraint ):
-      assert isinstance( inst2, Constraint );
       return self.process_constraint( inst1, inst2 );
-    
     if isinstance( inst1, Functor ):
-      assert isinstance( inst2, Functor );
       return self.process_functor( inst1, inst2 );
-    
-    if isinstance( inst1, Variable ):
-      assert isinstance( inst2, Variable );
-      return self.process_variable( inst1 );
-    
-    if isinstance( inst1, Constant ):
-      assert isinstance( inst2, Constant );
-      return self.process_constant( inst1, inst2 );
-    
     if isinstance( inst1, Sort ):
-      assert isinstance( inst2, Sort );
       return self.process_sort( inst1, inst2 );
-    
+    if isinstance( inst1, ArgumentValue ):
+      return self.process_argument_value( inst1, inst2 );
     if isinstance( inst1, Argument ):
-      assert isinstance( inst2, Argument );
       return self.process_argument( inst1, inst2 );
-    
-    if isinstance( inst1, Word ):
-      assert isinstance( inst2, Word );
-      return self.process_word( inst1, inst2 );
-    
-    if isinstance( inst1, Operator ):
-      assert isinstance( inst2, Operator );
-      return self.process_operator( inst1, inst2 );
-    
+    if isinstance( inst1, Referent ):
+      return self.process_referent( inst1, inst2 );
     if isinstance( inst1, Handle ):
-      assert isinstance( inst2, Handle );
       return self.process_handle( inst1, inst2 );
     
     try:

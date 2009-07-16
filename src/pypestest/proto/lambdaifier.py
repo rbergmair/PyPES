@@ -19,6 +19,7 @@ from pypestest.proto.form.quantification import TestQuantification;
 
 from pypestest.proto.sig.variable import TestVariable;
 from pypestest.proto.sig.constant import TestConstant;
+
 from pypestest.proto.lex.basic import TestWord;
 
 from pypes.proto import lambdaify;

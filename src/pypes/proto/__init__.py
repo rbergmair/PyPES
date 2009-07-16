@@ -11,6 +11,8 @@ __all__ = [ "Connection", "Constraint", "Handle", "Freezer", "Modification",
             "ProtoBase",
             "ProtoProcessor", "BinaryProtoProcessor",
             "LambdaifyingProcessor", "Lambdaifier", "lambdaify",
+            "ProtoComparer",
+            "Morpher",
             "SanityChecker", "sanity_check",
             "RecursionChecker", "recursion_check",
             "analyze_as_conjunction_pf" ];
@@ -46,6 +48,10 @@ from pypes.proto.binary_proto_processor import BinaryProtoProcessor;
 from pypes.proto.lambdaifier import LambdaifyingProcessor;
 from pypes.proto.lambdaifier import Lambdaifier;
 from pypes.proto.lambdaifier import lambdaify;
+
+from pypes.proto.proto_comparer import ProtoComparer;
+
+from pypes.proto.morpher import Morpher;
 
 from pypes.proto.utils import SanityChecker, sanity_check;
 from pypes.proto.utils import RecursionChecker, recursion_check;

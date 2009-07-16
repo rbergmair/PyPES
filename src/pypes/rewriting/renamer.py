@@ -71,7 +71,7 @@ class _IndexCollector( ProtoProcessor, metaclass=subject ):
     self._obj_._funct_by_fid[ fid ].add( inst )
 
 
-  def _process_variable( self, inst, sid, vid ):
+  def _process_variable( self, inst, sort, vid ):
 
     if not inst in self._obj_._variable_references:
       self._obj_._variable_references[ inst ] = 0;
@@ -81,7 +81,7 @@ class _IndexCollector( ProtoProcessor, metaclass=subject ):
       self._obj_._sort_references[ inst.sort ] = 0;
     self._obj_._sort_references[ inst.sort ] += 1;  
       
-    sidvid = ( sid, vid );
+    sidvid = ( inst.sort.sid, vid );
     if not sidvid in self._obj_._variable_by_sidvid:
       self._obj_._variable_by_sidvid[ sidvid ] = set();
     self._obj_._variable_by_sidvid[ sidvid ].add( inst );
@@ -276,10 +276,10 @@ class Renamer( ProtoProcessor, metaclass=subject ):
     inst.hid = self._hid_by_handle[ inst ];
 
 
-  def _process_variable( self, inst, sid, vid ):
+  def _process_variable( self, inst, sort, vid ):
     
-    ( sort, inst.vid ) = self._sortvid_by_variable[ inst ];
-    inst.sort.sid = self._sid_by_sort[ sort ];
+    ( inst.sort, inst.vid ) = self._sortvid_by_variable[ inst ];
+    inst.sort.sid = self._sid_by_sort[ inst.sort ];
 
 
   def _process_functor( self, inst, fid, referent, feats ):

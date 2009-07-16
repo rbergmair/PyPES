@@ -151,13 +151,14 @@ class PFTEncoder( LambdaifyingProcessor, metaclass=subject ):
       return "<" + content + ">";
 
 
-  def _process_variable( self, inst, sid, vid ):
+  def _process_variable( self, inst, sort, vid ):
     
+    sid = inst.sort.sid;
     if sid is None:
       sid = self._next_sid();
       
     if vid is None:
-      vid = self._next_vid( inst.sort );
+      vid = self._next_vid( sort );
 
     return str(sid) + str(vid);
 

@@ -40,17 +40,17 @@ class ProtoProcessor( metaclass=subject ):
              );
 
 
-  def _process_variable( self, inst, sid, vid ):
+  def _process_variable( self, inst, sort, vid ):
     
     pass;
   
   def process_variable( self, inst ):
     
-    self.process_sort( inst.sort );
+    sort_ = self.process_sort( inst.sort );
     
     return self._process_variable(
                inst = inst,
-               sid = inst.sort.sid,
+               sort = sort_,
                vid = inst.vid
              );
 

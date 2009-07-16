@@ -154,10 +154,10 @@ class Lambdaifier( LambdaifyingProcessor, metaclass=subject ):
                aid = aid
              );
     
-  def _process_variable( self, inst, sid, vid ):
+  def _process_variable( self, inst, sort, vid ):
     
     return inst.__class__(
-               sidvid = (sid,vid)
+               sidvid = (inst.sort.sid,vid)
              );
     
   def _process_constant( self, inst, ident ):

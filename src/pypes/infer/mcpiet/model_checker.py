@@ -22,7 +22,7 @@ class ModelChecker( metaclass=subject ):
   class _FormCompiler( ProtoProcessor, metaclass=subject ):
 
     
-    def _process_variable( self, inst, sid, vid ):
+    def _process_variable( self, inst, sort, vid ):
       
       self._vars.add( inst );
       
