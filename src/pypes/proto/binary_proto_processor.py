@@ -413,7 +413,7 @@ class BinaryProtoProcessor( metaclass=subject ):
     constraints_ = [];
     
     for constraint1 in inst1.constraints:
-      for constraint2 in inst1.constraints:
+      for constraint2 in inst2.constraints:
         constraint_ = self.process_constraint( constraint1, constraint2 );
         if constraint_ is not None:
           constraints_.append( (constraint1,constraint2,constraint_) );

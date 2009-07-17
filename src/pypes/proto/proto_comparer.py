@@ -122,22 +122,57 @@ class ProtoComparer( BinaryProtoProcessor, metaclass=subject ):
     return super().process( inst1, inst2 );
   
   
+  def true( self ):
+    
+    return True;
+  
+  def false( self ):
+    
+    return False;
+
+  def meet2( self, arg1, arg2 ):
+    
+    return arg1 and arg2;
+  
+  def join2( self, arg1, arg2 ):
+    
+    return arg1 or arg2;
+  
+  
+  def meet1( self, arg1, arg2 ):
+    
+    if arg1 is None:
+      return None;
+    if arg2 is None:
+      return None;
+    
+    return self.meet2( arg1, arg2 );
+  
+  
+  def join1( self, arg1, arg2 ):
+    
+    if arg1 is None:
+      return arg2;
+    if arg2 is None:
+      return arg1;
+    
+    return self.join2( arg1, arg2 );
+  
+  
   def meet( self, *args ):
     
-    rslt = True;
+    rslt = self.true();
     for arg in args:
-      if arg is None:
-        rslt = None;
+      rslt = self.meet1( rslt, arg );
       
     return rslt;
   
   
   def join( self, *args ):
     
-    rslt = None;
+    rslt = self.false();
     for arg in args:
-      if arg is not None:
-        rslt = arg;
+      rslt = self.join1( rslt, arg );
       
     return rslt;
 
@@ -146,7 +181,7 @@ class ProtoComparer( BinaryProtoProcessor, metaclass=subject ):
     
     if ident1 is not None:
       if ident1 != ident2:
-        return None;
+        return False;
     
     return True;
 
@@ -155,29 +190,29 @@ class ProtoComparer( BinaryProtoProcessor, metaclass=subject ):
     
     if sid1 is not None:
       if sid1 != sid2:
-        return None;
+        return False;
       
     return True;
 
 
   def process_variable_( self, inst1, inst2, vid1, vid2, sort ):
 
-    if vid1 is not None:
-      if vid1 != vid2:
-        return None;
-    
     assert not inst1.sort is None;
     if sort is None:
       return None;
 
-    return True;
+    if vid1 is not None:
+      if vid1 != vid2:
+        return False;
+    
+    return sort;
 
 
   def process_argument_( self, inst1, inst2, aid1, aid2 ):
     
     if aid1 is not None:
       if aid1 != aid2:
-        return None;
+        return False;
       
     return True;
 
@@ -186,22 +221,22 @@ class ProtoComparer( BinaryProtoProcessor, metaclass=subject ):
     
     if lemma1 is None:
       if lemma2 is not None:
-        return None;
+        return False;
       
     if lemma1 is not None:
       if lemma2 is None:
-        return None;
+        return False;
       if len( lemma1 ) != len( lemma2 ):
-        return None;
+        return False;
       for i in range( 0, len(lemma1) ):
         if lemma1[ i ].upper() != lemma2[ i ].upper():
-          return None;
+          return False;
       
     if pos1 != pos2:
-      return None;
+      return False;
       
     if sense1 != sense2:
-      return None;
+      return False;
       
     return True;
     
@@ -210,7 +245,7 @@ class ProtoComparer( BinaryProtoProcessor, metaclass=subject ):
     
     if otype1 is not None:
       if otype1 != otype2:
-        return None;
+        return False;
       
     return True;
 
@@ -223,18 +258,18 @@ class ProtoComparer( BinaryProtoProcessor, metaclass=subject ):
     
     if fid1 is not None:
       if fid1 != fid2:
-        return None;
+        return False;
 
     if feats1:
       if not feats2:
-        return None;
+        return False;
       for feat in feats1:
         if not feat in feats2:
-          return None;
+          return False;
         if feats1[ feat ] != feats2[ feat ]:
-          return None;
+          return False;
       
-    return True;
+    return referent;
   
 
   # doesn't work
@@ -291,19 +326,16 @@ class ProtoComparer( BinaryProtoProcessor, metaclass=subject ):
     rel = set();
     
     for ( (arg1,arg2,arg_), (val1,val2,val_) ) in args:
-      if arg_ is not None and val_ is not None:
-        subresults[ (arg1,arg2) ] = (arg_,val_);
+      subrslt = self.meet( arg_, val_ );
+      if subrslt:
+        subresults[ (arg1,arg2) ] = subrslt;
         rel.add( (arg1,arg2) );
     
     rslt = self.join();
     for mapping in self._check_match( len(inst1.args), rel ):
       rslt_ = self.meet();
       for (arg1,arg2) in mapping:
-        rslt_ = self.meet(
-                         rslt_,
-                         subresults[ (arg1,arg2) ][ 0 ],
-                         subresults[ (arg1,arg2) ][ 1 ]
-                       );
+        rslt_ = self.meet( rslt_, subresults[ (arg1,arg2) ] );
       rslt = self.join( rslt, rslt_ );
     
     return rslt;
@@ -391,7 +423,7 @@ class ProtoComparer( BinaryProtoProcessor, metaclass=subject ):
     
     if hid1 is not None:
       if hid1 != hid2:
-        return None;
+        return False;
     return True;
 
 
@@ -404,7 +436,7 @@ class ProtoComparer( BinaryProtoProcessor, metaclass=subject ):
     rel = set();
     
     for ( hole1, hole2, hole_ ) in holes:
-      if hole_ is not None:
+      if hole_:
         subresults[ (hole1,hole2) ] = hole_;
         rel.add( (hole1,hole2) );
     
@@ -427,7 +459,7 @@ class ProtoComparer( BinaryProtoProcessor, metaclass=subject ):
     assert inst1.larg is not None;
     if larg is None:
       return None;
-
+    
     return self.meet( harg, larg );
   
   
@@ -443,29 +475,26 @@ class ProtoComparer( BinaryProtoProcessor, metaclass=subject ):
     rel = set();
     
     for ( (root1,root2,root_), (subform1,subform2,subform_) ) in subforms:
-      if root_ is not None and subform_ is not None:
-        subresults[ (root1,root2) ] = ( root_, subform_ );
+      subrslt = self.meet( root_, subform_ );
+      if subrslt:
+        subresults[ (root1,root2) ] = subrslt;
         rel.add( (root1,root2) );
     
     rslt1 = self.join();
     for mapping in self._check_match( len(inst1.subforms), rel ):
       rslt_ = self.meet();
       for ( root1, root2 ) in mapping:
-        rslt_ = self.meet(
-                    rslt_,
-                    subresults[ (root1,root2) ][ 0 ],
-                    subresults[ (root1,root2) ][ 1 ]
-                  );
+        rslt_ = self.meet( rslt_, subresults[ (root1,root2) ] );
       rslt1 = self.join( rslt1, rslt_ );
     
     if inst1.constraints and not inst2.constraints:
       return None;
-    
+
     subresults = {};
     rel = set();
     
     for ( constraint1, constraint2, constraint_ ) in constraints:
-      if constraint_ is not None:
+      if constraint_:
         subresults[ (constraint1,constraint2) ] = constraint_;
         rel.add( (constraint1,constraint2) );
         

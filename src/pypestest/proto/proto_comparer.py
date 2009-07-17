@@ -1,7 +1,7 @@
 # -*-  coding: ascii -*-  # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 __package__ = "pypestest.proto";
-__all__ = [ "TestMorpher", "suite", "main" ];
+__all__ = [ "TestProtoComparer", "suite", "main" ];
 
 import sys;
 import unittest;
@@ -31,61 +31,26 @@ from pypes.rewriting.renamer import rename;
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-class TestMorpher( TestCase, metaclass=object_ ):
+class TestProtoComparer( TestCase, metaclass=object_ ):
 
   
-  def test_smoke( self ):
-    
-    init = TestProtoForm.init_logified_pf_4( self );
-    rslt = rename( init );
-    
-    ref = pft_decode( """{ \ue103 { 8: \ue101 |Every|:0 x4 { \ue100 |man|:6( arg0=x4 ) } __;
-                                    9: \ue101 |a|:16 x3 { \ue100 |woman|:18( arg0=x3 ) } __;
-                                    5: \ue100 |loves|:10( arg1=x4, arg2=x3 );
-                                    \ue104 9 ^ 5;
-                                    \ue104 8 ^ 5 } /\ {    \ue101 |eVery| x1 1 { \ue100 |lie|:32( arg1=x1 ) };
-                                                        2: {    \ue103 __ /\ __;
-                                                             6: \ue100 |witness|( arg0=x1 );
-                                                             7: \ue102 |say|( arg1=x1 ) <3> };
-                                                        4: \ue101 |she|:23 x2 { \ue100 |she|:23( arg0=x2 ) } { \ue100 |lie|:27( arg1=x2 ) };
-                                                        \ue104 3 ^ 4;
-                                                        \ue104 1 ^ 2 } }""" )( sig=ProtoSig() );
-    
-    print( pft_encode( rslt ) );
-    print( pft_encode( ref ) );
-    
-    with Morpher() as morpher:
-      morpher.process( rslt, ref );
-
-  
-  def equals_morpher( self, inst1, inst2 ):
-
-    with Morpher() as morpher:
-      if morpher.process( inst1, inst2 ) is not None:
-        if morpher.process( inst2, inst1 ) is not None:
-          return True;
-    return False;
-
-
-  def equals_comparer( self, inst1, inst2 ):
+  def equals( self, inst1, inst2 ):
 
     with ProtoComparer() as comparer:
-      if comparer.process( inst1, inst2 ) is not None:
-        if comparer.process( inst2, inst1 ) is not None:
+      if comparer.process( inst1, inst2 ):
+        if comparer.process( inst2, inst1 ):
           return True;
     return False;
   
   
   def assertEquals_( self, inst1, inst2 ):
     
-    self.assertTrue( self.equals_morpher( inst1, inst2 ) );
-    self.assertTrue( self.equals_comparer( inst1, inst2 ) );
+    self.assertTrue( self.equals( inst1, inst2 ) );
   
   
   def assertNotEquals_( self, inst1, inst2 ):
-    
-    self.assertFalse( self.equals_morpher( inst1, inst2 ) );
-    self.assertFalse( self.equals_comparer( inst1, inst2 ) );
+
+    self.assertFalse( self.equals( inst1, inst2 ) );
 
 
   def test_connection( self ):
@@ -97,7 +62,7 @@ class TestMorpher( TestCase, metaclass=object_ ):
     conn1_ = TestConnection.init_conn_1( self )( sig=ProtoSig() );
     conn2_ = TestConnection.init_conn_2( self )( sig=ProtoSig() );
     conn3_ = TestConnection.init_conn_3( self )( sig=ProtoSig() );
-    
+
     self.assertEquals_( conn1, conn1_ );
     self.assertEquals_( conn2, conn2_ );
     self.assertEquals_( conn3, conn3_ );
@@ -282,7 +247,7 @@ def suite():
   suite = unittest.TestSuite();
 
   suite.addTests( unittest.TestLoader().loadTestsFromTestCase(
-      TestMorpher
+      TestProtoComparer
     ) );
 
   return suite;

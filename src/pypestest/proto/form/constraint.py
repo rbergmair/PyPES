@@ -54,7 +54,7 @@ class TestConstraint( TestCase, metaclass=object_ ):
   def init_constr_2( self ):
     
     inst_ = Constraint(
-                harg = Handle( hid=2 ),
+                harg = Handle( hid=1 ),
                 larg = Handle( hid=1 )
               );
     
@@ -63,7 +63,7 @@ class TestConstraint( TestCase, metaclass=object_ ):
   def check_constr_2( self, inst, msg=None ):
     
     self.assert_( isinstance( inst.harg, Handle ), msg );
-    self.assertEquals( inst.harg.hid, 2, msg );
+    self.assertEquals( inst.harg.hid, 1, msg );
     self.assert_( isinstance( inst.larg, Handle ), msg );
     self.assertEquals( inst.larg.hid, 1, msg );
     self.assertFalse( inst.harg is inst.larg, msg );
