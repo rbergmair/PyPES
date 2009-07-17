@@ -22,6 +22,23 @@ from pypestest.proto.form.protoform import TestProtoForm;
 
 class TestRenamer( TestCase, metaclass=object_ ):
 
+
+  def equals( self, inst1, inst2 ):
+
+    with Morpher() as morpher:
+      if morpher.process( inst1, inst2 ):
+        if morpher.process( inst2, inst1 ):
+          return True;
+    return False;
+  
+  def assertEquals_( self, inst1, inst2 ):
+    
+    self.assertTrue( self.equals( inst1, inst2 ) );
+  
+  def assertNotEquals_( self, inst1, inst2 ):
+
+    self.assertFalse( self.equals( inst1, inst2 ) );
+
   
   def test_renamer_1( self ):
     

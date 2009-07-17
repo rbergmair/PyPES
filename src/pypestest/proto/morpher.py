@@ -6,12 +6,12 @@ __all__ = [ "TestMorpher", "suite", "main" ];
 import sys;
 import unittest;
 
-from pypestest.proto.proto_comparer import TestProtoComparer;
+from pypestest.proto.comparer import TestComparer;
 from pypes.utils.mc import object_;
 
 from pypestest.proto.form.protoform import TestProtoForm;
 
-from pypes.proto import ProtoSig, Morpher, ProtoComparer;
+from pypes.proto import ProtoSig, Morpher;
 from pypes.codecs_ import pft_encode, pft_decode;
 
 from pypes.rewriting.renamer import rename;
@@ -20,7 +20,7 @@ from pypes.rewriting.renamer import rename;
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-class TestMorpher( TestProtoComparer, metaclass=object_ ):
+class TestMorpher( TestComparer, metaclass=object_ ):
 
 
   def equals( self, inst1, inst2 ):
@@ -33,6 +33,11 @@ class TestMorpher( TestProtoComparer, metaclass=object_ ):
   
   
   def test_handle( self ):
+    
+    pass;
+
+
+  def test_constraint( self ):
     
     pass;
 
@@ -64,6 +69,26 @@ class TestMorpher( TestProtoComparer, metaclass=object_ ):
                                                          \ue104 1 ^ 2 } }""" )( sig=ProtoSig() );
     
     self.assertEquals_( ref1, ref2 );
+
+
+  def test_smoke_2( self ):
+    
+    init = TestProtoForm.init_logified_pf_4( self );
+    rslt = rename( init );
+    
+    ref = pft_decode( """{ \ue103 { 8: \ue101 |Every|:0 x4 { \ue100 |man|:6( arg0=x4 ) } __;
+                                    9: \ue101 |a|:16 x3 { \ue100 |woman|:18( arg0=x3 ) } __;
+                                    5: \ue100 |loves|:10( arg1=x4, arg2=x3 );
+                                    \ue104 9 ^ 5;
+                                    \ue104 8 ^ 5 } /\ {    \ue101 |eVery| x1 1 { \ue100 |lie|:32( arg1=x1 ) };
+                                                        2: {    \ue103 __ /\ __;
+                                                             6: \ue100 |witness|( arg0=x1 );
+                                                             7: \ue102 |say|( arg1=x1 ) <3> };
+                                                        4: \ue101 |she|:23 x2 { \ue100 |she|:23( arg0=x2 ) } { \ue100 |lie|:27( arg1=x2 ) };
+                                                        \ue104 3 ^ 4;
+                                                        \ue104 1 ^ 2 } }""" )( sig=ProtoSig() );
+    
+    self.assertEquals_( ref, rslt );
       
 
 

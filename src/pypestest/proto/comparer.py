@@ -1,7 +1,7 @@
 # -*-  coding: ascii -*-  # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 __package__ = "pypestest.proto";
-__all__ = [ "TestProtoComparer", "suite", "main" ];
+__all__ = [ "TestComparer", "suite", "main" ];
 
 import sys;
 import unittest;
@@ -22,7 +22,7 @@ from pypestest.proto.sig.constant import TestConstant;
 
 from pypestest.proto.lex.basic import TestWord;
 
-from pypes.proto import ProtoSig, Morpher, ProtoComparer;
+from pypes.proto import ProtoSig, Morpher, Comparer;
 from pypes.codecs_ import pft_encode, pft_decode;
 
 from pypes.rewriting.renamer import rename;
@@ -31,12 +31,12 @@ from pypes.rewriting.renamer import rename;
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-class TestProtoComparer( TestCase, metaclass=object_ ):
+class TestComparer( TestCase, metaclass=object_ ):
 
   
   def equals( self, inst1, inst2 ):
 
-    with ProtoComparer() as comparer:
+    with Comparer() as comparer:
       if comparer.process( inst1, inst2 ):
         if comparer.process( inst2, inst1 ):
           return True;
@@ -247,7 +247,7 @@ def suite():
   suite = unittest.TestSuite();
 
   suite.addTests( unittest.TestLoader().loadTestsFromTestCase(
-      TestProtoComparer
+      TestComparer
     ) );
 
   return suite;

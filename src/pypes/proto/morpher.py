@@ -9,13 +9,13 @@ from pypes.proto.form import *;
 from pypes.proto.sig import *;
 from pypes.proto.lex import *;
 
-from pypes.proto.proto_comparer import ProtoComparer;
+from pypes.proto.comparer import Comparer;
 
 
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-class Morpher( ProtoComparer, metaclass=subject ):
+class Morpher( Comparer, metaclass=subject ):
 
   
   class _Morphism( metaclass=object_ ):

@@ -18,7 +18,7 @@ from pypes.proto.binary_proto_processor import BinaryProtoProcessor;
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-class ProtoComparer( BinaryProtoProcessor, metaclass=subject ):
+class Comparer( BinaryProtoProcessor, metaclass=subject ):
   
 
   def process_constant( self, inst1, inst2 ):
