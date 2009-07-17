@@ -34,7 +34,7 @@ def main( argv=None ):
     rewerrs = set();
     succ = set();
 
-    f_ = gzip.open( "/local/scratch/rb432/delphin/erg/gold/fracas/result.gz", "rb" );
+    f_ = gzip.open( "dta/treebanks/fracas.gz", "rb" );
     
     try:
       

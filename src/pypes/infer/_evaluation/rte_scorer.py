@@ -95,11 +95,11 @@ class RTEScorer( metaclass=subject ):
     
     self.read_datastructure_();
 
-    print( self._gold );
-    print( self._refs );
-    print( self._subdir_subdir );
-    print( self._subdir_names );
-    print( self._prefixes );
+    #print( self._gold );
+    #print( self._refs );
+    #print( self._subdir_subdir );
+    #print( self._subdir_names );
+    #print( self._prefixes );
     
     scores = {};
     for prefix in self._prefixes:

@@ -19,15 +19,13 @@ def compare( referencefile, objectfile ):
   objdata = None;
   
   with open( referencefile ) as f:
-    refdata = read_annotation( f );
+    refdata_ = read_annotation( f );
   
   with open( objectfile ) as f:
-    objdata = read_annotation( f );
+    objdata_ = read_annotation( f );
   
-  ( refdata_ranked, refdata ) = refdata;
-  ( objdata_ranked, objdata ) = objdata;
-  
-  objdata = dict( objdata );
+  ( descriptor, labelset, refdata ) = refdata_;
+  ( descriptor, labelset, objdata ) = objdata_;
   
   print( "reference file:  " + referencefile );
   print( "object file:     " + objectfile );
@@ -51,7 +49,9 @@ def compare( referencefile, objectfile ):
   total = 0;
   error = 0;
   
-  for ( infid, ( ref_decision, ref_vals ) ) in refdata:
+  for infid in sorted( refdata.keys() ):
+    
+    ( ref_decision, ref_conf, ref_vals ) = refdata[ infid ];
     
     total += 1;
     
@@ -60,7 +60,7 @@ def compare( referencefile, objectfile ):
       print( "{0} {1:3s} | {2:23s} | {3:23s}".format( " ", infid, ref_decision, "-" ) );
       continue;
     
-    ( obj_decision, obj_vals ) = objdata[ infid ];
+    ( obj_decision, obj_conf, obj_vals ) = objdata[ infid ];
     
     if ref_decision == "entailment":
       if obj_decision == "entailment":

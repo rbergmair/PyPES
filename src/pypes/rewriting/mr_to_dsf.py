@@ -132,14 +132,14 @@ class MRtoDSF( metaclass=subject ):
       if lscope is None:
         newhndl = Handle()( sig=ProtoSig() );
         newconn.lscope = newhndl;
-        newconn.holes.add( newhndl );
+        newconn.holes.append( newhndl );
       else:
         newconn.lscope = lscope;
       
       if rscope is None:
         newhndl = Handle()( sig=ProtoSig() );
         newconn.rscope = newhndl;
-        newconn.holes.add( newhndl );
+        newconn.holes.append( newhndl );
       else:
         newconn.rscope = rscope;
       

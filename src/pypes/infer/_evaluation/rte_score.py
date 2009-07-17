@@ -210,10 +210,10 @@ class RTEScore( metaclass=object_ ):
     if self.objdata_confranked is None:
       return None;
     
-    if self.descriptor == "Stanford1":
-      if len( self.objdata_confranked ) == 1000:
-        pprint( self.objdata_confranked );
-        pprint( self.refdata );
+    #if self.descriptor == "Stanford1":
+    #  if len( self.objdata_confranked ) == 1000:
+    #    pprint( self.objdata_confranked );
+    #    pprint( self.refdata );
     
     i = 0;
     mass = 0;

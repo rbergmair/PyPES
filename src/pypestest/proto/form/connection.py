@@ -51,7 +51,7 @@ class TestConnection( TestCase, metaclass=object_ ):
     self.assert_( isinstance( inst.lscope, ProtoForm ), msg );
     self.assert_( isinstance( inst.rscope, Handle ), msg );
     self.assertEquals( inst.rscope.hid, 1, msg );
-    self.assertEquals( inst.holes, {inst.rscope} );
+    self.assertEquals( inst.holes, [ inst.rscope ] );
   
   def test_1( self ):
     
@@ -77,7 +77,7 @@ class TestConnection( TestCase, metaclass=object_ ):
     self.assertEquals( inst.connective.referent.lemma, ["and"], msg );
     self.assert_( isinstance( inst.lscope, Handle ), msg );
     self.assert_( isinstance( inst.rscope, ProtoForm ), msg );
-    self.assertEquals( inst.holes, {inst.lscope} );
+    self.assertEquals( inst.holes, [ inst.lscope ] );
   
   def test_2( self ):
     
@@ -106,7 +106,7 @@ class TestConnection( TestCase, metaclass=object_ ):
     self.assert_( isinstance( inst.lscope, ProtoForm ), msg );
     self.assert_( isinstance( inst.rscope, Handle ), msg );
     self.assertEquals( inst.rscope.hid, 1, msg );
-    self.assertEquals( inst.holes, set() );
+    self.assertEquals( inst.holes, [] );
   
   def test_3( self ):
     

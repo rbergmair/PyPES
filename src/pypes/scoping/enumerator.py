@@ -18,15 +18,43 @@ from pypes.scoping.domcon import *;
 class Enumerator( metaclass=subject ):
   
   
+  def __init__( self ):
+    
+    self.holes = [];
+    for root in self._obj_.pf.roots:
+      subf = self._obj_.pf.subforms[ root ];
+      for hole in subf.holes:
+        self.holes.append( hole );
+  
+  
   def _sortedroots( self, roots ):
+    
+    def _cmp( root ):
+      idx = self._obj_.pf.roots.index( root );
+      assert idx >= 0;
+      return idx;
     
     return sorted(
                roots,
-               key = lambda root: self._obj_.pf.roots.index( root ),
+               key = _cmp,
                reverse = False
              );
 
 
+  def _sortedholes( self, holes ):
+    
+    def _cmp( hole ):
+      idx = self.holes.index( hole );
+      assert idx >= 0;
+      return idx;
+    
+    return sorted(
+               holes,
+               key = _cmp,
+               reverse = False
+             );
+  
+  
   def enumerate_subcomponents( self, pluggings, holes ):
     
     if len( holes ) == 0:
@@ -65,7 +93,7 @@ class Enumerator( metaclass=subject ):
       pluggings = splits[ root ];
       if pluggings is None:
         continue;
-      for solution_ in self.enumerate_subcomponents( pluggings, list( pluggings.keys() ) ):
+      for solution_ in self.enumerate_subcomponents( pluggings, list( self._sortedholes( pluggings.keys() ) ) ):
         solution = DomConSolution();
         solution.chart_index = [ component ] + solution_.chart_index;
         solution.chart = [ { root: pluggings } ] + solution_.chart;
@@ -91,7 +119,7 @@ class Enumerator( metaclass=subject ):
       root_chart_index = [ cur_component ];
       cur_pluggings = self._obj_.solution.chart[ cur_component ][ cur_root ];
       root_chart = [ { cur_root: cur_pluggings } ];
-      solutions = self.enumerate_subcomponents( cur_pluggings, list( cur_pluggings.keys() ) );
+      solutions = self.enumerate_subcomponents( cur_pluggings, list( self._sortedholes( cur_pluggings.keys() ) ) );
     
     for solution_ in solutions:
       solution = DomConSolution();

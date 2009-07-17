@@ -15,16 +15,13 @@ class SubForm( ProtoBase, metaclass=kls ):
 
   def _init_init_( self ):
     
-    self._holes = { 0: set() };
+    self._holes = { 0: [] };
     self.protoforms = set();
   
   holes = property();
   
   @holes.getter
   def holes( self ):
-    #if isinstance( self._holes, dict ):
-    #  self._holes = self._holes[ 0 ];
-    #return self._holes;
     return self._holes[ 0 ];
 
   @holes.setter
@@ -39,18 +36,18 @@ class SubForm( ProtoBase, metaclass=kls ):
     from pypes.proto.form.protoform import ProtoForm;
     
     if isinstance( scope, Handle ):
-      self.holes.add( scope );
+      self.holes.append( scope );
       return scope;
     elif isinstance( scope, Freezer ):
       if not scope.freezelevel in self._holes:
-        self._holes[ scope.freezelevel ] = set();
-      self._holes[ scope.freezelevel ].add( scope.content );
+        self._holes[ scope.freezelevel ] = [];
+      self._holes[ scope.freezelevel ].append( scope.content );
       return scope.content;
     elif isinstance( scope, ProtoForm ):
       for ( freezelevel, content ) in scope._holes.items():
         if not freezelevel in self._holes:
-          self._holes[ freezelevel ] = set();
-        self._holes[ freezelevel ] |= content;
+          self._holes[ freezelevel ] = [];
+        self._holes[ freezelevel ] += content;
       self.protoforms.add( scope );
       return scope;
     else:
@@ -70,7 +67,7 @@ class SubForm( ProtoBase, metaclass=kls ):
 
     for handle in self.holes:
       found = False;
-      objholes = set( obj.holes );
+      objholes = list( obj.holes );
       for objhandle in obj.holes:
         if handle <= objhandle and objhandle <= handle:
           objholes.remove( objhandle );

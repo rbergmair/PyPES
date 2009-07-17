@@ -278,7 +278,7 @@ class TestProtoForm( TestCase, metaclass=object_ ):
     
     sf2 = inst.subforms[ inst.roots[1] ];
     sf7 = sf2.subforms[ sf2.roots[2] ];
-    self.assertEquals( sf2.holes, {sf7.scope} );
+    self.assertEquals( sf2.holes, [ sf7.scope ] );
 
   def test_3( self ):
     

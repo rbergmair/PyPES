@@ -267,7 +267,7 @@ class ERGSemProcessor( metaclass=subject ):
       if holes == 0:
         return True;
     else:
-      if total-nonholes <= 0:
+      if total - nonholes <= 0:
         return True;
     
     return False;

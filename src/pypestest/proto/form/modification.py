@@ -71,7 +71,7 @@ class TestModification( TestCase, metaclass=object_ ):
       
     self.assert_( isinstance( inst.scope, Handle ), msg );
     self.assertEquals( inst.scope.hid, 1, msg );
-    self.assertEquals( inst.holes, {inst.scope} );
+    self.assertEquals( inst.holes, [inst.scope] );
 
   def test_1( self ):
     
@@ -118,7 +118,7 @@ class TestModification( TestCase, metaclass=object_ ):
     self.assert_( isinstance( inst.modality.referent, Operator ), msg );
     self.assertEquals( inst.modality.referent.otype, Operator.OP_M_NULL, msg );
     self.assert_( isinstance( inst.scope, Handle ), msg );
-    self.assertEquals( inst.holes, {inst.scope} );
+    self.assertEquals( inst.holes, [inst.scope] );
     
   
   def test_3( self ):

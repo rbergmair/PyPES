@@ -76,7 +76,7 @@ class TestERGtoBDSF( TestCase, metaclass=object_ ):
                 print( pft_encode( pf, pretty=False, fast_initialize=True ) );
                 raise;
 
-              k = open( filename.replace( ".pft.gz", ".txt" ), "wt", encoding="utf-8" )
+              k = open( filename.replace( ".pft.gz", ".txt" ), "rt", encoding="utf-8" )
               txt = k.read();
               k.close();
               

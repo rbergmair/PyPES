@@ -63,7 +63,7 @@ class TestQuantification( TestCase, metaclass=object_ ):
     self.assert_( isinstance( inst.rstr, ProtoForm ), msg );
     self.assert_( isinstance( inst.body, Handle ), msg );
     self.assertEquals( inst.body.hid, 1, msg );
-    self.assertEquals( inst.holes, {inst.body} );
+    self.assertEquals( inst.holes, [ inst.body ] );
   
   def test_1( self ):
     
@@ -95,7 +95,7 @@ class TestQuantification( TestCase, metaclass=object_ ):
     self.assert_( isinstance( inst.rstr, Handle ), msg );
     self.assertEquals( inst.rstr.hid, None, msg );
     self.assert_( isinstance( inst.body, ProtoForm ), msg );
-    self.assertEquals( inst.holes, set() );
+    self.assertEquals( inst.holes, [] );
     
   
   def test_2( self ):

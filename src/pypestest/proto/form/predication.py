@@ -61,7 +61,7 @@ class TestPredication( TestCase, metaclass=object_ ):
       self.assertEquals( inst.args[ arg ].sort.sid, "x", msg );
     self.assertEquals( labels, { "arg1" }, msg );
     self.assertEquals( len( vars ), 1, msg );
-    self.assertEquals( inst.holes, set() );
+    self.assertEquals( inst.holes, [] );
   
   def test_1( self ):
     
@@ -105,7 +105,7 @@ class TestPredication( TestCase, metaclass=object_ ):
         
     self.assertEquals( labels, { "ARG0", "ARG1" }, msg );
     self.assertEquals( len( vars ), 2, msg );
-    self.assertEquals( inst.holes, set() );
+    self.assertEquals( inst.holes, [] );
   
   def test_2( self ):
     

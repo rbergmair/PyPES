@@ -17,7 +17,7 @@ def listsubdirs( pattern ):
   try:
     st = stat( pattern );
     if S_ISDIR( st[ ST_MODE ] ):
-      yield pattern;
+      return [ pattern ];
       return;
   except OSError:
     pass;
@@ -29,13 +29,17 @@ def listsubdirs( pattern ):
   st = stat( dirname );
   assert S_ISDIR( st[ ST_MODE ] );
   
+  rslt = set();
+  
   for entry in listdir( dirname ):
 
     fullname = dirname + "/" + entry;
     st = stat( fullname );
     if S_ISDIR( st[ ST_MODE ] ):
       if entry.startswith( prefix ):
-        yield fullname;
+        rslt.add( fullname );
+  
+  return sorted( rslt );
 
 
 

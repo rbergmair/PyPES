@@ -337,6 +337,9 @@ class TestEnumerator( TestCase, metaclass=object_ ):
               
               pf1 = decoder.decode( fstr )( sig=ProtoSig() );
               
+              # print( fstr );
+              # print( pft_encode( pf1, pretty=False, fast_initialize=True, linebreaks=True ) );
+              
               print( filename );
               
               with Solver( pf1 ) as solver:
@@ -424,8 +427,9 @@ class TestEnumerator( TestCase, metaclass=object_ ):
     
     with PFTDecoder( (pypes.proto.lex.erg,None) ) as decoder:
       
-      i = 520;
-      self.quicktest( "{0}/fracas-{1}.pft.gz".format( self._TESTDTADIR, i ), decoder );
+      i = 164;
+      #self.quicktest( "{0}/fracas-{1}.pft.gz".format( self._TESTDTADIR, i ), decoder );
+      self.check_testfile( "{0}/fracas-{1}.pft.gz".format( self._TESTDTADIR, i ), decoder );
   
   def test_enumerator( self ):
 

@@ -60,8 +60,8 @@ class ProtoForm( SubForm, ScopeBearer, metaclass=kls ):
     for ( freezelevel, content ) in subform._holes.items():
       freezelevel -= 1;
       if not freezelevel in self._holes:
-        self._holes[ freezelevel ] = set();
-      self._holes[ freezelevel ] |= content;
+        self._holes[ freezelevel ] = [];
+      self._holes[ freezelevel ] += content;
     self.protoforms |= subform.protoforms;
     if isinstance( subform, ProtoForm ):
       self.protoforms.add( subform );

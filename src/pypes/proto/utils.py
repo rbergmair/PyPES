@@ -37,7 +37,10 @@ class SanityChecker( ProtoProcessor, metaclass=subject ):
     holes = set();
     for root in inst.roots:
       subform = inst.subforms[ root ];
-      holes |= subform.holes;
+      holes_ = set( subform.holes );
+      assert len( holes_ ) == len( subform.holes );
+      assert not holes_ & holes;
+      holes |= holes_;
     
     if len( holes ) + 1 != len( inst.roots ):
       self._insane = True;

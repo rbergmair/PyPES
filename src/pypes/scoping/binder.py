@@ -3,6 +3,7 @@
 __package__ = "pypes.scoping";
 __all__ = [ "Binder", "bind" ];
 
+from itertools import chain;
 from copy import copy;
 from pypes.utils.mc import subject;
 from pypes.proto import *;
@@ -28,7 +29,9 @@ class _Binder( ProtoProcessor, metaclass=subject ):
   def _process_subform( self, inst, holes, protoforms ):
     
     subform = copy( inst )( sig=ProtoSig() );
-    subform.holes = holes - self._bound_handles;
+    subform.holes = list( holes );
+    for hndl in self._bound_handles:
+      subform.holes.remove( hndl );
     return subform;
   
   def _process_predication( self, inst, subform, predicate, args ):
@@ -102,7 +105,7 @@ class Binder( ProtoProcessor, metaclass=subject ):
   def _process_subform( self, inst, holes, protoforms ):
     
     subform = copy( inst )( sig=ProtoSig() );
-    for old in set( holes ) | set( protoforms ):
+    for old in chain( holes, protoforms ):
       if old in self._obj_:
         if old in subform.holes:
           subform.holes.remove( old );
@@ -113,7 +116,7 @@ class Binder( ProtoProcessor, metaclass=subject ):
           if isinstance( new, ProtoForm ):
             subform.protoforms.add( new );
           elif isinstance( new, Handle ):
-            subform.holes.add( new );
+            subform.holes.append( new );
           else:
             print( self._obj_ );
             assert False;

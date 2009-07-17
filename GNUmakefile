@@ -127,6 +127,7 @@ cleandata:
 	$(RM) dta/items/fracas/*
 	$(RM) $(FRACAS_PROCESSED)
 	$(RM) $(RTE)
+	$(RM) dta/infer/scores/*
 
 cleanresults:
 	$(RM) $(FRACAS_RESULTS)
