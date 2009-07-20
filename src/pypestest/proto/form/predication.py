@@ -47,7 +47,7 @@ class TestPredication( TestCase, metaclass=object_ ):
     self.assert_( isinstance( inst.predicate, Functor ), msg );
     self.assertEquals( inst.predicate.fid, 5, msg );
     self.assert_( isinstance( inst.predicate.referent, Word ), msg );
-    self.assertEquals( inst.predicate.referent.lemma, ["cat"], msg );
+    self.assertSequenceEqual( inst.predicate.referent.lemma, ["cat"], msg );
     labels = set();
     vars = set();
     for arg in inst.args:
@@ -59,9 +59,9 @@ class TestPredication( TestCase, metaclass=object_ ):
       self.assertEquals( inst.args[ arg ].vid, 1, msg );
       self.assert_( isinstance( inst.args[ arg ].sort, Sort ), msg );
       self.assertEquals( inst.args[ arg ].sort.sid, "x", msg );
-    self.assertEquals( labels, { "arg1" }, msg );
+    self.assertSetEqual( labels, { "arg1" }, msg );
     self.assertEquals( len( vars ), 1, msg );
-    self.assertEquals( inst.holes, [] );
+    self.assertSequenceEqual( inst.holes, [] );
   
   def test_1( self ):
     
@@ -103,9 +103,9 @@ class TestPredication( TestCase, metaclass=object_ ):
         self.assert_( isinstance( inst.args[ arg ], Constant ), msg );
         self.assertEquals( inst.args[ arg ].ident, "Jones", msg );
         
-    self.assertEquals( labels, { "ARG0", "ARG1" }, msg );
+    self.assertSetEqual( labels, { "ARG0", "ARG1" }, msg );
     self.assertEquals( len( vars ), 2, msg );
-    self.assertEquals( inst.holes, [] );
+    self.assertSequenceEqual( inst.holes, [] );
   
   def test_2( self ):
     

@@ -51,7 +51,7 @@ class TestModification( TestCase, metaclass=object_ ):
     self.assert_( isinstance( inst.modality, Functor ), msg );
     self.assertEquals( inst.modality.fid, 5, msg );
     self.assert_( isinstance( inst.modality.referent, Word ), msg );
-    self.assertEquals( inst.modality.referent.lemma, ["told"], msg );
+    self.assertSequenceEqual( inst.modality.referent.lemma, ["told"], msg );
     
     labels = set();
     vars = set();
@@ -66,12 +66,12 @@ class TestModification( TestCase, metaclass=object_ ):
       self.assert_( isinstance( inst.args[ arg ].sort, Sort ), msg );
       self.assertEquals( inst.args[ arg ].sort.sid, "x", msg );
     
-    self.assertEquals( labels, { "arg1", "arg2" } );
+    self.assertSetEqual( labels, { "arg1", "arg2" } );
     self.assertEquals( len( vars ), 2 );
       
     self.assert_( isinstance( inst.scope, Handle ), msg );
     self.assertEquals( inst.scope.hid, 1, msg );
-    self.assertEquals( inst.holes, [inst.scope] );
+    self.assertSequenceEqual( inst.holes, [inst.scope] );
 
   def test_1( self ):
     
@@ -118,7 +118,7 @@ class TestModification( TestCase, metaclass=object_ ):
     self.assert_( isinstance( inst.modality.referent, Operator ), msg );
     self.assertEquals( inst.modality.referent.otype, Operator.OP_M_NULL, msg );
     self.assert_( isinstance( inst.scope, Handle ), msg );
-    self.assertEquals( inst.holes, [inst.scope] );
+    self.assertSequenceEqual( inst.holes, [inst.scope] );
     
   
   def test_3( self ):

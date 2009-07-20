@@ -38,7 +38,7 @@ class TestFunctor( TestCase, metaclass=object_ ):
     
     self.assert_( isinstance( inst.referent, Word ), msg );
     self.assertEquals( inst.fid, 5, msg );
-    self.assertEquals( inst.referent.lemma, ["man"], msg );
+    self.assertSequenceEqual( inst.referent.lemma, ["man"], msg );
 
   def test_1( self ):
     
@@ -76,7 +76,7 @@ class TestFunctor( TestCase, metaclass=object_ ):
     
     self.assert_( isinstance( inst.referent, Word ), msg );
     self.assertEquals( inst.fid, 5, msg );
-    self.assertEquals( inst.referent.lemma, ["man"], msg );
+    self.assertSequenceEqual( inst.referent.lemma, ["man"], msg );
     self.assertEquals( len( inst.feats ), 2, msg );
     self.assert_( "pers" in inst.feats, msg );
     self.assert_( "num" in inst.feats, msg );

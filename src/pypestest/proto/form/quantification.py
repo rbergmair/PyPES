@@ -63,7 +63,7 @@ class TestQuantification( TestCase, metaclass=object_ ):
     self.assert_( isinstance( inst.rstr, ProtoForm ), msg );
     self.assert_( isinstance( inst.body, Handle ), msg );
     self.assertEquals( inst.body.hid, 1, msg );
-    self.assertEquals( inst.holes, [ inst.body ] );
+    self.assertSequenceEqual( inst.holes, [ inst.body ] );
   
   def test_1( self ):
     
@@ -87,7 +87,7 @@ class TestQuantification( TestCase, metaclass=object_ ):
     
     self.assert_( isinstance( inst.quantifier, Functor ), msg );
     self.assert_( isinstance( inst.quantifier.referent, Word ), msg );
-    self.assertEquals( inst.quantifier.referent.lemma, ["every"], msg );
+    self.assertSequenceEqual( inst.quantifier.referent.lemma, ["every"], msg );
     self.assert_( isinstance( inst.var, Variable ), msg );
     self.assertEquals( inst.var.vid, 1, msg );
     self.assert_( isinstance( inst.var.sort, Sort ), msg );
@@ -95,7 +95,7 @@ class TestQuantification( TestCase, metaclass=object_ ):
     self.assert_( isinstance( inst.rstr, Handle ), msg );
     self.assertEquals( inst.rstr.hid, None, msg );
     self.assert_( isinstance( inst.body, ProtoForm ), msg );
-    self.assertEquals( inst.holes, [] );
+    self.assertSequenceEqual( inst.holes, [] );
     
   
   def test_2( self ):

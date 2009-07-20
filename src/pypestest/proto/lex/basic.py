@@ -37,7 +37,7 @@ class TestWord( TestCase, metaclass=object_ ):
   def check_word_1( self, inst, msg=None ):
     
     self.assert_( isinstance( inst, Word ), msg );
-    self.assertEquals( inst.lemma, ["lemma"], msg );
+    self.assertSequenceEqual( inst.lemma, ["lemma"], msg );
     self.assertEquals( inst.pos, None, msg );
     self.assertEquals( inst.sense, None, msg );
   
@@ -54,7 +54,7 @@ class TestWord( TestCase, metaclass=object_ ):
   def check_word_2( self, inst, msg=None ):
     
     self.assert_( isinstance( inst, Word ), msg );
-    self.assertEquals( inst.lemma, ["lemma1","lemma2"], msg );
+    self.assertSequenceEqual( inst.lemma, ["lemma1","lemma2"], msg );
     self.assertEquals( inst.pos, None, msg );
     self.assertEquals( inst.sense, None, msg );
   
@@ -109,7 +109,7 @@ class TestWord( TestCase, metaclass=object_ ):
   def check_word_8( self, inst, msg=None ):
     
     self.assert_( isinstance( inst, Word ), msg );
-    self.assertEquals( inst.lemma, ["lemma"], msg );
+    self.assertSequenceEqual( inst.lemma, ["lemma"], msg );
     self.assertEquals( inst.pos, "p", msg );
     self.assertEquals( inst.sense, "1", msg );
   
