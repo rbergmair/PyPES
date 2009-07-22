@@ -12,50 +12,7 @@ PYTHONPATH = src
 PYTHON = $(ENV) PYTHONPATH="$(PYTHONPATH)" python3.0
 
 
-INFERDTA = \
-  aquaint-brandeis.kbe.xml \
-  aquaint-chrisrte.kbe.xml \
-  aquaint-cns.kbe.xml \
-  aquaint-cycorp.kbe.xml \
-  aquaint-kbeval.kbe.xml \
-  aquaint-lcch.kbe.xml \
-  aquaint-lccm.kbe.xml \
-  aquaint-mit.kbe.xml \
-  aquaint-modals.kbe.xml \
-  aquaint-parc-dev.kbe.xml \
-  aquaint-parc-predev.kbe.xml \
-  aquaint-simple.kbe.xml \
-  aquaint-stanford.kbe.xml \
-  aquaint-utdicsi.kbe.xml \
-  ave-06-de-tst.rte.xml \
-  ave-06-en-dev-np-nr.rte.xml \
-  ave-06-en-dev-np-r.rte.xml \
-  ave-06-en-dev-yp-nr.rte.xml \
-  ave-06-en-dev-yp-r.rte.xml \
-  ave-06-en-tst.rte.xml \
-  ave-07-de-dev.ave.xml \
-  ave-07-de-tst.ave.xml \
-  ave-07-en-dev.ave.xml \
-  ave-07-en-tst.ave.xml \
-  ave-08-de-dev.ave.xml \
-  ave-08-de-tst.ave.xml \
-  ave-08-en-dev.ave.xml \
-  ave-08-en-tst.ave.xml \
-  fracas.bmc.xml \
-  rte-05-dev.rte.xml \
-  rte-05-tst.rte.xml \
-  rte-06-dev.rte.xml \
-  rte-06-tst.rte.xml \
-  rte-07-dev-2w.rte.xml \
-  rte-07-dev-3w.rte.xml \
-  rte-07-tst-2w.rte.xml \
-  rte-07-tst-3w-results.tar.gz \
-  rte-07-tst-3w.txt \
-  rte-08-2w-results.tar.gz \
-  rte-08-3w-results.tar.gz \
-  rte-08.rte.xml \
-  rte-wang-birth.rte.xml \
-  rte-wang-kill.rte.xml
+INFERDTA = $(subst dta/infer/orig/, , $(wildcard dta/infer/orig/*.xml *.gz))
 
 INFERDTA_ORIG = $(patsubst %, dta/infer/orig/%, $(INFERDTA))
 

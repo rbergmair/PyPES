@@ -31,7 +31,7 @@ class RTEScore( metaclass=object_ ):
       "three-way": LBLSET_3W
     };
 
-  CSV_HEADER = "descr,N,acc,acc2w,ap,cws,cws2w";
+  CSV_HEADER = "descr,total,covered,cov,acc,acc2w,ap,cws,cws2w";
 
 
   def __init__( self, reffile=None, objfile=None ):
@@ -47,6 +47,7 @@ class RTEScore( metaclass=object_ ):
     self._contingency_table = None;
     
     self._total = 0;
+    self._notcovered = 0;
     
     if reffile is not None and objfile is not None:
       self._run_statistics( read_annotation(reffile), read_annotation(objfile) );
@@ -65,7 +66,7 @@ class RTEScore( metaclass=object_ ):
     ( descriptor_, lblset_, data_ ) = refdata;
     ( descriptor, lblset, data ) = objdata;
     
-    assert data_.keys() == data.keys();
+    # assert data_.keys() == data.keys();
     assert not data_.keys() & self._refdata.keys();
     assert not data.keys() & self._objdata.keys();
     
@@ -94,13 +95,25 @@ class RTEScore( metaclass=object_ ):
     self._refdata.update( data_ );
     self._objdata.update( data );
     
-    for ( id_, (dec,conf,val) ) in data.items():
-      assert id_ in data_;
-      (dec_,conf_,val_) = data_[ id_ ];
-      assert dec in self.LBLSETs[ self._lblset ];
-      assert dec_ in self.LBLSETs[ self._lblset_ ];
-      self._contingency_table[ dec_ ][ dec ] += 1;
+    for ( id_, (dec_,conf_,val_) ) in data_.items():
+
+      if dec_ is None:
+        continue;
+
       self._total += 1;
+      if id_ not in data:
+        self._notcovered += 1;
+        continue;
+
+      (dec,conf,val) = data[ id_ ];
+      assert dec in self.LBLSETs[ self._lblset ];
+      try:
+        assert dec_ in self.LBLSETs[ self._lblset_ ];
+      except:
+        print( dec_ );
+        raise;
+
+      self._contingency_table[ dec_ ][ dec ] += 1;
 
 
   @property
@@ -131,38 +144,51 @@ class RTEScore( metaclass=object_ ):
   def total( self ):
     return self._total;
 
+  @property
+  def notcovered( self ):
+    return self._notcovered;
 
-  def accuracy_( self, comp ):
-    
-    if self._total == 0:
+  @property
+  def covered( self ):
+    return self._total - self._notcovered;
+
+
+  @property
+  def coverage( self ):
+    return self.covered / self.total;
+
+
+  def _accuracy( self, comp ):
+
+    if self.covered == 0:
       return None;
     
     total = 0;
     correct = 0;
     
-    for ref_dec in self._contingency_table:
-      for obj_dec in self._contingency_table[ ref_dec ]:
-        total += self._contingency_table[ ref_dec ][ obj_dec ];
+    for ref_dec in self.contingency_table:
+      for obj_dec in self.contingency_table[ ref_dec ]:
+        total += self.contingency_table[ ref_dec ][ obj_dec ];
         if comp( ref_dec, obj_dec ):
-          correct += self._contingency_table[ ref_dec ][ obj_dec ];
+          correct += self.contingency_table[ ref_dec ][ obj_dec ];
     
-    assert total == self.total;
+    assert total == self.covered;
     return correct/total;
 
 
   @property
   def accuracy( self ):
     
-    if self._lblset != self._lblset_:
+    if self.lblset != self.lblset_:
       return None;
     
-    return self.accuracy_( lambda ref, obj: ref == obj );
+    return self._accuracy( lambda ref, obj: ref == obj );
 
 
   @property
   def accuracy_2w( self ):
     
-    return self.accuracy_(
+    return self._accuracy(
                lambda ref, obj:
                  self.LBLSETs[ self._lblset_ ][ ref ] == \
                  self.LBLSETs[ self._lblset ][ obj ]
@@ -205,7 +231,7 @@ class RTEScore( metaclass=object_ ):
     assert False;
   
   
-  def rank_weighted_score( self, comp ):
+  def _rank_weighted_score( self, comp ):
     
     if self.objdata_confranked is None:
       return None;
@@ -225,7 +251,7 @@ class RTEScore( metaclass=object_ ):
         mass += 1;
       rws += float( mass ) / float( i );
     
-    assert i == self.total;
+    assert i == self.covered;
     
     return rws / float(i);
 
@@ -233,7 +259,7 @@ class RTEScore( metaclass=object_ ):
   @property
   def average_precision_2w( self ):
     
-    return self.rank_weighted_score(
+    return self._rank_weighted_score(
                lambda ref, obj:
                  self.LBLSETs[ self._lblset_ ][ ref ] == 1
              );
@@ -245,7 +271,7 @@ class RTEScore( metaclass=object_ ):
     if self._lblset != self._lblset_:
       return None;
     
-    return self.rank_weighted_score(
+    return self._rank_weighted_score(
                lambda ref, obj:
                  ref == obj
              );
@@ -254,7 +280,7 @@ class RTEScore( metaclass=object_ ):
   @property
   def confidence_weighted_score_2w( self ):
 
-    return self.rank_weighted_score(
+    return self._rank_weighted_score(
                lambda ref, obj:
                  self.LBLSETs[ self._lblset_ ][ ref ] == \
                  self.LBLSETs[ self._lblset ][ obj ]
@@ -271,6 +297,14 @@ class RTEScore( metaclass=object_ ):
     rslt += ",";
     if self.total is not None:
       rslt += str( self.total );
+
+    rslt += ",";
+    if self.covered is not None:
+      rslt += str( self.covered );
+
+    rslt += ",";
+    if self.coverage is not None:
+      rslt += str( self.coverage );
 
     rslt += ",";
     if self.accuracy is not None:

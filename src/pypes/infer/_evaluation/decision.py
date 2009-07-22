@@ -19,32 +19,34 @@ def decide( infile, outfile ):
   with open( infile ) as f:
     data = read_annotation( f );
     
-  ( ranked, data ) = data;
+  ( descriptor, labelset, annotation ) = data;
   
   with open( outfile, "wt" ) as f:
 
     f.write( """<?xml version="1.0" encoding="UTF-8"?>\n\n""" );
     f.write(
-        """<annotations confidence_ranked="{0}">\n\n\n""".format( ranked )
+        """<annotations descriptor="{0}" labelset="two-way">\n\n\n""".format( descriptor )
       );
     
-    for ( infid, ( dec, vals ) ) in data:
+    for ( infid, ( dec, conf, vals ) ) in annotation.items():
       
       r1 = float( vals[ "r1" ] );
       r2 = float( vals[ "r2" ] );
       
       if r1 > r2:
         decision = "entailment";
-      elif r2 > r1:
-        decision = "contradiction";
       else:
-        decision = "unknown";
-        
+        decision = "no entailment";
+
+      confidence = "";
+      if conf is not None:
+        confidence = ' confidence="{0}"'.format( conf )
+
       f.write(
-          ( """<annotation infid="{0:s}" decision="{1:s}">\n"""
+          ( """<annotation infid="{0:s}"{4} decision="{1:s}">\n"""
             """  <value attribute="r1">{2:0.5f}</value>\n"""
             """  <value attribute="r2">{3:0.5f}</value>\n"""
-            """</annotation>\n\n""" ).format( infid, dec, r1, r2 )
+            """</annotation>\n\n""" ).format( infid, decision, r1, r2, confidence )
         );
     
     f.write( "\n</annotations>\n" );

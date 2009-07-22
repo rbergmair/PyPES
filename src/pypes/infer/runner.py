@@ -152,7 +152,7 @@ class TestsuiteRunner( XMLHandler, metaclass=subject ):
     
     f.write(
          """<?xml version="1.0" encoding="UTF-8"?>\n\n"""
-         """<annotations>\n\n\n"""
+         """<annotations descriptor="{0}" labelset="three-way">\n\n\n""".format( inst.__class__.__name__ )
       );
     f.flush();
     
