@@ -237,8 +237,8 @@ class TestsuiteRunner( XMLHandler, metaclass=subject ):
         f.write( "-->\n" );
       
       (r1, r2) = agent.infer( discid, antecedent, consequent );
+
       decision = "unknown";
-      
       if r1 >= 1.0:
         decision = "entailment";
       if r2 >= 1.0:
