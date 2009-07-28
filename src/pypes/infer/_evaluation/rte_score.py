@@ -4,6 +4,7 @@ __package__ = "pypes.infer._evaluation";
 __all__ = [ "RTEScore" ];
 
 from pprint import pprint;
+from math import log;
 
 from pypes.utils.mc import object_;
 from pypes.infer._evaluation.annotation_reader import read_annotation;
@@ -31,7 +32,7 @@ class RTEScore( metaclass=object_ ):
       "three-way": LBLSET_3W
     };
 
-  CSV_HEADER = "descr,total,covered,cov,acc,acc2w,ap,cws,cws2w";
+  CSV_HEADER = "descr,total,covered,cov,acc,acc2,ap2,ap2',cws,cws2,h(g),i(s|g),h(g2),i(s2|g2)";
 
 
   def __init__( self, reffile=None, objfile=None ):
@@ -229,9 +230,34 @@ class RTEScore( metaclass=object_ ):
       self._objdata_confranked.sort( reverse=True );
       return self._objdata_confranked;
     assert False;
+
+
+  @property
+  def objdata_confranked_rr( self ):
+    
+    if self.objdata_confranked is None:
+      return None;
+    
+    pos = [];
+    neg = [];
+    
+    is_incorrecty_ranked = False;
+    
+    for ( conf, id_, dec, val ) in self.objdata_confranked:
+      if self.LBLSETs[ self.lblset ][ dec ] == 1:
+        pos.append( (conf,id_,dec,val) );
+        if neg:
+          is_incorrecty_ranked = True;
+      else:
+        neg.insert( 0, (conf,id_,dec,val) );
+    
+    if not is_incorrecty_ranked:
+      return None;
+    
+    return pos + neg;
   
   
-  def _rank_weighted_score( self, comp ):
+  def _rank_weighted_score( self, ranking, comp ):
     
     if self.objdata_confranked is None:
       return None;
@@ -244,7 +270,7 @@ class RTEScore( metaclass=object_ ):
     i = 0;
     mass = 0;
     rws = 0.0;
-    for ( conf, id_, dec, val ) in self.objdata_confranked:
+    for ( conf, id_, dec, val ) in ranking:
       i += 1;
       (dec_,conf_,val_) = self.refdata[ id_ ];
       if comp( dec_, dec ):
@@ -260,6 +286,20 @@ class RTEScore( metaclass=object_ ):
   def average_precision_2w( self ):
     
     return self._rank_weighted_score(
+               self.objdata_confranked,
+               lambda ref, obj:
+                 self.LBLSETs[ self._lblset_ ][ ref ] == 1
+             );
+
+
+  @property
+  def average_precision_rr_2w( self ):
+    
+    if self.objdata_confranked_rr is None:
+      return None;
+    
+    return self._rank_weighted_score(
+               self.objdata_confranked_rr,
                lambda ref, obj:
                  self.LBLSETs[ self._lblset_ ][ ref ] == 1
              );
@@ -272,6 +312,7 @@ class RTEScore( metaclass=object_ ):
       return None;
     
     return self._rank_weighted_score(
+               self.objdata_confranked,
                lambda ref, obj:
                  ref == obj
              );
@@ -281,11 +322,127 @@ class RTEScore( metaclass=object_ ):
   def confidence_weighted_score_2w( self ):
 
     return self._rank_weighted_score(
+               self.objdata_confranked,
                lambda ref, obj:
                  self.LBLSETs[ self._lblset_ ][ ref ] == \
                  self.LBLSETs[ self._lblset ][ obj ]
              );
+
+
+  def _ent_gold( self, contingency_table ):
+
+    ent = 0.0;
+    for ref_dec in contingency_table:
+      sum = 0;
+      for obj_dec in contingency_table[ ref_dec ]:
+        sum += contingency_table[ ref_dec ][ obj_dec ];
+      prob = sum / self.covered;
+      if prob > 0.0:
+        ent += prob * log( prob, 2 );
+    ent = -ent;
+    return ent;
+
+
+  def _ent_gold_giv_obj( self, contingency_table ):
+    
+    relent = 0.0;
+    for obj_dec in contingency_table:
+      sum = 0;
+      for ref_dec in contingency_table:
+        try:
+          sum += contingency_table[ ref_dec ][ obj_dec ];
+        except:
+          print( contingency_table );
+          raise;
+      #print( str(obj_dec) + ":" + str(sum) );
+      if sum > 0:
+        relent_ = 0.0;
+        for ref_dec in contingency_table:
+          prob = contingency_table[ ref_dec ][ obj_dec ] / sum;
+          #print( "  " + str(ref_dec) + ":" + str(prob) );
+          if prob > 0.0:
+            relent_ += prob * log( prob, 2 );
+        relent_ = -relent_;
+        #print( " " + str(obj_dec) + ":" + str(relent_) );
+        relent += (float(sum)*relent_) / float(self.covered);
+      
+    return relent;
   
+  
+  def _mutinf( self, contingency_table ):
+    
+    eg = self._ent_gold( contingency_table );
+    if eg is None:
+      return None;
+    
+    eggo = self._ent_gold_giv_obj( contingency_table );
+    if eggo is None:
+      return None;
+    
+    return eg - eggo;
+
+
+  @property
+  def ent_gold( self ):
+
+    if self._lblset != self._lblset_:
+      return None;
+    
+    return self._ent_gold( self._contingency_table );
+
+
+  @property
+  def ent_gold_giv_obj( self ):
+
+    if self._lblset != self._lblset_:
+      return None;
+    
+    return self._ent_gold_giv_obj( self._contingency_table );
+
+
+  @property
+  def mutinf( self ):
+
+    if self._lblset != self._lblset_:
+      return None;
+    
+    return self._mutinf( self._contingency_table );
+  
+  
+  def _collapse( self, contingency_table ):
+    
+    contingency_table_ = {
+        0 : { 0 : 0, 1: 0 },
+        1 : { 0 : 0, 1: 0 }
+      };
+      
+    for ref_dec in contingency_table:
+      ref_dec_ = self.LBLSETs[ self.lblset_ ][ ref_dec ];
+      for obj_dec in contingency_table[ ref_dec ]:
+        obj_dec_ = self.LBLSETs[ self.lblset ][ obj_dec ];
+        contingency_table_[ ref_dec_ ][ obj_dec_ ] += \
+          contingency_table[ ref_dec ][ obj_dec ];
+    
+    return contingency_table_;
+
+
+  @property
+  def ent_gold_2w( self ):
+
+    return self._ent_gold( self._collapse( self._contingency_table ) );
+
+
+  @property
+  def ent_gold_giv_obj_2w( self ):
+
+    return self._ent_gold_giv_obj( self._collapse( self._contingency_table ) );
+
+
+  @property
+  def mutinf_2w( self ):
+    
+    return self._mutinf( self._collapse( self._contingency_table ) );
+    
   
   @property
   def csv_data( self ):
@@ -317,6 +474,10 @@ class RTEScore( metaclass=object_ ):
     rslt += ",";
     if self.average_precision_2w is not None:
       rslt += str( self.average_precision_2w );
+
+    rslt += ",";
+    if self.average_precision_rr_2w is not None:
+      rslt += str( self.average_precision_rr_2w );
     
     rslt += ",";
     if self.confidence_weighted_score is not None:
@@ -325,6 +486,22 @@ class RTEScore( metaclass=object_ ):
     rslt += ",";
     if self.confidence_weighted_score_2w is not None:
       rslt += str( self.confidence_weighted_score_2w );
+      
+    rslt += ",";
+    if self.ent_gold is not None:
+      rslt += str( self.ent_gold );
+      
+    rslt += ",";
+    if self.mutinf is not None:
+      rslt += str( self.mutinf );
+
+    rslt += ",";
+    if self.ent_gold_2w is not None:
+      rslt += str( self.ent_gold_2w );
+      
+    rslt += ",";
+    if self.mutinf_2w is not None:
+      rslt += str( self.mutinf_2w );
     
     return rslt;
 

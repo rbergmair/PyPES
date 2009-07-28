@@ -67,17 +67,23 @@ def compare( referencefile, objectfile ):
 
   print();
   if score.coverage is not None:
-    print( "coverage:  {0:1.2f}".format( score.coverage ) );
+    print( "COVERAGE:  {0:1.2f}".format( score.coverage ) );
   if score.accuracy is not None:
-    print( "acc:       {0:1.2f}".format( score.accuracy ) );
+    print( "ACCURACY:  {0:1.2f}".format( score.accuracy ) );
   if score.accuracy_2w is not None:
-    print( "acc2:      {0:1.2f}".format( score.accuracy_2w ) );
+    print( "ACCURACY2: {0:1.2f}".format( score.accuracy_2w ) );
   if score.average_precision_2w is not None:
-    print( "ap:        {0:1.2f}".format( score.average_precision_2w ) );
+    print( "AVPREC:    {0:1.2f}".format( score.average_precision_2w ) );
   if score.confidence_weighted_score is not None:
-    print( "cws:       {0:1.2f}".format( score.confidence_weighted_score ) );
+    print( "CWS:       {0:1.2f}".format( score.confidence_weighted_score ) );
   if score.confidence_weighted_score_2w is not None:
-    print( "cws2:      {0:1.2f}".format( score.confidence_weighted_score_2w ) );
+    print( "CWS2:      {0:1.2f}".format( score.confidence_weighted_score_2w ) );
+  if score.ent_gold is not None:
+    print( "H(G):    {0:1.4f}".format( score.ent_gold ) );
+  if score.mutinf is not None:
+    print( "I(S;G):  {0:1.4f}".format( score.mutinf ) );
+    
+    
 
   
     
