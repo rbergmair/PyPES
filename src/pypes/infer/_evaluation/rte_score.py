@@ -257,7 +257,7 @@ class RTEScore( metaclass=object_ ):
     return pos + neg;
   
   
-  def _rank_weighted_score( self, ranking, comp ):
+  def _confidence_weighted_score( self, ranking, comp ):
     
     if self.objdata_confranked is None:
       return None;
@@ -282,13 +282,34 @@ class RTEScore( metaclass=object_ ):
     return rws / float(i);
 
 
+  def _average_precision( self, ranking ):
+    
+    if self.objdata_confranked is None:
+      return None;
+    
+    i = 0;
+    no_gs_entailment = 0;
+    no_both_entailment = 0;
+    rws = 0.0;
+    
+    for ( conf, id_, dec, val ) in ranking:
+      i += 1;
+      
+      (dec_,conf_,val_) = self.refdata[ id_ ];
+      if self.LBLSETs[ self.lblset_ ][ dec_ ] == 1:
+        no_gs_entailment += 1;
+        rws += float( no_gs_entailment ) / float( i );
+    
+    assert i == self.covered;
+    
+    return rws / float(no_gs_entailment);
+
+
   @property
   def average_precision_2w( self ):
     
-    return self._rank_weighted_score(
-               self.objdata_confranked,
-               lambda ref, obj:
-                 self.LBLSETs[ self._lblset_ ][ ref ] == 1
+    return self._average_precision(
+               self.objdata_confranked
              );
 
 
@@ -298,10 +319,8 @@ class RTEScore( metaclass=object_ ):
     if self.objdata_confranked_rr is None:
       return None;
     
-    return self._rank_weighted_score(
-               self.objdata_confranked_rr,
-               lambda ref, obj:
-                 self.LBLSETs[ self._lblset_ ][ ref ] == 1
+    return self._average_precision(
+               self.objdata_confranked_rr
              );
 
 
@@ -311,7 +330,7 @@ class RTEScore( metaclass=object_ ):
     if self._lblset != self._lblset_:
       return None;
     
-    return self._rank_weighted_score(
+    return self._confidence_weighted_score(
                self.objdata_confranked,
                lambda ref, obj:
                  ref == obj
@@ -321,7 +340,7 @@ class RTEScore( metaclass=object_ ):
   @property
   def confidence_weighted_score_2w( self ):
 
-    return self._rank_weighted_score(
+    return self._confidence_weighted_score(
                self.objdata_confranked,
                lambda ref, obj:
                  self.LBLSETs[ self._lblset_ ][ ref ] == \
