@@ -11,7 +11,7 @@ Contents:
    :maxdepth: 2
 
    tutorial.rst
-   library/bin.rst
+   library.rst
    guidelines.rst
 
 Indices and tables

@@ -9,8 +9,7 @@ from pypes.infer._evaluation.rte_scorer import score;
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 def main( argv=None ):
-  
-  score( "dta/infer/rte/rte-08" );
+  score( "dta/infer/fracas/fracas-2" );
   return 0;
 
 
