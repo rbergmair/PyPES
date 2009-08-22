@@ -1,0 +1,57 @@
+:mod:`pypes.codecs_` --- Input/Output Formats for ProtoForms
+============================================================
+
+.. module:: pypes.codecs_
+  :synopsis: provides routines for reading from and writing to string representations of ProtoForms.
+
+:mod:`pypes.codecs_` provides routines for reading from and writing to string representations of ProtoForms.
+
+
+Decoders
+--------
+
+.. class:: PFTDecoder( (lex,itemtype) )
+
+   .. method:: decode( pf )
+
+.. function:: pft_decode( pf [ , itemtype [ , lexicon ] ] )
+
+   is a shortcut to :meth:`pypes.codecs_.PFTDecoder.decode`.
+
+.. class:: MRXDecoder( mrx )
+
+   .. method:: decode( [ sem ] )
+
+.. function:: mrx_decode( mrx [ , sem ] )
+
+   is a shortcut to :meth:`pypes.codecs_.MRXDecoder.decode`.
+
+.. class:: MRSDecoder( mrs )
+
+   .. method:: decode( [ sem ] )
+
+.. function:: mrs_decode( mrs [ , sem ] )
+
+   is a shortcut to :meth:`pypes.codecs_.MRSDecoder.decode`.
+
+
+Encoders
+--------
+
+.. class:: PFTEncoder( pf )
+
+   .. method:: encode( [ pretty=True [, fast_initialize=False [, linebreaks=True ] ] ] )
+
+.. function:: pft_encode( pf, [ pretty=True [, fast_initialize=False [, linebreaks=True ] ] ] )
+
+   is a shortcut to :meth:`pypes.codecs_.PFTEncoder.encode`.
+
+.. class:: TreeEncoder( pf )
+
+   .. method:: encode( [ utool_style=False ] )
+
+.. function:: tree_encode( pf [ , utool_style=False ] )
+
+   is a shortcut to :meth:`pypes.codecs_.TreeEncoder.encode`.
+
+

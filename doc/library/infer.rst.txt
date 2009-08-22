@@ -1,0 +1,56 @@
+:mod:`pypes.infer` --- Inference Engines & Evaluation Environment
+=================================================================
+
+.. module:: pypes.infer
+  :synopsis: provides routines for running the inference
+     engines and using their output for evaluation purposes.
+
+:mod:`pypes.infer` provides routines for running the inference
+engines and using their output for evaluation purposes.
+
+
+.. class:: InferenceAgent( [paramid] )
+
+   is the base class for inference agents.
+
+   .. attribute:: paramid
+
+   .. method:: reset()
+
+   .. method:: process_sentence( sentid, rec, text )
+
+   .. method:: process_discourse( discid, rec, sents [ , inf=False ] )
+
+   .. method:: preprocess()
+
+   .. method:: infer( disc, antecedent, consequent )
+
+
+.. class:: SemanticInferenceAgent( [paramid] )
+
+   is a subclass of :class:`pypes.infer.InferenceAgent` which serves
+   as a base class for inference agents which work with semantic
+   representations from the item bank.
+
+   .. attribute:: paramid
+
+   .. method:: reset()
+
+   .. method:: process_sentence( sentid, rec, text )
+
+   .. method:: process_discourse( discid, rec, sents [ , inf=False ] )
+
+   .. method:: preprocess()
+
+   .. method:: infer( disc, antecedent, consequent )
+
+
+.. class:: TestsuiteRunner()
+
+   .. method:: add_agent( agent )
+
+   .. method:: run()
+
+
+
+

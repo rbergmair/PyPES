@@ -1,0 +1,137 @@
+:mod:`pypes.bin` --- "binaries"
+===============================
+
+.. module:: pypes.bin
+  :synopsis: "binaries"
+
+:mod:`pypes.bin` contains main programmes and command line utilities.
+
+
+.. function:: sanitize_rte( [argv] )
+
+   is a helper script that cleans up the RTE dataset from
+   the file named by the first element of the *argv*, and
+   writes the result to file named in the secont element of
+   *argv*.  This is normally called from the :file:`GNUmakefile`.
+
+
+.. function:: preprocess_rte( [argv] )
+
+   reads :file:`dta/infer/edited/rte*.rte.xml`, and populates
+   both the output directories in :file:`dta/infer/rte`, and
+   the items databases in :file:`dta/items/rte-*`
+   *argv* is ignored.
+   *(not fully implemented yet)*.
+
+
+.. function:: preprocess_rte_results( [argv] )
+
+   reads the system submissions from past RTE evaluations,
+   from :file:`dta/infer/edited/rte-results*.tar.gz`, and
+   creates annotation files in :file:`dta/infer/rte/`.
+   *argv* is ignored.
+
+
+.. function:: preprocess_fracas( [argv] )
+
+   reads :file:`dta/infer/edited/fracas.bmc.xml`, and populates
+   both the output directories in :file:`dta/infer/fracas`, and
+   the items database in :file:`dta/items/fracas`.
+   *argv* is ignored.
+
+
+.. function:: extract_logical_patterns( [argv] )
+
+   goes through the MRS test data items, and extracts examples of
+   predications, grouping them by the type of the MRS elementary
+   predications, which is often useful for developing logical
+   rewriting definitions.
+
+   The input is taken from :file:`dta/test`, and the output is
+   written to :file:`dta/pat`.
+   *argv* is ignored.
+
+
+.. function:: extract_ergsem_smi( [argv] )
+
+   extracts information from the ERG's SEM-I files in the directory named in
+   the first element of the *argv* list, and creates as output some python files
+   in a directory named in the second element.
+
+   In the process, it checks PyPES-internal assumptions against the grammar's
+   SEM-I, so when assertions fail, then that version of the ERG should not be
+   used with PyPES.  If the extraction succeeds, the output files need to go
+   in :file:`src/pypes/codecs_/mrs/_smi/_ergsem_smi_checker_auto.py` and
+   :file:`src/pypes/proto/lex/_erg_auto.py`.
+
+
+.. function:: read_treebank( [argv] )
+
+   reads the treebank in :file:`dta/treebanks/fracas.gz`
+   and populates the database in :file:`items/fracas`
+   with protoforms in basic and bdsf form.
+   *argv* is ignored.
+
+
+.. function:: run_testsuite( [argv] )
+
+   runs the inference engines on a testsuite.
+
+   The *argv* list should contain as its first element the subdirectory
+   where files are to be found (default :file:`dta/infer/fracas/fracas-1`).
+   Then all directories are traversed which are subdirectories
+   :file:`dta/infer/fracas` and have as a prefix ``fracas-1``.
+
+   Within each such directory, it will then look for :file:`data.ts.xml`,
+   reading the semantics from the items database named in the second
+   element of the *argv* list (default: :file:`items/fracas`).
+
+   The output will be written into each directory as an annotation file
+   under the name of the inference engine (e.g. file:`McPIETInferenceAgent.tsa.xml`)
+
+
+.. function:: decide_annotations( [argv] )
+
+   takes a McPIET annotation
+   (such as :file:`dta/infer/fracas/fracas-1-1/McPIETAgent.tsa.xml`)
+   and makes new entailment decisions on the basis of the numeric
+   `r1` and `r2` fields.
+
+   The default strategy in McPIET is to say `entailment` when `r1` is `1.0`,
+   contradiction when `r2` is `1.0` and `unknown` otherwise. -- This leads to
+   strict logical decisions and no robustness.
+
+   The strategy used in :func:`decide_annotation.main( [argv] )`, on the other
+   hand, leads to more robustness.  Here a decision is `entailment` whenever
+   `r1` > `r2`, and `no entailment` otherwise.
+
+   Does the same traversal through subdirectories of a named testsuite as
+   in :func:`run_testsuite.main()` based on the first element of the
+   *argv* list.
+
+   The second element of *argv* is the input annotation file and the third
+   element is the output annotaion file.
+
+
+.. function:: compare_annotations( [argv] )
+
+   compares two annotation files containing decisions on candidate
+   entailments, such as :file:`dta/infer/fracas/fracas-1-1/gold.tsa.xml` and
+   :file:`dta/infer/fracas/fracas-1-1/McPIETAgent.tsa.xml`.
+
+   Does the same traversal through subdirectories of a named testsuite as
+   in :func:`run_testsuite.main()` based on the first element of the
+   *argv* list.
+
+   Within each directory, a file named in the second element in the
+   *argv* list (default ``gold.tsa.xml``) is then compared against
+   a file named in the third element (default ``McPIETAgent.tsa.xml``).
+
+
+.. function:: run_score( [argv] )
+
+   iterates through subdirectories of :file:`dta/infer/fracas`
+   or :file:`dta/infer/rte` and creates CSV files in
+   :file:`dta/infer/score` to summarize the scores for the
+   different inference engines and subsets of the datasets.
+
