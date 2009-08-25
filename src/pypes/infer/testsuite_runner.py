@@ -271,18 +271,20 @@ class TestsuiteRunner( XMLHandler, metaclass=subject ):
         x = f.read( self.CHUNK_SIZE );
 
 
-
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-def run_testsuite( tsdir, itemsdir ):
-  
-  with TestsuiteRunner( (tsdir,itemsdir) ) as runner:
+def run_testsuite( tsdirnameprefix, tsitemsdbdirname ):
+
+  for subdir in listsubdirs( tsdirnameprefix ):
     
-    #runner.add_agent( lambda: YesInferenceAgent( paramid="ASDF" ) );
-    runner.add_agent( YesInferenceAgent );
-    runner.add_agent( NoInferenceAgent );
-    runner.add_agent( McPIETAgent );
-    runner.run();
+    print( subdir );
+    
+    with TestsuiteRunner( (subdir,tsitemsdbdirname) ) as runner:
+    
+      runner.add_agent( YesInferenceAgent );
+      runner.add_agent( NoInferenceAgent );
+      runner.add_agent( McPIETAgent );
+      runner.run();
 
 
 

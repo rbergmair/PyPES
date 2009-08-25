@@ -1,5 +1,8 @@
 # -*-  coding: ascii -*-  # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
+__package__ = "pypes.rewriting";
+__all__ = [ "LogpatExtractor", "extract_logpats" ];
+
 import sys;
 import gzip;
 import codecs;
@@ -12,6 +15,7 @@ import pypes.proto.lex.erg;
 from pypes.proto.lex import basic;
 
 from pypes.codecs_ import PFTDecoder, pft_encode;
+
 
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
@@ -123,26 +127,16 @@ class LogpatExtractor( ProtoProcessor, metaclass=subject ):
   def _process_connection( self, inst, subform, connective, lscope, rscope ):
 
     self._register_logpat( "c", inst.connective.referent );
-    
+
     
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-def main( argv=None ):
+def extract_logpats():
   
-  if argv is None or len( argv ) < 2:
-    argv = "dta/test";
-  else:
-    argv = argv[1];
-
   with LogpatExtractor( None ) as extractor:
-    extractor.extract_from_dir( argv );
+    extractor.extract_from_dir( "dta/test" );
 
-
-# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
-
-if __name__ == '__main__':
-  sys.exit( main( sys.argv ) );
 
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #

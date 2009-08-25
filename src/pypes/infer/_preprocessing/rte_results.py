@@ -1,7 +1,7 @@
 # -*-  coding: ascii -*-  # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 __package__ = "pypes.infer._preprocess";
-__all__ = [ "RTEResultsProcessor" ];
+__all__ = [ "RTEResultsPreprocessor", "preprocess_rte_results" ];
 
 import tarfile;
 import tempfile;
@@ -12,9 +12,10 @@ from pypes.utils.mc import subject;
 from pypes.utils.os_ import listsubdirs;
 
 
+
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-class RTEResultsProcessor( metaclass=subject ):
+class RTEResultsPreprocessor( metaclass=subject ):
 
 
   def __init__( self, f, dataset, datasubset ):
@@ -130,6 +131,28 @@ class RTEResultsProcessor( metaclass=subject ):
         self.process_file( f, filename );
       
       name = next( names, False );
+
+
+
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+
+def preprocess_rte_results( argv=None ):
+
+  f = tarfile.open( "dta/infer/orig/rte-08-3w-results.tar.gz", "r" );
+  try:
+    with RTEResultsPreprocessor( f=f, dataset="08", datasubset="3w" ) as proc:
+      proc.process();
+  finally:
+    f.close();
+
+  f = tarfile.open( "dta/infer/orig/rte-08-2w-results.tar.gz", "r" );
+  try:
+    with RTEResultsPreprocessor( f=f, dataset="08", datasubset="2w" ) as proc:
+      proc.process();
+  finally:
+    f.close();
+  
+  return 0; 
 
 
 

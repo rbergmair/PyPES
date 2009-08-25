@@ -5,21 +5,28 @@ CAT = cat
 BASH = bash
 SED = sed
 CP = cp
-ENV = env
+WHICH = which
+ECHO = echo
+CHMOD = chmod
 
-PYTHONPATH = src
+PYTHON = $(shell $(WHICH) python3.0)
 
-PYTHON = $(ENV) PYTHONPATH="$(PYTHONPATH)" python3.0
-
+SCRIPTS = \
+  bin/sanitize_rte \
+  bin/preprocess_rte \
+  bin/preprocess_rte_results \
+  bin/extract_ergsem_smi \
+  bin/extract_logpats \
+  bin/read_treebank \
+  bin/run_testsuite \
+  bin/reconsider_decisions \
+  bin/compare_decisions \
+  bin/score_decisions
 
 INFERDTA = $(subst dta/infer/orig/, , $(wildcard dta/infer/orig/*.xml *.gz))
-
 INFERDTA_ORIG = $(patsubst %, dta/infer/orig/%, $(INFERDTA))
-
 INFERDTA_SANITIZED = $(patsubst %, dta/infer/sanitized/%, $(INFERDTA))
-
 INFERDTA_EDITED = $(patsubst %, dta/infer/edited/%, $(INFERDTA))
-
 
 FRACAS_SECTIONS = \
   1-1 1-2 1-3 1-4 1-5 \
@@ -55,6 +62,30 @@ RTE = $(patsubst %, dta/infer/rte/rte-%/*, $(RTE_SUBSETS))
 
 all:
 
+
+scripts: $(SCRIPTS)
+
+bin/%: src/pypes/bin.py
+	@$(ECHO) -n "writing script $@..."
+	@$(ECHO) "#!$(PYTHON)" >> $@
+	@$(ECHO) "from os import chdir;" >> $@
+	@$(ECHO) "chdir( '$(PWD)' );" >> $@
+	@$(ECHO) "import sys;" >> $@
+	@$(ECHO) "from getopt import gnu_getopt;" >> $@
+	@$(ECHO) "from inspect import getargspec;" >> $@
+	@$(ECHO) "if not '$(PWD)/lib' in sys.path:" >> $@
+	@$(ECHO) "  sys.path.append( '$(PWD)/lib' );" >> $@
+	@$(ECHO) "if not '$(PWD)/src' in sys.path:" >> $@
+	@$(ECHO) "  sys.path.append( '$(PWD)/src' );" >> $@
+	@$(ECHO) "from pypes.bin import $*;" >> $@
+	@$(ECHO) "assert __name__ == '__main__';" >> $@
+	@$(ECHO) "argnames = getargspec( $* ).args;" >> $@
+	@$(ECHO) "( optval, args ) = gnu_getopt( sys.argv[1:], '', [ argname+'=' for argname in argnames ] );" >> $@
+	@$(ECHO) "kwargs = { opt[2:]: val for opt, val in optval };" >> $@
+	@$(ECHO) "$*( *args, **kwargs );" >> $@
+	@$(ECHO) "done."
+	$(CHMOD) +x $@
+
 data: $(INFERDTA_SANITIZED) $(INFERDTA_EDITED)
 
 
@@ -72,10 +103,13 @@ dta/infer/sanitized/%: dta/infer/orig/%
 	$(CP) dta/infer/orig/$* dta/infer/sanitized/$*
 
 
-clean: cleanpyc cleandata cleanresults
+clean: cleanpyc cleanscripts cleandata cleanresults
 
 cleanpyc:
 	$(FIND) src -name "*.pyc" -exec $(RM) {} \;
+
+cleanscripts:
+	$(RM) $(SCRIPTS)
 
 cleandata:
 	$(RM) dta/pat/*
@@ -96,4 +130,4 @@ loc:
 	$(FIND) src/pypes -name "*.py" | $(GREP) -v "_auto.py" | $(BASH) -c 'while read VAL; do $(CAT) $$VAL; done;' | $(GREP) -v "^#" | $(GREP) -v "^[:space:]*$$" --count
 
 
-.PHONY: all data clean cleanpyc cleandata loc
+.PHONY: all data clean cleanpyc cleanscripts cleandata cleanresults loc

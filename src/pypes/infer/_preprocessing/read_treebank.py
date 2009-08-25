@@ -1,5 +1,8 @@
 # -*-  coding: ascii -*-  # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
+__package__ = "pypes.infer._preprocess";
+__all__ = [ "read_treebank" ];
+
 import gzip;
 import sys;
 import codecs;
@@ -20,21 +23,21 @@ from pypes.proto import *;
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-def main( argv=None ):
+def read_treebank( infilename, outdbdirname ):
 
-  with TableManager( ( "dta/items/fracas", "discourse" ) ) as tbl:
+  with TableManager( ( outdbdirname, "discourse" ) ) as tbl:
     for i in range( 1, tbl.max_id+1 ):
       with tbl.record_by_id( i ) as rec:
         rec.set( "status", "succ" );
   
-  with TableManager( ( "dta/items/fracas", "sentence" ) ) as tbl:
+  with TableManager( ( outdbdirname, "sentence" ) ) as tbl:
     
     converrs = set();
     scoerrs = set();
     rewerrs = set();
     succ = set();
 
-    f_ = gzip.open( "dta/treebanks/fracas.gz", "rb" );
+    f_ = gzip.open( infilename, "rb" );
     
     try:
       
@@ -161,7 +164,7 @@ def main( argv=None ):
     n_succ = len( succ );
     p_succ = int( n_succ*100 / n_total )
     
-    with open( "dta/items/fracas/summary.txt", "wt" ) as f:
+    with open( outdbdirname + "/summary.txt", "wt" ) as f:
       
       print( "\n--- SUMMARY ---" );
       
@@ -188,13 +191,6 @@ def main( argv=None ):
         
       print( "total number of processed items: {0:d} ({1:d}% good)".format( n_succ, p_succ ) );
       print( "total number of processed items: {0:d} ({1:d}% good)".format( n_succ, p_succ ), file=f );
-
-
-
-# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
-
-if __name__ == '__main__':
-  sys.exit( main( sys.argv ) );
 
 
 

@@ -133,7 +133,6 @@ class RTESanitizer( TextContentFilter, metaclass=subject ):
       nextchar = outline[ r+3 ];
       isupcase = string.ascii_uppercase.find( nextchar ) != -1;
       
-      
       if isupcase:
         cnt = prefix.count( " " );
         if cnt == 0:
@@ -173,10 +172,12 @@ class RTESanitizer( TextContentFilter, metaclass=subject ):
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-def sanitize_rte( ifile, ofile ):
+def sanitize_rte( infilename, outfilename ):
   
-  with RTESanitizer() as san:
-    san.sanitize( ifile, ofile );
+  with open( infilename, mode="rb" ) as infile:
+    with open( outfilename, mode="wt", encoding="utf-8" ) as outfile:
+      with RTESanitizer() as san:
+        san.sanitize( infile, outfile );
 
 
 

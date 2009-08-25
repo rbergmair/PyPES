@@ -10,13 +10,13 @@
 Decoders
 --------
 
-.. class:: PFTDecoder( (lex,itemtype) )
+.. class:: PFTDecoder( (lexicon,itemtype) )
 
    .. method:: decode( pf )
 
 .. function:: pft_decode( pf [ , itemtype [ , lexicon ] ] )
 
-   is a shortcut to :meth:`pypes.codecs_.PFTDecoder.decode`.
+   is a shortcut to :meth:`PFTDecoder.decode`.
 
 .. class:: MRXDecoder( mrx )
 
@@ -24,7 +24,7 @@ Decoders
 
 .. function:: mrx_decode( mrx [ , sem ] )
 
-   is a shortcut to :meth:`pypes.codecs_.MRXDecoder.decode`.
+   is a shortcut to :meth:`MRXDecoder.decode`.
 
 .. class:: MRSDecoder( mrs )
 
@@ -32,7 +32,7 @@ Decoders
 
 .. function:: mrs_decode( mrs [ , sem ] )
 
-   is a shortcut to :meth:`pypes.codecs_.MRSDecoder.decode`.
+   is a shortcut to :meth:`MRSDecoder.decode`.
 
 
 Encoders
@@ -44,7 +44,7 @@ Encoders
 
 .. function:: pft_encode( pf, [ pretty=True [, fast_initialize=False [, linebreaks=True ] ] ] )
 
-   is a shortcut to :meth:`pypes.codecs_.PFTEncoder.encode`.
+   is a shortcut to :meth:`PFTEncoder.encode`.
 
 .. class:: TreeEncoder( pf )
 
@@ -52,6 +52,6 @@ Encoders
 
 .. function:: tree_encode( pf [ , utool_style=False ] )
 
-   is a shortcut to :meth:`pypes.codecs_.TreeEncoder.encode`.
+   is a shortcut to :meth:`TreeEncoder.encode`.
 
 

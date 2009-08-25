@@ -1,137 +1,142 @@
-:mod:`pypes.bin` --- "binaries"
-===============================
+:mod:`pypes.bin` --- scripts
+============================
+
 
 .. module:: pypes.bin
-  :synopsis: "binaries"
+  :synopsis: scripts
+
 
 :mod:`pypes.bin` contains main programmes and command line utilities.
 
 
-.. function:: sanitize_rte( [argv] )
+.. function:: sanitize_rte( infilename, outfilename )
 
-   is a helper script that cleans up the RTE dataset from
-   the file named by the first element of the *argv*, and
-   writes the result to file named in the secont element of
-   *argv*.  This is normally called from the :file:`GNUmakefile`.
-
-
-.. function:: preprocess_rte( [argv] )
-
-   reads :file:`dta/infer/edited/rte*.rte.xml`, and populates
-   both the output directories in :file:`dta/infer/rte`, and
-   the items databases in :file:`dta/items/rte-*`
-   *argv* is ignored.
-   *(not fully implemented yet)*.
+   is a helper script that cleans up the RTE dataset from the file named
+   *infilename*, and writes the result to file named *outfilename*.
+   This is normally called from the :file:`GNUmakefile`.
 
 
-.. function:: preprocess_rte_results( [argv] )
+.. function:: preprocess_rte()
 
-   reads the system submissions from past RTE evaluations,
-   from :file:`dta/infer/edited/rte-results*.tar.gz`, and
-   creates annotation files in :file:`dta/infer/rte/`.
-   *argv* is ignored.
-
-
-.. function:: preprocess_fracas( [argv] )
-
-   reads :file:`dta/infer/edited/fracas.bmc.xml`, and populates
-   both the output directories in :file:`dta/infer/fracas`, and
-   the items database in :file:`dta/items/fracas`.
-   *argv* is ignored.
+   reads :file:`dta/infer/edited/rte*.rte.xml`, and populates the output
+   directories in :file:`dta/infer/rte` with inference testing markup and
+   the items database in :file:`dta/items/rte` with cleartext items.
+   *(not fully implemented yet)*
 
 
-.. function:: extract_logical_patterns( [argv] )
+.. function:: preprocess_rte_results()
 
-   goes through the MRS test data items, and extracts examples of
-   predications, grouping them by the type of the MRS elementary
-   predications, which is often useful for developing logical
-   rewriting definitions.
+   reads the system submissions from past RTE evaluations, from
+   :file:`dta/infer/edited/rte-results*.tar.gz`, and creates annotation files
+   in :file:`dta/infer/rte`.
 
+
+.. function:: preprocess_fracas()
+
+   reads :file:`dta/infer/edited/fracas.bmc.xml`, and populates the output
+   directories in :file:`dta/infer/fracas` with inference testing markup and
+   the items database in :file:`dta/items/fracas` with cleartext items.
+
+
+.. function:: extract_ergsem_smi( ergdirname, targetdirname )
+
+   Within the directory named *ergdirname*, this will look at the files
+   :file:`erg.smi` and :file:`core.smi` to extract the grammar's SEM-I.
+
+   In the process, assertions are made, checking PyPES-internal assumptions
+   against the grammar's SEM-I.  When assertions fail, this means that the
+   present version of the ERG is incompatible with the present version of
+   PyPES, and adaptations have to be made on either or both sides, in order
+   to ensure interoperability.
+   
+   If the process succeeds, then the files :file:`_ergsem_smi_checker_auto.py`
+   and :file:`_erg_auto.py`, which are ultimately supposed to go into
+   :file:`src/pypes/codecs_/mrs/_smi` and :file:`src/pypes/proto/lex`
+   respectively, are created in the directory named *targetdirname*.
+
+
+.. function:: extract_logical_patterns()
+
+   goes through the MRS test data items, and extracts examples of predications,
+   grouping them by the type of the MRS elementary predications, which is often
+   useful for studying the properties of semantic representations and
+   developing rewriting rules.
    The input is taken from :file:`dta/test`, and the output is
    written to :file:`dta/pat`.
-   *argv* is ignored.
 
 
-.. function:: extract_ergsem_smi( [argv] )
+.. function:: read_treebank( infilename, outdbdirname )
 
-   extracts information from the ERG's SEM-I files in the directory named in
-   the first element of the *argv* list, and creates as output some python files
-   in a directory named in the second element.
-
-   In the process, it checks PyPES-internal assumptions against the grammar's
-   SEM-I, so when assertions fail, then that version of the ERG should not be
-   used with PyPES.  If the extraction succeeds, the output files need to go
-   in :file:`src/pypes/codecs_/mrs/_smi/_ergsem_smi_checker_auto.py` and
-   :file:`src/pypes/proto/lex/_erg_auto.py`.
+   reads the treebank from the file named *infilename* and populates the
+   databases in the directory *outdbdirname* with protoforms in basic and bdsf
+   forms; prints summary statistics on the process, and also writes those
+   statistics to :file:`summary.txt` in *outdbdirname*.
 
 
-.. function:: read_treebank( [argv] )
-
-   reads the treebank in :file:`dta/treebanks/fracas.gz`
-   and populates the database in :file:`items/fracas`
-   with protoforms in basic and bdsf form.
-   *argv* is ignored.
-
-
-.. function:: run_testsuite( [argv] )
+.. function:: run_testsuite( tsdirnameprefix, tsitemsdbdirname )
 
    runs the inference engines on a testsuite.
 
-   The *argv* list should contain as its first element the subdirectory
-   where files are to be found (default :file:`dta/infer/fracas/fracas-1`).
-   Then all directories are traversed which are subdirectories
-   :file:`dta/infer/fracas` and have as a prefix ``fracas-1``.
+   On the outermost level, this procedure performs an iteration over all
+   directories which have *tsdirnameprefix* as a prefix to their name.
+   For example, if *tsdirnameprefix* is :file:`dta/infer/fracas/fracas-1`,
+   then the procedure will enumerate all subdirectories of
+   :file:`dta/infer/fracas` which have `fracas-1` as a prefix in their name,
+   i.e.
+   :file:`dta/infer/fracas/fracas-1-1`,
+   :file:`dta/infer/fracas/fracas-1-2`,
+   :file:`dta/infer/fracas/fracas-1-3`,
+   etc.
 
-   Within each such directory, it will then look for :file:`data.ts.xml`,
-   reading the semantics from the items database named in the second
-   element of the *argv* list (default: :file:`items/fracas`).
+   Within each such directory, the inference testing markup file
+   :file:`data.ts.xml` will be consulted.  Then each inference engine will
+   be run on that testsuite, and will produce, in the same directory, an
+   annotation file named after itself, e.g.
+   file:`McPIETInferenceAgent.tsa.xml`.
 
-   The output will be written into each directory as an annotation file
-   under the name of the inference engine (e.g. file:`McPIETInferenceAgent.tsa.xml`)
+   Semantic inference angents will have to consult the semantic representations
+   for sentences and discourses.  These will be looked up in the items database
+   found in the directory named *tsitemsdbdirname*.
 
 
-.. function:: decide_annotations( [argv] )
-
-   takes a McPIET annotation
-   (such as :file:`dta/infer/fracas/fracas-1-1/McPIETAgent.tsa.xml`)
-   and makes new entailment decisions on the basis of the numeric
-   `r1` and `r2` fields.
+.. function:: reconsider_decisions( tsdirnameprefix [ , infile = "McPIETAgent.tsa.xml" [ , outfile = "McPIETAgent-reconsidered.tsa.xml" ] ] )
 
    The default strategy in McPIET is to say `entailment` when `r1` is `1.0`,
    contradiction when `r2` is `1.0` and `unknown` otherwise. -- This leads to
-   strict logical decisions and no robustness.
+   strict logical decisions.
 
-   The strategy used in :func:`decide_annotation.main( [argv] )`, on the other
-   hand, leads to more robustness.  Here a decision is `entailment` whenever
+   This procedure can "reconsider" the entailment decisions for added
+   robustness.  The strategy used here is to decide `entailment` whenever
    `r1` > `r2`, and `no entailment` otherwise.
 
-   Does the same traversal through subdirectories of a named testsuite as
-   in :func:`run_testsuite.main()` based on the first element of the
-   *argv* list.
-
-   The second element of *argv* is the input annotation file and the third
-   element is the output annotaion file.
-
-
-.. function:: compare_annotations( [argv] )
-
-   compares two annotation files containing decisions on candidate
-   entailments, such as :file:`dta/infer/fracas/fracas-1-1/gold.tsa.xml` and
-   :file:`dta/infer/fracas/fracas-1-1/McPIETAgent.tsa.xml`.
-
-   Does the same traversal through subdirectories of a named testsuite as
-   in :func:`run_testsuite.main()` based on the first element of the
-   *argv* list.
-
-   Within each directory, a file named in the second element in the
-   *argv* list (default ``gold.tsa.xml``) is then compared against
-   a file named in the third element (default ``McPIETAgent.tsa.xml``).
+   Based on *tsdirnameprefix*, this procedure goes through the various
+   datasets, in the same way as :meth:`run_testsuite`.  It reads the
+   `r1` and `r2` fields from the testsuite annotation in the file named
+   *infile*, and writes the new decisions into the file named *outfile*,
+   copying through other relevant information.
 
 
-.. function:: run_score( [argv] )
+.. function:: compare_decisions( tsdirnameprefix [ , objectfilename = "McPIETAgent.tsa.xml" [ , referencefilename = "gold.tsa.xml" ] ] )
 
-   iterates through subdirectories of :file:`dta/infer/fracas`
-   or :file:`dta/infer/rte` and creates CSV files in
-   :file:`dta/infer/score` to summarize the scores for the
+   compares two annotation files containing decisions on candidate entailments,
+   normally a set of system decisions against a gold standard.
+
+   Based on *tsdirnameprefix*, this procedure goes through the
+   various datasets, in the same way as :meth:`run_testsuite`.
+   Within each directory, a file named
+   *objectfilename* (default: `McPIETAgent.tsa.xml`)
+   is read, and compared against a file named
+   *referencefilename* (default: `gold.tsa.xml`).
+
+   The results are printed for quick visual inspection.  In order to
+   systematically collect statistics and export them for further analysis,
+   use :meth:`score_decisions` instead.
+
+
+.. function:: score_decisions( prefix )
+
+   iterates through subdirectories of the directory named by *prefix*,
+   such as :file:`dta/infer/fracas` or :file:`dta/infer/rte`, and creates
+   CSV files in :file:`dta/infer/score` to summarize the scores for the
    different inference engines and subsets of the datasets.
 

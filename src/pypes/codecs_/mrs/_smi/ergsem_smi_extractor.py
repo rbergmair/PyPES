@@ -1,7 +1,7 @@
 # -*-  coding: ascii -*-  # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 __package__ = "pypes.codecs_.mrs._smi";
-__all__ = [ "ERGSemSMIExtractor", "ergsem_smi_extract" ];
+__all__ = [ "ERGSemSMIExtractor", "extract_ergsem_smi" ];
 
 import re;
 from itertools import chain;
@@ -408,10 +408,10 @@ class ERGSemSMIExtractor( ERGSemProcessor, metaclass=subject ):
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-def ergsem_smi_extract( sourcedir, targetdir ):
+def extract_ergsem_smi( ergdirname, targetdirname ):
   
-  with ERGSemSMIExtractor( sourcedir ) as extractor:
-    extractor.extract( targetdir );
+  with ERGSemSMIExtractor( ergdirname ) as extractor:
+    extractor.extract( targetdirname );
 
 
 
