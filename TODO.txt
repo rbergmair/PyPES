@@ -1,9 +1,3 @@
 instrument code for testing
   __del__ methods
   stdin/stdout rerouting, redo logger testing
-
-use hasattr instead of AttributeError
-
-lambdaification use coreferences AFTER renaming
-
-fix comparisons

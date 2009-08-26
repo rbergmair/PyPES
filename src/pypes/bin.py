@@ -3,14 +3,16 @@
 __package__ = "pypes";
 __all__ = [
     "sanitize_rte", "preprocess_rte", "preprocess_rte_results",
-    "extract_ergsem_smi", "extract_logpats", "read_treebank", "run_testsuite",
-    "reconsider_decisions", "compare_decisions", "score_decisions"
+    "preprocess_fracas", "extract_ergsem_smi", "extract_logpats",
+    "read_treebank", "run_testsuite", "reconsider_decisions",
+    "compare_decisions", "score_decisions"
   ];
 
 
 from pypes.infer._preprocessing.rte_sanitizer import sanitize_rte;
 from pypes.infer._preprocessing.rte_preprocessor import  preprocess_rte;
 from pypes.infer._preprocessing.rte_results import  preprocess_rte_results;
+from pypes.infer._preprocessing.fracas_preprocessor import preprocess_fracas;
 
 from pypes.codecs_.mrs._smi.ergsem_smi_extractor import extract_ergsem_smi;
 

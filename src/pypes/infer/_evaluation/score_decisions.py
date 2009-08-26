@@ -7,6 +7,7 @@ from pprint import pprint;
 from math import log;
 
 from pypes.utils.mc import object_, subject;
+from pypes.utils.os_ import listsubdirs, listdir;
 from pypes.infer._evaluation.annotation_reader import read_annotation;
 
 

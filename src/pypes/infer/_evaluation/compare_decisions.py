@@ -40,8 +40,8 @@ def compare_decisions(
     ( descriptor, labelset, refdata ) = refdata_;
     ( descriptor, labelset, objdata ) = objdata_;
     
-    print( "reference file:  " + referencefile );
-    print( "object file:     " + objectfile );
+    print( "reference file:  " + referencefilename );
+    print( "object file:     " + objectfilename );
   
     print();
     

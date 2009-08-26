@@ -1,7 +1,7 @@
 # -*-  coding: ascii -*-  # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 __package__ = "pypes.infer._preprocess";
-__all__ = [ "FracasProcessor" ];
+__all__ = [ "FraCaSPreprocessor", "preprocess_fracas" ];
 
 from pypes.utils.mc import subject;
 from pypes.utils.itembank import *;
@@ -344,7 +344,7 @@ class ProblemsHandler( XMLElementHandler, metaclass=subject ):
     self.itemid_by_sentid = {};
     self.itemid_by_discid = {};
     
-    assert isinstance( self._obj_, FraCaSProcessor );
+    assert isinstance( self._obj_, FraCaSPreprocessor );
     self.datadir = self._obj_.datadir;
     
     self.sents_ctx_mgr = TableManager( ( self._obj_.itemdir, "sentence" ) );
@@ -377,7 +377,7 @@ class ProblemsHandler( XMLElementHandler, metaclass=subject ):
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-class FraCaSProcessor( XMLHandler, metaclass=subject ):
+class FraCaSPreprocessor( XMLHandler, metaclass=subject ):
 
 
   CLIENT_BYNAME = {
@@ -406,6 +406,19 @@ class FraCaSProcessor( XMLHandler, metaclass=subject ):
     stylesheet = self._obj_.readline();
     
     super().process();
+
+
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+
+def preprocess_fracas():
+  
+  f = open( "dta/infer/edited/fracas.bmc.xml", "rb" );
+  try:
+    with FraCaSPreprocessor( f ) as proc:
+      proc.process( "dta/infer/fracas", "dta/items/fracas" );
+  finally:
+    f.close();
+  return 0;
 
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #

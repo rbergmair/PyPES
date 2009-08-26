@@ -1,7 +1,7 @@
 # -*-  coding: ascii -*-  # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 __package__ = "pypes.infer";
-__all__ = [ "YesInferenceAgent", "NoInferenceAgent" ];
+__all__ = [ "YesAgent", "NoAgent" ];
 
 from pypes.utils.mc import subject;
 from pypes.infer.infeng import InferenceAgent;
@@ -10,7 +10,7 @@ from pypes.infer.infeng import InferenceAgent;
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-class YesInferenceAgent( InferenceAgent, metaclass=subject ):
+class YesAgent( InferenceAgent, metaclass=subject ):
   
   def infer( self, disc, antecedent, consequent ):
     
@@ -20,7 +20,7 @@ class YesInferenceAgent( InferenceAgent, metaclass=subject ):
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-class NoInferenceAgent( InferenceAgent, metaclass=subject ):
+class NoAgent( InferenceAgent, metaclass=subject ):
   
   def infer( self, disc, antecedent, consequent ):
     

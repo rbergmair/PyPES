@@ -7,8 +7,9 @@ import sys;
 
 from pypes.utils.mc import subject;
 from pypes.utils.xml_.xml_handler import *;
+from pypes.utils.os_ import listsubdirs;
 
-from pypes.infer.biet import YesInferenceAgent, NoInferenceAgent;
+from pypes.infer.biet import YesAgent, NoAgent;
 from pypes.infer.mcpiet.mcpiet import McPIETAgent;
 
 from pypes.utils.itembank import *;
@@ -281,8 +282,8 @@ def run_testsuite( tsdirnameprefix, tsitemsdbdirname ):
     
     with TestsuiteRunner( (subdir,tsitemsdbdirname) ) as runner:
     
-      runner.add_agent( YesInferenceAgent );
-      runner.add_agent( NoInferenceAgent );
+      runner.add_agent( YesAgent );
+      runner.add_agent( NoAgent );
       runner.add_agent( McPIETAgent );
       runner.run();
 

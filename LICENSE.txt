@@ -30,7 +30,7 @@ modifications, packages and aggregates.
 
 (vi) "Original Source" shall mean a URL reference to
 
-  http://semantilog.ucam.org/
+  http://www.semantilog.org/
 
 (vii) "Copyright" also means copyright-like laws that apply to software or
 other kinds of works, such as semiconductor masks or database rights.
