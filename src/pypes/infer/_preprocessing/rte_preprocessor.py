@@ -286,7 +286,7 @@ class RTEPreprocessor( XMLHandler, metaclass=subject ):
       HHandler.XMLELEM: ( HHandler, None )
     };
   
-  IGNORE = {};
+  IGNORE = { "headline" };
   
   def __init__( self, dataset=None ):
     
