@@ -140,3 +140,10 @@
    CSV files in :file:`dta/infer/score` to summarize the scores for the
    different inference engines and subsets of the datasets.
 
+
+.. function:: run_unittests( [ packagename = "pypes" ] )
+
+   runs the unit tests associated with the pypes package named *packagename*.
+   The default package name is `pypes`.  If specified, the package name must
+   be either `pypes`, or must have `pypes.` as a prefix.
+

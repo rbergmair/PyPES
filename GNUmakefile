@@ -9,7 +9,7 @@ WHICH = which
 ECHO = echo
 CHMOD = chmod
 
-PYTHON = $(shell $(WHICH) python3.0)
+PYTHON = $(shell $(WHICH) python3)
 
 
 SCRIPTS = \
@@ -23,7 +23,8 @@ SCRIPTS = \
   bin/run_testsuite.py \
   bin/reconsider_decisions.py \
   bin/compare_decisions.py \
-  bin/score_decisions.py
+  bin/score_decisions.py \
+  bin/run_unittests.py
 
 
 INFERDTA = $(subst dta/infer/orig/, , $(wildcard dta/infer/orig/*.xml dta/infer/orig/*.gz dta/infer/orig/*.txt))

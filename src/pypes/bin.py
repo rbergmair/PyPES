@@ -5,7 +5,7 @@ __all__ = [
     "sanitize_rte", "preprocess_rte", "preprocess_rte_results",
     "preprocess_fracas", "extract_ergsem_smi", "extract_logpats",
     "read_treebank", "run_testsuite", "reconsider_decisions",
-    "compare_decisions", "score_decisions"
+    "compare_decisions", "score_decisions", "run_unittests"
   ];
 
 
@@ -25,6 +25,8 @@ from pypes.infer.testsuite_runner import run_testsuite;
 from pypes.infer._evaluation.reconsider_decisions import reconsider_decisions;
 from pypes.infer._evaluation.compare_decisions import compare_decisions;
 from pypes.infer._evaluation.score_decisions import score_decisions;
+
+from pypes.utils.unittest_ import run_unittests;
 
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
