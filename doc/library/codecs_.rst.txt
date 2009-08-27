@@ -12,7 +12,29 @@ Decoders
 
 .. class:: PFTDecoder( (lexicon,itemtype) )
 
-   .. method:: decode( pf )
+   .. method:: subtokenize_word( pft_word )
+   .. method:: subtokenize_variable( pft_variable )
+
+   .. method:: decode_quoted( pft_toks )
+   .. method:: decode_fid( pft_toks )
+   .. method:: decode_operator( pft_toks )
+   .. method:: decode_word( pft_toks )
+   .. method:: decode_variable( pft_toks )
+   .. method:: decode_constant( pft_toks )
+   .. method:: decode_explicit_handle( pft_toks )
+   .. method:: decode_anonymous_handle( pft_toks )
+   .. method:: decode_features_list( pft_toks )
+   .. method:: decode_arguments_list( pft_toks )
+   .. method:: decode_functor( pft_toks )
+   .. method:: decode_predication( pft_toks )
+   .. method:: decode_freezer( pft_toks )
+   .. method:: decode_quantification( pft_toks )
+   .. method:: decode_modification( pft_toks )
+   .. method:: decode_connection( pft_toks )
+   .. method:: decode_constraint( pft_toks )
+   .. method:: decode_protoform( pft_toks )
+
+   .. method:: decode( pft )
 
 .. function:: pft_decode( pf [ , itemtype [ , lexicon ] ] )
 

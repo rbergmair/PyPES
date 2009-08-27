@@ -216,7 +216,7 @@ class PFTParser( _pft_parser.PFTParser, metaclass=subject ):
     pass;
 
   
-  def parse( self, item ):
+  def _parse( self, item ):
     
     if isinstance( item, str ):
       rslt = self.start.parseString( item );
@@ -228,7 +228,7 @@ class PFTParser( _pft_parser.PFTParser, metaclass=subject ):
 
   def decode( self, item ):
     
-    ( type_, inst ) = self.parse( item );
+    ( type_, inst ) = self._parse( item );
     return inst;
 
     

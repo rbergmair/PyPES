@@ -157,7 +157,7 @@ class PFTParser( PFTLexer, metaclass=subject ):
     self._parser = None;
   
   
-  def parse( self, item ):
+  def _parse( self, item ):
     
     if isinstance( item, str ):
       return self._parser.parse( item, lexer = self._lexer );
@@ -167,7 +167,7 @@ class PFTParser( PFTLexer, metaclass=subject ):
 
   def decode( self, item ):
     
-    ( type_, inst ) = self.parse( item );
+    ( type_, inst ) = self._parse( item );
     return inst;
 
 
