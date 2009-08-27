@@ -62,7 +62,7 @@ class PFTDecoder( PFTParser, metaclass=subject ):
     PFTParser._exit_( self, exc_type, exc_val, exc_tb );
 
 
-  def _decode_operator( self, toks_ ):
+  def decode_operator( self, toks_ ):
     
     toks = iter( toks_ );
     otype = next( toks );
@@ -73,7 +73,7 @@ class PFTDecoder( PFTParser, metaclass=subject ):
                                   ) );
 
 
-  def _decode_word( self, toks_ ):
+  def decode_word( self, toks_ ):
     
     lemma = None;
     pos = None;
@@ -132,7 +132,7 @@ class PFTDecoder( PFTParser, metaclass=subject ):
 
 
   @classmethod
-  def _decode_variable( cls, toks_ ):
+  def decode_variable( cls, toks_ ):
 
     toks = iter( toks_ );
     
@@ -145,7 +145,7 @@ class PFTDecoder( PFTParser, metaclass=subject ):
 
 
   @classmethod
-  def _decode_constant( cls, toks_ ):
+  def decode_constant( cls, toks_ ):
 
     toks = iter( toks_ );
     ident = next( toks );
@@ -155,7 +155,7 @@ class PFTDecoder( PFTParser, metaclass=subject ):
   
   
   @classmethod
-  def _decode_explicit_handle( cls, toks_ ):
+  def decode_explicit_handle( cls, toks_ ):
     
     toks = iter( toks_ );
     
@@ -167,7 +167,7 @@ class PFTDecoder( PFTParser, metaclass=subject ):
 
 
   @classmethod
-  def _decode_anonymous_handle( cls, toks_ ):
+  def decode_anonymous_handle( cls, toks_ ):
 
     toks = iter( toks_ );
     
@@ -180,7 +180,7 @@ class PFTDecoder( PFTParser, metaclass=subject ):
 
     
   @classmethod
-  def _decode_features_list( cls, toks_ ):
+  def decode_features_list( cls, toks_ ):
     
     toks = iter( toks_ );
     
@@ -214,7 +214,7 @@ class PFTDecoder( PFTParser, metaclass=subject ):
 
 
   @classmethod
-  def _decode_arguments_list( cls, toks_ ):
+  def decode_arguments_list( cls, toks_ ):
     
     toks = iter( toks_ );
     
@@ -244,7 +244,7 @@ class PFTDecoder( PFTParser, metaclass=subject ):
 
 
   @classmethod
-  def _decode_functor( cls, toks_ ):
+  def decode_functor( cls, toks_ ):
     
     toks = iter( toks_ );
     
@@ -275,7 +275,7 @@ class PFTDecoder( PFTParser, metaclass=subject ):
   
   
   @classmethod
-  def _decode_predication( cls, toks_ ):
+  def decode_predication( cls, toks_ ):
 
     toks = iter( toks_ );
     
@@ -296,7 +296,7 @@ class PFTDecoder( PFTParser, metaclass=subject ):
 
 
   @classmethod
-  def _decode_freezer( cls, toks_ ):
+  def decode_freezer( cls, toks_ ):
     
     toks = iter( toks_ );
     
@@ -313,7 +313,7 @@ class PFTDecoder( PFTParser, metaclass=subject ):
   
   
   @classmethod
-  def _decode_quantification( cls, toks_ ):
+  def decode_quantification( cls, toks_ ):
 
     toks = iter( toks_ );
     
@@ -351,7 +351,7 @@ class PFTDecoder( PFTParser, metaclass=subject ):
   
   
   @classmethod
-  def _decode_modification( cls, toks_ ):
+  def decode_modification( cls, toks_ ):
     
     toks = iter( toks_ );
 
@@ -378,7 +378,7 @@ class PFTDecoder( PFTParser, metaclass=subject ):
   
   
   @classmethod
-  def _decode_connection( cls, toks_ ):
+  def decode_connection( cls, toks_ ):
 
     toks = iter( toks_ );
 
@@ -407,7 +407,7 @@ class PFTDecoder( PFTParser, metaclass=subject ):
   
   
   @classmethod
-  def _decode_constraint( cls, toks_ ):
+  def decode_constraint( cls, toks_ ):
 
     toks = iter( toks_ );
 
@@ -427,7 +427,7 @@ class PFTDecoder( PFTParser, metaclass=subject ):
   
   
   @classmethod
-  def _decode_protoform( cls, toks_ ):
+  def decode_protoform( cls, toks_ ):
 
     toks = iter( toks_ );
 

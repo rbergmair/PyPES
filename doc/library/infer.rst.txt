@@ -16,13 +16,9 @@ engines and using their output for evaluation purposes.
    .. attribute:: paramid
 
    .. method:: reset()
-
    .. method:: process_sentence( sentid, rec, text )
-
    .. method:: process_discourse( discid, rec, sents [ , inf=False ] )
-
    .. method:: preprocess()
-
    .. method:: infer( disc, antecedent, consequent )
 
 
@@ -33,22 +29,18 @@ engines and using their output for evaluation purposes.
    representations from the item bank.
 
    .. attribute:: paramid
-
    .. method:: reset()
-
    .. method:: process_sentence( sentid, rec, text )
-
    .. method:: process_discourse( discid, rec, sents [ , inf=False ] )
-
    .. method:: preprocess()
-
    .. method:: infer( disc, antecedent, consequent )
+
+      this is a comment.
 
 
 .. class:: TestsuiteRunner()
 
    .. method:: add_agent( agent )
-
    .. method:: run()
 
 

@@ -58,7 +58,7 @@ class PFTLexer( _pft_parser.PFTParser, metaclass=subject ):
 
   @TOKEN( _pft_parser.PFTParser.RE_QUOTED )
   def t_QUOTED( self, t ):
-    t.value = self._decode_quoted( [t.value] );
+    t.value = self.decode_quoted( [t.value] );
     return t;
   
   def t_LPAR( self, t ):
@@ -88,8 +88,8 @@ class PFTLexer( _pft_parser.PFTParser, metaclass=subject ):
 
   @TOKEN( _pft_parser.PFTParser.RE_WORD )
   def t_WORD( self, t ):
-    t.value = self._decode_word(
-                  _pft_parser.PFTParser._subtokenize_word( t.value )
+    t.value = self.decode_word(
+                  _pft_parser.PFTParser.subtokenize_word( t.value )
                 );
     return t;
   
@@ -100,29 +100,29 @@ class PFTLexer( _pft_parser.PFTParser, metaclass=subject ):
   
   @TOKEN( _pft_parser.PFTParser.RE_FID )
   def t_FID( self, t ):
-    t.value = self._decode_fid( [t.value] );
+    t.value = self.decode_fid( [t.value] );
     return t;
 
   @TOKEN( _pft_parser.PFTParser.RE_VARIABLE )
   def t_VARIABLE( self, t ):
-    t.value = self._decode_variable(
-                  _pft_parser.PFTParser._subtokenize_variable( t.value )
+    t.value = self.decode_variable(
+                  _pft_parser.PFTParser.subtokenize_variable( t.value )
                 );
     return t;
   
   @TOKEN( _pft_parser.PFTParser.RE_EXPLICIT_HANDLE )
   def t_EXPLICIT_HANDLE( self, t ):
-    t.value = self._decode_explicit_handle( [t.value] );
+    t.value = self.decode_explicit_handle( [t.value] );
     return t;
   
   @TOKEN( _pft_parser.PFTParser.RE_ANONYMOUS_HANDLE )
   def t_ANONYMOUS_HANDLE( self, t ):
-    t.value = self._decode_anonymous_handle( [t.value] );
+    t.value = self.decode_anonymous_handle( [t.value] );
     return t;
   
   @TOKEN( _pft_parser.PFTParser.RE_OPERATOR )
   def t_OPERATOR( self, t ):
-    t.value = self._decode_operator( [t.value] );
+    t.value = self.decode_operator( [t.value] );
     return t;
 
 
@@ -187,7 +187,7 @@ class PFTParser( PFTLexer, metaclass=subject ):
   def p_constant( self, p ):
     r"""constant : QUOTED""";
     
-    p[0] = self._decode_constant( [ p[1] ] );
+    p[0] = self.decode_constant( [ p[1] ] );
 
 
   def p_handle( self, p ):
@@ -208,7 +208,7 @@ class PFTParser( PFTLexer, metaclass=subject ):
     p[0] = p[1] + [ p[2] ] + p[3];
   def p_features_list( self, p ):
     r"""features_list : LBRACK features_list_list RBRACK"""
-    p[0] = self._decode_features_list( [ p[1] ] + p[2] + [ p[3] ] );
+    p[0] = self.decode_features_list( [ p[1] ] + p[2] + [ p[3] ] );
 
 
   def p_arguments_list_item( self, p ):
@@ -223,10 +223,10 @@ class PFTParser( PFTLexer, metaclass=subject ):
     p[0] = p[1] + [ p[2] ] + p[3];
   def p_arguments_list_1( self, p ):
     r"""arguments_list : LPAR RPAR"""
-    p[0] = self._decode_arguments_list( [ p[1], p[2] ] );
+    p[0] = self.decode_arguments_list( [ p[1], p[2] ] );
   def p_arguments_list_2( self, p ):
     r"""arguments_list : LPAR arguments_list_list RPAR"""
-    p[0] = self._decode_arguments_list( [ p[1] ] + p[2] + [ p[3] ] );
+    p[0] = self.decode_arguments_list( [ p[1] ] + p[2] + [ p[3] ] );
 
 
   def p_word( self, p ):
@@ -243,27 +243,27 @@ class PFTParser( PFTLexer, metaclass=subject ):
   
   def p_functor_1( self, p ):
     r"""functor : word_or_operator"""
-    p[0] = self._decode_functor( [ p[1] ] );
+    p[0] = self.decode_functor( [ p[1] ] );
   def p_functor_2( self, p ):
     r"""functor : word_or_operator FID"""
-    p[0] = self._decode_functor( [ p[1], p[2] ] );
+    p[0] = self.decode_functor( [ p[1], p[2] ] );
   def p_functor_3( self, p ):
     r"""functor : word_or_operator features_list"""
-    p[0] = self._decode_functor( [ p[1], p[2] ] );
+    p[0] = self.decode_functor( [ p[1], p[2] ] );
   def p_functor_4( self, p ):
     r"""functor : word_or_operator FID features_list"""
-    p[0] = self._decode_functor( [ p[1], p[2], p[3] ] );
+    p[0] = self.decode_functor( [ p[1], p[2], p[3] ] );
   
   
   def p_predication( self, p ):
     r"""predication : '\ue100' functor arguments_list"""
-    p[0] = self._decode_predication( [ p[1], p[2], p[3] ] );
+    p[0] = self.decode_predication( [ p[1], p[2], p[3] ] );
 
 
   def p_freezer( self, p ):
     r"""freezer : '<' handle '>'
                 | '<' freezer '>'"""
-    p[0] = self._decode_freezer( [ p[1], p[2], p[3] ] );
+    p[0] = self.decode_freezer( [ p[1], p[2], p[3] ] );
 
 
   def p_scopebearer( self, p ):
@@ -275,22 +275,22 @@ class PFTParser( PFTLexer, metaclass=subject ):
   
   def p_quantification( self, p ):
     r"""quantification : '\ue101' functor variable scopebearer scopebearer"""
-    p[0] = self._decode_quantification( [ p[1], p[2], p[3], p[4], p[5] ] );
+    p[0] = self.decode_quantification( [ p[1], p[2], p[3], p[4], p[5] ] );
 
 
   def p_modification( self, p ):
     r"""modification : '\ue102' functor arguments_list scopebearer"""
-    p[0] = self._decode_modification( [ p[1], p[2], p[3], p[4] ] );
+    p[0] = self.decode_modification( [ p[1], p[2], p[3], p[4] ] );
 
 
   def p_connection( self, p ):
     r"""connection : '\ue103' scopebearer functor scopebearer"""
-    p[0] = self._decode_connection( [ p[1], p[2], p[3], p[4] ] );
+    p[0] = self.decode_connection( [ p[1], p[2], p[3], p[4] ] );
 
 
   def p_constraint( self, p ):
     r"""constraint : '\ue104' handle '^' handle"""
-    p[0] = self._decode_constraint( [ p[1], p[2], p[3], p[4] ] );
+    p[0] = self.decode_constraint( [ p[1], p[2], p[3], p[4] ] );
 
 
   def p_subform( self, p ):
@@ -318,10 +318,10 @@ class PFTParser( PFTLexer, metaclass=subject ):
     p[0] = p[1] + [ p[2] ] + p[3];
   def p_protoform_1( self, p ):
     r"""protoform : '{' '}'"""
-    p[0] = self._decode_protoform( [ p[1], p[2] ] );
+    p[0] = self.decode_protoform( [ p[1], p[2] ] );
   def p_protoform_2( self, p ):
     r"""protoform : '{' protoform_list '}'"""
-    p[0] = self._decode_protoform( [ p[1] ] + p[2] + [ p[3] ] );
+    p[0] = self.decode_protoform( [ p[1] ] + p[2] + [ p[3] ] );
 
 
 

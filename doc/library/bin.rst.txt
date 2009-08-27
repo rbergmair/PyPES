@@ -124,9 +124,9 @@
    Based on *tsdirnameprefix*, this procedure goes through the
    various datasets, in the same way as :meth:`run_testsuite`.
    Within each directory, a file named
-   *objectfilename* (default: `McPIETAgent.tsa.xml`)
+   *objectfilename* (default: ``McPIETAgent.tsa.xml``)
    is read, and compared against a file named
-   *referencefilename* (default: `gold.tsa.xml`).
+   *referencefilename* (default: ``gold.tsa.xml``).
 
    The results are printed for quick visual inspection.  In order to
    systematically collect statistics and export them for further analysis,
@@ -144,6 +144,6 @@
 .. function:: run_unittests( [ packagename = "pypes" ] )
 
    runs the unit tests associated with the pypes package named *packagename*.
-   The default package name is `pypes`.  If specified, the package name must
+   The default package name is ``pypes``.  If specified, the package name must
    be either `pypes`, or must have `pypes.` as a prefix.
 

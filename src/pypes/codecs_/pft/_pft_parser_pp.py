@@ -26,79 +26,82 @@ class PFTParser( _pft_parser.PFTParser, metaclass=subject ):
   
   # lexer
 
-  quoted = Regex( _pft_parser.PFTParser.RE_QUOTED );
+  _quoted = Regex( _pft_parser.PFTParser.RE_QUOTED );
   
-  word = Regex( _pft_parser.PFTParser.RE_WORD );
+  _word = Regex( _pft_parser.PFTParser.RE_WORD );
 
-  identifier = Regex( _pft_parser.PFTParser.RE_IDENTIFIER );
+  _identifier = Regex( _pft_parser.PFTParser.RE_IDENTIFIER );
   
-  fid = Regex( _pft_parser.PFTParser.RE_FID );
+  _fid = Regex( _pft_parser.PFTParser.RE_FID );
 
-  variable = Regex( _pft_parser.PFTParser.RE_VARIABLE );
+  _variable = Regex( _pft_parser.PFTParser.RE_VARIABLE );
 
-  explicit_handle = Regex( _pft_parser.PFTParser.RE_EXPLICIT_HANDLE );
+  _explicit_handle = Regex( _pft_parser.PFTParser.RE_EXPLICIT_HANDLE );
   
-  anonymous_handle = Regex( _pft_parser.PFTParser.RE_ANONYMOUS_HANDLE );
+  _anonymous_handle = Regex( _pft_parser.PFTParser.RE_ANONYMOUS_HANDLE );
   
-  operator = Regex( _pft_parser.PFTParser.RE_OPERATOR );
+  _operator = Regex( _pft_parser.PFTParser.RE_OPERATOR );
 
   # parser
 
-  constant = Group( quoted );
+  _constant = Group( _quoted );
 
-  handle = ( explicit_handle | anonymous_handle );
+  _handle = ( _explicit_handle | _anonymous_handle );
   
-  features_list = Literal("[") + \
-                    identifier + Literal("=") + quoted + \
-                    ZeroOrMore(
-                        Literal(",") + identifier + Literal("=") + quoted
+  _features_list = Literal("[") + \
+                     _identifier + Literal("=") + _quoted + \
+                     ZeroOrMore(
+                         Literal(",") + _identifier + Literal("=") + _quoted
+                       ) + \
+                   Literal("]");
+
+  _arguments_list = Literal("(") + \
+                    Optional( 
+                        _identifier + Literal("=") + \
+                        ( _variable | _constant ) + \
+                        ZeroOrMore(
+                            Literal(",") +
+                            _identifier + Literal("=") + \
+                            ( _variable | _constant )
+                          )
                       ) + \
-                  Literal("]");
+                    Literal(")");
 
-  arguments_list = Literal("(") + \
-                   Optional( 
-                       identifier + Literal("=") + ( variable | constant ) + \
-                       ZeroOrMore(
-                           Literal(",") +
-                           identifier + Literal("=") + ( variable | constant )
-                         )
-                     ) + \
-                   Literal(")");
+  _functor = ( _word | _operator ) + Optional( _fid ) + \
+             Optional( _features_list );
 
-  functor = ( word | operator ) + Optional( fid ) + Optional( features_list );
+  _predication = Literal("\ue100") + _functor + _arguments_list;
 
-  predication = Literal("\ue100") + functor + arguments_list;
+  _protoform = Forward();
+  
+  _freezer = Forward();
+  _freezer << Literal("<") + ( _freezer | _handle ) + Literal(">");
+  
+  _scopebearer = ( _handle | _freezer | _protoform );
+  
+  _quantification = Literal("\ue101") + \
+                    _functor + _variable + \
+                    _scopebearer + _scopebearer;
+  
+  _modification = Literal("\ue102") + \
+                  _functor + _arguments_list + _scopebearer;
 
-  protoform = Forward();
+  _connection = Literal("\ue103") + \
+                _scopebearer + \
+                _functor + \
+                _scopebearer;
   
-  freezer = Forward();
-  freezer << Literal("<") + ( freezer | handle ) + Literal(">");
+  _constraint = Literal("\ue104") + _handle + Literal("^") + _handle;
   
-  scopebearer = ( handle | freezer | protoform );
+  _subform = ( _predication | _quantification | _modification | _connection  );
   
-  quantification = Literal("\ue101") + \
-                   functor + variable + \
-                   scopebearer + scopebearer;
+  _item = ( Optional( _explicit_handle + Literal(":") ) +
+            ( _protoform | _subform ) ) | \
+          _constraint;
   
-  modification = Literal("\ue102") + \
-                 functor + arguments_list + scopebearer;
-
-  connection = Literal("\ue103") + \
-               scopebearer + \
-               functor + \
-               scopebearer;
-  
-  constraint = Literal("\ue104") + handle + Literal("^") + handle;
-  
-  subform = ( predication | quantification | modification | connection  );
-  
-  item = ( Optional( explicit_handle + Literal(":") ) +
-           ( protoform | subform ) ) | \
-         constraint;
-  
-  protoform << ( Literal("{") + \
-                 Optional( item + ZeroOrMore( Literal(";") + item ) ) + \
-                 Literal("}") );
+  _protoform << ( Literal("{") + \
+                  Optional( _item + ZeroOrMore( Literal(";") + _item ) ) + \
+                  Literal("}") );
 
 
   def _enter_( self ):
@@ -106,105 +109,105 @@ class PFTParser( _pft_parser.PFTParser, metaclass=subject ):
     ( lexicon, type_ ) = self._obj_;
 
     if type_ is None:
-      self.start = eval( "self." + self.GT_PROTOFORM );
+      self.start = eval( "self._" + self.GT_PROTOFORM );
     else:
-      self.start = eval( "self." + type_ );
+      self.start = eval( "self._" + type_ );
     
     # lexer
 
-    self.quoted.setParseAction(
+    self._quoted.setParseAction(
         lambda str_, loc, toks:
-          self._decode_quoted( toks )
+          self.decode_quoted( toks )
       );
 
-    self.word.setParseAction(
+    self._word.setParseAction(
         lambda str_, loc, toks:
-          self._decode_word(
-              _pft_parser.PFTParser._subtokenize_word( toks[0] )
+          self.decode_word(
+              _pft_parser.PFTParser.subtokenize_word( toks[0] )
             )
       );
 
-    self.operator.setParseAction(
+    self._operator.setParseAction(
         lambda str_, loc, toks:
-          self._decode_operator( toks )
+          self.decode_operator( toks )
       );
 
-    self.fid.setParseAction(
+    self._fid.setParseAction(
         lambda str_, loc, toks:
-          self._decode_fid( toks )
+          self.decode_fid( toks )
       );
 
-    self.variable.setParseAction(
+    self._variable.setParseAction(
         lambda str_, loc, toks:
-          self._decode_variable(
-              _pft_parser.PFTParser._subtokenize_variable( toks[0] )
+          self.decode_variable(
+              _pft_parser.PFTParser.subtokenize_variable( toks[0] )
             )
       );
 
-    self.explicit_handle.setParseAction(
+    self._explicit_handle.setParseAction(
         lambda str_, loc, toks:
-          self._decode_explicit_handle( toks )
+          self.decode_explicit_handle( toks )
       );
       
-    self.anonymous_handle.setParseAction(
+    self._anonymous_handle.setParseAction(
         lambda str_, loc, toks:
-          self._decode_anonymous_handle( toks )
+          self.decode_anonymous_handle( toks )
       );
 
     # parser
 
-    self.constant.setParseAction(
+    self._constant.setParseAction(
         lambda str_, loc, toks:
-          self._decode_constant( toks[0] )
+          self.decode_constant( toks[0] )
       );
 
-    self.features_list.setParseAction(
+    self._features_list.setParseAction(
         lambda str_, loc, toks:
-          self._decode_features_list( toks )
+          self.decode_features_list( toks )
       );
 
-    self.arguments_list.setParseAction(
+    self._arguments_list.setParseAction(
         lambda str_, loc, toks:
-          self._decode_arguments_list( toks )
+          self.decode_arguments_list( toks )
       );
 
-    self.functor.setParseAction(
+    self._functor.setParseAction(
         lambda str_, loc, toks:
-          self._decode_functor( toks )
+          self.decode_functor( toks )
       );
     
-    self.predication.setParseAction(
+    self._predication.setParseAction(
         lambda str_, loc, toks:
-          self._decode_predication( toks )
+          self.decode_predication( toks )
       );
       
-    self.freezer.setParseAction(
+    self._freezer.setParseAction(
         lambda str_, loc, toks:
-          self._decode_freezer( toks )
+          self.decode_freezer( toks )
       );
       
-    self.quantification.setParseAction(
+    self._quantification.setParseAction(
         lambda str_, loc, toks:
-          self._decode_quantification( toks )
+          self.decode_quantification( toks )
       );
     
-    self.modification.setParseAction(
+    self._modification.setParseAction(
         lambda str_, loc, toks:
-          self._decode_modification( toks )
+          self.decode_modification( toks )
       );
     
-    self.connection.setParseAction(
+    self._connection.setParseAction(
         lambda str_, loc, toks:
-          self._decode_connection( toks )
+          self.decode_connection( toks )
       );
       
-    self.constraint.setParseAction(
+    self._constraint.setParseAction(
         lambda str_, loc, toks:
-          self._decode_constraint( toks )
+          self.decode_constraint( toks )
       );
       
-    self.protoform.setParseAction(
-        lambda str_, loc, toks: self._decode_protoform( toks )
+    self._protoform.setParseAction(
+        lambda str_, loc, toks: self.decode_protoform( toks )
       );
 
 

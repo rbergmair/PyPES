@@ -73,7 +73,7 @@ class PFTParser( metaclass=subject ):
 
 
   @classmethod
-  def _decode_quoted( cls, toks_ ):
+  def decode_quoted( cls, toks_ ):
     
     toks = iter( toks_ );
     tok = next( toks );
@@ -91,7 +91,7 @@ class PFTParser( metaclass=subject ):
 
 
   @classmethod
-  def _decode_fid( cls, toks_ ):
+  def decode_fid( cls, toks_ ):
 
     toks = iter( toks_ );
     tok = next( toks );
@@ -111,7 +111,7 @@ class PFTParser( metaclass=subject ):
   _re_quoted = re.compile( RE_QUOTED );
   
   @classmethod
-  def _subtokenize_word( cls, word ):
+  def subtokenize_word( cls, word ):
     
     rslt = [];
     for tok in cls._re_subtok_word.split( word ):
@@ -129,7 +129,7 @@ class PFTParser( metaclass=subject ):
                           );
 
   @classmethod
-  def _subtokenize_variable( cls, variable ):
+  def subtokenize_variable( cls, variable ):
     
     x = cls._re_subtok_variable.match( variable );
     sid = x.group( "sid" );

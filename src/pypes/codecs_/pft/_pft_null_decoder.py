@@ -29,69 +29,69 @@ class PFTDecoder( PFTDecoder, metaclass=subject ):
 
 
   @classmethod
-  def _decode_bare_word( self, toks_ ):
+  def decode_bare_word( self, toks_ ):
     return ( None, None );
 
   @classmethod
-  def _decode_variable( cls, toks_ ):
+  def decode_variable( cls, toks_ ):
     return ( None, None );
 
   @classmethod
-  def _decode_constant( cls, toks_ ):
+  def decode_constant( cls, toks_ ):
     return ( None, None );
   
   @classmethod
-  def _decode_explicit_handle( cls, toks_ ):
+  def decode_explicit_handle( cls, toks_ ):
     return ( None, None );
 
   @classmethod
-  def _decode_anonymous_handle( cls, toks_ ):
+  def decode_anonymous_handle( cls, toks_ ):
     return ( None, None );
     
   @classmethod
-  def _decode_features_list( cls, toks_ ):
+  def decode_features_list( cls, toks_ ):
     return ( None, None );
 
   @classmethod
-  def _decode_bare_operator( self, toks_ ):
+  def decode_bare_operator( self, toks_ ):
     return ( None, None );
   
-  def _decode_word( self, toks_ ):
+  def decode_word( self, toks_ ):
     return ( None, None );
 
-  def _decode_operator( self, toks_ ):
-    return ( None, None );
-
-  @classmethod
-  def _decode_arguments_list( cls, toks_ ):
-    return ( None, None );
-  
-  @classmethod
-  def _decode_predication( cls, toks_ ):
+  def decode_operator( self, toks_ ):
     return ( None, None );
 
   @classmethod
-  def _decode_freezer( cls, toks_ ):
+  def decode_arguments_list( cls, toks_ ):
     return ( None, None );
   
   @classmethod
-  def _decode_quantification( cls, toks_ ):
+  def decode_predication( cls, toks_ ):
+    return ( None, None );
+
+  @classmethod
+  def decode_freezer( cls, toks_ ):
     return ( None, None );
   
   @classmethod
-  def _decode_modification( cls, toks_ ):
+  def decode_quantification( cls, toks_ ):
     return ( None, None );
   
   @classmethod
-  def _decode_connection( cls, toks_ ):
+  def decode_modification( cls, toks_ ):
     return ( None, None );
   
   @classmethod
-  def _decode_constraint( cls, toks_ ):
+  def decode_connection( cls, toks_ ):
     return ( None, None );
   
   @classmethod
-  def _decode_protoform( cls, toks_ ):
+  def decode_constraint( cls, toks_ ):
+    return ( None, None );
+  
+  @classmethod
+  def decode_protoform( cls, toks_ ):
     return ( None, None );
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
