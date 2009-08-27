@@ -112,19 +112,19 @@ class LogpatExtractor( ProtoProcessor, metaclass=subject ):
         pred += "_" + referent.sense;
       self._logpats.add( ( logpat_type, pred ) );
   
-  def _process_predication( self, inst, subform, predicate, args ):
+  def process_predication_( self, inst, subform, predicate, args ):
     
     self._register_logpat( "p", inst.predicate.referent );
     
-  def _process_quantification( self, inst, subform, quantifier, var, rstr, body ):
+  def process_quantification_( self, inst, subform, quantifier, var, rstr, body ):
 
     self._register_logpat( "q", inst.quantifier.referent );
 
-  def _process_modification( self, inst, subform, modality, args, scope ):
+  def process_modification_( self, inst, subform, modality, args, scope ):
 
     self._register_logpat( "m", inst.modality.referent );
 
-  def _process_connection( self, inst, subform, connective, lscope, rscope ):
+  def process_connection_( self, inst, subform, connective, lscope, rscope ):
 
     self._register_logpat( "c", inst.connective.referent );
 

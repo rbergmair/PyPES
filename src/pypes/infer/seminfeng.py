@@ -25,19 +25,19 @@ class SemanticInferenceAgent( InferenceAgent, metaclass=subject ):
   
   class _PreProcessor( ProtoProcessor, metaclass=subject ):
     
-    def _process_sort( self, inst, sid ):
+    def process_sort_( self, inst, sid ):
       
       if inst.sid != "x":
         inst.sid = "e";
 
-    def _process_functor( self, inst, fid, referent, feats ):
+    def process_functor_( self, inst, fid, referent, feats ):
       
       inst.feats = {};
   
   
   class _PostProcessor( ProtoProcessor, metaclass=subject ):
     
-    def _process_protoform( self, inst, subform, subforms, constraints ):
+    def process_protoform_( self, inst, subform, subforms, constraints ):
       
       def wrap( subform ):
         

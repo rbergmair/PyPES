@@ -26,7 +26,7 @@ class CopulaResolver( ProtoProcessor, metaclass=subject ):
       self._quants = set();
 
   
-    def _process_predication( self, inst, subform, predicate, args ):
+    def process_predication_( self, inst, subform, predicate, args ):
       
       if not isinstance( inst.predicate.referent, Operator ):
         return;
@@ -48,7 +48,7 @@ class CopulaResolver( ProtoProcessor, metaclass=subject ):
       self._obj_._vars_by_copula[ inst ] = (var1,var2);
 
       
-    def _process_quantification( self, inst, subform, quantifier, var, rstr, body ):
+    def process_quantification_( self, inst, subform, quantifier, var, rstr, body ):
   
       if not isinstance( inst.quantifier.referent, Operator ):
         return;
@@ -57,7 +57,7 @@ class CopulaResolver( ProtoProcessor, metaclass=subject ):
       self._quants.add( inst );
     
     
-    def _process_protoform( self, inst, subform, subforms, constraints ):
+    def process_protoform_( self, inst, subform, subforms, constraints ):
       
       for (root,subform) in inst.subforms.items():
           self._obj_._subform_by_root[ root ] = subform;
@@ -169,17 +169,17 @@ class CopulaResolver( ProtoProcessor, metaclass=subject ):
         args[ arg ] = self._newvar_by_oldvar[ var ];
 
   
-  def _process_predication( self, inst, subform, predicate, args ):
+  def process_predication_( self, inst, subform, predicate, args ):
     
     self._process_args( inst.args );
 
 
-  def _process_modification( self, inst, subform, modality, args, scope ):
+  def process_modification_( self, inst, subform, modality, args, scope ):
     
     self._process_args( inst.args );
 
 
-  def _process_protoform( self, inst, subform, subforms, constraints ):
+  def process_protoform_( self, inst, subform, subforms, constraints ):
     
     for root in set( inst.subforms.keys() ):
       

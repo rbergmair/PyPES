@@ -16,17 +16,17 @@ class _Binder( ProtoProcessor, metaclass=subject ):
     
     self._bound_handles = set( self._obj_.keys() );
 
-  def _process_handle( self, inst, hid ):
+  def process_handle_( self, inst, hid ):
     
     if inst in self._obj_:
       return self._obj_[ inst ];
     return inst;
   
-  def _process_freezer( self, content, freezelevel ):
+  def process_freezer_( self, content, freezelevel ):
     
     return content;
   
-  def _process_subform( self, inst, holes, protoforms ):
+  def process_subform_( self, inst, holes, protoforms ):
     
     subform = copy( inst )( sig=ProtoSig() );
     subform.holes = list( holes );
@@ -34,12 +34,12 @@ class _Binder( ProtoProcessor, metaclass=subject ):
       subform.holes.remove( hndl );
     return subform;
   
-  def _process_predication( self, inst, subform, predicate, args ):
+  def process_predication_( self, inst, subform, predicate, args ):
     
     predication = subform;
     return predication;
 
-  def _process_quantification( self, inst, subform, quantifier, var, rstr, body ):
+  def process_quantification_( self, inst, subform, quantifier, var, rstr, body ):
     
     quantification = subform;
     if rstr is not None:
@@ -48,14 +48,14 @@ class _Binder( ProtoProcessor, metaclass=subject ):
       quantification.body = body;
     return quantification;
 
-  def _process_modification( self, inst, subform, modality, args, scope ):
+  def process_modification_( self, inst, subform, modality, args, scope ):
     
     modification = subform;
     if scope:
       modification.scope = scope;
     return modification;
     
-  def _process_connection( self, inst, subform, connective, lscope, rscope ):
+  def process_connection_( self, inst, subform, connective, lscope, rscope ):
     
     connection = subform;
     if lscope:
@@ -64,7 +64,7 @@ class _Binder( ProtoProcessor, metaclass=subject ):
       connection.rscope = rscope;
     return connection;
   
-  def _process_protoform( self, inst, subform, subforms, constraints ):
+  def process_protoform_( self, inst, subform, subforms, constraints ):
     
     protoform = subform;
     for ( root, (root_,subform_) ) in zip( inst.roots, subforms ):
@@ -82,9 +82,11 @@ class _Binder( ProtoProcessor, metaclass=subject ):
 
 class Binder( ProtoProcessor, metaclass=subject ):
 
-  def _process_handle( self, inst, hid ):
+
+  def process_handle_( self, inst, hid ):
     
     return inst;
+
 
   def process_handle( self, inst ):
 
@@ -92,17 +94,20 @@ class Binder( ProtoProcessor, metaclass=subject ):
       return self._obj_[ inst ];
     return super().process_handle( inst );
 
+
   def process_freezer( self, handle, freezelevel=None ):
     
     return self.process_handle( handle );
+
 
   def process_protoform( self, inst, subform ):
     
     if inst in self._obj_:
       return self._obj_[ inst ];
     return super().process_protoform( inst, subform );
+
   
-  def _process_subform( self, inst, holes, protoforms ):
+  def process_subform_( self, inst, holes, protoforms ):
     
     subform = copy( inst )( sig=ProtoSig() );
     for old in chain( holes, protoforms ):
@@ -121,12 +126,14 @@ class Binder( ProtoProcessor, metaclass=subject ):
             print( self._obj_ );
             assert False;
     return subform;
+
   
-  def _process_predication( self, inst, subform, predicate, args ):
+  def process_predication_( self, inst, subform, predicate, args ):
     
     return subform;
 
-  def _process_quantification( self, inst, subform, quantifier, var, rstr, body ):
+
+  def process_quantification_( self, inst, subform, quantifier, var, rstr, body ):
     
     assert rstr is not None and body is not None;
     subform.rstr = rstr;
@@ -134,7 +141,8 @@ class Binder( ProtoProcessor, metaclass=subject ):
       
     return subform;
 
-  def _process_modification( self, inst, subform, modality, args, scope ):
+
+  def process_modification_( self, inst, subform, modality, args, scope ):
     
     # TODO: HACK!
     if isinstance( scope, ProtoForm ):
@@ -153,7 +161,7 @@ class Binder( ProtoProcessor, metaclass=subject ):
       return subform;
     
     
-  def _process_connection( self, inst, subform, connective, lscope, rscope ):
+  def process_connection_( self, inst, subform, connective, lscope, rscope ):
     
     assert lscope is not None and rscope is not None;
     subform.lscope = lscope;
@@ -162,7 +170,7 @@ class Binder( ProtoProcessor, metaclass=subject ):
     return subform;
 
   
-  def _process_protoform( self, inst, subform, subforms, constraints ):
+  def process_protoform_( self, inst, subform, subforms, constraints ):
     
     protoform = subform;
     for ( root, (root_,subform_) ) in zip( inst.roots, subforms ):

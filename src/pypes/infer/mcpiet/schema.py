@@ -23,7 +23,7 @@ class Schema( metaclass=object_ ):
     
   class _PFReader( ProtoProcessor, metaclass=subject ):
     
-    def _process_predication( self, inst, subform, predicate, args ):
+    def process_predication_( self, inst, subform, predicate, args ):
       
       pred = inst.predicate;
       ref = pred.referent;

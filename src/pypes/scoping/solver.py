@@ -25,11 +25,11 @@ class _QuantifiedVarsCollector( ProtoProcessor, metaclass=subject ):
     
     self.process( inst );
   
-  def _process_quantification( self, inst, subform, quantifier, var, rstr, body ):
+  def process_quantification_( self, inst, subform, quantifier, var, rstr, body ):
     
     return { inst.var };
   
-  def _process_protoform( self, inst, subform, subforms, constraints ):
+  def process_protoform_( self, inst, subform, subforms, constraints ):
     
     vars = set();
     for ( root, (root_,subform_) ) in zip( inst.roots, subforms ):
@@ -63,11 +63,11 @@ class _ConstraintsCollector( ProtoProcessor, metaclass=subject ):
         vars.add( val );
     return vars;
 
-  def _process_predication( self, inst, subform, predicate, args ):
+  def process_predication_( self, inst, subform, predicate, args ):
     
     return self._process_args( inst.args );
 
-  def _process_modification( self, inst, subform, modality, args, scope ):
+  def process_modification_( self, inst, subform, modality, args, scope ):
 
     vars = set();
     if scope is not None:
@@ -75,7 +75,7 @@ class _ConstraintsCollector( ProtoProcessor, metaclass=subject ):
     vars |= self._process_args( inst.args );
     return vars;
   
-  def _process_quantification( self, inst, subform, quantifier, var, rstr, body ):
+  def process_quantification_( self, inst, subform, quantifier, var, rstr, body ):
     
     vars = set();
     if rstr is not None:
@@ -84,7 +84,7 @@ class _ConstraintsCollector( ProtoProcessor, metaclass=subject ):
       vars |= body;
     return vars;
     
-  def _process_connection( self, inst, subform, connective, lscope, rscope ):
+  def process_connection_( self, inst, subform, connective, lscope, rscope ):
     
     vars = set();
     if lscope is not None:
@@ -93,13 +93,13 @@ class _ConstraintsCollector( ProtoProcessor, metaclass=subject ):
       vars |= rscope;
     return vars;
   
-  def _process_constraint( self, inst, harg, larg ):
+  def process_constraint_( self, inst, harg, larg ):
     
     if inst.harg not in self._obj_.cons:
       self._obj_.cons[ inst.harg ] = set();
     self._obj_.cons[ inst.harg ].add( inst.larg );
 
-  def _process_protoform( self, inst, subform, subforms, constraints ):
+  def process_protoform_( self, inst, subform, subforms, constraints ):
     
     vars = set();
     

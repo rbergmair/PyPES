@@ -249,7 +249,7 @@ class ERGtoBasic( ProtoProcessor, metaclass=subject ):
   
   class _VarsCollector( ProtoProcessor, metaclass=subject ):
     
-    def _process_modification( self, inst, subform, modality, args, scope ):
+    def process_modification_( self, inst, subform, modality, args, scope ):
     
       for var in inst.args.values():
         if isinstance( var, Variable ):
@@ -257,7 +257,7 @@ class ERGtoBasic( ProtoProcessor, metaclass=subject ):
             self._obj_[ var ] = 0;
           self._obj_[ var ] += 1;
     
-    def _process_predication( self, inst, subform, predicate, args ):
+    def process_predication_( self, inst, subform, predicate, args ):
     
       for var in inst.args.values():
         if isinstance( var, Variable ):
@@ -284,11 +284,11 @@ class ERGtoBasic( ProtoProcessor, metaclass=subject ):
     return args;
 
 
-  def _process_modification( self, inst, subform, modality, args, scope ):
+  def process_modification_( self, inst, subform, modality, args, scope ):
     
     self._process_argslist( inst.args );
     
-  def _process_predication( self, inst, subform, predicate, args ):
+  def process_predication_( self, inst, subform, predicate, args ):
 
     self._process_argslist( inst.args );
 
@@ -334,7 +334,7 @@ class ERGtoBasic( ProtoProcessor, metaclass=subject ):
     return rslt;
 
 
-  def _process_quantification( self, inst, subform, quantifier, var, rstr, body ):
+  def process_quantification_( self, inst, subform, quantifier, var, rstr, body ):
 
     func = copy( inst.quantifier )( sig=ProtoSig() );
 
@@ -354,7 +354,7 @@ class ERGtoBasic( ProtoProcessor, metaclass=subject ):
     assert False;
 
 
-  def _process_connection( self, inst, subform, connective, lscope, rscope ):
+  def process_connection_( self, inst, subform, connective, lscope, rscope ):
 
     func = copy( inst.connective )( sig=ProtoSig() );
 
@@ -407,7 +407,7 @@ class ERGtoBasic( ProtoProcessor, metaclass=subject ):
              )( sig=ProtoSig() );
 
 
-  def _process_modification( self, inst, subform, modality, args, scope ):
+  def process_modification_( self, inst, subform, modality, args, scope ):
     
     func = copy( inst.modality )( sig=ProtoSig() );
 
@@ -432,7 +432,7 @@ class ERGtoBasic( ProtoProcessor, metaclass=subject ):
     functor.referent = self._map_to_default_referent( functor.referent );
 
 
-  def _process_predication( self, inst, subform, predicate, args ):
+  def process_predication_( self, inst, subform, predicate, args ):
 
     func = copy( inst.predicate )( sig=ProtoSig() );
     

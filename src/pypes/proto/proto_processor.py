@@ -16,31 +16,31 @@ from pypes.proto.lex import *;
 class ProtoProcessor( metaclass=subject ):
 
 
-  def _process_constant( self, inst, ident ):
+  def process_constant_( self, inst, ident ):
     
     pass;
   
   def process_constant( self, inst ):
     
-    return self._process_constant(
+    return self.process_constant_(
                inst = inst,
                ident = inst.ident
              );
 
 
-  def _process_sort( self, inst, sid ):
+  def process_sort_( self, inst, sid ):
     
     pass;
   
   def process_sort( self, inst ):
     
-    return self._process_sort(
+    return self.process_sort_(
                inst = inst,
                sid = inst.sid
              );
 
 
-  def _process_variable( self, inst, sort, vid ):
+  def process_variable_( self, inst, sort, vid ):
     
     pass;
   
@@ -48,32 +48,32 @@ class ProtoProcessor( metaclass=subject ):
     
     sort_ = self.process_sort( inst.sort );
     
-    return self._process_variable(
+    return self.process_variable_(
                inst = inst,
                sort = sort_,
                vid = inst.vid
              );
 
 
-  def _process_argument( self, inst, aid ):
+  def process_argument_( self, inst, aid ):
     
     pass;
   
   def process_argument( self, inst ):
     
-    return self._process_argument(
+    return self.process_argument_(
                inst = inst,
                aid = inst.aid
              );
 
 
-  def _process_word( self, inst, lemma, pos, sense ):
+  def process_word_( self, inst, lemma, pos, sense ):
     
     pass;
   
   def process_word( self, inst ):
     
-    return self._process_word(
+    return self.process_word_(
                inst = inst,
                lemma = inst.lemma,
                pos = inst.pos,
@@ -81,19 +81,19 @@ class ProtoProcessor( metaclass=subject ):
              );
   
   
-  def _process_operator( self, inst, otype ):
+  def process_operator_( self, inst, otype ):
     
     pass;
   
   def process_operator( self, inst ):
     
-    return self._process_operator(
+    return self.process_operator_(
                inst = inst,
                otype = inst.otype
              );
 
 
-  def _process_functor( self, inst, fid, referent, feats ):
+  def process_functor_( self, inst, fid, referent, feats ):
     
     pass;
   
@@ -104,7 +104,7 @@ class ProtoProcessor( metaclass=subject ):
     elif isinstance( inst.referent, Operator ):
       referent_ = self.process_operator( inst.referent );
     
-    return self._process_functor(
+    return self.process_functor_(
                inst = inst,
                fid = inst.fid,
                referent = referent_,
@@ -112,7 +112,7 @@ class ProtoProcessor( metaclass=subject ):
             );
 
 
-  def _process_predication( self, inst, subform, predicate, args ):
+  def process_predication_( self, inst, subform, predicate, args ):
     
     pass;
   
@@ -131,7 +131,7 @@ class ProtoProcessor( metaclass=subject ):
         assert False;
       args_[ arg_ ] = val_;
     
-    return self._process_predication(
+    return self.process_predication_(
                inst = inst,
                subform = subform,
                predicate = predicate_,
@@ -139,7 +139,7 @@ class ProtoProcessor( metaclass=subject ):
              );
   
   
-  def _process_quantification( self, inst, subform, quantifier, var, rstr, body ):
+  def process_quantification_( self, inst, subform, quantifier, var, rstr, body ):
     
     pass;
   
@@ -153,7 +153,7 @@ class ProtoProcessor( metaclass=subject ):
     
     body_ = self.process_scopebearer( inst.body );
     
-    return self._process_quantification(
+    return self.process_quantification_(
                inst = inst,
                subform = subform,
                quantifier = quantifier_,
@@ -163,7 +163,7 @@ class ProtoProcessor( metaclass=subject ):
              );
   
   
-  def _process_modification( self, inst, subform, modality, args, scope ):
+  def process_modification_( self, inst, subform, modality, args, scope ):
     
     pass;
   
@@ -184,7 +184,7 @@ class ProtoProcessor( metaclass=subject ):
 
     scope_ = self.process_scopebearer( inst.scope );
     
-    return self._process_modification(
+    return self.process_modification_(
                inst = inst,
                subform = subform,
                modality = modality_,
@@ -193,7 +193,7 @@ class ProtoProcessor( metaclass=subject ):
              );
   
   
-  def _process_connection( self, inst, subform, connective, lscope, rscope ):
+  def process_connection_( self, inst, subform, connective, lscope, rscope ):
     
     pass;
   
@@ -205,7 +205,7 @@ class ProtoProcessor( metaclass=subject ):
     
     rscope_ = self.process_scopebearer( inst.rscope );
     
-    return self._process_connection(
+    return self.process_connection_(
                inst = inst,
                subform = subform,
                connective = connective_,
@@ -214,13 +214,13 @@ class ProtoProcessor( metaclass=subject ):
              );
 
 
-  def _process_handle( self, inst, hid ):
+  def process_handle_( self, inst, hid ):
     
     pass;
   
   def process_handle( self, inst ):
     
-    return self._process_handle(
+    return self.process_handle_(
                inst = inst,
                hid = inst.hid
              );
@@ -234,14 +234,14 @@ class ProtoProcessor( metaclass=subject ):
       return self.process_handle( inst );
 
 
-  def _process_subform( self, inst, holes, protoforms ):
+  def process_subform_( self, inst, holes, protoforms ):
     
     pass;
 
 
   def process_subform( self, subform ):
 
-    subform_ = self._process_subform( subform, subform.holes, subform.protoforms );
+    subform_ = self.process_subform_( subform, subform.holes, subform.protoforms );
 
     if isinstance( subform, Predication ):
       return self.process_predication( subform, subform_ );
@@ -256,7 +256,7 @@ class ProtoProcessor( metaclass=subject ):
     assert False;
   
 
-  def _process_constraint( self, inst, harg, larg ):
+  def process_constraint_( self, inst, harg, larg ):
     
     pass;
   
@@ -268,14 +268,14 @@ class ProtoProcessor( metaclass=subject ):
     assert isinstance( inst.harg, Handle );
     larg_ = self.process_handle( inst.larg );
 
-    return self._process_constraint(
+    return self.process_constraint_(
                inst = inst,
                harg = harg_,
                larg = larg_
              );
   
   
-  def _process_protoform( self, inst, subform, subforms, constraints ):
+  def process_protoform_( self, inst, subform, subforms, constraints ):
     
     pass;
   
@@ -305,7 +305,7 @@ class ProtoProcessor( metaclass=subject ):
       constraint_ = self.process_constraint( constraint );
       constraints_.append( constraint_ );
     
-    return self._process_protoform(
+    return self.process_protoform_(
                inst = inst,
                subform = subform,
                subforms = subforms_,

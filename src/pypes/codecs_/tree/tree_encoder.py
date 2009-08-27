@@ -16,11 +16,11 @@ from pypes.proto import *;
 
 class TreeEncoder( ProtoProcessor, metaclass=subject ):
 
-  def _process_operator( self, inst, otype ):
+  def process_operator_( self, inst, otype ):
     
     return otype;
   
-  def _process_word( self, inst, lemma, pos, sense ):
+  def process_word_( self, inst, lemma, pos, sense ):
     
     rslt = "_";
     if lemma is not None:
@@ -36,7 +36,7 @@ class TreeEncoder( ProtoProcessor, metaclass=subject ):
     
     return rslt;
   
-  def _process_argslist( self, inst, args ):
+  def process_argslist_( self, inst, args ):
     
     if self._utool_style:
       return "";
@@ -50,19 +50,19 @@ class TreeEncoder( ProtoProcessor, metaclass=subject ):
     
     return "";
 
-  def _process_functor( self, inst, fid, referent, feats ):
+  def process_functor_( self, inst, fid, referent, feats ):
     
     rslt = referent;
     if fid is not None:
       rslt += ":" + str(fid);
     return rslt;
   
-  def _process_predication( self, inst, subform, predicate, args ):
+  def process_predication_( self, inst, subform, predicate, args ):
     
     if predicate is not None:
-      return predicate + self._process_argslist( inst.args, args );
+      return predicate + self.process_argslist_( inst.args, args );
   
-  def _process_quantification( self, inst, subform, quantifier, var, rstr, body ):
+  def process_quantification_( self, inst, subform, quantifier, var, rstr, body ):
     
     if rstr is None:
       return None;
@@ -70,13 +70,13 @@ class TreeEncoder( ProtoProcessor, metaclass=subject ):
       return None;
     return quantifier + "( " + rstr + ", " + body + " )";
 
-  def _process_modification( self, inst, subform, modality, args, scope ):
+  def process_modification_( self, inst, subform, modality, args, scope ):
     
     if scope is None:
       return None;
     return modality + "( " + scope + " )";
 
-  def _process_connection( self, inst, subform, connective, lscope, rscope ):
+  def process_connection_( self, inst, subform, connective, lscope, rscope ):
     
     if lscope is None:
       return None;
@@ -84,7 +84,7 @@ class TreeEncoder( ProtoProcessor, metaclass=subject ):
       return None;
     return connective + "( " + lscope + ", " + rscope + " )";
 
-  def _process_protoform( self, inst, subform, subforms, constraints ):
+  def process_protoform_( self, inst, subform, subforms, constraints ):
     
     try:
       arg = "";

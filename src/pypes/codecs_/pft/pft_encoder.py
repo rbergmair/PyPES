@@ -136,14 +136,14 @@ class PFTEncoder( LambdaifyingProcessor, metaclass=subject ):
     return stri;
   
   
-  def _process_handle( self, inst, hid ):
+  def process_handle_( self, inst, hid ):
     
     if hid is None:
       return "__";
     return str( hid );
 
 
-  def _process_freezer( self, content, freezelevel ):
+  def process_freezer_( self, content, freezelevel ):
     
     if freezelevel <= 0:
       return content;
@@ -151,7 +151,7 @@ class PFTEncoder( LambdaifyingProcessor, metaclass=subject ):
       return "<" + content + ">";
 
 
-  def _process_variable( self, inst, sort, vid ):
+  def process_variable_( self, inst, sort, vid ):
     
     sid = inst.sort.sid;
     if sid is None:
@@ -163,12 +163,12 @@ class PFTEncoder( LambdaifyingProcessor, metaclass=subject ):
     return str(sid) + str(vid);
 
 
-  def _process_constant( self, inst, ident ):
+  def process_constant_( self, inst, ident ):
     
     return self._fmt_quoted( ident );
   
   
-  def _process_feats( self, feats ):
+  def process_feats_( self, feats ):
 
     if self._pretty:
       return "";
@@ -186,13 +186,13 @@ class PFTEncoder( LambdaifyingProcessor, metaclass=subject ):
     return rslt;
   
   
-  def _process_operator( self, inst, otype ):
+  def process_operator_( self, inst, otype ):
     
     rslt = otype;
     return rslt;
   
   
-  def _process_word( self, inst, lemma, pos, sense ):
+  def process_word_( self, inst, lemma, pos, sense ):
     
     # TODO: check this
     rslt = "|";
@@ -212,12 +212,12 @@ class PFTEncoder( LambdaifyingProcessor, metaclass=subject ):
     return rslt;
 
 
-  def _process_argument( self, inst, aid ):
+  def process_argument_( self, inst, aid ):
     
     return inst;
   
   
-  def _process_argslist( self, predmod, args_ ):
+  def process_argslist_( self, predmod, args_ ):
     
     if hasattr( predmod, "_sos_" ) and Argument in predmod._sos_:
       assigned_aids = predmod._sos_[ Argument ].keys();
@@ -268,26 +268,26 @@ class PFTEncoder( LambdaifyingProcessor, metaclass=subject ):
     return rslt;
       
 
-  def _process_functor( self, inst, fid, referent, feats ):
+  def process_functor_( self, inst, fid, referent, feats ):
     
     rslt = referent;
     if inst.fid is not None:
       rslt += ":" + str(inst.fid);
     if feats is not None:
-      rslt += self._process_feats( feats );
+      rslt += self.process_feats_( feats );
     return rslt;
 
   
-  def _process_predication( self, inst, subform, predicate, args ):
+  def process_predication_( self, inst, subform, predicate, args ):
     
     rslt = "\ue100 ";
     rslt += predicate;
-    rslt += self._process_argslist( predicate, args );
+    rslt += self.process_argslist_( predicate, args );
     
     return rslt;
 
   
-  def _process_quantification( self, inst, subform, quantifier, var, rstr, body ):
+  def process_quantification_( self, inst, subform, quantifier, var, rstr, body ):
     
     rslt = "\ue101 ";
     rslt += quantifier;
@@ -298,17 +298,17 @@ class PFTEncoder( LambdaifyingProcessor, metaclass=subject ):
     return rslt;
 
 
-  def _process_modification( self, inst, subform, modality, args, scope ):
+  def process_modification_( self, inst, subform, modality, args, scope ):
     
     rslt = "\ue102 ";
     rslt += modality;
-    rslt += self._process_argslist( modality, args );
+    rslt += self.process_argslist_( modality, args );
     rslt += " " + scope;
     
     return rslt;
 
 
-  def _process_connection( self, inst, subform, connective, lscope, rscope ):
+  def process_connection_( self, inst, subform, connective, lscope, rscope ):
     
     rslt = "\ue103 ";
     rslt += lscope + " ";
@@ -318,7 +318,7 @@ class PFTEncoder( LambdaifyingProcessor, metaclass=subject ):
     return rslt;
 
 
-  def _process_constraint( self, inst, harg, larg ):
+  def process_constraint_( self, inst, harg, larg ):
     
     rslt = "\ue104 ";
     rslt += harg;
@@ -328,7 +328,7 @@ class PFTEncoder( LambdaifyingProcessor, metaclass=subject ):
     return rslt;
 
 
-  def _process_protoform( self, inst, subform, subforms, constraints ):
+  def process_protoform_( self, inst, subform, subforms, constraints ):
     
     rslt = "{";
     

@@ -20,13 +20,13 @@ class ERGtoBDSF( ProtoProcessor, metaclass=subject ):
 
   class _FuncsCollector( ProtoProcessor, metaclass=subject ):
     
-    def _process_modification( self, inst, subform, modality, args, scope ):
+    def process_modification_( self, inst, subform, modality, args, scope ):
       
       if inst.modality not in self._obj_:
         self._obj_[ inst.modality ] = set();
       self._obj_[ inst.modality ].add( inst );
     
-    def _process_predication( self, inst, subform, predicate, args ):
+    def process_predication_( self, inst, subform, predicate, args ):
     
       if inst.predicate not in self._obj_:
         self._obj_[ inst.predicate ] = set();
@@ -35,11 +35,11 @@ class ERGtoBDSF( ProtoProcessor, metaclass=subject ):
 
   class _PostDSFRewriter( ProtoProcessor, metaclass=subject ):
     
-    def _process_modification( self, inst, subform, modality, args, scope ):
+    def process_modification_( self, inst, subform, modality, args, scope ):
       
       pass;
       
-    def _process_predication( self, inst, subform, predicate, args ):
+    def process_predication_( self, inst, subform, predicate, args ):
   
       pass;
   

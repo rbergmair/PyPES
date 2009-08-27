@@ -42,7 +42,7 @@ class MRtoDSF( metaclass=subject ):
       self._binder = {};
       self._vars = {};
     
-    def _process_connection( self, inst, subform, connective, lscope, rscope ):
+    def process_connection_( self, inst, subform, connective, lscope, rscope ):
       
       if isinstance( inst.lscope, Handle ):
         self._binder[ inst.lscope ] = self._obj_.CONNECTION;
@@ -50,7 +50,7 @@ class MRtoDSF( metaclass=subject ):
         self._binder[ inst.rscope ] = self._obj_.CONNECTION;
       self._obj_.index[ inst ] = self._obj_.CONNECTION;
     
-    def _process_quantification( self, inst, subform, quantifier, var, rstr, body ):
+    def process_quantification_( self, inst, subform, quantifier, var, rstr, body ):
       
       if isinstance( inst.rstr, Handle ):
         self._binder[ inst.rstr ] = self._obj_.QUANTIFICATION;
@@ -60,17 +60,17 @@ class MRtoDSF( metaclass=subject ):
         self._obj_.holevars[ inst.body ] = inst.var;
       self._obj_.index[ inst ] = self._obj_.QUANTIFICATION;
     
-    def _process_modification( self, inst, subform, modality, args, scope ):
+    def process_modification_( self, inst, subform, modality, args, scope ):
       
       if isinstance( inst.scope, Handle ):
         self._binder[ inst.scope ] = self._obj_.MODIFICATION;
       self._obj_.index[ inst ] = self._obj_.MODIFICATION;
     
-    def _process_predication( self, inst, subform, predicate, args ):
+    def process_predication_( self, inst, subform, predicate, args ):
       
       self._obj_.index[ inst ] = self._obj_.PREDICATION;
     
-    def _process_protoform( self, inst, subform, subforms, constraints ):
+    def process_protoform_( self, inst, subform, subforms, constraints ):
       
       maxbinder = self._obj_.ZERO;
       qvar = None;

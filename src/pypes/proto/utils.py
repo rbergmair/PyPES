@@ -32,7 +32,7 @@ class SanityChecker( ProtoProcessor, metaclass=subject ):
     return not self._insane;
   
   
-  def _process_protoform( self, inst, subform, subforms, constraints ):
+  def process_protoform_( self, inst, subform, subforms, constraints ):
     
     holes = set();
     for root in inst.roots:
@@ -113,7 +113,7 @@ class RecursionChecker( ProtoProcessor, metaclass=subject ):
     return not self._insane;
   
   
-  def _process_protoform( self, inst, subform, subforms, constraints ):
+  def process_protoform_( self, inst, subform, subforms, constraints ):
     
     if len( subforms ) == 1:
       return;

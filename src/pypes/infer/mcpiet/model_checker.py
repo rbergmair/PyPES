@@ -22,24 +22,24 @@ class ModelChecker( metaclass=subject ):
   class _FormCompiler( ProtoProcessor, metaclass=subject ):
 
     
-    def _process_variable( self, inst, sort, vid ):
+    def process_variable_( self, inst, sort, vid ):
       
       self._vars.add( inst );
       
 
-    def _process_protoform( self, inst, subform, subforms, constraints ):
+    def process_protoform_( self, inst, subform, subforms, constraints ):
       
       ((root,subf),) = subforms;
       assert not constraints;
       return subf;
 
 
-    def _process_modification( self, inst, subform, modality, args, scope ):
+    def process_modification_( self, inst, subform, modality, args, scope ):
       
       return scope;
 
 
-    def _process_predication( self, inst, subform, predicate, args ):
+    def process_predication_( self, inst, subform, predicate, args ):
 
       p = None;
       if isinstance( inst.predicate.referent, Operator ) and \
@@ -110,7 +110,7 @@ class ModelChecker( metaclass=subject ):
         raise;
 
     
-    def _process_quantification( self, inst, subform, quantifier, var, rstr, body ):
+    def process_quantification_( self, inst, subform, quantifier, var, rstr, body ):
       
       assert isinstance( inst.quantifier.referent, Operator );
       q = inst.quantifier.referent.otype;
@@ -152,7 +152,7 @@ class ModelChecker( metaclass=subject ):
       assert False;
 
                
-    def _process_connection( self, inst, subform, connective, lscope, rscope ):
+    def process_connection_( self, inst, subform, connective, lscope, rscope ):
       
       assert isinstance( inst.connective.referent, Operator );
       c = inst.connective.referent.otype;

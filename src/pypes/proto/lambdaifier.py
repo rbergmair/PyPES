@@ -31,7 +31,7 @@ class LambdaifyingProcessor( ProtoProcessor, metaclass=subject ):
     return super().process_subform( subform );
   
   
-  def _process_freezer( self, content, freezelevel ):
+  def process_freezer_( self, content, freezelevel ):
     
     pass;
   
@@ -43,7 +43,7 @@ class LambdaifyingProcessor( ProtoProcessor, metaclass=subject ):
     if freezelevel == -1:
       return self.process_handle( handle );
     else:
-      return self._process_freezer(
+      return self.process_freezer_(
                  self.process_freezer( handle, freezelevel-1 ),
                  freezelevel
                );
@@ -84,18 +84,20 @@ class Lambdaifier( LambdaifyingProcessor, metaclass=subject ):
     return self.process( pf );
   
   
-  def _process_freezer( self, content, freezelevel ):
+  def process_freezer_( self, content, freezelevel ):
     
     return Freezer( content=content );
 
-  def _process_predication( self, inst, subform, predicate, args ):
+  def process_predication_( self, inst, subform, predicate, args ):
     
     return inst.__class__(
                predicate = predicate,
                args = args
              );
     
-  def _process_quantification( self, inst, subform, quantifier, var, rstr, body ):
+  def process_quantification_(
+          self, inst, subform, quantifier, var, rstr, body
+        ):
     
     return inst.__class__(
                quantifier = quantifier,
@@ -104,7 +106,7 @@ class Lambdaifier( LambdaifyingProcessor, metaclass=subject ):
                body = body
              );
              
-  def _process_modification( self, inst, subform, modality, args, scope ):
+  def process_modification_( self, inst, subform, modality, args, scope ):
     
     return inst.__class__(
                modality = modality,
@@ -112,7 +114,7 @@ class Lambdaifier( LambdaifyingProcessor, metaclass=subject ):
                scope = scope
              );
     
-  def _process_connection( self, inst, subform, connective, lscope, rscope ):
+  def process_connection_( self, inst, subform, connective, lscope, rscope ):
     
     return inst.__class__(
                connective = connective,
@@ -120,27 +122,27 @@ class Lambdaifier( LambdaifyingProcessor, metaclass=subject ):
                rscope = rscope
              );
     
-  def _process_handle( self, inst, hid ):
+  def process_handle_( self, inst, hid ):
     
     return inst.__class__(
                hid = hid
              );
     
-  def _process_constraint( self, inst, harg, larg ):
+  def process_constraint_( self, inst, harg, larg ):
     
     return inst.__class__(
                harg = harg,
                larg = larg
              );
     
-  def _process_protoform( self, inst, subform, subforms, constraints ):
+  def process_protoform_( self, inst, subform, subforms, constraints ):
     
     return inst.__class__(
                subforms = subforms,
                constraints = constraints
             );
     
-  def _process_functor( self, inst, fid, referent, feats ):
+  def process_functor_( self, inst, fid, referent, feats ):
     
     return inst.__class__(
                fid = fid,
@@ -148,31 +150,31 @@ class Lambdaifier( LambdaifyingProcessor, metaclass=subject ):
                feats = feats
              );
              
-  def _process_argument( self, inst, aid ):
+  def process_argument_( self, inst, aid ):
     
     return inst.__class__(
                aid = aid
              );
     
-  def _process_variable( self, inst, sort, vid ):
+  def process_variable_( self, inst, sort, vid ):
     
     return inst.__class__(
                sidvid = (inst.sort.sid,vid)
              );
     
-  def _process_constant( self, inst, ident ):
+  def process_constant_( self, inst, ident ):
     
     return inst.__class__(
                ident = ident
              );
     
-  def _process_sort( self, inst, sid ):
+  def process_sort_( self, inst, sid ):
     
     return inst.__class__(
                sid = sid
              );
     
-  def _process_word( self, inst, lemma, pos, sense ):
+  def process_word_( self, inst, lemma, pos, sense ):
     
     return inst.__class__(
                lemma = lemma,
@@ -180,7 +182,7 @@ class Lambdaifier( LambdaifyingProcessor, metaclass=subject ):
                sense = sense
              );
     
-  def _process_operator( self, inst, otype ):
+  def process_operator_( self, inst, otype ):
     
     return inst.__class__(
                otype = otype

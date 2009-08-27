@@ -38,11 +38,11 @@ class Reifier( ProtoProcessor, metaclass=subject ):
       
       self._obj_._args_by_functor[ functor ] = args_;
 
-    def _process_predication( self, inst, subform, predicate, args ):
+    def process_predication_( self, inst, subform, predicate, args ):
       
       self._process_functor_args( inst.predicate, inst.args );
       
-    def _process_modification( self, inst, subform, modality, args, scope ):
+    def process_modification_( self, inst, subform, modality, args, scope ):
 
       self._process_functor_args( inst.modality, inst.args );
   
@@ -157,7 +157,7 @@ class Reifier( ProtoProcessor, metaclass=subject ):
         self._fid_by_functor[ functor ] = i+1;
 
 
-  def _process_functor( self, inst, fid, referent, feats ):
+  def process_functor_( self, inst, fid, referent, feats ):
     
     if inst in self._fid_by_functor:
       inst.fid = self._fid_by_functor[ inst ];
@@ -169,11 +169,11 @@ class Reifier( ProtoProcessor, metaclass=subject ):
       if var in self._const_by_event:
         args[ arg ] = self._const_by_event[ var ];
 
-  def _process_predication( self, inst, subform, predicate, args ):
+  def process_predication_( self, inst, subform, predicate, args ):
     
     self._process_functor_args( inst.predicate, inst.args );
     
-  def _process_modification( self, inst, subform, modality, args, scope ):
+  def process_modification_( self, inst, subform, modality, args, scope ):
 
     self._process_functor_args( inst.modality, inst.args );
   
