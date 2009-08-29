@@ -92,7 +92,7 @@
    :file:`data.ts.xml` will be consulted.  Then each inference engine will
    be run on that testsuite, and will produce, in the same directory, an
    annotation file named after itself, e.g.
-   file:`McPIETInferenceAgent.tsa.xml`.
+   :file:`McPIETInferenceAgent.tsa.xml`.
 
    Semantic inference angents will have to consult the semantic representations
    for sentences and discourses.  These will be looked up in the items database

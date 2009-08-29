@@ -4,13 +4,14 @@
 .. module:: pypes.codecs_
   :synopsis: provides routines for reading from and writing to string representations of ProtoForms.
 
-:mod:`pypes.codecs_` provides routines for reading from and writing to string representations of ProtoForms.
+:mod:`pypes.codecs_` provides routines for reading from and writing to string
+representations of ProtoForms.
 
 
 Decoders
 --------
 
-.. class:: PFTDecoder( (lexicon,itemtype) )
+.. class:: PFTDecoder( (itemtype,lexicon) )
 
    .. method:: subtokenize_word( pft_word )
    .. method:: subtokenize_variable( pft_variable )
@@ -40,17 +41,19 @@ Decoders
 
    is a shortcut to :meth:`PFTDecoder.decode`.
 
-.. class:: MRXDecoder( mrx )
+.. class:: MRXDecoder( [ sem ] )
 
-   .. method:: decode( [ sem ] )
+   .. attribute:: SEM_ERG
+   .. method:: decode( mrx )
 
 .. function:: mrx_decode( mrx [ , sem ] )
 
    is a shortcut to :meth:`MRXDecoder.decode`.
 
-.. class:: MRSDecoder( mrs )
+.. class:: MRSDecoder( [ sem ] )
 
-   .. method:: decode( [ sem ] )
+   .. attribute:: SEM_ERG
+   .. method:: decode( mrs )
 
 .. function:: mrs_decode( mrs [ , sem ] )
 

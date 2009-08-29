@@ -25,7 +25,7 @@ class LogpatExtractor( ProtoProcessor, metaclass=subject ):
   
   def _enter_( self ):
     
-    self._decoder_ctx = PFTDecoder( (pypes.proto.lex.erg,None) );
+    self._decoder_ctx = PFTDecoder( (None,pypes.proto.lex.erg) );
     self._decoder = self._decoder_ctx.__enter__();
   
   def _exit_( self, exc_type, exc_val, exc_tb ):

@@ -106,7 +106,7 @@ class PFTParser( _pft_parser.PFTParser, metaclass=subject ):
 
   def _enter_( self ):
 
-    ( lexicon, type_ ) = self._obj_;
+    ( type_, lexicon ) = self._obj_;
 
     if type_ is None:
       self.start = eval( "self._" + self.GT_PROTOFORM );
@@ -226,9 +226,9 @@ class PFTParser( _pft_parser.PFTParser, metaclass=subject ):
     return rslt[0];
   
 
-  def decode( self, item ):
+  def decode( self, pft ):
     
-    ( type_, inst ) = self._parse( item );
+    ( type_, inst ) = self._parse( pft );
     return inst;
 
     

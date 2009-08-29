@@ -132,7 +132,7 @@ class TestIOTest( TestCase, metaclass=object_ ):
     
     for i in range(0,5):
 
-      with PFTDecoder( (pypes.proto.lex.erg,None) ) as decoder:
+      with PFTDecoder( (None,pypes.proto.lex.erg) ) as decoder:
   
         before = time.clock();
         f = open( "/local/scratch/rb432/tmp/outp/outp.txt", "rt", encoding="utf-8" );

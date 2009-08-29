@@ -9,7 +9,7 @@ from pypes.proto import *;
 
 import pypes.proto.lex.basic;
 
-from pypes.codecs_.pft._pft_parser_pp import PFTParser;
+from pypes.codecs_.pft._pft_parser_ply import PFTParser;
 
 
 
@@ -38,7 +38,7 @@ class PFTDecoder( PFTParser, metaclass=subject ):
   def _enter_( self ):
 
     PFTParser._enter_( self );
-    ( lexicon, type_ ) = self._obj_;
+    ( type_, lexicon ) = self._obj_;
     
     if lexicon is None:
       self._lexicon = pypes.proto.lex.basic;
@@ -468,12 +468,11 @@ class PFTDecoder( PFTParser, metaclass=subject ):
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-def pft_decode( item, type_=None, lexicon=None ):
+def pft_decode( pft, type_=None, lexicon=None ):
   
   rslt = None;
-  decoder = PFTDecoder( lexicon );
-  with PFTDecoder( ( lexicon, type_ ) ) as decoder:
-    rslt = decoder.decode( item );
+  with PFTDecoder( ( type_, lexicon ) ) as decoder:
+    rslt = decoder.decode( pft );
   return rslt;
 
 

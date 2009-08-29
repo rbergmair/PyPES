@@ -125,7 +125,7 @@ class TestMRSDecoder( TestCase, metaclass=object_ ):
 
   def x_test_quick( self ):
     
-    with PFTDecoder( (pypes.proto.lex.erg,None) ) as decoder:
+    with PFTDecoder( (None,pypes.proto.lex.erg) ) as decoder:
       
       i = 13;
       self.check_testfile( "{0}/mrs-{1}1.mrs.gz".format( self._TESTMRSDIR, i ), decoder );
@@ -133,7 +133,7 @@ class TestMRSDecoder( TestCase, metaclass=object_ ):
   
   def test_mrsdecoder( self ):
 
-    with PFTDecoder( (pypes.proto.lex.erg,None) ) as decoder:
+    with PFTDecoder( (None,pypes.proto.lex.erg) ) as decoder:
 
       for i in range( 1, 108 ):
         self.check_testfile( "{0}/mrs-{1}1.mrs.gz".format( self._TESTMRSDIR, i ), decoder );

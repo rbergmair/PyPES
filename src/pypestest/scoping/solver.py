@@ -220,14 +220,14 @@ class TestSolver( TestCase, metaclass=object_ ):
     
   def x_test_quick( self ):
     
-    with PFTDecoder( (pypes.proto.lex.erg,None) ) as decoder:
+    with PFTDecoder( (None,pypes.proto.lex.erg) ) as decoder:
       
       i = 185;
       self.quicktest( "{0}/fracas-{1}.pft.gz".format( self._TESTDTADIR, i ), decoder );
 
   def test_solver( self ):
 
-    with PFTDecoder( (pypes.proto.lex.erg,None) ) as decoder:
+    with PFTDecoder( (None,pypes.proto.lex.erg) ) as decoder:
 
       for i in range( 1, 108 ):
         self.check_testfile( "{0}/mrs-{1}1.pft.gz".format( self._TESTDTADIR, i ), decoder );

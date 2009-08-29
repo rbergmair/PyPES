@@ -103,7 +103,7 @@ class TestMRtoDSF( TestCase, metaclass=object_ ):
 
   def x_test_quick( self ):
 
-    with PFTDecoder( (pypes.proto.lex.erg,None) ) as decoder:
+    with PFTDecoder( (None,pypes.proto.lex.erg) ) as decoder:
       
       i = 75;
       self.write_testfile( "{0}/mrs-{1}1.pft.gz".format( self._TESTDTADIR, i ), decoder );
@@ -114,7 +114,7 @@ class TestMRtoDSF( TestCase, metaclass=object_ ):
 
     with open( self._TESTDTADIR+"/dsfs.txt", "wt", encoding="utf-8" ) as x:
 
-      with PFTDecoder( (pypes.proto.lex.erg,None) ) as decoder:
+      with PFTDecoder( (None,pypes.proto.lex.erg) ) as decoder:
   
         for i in range( 1, 108 ):
           self.write_testfile( "{0}/mrs-{1}1.pft.gz".format( self._TESTDTADIR, i ), decoder, x );

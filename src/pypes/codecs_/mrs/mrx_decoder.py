@@ -345,6 +345,16 @@ class MRXDecoder( XMLHandler, metaclass=subject ):
   IGNORE = [];
   
   SEM_ERG = 1;
+  
+  
+  def _enter_( self ):
+    
+    if self._obj_ is None or self._obj_ == self.SEM_ERG:
+      self._converter = _ergsem_interpreter.mrs_to_pf;
+    else:
+      assert False;
+      
+    XMLHandler._enter_( self );
 
   
   def handle( self, obj ):
@@ -353,29 +363,16 @@ class MRXDecoder( XMLHandler, metaclass=subject ):
       self.mrs = obj;
 
 
-  def decode( self, sem=None ):
+  def decode( self, mrx ):
     
-    converter = None;
-    if sem is None or sem == self.SEM_ERG:
-      converter = _ergsem_interpreter.mrs_to_pf;
-    else:
-      assert False;
-
-    f = self._obj_;
     self.feed( """<?xml version="1.1"?>""" );
     self.feed( """<!DOCTYPE mrs [""" );
     self.feed( _MRS_DTD );
     self.feed( """              ] >""" );
     
-    if isinstance( self._obj_, str ):
-      self.feed( self._obj_ );
-    else:
-      x = self._obj_.read( self.CHUNK_SIZE );
-      while x:
-        self.feed( x );
-        x = self._obj_.read( self.CHUNK_SIZE );
+    XMLHandler.process( self, mrx );
     
-    return converter( self.mrs );
+    return self._converter( self.mrs );
 
 
 
@@ -384,8 +381,8 @@ class MRXDecoder( XMLHandler, metaclass=subject ):
 def mrx_decode( mrx, sem=None ):
   
   rslt = None;
-  with MRXDecoder( mrx ) as decoder:
-    rslt = decoder.decode( sem );
+  with MRXDecoder( sem ) as decoder:
+    rslt = decoder.decode( mrx );
   return rslt;
 
     

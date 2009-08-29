@@ -100,7 +100,7 @@ def pft_decode( item, type_=None, lexicon=None ):
   
   rslt = None;
   decoder = PFTDecoder( lexicon );
-  with PFTDecoder( ( lexicon, type_ ) ) as decoder:
+  with PFTDecoder( ( type_, lexicon ) ) as decoder:
     rslt = decoder.decode( item );
   return rslt;
 

@@ -125,7 +125,7 @@ class TestMRXDecoder( TestCase, metaclass=object_ ):
 
   def x_test_quick( self ):
     
-    with PFTDecoder( (pypes.proto.lex.erg,None) ) as decoder:
+    with PFTDecoder( (None,pypes.proto.lex.erg) ) as decoder:
       
       i = 192;
       self.write_testfile( "{0}/fracas-{1}.mrs.xml.gz".format( self._TESTMRSDIR, i ), decoder );
@@ -133,7 +133,7 @@ class TestMRXDecoder( TestCase, metaclass=object_ ):
   
   def test_mrxdecoder( self ):
 
-    with PFTDecoder( (pypes.proto.lex.erg,None) ) as decoder:
+    with PFTDecoder( (None,pypes.proto.lex.erg) ) as decoder:
   
       for i in range( 1, 641 ):
         self.check_testfile( "{0}/fracas-{1}.mrs.xml.gz".format( self._TESTMRSDIR, i ), decoder );

@@ -56,21 +56,21 @@ class MRSDecoder( metaclass=subject ):
     self._lexer = None;
 
     
-  def decode( self, sem=None ):
+  def decode( self, mrx ):
     
     converter = None;
-    if sem is None or sem == self.SEM_ERG:
+    if self._obj_ is None or self._obj_ == self.SEM_ERG:
       converter = _ergsem_interpreter.mrs_to_pf;
     else:
       assert False;
     
     input = None;
     
-    if isinstance( self._obj_, str ):
-      input = self._obj_;
+    if isinstance( mrx, str ):
+      input = mrx;
     else:
       cdc = codecs.getreader( "utf-8" );
-      g = cdc( self._obj_ );
+      g = cdc( mrx );
       input = g.read();
       g.close();
       
@@ -290,8 +290,8 @@ class MRSDecoder( metaclass=subject ):
 def mrs_decode( mrs, sem=None ):
   
   rslt = None;
-  with MRSDecoder( mrs ) as decoder:
-    rslt = decoder.decode( sem );
+  with MRSDecoder( sem ) as decoder:
+    rslt = decoder.decode( mrs );
   return rslt;
 
 
