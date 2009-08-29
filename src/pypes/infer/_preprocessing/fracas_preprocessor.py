@@ -395,17 +395,17 @@ class FraCaSPreprocessor( XMLHandler, metaclass=subject ):
   IGNORE = {};
 
 
-  def process( self, datadir, itemdir ):
+  def process( self, f, datadir, itemdir ):
     
     self.datadir = datadir;
     self.itemdir = itemdir;
     
-    xmldecl = self._obj_.readline();
+    xmldecl = f.readline();
     self.feed( xmldecl );
-    doctype = self._obj_.readline();
-    stylesheet = self._obj_.readline();
+    doctype = f.readline();
+    stylesheet = f.readline();
     
-    super().process();
+    XMLHandler.process( self, f );
 
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
@@ -414,8 +414,8 @@ def preprocess_fracas():
   
   f = open( "dta/infer/edited/fracas.bmc.xml", "rb" );
   try:
-    with FraCaSPreprocessor( f ) as proc:
-      proc.process( "dta/infer/fracas", "dta/items/fracas" );
+    with FraCaSPreprocessor() as proc:
+      proc.process( f, "dta/infer/fracas", "dta/items/fracas" );
   finally:
     f.close();
   return 0;

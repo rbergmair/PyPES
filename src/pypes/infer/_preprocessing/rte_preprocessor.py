@@ -288,9 +288,10 @@ class RTEPreprocessor( XMLHandler, metaclass=subject ):
   
   IGNORE = { "headline" };
   
-  def __init__( self, dataset=None ):
+  def preprocess( self, f, dataset=None ):
     
     self.dataset = dataset;
+    self.process( f );
 
 
 
@@ -300,30 +301,30 @@ def preprocess_rte():
   
   f = open( "dta/infer/edited/rte-08.rte.xml", "rb" );
   try:
-    with RTEPreprocessor( f, dataset="08" ) as proc:
-      proc.process();
+    with RTEPreprocessor() as proc:
+      proc.preprocess( f, dataset="08" );
   finally:
     f.close();
 
   f = open( "dta/infer/edited/rte-07-dev-3w.rte.xml", "rb" );
   try:
-    with RTEPreprocessor( f, dataset="07-dev" ) as proc:
-      proc.process();
+    with RTEPreprocessor() as proc:
+      proc.preprocess( f, dataset="07-dev" );
   finally:
     f.close();
 
   f = open( "dta/infer/edited/rte-07-tst-2w.rte.xml", "rb" );
   try:
-    with RTEPreprocessor( f, dataset="07-tst" ) as proc:
-      proc.process();
+    with RTEPreprocessor() as proc:
+      proc.preprocess( f, dataset="07-tst" );
   finally:
     f.close();
   
   for dataset in [ "05-dev", "05-tst", "06-dev", "06-tst" ]:
     f = open( "dta/infer/edited/rte-{0}.rte.xml".format( dataset ), "rb" );
     try:
-      with RTEPreprocessor( f, dataset=dataset ) as proc:
-        proc.process();
+      with RTEPreprocessor() as proc:
+        proc.preprocess( f, dataset=dataset );
     finally:
       f.close();
     

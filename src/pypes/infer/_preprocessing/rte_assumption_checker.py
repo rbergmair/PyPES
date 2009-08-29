@@ -74,10 +74,11 @@ class RTEProcessor( XMLHandler, metaclass=subject ):
   
   IGNORE = { "headline" };
   
-  def __init__( self, dataset=None ):
+  def process( self, f, dataset=None ):
     
     self.dataset = dataset;
     self.flattened = [];
+    XMLHandler.process( f );
 
 
 
@@ -88,8 +89,8 @@ def check_rte_assumptions():
   fl2w = None;
   f = open( "dta/infer/edited/rte-07-dev-2w.rte.xml", "rb" );
   try:
-    with RTEProcessor( f, dataset="2w" ) as proc:
-      proc.process();
+    with RTEProcessor() as proc:
+      proc.process( f, dataset="2w" );
       fl2w = proc.flattened;
   finally:
     f.close();
@@ -97,8 +98,8 @@ def check_rte_assumptions():
   fl3w = None;
   f = open( "dta/infer/edited/rte-07-dev-3w.rte.xml", "rb" );
   try:
-    with RTEProcessor( f, dataset="3w" ) as proc:
-      proc.process();
+    with RTEProcessor() as proc:
+      proc.process( f, dataset="3w" );
       fl3w = proc.flattened;
   finally:
     f.close();
@@ -119,8 +120,8 @@ def check_rte_assumptions():
   fltst = None;
   f = open( "dta/infer/edited/rte-07-tst-2w.rte.xml", "rb" );
   try:
-    with RTEProcessor( f, dataset="2w" ) as proc:
-      proc.process();
+    with RTEProcessor() as proc:
+      proc.process( f, dataset="2w" );
       fltst = proc.flattened;
   finally:
     f.close();

@@ -73,15 +73,15 @@ class AnnotationReader( XMLHandler, metaclass=subject ):
     };
 
   
-  def read( self ):
+  def read( self, annotation ):
     
-    if isinstance( self._obj_, str ):
-      self.feed( self._obj_ );
+    if isinstance( annotation, str ):
+      self.feed( annotation );
     else:
-      x = self._obj_.read( self.CHUNK_SIZE );
+      x = annotation.read( self.CHUNK_SIZE );
       while x:
         self.feed( x );
-        x = self._obj_.read( self.CHUNK_SIZE );
+        x = annotation.read( self.CHUNK_SIZE );
     
     return ( self.descriptor, self.labelset, self.annotations );
 
@@ -92,8 +92,8 @@ class AnnotationReader( XMLHandler, metaclass=subject ):
 def read_annotation( data ):
   
   rslt = None;
-  with AnnotationReader( data ) as reader:
-    rslt = reader.read();
+  with AnnotationReader() as reader:
+    rslt = reader.read( data );
   return rslt;
   
 

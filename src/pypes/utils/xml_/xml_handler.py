@@ -64,27 +64,36 @@ class XMLHandler( xml.sax.handler.ContentHandler, metaclass=subject ):
   
   def _enter_( self ):
 
-    self._alldata = "";
-
     self._parser = xml.sax.make_parser( \
       [ "xml.sax.xmlreader.IncrementalParser" ] );
     self._parser.setFeature( xml.sax.handler.feature_namespaces, 0 );
     # self._parser.setFeature( xml.sax.handler.feature_validation, 1 );
     self._parser.setContentHandler( self );
     
-    self._active_clients = [];
+    self.reset();
+
+
+  def feed( self, data ):
     
+    self._parser.feed( data );
+
+
+  def close( self ):
+    
+    self._parser.close();
+  
+  
+  def reset( self ):
+    
+    self._alldata = "";
+    self._active_clients = [];
     self._stop_parsing = False;
+    self._parser.reset();
 
 
   def handle( self, obj ):
     
     pass;
-  
-  
-  def feed( self, data ):
-    
-    self._parser.feed( data );
     
   
   def startElement( self, name, attrs ):
@@ -165,15 +174,15 @@ class XMLHandler( xml.sax.handler.ContentHandler, metaclass=subject ):
         active_client_ctx.__exit__( None, None, None );
 
 
-  def process( self ):
-    
-    if isinstance( self._obj_, str ):
-      self.feed( str );
+  def process( self, xml_ ):
+
+    if isinstance( xml_, str ):
+      self.feed( xml_ );
     else:
-      x = self._obj_.read( self.CHUNK_SIZE );
+      x = xml_.read( self.CHUNK_SIZE );
       while x:
         self.feed( x );
-        x = self._obj_.read( self.CHUNK_SIZE );
+        x = xml_.read( self.CHUNK_SIZE );
 
 
 

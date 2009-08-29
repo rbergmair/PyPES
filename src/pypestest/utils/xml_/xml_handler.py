@@ -106,7 +106,7 @@ class TestMyXMLHandler( TestCase, metaclass=object_ ):
   def test_myxmlhandler( self ):
     
     rslt = None;
-    with MyXMLHandler( None ) as myxmlhandler:
+    with MyXMLHandler() as myxmlhandler:
       myxmlhandler.feed( INDATA );
       rslt = myxmlhandler.result;
     del myxmlhandler;
