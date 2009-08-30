@@ -119,10 +119,10 @@ class McPIETAgent( SemanticInferenceAgent, metaclass=subject ):
     
     rslt = super().preprocess();
     
-    for ( sentid, pf ) in self._pfs.items():
+    for ( sentid, pf ) in self.pfs.items():
       self._schema.accommodate_for_form( pf );
     
-    for ( sentid, pf ) in self._pfs.items():
+    for ( sentid, pf ) in self.pfs.items():
       self._checker.preprocess( sentid, pf, self._schema );
 
     self._preprocessed = True;
@@ -135,8 +135,8 @@ class McPIETAgent( SemanticInferenceAgent, metaclass=subject ):
     r1 = None;
     r2 = None;
 
-    antdisc = self._discs[ antecedent ];
-    condisc = self._discs[ consequent ];
+    antdisc = self.discs[ antecedent ];
+    condisc = self.discs[ consequent ];
     
     #print( antdisc );
     #print( condisc );

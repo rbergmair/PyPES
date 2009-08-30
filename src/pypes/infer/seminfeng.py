@@ -99,26 +99,26 @@ class SemanticInferenceAgent( InferenceAgent, metaclass=subject ):
 
   def reset( self ):
     
-    self._pfs = {};
-    self._discs = {};
+    self.pfs = {};
+    self.discs = {};
     
   
   def process_sentence( self, sentid, rec, text ):
     
     assert rec.get_ctx_str() == text;
     pf = pft_decode( rec.fetch_first( self.SEMFIELD ) )( sig = ProtoSig() );
-    self._pfs[ sentid ] = pf;
+    self.pfs[ sentid ] = pf;
 
 
   def process_discourse( self, discid, rec, sents, inf=False ):
     
     if not inf:
-      self._discs[ discid ] = sents;
+      self.discs[ discid ] = sents;
 
 
   def preprocess( self ):
     
-    for ( sentid, pf ) in self._pfs.items():
+    for ( sentid, pf ) in self.pfs.items():
       
       self._pp.process( pf );
       self._renamer.process_pf( pf );
@@ -127,12 +127,12 @@ class SemanticInferenceAgent( InferenceAgent, metaclass=subject ):
 
     self._sig = ProtoSig();
 
-    for ( sentid, pf ) in self._pfs.items():
+    for ( sentid, pf ) in self.pfs.items():
       
       pf = self._renamer.rename( pf );
       pf_ = lambdaify( pf );
       pf = pf_( sig = self._sig );
-      self._pfs[ sentid ] = pf;
+      self.pfs[ sentid ] = pf;
       
       self._reifier.process_pf( pf );
 
@@ -140,17 +140,17 @@ class SemanticInferenceAgent( InferenceAgent, metaclass=subject ):
 
     self._sig = ProtoSig();
 
-    for ( sentid, pf ) in self._pfs.items():
+    for ( sentid, pf ) in self.pfs.items():
       
       pf = self._reifier.reify( pf );
       pf_ = lambdaify( pf );
       pf = pf_( sig = self._sig );
-      self._pfs[ sentid ] = pf;
+      self.pfs[ sentid ] = pf;
 
-    for pf in self._pfs.values():
+    for pf in self.pfs.values():
       self._postp.process( pf );
     
-    return self._pfs;
+    return self.pfs;
 
   
   def infer( self, disc, antecedent, consequent ):

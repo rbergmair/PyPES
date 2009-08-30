@@ -22,27 +22,49 @@ engines and using their output for evaluation purposes.
    .. method:: infer( disc, antecedent, consequent )
 
 
+.. class:: YesAgent( [paramid] )
+
+      is a baseline :class:`pypes.infer.InferenceAgent` whose
+      :meth:`infer` method always returns ( 1.0, 0.0 ).
+
+
+.. class:: NoAgent( [paramid] )
+
+      is a baseline :class:`pypes.infer.InferenceAgent` whose
+      :meth:`infer` method always returns ( 0.0, 1.0 ).
+
+
 .. class:: SemanticInferenceAgent( [paramid] )
 
-   is a subclass of :class:`pypes.infer.InferenceAgent` which serves
-   as a base class for inference agents which work with semantic
-   representations from the item bank.
+   is an :class:`pypes.infer.InferenceAgent` which serves as a base
+   class for inference agents which work with semantic representations
+   from the item bank.  It implements :meth:`reset`,
+   :meth:`process_sentence`, :meth:`process_discourse`, and
+   :meth:`preprocess`, in such a way that only the :meth:`infer`
+   method remains to be implemented by the writer of the specific
+   semantic inference agent.
 
-   .. attribute:: paramid
-   .. method:: reset()
-   .. method:: process_sentence( sentid, rec, text )
-   .. method:: process_discourse( discid, rec, sents [ , inf=False ] )
-   .. method:: preprocess()
-   .. method:: infer( disc, antecedent, consequent )
+   .. attribute:: pfs
+   .. attribute:: discs
 
-      this is a comment.
+   The attributes :attr:`pfs` and :attr:`discs` are populated
+   so that, within the :meth:`infer` method they are available as
+   mappings, mapping sentence ids to protoforms, and discourse ids
+   to lists of sentence ids, respectively.
+   
 
 
-.. class:: TestsuiteRunner()
+.. class:: TestsuiteRunner( [ ( tsdirname, tsitemsdbdirname ) ] )
 
    .. method:: add_agent( agent )
    .. method:: run()
 
 
+.. class:: run_testsuite( tsdirnameprefix, tsitemsdbdirname )
 
+   is a synonym of :meth:`bin.run_testsuite`; controls an iteration
+   through the directories which have *tsdirnameprefix* as a prefix.
+   Within this iteration, it instantiates the :class:`TestsuiteRunner`,
+   calls :meth:`TestsuiteRunner.add_agent` for all of the above agents,
+   and then calls :meth:`TestsuiteRunner.run`.
 

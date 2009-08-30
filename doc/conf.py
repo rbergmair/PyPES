@@ -39,7 +39,7 @@ master_doc = 'index'
 
 # General information about the project.
 project = u'PyPES'
-copyright = u'2008, Richard Bergmair'
+copyright = u'2008 - 2009, Richard Bergmair'
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
