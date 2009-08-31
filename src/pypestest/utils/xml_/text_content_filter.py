@@ -10,7 +10,7 @@ from io import StringIO, BytesIO;
 from pypes.utils.unittest_ import TestCase;
 from pypes.utils.mc import object_;
 
-from pypes.utils.xml_.text_content_filter import TextContentFilter;
+from pypes.utils.xml_ import TextContentFilter;
 
 from pypestest.utils.xml_.data import INDATA, OUTDATA;
 

@@ -1,7 +1,7 @@
 # -*-  coding: ascii -*-  # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 __package__ = "pypes.infer._evaluation";
-__all__ = [ "Score" ];
+__all__ = [ "Score", "score_decisions" ];
 
 from pprint import pprint;
 from math import log;
@@ -529,7 +529,7 @@ class Score( metaclass=object_ ):
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-class DecisionsScorer( metaclass=subject ):
+class _DecisionsScorer( metaclass=subject ):
   
   def __init__( self, prefix ):
     
@@ -662,7 +662,7 @@ class DecisionsScorer( metaclass=subject ):
 
 def score_decisions( prefix ):
   
-  with DecisionsScorer( prefix=prefix ) as sc:
+  with _DecisionsScorer( prefix=prefix ) as sc:
     sc.score();
 
 

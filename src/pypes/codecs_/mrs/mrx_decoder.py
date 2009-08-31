@@ -6,7 +6,7 @@ __all__ = [ "MRXDecoder", "mrx_decode" ];
 from io import StringIO;
 
 from pypes.utils.mc import subject;
-from pypes.utils.xml_.xml_handler import *;
+from pypes.utils.xml_ import *;
 
 from pypes.codecs_.mrs._mrs import *;
 from pypes.codecs_.mrs import _ergsem_interpreter;

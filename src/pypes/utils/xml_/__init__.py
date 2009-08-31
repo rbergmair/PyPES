@@ -1,7 +1,18 @@
 # -*-  coding: ascii -*-  # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 __package__ = "pypes.utils";
-__all__ = [ "text_content_filter", "xml_handler" ];
+
+__all__ = [
+     "XMLElementHandler", "XMLPCharElementHandler", "XMLHandler",
+     "TextContentFilter"
+  ];
+
+from pypes.utils.xml_.xml_handler import XMLElementHandler;
+from pypes.utils.xml_.xml_handler import XMLPCharElementHandler;
+from pypes.utils.xml_.xml_handler import XMLHandler;
+
+from pypes.utils.xml_.text_content_filter import TextContentFilter;
+
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 #                                                                             #

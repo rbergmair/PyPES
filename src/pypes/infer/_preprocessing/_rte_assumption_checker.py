@@ -4,7 +4,7 @@ import sys;
 
 from pypes.utils.mc import subject;
 
-from pypes.utils.xml_.xml_handler import *;
+from pypes.utils.xml_ import *;
 from pypes.infer._preprocessing import rte;
 
 

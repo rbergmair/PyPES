@@ -2,20 +2,22 @@
 
 __package__ = "pypes";
 
-__all__ = [ "Connection", "Constraint", "Handle", "Freezer", "Modification",
-            "Predication", "ProtoForm", "Quantification", "SubForm",
-            "ScopeBearer",
-            "Argument", "Constant", "Functor", "ProtoSig", "Sort", "Variable",
-            "ArgumentValue",
-            "Operator", "Word", "Referent", 
-            "ProtoBase",
-            "ProtoProcessor", "BinaryProtoProcessor",
-            "LambdaifyingProcessor", "Lambdaifier", "lambdaify",
-            "Comparer",
-            "Morpher",
-            "SanityChecker", "sanity_check",
-            "RecursionChecker", "recursion_check",
-            "analyze_as_conjunction_pf" ];
+__all__ = [
+    "Connection", "Constraint", "Handle", "Freezer", "Modification",
+    "Predication", "ProtoForm", "Quantification", "SubForm",
+    "ScopeBearer",
+    "Argument", "Constant", "Functor", "ProtoSig", "Sort", "Variable",
+    "ArgumentValue",
+    "Operator", "Word", "Referent", 
+    "ProtoBase",
+    "ProtoProcessor", "BinaryProtoProcessor",
+    "LambdaifyingProcessor", "Lambdaifier", "lambdaify",
+    "Comparer",
+    "Morpher",
+    "SanityChecker", "sanity_check",
+    "RecursionChecker", "recursion_check",
+    "analyze_as_conjunction_pf"
+  ];
 
 from pypes.proto.form import Connection;
 from pypes.proto.form import Constraint;

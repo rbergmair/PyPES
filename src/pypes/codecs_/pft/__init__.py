@@ -1,11 +1,13 @@
 # -*-  coding: ascii -*-  # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 __package__ = "pypes.codecs_";
+
 __all__ = [ "PFTEncoder", "pft_encode", "PFTDecoder", "pft_decode" ];
 
-from pypes.codecs_.pft.pft_encoder import PFTEncoder, pft_encode;
-from pypes.codecs_.pft.pft_decoder import PFTDecoder, pft_decode;
-
+from pypes.codecs_.pft.pft_encoder import PFTEncoder;
+from pypes.codecs_.pft.pft_encoder import pft_encode;
+from pypes.codecs_.pft.pft_decoder import PFTDecoder;
+from pypes.codecs_.pft.pft_decoder import pft_decode;
 
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #

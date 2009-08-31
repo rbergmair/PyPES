@@ -6,7 +6,7 @@ __all__ = [ "AnnotationReader", "read_annotation" ];
 from ast import literal_eval;
 
 from pypes.utils.mc import subject;
-from pypes.utils.xml_.xml_handler import *;
+from pypes.utils.xml_ import *;
 
 
 

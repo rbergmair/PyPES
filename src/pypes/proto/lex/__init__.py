@@ -1,6 +1,7 @@
 # -*-  coding: ascii -*-  # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 __package__ = "proto";
+
 __all__ = [ "Word", "Operator", "Referent" ];
 
 from pypes.proto.lex.basic import Word;

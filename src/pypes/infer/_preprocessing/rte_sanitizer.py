@@ -4,7 +4,7 @@ __package__ = "pypes.infer._preprocess";
 __all__ = [ "RTESanitizer", "sanitize_rte" ];
 
 from pypes.utils.mc import subject;
-from pypes.utils.xml_.text_content_filter import TextContentFilter;
+from pypes.utils.xml_ import TextContentFilter;
 
 
 import string;

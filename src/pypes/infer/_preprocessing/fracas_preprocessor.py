@@ -5,7 +5,7 @@ __all__ = [ "FraCaSPreprocessor", "preprocess_fracas" ];
 
 from pypes.utils.mc import subject;
 from pypes.utils.itembank import *;
-from pypes.utils.xml_.xml_handler import *;
+from pypes.utils.xml_ import *;
 
 
 

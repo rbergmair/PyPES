@@ -24,25 +24,32 @@ engines and using their output for evaluation purposes.
 
 .. class:: YesAgent( [paramid] )
 
-      is a baseline :class:`pypes.infer.InferenceAgent` whose
-      :meth:`infer` method always returns ( 1.0, 0.0 ).
+   (see also: :class:`InferenceAgent`)
+
+   is a baseline :class:`InferenceAgent` class whose
+   :meth:`infer` method always returns ``( 1.0, 0.0 )``.
 
 
 .. class:: NoAgent( [paramid] )
 
-      is a baseline :class:`pypes.infer.InferenceAgent` whose
-      :meth:`infer` method always returns ( 0.0, 1.0 ).
+   (see also: :class:`InferenceAgent`)
+
+   is a baseline :class:`InferenceAgent` class whose
+   :meth:`infer` method always returns ``( 0.0, 1.0 )``.
 
 
 .. class:: SemanticInferenceAgent( [paramid] )
 
-   is an :class:`pypes.infer.InferenceAgent` which serves as a base
-   class for inference agents which work with semantic representations
-   from the item bank.  It implements :meth:`reset`,
+   (see also: :class:`InferenceAgent`)
+
+   is a subclass of :class:`InferenceAgent` and serves as base class
+   for inference agents which work with semantic representations from
+   the item bank.
+   
+   It implements :meth:`reset`,
    :meth:`process_sentence`, :meth:`process_discourse`, and
-   :meth:`preprocess`, in such a way that only the :meth:`infer`
-   method remains to be implemented by the writer of the specific
-   semantic inference agent.
+   :meth:`preprocess` to collect the appropriate protoforms
+   from the itembank.
 
    .. attribute:: pfs
    .. attribute:: discs
@@ -51,7 +58,14 @@ engines and using their output for evaluation purposes.
    so that, within the :meth:`infer` method they are available as
    mappings, mapping sentence ids to protoforms, and discourse ids
    to lists of sentence ids, respectively.
-   
+
+
+   .. method:: infer( disc, antecedent, consequent )
+
+      (see also: :meth:`InferenceAgent.infer`)
+
+      You will need to override this to implement your own
+      inference agent.
 
 
 .. class:: TestsuiteRunner( [ ( tsdirname, tsitemsdbdirname ) ] )
@@ -60,11 +74,14 @@ engines and using their output for evaluation purposes.
    .. method:: run()
 
 
-.. class:: run_testsuite( tsdirnameprefix, tsitemsdbdirname )
+.. function:: run_testsuite( tsdirnameprefix, tsitemsdbdirname )
 
-   is a synonym of :meth:`bin.run_testsuite`; controls an iteration
+   (see also: :meth:`pypes.bin.run_testsuite`)
+
+   is a synonym of :func:`pypes.bin.run_testsuite`; controls an iteration
    through the directories which have *tsdirnameprefix* as a prefix.
    Within this iteration, it instantiates the :class:`TestsuiteRunner`,
    calls :meth:`TestsuiteRunner.add_agent` for all of the above agents,
    and then calls :meth:`TestsuiteRunner.run`.
+
 

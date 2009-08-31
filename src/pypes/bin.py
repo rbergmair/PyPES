@@ -9,10 +9,10 @@ __all__ = [
   ];
 
 
-from pypes.infer._preprocessing.rte_sanitizer import sanitize_rte;
-from pypes.infer._preprocessing.rte_preprocessor import  preprocess_rte;
-from pypes.infer._preprocessing.rte_results import  preprocess_rte_results;
-from pypes.infer._preprocessing.fracas_preprocessor import preprocess_fracas;
+from pypes.infer._preprocessing import sanitize_rte;
+from pypes.infer._preprocessing import preprocess_rte;
+from pypes.infer._preprocessing import preprocess_rte_results;
+from pypes.infer._preprocessing import preprocess_fracas;
 
 from pypes.codecs_.mrs._smi.ergsem_smi_extractor import extract_ergsem_smi;
 
@@ -22,9 +22,9 @@ from pypes.infer._preprocessing.read_treebank import read_treebank;
 
 from pypes.infer.testsuite_runner import run_testsuite;
 
-from pypes.infer._evaluation.reconsider_decisions import reconsider_decisions;
-from pypes.infer._evaluation.compare_decisions import compare_decisions;
-from pypes.infer._evaluation.score_decisions import score_decisions;
+from pypes.infer._evaluation import reconsider_decisions;
+from pypes.infer._evaluation import compare_decisions;
+from pypes.infer._evaluation import score_decisions;
 
 from pypes.utils.unittest_ import run_unittests;
 

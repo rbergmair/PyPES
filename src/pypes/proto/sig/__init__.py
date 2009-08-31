@@ -2,8 +2,10 @@
 
 __package__ = "pypes.proto";
 
-__all__ = [ "Argument", "Constant", "Functor", "ProtoSig",
-            "Sort", "Variable", "ArgumentValue" ];
+__all__ = [
+    "Argument", "Constant", "Functor", "ProtoSig",
+    "Sort", "Variable", "ArgumentValue"
+  ];
 
 from pypes.proto.sig.argument import Argument;
 from pypes.proto.sig.constant import Constant;

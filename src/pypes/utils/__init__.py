@@ -1,7 +1,12 @@
 # -*-  coding: ascii -*-  # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 __package__ = "pypes";
-__all__ = [ "xml_", "globals", "logging_", "mc", "string_", "unittest_" ];
+
+__all__ = [
+    "xml_", "globals", "itembank",  "logging_", "mc",
+    "os_", "string_", "unittest_"
+  ];
+
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 #                                                                             #

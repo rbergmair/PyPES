@@ -11,7 +11,7 @@ from pypes.proto.lex.erg import *;
 from pypes.codecs_.mrs._mrs import *;
 
 from pypes.codecs_.mrs._ergsem_processor import ERGSemProcessor;
-from pypes.codecs_.mrs._smi.ergsem_smi_checker import ergsem_smi_check;
+from pypes.codecs_.mrs._smi import ergsem_smi_check;
 
 
 

@@ -2,9 +2,10 @@
 
 __package__ = "pypes.proto";
 
-__all__ = [ "Connection", "Constraint", "Handle", "Freezer", "Modification",
-            "Predication", "ProtoForm", "Quantification", "SubForm",
-            "ScopeBearer" ];
+__all__ = [
+    "Connection", "Constraint", "Handle", "Freezer", "Modification",
+    "Predication", "ProtoForm", "Quantification", "SubForm", "ScopeBearer"
+  ];
 
 from pypes.proto.form.connection import Connection;
 from pypes.proto.form.constraint import Constraint;

@@ -10,7 +10,7 @@ from pypes.utils.mc import subject;
 
 from pypes.utils.unittest_ import TestCase;
 
-from pypes.utils.xml_.xml_handler import *;
+from pypes.utils.xml_ import *;
 
 from pypestest.utils.xml_.data import INDATA, TITLE, CONTENT;
 

@@ -6,7 +6,7 @@ __all__ = [ "TestsuiteRunner", "run_testsuite" ];
 import sys;
 
 from pypes.utils.mc import subject;
-from pypes.utils.xml_.xml_handler import *;
+from pypes.utils.xml_ import *;
 from pypes.utils.os_ import listsubdirs;
 
 from pypes.infer.biet import YesAgent, NoAgent;
