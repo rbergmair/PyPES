@@ -72,7 +72,7 @@ class PFTEncoder( LambdaifyingProcessor, metaclass=subject ):
     return vid;
 
 
-  re_alphanum = re.compile( _pft_parser.PFTParser.RE_ALPHANUMs );
+  re_alphanum = re.compile( _pft_parser.PFTDecoder._RE_ALPHANUMs );
   
   @classmethod
   def _fmt_alphanum( cls, stri ):
@@ -105,7 +105,7 @@ class PFTEncoder( LambdaifyingProcessor, metaclass=subject ):
       return cls._fmt_quoted( stri );
   
   
-  re_identifier = re.compile( _pft_parser.PFTParser.RE_IDENTIFIER );
+  re_identifier = re.compile( _pft_parser.PFTDecoder._RE_IDENTIFIER );
   
   @classmethod
   def _fmt_identifier( cls, stri, sensitive=None ):
@@ -121,7 +121,7 @@ class PFTEncoder( LambdaifyingProcessor, metaclass=subject ):
     assert False;
 
 
-  re_word = re.compile( _pft_parser.PFTParser.RE_WORD );
+  re_word = re.compile( _pft_parser.PFTDecoder._RE_WORD );
 
   @classmethod
   def _fmt_word( cls, stri ):

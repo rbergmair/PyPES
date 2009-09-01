@@ -13,9 +13,6 @@ Decoders
 
 .. class:: PFTDecoder( (itemtype,lexicon) )
 
-   .. method:: subtokenize_word( pft_word )
-   .. method:: subtokenize_variable( pft_variable )
-
    .. method:: decode_quoted( pft_toks )
    .. method:: decode_fid( pft_toks )
    .. method:: decode_operator( pft_toks )
@@ -65,6 +62,8 @@ Encoders
 
 .. class:: PFTEncoder( pf )
 
+   TODO: insert protoprocessor stuff here.
+
    .. method:: encode( [ pretty=True [, fast_initialize=False [, linebreaks=True ] ] ] )
 
 .. function:: pft_encode( pf, [ pretty=True [, fast_initialize=False [, linebreaks=True ] ] ] )
@@ -72,6 +71,8 @@ Encoders
    is a shortcut to :meth:`PFTEncoder.encode`.
 
 .. class:: TreeEncoder( pf )
+
+   TODO: insert protoprocessor stuff here.
 
    .. method:: encode( [ utool_style=False ] )
 

@@ -24,217 +24,219 @@ from pypes.codecs_.pft import _pft_parser;
 
 class PFTDecoder( _pft_parser.PFTDecoder, metaclass=subject ):
 
-  class PFTLexer( _pft_parser.PFTDecoder.PFTLexer, metaclass=subject ):
+
+  class _PFTParser( metaclass=subject ):
+
   
-  # lexer
-
-  _quoted = Regex( _pft_parser.PFTParser.RE_QUOTED );
-  
-  _word = Regex( _pft_parser.PFTParser.RE_WORD );
-
-  _identifier = Regex( _pft_parser.PFTParser.RE_IDENTIFIER );
-  
-  _fid = Regex( _pft_parser.PFTParser.RE_FID );
-
-  _variable = Regex( _pft_parser.PFTParser.RE_VARIABLE );
-
-  _explicit_handle = Regex( _pft_parser.PFTParser.RE_EXPLICIT_HANDLE );
-  
-  _anonymous_handle = Regex( _pft_parser.PFTParser.RE_ANONYMOUS_HANDLE );
-  
-  _operator = Regex( _pft_parser.PFTParser.RE_OPERATOR );
-
-  # parser
-
-  _constant = Group( _quoted );
-
-  _handle = ( _explicit_handle | _anonymous_handle );
-  
-  _features_list = Literal("[") + \
-                     _identifier + Literal("=") + _quoted + \
-                     ZeroOrMore(
-                         Literal(",") + _identifier + Literal("=") + _quoted
-                       ) + \
-                   Literal("]");
-
-  _arguments_list = Literal("(") + \
-                    Optional( 
-                        _identifier + Literal("=") + \
-                        ( _variable | _constant ) + \
-                        ZeroOrMore(
-                            Literal(",") +
-                            _identifier + Literal("=") + \
-                            ( _variable | _constant )
-                          )
-                      ) + \
-                    Literal(")");
-
-  _functor = ( _word | _operator ) + Optional( _fid ) + \
-             Optional( _features_list );
-
-  _predication = Literal("\ue100") + _functor + _arguments_list;
-
-  _protoform = Forward();
-  
-  _freezer = Forward();
-  _freezer << Literal("<") + ( _freezer | _handle ) + Literal(">");
-  
-  _scopebearer = ( _handle | _freezer | _protoform );
-  
-  _quantification = Literal("\ue101") + \
-                    _functor + _variable + \
-                    _scopebearer + _scopebearer;
-  
-  _modification = Literal("\ue102") + \
-                  _functor + _arguments_list + _scopebearer;
-
-  _connection = Literal("\ue103") + \
-                _scopebearer + \
-                _functor + \
-                _scopebearer;
-  
-  _constraint = Literal("\ue104") + _handle + Literal("^") + _handle;
-  
-  _subform = ( _predication | _quantification | _modification | _connection  );
-  
-  _item = ( Optional( _explicit_handle + Literal(":") ) +
-            ( _protoform | _subform ) ) | \
-          _constraint;
-  
-  _protoform << ( Literal("{") + \
-                  Optional( _item + ZeroOrMore( Literal(";") + _item ) ) + \
-                  Literal("}") );
-
-
-  def _enter_( self ):
-
-    ( type_, lexicon ) = self._obj_;
-
-    if type_ is None:
-      self.start = eval( "self._" + self.GT_PROTOFORM );
-    else:
-      self.start = eval( "self._" + type_ );
-    
     # lexer
+  
+    quoted = Regex( _pft_parser.PFTDecoder._RE_QUOTED );
+    
+    word = Regex( _pft_parser.PFTDecoder._RE_WORD );
+  
+    identifier = Regex( _pft_parser.PFTDecoder._RE_IDENTIFIER );
+    
+    fid = Regex( _pft_parser.PFTDecoder._RE_FID );
+  
+    variable = Regex( _pft_parser.PFTDecoder._RE_VARIABLE );
+  
+    explicit_handle = Regex( _pft_parser.PFTDecoder._RE_EXPLICIT_HANDLE );
+    
+    anonymous_handle = Regex( _pft_parser.PFTDecoder._RE_ANONYMOUS_HANDLE );
+    
+    operator = Regex( _pft_parser.PFTDecoder._RE_OPERATOR );
 
-    self._quoted.setParseAction(
-        lambda str_, loc, toks:
-          self.decode_quoted( toks )
-      );
-
-    self._word.setParseAction(
-        lambda str_, loc, toks:
-          self.decode_word(
-              _pft_parser.PFTParser.subtokenize_word( toks[0] )
-            )
-      );
-
-    self._operator.setParseAction(
-        lambda str_, loc, toks:
-          self.decode_operator( toks )
-      );
-
-    self._fid.setParseAction(
-        lambda str_, loc, toks:
-          self.decode_fid( toks )
-      );
-
-    self._variable.setParseAction(
-        lambda str_, loc, toks:
-          self.decode_variable(
-              _pft_parser.PFTParser.subtokenize_variable( toks[0] )
-            )
-      );
-
-    self._explicit_handle.setParseAction(
-        lambda str_, loc, toks:
-          self.decode_explicit_handle( toks )
-      );
-      
-    self._anonymous_handle.setParseAction(
-        lambda str_, loc, toks:
-          self.decode_anonymous_handle( toks )
-      );
 
     # parser
-
-    self._constant.setParseAction(
-        lambda str_, loc, toks:
-          self.decode_constant( toks[0] )
-      );
-
-    self._features_list.setParseAction(
-        lambda str_, loc, toks:
-          self.decode_features_list( toks )
-      );
-
-    self._arguments_list.setParseAction(
-        lambda str_, loc, toks:
-          self.decode_arguments_list( toks )
-      );
-
-    self._functor.setParseAction(
-        lambda str_, loc, toks:
-          self.decode_functor( toks )
-      );
-    
-    self._predication.setParseAction(
-        lambda str_, loc, toks:
-          self.decode_predication( toks )
-      );
-      
-    self._freezer.setParseAction(
-        lambda str_, loc, toks:
-          self.decode_freezer( toks )
-      );
-      
-    self._quantification.setParseAction(
-        lambda str_, loc, toks:
-          self.decode_quantification( toks )
-      );
-    
-    self._modification.setParseAction(
-        lambda str_, loc, toks:
-          self.decode_modification( toks )
-      );
-    
-    self._connection.setParseAction(
-        lambda str_, loc, toks:
-          self.decode_connection( toks )
-      );
-      
-    self._constraint.setParseAction(
-        lambda str_, loc, toks:
-          self.decode_constraint( toks )
-      );
-      
-    self._protoform.setParseAction(
-        lambda str_, loc, toks: self.decode_protoform( toks )
-      );
-
-
-  def _exit_( self, exc_type, exc_val, exc_tb ):
-    
-    pass;
-
   
+    constant = Group( quoted );
+  
+    handle = ( explicit_handle | anonymous_handle );
+    
+    features_list = Literal("[") + \
+                      identifier + Literal("=") + quoted + \
+                      ZeroOrMore(
+                          Literal(",") + identifier + Literal("=") + quoted
+                        ) + \
+                    Literal("]");
+  
+    arguments_list = Literal("(") + \
+                     Optional( 
+                         identifier + Literal("=") + \
+                         ( variable | constant ) + \
+                         ZeroOrMore(
+                             Literal(",") +
+                             identifier + Literal("=") + \
+                             ( variable | constant )
+                           )
+                       ) + \
+                     Literal(")");
+  
+    functor = ( word | operator ) + Optional( fid ) + Optional( features_list );
+  
+    predication = Literal("\ue100") + functor + arguments_list;
+  
+    protoform = Forward();
+    
+    freezer = Forward();
+    freezer << Literal("<") + ( freezer | handle ) + Literal(">");
+    
+    scopebearer = ( handle | freezer | protoform );
+    
+    quantification = Literal("\ue101") + \
+                     functor + variable + scopebearer + scopebearer;
+    
+    modification = Literal("\ue102") + \
+                   functor + arguments_list + scopebearer;
+  
+    connection = Literal("\ue103") + \
+                 scopebearer + functor + scopebearer;
+    
+    constraint = Literal("\ue104") + \
+                 handle + Literal("^") + handle;
+    
+    subform = ( predication | quantification | modification | connection  );
+    
+    item = ( Optional( explicit_handle + Literal(":") ) +
+             ( protoform | subform ) ) | \
+           constraint;
+    
+    protoform << ( Literal("{") + \
+                   Optional( item + ZeroOrMore( Literal(";") + item ) ) + \
+                   Literal("}") );
+  
+  
+    def _enter_( self ):
+  
+      # lexer
+  
+      self.quoted.setParseAction(
+          lambda str_, loc, toks:
+            self._obj_.decode_quoted( toks )
+        );
+  
+      self.word.setParseAction(
+          lambda str_, loc, toks:
+            self._obj_.decode_word(
+                self._obj_._subtokenize_word( toks[0] )
+              )
+        );
+  
+      self.operator.setParseAction(
+          lambda str_, loc, toks:
+            self._obj_.decode_operator( toks )
+        );
+  
+      self.fid.setParseAction(
+          lambda str_, loc, toks:
+            self._obj_.decode_fid( toks )
+        );
+  
+      self.variable.setParseAction(
+          lambda str_, loc, toks:
+            self._obj_.decode_variable(
+                self._obj_._subtokenize_variable( toks[0] )
+              )
+        );
+  
+      self.explicit_handle.setParseAction(
+          lambda str_, loc, toks:
+            self._obj_.decode_explicit_handle( toks )
+        );
+        
+      self.anonymous_handle.setParseAction(
+          lambda str_, loc, toks:
+            self._obj_.decode_anonymous_handle( toks )
+        );
+  
+      # parser
+  
+      self.constant.setParseAction(
+          lambda str_, loc, toks:
+            self._obj_.decode_constant( toks[0] )
+        );
+  
+      self.features_list.setParseAction(
+          lambda str_, loc, toks:
+            self._obj_.decode_features_list( toks )
+        );
+  
+      self.arguments_list.setParseAction(
+          lambda str_, loc, toks:
+            self._obj_.decode_arguments_list( toks )
+        );
+  
+      self.functor.setParseAction(
+          lambda str_, loc, toks:
+            self._obj_.decode_functor( toks )
+        );
+      
+      self.predication.setParseAction(
+          lambda str_, loc, toks:
+            self._obj_.decode_predication( toks )
+        );
+        
+      self.freezer.setParseAction(
+          lambda str_, loc, toks:
+            self._obj_.decode_freezer( toks )
+        );
+        
+      self.quantification.setParseAction(
+          lambda str_, loc, toks:
+            self._obj_.decode_quantification( toks )
+        );
+      
+      self.modification.setParseAction(
+          lambda str_, loc, toks:
+            self._obj_.decode_modification( toks )
+        );
+      
+      self.connection.setParseAction(
+          lambda str_, loc, toks:
+            self._obj_.decode_connection( toks )
+        );
+        
+      self.constraint.setParseAction(
+          lambda str_, loc, toks:
+            self._obj_.decode_constraint( toks )
+        );
+        
+      self.protoform.setParseAction(
+          lambda str_, loc, toks:
+            self._obj_.decode_protoform( toks )
+        );
+  
+  
+  def _enter_( self ):
+    
+    ( type_, lexicon ) = self._obj_;
+    
+    self._parser_ctx = self._PFTParser( self );
+    self._parser = self._parser_ctx.__enter__();
+
+    if type_ is None:
+      self._start = eval( "self._parser." + self.GT_PROTOFORM );
+    else:
+      self._start = eval( "self._parser." + type_ );
+
+      
+  def _exit_( self, exc_type, exc_val, exc_tb ):
+
+    self._parser = None;
+    self._parser_ctx.__exit__( exc_type, exc_val, exc_tb );
+      
+
   def _parse( self, item ):
     
     if isinstance( item, str ):
-      rslt = self.start.parseString( item );
+      rslt = self._start.parseString( item );
     else:
-      rslt = self.start.parseFile( item );
+      rslt = self._start.parseFile( item );
     assert len( rslt ) == 1;
     return rslt[0];
   
-
-  def decode( self, pft ):
-    
-    ( type_, inst ) = self._parse( pft );
-    return inst;
-
-    
-
+  
+  
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 #                                                                             #
 #        PyPES: the python platform for experimentation with semantics        #

@@ -9,47 +9,24 @@ from pypes.proto import *;
 
 import pypes.proto.lex.basic;
 
-from pypes.codecs_.pft._pft_parser_ply import PFTParser;
+from pypes.codecs_.pft._pft_parser_ply import PFTDecoder as PFTDecoder_;
 
 
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-class PFTDecoder( PFTParser, metaclass=subject ):
+class PFTDecoder( PFTDecoder_, metaclass=subject ):
 
 
-  GT_VARIABLE = "variable";
-  GT_HANDLE = "handle";
-  
-  GT_WORD = "word";
-  GT_PREDICATION = "predication";
-  GT_QUANTIFICATION = "quantification";
-  GT_MODIFICATION = "modification";
-  GT_CONNECTION = "connection";
-  GT_CONSTRAINT = "constraint";
-  GT_PROTOFORM = "protoform";
-  GT_FREEZER = "freezer";
-  GT_LEMMATOKS = "lemmatoks";
-  GT_OPERATOR = "operator";
-  GT_CONSTANT = "constant";
-  GT_FUNCTOR = "functor";
-  
-  
   def _enter_( self ):
 
-    PFTParser._enter_( self );
+    PFTDecoder_._enter_( self );
     ( type_, lexicon ) = self._obj_;
     
     if lexicon is None:
       self._lexicon = pypes.proto.lex.basic;
     else:
       self._lexicon = lexicon;
-
-
-  def _exit_( self, exc_type, exc_val, exc_tb ):
-    
-    self._parser = None;
-    PFTParser._exit_( self, exc_type, exc_val, exc_tb );
 
 
   def decode_operator( self, toks_ ):
