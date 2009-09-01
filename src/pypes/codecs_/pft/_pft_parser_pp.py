@@ -1,7 +1,7 @@
 # -*-  coding: ascii -*-  # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 __package__ = "pypes.codecs_.pft";
-__all__ = [ "PFTParser" ];
+__all__ = [ "PFTDecoder" ];
 
 import pyparsing;
 
@@ -16,13 +16,15 @@ from pypes.utils.mc import subject;
 
 import pypes.proto.lex.basic;
 
-from  pypes.codecs_.pft import _pft_parser;
+from pypes.codecs_.pft import _pft_parser;
 
 
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-class PFTParser( _pft_parser.PFTParser, metaclass=subject ):
+class PFTDecoder( _pft_parser.PFTDecoder, metaclass=subject ):
+
+  class PFTLexer( _pft_parser.PFTDecoder.PFTLexer, metaclass=subject ):
   
   # lexer
 

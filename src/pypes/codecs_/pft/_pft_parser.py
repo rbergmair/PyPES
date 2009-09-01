@@ -1,7 +1,7 @@
 # -*-  coding: ascii -*-  # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 __package__ = "pypes.codecs_.pft";
-__all__ = [ "PFTParser" ];
+__all__ = [ "PFTDecoder" ];
 
 import ast;
 import string;
@@ -13,63 +13,65 @@ from pypes.utils.mc import subject;
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-class PFTParser( metaclass=subject ):
+class PFTDecoder( metaclass=subject ):
   
-  UPPER = string.ascii_uppercase;
-  LOWER = string.ascii_lowercase;
-  DIGIT = string.digits;
+  class _PFTLexer( metaclass=subject ):
   
-  ALPHA = UPPER + LOWER;
-  ALPHANUM = ALPHA + DIGIT;
-  UPPERNUM = UPPER + DIGIT;
-
-  IDENTFIRST = ALPHA + "_";
-  IDENTNEXT = ALPHANUM + "." + "_";
-
-  OPERFIRST = UPPER + "_";
-  OPERNEXT = UPPERNUM + "_";
+    UPPER = string.ascii_uppercase;
+    LOWER = string.ascii_lowercase;
+    DIGIT = string.digits;
+    
+    ALPHA = UPPER + LOWER;
+    ALPHANUM = ALPHA + DIGIT;
+    UPPERNUM = UPPER + DIGIT;
   
-  RE_UPPERs = r"(?:["+UPPER+r"]+)";
-  RE_LOWERs = r"(?:["+LOWER+r"]+)";
-  RE_DIGITs = r"(?:["+DIGIT+r"]+)";
-  RE_ALPHAs = r"(?:["+ALPHA+r"]+)";
-  RE_ALPHANUMs = r"(?:["+ALPHANUM+r"]+)";
-
-  RE_QUOTED = r'''(?:"(?:[^"\n\r\\]|(?:"")|(?:\\x[0-9a-fA-F]+)|(?:\\.))*")|(?:'(?:[^'\n\r\\]|(?:'')|(?:\\x[0-9a-fA-F]+)|(?:\\.))*')''';
-
-  RE_LEMMA = r"(?:" + RE_QUOTED + r"|" + RE_ALPHANUMs + r")"  ;
-
-  RE_WORD = r"(?:\|" + \
-              r"(?:" + \
-                RE_LEMMA + r"(?:\+" + RE_LEMMA + r")*" + \
-              r")?" + \
-              r"(?:" + \
-                r"\_" + RE_ALPHANUMs + "?" + \
-              r"){0,2}" + \
-            r"\|)";
-
-  RE_IDENTIFIER = r"(?:[" + IDENTFIRST + r"][" + IDENTNEXT + r"]+)";
+    IDENTFIRST = ALPHA + "_";
+    IDENTNEXT = ALPHANUM + "." + "_";
   
-  RE_FID = r"(?::" + RE_DIGITs + ")";
-
-  RE_VARIABLE = r"(?:" + RE_LOWERs + RE_DIGITs + ")";
+    OPERFIRST = UPPER + "_";
+    OPERNEXT = UPPERNUM + "_";
+    
+    RE_UPPERs = r"(?:["+UPPER+r"]+)";
+    RE_LOWERs = r"(?:["+LOWER+r"]+)";
+    RE_DIGITs = r"(?:["+DIGIT+r"]+)";
+    RE_ALPHAs = r"(?:["+ALPHA+r"]+)";
+    RE_ALPHANUMs = r"(?:["+ALPHANUM+r"]+)";
   
-  RE_EXPLICIT_HANDLE = RE_DIGITs;
-
-  RE_ANONYMOUS_HANDLE = r"(?:__)";
+    RE_QUOTED = r'''(?:"(?:[^"\n\r\\]|(?:"")|(?:\\x[0-9a-fA-F]+)|(?:\\.))*")|(?:'(?:[^'\n\r\\]|(?:'')|(?:\\x[0-9a-fA-F]+)|(?:\\.))*')''';
   
-  RE_OPERATOR = r"(?:" + \
-                   r"(?:" + \
-                     r"["+ OPERFIRST +r"][" + OPERNEXT + r"]+|" + \
-                     r"/\\|" + \
-                     r"\\/|" + \
-                     r"&&|" + \
-                     r"\->|" + \
-                     r"\|\|" + \
-                   r")" + \
-                ")";
+    RE_LEMMA = r"(?:" + RE_QUOTED + r"|" + RE_ALPHANUMs + r")"  ;
   
-  RE_OUTSCOPES = r"(?:>>)";
+    RE_WORD = r"(?:\|" + \
+                r"(?:" + \
+                  RE_LEMMA + r"(?:\+" + RE_LEMMA + r")*" + \
+                r")?" + \
+                r"(?:" + \
+                  r"\_" + RE_ALPHANUMs + "?" + \
+                r"){0,2}" + \
+              r"\|)";
+  
+    RE_IDENTIFIER = r"(?:[" + IDENTFIRST + r"][" + IDENTNEXT + r"]+)";
+    
+    RE_FID = r"(?::" + RE_DIGITs + ")";
+  
+    RE_VARIABLE = r"(?:" + RE_LOWERs + RE_DIGITs + ")";
+    
+    RE_EXPLICIT_HANDLE = RE_DIGITs;
+  
+    RE_ANONYMOUS_HANDLE = r"(?:__)";
+    
+    RE_OPERATOR = r"(?:" + \
+                     r"(?:" + \
+                       r"["+ OPERFIRST +r"][" + OPERNEXT + r"]+|" + \
+                       r"/\\|" + \
+                       r"\\/|" + \
+                       r"&&|" + \
+                       r"\->|" + \
+                       r"\|\|" + \
+                     r")" + \
+                  ")";
+    
+    RE_OUTSCOPES = r"(?:>>)";
 
 
   @classmethod
