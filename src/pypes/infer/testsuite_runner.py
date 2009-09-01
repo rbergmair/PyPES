@@ -20,7 +20,7 @@ from pypes.codecs_ import pft_encode;
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-class TestsuiteRunner( XMLHandler, metaclass=subject ):
+class TestsuiteRunner( XMLProcessor, metaclass=subject ):
 
 
   class _SentenceHandler( XMLPCharElementHandler, metaclass=subject ):
@@ -108,7 +108,7 @@ class TestsuiteRunner( XMLHandler, metaclass=subject ):
     XMLELEM = "testsuite";
 
 
-  CLIENT_BYNAME = {
+  HANDLER_BYNAME = {
       _SentenceHandler.XMLELEM: ( _SentenceHandler, lambda: None ),
       _DiscourseHandler.XMLELEM: ( _DiscourseHandler, lambda: None ),
       _AntecedentHandler.XMLELEM: ( _AntecedentHandler, lambda: None ),

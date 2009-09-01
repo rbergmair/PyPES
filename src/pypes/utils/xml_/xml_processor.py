@@ -1,7 +1,7 @@
 # -*-  coding: ascii -*-  # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 __package__ = "pypes.utils.xml_";
-__all__ = [ "XMLElementHandler", "XMLPCharElementHandler", "XMLHandler" ];
+__all__ = [ "XMLElementHandler", "XMLPCharElementHandler", "XMLProcessor" ];
 
 import xml.sax;
 import xml.sax.handler;
@@ -54,9 +54,9 @@ class XMLPCharElementHandler( XMLElementHandler, metaclass=subject ):
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-class XMLHandler( xml.sax.handler.ContentHandler, metaclass=subject ):
+class XMLProcessor( xml.sax.handler.ContentHandler, metaclass=subject ):
 
-  CLIENT_BYNAME = {};
+  HANDLER_BYNAME = {};
   IGNORE = [];
   
   CHUNK_SIZE = 512;
@@ -102,9 +102,9 @@ class XMLHandler( xml.sax.handler.ContentHandler, metaclass=subject ):
     if self._active_clients:
       ( active_client, active_client_ctx ) = self._active_clients[ -1 ];
     
-    if name in self.CLIENT_BYNAME:
+    if name in self.HANDLER_BYNAME:
       
-      ( client, obj ) = self.CLIENT_BYNAME[ name ];
+      ( client, obj ) = self.HANDLER_BYNAME[ name ];
       if obj is None:
         if active_client is not None:
           obj = active_client;

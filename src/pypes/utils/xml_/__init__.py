@@ -3,15 +3,15 @@
 __package__ = "pypes.utils";
 
 __all__ = [
-     "XMLElementHandler", "XMLPCharElementHandler", "XMLHandler",
+     "XMLElementHandler", "XMLPCharElementHandler", "XMLProcessor",
      "TextContentFilter"
   ];
 
-from pypes.utils.xml_.xml_handler import XMLElementHandler;
-from pypes.utils.xml_.xml_handler import XMLPCharElementHandler;
-from pypes.utils.xml_.xml_handler import XMLHandler;
+from pypes.utils.xml_.xml_processor import XMLElementHandler;
+from pypes.utils.xml_.xml_processor import XMLPCharElementHandler;
+from pypes.utils.xml_.xml_processor import XMLProcessor;
 
-from pypes.utils.xml_.text_content_filter import TextContentFilter;
+from pypes.utils.xml_.textcontent_filter import TextContentFilter;
 
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #

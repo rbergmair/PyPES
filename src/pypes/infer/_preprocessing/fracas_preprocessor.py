@@ -377,10 +377,10 @@ class ProblemsHandler( XMLElementHandler, metaclass=subject ):
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-class FraCaSPreprocessor( XMLHandler, metaclass=subject ):
+class FraCaSPreprocessor( XMLProcessor, metaclass=subject ):
 
 
-  CLIENT_BYNAME = {
+  HANDLER_BYNAME = {
       ProblemsHandler.XMLELEM: ( ProblemsHandler, None ),
       CommentHandler.XMLELEM: ( CommentHandler, None ),
       ProblemHandler.XMLELEM: ( ProblemHandler, None ),
@@ -405,7 +405,7 @@ class FraCaSPreprocessor( XMLHandler, metaclass=subject ):
     doctype = f.readline();
     stylesheet = f.readline();
     
-    XMLHandler.process( self, f );
+    XMLProcessor.process( self, f );
 
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #

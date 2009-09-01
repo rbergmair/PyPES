@@ -94,6 +94,7 @@ class PFTDecoder( PFTDecoder, metaclass=subject ):
   def decode_protoform( cls, toks_ ):
     return ( None, None );
 
+
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 def pft_decode( item, type_=None, lexicon=None ):

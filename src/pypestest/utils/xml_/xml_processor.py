@@ -80,9 +80,9 @@ class BodyHandler( XMLElementHandler, metaclass=subject ):
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-class MyXMLHandler( XMLHandler, metaclass=subject ):
+class MyXMLProcessor( XMLProcessor, metaclass=subject ):
   
-  CLIENT_BYNAME = {
+  HANDLER_BYNAME = {
     "html" : ( HTMLHandler, lambda: DocumentModel() ),
     "title" : ( TitleHandler, lambda: None ),
     "body" : ( BodyHandler, lambda: None ),
@@ -101,15 +101,15 @@ class MyXMLHandler( XMLHandler, metaclass=subject ):
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-class TestMyXMLHandler( TestCase, metaclass=object_ ):
+class TestMyXMLProcessor( TestCase, metaclass=object_ ):
   
-  def test_myxmlhandler( self ):
+  def test_myxmlprocessor( self ):
     
     rslt = None;
-    with MyXMLHandler() as myxmlhandler:
-      myxmlhandler.feed( INDATA );
-      rslt = myxmlhandler.result;
-    del myxmlhandler;
+    with MyXMLProcessor() as myxmlprocessor:
+      myxmlprocessor.feed( INDATA );
+      rslt = myxmlprocessor.result;
+    del myxmlprocessor;
       
     self.assertStringCrudelyEqual( rslt.title, TITLE );
     self.assertStringCrudelyEqual( rslt.content, CONTENT );
@@ -123,7 +123,7 @@ def suite():
   suite = unittest.TestSuite();
 
   suite.addTests( unittest.TestLoader().loadTestsFromTestCase(
-      TestMyXMLHandler
+      TestMyXMLProcessor
     ) );
 
   return suite;

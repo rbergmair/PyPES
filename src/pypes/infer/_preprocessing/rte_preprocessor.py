@@ -277,9 +277,9 @@ class CorpusHandler( XMLElementHandler, metaclass=subject ):
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-class RTEPreprocessor( XMLHandler, metaclass=subject ):
+class RTEPreprocessor( XMLProcessor, metaclass=subject ):
 
-  CLIENT_BYNAME = {
+  HANDLER_BYNAME = {
       CorpusHandler.XMLELEM: ( CorpusHandler, None ),
       PairHandler.XMLELEM: ( PairHandler, lambda: None ),
       THandler.XMLELEM: ( THandler, None ),

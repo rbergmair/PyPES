@@ -34,7 +34,6 @@ class PFTLexer( _pft_parser.PFTParser, metaclass=subject ):
   literals = "<>{}=:;^\ue100\ue101\ue102\ue103\ue104";
   
   states = [ ( "ident", "inclusive" ) ];
-             
 
 
   def _enter_( self ):

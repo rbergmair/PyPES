@@ -63,9 +63,9 @@ class CorpusHandler( rte.CorpusHandler, metaclass=subject ):
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-class RTEProcessor( XMLHandler, metaclass=subject ):
+class RTEProcessor( XMLProcessor, metaclass=subject ):
 
-  CLIENT_BYNAME = {
+  HANDLER_BYNAME = {
       CorpusHandler.XMLELEM: ( CorpusHandler, None ),
       rte.PairHandler.XMLELEM: ( rte.PairHandler, lambda: None ),
       rte.THandler.XMLELEM: ( rte.THandler, None ),
@@ -78,7 +78,7 @@ class RTEProcessor( XMLHandler, metaclass=subject ):
     
     self.dataset = dataset;
     self.flattened = [];
-    XMLHandler.process( f );
+    XMLProcessor.process( f );
 
 
 

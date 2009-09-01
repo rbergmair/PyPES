@@ -83,262 +83,215 @@ _MRS_DTD = """<!ELEMENT mrs-list (mrs)*>
 
 
 
-# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+class MRXDecoder( XMLProcessor, metaclass=subject ):
 
-class PathHandler( XMLPCharElementHandler, metaclass=subject ):
 
-  XMLELEM = "path";
+  class _PathHandler( XMLPCharElementHandler, metaclass=subject ):
   
-  def endElement( self, name ):
+    XMLELEM = "path";
     
-    self._obj_.path = self._text;
-
-
-
-# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
-
-class ValueHandler( XMLPCharElementHandler, metaclass=subject ):
-
-  XMLELEM = "value";
-  
-  def endElement( self, name ):
-    
-    self._obj_.value = self._text;
-
-
-
-# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
-
-class ExtrapairHandler( XMLElementHandler, metaclass=subject ):
-  
-  XMLELEM = "extrapair";
-
-  def __init__( self ):
-    
-    self.path = None;
-    self.value = None;
-
-
-
-# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
-
-class VariableHandler( XMLElementHandler, metaclass=subject ):
-  
-  XMLELEM = "var";
-  
-  def startElement( self, name, attrs ):
-    
-    if name != self.XMLELEM:
-      return;
-    
-    if "sort" in attrs:
-      self._obj_.sid = attrs[ "sort" ];
-    if "vid" in attrs:
-      self._obj_.vid = int( attrs["vid"] );
-  
-  def handle( self, obj ):
-    
-    if isinstance( obj, ExtrapairHandler ):
-      self._obj_.feats[ obj.path ] = obj.value;
-
-
-
-# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
-
-class ConstantHandler( XMLPCharElementHandler, metaclass=subject ):
-  
-  XMLELEM = "constant";
-  
-  def endElement( self, name ):
-    
-    self._obj_.constant = self._text;
-
-
-
-# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
-
-class RargnameHandler( XMLPCharElementHandler, metaclass=subject ):
-
-  XMLELEM = "rargname";
-  
-  def endElement( self, name ):
-    
-    self._obj_.rargname = self._text;
-
-
-
-# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
-
-class FVPairHandler( XMLElementHandler, metaclass=subject ):
-
-  XMLELEM = "fvpair";
-  
-  def __init__( self ):
-    
-    self.rargname = None;
-    self.var = None;
-    
-  def handle( self, obj ):
-    
-    if isinstance( obj, MRSVariable ):
-      self.var = obj;
+    def endElement( self, name ):
       
-    if isinstance( obj, MRSConstant ):
-      self.var = obj;
+      self._obj_.path = self._text;
+
+
+  class _ValueHandler( XMLPCharElementHandler, metaclass=subject ):
   
-  def endElement( self, name ):
+    XMLELEM = "value";
     
-    self._obj_.args[ self.rargname ] = self.var;
+    def endElement( self, name ):
+      
+      self._obj_.value = self._text;
 
 
-
-# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
-
-class LabelHandler( XMLElementHandler, metaclass=subject ):
-
-  XMLELEM = "label";
+  class _ExtrapairHandler( XMLElementHandler, metaclass=subject ):
+    
+    XMLELEM = "extrapair";
   
-  def startElement( self, name, attrs ):
+    def __init__( self ):
+      
+      self.path = None;
+      self.value = None;
+
+
+  class _VariableHandler( XMLElementHandler, metaclass=subject ):
     
-    if name != self.XMLELEM:
-      return;
+    XMLELEM = "var";
     
-    if "vid" in attrs:
-      if self._obj_ is not None:
-        self._obj_.lid = int( attrs[ "vid" ] );
+    def startElement( self, name, attrs ):
+      
+      if name != self.XMLELEM:
+        return;
+      
+      if "sort" in attrs:
+        self._obj_.sid = attrs[ "sort" ];
+      if "vid" in attrs:
+        self._obj_.vid = int( attrs["vid"] );
+    
+    def handle( self, obj ):
+      
+      if isinstance( obj, MRXDecoder._ExtrapairHandler ):
+        self._obj_.feats[ obj.path ] = obj.value;
 
 
+  class _ConstantHandler( XMLPCharElementHandler, metaclass=subject ):
+    
+    XMLELEM = "constant";
+    
+    def endElement( self, name ):
+      
+      self._obj_.constant = self._text;
 
-# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-class SPredHandler( XMLPCharElementHandler, metaclass=subject ):
-
-  XMLELEM = "spred";
+  class _RargnameHandler( XMLPCharElementHandler, metaclass=subject ):
   
-  def endElement( self, name ):
+    XMLELEM = "rargname";
     
-    self._obj_.pred = self._text.lower();
+    def endElement( self, name ):
+      
+      self._obj_.rargname = self._text;
 
 
-
-# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
-
-class PredHandler( XMLPCharElementHandler, metaclass=subject ):
-
-  XMLELEM = "pred";
+  class _FVPairHandler( XMLElementHandler, metaclass=subject ):
   
-  def endElement( self, name ):
+    XMLELEM = "fvpair";
     
-    self._obj_.pred = self._text;
-
-
-
-# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
-
-class ElementaryPredicationHandler( XMLElementHandler, metaclass=subject ):
-
-  XMLELEM = "ep";
-  
-  def startElement( self, name, attrs ):
+    def __init__( self ):
+      
+      self.rargname = None;
+      self.var = None;
+      
+    def handle( self, obj ):
+      
+      if isinstance( obj, MRSVariable ):
+        self.var = obj;
+        
+      if isinstance( obj, MRSConstant ):
+        self.var = obj;
     
-    if name != self.XMLELEM:
-      return;
+    def endElement( self, name ):
+      
+      self._obj_.args[ self.rargname ] = self.var;
+
+
+  class _LabelHandler( XMLElementHandler, metaclass=subject ):
+  
+    XMLELEM = "label";
     
-    if "cfrom" in attrs:
-      self._obj_.cfrom = attrs[ "cfrom" ];
+    def startElement( self, name, attrs ):
+      
+      if name != self.XMLELEM:
+        return;
+      
+      if "vid" in attrs:
+        if self._obj_ is not None:
+          self._obj_.lid = int( attrs[ "vid" ] );
 
-    if "cto" in attrs:
-      self._obj_.cto = attrs[ "cto" ];
 
-
-
-# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
-
-class ConstraintHandler( XMLElementHandler, metaclass=subject ):
+  class _SPredHandler( XMLPCharElementHandler, metaclass=subject ):
   
-  XMLELEM = "hcons";
-  
-
-
-# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
-
-class HiHandler( XMLElementHandler, metaclass=subject ):
-  
-  XMLELEM = "hi";
-  
-  def handle( self, obj ):
+    XMLELEM = "spred";
     
-    if isinstance( obj, MRSVariable ):
-      self._obj_.hi = obj;
+    def endElement( self, name ):
+      
+      self._obj_.pred = self._text.lower();
 
 
-
-# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
-
-class LoHandler( XMLElementHandler, metaclass=subject ):
+  class _PredHandler( XMLPCharElementHandler, metaclass=subject ):
   
-  XMLELEM = "lo";
+    XMLELEM = "pred";
+    
+    def endElement( self, name ):
+      
+      self._obj_.pred = self._text;
+
+
+  class _ElementaryPredicationHandler( XMLElementHandler, metaclass=subject ):
   
-  def handle( self, obj ):
+    XMLELEM = "ep";
     
-    if isinstance( obj, MRSVariable ):
-      self._obj_.lo = obj;
+    def startElement( self, name, attrs ):
+      
+      if name != self.XMLELEM:
+        return;
+      
+      if "cfrom" in attrs:
+        self._obj_.cfrom = attrs[ "cfrom" ];
+  
+      if "cto" in attrs:
+        self._obj_.cto = attrs[ "cto" ];
 
 
-
-# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
-
-class MRSHandler( XMLElementHandler, metaclass=subject ):
-
-  XMLELEM = "mrs";
+  class _ConstraintHandler( XMLElementHandler, metaclass=subject ):
     
-  def handle( self, obj ):
+    XMLELEM = "hcons";
+
+
+  class _HiHandler( XMLElementHandler, metaclass=subject ):
     
-    if isinstance( obj, MRSElementaryPredication ):
-      if not obj in self._obj_.eps:
-        self._obj_.eps.append( obj );
-    elif isinstance( obj, MRSConstraint ):
-      if not obj in self._obj_.cons:
-        self._obj_.cons.append( obj );
+    XMLELEM = "hi";
+    
+    def handle( self, obj ):
+      
+      if isinstance( obj, MRSVariable ):
+        self._obj_.hi = obj;
 
 
+  class _LoHandler( XMLElementHandler, metaclass=subject ):
+    
+    XMLELEM = "lo";
+    
+    def handle( self, obj ):
+      
+      if isinstance( obj, MRSVariable ):
+        self._obj_.lo = obj;
 
-# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-class MRXDecoder( XMLHandler, metaclass=subject ):
+  class _MRSHandler( XMLElementHandler, metaclass=subject ):
+  
+    XMLELEM = "mrs";
+      
+    def handle( self, obj ):
+      
+      if isinstance( obj, MRSElementaryPredication ):
+        if not obj in self._obj_.eps:
+          self._obj_.eps.append( obj );
+      elif isinstance( obj, MRSConstraint ):
+        if not obj in self._obj_.cons:
+          self._obj_.cons.append( obj );
 
 
-  CLIENT_BYNAME = {
-      PathHandler.XMLELEM:
-        ( PathHandler, None ),
-      ValueHandler.XMLELEM:
-        ( ValueHandler, None ),
-      ExtrapairHandler.XMLELEM:
-        ( ExtrapairHandler, None ),
-      VariableHandler.XMLELEM:
-        ( VariableHandler, lambda: MRSVariable() ),
-      ConstantHandler.XMLELEM:
-        ( ConstantHandler, lambda: MRSConstant() ),
-      RargnameHandler.XMLELEM:
-        ( RargnameHandler, None ),
-      FVPairHandler.XMLELEM:
-        ( FVPairHandler, lambda: None ),
-      LabelHandler.XMLELEM:
-        ( LabelHandler, lambda: None ),
-      SPredHandler.XMLELEM:
-        ( SPredHandler, lambda: None ),
-      PredHandler.XMLELEM:
-        ( PredHandler, lambda: None ),
-      ElementaryPredicationHandler.XMLELEM:
-        ( ElementaryPredicationHandler, lambda: MRSElementaryPredication() ),
-      ConstraintHandler.XMLELEM:
-        ( ConstraintHandler, lambda: MRSConstraint() ),
-      HiHandler.XMLELEM:
-        ( HiHandler, lambda: None ),
-      LoHandler.XMLELEM:
-        ( LoHandler, lambda: None ),
-      MRSHandler.XMLELEM:
-        ( MRSHandler, lambda: MRS() ),
+  HANDLER_BYNAME = {
+      _PathHandler.XMLELEM:
+        ( _PathHandler, None ),
+      _ValueHandler.XMLELEM:
+        ( _ValueHandler, None ),
+      _ExtrapairHandler.XMLELEM:
+        ( _ExtrapairHandler, None ),
+      _VariableHandler.XMLELEM:
+        ( _VariableHandler, lambda: MRSVariable() ),
+      _ConstantHandler.XMLELEM:
+        ( _ConstantHandler, lambda: MRSConstant() ),
+      _RargnameHandler.XMLELEM:
+        ( _RargnameHandler, None ),
+      _FVPairHandler.XMLELEM:
+        ( _FVPairHandler, lambda: None ),
+      _LabelHandler.XMLELEM:
+        ( _LabelHandler, lambda: None ),
+      _SPredHandler.XMLELEM:
+        ( _SPredHandler, lambda: None ),
+      _PredHandler.XMLELEM:
+        ( _PredHandler, lambda: None ),
+      _ElementaryPredicationHandler.XMLELEM:
+        ( _ElementaryPredicationHandler, lambda: MRSElementaryPredication() ),
+      _ConstraintHandler.XMLELEM:
+        ( _ConstraintHandler, lambda: MRSConstraint() ),
+      _HiHandler.XMLELEM:
+        ( _HiHandler, lambda: None ),
+      _LoHandler.XMLELEM:
+        ( _LoHandler, lambda: None ),
+      _MRSHandler.XMLELEM:
+        ( _MRSHandler, lambda: MRS() ),
     };
 
 
@@ -354,7 +307,7 @@ class MRXDecoder( XMLHandler, metaclass=subject ):
     else:
       assert False;
       
-    XMLHandler._enter_( self );
+    XMLProcessor._enter_( self );
 
   
   def handle( self, obj ):
@@ -370,7 +323,7 @@ class MRXDecoder( XMLHandler, metaclass=subject ):
     self.feed( _MRS_DTD );
     self.feed( """              ] >""" );
     
-    XMLHandler.process( self, mrx );
+    XMLProcessor.process( self, mrx );
     
     return self._converter( self.mrs );
 
