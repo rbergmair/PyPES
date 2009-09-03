@@ -16,7 +16,8 @@ __all__ = [
     "Morpher",
     "sanity_check",
     "recursion_check",
-    "analyze_as_conjunction_pf"
+    "analyze_as_conjunction_pf",
+    "sortseq"
   ];
 
 from pypes.proto.form import Connection;
@@ -59,6 +60,8 @@ from pypes.proto.utils import sanity_check;
 from pypes.proto.utils import recursion_check;
 
 from pypes.proto.utils import analyze_as_conjunction_pf;
+
+from pypes.proto.utils import sortseq;
 
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #

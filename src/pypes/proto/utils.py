@@ -3,7 +3,8 @@
 __package__ = "pypes.proto";
 __all__ = [ "sanity_check",
             "recursion_check",
-            "analyze_as_conjunction_pf" ];
+            "analyze_as_conjunction_pf",
+            "sortseq" ];
 
 from pypes.utils.mc import subject;
 
@@ -116,6 +117,21 @@ def recursion_check( obj ):
   rslt = None;
   with RecursionChecker( obj ) as checker:
     rslt = checker.check();
+  return rslt;
+
+
+
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+
+def sortseq( int_ ):
+
+  SORT_CHARS = "cdfghklmnorstuvw";
+  
+  rslt = "";
+  while int_ > 0:
+    rest = int_ & 0xF;
+    int_ = int_ >> 4;
+    rslt += SORT_CHARS[ rest ];
   return rslt;
   
 

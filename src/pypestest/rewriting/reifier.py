@@ -18,10 +18,10 @@ from pypes.rewriting.reifier import Reifier;
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-class TestFuncMerger( TestCase, metaclass=object_ ):
+class TestReifier( TestCase, metaclass=object_ ):
 
   
-  def test_merge_1( self ):
+  def test_reifier_1( self ):
     
     x = pft_decode( """{ \ue103 { 8: \ue101 |Every| x4 { \ue100 |man|( arg0=x4 ) } __;
                                   9: \ue101 |a| x3 { \ue100 |woman|( arg0=x3 ) } __;
@@ -71,7 +71,7 @@ def suite():
   suite = unittest.TestSuite();
 
   suite.addTests( unittest.TestLoader().loadTestsFromTestCase(
-      TestFuncMerger
+      TestReifier
     ) );
 
   return suite;

@@ -435,15 +435,15 @@ class MRtoDSF( metaclass=subject ):
 
 
 
-  def rewrite( self ):
+  def rewrite( self, pf ):
     
     rslt = None;
     
     index = self._BinderIndex();
     with self._IndexCollector( index ) as index_collector:
-      index_collector.process( self._obj_ );
+      index_collector.process( pf );
       
-    with self._Solver( (index,self._obj_) ) as solver:
+    with self._Solver( (index,pf) ) as solver:
       solution = solver.solve_all();
       with self._Recursivizer( (index,solution) ) as recursivizer:
         rslt = recursivizer.recursivize();
@@ -457,8 +457,8 @@ class MRtoDSF( metaclass=subject ):
 def mr_to_dsf( obj ):
   
   rslt = None;
-  with MRtoDSF( obj ) as rewriter:
-    rslt = rewriter.rewrite();
+  with MRtoDSF() as rewriter:
+    rslt = rewriter.rewrite( obj );
   return rslt;
 
 

@@ -15,124 +15,118 @@ from pypes.scoping.domcon import *;
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-class _QuantifiedVarsCollector( ProtoProcessor, metaclass=subject ):
-  
-  def _enter_( self ):
-    
-    self._obj_.quantified_vars = {};
-  
-  def collect( self, inst ):
-    
-    self.process( inst );
-  
-  def process_quantification_( self, inst, subform, quantifier, var, rstr, body ):
-    
-    return { inst.var };
-  
-  def process_protoform_( self, inst, subform, subforms, constraints ):
-    
-    vars = set();
-    for ( root, (root_,subform_) ) in zip( inst.roots, subforms ):
-      subform = inst.subforms[ root ];
-      if subform_ is not None:
-        vars |= subform_;
-        if inst is self._obj_.pf:
-          for var in subform_:
-            self._obj_.quantified_vars[ var ] = root;
-    return vars;
-
-
-
-# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
-
-class _ConstraintsCollector( ProtoProcessor, metaclass=subject ):
-  
-  def _enter_( self ):
-    
-    self._obj_.cons = {};
-  
-  def collect( self, inst ):
-    
-    self.process( inst );
-  
-  def _process_args( self, args ):
-    
-    vars = set();
-    for val in args.values():
-      if val in self._obj_.quantified_vars:
-        vars.add( val );
-    return vars;
-
-  def process_predication_( self, inst, subform, predicate, args ):
-    
-    return self._process_args( inst.args );
-
-  def process_modification_( self, inst, subform, modality, args, scope ):
-
-    vars = set();
-    if scope is not None:
-      vars |= scope;
-    vars |= self._process_args( inst.args );
-    return vars;
-  
-  def process_quantification_( self, inst, subform, quantifier, var, rstr, body ):
-    
-    vars = set();
-    if rstr is not None:
-      vars |= rstr;
-    if body is not None:
-      vars |= body;
-    return vars;
-    
-  def process_connection_( self, inst, subform, connective, lscope, rscope ):
-    
-    vars = set();
-    if lscope is not None:
-      vars |= lscope;
-    if rscope is not None:
-      vars |= rscope;
-    return vars;
-  
-  def process_constraint_( self, inst, harg, larg ):
-    
-    if inst.harg not in self._obj_.cons:
-      self._obj_.cons[ inst.harg ] = set();
-    self._obj_.cons[ inst.harg ].add( inst.larg );
-
-  def process_protoform_( self, inst, subform, subforms, constraints ):
-    
-    vars = set();
-    
-    for ( root, (root_, subform_) ) in zip( inst.roots, subforms ):
-      subform = inst.subforms[ root ];
-      if subform_ is not None:
-        for var in subform_:
-          if inst is not self._obj_.pf:
-            vars |= subform_;
-            continue;
-          else:
-            harg = self._obj_.quantified_vars[ var ];
-            larg = root;
-            if harg not in self._obj_.cons:
-              self._obj_.cons[ harg ] = set();
-            self._obj_.cons[ harg ].add( larg );
-    
-    return vars;
-
-
-
-# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
-
 class Solver( metaclass=subject ):
 
+
+  class _QuantifiedVarsCollector( ProtoProcessor, metaclass=subject ):
+    
+    def _enter_( self ):
+      
+      self._obj_.quantified_vars = {};
+    
+    def collect( self, inst ):
+      
+      self.process( inst );
+    
+    def process_quantification_( self, inst, subform, quantifier, var, rstr, body ):
+      
+      return { inst.var };
+    
+    def process_protoform_( self, inst, subform, subforms, constraints ):
+      
+      vars = set();
+      for ( root, (root_,subform_) ) in zip( inst.roots, subforms ):
+        subform = inst.subforms[ root ];
+        if subform_ is not None:
+          vars |= subform_;
+          if inst is self._obj_.pf:
+            for var in subform_:
+              self._obj_.quantified_vars[ var ] = root;
+      return vars;
   
+  
+  class _ConstraintsCollector( ProtoProcessor, metaclass=subject ):
+    
+    def _enter_( self ):
+      
+      self._obj_.cons = {};
+    
+    def collect( self, inst ):
+      
+      self.process( inst );
+    
+    def _process_args( self, args ):
+      
+      vars = set();
+      for val in args.values():
+        if val in self._obj_.quantified_vars:
+          vars.add( val );
+      return vars;
+  
+    def process_predication_( self, inst, subform, predicate, args ):
+      
+      return self._process_args( inst.args );
+  
+    def process_modification_( self, inst, subform, modality, args, scope ):
+  
+      vars = set();
+      if scope is not None:
+        vars |= scope;
+      vars |= self._process_args( inst.args );
+      return vars;
+    
+    def process_quantification_( self, inst, subform, quantifier, var, rstr, body ):
+      
+      vars = set();
+      if rstr is not None:
+        vars |= rstr;
+      if body is not None:
+        vars |= body;
+      return vars;
+      
+    def process_connection_( self, inst, subform, connective, lscope, rscope ):
+      
+      vars = set();
+      if lscope is not None:
+        vars |= lscope;
+      if rscope is not None:
+        vars |= rscope;
+      return vars;
+    
+    def process_constraint_( self, inst, harg, larg ):
+      
+      if inst.harg not in self._obj_.cons:
+        self._obj_.cons[ inst.harg ] = set();
+      self._obj_.cons[ inst.harg ].add( inst.larg );
+  
+    def process_protoform_( self, inst, subform, subforms, constraints ):
+      
+      vars = set();
+      
+      for ( root, (root_, subform_) ) in zip( inst.roots, subforms ):
+        subform = inst.subforms[ root ];
+        if subform_ is not None:
+          for var in subform_:
+            if inst is not self._obj_.pf:
+              vars |= subform_;
+              continue;
+            else:
+              harg = self._obj_.quantified_vars[ var ];
+              larg = root;
+              if harg not in self._obj_.cons:
+                self._obj_.cons[ harg ] = set();
+              self._obj_.cons[ harg ].add( larg );
+      
+      return vars;
+
+
   def _enter_( self ):
     
     self._domcon = DomCon();
     self._domcon.pf = self._obj_;
-    with _QuantifiedVarsCollector( self._domcon ) as coll:
+    with self._QuantifiedVarsCollector( self._domcon ) as coll:
       coll.collect( self._obj_ );
-    with _ConstraintsCollector( self._domcon ) as coll:
+    with self._ConstraintsCollector( self._domcon ) as coll:
       coll.collect( self._obj_ );
     
     self._domcon.fragments = {};

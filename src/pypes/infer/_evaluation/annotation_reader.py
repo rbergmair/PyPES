@@ -92,7 +92,7 @@ class AnnotationReader( metaclass=subject ):
   
   def read( self, xml_ ):
     
-    self.process( xml_ );
+    self._xmlprocessor.process( xml_ );
     return (
                self._xmlprocessor.descriptor,
                self._xmlprocessor.labelset,

@@ -15,7 +15,7 @@ from pypes.rewriting.renamer import rename;
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-class CopulaResolver( ProtoProcessor, metaclass=subject ):
+class CopulaResolver( metaclass=subject ):
   
   
   class _IndexCollector( ProtoProcessor, metaclass=subject ):
@@ -64,6 +64,47 @@ class CopulaResolver( ProtoProcessor, metaclass=subject ):
       
       for cons in inst.constraints:
         self._obj_._lo_by_hi[ cons.harg ] = cons.larg;
+  
+  
+  class _Substituter( ProtoProcessor, metaclass=subject ):
+
+    
+    def _process_args( self, args ):
+      
+      for arg in args:
+        var = args[ arg ];
+        if var in self._obj_._newvar_by_oldvar:
+          args[ arg ] = self._obj_._newvar_by_oldvar[ var ];
+
+    
+    def process_predication_( self, inst, subform, predicate, args ):
+      
+      self._process_args( inst.args );
+    
+    
+    def process_modification_( self, inst, subform, modality, args, scope ):
+      
+      self._process_args( inst.args );
+    
+    
+    def process_protoform_( self, inst, subform, subforms, constraints ):
+      
+      for root in set( inst.subforms.keys() ):
+        
+        subform = inst.subforms[ root ];
+        
+        if subform in self._obj_._newsubform_by_oldsubform:
+          inst.subforms[ root ] = self._obj_._newsubform_by_oldsubform[ subform ];
+          continue;
+        
+        if subform in self._obj_._removable_subforms:
+          inst.roots.remove( root );
+          del inst.subforms[ root ];
+      
+      for cons in set( inst.constraints ):
+        if cons.harg in self._obj_._removable_holes:
+          inst.constraints.remove( cons );
+          continue;
   
   
   def resolve( self, pf ):
@@ -155,48 +196,10 @@ class CopulaResolver( ProtoProcessor, metaclass=subject ):
       self._removable_subforms.add( rstrsubf );
       self._removable_holes.add( qlo.rstr );
       
-    
-    self.process( pf );
+    with self._Substituter( self ) as subst: 
+      subst.process( pf );
     
     return pf;
-
-  
-  def _process_args( self, args ):
-    
-    for arg in args:
-      var = args[ arg ];
-      if var in self._newvar_by_oldvar:
-        args[ arg ] = self._newvar_by_oldvar[ var ];
-
-  
-  def process_predication_( self, inst, subform, predicate, args ):
-    
-    self._process_args( inst.args );
-
-
-  def process_modification_( self, inst, subform, modality, args, scope ):
-    
-    self._process_args( inst.args );
-
-
-  def process_protoform_( self, inst, subform, subforms, constraints ):
-    
-    for root in set( inst.subforms.keys() ):
-      
-      subform = inst.subforms[ root ];
-      
-      if subform in self._newsubform_by_oldsubform:
-        inst.subforms[ root ] = self._newsubform_by_oldsubform[ subform ];
-        continue;
-      
-      if subform in self._removable_subforms:
-        inst.roots.remove( root );
-        del inst.subforms[ root ];
-    
-    for cons in set( inst.constraints ):
-      if cons.harg in self._removable_holes:
-        inst.constraints.remove( cons );
-        continue;
 
 
 

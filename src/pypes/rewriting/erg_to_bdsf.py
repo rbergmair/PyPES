@@ -15,7 +15,7 @@ from pypes.rewriting.copula_resolver import CopulaResolver;
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-class ERGtoBDSF( ProtoProcessor, metaclass=subject ):
+class ERGtoBDSF( metaclass=subject ):
 
 
   class _FuncsCollector( ProtoProcessor, metaclass=subject ):
@@ -33,17 +33,6 @@ class ERGtoBDSF( ProtoProcessor, metaclass=subject ):
       self._obj_[ inst.predicate ].add( inst );
 
 
-  class _PostDSFRewriter( ProtoProcessor, metaclass=subject ):
-    
-    def process_modification_( self, inst, subform, modality, args, scope ):
-      
-      pass;
-      
-    def process_predication_( self, inst, subform, predicate, args ):
-  
-      pass;
-  
-  
   def _rewrite( self ):
     
     for ( func, subfs ) in self._funcs.items():
@@ -64,14 +53,14 @@ class ERGtoBDSF( ProtoProcessor, metaclass=subject ):
     
   def rewrite( self, pf ):
 
-    with ERGtoBasic( pf ) as rewriter:
-      pf = rewriter.rewrite();
+    with ERGtoBasic() as rewriter:
+      pf = rewriter.rewrite( pf );
       
     with CopulaResolver() as resolver:
       pf = resolver.resolve( pf );
     
-    with MRtoDSF( pf ) as rewriter:
-      pf = rewriter.rewrite();
+    with MRtoDSF() as rewriter:
+      pf = rewriter.rewrite( pf );
 
     self._funcs = {};
     

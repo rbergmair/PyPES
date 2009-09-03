@@ -1,7 +1,7 @@
 # -*-  coding: ascii -*-  # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 __package__ = "pypes.codecs_";
-__all__ = [ "PFTEncoder", "pft_encode", "argseq", "sortseq" ];
+__all__ = [ "PFTEncoder", "pft_encode", "argseq" ];
 
 import re;
 import string;
@@ -12,7 +12,7 @@ from pypes.utils.mc import subject;
 
 from pypes.proto import *;
 
-from pypes.rewriting.renamer import rename, sortseq;
+from pypes.rewriting.renamer import rename;
 
 from pypes.codecs_.pft import _pft_parser;
 

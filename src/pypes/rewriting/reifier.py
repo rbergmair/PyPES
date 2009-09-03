@@ -45,16 +45,43 @@ class Reifier( ProtoProcessor, metaclass=subject ):
     def process_modification_( self, inst, subform, modality, args, scope ):
 
       self._process_functor_args( inst.modality, inst.args );
+
+
+  class _Substituter( ProtoProcessor, metaclass=subject ):
+
+    def process_functor_( self, inst, fid, referent, feats ):
+      
+      if inst in self._obj_._fid_by_functor:
+        inst.fid = self._obj_._fid_by_functor[ inst ];
+    
+    def _process_functor_args( self, functor, args ):
+      
+      for arg in args:
+        var = args[ arg ];
+        if var in self._obj_._const_by_event:
+          args[ arg ] = self._obj_._const_by_event[ var ];
+  
+    def process_predication_( self, inst, subform, predicate, args ):
+      
+      self._process_functor_args( inst.predicate, inst.args );
+      
+    def process_modification_( self, inst, subform, modality, args, scope ):
+  
+      self._process_functor_args( inst.modality, inst.args );
   
   
   def _enter_( self ):
     
     self._idx_collector_ctx = self._IndexCollector( self );
     self._idx_collector = self._idx_collector_ctx.__enter__();
+    self._substituter_ctx = self._Substituter( self );
+    self._substituter = self._substituter_ctx.__enter__();
   
   
   def _exit_( self, exc_type, exc_val, exc_tb ):
 
+    self._substituter = None;
+    self._substituter_ctx.__exit__( exc_type, exc_val, exc_tb );
     self._idx_collector = None;
     self._idx_collector_ctx.__exit__( exc_type, exc_val, exc_tb );
   
@@ -157,30 +184,9 @@ class Reifier( ProtoProcessor, metaclass=subject ):
         self._fid_by_functor[ functor ] = i+1;
 
 
-  def process_functor_( self, inst, fid, referent, feats ):
-    
-    if inst in self._fid_by_functor:
-      inst.fid = self._fid_by_functor[ inst ];
-  
-  def _process_functor_args( self, functor, args ):
-    
-    for arg in args:
-      var = args[ arg ];
-      if var in self._const_by_event:
-        args[ arg ] = self._const_by_event[ var ];
-
-  def process_predication_( self, inst, subform, predicate, args ):
-    
-    self._process_functor_args( inst.predicate, inst.args );
-    
-  def process_modification_( self, inst, subform, modality, args, scope ):
-
-    self._process_functor_args( inst.modality, inst.args );
-  
-  
   def reify( self, pf ):
     
-    self.process( pf );
+    self._substituter.process( pf );
     return pf;
 
 

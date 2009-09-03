@@ -1,7 +1,7 @@
 # -*-  coding: ascii -*-  # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 __package__ = "pypes.rewriting";
-__all__ = [ "RenamingRewriter", "renaming_rewrite", "sortseq" ];
+__all__ = [ "RenamingRewriter", "renaming_rewrite" ];
 
 from pypes.utils.mc import subject, Object;
 
@@ -15,89 +15,87 @@ from pypes.proto.proto_processor import ProtoProcessor;
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-def sortseq( int_ ):
-
-  SORT_CHARS = "cdfghklmnorstuvw";
-  
-  rslt = "";
-  while int_ > 0:
-    rest = int_ & 0xF;
-    int_ = int_ >> 4;
-    rslt += SORT_CHARS[ rest ];
-  return rslt;
-
-
-
-# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
-
-class _IndexCollector( ProtoProcessor, metaclass=subject ):
-
-  
-  def _enter_( self ):
-    
-    self._obj_._handle_references = {};
-    self._obj_._handle_by_hid = {};
-    
-    self._obj_._variable_references = {};
-    self._obj_._variable_by_sidvid = {};
-    
-    self._obj_._funct_references = {};
-    self._obj_._funct_by_fid = {};
-    
-    self._obj_._sort_references = {};
-  
-  
-  def process_handle_( self, inst, hid ):
-    
-    assert inst.hid == hid;
-    
-    if not inst in self._obj_._handle_references:
-      self._obj_._handle_references[ inst ] = 0;
-    self._obj_._handle_references[ inst ] += 1;  
-      
-    if not hid in self._obj_._handle_by_hid:
-      self._obj_._handle_by_hid[ hid ] = set();
-    self._obj_._handle_by_hid[ hid ].add( inst );
-    
-    
-  def process_functor_( self, inst, fid, referent, feats ):
-    
-    if not inst in self._obj_._funct_references:
-      self._obj_._funct_references[ inst ] = 0;
-    self._obj_._funct_references[ inst ] += 1;
-    
-    if not fid in self._obj_._funct_by_fid:
-      self._obj_._funct_by_fid[ fid ] = set();
-    self._obj_._funct_by_fid[ fid ].add( inst )
-
-
-  def process_variable_( self, inst, sort, vid ):
-
-    if not inst in self._obj_._variable_references:
-      self._obj_._variable_references[ inst ] = 0;
-    self._obj_._variable_references[ inst ] += 1;
-  
-    if not inst.sort in self._obj_._sort_references:
-      self._obj_._sort_references[ inst.sort ] = 0;
-    self._obj_._sort_references[ inst.sort ] += 1;  
-      
-    sidvid = ( inst.sort.sid, vid );
-    if not sidvid in self._obj_._variable_by_sidvid:
-      self._obj_._variable_by_sidvid[ sidvid ] = set();
-    self._obj_._variable_by_sidvid[ sidvid ].add( inst );
-    
-
-
-# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
-
 class Renamer( ProtoProcessor, metaclass=subject ):
+
+
+  class _IndexCollector( ProtoProcessor, metaclass=subject ):
+    
+    def _enter_( self ):
+      
+      self._obj_._handle_references = {};
+      self._obj_._handle_by_hid = {};
+      
+      self._obj_._variable_references = {};
+      self._obj_._variable_by_sidvid = {};
+      
+      self._obj_._funct_references = {};
+      self._obj_._funct_by_fid = {};
+      
+      self._obj_._sort_references = {};
+    
+    def process_handle_( self, inst, hid ):
+      
+      assert inst.hid == hid;
+      
+      if not inst in self._obj_._handle_references:
+        self._obj_._handle_references[ inst ] = 0;
+      self._obj_._handle_references[ inst ] += 1;  
+        
+      if not hid in self._obj_._handle_by_hid:
+        self._obj_._handle_by_hid[ hid ] = set();
+      self._obj_._handle_by_hid[ hid ].add( inst );
+      
+    def process_functor_( self, inst, fid, referent, feats ):
+      
+      if not inst in self._obj_._funct_references:
+        self._obj_._funct_references[ inst ] = 0;
+      self._obj_._funct_references[ inst ] += 1;
+      
+      if not fid in self._obj_._funct_by_fid:
+        self._obj_._funct_by_fid[ fid ] = set();
+      self._obj_._funct_by_fid[ fid ].add( inst )
+  
+    def process_variable_( self, inst, sort, vid ):
+  
+      if not inst in self._obj_._variable_references:
+        self._obj_._variable_references[ inst ] = 0;
+      self._obj_._variable_references[ inst ] += 1;
+    
+      if not inst.sort in self._obj_._sort_references:
+        self._obj_._sort_references[ inst.sort ] = 0;
+      self._obj_._sort_references[ inst.sort ] += 1;  
+        
+      sidvid = ( inst.sort.sid, vid );
+      if not sidvid in self._obj_._variable_by_sidvid:
+        self._obj_._variable_by_sidvid[ sidvid ] = set();
+      self._obj_._variable_by_sidvid[ sidvid ].add( inst );
+
+
+  class _Substituter( ProtoProcessor, metaclass=subject ):
+
+    def process_handle_( self, inst, hid ):
+      
+      inst.hid = self._obj_._hid_by_handle[ inst ];
+  
+    def process_variable_( self, inst, sort, vid ):
+      
+      ( inst.sort, inst.vid ) = self._obj_._sortvid_by_variable[ inst ];
+      inst.sort.sid = self._obj_._sid_by_sort[ inst.sort ];
+  
+    def process_functor_( self, inst, fid, referent, feats ):
+      
+      inst.fid = self._obj_._fid_by_funct[ inst ];
   
 
   def _enter_( self ):
     
     self._index = Object();
-    self._collector_ctx = _IndexCollector( self._index );
+    
+    self._collector_ctx = self._IndexCollector( self._index );
     self._collector = self._collector_ctx.__enter__();
+    
+    self._substituter_ctx = self._Substituter( self );
+    self._substituter = self._substituter_ctx.__enter__();
 
     self._hid_by_handle = {};
     self._sortvid_by_variable = {};
@@ -105,6 +103,9 @@ class Renamer( ProtoProcessor, metaclass=subject ):
     self._fid_by_funct = {};
     
   def _exit_( self, exc_type, exc_val, exc_tb ):
+
+    self._substituter = None;
+    self._substituter_ctx.__exit__( exc_type, exc_val, exc_tb );
     
     self._collector = None;
     self._collector_ctx.__exit__( exc_type, exc_val, exc_tb );
@@ -271,25 +272,9 @@ class Renamer( ProtoProcessor, metaclass=subject ):
       newsid += 1;
 
 
-  def process_handle_( self, inst, hid ):
-    
-    inst.hid = self._hid_by_handle[ inst ];
-
-
-  def process_variable_( self, inst, sort, vid ):
-    
-    ( inst.sort, inst.vid ) = self._sortvid_by_variable[ inst ];
-    inst.sort.sid = self._sid_by_sort[ inst.sort ];
-
-
-  def process_functor_( self, inst, fid, referent, feats ):
-    
-    inst.fid = self._fid_by_funct[ inst ];
-  
-  
   def rename( self, pf ):
       
-    self.process( pf );
+    self._substituter.process( pf );
     return pf;
 
 

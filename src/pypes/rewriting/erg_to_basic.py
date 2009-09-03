@@ -266,6 +266,95 @@ class ERGtoBasic( ProtoProcessor, metaclass=subject ):
           self._obj_[ var ] += 1;
 
 
+
+  class _Substituter( ProtoProcessor, metaclass=subject ):
+    
+    
+    def process_quantification_( self, inst, subform, quantifier, var, rstr, body ):
+    
+      func = copy( inst.quantifier )( sig=ProtoSig() );
+    
+      functor = self._obj_._map_functor(
+                    func,
+                    self._obj_.OP_Qs,
+                    self._obj_.WRD_Qs
+                  );
+      
+      if functor is not None:
+        functor.fid = None;
+        inst.quantifier = functor;
+        return;
+      
+      print( inst.quantifier );
+      
+      assert False;
+    
+    
+    def process_connection_( self, inst, subform, connective, lscope, rscope ):
+    
+      func = copy( inst.connective )( sig=ProtoSig() );
+    
+      functor = self._obj_._map_functor(
+                    func,
+                    self._obj_.OP_Cs,
+                    self._obj_.WRD_Cs
+                  );
+    
+      if functor is not None:
+        functor.fid = None;
+        inst.connective = functor;
+        return;
+    
+      assert False;
+  
+  
+    def process_modification_( self, inst, subform, modality, args, scope ):
+      
+      func = copy( inst.modality )( sig=ProtoSig() );
+  
+      functor = self._obj_._map_functor(
+                    func,
+                    self._obj_.OP_Ms,
+                    self._obj_.WRD_Ms
+                  );
+      
+      inst.args = self._obj_._process_argslist( inst.args );
+  
+      if functor is not None:
+        functor.fid = None;
+        inst.modality = functor;
+        return;
+  
+      functor = inst.modality;
+      
+      if isinstance( functor.referent, Operator ):
+        assert False;
+        
+      functor.referent = self._obj_._map_to_default_referent( functor.referent );
+  
+  
+    def process_predication_( self, inst, subform, predicate, args ):
+  
+      func = copy( inst.predicate )( sig=ProtoSig() );
+      
+      functor = self._obj_._map_functor(
+                    func,
+                    self._obj_.OP_Ps,
+                    self._obj_.WRD_Ps
+                  );
+  
+      inst.args = self._obj_._process_argslist( inst.args );
+  
+      if functor is not None:
+        functor.fid = None;
+        inst.predicate = functor;
+        return;
+  
+      functor = inst.predicate;
+      functor.referent = self._obj_._map_to_default_referent( functor.referent );
+    
+    
+
   def _process_argslist( self, args ):
 
     for (arg,var) in set( args.items() ):
@@ -282,15 +371,6 @@ class ERGtoBasic( ProtoProcessor, metaclass=subject ):
             arg.aid = "KEY";
     
     return args;
-
-
-  def process_modification_( self, inst, subform, modality, args, scope ):
-    
-    self._process_argslist( inst.args );
-    
-  def process_predication_( self, inst, subform, predicate, args ):
-
-    self._process_argslist( inst.args );
 
 
   def _map_functor( self, functor, ops, wrds ):
@@ -334,44 +414,6 @@ class ERGtoBasic( ProtoProcessor, metaclass=subject ):
     return rslt;
 
 
-  def process_quantification_( self, inst, subform, quantifier, var, rstr, body ):
-
-    func = copy( inst.quantifier )( sig=ProtoSig() );
-
-    functor = self._map_functor(
-                  func,
-                  self.OP_Qs,
-                  self.WRD_Qs
-                );
-    
-    if functor is not None:
-      functor.fid = None;
-      inst.quantifier = functor;
-      return;
-    
-    print( inst.quantifier );
-    
-    assert False;
-
-
-  def process_connection_( self, inst, subform, connective, lscope, rscope ):
-
-    func = copy( inst.connective )( sig=ProtoSig() );
-
-    functor = self._map_functor(
-                  func,
-                  self.OP_Cs,
-                  self.WRD_Cs
-                );
-
-    if functor is not None:
-      functor.fid = None;
-      inst.connective = functor;
-      return;
-
-    assert False;
-  
-  
   def _map_to_default_referent( self, referent ):
     
     if isinstance( referent, basic.Word ) and not isinstance( referent, erg.Word ):
@@ -407,71 +449,29 @@ class ERGtoBasic( ProtoProcessor, metaclass=subject ):
              )( sig=ProtoSig() );
 
 
-  def process_modification_( self, inst, subform, modality, args, scope ):
-    
-    func = copy( inst.modality )( sig=ProtoSig() );
-
-    functor = self._map_functor(
-                  func,
-                  self.OP_Ms,
-                  self.WRD_Ms
-                );
-    
-    inst.args = self._process_argslist( inst.args );
-
-    if functor is not None:
-      functor.fid = None;
-      inst.modality = functor;
-      return;
-
-    functor = inst.modality;
-    
-    if isinstance( functor.referent, Operator ):
-      assert False;
-      
-    functor.referent = self._map_to_default_referent( functor.referent );
-
-
-  def process_predication_( self, inst, subform, predicate, args ):
-
-    func = copy( inst.predicate )( sig=ProtoSig() );
-    
-    functor = self._map_functor(
-                  func,
-                  self.OP_Ps,
-                  self.WRD_Ps
-                );
-
-    inst.args = self._process_argslist( inst.args );
-
-    if functor is not None:
-      functor.fid = None;
-      inst.predicate = functor;
-      return;
-
-    functor = inst.predicate;
-    functor.referent = self._map_to_default_referent( functor.referent );
-
-
   def _enter_( self ):
     
     self._vars = {};
     self._vars_collector_ctx = self._VarsCollector( self._vars );
     self._vars_collector = self._vars_collector_ctx.__enter__();
+    self._substituter_ctx = self._Substituter( self );
+    self._substituter = self._substituter_ctx.__enter__();
 
 
   def _exit_( self, exc_type, exc_val, exc_tb ):
 
+    self._substituter = None;
+    self._substituter_ctx.__exit__( exc_type, exc_val, exc_tb );
     self._vars_collector = None;
     self._vars_collector_ctx.__exit__( exc_type, exc_val, exc_tb );
   
 
-  def rewrite( self ):
+  def rewrite( self, pf ):
     
     self._vars.clear();
-    self._vars_collector.process( self._obj_ );
-    self.process( self._obj_ );
-    return self._obj_;
+    self._vars_collector.process( pf );
+    self._substituter.process( pf );
+    return pf;
 
 
 
@@ -480,8 +480,8 @@ class ERGtoBasic( ProtoProcessor, metaclass=subject ):
 def erg_to_basic( obj ):
   
   rslt = None;
-  with ERGtoBasic( obj ) as rewriter:
-    rslt = rewriter.rewrite();
+  with ERGtoBasic() as rewriter:
+    rslt = rewriter.rewrite( obj );
   return rslt;
 
 

@@ -1,7 +1,7 @@
 # -*-  coding: ascii -*-  # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 __package__ = "pypes.rewriting";
-__all__ = [ "LogpatExtractor", "extract_logpats" ];
+__all__ = [ "extract_logpats" ];
 
 import sys;
 import gzip;
@@ -20,7 +20,7 @@ from pypes.codecs_ import PFTDecoder, pft_encode;
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-class LogpatExtractor( ProtoProcessor, metaclass=subject ):
+class _LogpatExtractor( ProtoProcessor, metaclass=subject ):
   
   
   def _enter_( self ):
@@ -134,7 +134,7 @@ class LogpatExtractor( ProtoProcessor, metaclass=subject ):
 
 def extract_logpats():
   
-  with LogpatExtractor( None ) as extractor:
+  with _LogpatExtractor( None ) as extractor:
     extractor.extract_from_dir( "dta/test" );
 
 
