@@ -113,7 +113,10 @@ class XMLProcessor( xml.sax.handler.ContentHandler, metaclass=subject ):
       else:
         obj = obj();
         if obj is None:
-          obj = active_client._obj_;
+          if active_client is None:
+            obj = self._obj_;
+          else:
+            obj = active_client._obj_;
           
       new_client_ctx = client( obj );
       new_client = new_client_ctx.__enter__();

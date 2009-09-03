@@ -17,17 +17,6 @@ from pypes.codecs_.pft.pft_decoder import PFTDecoder;
 
 class PFTDecoder( PFTDecoder, metaclass=subject ):
 
-
-  def decoder_enter( self ):
-
-    pass;
-
-      
-  def decoder_exit( self, exc_type, exc_val, exc_tb ):
-    
-    pass;
-
-
   @classmethod
   def decode_bare_word( self, toks_ ):
     return ( None, None );

@@ -1,8 +1,8 @@
 # -*-  coding: ascii -*-  # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 __package__ = "pypes.proto";
-__all__ = [ "SanityChecker", "sanity_check",
-            "RecursionChecker", "recursion_check",
+__all__ = [ "sanity_check",
+            "recursion_check",
             "analyze_as_conjunction_pf" ];
 
 from pypes.utils.mc import subject;
@@ -17,39 +17,32 @@ from pypes.proto.proto_processor import ProtoProcessor;
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-class SanityChecker( ProtoProcessor, metaclass=subject ):
-  
-  
-  def __init__( self ):
-    
-    self._insane = False;
-    super().__init__();
-  
-  
-  def check( self ):
-    
-    self.process( self._obj_ );
-    return not self._insane;
-  
-  
-  def process_protoform_( self, inst, subform, subforms, constraints ):
-    
-    holes = set();
-    for root in inst.roots:
-      subform = inst.subforms[ root ];
-      holes_ = set( subform.holes );
-      assert len( holes_ ) == len( subform.holes );
-      assert not holes_ & holes;
-      holes |= holes_;
-    
-    if len( holes ) + 1 != len( inst.roots ):
-      self._insane = True;
-
-
-
-# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
-
 def sanity_check( obj ):
+
+  class SanityChecker( ProtoProcessor, metaclass=subject ):
+    
+    def __init__( self ):
+      
+      self._insane = False;
+      super().__init__();
+    
+    def check( self ):
+      
+      self.process( self._obj_ );
+      return not self._insane;
+    
+    def process_protoform_( self, inst, subform, subforms, constraints ):
+      
+      holes = set();
+      for root in inst.roots:
+        subform = inst.subforms[ root ];
+        holes_ = set( subform.holes );
+        assert len( holes_ ) == len( subform.holes );
+        assert not holes_ & holes;
+        holes |= holes_;
+      
+      if len( holes ) + 1 != len( inst.roots ):
+        self._insane = True;
   
   rslt = None;
   with SanityChecker( obj ) as checker:
@@ -98,34 +91,27 @@ def analyze_as_conjunction_pf( pf ):
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-class RecursionChecker( ProtoProcessor, metaclass=subject ):
-  
-  
-  def __init__( self ):
-    
-    self._insane = False;
-    super().__init__();
-  
-  
-  def check( self ):
-    
-    self.process( self._obj_ );
-    return not self._insane;
-  
-  
-  def process_protoform_( self, inst, subform, subforms, constraints ):
-    
-    if len( subforms ) == 1:
-      return;
-    
-    if analyze_as_conjunction_pf( inst ) is None:
-      self._insane = True;
-
-
-
-# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
-
 def recursion_check( obj ):
+
+  class RecursionChecker( ProtoProcessor, metaclass=subject ):
+    
+    def __init__( self ):
+      
+      self._insane = False;
+      super().__init__();
+    
+    def check( self ):
+      
+      self.process( self._obj_ );
+      return not self._insane;
+    
+    def process_protoform_( self, inst, subform, subforms, constraints ):
+      
+      if len( subforms ) == 1:
+        return;
+      
+      if analyze_as_conjunction_pf( inst ) is None:
+        self._insane = True;
   
   rslt = None;
   with RecursionChecker( obj ) as checker:

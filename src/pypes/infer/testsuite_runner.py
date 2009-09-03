@@ -20,7 +20,7 @@ from pypes.codecs_ import pft_encode;
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-class TestsuiteRunner( XMLProcessor, metaclass=subject ):
+class TestsuiteRunner( metaclass=subject ):
 
 
   class _SentenceHandler( XMLPCharElementHandler, metaclass=subject ):
@@ -103,26 +103,26 @@ class TestsuiteRunner( XMLProcessor, metaclass=subject ):
       self._obj_._reset();
   
   
-  class _TestsuiteHandler( XMLElementHandler, metaclass=subject ):
+  class _XMLProcessor( XMLProcessor, metaclass=subject ):
     
-    XMLELEM = "testsuite";
-
-
-  HANDLER_BYNAME = {
+    IGNORE = [ "testsuite" ];
+  
+  
+  _XMLProcessor.HANDLER_BYNAME = {
       _SentenceHandler.XMLELEM: ( _SentenceHandler, lambda: None ),
       _DiscourseHandler.XMLELEM: ( _DiscourseHandler, lambda: None ),
       _AntecedentHandler.XMLELEM: ( _AntecedentHandler, lambda: None ),
       _ConsequentHandler.XMLELEM: ( _ConsequentHandler, lambda: None ),
       _InferenceHandler.XMLELEM: ( _InferenceHandler, lambda: None ),
-      _GroupHandler.XMLELEM: ( _GroupHandler, None ),
+      _GroupHandler.XMLELEM: ( _GroupHandler, lambda: None ),
     };
-  
-  IGNORE = [ "testsuite" ];
   
   
   def _enter_( self ):
-    
-    super()._enter_();
+
+    self._xmlprocessor_ctx = self._XMLProcessor( self );
+    self._xmlprocessor = self._xmlprocessor_ctx.__enter__();
+  
     self._agent = [];
     self._agent_ctx = [];
     
@@ -176,7 +176,8 @@ class TestsuiteRunner( XMLProcessor, metaclass=subject ):
     self._sents_tbl_ctx.__exit__( exc_type, exc_val, exc_tb );
     self._sents_tbl = None;
 
-    super()._exit_( exc_type, exc_val, exc_tb );
+    self._xmlprocessor = None;
+    self._xmlprocessor_ctx.__exit__( exc_type, exc_val, exc_tb );
     
     
   def _reset( self ):
@@ -259,17 +260,12 @@ class TestsuiteRunner( XMLProcessor, metaclass=subject ):
     sys.stdout.write( "\n" );
   
   
-  
   def run( self ):
     
     self._reset();
-    
     with open( self._tsdir + "/data.ts.xml", "rb" ) as f:
-      
-      x = f.read( self.CHUNK_SIZE );
-      while x:
-        self.feed( x );
-        x = f.read( self.CHUNK_SIZE );
+      self._xmlprocessor.process( f );
+
 
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #

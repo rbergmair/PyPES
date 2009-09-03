@@ -83,7 +83,7 @@ _MRS_DTD = """<!ELEMENT mrs-list (mrs)*>
 
 
 
-class MRXDecoder( XMLProcessor, metaclass=subject ):
+class MRXDecoder( metaclass=subject ):
 
 
   class _PathHandler( XMLPCharElementHandler, metaclass=subject ):
@@ -259,9 +259,19 @@ class MRXDecoder( XMLProcessor, metaclass=subject ):
       elif isinstance( obj, MRSConstraint ):
         if not obj in self._obj_.cons:
           self._obj_.cons.append( obj );
+  
+  
+  class _XMLProcessor( XMLProcessor, metaclass=subject ):
+  
+    IGNORE = [];
+
+    def handle( self, obj ):
+      
+      if isinstance( obj, MRS ):
+        self._obj_._mrs = obj;
 
 
-  HANDLER_BYNAME = {
+  _XMLProcessor.HANDLER_BYNAME = {
       _PathHandler.XMLELEM:
         ( _PathHandler, None ),
       _ValueHandler.XMLELEM:
@@ -294,38 +304,37 @@ class MRXDecoder( XMLProcessor, metaclass=subject ):
         ( _MRSHandler, lambda: MRS() ),
     };
 
-
-  IGNORE = [];
-  
+        
   SEM_ERG = 1;
   
-  
+        
   def _enter_( self ):
     
     if self._obj_ is None or self._obj_ == self.SEM_ERG:
       self._converter = _ergsem_interpreter.mrs_to_pf;
     else:
       assert False;
-      
-    XMLProcessor._enter_( self );
-
-  
-  def handle( self, obj ):
     
-    if isinstance( obj, MRS ):
-      self.mrs = obj;
+    self._xmlprocessor_ctx = self._XMLProcessor( self );
+    self._xmlprocessor = self._xmlprocessor_ctx.__enter__();
+  
+  
+  def _exit_( self, exc_type, exc_val, exc_tb ):
+    
+    self._xmlprocessor = None;
+    self._xmlprocessor_ctx.__exit__( exc_type, exc_val, exc_tb );
 
 
   def decode( self, mrx ):
     
-    self.feed( """<?xml version="1.1"?>""" );
-    self.feed( """<!DOCTYPE mrs [""" );
-    self.feed( _MRS_DTD );
-    self.feed( """              ] >""" );
+    self._xmlprocessor.feed( """<?xml version="1.1"?>""" );
+    self._xmlprocessor.feed( """<!DOCTYPE mrs [""" );
+    self._xmlprocessor.feed( _MRS_DTD );
+    self._xmlprocessor.feed( """              ] >""" );
     
-    XMLProcessor.process( self, mrx );
+    self._xmlprocessor.process( mrx );
     
-    return self._converter( self.mrs );
+    return self._converter( self._mrs );
 
 
 

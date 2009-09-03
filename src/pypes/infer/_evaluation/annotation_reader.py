@@ -12,7 +12,7 @@ from pypes.utils.xml_ import *;
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-class AnnotationReader( XMLProcessor, metaclass=subject ):
+class AnnotationReader( metaclass=subject ):
   
   
   class _AnnotationsHandler( XMLElementHandler, metaclass=subject ):
@@ -66,17 +66,38 @@ class AnnotationReader( XMLProcessor, metaclass=subject ):
       self._obj_.vals[ self._attribute ] = self._text;
   
   
-  HANDLER_BYNAME = {
+  class _XMLProcessor( XMLProcessor, metaclass=subject ):
+    
+    pass;
+  
+  
+  _XMLProcessor.HANDLER_BYNAME = {
       _AnnotationsHandler.XMLELEM: ( _AnnotationsHandler, None ),
       _AnnotationHandler.XMLELEM: ( _AnnotationHandler, lambda: None ),
       _ValueHandler.XMLELEM: ( _ValueHandler, None )
     };
+  
+  
+  def _enter_( self ):
+    
+    self._xmlprocessor_ctx = self._XMLProcessor( self );
+    self._xmlprocessor = self._xmlprocessor_ctx.__enter__();
+  
+  
+  def _exit_( self, exc_type, exc_val, exc_tb ):
+    
+    self._xmlprocessor = None;
+    self._xmlprocessor_ctx.__exit__( exc_type, exc_val, exc_tb );
 
   
   def read( self, xml_ ):
     
     self.process( xml_ );
-    return ( self.descriptor, self.labelset, self.annotations );
+    return (
+               self._xmlprocessor.descriptor,
+               self._xmlprocessor.labelset,
+               self._xmlprocessor.annotations
+             );
 
 
 

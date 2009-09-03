@@ -266,11 +266,9 @@ class ERGSemSMIExtractor( ERGSemProcessor, metaclass=subject ):
         self._semi_interesting.add( predstr );
 
 
-
   def extract( self, targetdir ):
     
     sourcedir = self._obj_;
-
     
     with open( sourcedir + "/erg.smi", "rt", encoding="utf-8" ) as f:
       self._read_preds( f );
@@ -281,11 +279,9 @@ class ERGSemSMIExtractor( ERGSemProcessor, metaclass=subject ):
     with open( sourcedir + "/mine.smi", "rt", encoding="utf-8" ) as f:
       self._read_preds( f );
 
-
     for pred in set( self._semi.keys() ):
       if pred not in self._semi_interesting:
         del self._semi[ pred ];
-
     
     with open( targetdir + "/_ergsem_smi_checker_auto.py", "wt", encoding="ascii" ) as f:
         
@@ -305,12 +301,10 @@ class ERGSemSMIExtractor( ERGSemProcessor, metaclass=subject ):
       semi = semi + "\n    };";
       
       f.write( semi );
-
       
     ops = {};
     for op in chain( self._opqs, self._opcs, self._opms, self._opps ):
       ops[ op ] = op;
-
     
     wrdids = [];
     wrds = [];
@@ -336,7 +330,6 @@ class ERGSemSMIExtractor( ERGSemProcessor, metaclass=subject ):
         if not wrdid in wrdids:
           wrdids.append( wrdid );
           wrds.append( wrd );
-      
         
     with open( targetdir + "/_erg_auto.py", "wt", encoding="ascii" ) as f:
   

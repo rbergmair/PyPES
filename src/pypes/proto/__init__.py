@@ -14,8 +14,8 @@ __all__ = [
     "LambdaifyingProcessor", "Lambdaifier", "lambdaify",
     "Comparer",
     "Morpher",
-    "SanityChecker", "sanity_check",
-    "RecursionChecker", "recursion_check",
+    "sanity_check",
+    "recursion_check",
     "analyze_as_conjunction_pf"
   ];
 
@@ -55,8 +55,8 @@ from pypes.proto.comparer import Comparer;
 
 from pypes.proto.morpher import Morpher;
 
-from pypes.proto.utils import SanityChecker, sanity_check;
-from pypes.proto.utils import RecursionChecker, recursion_check;
+from pypes.proto.utils import sanity_check;
+from pypes.proto.utils import recursion_check;
 
 from pypes.proto.utils import analyze_as_conjunction_pf;
 

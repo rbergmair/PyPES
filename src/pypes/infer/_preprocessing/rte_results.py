@@ -48,7 +48,7 @@ class RTEResultsPreprocessor( metaclass=subject ):
     os.rmdir( self._tempdir );
   
   
-  def process_file( self, f, filename ):
+  def _process_file( self, f, filename ):
     
     lines = iter( f );
     ranked_ = next( lines );
@@ -128,7 +128,7 @@ class RTEResultsPreprocessor( metaclass=subject ):
       # print( "==" + filename + "==" );
       
       with open( self._tempdir + "/" + name, "rt", encoding="utf-8" ) as f:
-        self.process_file( f, filename );
+        self._process_file( f, filename );
       
       name = next( names, False );
 

@@ -6,7 +6,6 @@ __all__ = [ "RTESanitizer", "sanitize_rte" ];
 from pypes.utils.mc import subject;
 from pypes.utils.xml_ import TextContentFilter;
 
-
 import string;
 import re;
 
@@ -16,13 +15,13 @@ from xml.sax.saxutils import escape;
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-class RTESanitizer( TextContentFilter, metaclass=subject ):
+class RTESanitizer( metaclass=subject ):
 
 
-  EOS_PUN = [ ".", "!", "?", "\"" ];
-  PUN = EOS_PUN + [ "," ];
+  _EOS_PUN = [ ".", "!", "?", "\"" ];
+  _PUN = _EOS_PUN + [ "," ];
   
-  DATEMARKERs = [
+  _DATEMARKERs = [
       "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov",
       "Dec",
       "January", "February", "March", "April", "May", "June", "July",
@@ -31,10 +30,10 @@ class RTESanitizer( TextContentFilter, metaclass=subject ):
       "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"
     ];
   
-  HEADLINEMARKERs = [
+  _HEADLINEMARKERs = [
       "Reuters", "Dow Jones", "Bloomberg", "AP", "CNN", "BBC"
     ];
-
+  
   
   def sanitize_text( self, line ):
     
@@ -55,7 +54,7 @@ class RTESanitizer( TextContentFilter, metaclass=subject ):
       if x:
         if block:
           block = False;
-          if currenttoken != "" and currenttoken.strip() in self.PUN:
+          if currenttoken != "" and currenttoken.strip() in self._PUN:
             outline = outline[ :len(outline)-len(currenttoken) ];
             outline = outline.strip();
             outline += currenttoken;
@@ -79,7 +78,7 @@ class RTESanitizer( TextContentFilter, metaclass=subject ):
       changes.append( 2 );
       line = outline;
       
-    if not outline[ len(outline)-1 ] in self.EOS_PUN:
+    if not outline[ len(outline)-1 ] in self._EOS_PUN:
       outline += ".";
     if line != outline:
       changes.append( 3 );
@@ -138,7 +137,7 @@ class RTESanitizer( TextContentFilter, metaclass=subject ):
         if cnt == 0:
           isheadline = True;
         elif cnt < 10:
-          for marker in self.DATEMARKERs + self.HEADLINEMARKERs:
+          for marker in self._DATEMARKERs + self._HEADLINEMARKERs:
             if prefix.find( marker ) != -1:
               isheadline = True;
               break;
@@ -158,10 +157,22 @@ class RTESanitizer( TextContentFilter, metaclass=subject ):
     
     return outline;  
 
+
+  def _enter_( self ):
+    
+    self._tcfilter_ctx = TextContentFilter( self );
+    self._tcfilter = self._tcfilter_ctx.__enter__();
   
+  
+  def _exit_( self, exc_type, exc_val, exc_tb ):
+    
+    self._tcfilter = None;
+    self._tcfilter_ctx.__exit__( exc_type, exc_val, exc_tb );
+
+
   def sanitize( self, ifile, ofile ):
     
-    self.filter_textcontent(
+    self._tcfilter.filter_textcontent(
         ifile,
         ofile,
         { "t": self.sanitize_text, "h": self.sanitize_text },
