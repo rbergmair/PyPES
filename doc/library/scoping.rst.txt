@@ -1,0 +1,66 @@
+:mod:`pypes.scoping` --- ProtoForm Scoping
+==========================================
+
+.. module:: pypes.scoping
+  :synopsis: provides routines for scoping ProtoForms.
+
+:mod:`pypes.rewriting` provides routines for biconversion between
+  ProtoForms and dominance constraints, and for solving and enumerating
+  dominance constraints.
+
+
+.. class:: DomCon():
+
+   .. attribute:: pf
+   .. attribute:: cons
+   .. attribute:: cons_inv
+   .. attribute:: fragments
+   .. attribute:: fragments_inv
+
+
+.. class:: DomConSolution():
+
+   .. attribute:: domcon
+   .. attribute:: chart_index
+   .. attribute:: chart
+   .. attribute:: cur_component
+   .. attribute:: cur_root
+
+
+.. class:: Solver( pf ):
+
+   .. attribute:: domcon
+
+   .. method:: apply_cuts()
+   .. method:: solve_one( [ component ] )
+   .. method:: solve_all( [ comonent [ , branching_factor ] ] )
+
+
+.. function:: solve_one( pf [ , component ] )
+
+   is a shortcut to :meth:`Solver.solve_one`.
+
+.. function:: solve_all( pf [ , component [ , branching_factor ] ] )
+
+   is a shortcut to :meth:`Solver.solve_all`.
+
+
+.. class:: Enumerator( solution ):
+
+   .. method:: enumerate_subcomponents( pluggings, holes )
+   .. method:: enumerate_component( component )
+   .. method:: enumerate()
+
+.. function:: enumerate( solution )
+
+   is a shortcut to :meth:`Enumerator.enumerate`.
+
+
+.. class:: Recursivizer( solution ):
+
+   .. method:: recursivize()
+
+.. function:: recursivize( solution )
+
+   is a shortcut to :meth:`Recursivizer.recursivize`.
+

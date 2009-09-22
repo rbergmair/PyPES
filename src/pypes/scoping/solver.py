@@ -39,7 +39,7 @@ class Solver( metaclass=subject ):
         subform = inst.subforms[ root ];
         if subform_ is not None:
           vars |= subform_;
-          if inst is self._obj_.pf:
+          if inst is self._obj_.domcon.pf:
             for var in subform_:
               self._obj_.quantified_vars[ var ] = root;
       return vars;
@@ -49,7 +49,7 @@ class Solver( metaclass=subject ):
     
     def _enter_( self ):
       
-      self._obj_.cons = {};
+      self._obj_.domcon.cons = {};
     
     def collect( self, inst ):
       
@@ -95,9 +95,9 @@ class Solver( metaclass=subject ):
     
     def process_constraint_( self, inst, harg, larg ):
       
-      if inst.harg not in self._obj_.cons:
-        self._obj_.cons[ inst.harg ] = set();
-      self._obj_.cons[ inst.harg ].add( inst.larg );
+      if inst.harg not in self._obj_.domcon.cons:
+        self._obj_.domcon.cons[ inst.harg ] = set();
+      self._obj_.domcon.cons[ inst.harg ].add( inst.larg );
   
     def process_protoform_( self, inst, subform, subforms, constraints ):
       
@@ -107,46 +107,47 @@ class Solver( metaclass=subject ):
         subform = inst.subforms[ root ];
         if subform_ is not None:
           for var in subform_:
-            if inst is not self._obj_.pf:
+            if inst is not self._obj_.domcon.pf:
               vars |= subform_;
               continue;
             else:
               harg = self._obj_.quantified_vars[ var ];
               larg = root;
-              if harg not in self._obj_.cons:
-                self._obj_.cons[ harg ] = set();
-              self._obj_.cons[ harg ].add( larg );
+              if harg not in self._obj_.domcon.cons:
+                self._obj_.domcon.cons[ harg ] = set();
+              self._obj_.domcon.cons[ harg ].add( larg );
       
       return vars;
 
 
   def _enter_( self ):
     
-    self._domcon = DomCon();
-    self._domcon.pf = self._obj_;
-    with self._QuantifiedVarsCollector( self._domcon ) as coll:
+    self.domcon = DomCon();
+    self.domcon.pf = self._obj_;
+    with self._QuantifiedVarsCollector( self ) as coll:
       coll.collect( self._obj_ );
-    with self._ConstraintsCollector( self._domcon ) as coll:
+    with self._ConstraintsCollector( self ) as coll:
       coll.collect( self._obj_ );
     
-    self._domcon.fragments = {};
+    self.domcon.fragments = {};
     for root in self._obj_.roots:
       subf = self._obj_.subforms[ root ];
-      self._domcon.fragments[ root ] = subf.holes;
+      self.domcon.fragments[ root ] = subf.holes;
     
-    self._domcon.fragments_inv = {};
-    for ( root, holes ) in self._domcon.fragments.items():
+    self.domcon.fragments_inv = {};
+    for ( root, holes ) in self.domcon.fragments.items():
       for hole in holes:
-        self._domcon.fragments_inv[ hole ] = root;
+        self.domcon.fragments_inv[ hole ] = root;
     
-    self._domcon.cons_inv = {};
-    for ( hi, los ) in self._domcon.cons.items():
+    self.domcon.cons_inv = {};
+    for ( hi, los ) in self.domcon.cons.items():
       for lo in los:
-        if lo not in self._domcon.cons_inv:
-          self._domcon.cons_inv[ lo ] = set();
-        self._domcon.cons_inv[ lo ].add( hi );
+        if lo not in self.domcon.cons_inv:
+          self.domcon.cons_inv[ lo ] = set();
+        self.domcon.cons_inv[ lo ].add( hi );
     
-    self._domcon.solution = DomConSolution();
+    self.domcon_solution = DomConSolution();
+    self.domcon_solution.domcon = self.domcon;
       
   
   def _sortedroots( self, roots ):
@@ -173,25 +174,25 @@ class Solver( metaclass=subject ):
       hole = holes[i];
       i += 1;
       
-      if hole not in self._domcon.cons:
+      if hole not in self.domcon.cons:
         continue;
     
       new_roots = set();
       
-      for root in self._domcon.cons[ hole ]:
+      for root in self.domcon.cons[ hole ]:
         new_roots.add( root );
-        if root in self._domcon.cons:
-          new_roots |= self._domcon.cons[ root ];
-        if root in self._domcon.cons_inv:
-          new_roots |= self._domcon.cons_inv[ root ];
+        if root in self.domcon.cons:
+          new_roots |= self.domcon.cons[ root ];
+        if root in self.domcon.cons_inv:
+          new_roots |= self.domcon.cons_inv[ root ];
       
       new_roots &= component;
       
       roots |= new_roots;
       
       for root in new_roots:
-        if root in self._domcon.fragments:
-          for hole in self._domcon.fragments[ root ]:
+        if root in self.domcon.fragments:
+          for hole in self.domcon.fragments[ root ]:
             if hole not in holes:
               holes.append( hole );
     
@@ -200,9 +201,9 @@ class Solver( metaclass=subject ):
   
   def _split( self, free_root, component ):
     
-    if free_root in self._domcon.cons_inv:
-      for hi in self._domcon.cons_inv[ free_root ]:
-        rt = self._domcon._get_root( hi );
+    if free_root in self.domcon.cons_inv:
+      for hi in self.domcon.cons_inv[ free_root ]:
+        rt = self.domcon._get_root( hi );
         # print( str(free_root) + "  " + str(hi) + "  " + str(rt) );
         if rt in component or rt is free_root:
           # print( "S1   " + str( free_root ) + "   " + str( component) );
@@ -212,7 +213,7 @@ class Solver( metaclass=subject ):
     
     assigned = set();
     empty_hole = set();
-    for hole in self._domcon.fragments[ free_root ]:
+    for hole in self.domcon.fragments[ free_root ]:
       split[ hole ] = self._collect_reachable( hole, component );
       if len( split[ hole ] ) == 0:
         empty_hole.add( hole );
@@ -250,29 +251,29 @@ class Solver( metaclass=subject ):
 
     idx = None;
     try:
-      idx = self._domcon.solution.chart_index.index( component )
+      idx = self.domcon_solution.chart_index.index( component )
     except ValueError:
       pass;
     
     if idx is None:
-      self._domcon.solution.chart.append( {} );
-      self._domcon.solution.chart_index.append( component );
-      idx = len(self._domcon.solution.chart) - 1;
+      self.domcon_solution.chart.append( {} );
+      self.domcon_solution.chart_index.append( component );
+      idx = len(self.domcon_solution.chart) - 1;
       
-    self._domcon.solution.cur_root = None;
-    self._domcon.solution.cur_component = idx;
+    self.domcon_solution.cur_root = None;
+    self.domcon_solution.cur_component = idx;
     
     for root in self._sortedroots( component ):
-      if root not in self._domcon.solution.chart[ idx ]:
+      if root not in self.domcon_solution.chart[ idx ]:
         split = self._split( root, component - {root} );
-        self._domcon.solution.chart[ idx ][ root ] = split;
-      if self._domcon.solution.chart[ idx ][ root ] is None:
+        self.domcon_solution.chart[ idx ][ root ] = split;
+      if self.domcon_solution.chart[ idx ][ root ] is None:
         continue;
-      self._domcon.solution.cur_root = root;
-      yield self._domcon;
+      self.domcon_solution.cur_root = root;
+      yield self.domcon_solution;
   
   
-  def _apply_cuts( self ):
+  def apply_cuts( self ):
     
     pass;
   
@@ -288,16 +289,16 @@ class Solver( metaclass=subject ):
     
     roots = [];
     for solution in self.solve_one( component ):
-      roots.append( solution.solution.cur_root );
-    self._domcon.solution.cur_root = None;
+      roots.append( solution.cur_root );
+    self.domcon_solution.cur_root = None;
     
     if len(roots) == 0:
       return None;
     
-    self._apply_cuts();
+    self.apply_cuts();
     
     i = 0;
-    splits = self._domcon.solution.chart[ self._domcon.solution.cur_component ];
+    splits = self.domcon_solution.chart[ self.domcon_solution.cur_component ];
     for root in roots:
       if root not in splits:
         continue;
@@ -311,11 +312,11 @@ class Solver( metaclass=subject ):
         if self.solve_all( subcomponent, branching_factor ) is None:
           return None;
     
-    self._domcon.solution.cur_root = None;
-    self._domcon.solution.cur_component = None;
+    self.domcon_solution.cur_root = None;
+    self.domcon_solution.cur_component = None;
     
-    return self._domcon;
-      
+    return self.domcon_solution;
+    
 
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #

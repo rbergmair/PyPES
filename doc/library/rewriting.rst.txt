@@ -1,0 +1,78 @@
+:mod:`pypes.rewriting` --- ProtoForm Rewriting
+==============================================
+
+.. module:: pypes.rewriting
+  :synopsis: provides routines for rewriting protoforms.
+
+:mod:`pypes.rewriting` provides routines for rewriting protoforms.
+
+
+.. class:: Binder( binding )
+
+   .. method:: bind( pf )
+
+.. function:: bind( binding, subform )
+
+   is a shortcut to :meth:`Binder.bind`.
+
+
+.. class:: Renamer()
+
+   .. method:: process_pf( pf )
+   .. method:: invert( [ rename_handles_p=True [ , rename_vars_p=True [ , rename_functs_p=True [ , force_rename_handles_p=False ] ] ] ] )
+   .. method:: rename( pf )
+
+.. function:: rename( pf [ , rename_handles_p=True [ , rename_vars_p=True [ , rename_functs_p=True [ , force_rename_handles_p=False ] ] ] ] )
+
+   is a shortcut to instantiate a :class:`Renamer`, and then call
+   :meth:`Renamer.process_pf`, :meth:`Renamer.invert`, and
+   :meth:`Renamer.rename` on it.
+
+
+.. class:: ERGtoBasic()
+
+   .. attribute:: OP_Qs
+   .. attribute:: WRD_Qs 
+   .. attribute:: OP_Cs
+   .. attribute:: WRD_Cs
+   .. attribute:: OP_Ms
+   .. attribute:: WRD_Ms
+   .. attribute:: OP_Ps
+   .. attribute:: WRD_Ps
+   .. attribute:: NONCTRL_WRD_Ps
+   .. method:: rewrite( pf )
+
+.. function:: erg_to_basic( pf )
+
+   is a shortcut to :meth:`ERGtoBasic.rewrite`.
+
+
+.. class:: CopulaResolver()
+
+   .. method:: resolve( pf )
+
+.. function:: resolve_copula( pf )
+
+   is a shortcut to :meth:`CopulaResolver.resolve`.
+
+
+.. class:: MRtoDSF()
+
+   .. method:: rewrite( pf )
+
+.. function:: mr_to_dsf( pf )
+
+   is a shortcut to :meth:`MRtoDSF.rewrite`.
+
+
+.. class:: Reifier()
+
+   .. method:: process_pf( pf )
+   .. method:: invert()
+   .. method:: reify( pf )
+
+.. function:: reify( pf )
+
+   is a shortcut to instantiate a :class:`Reifier`, and then call
+   :meth:`Reifier.process_pf`, :meth:`Reifier.invert`, and
+   :meth:`Reifier.reify` on it.

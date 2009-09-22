@@ -11,6 +11,8 @@ from pypes.utils.mc import subject, object_;
 from pypes.proto import *;
 from pypes.scoping import *;
 
+from pypes.rewriting.binder import bind;
+
 
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
@@ -32,6 +34,7 @@ class MRtoDSF( metaclass=subject ):
       
       self.index = {};
       self.holevars = {};
+      self.quantified_vars = set();
 
 
 
@@ -59,6 +62,7 @@ class MRtoDSF( metaclass=subject ):
         self._binder[ inst.body ] = self._obj_.QUANTIFICATION;
         self._obj_.holevars[ inst.body ] = inst.var;
       self._obj_.index[ inst ] = self._obj_.QUANTIFICATION;
+      self._obj_.quantified_vars.add( inst.var );
     
     def process_modification_( self, inst, subform, modality, args, scope ):
       
@@ -88,10 +92,10 @@ class MRtoDSF( metaclass=subject ):
       ( self._index, self._obj_ ) = self._obj_;
       super()._enter_();
     
-    def _apply_cuts( self ):
+    def apply_cuts( self ):
       
-      idx = self._domcon.solution.cur_component;
-      splits = self._domcon.solution.chart[ idx ];
+      idx = self.domcon_solution.cur_component;
+      splits = self.domcon_solution.chart[ idx ];
       
       roots = set( splits.keys() );
       
@@ -225,14 +229,14 @@ class MRtoDSF( metaclass=subject ):
       subform_.args = {};
 
       for (arg,var_) in subform.args.items():
-        if ( var_ is var ) or ( var_ not in self._obj_.quantified_vars ):
+        if ( var_ is var ) or ( var_ not in self._index.quantified_vars ):
           if isinstance( var_, Variable ):
             var_occurs = True;
           if var is var_:
             occurs = True;
           if not ( var is not None and
                    isinstance( var_, Variable ) and
-                   var_ not in self._obj_.quantified_vars and
+                   var_ not in self._index.quantified_vars and
                    arg.aid != "KEY" ):
             subform_.args[ arg ] = var_;
       
@@ -365,29 +369,29 @@ class MRtoDSF( metaclass=subject ):
 
       self._invariant_pluggings = {};
       
-      toplevel_component = self._obj_.solution.chart_index[ 0 ];
+      toplevel_component = self._obj_.chart_index[ 0 ];
       self._collect_invariant_pluggings( toplevel_component );
       self._invariant_pluggings[ None ] = toplevel_component;
       
       self._binding = {};
       
-      # pprint( self._obj_.solution.chart );
+      # pprint( self._obj_.chart );
       
       for ( top, component ) in self._invariant_pluggings.items():
 
         contains_quantifications = False;
-        idx = self._obj_.solution.chart_index.index( component );
-        splits = self._obj_.solution.chart[ idx ];
+        idx = self._obj_.chart_index.index( component );
+        splits = self._obj_.chart[ idx ];
         
         for root in splits:
-          subform = self._obj_.pf.subforms[ root ];
+          subform = self._obj_.domcon.pf.subforms[ root ];
           if self._index.index[ subform ] == self._index.QUANTIFICATION:
             contains_quantifications = True;
         if not contains_quantifications:
           continue;
 
         subfs = [];
-        for ( occurs, subform ) in self._filter( None, self._obj_.pf, component ):
+        for ( occurs, subform ) in self._filter( None, self._obj_.domcon.pf, component ):
           assert not occurs;
           if subform is None:
             continue;
@@ -400,20 +404,20 @@ class MRtoDSF( metaclass=subject ):
           pf.append_fragment( Handle()( sig=sig ), subf );
 
         pf_ = None;
-        for root in self._obj_.pf.roots:
+        for root in self._obj_.domcon.pf.roots:
           
           if not root in splits:
             continue;
           
           pluggings = splits[ root ];
-          subf = self._obj_.pf.subforms[ root ];
+          subf = self._obj_.domcon.pf.subforms[ root ];
 
           binding = {};
           for hole in subf.holes:
             subpf = ProtoForm()( sig=sig );
             for ( occurs, subsubform ) in self._filter(
                                               self._index.holevars[ hole ],
-                                              self._obj_.pf,
+                                              self._obj_.domcon.pf,
                                               pluggings[ hole ]
                                             ):
               assert occurs;
@@ -447,7 +451,7 @@ class MRtoDSF( metaclass=subject ):
       solution = solver.solve_all();
       with self._Recursivizer( (index,solution) ) as recursivizer:
         rslt = recursivizer.recursivize();
-        
+    
     return rslt;
 
 

@@ -11,7 +11,7 @@ from pypes.proto import ProtoProcessor, Variable, Constant, ProtoSig;
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-class Reifier( ProtoProcessor, metaclass=subject ):
+class Reifier( metaclass=subject ):
 
 
   class _IndexCollector( ProtoProcessor, metaclass=subject ):

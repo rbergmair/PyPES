@@ -40,7 +40,6 @@ Decoders
 
 .. class:: MRXDecoder( [ sem ] )
 
-   .. attribute:: SEM_ERG
    .. method:: decode( mrx )
 
 .. function:: mrx_decode( mrx [ , sem ] )
@@ -49,7 +48,6 @@ Decoders
 
 .. class:: MRSDecoder( [ sem ] )
 
-   .. attribute:: SEM_ERG
    .. method:: decode( mrs )
 
 .. function:: mrs_decode( mrs [ , sem ] )

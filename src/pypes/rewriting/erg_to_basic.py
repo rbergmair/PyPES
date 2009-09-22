@@ -14,7 +14,7 @@ from pypes.proto.lex import basic, erg;
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-class ERGtoBasic( ProtoProcessor, metaclass=subject ):
+class ERGtoBasic( metaclass=subject ):
   
   
   OP_Qs = {

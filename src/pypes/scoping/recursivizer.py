@@ -9,7 +9,7 @@ from pypes.utils.mc import subject;
 
 from pypes.proto import *;
 
-from pypes.scoping import bind;
+from pypes.rewriting import bind;
 
 
 
@@ -28,13 +28,13 @@ class Recursivizer( metaclass=subject ):
 
     global_pluggings = {};
     
-    for i in range( 0, len( self._obj_.solution.chart_index ) ):
+    for i in range( 0, len( self._obj_.chart_index ) ):
       
-      subcomponent = self._obj_.solution.chart_index[ i ];
+      subcomponent = self._obj_.chart_index[ i ];
       if not subcomponent <= component:
         continue;
       
-      splits = self._obj_.solution.chart[i];
+      splits = self._obj_.chart[i];
       
       for ( root, pluggings ) in splits.items():
         if pluggings is None:
@@ -76,23 +76,23 @@ class Recursivizer( metaclass=subject ):
     if len( roots ) == 1:
       
       (root,) = roots;
-      subform = self._obj_.pf.subforms[ root ];
+      subform = self._obj_.domcon.pf.subforms[ root ];
       if isinstance( subform, ProtoForm ):
         pf = subform;
     
     if pf is None:
         
       pf = ProtoForm()( sig = ProtoSig() );
-      for root in self._obj_.pf.roots:
+      for root in self._obj_.domcon.pf.roots:
         if root not in roots:
           continue;
-        subform = self._obj_.pf.subforms[ root ];
+        subform = self._obj_.domcon.pf.subforms[ root ];
         pf.append_fragment( root, subform );
   
-      for constraint in self._obj_.pf.constraints:
+      for constraint in self._obj_.domcon.pf.constraints:
         if constraint.larg in roots:
           #print( "x" + str( self._get_root( constraint.harg ) ) );
-          if self._obj_._get_root( constraint.harg ) in roots:
+          if self._obj_.domcon._get_root( constraint.harg ) in roots:
             #print( constraint );
             pf.constraints.append( constraint );
       
@@ -103,22 +103,22 @@ class Recursivizer( metaclass=subject ):
 
   def recursivize( self ):
     
-    cur_component = self._obj_.solution.cur_component;
+    cur_component = self._obj_.cur_component;
     if cur_component is None:
       cur_component = 0;
       
     self._invariant_pluggings = {};
     self._binding = {};
     
-    cur_root = self._obj_.solution.cur_root;
+    cur_root = self._obj_.cur_root;
 
-    component = self._obj_.solution.chart_index[ cur_component ];
+    component = self._obj_.chart_index[ cur_component ];
     
     if cur_root is None:
       self._collect_invariant_pluggings( component );
     
     else:
-      pluggings = self._obj_.solution.chart[ cur_component ][ cur_root ];
+      pluggings = self._obj_.chart[ cur_component ][ cur_root ];
       for (hole,subcomponent) in pluggings.items():
         self._collect_invariant_pluggings( subcomponent );
         self._invariant_pluggings[ hole ] = subcomponent;

@@ -1,7 +1,7 @@
 # -*-  coding: ascii -*-  # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 __package__ = "pypes.rewriting";
-__all__ = [ "RenamingRewriter", "renaming_rewrite" ];
+__all__ = [ "Renamer", "rename" ];
 
 from pypes.utils.mc import subject, Object;
 
@@ -15,7 +15,7 @@ from pypes.proto.proto_processor import ProtoProcessor;
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-class Renamer( ProtoProcessor, metaclass=subject ):
+class Renamer( metaclass=subject ):
 
 
   class _IndexCollector( ProtoProcessor, metaclass=subject ):

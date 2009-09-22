@@ -4,14 +4,12 @@ __package__ = "pypes";
 
 __all__ = [
     "DomCon", "DomConSolution",
-    "Binder", "bind",
     "Solver", "solve_one", "solve_all",
     "Enumerator", "enumerate",
     "Recursivizer", "recursivize"
   ];
 
 from pypes.scoping.domcon import DomCon, DomConSolution;
-from pypes.scoping.binder import Binder, bind;
 from pypes.scoping.solver import Solver, solve_one, solve_all;
 from pypes.scoping.enumerator import Enumerator, enumerate;
 from pypes.scoping.recursivizer import Recursivizer, recursivize;

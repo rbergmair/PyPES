@@ -55,7 +55,7 @@
    respectively, are created in the directory named *targetdirname*.
 
 
-.. function:: extract_logical_patterns()
+.. function:: extract_logpats()
 
    goes through the MRS test data items, and extracts examples of predications,
    grouping them by the type of the MRS elementary predications, which is often

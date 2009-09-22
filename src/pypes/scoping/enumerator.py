@@ -21,8 +21,8 @@ class Enumerator( metaclass=subject ):
   def __init__( self ):
     
     self.holes = [];
-    for root in self._obj_.pf.roots:
-      subf = self._obj_.pf.subforms[ root ];
+    for root in self._obj_.domcon.pf.roots:
+      subf = self._obj_.domcon.pf.subforms[ root ];
       for hole in subf.holes:
         self.holes.append( hole );
   
@@ -30,7 +30,7 @@ class Enumerator( metaclass=subject ):
   def _sortedroots( self, roots ):
     
     def _cmp( root ):
-      idx = self._obj_.pf.roots.index( root );
+      idx = self._obj_.domcon.pf.roots.index( root );
       assert idx >= 0;
       return idx;
     
@@ -82,12 +82,12 @@ class Enumerator( metaclass=subject ):
     #  yield solution;
     #  return;
     
-    if not component in self._obj_.solution.chart_index:
+    if not component in self._obj_.chart_index:
       return;
     
-    idx = self._obj_.solution.chart_index.index( component );
+    idx = self._obj_.chart_index.index( component );
     
-    splits = self._obj_.solution.chart[ idx ];
+    splits = self._obj_.chart[ idx ];
     
     for root in self._sortedroots( splits.keys() ):
       pluggings = splits[ root ];
@@ -103,31 +103,30 @@ class Enumerator( metaclass=subject ):
   
   def enumerate( self ):
     
-    cur_component = self._obj_.solution.cur_component;
+    cur_component = self._obj_.cur_component;
     if cur_component is None:
       cur_component = 0;
       
-    cur_root = self._obj_.solution.cur_root;
+    cur_root = self._obj_.cur_root;
     
     root_chart_index = [];
     root_chart = [];
     
     solutions = None;
     if cur_root is None:
-      solutions = self.enumerate_component( self._obj_.solution.chart_index[ cur_component ] );
+      solutions = self.enumerate_component( self._obj_.chart_index[ cur_component ] );
     else:
       root_chart_index = [ cur_component ];
-      cur_pluggings = self._obj_.solution.chart[ cur_component ][ cur_root ];
+      cur_pluggings = self._obj_.chart[ cur_component ][ cur_root ];
       root_chart = [ { cur_root: cur_pluggings } ];
       solutions = self.enumerate_subcomponents( cur_pluggings, list( self._sortedholes( cur_pluggings.keys() ) ) );
     
     for solution_ in solutions:
       solution = DomConSolution();
+      solution.domcon = self._obj_.domcon;
       solution.chart_index = root_chart_index + solution_.chart_index;
       solution.chart = root_chart + solution_.chart;
-      domcon = copy( self._obj_ );
-      domcon.solution = solution;
-      yield domcon;
+      yield solution;
       
 
 

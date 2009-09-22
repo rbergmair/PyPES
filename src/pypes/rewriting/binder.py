@@ -12,7 +12,7 @@ from pypes.proto import *;
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-class Binder( ProtoProcessor, metaclass=subject ):
+class Binder( metaclass=subject ):
   
   
   class _Substituter( ProtoProcessor, metaclass=subject ):

@@ -3,6 +3,7 @@
 __package__ = "pypes";
 
 __all__ = [
+    "Binder", "bind",
     "Renamer", "rename",
     "ERGtoBasic", "erg_to_basic",
     "CopulaResolver", "resolve_copula",
@@ -11,6 +12,7 @@ __all__ = [
     "Reifier", "reify"
   ];
 
+from pypes.rewriting.binder import Binder, bind;
 from pypes.rewriting.renamer import Renamer, rename;
 from pypes.rewriting.erg_to_basic import ERGtoBasic, erg_to_basic;
 from pypes.rewriting.copula_resolver import CopulaResolver, resolve_copula;
