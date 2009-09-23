@@ -30,7 +30,7 @@ class ModelBuilder( metaclass=subject ):
   def _build_matrix( self, argsorts ):
     
     if len( argsorts ) == 0:
-      return self._logic.tv();
+      return self._logic.propositional_logic.tv();
     
     argss = argsorts[ 1: ];
     return [

@@ -29,10 +29,6 @@ class Model( metaclass=object_ ):
     return self._schema;
   
   schema = property( _get_schema );
-  
-  def _get_matrix_value( self, submatrix, idx ):
-    
-    pass;
       
       
 

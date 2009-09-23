@@ -5,13 +5,16 @@ __all__ = [ "FirstOrderLogic" ];
 
 from pypes.utils.mc import subject;
 
-from pypes.infer.mcpiet.logic.lukasiewicz import PropositionalLogic;
-
 
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-class FirstOrderLogic( PropositionalLogic, metaclass=subject ):
+class FirstOrderLogic( metaclass=subject ):
+  
+  
+  def __init__( self, propositional_logic ):
+    
+    self.propositional_logic = propositional_logic;
   
   
   def fo_pred_open( self, model, indiv_by_arg, predication ):
@@ -38,9 +41,9 @@ class FirstOrderLogic( PropositionalLogic, metaclass=subject ):
       if ref is None:
         ref = indiv;
       if indiv != ref:
-        return self.tv_false();
+        return self.propositional_logic.tv_false();
     
-    return self.TV_TRUE;
+    return self.propositional_logic.TV_TRUE;
 
 
   def fo_quant( self, model, indiv_by_var, quantification, rstr, body, var_range, outer, inner ):
@@ -76,7 +79,7 @@ class FirstOrderLogic( PropositionalLogic, metaclass=subject ):
     
     return self.fo_quant(
                model, indiv_by_var, quantification, rstr, body, var_range,
-               self.p_weacon, self.p_imp
+               self.propositional_logic.p_weacon, self.propositional_logic.p_imp
              );
   
   
@@ -84,7 +87,7 @@ class FirstOrderLogic( PropositionalLogic, metaclass=subject ):
 
     return self.fo_quant(
                model, indiv_by_var, quantification, rstr, body, var_range,
-               self.p_weadis, self.p_weacon
+               self.propositional_logic.p_weadis, self.propositional_logic.p_weacon
              );
 
   
@@ -92,7 +95,7 @@ class FirstOrderLogic( PropositionalLogic, metaclass=subject ):
 
     return self.fo_quant(
                model, indiv_by_var, quantification, rstr, body, var_range,
-               self.p_weadis, self.p_weacon
+               self.propositional_logic.p_weadis, self.propositional_logic.p_weacon
              );
 
 

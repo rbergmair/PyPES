@@ -13,13 +13,13 @@ from pypes.proto import *;
 from pypes.infer.seminfeng import SemanticInferenceAgent;
 from pypes.infer.mcpiet.schema import Schema;
 
-from pypes.infer.mcpiet.logic.first_order import FirstOrderLogic;
+from pypes.infer.mcpiet.logic import LukasiewiczPropositionalLogic;
+from pypes.infer.mcpiet.logic import FirstOrderLogic;
 
-from pypes.infer.mcpiet.optimization import exhaustive, null, tarski;
+from pypes.infer.mcpiet.optimization import NullOptimizer, ExhaustiveOptimizer;
 
 from pypes.infer.mcpiet.model_builder import ModelBuilder;
 from pypes.infer.mcpiet.model_checker import ModelChecker;
-
 
 
 
@@ -30,56 +30,52 @@ class McPIETAgent( SemanticInferenceAgent, metaclass=subject ):
   SEMFIELD = "bdsf";
   
   
-  def __init__( self, paramid=None, logic=None, builder=None, checker=None,
-                log2_iterations=None ):
+  def __init__( self, paramid=None,
+                propositional_logic=LukasiewiczPropositionalLogic,
+                firstorder_logic=FirstOrderLogic,
+                inner_optimizer=ExhaustiveOptimizer,
+                outer_optimizer=NullOptimizer,
+                builder=ModelBuilder, checker=ModelChecker,
+                log2_iterations=10 ):
     
     super().__init__( paramid );
     
-    if logic is None:
-      self._logic_new = FirstOrderLogic;
-    else:
-      self._logic_new = logic;
-      
-    if builder is None:
-      self._builder_new = ModelBuilder;
-    else:
-      self._builder_new = builder;
-    
-    if checker is None:
-      self._checker_new = ModelChecker;
-    else:
-      self._checker_new = checker;
-    
-    if log2_iterations is None:
-      self._log2_iterations = 10;
-    else:
-      self._log2_iterations = log2_iterations;
+    self._propositional_logic_new = propositional_logic;
+    self._firstorder_logic_new = firstorder_logic;
+    self._inner_optimizer_new = inner_optimizer;
+    self._outer_optimizer_new = outer_optimizer;
+    self._builder_new = builder;
+    self._checker_new = checker;
+    self._log2_iterations = log2_iterations;
+  
   
   def _enter_( self ):
     
     super()._enter_();
     
-    self._logic_ctx = self._logic_new();
-    self._logic = self._logic_ctx.__enter__();
-    
-    self._exhaustive_optimizer_ctx = exhaustive.Optimizer();
-    self._exhaustive_optimizer = self._exhaustive_optimizer_ctx.__enter__();
-    
-    self._null_optimizer_ctx = null.Optimizer();
-    self._null_optimizer = self._null_optimizer_ctx.__enter__();
-    
-    self._tarski_optimizer_ctx = tarski.Optimizer();
-    self._tarski_optimizer = self._tarski_optimizer_ctx.__enter__();
+    self._propositional_logic_ctx = self._propositional_logic_new();
+    self._propositional_logic = self._propositional_logic_ctx.__enter__();
+
+    self._firstorder_logic_ctx = self._firstorder_logic_new(
+                                     propositional_logic = self._propositional_logic
+                                   );
+    self._firstorder_logic = self._firstorder_logic_ctx.__enter__();
+
+    self._inner_optimizer_ctx = self._inner_optimizer_new();
+    self._inner_optimizer = self._inner_optimizer_ctx.__enter__();
+
+    self._outer_optimizer_ctx = self._outer_optimizer_new();
+    self._outer_optimizer = self._outer_optimizer_ctx.__enter__();
     
     self._builder_ctx = self._builder_new(
-                            logic = self._logic
+                            logic = self._firstorder_logic
                           );
     self._builder = self._builder_ctx.__enter__();
     
     self._checker_ctx = self._checker_new(
-                            logic = self._logic,
-                            inner_optimizer = self._exhaustive_optimizer,
-                            outer_optimizer = self._null_optimizer
+                            logic = self._firstorder_logic,
+                            inner_optimizer = self._inner_optimizer,
+                            outer_optimizer = self._outer_optimizer
                           );
     self._checker = self._checker_ctx.__enter__();
     
@@ -92,17 +88,17 @@ class McPIETAgent( SemanticInferenceAgent, metaclass=subject ):
     self._builder = None;
     self._builder_ctx.__exit__( exc_type, exc_val, exc_tb );
     
-    self._tarski_optimzer = None;
-    self._tarski_optimizer_ctx.__exit__( exc_type, exc_val, exc_tb );
+    self._outer_optimizer = None;
+    self._outer_optimizer_ctx.__exit__( exc_type, exc_val, exc_tb );
 
-    self._null_optimizer = None;
-    self._null_optimizer_ctx.__exit__( exc_type, exc_val, exc_tb );
-    
-    self._exhaustive_optimizer = None;
-    self._exhaustive_optimizer_ctx.__exit__( exc_type, exc_val, exc_tb );
-    
-    self._logic = None;
-    self._logic_ctx.__exit__( exc_type, exc_val, exc_tb );
+    self._inner_optimizer = None;
+    self._inner_optimizer_ctx.__exit__( exc_type, exc_val, exc_tb );
+
+    self._firstorder_logic = None;
+    self._firstorder_logic_ctx.__exit__( exc_type, exc_val, exc_tb );
+
+    self._propositional_logic = None;
+    self._propositional_logic_ctx.__exit__( exc_type, exc_val, exc_tb );
     
     super()._exit_( exc_type, exc_val, exc_tb );
   
@@ -155,33 +151,34 @@ class McPIETAgent( SemanticInferenceAgent, metaclass=subject ):
         if ant is None:
           ant = r;
         else:
-          ant = self._logic.p_strcon( ant, r );
+          ant = self._propositional_logic.p_strcon( ant, r );
   
       for sent in condisc:
         r = self._checker.check( sent, model );
         if con is None:
           con = r;
         else:
-          con = self._logic.p_strcon( con, r );
+          con = self._propositional_logic.p_strcon( con, r );
       
       #print( ant );
       #print( con );
       #print( "--" );
       
       if r1 is None:
-        r1 = self._logic.p_imp( ant, con );
+        r1 = self._propositional_logic.p_imp( ant, con );
       else:
-        r1 += self._logic.p_imp( ant, con );
+        r1 += self._propositional_logic.p_imp( ant, con );
       
       if r2 is None:
-        r2 = self._logic.p_imp( ant, self._logic.p_neg( con ) );
+        r2 = self._propositional_logic.p_imp( ant, self._propositional_logic.p_neg( con ) );
       else:
-        r2 += self._logic.p_imp( ant, self._logic.p_neg( con ) );
+        r2 += self._propositional_logic.p_imp( ant, self._propositional_logic.p_neg( con ) );
     
     r1 >>= self._log2_iterations;
     r2 >>= self._log2_iterations;
     
-    return ( self._logic.tv_to_float(r1), self._logic.tv_to_float(r2) );
+    return ( self._propositional_logic.tv_to_float(r1),
+             self._propositional_logic.tv_to_float(r2) );
 
 
 

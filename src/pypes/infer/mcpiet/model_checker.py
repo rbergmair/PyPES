@@ -11,8 +11,6 @@ from pypes.utils.mc import subject;
 #from pypes.proto import Variable, Constant;
 from pypes.proto import *;
 
-from pypes.infer.mcpiet import logic as dfltlogic;
-
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
@@ -48,15 +46,15 @@ class ModelChecker( metaclass=subject ):
       
       if p == Operator.OP_P_TAUTOLOGY:
         return lambda model, binding: \
-                 self._obj_._logic.tv_true();
+                 self._obj_._logic.propositional_logic.tv_true();
                  
       if p == Operator.OP_P_AND:
         return lambda model, binding: \
-                 self._obj_._logic.tv_true();
+                 self._obj_._logic.propositional_logic.tv_true();
 
       if p == Operator.OP_P_OR:
         return lambda model, binding: \
-                 self._obj_._logic.tv_true();
+                 self._obj_._logic.propositional_logic.tv_true();
 
       dropped_entity_args = [];
       
@@ -135,7 +133,7 @@ class ModelChecker( metaclass=subject ):
       
       if q == Operator.OP_Q_UNIV_NEG:
         return lambda model, binding: \
-                 self._obj_._logic.p_neg(
+                 self._obj_._logic.propositional_logic.p_neg(
                      self._obj_._logic.fo_quant_exist(
                          model, binding, inst, rstr, body, self._schema.entity_range
                        )
@@ -143,7 +141,7 @@ class ModelChecker( metaclass=subject ):
                    
       if q == Operator.OP_Q_EXIST_NEG:
         return lambda model, binding: \
-                 self._obj_._logic.p_neg(
+                 self._obj_._logic.propositional_logic.p_neg(
                      self._obj_._logic.fo_quant_univ(
                          model, binding, inst, rstr, body, self._schema.entity_range
                        )
@@ -159,35 +157,35 @@ class ModelChecker( metaclass=subject ):
       
       if c == Operator.OP_C_STRCON:
         return lambda model, binding: \
-                 self._obj_._logic.p_strcon(
+                 self._obj_._logic.propositional_logic.p_strcon(
                      lscope( model, binding ),
                      rscope( model, binding )
                    );
                    
       if c == Operator.OP_C_WEACON:
         return lambda model, binding: \
-                 self._obj_._logic.p_weacon(
+                 self._obj_._logic.propositional_logic.p_weacon(
                      lscope( model, binding ),
                      rscope( model, binding )
                    );
                    
       if c == Operator.OP_C_STRDIS:
         return lambda model, binding: \
-                 self._obj_._logic.p_strdis(
+                 self._obj_._logic.propositional_logic.p_strdis(
                      lscope( model, binding ),
                      rscope( model, binding )
                    );
                    
       if c == Operator.OP_C_WEADIS:
         return lambda model, binding: \
-                 self._obj_._logic.p_weadis(
+                 self._obj_._logic.propositional_logic.p_weadis(
                      lscope( model, binding ),
                      rscope( model, binding )
                    );
                    
       if c == Operator.OP_C_IMPL:
         return lambda model, binding: \
-                 self._obj_._logic.p_imp(
+                 self._obj_._logic.propositional_logic.p_imp(
                      lscope( model, binding ),
                      rscope( model, binding )
                    );

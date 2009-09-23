@@ -538,7 +538,7 @@ def pfs_eq( pf1, pf2 ):
   
   rslt = False;  
   with Comparer() as comparer:
-    rslt = comparer.pfs_eq( inst1, inst2 ):
+    rslt = comparer.pfs_eq( inst1, inst2 );
   return rslt;
 
 

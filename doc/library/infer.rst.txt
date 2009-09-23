@@ -45,7 +45,27 @@ engines and using their output for evaluation purposes.
    is a subclass of :class:`InferenceAgent` and serves as base class
    for inference agents which work with semantic representations from
    the item bank.
-   
+
+   .. method:: reset()
+
+      (see also: :meth:`InferenceAgent.reset`)
+
+   .. method:: process_sentence( sentid, rec, text )
+
+      (see also: :meth:`InferenceAgent.process_sentence`)
+
+   .. method:: process_discourse( discid, rec, sents [ , inf=False ] )
+
+      (see also: :meth:`InferenceAgent.process_discourse`)
+
+   .. method:: preprocess()
+
+      (see also: :meth:`InferenceAgent.preprocess`)
+
+   .. method:: infer( disc, antecedent, consequent )
+
+      (see also: :meth:`InferenceAgent.reset`)
+  
    It implements :meth:`reset`,
    :meth:`process_sentence`, :meth:`process_discourse`, and
    :meth:`preprocess` to collect the appropriate protoforms

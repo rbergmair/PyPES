@@ -2,6 +2,31 @@
 
 __package__ = "pypes.infer";
 
+__all__ = [
+    "LukasiewiczPropositionalLogic", "FirstOrderLogic",
+    "Optimizer", "NullOptimizer", "TarskiOptimizer", "ExhaustiveOptimizer",
+    "McPIETAgent",
+    "ModelBuilder", "ModelChecker",
+    "Model", "Schema"
+  ];
+
+
+from pypes.infer.mcpiet.logic import LukasiewiczPropositionalLogic;
+from pypes.infer.mcpiet.logic import FirstOrderLogic;
+
+from pypes.infer.mcpiet.optimizer import Optimizer;
+from pypes.infer.mcpiet.optimizer import NullOptimizer;
+from pypes.infer.mcpiet.optimizer import TarskiOptimizer;
+from pypes.infer.mcpiet.optimizer import ExhaustiveOptimizer;
+
+from pypes.infer.mcpiet.mcpiet import McPIETAgent;
+
+from pypes.infer.mcpiet.model_builder import ModelBuilder;
+from pypes.infer.mcpiet.model_checker import ModelChecker;
+
+from pypes.infer.mcpiet.model import Model;
+from pypes.infer.mcpiet.schema import Schema;
+
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 #                                                                             #

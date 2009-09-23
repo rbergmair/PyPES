@@ -1,17 +1,19 @@
 # -*-  coding: ascii -*-  # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 __package__ = "pypes.infer.mcpiet.logic";
-__all__ = [ "Optimizer" ];
+__all__ = [ "TarskiOptimizer" ];
 
 from itertools import product;
 
 from pypes.utils.mc import subject;
 
+from pypes.infer.mcpiet.optimization.optimizer import Optimizer;
+
 
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-class Optimizer( metaclass=subject ):
+class TarskiOptimizer( Optimizer, metaclass=subject ):
   
   @classmethod
   def optimize( cls, arg_range, free_args, args, function ):

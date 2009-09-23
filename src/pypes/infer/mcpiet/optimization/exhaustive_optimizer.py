@@ -1,17 +1,19 @@
 # -*-  coding: ascii -*-  # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 __package__ = "pypes.infer.mcpiet.logic";
-__all__ = [ "Optimizer" ];
+__all__ = [ "ExhaustiveOptimizer" ];
 
 from itertools import product;
 
 from pypes.utils.mc import subject;
 
+from pypes.infer.mcpiet.optimization.optimizer import Optimizer;
+
 
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-class Optimizer( metaclass=subject ):
+class ExhaustiveOptimizer( Optimizer, metaclass=subject ):
   
   @classmethod
   def optimize( cls, arg_range, free_args, args, function ):
