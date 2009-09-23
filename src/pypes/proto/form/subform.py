@@ -18,6 +18,10 @@ class SubForm( ProtoBase, metaclass=kls ):
     self._holes = { 0: [] };
     self.protoforms = set();
   
+  def __init__( self, sig ):
+    
+    pass;
+  
   holes = property();
   
   @holes.getter

@@ -1,7 +1,7 @@
 # -*-  coding: ascii -*-  # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 __package__ = "pypes.proto";
-__all__ = [ "Morpher" ];
+__all__ = [ "Morpher", "pfs_homomorphic", "pfs_isomorphic" ];
 
 from pypes.utils.mc import subject, object_;
 
@@ -176,7 +176,39 @@ class Morpher( Comparer, metaclass=subject ):
     return { rslt };
 
 
+  def pfs_homomorphic( self, pf1, pf2 ):
+    
+    return self.process( pf1, pf2 );
+  
+  
+  def pfs_isomorphic( self, pf1, pf2 ):
+    
+    return self.process( pf1, pf2 ) and self.process( pf2, pf1 );
 
+
+
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+
+def pfs_homomorphic( pf1, pf2 ):
+  
+  rslt = False;
+  with Morpher() as morpher:
+    rslt = morpher.pfs_homomorphic( inst1, inst2 );
+  return rslt;
+
+
+
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+
+def pfs_isomorphic( pf1, pf2 ):
+  
+  rslt = False;
+  with Morpher() as morpher:
+    rslt = morpher.pfs_isomorphic( inst1, inst2 );
+  return rslt;
+  
+  
+  
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 #                                                                             #
 #        PyPES: the python platform for experimentation with semantics        #

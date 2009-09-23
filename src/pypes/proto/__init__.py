@@ -12,8 +12,8 @@ __all__ = [
     "ProtoBase",
     "ProtoProcessor", "BinaryProtoProcessor",
     "LambdaifyingProcessor", "Lambdaifier", "lambdaify",
-    "Comparer",
-    "Morpher",
+    "Comparer", "pfs_leq", "pfs_eq",
+    "Morpher", "pfs_homomorphic", "pfs_isomorphic",
     "sanity_check",
     "recursion_check",
     "analyze_as_conjunction_pf",
@@ -53,8 +53,12 @@ from pypes.proto.lambdaifier import Lambdaifier;
 from pypes.proto.lambdaifier import lambdaify;
 
 from pypes.proto.comparer import Comparer;
+from pypes.proto.comparer import pfs_leq;
+from pypes.proto.comparer import pfs_eq;
 
 from pypes.proto.morpher import Morpher;
+from pypes.proto.morpher import pfs_homomorphic;
+from pypes.proto.morpher import pfs_isomorphic;
 
 from pypes.proto.utils import sanity_check;
 from pypes.proto.utils import recursion_check;

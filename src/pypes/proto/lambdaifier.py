@@ -35,16 +35,16 @@ class LambdaifyingProcessor( ProtoProcessor, metaclass=subject ):
     
     pass;
   
-  def process_freezer( self, handle, freezelevel=None ):
+  def process_freezer( self, content, freezelevel=None ):
     
     if freezelevel is None:
-      freezelevel = self.global_holes[ handle ];
+      freezelevel = self.global_holes[ content ];
     
     if freezelevel == -1:
-      return self.process_handle( handle );
+      return self.process_handle( content );
     else:
       return self.process_freezer_(
-                 self.process_freezer( handle, freezelevel-1 ),
+                 self.process_freezer( content, freezelevel-1 ),
                  freezelevel
                );
   

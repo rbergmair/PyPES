@@ -45,7 +45,7 @@ then::
   from pypes.codecs_ import mrx_decode;
   pf121_ = mrx_decode( mrs121xml );
 
-This gives us the "lambdaified" ("freezed") representation, which we
+This gives us the "lambdaified" ("frozen") representation, which we
 now have to "logify" ("thaw")::
 
   from pypes.proto import *;

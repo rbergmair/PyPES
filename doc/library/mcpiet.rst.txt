@@ -1,0 +1,8 @@
+:mod:`pypes.infer.mcpiet` --- The Monte Carlo Pseudo Inference Engine for Text (McPIET)
+=======================================================================================
+
+.. module:: pypes.infer.mcpiet
+  :synopsis: The Monte Carlo Pseudo Inference Engine for Text (McPIET)
+
+
+asdf

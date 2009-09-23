@@ -5,11 +5,11 @@
   :synopsis: provides routines for scoping ProtoForms.
 
 :mod:`pypes.rewriting` provides routines for biconversion between
-  ProtoForms and dominance constraints, and for solving and enumerating
-  dominance constraints.
+ProtoForms and dominance constraints, and for solving and enumerating
+dominance constraints.
 
 
-.. class:: DomCon():
+.. class:: DomCon()
 
    .. attribute:: pf
    .. attribute:: cons
@@ -18,7 +18,7 @@
    .. attribute:: fragments_inv
 
 
-.. class:: DomConSolution():
+.. class:: DomConSolution()
 
    .. attribute:: domcon
    .. attribute:: chart_index
@@ -27,7 +27,7 @@
    .. attribute:: cur_root
 
 
-.. class:: Solver( pf ):
+.. class:: Solver( pf )
 
    .. attribute:: domcon
 
@@ -45,7 +45,7 @@
    is a shortcut to :meth:`Solver.solve_all`.
 
 
-.. class:: Enumerator( solution ):
+.. class:: Enumerator( solution )
 
    .. method:: enumerate_subcomponents( pluggings, holes )
    .. method:: enumerate_component( component )
@@ -56,7 +56,7 @@
    is a shortcut to :meth:`Enumerator.enumerate`.
 
 
-.. class:: Recursivizer( solution ):
+.. class:: Recursivizer( solution )
 
    .. method:: recursivize()
 

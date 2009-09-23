@@ -1,7 +1,7 @@
 # -*-  coding: ascii -*-  # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 __package__ = "pypes.proto";
-__all__ = [ "ProtoComparer" ];
+__all__ = [ "Comparer", "pfs_leq", "pfs_eq" ];
 
 from copy import copy;
 from pprint import pprint;
@@ -509,6 +509,38 @@ class Comparer( BinaryProtoProcessor, metaclass=subject ):
     
     return rslt;
   
+  
+  def pfs_leq( self, pf1, pf2 ):
+    
+    return self.process( pf1, pf2 ) and self.process( pf2, pf1 );
+
+
+  def pfs_eq( self, pf1, pf2 ):
+    
+    return self.process( pf1, pf2 );
+
+
+
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+
+def pfs_leq( pf1, pf2 ):
+  
+  rslt = False;  
+  with Comparer() as comparer:
+    rslt = comparer.pfs_leq( inst1, inst2 );
+  return rslt;
+
+
+
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+
+def pfs_eq( pf1, pf2 ):
+  
+  rslt = False;  
+  with Comparer() as comparer:
+    rslt = comparer.pfs_eq( inst1, inst2 ):
+  return rslt;
+
 
     
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #

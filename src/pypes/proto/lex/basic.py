@@ -12,7 +12,9 @@ from pypes.proto.protobase import ProtoBase;
 
 class Referent( ProtoBase, metaclass=kls ):
   
-  pass;
+  def __init__( self, sig ):
+    
+    pass;
 
 
 
