@@ -47,7 +47,7 @@ class RTEPreprocessor( metaclass=subject ):
       if name != self.XMLELEM:
         return;
   
-      self._obj_.t = self._text;
+      self._obj_.t = self.text;
   
   
   class _HHandler( XMLPCharElementHandler, metaclass=subject ):
@@ -61,7 +61,7 @@ class RTEPreprocessor( metaclass=subject ):
       if name != self.XMLELEM:
         return;
       
-      self._obj_.h = self._text;
+      self._obj_.h = self.text;
   
       self._obj_.finished = True;
   

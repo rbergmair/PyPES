@@ -92,7 +92,7 @@ class MRXDecoder( metaclass=subject ):
     
     def endElement( self, name ):
       
-      self._obj_.path = self._text;
+      self._obj_.path = self.text;
 
 
   class _ValueHandler( XMLPCharElementHandler, metaclass=subject ):
@@ -101,7 +101,7 @@ class MRXDecoder( metaclass=subject ):
     
     def endElement( self, name ):
       
-      self._obj_.value = self._text;
+      self._obj_.value = self.text;
 
 
   class _ExtrapairHandler( XMLElementHandler, metaclass=subject ):
@@ -140,7 +140,7 @@ class MRXDecoder( metaclass=subject ):
     
     def endElement( self, name ):
       
-      self._obj_.constant = self._text;
+      self._obj_.constant = self.text;
 
 
   class _RargnameHandler( XMLPCharElementHandler, metaclass=subject ):
@@ -149,7 +149,7 @@ class MRXDecoder( metaclass=subject ):
     
     def endElement( self, name ):
       
-      self._obj_.rargname = self._text;
+      self._obj_.rargname = self.text;
 
 
   class _FVPairHandler( XMLElementHandler, metaclass=subject ):
@@ -194,7 +194,7 @@ class MRXDecoder( metaclass=subject ):
     
     def endElement( self, name ):
       
-      self._obj_.pred = self._text.lower();
+      self._obj_.pred = self.text.lower();
 
 
   class _PredHandler( XMLPCharElementHandler, metaclass=subject ):
@@ -203,7 +203,7 @@ class MRXDecoder( metaclass=subject ):
     
     def endElement( self, name ):
       
-      self._obj_.pred = self._text;
+      self._obj_.pred = self.text;
 
 
   class _ElementaryPredicationHandler( XMLElementHandler, metaclass=subject ):

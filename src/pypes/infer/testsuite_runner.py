@@ -36,7 +36,7 @@ class TestsuiteRunner( metaclass=subject ):
     def endElement( self, name ):
       
       super().endElement( name );
-      self._obj_._process_sentence( self._sentid, self._text );
+      self._obj_._process_sentence( self._sentid, self.text );
 
     
   class _DiscourseHandler( XMLElementHandler, metaclass=subject ):

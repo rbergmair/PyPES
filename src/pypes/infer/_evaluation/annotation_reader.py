@@ -63,7 +63,7 @@ class AnnotationReader( metaclass=subject ):
     def endElement( self, name ):
       
       super().endElement( name );
-      self._obj_.vals[ self._attribute ] = self._text;
+      self._obj_.vals[ self._attribute ] = self.text;
   
   
   class _XMLProcessor( XMLProcessor, metaclass=subject ):

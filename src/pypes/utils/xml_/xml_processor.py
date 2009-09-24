@@ -41,11 +41,11 @@ class XMLPCharElementHandler( XMLElementHandler, metaclass=subject ):
   def startElement( self, name, attrs ):
     
     if name == self.XMLELEM:
-      self._text = "";
+      self.text = "";
 
   def characters( self, content ):
 
-    self._text += content;
+    self.text += content;
 
   def endElement( self, name ):
     

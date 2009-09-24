@@ -1,0 +1,200 @@
+:mod:`pypes.utils` --- Utilities
+================================
+
+.. module:: pypes.utils
+
+
+
+:mod:`pypes.utlis.globals` --- Globals
+--------------------------------------
+
+.. module:: pypes.utils.globals
+
+
+.. function:: get_insttok()
+
+.. function:: get_guid()
+
+.. function:: get_runningno()
+
+
+
+:mod:`pypes.utils.itembank` --- Item Bank
+-----------------------------------------
+
+.. module:: pypes.utils.itembank
+
+
+.. class:: RecordManager( (tbl,id) )
+
+   .. method:: sync()
+
+   .. attribute:: id
+   .. attribute:: length
+
+   .. method:: get_ctx_str()
+   .. method:: set_ctx_str()
+
+   .. method:: reset( field )
+   .. method:: append_to( field, val )
+   .. method:: fetch_first( field )
+   .. method:: fetch_all( field )
+      
+   .. method:: set( field, val )
+   .. method:: get( field )
+
+
+.. class:: TableManager( (dbdirname,tblfilename) )
+
+   .. method:: sync()
+
+   .. attribute:: max_id
+   .. method:: has_id( id )
+
+   .. method:: record_by_id( id )
+
+   .. method:: create_record( [id] )
+
+   .. method:: id_by_ctx_str( ctx_str )
+
+   .. method:: add_ctx_str( ctx_str )
+
+
+
+:mod:`pypes.utils.logging_` --- Extensions to Python's Logging Framework
+------------------------------------------------------------------------
+
+.. module:: pypes.utils.logging_
+
+
+.. function:: log_attach_stderr_logger( loggername, level )
+.. function:: log_attach_file_logger( loggername, level, logdir, prefix )
+   
+.. function:: log_critical( sourceid, msg )
+.. function:: log_error( sourceid, msg )
+.. function:: log_warn( sourceid, msg )
+.. function:: log_info( sourceid, msg )
+.. function:: log_debug_coarse( sourceid, msg )
+.. function:: log_debug( sourceid, msg )
+
+.. function:: log( sourceid, level, msg )
+
+.. function:: get_logger( sourceid )
+
+.. function:: print_dot()
+
+
+
+:mod:`pypes.utils.os_` --- Extension to Python's Miscellaneous Operating System Interfaces
+------------------------------------------------------------------------------------------
+
+.. module:: pypes.utils.os_
+
+
+.. function:: listsubdirs( pattern )
+
+
+
+:mod:`pypes.utils.string_` --- Miscellaneous String Handling Functions
+----------------------------------------------------------------------
+
+.. module:: pypes.utils.string_
+
+
+.. function:: crude_hashcode( s )
+
+.. function:: crude_match( s1, s2 )
+
+
+
+:mod:`pypes.utils.unittest_` --- Extension to Python's Unit Testing Framework
+-----------------------------------------------------------------------------
+
+.. module:: pypes.utils.unittest_
+
+
+.. class:: TestCase()
+
+   (see also: `unittest.TestCase` in Python's standard Library)
+
+   .. attribute:: globalstate
+
+   .. method:: globalSetUp()
+   .. method:: globalTearDown()
+
+   .. method:: assertStringCrudelyEqual( actual, expected [, msg] )
+   .. method:: assertStringNotCrudelyEqual( actual, expected [, msg] )
+   .. method:: assertSequenceEqual( actual, expected [, msg] )
+   .. method:: assertSequenceNotEqual( actual, expected [, msg] )
+   .. method:: assertEquals_( actual, expected [, msg] )
+   .. method:: assertNotEquals_( actual, expected [, msg] )
+
+.. function:: run_unittests( [ packagename ] )
+
+   is a synonym of :func:`pypes.bin.run_unittests`.
+
+
+
+:mod:`pypes.utils.xml_` --- Extension to Python's XML Framework
+---------------------------------------------------------------
+
+.. module:: pypes.utils.xml_
+
+
+.. class:: TextContentFilter()
+
+   (see also: `xml.sax.handler.ContentHandler` in Python's standard library)
+
+   .. method:: filter_textcontent( ifile, ofile, filters [, bypass_escape=False ] )
+
+
+.. class:: XMLElementHandler()
+
+   (see also: `xml.sax.handler.ContentHandler` in Python's standard library)
+
+   .. attribute:: XMLELEM
+
+
+.. class:: XMLPCharElementHandler()
+
+   (see also: `xml.sax.handler.ContentHandler` in Python's standard library)
+
+   .. attribute:: XMLELEM
+   .. attribute:: text
+
+
+.. class:: XMLProcessor()
+
+   (see also: `xml.sax.handler.ContentHandler` in Python's standard library)
+
+   .. attribute:: HANDLER_BYNAME
+   .. attribute:: IGNORE
+   .. attribute:: CHUNK_SIZE
+
+   .. method:: feed( data )
+   .. method:: close()
+   .. method:: reset()
+
+   .. method:: handle( obj )
+
+   .. method:: process( xml_ )
+
+
+
+:mod:`pypes.utils.mc` --- Metaclasses
+-------------------------------------
+
+.. module:: pypes.utils.mc
+
+
+.. class:: object_
+
+.. class:: Object
+
+.. class:: subject
+
+.. class:: singleton
+
+.. class:: kls
+
+

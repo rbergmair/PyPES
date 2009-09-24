@@ -38,7 +38,7 @@ class TitleHandler( XMLPCharElementHandler, metaclass=subject ):
   def endElement( self, name ):
     
     XMLPCharElementHandler.endElement( self, name );
-    self._obj_.title = self._text;
+    self._obj_.title = self.text;
   
 
 class H1Handler( XMLPCharElementHandler, metaclass=subject ):
@@ -48,7 +48,7 @@ class H1Handler( XMLPCharElementHandler, metaclass=subject ):
   def endElement( self, name ):
     
     XMLPCharElementHandler.endElement( self, name );
-    self._obj_._content.append( "HEADING: " + self._text );
+    self._obj_._content.append( "HEADING: " + self.text );
 
 
 class PHandler( XMLPCharElementHandler, metaclass=subject ):
@@ -58,7 +58,7 @@ class PHandler( XMLPCharElementHandler, metaclass=subject ):
   def endElement( self, name ):
     
     XMLPCharElementHandler.endElement( self, name );
-    self._obj_._content.append( "PARAGRAPH: " + self._text );
+    self._obj_._content.append( "PARAGRAPH: " + self.text );
 
 
 class BodyHandler( XMLElementHandler, metaclass=subject ):

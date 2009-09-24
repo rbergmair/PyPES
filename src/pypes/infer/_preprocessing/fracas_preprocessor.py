@@ -53,7 +53,7 @@ class FraCaSPreprocessor( metaclass=subject ):
         self._obj_.afile.write( "\n</annotations>\n" );
         self._obj_.afile.close();
         
-      sect = self._text.split();
+      sect = self.text.split();
       sect = sect[ 0 ];
       sect = sect.replace( ".", "-" );
       
@@ -92,7 +92,7 @@ class FraCaSPreprocessor( metaclass=subject ):
       if name != self.XMLELEM:
         return;
       
-      self._obj_.antecedents.append( self._text.strip() );
+      self._obj_.antecedents.append( self.text.strip() );
     
   
   
@@ -105,7 +105,7 @@ class FraCaSPreprocessor( metaclass=subject ):
       if name != self.XMLELEM:
         return;
       
-      self._obj_.question = self._text.strip();
+      self._obj_.question = self.text.strip();
     
   
   
@@ -118,7 +118,7 @@ class FraCaSPreprocessor( metaclass=subject ):
       if name != self.XMLELEM:
         return;
       
-      self._obj_.hypothesis = self._text.strip();
+      self._obj_.hypothesis = self.text.strip();
     
   
   
@@ -131,7 +131,7 @@ class FraCaSPreprocessor( metaclass=subject ):
       if name != self.XMLELEM:
         return;
       
-      self._obj_.answer = self._text.strip();
+      self._obj_.answer = self.text.strip();
     
   
   
@@ -144,7 +144,7 @@ class FraCaSPreprocessor( metaclass=subject ):
       if name != self.XMLELEM:
         return;
       
-      self._obj_.why = self._text.strip();
+      self._obj_.why = self.text.strip();
     
   
   
@@ -157,7 +157,7 @@ class FraCaSPreprocessor( metaclass=subject ):
       if name != self.XMLELEM:
         return;
       
-      self._obj_.note = self._text.strip();
+      self._obj_.note = self.text.strip();
     
   
   
