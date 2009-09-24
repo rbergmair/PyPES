@@ -90,6 +90,10 @@ def compare_decisions(
       print( "H(G):    {0:1.4f}".format( score.ent_gold ) );
     if score.mutinf is not None:
       print( "I(S;G):  {0:1.4f}".format( score.mutinf ) );
+    
+    print();
+    print();
+    print();
 
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
