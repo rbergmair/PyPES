@@ -180,9 +180,6 @@ def log_warn( sourceid, msg ):
 def log_info( sourceid, msg ):
   _LogController().get_logger( sourceid ).log( LOG_INFO, msg );
 
-def log_error( sourceid, msg ):
-  _LogController().get_logger( sourceid ).log( LOG_ERROR, msg );
-
 def log_debug_coarse( sourceid, msg ):
   _LogController().get_logger( sourceid ).log( LOG_DEBUG_COARSE, msg );
 

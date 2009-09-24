@@ -39,10 +39,10 @@ class _TestCaseController( metaclass=singleton ):
 
     if testcase_inst.__class__ in self._globalstate_insts: 
       globalstate = self._globalstate_insts[ testcase_inst.__class__ ];
-      testcase_inst._globalstate = globalstate;
+      testcase_inst.globalstate = globalstate;
     else:
       globalstate = _TestCaseGlobalState();
-      testcase_inst._globalstate = globalstate;
+      testcase_inst.globalstate = globalstate;
       testcase_inst.globalSetUp();
       self._globalstate_insts[ testcase_inst.__class__ ] = globalstate;
 

@@ -27,7 +27,7 @@ class RecordManager( metaclass=subject ):
 
     self._ctx_str = None;
     
-    key = self._tbl.id_to_key( self._id );
+    key = self._tbl._id_to_key( self._id );
     if key in self._tbl.master:
       ( self._length, self._ctx_offs, self._fields ) = self._tbl.master[ key ];
     else:
@@ -46,7 +46,7 @@ class RecordManager( metaclass=subject ):
 
   def sync( self ):
     
-    key = self._tbl.id_to_key( self._id );
+    key = self._tbl._id_to_key( self._id );
     self._tbl.master[ key ] = ( self._length, self._ctx_offs, self._fields )
   
   
@@ -227,7 +227,7 @@ class TableManager( metaclass=subject ):
   
   
   @classmethod
-  def id_to_key( cls, id ):
+  def _id_to_key( cls, id ):
     
     return str( id );
 
@@ -242,19 +242,19 @@ class TableManager( metaclass=subject ):
     assert isinstance( id, int );
     
     key = None;
-    key = self.id_to_key( id );
+    key = self._id_to_key( id );
     return bool( key in self.master );
   
   
   def record_by_id( self, id ):
     
     assert isinstance( id, int );
-    key = self.id_to_key( id );
+    key = self._id_to_key( id );
     assert key in self.master;
     return RecordManager( ( self, id ) );
   
   
-  def create_record( self, id ):
+  def create_record( self, id=None ):
     
     if id is None:
       self._max_id += 1;

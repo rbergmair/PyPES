@@ -14,10 +14,10 @@ __all__ = [
 from pypes.infer.mcpiet.logic import LukasiewiczPropositionalLogic;
 from pypes.infer.mcpiet.logic import FirstOrderLogic;
 
-from pypes.infer.mcpiet.optimizer import Optimizer;
-from pypes.infer.mcpiet.optimizer import NullOptimizer;
-from pypes.infer.mcpiet.optimizer import TarskiOptimizer;
-from pypes.infer.mcpiet.optimizer import ExhaustiveOptimizer;
+from pypes.infer.mcpiet.optimization import Optimizer;
+from pypes.infer.mcpiet.optimization import NullOptimizer;
+from pypes.infer.mcpiet.optimization import TarskiOptimizer;
+from pypes.infer.mcpiet.optimization import ExhaustiveOptimizer;
 
 from pypes.infer.mcpiet.mcpiet import McPIETAgent;
 
