@@ -1,6 +1,6 @@
 # -*-  coding: ascii -*-  # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-__package__ = "pypes.infer._preprocess";
+__package__ = "pypes.infer._preprocessing";
 __all__ = [ "RTEResultsPreprocessor", "preprocess_rte_results" ];
 
 import tarfile;

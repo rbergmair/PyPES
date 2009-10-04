@@ -1,6 +1,6 @@
 # -*-  coding: ascii -*-  # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-__package__ = "pypes.infer._preprocess";
+__package__ = "pypes.infer._preprocessing";
 __all__ = [ "FraCaSPreprocessor", "preprocess_fracas" ];
 
 from pypes.utils.mc import subject;
