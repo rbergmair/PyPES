@@ -105,15 +105,25 @@ class SemanticInferenceAgent( InferenceAgent, metaclass=subject ):
   
   def process_sentence( self, sentid, rec, text ):
     
+    if rec.get( "status" ) != "succ":
+      return True;
+    
     assert rec.get_ctx_str() == text;
     pf = pft_decode( rec.fetch_first( self.SEMFIELD ) )( sig = ProtoSig() );
     self.pfs[ sentid ] = pf;
 
+    return False;
+
 
   def process_discourse( self, discid, rec, sents, inf=False ):
+
+    if rec.get( "status" ) != "succ":
+      return True;
     
     if not inf:
       self.discs[ discid ] = sents;
+    
+    return False;
 
 
   def preprocess( self ):
@@ -153,7 +163,7 @@ class SemanticInferenceAgent( InferenceAgent, metaclass=subject ):
     return self.pfs;
 
   
-  def infer( self, disc, antecedent, consequent ):
+  def infer( self, infid, disc, antecedent, consequent ):
     
     pass;
 

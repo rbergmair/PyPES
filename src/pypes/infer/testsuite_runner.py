@@ -9,6 +9,7 @@ from pypes.utils.mc import subject;
 from pypes.utils.xml_ import *;
 from pypes.utils.os_ import listsubdirs;
 
+from pypes.infer.infeng import InferenceAgent;
 from pypes.infer.biet import YesAgent, NoAgent;
 from pypes.infer.mcpiet.mcpiet import McPIETAgent;
 
@@ -126,7 +127,7 @@ class TestsuiteRunner( metaclass=subject ):
     self._agent = [];
     self._agent_ctx = [];
     
-    ( self._tsdir, self._itemsdir ) = self._obj_;
+    ( self._tsdir, self._itemsdir, self._stdout ) = self._obj_;
     
     self._sents_tbl_ctx = TableManager( ( self._itemsdir, "sentence" ) );
     self._sents_tbl = self._sents_tbl_ctx.__enter__();
@@ -136,12 +137,17 @@ class TestsuiteRunner( metaclass=subject ):
     
     self._ofile = {};
     
-  def add_agent( self, agent ):
+  def add_agent( self, agent, passive=False ):
     
-    inst_ctx = agent();
-    inst = inst_ctx.__enter__();
-    self._agent_ctx.append( inst_ctx );
+    inst = agent;
+    if not isinstance( agent, InferenceAgent ):
+      inst_ctx = agent();
+      inst = inst_ctx.__enter__();
+      self._agent_ctx.append( inst_ctx );
     self._agent.append( inst );
+    
+    if passive:
+      return;
     
     filename = self._tsdir + "/" + inst.__class__.__name__;
     if inst.paramid is not None:
@@ -167,8 +173,8 @@ class TestsuiteRunner( metaclass=subject ):
       f.write( "\n</annotations>\n" );
       f.close();
     
-    self._agent = None;
     self._agent_ctx = None;
+    self._agent = None;
 
     self._discs_tbl_ctx.__exit__( exc_type, exc_val, exc_tb );
     self._discs_tbl = None;
@@ -192,72 +198,76 @@ class TestsuiteRunner( metaclass=subject ):
   def _process_sentence( self, sentid, text ):
     
     with self._sents_tbl.record_by_id( sentid ) as rec:
-      if rec.get( "status" ) != "succ":
-        self._error = True;
-      else:
-        for agent in self._agent:
-          assert rec.get_ctx_str() == text;
-          agent.process_sentence( sentid, rec, text );
+
+      for agent in self._agent:
+        assert rec.get_ctx_str() == text;
+        if agent.process_sentence( sentid, rec, text ):
+          self._error = True;
   
   
   def _process_discourse( self, discid, sents, inf=False ):
 
     self._discs[ discid ] = sents;
     with self._discs_tbl.record_by_id( discid ) as rec:
-      if rec.get( "status" ) != "succ":
-        self._error = True;
-      else:
-        for agent in self._agent:
-          agent.process_discourse( discid, rec, sents, inf=inf );
+      for agent in self._agent:
+        if agent.process_discourse( discid, rec, sents, inf=inf ):
+          self._error = True;
   
   
   def _infer( self, infid, discid, antecedent, consequent ):
     
     sents = self._discs[ antecedent ] + self._discs[ consequent ];
     self._process_discourse( discid, sents, inf=True );
-    
+
     if self._error:
       return;
     
-    sys.stdout.write( "   {0:3s}    ".format(infid) );
+    if not self._stdout is None:
+      self._stdout.write( "   {0:3s}    ".format(infid) );
 
     for agent in self._agent:
 
-      f = self._ofile[ agent ];
+      if agent in self._ofile:  
+        f = self._ofile[ agent ];
+        
+        if not agent in self._processed:
+          self._processed.add( agent );
+          rslt = agent.preprocess();
+          f.write( "<!--\n" );
+          for key in sorted( rslt.keys() ):
+            pf = rslt[ key ];
+            key_ = str( key ) + ": ";
+            outp = pft_encode( pf );
+            outp = outp.replace( "\n", "\n" + len(key_) * " " );
+            outp = key_ + outp + "\n";
+            f.write( outp );
+          f.write( "-->\n" );
       
-      if not agent in self._processed:
-        self._processed.add( agent );
-        rslt = agent.preprocess();
-        f.write( "<!--\n" );
-        for key in sorted( rslt.keys() ):
-          pf = rslt[ key ];
-          key_ = str( key ) + ": ";
-          outp = pft_encode( pf );
-          outp = outp.replace( "\n", "\n" + len(key_) * " " );
-          outp = key_ + outp + "\n";
-          f.write( outp );
-        f.write( "-->\n" );
+      (r1, r2) = agent.infer( infid, discid, antecedent, consequent );
       
-      (r1, r2) = agent.infer( discid, antecedent, consequent );
+      if agent in self._ofile:  
 
-      decision = "unknown";
-      if r1 >= 1.0:
-        decision = "entailment";
-      if r2 >= 1.0:
-        decision = "contradiction";
-      if r1 >= 1.0 and r2 >= 1.0:
+        f = self._ofile[ agent ];
+        
         decision = "unknown";
-      
-      f.write(
-          ( """<annotation infid="{0:s}" decision="{1:s}">\n"""
-            """  <value attribute="r1">{2:0.5f}</value>\n"""
-            """  <value attribute="r2">{3:0.5f}</value>\n"""
-            """</annotation>\n\n""" ).format( infid, decision, r1, r2 )
-        );
-      
-      f.flush();
+        if r1 >= 1.0:
+          decision = "entailment";
+        if r2 >= 1.0:
+          decision = "contradiction";
+        if r1 >= 1.0 and r2 >= 1.0:
+          decision = "unknown";
+        
+        f.write(
+            ( """<annotation infid="{0:s}" decision="{1:s}">\n"""
+              """  <value attribute="r1">{2:0.5f}</value>\n"""
+              """  <value attribute="r2">{3:0.5f}</value>\n"""
+              """</annotation>\n\n""" ).format( infid, decision, r1, r2 )
+          );
+        
+        f.flush();
 
-    sys.stdout.write( "\n" );
+    if self._stdout is not None:
+      self._stdout.write( "\n" );
   
   
   def run( self ):
@@ -270,13 +280,13 @@ class TestsuiteRunner( metaclass=subject ):
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-def run_testsuite( tsdirnameprefix, tsitemsdbdirname ):
+def run_testsuite( tsdirnameprefix, tsitemsdbdirname, stdout=sys.stdout ):
 
   for subdir in listsubdirs( tsdirnameprefix ):
     
     print( subdir );
     
-    with TestsuiteRunner( (subdir,tsitemsdbdirname) ) as runner:
+    with TestsuiteRunner( (subdir,tsitemsdbdirname,stdout) ) as runner:
     
       runner.add_agent( YesAgent );
       runner.add_agent( NoAgent );

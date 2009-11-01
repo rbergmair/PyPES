@@ -12,7 +12,7 @@ from pypes.infer.infeng import InferenceAgent;
 
 class YesAgent( InferenceAgent, metaclass=subject ):
   
-  def infer( self, disc, antecedent, consequent ):
+  def infer( self, infid, disc, antecedent, consequent ):
     
     return ( 1.0, 0.0 );
 
@@ -22,7 +22,7 @@ class YesAgent( InferenceAgent, metaclass=subject ):
 
 class NoAgent( InferenceAgent, metaclass=subject ):
   
-  def infer( self, disc, antecedent, consequent ):
+  def infer( self, infid, disc, antecedent, consequent ):
     
     return ( 0.0, 1.0 );
 

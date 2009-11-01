@@ -32,6 +32,12 @@ class Reifier( metaclass=subject ):
         args_ = self._obj_._args_by_functor[ functor ];
       
       for (arg,var) in args.items():
+        if isinstance( var, Variable ):
+          if var not in self._obj_._var_refcount:
+            self._obj_._var_refcount[ var ] = 0;
+          else:
+            self._obj_._var_refcount[ var ] += 1;
+        
         if arg.aid in args_:
           assert args_[ arg.aid ] == var;
         args_[ arg.aid ] = var;
@@ -45,6 +51,13 @@ class Reifier( metaclass=subject ):
     def process_modification_( self, inst, subform, modality, args, scope ):
 
       self._process_functor_args( inst.modality, inst.args );
+    
+    def process_quantification_( self, inst, subform, quantifier, var, rstr, body ):
+      
+      if inst.var not in self._obj_._var_refcount:
+        self._obj_._var_refcount[ inst.var ] = 0;
+      else:
+        self._obj_._var_refcount[ inst.var ] += 1;
 
 
   class _Substituter( ProtoProcessor, metaclass=subject ):
@@ -56,10 +69,14 @@ class Reifier( metaclass=subject ):
     
     def _process_functor_args( self, functor, args ):
       
-      for arg in args:
+      for arg in set( args.keys() ):
         var = args[ arg ];
         if var in self._obj_._const_by_event:
           args[ arg ] = self._obj_._const_by_event[ var ];
+        elif isinstance( var, Variable ):
+          if self._obj_._var_refcount[ var ] < 2:
+            del args[ arg ];
+
   
     def process_predication_( self, inst, subform, predicate, args ):
       
@@ -91,6 +108,7 @@ class Reifier( metaclass=subject ):
     self._args_by_functor = {};
     self._functor_by_referent = {};
     self._const_by_event = {};
+    self._var_refcount = {}
     
   
   def process_pf( self, pf ):

@@ -34,10 +34,16 @@ class CopulaResolver( metaclass=subject ):
       if inst.predicate.referent.otype != Operator.OP_P_COPULA:
         return;
       
+      evar = None;
       var1 = None;
       var2 = None;
       
       for (arg,var) in inst.args.items():
+        
+        if ( arg.aid == "key" ) or ( arg.aid == "KEY" ) or ( arg.aid == "arg0" ) or ( arg.aid == "ARG0" ):
+          assert var.sort.sid == "e";
+          evar = var;
+          
         if ( arg.aid == "arg1" ) or ( arg.aid == "ARG1" ):
           assert var.sort.sid == "x";
           var1 = var;
@@ -45,7 +51,7 @@ class CopulaResolver( metaclass=subject ):
           assert var.sort.sid == "x";
           var2 = var;
 
-      self._obj_._vars_by_copula[ inst ] = (var1,var2);
+      self._obj_._vars_by_copula[ inst ] = (evar,var1,var2);
 
       
     def process_quantification_( self, inst, subform, quantifier, var, rstr, body ):
@@ -126,7 +132,7 @@ class CopulaResolver( metaclass=subject ):
     
     vars = set();
     
-    for ( cpsf, (var1,var2) ) in self._vars_by_copula.items():
+    for ( cpsf, (evar,var1,var2) ) in self._vars_by_copula.items():
       
       if var1 not in self._quant_by_var:
         continue;
@@ -191,6 +197,7 @@ class CopulaResolver( metaclass=subject ):
         
       rstrsubf = self._subform_by_root[ self._lo_by_hi[ qlo.rstr ] ];
       self._newvar_by_oldvar[ qlo.var ] = qhi.var;
+      self._newvar_by_oldvar[ evar ] = qhi.var;
       self._newsubform_by_oldsubform[ cpsf ] = rstrsubf;
       self._removable_subforms.add( qlo );
       self._removable_subforms.add( rstrsubf );

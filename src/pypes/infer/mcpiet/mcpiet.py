@@ -10,6 +10,8 @@ from pypes.utils.logging_ import print_dot;
 
 from pypes.proto import *;
 
+from pypes.codecs_.pft import *;
+
 from pypes.infer.seminfeng import SemanticInferenceAgent;
 from pypes.infer.mcpiet.schema import Schema;
 
@@ -113,20 +115,27 @@ class McPIETAgent( SemanticInferenceAgent, metaclass=subject ):
   
   def preprocess( self ):
     
-    rslt = super().preprocess();
+    self.pfs = SemanticInferenceAgent.preprocess( self );
+    
+    #debug = False;
     
     for ( sentid, pf ) in self.pfs.items():
+      #if sentid == 188:
+      #  debug = True;
       self._schema.accommodate_for_form( pf );
     
+    #if debug:
+    #  for ( sentid, pf ) in self.pfs.items():
+    #    print( sentid );
+    #    print( pft_encode( pf, pretty=True, fast_initialize=False ) );
+
     for ( sentid, pf ) in self.pfs.items():
       self._checker.preprocess( sentid, pf, self._schema );
-
-    self._preprocessed = True;
     
-    return rslt;
+    return self.pfs;
     
   
-  def infer( self, disc, antecedent, consequent ):
+  def infer( self, infid, disc, antecedent, consequent ):
     
     r1 = None;
     r2 = None;

@@ -21,19 +21,19 @@ class InferenceAgent( metaclass=subject ):
   
   def process_sentence( self, sentid, rec, text ):
     
-    pass;
+    return False;
 
   def process_discourse( self, discid, rec, sents, inf=False ):
     
-    pass;
+    return False;
 
   def preprocess( self ):
     
     return {};
   
-  def infer( self, disc, antecedent, consequent ):
+  def infer( self, infid, disc, antecedent, consequent ):
     
-    pass;
+    return (None,None);
 
 
 

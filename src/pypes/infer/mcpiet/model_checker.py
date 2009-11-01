@@ -71,13 +71,16 @@ class ModelChecker( metaclass=subject ):
           continue;
         
         var = inst.args[ arg ];
+        #if not isinstance( var, Variable ):
+        #  continue;
+                  
         arg_by_var[ var ] = arg;
         
         if var.sort.sid == "x":
           entity_var.add( var );
           entity_arg_by_var[ var ] = arg;
 
-      if p == Operator.OP_P_EQUALITY:
+      if p == Operator.OP_P_EQUALITY or p == Operator.OP_P_COPULA:
         # TODO: fix
         # assert not dropped_entity_args;
         return lambda model, binding: \
