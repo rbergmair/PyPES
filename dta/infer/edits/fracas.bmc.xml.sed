@@ -7,3 +7,7 @@ s/Did ITEL delivered reports late in 1993[?]/Did ITEL deliver reports late in 19
 
 /id="012"/,/fracas_answer=/ s/undef/unknown/
 /id="016"/,/fracas_answer=/ s/undef/unknown/
+/id="061"/,/fracas_answer=/ s/undef/unknown/
+/id="062"/,/fracas_answer=/ s/undef/unknown/
+/id="077"/,/fracas_answer=/ s/undef/yes/
+/id="078"/,/fracas_answer=/ s/undef/no/
