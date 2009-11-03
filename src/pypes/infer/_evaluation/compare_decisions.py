@@ -56,14 +56,19 @@ class DecisionComparer( metaclass=subject ):
         
       else:
         ( obj_decision, obj_conf, obj_vals ) = self._obj_._objdata[ infid ];
-        ch = None;
-        if ref_decision == obj_decision:
-          ch = " ";
-        elif self.lblset_[ ref_decision ] != self.lblset[ obj_decision ]:
-          ch = "+";
+        
+        if obj_conf == 0.0:
+          print( "{0} {1:3s} | {2:23s} | {3:23s}".format( "?", infid, ref_decision, obj_decision ) );
+          
         else:
-          ch = "-";
-        print( "{0} {1:3s} | {2:23s} | {3:23s}".format( ch, infid, ref_decision, obj_decision ) );
+          ch = None;
+          if ref_decision == obj_decision:
+            ch = " ";
+          elif self.lblset_[ ref_decision ] != self.lblset[ obj_decision ]:
+            ch = "+";
+          else:
+            ch = "-";
+          print( "{0} {1:3s} | {2:23s} | {3:23s}".format( ch, infid, ref_decision, obj_decision ) );
       
       if ref_decision == "entailment":
         self.tracefile.write( "BEGIN_INFERENCE_ENT(" + str(int(infid)) + ")\n" );

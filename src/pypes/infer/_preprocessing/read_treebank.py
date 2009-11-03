@@ -118,6 +118,9 @@ def read_treebank( infilename, outdbdirname ):
             bdsf = None;
             try:
               bdsf = erg_to_bdsf( pf );
+              #print( repr(id) );
+              #if id == 32:
+              #  print( pft_encode( bdsf, pretty=False, fast_initialize=True ) );
               assert sanity_check( bdsf );
               assert recursion_check( bdsf );
             except:
@@ -141,7 +144,7 @@ def read_treebank( infilename, outdbdirname ):
       f_.close();
 
 
-    gramerrs = set( range( 1, tbl.max_id+1 ) ) - succ;
+    gramerrs = set( range( 1, tbl.max_id+1 ) ) - succ - scoerrs - rewerrs;
     
     for id in gramerrs:
       with tbl.record_by_id( id ) as rec:

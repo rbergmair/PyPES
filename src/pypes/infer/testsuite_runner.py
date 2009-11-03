@@ -249,19 +249,27 @@ class TestsuiteRunner( metaclass=subject ):
 
         f = self._ofile[ agent ];
         
+        confidence = None;
         decision = "unknown";
-        if r1 >= 1.0:
-          decision = "entailment";
-        if r2 >= 1.0:
-          decision = "contradiction";
+        
+        confidence = 1.0 - min( r1, r2 );
+        
         if r1 >= 1.0 and r2 >= 1.0:
+          decision = "unknown";
+        elif r1 >= 1.0:
+          decision = "entailment";
+        elif r2 >= 1.0:
+          decision = "contradiction";
+        else:
           decision = "unknown";
         
         f.write(
-            ( """<annotation infid="{0:s}" decision="{1:s}">\n"""
-              """  <value attribute="r1">{2:0.5f}</value>\n"""
-              """  <value attribute="r2">{3:0.5f}</value>\n"""
-              """</annotation>\n\n""" ).format( infid, decision, r1, r2 )
+            ( """<annotation infid="{0:s}" decision="{1:s}" confidence="{2:0.5f}">\n"""
+              """  <value attribute="r1">{3:0.5f}</value>\n"""
+              """  <value attribute="r2">{4:0.5f}</value>\n"""
+              """</annotation>\n\n""" ).format(
+                  infid, decision, confidence, r1, r2
+                )
           );
         
         f.flush();

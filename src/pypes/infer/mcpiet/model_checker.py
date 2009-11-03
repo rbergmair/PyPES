@@ -38,6 +38,14 @@ class ModelChecker( metaclass=subject ):
 
 
     def process_predication_( self, inst, subform, predicate, args ):
+      
+      #has_var = False;
+      #for (arg,var) in inst.args.items():
+      #  if isinstance( var, Variable ):
+      #    has_var = True;
+      #if not has_var:
+      #  return lambda model, binding: \
+      #           self._obj_._logic.propositional_logic.tv_true();
 
       p = None;
       if isinstance( inst.predicate.referent, Operator ) and \
