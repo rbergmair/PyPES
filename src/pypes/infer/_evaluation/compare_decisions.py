@@ -53,12 +53,14 @@ class DecisionComparer( metaclass=subject ):
       
       if infid not in self._obj_._objdata:
         print( "{0} {1:3s} | {2:23s} | {3:23s}".format( " ", infid, ref_decision, "-" ) );
+        err = True;
         
       else:
         ( obj_decision, obj_conf, obj_vals ) = self._obj_._objdata[ infid ];
         
         if obj_conf == 0.0:
           print( "{0} {1:3s} | {2:23s} | {3:23s}".format( "?", infid, ref_decision, obj_decision ) );
+          err = True;
           
         else:
           ch = None;
@@ -66,18 +68,33 @@ class DecisionComparer( metaclass=subject ):
             ch = " ";
           elif self.lblset_[ ref_decision ] != self.lblset[ obj_decision ]:
             ch = "+";
+            err = True;
           else:
             ch = "-";
+            err = True;
           print( "{0} {1:3s} | {2:23s} | {3:23s}".format( ch, infid, ref_decision, obj_decision ) );
       
+      ref = None;
       if ref_decision == "entailment":
-        self.tracefile.write( "BEGIN_INFERENCE_ENT(" + str(int(infid)) + ")\n" );
+        ref = "ENT";
       elif ref_decision == "unknown":
-        self.tracefile.write( "BEGIN_INFERENCE_UNK(" + str(int(infid)) + ")\n" );
+        ref = "UNK";
       elif ref_decision == "contradiction":
-        self.tracefile.write( "BEGIN_INFERENCE_CON(" + str(int(infid)) + ")\n" );
+        ref = "CON";
       else:
         assert False;
+      
+      corr = None;
+      if err:
+        corr = "WRONG";
+      else:
+        corr = "RIGHT";
+        
+
+      self.tracefile.write(
+          "BEGIN_INFERENCE_" + ref + "_" + corr + "(" + \
+          str(int(infid)) + ")\n"
+        );
       
       self.tracefile.write( "BEGIN_ANTECEDENT\n" );
       for sent in self.discs[ antecedent ]:

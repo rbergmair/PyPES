@@ -34,6 +34,13 @@ class ModelChecker( metaclass=subject ):
 
     def process_modification_( self, inst, subform, modality, args, scope ):
       
+      if isinstance( inst.modality.referent, Operator ) and \
+         inst.modality.referent.otype == Operator.OP_M_NEG:
+        return lambda model, binding: \
+                        self._obj_._logic.propositional_logic.p_neg(
+                            scope( model, binding )
+                          );
+      
       return scope;
 
 
@@ -56,14 +63,6 @@ class ModelChecker( metaclass=subject ):
         return lambda model, binding: \
                  self._obj_._logic.propositional_logic.tv_true();
                  
-      if p == Operator.OP_P_AND:
-        return lambda model, binding: \
-                 self._obj_._logic.propositional_logic.tv_true();
-
-      if p == Operator.OP_P_OR:
-        return lambda model, binding: \
-                 self._obj_._logic.propositional_logic.tv_true();
-
       dropped_entity_args = [];
       
       arg_by_var = {};
@@ -88,6 +87,22 @@ class ModelChecker( metaclass=subject ):
           entity_var.add( var );
           entity_arg_by_var[ var ] = arg;
 
+      if p == Operator.OP_P_AND:
+        return lambda model, binding: \
+                 self._obj_._logic.fo_pred_and(
+                     model = model,
+                     indiv_by_arg = { arg: binding[ var ] \
+                                        for (var,arg) in entity_arg_by_var.items() }
+                   );
+
+      if p == Operator.OP_P_OR:
+        return lambda model, binding: \
+                 self._obj_._logic.fo_pred_or(
+                     model = model,
+                     indiv_by_arg = { arg: binding[ var ] \
+                                        for (var,arg) in entity_arg_by_var.items() }
+                   );
+
       if p == Operator.OP_P_EQUALITY or p == Operator.OP_P_COPULA:
         # TODO: fix
         # assert not dropped_entity_args;
@@ -95,8 +110,7 @@ class ModelChecker( metaclass=subject ):
                  self._obj_._logic.fo_pred_equals(
                      model = model,
                      indiv_by_arg = { arg: binding[ var ] \
-                                        for (var,arg) in entity_arg_by_var.items() },
-                     predication = inst
+                                        for (var,arg) in entity_arg_by_var.items() }
                    );
       
       if p is None:

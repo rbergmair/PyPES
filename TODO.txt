@@ -1,3 +1,7 @@
 instrument code for testing
   __del__ methods
   stdin/stdout rerouting, redo logger testing
+
+fix data model for variables
+  stuff would be a lot easier, if variables didn't have composite key.
+  make sort a normal attribute instead.

@@ -128,6 +128,9 @@ class SemanticInferenceAgent( InferenceAgent, metaclass=subject ):
 
   def preprocess( self ):
     
+    self._renamer.reset();
+    self._reifier.reset();
+    
     for ( sentid, pf ) in self.pfs.items():
       
       self._pp.process( pf );

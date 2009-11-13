@@ -93,6 +93,8 @@ class Reifier( metaclass=subject ):
     self._idx_collector = self._idx_collector_ctx.__enter__();
     self._substituter_ctx = self._Substituter( self );
     self._substituter = self._substituter_ctx.__enter__();
+    
+    self.reset();
   
   
   def _exit_( self, exc_type, exc_val, exc_tb ):
@@ -103,12 +105,12 @@ class Reifier( metaclass=subject ):
     self._idx_collector_ctx.__exit__( exc_type, exc_val, exc_tb );
   
   
-  def __init__( self ):
+  def reset( self ):
     
     self._args_by_functor = {};
     self._functor_by_referent = {};
     self._const_by_event = {};
-    self._var_refcount = {}
+    self._var_refcount = {};
     
   
   def process_pf( self, pf ):
@@ -134,11 +136,15 @@ class Reifier( metaclass=subject ):
       if arg2 in self._const_by_event:
         arg2 = self._const_by_event[ arg2 ];
       
-      if isinstance( arg1, Variable ) and isinstance( arg2, Variable ):
+      if isinstance( arg1, Variable ):
+        if not isinstance( arg2, Variable ):
+          return False;
         if arg1.sort is not arg2.sort:
           return False;
 
-      if isinstance( arg1, Constant ) and isinstance( arg2, Constant ):
+      if isinstance( arg1, Constant ):
+        if not isinstance( arg2, Constant ):
+          return False;
         if arg1 is not arg2:
           return False;
     

@@ -53,7 +53,8 @@ FRACAS_PROCESSED = \
 FRACAS_RESULTS = \
   $(patsubst %, %/NoAgent.tsa.xml, $(FRACAS)) \
   $(patsubst %, %/YesAgent.tsa.xml, $(FRACAS)) \
-  $(patsubst %, %/McPIETAgent.tsa.xml, $(FRACAS))
+  $(patsubst %, %/McPIETAgent.tsa.xml, $(FRACAS)) \
+  $(patsubst %, %/trace.txt, $(FRACAS))
 
 
 RTE_SUBSETS = \

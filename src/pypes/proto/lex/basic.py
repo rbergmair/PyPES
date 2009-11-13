@@ -117,8 +117,9 @@ class Operator( Referent, metaclass=kls ):
   OP_Cs = { OP_C_STRCON, OP_C_WEACON, OP_C_STRDIS, OP_C_WEADIS, OP_C_IMPL };
   
   OP_M_NULL = "NULL";
+  OP_M_NEG = "NOT";
   
-  OP_Ms = { OP_M_NULL };
+  OP_Ms = { OP_M_NULL, OP_M_NEG };
 
   OP_P_COPULA = "COPULA";
   OP_P_EQUALITY = "EQUALS";

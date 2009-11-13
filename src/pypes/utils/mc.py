@@ -213,6 +213,15 @@ class kls( type ):
     
       key = kwargs_outer.get( cls._key_ );
       
+      # TODO: HACK!
+      isnone = False;
+      if isinstance( key, tuple ):
+        for component in key:
+          if component is None:
+            isnone = True;
+      if isnone:
+        key = None;
+      
       if key is None:
         inst = cls.__new_orig( cls );
         inst._init_init_();

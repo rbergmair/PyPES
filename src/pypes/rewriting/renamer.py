@@ -96,11 +96,9 @@ class Renamer( metaclass=subject ):
     
     self._substituter_ctx = self._Substituter( self );
     self._substituter = self._substituter_ctx.__enter__();
-
-    self._hid_by_handle = {};
-    self._sortvid_by_variable = {};
-    self._sid_by_sort = {};
-    self._fid_by_funct = {};
+    
+    self.reset();
+    
     
   def _exit_( self, exc_type, exc_val, exc_tb ):
 
@@ -109,6 +107,14 @@ class Renamer( metaclass=subject ):
     
     self._collector = None;
     self._collector_ctx.__exit__( exc_type, exc_val, exc_tb );
+
+
+  def reset( self ):
+
+    self._hid_by_handle = {};
+    self._sortvid_by_variable = {};
+    self._sid_by_sort = {};
+    self._fid_by_funct = {};
 
 
   def process_pf( self, pf ):

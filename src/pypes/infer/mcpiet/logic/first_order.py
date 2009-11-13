@@ -31,10 +31,8 @@ class FirstOrderLogic( metaclass=subject ):
     return submatrix;
 
 
-  def fo_pred_equals( self, model, indiv_by_arg, predication ):
+  def fo_pred_equals( self, model, indiv_by_arg ):
 
-    # print( predication.predicate );
-    
     ref = None;
     
     for indiv in indiv_by_arg.values():
@@ -46,6 +44,49 @@ class FirstOrderLogic( metaclass=subject ):
     return self.propositional_logic.TV_TRUE;
 
 
+  def fo_pred_npcoord( self, model, indiv_by_arg, coordop ):
+    
+    args = set();
+    
+    arg0 = None;
+    lindex = None;
+    rindex = None;
+    
+    for ( arg, val ) in indiv_by_arg.items():
+      args.add( arg.aid );
+      if arg.aid == "ARG0":
+        arg0 = (arg,val);
+      elif arg.aid == "L_INDEX":
+        lindex = (arg,val);
+      elif arg.aid == "R_INDEX":
+        rindex = (arg,val);
+    
+    assert args == { "ARG0", "L_INDEX", "R_INDEX" };
+    
+    return coordop(
+               self.fo_pred_equals( model, dict( {arg0,lindex} ) ),
+               self.fo_pred_equals( model, dict( {arg0,rindex} ) )
+             );               
+
+
+  def fo_pred_and( self, model, indiv_by_arg ):
+    
+    return self.fo_pred_npcoord(
+               model,
+               indiv_by_arg,
+               self.propositional_logic.p_weacon
+             );
+
+
+  def fo_pred_or( self, model, indiv_by_arg ):
+    
+    return self.fo_pred_npcoord(
+               model,
+               indiv_by_arg,
+               self.propositional_logic.p_weadis
+             );
+    
+    
   def fo_quant( self, model, indiv_by_var, quantification, rstr, body, var_range, outer, inner ):
     
     # print( quantification.quantifier );

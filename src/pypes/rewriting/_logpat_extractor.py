@@ -78,7 +78,7 @@ class _LogpatExtractor( ProtoProcessor, metaclass=subject ):
                 );
           g.write( filename + ": " + txt );
           g.write( "\n\n" );
-          g.write( pft_encode(pf) );
+          g.write( pft_encode( pf, pretty=False ) );
           g.write( "\n\n\n\n" );
           g.close();
                     

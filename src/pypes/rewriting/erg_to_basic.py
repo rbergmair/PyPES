@@ -15,6 +15,10 @@ from pypes.proto.lex import basic, erg;
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 class ERGtoBasic( metaclass=subject ):
+
+  
+  IMPLICIT_CONJ_AND = "IMPLICIT_CONJ_AND";
+  IMPLICIT_CONJ_OR = "IMPLICIT_CONJ_OR";
   
   
   OP_Qs = {
@@ -79,7 +83,7 @@ class ERGtoBasic( metaclass=subject ):
 
       # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-      erg.Operator.IMPLICIT_CONJ: basic.Operator.OP_C_WEACON,
+      # erg.Operator.IMPLICIT_CONJ: basic.Operator.OP_C_WEACON,
 
     };
   
@@ -112,7 +116,7 @@ class ERGtoBasic( metaclass=subject ):
 
       # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-      erg.Operator.NEG: basic.Operator.OP_M_NULL,
+      erg.Operator.NEG: basic.Operator.OP_M_NEG,
       
     };
 
@@ -184,7 +188,9 @@ class ERGtoBasic( metaclass=subject ):
       
       erg.Operator.PRON: basic.Operator.OP_P_TAUTOLOGY,
 
-      erg.Operator.IMPLICIT_CONJ: basic.Operator.OP_P_AND,
+      IMPLICIT_CONJ_AND: basic.Operator.OP_P_AND,
+      IMPLICIT_CONJ_OR: basic.Operator.OP_P_OR,
+      # erg.Operator.IMPLICIT_CONJ: basic.Operator.OP_P_AND,
       
       erg.Operator.CARD: None,
       erg.Operator.ORD: None,
@@ -247,23 +253,64 @@ class ERGtoBasic( metaclass=subject ):
   
   
   
-  class _VarsCollector( ProtoProcessor, metaclass=subject ):
+  class _IndexCollector( ProtoProcessor, metaclass=subject ):
+
+    def process_quantification_( self, inst, subform, quantifier, var, rstr, body ):
+      
+      var = inst.var;
+      if isinstance( var, Variable ):
+        if not var in self._obj_._vars:
+          self._obj_._vars[ var ] = 0;
+        self._obj_._vars[ var ] += 1;
     
     def process_modification_( self, inst, subform, modality, args, scope ):
     
       for var in inst.args.values():
         if isinstance( var, Variable ):
-          if not var in self._obj_:
-            self._obj_[ var ] = 0;
-          self._obj_[ var ] += 1;
+          if not var in self._obj_._vars:
+            self._obj_._vars[ var ] = 0;
+          self._obj_._vars[ var ] += 1;
     
     def process_predication_( self, inst, subform, predicate, args ):
+      
+      thistuple = None;
+      
+      args = set();
+      
+      arg0 = None;
+      lindex = None;
+      rindex = None;
+      
+      for arg in inst.args:
+        args.add( arg.aid );
+        if arg.aid == "ARG0" or arg.aid == "arg0":
+          arg0 = inst.args[ arg ];
+        elif arg.aid == "L_INDEX" or arg.aid == "l_index":
+          lindex = inst.args[ arg ];
+        elif arg.aid == "R_INDEX" or arg.aid == "r_index":
+          rindex = inst.args[ arg ];
+      
+      if args == { "ARG0", "L_INDEX", "R_INDEX" }:
+        thistuple = ( arg0, lindex, rindex, inst.predicate );
+
+      if args == { "arg0", "l_index", "r_index" }:
+        thistuple = ( arg0, lindex, rindex, inst.predicate );
+        
+      if thistuple is not None:
+        if isinstance( inst.predicate.referent, erg.Operator ):
+          if inst.predicate.referent.otype == erg.Operator.IMPLICIT_CONJ:
+            self._obj_._implicits.insert( 0, thistuple );
+        elif isinstance( inst.predicate.referent, erg.Word ):
+          if inst.predicate.referent.word == erg.Word.AND_C:
+            self._obj_._ands.append( thistuple );
+          elif inst.predicate.referent.word == erg.Word.OR_C:
+            self._obj_._ors.append( thistuple );
     
       for var in inst.args.values():
         if isinstance( var, Variable ):
-          if not var in self._obj_:
-            self._obj_[ var ] = 0;
-          self._obj_[ var ] += 1;
+          if not var in self._obj_._vars:
+            self._obj_._vars[ var ] = 0;
+          self._obj_._vars[ var ] += 1;
 
 
 
@@ -273,12 +320,31 @@ class ERGtoBasic( metaclass=subject ):
     def process_quantification_( self, inst, subform, quantifier, var, rstr, body ):
     
       func = copy( inst.quantifier )( sig=ProtoSig() );
-    
-      functor = self._obj_._map_functor(
-                    func,
-                    self._obj_.OP_Qs,
-                    self._obj_.WRD_Qs
-                  );
+      
+      functor = None;
+      
+      if isinstance( func.referent, erg.Word ):
+        
+        if func.referent.word == erg.Word.THE_Q:
+          if "NUM" in func.feats:
+            if func.feats[ "NUM" ] == "SG":
+              func.referent = basic.Operator(
+                                  otype = basic.Operator.OP_Q_DESCR
+                                )( sig=ProtoSig() );
+              functor = func;
+            elif func.feats[ "NUM" ] == "PL":
+              func.referent = basic.Operator(
+                                  otype = basic.Operator.OP_Q_UNIV
+                                )( sig=ProtoSig() );
+              functor = func;
+
+      
+      if functor is None:  
+        functor = self._obj_._map_functor(
+                      func,
+                      self._obj_.OP_Qs,
+                      self._obj_.WRD_Qs
+                    );
       
       if functor is not None:
         functor.fid = None;
@@ -293,6 +359,13 @@ class ERGtoBasic( metaclass=subject ):
     def process_connection_( self, inst, subform, connective, lscope, rscope ):
     
       func = copy( inst.connective )( sig=ProtoSig() );
+      
+      if isinstance( func.referent, erg.Word ):
+        if func.referent.word == erg.Word.IF_X_THEN:
+          lscope = inst.lscope;
+          rscope = inst.rscope;
+          inst.lscope = rscope;
+          inst.rscope = lscope;
     
       functor = self._obj_._map_functor(
                     func,
@@ -318,24 +391,31 @@ class ERGtoBasic( metaclass=subject ):
                     self._obj_.WRD_Ms
                   );
       
-      inst.args = self._obj_._process_argslist( inst.args );
-  
       if functor is not None:
         functor.fid = None;
         inst.modality = functor;
-        return;
-  
-      functor = inst.modality;
+      else:
+        functor = inst.modality;
+        if isinstance( functor.referent, Operator ):
+          assert False;
+        functor.referent = self._obj_._map_to_default_referent( functor.referent );
       
-      if isinstance( functor.referent, Operator ):
-        assert False;
-        
-      functor.referent = self._obj_._map_to_default_referent( functor.referent );
+      inst.args = self._obj_._process_argslist(
+                      inst.args,
+                      upcase = isinstance( inst.modality.referent, Operator )
+                    );
   
   
     def process_predication_( self, inst, subform, predicate, args ):
   
       func = copy( inst.predicate )( sig=ProtoSig() );
+      
+      if isinstance( func.referent, erg.Operator ):
+        if func.referent.otype == erg.Operator.IMPLICIT_CONJ:
+          if inst.predicate in self._obj_._implicit_ands:
+            func.referent.otype = self._obj_.IMPLICIT_CONJ_AND;
+          elif inst.predicate in self._obj_._implicit_ors:
+            func.referent.otype = self._obj_.IMPLICIT_CONJ_OR;
       
       functor = self._obj_._map_functor(
                     func,
@@ -343,19 +423,20 @@ class ERGtoBasic( metaclass=subject ):
                     self._obj_.WRD_Ps
                   );
   
-      inst.args = self._obj_._process_argslist( inst.args );
-  
       if functor is not None:
         functor.fid = None;
         inst.predicate = functor;
-        return;
-  
-      functor = inst.predicate;
-      functor.referent = self._obj_._map_to_default_referent( functor.referent );
-    
+      else:
+        functor = inst.predicate;
+        functor.referent = self._obj_._map_to_default_referent( functor.referent );
+
+      inst.args = self._obj_._process_argslist(
+                      inst.args,
+                      upcase = isinstance( inst.predicate.referent, Operator )
+                    );
     
 
-  def _process_argslist( self, args ):
+  def _process_argslist( self, args, upcase ):
 
     for (arg,var) in set( args.items() ):
       
@@ -369,6 +450,10 @@ class ERGtoBasic( metaclass=subject ):
         if var.sort.sid != "x":
           if arg.aid in { "ARG0", "arg0" }:
             arg.aid = "KEY";
+        
+        if upcase:
+          if arg.aid is not None:
+            arg.aid = arg.aid.upper();
     
     return args;
 
@@ -451,9 +536,8 @@ class ERGtoBasic( metaclass=subject ):
 
   def _enter_( self ):
     
-    self._vars = {};
-    self._vars_collector_ctx = self._VarsCollector( self._vars );
-    self._vars_collector = self._vars_collector_ctx.__enter__();
+    self._index_collector_ctx = self._IndexCollector( self );
+    self._index_collector = self._index_collector_ctx.__enter__();
     self._substituter_ctx = self._Substituter( self );
     self._substituter = self._substituter_ctx.__enter__();
 
@@ -462,15 +546,54 @@ class ERGtoBasic( metaclass=subject ):
 
     self._substituter = None;
     self._substituter_ctx.__exit__( exc_type, exc_val, exc_tb );
-    self._vars_collector = None;
-    self._vars_collector_ctx.__exit__( exc_type, exc_val, exc_tb );
+    self._index_collector = None;
+    self._index_collector_ctx.__exit__( exc_type, exc_val, exc_tb );
   
 
   def rewrite( self, pf ):
     
-    self._vars.clear();
-    self._vars_collector.process( pf );
+    self._vars = {};
+    self._implicits = [];
+    self._ands = [];
+    self._ors = [];
+    self._implicit_ands = set();
+    self._implicit_ors = set();
+
+    self._index_collector.process( pf );
+    
+    if len( self._implicits ) > 0:
+      
+      #print( self._ands );
+      #print( self._ors );
+      #print( self._implicits );
+      
+      def resolve( origs, implicits ): 
+      
+        for ( arg0_, lindex_, rindex_, functor_ ) in origs:
+          
+          rews = { arg0_, lindex_, rindex_ };
+          repeat = True;
+          while repeat:
+            repeat = False;
+            
+            i = 0;
+            while len( self._implicits ) > i: 
+              ( arg0, lindex, rindex, functor ) = self._implicits[ i ];
+              if not { arg0, lindex, rindex } & rews:
+                i += 1;
+              else:
+                del self._implicits[ i ];
+                implicits.add( functor );
+                repeat = True;
+      
+      resolve( self._ands, self._implicit_ands );
+      resolve( self._ors, self._implicit_ors );
+      
+      # print( self._implicit_ands );
+      # print( self._implicit_ors );
+        
     self._substituter.process( pf );
+    
     return pf;
 
 
