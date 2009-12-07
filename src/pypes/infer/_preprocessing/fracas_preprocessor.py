@@ -58,8 +58,9 @@ class FraCaSPreprocessor( metaclass=subject ):
       sect = sect.replace( ".", "-" );
       
       self._obj_.tsfile = open(
-                              "{0}/fracas-{1}/data.ts.xml".format(
+                              "{0}/{1}-{2}/data.ts.xml".format(
                                     self._obj_.datadir,
+                                    self._obj_._obj_._obj_,
                                     sect
                                   ),
                               "wt",
@@ -70,9 +71,10 @@ class FraCaSPreprocessor( metaclass=subject ):
       self._obj_.tsfile.write( '<testsuite>\n\n\n' );
   
       self._obj_.afile = open(
-                             "{0}/fracas-{1}/gold.tsa.xml".format(
-                                 self._obj_.datadir,
-                                 sect
+                             "{0}/{1}-{2}/gold.tsa.xml".format(
+                                   self._obj_.datadir,
+                                    self._obj_._obj_._obj_,
+                                   sect
                                ),
                              "wt",
                              encoding="utf-8"
@@ -290,6 +292,9 @@ class FraCaSPreprocessor( metaclass=subject ):
       
       if not self.antecedents:
         return;
+
+      if not self.question:
+        self.question = self.hypothesis;
       
       if not self.question:
         return;
@@ -411,10 +416,18 @@ def preprocess_fracas():
   
   f = open( "dta/infer/edited/fracas.bmc.xml", "rb" );
   try:
-    with FraCaSPreprocessor() as proc:
+    with FraCaSPreprocessor( "fracas" ) as proc:
       proc.process( f, "dta/infer/fracas", "dta/items/fracas" );
   finally:
     f.close();
+
+  f = open( "dta/infer/edited/syllogism.bmc.xml", "rb" );
+  try:
+    with FraCaSPreprocessor( "syllogism" ) as proc:
+      proc.process( f, "dta/infer/syllogism", "dta/items/syllogism" );
+  finally:
+    f.close();
+    
   return 0;
 
 

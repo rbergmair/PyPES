@@ -86,6 +86,7 @@ class TestMRtoDSF( TestCase, metaclass=object_ ):
             except:
   
               print( fstr );
+              print( pfstr );
               raise;
     
           finally:
@@ -115,16 +116,20 @@ class TestMRtoDSF( TestCase, metaclass=object_ ):
     with open( self._TESTDTADIR+"/dsfs.txt", "wt", encoding="utf-8" ) as x:
 
       with PFTDecoder( (None,pypes.proto.lex.erg) ) as decoder:
-  
+
         for i in range( 1, 108 ):
           self.write_testfile( "{0}/mrs-{1}1.pft.gz".format( self._TESTDTADIR, i ), decoder, x );
-  
-        for i in range( 180, 641 ):
-          if i in { 185, 186, 473 }: # disconnected structures
+
+        for i in range( 1, 641 ):
+          if i in { 185, 186, 473 }: # scoping errors: disconnected structures
+            continue;
+          if i in { 32, 349, 598, 606 }: # previously, rewriting errors
+            continue;
+          if i in { 594 }: # interesting case
             continue;
           self.write_testfile( "{0}/fracas-{1}.pft.gz".format( self._TESTDTADIR, i ), decoder, x );
-      
 
+      
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 

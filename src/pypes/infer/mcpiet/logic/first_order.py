@@ -61,7 +61,9 @@ class FirstOrderLogic( metaclass=subject ):
       elif arg.aid == "R_INDEX":
         rindex = (arg,val);
     
-    assert args == { "ARG0", "L_INDEX", "R_INDEX" };
+    # TODO: hack!
+    if args != { "ARG0", "L_INDEX", "R_INDEX" }:
+      return self.propositional_logic.tv_true();
     
     return coordop(
                self.fo_pred_equals( model, dict( {arg0,lindex} ) ),

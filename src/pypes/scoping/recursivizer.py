@@ -127,7 +127,7 @@ class Recursivizer( metaclass=subject ):
 
     # print( binding );
     
-    return bind( self._binding, self._binding[cur_root] );
+    return bind( self._binding, None, self._binding[cur_root] );
       
 
 

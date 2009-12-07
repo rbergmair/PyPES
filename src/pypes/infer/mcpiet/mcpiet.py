@@ -29,7 +29,7 @@ from pypes.infer.mcpiet.model_checker import ModelChecker;
 
 class McPIETAgent( SemanticInferenceAgent, metaclass=subject ):
   
-  SEMFIELD = "basic";
+  SEMFIELD = "bdsf";
   
   
   def __init__( self, paramid=None,
@@ -38,7 +38,7 @@ class McPIETAgent( SemanticInferenceAgent, metaclass=subject ):
                 inner_optimizer=ExhaustiveOptimizer,
                 outer_optimizer=NullOptimizer,
                 builder=ModelBuilder, checker=ModelChecker,
-                log2_iterations=12 ):
+                log2_iterations=14 ):
     
     super().__init__( paramid );
     
@@ -146,9 +146,18 @@ class McPIETAgent( SemanticInferenceAgent, metaclass=subject ):
     #print( antdisc );
     #print( condisc );
     
-    for i in range( 0, 1 << self._log2_iterations ):
+    its = self._schema.get_log_size() << 12;
+    
+    print( str(its) + "\n          ", end="" );
+    
+    k = 0;
+    
+    for i in range( 0, its ):
       
-      # print_dot();
+      k += 1;
+      if k == 10:
+        print_dot();
+        k = 0;
   
       model = self._builder.build( self._schema );
       
@@ -183,8 +192,10 @@ class McPIETAgent( SemanticInferenceAgent, metaclass=subject ):
       else:
         r2 += self._propositional_logic.p_imp( ant, self._propositional_logic.p_neg( con ) );
     
-    r1 >>= self._log2_iterations;
-    r2 >>= self._log2_iterations;
+    # r1 >>= self._log2_iterations;
+    # r2 >>= self._log2_iterations;
+    r1 /= its;
+    r2 /= its;
     
     return ( self._propositional_logic.tv_to_float(r1),
              self._propositional_logic.tv_to_float(r2) );

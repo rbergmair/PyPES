@@ -19,6 +19,14 @@ class Schema( metaclass=object_ ):
     self.sorts = {};
     self.event_range = range( 0, 3 );
     self.entity_range = range( 0, 3 );
+  
+  
+  def get_log_size( self ):
+    
+    log_size = 0;
+    for pred in self.args:
+      log_size += len( self.args[ pred ] );
+    return log_size;
     
     
   class _PFReader( ProtoProcessor, metaclass=subject ):
