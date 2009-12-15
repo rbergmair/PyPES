@@ -27,10 +27,10 @@ SCRIPTS = \
   bin/run_unittests.py
 
 
-INFERDTA = $(subst dta/infer/orig/, , $(wildcard dta/infer/orig/*.xml dta/infer/orig/*.gz dta/infer/orig/*.txt))
-INFERDTA_ORIG = $(patsubst %, dta/infer/orig/%, $(INFERDTA))
-INFERDTA_SANITIZED = $(patsubst %, dta/infer/sanitized/%, $(INFERDTA))
-INFERDTA_EDITED = $(patsubst %, dta/infer/edited/%, $(INFERDTA))
+PREDTA = $(subst dta/infer/orig/, , $(wildcard dta/infer/orig/*.xml dta/infer/orig/*.gz dta/infer/orig/*.txt))
+PREDTA_ORIG = $(patsubst %, dta/infer/orig/%, $(PREDTA))
+PREDTA_SANITIZED = $(patsubst %, dta/infer/sanitized/%, $(PREDTA))
+PREDTA_EDITED = $(patsubst %, dta/infer/edited/%, $(PREDTA))
 
 
 FRACAS_SECTIONS = \
@@ -44,17 +44,22 @@ FRACAS_SECTIONS = \
   8-1 8-2 \
   9-1 9-2
 
-FRACAS = $(patsubst %, dta/infer/fracas/fracas-%, $(FRACAS_SECTIONS))
+FRACAS_DIRS = $(patsubst %, dta/infer/fracas/fracas-%, $(FRACAS_SECTIONS))
+
+FRACAS_ITEMS = dta/items/fracas/*
 
 FRACAS_PROCESSED = \
-  $(patsubst %, %/data.ts.xml, $(FRACAS)) \
-  $(patsubst %, %/gold.tsa.xml, $(FRACAS))
+  $(patsubst %, %/data.ts.xml, $(FRACAS_DIRS)) \
+  $(patsubst %, %/gold.tsa.xml, $(FRACAS_DIRS))
 
 FRACAS_RESULTS = \
-  $(patsubst %, %/NoAgent.tsa.xml, $(FRACAS)) \
-  $(patsubst %, %/YesAgent.tsa.xml, $(FRACAS)) \
-  $(patsubst %, %/McPIETAgent.tsa.xml, $(FRACAS)) \
-  $(patsubst %, %/trace.txt, $(FRACAS))
+  $(patsubst %, %/NoAgent.tsa.xml, $(FRACAS_DIRS)) \
+  $(patsubst %, %/YesAgent.tsa.xml, $(FRACAS_DIRS)) \
+  $(patsubst %, %/McPIETAgent.tsa.xml, $(FRACAS_DIRS)) \
+  $(patsubst %, %/trace.txt, $(FRACAS_DIRS))
+
+FRACAS_DATA = \
+  $(FRACAS_PROCESSED) $(FRACAS_RESULTS)
 
 
 RTE_SUBSETS = \
@@ -64,7 +69,13 @@ RTE_SUBSETS = \
   07-dev-ie 07-dev-ir 07-dev-qa 07-dev-sum 07-tst-ie 07-tst-ir 07-tst-qa 07-tst-sum \
   08-ie 08-ir 08-qa 08-sum
 
-RTE = $(patsubst %, dta/infer/rte/rte-%/*, $(RTE_SUBSETS))
+RTE_DIRS = $(patsubst %, dta/infer/rte/rte-%, $(RTE_SUBSETS))
+
+RTE_ITEMS = $(patsubst %, dta/items/rte-%/*, $(RTE_SUBSETS))
+
+RTE_DATA = \
+  $(patsubst %, %/*, $(RTE_DIRS))
+
 
 
 all:
@@ -94,7 +105,7 @@ bin/%.py: src/pypes/bin.py
 	$(CHMOD) +x $@
 
 
-data: $(INFERDTA_SANITIZED) $(INFERDTA_EDITED)
+predata: $(PREDTA_SANITIZED) $(PREDTA_EDITED)
 
 
 dta/infer/sanitized/rte-%.rte.xml: dta/infer/orig/rte-%.rte.xml bin/sanitize_rte.py
@@ -111,7 +122,7 @@ dta/infer/edited/%: dta/infer/sanitized/%
 	$(CP) dta/infer/sanitized/$* dta/infer/edited/$*
 
 
-clean: cleanpyc cleanscripts cleandata cleanresults
+clean: cleanpyc cleanscripts cleanpats cleanscores cleaninferdta cleanfracas cleanrte
 
 cleanpyc:
 	$(FIND) src -name "*.pyc" -exec $(RM) {} \;
@@ -119,17 +130,23 @@ cleanpyc:
 cleanscripts:
 	$(RM) $(SCRIPTS)
 
-cleandata:
+cleanpats:
 	$(RM) dta/pat/*
-	$(RM) $(INFERDTA_SANITIZED)
-	$(RM) $(INFERDTA_EDITED)
-	$(RM) dta/items/fracas/*
-	$(RM) $(FRACAS_PROCESSED)
-	$(RM) $(RTE)
+
+cleanscores:
 	$(RM) dta/infer/scores/*
 
-cleanresults:
-	$(RM) $(FRACAS_RESULTS)
+cleanpredata:
+	$(RM) $(PREDTA_SANITIZED)
+	$(RM) $(PREDTA_EDITED)
+
+cleanfracas:
+	$(RM) $(FRACAS_DATA)
+	$(RM) $(FRACAS_ITEMS)
+
+cleanrte:
+	$(RM) $(RTE_DATA)
+	$(RM) $(RTE_ITEMS)
 
   
 loc:
@@ -138,4 +155,4 @@ loc:
 	$(FIND) src/pypes -name "*.py" | $(GREP) -v "_auto.py" | $(BASH) -c 'while read VAL; do $(CAT) $$VAL; done;' | $(GREP) -v "^#" | $(GREP) -v "^[:space:]*$$" --count
 
 
-.PHONY: all data clean cleanpyc cleanscripts cleandata cleanresults loc
+.PHONY: all inferdta cleanpyc cleanscripts cleanpats cleanscores cleaninferdta cleanfracas cleanrte loc

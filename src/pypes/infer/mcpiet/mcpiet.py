@@ -29,7 +29,7 @@ from pypes.infer.mcpiet.model_checker import ModelChecker;
 
 class McPIETAgent( SemanticInferenceAgent, metaclass=subject ):
   
-  SEMFIELD = "bdsf";
+  SEMFIELD = "basic";
   
   
   def __init__( self, paramid=None,
@@ -146,7 +146,8 @@ class McPIETAgent( SemanticInferenceAgent, metaclass=subject ):
     #print( antdisc );
     #print( condisc );
     
-    its = self._schema.get_log_size() << 12;
+    # its = self._schema.get_log_size() << 12;
+    its = self._schema.get_log_size() << 10;
     
     print( str(its) + "\n          ", end="" );
     

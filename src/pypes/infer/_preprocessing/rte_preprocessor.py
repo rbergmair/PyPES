@@ -8,6 +8,62 @@ from pypes.utils.mc import subject;
 from pypes.utils.itembank import *;
 from pypes.utils.xml_ import *;
 
+from nltk.tokenize.punkt import PunktTrainer, PunktSentenceTokenizer;
+from nltk.tokenize.punkt_abbr_hack import punkt_abbr_hack;
+
+from itertools import chain;
+from pprint import pprint;
+
+
+
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+
+class RTEPunktTrainer( metaclass=subject ):
+
+  class _Handler( XMLPCharElementHandler, metaclass=subject ):
+    
+    def endElement( self, name ):
+  
+      super().endElement( name );
+      if name != self.XMLELEM:
+        return;
+      self._obj_._trainon( self.text );
+
+  class _THandler( _Handler, metaclass=subject ):
+
+    XMLELEM = "t";
+
+  class _HHandler( XMLPCharElementHandler, metaclass=subject ):
+    
+    XMLELEM = "h";
+
+  class _XMLProcessor( XMLProcessor, metaclass=subject ):
+  
+    IGNORE = { "entailment-corpus", "pair", "headline" };
+
+  _XMLProcessor.HANDLER_BYNAME = {
+      _THandler.XMLELEM: ( _THandler, lambda: None ),
+      _HHandler.XMLELEM: ( _HHandler, lambda: None )
+    };
+
+  def _enter_( self ):
+    
+    self._xmlprocessor_ctx = self._XMLProcessor( self );
+    self._xmlprocessor = self._xmlprocessor_ctx.__enter__();
+  
+  def _exit_( self, exc_type, exc_val, exc_tb ):
+    
+    self._xmlprocessor = None;
+    self._xmlprocessor_ctx.__exit__( exc_type, exc_val, exc_tb );
+  
+  def _trainon( self, text ):
+    
+    self._obj_.train( text );
+
+  def preprocess( self, f ):
+    
+    self._xmlprocessor.process( f );
+
 
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
@@ -108,6 +164,8 @@ class RTEPreprocessor( metaclass=subject ):
       
       self._afiles = {};
       self._tsfiles = {};
+      self._itembanks = {};
+      self._splitter = self._obj_._obj_._obj_;
       # self._qfile = open( "/tmp/gold-" + self._obj_.dataset + ".txt", "wt" );
   
       
@@ -122,6 +180,11 @@ class RTEPreprocessor( metaclass=subject ):
         afile.write( "</annotations>\n" );
         afile.close();
       self._afiles = None;
+      
+      for ( sents_ctx_mgr, sents, discs_ctx_mgr, discs ) in self._itembanks.values():
+        discs_ctx_mgr.__exit__( exc_type, exc_val, exc_tb );
+        sents_ctx_mgr.__exit__( exc_type, exc_val, exc_tb );
+      self._itembanks = None;
   
       # self._qfile.close();
     
@@ -252,15 +315,59 @@ class RTEPreprocessor( metaclass=subject ):
         tsfile.write( '<?xml version="1.0" encoding="UTF-8"?>\n\n' );
         tsfile.write( '<testsuite>\n\n' );
         self._tsfiles[ obj.task ] = tsfile;
+
+      if not obj.task in self._itembanks:
+        
+        itemdir = "dta/items/rte-{0}-{1}".format(
+                                              self._obj_.dataset,
+                                              obj.task
+                                            );
+        
+        sents_ctx_mgr = TableManager( ( itemdir, "sentence" ) );
+        sents = sents_ctx_mgr.__enter__();
+        discs_ctx_mgr = TableManager( ( itemdir, "discourse" ) );
+        discs = discs_ctx_mgr.__enter__();
+        
+        self._itembanks[ obj.task ] = ( sents_ctx_mgr, sents, discs_ctx_mgr, discs );
+      
+      ( sents_ctx_mgr, sents, discs_ctx_mgr, discs ) = self._itembanks[ obj.task ]; 
       
       afile = self._afiles[ obj.task ];
       tsfile = self._tsfiles[ obj.task ]; 
       
-      afile.write( '  <annotation infid="{0}" decision="{1}"/>\n'.format( obj.id, obj.ent ) );
+      afile.write( '  <annotation infid="{0}" decision="{1}"/>\n'.format(
+                       obj.id, obj.ent
+                     ) );
   
-      #tsfile.write( '  <group>\n' );
-      #tsfile.write( '    <discourse discid="{0}t">\n' );
-      tsfile.write( ' data goes here\n' );
+      tsfile.write( '<group>\n\n' );
+
+      inftxt = obj.t + " " + obj.h;
+      discids = [ None, None ];
+
+      for ( txt, c ) in [ ( obj.t, 0 ), ( obj.h, 1 ) ]:
+        
+        discid = discs.add_ctx_str( txt );
+        discids[ c ] = discid; 
+        tsfile.write( '<discourse discid="{0:d}">\n'.format(discid) );
+        for sent in self._splitter.sentences_from_text( txt, realign_boundaries=True ):
+          sentid = sents.add_ctx_str( sent );
+          tsfile.write( '  <sentence sentid="{0:d}">'.format(sentid) );
+          tsfile.write( sent );
+          tsfile.write( '</sentence>\n' );
+        tsfile.write( '</discourse>\n\n' );
+      
+      infdiscid = discs.add_ctx_str( inftxt );
+      
+      tsfile.write(
+          '<inference discid="{0}" infid="{1}">\n'.format(
+                                                       infdiscid, obj.id
+                                                     )
+        );
+      tsfile.write( '  <antecedent discid="{0}"/>\n'.format( discids[0] ) );
+      tsfile.write( '  <consequent discid="{0}"/>\n'.format( discids[1] ) );
+      tsfile.write( '</inference>\n\n' );
+
+      tsfile.write( '</group>\n\n\n' );
       
       # self._qfile.write( obj.id + " " + obj.ent + "\n" );
   
@@ -301,32 +408,44 @@ class RTEPreprocessor( metaclass=subject ):
 
 def preprocess_rte():
   
-  f = open( "dta/infer/edited/rte-08.rte.xml", "rb" );
-  try:
-    with RTEPreprocessor() as proc:
-      proc.preprocess( f, dataset="08" );
-  finally:
-    f.close();
-
-  f = open( "dta/infer/edited/rte-07-dev-3w.rte.xml", "rb" );
-  try:
-    with RTEPreprocessor() as proc:
-      proc.preprocess( f, dataset="07-dev" );
-  finally:
-    f.close();
-
-  f = open( "dta/infer/edited/rte-07-tst-2w.rte.xml", "rb" );
-  try:
-    with RTEPreprocessor() as proc:
-      proc.preprocess( f, dataset="07-tst" );
-  finally:
-    f.close();
+  def rte_file( name ):
+    return "dta/infer/edited/rte-{0}.rte.xml".format( name );
   
-  for dataset in [ "05-dev", "05-tst", "06-dev", "06-tst" ]:
-    f = open( "dta/infer/edited/rte-{0}.rte.xml".format( dataset ), "rb" );
+  training_files = [
+      ( "07-dev-3w", "07-dev" ),
+      ( "06-dev", "06-dev" ),
+      ( "05-dev", "05-dev" )
+    ];
+
+  test_files = [
+      ( "08", "08" ),
+      ( "07-tst-2w", "07-tst" ),
+      ( "06-tst", "06-tst" ),
+      ( "05-tst", "05-tst" )
+    ];
+    
+  trainer = PunktTrainer();
+
+  for ( filename, datasetname ) in training_files:
+
+    f = open( rte_file(filename), "rb" );
     try:
-      with RTEPreprocessor() as proc:
-        proc.preprocess( f, dataset=dataset );
+      with RTEPunktTrainer( trainer ) as proc:
+        proc.preprocess( f );
+    finally:
+      f.close();
+
+  params = trainer.get_params();
+  params = punkt_abbr_hack( params );
+  
+  splitter = PunktSentenceTokenizer( params );
+  
+  for ( filename, datasetname ) in chain( training_files, test_files ):
+  
+    f = open( rte_file(filename), "rb" );
+    try:
+      with RTEPreprocessor( splitter ) as proc:
+        proc.preprocess( f, dataset=datasetname );
     finally:
       f.close();
     
