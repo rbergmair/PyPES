@@ -3,6 +3,8 @@
 __package__ = "pypes.infer._preprocessing";
 __all__ = [ "FraCaSPreprocessor", "preprocess_fracas" ];
 
+from xml.sax.saxutils import escape;
+
 from pypes.utils.mc import subject;
 from pypes.utils.itembank import *;
 from pypes.utils.xml_ import *;
@@ -216,7 +218,7 @@ class FraCaSPreprocessor( metaclass=subject ):
         self._obj_.tsfile.write(
             """  <sentence sentid="{0:d}">""".format( sentid )
           );
-        self._obj_.tsfile.write( sent );
+        self._obj_.tsfile.write( escape(sent) );
         self._obj_.tsfile.write( "</sentence>\n" );
         
       self._obj_.tsfile.write( "</discourse>\n\n" );

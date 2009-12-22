@@ -14,7 +14,7 @@ class YesAgent( InferenceAgent, metaclass=subject ):
   
   def infer( self, infid, disc, antecedent, consequent ):
     
-    return ( 1.0, 0.0 );
+    return self.interpret_r1_r2( 1.0, 0.0 );
 
 
 
@@ -24,7 +24,7 @@ class NoAgent( InferenceAgent, metaclass=subject ):
   
   def infer( self, infid, disc, antecedent, consequent ):
     
-    return ( 0.0, 1.0 );
+    return self.interpret_r1_r2( 0.0, 1.0 );
 
 
 

@@ -9,8 +9,11 @@ from pypes.utils.mc import subject;
 from pypes.utils.xml_ import *;
 from pypes.utils.os_ import listsubdirs;
 
+from pypes.proto import ProtoForm;
+
 from pypes.infer.infeng import InferenceAgent;
 from pypes.infer.biet import YesAgent, NoAgent;
+from pypes.infer.bow import BOWAgent;
 from pypes.infer.mcpiet.mcpiet import McPIETAgent;
 
 from pypes.utils.itembank import *;
@@ -237,41 +240,38 @@ class TestsuiteRunner( metaclass=subject ):
           for key in sorted( rslt.keys() ):
             pf = rslt[ key ];
             key_ = str( key ) + ": ";
-            outp = pft_encode( pf );
+            if isinstance( pf, ProtoForm ):
+              outp = pft_encode( pf );
+            else:
+              outp = repr( pf );
             outp = outp.replace( "\n", "\n" + len(key_) * " " );
             outp = key_ + outp + "\n";
             f.write( outp );
           f.write( "-->\n" );
       
-      (r1, r2) = agent.infer( infid, discid, antecedent, consequent );
+      ( decision, confidence, attrs ) = agent.infer(
+                                            infid,
+                                            discid,
+                                            antecedent,
+                                            consequent
+                                          );
       
       if agent in self._ofile:  
 
         f = self._ofile[ agent ];
         
-        confidence = None;
-        decision = "unknown";
-        
-        confidence = 1.0 - min( r1, r2 );
-        
-        if r1 >= 1.0 and r2 >= 1.0:
-          decision = "unknown";
-        elif r1 >= 1.0:
-          decision = "entailment";
-        elif r2 >= 1.0:
-          decision = "contradiction";
-        else:
-          decision = "unknown";
-        
         f.write(
-            ( """<annotation infid="{0:s}" decision="{1:s}" confidence="{2:0.5f}">\n"""
-              """  <value attribute="r1">{3:0.5f}</value>\n"""
-              """  <value attribute="r2">{4:0.5f}</value>\n"""
-              """</annotation>\n\n""" ).format(
-                  infid, decision, confidence, r1, r2
-                )
+            """<annotation infid="{0:s}" decision="{1:s}" confidence="{2:1.5f}">\n""".format(
+                infid, decision, confidence
+              )
           );
         
+        for ( attr, val ) in attrs.items():
+          f.write(  """  <value attribute="{0:s}">{1:s}</value>\n""".format(
+                        attr, val
+                      ) );
+
+        f.write( """</annotation>\n\n""" );
         f.flush();
 
     if self._stdout is not None:
@@ -298,7 +298,8 @@ def run_testsuite( tsdirnameprefix, tsitemsdbdirname, stdout=sys.stdout ):
     
       runner.add_agent( YesAgent );
       runner.add_agent( NoAgent );
-      runner.add_agent( McPIETAgent );
+      # runner.add_agent( McPIETAgent );
+      runner.add_agent( BOWAgent );
       runner.run();
 
 

@@ -122,7 +122,7 @@ dta/infer/edited/%: dta/infer/sanitized/%
 	$(CP) dta/infer/sanitized/$* dta/infer/edited/$*
 
 
-clean: cleanpyc cleanscripts cleanpats cleanscores cleaninferdta cleanfracas cleanrte
+clean: cleanpyc cleanscripts cleanpats cleanscores cleanpredata cleanfracas cleanrte
 
 cleanpyc:
 	$(FIND) src -name "*.pyc" -exec $(RM) {} \;

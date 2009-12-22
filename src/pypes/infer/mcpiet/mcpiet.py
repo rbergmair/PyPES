@@ -198,8 +198,8 @@ class McPIETAgent( SemanticInferenceAgent, metaclass=subject ):
     r1 /= its;
     r2 /= its;
     
-    return ( self._propositional_logic.tv_to_float(r1),
-             self._propositional_logic.tv_to_float(r2) );
+    return self.interpret_r1_r2( self._propositional_logic.tv_to_float(r1),
+                                 self._propositional_logic.tv_to_float(r2) );
 
 
 

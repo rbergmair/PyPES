@@ -3,6 +3,11 @@
 __package__ = "pypes.infer._preprocessing";
 __all__ = [ "RTEPreprocessor", "preprocess_rte" ];
 
+from itertools import chain;
+from pprint import pprint;
+
+from xml.sax.saxutils import escape;
+
 from pypes.utils.mc import subject;
 
 from pypes.utils.itembank import *;
@@ -11,8 +16,6 @@ from pypes.utils.xml_ import *;
 from nltk.tokenize.punkt import PunktTrainer, PunktSentenceTokenizer;
 from nltk.tokenize.punkt_abbr_hack import punkt_abbr_hack;
 
-from itertools import chain;
-from pprint import pprint;
 
 
 
@@ -352,7 +355,7 @@ class RTEPreprocessor( metaclass=subject ):
         for sent in self._splitter.sentences_from_text( txt, realign_boundaries=True ):
           sentid = sents.add_ctx_str( sent );
           tsfile.write( '  <sentence sentid="{0:d}">'.format(sentid) );
-          tsfile.write( sent );
+          tsfile.write( escape(sent) );
           tsfile.write( '</sentence>\n' );
         tsfile.write( '</discourse>\n\n' );
       
