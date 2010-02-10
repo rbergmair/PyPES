@@ -33,7 +33,7 @@ class Score( metaclass=object_ ):
       "three-way": LBLSET_3W
     };
 
-  CSV_HEADER = "descr,total,covered,cov,acc,acc2,ap2,ap2',cws,cws2,h(g),i(s|g),h(g2),i(s2|g2)";
+  CSV_HEADER = "descr,total,covered,cov,acc,acc2,s,pi,kappa,kappa',ap2,ap2',cws,cws2,h(g),i(s|g),h(g2),i(s2|g2)";
 
 
   def __init__( self, reffile=None, objfile=None ):
@@ -197,6 +197,94 @@ class Score( metaclass=object_ ):
              );
 
 
+  def _randagree_s( self ):
+    
+    if self.lblset != self.lblset_:
+      return None;
+    
+    return 1 / len( self.lblset );
+
+
+  def _marginals( self ):
+    
+    marginal_ref = {};
+    marginal_obj = {};
+    
+    for ( ref, objs )  in self._contingency_table.items():
+      
+      assert objs.keys() == self._contingency_table.keys();
+      
+      for ( obj, cnt ) in objs.items():
+        
+        if not ref in marginal_ref:
+          marginal_ref[ ref ] = 0;
+        marginal_ref[ ref ] += cnt;
+        
+        if not obj in marginal_obj:
+          marginal_obj[ obj ] = 0;
+        marginal_obj[ obj ] += cnt;
+    
+    return ( marginal_ref, marginal_obj );
+
+
+  def _randagree_pi( self ):
+    
+    if self.lblset != self.lblset_:
+      return None;
+    ( marginal_ref, marginal_obj ) = self._marginals();
+    randagree = 0.0;
+    for lbl in self._contingency_table:
+      randagree += ( ( marginal_ref[ lbl ] + marginal_obj[ lbl ] ) / (2*self._total) ) ** 2;
+    return randagree;
+
+
+  def _randagree_kappa( self ):
+    
+    if self.lblset != self.lblset_:
+      return None;
+    ( marginal_ref, marginal_obj ) = self._marginals();
+    randagree = 0.0;
+    for lbl in self._contingency_table:
+      randagree += ( marginal_ref[lbl] / self._total ) * ( marginal_obj[lbl] / self._total );
+    return randagree;
+
+  def _randagree_kappa_prime( self ):
+    
+    if self.lblset != self.lblset_:
+      return None;
+    ( marginal_ref, marginal_obj ) = self._marginals();
+    randagree = 0.0;
+    for lbl in self._contingency_table:
+      randagree += ( marginal_ref[lbl] / self._total ) ** 2;
+    return randagree;
+  
+  
+  def _kappa( self, randagree ):
+    
+    if randagree is None:
+      return None;
+    if self.accuracy is None:
+      return None;
+    return ( self.accuracy - randagree ) / ( 1.0 - randagree );
+
+    
+  @property
+  def kappa_s( self ):
+    return self._kappa( self._randagree_s() );
+
+  @property
+  def kappa_pi( self ):
+    return self._kappa( self._randagree_pi() );
+
+  @property
+  def kappa_kappa( self ):
+    return self._kappa( self._randagree_kappa() );
+
+  @property
+  def kappa_kappa_prime( self ):
+    return self._kappa( self._randagree_kappa_prime() );
+  
+    
   @property
   def objdata_confranked( self ):
     
@@ -432,8 +520,8 @@ class Score( metaclass=object_ ):
   def _collapse( self, contingency_table ):
     
     contingency_table_ = {
-        0 : { 0 : 0, 1: 0 },
-        1 : { 0 : 0, 1: 0 }
+        0 : { 0: 0, 1: 0 },
+        1 : { 0: 0, 1: 0 }
       };
       
     for ref_dec in contingency_table:
@@ -490,6 +578,22 @@ class Score( metaclass=object_ ):
     rslt += ",";
     if self.accuracy_2w is not None:
       rslt += str( self.accuracy_2w );
+
+    rslt += ",";
+    if self.kappa_s is not None:
+      rslt += str( self.kappa_s );
+
+    rslt += ",";
+    if self.kappa_pi is not None:
+      rslt += str( self.kappa_pi );
+
+    rslt += ",";
+    if self.kappa_kappa is not None:
+      rslt += str( self.kappa_kappa );
+
+    rslt += ",";
+    if self.kappa_kappa_prime is not None:
+      rslt += str( self.kappa_kappa_prime );
     
     rslt += ",";
     if self.average_precision_2w is not None:
