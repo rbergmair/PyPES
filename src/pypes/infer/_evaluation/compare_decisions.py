@@ -10,7 +10,7 @@ from pypes.utils.mc import subject;
 from pypes.utils.os_ import listsubdirs;
 
 from pypes.infer._evaluation.annotation_reader import read_annotation;
-from pypes.infer._evaluation.score_decisions import Score;
+from pypes.infer._evaluation.score import Score;
 
 from pypes.infer.infeng import InferenceAgent;
 from pypes.infer.testsuite_runner import TestsuiteRunner;
