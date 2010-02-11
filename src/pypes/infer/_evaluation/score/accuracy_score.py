@@ -14,7 +14,7 @@ class AccuracyScore( metaclass=object_ ):
   CSV_HEADER = "acc,acc2";
 
 
-  def _accuracy( self, comp ):
+  def _accuracy_comp( self, comp ):
 
     if self.covered == 0:
       return None;
@@ -32,23 +32,44 @@ class AccuracyScore( metaclass=object_ ):
     return correct/total;
 
 
+  def _reinit_cache( self ):
+    
+    self._accuracy = None;
+    self._accuracy_2w = None;
+  
+  
+  def _run_accuracy( self ):
+    
+    self._accuracy = self._accuracy_comp( lambda ref, obj: ref == obj );
+
+
   @property
   def accuracy( self ):
     
-    if self.lblset != self.lblset_:
+    if self.ref_lblset != self.obj_lblset:
       return None;
     
-    return self._accuracy( lambda ref, obj: ref == obj );
+    if self._accuracy is None:
+      self._run_accuracy();
+    
+    return self._accuracy;
+
+
+  def _run_accuracy_2w( self ):
+    
+    self._accuracy_2w = self._accuracy_comp(
+         lambda ref, obj:
+           self.ref_lblset[ ref ] == self.obj_lblset[ obj ]
+       );
 
 
   @property
   def accuracy_2w( self ):
     
-    return self._accuracy(
-               lambda ref, obj:
-                 self.LBLSETs[ self._lblset_ ][ ref ] == \
-                 self.LBLSETs[ self._lblset ][ obj ]
-             );
+    if self._accuracy_2w is None:
+      self._run_accuracy_2w();
+    
+    return self._accuracy_2w;
 
 
   def csv_data( self ):

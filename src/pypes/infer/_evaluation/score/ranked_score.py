@@ -11,49 +11,66 @@ from pypes.utils.mc import object_;
 
 class RankedScore( metaclass=object_ ):
 
-  CSV_HEADER = "ap2,ap2',cws,cws2";
+  CSV_HEADER = "ap2,ap2rr,cws,cws2";
+
+
+  def _reinit_cache( self ):
+    
+    self._obj_ranking = None;
+    self._obj_is_ranked = None;
+
+
+  def _run_objranking( self ):
+    
+    self._obj_ranking = [];
+    self._obj_is_ranked = None;
+    
+    for ( id_, (dec,conf,val) ) in self._obj_data.items():
+      
+      if self._obj_is_ranked is None:
+        
+        if conf is None:
+          self._obj_is_ranked = False;
+        else:
+          self._obj_is_ranked = True;
+          
+      if self._obj_is_ranked == True:
+        assert conf is not None;
+        
+      if self._obj_is_ranked == False:
+        assert conf is None;
+      
+      self._obj_ranking.append( (conf,id_,dec,val) );
+    
+    if self._obj_is_ranked == False:
+      self._obj_ranking = [];
+      return;
+    
+    if self._obj_is_ranked == True:
+      self._obj_ranking.sort( reverse=True );
+      return;
+  
+  
+  @property
+  def obj_ranking( self ):
+    
+    if self._obj_ranking is None:
+      self._run_objranking();
+    return self._obj_ranking; 
 
 
   @property
-  def objdata_confranked( self ):
+  def obj_is_ranked( self ):
     
-    if len( self._objdata_confranked ) == len( self._objdata ):
-      if self._confranked == True:
-        return self._objdata_confranked;
-      elif self._confranked == False:
-        return None;
-      else:
-        assert False;
-    
-    self._objdata_confranked = [];
-    self._confranked = None;
-    
-    for ( id_, (dec,conf,val) ) in self._objdata.items():
-      
-      if self._confranked is None:
-        if conf is None:
-          self._confranked = False;
-        else:
-          self._confranked = True;
-      if self._confranked == True:
-        assert conf is not None;
-      if self._confranked == False:
-        assert conf is None;
-      
-      self._objdata_confranked.append( ( conf, id_, dec, val ) );
-    
-    if self._confranked == False:
-      return None;
-    if self._confranked == True:
-      self._objdata_confranked.sort( reverse=True );
-      return self._objdata_confranked;
-    assert False;
+    if self._obj_is_ranked is None:
+      self._run_objranking();
+    return self._obj_is_ranked; 
 
 
   @property
   def objdata_confranked_rr( self ):
     
-    if self.objdata_confranked is None:
+    if not self.obj_ranking:
       return None;
     
     pos = [];
@@ -61,8 +78,8 @@ class RankedScore( metaclass=object_ ):
     
     is_incorrecty_ranked = False;
     
-    for ( conf, id_, dec, val ) in self.objdata_confranked:
-      if self.LBLSETs[ self.lblset ][ dec ] == 1:
+    for ( conf, id_, dec, val ) in self.obj_ranking:
+      if self.obj_lblset[ dec ] == 1:
         pos.append( (conf,id_,dec,val) );
         if neg:
           is_incorrecty_ranked = True;
@@ -77,23 +94,19 @@ class RankedScore( metaclass=object_ ):
   
   def _confidence_weighted_score( self, ranking, comp ):
     
-    if self.objdata_confranked is None:
+    if not ranking:
       return None;
-    
-    #if self.descriptor == "Stanford1":
-    #  if len( self.objdata_confranked ) == 1000:
-    #    pprint( self.objdata_confranked );
-    #    pprint( self.refdata );
     
     i = 0;
     mass = 0;
     rws = 0.0;
-    for ( conf, id_, dec, val ) in ranking:
+    
+    for ( obj_conf, id_, obj_dec, obj_val ) in ranking:
       i += 1;
-      (dec_,conf_,val_) = self.refdata[ id_ ];
-      if comp( dec_, dec ):
+      ( ref_dec, ref_conf, ref_val ) = self._ref_data[ id_ ];
+      if comp( ref_dec, obj_dec ):
         mass += 1;
-      rws += float( mass ) / float( i );
+      rws += float(mass) / float(i);
     
     assert i == self.covered;
     
@@ -102,7 +115,7 @@ class RankedScore( metaclass=object_ ):
 
   def _average_precision( self, ranking ):
     
-    if self.objdata_confranked is None:
+    if not ranking:
       return None;
     
     i = 0;
@@ -110,11 +123,10 @@ class RankedScore( metaclass=object_ ):
     no_both_entailment = 0;
     rws = 0.0;
     
-    for ( conf, id_, dec, val ) in ranking:
+    for ( obj_conf, id_, obj_dec, obj_val ) in ranking:
       i += 1;
-      
-      (dec_,conf_,val_) = self.refdata[ id_ ];
-      if self.LBLSETs[ self.lblset_ ][ dec_ ] == 1:
+      ( ref_dec, ref_conf, ref_val ) = self._ref_data[ id_ ];
+      if self.ref_lblset[ ref_dec ] == 1:
         no_gs_entailment += 1;
         rws += float( no_gs_entailment ) / float( i );
     
@@ -127,29 +139,31 @@ class RankedScore( metaclass=object_ ):
   def average_precision_2w( self ):
     
     return self._average_precision(
-               self.objdata_confranked
+               self.obj_ranking
              );
 
 
   @property
   def average_precision_rr_2w( self ):
     
-    if self.objdata_confranked_rr is None:
+    objdata_confranked_rr = self.objdata_confranked_rr;
+    
+    if objdata_confranked_rr is None:
       return None;
     
     return self._average_precision(
-               self.objdata_confranked_rr
+               objdata_confranked_rr
              );
 
 
   @property
   def confidence_weighted_score( self ):
     
-    if self._lblset != self._lblset_:
+    if self.ref_lblset != self.obj_lblset:
       return None;
     
     return self._confidence_weighted_score(
-               self.objdata_confranked,
+               self.obj_ranking,
                lambda ref, obj:
                  ref == obj
              );
@@ -159,10 +173,9 @@ class RankedScore( metaclass=object_ ):
   def confidence_weighted_score_2w( self ):
 
     return self._confidence_weighted_score(
-               self.objdata_confranked,
+               self.obj_ranking,
                lambda ref, obj:
-                 self.LBLSETs[ self._lblset_ ][ ref ] == \
-                 self.LBLSETs[ self._lblset ][ obj ]
+                 self.ref_lblset[ ref ] == self.obj_lblset[ obj ]
              );
 
 

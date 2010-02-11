@@ -12,14 +12,14 @@ from pypes.infer._evaluation.annotation_reader import read_annotation;
 from pypes.infer._evaluation.score.accuracy_score import AccuracyScore;
 from pypes.infer._evaluation.score.kappa_score import KappaScore;
 from pypes.infer._evaluation.score.ranked_score import RankedScore;
-from pypes.infer._evaluation.score.information_score import InformationScore;
+from pypes.infer._evaluation.score.information_score_val_vs_rel import InformationScoreValVSRel;
 
 
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 class Score(
-          AccuracyScore, KappaScore, RankedScore, InformationScore,
+          AccuracyScore, KappaScore, RankedScore, InformationScoreValVSRel,
           metaclass=object_
         ):
   
@@ -44,114 +44,109 @@ class Score(
     AccuracyScore.CSV_HEADER + "," + \
     KappaScore.CSV_HEADER + "," + \
     RankedScore.CSV_HEADER + "," + \
-    InformationScore.CSV_HEADER;
+    InformationScoreValVSRel.CSV_HEADER;
 
 
   def __init__( self, reffile=None, objfile=None ):
     
-    self._refdata = {};
-    self._objdata = {};
-    self._objdata_confranked = [];
-    self._confranked = None;
-
-    self._descriptor = None;
-    self._lblset = None;
-    self._lblset_ = None;
+    self._ref_data = {};
+    self._obj_data = {};
+    
+    self._obj_descriptor = None;
+    
+    self._ref_lblset = None;
+    self._obj_lblset = None;
+    
     self._contingency_table = None;
     
     self._total = 0;
     self._notcovered = 0;
     
     if reffile is not None and objfile is not None:
-      self._run_statistics( read_annotation(reffile), read_annotation(objfile) );
+      
+      ( ref_descriptor, ref_lblset, ref_data ) = read_annotation( reffile );
+      ( obj_descriptor, obj_lblset, obj_data ) = read_annotation( objfile );
+      
+      ref_lblset = self.LBLSETs[ ref_lblset ];
+      obj_lblset = self.LBLSETs[ obj_lblset ];
+      
+      self._run_statistics(
+          (ref_descriptor,ref_lblset,ref_data),
+          (obj_descriptor,obj_lblset,obj_data)
+        );
 
 
   def concatenate( self, score ):
     
     self._run_statistics(
-        ( None, score.lblset_, score.refdata ),
-        ( score.descriptor, score.lblset, score.objdata )
+        ( None, score._ref_lblset, score._ref_data ),
+        ( score._obj_descriptor, score._obj_lblset, score._obj_data )
       );
 
 
-  def _run_statistics( self, refdata, objdata ):
+  def _run_statistics( self, ref, obj ):
     
-    ( descriptor_, lblset_, data_ ) = refdata;
-    ( descriptor, lblset, data ) = objdata;
+    ( ref_descriptor, ref_lblset, ref_data ) = ref;
+    ( obj_descriptor, obj_lblset, obj_data ) = obj;
     
-    # assert data_.keys() == data.keys();
-    assert not data_.keys() & self._refdata.keys();
-    assert not data.keys() & self._objdata.keys();
+    assert not ref_data.keys() & self._ref_data.keys();
+    assert not obj_data.keys() & self._obj_data.keys();
     
-    if self._lblset is not None:
-      assert self._lblset == lblset;
+    if self._ref_lblset is not None:
+      assert self._ref_lblset is ref_lblset;
     else:
-      self._lblset = lblset;
-    
-    if self._lblset_ is not None:
-      assert self._lblset_ == lblset_;
+      self._ref_lblset = ref_lblset;
+
+    if self._obj_lblset is not None:
+      assert self._obj_lblset is obj_lblset;
     else:
-      self._lblset_ = lblset_;
+      self._obj_lblset = obj_lblset;
       
     if self._contingency_table is None:
-      self._contingency_table = {};
-      for ref_lbl in self.LBLSETs[ self._lblset_ ]:
-        self._contingency_table[ ref_lbl ] = {};
-        for obj_lbl in self.LBLSETs[ self._lblset ]:
-          self._contingency_table[ ref_lbl ][ obj_lbl ] = 0;
+      self._contingency_table = { ref_key:
+                                    { obj_key: 0
+                                      for obj_key in self._obj_lblset.keys() }
+                                  for ref_key in self._ref_lblset.keys() };
 
-    if self._descriptor is not None:
-      assert self._descriptor == descriptor;
+    if self._obj_descriptor is not None:
+      assert self._obj_descriptor == obj_descriptor;
     else:
-      self._descriptor = descriptor;
+      self._obj_descriptor = obj_descriptor;
     
-    self._refdata.update( data_ );
-    self._objdata.update( data );
+    self._ref_data.update( ref_data );
+    self._obj_data.update( obj_data );
     
-    for ( id_, (dec_,conf_,val_) ) in data_.items():
-
-      if dec_ is None:
+    for ( ref_id, (ref_dec,ref_conf,ref_val) ) in ref_data.items():
+      
+      if ref_dec is None:
         continue;
 
       self._total += 1;
-      if id_ not in data:
+      if ref_id not in obj_data.keys():
         self._notcovered += 1;
         continue;
 
-      (dec,conf,val) = data[ id_ ];
-      assert dec in self.LBLSETs[ self._lblset ];
-      try:
-        assert dec_ in self.LBLSETs[ self._lblset_ ];
-      except:
-        print( dec_ );
-        raise;
+      ( obj_dec, obj_conf, obj_val ) = obj_data[ ref_id ];
+      
+      assert ref_dec in self._ref_lblset.keys();
+      assert obj_dec in self._obj_lblset.keys();
 
-      self._contingency_table[ dec_ ][ dec ] += 1;
+      self._contingency_table[ ref_dec ][ obj_dec ] += 1;
+    
+    self._reinit_cache();
 
-
+    
   @property
-  def descriptor( self ):
-    return self._descriptor;
-
-  @property
-  def lblset( self ):
-    return self._lblset;
+  def obj_descriptor( self ):
+    return self._obj_descriptor;
 
   @property
-  def lblset_( self ):
-    return self._lblset_;
-  
-  @property
-  def refdata( self ):
-    return self._refdata;
+  def ref_lblset( self ):
+    return self._ref_lblset;
 
   @property
-  def objdata( self ):
-    return self._objdata;
-  
-  @property
-  def contingency_table( self ):
-    return self._contingency_table;
+  def obj_lblset( self ):
+    return self._obj_lblset;
   
   @property
   def total( self ):
@@ -171,51 +166,66 @@ class Score(
     return self.covered / self.total;
 
 
+  def _marginals( self, contingency_table ):
+    
+    marginal_left = {};
+    marginal_right = {};
+    
+    for ( left, subtable )  in contingency_table.items():
+      
+      for ( right, cnt ) in subtable.items():
+        
+        if not left in marginal_left:
+          marginal_left[ left ] = 0;
+        marginal_left[ left ] += cnt;
+        
+        if not right in marginal_right:
+          marginal_right[ right ] = 0;
+        marginal_right[ right ] += cnt;
+    
+    return ( marginal_left, marginal_right );
+  
+  
+  def _reinit_cache( self ):
+    
+    self._ref_marginal = None;
+    self._obj_marginal = None;
+    
+    AccuracyScore._reinit_cache( self );
+    KappaScore._reinit_cache( self );
+    RankedScore._reinit_cache( self );
+    InformationScoreValVSRel._reinit_cache( self );
+
+
+  def _run_marginals( self ):
+    
+    ( self._ref_marginal, self._obj_marginal ) = self._marginals(
+                                                     self._contingency_table
+                                                   );
+
+
   @property
-  def marginals( self ):
-    
-    marginal_ref = {};
-    marginal_obj = {};
-    
-    for ( ref, objs )  in self._contingency_table.items():
-      
-      assert objs.keys() == self._contingency_table.keys();
-      
-      for ( obj, cnt ) in objs.items():
-        
-        if not ref in marginal_ref:
-          marginal_ref[ ref ] = 0;
-        marginal_ref[ ref ] += cnt;
-        
-        if not obj in marginal_obj:
-          marginal_obj[ obj ] = 0;
-        marginal_obj[ obj ] += cnt;
-    
-    return ( marginal_ref, marginal_obj );
+  def contingency_table( self ):
+    return self._contingency_table;
   
-  
-  def _collapse( self, contingency_table ):
-    
-    contingency_table_ = {
-        0 : { 0: 0, 1: 0 },
-        1 : { 0: 0, 1: 0 }
-      };
-      
-    for ref_dec in contingency_table:
-      ref_dec_ = self.LBLSETs[ self.lblset_ ][ ref_dec ];
-      for obj_dec in contingency_table[ ref_dec ]:
-        obj_dec_ = self.LBLSETs[ self.lblset ][ obj_dec ];
-        contingency_table_[ ref_dec_ ][ obj_dec_ ] += \
-          contingency_table[ ref_dec ][ obj_dec ];
-    
-    return contingency_table_;
+  @property
+  def ref_marginal( self ):
+    if self._ref_marginal is None:
+      self._run_marginals();
+    return self._ref_marginal;
+
+  @property
+  def obj_marginal( self ):
+    if self._obj_marginal is None:
+      self._run_marginals();
+    return self._obj_marginal;
 
 
   def csv_data( self ):
     
     rslt = "";
-    if self.descriptor is not None:
-      rslt += str( self.descriptor );
+    if self.obj_descriptor is not None:
+      rslt += str( self.obj_descriptor );
       
     rslt += ",";
     if self.total is not None:
@@ -232,7 +242,7 @@ class Score(
     rslt += "," + AccuracyScore.csv_data( self );
     rslt += "," + KappaScore.csv_data( self );
     rslt += "," + RankedScore.csv_data( self );
-    rslt += "," + InformationScore.csv_data( self );
+    rslt += "," + InformationScoreValVSRel.csv_data( self );
     
     return rslt;
 
@@ -249,15 +259,15 @@ class _DecisionsScorer( metaclass=subject ):
   def read_datastructure_( self ):
     
     subdirs = set();
-    self._refs = None;
-    self._gold = None;
+    self._objs = None;
+    self._ref = None;
     
     for subdirname in listsubdirs( self._prefix ):
       
       subdirs.add( subdirname );
       
-      refs_ = set();
-      gold_ = None;
+      objs_ = set();
+      ref_ = None;
       
       for filename in listdir( subdirname ):
         
@@ -267,21 +277,21 @@ class _DecisionsScorer( metaclass=subject ):
         filename = filename[ : - len(".tsa.xml") ];
         
         if filename.startswith( "gold" ):
-          assert gold_ is None;
-          gold_ = filename;
+          assert ref_ is None;
+          ref_ = filename;
           continue;
         
-        refs_.add( filename );
+        objs_.add( filename );
       
-      if self._refs is None:
-        self._refs = refs_;
+      if self._objs is None:
+        self._objs = objs_;
       else:
-        assert self._refs == refs_;
+        assert self._objs == objs_;
       
-      if self._gold is None:
-        self._gold = gold_;
+      if self._ref is None:
+        self._ref = ref_;
       else:
-        assert self._gold == gold_;
+        assert self._ref == ref_;
     
     self._prefixes = set();
     
@@ -322,8 +332,8 @@ class _DecisionsScorer( metaclass=subject ):
     
     self.read_datastructure_();
 
-    #print( self._gold );
-    #print( self._refs );
+    #print( self._ref );
+    #print( self._objs );
     #print( self._subdir_subdir );
     #print( self._subdir_names );
     #print( self._prefixes );
@@ -331,39 +341,39 @@ class _DecisionsScorer( metaclass=subject ):
     scores = {};
     for prefix in self._prefixes:
       scores_ = {};
-      for ref in self._refs:
-        scores_[ ref ] = Score();
+      for obj in self._objs:
+        scores_[ obj ] = Score();
       scores[ prefix ] = scores_;
     
     for subdir_name in self._subdir_names:
       
       subdir = self._subdir_subdir + "/" + subdir_name;
       
-      for ref in self._refs:
+      for obj in self._objs:
         
         score = None;
         with open( subdir + "/gold.tsa.xml", "rb" ) as r:
-          with open( subdir + "/" + ref + ".tsa.xml", "rb" ) as o:
+          with open( subdir + "/" + obj + ".tsa.xml", "rb" ) as o:
             score = Score( r, o );
         assert score is not None;
             
         for prefix in scores:
           if subdir_name.startswith( prefix ):
-            scores[ prefix ][ ref ].concatenate( score );
+            scores[ prefix ][ obj ].concatenate( score );
     
     for prefix in sorted( self._prefixes ):
       with open( "dta/infer/scores/" + prefix + ".csv", "wt", encoding="utf-8" ) as f:
         f.write( "system," + Score.CSV_HEADER + "\n" );
-        for ref in sorted( self._refs ):
-          score = scores[ prefix ][ ref ];
-          f.write( ref + "," );
+        for obj in sorted( self._objs ):
+          score = scores[ prefix ][ obj ];
+          f.write( obj + "," );
           f.write( score.csv_data() + "\n" );
     
-    for ref in sorted( self._refs ):
-      with open( "dta/infer/scores/" + ref + ".csv", "wt", encoding="utf-8" ) as f:
+    for obj in sorted( self._objs ):
+      with open( "dta/infer/scores/" + obj + ".csv", "wt", encoding="utf-8" ) as f:
         f.write( "dataset," + Score.CSV_HEADER + "\n" );
         for prefix in sorted( self._prefixes ):
-          score = scores[ prefix ][ ref ];
+          score = scores[ prefix ][ obj ];
           f.write( prefix + "," )
           f.write( score.csv_data() + "\n" );
 

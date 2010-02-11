@@ -11,46 +11,39 @@ from pypes.utils.mc import object_;
 
 class KappaScore( metaclass=object_ ):
 
-  CSV_HEADER = "s,pi,kappa,kappa'";
+  CSV_HEADER = "s,pi,kappa,kappa_";
+
+
+  def _reinit_cache( self ):
+    
+    pass;
 
 
   def _randagree_s( self ):
     
-    if self.lblset != self.lblset_:
-      return None;
-    
-    return 1 / len( self.lblset );
+    return 1 / len( self.ref_lblset );
 
 
   def _randagree_pi( self ):
     
-    if self.lblset != self.lblset_:
-      return None;
-    ( marginal_ref, marginal_obj ) = self.marginals;
     randagree = 0.0;
     for lbl in self._contingency_table:
-      randagree += ( ( marginal_ref[ lbl ] + marginal_obj[ lbl ] ) / (2*self._total) ) ** 2;
+      randagree += ( ( self.ref_marginal[ lbl ] + self.obj_marginal[ lbl ] ) / (2*self.covered) ) ** 2;
     return randagree;
 
 
   def _randagree_kappa( self ):
     
-    if self.lblset != self.lblset_:
-      return None;
-    ( marginal_ref, marginal_obj ) = self.marginals;
     randagree = 0.0;
     for lbl in self._contingency_table:
-      randagree += ( marginal_ref[lbl] / self._total ) * ( marginal_obj[lbl] / self._total );
+      randagree += ( self.ref_marginal[lbl] / self.covered ) * ( self.obj_marginal[lbl] / self.covered );
     return randagree;
 
   def _randagree_kappa_prime( self ):
     
-    if self.lblset != self.lblset_:
-      return None;
-    ( marginal_ref, marginal_obj ) = self.marginals;
     randagree = 0.0;
     for lbl in self._contingency_table:
-      randagree += ( marginal_ref[lbl] / self._total ) ** 2;
+      randagree += ( self.ref_marginal[lbl] / self.covered ) ** 2;
     return randagree;
   
   
@@ -65,18 +58,26 @@ class KappaScore( metaclass=object_ ):
     
   @property
   def kappa_s( self ):
+    if self.ref_lblset != self.obj_lblset:
+      return None;
     return self._kappa( self._randagree_s() );
 
   @property
   def kappa_pi( self ):
+    if self.ref_lblset != self.obj_lblset:
+      return None;
     return self._kappa( self._randagree_pi() );
 
   @property
   def kappa_kappa( self ):
+    if self.ref_lblset != self.obj_lblset:
+      return None;
     return self._kappa( self._randagree_kappa() );
 
   @property
   def kappa_kappa_prime( self ):
+    if self.ref_lblset != self.obj_lblset:
+      return None;
     return self._kappa( self._randagree_kappa_prime() );
 
 
