@@ -44,8 +44,24 @@ class InformationScoreValVSRel( InformationScore, metaclass=object_ ):
     conttbl = self._collapse( self.contingency_table, lblset, lblset );
 
     ( refm, objm ) = self._marginals( conttbl );
+    
+    def compute( ref, obj ):
+        
+      cnt = conttbl[ ref ][ obj ];
+      freq = None;
+      if cnt == 0:
+        return 0;
+      div = None;
+      marg = refm[ ref ];
+      if marg == 0:
+        div = 0;
+      elif self.covered != 0:
+        div = marg / self.covered;
+      if div != 0 and div is not None:
+        freq = cnt / div;
+      return freq;
 
-    conttbl_rb = { ref: { obj : conttbl[ ref ][ obj ] / ( refm[ref] / self.covered )
+    conttbl_rb = { ref: { obj : compute( ref, obj )
                           for obj in conttbl[ ref ]
                         }
                    for ref in conttbl };

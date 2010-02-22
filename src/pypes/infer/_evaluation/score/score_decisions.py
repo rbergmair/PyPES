@@ -256,7 +256,7 @@ class _DecisionsScorer( metaclass=subject ):
     
     self._prefix = prefix;
   
-  def read_datastructure_( self ):
+  def read_datastructure_( self, referencefilename ):
     
     subdirs = set();
     self._objs = None;
@@ -276,7 +276,7 @@ class _DecisionsScorer( metaclass=subject ):
         
         filename = filename[ : - len(".tsa.xml") ];
         
-        if filename.startswith( "gold" ):
+        if filename.startswith( referencefilename ):
           assert ref_ is None;
           ref_ = filename;
           continue;
@@ -328,9 +328,9 @@ class _DecisionsScorer( metaclass=subject ):
           self._prefixes.add( prefix );
   
   
-  def score( self ):
+  def score( self, referencefilename="gold", outdirname="scores" ):
     
-    self.read_datastructure_();
+    self.read_datastructure_( referencefilename );
 
     #print( self._ref );
     #print( self._objs );
@@ -352,7 +352,7 @@ class _DecisionsScorer( metaclass=subject ):
       for obj in self._objs:
         
         score = None;
-        with open( subdir + "/gold.tsa.xml", "rb" ) as r:
+        with open( subdir + "/" + referencefilename + ".tsa.xml", "rb" ) as r:
           with open( subdir + "/" + obj + ".tsa.xml", "rb" ) as o:
             score = Score( r, o );
         assert score is not None;
@@ -362,7 +362,7 @@ class _DecisionsScorer( metaclass=subject ):
             scores[ prefix ][ obj ].concatenate( score );
     
     for prefix in sorted( self._prefixes ):
-      with open( "dta/infer/scores/" + prefix + ".csv", "wt", encoding="utf-8" ) as f:
+      with open( "dta/infer/" + outdirname + "/" + prefix + ".csv", "wt", encoding="utf-8" ) as f:
         f.write( "system," + Score.CSV_HEADER + "\n" );
         for obj in sorted( self._objs ):
           score = scores[ prefix ][ obj ];
@@ -370,7 +370,7 @@ class _DecisionsScorer( metaclass=subject ):
           f.write( score.csv_data() + "\n" );
     
     for obj in sorted( self._objs ):
-      with open( "dta/infer/scores/" + obj + ".csv", "wt", encoding="utf-8" ) as f:
+      with open( "dta/infer/" + outdirname + "/" + obj + ".csv", "wt", encoding="utf-8" ) as f:
         f.write( "dataset," + Score.CSV_HEADER + "\n" );
         for prefix in sorted( self._prefixes ):
           score = scores[ prefix ][ obj ];
@@ -381,10 +381,10 @@ class _DecisionsScorer( metaclass=subject ):
           
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-def score_decisions( prefix ):
+def score_decisions( prefix, referencefilename="gold", outdirname="scores" ):
   
   with _DecisionsScorer( prefix=prefix ) as sc:
-    sc.score();
+    sc.score( referencefilename, outdirname );
 
 
 

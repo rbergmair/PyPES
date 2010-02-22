@@ -9,7 +9,7 @@ WHICH = which
 ECHO = echo
 CHMOD = chmod
 
-PYTHON = $(shell $(WHICH) python3)
+PYTHON = $(shell $(WHICH) python3.0)
 
 
 SCRIPTS = \
