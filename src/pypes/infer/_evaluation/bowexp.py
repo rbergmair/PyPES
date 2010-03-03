@@ -3,7 +3,7 @@
 __package__ = "pypes.infer._evaluation";
 
 from pypes.infer._evaluation.annotation_reader import read_annotation;
-from pypes.infer._evaluation.score_decisions import Score;
+from pypes.infer._evaluation.score import Score;
 
 
 
