@@ -37,12 +37,12 @@ class TestSolver( TestCase, metaclass=object_ ):
 
     try:
       
-      f_ = gzip.open( filename );
+      f_ = gzip.open( filename, "rb" );
       try:
         
         try:
           
-          g = open( filename.replace( ".pft.gz", "-solved.pft" ), "w" );
+          g = open( filename.replace( ".pft.gz", "-solved.pft" ), "wt", encoding="utf-8" );
           try:
 
             r = None;
@@ -110,12 +110,12 @@ class TestSolver( TestCase, metaclass=object_ ):
     
     try:
       
-      f_ = gzip.open( filename );
+      f_ = gzip.open( filename, "rb" );
       try:
         
         try:
           
-          g_ = gzip.open( filename.replace( ".pft.gz", "-solved.pft.gz" ) );
+          g_ = gzip.open( filename.replace( ".pft.gz", "-solved.pft.gz" ), "rb" );
           try:
 
             r = None;
@@ -183,7 +183,7 @@ class TestSolver( TestCase, metaclass=object_ ):
     
     try:
       
-      f_ = gzip.open( filename );
+      f_ = gzip.open( filename, "rb" );
       try:
         
         cdc = codecs.getreader( "utf-8" );
@@ -220,14 +220,14 @@ class TestSolver( TestCase, metaclass=object_ ):
     
   def x_test_quick( self ):
     
-    with PFTDecoder( (pypes.proto.lex.erg,None) ) as decoder:
+    with PFTDecoder( (None,pypes.proto.lex.erg) ) as decoder:
       
       i = 185;
       self.quicktest( "{0}/fracas-{1}.pft.gz".format( self._TESTDTADIR, i ), decoder );
 
   def test_solver( self ):
 
-    with PFTDecoder( (pypes.proto.lex.erg,None) ) as decoder:
+    with PFTDecoder( (None,pypes.proto.lex.erg) ) as decoder:
 
       for i in range( 1, 108 ):
         self.check_testfile( "{0}/mrs-{1}1.pft.gz".format( self._TESTDTADIR, i ), decoder );

@@ -1,7 +1,7 @@
 # -*-  coding: ascii -*-  # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 __package__ = "pypes.codecs_.pft";
-__all__ = [ "PFTParser" ];
+__all__ = [ "PFTDecoder" ];
 
 import ast;
 import string;
@@ -13,67 +13,85 @@ from pypes.utils.mc import subject;
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-class PFTParser( metaclass=subject ):
+class PFTDecoder( metaclass=subject ):
+
   
-  UPPER = string.ascii_uppercase;
-  LOWER = string.ascii_lowercase;
-  DIGIT = string.digits;
+  GT_VARIABLE = "variable";
+  GT_HANDLE = "handle";
   
-  ALPHA = UPPER + LOWER;
-  ALPHANUM = ALPHA + DIGIT;
-  UPPERNUM = UPPER + DIGIT;
-
-  IDENTFIRST = ALPHA + "_";
-  IDENTNEXT = ALPHANUM + "." + "_";
-
-  OPERFIRST = UPPER + "_";
-  OPERNEXT = UPPERNUM + "_";
+  GT_WORD = "word";
+  GT_PREDICATION = "predication";
+  GT_QUANTIFICATION = "quantification";
+  GT_MODIFICATION = "modification";
+  GT_CONNECTION = "connection";
+  GT_CONSTRAINT = "constraint";
+  GT_PROTOFORM = "protoform";
+  GT_FREEZER = "freezer";
+  GT_LEMMATOKS = "lemmatoks";
+  GT_OPERATOR = "operator";
+  GT_CONSTANT = "constant";
+  GT_FUNCTOR = "functor";
   
-  RE_UPPERs = r"(?:["+UPPER+r"]+)";
-  RE_LOWERs = r"(?:["+LOWER+r"]+)";
-  RE_DIGITs = r"(?:["+DIGIT+r"]+)";
-  RE_ALPHAs = r"(?:["+ALPHA+r"]+)";
-  RE_ALPHANUMs = r"(?:["+ALPHANUM+r"]+)";
-
-  RE_QUOTED = r'''(?:"(?:[^"\n\r\\]|(?:"")|(?:\\x[0-9a-fA-F]+)|(?:\\.))*")|(?:'(?:[^'\n\r\\]|(?:'')|(?:\\x[0-9a-fA-F]+)|(?:\\.))*')''';
-
-  RE_LEMMA = r"(?:" + RE_QUOTED + r"|" + RE_ALPHANUMs + r")"  ;
-
-  RE_WORD = r"(?:\|" + \
-              r"(?:" + \
-                RE_LEMMA + r"(?:\+" + RE_LEMMA + r")*" + \
-              r")?" + \
-              r"(?:" + \
-                r"\_" + RE_ALPHANUMs + "?" + \
-              r"){0,2}" + \
-            r"\|)";
-
-  RE_IDENTIFIER = r"(?:[" + IDENTFIRST + r"][" + IDENTNEXT + r"]+)";
   
-  RE_FID = r"(?::" + RE_DIGITs + ")";
+  _UPPER = string.ascii_uppercase;
+  _LOWER = string.ascii_lowercase;
+  _DIGIT = string.digits;
+  
+  _ALPHA = _UPPER + _LOWER;
+  _ALPHANUM = _ALPHA + _DIGIT;
+  _UPPERNUM = _UPPER + _DIGIT;
 
-  RE_VARIABLE = r"(?:" + RE_LOWERs + RE_DIGITs + ")";
-  
-  RE_EXPLICIT_HANDLE = RE_DIGITs;
+  _IDENTFIRST = _ALPHA + "_";
+  _IDENTNEXT = _ALPHANUM + "." + "_";
 
-  RE_ANONYMOUS_HANDLE = r"(?:__)";
+  _OPERFIRST = _UPPER + "_";
+  _OPERNEXT = _UPPERNUM + "_";
   
-  RE_OPERATOR = r"(?:" + \
-                   r"(?:" + \
-                     r"["+ OPERFIRST +r"][" + OPERNEXT + r"]+|" + \
-                     r"/\\|" + \
-                     r"\\/|" + \
-                     r"&&|" + \
-                     r"\->|" + \
-                     r"\|\|" + \
-                   r")" + \
-                ")";
+  _RE_UPPERs = r"(?:["+_UPPER+r"]+)";
+  _RE_LOWERs = r"(?:["+_LOWER+r"]+)";
+  _RE_DIGITs = r"(?:["+_DIGIT+r"]+)";
+  _RE_ALPHAs = r"(?:["+_ALPHA+r"]+)";
+  _RE_ALPHANUMs = r"(?:["+_ALPHANUM+r"]+)";
+
+  _RE_QUOTED = r'''(?:"(?:[^"\n\r\\]|(?:"")|(?:\\x[0-9a-fA-F]+)|(?:\\.))*")|(?:'(?:[^'\n\r\\]|(?:'')|(?:\\x[0-9a-fA-F]+)|(?:\\.))*')''';
+
+  _RE_LEMMA = r"(?:" + _RE_QUOTED + r"|" + _RE_ALPHANUMs + r")"  ;
+
+  _RE_WORD = r"(?:\|" + \
+               r"(?:" + \
+                 _RE_LEMMA + r"(?:\+" + _RE_LEMMA + r")*" + \
+               r")?" + \
+               r"(?:" + \
+                 r"\_" + _RE_ALPHANUMs + "?" + \
+               r"){0,2}" + \
+             r"\|)";
+
+  _RE_IDENTIFIER = r"(?:[" + _IDENTFIRST + r"][" + _IDENTNEXT + r"]+)";
   
-  RE_OUTSCOPES = r"(?:>>)";
+  _RE_FID = r"(?::" + _RE_DIGITs + ")";
+
+  _RE_VARIABLE = r"(?:" + _RE_LOWERs + _RE_DIGITs + ")";
+  
+  _RE_EXPLICIT_HANDLE = _RE_DIGITs;
+
+  _RE_ANONYMOUS_HANDLE = r"(?:__)";
+  
+  _RE_OPERATOR = r"(?:" + \
+                    r"(?:" + \
+                      r"["+ _OPERFIRST +r"][" + _OPERNEXT + r"]+|" + \
+                      r"/\\|" + \
+                      r"\\/|" + \
+                      r"&&|" + \
+                      r"\->|" + \
+                      r"\|\|" + \
+                    r")" + \
+                 ")";
+  
+  _RE_OUTSCOPES = r"(?:>>)";
 
 
   @classmethod
-  def _decode_quoted( cls, toks_ ):
+  def decode_quoted( cls, toks_ ):
     
     toks = iter( toks_ );
     tok = next( toks );
@@ -91,7 +109,7 @@ class PFTParser( metaclass=subject ):
 
 
   @classmethod
-  def _decode_fid( cls, toks_ ):
+  def decode_fid( cls, toks_ ):
 
     toks = iter( toks_ );
     tok = next( toks );
@@ -102,13 +120,13 @@ class PFTParser( metaclass=subject ):
 
             
   _re_subtok_word = re.compile(
-                        r"(" + RE_QUOTED + \
-                        r"|" + RE_ALPHANUMs + \
+                        r"(" + _RE_QUOTED + \
+                        r"|" + _RE_ALPHANUMs + \
                         r"|[_\+\|]" + \
                         r")"
                       );
 
-  _re_quoted = re.compile( RE_QUOTED );
+  _re_quoted = re.compile( _RE_QUOTED );
   
   @classmethod
   def _subtokenize_word( cls, word ):
@@ -124,8 +142,8 @@ class PFTParser( metaclass=subject ):
 
 
   _re_subtok_variable = re.compile(
-                            r"(?P<sid>" + RE_LOWERs + r")" + \
-                            r"(?P<vid>" + RE_DIGITs + r")"
+                            r"(?P<sid>" + _RE_LOWERs + r")" + \
+                            r"(?P<vid>" + _RE_DIGITs + r")"
                           );
 
   @classmethod
@@ -139,6 +157,17 @@ class PFTParser( metaclass=subject ):
     #print( variable );
     assert sid+vid == variable;
     return [ sid, vid ];
+
+
+  def _parse( self, item ):
+    
+    assert False;
+
+
+  def decode( self, pft ):
+    
+    ( type_, inst ) = self._parse( pft );
+    return inst;
 
 
 

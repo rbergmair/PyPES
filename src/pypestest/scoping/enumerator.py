@@ -128,7 +128,7 @@ class TestEnumerator( TestCase, metaclass=object_ ):
 
     try:
 
-      f_ = gzip.open( filename );
+      f_ = gzip.open( filename, "rb" );
       
       try:
         
@@ -139,7 +139,7 @@ class TestEnumerator( TestCase, metaclass=object_ ):
           
           try:
             
-            h_ = gzip.open( filename.replace( ".pft.gz", ".pl.gz" ) );
+            h_ = gzip.open( filename.replace( ".pft.gz", ".pl.gz" ), "rb" );
             
             try:
               
@@ -150,7 +150,7 @@ class TestEnumerator( TestCase, metaclass=object_ ):
                 
                 try:
                   
-                  i_ = gzip.open( filename.replace( ".pft.gz", ".scmrs.txt.gz" ) );
+                  i_ = gzip.open( filename.replace( ".pft.gz", ".scmrs.txt.gz" ), "rb" );
                   
                   try:
                     
@@ -275,7 +275,7 @@ class TestEnumerator( TestCase, metaclass=object_ ):
                         assert False;
                       
                       if not pypeserr:
-                        g = open( filename.replace( ".pft.gz", ".trees.txt" ), "w" );
+                        g = open( filename.replace( ".pft.gz", ".trees.txt" ), "wt", encoding="utf-8" );
                         try:
                           for line in mylines_orig:
                             g.write( line );
@@ -315,12 +315,12 @@ class TestEnumerator( TestCase, metaclass=object_ ):
     
     try:
       
-      f_ = gzip.open( filename );
+      f_ = gzip.open( filename, "rb" );
       try:
         
         try:
           
-          g_ = gzip.open( filename.replace( ".pft.gz", ".trees.txt.gz" ) );
+          g_ = gzip.open( filename.replace( ".pft.gz", ".trees.txt.gz" ), "rb" );
           try:
 
             r = None;
@@ -336,6 +336,9 @@ class TestEnumerator( TestCase, metaclass=object_ ):
               fstr = f.read();
               
               pf1 = decoder.decode( fstr )( sig=ProtoSig() );
+              
+              # print( fstr );
+              # print( pft_encode( pf1, pretty=False, fast_initialize=True, linebreaks=True ) );
               
               print( filename );
               
@@ -390,7 +393,7 @@ class TestEnumerator( TestCase, metaclass=object_ ):
     
     try:
       
-      f_ = gzip.open( filename );
+      f_ = gzip.open( filename, "rb" );
       try:
         
         cdc = codecs.getreader( "utf-8" );
@@ -422,14 +425,15 @@ class TestEnumerator( TestCase, metaclass=object_ ):
 
   def x_test_quick( self ):
     
-    with PFTDecoder( (pypes.proto.lex.erg,None) ) as decoder:
+    with PFTDecoder( (None,pypes.proto.lex.erg) ) as decoder:
       
-      i = 185;
-      self.quicktest( "{0}/fracas-{1}.pft.gz".format( self._TESTDTADIR, i ), decoder );
+      i = 164;
+      #self.quicktest( "{0}/fracas-{1}.pft.gz".format( self._TESTDTADIR, i ), decoder );
+      self.check_testfile( "{0}/fracas-{1}.pft.gz".format( self._TESTDTADIR, i ), decoder );
   
   def test_enumerator( self ):
 
-    with PFTDecoder( (pypes.proto.lex.erg,None) ) as decoder:
+    with PFTDecoder( (None,pypes.proto.lex.erg) ) as decoder:
   
       for i in range( 1, 108 ):
         self.check_testfile( "{0}/mrs-{1}1.pft.gz".format( self._TESTDTADIR, i ), decoder );

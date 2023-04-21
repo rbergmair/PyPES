@@ -1,0 +1,77 @@
+Final Reflections
+=================
+
+
+Why Python?
+-----------
+
+
+Abstraction Mechanisms and Design Principles
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
+Let me give an example:  As far as Java is concerend, a programmer is just
+stupid if they do not either ``catch`` or ``throw`` all exceptions that can
+theoretically occur in a piece of code.  It is the compiler's job to teach
+stupid programmers a lesson or two by refusing to compile things otherwise.
+A *Müslifresser* will spend a large part of their development efforts writing
+exception handlers for exceptions that will never in practice occur.
+A *Real Programmer* will have tools to name for them those exceptions which
+they "forgot" to handle, and will simply add the names to a ``throws``
+declaration without thinking about it.  This is hardly any different from what
+would happen, if the language wasn't so strict to begin with, but in this
+case the ``throws`` declaration adds no real information, and makes the code
+unnecessarily long, i.e. redundant.
+
+Python, on the other hand, reasserts software engineering humanism.  You have
+at your disposal all exception handling mechanisms that Java supports, but
+nobody forces you to use them.  Python provides many powerful abstractions,
+even to the point of supporting a fully developed set of abstraction mechanisms
+from functional programming alongside a fully developed set of abstraction
+mechanisms from imperative programming.  The abstraction mechanisms are
+redundant so as to leave it up to a well-informed programmer to choose the most
+effective way of thinking and talking about a given aspect of the problem they
+are facing.
+Python supports class abstractions, and even metaclass abstractions.  All that
+expressive power is at the programmer's disposal, but never forced on them.
+In the wrong hands, this sort of freedom can lead to bad code.  But in the hands
+of a capable programmer, expressive power is never a bad thing.
+
+For example, PyPES is basically a bunch of operations on semantic data structures
+we will refer to as protoforms.  Although protoforms are composed of simpler
+atomic data structures, these data objects are almost meaningless in isolation.
+Operations on these data objects are needed, however, in order to suport the
+relevant operations on protoforms.  This would lead to a vast majority of
+the code belonging to unrelated operations to be concentrated in a single
+data object representing a protoform, while operations and their subroutines
+which form a coherent whole would have to be scattered across different data
+objects.
+Thanks to metaclass abstraction, however, I was able to come up with a much
+more elegant design, by defining what it means for a class to be a ``subject``,
+rather than an ``object``, drawing inspiration from what some people have been
+saying about subject-oriented programming or aspect-oriented programming.
+The idea is to modularize by runtime structures, not by data structures.
+
+Furthermore, in PyPES, I define "keyed lambda structures" (``kls``) to
+customize the management of the identities of certain data object instances.
+For example, when the constructor of the ``Variable`` class is called at two
+different points in the runtime structure of a piece of code reading a formula
+from a string representation, then sometimes this will lead to two distinct
+instances of the ``Variable`` class being constructed, and sometimes the
+second call to the constructor will return the same instance constructed by the
+previous call.  The class has a certain degree of control over its own
+instantiation.  This way I don't have to superimpose an artificial external
+notion of object identity, for example by using a running integer as a variable
+id, and then wasting my time indexing and renaming those variables in
+subsequent operations.
+
+I mention these two details about the design of PyPES here just as an example.
+I'm not saying Python's metaclass abstraction mechanism is the only way of
+supporting my design.  The point I'm trying to make is that there are many
+software engineering problems that are solved most elegantly by really
+thinking out-of-the-box.  Java, nowadays, is so influential that it more or
+less defines what the box is.  Python, on the other hand, supports the designs
+Java supports, but is also supportive when it comes to implementing
+out-of-the-box solutions to uncommon software engineering problems.
+
+

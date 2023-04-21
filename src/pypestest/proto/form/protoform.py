@@ -102,7 +102,7 @@ class TestProtoForm( TestCase, metaclass=object_ ):
     self.assert_( isinstance( sf1.quantifier, Functor ), msg );
     self.assertEquals( sf1.quantifier.fid, 0, msg );
     self.assert_( isinstance( sf1.quantifier.referent, Word ), msg );
-    self.assertEquals( sf1.quantifier.referent.lemma, ["Every"], msg );
+    self.assertSequenceEqual( sf1.quantifier.referent.lemma, ["Every"], msg );
     
     x1 = sf1.var;
 
@@ -123,7 +123,7 @@ class TestProtoForm( TestCase, metaclass=object_ ):
     self.assert_( isinstance( sf_.predicate, Functor ), msg );
     self.assertEquals( sf_.predicate.fid, 6, msg );
     self.assert_( isinstance( sf_.predicate.referent, Word ), msg );
-    self.assertEquals( sf_.predicate.referent.lemma, ["man"], msg );
+    self.assertSequenceEqual( sf_.predicate.referent.lemma, ["man"], msg );
     
     sf_args = {};
     for arg in sf_.args:
@@ -141,7 +141,7 @@ class TestProtoForm( TestCase, metaclass=object_ ):
     self.assert_( isinstance( sf3.quantifier, Functor ), msg );
     self.assertEquals( sf3.quantifier.fid, 16, msg );
     self.assert_( isinstance( sf3.quantifier.referent, Word ), msg );
-    self.assertEquals( sf3.quantifier.referent.lemma, ["a"], msg );
+    self.assertSequenceEqual( sf3.quantifier.referent.lemma, ["a"], msg );
     
     x2 = sf3.var;
 
@@ -162,7 +162,7 @@ class TestProtoForm( TestCase, metaclass=object_ ):
     self.assert_( isinstance( sf__.predicate, Functor ), msg );
     self.assertEquals( sf__.predicate.fid, 18, msg );
     self.assert_( isinstance( sf__.predicate.referent, Word ), msg );
-    self.assertEquals( sf__.predicate.referent.lemma, ["woman"], msg );
+    self.assertSequenceEqual( sf__.predicate.referent.lemma, ["woman"], msg );
 
     sf__args = {};
     for arg in sf__.args:
@@ -180,7 +180,7 @@ class TestProtoForm( TestCase, metaclass=object_ ):
     self.assert_( isinstance( sf5.predicate, Functor ), msg );
     self.assertEquals( sf5.predicate.fid, 10, msg );
     self.assert_( isinstance( sf5.predicate.referent, Word ), msg );
-    self.assertEquals( sf5.predicate.referent.lemma, ["loves"], msg );
+    self.assertSequenceEqual( sf5.predicate.referent.lemma, ["loves"], msg );
     
     sf5args = {};
     for arg in sf5.args:
@@ -278,7 +278,7 @@ class TestProtoForm( TestCase, metaclass=object_ ):
     
     sf2 = inst.subforms[ inst.roots[1] ];
     sf7 = sf2.subforms[ sf2.roots[2] ];
-    self.assertEquals( sf2.holes, {sf7.scope} );
+    self.assertSequenceEqual( sf2.holes, [ sf7.scope ] );
 
   def test_3( self ):
     

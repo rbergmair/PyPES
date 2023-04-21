@@ -1,0 +1,149 @@
+:mod:`pypes.bin` --- scripts
+============================
+
+
+.. module:: pypes.bin
+  :synopsis: scripts
+
+
+:mod:`pypes.bin` contains main programmes and command line utilities.
+
+
+.. function:: sanitize_rte( infilename, outfilename )
+
+   is a helper script that cleans up the RTE dataset from the file named
+   *infilename*, and writes the result to file named *outfilename*.
+   This is normally called from the :file:`GNUmakefile`.
+
+
+.. function:: preprocess_rte()
+
+   reads :file:`dta/infer/edited/rte*.rte.xml`, and populates the output
+   directories in :file:`dta/infer/rte` with inference testing markup and
+   the items database in :file:`dta/items/rte` with cleartext items.
+   *(not fully implemented yet)*
+
+
+.. function:: preprocess_rte_results()
+
+   reads the system submissions from past RTE evaluations, from
+   :file:`dta/infer/edited/rte-results*.tar.gz`, and creates annotation files
+   in :file:`dta/infer/rte`.
+
+
+.. function:: preprocess_fracas()
+
+   reads :file:`dta/infer/edited/fracas.bmc.xml`, and populates the output
+   directories in :file:`dta/infer/fracas` with inference testing markup and
+   the items database in :file:`dta/items/fracas` with cleartext items.
+
+
+.. function:: extract_ergsem_smi( ergdirname, targetdirname )
+
+   Within the directory named *ergdirname*, this will look at the files
+   :file:`erg.smi` and :file:`core.smi` to extract the grammar's SEM-I.
+
+   In the process, assertions are made, checking PyPES-internal assumptions
+   against the grammar's SEM-I.  When assertions fail, this means that the
+   present version of the ERG is incompatible with the present version of
+   PyPES, and adaptations have to be made on either or both sides, in order
+   to ensure interoperability.
+   
+   If the process succeeds, then the files :file:`_ergsem_smi_checker_auto.py`
+   and :file:`_erg_auto.py`, which are ultimately supposed to go into
+   :file:`src/pypes/codecs_/mrs/_smi` and :file:`src/pypes/proto/lex`
+   respectively, are created in the directory named *targetdirname*.
+
+
+.. function:: extract_logpats()
+
+   goes through the MRS test data items, and extracts examples of predications,
+   grouping them by the type of the MRS elementary predications, which is often
+   useful for studying the properties of semantic representations and
+   developing rewriting rules.
+   The input is taken from :file:`dta/test`, and the output is
+   written to :file:`dta/pat`.
+
+
+.. function:: read_treebank( infilename, outdbdirname )
+
+   reads the treebank from the file named *infilename* and populates the
+   databases in the directory *outdbdirname* with protoforms in basic and bdsf
+   forms; prints summary statistics on the process, and also writes those
+   statistics to :file:`summary.txt` in *outdbdirname*.
+
+
+.. function:: run_testsuite( tsdirnameprefix, tsitemsdbdirname )
+
+   runs the inference engines on a testsuite.
+
+   On the outermost level, this procedure performs an iteration over all
+   directories which have *tsdirnameprefix* as a prefix to their name.
+   For example, if *tsdirnameprefix* is :file:`dta/infer/fracas/fracas-1`,
+   then the procedure will enumerate all subdirectories of
+   :file:`dta/infer/fracas` which have `fracas-1` as a prefix in their name,
+   i.e.
+   :file:`dta/infer/fracas/fracas-1-1`,
+   :file:`dta/infer/fracas/fracas-1-2`,
+   :file:`dta/infer/fracas/fracas-1-3`,
+   etc.
+
+   Within each such directory, the inference testing markup file
+   :file:`data.ts.xml` will be consulted.  Then each inference engine will
+   be run on that testsuite, and will produce, in the same directory, an
+   annotation file named after itself, e.g.
+   :file:`McPIETInferenceAgent.tsa.xml`.
+
+   Semantic inference angents will have to consult the semantic representations
+   for sentences and discourses.  These will be looked up in the items database
+   found in the directory named *tsitemsdbdirname*.
+
+
+.. function:: reconsider_decisions( tsdirnameprefix [ , infile = "McPIETAgent.tsa.xml" [ , outfile = "McPIETAgent-reconsidered.tsa.xml" ] ] )
+
+   The default strategy in McPIET is to say `entailment` when `r1` is `1.0`,
+   contradiction when `r2` is `1.0` and `unknown` otherwise. -- This leads to
+   strict logical decisions.
+
+   This procedure can "reconsider" the entailment decisions for added
+   robustness.  The strategy used here is to decide `entailment` whenever
+   `r1` > `r2`, and `no entailment` otherwise.
+
+   Based on *tsdirnameprefix*, this procedure goes through the various
+   datasets, in the same way as :meth:`run_testsuite`.  It reads the
+   `r1` and `r2` fields from the testsuite annotation in the file named
+   *infile*, and writes the new decisions into the file named *outfile*,
+   copying through other relevant information.
+
+
+.. function:: compare_decisions( tsdirnameprefix [ , objectfilename = "McPIETAgent.tsa.xml" [ , referencefilename = "gold.tsa.xml" ] ] )
+
+   compares two annotation files containing decisions on candidate entailments,
+   normally a set of system decisions against a gold standard.
+
+   Based on *tsdirnameprefix*, this procedure goes through the
+   various datasets, in the same way as :meth:`run_testsuite`.
+   Within each directory, a file named
+   *objectfilename* (default: ``McPIETAgent.tsa.xml``)
+   is read, and compared against a file named
+   *referencefilename* (default: ``gold.tsa.xml``).
+
+   The results are printed for quick visual inspection.  In order to
+   systematically collect statistics and export them for further analysis,
+   use :meth:`score_decisions` instead.
+
+
+.. function:: score_decisions( prefix )
+
+   iterates through subdirectories of the directory named by *prefix*,
+   such as :file:`dta/infer/fracas` or :file:`dta/infer/rte`, and creates
+   CSV files in :file:`dta/infer/score` to summarize the scores for the
+   different inference engines and subsets of the datasets.
+
+
+.. function:: run_unittests( [ packagename = "pypes" ] )
+
+   runs the unit tests associated with the pypes package named *packagename*.
+   The default package name is ``pypes``.  If specified, the package name must
+   be either `pypes`, or must have `pypes.` as a prefix.
+

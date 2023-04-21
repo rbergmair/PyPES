@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<svg width="1000px" height="500px" viewBox="-2828 -1414 5656 2828"
+  xmlns="http://www.w3.org/2000/svg" version="1.2" baseProfile="tiny">
+<ellipse cx="0" cy="0" rx="2828" ry="1414" fill="grey" stroke="black" stroke-width="2"/>
+
+<ellipse cx="0" cy="0" rx="1414" ry="1414" fill="grey" stroke="black" stroke-width="2"/>
+
+<line x1="0" y1="1414" x2="0" y2="-1414" stroke="black" stroke-width="2"/>
+
+<circle cx="-1" cy="-945" r="30" fill="red" stroke="black" stroke-width="1"/>
+
+<circle cx="28" cy="-902" r="30" fill="red" stroke="black" stroke-width="1"/>
+
+<circle cx="-925" cy="-791" r="30" fill="red" stroke="black" stroke-width="1"/>
+
+<circle cx="-978" cy="-763" r="30" fill="red" stroke="black" stroke-width="1"/>
+
+<circle cx="2117" cy="641" r="30" fill="red" stroke="black" stroke-width="1"/>
+
+<circle cx="1929" cy="-674" r="30" fill="red" stroke="black" stroke-width="1"/>
+
+</svg>

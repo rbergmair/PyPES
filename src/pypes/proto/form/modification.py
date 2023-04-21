@@ -89,6 +89,7 @@ class Modification( SubForm, metaclass=kls ):
     if self.modality is not None:
       if not self.modality <= obj.modality:
         return False;
+      
     if self.scope is not None:
       if not self.scope <= obj.scope:
         return False;

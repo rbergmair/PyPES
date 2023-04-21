@@ -10,6 +10,10 @@ import pypestest.proto.form;
 import pypestest.proto.sig;
 import pypestest.proto.lex;
 
+import pypestest.proto.lambdaifier;
+import pypestest.proto.comparer;
+import pypestest.proto.morpher;
+
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
@@ -20,6 +24,9 @@ def suite():
   suite.addTests( pypestest.proto.form.suite() );
   suite.addTests( pypestest.proto.sig.suite() );
   suite.addTests( pypestest.proto.lex.suite() );
+  suite.addTests( pypestest.proto.lambdaifier.suite() );
+  suite.addTests( pypestest.proto.comparer.suite() );
+  suite.addTests( pypestest.proto.morpher.suite() );
 
   return suite;
 

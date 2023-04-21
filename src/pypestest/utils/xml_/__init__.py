@@ -5,8 +5,8 @@ __package__ = "pypestest.utils";
 import sys;
 import unittest;
 
-import pypestest.utils.xml_.text_content_filter;
-import pypestest.utils.xml_.xml_handler;
+import pypestest.utils.xml_.textcontent_filter;
+import pypestest.utils.xml_.xml_processor;
 
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
@@ -15,8 +15,8 @@ def suite():
 
   suite = unittest.TestSuite();
 
-  suite.addTests( pypestest.utils.xml_.text_content_filter.suite() );
-  suite.addTests( pypestest.utils.xml_.xml_handler.suite() );
+  suite.addTests( pypestest.utils.xml_.textcontent_filter.suite() );
+  suite.addTests( pypestest.utils.xml_.xml_processor.suite() );
 
   return suite;
 

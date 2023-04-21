@@ -1,0 +1,134 @@
+:mod:`pypes.infer.mcpiet` --- The Monte Carlo Pseudo Inference Engine for Text (McPIET)
+=======================================================================================
+
+.. module:: pypes.infer.mcpiet
+  :synopsis: The Monte Carlo Pseudo Inference Engine for Text (McPIET)
+
+
+.. class:: LukasiewiczPropositionalLogic()
+
+   .. attribute:: TV_MIN
+   .. attribute:: TV_FALSE
+   .. attribute:: TV_MAXFALSE
+
+   .. attribute:: TV_MINTRUE
+   .. attribute:: TV_TRUE
+   .. attribute:: TV_MAX
+
+   .. method:: tv_false()
+   .. method:: tv_true()
+   .. method:: tv_undesignated()
+
+   .. method:: tv()
+
+   .. method:: tv_is_false()
+   .. method:: tv_is_true()
+   .. method:: tv_is_undesignated()
+
+   .. method:: tv_to_float()
+
+   .. method:: p_neg( p )
+   .. method:: p_strcon( p, q )
+   .. method:: p_weacon( p, q )
+   .. method:: p_strdis( p, q )
+   .. method:: p_weadis( p, q )
+   .. method:: p_imp( p, q )
+
+
+.. class:: FirstOrderLogic( propositional_logic )
+
+   .. attribute:: propositional_logic
+
+   .. method:: fo_pred_open( model, indiv_by_arg, predication )
+   .. method:: fo_pred_equals( model, indiv_by_arg, predication )
+   .. method:: fo_quant( model, indiv_by_var, quantification, rstr, body, var_range, outer, inner )
+   .. method:: fo_quant_univ( model, indiv_by_var, quantification, rstr, body, var_range )
+   .. method:: fo_quant_exist( model, indiv_by_var, quantification, rstr, body, var_range )
+   .. method:: fo_quant_descr( model, indiv_by_var, quantification, rstr, body, var_range )
+
+
+.. class:: Optimizer()
+
+   .. method:: optimize( arg_range, free_args, args, function )
+
+
+.. class:: NullOptimizer()
+
+   (see also: :class:`Optimizer`)
+
+   .. method:: optimize( arg_range, free_args, args, function )
+
+      (see also: :meth:`Optimizer.optimize`)
+
+
+.. class:: ExhaustiveOptimizer()
+
+   (see also: :class:`Optimizer`)
+
+   .. method:: optimize( arg_range, free_args, args, function )
+
+      (see also: :meth:`Optimizer.optimize`)
+
+
+.. class:: TarskiOptimizer()
+
+   (see also: :class:`Optimizer`)
+
+   .. method:: optimize( arg_range, free_args, args, function )
+
+      (see also: :meth:`Optimizer.optimize`)
+
+
+.. class:: Schema()
+
+   .. attribute:: args
+   .. attribute:: sorts
+   .. attribute:: event_range
+   .. attribute:: entity_range
+
+   .. method:: accommodate_for_form( pf )
+
+
+.. class:: Model( schema )
+
+   .. attribute:: schema
+   .. attribute:: matrices
+
+
+.. class:: ModelBuilder( logic )
+
+   .. method:: reset()
+   .. method:: build( schema )
+
+
+.. class:: ModelChecker( logic, inner_optimizer, outer_optimizer )
+
+   .. method:: reset()
+   .. method:: preprocess( pfid, pf, schema )
+   .. method:: check( pfid, model )
+
+
+.. class:: McPIETAgent( [ paramid [ , propositional_logic [ , firstorder_logic [ , inner_optimizer [ , outer_optimizer [ , builder [ , log2_iterations ] ] ] ] ] ] ] )
+
+   (see also: :class:`pypes.infer.SemanticInferenceAgent`)
+
+   .. method:: reset()
+
+      (see also: :meth:`pypes.infer.SemanticInferenceAgent.reset`)
+
+   .. method:: process_sentence( sentid, rec, text )
+
+      (see: :meth:`pypes.infer.SemanticInferenceAgent.process_sentence`)
+
+   .. method:: process_discourse( discid, rec, sents [ , inf=False ] )
+
+      (see: :meth:`pypes.infer.SemanticInferenceAgent.process_discourse`)
+
+   .. method:: preprocess()
+
+      (see also: :meth:`pypes.infer.SemanticInferenceAgent.preprocess`)
+
+   .. method:: infer( disc, antecedent, consequent )
+
+      (see also: :meth:`pypes.infer.SemanticInferenceAgent.infer`)
+

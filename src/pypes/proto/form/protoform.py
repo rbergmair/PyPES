@@ -10,6 +10,7 @@ from copy import copy;
 from pypes.utils.mc import kls;
 from pypes.proto.form.handle import Handle;
 from pypes.proto.form.subform import SubForm;
+from pypes.proto.form.scope_bearer import ScopeBearer;
 from pypes.proto.form.constraint import Constraint;
 
 
@@ -19,7 +20,7 @@ from pypes.proto.form.constraint import Constraint;
 # In the fictional world of the Transformers, protoforms are "basic frames"
 # of a Cybertronian placed in stasis until a suitable form can be found.
 
-class ProtoForm( SubForm, metaclass=kls ):
+class ProtoForm( SubForm, ScopeBearer, metaclass=kls ):
 
   _superordinate_ = None;
   _key_ = None;
@@ -59,8 +60,8 @@ class ProtoForm( SubForm, metaclass=kls ):
     for ( freezelevel, content ) in subform._holes.items():
       freezelevel -= 1;
       if not freezelevel in self._holes:
-        self._holes[ freezelevel ] = set();
-      self._holes[ freezelevel ] |= content;
+        self._holes[ freezelevel ] = [];
+      self._holes[ freezelevel ] += content;
     self.protoforms |= subform.protoforms;
     if isinstance( subform, ProtoForm ):
       self.protoforms.add( subform );

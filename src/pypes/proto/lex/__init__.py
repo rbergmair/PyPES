@@ -1,10 +1,12 @@
 # -*-  coding: ascii -*-  # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 __package__ = "proto";
-__all__ = [ "Word", "Operator" ];
+
+__all__ = [ "Word", "Operator", "Referent" ];
 
 from pypes.proto.lex.basic import Word;
 from pypes.proto.lex.basic import Operator;
+from pypes.proto.lex.basic import Referent;
 
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #

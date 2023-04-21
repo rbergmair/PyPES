@@ -38,7 +38,7 @@ class TestFunctor( TestCase, metaclass=object_ ):
     
     self.assert_( isinstance( inst.referent, Word ), msg );
     self.assertEquals( inst.fid, 5, msg );
-    self.assertEquals( inst.referent.lemma, ["man"], msg );
+    self.assertSequenceEqual( inst.referent.lemma, ["man"], msg );
 
   def test_1( self ):
     
@@ -58,21 +58,53 @@ class TestFunctor( TestCase, metaclass=object_ ):
   def test_2( self ):
     
     self.check_funct_2( self.logify( self.init_funct_2() ) );
+
+
+  def init_funct_3( self ):
+    
+    inst_ = Functor(
+                fid = 5,
+                referent = Word( lemma=["man"] ),
+                feats = {
+                    "pers": "3",
+                    "num": "sg"
+                  }
+              );
+    return inst_;
+  
+  def check_funct_3( self, inst, msg=None ):
+    
+    self.assert_( isinstance( inst.referent, Word ), msg );
+    self.assertEquals( inst.fid, 5, msg );
+    self.assertSequenceEqual( inst.referent.lemma, ["man"], msg );
+    self.assertEquals( len( inst.feats ), 2, msg );
+    self.assert_( "pers" in inst.feats, msg );
+    self.assert_( "num" in inst.feats, msg );
+    self.assertEquals( inst.feats[ "pers" ], "3", msg );
+    self.assertEquals( inst.feats[ "num" ], "sg", msg );
+
+  def test_3( self ):
+    
+    self.check_funct_3( self.logify( self.init_funct_3() ) );
   
   
   def test_cmp( self ):
     
     funct1 = self.logify( self.init_funct_1() );
     funct2 = self.logify( self.init_funct_2() );
+    funct3 = self.logify( self.init_funct_3() );
 
     funct1_ = self.logify( self.init_funct_1() );
     funct2_ = self.logify( self.init_funct_2() );
+    funct3_ = self.logify( self.init_funct_3() );
     
     self.assertEquals_( funct1, funct1_ );
     self.assertEquals_( funct2, funct2_ );
+    self.assertEquals_( funct3, funct3_ );
 
     self.assertNotEquals_( funct1, funct2_ );
-    self.assertNotEquals_( funct2, funct1_ );
+    self.assertNotEquals_( funct2, funct3_ );
+    self.assertNotEquals_( funct3, funct1_ );
     
 
 

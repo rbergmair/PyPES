@@ -16,25 +16,25 @@ class TestTestCase1( TestCase, metaclass=object_ ):
   def globalSetUp( self ):
 
     super( TestTestCase1, self ).globalSetUp();
-    self._globalstate.myvar = True;
-    self._globalstate.mycnt = 0;
+    self.globalstate.myvar = True;
+    self.globalstate.mycnt = 0;
 
   def setUp( self ):
 
-    self.assertTrue( self._globalstate.myvar );
-    self._globalstate.mycnt += 1;
+    self.assertTrue( self.globalstate.myvar );
+    self.globalstate.mycnt += 1;
 
   def test_aa( self ):
 
-    self.assertEquals( self._globalstate.mycnt, 1 );
+    self.assertEquals( self.globalstate.mycnt, 1 );
 
   def test_ab( self ):
 
-    self.assertEquals( self._globalstate.mycnt, 2 );
+    self.assertEquals( self.globalstate.mycnt, 2 );
 
   def test_ac( self ):
 
-    self.assertEquals( self._globalstate.mycnt, 3 );
+    self.assertEquals( self.globalstate.mycnt, 3 );
 
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
@@ -44,7 +44,7 @@ class TestTestCase2( TestCase, metaclass=object_ ):
   def globalSetUp( self ):
 
     super( TestTestCase2, self ).globalSetUp();
-    self._globalstate.mycnt = 0;
+    self.globalstate.mycnt = 0;
 
   def globalTearDown( self ):
 
@@ -53,23 +53,23 @@ class TestTestCase2( TestCase, metaclass=object_ ):
 
   def setUp( self ):
 
-    self._globalstate.mycnt += 1;
+    self.globalstate.mycnt += 1;
 
   def tearDown( self ):
 
-    self._globalstate.mycnt -= 1;
+    self.globalstate.mycnt -= 1;
 
   def test_aa( self ):
 
-    self.assertEquals( self._globalstate.mycnt, 1 );
+    self.assertEquals( self.globalstate.mycnt, 1 );
 
   def test_ab( self ):
 
-    self.assertEquals( self._globalstate.mycnt, 1 );
+    self.assertEquals( self.globalstate.mycnt, 1 );
 
   def test_ac( self ):
 
-    self.assertEquals( self._globalstate.mycnt, 1 );
+    self.assertEquals( self.globalstate.mycnt, 1 );
 
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #

@@ -39,14 +39,15 @@ class Object( metaclass=object_ ):
 class _SubjectCtxMgr( metaclass=object_ ):
 
 
-  def __init__( self, subj ):
+  def __init__( self, subj, kwargs ):
 
     self._subj = subj;
+    self._kwargs = kwargs;
 
 
   def __enter__( self ):
 
-    self._subj._subject__orig_init( self._subj );
+    self._subj._subject__orig_init( self._subj, **self._kwargs );
     
     enter = None;
     try:
@@ -83,13 +84,13 @@ class _SubjectCtxMgr( metaclass=object_ ):
 class subject( type ):
 
 
-  def __new( cls, obj=None ):
+  def __new( cls, obj=None, **kwargs ):
 
     inst = cls.__orig_new( cls );
     inst.__orig_init = cls.__init__;
     inst.__init__ = lambda *args, **kwargs: None;
     inst._obj_ = obj;
-    return _SubjectCtxMgr( inst );
+    return _SubjectCtxMgr( inst, kwargs );
 
 
   def __new__( mcs, name, bases, dict ):
@@ -182,17 +183,44 @@ class kls( type ):
 
       inst = cls.__new_orig( cls );
       inst._init_init_();
+      inst.__init__( **kwargs );
+      return inst;
       
+    if not hasattr( parent, "_sos_" ):
+      parent._sos_ = {};
+    if not cls in parent._sos_:
+      parent._sos_[ cls ] = {};
+    
+    superordinate = parent._sos_[ cls ];
+    
+    if cls._key_ is None:
+
+      inst = cls.__new_orig( cls );
+      inst._init_init_();
+      inst.__init__( **kwargs );
+      foundinst = None;
+      for inst_ in superordinate.values():
+        if inst_ <= inst or inst <= inst_:
+          assert foundinst is None;
+          foundinst = inst_;
+      if foundinst is None:
+        superordinate[ id(inst) ] = inst;
+      else:
+        inst = foundinst;
+        inst.__init__( **kwargs );
+    
     else:
-      
-      if not hasattr( parent, "_sos_" ):
-        parent._sos_ = {};
-      if not cls in parent._sos_:
-        parent._sos_[ cls ] = {};
-      
-      superordinate = parent._sos_[ cls ];
-      
+    
       key = kwargs_outer.get( cls._key_ );
+      
+      # TODO: HACK!
+      isnone = False;
+      if isinstance( key, tuple ):
+        for component in key:
+          if component is None:
+            isnone = True;
+      if isnone:
+        key = None;
       
       if key is None:
         inst = cls.__new_orig( cls );
@@ -204,8 +232,9 @@ class kls( type ):
         inst = cls.__new_orig( cls );
         inst._init_init_();
         superordinate[ key ] = inst;
-    
-    inst.__init__( **kwargs );
+  
+      inst.__init__( **kwargs );
+      
     return inst;
   
   

@@ -5,7 +5,7 @@ __all__ = [ "ERGSemProcessor" ];
 
 from pypes.utils.mc import subject;
 
-from pypes.codecs_.pft._pft_parser import PFTParser;
+from pypes.codecs_.pft._pft_parser import PFTDecoder;
 
 
 
@@ -28,7 +28,7 @@ class ERGSemProcessor( metaclass=subject ):
     stri_ = "";
     
     for ch in stri:
-      if ch in PFTParser.ALPHANUM:
+      if ch in PFTDecoder._ALPHANUM:
         stri_ += ch;
     return stri_;
 
@@ -38,11 +38,11 @@ class ERGSemProcessor( metaclass=subject ):
 
     stri_ = "";
     
-    if not stri[0] in PFTParser.IDENTFIRST:
+    if not stri[0] in PFTDecoder._IDENTFIRST:
       stri_ += "_";
     
     for ch in stri:
-      if ch in PFTParser.IDENTNEXT:
+      if ch in PFTDecoder._IDENTNEXT:
         stri_ += ch;
       else:
         stri_ += "_";
@@ -267,7 +267,7 @@ class ERGSemProcessor( metaclass=subject ):
       if holes == 0:
         return True;
     else:
-      if total-nonholes <= 0:
+      if total - nonholes <= 0:
         return True;
     
     return False;

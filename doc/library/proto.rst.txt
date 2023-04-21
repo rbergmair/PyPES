@@ -1,0 +1,985 @@
+:mod:`pypes.proto` --- ProtoForm Object Data Structure
+======================================================
+
+
+:mod:`pypes.proto` provides object classes for the main data structures
+representing protoforms and utility subjects controlling iterations and
+comparisons of protoforms.
+
+
+
+:mod:`pypes.proto.form` --- dynamic form objects
+------------------------------------------------
+
+.. module:: pypes.proto.form
+
+
+.. class:: Constraint( sig [ , harg  [ , larg ] ] )
+
+   .. attribute:: harg
+   .. attribute:: larg
+      
+
+.. class:: SubForm( sig )
+
+   .. attribute:: holes
+   .. attribute:: protoforms
+
+
+.. class:: Connection( sig [ , connective [ , lscope [ , rscope ] ] ] )
+
+   (see also: :class:`SubForm`)
+
+   .. attribute:: holes
+
+      (see also: :attr:`SubForm.holes`)
+
+   .. attribute:: protoforms
+
+      (see also: :attr:`SubForm.protoforms`)
+
+   .. attribute:: connective
+   .. attribute:: lscope
+   .. attribute:: rscope
+
+
+.. class:: Quantification( sig [ , quantifier [ , var [ , rstr [ , body ] ] ] ] )
+
+   (see also: :class:`SubForm`)
+
+   .. attribute:: holes
+      
+      (see also: :attr:`SubForm.holes`)
+
+   .. attribute:: protoforms
+
+      (see also: :attr:`SubForm.protoforms`)
+
+   .. attribute:: quantifier
+   .. attribute:: var
+   .. attribute:: rstr
+   .. attribute:: body
+
+
+.. class:: Predication( sig [ , predicate [ , args ] ] )
+
+   (see also: :class:`SubForm`)
+
+   .. attribute:: holes
+      
+      (see also: :attr:`SubForm.holes`)
+
+   .. attribute:: protoforms
+
+      (see also: :attr:`SubForm.protoforms`)
+
+   .. attribute:: predicate
+   .. attribute:: args
+
+
+.. class:: Modification( sig [ , predicate [ , args ] ] )
+
+   (see also: :class:`SubForm`)
+
+   .. attribute:: holes
+      
+      (see also: :attr:`SubForm.holes`)
+
+   .. attribute:: protoforms
+
+      (see also: :attr:`SubForm.protoforms`)
+
+   .. attribute:: modality
+   .. attribute:: scope
+   .. attribute:: args
+
+
+.. class:: ScopeBearer( sig )
+
+
+.. class:: Handle( sig [ , hid ] )
+
+   (see also: :class:`ScopeBearer`)
+
+   .. attribute:: hid
+
+
+.. class:: Freezer( sig [ , content ] )
+
+   (see also: :class:`ScopeBearer`)
+
+   .. attribute:: freezelevel
+   .. attribute:: content
+
+
+.. class:: ProtoForm( sig [ , subforms [ , constraints ] ] )
+
+   (see also: :class:`SubForm`, :class:`ScopeBearer`)
+   
+   .. attribute:: holes
+
+      (see also: :attr:`SubForm.holes`)
+
+   .. attribute:: protoforms
+
+      (see also: :attr:`SubForm.protoforms`)
+
+   .. attribute:: roots
+   .. attribute:: subforms
+   .. attribute:: constraints
+
+
+
+:mod:`pypes.proto.sig` --- signature objects
+--------------------------------------------
+
+.. module:: pypes.proto.sig
+
+
+.. class:: Argument( predmod [ , aid ] )
+
+   .. attribute:: aid
+
+
+.. class:: ArgumentValue( sig )
+
+
+.. class:: Constant( sig [ , ident ] )
+
+   (see also: :class:`ArgumentValue`)
+
+   .. attribute:: ident
+
+
+.. class:: Sort( sig [ , sid ] )
+
+   .. attribute:: sid
+
+
+.. class:: Variable( sig [ , sidvid ] )
+
+   (see also: :class:`ArgumentValue`)
+
+   .. attribute:: sort
+   .. attribute:: vid
+
+
+.. class:: Functor( sig [ , fid [ , referent [ , feats ] ] ] )
+
+   .. attribute:: fid
+   .. attribute:: referent
+   .. attribute:: feats
+
+
+
+:mod:`pypes.proto.lex` --- lexical objects
+------------------------------------------
+
+.. module:: pypes.proto.lex
+
+.. module:: pypes.proto.lex.basic
+
+
+.. class:: Referent( sig )
+
+
+.. class:: Word( sig [ , lemma [ , pos [ , sense ] ] ] )
+
+   (see also: :class:`Referent`)
+
+   .. attribute:: lemma
+   .. attribute:: pos
+   .. attribute:: sense
+
+
+.. class:: Operator( sig [ , otype ] )
+
+   (see also: :class:`Referent`)
+
+   .. attribute:: otype
+
+
+.. module:: pypes.proto.lex.erg
+
+
+.. class:: Word( sig [ , lemma [ , pos [ , sense ] ] ] )
+
+   (see also: :class:`pypes.proto.lex.basic.Word`)
+
+   .. attribute:: lemma
+   .. attribute:: pos
+   .. attribute:: sense
+
+
+.. class:: Operator( sig [ , otype ] )
+
+   (see also: :class:`pypes.proto.lex.basic.Operator`)
+
+   .. attribute:: otype
+
+
+
+.. module:: pypes.proto
+  :synopsis: object classes for the main data structures representing
+    protoforms and utility subjects.
+
+
+
+ProtoForm Iterators
+-------------------
+
+
+
+.. class:: ProtoProcessor()
+
+   .. method:: process_constant( inst )
+   .. method:: process_sort( inst )
+   .. method:: process_variable( inst )
+   .. method:: process_argument( inst )
+   .. method:: process_word( inst )
+   .. method:: process_operator( inst )
+   .. method:: process_functor( inst )
+   .. method:: process_predication( inst, subform )
+   .. method:: process_quantification( inst, subform )
+   .. method:: process_modification( inst, subform )
+   .. method:: process_connection( inst, subform )
+   .. method:: process_handle( inst )
+   .. method:: process_scopebearer( inst )
+   .. method:: process_subform( subform )
+   .. method:: process_constraint( inst )
+   .. method:: process_protoform( inst, subform )
+
+   .. method:: process_constant_( inst, ident )
+   .. method:: process_sort_( inst, sid )
+   .. method:: process_variable_( inst, sort, vid )
+   .. method:: process_argument_( inst, aid )
+   .. method:: process_word_( inst, lemma, pos, sense )
+   .. method:: process_operator_( inst, otype )
+   .. method:: process_functor_( inst, fid, referent, feats )
+   .. method:: process_predication_( inst, subform, predicate, args )
+   .. method:: process_quantification_( inst, subform, quantifier, var, rstr, body )
+   .. method:: process_modification_( inst, subform, modality, args, scope )
+   .. method:: process_connection_( inst, subform, connective, lscope, rscope )
+   .. method:: process_handle_( inst, hid )
+   .. method:: process_subform_( inst, holes, protoforms )
+   .. method:: process_constraint_( inst, harg, larg )
+   .. method:: process_protoform_( inst, subform, subforms, constraints )
+
+   .. method:: process( inst )
+
+
+
+.. class:: LambdaifyingProcessor()
+
+   (see also: :class:`ProtoProcessor`)
+
+
+   .. method:: process_constant( inst )
+
+      (see: :meth:`ProtoProcessor.process_constant`)
+
+   .. method:: process_sort( inst )
+
+      (see: :meth:`ProtoProcessor.process_sort`)
+
+   .. method:: process_variable( inst )
+
+      (see: :meth:`ProtoProcessor.process_variable`)
+
+   .. method:: process_argument( inst )
+
+      (see: :meth:`ProtoProcessor.process_argument`)
+
+   .. method:: process_word( inst )
+
+      (see: :meth:`ProtoProcessor.process_word`)
+
+   .. method:: process_operator( inst )
+
+      (see: :meth:`ProtoProcessor.process_operator`)
+
+   .. method:: process_functor( inst )
+
+      (see: :meth:`ProtoProcessor.process_functor`)
+
+   .. method:: process_predication( inst, subform )
+
+      (see: :meth:`ProtoProcessor.process_predication`)
+
+   .. method:: process_quantification( inst, subform )
+
+      (see: :meth:`ProtoProcessor.process_quantification`)
+
+   .. method:: process_modification( inst, subform )
+
+      (see: :meth:`ProtoProcessor.process_modification`)
+
+   .. method:: process_connection( inst, subform )
+
+      (see: :meth:`ProtoProcessor.process_connection`)
+
+   .. method:: process_handle( inst )
+
+      (see: :meth:`ProtoProcessor.process_handle`)
+
+   .. method:: process_freezer( content [ , freezelevel ] )
+
+   .. method:: process_scopebearer( inst )
+
+      (see also: :meth:`ProtoProcessor.process_scopebearer`)
+
+   .. method:: process_subform( subform )
+
+      (see also: :meth:`ProtoProcessor.process_subform`)
+
+   .. method:: process_constraint( inst )
+
+      (see: :meth:`ProtoProcessor.process_constraint`)
+
+   .. method:: process_protoform( inst, subform )
+
+      (see also: :meth:`ProtoProcessor.process_protoform`)
+
+
+   .. method:: process_constant_( inst, ident )
+
+      (see: :meth:`ProtoProcessor.process_constant_`)
+
+   .. method:: process_sort_( inst, sid )
+
+      (see: :meth:`ProtoProcessor.process_sort_`)
+
+   .. method:: process_variable_( inst, sort, vid )
+
+      (see: :meth:`ProtoProcessor.process_variable_`)
+
+   .. method:: process_argument_( inst, aid )
+
+      (see: :meth:`ProtoProcessor.process_argument_`)
+
+   .. method:: process_word_( inst, lemma, pos, sense )
+
+      (see: :meth:`ProtoProcessor.process_word_`)
+
+   .. method:: process_operator_( inst, otype )
+
+      (see: :meth:`ProtoProcessor.process_operator_`)
+
+   .. method:: process_functor_( inst, fid, referent, feats )
+
+      (see: :meth:`ProtoProcessor.process_functor_`)
+
+   .. method:: process_predication_( inst, subform, predicate, args )
+
+      (see: :meth:`ProtoProcessor.process_predication_`)
+
+   .. method:: process_quantification_( inst, subform, quantifier, var, rstr, body )
+
+      (see: :meth:`ProtoProcessor.process_quantification_`)
+
+   .. method:: process_modification_( inst, subform, modality, args, scope )
+
+      (see: :meth:`ProtoProcessor.process_modification_`)
+
+   .. method:: process_connection_( inst, subform, connective, lscope, rscope )
+
+      (see: :meth:`ProtoProcessor.process_connection_`)
+
+   .. method:: process_handle_( inst, hid )
+
+      (see: :meth:`ProtoProcessor.process_handle_`)
+
+   .. method:: process_freezer_( content, freezelevel )
+
+   .. method:: process_subform_( inst, holes, protoforms )
+
+      (see: :meth:`ProtoProcessor.process_subform_`)
+
+   .. method:: process_constraint_( inst, harg, larg )
+
+      (see: :meth:`ProtoProcessor.process_constraint_`)
+
+   .. method:: process_protoform_( inst, subform, subforms, constraints )
+
+      (see: :meth:`ProtoProcessor.process_protoform_`)
+
+
+   .. method:: process( inst )
+
+      (see: :meth:`ProtoProcessor.process`)
+
+
+
+.. class:: Lambdaifier()
+
+   (see also: :class:`LambdaifyingProcessor`)
+
+
+   .. method:: process_constant( inst )
+
+      (see: :meth:`ProtoProcessor.process_constant`)
+
+   .. method:: process_sort( inst )
+
+      (see: :meth:`ProtoProcessor.process_sort`)
+
+   .. method:: process_variable( inst )
+
+      (see: :meth:`ProtoProcessor.process_variable`)
+
+   .. method:: process_argument( inst )
+
+      (see: :meth:`ProtoProcessor.process_argument`)
+
+   .. method:: process_word( inst )
+
+      (see: :meth:`ProtoProcessor.process_word`)
+
+   .. method:: process_operator( inst )
+
+      (see: :meth:`ProtoProcessor.process_operator`)
+
+   .. method:: process_functor( inst )
+
+      (see: :meth:`ProtoProcessor.process_functor`)
+
+   .. method:: process_predication( inst, subform )
+
+      (see: :meth:`ProtoProcessor.process_predication`)
+
+   .. method:: process_quantification( inst, subform )
+
+      (see: :meth:`ProtoProcessor.process_quantification`)
+
+   .. method:: process_modification( inst, subform )
+
+      (see: :meth:`ProtoProcessor.process_modification`)
+
+   .. method:: process_connection( inst, subform )
+
+      (see: :meth:`ProtoProcessor.process_connection`)
+
+   .. method:: process_handle( inst )
+
+      (see: :meth:`ProtoProcessor.process_handle`)
+
+   .. method:: process_freezer( content [ , freezelevel ] )
+
+      (see: :meth:`LambdaifyingProcessor.process_freezer`)
+
+   .. method:: process_scopebearer( inst )
+
+      (see: :meth:`LambdaifyingProcessor.process_scopebearer`)
+
+   .. method:: process_subform( subform )
+
+      (see: :meth:`LambdaifyingProcessor.process_subform`)
+
+   .. method:: process_constraint( inst )
+
+      (see: :meth:`ProtoProcessor.process_constraint`)
+
+   .. method:: process_protoform( inst, subform )
+
+      (see: :meth:`LambdaifyingProcessor.process_protoform`)
+
+
+   .. method:: process_constant_( inst, ident )
+
+      (see also: :meth:`ProtoProcessor.process_constant_`)
+
+   .. method:: process_sort_( inst, sid )
+
+      (see also: :meth:`ProtoProcessor.process_sort_`)
+
+   .. method:: process_variable_( inst, sort, vid )
+
+      (see also: :meth:`ProtoProcessor.process_variable_`)
+
+   .. method:: process_argument_( inst, aid )
+
+      (see also: :meth:`ProtoProcessor.process_argument_`)
+
+   .. method:: process_word_( inst, lemma, pos, sense )
+
+      (see also: :meth:`ProtoProcessor.process_word_`)
+
+   .. method:: process_operator_( inst, otype )
+
+      (see also: :meth:`ProtoProcessor.process_operator_`)
+
+   .. method:: process_functor_( inst, fid, referent, feats )
+
+      (see also: :meth:`ProtoProcessor.process_functor_`)
+
+   .. method:: process_predication_( inst, subform, predicate, args )
+
+      (see also: :meth:`ProtoProcessor.process_predication_`)
+
+   .. method:: process_quantification_( inst, subform, quantifier, var, rstr, body )
+
+      (see also: :meth:`ProtoProcessor.process_quantification_`)
+
+   .. method:: process_modification_( inst, subform, modality, args, scope )
+
+      (see also: :meth:`ProtoProcessor.process_modification_`)
+
+   .. method:: process_connection_( inst, subform, connective, lscope, rscope )
+
+      (see also: :meth:`ProtoProcessor.process_connection_`)
+
+   .. method:: process_handle_( inst, hid )
+
+      (see also: :meth:`ProtoProcessor.process_handle_`)
+
+   .. method:: process_freezer_( content, freezelevel )
+
+      (see also: :meth:`LambdaifyingProcessor.process_freezer_`)
+
+   .. method:: process_subform_( inst, holes, protoforms )
+
+      (see also: :meth:`ProtoProcessor.process_subform_`)
+
+   .. method:: process_constraint_( inst, harg, larg )
+
+      (see also: :meth:`ProtoProcessor.process_constraint_`)
+
+   .. method:: process_protoform_( inst, subform, subforms, constraints )
+
+      (see also: :meth:`ProtoProcessor.process_protoform_`)
+
+
+   .. method:: process( inst )
+
+      (see: :meth:`ProtoProcessor.process`)
+
+
+   .. method:: lambdaify( inst )
+
+
+
+.. function:: lambdaify( pf )
+
+   is a shortcut to :meth:`Lambdaifier.lambdaify`.
+
+
+
+.. class:: BinaryProtoProcessor()
+
+   .. method:: process_constant( inst1, inst2 )
+   .. method:: process_sort( inst1, inst2 )
+   .. method:: process_variable( inst1, inst2 )
+   .. method:: process_argument_value( inst1, inst2 )
+   .. method:: process_argument( inst1, inst2 )
+   .. method:: process_word( inst1, inst2 )
+   .. method:: process_operator( inst1, inst2 )
+   .. method:: process_referent( inst1, inst2 )
+   .. method:: process_functor( inst1, inst2 )
+   .. method:: process_predication( inst1, inst2, subform )
+   .. method:: process_quantification( inst1, inst2, subform )
+   .. method:: process_modification( inst1, inst2, subform )
+   .. method:: process_connection( inst1, inst2, subform )
+   .. method:: process_handle( inst1, inst2 )
+   .. method:: process_subform( inst1, inst2 )
+   .. method:: process_constraint( inst1, inst2 )
+   .. method:: process_protoform( inst1, inst2, subform )
+   .. method:: process_scopebearer( inst1, inst2 )
+
+   .. method:: process_constant_( inst1, inst2, ident1, ident2 )
+   .. method:: process_sort_( inst1, inst2, sid1, sid2 )
+   .. method:: process_variable_( inst1, inst2, vid1, vid2, sort )
+   .. method:: process_argument_( inst1, inst2, aid1, aid2 )
+   .. method:: process_word_( inst1, inst2, lemma1, lemma2, pos1, pos2, sense1, sense2 )
+   .. method:: process_operator_( inst1, inst2, otype1, otype2 )
+   .. method:: process_functor_( inst1, inst2, fid1, fid2, feats1, feats2, referent )
+   .. method:: process_predication_( inst1, inst2, subform, predicate, args )
+   .. method:: process_quantification_( inst1, inst2, subform, quantifier, var, rstr, body )
+   .. method:: process_modification_( inst1, inst2, subform, modality, args, scope )
+   .. method:: process_connection_( inst1, inst2, subform, connective, lscope, rscope )
+   .. method:: process_handle_( inst1, inst2, hid1, hid2 )
+   .. method:: process_subform_( inst1, inst2, holes, protoforms )
+   .. method:: process_constraint_( inst1, inst2, harg, larg )
+   .. method:: process_protoform_( inst1, inst2, subform, subforms, constraints )
+
+   .. method:: process( inst1, inst2 )
+
+
+
+.. class:: Comparer()
+
+   (see also: :class:`BinaryProtoProcessor`)
+
+   .. method:: process_constant( inst1, inst2 )
+
+      (see also: :meth:`BinaryProtoProcessor.process_constant`)
+
+   .. method:: process_sort( inst1, inst2 )
+
+      (see also: :meth:`BinaryProtoProcessor.process_sort`)
+
+   .. method:: process_variable( inst1, inst2 )
+
+      (see also: :meth:`BinaryProtoProcessor.process_variable`)
+
+   .. method:: process_argument_value( inst1, inst2 )
+
+      (see also: :meth:`BinaryProtoProcessor.process_argument_value`)
+
+   .. method:: process_argument( inst1, inst2 )
+
+      (see also: :meth:`BinaryProtoProcessor.process_argument`)
+
+   .. method:: process_word( inst1, inst2 )
+
+      (see also: :meth:`BinaryProtoProcessor.process_word`)
+
+   .. method:: process_operator( inst1, inst2 )
+
+      (see also: :meth:`BinaryProtoProcessor.process_operator`)
+
+   .. method:: process_referent( inst1, inst2 )
+
+      (see also: :meth:`BinaryProtoProcessor.process_referent`)
+
+   .. method:: process_functor( inst1, inst2 )
+
+      (see also: :meth:`BinaryProtoProcessor.process_functor`)
+
+   .. method:: process_predication( inst1, inst2, subform )
+
+      (see also: :meth:`BinaryProtoProcessor.process_predication`)
+
+   .. method:: process_quantification( inst1, inst2, subform )
+
+      (see also: :meth:`BinaryProtoProcessor.process_quantification`)
+
+   .. method:: process_modification( inst1, inst2, subform )
+
+      (see also: :meth:`BinaryProtoProcessor.process_modification`)
+
+   .. method:: process_connection( inst1, inst2, subform )
+
+      (see also: :meth:`BinaryProtoProcessor.process_connection`)
+
+   .. method:: process_handle( inst1, inst2 )
+
+      (see also: :meth:`BinaryProtoProcessor.process_handle`)
+
+   .. method:: process_subform( inst1, inst2 )
+
+      (see also: :meth:`BinaryProtoProcessor.process_subform`)
+
+   .. method:: process_constraint( inst1, inst2 )
+
+      (see also: :meth:`BinaryProtoProcessor.process_constraint`)
+
+   .. method:: process_protoform( inst1, inst2, subform )
+
+      (see also: :meth:`BinaryProtoProcessor.process_protoform`)
+
+   .. method:: process_scopebearer( inst1, inst2 )
+
+      (see also: :meth:`BinaryProtoProcessor.process_scopebearer`)
+
+
+   .. method:: process_constant_( inst1, inst2, ident1, ident2 )
+
+      (see also: :meth:`BinaryProtoProcessor.process_constant_`)
+
+   .. method:: process_sort_( inst1, inst2, sid1, sid2 )
+
+      (see also: :meth:`BinaryProtoProcessor.process_sort_`)
+
+   .. method:: process_variable_( inst1, inst2, vid1, vid2, sort )
+
+      (see also: :meth:`BinaryProtoProcessor.process_variable_`)
+
+   .. method:: process_argument_( inst1, inst2, aid1, aid2 )
+
+      (see also: :meth:`BinaryProtoProcessor.process_argument_`)
+
+   .. method:: process_word_( inst1, inst2, lemma1, lemma2, pos1, pos2, sense1, sense2 )
+
+      (see also: :meth:`BinaryProtoProcessor.process_word_`)
+
+   .. method:: process_operator_( inst1, inst2, otype1, otype2 )
+
+      (see also: :meth:`BinaryProtoProcessor.process_operator_`)
+
+   .. method:: process_functor_( inst1, inst2, fid1, fid2, feats1, feats2, referent )
+
+      (see also: :meth:`BinaryProtoProcessor.process_functor_`)
+
+   .. method:: process_predication_( inst1, inst2, subform, predicate, args )
+
+      (see also: :meth:`BinaryProtoProcessor.process_predication_`)
+
+   .. method:: process_quantification_( inst1, inst2, subform, quantifier, var, rstr, body )
+
+      (see also: :meth:`BinaryProtoProcessor.process_quantification_`)
+
+   .. method:: process_modification_( inst1, inst2, subform, modality, args, scope )
+
+      (see also: :meth:`BinaryProtoProcessor.process_modification_`)
+
+   .. method:: process_connection_( inst1, inst2, subform, connective, lscope, rscope )
+
+      (see also: :meth:`BinaryProtoProcessor.process_connection_`)
+
+   .. method:: process_handle_( inst1, inst2, hid1, hid2 )
+
+      (see also: :meth:`BinaryProtoProcessor.process_handle_`)
+
+   .. method:: process_subform_( inst1, inst2, holes, protoforms )
+
+      (see also: :meth:`BinaryProtoProcessor.process_subform_`)
+
+   .. method:: process_constraint_( inst1, inst2, harg, larg )
+
+      (see also: :meth:`BinaryProtoProcessor.process_constraint_`)
+
+   .. method:: process_protoform_( inst1, inst2, subform, subforms, constraints )
+
+      (see also: :meth:`BinaryProtoProcessor.process_protoform_`)
+
+
+   .. method:: true()
+
+   .. method:: false()
+
+   .. method:: meet()
+
+   .. method:: join()
+
+   .. method:: meet1()
+
+   .. method:: join1()
+
+   .. method:: meet2()
+
+   .. method:: join2()
+
+
+   .. method:: process( inst1, inst2 )
+
+      (see: :meth:`BinaryProtoProcessor.process`)
+
+
+   .. method:: pfs_leq( pf1, pf2 )
+
+   .. method:: pfs_eq( pf1, pf2 )
+
+
+.. function:: pfs_leq( pf1, pf2 )
+
+   is a shortcut to :meth:`Comparer.pfs_leq`.
+
+.. function:: pfs_eq( pf1, pf2 )
+
+   is a shortcut to :meth:`Comparer.pfs_eq`.
+
+
+
+.. class:: Morpher()
+
+   (see also: :class:`Comparer`)
+
+   .. method:: process_constant( inst1, inst2 )
+
+      (see: :meth:`Comparer.process_constant`)
+
+   .. method:: process_sort( inst1, inst2 )
+
+      (see: :meth:`Comparer.process_sort`)
+
+   .. method:: process_variable( inst1, inst2 )
+
+      (see: :meth:`Comparer.process_variable`)
+
+   .. method:: process_argument_value( inst1, inst2 )
+
+      (see: :meth:`Comparer.process_argument_value`)
+
+   .. method:: process_argument( inst1, inst2 )
+
+      (see: :meth:`Comparer.process_argument`)
+
+   .. method:: process_word( inst1, inst2 )
+
+      (see: :meth:`Comparer.process_word`)
+
+   .. method:: process_operator( inst1, inst2 )
+
+      (see: :meth:`Comparer.process_operator`)
+
+   .. method:: process_referent( inst1, inst2 )
+
+      (see: :meth:`Comparer.process_referent`)
+
+   .. method:: process_functor( inst1, inst2 )
+
+      (see: :meth:`Comparer.process_functor`)
+
+   .. method:: process_predication( inst1, inst2, subform )
+
+      (see: :meth:`Comparer.process_predication`)
+
+   .. method:: process_quantification( inst1, inst2, subform )
+
+      (see: :meth:`Comparer.process_quantification`)
+
+   .. method:: process_modification( inst1, inst2, subform )
+
+      (see: :meth:`Comparer.process_modification`)
+
+   .. method:: process_connection( inst1, inst2, subform )
+
+      (see: :meth:`Comparer.process_connection`)
+
+   .. method:: process_handle( inst1, inst2 )
+
+      (see: :meth:`Comparer.process_handle`)
+
+   .. method:: process_subform( inst1, inst2 )
+
+      (see: :meth:`Comparer.process_subform`)
+
+   .. method:: process_constraint( inst1, inst2 )
+
+      (see: :meth:`Comparer.process_constraint`)
+
+   .. method:: process_protoform( inst1, inst2, subform )
+
+      (see: :meth:`Comparer.process_protoform`)
+
+   .. method:: process_scopebearer( inst1, inst2 )
+
+      (see: :meth:`Comparer.process_scopebearer`)
+
+
+   .. method:: process_constant_( inst1, inst2, ident1, ident2 )
+
+      (see also: :meth:`Comparer.process_constant_`)
+
+   .. method:: process_sort_( inst1, inst2, sid1, sid2 )
+
+      (see also: :meth:`Comparer.process_sort_`)
+
+   .. method:: process_variable_( inst1, inst2, vid1, vid2, sort )
+
+      (see also: :meth:`Comparer.process_variable_`)
+
+   .. method:: process_argument_( inst1, inst2, aid1, aid2 )
+
+      (see also: :meth:`Comparer.process_argument_`)
+
+   .. method:: process_word_( inst1, inst2, lemma1, lemma2, pos1, pos2, sense1, sense2 )
+
+      (see also: :meth:`Comparer.process_word_`)
+
+   .. method:: process_operator_( inst1, inst2, otype1, otype2 )
+
+      (see also: :meth:`Comparer.process_operator_`)
+
+   .. method:: process_functor_( inst1, inst2, fid1, fid2, feats1, feats2, referent )
+
+      (see also: :meth:`Comparer.process_functor_`)
+
+   .. method:: process_predication_( inst1, inst2, subform, predicate, args )
+
+      (see: :meth:`Comparer.process_predication_`)
+
+   .. method:: process_quantification_( inst1, inst2, subform, quantifier, var, rstr, body )
+
+      (see: :meth:`Comparer.process_quantification_`)
+
+   .. method:: process_modification_( inst1, inst2, subform, modality, args, scope )
+
+      (see: :meth:`Comparer.process_modification_`)
+
+   .. method:: process_connection_( inst1, inst2, subform, connective, lscope, rscope )
+
+      (see: :meth:`Comparer.process_connection_`)
+
+   .. method:: process_handle_( inst1, inst2, hid1, hid2 )
+
+      (see also: :meth:`Comparer.process_handle_`)
+
+   .. method:: process_subform_( inst1, inst2, holes, protoforms )
+
+      (see: :meth:`Comparer.process_subform_`)
+
+   .. method:: process_constraint_( inst1, inst2, harg, larg )
+
+      (see: :meth:`Comparer.process_constraint_`)
+
+   .. method:: process_protoform_( inst1, inst2, subform, subforms, constraints )
+
+      (see: :meth:`Comparer.process_protoform_`)
+
+
+   .. method:: true()
+
+      (see also: :meth:`Comparer.true`)
+
+   .. method:: false()
+
+      (see also: :meth:`Comparer.false`)
+
+   .. method:: meet()
+
+      (see: :meth:`Comparer.meet`)
+
+   .. method:: join()
+
+      (see: :meth:`Comparer.join`)
+
+   .. method:: meet1()
+
+      (see: :meth:`Comparer.meet1`)
+
+   .. method:: join1()
+
+      (see: :meth:`Comparer.join1`)
+
+   .. method:: meet2()
+
+      (see also: :meth:`Comparer.meet2`)
+
+   .. method:: join2()
+
+      (see also: :meth:`Comparer.join2`)
+
+
+   .. method:: process( inst1, inst2 )
+
+      (see: :meth:`BinaryProtoProcessor.process`)
+
+
+   .. method:: pfs_homomorphic( pf1, pf2 )
+
+   .. method:: pfs_isomorphic( pf1, pf2 )
+
+
+.. function:: pfs_homomorphic( pf1, pf2 )
+
+   is a shortcut to :meth:`Morpher.pfs_homomorphic`.
+
+.. function:: pfs_isomorphic( pf1, pf2 )
+
+   is a shortcut to :meth:`Morpher.pfs_isomorphic`.
+
+
+
+Miscellaneous Useful Functions
+------------------------------
+
+.. function:: sanity_check( pf )
+
+.. function:: analyze_as_conjunction_pf( pf )
+
+.. function:: recursion_check( pf )
+
+.. function:: sortseq( n )
+
+

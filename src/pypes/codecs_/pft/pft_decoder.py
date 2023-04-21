@@ -9,35 +9,19 @@ from pypes.proto import *;
 
 import pypes.proto.lex.basic;
 
-from pypes.codecs_.pft._pft_parser_ply import PFTParser;
+from pypes.codecs_.pft._pft_parser_ply import PFTDecoder as PFTDecoder_;
 
 
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-class PFTDecoder( PFTParser, metaclass=subject ):
+class PFTDecoder( PFTDecoder_, metaclass=subject ):
 
 
-  GT_VARIABLE = "variable";
-  GT_HANDLE = "handle";
-  
-  GT_WORD = "word";
-  GT_PREDICATION = "predication";
-  GT_QUANTIFICATION = "quantification";
-  GT_MODIFICATION = "modification";
-  GT_CONNECTION = "connection";
-  GT_CONSTRAINT = "constraint";
-  GT_PROTOFORM = "protoform";
-  GT_FREEZER = "freezer";
-  GT_LEMMATOKS = "lemmatoks";
-  GT_OPERATOR = "operator";
-  GT_CONSTANT = "constant";
-  GT_FUNCTOR = "functor";
-  
-  
-  def decoder_enter( self ):
+  def _enter_( self ):
 
-    ( lexicon, type_ ) = self._obj_;
+    PFTDecoder_._enter_( self );
+    ( type_, lexicon ) = self._obj_;
     
     if lexicon is None:
       self._lexicon = pypes.proto.lex.basic;
@@ -45,25 +29,18 @@ class PFTDecoder( PFTParser, metaclass=subject ):
       self._lexicon = lexicon;
 
 
-  def _enter_( self ):
-
-    PFTParser._enter_( self );
-    self.decoder_enter();
-
-
-  def decoder_exit( self, exc_type, exc_val, exc_tb ):
+  def decode_operator( self, toks_ ):
     
-    self._parser = None;
+    toks = iter( toks_ );
+    otype = next( toks );
+    assert not next( toks, False );
 
-      
-  def _exit_( self, exc_type, exc_val, exc_tb ):
-    
-    PFTParser._exit_( self, exc_type, exc_val, exc_tb );
-    self.decoder_exit( exc_type, exc_val, exc_tb );
+    return (  self.GT_OPERATOR, self._lexicon.Operator(
+                                    otype = otype
+                                  ) );
 
 
-  @classmethod
-  def _decode_bare_word( self, toks_ ):
+  def decode_word( self, toks_ ):
     
     lemma = None;
     pos = None;
@@ -114,11 +91,15 @@ class PFTDecoder( PFTParser, metaclass=subject ):
     
     assert not next( toks, False );
       
-    return ( lemma, pos, sense );
+    return ( self.GT_WORD, self._lexicon.Word(
+                               lemma=lemma,
+                               pos=pos,
+                               sense=sense
+                             ) );
 
 
   @classmethod
-  def _decode_variable( cls, toks_ ):
+  def decode_variable( cls, toks_ ):
 
     toks = iter( toks_ );
     
@@ -131,7 +112,7 @@ class PFTDecoder( PFTParser, metaclass=subject ):
 
 
   @classmethod
-  def _decode_constant( cls, toks_ ):
+  def decode_constant( cls, toks_ ):
 
     toks = iter( toks_ );
     ident = next( toks );
@@ -141,7 +122,7 @@ class PFTDecoder( PFTParser, metaclass=subject ):
   
   
   @classmethod
-  def _decode_explicit_handle( cls, toks_ ):
+  def decode_explicit_handle( cls, toks_ ):
     
     toks = iter( toks_ );
     
@@ -153,7 +134,7 @@ class PFTDecoder( PFTParser, metaclass=subject ):
 
 
   @classmethod
-  def _decode_anonymous_handle( cls, toks_ ):
+  def decode_anonymous_handle( cls, toks_ ):
 
     toks = iter( toks_ );
     
@@ -166,7 +147,7 @@ class PFTDecoder( PFTParser, metaclass=subject ):
 
     
   @classmethod
-  def _decode_features_list( cls, toks_ ):
+  def decode_features_list( cls, toks_ ):
     
     toks = iter( toks_ );
     
@@ -200,45 +181,7 @@ class PFTDecoder( PFTParser, metaclass=subject ):
 
 
   @classmethod
-  def _decode_bare_operator( self, toks_ ):
-    
-    toks = iter( toks_ );
-    otype = next( toks );
-    assert not next( toks, False );
-    
-    return otype;
-  
-  
-  def _decode_word( self, toks_ ):
-
-    toks = iter( toks_ );
-    bare_word = next( toks );
-    feats = next( toks, None );
-    assert not next( toks, False );
-    
-    ( lemma, pos, sense ) = bare_word;
-    
-    return ( self.GT_WORD, self._lexicon.Word(
-                               lemma=lemma, pos=pos,
-                               sense=sense, feats=feats
-                             ) );
-
-
-  def _decode_operator( self, toks_ ):
-    
-    toks = iter( toks_ );
-    otype = next( toks );
-    feats = next( toks, None );
-    assert not next( toks, False );
-    
-    return (  self.GT_OPERATOR, self._lexicon.Operator(
-                                    otype = otype,
-                                    feats = feats
-                                  ) );
-
-
-  @classmethod
-  def _decode_arguments_list( cls, toks_ ):
+  def decode_arguments_list( cls, toks_ ):
     
     toks = iter( toks_ );
     
@@ -268,22 +211,38 @@ class PFTDecoder( PFTParser, metaclass=subject ):
 
 
   @classmethod
-  def _decode_functor( cls, toks_ ):
+  def decode_functor( cls, toks_ ):
     
     toks = iter( toks_ );
     
     ( type_, referent ) = next( toks );
     assert type_ in { cls.GT_WORD, cls.GT_OPERATOR };
 
-    fid = next( toks, None );
-
-    assert not next( toks, False );
+    fid = None;
+    feats = None;
     
-    return ( cls.GT_FUNCTOR, Functor( referent = referent, fid = fid ) );
+    tok = next( toks, None );
+    
+    if isinstance( tok, int ):
+      fid = tok;
+      tok = next( toks, None );
+    
+    if tok is not None:
+      assert isinstance( tok, dict );
+      feats = tok;
+      tok = next( toks, None );
+
+    assert tok is None;
+    
+    return ( cls.GT_FUNCTOR, Functor(
+                                 referent = referent,
+                                 fid = fid,
+                                 feats = feats
+                               ) );
   
   
   @classmethod
-  def _decode_predication( cls, toks_ ):
+  def decode_predication( cls, toks_ ):
 
     toks = iter( toks_ );
     
@@ -304,7 +263,7 @@ class PFTDecoder( PFTParser, metaclass=subject ):
 
 
   @classmethod
-  def _decode_freezer( cls, toks_ ):
+  def decode_freezer( cls, toks_ ):
     
     toks = iter( toks_ );
     
@@ -321,7 +280,7 @@ class PFTDecoder( PFTParser, metaclass=subject ):
   
   
   @classmethod
-  def _decode_quantification( cls, toks_ ):
+  def decode_quantification( cls, toks_ ):
 
     toks = iter( toks_ );
     
@@ -359,7 +318,7 @@ class PFTDecoder( PFTParser, metaclass=subject ):
   
   
   @classmethod
-  def _decode_modification( cls, toks_ ):
+  def decode_modification( cls, toks_ ):
     
     toks = iter( toks_ );
 
@@ -386,7 +345,7 @@ class PFTDecoder( PFTParser, metaclass=subject ):
   
   
   @classmethod
-  def _decode_connection( cls, toks_ ):
+  def decode_connection( cls, toks_ ):
 
     toks = iter( toks_ );
 
@@ -415,7 +374,7 @@ class PFTDecoder( PFTParser, metaclass=subject ):
   
   
   @classmethod
-  def _decode_constraint( cls, toks_ ):
+  def decode_constraint( cls, toks_ ):
 
     toks = iter( toks_ );
 
@@ -435,7 +394,7 @@ class PFTDecoder( PFTParser, metaclass=subject ):
   
   
   @classmethod
-  def _decode_protoform( cls, toks_ ):
+  def decode_protoform( cls, toks_ ):
 
     toks = iter( toks_ );
 
@@ -486,12 +445,11 @@ class PFTDecoder( PFTParser, metaclass=subject ):
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-def pft_decode( item, type_=None, lexicon=None ):
+def pft_decode( pft, type_=None, lexicon=None ):
   
   rslt = None;
-  decoder = PFTDecoder( lexicon );
-  with PFTDecoder( ( lexicon, type_ ) ) as decoder:
-    rslt = decoder.decode( item );
+  with PFTDecoder( ( type_, lexicon ) ) as decoder:
+    rslt = decoder.decode( pft );
   return rslt;
 
 

@@ -12,6 +12,7 @@ class DomConSolution( metaclass=object_ ):
   
   def __init__( self ):
     
+    self.domcon = None;
     self.chart_index = [];
     self.chart = [];
     self.cur_component = None;
@@ -25,12 +26,10 @@ class DomCon( metaclass=object_ ):
   def __init__( self ):
     
     self.pf = None;
-    self.quantified_vars = None;
     self.cons = None;
     self.cons_inv = None;
     self.fragments = None;
     self.fragments_inv = None;
-    self.solution = None;
     
   def _get_root( self, rt ):
     

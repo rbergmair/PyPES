@@ -1,7 +1,11 @@
 # -*-  coding: ascii -*-  # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 __package__ = "";
-__all__ = [ "codecs_", "native", "proto", "utils" ];
+
+__all__ = [
+    "bin", "codecs_", "infer", "proto", "rewriting", "scoping", "utils"
+  ];
+
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 #                                                                             #

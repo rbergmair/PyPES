@@ -132,13 +132,53 @@ class MyKLS( metaclass=kls ):
   _superordinate_ = "parent";
   _key_ = "key";
   
+  def _init_init_( self ):
+    
+    self.x = None;
+    self.key = None;
+  
   def __init__( self, parent, x=None, key=None ):
     
-    self.x = x;
-    self.key = key;
+    if x is not None:
+      self.x = x;
+    if key is not None:
+      self.key = key;
 
 
+class OtherKLS( metaclass=kls ):
 
+  _superordinate_ = "parent";
+  _key_ = None;
+
+  def _init_init_( self ):
+    
+    self.x = None;
+    self.y = None;
+
+  def __init__( self, parent, x=None, y=None ):
+    
+    if x is not None:
+      self.x = x;
+    if y is not None:
+      self.y = y;
+  
+  def __le__( self, obj ):
+    
+    if self.x is not None:
+      if obj.x is None:
+        return False;
+    if self.y is not None:
+      if obj.y is None:
+        return False;
+    if self.x is not None:
+      if self.x <= obj.x:
+        return True;
+    if self.y is not None:
+      if self.y <= obj.y:
+        return True;
+    return False;
+  
+  
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 class TestKLS( TestCase, metaclass=object_ ):
@@ -194,7 +234,54 @@ class TestKLS( TestCase, metaclass=object_ ):
     kls1 = kls1_( parent=myparent, x="y" );
     kls2 = kls2_( parent=myparent, x="y" );
     
-    self.assertFalse( kls1_ is kls2_ );
+    self.assertFalse( kls1 is kls2 );
+
+
+  def test_other_merge( self ):
+    
+    myparent = MyParent();
+    
+    kls1_ = OtherKLS( x=2, y=5 );
+    kls2_ = OtherKLS( x=1, y=3 );
+    
+    kls1 = kls1_( parent=myparent );
+    kls2 = kls2_( parent=myparent );
+    
+    self.assertTrue( kls1 is kls2 );
+    self.assertEquals( kls1.x, 1 );
+    self.assertEquals( kls1.y, 3 );
+
+
+  def test_other_merge_2( self ):
+    
+    myparent = MyParent();
+    
+    kls1_ = OtherKLS( x=2, y=5 );
+    kls2_ = OtherKLS( x=1, y=None );
+    
+    kls1 = kls1_( parent=myparent );
+    kls2 = kls2_( parent=myparent );
+    
+    self.assertTrue( kls1 is kls2 );
+    self.assertEquals( kls1.x, 1 );
+    self.assertEquals( kls1.y, 5 );
+
+
+  def test_other_nomerge( self ):
+    
+    myparent = MyParent();
+    
+    kls1_ = OtherKLS( x=2, y=5 );
+    kls2_ = OtherKLS( x=None, y=10 );
+    
+    kls1 = kls1_( parent=myparent );
+    kls2 = kls2_( parent=myparent );
+    
+    self.assertFalse( kls1 is kls2 );
+    self.assertEquals( kls1.x, 2 );
+    self.assertEquals( kls1.y, 5 );
+    self.assertEquals( kls2.x, None );
+    self.assertEquals( kls2.y, 10 );
 
 
   def test_copy_kls( self ):

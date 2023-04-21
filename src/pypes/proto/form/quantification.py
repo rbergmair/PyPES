@@ -81,6 +81,10 @@ class Quantification( SubForm, metaclass=kls ):
 
     if not super().__le__( obj ):
       return False;
+
+    if self.quantifier is not None:
+      if not self.quantifier <= obj.quantifier:
+        return False;
     
     if self.var is not None:
       if not self.var <= obj.var:

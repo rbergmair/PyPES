@@ -1,0 +1,349 @@
+:mod:`pypes.codecs_` --- Input/Output Formats for ProtoForms
+============================================================
+
+.. module:: pypes.codecs_
+  :synopsis: provides routines for reading from and writing to string representations of ProtoForms.
+
+:mod:`pypes.codecs_` provides routines for reading from and writing to string
+representations of ProtoForms.
+
+
+Decoders
+--------
+
+.. class:: PFTDecoder( (itemtype,lexicon) )
+
+   .. method:: decode_quoted( pft_toks )
+   .. method:: decode_fid( pft_toks )
+   .. method:: decode_operator( pft_toks )
+   .. method:: decode_word( pft_toks )
+   .. method:: decode_variable( pft_toks )
+   .. method:: decode_constant( pft_toks )
+   .. method:: decode_explicit_handle( pft_toks )
+   .. method:: decode_anonymous_handle( pft_toks )
+   .. method:: decode_features_list( pft_toks )
+   .. method:: decode_arguments_list( pft_toks )
+   .. method:: decode_functor( pft_toks )
+   .. method:: decode_predication( pft_toks )
+   .. method:: decode_freezer( pft_toks )
+   .. method:: decode_quantification( pft_toks )
+   .. method:: decode_modification( pft_toks )
+   .. method:: decode_connection( pft_toks )
+   .. method:: decode_constraint( pft_toks )
+   .. method:: decode_protoform( pft_toks )
+
+   .. method:: decode( pft )
+
+.. function:: pft_decode( pf [ , itemtype [ , lexicon ] ] )
+
+   is a shortcut to :meth:`PFTDecoder.decode`.
+
+.. class:: MRXDecoder( [ sem ] )
+
+   .. method:: decode( mrx )
+
+.. function:: mrx_decode( mrx [ , sem ] )
+
+   is a shortcut to :meth:`MRXDecoder.decode`.
+
+.. class:: MRSDecoder( [ sem ] )
+
+   .. method:: decode( mrs )
+
+.. function:: mrs_decode( mrs [ , sem ] )
+
+   is a shortcut to :meth:`MRSDecoder.decode`.
+
+
+
+Encoders
+--------
+
+.. class:: PFTEncoder( pf )
+   
+   (see also: :class:`pypes.proto.LambdaifyingProcessor`, :class:`pypes.proto.ProtoProcessor`)
+   
+   .. method:: process_constant( inst )
+      
+      (see: :meth:`pypes.proto.ProtoProcessor.process_constant`)
+      
+   .. method:: process_sort( inst )
+      
+      (see: :meth:`pypes.proto.ProtoProcessor.process_sort`)
+
+   .. method:: process_variable( inst )
+
+      (see: :meth:`pypes.proto.ProtoProcessor.process_variable`)
+
+   .. method:: process_argument( inst )
+
+      (see: :meth:`pypes.proto.ProtoProcessor.process_argument`)
+
+   .. method:: process_word( inst )
+
+      (see: :meth:`pypes.proto.ProtoProcessor.process_word`)
+
+   .. method:: process_operator( inst )
+
+      (see: :meth:`pypes.proto.ProtoProcessor.process_operator`)
+
+   .. method:: process_functor( inst )
+
+      (see: :meth:`pypes.proto.ProtoProcessor.process_functor`)
+
+   .. method:: process_predication( inst, subform )
+
+      (see: :meth:`pypes.proto.ProtoProcessor.process_predication`)
+
+   .. method:: process_quantification( inst, subform )
+
+      (see: :meth:`pypes.proto.ProtoProcessor.process_quantification`)
+
+   .. method:: process_modification( inst, subform )
+
+      (see: :meth:`pypes.proto.ProtoProcessor.process_modification`)
+
+   .. method:: process_connection( inst, subform )
+
+      (see: :meth:`pypes.proto.ProtoProcessor.process_connection`)
+
+   .. method:: process_handle( inst )
+
+      (see: :meth:`pypes.proto.ProtoProcessor.process_handle`)
+
+   .. method:: process_freezer( content [ , freezelevel ] )
+
+      (see: :meth:`pypes.proto.LambdaifyingProcessor.process_freezer`)
+
+   .. method:: process_scopebearer( inst )
+
+      (see: :meth:`pypes.proto.LambdaifyingProcessor.process_scopebearer`)
+
+   .. method:: process_subform( subform )
+
+      (see: :meth:`pypes.proto.LambdaifyingProcessor.process_subform`)
+
+   .. method:: process_constraint( inst )
+
+      (see: :meth:`pypes.proto.ProtoProcessor.process_constraint`)
+
+   .. method:: process_protoform( inst, subform )
+
+      (see: :meth:`pypes.proto.LambdaifyingProcessor.process_protoform`)
+
+
+   .. method:: process_constant_( inst, ident )
+
+      (see also: :meth:`pypes.proto.LambdaifyingProcessor.process_constant_`)
+
+   .. method:: process_sort_( inst, sid )
+
+      (see also: :meth:`pypes.proto.LambdaifyingProcessor.process_sort_`)
+
+   .. method:: process_variable_( inst, sort, vid )
+
+      (see also: :meth:`pypes.proto.LambdaifyingProcessor.process_variable_`)
+
+   .. method:: process_argument_( inst, aid )
+
+      (see also: :meth:`pypes.proto.LambdaifyingProcessor.process_argument_`)
+
+   .. method:: process_word_( inst, lemma, pos, sense )
+
+      (see also: :meth:`pypes.proto.LambdaifyingProcessor.process_word_`)
+
+   .. method:: process_operator_( inst, otype )
+
+      (see also: :meth:`pypes.proto.LambdaifyingProcessor.process_operator_`)
+
+   .. method:: process_functor_( inst, fid, referent, feats )
+
+      (see also: :meth:`pypes.proto.LambdaifyingProcessor.process_functor_`)
+
+   .. method:: process_predication_( inst, subform, predicate, args )
+
+      (see also: :meth:`pypes.proto.LambdaifyingProcessor.process_predication_`)
+
+   .. method:: process_quantification_( inst, subform, quantifier, var, rstr, body )
+
+      (see also: :meth:`pypes.proto.LambdaifyingProcessor.process_quantification_`)
+
+   .. method:: process_modification_( inst, subform, modality, args, scope )
+
+      (see also: :meth:`pypes.proto.LambdaifyingProcessor.process_modification_`)
+
+   .. method:: process_connection_( inst, subform, connective, lscope, rscope )
+
+      (see also: :meth:`pypes.proto.LambdaifyingProcessor.process_connection_`)
+
+   .. method:: process_handle_( inst, hid )
+
+      (see also: :meth:`pypes.proto.LambdaifyingProcessor.process_handle_`)
+
+   .. method:: process_freezer_( content, freezelevel )
+
+      (see also: :meth:`pypes.proto.LambdaifyingProcessor.process_freezer_`)
+
+   .. method:: process_subform_( inst, holes, protoforms )
+
+      (see also: :meth:`pypes.proto.LambdaifyingProcessor.process_subform_`)
+
+   .. method:: process_constraint_( inst, harg, larg )
+
+      (see also: :meth:`pypes.proto.LambdaifyingProcessor.process_constraint_`)
+
+   .. method:: process_protoform_( inst, subform, subforms, constraints )
+
+      (see also: :meth:`pypes.proto.LambdaifyingProcessor.process_protoform_`)
+
+
+   .. method:: encode( [ pretty=True [, fast_initialize=False [, linebreaks=True ] ] ] )
+
+
+.. function:: pft_encode( pf, [ pretty=True [, fast_initialize=False [, linebreaks=True ] ] ] )
+
+   is a shortcut to :meth:`PFTEncoder.encode`.
+
+
+
+.. class:: TreeEncoder( pf )
+
+   (see also: :class:`pypes.proto.ProtoProcessor`)
+
+
+   .. method:: process_constant( inst )
+
+      (see: :meth:`pypes.proto.ProtoProcessor.process_constant`)
+
+   .. method:: process_sort( inst )
+
+      (see: :meth:`pypes.proto.ProtoProcessor.process_sort`)
+
+   .. method:: process_variable( inst )
+
+      (see: :meth:`pypes.proto.ProtoProcessor.process_variable`)
+
+   .. method:: process_argument( inst )
+
+      (see: :meth:`pypes.proto.ProtoProcessor.process_argument`)
+
+   .. method:: process_word( inst )
+
+      (see: :meth:`pypes.proto.ProtoProcessor.process_word`)
+
+   .. method:: process_operator( inst )
+
+      (see: :meth:`pypes.proto.ProtoProcessor.process_operator`)
+
+   .. method:: process_functor( inst )
+
+      (see: :meth:`pypes.proto.ProtoProcessor.process_functor`)
+
+   .. method:: process_predication( inst, subform )
+
+      (see: :meth:`pypes.proto.ProtoProcessor.process_predication`)
+
+   .. method:: process_quantification( inst, subform )
+
+      (see: :meth:`pypes.proto.ProtoProcessor.process_quantification`)
+
+   .. method:: process_modification( inst, subform )
+
+      (see: :meth:`pypes.proto.ProtoProcessor.process_modification`)
+
+   .. method:: process_connection( inst, subform )
+
+      (see: :meth:`pypes.proto.ProtoProcessor.process_connection`)
+
+   .. method:: process_handle( inst )
+
+      (see: :meth:`pypes.proto.ProtoProcessor.process_handle`)
+
+   .. method:: process_scopebearer( inst )
+
+      (see: :meth:`pypes.proto.ProtoProcessor.process_scopebearer`)
+
+   .. method:: process_subform( subform )
+
+      (see: :meth:`pypes.proto.ProtoProcessor.process_subform`)
+
+   .. method:: process_constraint( inst )
+
+      (see: :meth:`pypes.proto.ProtoProcessor.process_constraint`)
+
+   .. method:: process_protoform( inst, subform )
+
+      (see: :meth:`pypes.proto.ProtoProcessor.process_protoform`)
+
+
+   .. method:: process_constant_( inst, ident )
+
+      (see: :meth:`pypes.proto.ProtoProcessor.process_constant_`)
+
+   .. method:: process_sort_( inst, sid )
+
+      (see: :meth:`pypes.proto.ProtoProcessor.process_sort_`)
+
+   .. method:: process_variable_( inst, sort, vid )
+
+      (see: :meth:`pypes.proto.ProtoProcessor.process_variable_`)
+
+   .. method:: process_argument_( inst, aid )
+
+      (see: :meth:`pypes.proto.ProtoProcessor.process_argument_`)
+
+   .. method:: process_argslist( inst, args )
+
+   .. method:: process_word_( inst, lemma, pos, sense )
+
+      (see also: :meth:`pypes.proto.ProtoProcessor.process_word_`)
+
+   .. method:: process_operator_( inst, otype )
+
+      (see also: :meth:`pypes.proto.ProtoProcessor.process_operator_`)
+
+   .. method:: process_functor_( inst, fid, referent, feats )
+
+      (see also: :meth:`pypes.proto.ProtoProcessor.process_functor_`)
+
+   .. method:: process_predication_( inst, subform, predicate, args )
+
+      (see also: :meth:`pypes.proto.ProtoProcessor.process_predication_`)
+
+   .. method:: process_quantification_( inst, subform, quantifier, var, rstr, body )
+
+      (see also: :meth:`pypes.proto.ProtoProcessor.process_quantification_`)
+
+   .. method:: process_modification_( inst, subform, modality, args, scope )
+
+      (see also: :meth:`pypes.proto.ProtoProcessor.process_modification_`)
+
+   .. method:: process_connection_( inst, subform, connective, lscope, rscope )
+
+      (see also: :meth:`pypes.proto.ProtoProcessor.process_connection_`)
+
+   .. method:: process_handle_( inst, hid )
+
+      (see: :meth:`pypes.proto.ProtoProcessor.process_handle_`)
+
+   .. method:: process_subform_( inst, holes, protoforms )
+
+      (see: :meth:`pypes.proto.ProtoProcessor.process_subform_`)
+
+   .. method:: process_constraint_( inst, harg, larg )
+
+      (see: :meth:`pypes.proto.ProtoProcessor.process_constraint_`)
+
+   .. method:: process_protoform_( inst, subform, subforms, constraints )
+
+      (see also: :meth:`pypes.proto.ProtoProcessor.process_protoform_`)
+
+
+   .. method:: encode( [ utool_style=False ] )
+
+
+.. function:: tree_encode( pf [ , utool_style=False ] )
+
+   is a shortcut to :meth:`TreeEncoder.encode`.
+
+

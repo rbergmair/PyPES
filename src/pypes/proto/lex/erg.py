@@ -20,9 +20,9 @@ class Operator( _erg_auto.Operator ):
 
 class Word( _erg_auto.Word ):
 
-  def __init__( self, sig, lemma=None, pos=None, sense=None, feats=None ):
+  def __init__( self, sig, lemma=None, pos=None, sense=None ):
     
-    super().__init__( sig=sig, lemma=lemma, pos=pos, sense=sense, feats=feats );
+    super().__init__( sig=sig, lemma=lemma, pos=pos, sense=sense );
     
     try:
       self.word = self.WRDs.index( (lemma,pos,sense) );

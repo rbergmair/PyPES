@@ -1,12 +1,12 @@
 # -*-  coding: ascii -*-  # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 __package__ = "pypes.codecs_.mrs._smi";
-__all__ = [ "ERGSemSMIExtractor", "ergsem_smi_extract" ];
+__all__ = [ "ERGSemSMIExtractor", "extract_ergsem_smi" ];
 
 import re;
 from itertools import chain;
 
-from pprint import pformat;
+from pprint import pformat, pprint;
 
 from pypes.utils.mc import subject;
 
@@ -270,19 +270,20 @@ class ERGSemSMIExtractor( ERGSemProcessor, metaclass=subject ):
     
     sourcedir = self._obj_;
     
-    with open( sourcedir + "/erg.smi" ) as f:
-      
+    with open( sourcedir + "/erg.smi", "rt", encoding="utf-8" ) as f:
       self._read_preds( f );
       
-    with open( sourcedir + "/core.smi" ) as f:
-      
+    with open( sourcedir + "/core.smi", "rt", encoding="utf-8" ) as f:
+      self._read_preds( f );
+
+    with open( sourcedir + "/mine.smi", "rt", encoding="utf-8" ) as f:
       self._read_preds( f );
 
     for pred in set( self._semi.keys() ):
       if pred not in self._semi_interesting:
         del self._semi[ pred ];
     
-    with open( targetdir + "/_ergsem_smi_checker_auto.py", "w" ) as f:
+    with open( targetdir + "/_ergsem_smi_checker_auto.py", "wt", encoding="ascii" ) as f:
         
       f.write(
           """# -*-  coding: ascii -*-\n"""
@@ -308,26 +309,29 @@ class ERGSemSMIExtractor( ERGSemProcessor, metaclass=subject ):
     wrdids = [];
     wrds = [];
     
-    for wrd in sorted( chain( self._wqs, self._wcs, self._wms, self._wps ) ):
-      
-      if wrd in wrds:
-        continue;
-      
-      wrdid = "";
-      ( lemma, pos, sense ) = wrd;
-      for tok in lemma:
-        wrdid += self._make_identifier( tok.upper() );
-        wrdid += "_";
-      wrdid = wrdid[ :-1 ];
-      if pos is not None and pos != "":
-        wrdid += "_" + pos.upper();
-      if sense is not None and sense != "":
-        wrdid += "_" + sense.upper();
-      
-      wrdids.append( wrdid );
-      wrds.append( wrd );
+    for subcat in [ self._wqs, self._wcs, self._wms, self._wps ]:
+      for k in range( 0, len(subcat) ):
         
-    with open( targetdir + "/_erg_auto.py", "w" ) as f:
+        wrd = subcat[k];
+
+        wrdid = "";
+        ( lemma, pos, sense ) = wrd;
+        for tok in lemma:
+          wrdid += self._make_identifier( tok.upper() );
+          wrdid += "_";
+        wrdid = wrdid[ :-1 ];
+        if pos is not None and pos != "":
+          wrdid += "_" + pos.upper();
+        if sense is not None and sense != "":
+          wrdid += "_" + sense.upper();
+        
+        subcat[k] = wrdid;
+        
+        if not wrdid in wrdids:
+          wrdids.append( wrdid );
+          wrds.append( wrd );
+        
+    with open( targetdir + "/_erg_auto.py", "wt", encoding="ascii" ) as f:
   
       f.write(
           """# -*-  coding: ascii -*-\n\n"""
@@ -372,38 +376,9 @@ class ERGSemSMIExtractor( ERGSemProcessor, metaclass=subject ):
       f.write( ( "\n " + pformat( wrds, width=74 )[1:-1] ).replace( "\n", "\n   " ).replace( "''", "None" ) );
       f.write( "];\n\n" );
       
-      k = 0;
-      
-      for wrdid in wrdids:
-        
+      for k in range( 0, len(wrdids) ):
+        wrdid = wrdids[k];
         f.write( "  " + wrdid + " = " + str(k) + ";\n" );
-        
-        try:
-          i = self._wqs.index( wrds[k] );
-          self._wqs[i] = wrdid;
-        except ValueError:
-          pass;
-        
-        try:
-          i = self._wcs.index( wrds[k] );
-          self._wcs[i] = wrdid;
-        except ValueError:
-          pass;
-        
-        try:
-          i = self._wms.index( wrds[k] );
-          self._wms[i] = wrdid;
-        except ValueError:
-          pass;
-
-        try:
-          i = self._wps.index( wrds[k] );
-          self._wps[i] = wrdid;
-        except ValueError:
-          pass;
-
-        k += 1;
-
       f.write( "\n" );
 
       f.write( "  WRD_Qs = {" );
@@ -426,10 +401,10 @@ class ERGSemSMIExtractor( ERGSemProcessor, metaclass=subject ):
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-def ergsem_smi_extract( sourcedir, targetdir ):
+def extract_ergsem_smi( ergdirname, targetdirname ):
   
-  with ERGSemSMIExtractor( sourcedir ) as extractor:
-    extractor.extract( targetdir );
+  with ERGSemSMIExtractor( ergdirname ) as extractor:
+    extractor.extract( targetdirname );
 
 
 

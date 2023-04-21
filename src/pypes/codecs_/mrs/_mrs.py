@@ -1,6 +1,7 @@
 # -*-  coding: ascii -*-  # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 __package__ = "pypes.codecs_.mrs";
+
 __all__ = [ "MRSVariable", "MRSConstant", "MRSElementaryPredication",
             "MRSConstraint", "MRS" ];
 
@@ -85,7 +86,7 @@ class MRS( metaclass=object_ ):
     self.eps = [];
     self.cons = [];
   
-  def __str__( self ):
+  def __repr__( self ):
     
     return str( self.eps ) + str( self.cons );
 

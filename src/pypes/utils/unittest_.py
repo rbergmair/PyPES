@@ -1,7 +1,7 @@
 # -*-  coding: ascii -*-  # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 __package__ = "pypes.utils";
-__all__ = [ "TestCase" ];
+__all__ = [ "TestCase", "run_unittests" ];
 
 import unittest;
 
@@ -39,10 +39,10 @@ class _TestCaseController( metaclass=singleton ):
 
     if testcase_inst.__class__ in self._globalstate_insts: 
       globalstate = self._globalstate_insts[ testcase_inst.__class__ ];
-      testcase_inst._globalstate = globalstate;
+      testcase_inst.globalstate = globalstate;
     else:
       globalstate = _TestCaseGlobalState();
-      testcase_inst._globalstate = globalstate;
+      testcase_inst.globalstate = globalstate;
       testcase_inst.globalSetUp();
       self._globalstate_insts[ testcase_inst.__class__ ] = globalstate;
 
@@ -78,8 +78,8 @@ class TestCase( unittest.TestCase, metaclass=object_ ):
 
   def run( self, result ):
 
-    #super( TestCase, TestCase ).run( self, result );
-    #return;
+    # super( TestCase, TestCase ).run( self, result );
+    # return;
 
     try:
       gc.collect();
@@ -148,7 +148,27 @@ class TestCase( unittest.TestCase, metaclass=object_ ):
   def assertNotEquals_( self, actual, expected, msg=None ):
     
     self.assert_( not( actual <= expected and expected <= actual ), msg );
+
+
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+
+def run_unittests( packagename = "pypes" ):
+  
+  r = packagename.find( "." );
+  
+  if r == -1:
+    assert packagename == "pypes";
+    packagename = "";
+  else:
+    toplevel = packagename[ :r ];
+    assert toplevel == "pypes";
+    packagename = packagename[ r: ];
     
+  packagename = "pypestest" + packagename; 
+  __import__( packagename );
+  suite = sys.modules[ packagename ].suite;
+  
+  unittest.TextTestRunner( verbosity=2 ).run( suite() );
 
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #

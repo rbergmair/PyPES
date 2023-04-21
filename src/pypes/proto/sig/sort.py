@@ -32,6 +32,10 @@ class Sort( ProtoBase, metaclass=kls ):
       if self.sid != obj.sid:
         return False;
     return True;
+  
+  def __repr__( self ):
+    
+    return "Sort( sid=" + repr(self.sid) + " )";
 
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #

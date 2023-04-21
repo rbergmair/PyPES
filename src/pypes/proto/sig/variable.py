@@ -4,14 +4,13 @@ __package__ = "pypes.proto.sig";
 __all__ = [ "Variable" ];
 
 from pypes.utils.mc import kls;
-
 from pypes.proto.sig.sort import Sort;
-from pypes.proto.protobase import ProtoBase;
+from pypes.proto.sig.argument_value import ArgumentValue;
 
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-class Variable( ProtoBase, metaclass=kls ):
+class Variable( ArgumentValue, metaclass=kls ):
 
   _superordinate_ = "sig";
   _key_ = "sidvid";
@@ -44,6 +43,10 @@ class Variable( ProtoBase, metaclass=kls ):
       return False;
 
     return True;
+  
+  def __repr__( self ):
+    
+    return "Variable( sidvid=" + repr( (self.sort.sid,self.vid) )  + " )";
 
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #

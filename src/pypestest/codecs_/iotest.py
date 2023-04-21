@@ -38,7 +38,7 @@ class TestIOTest( TestCase, metaclass=object_ ):
     r = None;
 
     try:
-      f = gzip.open( filename );
+      f = gzip.open( filename, "rb" );
       try:
         r_ = mrx_decode( f, MRXDecoder.SEM_ERG )
         r = r_( sig=ProtoSig() );
@@ -100,7 +100,7 @@ class TestIOTest( TestCase, metaclass=object_ ):
     before = time.clock();
     
     for i in range(0,10):
-      f = open( "/local/scratch/rb432/tmp/outp/outp.txt", "wt" );
+      f = open( "/local/scratch/rb432/tmp/outp/outp.txt", "wt", encoding="utf-8" );
       for obj in objs:
         f.write( pft_encode( obj, fast_initialize=True, pretty_lines=False ) );
         f.write( "\n" );
@@ -132,10 +132,10 @@ class TestIOTest( TestCase, metaclass=object_ ):
     
     for i in range(0,5):
 
-      with PFTDecoder( (pypes.proto.lex.erg,None) ) as decoder:
+      with PFTDecoder( (None,pypes.proto.lex.erg) ) as decoder:
   
         before = time.clock();
-        f = open( "/local/scratch/rb432/tmp/outp/outp.txt", "rt" );
+        f = open( "/local/scratch/rb432/tmp/outp/outp.txt", "rt", encoding="utf-8" );
         j = 0;
         for line in f:
           
@@ -210,7 +210,7 @@ def main( argv=None ):
   for i in range(0,5):
 
     before = time.clock();
-    f = open( "/local/scratch/rb432/tmp/outp/outp.txt", "rt" );
+    f = open( "/local/scratch/rb432/tmp/outp/outp.txt", "rt", encoding="utf-8" );
     j = 0;
     for line in f:
       

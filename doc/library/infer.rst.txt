@@ -1,0 +1,107 @@
+:mod:`pypes.infer` --- Inference Engines & Evaluation Environment
+=================================================================
+
+.. module:: pypes.infer
+  :synopsis: provides routines for running the inference
+     engines and using their output for evaluation purposes.
+
+:mod:`pypes.infer` provides routines for running the inference
+engines and using their output for evaluation purposes.
+
+
+.. class:: InferenceAgent( [paramid] )
+
+   is the base class for inference agents.
+
+   .. attribute:: paramid
+
+   .. method:: reset()
+   .. method:: process_sentence( sentid, rec, text )
+   .. method:: process_discourse( discid, rec, sents [ , inf=False ] )
+   .. method:: preprocess()
+   .. method:: infer( disc, antecedent, consequent )
+
+
+.. class:: YesAgent( [paramid] )
+
+   (see also: :class:`InferenceAgent`)
+
+   is a baseline :class:`InferenceAgent` class whose
+   :meth:`infer` method always returns ``( 1.0, 0.0 )``.
+
+
+.. class:: NoAgent( [paramid] )
+
+   (see also: :class:`InferenceAgent`)
+
+   is a baseline :class:`InferenceAgent` class whose
+   :meth:`infer` method always returns ``( 0.0, 1.0 )``.
+
+
+.. class:: SemanticInferenceAgent( [paramid] )
+
+   (see also: :class:`InferenceAgent`)
+
+   is a subclass of :class:`InferenceAgent` and serves as base class
+   for inference agents which work with semantic representations from
+   the item bank.
+
+   .. method:: reset()
+
+      (see also: :meth:`InferenceAgent.reset`)
+
+   .. method:: process_sentence( sentid, rec, text )
+
+      (see also: :meth:`InferenceAgent.process_sentence`)
+
+   .. method:: process_discourse( discid, rec, sents [ , inf=False ] )
+
+      (see also: :meth:`InferenceAgent.process_discourse`)
+
+   .. method:: preprocess()
+
+      (see also: :meth:`InferenceAgent.preprocess`)
+
+   .. method:: infer( disc, antecedent, consequent )
+
+      (see also: :meth:`InferenceAgent.reset`)
+  
+   It implements :meth:`reset`,
+   :meth:`process_sentence`, :meth:`process_discourse`, and
+   :meth:`preprocess` to collect the appropriate protoforms
+   from the itembank.
+
+   .. attribute:: pfs
+   .. attribute:: discs
+
+   The attributes :attr:`pfs` and :attr:`discs` are populated
+   so that, within the :meth:`infer` method they are available as
+   mappings, mapping sentence ids to protoforms, and discourse ids
+   to lists of sentence ids, respectively.
+
+
+   .. method:: infer( disc, antecedent, consequent )
+
+      (see also: :meth:`InferenceAgent.infer`)
+
+      You will need to override this to implement your own
+      inference agent.
+
+
+.. class:: TestsuiteRunner( [ ( tsdirname, tsitemsdbdirname ) ] )
+
+   .. method:: add_agent( agent )
+   .. method:: run()
+
+
+.. function:: run_testsuite( tsdirnameprefix, tsitemsdbdirname )
+
+   (see also: :meth:`pypes.bin.run_testsuite`)
+
+   is a synonym of :func:`pypes.bin.run_testsuite`; controls an iteration
+   through the directories which have *tsdirnameprefix* as a prefix.
+   Within this iteration, it instantiates the :class:`TestsuiteRunner`,
+   calls :meth:`TestsuiteRunner.add_agent` for all of the above agents,
+   and then calls :meth:`TestsuiteRunner.run`.
+
+

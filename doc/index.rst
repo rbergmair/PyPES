@@ -10,6 +10,8 @@ Contents:
 .. toctree::
    :maxdepth: 2
 
+   tutorial.rst
+   library.rst
    guidelines.rst
 
 Indices and tables

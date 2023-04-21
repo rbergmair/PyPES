@@ -9,7 +9,7 @@ __all__ = [ "LOG_CRITICAL", "LOG_ERROR", "LOG_WARNING", "LOG_INFO",
             "get_logger" ];
 
 import logging;
-from sys import stderr;
+from sys import stderr, stdout;
 from os import mkdir;
 
 from pypes.utils.mc import singleton;
@@ -55,7 +55,7 @@ class _LogController( metaclass=singleton ):
     except:
       pass;
 
-    f = open( logdir+"/"+loggername+".log", "w" );
+    f = open( logdir+"/"+loggername+".log", "wt", encoding="utf-8" );
 
     handler = logging.StreamHandler( f );
     handler.setLevel( level );
@@ -180,9 +180,6 @@ def log_warn( sourceid, msg ):
 def log_info( sourceid, msg ):
   _LogController().get_logger( sourceid ).log( LOG_INFO, msg );
 
-def log_error( sourceid, msg ):
-  _LogController().get_logger( sourceid ).log( LOG_ERROR, msg );
-
 def log_debug_coarse( sourceid, msg ):
   _LogController().get_logger( sourceid ).log( LOG_DEBUG_COARSE, msg );
 
@@ -194,6 +191,21 @@ def log( sourceid, level, msg ):
 
 def get_logger( sourceid ):
   return _LogController().get_logger( sourceid );
+
+nodots = 0;
+
+def print_dot( ):
+  
+  global nodots;
+  
+  stdout.write( "." );
+  nodots += 1;
+  if nodots % 5 == 0:
+    stdout.write( " " );
+  if nodots == 70:
+    stdout.write( "\n          " );
+    nodots = 0;
+  stdout.flush();
 
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
