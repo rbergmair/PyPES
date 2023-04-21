@@ -1,0 +1,1356 @@
+<?xml version="1.0"?>
+<?xml-stylesheet type="text/xml" href="http://nlp.stanford.edu/projects/infer/kbe_to_html.xml"?>
+<root xmlns="http://bogusnamespace.com/inference_pilot_evaluation/annotation">
+  <inference id="MIT-1">
+    <passage>
+      City workers pretended to be victims of the attack.
+    </passage>
+    <question>
+      Were the city workers harmed by the attack?
+    </question>
+    <provenance type="edited">
+      CNS CBW &amp; WMD Terrorism News Archive, CBW0918.DOC (1998), #3
+    </provenance>
+    <answer id="1" polarity="true" force="strict" source="linguistic">
+      <response>No.</response>
+      <because>
+        Pretending to be a victim implies not really being a victim.
+      </because>
+    </answer>
+    <answer id="2" polarity="false" force="strict" source="linguistic">
+      <response>Yes.</response>
+      <because>
+        Pretending to be a victim implies not really being a victim.
+      </because>
+    </answer>
+    <answer id="3" polarity="false" force="strict" source="linguistic">
+      <response>Don't know.</response>
+      <because>
+        Pretending to be a victim implies not really being a victim.
+      </because>
+    </answer>
+    <answer id="4" polarity="true" force="strict" source="world">
+      <response>Don't know.</response>
+      <because>
+        Participants in a staged exercise sometimes get hurt.
+      </because>
+      <assumptions>
+        The attack was a staged exercise, not a real attack.
+      </assumptions>
+    </answer>
+    <answer id="5" polarity="unknown" force="strict" source="world">
+      <response>Yes.</response>
+      <because>
+        Participants in a staged exercise only sometimes get
+        hurt.
+      </because>
+      <assumptions>
+        The attack was a staged exercise, not a real attack.
+      </assumptions>
+    </answer>
+    <answer id="6" polarity="unknown" force="strict" source="world">
+      <response>No.</response>
+      <because>
+        Participants in a staged exercise sometimes get hurt.
+      </because>
+      <assumptions>
+        The attack was a staged exercise, not a real attack.
+      </assumptions>
+    </answer>
+  </inference>
+
+  <inference id="MIT-2">
+    <passage>
+      The Defense Department has awarded BioPort Corporation a 
+      contract to manufacture, test, bottle and store anthrax 
+      vaccine, the company has announced. 
+    </passage>
+    <question>
+      Does the Defense Department want BioPort Corporation
+      to manufacture anthrax vaccine?
+    </question>
+    <provenance type="unedited">
+      CNS CBW &amp; WMD Terrorism News Archive, CBW0928.DOC (1998), #1
+    </provenance>
+    <answer id="1" polarity="true" force="strict" source="linguistic">
+      <response>Yes.</response>
+      <because>
+        Awarding a contract to do something implies a desire for
+        the recipient to perform the specified task.
+      </because>
+      <context-type>report</context-type>
+    </answer>
+    <answer id="2" polarity="false" force="strict" source="linguistic">
+      <response>No.</response>
+      <because>
+        Awarding a contract to do something implies a desire for
+        the recipient to perform the specified task.
+      </because>
+      <context-type>report</context-type>
+    </answer>
+    <answer id="3" polarity="false" force="strict" source="linguistic">
+      <response>Don't know.</response>
+      <because>
+        Awarding a contract to do something implies a desire for
+        the recipient to perform the specified task.
+      </because>
+      <context-type>report</context-type>
+    </answer>
+  </inference>
+
+  <inference id="MIT-3">
+    <passage>
+      Chemical weapon projectiles contain a blasting tube which can
+      be seen in an X-ray.
+    </passage>
+    <question>
+      Is the blasting tube visible outside the projectile?
+    </question>
+    <provenance type="edited">
+      CNS CBW &amp; WMD Terrorism News Archive, CBW1016.DOC (1998), #1
+    </provenance>
+    <answer id="1" polarity="true" force="plausible" source="world">
+      <response>No.</response>
+      <because>
+        X-rays are usually used to peer inside opaque objects.
+        Projectiles are typically opaque.
+      </because>
+    </answer>
+    <answer id="2" polarity="false" force="plausible" source="world">
+      <response>Yes.</response>
+      <because>
+        X-rays are usually used to peer inside opaque objects.
+        Projectiles are typically opaque.
+      </because>
+    </answer>
+    <answer id="3" polarity="false" force="plausible" source="world">
+      <response>Don't know.</response>
+      <because>
+        X-rays are usually used to peer inside opaque objects.
+        Projectiles are typically opaque.
+      </because>
+    </answer>
+    <answer id="4" polarity="true" force="strict" source="linguistic">
+      <response>Don't know.</response>
+    </answer>
+    <answer id="5" polarity="unknown" force="strict" source="linguistic">
+      <response>Yes.</response>
+    </answer>
+    <answer id="6" polarity="unknown" force="strict" source="linguistic">
+      <response>No.</response>
+    </answer>
+  </inference>
+
+  <inference id="MIT-4">
+    <passage>
+      The incident at Mayak was the third shooting in recent weeks
+      involving nuclear weapons or facilities in Russia.
+    </passage>
+    <question>
+      Did the incident at Mayak involve nuclear weapons or
+      facilities?
+    </question>
+    <provenance type="unedited">
+      CNS CBW &amp; WMD Terrorism News Archive, CBW1021.DOC (1998), #2
+    </provenance>
+    <answer id="1" polarity="true" force="strict" source="linguistic">
+      <response>Yes.</response>
+      <because>
+        Semantic knowledge is used to associate "involving..."
+        with "shooting" rather than with "weeks"
+      </because>
+    </answer>
+    <answer id="2" polarity="false" force="strict" source="linguistic">
+      <response>No.</response>
+      <because>
+        Semantic knowledge is used to associate "involving..."
+        with "shooting" rather than with "weeks"
+      </because>
+    </answer>
+    <answer id="3" polarity="false" force="strict" source="linguistic">
+      <response>Don't know.</response>
+      <because>
+        Semantic knowledge is used to associate "involving..."
+        with "shooting" rather than with "weeks"
+      </because>
+    </answer>
+  </inference>
+
+  <inference id="MIT-5">
+    <passage>
+      Utah's Dugway Proving Ground has been chosen as a site to
+      test military vaccines against germ warfare agents.
+    </passage>
+    <question>
+      Who chose the Dugway Proving Ground as a site to test vaccines?
+    </question>
+    <provenance type="unedited">
+      CNS CBW &amp; WMD Terrorism News Archive, cbw1211.doc (1998), #1
+    </provenance>
+    <answer id="1" polarity="true" force="plausible" source="world">
+      <response>the U.S. military</response>
+      <because>
+        Dugway Proving Ground is a U.S. military site, and decisions
+        regarding military sites are typically made by the U.S.
+        military.
+      </because>
+    </answer>
+    <answer id="2" polarity="false" force="plausible" source="world">
+      <response>Utah</response>
+      <because>
+        Dugway Proving Ground is a U.S. military site, and decisions
+        regarding military sites are typically made by the U.S.
+        military.
+      </because>
+    </answer>
+    <answer id="3" polarity="false" force="plausible" source="world">
+      <response>Dugway Proving Ground</response>
+      <because>
+        Dugway Proving Ground is a U.S. military site, and decisions
+        regarding military sites are typically made by the U.S.
+        military.
+      </because>
+    </answer>
+    <answer id="4" polarity="false" force="plausible" source="world">
+      <response>Don't know.</response>
+      <because>
+        Dugway Proving Ground is a U.S. military site, and decisions
+        regarding military sites are typically made by the U.S.
+        military.
+      </because>
+    </answer>
+    <answer id="5" polarity="true" force="strict" source="linguistic">
+      <response>Don't know.</response>
+      <because>
+        Missing subject in the passive-voice passage statement.
+      </because>
+    </answer>
+    <answer id="6" polarity="unknown" force="strict" source="linguistic">
+      <response>Utah</response>
+      <because>
+        Missing subject in the passive-voice passage statement.
+      </because>
+    </answer>
+    <answer id="7" polarity="unknown" force="strict" source="linguistic">
+      <response>Dugway Proving Ground</response>
+      <because>
+        Missing subject in the passive-voice passage statement.
+      </because>
+    </answer>
+  </inference>
+
+  <inference id="MIT-6">
+    <passage>
+      The Russian Emergencies Ministry predicts a further increase
+      in 1999 of the concentration of toxic agents in marine burials
+      of chemical weapons.
+    </passage>
+    <question>
+      Has the concentration of toxic agents in marine burials of
+      chemical weapons increased prior to 1999?
+    </question>
+    <provenance type="unedited">
+      CNS CBW &amp; WMD Terrorism News Archive, cbw1228.doc (1998), #2
+    </provenance>
+    <answer id="1" polarity="true" force="strict" source="linguistic">
+      <response>Yes.</response>
+      <because>
+        Prediction of a further increase presupposes a past increase.
+      </because>
+    </answer>
+    <answer id="2" polarity="false" force="strict" source="linguistic">
+      <response>No.</response>
+      <because>
+        Prediction of a further increase presupposes a past increase.
+      </because>
+    </answer>
+    <answer id="3" polarity="false" force="strict" source="linguistic">
+      <response>Don't know.</response>
+      <because>
+        Prediction of a further increase presupposes a past increase.
+      </because>
+    </answer>
+    <answer id="4" polarity="true" force="strict" source="world">
+      <response>Don't know.</response>
+      <because>
+        The ministry might be engaging in a misinformation campaign
+        by issuing a statement that contains a false presupposition.
+      </because>
+    </answer>
+    <answer id="5" polarity="unknown" force="strict" source="world">
+      <response>Yes.</response>
+      <because>
+        The ministry might be engaging in a misinformation campaign
+        by issuing a statement that contains a false presupposition.
+      </because>
+    </answer>
+    <answer id="6" polarity="unknown" force="strict" source="world">
+      <response>No.</response>
+      <because>
+        The ministry might be engaging in a misinformation campaign
+        by issuing a statement that contains a false presupposition.
+      </because>
+    </answer>
+  </inference>
+
+  <inference id="MIT-7">
+    <passage>
+      The Army's chemical weapons incinerator has passed a
+      milestone, the destruction of 5 million pounds of GB nerve
+      agent.
+    </passage>
+    <question>
+      Who destroyed 5 million pounds of GB nerve agent?
+    </question>
+    <provenance type="unedited">
+      CNS CBW &amp; WMD Terrorism News Archive, CBW010899.doc, #1
+    </provenance>
+    <answer id="1" polarity="true" force="strict" source="linguistic">
+      <response>the Army's chemical weapons incinerator</response>
+      <because>
+        To pass a milestone implies being the agent of the
+        activity.
+      </because>
+    </answer>
+    <answer id="2" polarity="false" force="strict" source="linguistic">
+      <response>Don't know.</response>
+      <because>
+        To pass a milestone implies being the agent of the
+        activity.
+      </because>
+    </answer>
+    <answer id="3" polarity="true" force="strict" source="world">
+      <response>the Army</response>
+      <because>
+        For the chemical weapons incinerator to pass a milestone
+        implies being the agent of the activity.  Also, the Army
+        can claim responsibility for the activities of "the Army's
+        chemical weapons incinerator", whereas it could not for
+        "the Army's rival service, the Navy".
+      </because>
+    </answer>
+    <answer id="4" polarity="false" force="strict" source="world">
+      <response>Don't know.</response>
+    </answer>
+  </inference>
+
+  <inference id="MIT-8">
+    <passage>
+      The military is training for the day a terrorist sets off not
+      just a bomb, but a chemical or biological weapon that would
+      spew out an invisible death.
+    </passage>
+    <question>
+      Will a terrorist set off a chemical or biological weapon?
+    </question>
+    <provenance type="unedited">
+      CNS CBW &amp; WMD Terrorism News Archive, cbw012599.doc, #3
+    </provenance>
+    <answer id="1" polarity="true" force="strict" source="linguistic">
+      <response>Don't know.</response>
+      <because>
+        "...the day..." and "would" signal a hypothetical situation.
+      </because>
+    </answer>
+    <answer id="2" polarity="unknown" force="strict" source="linguistic">
+      <response>Yes.</response>
+      <because>
+        "...the day..." and "would" signal a hypothetical situation.
+      </because>
+    </answer>
+    <answer id="3" polarity="unknown" force="strict" source="linguistic">
+      <response>No.</response>
+      <because>
+        "...the day..." and "would" signal a hypothetical situation.
+      </because>
+    </answer>
+    <answer id="4" polarity="true" force="strict" source="linguistic">
+      <response>Yes.</response>
+      <context-type>possibility</context-type>
+    </answer>
+    <answer id="5" polarity="false" force="strict" source="linguistic">
+      <response>No.</response>
+      <context-type>possibility</context-type>
+    </answer>
+    <answer id="6" polarity="false" force="strict" source="linguistic">
+      <response>Don't know.</response>
+      <context-type>possibility</context-type>
+    </answer>
+    <answer id="7" polarity="true" force="plausible" source="world">
+      <response>Yes.</response>
+      <because>
+        If the military is training for the possibility, it must be
+        somewhat likely.
+      </because>
+    </answer>
+    <answer id="8" polarity="false" force="plausible" source="world">
+      <response>No.</response>
+      <because>
+        If the military is training for the possibility, it must be
+        somewhat likely.
+      </because>
+    </answer>
+    <answer id="9" polarity="false" force="plausible" source="world">
+      <response>Don't know.</response>
+      <because>
+        If the military is training for the possibility, it must be
+        somewhat likely.
+      </because>
+    </answer>
+  </inference>
+
+  <inference id="MIT-9">
+    <passage>
+      Virginia is ill prepared for a large-scale terrorist attack 
+      using chemical, biological or nuclear weapons, state officials 
+      say. 
+    </passage>
+    <question>
+      Is Virginia prepared for a small-scale terrorist attack
+      using chemical, biological or nuclear weapons?
+    </question>
+    <provenance type="unedited">
+      CNS CBW &amp; WMD Terrorism News Archive, cbw030899.doc, #1A
+    </provenance>
+    <answer id="1" polarity="true" force="plausible" source="linguistic">
+      <response>Yes.</response>
+      <because>
+        Inclusion of "large-scale" in the passage suggests that
+        the statement would not hold with that term omitted or
+        negated.
+      </because>
+      <context-type>report</context-type>
+    </answer>
+    <answer id="2" polarity="false" force="plausible" source="linguistic">
+      <response>No.</response>
+      <because>
+        Inclusion of "large-scale" in the passage suggests that
+        the statement would not hold with that term omitted or
+        negated.
+      </because>
+      <context-type>report</context-type>
+    </answer>
+    <answer id="3" polarity="false" force="plausible" source="linguistic">
+      <response>Don't know.</response>
+      <because>
+        Inclusion of "large-scale" in the passage suggests that
+        the statement would not hold with that term omitted or
+        negated.
+      </because>
+      <context-type>report</context-type>
+    </answer>
+  </inference>
+
+  <inference id="MIT-10">
+    <passage>
+      Unlike nuclear or chemical weapons, biological weapons can be
+      made with readily available materials or equipment.
+    </passage>
+    <question>
+      Can nuclear weapons be made with readily available
+      materials or equipment?
+    </question>
+    <provenance type="unedited">
+      CNS CBW &amp; WMD Terrorism News Archive, cbw031099.doc, #3
+    </provenance>
+    <answer id="1" polarity="true" force="strict" source="linguistic">
+      <response>No.</response>
+    </answer>
+    <answer id="2" polarity="false" force="strict" source="linguistic">
+      <response>Yes.</response>
+    </answer>
+    <answer id="3" polarity="false" force="strict" source="linguistic">
+      <response>Don't know.</response>
+    </answer>
+    <comment>
+      Note that both instances of "or" in the passage could be
+      replaced by "and" with no apparent change in meaning.
+    </comment>
+  </inference>
+
+  <inference id="MIT-11">
+    <passage>
+      Sudan says it's ready to sign the international convention
+      banning chemical weapons.
+    </passage>
+    <question>
+      Will Sudan produce chemical weapons in the future?
+    </question>
+    <provenance type="unedited">
+      CNS CBW &amp; WMD Terrorism News Archive, cbw052199.doc, #3
+    </provenance>
+    <answer id="1" polarity="true" force="plausible" source="world">
+      <response>No.</response>
+      <because>
+        Signing the convention suggests that Sudan will not produce
+        chemical weapons, but they might anyway.
+      </because>
+    </answer>
+    <answer id="2" polarity="false" force="plausible" source="world">
+      <response>Yes.</response>
+      <because>
+        Signing the convention suggests that Sudan will not produce
+        chemical weapons, but they might anyway.
+      </because>
+    </answer>
+    <answer id="3" polarity="false" force="plausible" source="world">
+      <response>Don't know.</response>
+      <because>
+        Signing the convention suggests that Sudan will not produce
+        chemical weapons, but they might anyway.
+      </because>
+    </answer>
+    <answer id="4" polarity="true" force="strict" source="linguistic">
+      <response>Don't know.</response>
+    </answer>
+    <answer id="5" polarity="unknown" force="strict" source="linguistic">
+      <response>Yes.</response>
+    </answer>
+    <answer id="6" polarity="unknown" force="strict" source="linguistic">
+      <response>No.</response>
+    </answer>
+  </inference>
+
+  <inference id="MIT-12">
+    <passage>
+      The Scud C has a range of 500 kilometers and is manufactured
+      in Syria with know-how from North Korea.
+    </passage>
+    <question>
+      Can a Scud C fly 500 kilometers?
+    </question>
+    <provenance type="unedited">
+      CNS CBW &amp; WMD Terrorism News Archive, cbw091599.doc, #6
+    </provenance>
+    <answer id="1" polarity="true" force="strict" source="world">
+      <response>Yes.</response>
+      <because>
+        A Scud C is a missile, not a ground vehicle, for
+        example, or a transmitter.
+      </because>
+    </answer>
+    <answer id="2" polarity="false" force="strict" source="world">
+      <response>No.</response>
+      <because>
+        A Scud C is a missile, not a ground vehicle, for
+        example, or a transmitter.
+      </because>
+    </answer>
+    <answer id="3" polarity="false" force="strict" source="world">
+      <response>Don't know.</response>
+      <because>
+        A Scud C is a missile, not a ground vehicle, for
+        example, or a transmitter.
+      </because>
+    </answer>
+    <answer id="4" polarity="true" force="strict" source="linguistic">
+      <response>Don't know.</response>
+      <comment> 
+        Assuming ontology is not so detailed as to specify that a
+        Scud C is a missile.
+      </comment>
+    </answer>
+    <answer id="5" polarity="unknown" force="strict" source="linguistic">
+      <response>Yes.</response>
+      <comment> 
+        Assuming ontology is not so detailed as to specify that a
+        Scud C is a missile.
+      </comment>
+    </answer>
+    <answer id="6" polarity="unknown" force="strict" source="linguistic">
+      <response>No.</response>
+      <comment> 
+        Assuming ontology is not so detailed as to specify that a
+        Scud C is a missile.
+      </comment>
+    </answer>
+  </inference>
+
+  <inference id="MIT-13">
+    <passage>
+      Some of the 14 alleged bin Laden associates arrested in
+      Jordan in December have begun talking to investigators.
+    </passage>
+    <question>
+      Was an associate of bin Laden arrested in the Middle East?
+    </question>
+    <provenance type="edited">
+      CNS CBW &amp; WMD Terrorism News Archive, cbw020200.doc, #1B
+    </provenance>
+    <answer id="1" polarity="true" force="plausible" source="world">
+      <response>Yes.</response>
+      <because>
+        Jordan is in the Middle East, and "alleged" suggests a
+        likelihood of actually being a bin Laden associate.  Also,
+        talking to investigators suggests culpability.
+      </because>
+    </answer>
+    <answer id="2" polarity="false" force="plausible" source="world">
+      <response>No.</response>
+      <because>
+        Jordan is in the Middle East, and "alleged" suggests a
+        likelihood of actually being a bin Laden associate.  Also,
+        talking to investigators suggests culpability.
+      </because>
+    </answer>
+    <answer id="3" polarity="false" force="plausible" source="world">
+      <response>Don't know.</response>
+      <because>
+        Jordan is in the Middle East, and "alleged" suggests a
+        likelihood of actually being a bin Laden associate.  Also,
+        talking to investigators suggests culpability.
+      </because>
+    </answer>
+    <answer id="4" polarity="true" force="strict" source="linguistic">
+      <response>Don't know.</response>
+    </answer>
+    <answer id="5" polarity="unknown" force="strict" source="linguistic">
+      <response>Yes.</response>
+    </answer>
+    <answer id="6" polarity="unknown" force="strict" source="linguistic">
+      <response>No.</response>
+    </answer>
+  </inference>
+
+  <inference id="MIT-14">
+    <passage>
+      The U.S. Senate on Thursday unanimously approved legislation
+      designed to punish Russia and other countries if they help
+      Iran develop weapons of mass destruction.
+    </passage>
+    <question>
+      Will Russia help Iran develop weapons of mass destruction?
+    </question>
+    <provenance type="unedited">
+      CNS CBW &amp; WMD Terrorism News Archive, cbw022500.DOC, #2
+    </provenance>
+    <answer id="1" polarity="true" force="plausible" source="world">
+      <response>No.</response>
+      <because>
+        If the U.S. Senate passes legislation to punish a country
+        for doing something, it is plausible to conclude that the
+        country will not do the specified thing.
+      </because>
+    </answer>
+    <answer id="2" polarity="false" force="plausible" source="world">
+      <response>Yes.</response>
+      <because>
+        If the U.S. Senate passes legislation to punish a country
+        for doing something, it is plausible to conclude that the
+        country will not do the specified thing.
+      </because>
+    </answer>
+    <answer id="3" polarity="false" force="plausible" source="world">
+      <response>Don't know.</response>
+      <because>
+        If the U.S. Senate passes legislation to punish a country
+        for doing something, it is plausible to conclude that the
+        country will not do the specified thing.
+      </because>
+    </answer>
+    <answer id="4" polarity="true" force="strict" source="linguistic">
+      <response>Don't know.</response>
+      <because>
+        "If" signals a hypothetical.
+      </because>
+    </answer>
+    <answer id="5" polarity="unknown" force="strict" source="linguistic">
+      <response>Yes.</response>
+      <because>
+        "If" signals a hypothetical.
+      </because>
+    </answer>
+    <answer id="6" polarity="unknown" force="strict" source="linguistic">
+      <response>No.</response>
+      <because>
+        "If" signals a hypothetical.
+      </because>
+    </answer>
+    <answer id="7" polarity="true" force="strict" source="linguistic">
+      <response>Yes.</response>
+      <context-type>possibility</context-type>
+    </answer>
+    <answer id="8" polarity="false" force="strict" source="linguistic">
+      <response>No.</response>
+      <context-type>possibility</context-type>
+    </answer>
+    <answer id="9" polarity="false" force="strict" source="linguistic">
+      <response>Don't know.</response>
+      <context-type>possibility</context-type>
+    </answer>
+  </inference>
+
+  <inference id="MIT-15">
+    <passage>
+      To date, Congress has authorized more than $4.7 billion for
+      U.S. programs aimed at helping Russia and other newly
+      independent states reduce the threats posed by their weapons
+      of mass destruction.
+    </passage>
+    <question>
+      Does the U.S. want the threat posed by Russia's
+      weapons of mass destruction to be reduced?
+    </question>
+    <provenance type="unedited">
+      CNS CBW &amp; WMD Terrorism News Archive, cbw031300.DOC, #1
+    </provenance>
+    <answer id="1" polarity="true" force="strict" source="linguistic">
+      <response>Yes.</response>
+      <because>
+        Authorizing money to help some entity undertake a task
+        implies a desire for the task to be carried out.
+      </because>
+    </answer>
+    <answer id="2" polarity="false" force="strict" source="linguistic">
+      <response>No.</response>
+      <because>
+        Authorizing money to help some entity undertake a task
+        implies a desire for the task to be carried out.
+      </because>
+    </answer>
+    <answer id="3" polarity="false" force="strict" source="linguistic">
+      <response>Don't know.</response>
+      <because>
+        Authorizing money to help some entity undertake a task
+        implies a desire for the task to be carried out.
+      </because>
+    </answer>
+  </inference>
+
+  <inference id="MIT-16">
+    <passage>
+      A father and a son were admitted to hospital with strychnine
+      poisoning after consuming Herron products.
+    </passage>
+    <question>
+      Did the Herron products contain poison?
+    </question>
+    <provenance type="unedited">
+      CNS CBW &amp; WMD Terrorism News Archive, cbw031700.DOC, #4
+    </provenance>
+    <answer id="1" polarity="true" force="plausible" source="linguistic">
+      <response>Yes.</response>
+      <because>
+        Relies on formation of a commonsense explanation involving
+        the ingesting of a poison.
+      </because>
+    </answer>
+    <answer id="2" polarity="false" force="plausible" source="linguistic">
+      <response>No.</response>
+      <because>
+        Relies on formation of a commonsense explanation involving
+        the ingesting of a poison.
+      </because>
+    </answer>
+    <answer id="3" polarity="false" force="plausible" source="linguistic">
+      <response>Don't know.</response>
+      <because>
+        Relies on formation of a commonsense explanation involving
+        the ingesting of a poison.
+      </because>
+    </answer>
+  </inference>
+
+  <inference id="MIT-17">
+    <passage>
+      About 400 of the more than 2,600 village residents were
+      hospitalized in July and August.
+    </passage>
+    <question>
+      Were some of the village residents not hospitalized in
+      July and August?
+    </question>
+    <provenance type="unedited">
+      CNS CBW &amp; WMD Terrorism News Archive, cbw092900.doc, #2
+    </provenance>
+    <answer id="1" polarity="true" force="strict" source="linguistic">
+      <response>Yes.</response>
+    </answer>
+    <answer id="2" polarity="false" force="strict" source="linguistic">
+      <response>No.</response>
+    </answer>
+    <answer id="3" polarity="false" force="strict" source="linguistic">
+      <response>Don't know.</response>
+    </answer>
+  </inference>
+
+  <inference id="MIT-18">
+    <passage>
+      The only bacterial attack in America came in 1984, when a
+      cult poisoned a salad bar in Oregon with salmonella, sickening
+      700 people.
+    </passage>
+    <question>
+      Has a biological attack occurred in the U.S.?
+    </question>
+    <provenance type="unedited">
+      CNS CBW &amp; WMD Terrorism News Archive, cbw102700.doc, #2B
+    </provenance>
+    <answer id="1" polarity="true" force="strict" source="linguistic">
+      <response>Yes.</response>
+      <because>
+        A bacterial attack is a biological attack.  Also,
+        "came" means "occurred" for an event, and "America"
+        is synonymous with "the U.S.".
+      </because>
+    </answer>
+    <answer id="2" polarity="false" force="strict" source="linguistic">
+      <response>No.</response>
+      <because>
+        A bacterial attack is a biological attack.  Also,
+        "came" means "occurred" for an event, and "America"
+        is synonymous with "the U.S.".
+      </because>
+    </answer>
+    <answer id="3" polarity="false" force="strict" source="linguistic">
+      <response>Don't know.</response>
+      <because>
+        A bacterial attack is a biological attack.  Also,
+        "came" means "occurred" for an event, and "America"
+        is synonymous with "the U.S.".
+      </because>
+    </answer>
+  </inference>
+
+  <inference id="MIT-19">
+    <passage>
+      Blix said the new weapons inspection team is composed of 
+      scientists from around the world, including South America, 
+      Thailand, Bangladesh and Eastern Europe. 
+    </passage>
+    <question>
+      Are scientists from Hungary members of the new weapons
+      inspection team?
+    </question>
+    <provenance type="unedited">
+      CNS CBW &amp; WMD Terrorism News Archive, cbw012201.doc, #1B
+    </provenance>
+    <answer id="1" polarity="true" force="strict" source="world">
+      <response>Don't know.</response>
+      <because>
+        The Eastern European scientists would not necessarily be
+        from Hungary.  Also, Thailand is not a part of Hungary, etc.
+      </because>
+      <context-type>report</context-type>
+    </answer>
+    <answer id="2" polarity="unknown" force="strict" source="world">
+      <response>Yes.</response>
+      <because>
+        The Eastern European scientists would not necessarily be
+        from Hungary.  Also, Thailand is not a part of Hungary, etc.
+      </because>
+      <context-type>report</context-type>
+    </answer>
+    <answer id="3" polarity="unknown" force="strict" source="world">
+      <response>No.</response>
+      <because>
+        The Eastern European scientists would not necessarily be
+        from Hungary.  Also, Thailand is not a part of Hungary, etc.
+      </because>
+      <context-type>report</context-type>
+    </answer>
+    <answer id="4" polarity="true" force="strict" source="linguistic">
+      <response>Don't know.</response>
+      <context-type>report</context-type>
+    </answer>
+    <answer id="5" polarity="unknown" force="strict" source="linguistic">
+      <response>Yes.</response>
+      <context-type>report</context-type>
+    </answer>
+    <answer id="6" polarity="unknown" force="strict" source="linguistic">
+      <response>No.</response>
+      <context-type>report</context-type>
+    </answer>
+  </inference>
+
+  <inference id="MIT-20">
+    <passage>
+      Biological select agents include about 40 viruses, bacteria,
+      rickettsia, fungi, and toxins whose transfer within the United
+      States is controlled.
+    </passage>
+    <question>
+      Is the transfer of biological select agents within the United
+      States controlled?
+    </question>
+    <provenance type="unedited">
+      CNS CBW &amp; WMD Terrorism News Archive, cbw021201.DOC, #2B
+    </provenance>
+    <answer id="1" polarity="true" force="strict" source="linguistic">
+      <response>Don't know.</response>
+      <assumptions>
+        Interpreting "include" to mean that these are just some
+        of the biological select agents, not all of them.
+        Interpreting "transfer of biological select agents" in
+        the question to mean "transfer of all biological select
+        agents".
+      </assumptions>
+    </answer>
+    <answer id="2" polarity="unknown" force="strict" source="linguistic">
+      <response>Yes.</response>
+      <assumptions>
+        Interpreting "include" to mean that these are just some
+        of the biological select agents, not all of them.
+        Interpreting "transfer of biological select agents" in
+        the question to mean "transfer of all biological select
+        agents".
+      </assumptions>
+    </answer>
+    <answer id="3" polarity="unknown" force="strict" source="linguistic">
+      <response>No.</response>
+      <assumptions>
+        Interpreting "include" to mean that these are just some
+        of the biological select agents, not all of them.
+        Interpreting "transfer of biological select agents" in
+        the question to mean "transfer of all biological select
+        agents".
+      </assumptions>
+    </answer>
+    <answer id="4" polarity="true" force="strict" source="linguistic">
+      <response>Yes.</response>
+      <assumptions>
+        Interpreting "include" to mean that these are just some
+        of the biological select agents, not all of them.
+        Interpreting "transfer of biological select agents" in
+        the question to mean "transfer of some biological select
+        agents".
+      </assumptions>
+    </answer>
+    <answer id="5" polarity="false" force="strict" source="linguistic">
+      <response>No.</response>
+      <assumptions>
+        Interpreting "include" to mean that these are just some
+        of the biological select agents, not all of them.
+        Interpreting "transfer of biological select agents" in
+        the question to mean "transfer of some biological select
+        agents".
+      </assumptions>
+    </answer>
+    <answer id="6" polarity="false" force="strict" source="linguistic">
+      <response>Don't know.</response>
+      <assumptions>
+        Interpreting "include" to mean that these are just some
+        of the biological select agents, not all of them.
+        Interpreting "transfer of biological select agents" in
+        the question to mean "transfer of some biological select
+        agents".
+      </assumptions>
+    </answer>
+    <answer id="7" polarity="true" force="strict" source="linguistic">
+      <response>Yes.</response>
+      <assumptions>
+        Interpreting "include" to mean that these are the only
+        biological select agents, not just some of them.
+        Interpreting "transfer of biological select agents" in
+        the question to mean "transfer of all biological select
+        agents".
+      </assumptions>
+    </answer>
+    <answer id="8" polarity="false" force="strict" source="linguistic">
+      <response>No.</response>
+      <assumptions>
+        Interpreting "include" to mean that these are the only
+        biological select agents, not just some of them.
+        Interpreting "transfer of biological select agents" in
+        the question to mean "transfer of all biological select
+        agents".
+      </assumptions>
+    </answer>
+    <answer id="9" polarity="false" force="strict" source="linguistic">
+      <response>Don't know.</response>
+      <assumptions>
+        Interpreting "include" to mean that these are the only
+        biological select agents, not just some of them.
+        Interpreting "transfer of biological select agents" in
+        the question to mean "transfer of all biological select
+        agents".
+      </assumptions>
+    </answer>
+    <answer id="10" polarity="true" force="strict" source="linguistic">
+      <response>Yes.</response>
+      <assumptions>
+        Interpreting "include" to mean that these are the only
+        biological select agents, not just some of them.
+        Interpreting "transfer of biological select agents" in
+        the question to mean "transfer of some biological select
+        agents".
+      </assumptions>
+    </answer>
+    <answer id="11" polarity="false" force="strict" source="linguistic">
+      <response>No.</response>
+      <assumptions>
+        Interpreting "include" to mean that these are the only
+        biological select agents, not just some of them.
+        Interpreting "transfer of biological select agents" in
+        the question to mean "transfer of some biological select
+        agents".
+      </assumptions>
+    </answer>
+    <answer id="12" polarity="false" force="strict" source="linguistic">
+      <response>Don't know.</response>
+      <assumptions>
+        Interpreting "include" to mean that these are the only
+        biological select agents, not just some of them.
+        Interpreting "transfer of biological select agents" in
+        the question to mean "transfer of some biological select
+        agents".
+      </assumptions>
+    </answer>
+  </inference>
+
+  <inference id="MIT-21">
+    <passage>
+      During his trip to five Arab capitals and Israel, which ended
+      last Monday, Powell proposed easing sanctions on Iraqi imports.
+    </passage>
+    <question>
+      Where did Powell travel to?
+    </question>
+    <provenance type="edited">
+      CNS CBW &amp; WMD Terrorism News Archive, cbw030501.DOC, #1B
+    </provenance>
+    <answer id="1" polarity="true" force="strict" source="linguistic">
+      <response>five Arab capitals and Israel</response>
+      <assumptions>
+        "his trip" refers to Powell's trip.
+      </assumptions>
+    </answer>
+    <answer id="2" polarity="false" force="strict" source="linguistic">
+      <response>Don't know.</response>
+      <assumptions>
+        "his trip" refers to Powell's trip.
+      </assumptions>
+    </answer>
+    <answer id="3" polarity="true" force="strict" source="world">
+      <response>the Middle East</response>
+      <because>
+        The Arab capitals and Israel are located in the Middle East.
+      </because>
+      <assumptions>
+        "his trip" refers to Powell's trip.
+      </assumptions>
+    </answer>
+    <answer id="4" polarity="false" force="strict" source="world">
+      <response>Don't know.</response>
+      <assumptions>
+        "his trip" refers to Powell's trip.
+      </assumptions>
+    </answer>
+  </inference>
+
+  <inference id="MIT-22">
+    <passage>
+      The Chemlab, for instance, is about the size of a Palm Pilot
+      and will be able to detect a range of biological agents.
+    </passage>
+    <question>
+      Is the Chemlab a handheld device?
+    </question>
+    <provenance type="unedited">
+      CNS CBW &amp; WMD Terrorism News Archive, cbw050701.DOC, #4
+    </provenance>
+    <answer id="1" polarity="true" force="plausible" source="world">
+      <response>Yes.</response>
+      <because>
+        Comparing the Chemlab to a well-known handheld device
+        suggests that it may also be a handheld device.
+      </because>
+    </answer>
+    <answer id="2" polarity="false" force="plausible" source="world">
+      <response>No.</response>
+      <because>
+        Comparing the Chemlab to a well-known handheld device
+        suggests that it may also be a handheld device.
+      </because>
+    </answer>
+    <answer id="3" polarity="false" force="plausible" source="world">
+      <response>Don't know.</response>
+      <because>
+        Comparing the Chemlab to a well-known handheld device
+        suggests that it may also be a handheld device.
+      </because>
+    </answer>
+    <answer id="4" polarity="true" force="strict" source="linguistic">
+      <response>Don't know.</response>
+    </answer>
+    <answer id="5" polarity="unknown" force="strict" source="linguistic">
+      <response>Yes.</response>
+    </answer>
+    <answer id="6" polarity="unknown" force="strict" source="linguistic">
+      <response>No.</response>
+    </answer>
+  </inference>
+
+  <inference id="MIT-23">
+    <passage>
+      Russia could suspend the destruction of its stockpile of 
+      chemical weapons if foreign aid is not increased, a senior 
+      official and negotiator was quoted as saying by the AVN 
+      Military News agency. 
+    </passage>
+    <question>
+      Does Russia have a stockpile of chemical weapons?
+    </question>
+    <provenance type="edited">
+      CNS CBW &amp; WMD Terrorism News Archive, cbw051101.DOC, #2
+    </provenance>
+    <answer id="1" polarity="true" force="strict" source="linguistic">
+      <response>Yes.</response>
+      <because>
+        "its stockpile" presupposes the existence of a stockpile.
+      </because>
+      <context-type>report of a report</context-type>
+    </answer>
+    <answer id="2" polarity="false" force="strict" source="linguistic">
+      <response>No.</response>
+      <because>
+        "its stockpile" presupposes the existence of a stockpile.
+      </because>
+      <context-type>report of a report</context-type>
+    </answer>
+    <answer id="3" polarity="false" force="strict" source="linguistic">
+      <response>Don't know.</response>
+      <because>
+        "its stockpile" presupposes the existence of a stockpile.
+      </because>
+      <context-type>report of a report</context-type>
+    </answer>
+  </inference>
+
+  <inference id="MIT-24">
+    <passage>
+      BioPort Corp. of Lansing, Michigan is the sole
+      U.S. manufacturer of an anthrax vaccine.
+    </passage>
+    <question>
+      Are there three U.S. manufacturers of anthrax vaccine?
+    </question>
+    <provenance type="edited">
+      CNS CBW &amp; WMD Terrorism News Archive, cbw092601.doc, #1E
+    </provenance>
+    <answer id="1" polarity="true" force="strict" source="linguistic">
+      <response>No.</response>
+    </answer>
+    <answer id="2" polarity="false" force="strict" source="linguistic">
+      <response>Yes.</response>
+    </answer>
+    <answer id="3" polarity="false" force="strict" source="linguistic">
+      <response>Don't know.</response>
+    </answer>
+  </inference>
+
+  <inference id="MIT-25">
+    <passage>
+      Two Al Qaeda computers have been found in Kabul.
+    </passage>
+    <question>
+      Did the computers belong to Al Qaeda?
+    </question>
+    <provenance type="edited">
+      CNS CBW &amp; WMD Terrorism News Archive, cbw010202.doc, #1
+    </provenance>
+    <answer id="1" polarity="true" force="plausible" source="world">
+      <response>Yes.</response>
+      <because>
+        Two Dell computers would most likely have been manufactured
+        by Dell.  Al Qaeda is not a computer manufacturer, but could
+        have owned the computers.
+      </because>
+    </answer>
+    <answer id="2" polarity="false" force="plausible" source="world">
+      <response>No.</response>
+      <because>
+        Two Dell computers would most likely have been manufactured
+        by Dell.  Al Qaeda is not a computer manufacturer, but could
+        have owned the computers.
+      </because>
+    </answer>
+    <answer id="3" polarity="false" force="plausible" source="world">
+      <response>Don't know.</response>
+      <because>
+        Two Dell computers would most likely have been manufactured
+        by Dell.  Al Qaeda is not a computer manufacturer, but could
+        have owned the computers.
+      </because>
+    </answer>
+    <answer id="4" polarity="true" force="strict" source="linguistic">
+      <response>Don't know.</response>
+    </answer>
+    <answer id="5" polarity="unknown" force="strict" source="linguistic">
+      <response>Yes.</response>
+    </answer>
+    <answer id="6" polarity="unknown" force="strict" source="linguistic">
+      <response>No.</response>
+    </answer>
+  </inference>
+
+  <inference id="MIT-26">
+    <passage>
+      The White House has ordered a purge of information from
+      government agency websites that could be exploited by
+      terrorists seeking weapons of mass destruction.
+    </passage>
+    <question>
+      Do government agency websites contain information that
+      could be exploited by terrorists?
+    </question>
+    <provenance type="unedited">
+      CNS CBW &amp; WMD Terrorism News Archive, cbw032202.doc, #1
+    </provenance>
+    <answer id="1" polarity="true" force="plausible" source="linguistic">
+      <response>Yes.</response>
+      <because>
+        A purge suggests the existence of items to be purged.
+      </because>
+    </answer>
+    <answer id="2" polarity="false" force="plausible" source="linguistic">
+      <response>No.</response>
+      <because>
+        A purge suggests the existence of items to be purged.
+      </because>
+    </answer>
+    <answer id="3" polarity="false" force="plausible" source="linguistic">
+      <response>Don't know.</response>
+      <because>
+        A purge suggests the existence of items to be purged.
+      </because>
+    </answer>
+  </inference>
+
+  <inference id="MIT-27">
+    <passage>
+      Agriculture accounts for 22 million jobs and 16.4 percent of
+      the nation's gross domestic product.
+    </passage>
+    <question>
+      Are 22 million people employed in agriculture?
+    </question>
+    <provenance type="edited">
+      CNS CBW &amp; WMD Terrorism News Archive, cbw032702.doc, #1B
+    </provenance>
+    <answer id="1" polarity="true" force="strict" source="linguistic">
+      <response>Yes.</response>
+    </answer>
+    <answer id="2" polarity="false" force="strict" source="linguistic">
+      <response>No.</response>
+    </answer>
+    <answer id="3" polarity="false" force="strict" source="linguistic">
+      <response>Don't know.</response>
+    </answer>
+  </inference>
+
+  <inference id="MIT-28">
+    <passage>
+      The Pentagon is considering a resumption of anthrax
+      vaccinations for U.S. troops.
+    </passage>
+    <question>
+      Have anthrax vaccinations of U.S. troops occurred previously?
+    </question>
+    <provenance type="edited">
+      CNS CBW &amp; WMD Terrorism News Archive, cbw040302.doc, #4A
+    </provenance>
+    <answer id="1" polarity="true" force="strict" source="linguistic">
+      <response>Yes.</response>
+      <because>
+        Resumption of an activity implies a former occurrence
+        of the activity.
+      </because>
+    </answer>
+    <answer id="2" polarity="false" force="strict" source="linguistic">
+      <response>No.</response>
+      <because>
+        Resumption of an activity implies a former occurrence
+        of the activity.
+      </because>
+    </answer>
+    <answer id="3" polarity="false" force="strict" source="linguistic">
+      <response>Don't know.</response>
+      <because>
+        Resumption of an activity implies a former occurrence
+        of the activity.
+      </because>
+    </answer>
+  </inference>
+
+  <inference id="MIT-29">
+    <passage>
+      Libya said on Wednesday it is not developing chemical,
+      biological or nuclear weapons, denying allegations made by a
+      US official.
+    </passage>
+    <question>
+      Did a U.S. official claim that Libya is developing
+      chemical, biological or nuclear weapons?
+    </question>
+    <provenance type="unedited">
+      CNS CBW &amp; WMD Terrorism News Archive, cbw050802.doc, #1B
+    </provenance>
+    <answer id="1" polarity="true" force="strict" source="linguistic">
+      <response>Yes.</response>
+    </answer>
+    <answer id="2" polarity="false" force="strict" source="linguistic">
+      <response>No.</response>
+    </answer>
+    <answer id="3" polarity="false" force="strict" source="linguistic">
+      <response>Don't know.</response>
+    </answer>
+  </inference>
+
+  <inference id="MIT-30">
+    <passage>
+      Al Wafa is one of the organisations whose assets have been
+      frozen in the United States amid suspicions that it might be
+      giving support to Osama Bin Laden's al-Qaeda network.
+    </passage>
+    <question>
+      Who has given support to al-Qaeda?
+    </question>
+    <provenance type="unedited">
+      CNS CBW &amp; WMD Terrorism News Archive, cbw082602.doc, #2
+    </provenance>
+    <answer id="1" polarity="true" force="plausible" source="world">
+      <response>al Wafa</response>
+      <because>
+        Freezing of assets in the United States must have been
+        done by a governmental entity.  That this action was
+        taken lends credence to the claim that al Wafa
+        supported al-Qaeda.
+      </because>
+    </answer>
+    <answer id="2" polarity="unknown" force="strict" source="world">
+      <response>the United States</response>
+    </answer>
+    <answer id="3" polarity="true" force="plausible" source="world">
+      <response>Osama Bin Laden</response>
+      <because>
+        Possessing a terrorist network suggests having given support
+        to it.
+      </because>
+    </answer>
+    <answer id="4" polarity="false" force="plausible" source="world">
+      <response>Don't know.</response>
+    </answer>
+    <answer id="5" polarity="true" force="strict" source="linguistic">
+      <response>al Wafa</response>
+      <context-type>possibility</context-type>
+    </answer>
+    <answer id="6" polarity="false" force="strict" source="linguistic">
+      <response>Don't know.</response>
+      <context-type>possibility</context-type>
+    </answer>
+    <answer id="7" polarity="true" force="strict" source="linguistic">
+      <response>Don't know.</response>
+    </answer>
+    <answer id="8" polarity="unknown" force="strict" source="linguistic">
+      <response>al Wafa</response>
+    </answer>
+    <answer id="9" polarity="unknown" force="strict" source="linguistic">
+      <response>the United States</response>
+    </answer>
+    <answer id="10" polarity="unknown" force="strict" source="linguistic">
+      <response>Osama Bin Laden</response>
+    </answer>
+  </inference>
+
+</root>

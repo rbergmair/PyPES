@@ -1,0 +1,138 @@
+AVE DATA
+-----------------------------------------------------------------------------
+
+
+http://nlp.uned.es/clef-qa/ave/ENGARTE-2.zip
+
+  ave-06-en-dev-np-nr.rte.xml
+  ave-06-en-dev-np-r.rte.xml
+  ave-06-en-dev-yp-nr.rte.xml
+  ave-06-en-dev-yp-r.rte.xml
+
+
+http://nlp.uned.es/clef-qa/ave/AVE2006-Test-annotated-EN-revised-26-9-06.zip
+
+  ave-06-en-tst.rte.xml  
+
+
+http://nlp.uned.es/clef-qa/ave/AVE2006-Test-annotated-DE-revised-29-9-06.zip
+
+  ave-06-de-tst.rte.xml
+
+
+http://nlp.uned.es/clef-qa/ave/datos/2007/coleccionesDev/AVE2007-Dev-EN.zip
+
+  ave-07-en-dev.ave.xml
+
+
+http://nlp.uned.es/clef-qa/ave/datos/2007/coleccionesDev/AVE2007-Dev-DE.zip
+
+  ave-07-de-dev.ave.xml
+
+
+http://nlp.uned.es/clef-qa/ave/datos/2007/coleccionesTest/AVE2007-annotated-test-EN.zip
+
+  ave-07-en-tst.ave.xml
+
+
+http://nlp.uned.es/clef-qa/ave/datos/2007/coleccionesTest/AVE2007-annotated-test-DE.zip
+
+  ave-07-de-tst.ave.xml
+
+
+http://nlp.uned.es/clef-qa/ave/datos/2008/coleccionesDev/AVE2008-Dev-EN.zip
+
+  ave-08-en-dev.ave.xml
+
+
+http://nlp.uned.es/clef-qa/ave/datos/2008/coleccionesDev/AVE2008-Dev-DE.zip
+
+  ave-08-de-dev.ave.xml
+
+
+http://nlp.uned.es/clef-qa/ave/datos/2008/coleccionesTestAnotadas/AVE2008-annotated-test-EN.zip
+
+  ave-08-en-tst.ave.xml
+
+
+http://nlp.uned.es/clef-qa/ave/datos/2008/coleccionesTestAnotadas/AVE2008-annotated-test-DE.zip
+
+  ave-08-de-tst.ave.xml
+
+
+
+RTE DATA
+-----------------------------------------------------------------------------
+
+
+http://www.nist.gov/tac/tracks/2008/rte/past_data/RTE1_dev.zip
+
+  rte-05-dev.rte.xml
+
+
+http://www.nist.gov/tac/tracks/2008/rte/past_data/RTE1_test.annotated.zip
+
+  rte-05-tst.rte.xml
+
+
+http://www.nist.gov/tac/tracks/2008/rte/past_data/RTE2_dev.tar.gz
+
+  rte-06-dev.rte.xml
+
+
+http://www.nist.gov/tac/tracks/2008/rte/past_data/RTE2_test.annotated.tar.gz
+
+  rte-06-tst.rte.xml
+
+
+http://www.nist.gov/tac/tracks/2008/rte/past_data/RTE3-DEV-FINAL.tar.gz
+
+  rte-07-dev-2w.rte.xml
+
+
+http://www.nist.gov/tac/tracks/2008/rte/past_data/RTE3_dev_3class.xml
+
+  rte-07-dev-3w.rte.xml
+
+
+http://www.nist.gov/tac/tracks/2008/rte/past_data/RTE3-TEST-GOLD.tar.gz
+
+  rte-07-tst-2w.rte.xml
+
+
+http://www.nist.gov/tac/tracks/2008/rte/past_data/RTE3_test_3class_gold.txt
+
+  rte-07-tst-3w.txt
+
+
+http://www.nist.gov/tac/protected/2008/RTE4_TEST-SET_GOLD.xml.gz
+
+  rte-08.rte.xml
+
+
+
+FRACAS DATA
+-----------------------------------------------------------------------------
+
+http://www-nlp.stanford.edu/~wcmac/downloads/fracas.xml
+
+  fracas.bmc.xml
+
+
+
+AQUAINT DATA
+-----------------------------------------------------------------------------
+
+http://nlp.stanford.edu/projects/infer/
+
+  aquaint-*
+
+
+
+Wang et al.
+-----------------------------------------------------------------------------
+
+kindly provided by Wang Rui with permission from DFKI
+
+  rte-wang-*
+
