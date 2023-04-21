@@ -26,8 +26,12 @@ def raspstr_to_smaf( surface, raspstr ):
   i = 0;
   for ch in surface:
     utf8offs.append( i );
-    if ord( ch ) > 127:
+    if ord( ch ) >= 0x80:
       utf8offs.append( i );
+      if ord( ch ) >= 0x800:
+        utf8offs.append( i );
+        if ord( ch ) >= 0x10000:
+          utf8offs.append( i );
     i += 1;
 
   i = 1;
@@ -53,7 +57,7 @@ def raspstr_to_smaf( surface, raspstr ):
 
       s -= min;
       e -= min;
-
+      
       s = utf8offs[s];
       e = utf8offs[e];
 

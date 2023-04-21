@@ -14,6 +14,11 @@ f.close();
 
 fsppctrl = pyrmrs.ext.fspp.FSPP();
 
+
+for smaf in fsppctrl.sentstr_to_smafs( "Unlike theorems, axioms cannot be derived by principles of deduction, nor are they demonstrable by formal proofs - simply because they are starting assumptions - there is nothing else they logically follow from (otherwise they would be called theorems)." ):
+  print pyrmrs.tools.fix_fspp_smaf.fix_fspp_smaf( smaf ).str_xml();
+
+
 for smaf in fsppctrl.sentstr_to_smafs( "She (Sandy) snored." ):
   print pyrmrs.tools.fix_fspp_smaf.fix_fspp_smaf( smaf ).str_xml();
 

@@ -597,8 +597,8 @@
 </rmrs>
 
 
-       l3 | _no_a_1( ARG0=e4 ARG1=h5 CARG=No ) 
-          |    h5 qeq l11
+       l3 | _no_a_1( ARG0=e5 ARG1=h4 ) 
+          |    h4 qeq l11
        l6 + udef_q_rel( ARG0=x9 RSTR=h8 BODY=h7 ) 
           +    h8 qeq l10
       l10 | unknown_nom_rel( ARG0=x9 CARG=*TOP* ) 
@@ -612,7 +612,7 @@
   <ep cfrom='0' cto='2'>
     <realpred lemma='no' pos='a' sense='1'/>
     <label vid='3'/>
-    <var sort='e' vid='4'/>
+    <var sort='e' vid='5'/>
   </ep>
   <ep cfrom='3' cto='11'>
     <gpred>udef_q_rel</gpred>
@@ -640,7 +640,7 @@
     <var sort='x' vid='12'/>
   </ep>
   <hcons hreln='qeq'>
-    <hi> <var sort='h' vid='5'/> </hi>
+    <hi> <var sort='h' vid='4'/> </hi>
     <lo> <label vid='11'/> </lo>
   </hcons>
   <hcons hreln='qeq'>
@@ -654,12 +654,7 @@
   <rarg>
     <rargname>ARG1</rargname>
     <label vid='3'/>
-    <var sort='h' vid='5'/>
-  </rarg>
-  <rarg>
-    <rargname>CARG</rargname>
-    <label vid='3'/>
-    <constant>No</constant>
+    <var sort='h' vid='4'/>
   </rarg>
   <rarg>
     <rargname>RSTR</rargname>
@@ -713,21 +708,181 @@
 
 <surface>All snakes are reptiles.</surface>
 
-<error>
-; WARNING: failed to unify new path-value (SYNSEM.LKEYS.KEYREL.CARG = All) into fs (type: d_-_prt-plm_le)
-; WARNING: failed to unify new path-value (SYNSEM.LKEYS.KEYREL.CARG = All) into fs (type: av_-_dg-v_le)
-; WARNING: failed to unify new path-value (SYNSEM.LKEYS.KEYREL.CARG = All) into fs (type: av_-_dg-ppdir_le)
-; WARNING: failed to unify new path-value (SYNSEM.LKEYS.KEYREL.CARG = All) into fs (type: d_-_all-tm_le)
-; WARNING: failed to unify new path-value (SYNSEM.LKEYS.KEYREL.CARG = All) into fs (type: aj_-_i_le)
-; WARNING: failed to unify new path-value (SYNSEM.LKEYS.KEYREL.CARG = All) into fs (type: av_-_dc-po_le)
-; WARNING: failed to unify new path-value (SYNSEM.LKEYS.KEYREL.CARG = All) into fs (type: av_-_dc-pr_le)
-; WARNING: failed to unify new path-value ( = "snakes") into fs (type: n_-_c_le)
-; WARNING: failed to unify new path-value ( = "snakes") into fs (type: v_pp_dir_le)
-; WARNING: failed to unify new path-value ( = "snakes") into fs (type: n_-_c_le)
-; WARNING: failed to unify new path-value ( = "snakes") into fs (type: v_pp_dir_le)
-no lexicon entries for:
-	"reptiles." [NN2]
-</error>
+<rmrs-list>
+
+
+       l3 | _all_q( ARG0=x6 RSTR=h5 BODY=h4 ) 
+          |    h5 qeq l7
+       l7 + _snake_n_1( ARG0=x6 ) 
+       l8 | _be_v_id( ARG0=e2 ARG1=x6 ARG2=x9 CARG=are ) 
+      l10 + udef_q_rel( ARG0=x9 RSTR=h11 BODY=h12 ) 
+          +    h11 qeq l13
+      l13 | unknown_nom_rel( ARG0=x9 CARG=*TOP* ) 
+
+<rmrs cfrom='-1' cto='-1'>
+  <label vid='1'/>
+  <ep cfrom='0' cto='3'>
+    <realpred lemma='all' pos='q'/>
+    <label vid='3'/>
+    <var sort='x' vid='6'/>
+  </ep>
+  <ep cfrom='4' cto='10'>
+    <realpred lemma='snake' pos='n' sense='1'/>
+    <label vid='7'/>
+    <var sort='x' vid='6'/>
+  </ep>
+  <ep cfrom='11' cto='14'>
+    <realpred lemma='be' pos='v' sense='id'/>
+    <label vid='8'/>
+    <var sort='e' vid='2'/>
+  </ep>
+  <ep cfrom='15' cto='24'>
+    <gpred>udef_q_rel</gpred>
+    <label vid='10'/>
+    <var sort='x' vid='9'/>
+  </ep>
+  <ep cfrom='15' cto='24'>
+    <gpred>unknown_nom_rel</gpred>
+    <label vid='13'/>
+    <var sort='x' vid='9'/>
+  </ep>
+  <hcons hreln='qeq'>
+    <hi> <var sort='h' vid='5'/> </hi>
+    <lo> <label vid='7'/> </lo>
+  </hcons>
+  <hcons hreln='qeq'>
+    <hi> <var sort='h' vid='11'/> </hi>
+    <lo> <label vid='13'/> </lo>
+  </hcons>
+  <rarg>
+    <rargname>RSTR</rargname>
+    <label vid='3'/>
+    <var sort='h' vid='5'/>
+  </rarg>
+  <rarg>
+    <rargname>BODY</rargname>
+    <label vid='3'/>
+    <var sort='h' vid='4'/>
+  </rarg>
+  <rarg>
+    <rargname>ARG1</rargname>
+    <label vid='8'/>
+    <var sort='x' vid='6'/>
+  </rarg>
+  <rarg>
+    <rargname>ARG2</rargname>
+    <label vid='8'/>
+    <var sort='x' vid='9'/>
+  </rarg>
+  <rarg>
+    <rargname>CARG</rargname>
+    <label vid='8'/>
+    <constant>are</constant>
+  </rarg>
+  <rarg>
+    <rargname>RSTR</rargname>
+    <label vid='10'/>
+    <var sort='h' vid='11'/>
+  </rarg>
+  <rarg>
+    <rargname>BODY</rargname>
+    <label vid='10'/>
+    <var sort='h' vid='12'/>
+  </rarg>
+  <rarg>
+    <rargname>CARG</rargname>
+    <label vid='13'/>
+    <constant>*TOP*</constant>
+  </rarg>
+</rmrs>
+
+
+       l3 | _all_q( ARG0=x6 RSTR=h5 BODY=h4 ) 
+          |    h5 qeq l7
+       l7 + _snake_n_1( ARG0=x6 ) 
+       l8 | _be_v_id( ARG0=e2 ARG1=x6 ARG2=x9 CARG=are ) 
+      l10 + udef_q_rel( ARG0=x9 RSTR=h11 BODY=h12 ) 
+          +    h11 qeq l13
+      l13 | unknown_nom_rel( ARG0=x9 CARG=*TOP* ) 
+
+<rmrs cfrom='-1' cto='-1'>
+  <label vid='1'/>
+  <ep cfrom='0' cto='3'>
+    <realpred lemma='all' pos='q'/>
+    <label vid='3'/>
+    <var sort='x' vid='6'/>
+  </ep>
+  <ep cfrom='4' cto='10'>
+    <realpred lemma='snake' pos='n' sense='1'/>
+    <label vid='7'/>
+    <var sort='x' vid='6'/>
+  </ep>
+  <ep cfrom='11' cto='14'>
+    <realpred lemma='be' pos='v' sense='id'/>
+    <label vid='8'/>
+    <var sort='e' vid='2'/>
+  </ep>
+  <ep cfrom='15' cto='24'>
+    <gpred>udef_q_rel</gpred>
+    <label vid='10'/>
+    <var sort='x' vid='9'/>
+  </ep>
+  <ep cfrom='15' cto='24'>
+    <gpred>unknown_nom_rel</gpred>
+    <label vid='13'/>
+    <var sort='x' vid='9'/>
+  </ep>
+  <hcons hreln='qeq'>
+    <hi> <var sort='h' vid='5'/> </hi>
+    <lo> <label vid='7'/> </lo>
+  </hcons>
+  <hcons hreln='qeq'>
+    <hi> <var sort='h' vid='11'/> </hi>
+    <lo> <label vid='13'/> </lo>
+  </hcons>
+  <rarg>
+    <rargname>RSTR</rargname>
+    <label vid='3'/>
+    <var sort='h' vid='5'/>
+  </rarg>
+  <rarg>
+    <rargname>BODY</rargname>
+    <label vid='3'/>
+    <var sort='h' vid='4'/>
+  </rarg>
+  <rarg>
+    <rargname>ARG1</rargname>
+    <label vid='8'/>
+    <var sort='x' vid='6'/>
+  </rarg>
+  <rarg>
+    <rargname>ARG2</rargname>
+    <label vid='8'/>
+    <var sort='x' vid='9'/>
+  </rarg>
+  <rarg>
+    <rargname>CARG</rargname>
+    <label vid='8'/>
+    <constant>are</constant>
+  </rarg>
+  <rarg>
+    <rargname>RSTR</rargname>
+    <label vid='10'/>
+    <var sort='h' vid='11'/>
+  </rarg>
+  <rarg>
+    <rargname>BODY</rargname>
+    <label vid='10'/>
+    <var sort='h' vid='12'/>
+  </rarg>
+  <rarg>
+    <rargname>CARG</rargname>
+    <label vid='13'/>
+    <constant>*TOP*</constant>
+  </rarg>
+</rmrs>
+
+</rmrs-list>
 
 </item>
 
@@ -1390,15 +1545,181 @@ no lexicon entries for:
 
 <surface>Some pets are kittens.</surface>
 
-<error>
-; WARNING: failed to unify new path-value ( = "Some") into fs (type: d_-_prt-div_le)
-; WARNING: failed to unify new path-value ( = "Some") into fs (type: d_-_ndiv_le)
-; WARNING: failed to unify new path-value ( = "Some") into fs (type: n_-_c-meas-nocnh_le)
-; WARNING: failed to unify new path-value ( = "pets") into fs (type: n_-_c_le)
-; WARNING: failed to unify new path-value ( = "pets") into fs (type: n_-_c_le)
-no lexicon entries for:
-	"kittens." [NN2]
-</error>
+<rmrs-list>
+
+
+       l3 | _some_q( ARG0=x6 RSTR=h5 BODY=h4 ) 
+          |    h5 qeq l7
+       l7 + _pet_n_1( ARG0=x6 ) 
+       l8 | _be_v_id( ARG0=e2 ARG1=x6 ARG2=x9 CARG=are ) 
+      l10 + udef_q_rel( ARG0=x9 RSTR=h11 BODY=h12 ) 
+          +    h11 qeq l13
+      l13 | unknown_nom_rel( ARG0=x9 CARG=*TOP* ) 
+
+<rmrs cfrom='-1' cto='-1'>
+  <label vid='1'/>
+  <ep cfrom='0' cto='4'>
+    <realpred lemma='some' pos='q'/>
+    <label vid='3'/>
+    <var sort='x' vid='6'/>
+  </ep>
+  <ep cfrom='5' cto='9'>
+    <realpred lemma='pet' pos='n' sense='1'/>
+    <label vid='7'/>
+    <var sort='x' vid='6'/>
+  </ep>
+  <ep cfrom='10' cto='13'>
+    <realpred lemma='be' pos='v' sense='id'/>
+    <label vid='8'/>
+    <var sort='e' vid='2'/>
+  </ep>
+  <ep cfrom='14' cto='22'>
+    <gpred>udef_q_rel</gpred>
+    <label vid='10'/>
+    <var sort='x' vid='9'/>
+  </ep>
+  <ep cfrom='14' cto='22'>
+    <gpred>unknown_nom_rel</gpred>
+    <label vid='13'/>
+    <var sort='x' vid='9'/>
+  </ep>
+  <hcons hreln='qeq'>
+    <hi> <var sort='h' vid='5'/> </hi>
+    <lo> <label vid='7'/> </lo>
+  </hcons>
+  <hcons hreln='qeq'>
+    <hi> <var sort='h' vid='11'/> </hi>
+    <lo> <label vid='13'/> </lo>
+  </hcons>
+  <rarg>
+    <rargname>RSTR</rargname>
+    <label vid='3'/>
+    <var sort='h' vid='5'/>
+  </rarg>
+  <rarg>
+    <rargname>BODY</rargname>
+    <label vid='3'/>
+    <var sort='h' vid='4'/>
+  </rarg>
+  <rarg>
+    <rargname>ARG1</rargname>
+    <label vid='8'/>
+    <var sort='x' vid='6'/>
+  </rarg>
+  <rarg>
+    <rargname>ARG2</rargname>
+    <label vid='8'/>
+    <var sort='x' vid='9'/>
+  </rarg>
+  <rarg>
+    <rargname>CARG</rargname>
+    <label vid='8'/>
+    <constant>are</constant>
+  </rarg>
+  <rarg>
+    <rargname>RSTR</rargname>
+    <label vid='10'/>
+    <var sort='h' vid='11'/>
+  </rarg>
+  <rarg>
+    <rargname>BODY</rargname>
+    <label vid='10'/>
+    <var sort='h' vid='12'/>
+  </rarg>
+  <rarg>
+    <rargname>CARG</rargname>
+    <label vid='13'/>
+    <constant>*TOP*</constant>
+  </rarg>
+</rmrs>
+
+
+       l3 | _some_q( ARG0=x6 RSTR=h5 BODY=h4 ) 
+          |    h5 qeq l7
+       l7 + _pet_n_1( ARG0=x6 ) 
+       l8 | _be_v_id( ARG0=e2 ARG1=x6 ARG2=x9 CARG=are ) 
+      l10 + udef_q_rel( ARG0=x9 RSTR=h11 BODY=h12 ) 
+          +    h11 qeq l13
+      l13 | unknown_nom_rel( ARG0=x9 CARG=*TOP* ) 
+
+<rmrs cfrom='-1' cto='-1'>
+  <label vid='1'/>
+  <ep cfrom='0' cto='4'>
+    <realpred lemma='some' pos='q'/>
+    <label vid='3'/>
+    <var sort='x' vid='6'/>
+  </ep>
+  <ep cfrom='5' cto='9'>
+    <realpred lemma='pet' pos='n' sense='1'/>
+    <label vid='7'/>
+    <var sort='x' vid='6'/>
+  </ep>
+  <ep cfrom='10' cto='13'>
+    <realpred lemma='be' pos='v' sense='id'/>
+    <label vid='8'/>
+    <var sort='e' vid='2'/>
+  </ep>
+  <ep cfrom='14' cto='22'>
+    <gpred>udef_q_rel</gpred>
+    <label vid='10'/>
+    <var sort='x' vid='9'/>
+  </ep>
+  <ep cfrom='14' cto='22'>
+    <gpred>unknown_nom_rel</gpred>
+    <label vid='13'/>
+    <var sort='x' vid='9'/>
+  </ep>
+  <hcons hreln='qeq'>
+    <hi> <var sort='h' vid='5'/> </hi>
+    <lo> <label vid='7'/> </lo>
+  </hcons>
+  <hcons hreln='qeq'>
+    <hi> <var sort='h' vid='11'/> </hi>
+    <lo> <label vid='13'/> </lo>
+  </hcons>
+  <rarg>
+    <rargname>RSTR</rargname>
+    <label vid='3'/>
+    <var sort='h' vid='5'/>
+  </rarg>
+  <rarg>
+    <rargname>BODY</rargname>
+    <label vid='3'/>
+    <var sort='h' vid='4'/>
+  </rarg>
+  <rarg>
+    <rargname>ARG1</rargname>
+    <label vid='8'/>
+    <var sort='x' vid='6'/>
+  </rarg>
+  <rarg>
+    <rargname>ARG2</rargname>
+    <label vid='8'/>
+    <var sort='x' vid='9'/>
+  </rarg>
+  <rarg>
+    <rargname>CARG</rargname>
+    <label vid='8'/>
+    <constant>are</constant>
+  </rarg>
+  <rarg>
+    <rargname>RSTR</rargname>
+    <label vid='10'/>
+    <var sort='h' vid='11'/>
+  </rarg>
+  <rarg>
+    <rargname>BODY</rargname>
+    <label vid='10'/>
+    <var sort='h' vid='12'/>
+  </rarg>
+  <rarg>
+    <rargname>CARG</rargname>
+    <label vid='13'/>
+    <constant>*TOP*</constant>
+  </rarg>
+</rmrs>
+
+</rmrs-list>
 
 </item>
 
@@ -1851,7 +2172,7 @@ no lexicon entries for:
 
        l3 | _no_q( ARG0=x6 RSTR=h5 BODY=h4 ) 
           |    h5 qeq l7
-       l7 + _homework_n_1( ARG0=x6 ) 
+       l7 + _homework_n_1( ARG0=x6 CARG=homework ) 
        l8 | _fun_a_for( ARG0=e2 ARG1=x6 ARG2=u9 ) 
 
 <rmrs cfrom='-1' cto='-1'>
@@ -1886,6 +2207,11 @@ no lexicon entries for:
     <var sort='h' vid='4'/>
   </rarg>
   <rarg>
+    <rargname>CARG</rargname>
+    <label vid='7'/>
+    <constant>homework</constant>
+  </rarg>
+  <rarg>
     <rargname>ARG1</rargname>
     <label vid='8'/>
     <var sort='x' vid='6'/>
@@ -1900,7 +2226,7 @@ no lexicon entries for:
 
        l3 | _no_q( ARG0=x6 RSTR=h5 BODY=h4 ) 
           |    h5 qeq l7
-       l7 + _homework_n_1( ARG0=x6 ) 
+       l7 + _homework_n_1( ARG0=x6 CARG=homework ) 
        l8 | _be_v_id( ARG0=e2 ARG1=x6 ARG2=x9 CARG=is ) 
       l10 + udef_q_rel( ARG0=x9 RSTR=h11 BODY=h12 ) 
           +    h11 qeq l13
@@ -1952,6 +2278,11 @@ no lexicon entries for:
     <var sort='h' vid='4'/>
   </rarg>
   <rarg>
+    <rargname>CARG</rargname>
+    <label vid='7'/>
+    <constant>homework</constant>
+  </rarg>
+  <rarg>
     <rargname>ARG1</rargname>
     <label vid='8'/>
     <var sort='x' vid='6'/>
@@ -1983,7 +2314,7 @@ no lexicon entries for:
           |    h5 qeq l11
        l6 + udef_q_rel( ARG0=x9 RSTR=h8 BODY=h7 ) 
           +    h8 qeq l10
-      l10 | _homework_n_1( ARG0=x9 ) 
+      l10 | _homework_n_1( ARG0=x9 CARG=homework ) 
       l11 + _fun_a_for( ARG0=e2 ARG1=x9 ARG2=u12 ) 
 
 <rmrs cfrom='-1' cto='-1'>
@@ -2037,6 +2368,11 @@ no lexicon entries for:
     <var sort='h' vid='7'/>
   </rarg>
   <rarg>
+    <rargname>CARG</rargname>
+    <label vid='10'/>
+    <constant>homework</constant>
+  </rarg>
+  <rarg>
     <rargname>ARG1</rargname>
     <label vid='11'/>
     <var sort='x' vid='9'/>
@@ -2053,7 +2389,7 @@ no lexicon entries for:
           |    h5 qeq l11
        l6 + udef_q_rel( ARG0=x9 RSTR=h8 BODY=h7 ) 
           +    h8 qeq l10
-      l10 | _homework_n_1( ARG0=x9 ) 
+      l10 | _homework_n_1( ARG0=x9 CARG=homework ) 
       l11 + _be_v_id( ARG0=e2 ARG1=x9 ARG2=x12 CARG=is ) 
       l13 | udef_q_rel( ARG0=x12 RSTR=h14 BODY=h15 ) 
           |    h14 qeq l16
@@ -2124,6 +2460,11 @@ no lexicon entries for:
     <var sort='h' vid='7'/>
   </rarg>
   <rarg>
+    <rargname>CARG</rargname>
+    <label vid='10'/>
+    <constant>homework</constant>
+  </rarg>
+  <rarg>
     <rargname>ARG1</rargname>
     <label vid='11'/>
     <var sort='x' vid='9'/>
@@ -2160,7 +2501,7 @@ no lexicon entries for:
           |    h19 qeq l20
       l10 + udef_q_rel( ARG0=x11 RSTR=h12 BODY=h13 ) 
           +    h12 qeq l14
-      l14 | _homework_n_1( ARG0=x11 ) 
+      l14 | _homework_n_1( ARG0=x11 CARG=homework ) 
       l15 + _be_v_id( ARG0=e16 ARG1=x11 ARG2=x4 CARG=is ) 
       l20 | _fun_a_for( ARG0=e23 ARG1=u21 ARG2=u22 ) 
 
@@ -2256,6 +2597,11 @@ no lexicon entries for:
     <rargname>BODY</rargname>
     <label vid='10'/>
     <var sort='h' vid='13'/>
+  </rarg>
+  <rarg>
+    <rargname>CARG</rargname>
+    <label vid='14'/>
+    <constant>homework</constant>
   </rarg>
   <rarg>
     <rargname>ARG1</rargname>
@@ -5936,7 +6282,7 @@ no lexicon entries for:
        l9 | unspec_mod_rel( ARG0=e2 ARG1=x6 ARG2=x10 ) 
       l11 + udef_q_rel( ARG0=x10 RSTR=h13 BODY=h12 ) 
           +    h13 qeq l14
-      l14 | _green_n_2( ARG0=x10 CARG=green. ) 
+      l14 | _green_n_2( ARG0=x10 ) 
 
 <rmrs cfrom='-1' cto='-1'>
   <label vid='1'/>
@@ -6008,11 +6354,6 @@ no lexicon entries for:
     <label vid='11'/>
     <var sort='h' vid='12'/>
   </rarg>
-  <rarg>
-    <rargname>CARG</rargname>
-    <label vid='14'/>
-    <constant>green.</constant>
-  </rarg>
 </rmrs>
 
 
@@ -6022,7 +6363,7 @@ no lexicon entries for:
        l9 | _be_v_id( ARG0=e2 ARG1=x6 ARG2=x10 CARG=are ) 
       l11 + udef_q_rel( ARG0=x10 RSTR=h12 BODY=h13 ) 
           +    h12 qeq l14
-      l14 | _green_n_2( ARG0=x10 CARG=green. ) 
+      l14 | _green_n_2( ARG0=x10 ) 
 
 <rmrs cfrom='-1' cto='-1'>
   <label vid='1'/>
@@ -6099,11 +6440,6 @@ no lexicon entries for:
     <label vid='11'/>
     <var sort='h' vid='13'/>
   </rarg>
-  <rarg>
-    <rargname>CARG</rargname>
-    <label vid='14'/>
-    <constant>green.</constant>
-  </rarg>
 </rmrs>
 
 
@@ -6113,7 +6449,7 @@ no lexicon entries for:
        l9 | _be_v_id( ARG0=e2 ARG1=x6 ARG2=x10 CARG=are ) 
       l11 + udef_q_rel( ARG0=x10 RSTR=h12 BODY=h13 ) 
           +    h12 qeq l14
-      l14 | _green_n_1( ARG0=x10 CARG=green. ) 
+      l14 | _green_n_1( ARG0=x10 ) 
 
 <rmrs cfrom='-1' cto='-1'>
   <label vid='1'/>
@@ -6190,11 +6526,6 @@ no lexicon entries for:
     <label vid='11'/>
     <var sort='h' vid='13'/>
   </rarg>
-  <rarg>
-    <rargname>CARG</rargname>
-    <label vid='14'/>
-    <constant>green.</constant>
-  </rarg>
 </rmrs>
 
 
@@ -6205,7 +6536,7 @@ no lexicon entries for:
        l8 | udef_q_rel( ARG0=x9 RSTR=h10 BODY=h11 ) 
           |    h10 qeq l12
       l12 + _tree_n_of( ARG0=x9 ARG1=u13 ) 
-      l15 | _green_v_1( ARG0=e2 ARG1=x6 CARG=green. ) 
+      l15 | _green_v_1( ARG0=e2 ARG1=x6 ) 
 
 <rmrs cfrom='-1' cto='-1'>
   <label vid='1'/>
@@ -6292,11 +6623,6 @@ no lexicon entries for:
     <label vid='15'/>
     <var sort='x' vid='6'/>
   </rarg>
-  <rarg>
-    <rargname>CARG</rargname>
-    <label vid='15'/>
-    <constant>green.</constant>
-  </rarg>
   <ing>
     <ing-a> <var sort='h' vid='7'/> </ing-a>
     <ing-b> <var sort='h' vid='10001'/> </ing-b> 
@@ -6305,7 +6631,7 @@ no lexicon entries for:
 
 
        l3 | focus_d_rel( ARG0=u5 ARG1=e2 ARG2=x4 ) 
-   l10002 | _green_v_cause( ARG0=e2 ARG1=x20 ARG2=x4 CARG=green. ) 
+   l10002 | _green_v_cause( ARG0=e2 ARG1=x20 ARG2=x4 ) 
        l6 + _some_q( ARG0=x4 RSTR=h7 BODY=h8 ) 
           +    h7 qeq l9
        l9 | generic_entity_rel( ARG0=x4 ) 
@@ -6445,11 +6771,6 @@ no lexicon entries for:
     <rargname>ARG2</rargname>
     <label vid='10002'/>
     <var sort='x' vid='4'/>
-  </rarg>
-  <rarg>
-    <rargname>CARG</rargname>
-    <label vid='10002'/>
-    <constant>green.</constant>
   </rarg>
   <ing>
     <ing-a> <var sort='h' vid='3'/> </ing-a>
@@ -9846,17 +10167,191 @@ no lexicon entries for:
 
 <surface>All cats are felines.</surface>
 
-<error>
-; WARNING: failed to unify new path-value (SYNSEM.LKEYS.KEYREL.CARG = All) into fs (type: d_-_prt-plm_le)
-; WARNING: failed to unify new path-value (SYNSEM.LKEYS.KEYREL.CARG = All) into fs (type: av_-_dg-v_le)
-; WARNING: failed to unify new path-value (SYNSEM.LKEYS.KEYREL.CARG = All) into fs (type: av_-_dg-ppdir_le)
-; WARNING: failed to unify new path-value (SYNSEM.LKEYS.KEYREL.CARG = All) into fs (type: d_-_all-tm_le)
-; WARNING: failed to unify new path-value (SYNSEM.LKEYS.KEYREL.CARG = All) into fs (type: aj_-_i_le)
-; WARNING: failed to unify new path-value (SYNSEM.LKEYS.KEYREL.CARG = All) into fs (type: av_-_dc-po_le)
-; WARNING: failed to unify new path-value (SYNSEM.LKEYS.KEYREL.CARG = All) into fs (type: av_-_dc-pr_le)
-no lexicon entries for:
-	"felines." [NN2]
-</error>
+<rmrs-list>
+
+
+       l3 | _all_q( ARG0=x6 RSTR=h5 BODY=h4 ) 
+          |    h5 qeq l7
+       l7 + _cat_n_1( ARG0=x6 CARG=cats ) 
+       l8 | _be_v_id( ARG0=e2 ARG1=x6 ARG2=x9 CARG=are ) 
+      l10 + udef_q_rel( ARG0=x9 RSTR=h11 BODY=h12 ) 
+          +    h11 qeq l13
+      l13 | unknown_nom_rel( ARG0=x9 CARG=*TOP* ) 
+
+<rmrs cfrom='-1' cto='-1'>
+  <label vid='1'/>
+  <ep cfrom='0' cto='3'>
+    <realpred lemma='all' pos='q'/>
+    <label vid='3'/>
+    <var sort='x' vid='6'/>
+  </ep>
+  <ep cfrom='4' cto='8'>
+    <realpred lemma='cat' pos='n' sense='1'/>
+    <label vid='7'/>
+    <var sort='x' vid='6'/>
+  </ep>
+  <ep cfrom='9' cto='12'>
+    <realpred lemma='be' pos='v' sense='id'/>
+    <label vid='8'/>
+    <var sort='e' vid='2'/>
+  </ep>
+  <ep cfrom='13' cto='21'>
+    <gpred>udef_q_rel</gpred>
+    <label vid='10'/>
+    <var sort='x' vid='9'/>
+  </ep>
+  <ep cfrom='13' cto='21'>
+    <gpred>unknown_nom_rel</gpred>
+    <label vid='13'/>
+    <var sort='x' vid='9'/>
+  </ep>
+  <hcons hreln='qeq'>
+    <hi> <var sort='h' vid='5'/> </hi>
+    <lo> <label vid='7'/> </lo>
+  </hcons>
+  <hcons hreln='qeq'>
+    <hi> <var sort='h' vid='11'/> </hi>
+    <lo> <label vid='13'/> </lo>
+  </hcons>
+  <rarg>
+    <rargname>RSTR</rargname>
+    <label vid='3'/>
+    <var sort='h' vid='5'/>
+  </rarg>
+  <rarg>
+    <rargname>BODY</rargname>
+    <label vid='3'/>
+    <var sort='h' vid='4'/>
+  </rarg>
+  <rarg>
+    <rargname>CARG</rargname>
+    <label vid='7'/>
+    <constant>cats</constant>
+  </rarg>
+  <rarg>
+    <rargname>ARG1</rargname>
+    <label vid='8'/>
+    <var sort='x' vid='6'/>
+  </rarg>
+  <rarg>
+    <rargname>ARG2</rargname>
+    <label vid='8'/>
+    <var sort='x' vid='9'/>
+  </rarg>
+  <rarg>
+    <rargname>CARG</rargname>
+    <label vid='8'/>
+    <constant>are</constant>
+  </rarg>
+  <rarg>
+    <rargname>RSTR</rargname>
+    <label vid='10'/>
+    <var sort='h' vid='11'/>
+  </rarg>
+  <rarg>
+    <rargname>BODY</rargname>
+    <label vid='10'/>
+    <var sort='h' vid='12'/>
+  </rarg>
+  <rarg>
+    <rargname>CARG</rargname>
+    <label vid='13'/>
+    <constant>*TOP*</constant>
+  </rarg>
+</rmrs>
+
+
+       l3 | _all_q( ARG0=x6 RSTR=h5 BODY=h4 ) 
+          |    h5 qeq l7
+       l7 + _cat_n_1( ARG0=x6 CARG=cats ) 
+       l8 | _be_v_id( ARG0=e2 ARG1=x6 ARG2=x9 CARG=are ) 
+      l10 + udef_q_rel( ARG0=x9 RSTR=h11 BODY=h12 ) 
+          +    h11 qeq l13
+      l13 | unknown_nom_rel( ARG0=x9 CARG=*TOP* ) 
+
+<rmrs cfrom='-1' cto='-1'>
+  <label vid='1'/>
+  <ep cfrom='0' cto='3'>
+    <realpred lemma='all' pos='q'/>
+    <label vid='3'/>
+    <var sort='x' vid='6'/>
+  </ep>
+  <ep cfrom='4' cto='8'>
+    <realpred lemma='cat' pos='n' sense='1'/>
+    <label vid='7'/>
+    <var sort='x' vid='6'/>
+  </ep>
+  <ep cfrom='9' cto='12'>
+    <realpred lemma='be' pos='v' sense='id'/>
+    <label vid='8'/>
+    <var sort='e' vid='2'/>
+  </ep>
+  <ep cfrom='13' cto='21'>
+    <gpred>udef_q_rel</gpred>
+    <label vid='10'/>
+    <var sort='x' vid='9'/>
+  </ep>
+  <ep cfrom='13' cto='21'>
+    <gpred>unknown_nom_rel</gpred>
+    <label vid='13'/>
+    <var sort='x' vid='9'/>
+  </ep>
+  <hcons hreln='qeq'>
+    <hi> <var sort='h' vid='5'/> </hi>
+    <lo> <label vid='7'/> </lo>
+  </hcons>
+  <hcons hreln='qeq'>
+    <hi> <var sort='h' vid='11'/> </hi>
+    <lo> <label vid='13'/> </lo>
+  </hcons>
+  <rarg>
+    <rargname>RSTR</rargname>
+    <label vid='3'/>
+    <var sort='h' vid='5'/>
+  </rarg>
+  <rarg>
+    <rargname>BODY</rargname>
+    <label vid='3'/>
+    <var sort='h' vid='4'/>
+  </rarg>
+  <rarg>
+    <rargname>CARG</rargname>
+    <label vid='7'/>
+    <constant>cats</constant>
+  </rarg>
+  <rarg>
+    <rargname>ARG1</rargname>
+    <label vid='8'/>
+    <var sort='x' vid='6'/>
+  </rarg>
+  <rarg>
+    <rargname>ARG2</rargname>
+    <label vid='8'/>
+    <var sort='x' vid='9'/>
+  </rarg>
+  <rarg>
+    <rargname>CARG</rargname>
+    <label vid='8'/>
+    <constant>are</constant>
+  </rarg>
+  <rarg>
+    <rargname>RSTR</rargname>
+    <label vid='10'/>
+    <var sort='h' vid='11'/>
+  </rarg>
+  <rarg>
+    <rargname>BODY</rargname>
+    <label vid='10'/>
+    <var sort='h' vid='12'/>
+  </rarg>
+  <rarg>
+    <rargname>CARG</rargname>
+    <label vid='13'/>
+    <constant>*TOP*</constant>
+  </rarg>
+</rmrs>
+
+</rmrs-list>
 
 </item>
 
@@ -9866,19 +10361,181 @@ no lexicon entries for:
 
 <surface>All mammals are felines.</surface>
 
-<error>
-; WARNING: failed to unify new path-value (SYNSEM.LKEYS.KEYREL.CARG = All) into fs (type: d_-_prt-plm_le)
-; WARNING: failed to unify new path-value (SYNSEM.LKEYS.KEYREL.CARG = All) into fs (type: av_-_dg-v_le)
-; WARNING: failed to unify new path-value (SYNSEM.LKEYS.KEYREL.CARG = All) into fs (type: av_-_dg-ppdir_le)
-; WARNING: failed to unify new path-value (SYNSEM.LKEYS.KEYREL.CARG = All) into fs (type: d_-_all-tm_le)
-; WARNING: failed to unify new path-value (SYNSEM.LKEYS.KEYREL.CARG = All) into fs (type: aj_-_i_le)
-; WARNING: failed to unify new path-value (SYNSEM.LKEYS.KEYREL.CARG = All) into fs (type: av_-_dc-po_le)
-; WARNING: failed to unify new path-value (SYNSEM.LKEYS.KEYREL.CARG = All) into fs (type: av_-_dc-pr_le)
-; WARNING: failed to create dag for new path-value ("mammals" = "mammals")
-; WARNING: failed to create dag for new path-value ("mammals" = "mammals")
-no lexicon entries for:
-	"felines." [NN2]
-</error>
+<rmrs-list>
+
+
+       l3 | _all_q( ARG0=x6 RSTR=h5 BODY=h4 ) 
+          |    h5 qeq l7
+       l7 + _mammal_n_1( ARG0=x6 ) 
+       l8 | _be_v_id( ARG0=e2 ARG1=x6 ARG2=x9 CARG=are ) 
+      l10 + udef_q_rel( ARG0=x9 RSTR=h11 BODY=h12 ) 
+          +    h11 qeq l13
+      l13 | unknown_nom_rel( ARG0=x9 CARG=*TOP* ) 
+
+<rmrs cfrom='-1' cto='-1'>
+  <label vid='1'/>
+  <ep cfrom='0' cto='3'>
+    <realpred lemma='all' pos='q'/>
+    <label vid='3'/>
+    <var sort='x' vid='6'/>
+  </ep>
+  <ep cfrom='4' cto='11'>
+    <realpred lemma='mammal' pos='n' sense='1'/>
+    <label vid='7'/>
+    <var sort='x' vid='6'/>
+  </ep>
+  <ep cfrom='12' cto='15'>
+    <realpred lemma='be' pos='v' sense='id'/>
+    <label vid='8'/>
+    <var sort='e' vid='2'/>
+  </ep>
+  <ep cfrom='16' cto='24'>
+    <gpred>udef_q_rel</gpred>
+    <label vid='10'/>
+    <var sort='x' vid='9'/>
+  </ep>
+  <ep cfrom='16' cto='24'>
+    <gpred>unknown_nom_rel</gpred>
+    <label vid='13'/>
+    <var sort='x' vid='9'/>
+  </ep>
+  <hcons hreln='qeq'>
+    <hi> <var sort='h' vid='5'/> </hi>
+    <lo> <label vid='7'/> </lo>
+  </hcons>
+  <hcons hreln='qeq'>
+    <hi> <var sort='h' vid='11'/> </hi>
+    <lo> <label vid='13'/> </lo>
+  </hcons>
+  <rarg>
+    <rargname>RSTR</rargname>
+    <label vid='3'/>
+    <var sort='h' vid='5'/>
+  </rarg>
+  <rarg>
+    <rargname>BODY</rargname>
+    <label vid='3'/>
+    <var sort='h' vid='4'/>
+  </rarg>
+  <rarg>
+    <rargname>ARG1</rargname>
+    <label vid='8'/>
+    <var sort='x' vid='6'/>
+  </rarg>
+  <rarg>
+    <rargname>ARG2</rargname>
+    <label vid='8'/>
+    <var sort='x' vid='9'/>
+  </rarg>
+  <rarg>
+    <rargname>CARG</rargname>
+    <label vid='8'/>
+    <constant>are</constant>
+  </rarg>
+  <rarg>
+    <rargname>RSTR</rargname>
+    <label vid='10'/>
+    <var sort='h' vid='11'/>
+  </rarg>
+  <rarg>
+    <rargname>BODY</rargname>
+    <label vid='10'/>
+    <var sort='h' vid='12'/>
+  </rarg>
+  <rarg>
+    <rargname>CARG</rargname>
+    <label vid='13'/>
+    <constant>*TOP*</constant>
+  </rarg>
+</rmrs>
+
+
+       l3 | _all_q( ARG0=x6 RSTR=h5 BODY=h4 ) 
+          |    h5 qeq l7
+       l7 + _mammal_n_1( ARG0=x6 ) 
+       l8 | _be_v_id( ARG0=e2 ARG1=x6 ARG2=x9 CARG=are ) 
+      l10 + udef_q_rel( ARG0=x9 RSTR=h11 BODY=h12 ) 
+          +    h11 qeq l13
+      l13 | unknown_nom_rel( ARG0=x9 CARG=*TOP* ) 
+
+<rmrs cfrom='-1' cto='-1'>
+  <label vid='1'/>
+  <ep cfrom='0' cto='3'>
+    <realpred lemma='all' pos='q'/>
+    <label vid='3'/>
+    <var sort='x' vid='6'/>
+  </ep>
+  <ep cfrom='4' cto='11'>
+    <realpred lemma='mammal' pos='n' sense='1'/>
+    <label vid='7'/>
+    <var sort='x' vid='6'/>
+  </ep>
+  <ep cfrom='12' cto='15'>
+    <realpred lemma='be' pos='v' sense='id'/>
+    <label vid='8'/>
+    <var sort='e' vid='2'/>
+  </ep>
+  <ep cfrom='16' cto='24'>
+    <gpred>udef_q_rel</gpred>
+    <label vid='10'/>
+    <var sort='x' vid='9'/>
+  </ep>
+  <ep cfrom='16' cto='24'>
+    <gpred>unknown_nom_rel</gpred>
+    <label vid='13'/>
+    <var sort='x' vid='9'/>
+  </ep>
+  <hcons hreln='qeq'>
+    <hi> <var sort='h' vid='5'/> </hi>
+    <lo> <label vid='7'/> </lo>
+  </hcons>
+  <hcons hreln='qeq'>
+    <hi> <var sort='h' vid='11'/> </hi>
+    <lo> <label vid='13'/> </lo>
+  </hcons>
+  <rarg>
+    <rargname>RSTR</rargname>
+    <label vid='3'/>
+    <var sort='h' vid='5'/>
+  </rarg>
+  <rarg>
+    <rargname>BODY</rargname>
+    <label vid='3'/>
+    <var sort='h' vid='4'/>
+  </rarg>
+  <rarg>
+    <rargname>ARG1</rargname>
+    <label vid='8'/>
+    <var sort='x' vid='6'/>
+  </rarg>
+  <rarg>
+    <rargname>ARG2</rargname>
+    <label vid='8'/>
+    <var sort='x' vid='9'/>
+  </rarg>
+  <rarg>
+    <rargname>CARG</rargname>
+    <label vid='8'/>
+    <constant>are</constant>
+  </rarg>
+  <rarg>
+    <rargname>RSTR</rargname>
+    <label vid='10'/>
+    <var sort='h' vid='11'/>
+  </rarg>
+  <rarg>
+    <rargname>BODY</rargname>
+    <label vid='10'/>
+    <var sort='h' vid='12'/>
+  </rarg>
+  <rarg>
+    <rargname>CARG</rargname>
+    <label vid='13'/>
+    <constant>*TOP*</constant>
+  </rarg>
+</rmrs>
+
+</rmrs-list>
 
 </item>
 
@@ -10345,7 +11002,7 @@ no lexicon entries for:
 
        l3 | _no_q( ARG0=x6 RSTR=h5 BODY=h4 ) 
           |    h5 qeq l7
-       l7 + unknown_adj_rel( ARG0=e8 ARG1=x6 CARG=healthful ) 
+       l7 + unknown_adj_rel( ARG0=e8 ARG1=x6 CARG=*TOP* ) 
    l10001 + _food_n_1( ARG0=x6 CARG=food ) 
        l9 | _fatten_v_1( ARG0=e2 ARG1=x6 ) 
 
@@ -10393,7 +11050,7 @@ no lexicon entries for:
   <rarg>
     <rargname>CARG</rargname>
     <label vid='7'/>
-    <constant>healthful</constant>
+    <constant>*TOP*</constant>
   </rarg>
   <rarg>
     <rargname>CARG</rargname>
@@ -10417,7 +11074,7 @@ no lexicon entries for:
        l6 + _no_q( ARG0=x4 RSTR=h8 BODY=h7 ) 
           +    h8 qeq l9
        l9 | generic_entity_rel( ARG0=x4 ) 
-   l10001 | unknown_adj_rel( ARG0=e10 ARG1=x4 CARG=healthful ) 
+   l10001 | unknown_adj_rel( ARG0=e10 ARG1=x4 CARG=*TOP* ) 
       l11 + udef_q_rel( ARG0=x14 RSTR=h13 BODY=h12 ) 
           +    h13 qeq l15
       l15 | _food_n_1( ARG0=x14 CARG=food ) 
@@ -10495,7 +11152,7 @@ no lexicon entries for:
   <rarg>
     <rargname>CARG</rargname>
     <label vid='10001'/>
-    <constant>healthful</constant>
+    <constant>*TOP*</constant>
   </rarg>
   <rarg>
     <rargname>RSTR</rargname>
@@ -10537,7 +11194,7 @@ no lexicon entries for:
        l5 + _no_q( ARG0=x4 RSTR=h7 BODY=h6 ) 
           +    h7 qeq l8
        l8 | generic_entity_rel( ARG0=x4 ) 
-   l10001 | unknown_adj_rel( ARG0=e9 ARG1=x4 CARG=healthful ) 
+   l10001 | unknown_adj_rel( ARG0=e9 ARG1=x4 CARG=*TOP* ) 
    l10002 | _fatten_v_cause( ARG0=e15 ARG1=x13 ARG2=x4 ) 
       l10 + udef_q_rel( ARG0=x13 RSTR=h12 BODY=h11 ) 
           +    h12 qeq l14
@@ -10611,7 +11268,7 @@ no lexicon entries for:
   <rarg>
     <rargname>CARG</rargname>
     <label vid='10001'/>
-    <constant>healthful</constant>
+    <constant>*TOP*</constant>
   </rarg>
   <rarg>
     <rargname>RSTR</rargname>
@@ -10654,7 +11311,7 @@ no lexicon entries for:
        l6 + focus_d_rel( ARG0=u7 ARG1=e2 ARG2=x8 ) 
    l10002 + _fatten_v_cause( ARG0=e2 ARG1=x17 ARG2=x8 ) 
        l9 | generic_entity_rel( ARG0=x8 ) 
-   l10001 | unknown_adj_rel( ARG0=e13 ARG1=x8 CARG=healthful ) 
+   l10001 | unknown_adj_rel( ARG0=e13 ARG1=x8 CARG=*TOP* ) 
       l10 + udef_q_rel( ARG0=x8 RSTR=h12 BODY=h11 ) 
           +    h12 qeq l9
       l14 | udef_q_rel( ARG0=x17 RSTR=h16 BODY=h15 ) 
@@ -10753,7 +11410,7 @@ no lexicon entries for:
   <rarg>
     <rargname>CARG</rargname>
     <label vid='10001'/>
-    <constant>healthful</constant>
+    <constant>*TOP*</constant>
   </rarg>
   <rarg>
     <rargname>RSTR</rargname>
@@ -10795,7 +11452,7 @@ no lexicon entries for:
           |    h5 qeq l12
        l6 + udef_q_rel( ARG0=x9 RSTR=h8 BODY=h7 ) 
           +    h8 qeq l10
-      l10 | unknown_adj_rel( ARG0=e11 ARG1=x9 CARG=healthful ) 
+      l10 | unknown_adj_rel( ARG0=e11 ARG1=x9 CARG=*TOP* ) 
    l10001 | _food_n_1( ARG0=x9 CARG=food ) 
       l12 + _fatten_v_1( ARG0=e2 ARG1=x9 ) 
 
@@ -10862,7 +11519,7 @@ no lexicon entries for:
   <rarg>
     <rargname>CARG</rargname>
     <label vid='10'/>
-    <constant>healthful</constant>
+    <constant>*TOP*</constant>
   </rarg>
   <rarg>
     <rargname>CARG</rargname>
@@ -11669,7 +12326,7 @@ no lexicon entries for:
 
        l3 | _some_q( ARG0=x6 RSTR=h5 BODY=h4 ) 
           |    h5 qeq l7
-       l7 + _student_n_of( ARG0=x6 ARG1=u8 ) 
+       l7 + _student_n_of( ARG0=x6 ARG1=u8 CARG=students ) 
        l9 | neg_rel( ARG0=e11 ARG1=h10 CARG=not ) 
           |    h10 qeq l12
       l12 + _lazy_a_1( ARG0=e2 ARG1=x6 ) 
@@ -11718,6 +12375,11 @@ no lexicon entries for:
     <rargname>ARG1</rargname>
     <label vid='7'/>
     <var sort='u' vid='8'/>
+  </rarg>
+  <rarg>
+    <rargname>CARG</rargname>
+    <label vid='7'/>
+    <constant>students</constant>
   </rarg>
   <rarg>
     <rargname>ARG1</rargname>
@@ -11739,7 +12401,7 @@ no lexicon entries for:
 
        l3 | _some_q( ARG0=x6 RSTR=h5 BODY=h4 ) 
           |    h5 qeq l7
-       l7 + _student_n_of( ARG0=x6 ARG1=u8 ) 
+       l7 + _student_n_of( ARG0=x6 ARG1=u8 CARG=students ) 
        l9 | neg_rel( ARG0=e11 ARG1=h10 CARG=not ) 
           |    h10 qeq l12
       l12 + _lazy_a_1( ARG0=e2 ARG1=x6 ) 
@@ -11788,6 +12450,11 @@ no lexicon entries for:
     <rargname>ARG1</rargname>
     <label vid='7'/>
     <var sort='u' vid='8'/>
+  </rarg>
+  <rarg>
+    <rargname>CARG</rargname>
+    <label vid='7'/>
+    <constant>students</constant>
   </rarg>
   <rarg>
     <rargname>ARG1</rargname>
@@ -11816,7 +12483,7 @@ no lexicon entries for:
        l9 | generic_entity_rel( ARG0=x4 ) 
       l10 + udef_q_rel( ARG0=x11 RSTR=h12 BODY=h13 ) 
           +    h12 qeq l14
-      l14 | _student_n_of( ARG0=x11 ARG1=u15 ) 
+      l14 | _student_n_of( ARG0=x11 ARG1=u15 CARG=students ) 
       l16 + _be_v_id( ARG0=e2 ARG1=x11 ARG2=x4 CARG=are ) 
       l17 | neg_rel( ARG0=e18 ARG1=h19 CARG=not ) 
           |    h19 qeq l16
@@ -11925,6 +12592,11 @@ no lexicon entries for:
     <var sort='u' vid='15'/>
   </rarg>
   <rarg>
+    <rargname>CARG</rargname>
+    <label vid='14'/>
+    <constant>students</constant>
+  </rarg>
+  <rarg>
     <rargname>ARG1</rargname>
     <label vid='16'/>
     <var sort='x' vid='11'/>
@@ -11980,7 +12652,7 @@ no lexicon entries for:
        l9 | generic_entity_rel( ARG0=x4 ) 
       l10 + udef_q_rel( ARG0=x11 RSTR=h12 BODY=h13 ) 
           +    h12 qeq l14
-      l14 | _student_n_of( ARG0=x11 ARG1=u15 ) 
+      l14 | _student_n_of( ARG0=x11 ARG1=u15 CARG=students ) 
       l16 + _be_v_id( ARG0=e2 ARG1=x11 ARG2=x4 CARG=are ) 
       l20 | neg_rel( ARG0=e21 ARG1=h22 CARG=not ) 
           |    h22 qeq l23
@@ -12089,6 +12761,11 @@ no lexicon entries for:
     <var sort='u' vid='15'/>
   </rarg>
   <rarg>
+    <rargname>CARG</rargname>
+    <label vid='14'/>
+    <constant>students</constant>
+  </rarg>
+  <rarg>
     <rargname>ARG1</rargname>
     <label vid='16'/>
     <var sort='x' vid='11'/>
@@ -12144,7 +12821,7 @@ no lexicon entries for:
           |    h20 qeq l23
        l9 + udef_q_rel( ARG0=x10 RSTR=h11 BODY=h12 ) 
           +    h11 qeq l13
-      l13 | _student_n_of( ARG0=x10 ARG1=u14 ) 
+      l13 | _student_n_of( ARG0=x10 ARG1=u14 CARG=students ) 
       l15 + _be_v_id( ARG0=e16 ARG1=x10 ARG2=x4 CARG=are ) 
       l17 | neg_rel( ARG0=e18 ARG1=h19 CARG=not ) 
           |    h19 qeq l15
@@ -12246,6 +12923,11 @@ no lexicon entries for:
     <rargname>ARG1</rargname>
     <label vid='13'/>
     <var sort='u' vid='14'/>
+  </rarg>
+  <rarg>
+    <rargname>CARG</rargname>
+    <label vid='13'/>
+    <constant>students</constant>
   </rarg>
   <rarg>
     <rargname>ARG1</rargname>
@@ -14915,7 +15597,7 @@ no lexicon entries for:
 
        l3 | _some_q( ARG0=x6 RSTR=h5 BODY=h4 ) 
           |    h5 qeq l7
-       l7 + _boarder_n_1( ARG0=x6 CARG=boarders ) 
+       l7 + _boarder_n_1( ARG0=x6 ) 
        l8 | _have_v_1( ARG0=e2 ARG1=x6 ARG2=x9 CARG=have ) 
       l10 + udef_q_rel( ARG0=x9 RSTR=h12 BODY=h11 ) 
           +    h12 qeq l13
@@ -14990,11 +15672,6 @@ no lexicon entries for:
     <var sort='h' vid='4'/>
   </rarg>
   <rarg>
-    <rargname>CARG</rargname>
-    <label vid='7'/>
-    <constant>boarders</constant>
-  </rarg>
-  <rarg>
     <rargname>ARG1</rargname>
     <label vid='8'/>
     <var sort='x' vid='6'/>
@@ -15053,7 +15730,7 @@ no lexicon entries for:
 
        l3 | _some_q( ARG0=x6 RSTR=h5 BODY=h4 ) 
           |    h5 qeq l7
-       l7 + _boarder_n_1( ARG0=x6 CARG=boarders ) 
+       l7 + _boarder_n_1( ARG0=x6 ) 
        l8 | _have_v_1( ARG0=e2 ARG1=x6 ARG2=x9 CARG=have ) 
       l10 + udef_q_rel( ARG0=x9 RSTR=h12 BODY=h11 ) 
           +    h12 qeq l13
@@ -15126,11 +15803,6 @@ no lexicon entries for:
     <rargname>BODY</rargname>
     <label vid='3'/>
     <var sort='h' vid='4'/>
-  </rarg>
-  <rarg>
-    <rargname>CARG</rargname>
-    <label vid='7'/>
-    <constant>boarders</constant>
   </rarg>
   <rarg>
     <rargname>ARG1</rargname>
@@ -20823,7 +21495,7 @@ no lexicon entries for:
 
        l3 | _some_q( ARG0=x6 RSTR=h5 BODY=h4 ) 
           |    h5 qeq l7
-       l7 + unknown_adj_rel( ARG0=e8 ARG1=x6 CARG=*TOP* ) 
+       l7 + unknown_adj_rel( ARG0=e8 ARG1=x6 CARG=mythical ) 
    l10001 + _thing_n_of-about( ARG0=x6 ARG1=u9 CARG=things ) 
       l10 | neg_rel( ARG0=e12 ARG1=h11 CARG=not ) 
           |    h11 qeq l13
@@ -20882,7 +21554,7 @@ no lexicon entries for:
   <rarg>
     <rargname>CARG</rargname>
     <label vid='7'/>
-    <constant>*TOP*</constant>
+    <constant>mythical</constant>
   </rarg>
   <rarg>
     <rargname>ARG1</rargname>
@@ -20918,7 +21590,7 @@ no lexicon entries for:
 
        l3 | _some_q( ARG0=x6 RSTR=h5 BODY=h4 ) 
           |    h5 qeq l7
-       l7 + unknown_adj_rel( ARG0=e8 ARG1=x6 CARG=*TOP* ) 
+       l7 + unknown_adj_rel( ARG0=e8 ARG1=x6 CARG=mythical ) 
    l10001 + _thing_n_of-about( ARG0=x6 ARG1=u9 CARG=things ) 
       l10 | neg_rel( ARG0=e12 ARG1=h11 CARG=not ) 
           |    h11 qeq l13
@@ -20977,7 +21649,7 @@ no lexicon entries for:
   <rarg>
     <rargname>CARG</rargname>
     <label vid='7'/>
-    <constant>*TOP*</constant>
+    <constant>mythical</constant>
   </rarg>
   <rarg>
     <rargname>ARG1</rargname>
@@ -21016,7 +21688,7 @@ no lexicon entries for:
        l7 + _some_q( ARG0=x8 RSTR=h9 BODY=h10 ) 
           +    h9 qeq l11
       l11 | part_of_rel( ARG0=x8 ARG1=u12 ) 
-   l10001 | unknown_adj_rel( ARG0=e13 ARG1=x6 CARG=*TOP* ) 
+   l10001 | unknown_adj_rel( ARG0=e13 ARG1=x6 CARG=mythical ) 
    l10002 | _thing_n_of-about( ARG0=x6 ARG1=u14 CARG=things ) 
       l15 + neg_rel( ARG0=e17 ARG1=h16 CARG=not ) 
           +    h16 qeq l18
@@ -21104,7 +21776,7 @@ no lexicon entries for:
   <rarg>
     <rargname>CARG</rargname>
     <label vid='10001'/>
-    <constant>*TOP*</constant>
+    <constant>mythical</constant>
   </rarg>
   <rarg>
     <rargname>ARG1</rargname>
@@ -21147,7 +21819,7 @@ no lexicon entries for:
        l7 + _some_q( ARG0=x8 RSTR=h9 BODY=h10 ) 
           +    h9 qeq l11
       l11 | part_of_rel( ARG0=x8 ARG1=u12 ) 
-   l10001 | unknown_adj_rel( ARG0=e13 ARG1=x6 CARG=*TOP* ) 
+   l10001 | unknown_adj_rel( ARG0=e13 ARG1=x6 CARG=mythical ) 
    l10002 | _thing_n_of-about( ARG0=x6 ARG1=u14 CARG=things ) 
       l15 + neg_rel( ARG0=e17 ARG1=h16 CARG=not ) 
           +    h16 qeq l18
@@ -21235,7 +21907,7 @@ no lexicon entries for:
   <rarg>
     <rargname>CARG</rargname>
     <label vid='10001'/>
-    <constant>*TOP*</constant>
+    <constant>mythical</constant>
   </rarg>
   <rarg>
     <rargname>ARG1</rargname>
@@ -21282,7 +21954,7 @@ no lexicon entries for:
        l9 | generic_entity_rel( ARG0=x4 ) 
       l10 + udef_q_rel( ARG0=x11 RSTR=h12 BODY=h13 ) 
           +    h12 qeq l14
-      l14 | unknown_adj_rel( ARG0=e15 ARG1=x11 CARG=*TOP* ) 
+      l14 | unknown_adj_rel( ARG0=e15 ARG1=x11 CARG=mythical ) 
    l10001 | _thing_n_of-about( ARG0=x11 ARG1=u16 CARG=things ) 
       l17 + _be_v_id( ARG0=e2 ARG1=x11 ARG2=x4 CARG=are ) 
       l18 | neg_rel( ARG0=e19 ARG1=h20 CARG=not ) 
@@ -21399,7 +22071,7 @@ no lexicon entries for:
   <rarg>
     <rargname>CARG</rargname>
     <label vid='14'/>
-    <constant>*TOP*</constant>
+    <constant>mythical</constant>
   </rarg>
   <rarg>
     <rargname>ARG1</rargname>

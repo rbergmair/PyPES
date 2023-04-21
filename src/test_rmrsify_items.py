@@ -12,26 +12,28 @@ import pyrmrs.tools.fix_fspp_smaf;
 import pyrmrs.tools.raspstr_to_smaf;
 import pyrmrs.tools.merge_pos_into_smaf;
 
+import pyrmrs.tools.prepreprocess;
+
+
+
+# INFILENAMEs = [ "simple/syllogism.items", "simple/fracas.items" ];
+# INFILENAMEs = [ "simple/syllogism.items" ];
+INFILENAMEs = [ "simple/katia-stuff.items" ];
+
 
 
 pyrmrs.globals.initMain();
-
-
 
 fsppctrl = pyrmrs.ext.fspp.FSPP();
 raspctrl = pyrmrs.ext.rasp.Rasp();
 petctrl = pyrmrs.ext.pet.PET( 5, 5 );
 
-
 reportfile = open( "testdta/parse-report.csv", "w" );
+reportfile.write( "filename,overall coverage[%],gram coverage [%],sys coverage [%],no items,avg readings,min readings,q1 readings,med readings,q3 readings,max readings,avg time per item [s],avg time per item [cpu]\n" );
 
-reportfile.write( "filename,coverage [%],no items,avg readings,min readings,q1 readings,med readings,q3 readings,max readings,avg time per item [s],avg time per item [cpu]\n" );
 
 
-# infilenames = [ "simple/syllogism.items", "simple/fracas.items" ];
-infilenames = [ "simple/syllogism.items" ];
-
-for filename in infilenames:
+for filename in INFILENAMEs:
   
   print filename;
   print;
@@ -42,8 +44,10 @@ for filename in infilenames:
   infile = codecs.open( infilename, "r", encoding="utf-8" );
   outfile = codecs.open( outfilename, "w", encoding="utf-8" );
   
-  succ = 0;
+  gram_error = 0;
+  sys_error = 0;
   total = 0;
+
   cnts = [];
   
   outfile.write( """<?xml version="1.0" encoding="UTF-8"?>\n\n<items>\n""" );
@@ -54,8 +58,15 @@ for filename in infilenames:
   
   for sentence in infile:
     sentence = sentence.replace( "\n", "" );
+    if sentence == "":
+      continue;
+    if sentence.find( "|" ) != -1:
+      continue;
+    
+    sentence = pyrmrs.tools.prepreprocess.prepreprocess( sentence );
     
     outfile.write( "\n\n<item>\n\n<surface>%s</surface>\n" % sentence );
+    outfile.flush();
     
     fsppsmaf = None;
     for smaf_ in fsppctrl.sentstr_to_smafs( sentence ):
@@ -77,12 +88,13 @@ for filename in infilenames:
     raspsmaf = pyrmrs.tools.raspstr_to_smaf.raspstr_to_smaf( sentence, raspstr );
     #print raspsmaf.str_xml();
     
+    #print newsmaf.str_xml();
+    
     combined = pyrmrs.tools.merge_pos_into_smaf.merge_pos_into_smaf( newsmaf, raspsmaf );
     combined = fsppsmaf;
     #print combined.str_xml();
-    
-    
-  
+
+
     rslt = "<rmrs-list>\n";
     
     err = None; 
@@ -102,10 +114,13 @@ for filename in infilenames:
     total += 1;
     if err is None:
       print "   --> %s" % sentence;
-      succ += 1;
+      cnts.append( cnt );
     else:
       print "%2d --> %s" % ( err.errno, sentence );
-    cnts.append( cnt );
+      if err.errno in [ err.ERRNO_MISSING_LEXICAL_ENTRY, err.ERRNO_ZERO_READINGS ]:
+        gram_error += 1;
+      else:
+        sys_error += 1;
   
   
   after_cpu = time.clock();
@@ -117,8 +132,16 @@ for filename in infilenames:
   print;
   print "%3.5f secs ( %s units of processor time )" % \
     ( after_time - before_time, after_cpu - before_cpu );
-  print "%d/%d successful ( %2.2f%% )" % \
-    ( succ, total, (100.0*float(succ))/float(total) );
+  print "overall coverage: %d/%d = %2.2f%%" % \
+    ( total-gram_error-sys_error, total, \
+      ( 100.0 * float( total-gram_error-sys_error ) ) / float( total ) );
+  print "grammatical coverage: %d/%d = %2.2f%%" % \
+    ( total-gram_error-sys_error, total-sys_error, \
+      ( 100.0 * float( total-gram_error-sys_error ) ) / float( total-sys_error ) );
+  print "system coverage: %d/%d = %2.2f%%" % \
+    ( total-gram_error-sys_error, total-gram_error, \
+      ( 100.0 * float( total-gram_error-sys_error ) ) / float( total-gram_error ) );
+  
   
   cnts.sort();
   
@@ -139,18 +162,20 @@ for filename in infilenames:
   print;
   print;
   
-  reportfile.write( "%s,%2.2f,%d,%2.2f,%d,%d,%d,%d,%d,%2.4f,%2.4f\n" % ( \
+  reportfile.write( "%s,%2.2f,%2.2f,%2.2f,%d,%2.2f,%d,%d,%d,%d,%d,%2.4f,%2.4f\n" % ( \
     filename,
-    ( 100.0*float(succ) ) / float( total ), \
+    ( 100.0 * float( total-gram_error-sys_error ) ) / float( total ), \
+    ( 100.0 * float( total-gram_error-sys_error ) ) / float( total-sys_error ), \
+    ( 100.0 * float( total-gram_error-sys_error ) ) / float( total-gram_error ), \
     total, \
     avg, \
     q0, q1, q2, q3, q4, \
-    float( after_time-before_time )/float( succ ), \
-    float( after_cpu-before_cpu )/float( succ ) ) \
+    float( after_time-before_time )/float( total-gram_error-sys_error ), \
+    float( after_cpu-before_cpu )/float( total-gram_error-sys_error ) ) \
    );
 
+
+
 reportfile.close();
-
-
 
 pyrmrs.globals.destructMain();

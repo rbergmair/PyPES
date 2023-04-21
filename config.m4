@@ -56,7 +56,7 @@ m4_define(`_SH_RASP',`_DIR_RASPHOME/scripts/rasp-rb.sh')
 m4_define(`_SH_RASPSENT',`_DIR_RASPHOME/sentence/sentence.x86_64_linux.int')
 
 m4_define(`_DIR_LKBHOME',m4_esyscmd(`echo -n $DELPHINHOME/lkb'))
-m4_define(`_SH_LKB',`/usr/opt/acl80.64/alisp -I _DIR_LKBHOME/rasp3-rmrs/rasp3-rmrs.dxl')
+m4_define(`_SH_LKB',`/usr/opt/acl80.64/alisp -I _DIR_LKBHOME/image/linux.x86.64/lkb.dxl')
 
 
 
