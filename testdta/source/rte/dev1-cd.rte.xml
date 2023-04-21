@@ -1,0 +1,396 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<entailment-corpus>
+<pair id='762' value='TRUE' task='CD'>
+  <t>A two-day auction of property belonging to actress Katharine Hepburn brought in 3.2 million pounds.</t>
+  <h>A two-day auction of property belonging to actress Katharine Hepburn brought in £3.2m.</h>
+</pair>
+<pair id='763' value='TRUE' task='CD'>
+  <t>Treasures belonging to Hollywood legend Katharine Hepburn have raised £3.2m at a two-day auction in America.</t>
+  <h>A two-day auction of property belonging to actress Katharine Hepburn brought in 3.2 million pounds.</h>
+</pair>
+<pair id='764' value='TRUE' task='CD'>
+  <t>Hepburn's family will receive the proceeds from the sale.</t>
+  <h>Proceeds go to Hepburn's family.</h>
+</pair>
+<pair id='765' value='TRUE' task='CD'>
+  <t>Money raised from the sale will go into a trust for Hepburn's family.</t>
+  <h>Proceeds go to Hepburn's family.</h>
+</pair>
+<pair id='766' value='TRUE' task='CD'>
+  <t>A small bronze bust of Spencer Tracy sold for £174,000.</t>
+  <h>A small bronze bust of Spencer Tracy made £174,000.</h>
+</pair>
+<pair id='767' value='TRUE' task='CD'>
+  <t>Hepburn, a four-time Academy Award winner, died last June in Connecticut at age 96.</t>
+  <h>Hepburn, who won four Oscars, died last June aged 96.</h>
+</pair>
+<pair id='768' value='FALSE' task='CD'>
+  <t>A small bronze bust of Spencer Tracy sold for £174,000.</t>
+  <h>A small bronze bust of Spencer Tracy made £180,447.</h>
+</pair>
+<pair id='769' value='TRUE' task='CD'>
+  <t>The most sought after piece and the most expensive item was a bronze bust of Spencer Tracy that Hepburn created in the 1960s.</t>
+  <h>The highest-selling item was a bronze bust made by Hepburn in the 1960s of her actor lover Spencer Tracy.</h>
+</pair>
+<pair id='770' value='TRUE' task='CD'>
+  <t>Hepburn's platinum, diamond and sapphire brooch had been estimated to fetch just $20,000, but sold for $120,000, six times its estimated price.</t>
+  <h>Hepburn's diamond and sapphire brooch fetched $120,000.</h>
+</pair>
+<pair id='771' value='FALSE' task='CD'>
+  <t>Nichols, 49, was convicted in the April 19, 1995, bombing of the Alfred P. Murrah Federal Building in Oklahoma City.</t>
+  <h>Nichols was sentenced to life in prison for the April 19, 1995, bombing of the Oklahoma City federal building.</h>
+</pair>
+<pair id='772' value='TRUE' task='CD'>
+  <t>Nichols was found guilty May 26 of 161 counts of first-degree murder for 160 victims and an unborn child in a state trial.</t>
+  <h>The state charges against Nichols are for 160 victims and one victim's fetus.</h>
+</pair>
+<pair id='775' value='TRUE' task='CD'>
+  <t>A statement said to be from al Qaida, claimed the terror group had killed one American and kidnapped another in Riyadh.</t>
+  <h>A U.S. citizen working in Riyadh has been kidnapped after a colleague in the same company was shot dead yesterday.</h>
+</pair>
+<pair id='778' value='TRUE' task='CD'>
+  <t>Voting for a new European Parliament has been clouded by apathy.</t>
+  <h>Apathy clouds EU voting.</h>
+</pair>
+<pair id='779' value='FALSE' task='CD'>
+  <t>Nineteen of the European Union's 25 member states were voting in the biggest transnational elections ever held, and the first for the EU since the bloc's expansion into the former communist eastern Europe on May 1.</t>
+  <h>Nearly 350 million people were eligible to vote since the EU took in 10 new members on May 1.</h>
+</pair>
+<pair id='781' value='TRUE' task='CD'>
+  <t>Voting for a new European Parliament was clouded by concerns over apathy.</t>
+  <h>Voting for a new European Parliament has been clouded by apathy.</h>
+</pair>
+<pair id='783' value='TRUE' task='CD'>
+  <t>Sharon sent dismissal letters to Benny Elon and Avigdor Lieberman, who oppose his withdrawal plan, on Friday.</t>
+  <h>On Friday, Sharon fired Benny Elon and Avigdor Lieberman.</h>
+</pair>
+<pair id='785' value='TRUE' task='CD'>
+  <t>The U.S. Army acceded to a request from the local governor to keep U.S. troops away from the Imam Ali Shrine in Najaf.</t>
+  <h>The U.S. Army agreed to a request from the local governor to keep US troops away from the Imam Ali Shrine in Najaf.</h>
+</pair>
+<pair id='786' value='TRUE' task='CD'>
+  <t>Assailants also ambushed two civilian sport utility vehicles, favoured by Western civilian contractors, on the road to Baghdad's international airport.</t>
+  <h>Assailants also ambushed two civilian sport utility vehicles on the road to Baghdad's international airport.</h>
+</pair>
+<pair id='787' value='TRUE' task='CD'>
+  <t>Five U.S. soldiers were killed and five wounded Friday in an ambush near the Shiite neighborhood Sadr City.</t>
+  <h>Five US soldiers were killed and five wounded on Friday in an ambush near the Shi'ite neighbourhood Sadr City.</h>
+</pair>
+<pair id='790' value='FALSE' task='CD'>
+  <t>Heemeyer cut portholes for his guns, then welded a tight enclosure around them so police bullets could not penetrate them.</t>
+  <h>Out of an old bulldozer, Heemeyer built a concrete box that no police bullet could penetrate.</h>
+</pair>
+<pair id='791' value='FALSE' task='CD'>
+  <t>Police found four weapons - two semiautomatic machine guns, a .223-caliber rifle and two handguns in the vehicle.</t>
+  <h>Police found four weapons - a .50-calibre rifle, two military style assault rifles and a handgun in the vehicle.</h>
+</pair>
+<pair id='793' value='TRUE' task='CD'>
+  <t>Heemeyer equipped an old bulldozer with three television cameras and monitors so he could see to steer.</t>
+  <h>Heemeyer had installed television cameras connected to three monitors so he could see where he was going.</h>
+</pair>
+<pair id='794' value='TRUE' task='CD'>
+  <t>The 7-4 defeat by Long Beach State, pushed the Cardinal to the brink in the double-elimination format of NCAA regionals.</t>
+  <h>Stanford Cardinal were defeated by Long Beach State, 7-4.</h>
+</pair>
+<pair id='795' value='TRUE' task='CD'>
+  <t>The two presidents, Bush and Chirac, were honored with a 21-gun salute.</t>
+  <h>The two presidents, Bush and Chirac, were honoured with a 21-gun salute.</h>
+</pair>
+<pair id='799' value='FALSE' task='CD'>
+  <t>Reagan announced he had Alzheimer's disease, an incurable brain affliction.</t>
+  <h>Reagan died of pneumonia complicated by Alzheimer's disease.</h>
+</pair>
+<pair id='800' value='TRUE' task='CD'>
+  <t>Reagan was seriously wounded by a bullet fired by John Hinckley Jr. in an attempted assassination, but made a remarkably speedy recovery.</t>
+  <h>Reagan survived an attempted assassin's bullets.</h>
+</pair>
+<pair id='801' value='FALSE' task='CD'>
+  <t>Reagan was seriously wounded by a bullet fired by John Hinckley Jr.</t>
+  <h>John W. Hinckley Jr. shot Reagan in the chest.</h>
+</pair>
+<pair id='805' value='FALSE' task='CD'>
+  <t>Desko's Orange beat Navy 1413 on Monday for the Division I title in men's lacrosse.</t>
+  <h>Desko's Orange beat Navy 14-13 on Monday for the Division I title in men's lacrosse.</h>
+</pair>
+<pair id='811' value='FALSE' task='CD'>
+  <t>Monica Meadows, a 22-year-old model from Atlanta, was shot in the shoulder on a subway car in New York City.</t>
+  <h>Monica Meadows, 23, was shot in shoulder while riding a subway car in New York City.</h>
+</pair>
+<pair id='812' value='FALSE' task='CD'>
+  <t>Oil prices this Tuesday rose sharply in New York and London reaching a record 42,33 US dollars per barrel, 2.45 US dollars more than last Friday.</t>
+  <h>Oil prices this Tuesday surged to an all-time high in New York, at 42 dollars a barrel, 1.92 dollars a barrel more than last Friday.</h>
+</pair>
+<pair id='814' value='FALSE' task='CD'>
+  <t>In New York, Nymex light crude oil for July delivery hit $42.38 per barrel on Tuesday.</t>
+  <h>Crude oil futures surged to an all-time high in New York Tuesday, at 42 dollars a barrel.</h>
+</pair>
+<pair id='667' value='TRUE' task='CD'>
+  <t>Traditional performances in Jakarta include wayang dance and drama, gamelan music, and wayang shadow-puppet shows.</t>
+  <h>Gamelan music, in which percussion instruments are key, and shadow-puppet shows are popular in Jakarta.</h>
+</pair>
+<pair id='668' value='TRUE' task='CD'>
+  <t>Some of the buildings around the city square in the Kota also date from colonial times, including the old city hall (1710), which has been restored and now serves as the municipal museum.</t>
+  <h>The city hall is a museum now.</h>
+</pair>
+<pair id='670' value='FALSE' task='CD'>
+  <t>Some of the buildings around the city square in the Kota also date from colonial times, including the old city hall (1710), which has been restored and now serves as the municipal museum.</t>
+  <h>In the Old City are the old port, the Dutch town hall, and a square.</h>
+</pair>
+<pair id='671' value='TRUE' task='CD'>
+  <t>The Kota ("Fort"), or Old City, for example, sometimes called the downtown section, is the central business district and Indonesia's financial capital.</t>
+  <h>The Kota is the country's business center.</h>
+</pair>
+<pair id='673' value='TRUE' task='CD'>
+  <t>The Istiqlal Mosque, in the northeast corner of Medan Merdeka opposite Lapangan Banteng, is one of the largest mosques in Southeast Asia.</t>
+  <h>The Istiqlal Mosque is one of the largest mosques in Southeast Asia.</h>
+</pair>
+<pair id='674' value='TRUE' task='CD'>
+  <t>Jakarta lies on a low, flat alluvial plain with historically extensive swampy areas; the parts of the city farther inland are slightly higher.</t>
+  <h>The parts of Jakarta away from the coast are on slightly higher land.</h>
+</pair>
+<pair id='675' value='TRUE' task='CD'>
+  <t>Jakarta floods easily during the rainy season.</t>
+  <h>Jakarta is easily flooded during the rainy season.</h>
+</pair>
+<pair id='677' value='FALSE' task='CD'>
+  <t>The Dutch, who ruled Indonesia until 1949, called the city of Jakarta Batavia.</t>
+  <h>Formerly (until 1949) Batavia, Jakarta is largest city and capital of Indonesia.</h>
+</pair>
+<pair id='684' value='FALSE' task='CD'>
+  <t>On Feb. 1, 1945, the Polish government made Warsaw its capital, and an office for urban reconstruction was set up.</t>
+  <h>Warsaw remained Poland's capital after the war.</h>
+</pair>
+<pair id='686' value='FALSE' task='CD'>
+  <t>Jews were confined to the Jewish part of town called a ghetto, and many people there starved to death.</t>
+  <h>Disease, starvation, and overcrowding caused thousands to perish before deportations to the Nazi death camps, especially to Treblinka, began in late 1941.</h>
+</pair>
+<pair id='695' value='FALSE' task='CD'>
+  <t>In 1596 the Polish king decided to move the capital from Krakow to Warsaw, making Warsaw the most important city in Poland.</t>
+  <h>In 1611 the king and his court finally moved from Krakow (Cracow) to Warsaw, making it the capital of the Polish state.</h>
+</pair>
+<pair id='698' value='FALSE' task='CD'>
+  <t>Saint John's Cathedral is the oldest church in Warsaw.</t>
+  <h>In the Old Town, the Gothic St. John's Cathedral and the red-brick fortifications known as the Barbican remain from the medieval period.</h>
+</pair>
+<pair id='700' value='FALSE' task='CD'>
+  <t>There are many Baroque churches of the Counter-Reformation period, including the Jesuit Church next to the cathedral and the Church of the Holy Cross, which contains Chopin's heart.</t>
+  <h>Sigismund made Warsaw the capital of Poland in 1611.</h>
+</pair>
+<pair id='707' value='FALSE' task='CD'>
+  <t>This became Aquincum when the Romans established a military camp and civilian town there at the end of the 1st century AD.</t>
+  <h>One of the first organized settlements on the site, though, was the Roman fortress of Aquincum.</h>
+</pair>
+<pair id='709' value='FALSE' task='CD'>
+  <t>Budapest is Europe's largest spa town; there are more than 100 hot springs that spout from Buda's limestone bedrock.</t>
+  <h>There are numerous underground hot springs that contain radium and other minerals, and, since Roman times, bathers have sought them out for their supposed healing properties.</h>
+</pair>
+<pair id='712' value='FALSE' task='CD'>
+  <t>To the south of Castle Hill rises the higher Gellert Hill (771 feet), a steep limestone escarpment overlooking the Danube, which provides a panoramic view of the whole city.</t>
+  <h>To the south is Gellert Hill, which features the 19th-century Citadel.</h>
+</pair>
+<pair id='717' value='FALSE' task='CD'>
+  <t>Budapest consists of two parts, Buda and Pest, which are situated on opposite sides of the river and connected by a series of bridges.</t>
+  <h>Pest is on the opposite, east bank.</h>
+</pair>
+<pair id='718' value='FALSE' task='CD'>
+  <t>Budapest consists of two parts, Buda and Pest, which are situated on opposite sides of the river and connected by a series of bridges.</t>
+  <h>Buda is located on the west bank of the Danube.</h>
+</pair>
+<pair id='720' value='FALSE' task='CD'>
+  <t>Budapest consists of two parts, Buda and Pest, which are situated on opposite sides of the river and connected by a series of bridges.</t>
+  <h>Budapest consists of two principal parts that were merged in 1873.</h>
+</pair>
+<pair id='2161' value='FALSE' task='CD'>
+  <t>City officials fired the captain of the crashed Staten Island ferry.</t>
+  <h>Staten Island ferry captain has refused to talk with investigators.</h>
+</pair>
+<pair id='702' value='TRUE' task='CD'>
+  <t>Budapest again became the focus of national political drama in the late 1980s, when Hungary led the reform movement in eastern Europe that broke the communist monopoly on political power and ushered in the possibility of multiparty politics.</t>
+  <h>In the late 1980s Budapest became the center of the reform movement.</h>
+</pair>
+<pair id='2166' value='FALSE' task='CD'>
+  <t>In Wednesday's filing, Google said it planned to complete the IPO "as soon as practicable."</t>
+  <h>It's unclear whether Wednesday's twist will affect the timing of Google's initial public offering.</h>
+</pair>
+<pair id='2174' value='FALSE' task='CD'>
+  <t>Al-Jazeera broadcasts to millions of Arab viewers from headquarters in Doha, Qatar.</t>
+  <h>Al-Jazeera has occasionally run into problems with authorities in other Arab countries.</h>
+</pair>
+<pair id='818' value='TRUE' task='CD'>
+  <t>The new study refutes earlier findings by researchers at the University of California, Los Angeles, who concluded that the odds of getting head and neck cancers rose in tandem with the frequency and duration of marijuana use.</t>
+  <h>The latest findings contradict a California study that implicated regular pot smoking as having markedly higher risks for head and neck cancers.</h>
+</pair>
+<pair id='820' value='TRUE' task='CD'>
+  <t>Kessler's team conducted 60,643 face-to-face interviews with adults in 14 countries.</t>
+  <h>Kessler's team interviewed more than 60,000 adults in 14 countries.</h>
+</pair>
+<pair id='806' value='TRUE' task='CD'>
+  <t>Investigators described the gunman as white, about 30 years old, of medium build with shoulder-length, wavy blond hair and as having a "scruffy" or "grunge" appearance.</t>
+  <h>The gunman is described as a white male in his 30s with a medium build, shoulder-length blonde hair and an unkempt appearance.</h>
+</pair>
+<pair id='823' value='TRUE' task='CD'>
+  <t>The body of Satomi Mitarai was found by a teacher after her attacker returned to class in bloody clothes.</t>
+  <h>Mitarai's body was found by a teacher after her killer returned to their classroom covered in blood.</h>
+</pair>
+<pair id='2147' value='FALSE' task='CD'>
+  <t>Witnesses told police a gas canister exploded to start the fire in a multilevel building which houses the Ycua Bolanos supermarket, a food court and a parking garage, causing the bottom floor to collapse.</t>
+  <h>Television footage showed several levels of the multi-level supermarket covered in soot, including the lower level parking garage.</h>
+</pair>
+<pair id='2156' value='FALSE' task='CD'>
+  <t>Gross domestic product, a measure of total output within the nation's borders, climbed at a 3% annual pace in the April-June period.</t>
+  <h>The annual rate increase of 3% in the second quarter was much lower than forecasts.</h>
+</pair>
+<pair id='1989' value='FALSE' task='CD'>
+  <t>Intel has decided to push back the launch date for its 4-GHz Pentium 4 desktop processor to the first quarter of 2005.</t>
+  <h>Intel would raise the clock speed of the company's flagship Pentium 4 processor to 4 GHz.</h>
+</pair>
+<pair id='829' value='TRUE' task='CD'>
+  <t>The last Australian to win Miss Universe was Perth's Kerry Anne Wells in 1972.</t>
+  <h>Not since 1972 has an Australian woman been named Miss Universe.</h>
+</pair>
+<pair id='723' value='FALSE' task='CD'>
+  <t>The city continued to grow through much of the 20th century.</t>
+  <h>The city continued to grow, but its services deteriorated.</h>
+</pair>
+<pair id='693' value='TRUE' task='CD'>
+  <t>This growth proved short-lived, for a Swedish invasion (1655-56) devastated the flourishing city of Warsaw.</t>
+  <h>Warsaw was invaded by the Swedes in 1655, and the city was devastated.</h>
+</pair>
+<pair id='826' value='TRUE' task='CD'>
+  <t>A car bomb exploded outside a U.S. military base near Baji.</t>
+  <h>A car bomb exploded outside a U.S. military base near Beiji.</h>
+</pair>
+<pair id='803' value='TRUE' task='CD'>
+  <t>Because of Reagan's economic strategy, the federal budget deficit ballooned.</t>
+  <h>Reagan's economic strategy led to huge federal budget deficits.</h>
+</pair>
+<pair id='719' value='TRUE' task='CD'>
+  <t>Once called the "Queen of the Danube," Budapest has long been the focal point of the nation and a lively cultural centre.</t>
+  <h>Budapest was once popularly known as the "Queen of the Danube."</h>
+</pair>
+<pair id='1806' value='FALSE' task='CD'>
+  <t>Vanunu, 49, was abducted by Israeli agents and convicted of treason in 1986 after discussing his work as a mid-level Dimona
+  technician with Britain's Sunday Times newspaper.</t>
+  <h>Vanunu's disclosures in 1968 led experts to conclude that Israel has a stockpile of nuclear warheads.</h>
+</pair>
+<pair id='2119' value='FALSE' task='CD'>
+  <t>Pakistani officials announced that two South African men in their custody had confessed to planning attacks at popular tourist spots in their home country.</t>
+  <h>Two South Africans were arrested in Pakistan in the past week after a shoot-out at a house between al-Qaeda operatives and security forces.</h>
+</pair>
+<pair id='810' value='TRUE' task='CD'>
+  <t>Meadows scored a big part in a January episode of "Law &amp; Order".</t>
+  <h>Meadows appeared in a "Law &amp; Order" episode which aired in January.</h>
+</pair>
+<pair id='809' value='TRUE' task='CD'>
+  <t>Authorities say Monica Meadows, who has appeared in catalogs and magazines, is in stable condition.</t>
+  <h>Monica Meadows is in stable condition.</h>
+</pair>
+<pair id='733' value='TRUE' task='CD'>
+  <t>According to tradition, they founded Tenochtitlan ("Place of the High Priest Tenoch") after much wandering when they saw on an island in Lake Texcoco the sign that their god Huitzilopochtli had indicated - an eagle perched on a cactus, eating a serpent.</t>
+  <h>They saw an eagle perched on a cactus eating a serpent.</h>
+</pair>
+<pair id='2158' value='FALSE' task='CD'>
+  <t>Prosecutors were still expected to unseal an 11-count manslaughter indictment against the ferry's captain, Michael Gansas. He violated procedure by his absence from the wheelhouse during docking, when Smith lost control of the ferry.</t>
+  <h>Mr Smith entered his guilty plea to 11 counts of manslaughter and also to lying to investigators about his medical history, under an agreement reached with prosecutors.</h>
+</pair>
+<pair id='804' value='TRUE' task='CD'>
+  <t>The Golden Flyers set a school record this year with 16 victories.</t>
+  <h>The Golden Flyers set a school record with 16 victories.</h>
+</pair>
+<pair id='2159' value='FALSE' task='CD'>
+  <t>The city ferry fleet shuttles about 70,000 people a day between Staten Island and Manhattan, a 5.2-mile trip across New York Harbor that takes about 25 minutes.</t>
+  <h>The ferry taking commuters from Manhattan to Staten Island crashed into a pier.</h>
+</pair>
+<pair id='713' value='TRUE' task='CD'>
+  <t>Rozsa (Rose) Hill, the third hill near the river, lies north of Castle Hill.</t>
+  <h>Rozsa Hill lies north of Castle Hill.</h>
+</pair>
+<pair id='2177' value='FALSE' task='CD'>
+  <t>Only 14 percent of U.S. mothers exclusively breast-feed their babies for the minimum recommended six months.</t>
+  <h>There are many benefits from breast-feeding.</h>
+</pair>
+<pair id='2118' value='FALSE' task='CD'>
+  <t>Francis Deng believes the government will be receptive to the plan to deploy 1,800 peacekeeping troops.</t>
+  <h>The AU said it may send a 2 000-strong peacekeeping force.</h>
+</pair>
+<pair id='819' value='TRUE' task='CD'>
+  <t>Recreational marijuana smokers are no more likely to develop oral cancer than nonusers.</t>
+  <h>Smoking marijuana does not increase the risk of developing oral cancer.</h>
+</pair>
+<pair id='678' value='TRUE' task='CD'>
+  <t>Coextensive with the metropolitan district of Jakarta Raya, it lies at the mouth of the Ciliwung (Liwung River) on the northwest coast of Java.</t>
+  <h>Jakarta lies at the mouth of the Ciliwung (Liwung River) on the northwest coast of the island of Java.</h>
+</pair>
+<pair id='2120' value='FALSE' task='CD'>
+  <t>Six hostages in Iraq were freed.</t>
+  <h>The four Jordanian hostages, kidnapped about a week ago, were freed.</h>
+</pair>
+<pair id='2154' value='FALSE' task='CD'>
+  <t>The GDP report showed growth in business outlays advanced at a solid 8.9% pace.</t>
+  <h>The GDP was a disappointing report.</h>
+</pair>
+<pair id='816' value='TRUE' task='CD'>
+  <t>Israel plans to increase the share of gas in its energy balance to 25 percent by 2025 from the current 1 percent.</t>
+  <h>Currently the share of natural gas in Israel's energy system amounts to no more than one percent.</h>
+</pair>
+<pair id='2115' value='FALSE' task='CD'>
+  <t>A senior al-Qaeda operative who was said to be planning an attack on Heathrow Airport has been arrested.</t>
+  <h>Despite rumors, the British Home Office denied any specific threat had been made to target Heathrow airport.</h>
+</pair>
+<pair id='2178' value='FALSE' task='CD'>
+  <t>For women who are HIV negative or who do not know their HIV status, breastfeeding should be protected, promoted and supported for six months.</t>
+  <h>For HIV-positive mothers, the decision about whether or not to breastfeed a child can be difficult.</h>
+</pair>
+<pair id='2191' value='TRUE' task='CD'>
+  <t>Saudi Arabia was boosting its production.</t>
+  <h>Saudi Arabia was boosting its own production.</h>
+</pair>
+<pair id='699' value='TRUE' task='CD'>
+  <t>The city's motto is Contemnit procellas, which means, "It defies the storms."</t>
+  <h>The city's motto is, appropriately, "Contemnit procellas" ("It defies the storms").</h>
+</pair>
+<pair id='2170' value='FALSE' task='CD'>
+  <t>Hacking reported his wife missing on July 19, a Monday.</t>
+  <h>Mark Hacking was booked into the Salt Lake County Jail on Monday.</h>
+</pair>
+<pair id='2164' value='FALSE' task='CD'>
+  <t>With $549 million in cash as of June 30, Google can easily afford to make amends.</t>
+  <h>Some 30 million shares have been assigned to the company's workers.</h>
+</pair>
+<pair id='750' value='TRUE' task='CD'>
+  <t>At the southeastern tip of the city, Xochimilco, another small town subsumed by the city, is a popular tourist destination because of its chinampas, or "floating gardens," boats made out of reeds on which the Indians have grown plants since pre-Columbian times.</t>
+  <h>Xochimilco is a popular tourist attraction because of its chinampas, or floating gardens.</h>
+</pair>
+<pair id='2165' value='FALSE' task='CD'>
+  <t>Google Inc. is delaying its IPO by a week because of logistical problems related to institutional investors registering to bid on the shares.</t>
+  <h>A delay for Google's IPO would push the deal later into a month that is traditionally light on IPO volume.</h>
+</pair>
+<pair id='2160' value='FALSE' task='CD'>
+  <t>Prosecutors were still expected to unseal an 11-count manslaughter indictment against the ferry's captain, Michael Gansas.</t>
+  <h>Gansas' attorneys have said that rule was not communicated to ferry staff.</h>
+</pair>
+<pair id='1953' value='FALSE' task='CD'>
+  <t>The latest attacks targeted the U-S embassy and a top prosecutor's office in the Uzbek capital.</t>
+  <h>Yesterday's terrorist bombings killed two people at the entrance to the Israeli Embassy in Uzbekistan's capital.</h>
+</pair>
+<pair id='2116' value='FALSE' task='CD'>
+  <t>Abu Musa al-Hindi was arrested following a tip-off from Pakistani Intelligence who claimed that he was receiving direct orders from Osama bin Laden.</t>
+  <h>The possibility of an attack began with the arrest of Naeem Noor Khan.</h>
+</pair>
+<pair id='735' value='TRUE' task='CD'>
+  <t>Even more than other economic activities, Mexico's financial services are concentrated in the capital.</t>
+  <h>Industry, retail stores, finance, and communications are all centered in the capital.</h>
+</pair>
+<pair id='2172' value='FALSE' task='CD'>
+  <t>Benjamin Vanderford, 22, said he posted the 55-second clip, which shows a knife sawing against his neck, on an online file-sharing network in May.</t>
+  <h>Mr Vanderford said he filmed his own mock execution in a friend's garage to show how the media could be fooled.</h>
+</pair>
+<pair id='802' value='TRUE' task='CD'>
+  <t>Reagan was seriously wounded by a bullet fired by John Hinckley Jr. in an attempted assassination on March 30, 1981.</t>
+  <h>Reagan almost died on March 30, 1981, when would-be assassin John W. Hinckley Jr. shot him.</h>
+</pair>
+<pair id='827' value='TRUE' task='CD'>
+  <t>Jennifer Hawkins is the 21-year-old beauty queen from Australia.</t>
+  <h>Jennifer Hawkins is Australia's 21-year-old beauty queen.</h>
+</pair>
+</entailment-corpus>

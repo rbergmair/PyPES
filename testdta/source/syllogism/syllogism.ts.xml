@@ -1,0 +1,396 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE testsuite SYSTEM "file:///home/rb432/workspace/rte/dtd/testsuite.dtd">
+
+<testsuite id="1" name="syllogism">
+
+  <testcase id="1.1" name="Barbara">
+    <proposition id="1.1.1">
+      All men are mortal.
+    </proposition>
+    <proposition id="1.1.2">
+      Socrates is a man.
+    </proposition>
+    <proposition id="1.1.3">
+      Socrates is mortal.
+    </proposition>
+    <valid id="1.1.a">
+      <theory> <ref src="1.1.1"/> <ref src="1.1.2"/> </theory>
+      <conclusion> <ref src="1.1.3"/> </conclusion>
+    </valid>
+  </testcase>
+
+  <testcase id="1.2" name="Celarent">
+    <proposition id="1.2.1">
+      No reptiles have fur.
+    </proposition>
+    <proposition id="1.2.2">
+      All snakes are reptiles.
+    </proposition>
+    <proposition id="1.2.3">
+      No snakes have fur.
+    </proposition>
+    <valid id="1.2.a">
+      <theory> <ref src="1.2.1"/> <ref src="1.2.2"/> </theory>
+      <conclusion> <ref src="1.2.3"/> </conclusion>
+    </valid>
+  </testcase>
+
+  <testcase id="1.3" name="Darii">
+    <proposition id="1.3.1">
+      All kittens are playful.
+    </proposition>
+    <proposition id="1.3.2">
+      Some pets are kittens.
+    </proposition>
+    <proposition id="1.3.3">
+      Some pets are playful.
+    </proposition>
+    <valid id="1.3.a">
+      <theory> <ref src="1.3.1"/> <ref src="1.3.2"/> </theory>
+      <conclusion> <ref src="1.3.3"/> </conclusion>
+    </valid>
+  </testcase>
+
+  <testcase id="1.4" name="Ferio">
+    <proposition id="1.4.1">
+      No homework is fun.
+    </proposition>
+    <proposition id="1.4.2">
+      Some reading is homework.
+    </proposition>
+    <proposition id="1.4.3">
+      Some reading is not fun.
+    </proposition>
+    <valid id="1.4.a">
+      <theory> <ref src="1.4.1"/> <ref src="1.4.2"/> </theory>
+      <conclusion> <ref src="1.4.3"/> </conclusion>
+    </valid>
+  </testcase>
+
+  <testcase id="1.5" name="Cesare">
+    <proposition id="1.5.1">
+      No healthful food is fattening.
+    </proposition>
+    <proposition id="1.5.2">
+      All cakes are fattening.
+    </proposition>
+    <proposition id="1.5.3">
+      No cakes are healthful.
+    </proposition>
+    <valid id="1.5.a">
+      <theory> <ref src="1.5.1"/> <ref src="1.5.2"/> </theory>
+      <conclusion> <ref src="1.5.3"/> </conclusion>
+    </valid>
+  </testcase>
+
+  <testcase id="1.6" name="Camestres">
+    <proposition id="1.6.1">
+      All horses have hooves.
+    </proposition>
+    <proposition id="1.6.2">
+      No humans have hooves.
+    </proposition>
+    <proposition id="1.6.3">
+      No humans are horses.
+    </proposition>
+    <valid id="1.6.a">
+      <theory> <ref src="1.6.1"/> <ref src="1.6.2"/> </theory>
+      <conclusion> <ref src="1.6.3"/> </conclusion>
+    </valid>
+  </testcase>
+
+  <testcase id="1.7" name="Festino">
+    <proposition id="1.7.1">
+      No lazy people pass exams.
+    </proposition>
+    <proposition id="1.7.2">
+      Some students pass exams.
+    </proposition>
+    <proposition id="1.7.3">
+      Some students are not lazy.
+    </proposition>
+    <valid id="1.7.a">
+      <theory> <ref src="1.7.1"/> <ref src="1.7.2"/> </theory>
+      <conclusion> <ref src="1.7.3"/> </conclusion>
+    </valid>
+  </testcase>
+
+  <testcase id="1.8" name="Baroco">
+    <proposition id="1.8.1">
+      All informative things are useful.
+    </proposition>
+    <proposition id="1.8.2">
+      Some websites are not useful.
+    </proposition>
+    <proposition id="1.8.3">
+      Some websites are not informative.
+    </proposition>
+    <valid id="1.8.a">
+      <theory> <ref src="1.8.1"/> <ref src="1.8.2"/> </theory>
+      <conclusion> <ref src="1.8.3"/> </conclusion>
+    </valid>
+  </testcase>
+
+  <testcase id="1.9" name="Darapti (ex. fal.)">
+    <proposition id="1.9.1">
+      All fruit is nutritious.
+    </proposition>
+    <proposition id="1.9.2">
+      All fruit is tasty.
+    </proposition>
+    <proposition id="1.9.3">
+      Some tasty things are nutritious.
+    </proposition>
+    <valid id="1.9.a">
+      <theory> <ref src="1.9.1"/> <ref src="1.9.2"/> </theory>
+      <conclusion> <ref src="1.9.3"/> </conclusion>
+    </valid>
+  </testcase>
+
+  <testcase id="1.10" name="Disamis">
+    <proposition id="1.10.1">
+      Some mugs are beautiful.
+    </proposition>
+    <proposition id="1.10.2">
+      All mugs are useful.
+    </proposition>
+    <proposition id="1.10.3">
+      Some useful things are beautiful.
+    </proposition>
+    <valid id="1.10.a">
+      <theory> <ref src="1.10.1"/> <ref src="1.10.2"/> </theory>
+      <conclusion> <ref src="1.10.3"/> </conclusion>
+    </valid>
+  </testcase>
+
+  <testcase id="1.11" name="Datisi">
+    <proposition id="1.11.1">
+      All the industrious boys have red hair.
+    </proposition>
+    <proposition id="1.11.2">
+      Some of the industrious boys are boarders.
+    </proposition>
+    <proposition id="1.11.3">
+      Some boarders have red hair.
+    </proposition>
+    <valid id="1.11.a">
+      <theory> <ref src="1.11.1"/> <ref src="1.11.2"/> </theory>
+      <conclusion> <ref src="1.11.3"/> </conclusion>
+    </valid>
+  </testcase>
+
+  <testcase id="1.12" name="Felapton (ex. fal.)">
+    <proposition id="1.12.1">
+      No jug is new.
+    </proposition>
+    <proposition id="1.12.2">
+      All jugs are cracked.
+    </proposition>
+    <proposition id="1.12.3">
+      Some of the cracked items are not new.
+    </proposition>
+    <valid id="1.12.a">
+      <theory> <ref src="1.12.1"/> <ref src="1.12.2"/> </theory>
+      <conclusion> <ref src="1.12.3"/> </conclusion>
+    </valid>
+  </testcase>
+
+  <testcase id="1.13" name="Bocardo">
+    <proposition id="1.13.1">
+      Some cats have no tails.
+    </proposition>
+    <proposition id="1.13.2">
+      All cats are mammals.
+    </proposition>
+    <proposition id="1.13.3">
+      Some mammals have no tails.
+    </proposition>
+    <valid id="1.13.a">
+      <theory> <ref src="1.13.1"/> <ref src="1.13.2"/> </theory>
+      <conclusion> <ref src="1.13.3"/> </conclusion>
+    </valid>
+  </testcase>
+
+  <testcase id="1.14" name="Ferison">
+    <proposition id="1.14.1">
+      No tree is edible.
+    </proposition>
+    <proposition id="1.14.2">
+      Some trees are green.
+    </proposition>
+    <proposition id="1.14.3">
+      Some green things are not edible.
+    </proposition>
+    <valid id="1.14.a">
+      <theory> <ref src="1.14.1"/> <ref src="1.14.2"/> </theory>
+      <conclusion> <ref src="1.14.3"/> </conclusion>
+    </valid>
+  </testcase>
+
+  <testcase id="1.15" name="Bramantip (ex. fal.)">
+    <proposition id="1.15.1">
+      All apples are ripe.
+    </proposition>
+    <proposition id="1.15.2">
+      All ripe things are tasty.
+    </proposition>
+    <proposition id="1.15.3">
+      Some tasty things are apples.
+    </proposition>
+    <valid id="1.15.a">
+      <theory> <ref src="1.15.1"/> <ref src="1.15.2"/> </theory>
+      <conclusion> <ref src="1.15.3"/> </conclusion>
+    </valid>
+  </testcase>
+
+  <testcase id="1.16" name="Camenes">
+    <proposition id="1.16.1">
+      All flowers are beautiful.
+    </proposition>
+    <proposition id="1.16.2">
+      No beautiful things are ugly.
+    </proposition>
+    <proposition id="1.16.3">
+      No ugly things are flowers.
+    </proposition>
+    <valid id="1.16.a">
+      <theory> <ref src="1.16.1"/> <ref src="1.16.2"/> </theory>
+      <conclusion> <ref src="1.16.3"/> </conclusion>
+    </valid>
+  </testcase>
+
+  <testcase id="1.17" name="Dimaris">
+    <proposition id="1.17.1">
+      Some birds are loud.
+    </proposition>
+    <proposition id="1.17.2">
+      All loud things are annoying.
+    </proposition>
+    <proposition id="1.17.3">
+      Some annoying things are birds.
+    </proposition>
+    <valid id="1.17.a">
+      <theory> <ref src="1.17.1"/> <ref src="1.17.2"/> </theory>
+      <conclusion> <ref src="1.17.3"/> </conclusion>
+    </valid>
+  </testcase>
+
+  <testcase id="1.18" name="Fesapo (ex. fal.)">
+    <proposition id="1.18.1">
+      No humans are perfect.
+    </proposition>
+    <proposition id="1.18.2">
+      All perfect things are mythical.
+    </proposition>
+    <proposition id="1.18.3">
+      Some mythical things are not human.
+    </proposition>
+    <valid id="1.18.a">
+      <theory> <ref src="1.18.1"/> <ref src="1.18.2"/> </theory>
+      <conclusion> <ref src="1.18.3"/> </conclusion>
+    </valid>
+  </testcase>
+
+  <testcase id="1.19" name="Fresison">
+    <proposition id="1.19.1">
+      No competent people are idiots.
+    </proposition>
+    <proposition id="1.19.2">
+      Some idiots are employees.
+    </proposition>
+    <proposition id="1.19.3">
+      Some employees are not competent people.
+    </proposition>
+    <valid id="1.19.a">
+      <theory> <ref src="1.19.1"/> <ref src="1.19.2"/> </theory>
+      <conclusion> <ref src="1.19.3"/> </conclusion>
+    </valid>
+  </testcase>
+  
+  
+  
+  <!-- FALLACIES -->
+
+
+
+  <testcase id="1.20" name="fallacy: affirmative conclusion from a negative premise">
+    <proposition id="1.20.1">
+      No fish are dogs.
+    </proposition>
+    <proposition id="1.20.2">
+      No dogs can fly.
+    </proposition>
+    <proposition id="1.20.3">
+      All fish can fly.
+    </proposition>
+    <nonvalid id="1.20.a">
+      <theory> <ref src="1.20.1"/> <ref src="1.20.2"/> </theory>
+      <conclusion> <ref src="1.20.3"/> </conclusion>
+    </nonvalid>
+  </testcase>
+
+  <testcase id="1.21" name="fallacy: exclusive premises">
+    <proposition id="1.21.1">
+      No mammals are fish.
+    </proposition>
+    <proposition id="1.21.2">
+      Some fish are not whales.
+    </proposition>
+    <proposition id="1.21.3">
+      Some whales are not mammals.
+    </proposition>
+    <nonvalid id="1.21.a">
+      <theory> <ref src="1.21.1"/> <ref src="1.21.2"/> </theory>
+      <conclusion> <ref src="1.21.3"/> </conclusion>
+    </nonvalid>
+  </testcase>
+
+  <testcase id="1.22" name="fallacy: undistributed middle">
+    <proposition id="1.22.1">
+      All students carry backpacks.
+    </proposition>
+    <proposition id="1.22.2">
+      My grandfather carries a backpack.
+    </proposition>
+    <proposition id="1.22.3">
+      My grandfather is a student.
+    </proposition>
+    <nonvalid id="1.22.a">
+      <theory> <ref src="1.22.1"/> <ref src="1.22.2"/> </theory>
+      <conclusion> <ref src="1.22.3"/> </conclusion>
+    </nonvalid>
+  </testcase>
+
+  <testcase id="1.23" name="fallacy: illicit major">
+    <proposition id="1.23.1">
+      All dogs are mammals.
+    </proposition>
+    <proposition id="1.23.2">
+      No cats are dogs.
+    </proposition>
+    <proposition id="1.23.3">
+      No cats are mammals.
+    </proposition>
+    <nonvalid id="1.23.a">
+      <theory> <ref src="1.23.1"/> <ref src="1.23.2"/> </theory>
+      <conclusion> <ref src="1.23.3"/> </conclusion>
+    </nonvalid>
+  </testcase>
+
+  <testcase id="1.24" name="fallacy: illicit minor">
+    <proposition id="1.24.1">
+      All cats are felines.
+    </proposition>
+    <proposition id="1.24.2">
+      All cats are mammals.
+    </proposition>
+    <proposition id="1.24.3">
+      All mammals are felines.
+    </proposition>
+    <nonvalid id="1.24.a">
+      <theory> <ref src="1.24.1"/> <ref src="1.24.2"/> </theory>
+      <conclusion> <ref src="1.24.3"/> </conclusion>
+    </nonvalid>
+  </testcase>
+
+</testsuite>

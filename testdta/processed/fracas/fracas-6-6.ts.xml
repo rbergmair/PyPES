@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE testsuite SYSTEM "file:///home/rb432/workspace/rte/dtd/testsuite.dtd">
+
+<testsuite id="6.6" name="comparatives and quantifiers">
+
+<testcase id="3.246">
+  <proposition id="3.246.1">
+    <rmrsbankitem id="213">The PC-6082 is faster than every ITEL computer.</rmrsbankitem>
+  </proposition>
+  <proposition id="3.246.2">
+    <rmrsbankitem id="101">The ITEL-ZX is an ITEL computer.</rmrsbankitem>
+  </proposition>
+  <proposition id="3.246.3">
+    <rmrsbankitem id="166">Is the PC-6082 faster than the ITEL-ZX?</rmrsbankitem>
+  </proposition>
+  <valid id="3.246.a">
+    <theory> <ref src="3.246.1"/> <ref src="3.246.2"/> </theory>
+    <conclusion> <ref src="3.246.3"/> </conclusion>
+  </valid>
+</testcase>
+
+<testcase id="3.247">
+  <proposition id="3.247.1">
+    <rmrsbankitem id="214">The PC-6082 is faster than some ITEL computer.</rmrsbankitem>
+  </proposition>
+  <proposition id="3.247.2">
+    <rmrsbankitem id="101">The ITEL-ZX is an ITEL computer.</rmrsbankitem>
+  </proposition>
+  <proposition id="3.247.3">
+    <rmrsbankitem id="166">Is the PC-6082 faster than the ITEL-ZX?</rmrsbankitem>
+  </proposition>
+  <nonvalid id="3.246.a">
+    <theory> <ref src="3.247.1"/> <ref src="3.247.2"/> </theory>
+    <conclusion> <ref src="3.247.3"/> </conclusion>
+  </nonvalid>
+  <nonvalid id="3.246.b">
+    <theory> <ref src="3.247.1"/> <ref src="3.247.2"/> </theory>
+    <conclusion> <negation> <ref src="3.247.3"/> </negation> </conclusion>
+  </nonvalid>
+</testcase>
+
+<testcase id="3.248">
+  <proposition id="3.248.1">
+    <rmrsbankitem id="215">The PC-6082 is faster than any ITEL computer.</rmrsbankitem>
+  </proposition>
+  <proposition id="3.248.2">
+    <rmrsbankitem id="101">The ITEL-ZX is an ITEL computer.</rmrsbankitem>
+  </proposition>
+  <proposition id="3.248.3">
+    <rmrsbankitem id="166">Is the PC-6082 faster than the ITEL-ZX?</rmrsbankitem>
+  </proposition>
+  <valid id="3.248.a">
+    <theory> <ref src="3.248.1"/> <ref src="3.248.2"/> </theory>
+    <conclusion> <ref src="3.248.3"/> </conclusion>
+  </valid>
+</testcase>
+
+<testcase id="3.249">
+  <proposition id="3.249.1">
+    <rmrsbankitem id="275">The PC-6082 is faster than the ITEL-ZX and the ITEL-ZY.</rmrsbankitem>
+  </proposition>
+  <proposition id="3.249.2">
+    <rmrsbankitem id="166">Is the PC-6082 faster than the ITEL-ZX?</rmrsbankitem>
+  </proposition>
+  <valid id="3.249.a">
+    <theory> <ref src="3.249.1"/> </theory>
+    <conclusion> <ref src="3.249.2"/> </conclusion>
+  </valid>
+</testcase>
+
+<testcase id="3.250">
+  <proposition id="3.250.1">
+    <rmrsbankitem id="276">The PC-6082 is faster than the ITEL-ZX or the ITEL-ZY.</rmrsbankitem>
+  </proposition>
+  <proposition id="3.250.2">
+    <rmrsbankitem id="166">Is the PC-6082 faster than the ITEL-ZX?</rmrsbankitem>
+  </proposition>
+  <valid id="3.250.a">
+    <theory> <ref src="3.250.1"/> </theory>
+    <conclusion> <ref src="3.250.2"/> </conclusion>
+  </valid>
+</testcase>
+
+</testsuite>

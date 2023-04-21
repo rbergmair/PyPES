@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE testsuite SYSTEM "file:///home/rb432/workspace/rte/dtd/testsuite.dtd">
+
+<testsuite id="2" name="plurals">
+  <testsuiteref src="fracas-2-1.ts.xml"/>
+  <testsuiteref src="fracas-2-2.ts.xml"/>
+  <testsuiteref src="fracas-2-3.ts.xml"/>
+  <testsuiteref src="fracas-2-4.ts.xml"/>
+  <testsuiteref src="fracas-2-5.ts.xml"/>
+  <testsuiteref src="fracas-2-6.ts.xml"/>
+</testsuite>

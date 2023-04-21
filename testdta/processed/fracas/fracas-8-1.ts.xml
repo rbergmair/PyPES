@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE testsuite SYSTEM "file:///home/rb432/workspace/rte/dtd/testsuite.dtd">
+
+<testsuite id="8.1" name="aspectual classes">
+
+<testcase id="3.326">
+  <proposition id="3.326.1">
+    <rmrsbankitem id="63">ITEL built MTALK in 1993.</rmrsbankitem>
+  </proposition>
+  <proposition id="3.326.2">
+    <rmrsbankitem id="102">Did ITEL finish MTALK in 1993?</rmrsbankitem>
+  </proposition>
+  <valid id="3.326.a">
+    <theory> <ref src="3.326.1"/> </theory>
+    <conclusion> <ref src="3.326.2"/> </conclusion>
+  </valid>
+</testcase>
+
+<testcase id="3.327">
+  <proposition id="3.327.1">
+    <rmrsbankitem id="103">ITEL was building MTALK in 1993.</rmrsbankitem>
+  </proposition>
+  <proposition id="3.327.2">
+    <rmrsbankitem id="102">Did ITEL finish MTALK in 1993?</rmrsbankitem>
+  </proposition>
+  <nonvalid id="3.327.a">
+    <theory> <ref src="3.327.1"/> </theory>
+    <conclusion> <ref src="3.327.2"/> </conclusion>
+  </nonvalid>
+  <nonvalid id="3.327.b">
+    <theory> <ref src="3.327.1"/> </theory>
+    <conclusion> <negation> <ref src="3.327.2"/> </negation> </conclusion>
+  </nonvalid>
+</testcase>
+
+<testcase id="3.328">
+  <proposition id="3.328.1">
+    <rmrsbankitem id="216">ITEL won the contract from APCOM in 1993.</rmrsbankitem>
+  </proposition>
+  <proposition id="3.328.2">
+    <rmrsbankitem id="168">Did ITEL win a contract in 1993?</rmrsbankitem>
+  </proposition>
+  <valid id="3.328.a">
+    <theory> <ref src="3.328.1"/> </theory>
+    <conclusion> <ref src="3.328.2"/> </conclusion>
+  </valid>
+</testcase>
+
+<testcase id="3.329">
+  <proposition id="3.329.1">
+    <rmrsbankitem id="246">ITEL was winning the contract from APCOM in 1993.</rmrsbankitem>
+  </proposition>
+  <proposition id="3.329.2">
+    <rmrsbankitem id="168">Did ITEL win a contract in 1993?</rmrsbankitem>
+  </proposition>
+  <nonvalid id="3.329.a">
+    <theory> <ref src="3.329.1"/> </theory>
+    <conclusion> <ref src="3.329.2"/> </conclusion>
+  </nonvalid>
+  <nonvalid id="3.329.b">
+    <theory> <ref src="3.329.1"/> </theory>
+    <conclusion> <negation> <ref src="3.329.2"/> </negation> </conclusion>
+  </nonvalid>
+</testcase>
+
+<testcase id="3.330">
+  <proposition id="3.330.1">
+    <rmrsbankitem id="169">ITEL owned APCOM from 1988 to 1992.</rmrsbankitem>
+  </proposition>
+  <proposition id="3.330.2">
+    <rmrsbankitem id="104">Did ITEL own APCOM in 1990?</rmrsbankitem>
+  </proposition>
+  <valid id="3.330.a">
+    <theory> <ref src="3.330.1"/> </theory>
+    <conclusion> <ref src="3.330.2"/> </conclusion>
+  </valid>
+</testcase>
+
+</testsuite>

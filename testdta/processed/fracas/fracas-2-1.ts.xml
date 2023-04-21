@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE testsuite SYSTEM "file:///home/rb432/workspace/rte/dtd/testsuite.dtd">
+
+<testsuite id="2.1" name="conjoined noun phrases">
+
+<testcase id="3.81">
+  <proposition id="3.81.1">
+    <rmrsbankitem id="144">Smith, Jones and Anderson signed the contract.</rmrsbankitem>
+  </proposition>
+  <proposition id="3.81.2">
+    <rmrsbankitem id="32">Did Jones sign the contract?</rmrsbankitem>
+  </proposition>
+  <valid id="3.81.a">
+    <theory> <ref src="3.81.1"/> </theory>
+    <conclusion> <ref src="3.81.2"/> </conclusion>
+  </valid>
+</testcase>
+
+<testcase id="3.82">
+  <proposition id="3.82.1">
+    <rmrsbankitem id="199">Smith, Jones and several lawyers signed the contract.</rmrsbankitem>
+  </proposition>
+  <proposition id="3.82.2">
+    <rmrsbankitem id="32">Did Jones sign the contract?</rmrsbankitem>
+  </proposition>
+  <valid id="3.82.a">
+    <theory> <ref src="3.82.1"/> </theory>
+    <conclusion> <ref src="3.82.2"/> </conclusion>
+  </valid>
+</testcase>
+
+<testcase id="3.83">
+  <proposition id="3.83.1">
+    <rmrsbankitem id="200">Either Smith, Jones or Anderson signed the contract.</rmrsbankitem>
+  </proposition>
+  <proposition id="3.83.2">
+    <rmrsbankitem id="32">Did Jones sign the contract?</rmrsbankitem>
+  </proposition>
+  <nonvalid id="3.83.a">
+    <theory> <ref src="3.83.1"/> </theory>
+    <conclusion> <ref src="3.83.2"/> </conclusion>
+  </nonvalid>
+  <nonvalid id="3.83.b">
+    <theory> <ref src="3.83.1"/> </theory>
+    <conclusion> <negation> <ref src="3.83.2"/> </negation> </conclusion>
+  </nonvalid>
+</testcase>
+
+<testcase id="3.84">
+  <proposition id="3.84.1">
+    <rmrsbankitem id="200">Either Smith, Jones or Anderson signed the contract.</rmrsbankitem>
+  </proposition>
+  <proposition id="3.84.2">
+    <rmrsbankitem id="321">If Smith and Anderson did not sign the contract, did Jones sign the contract?</rmrsbankitem>
+  </proposition>
+  <valid id="3.84.a">
+    <theory> <ref src="3.84.1"/> </theory>
+    <conclusion> <ref src="3.84.2"/> </conclusion>
+  </valid>
+</testcase>
+
+<testcase id="3.85">
+  <proposition id="3.85.1">
+    <rmrsbankitem id="242">Exactly two lawyers and three accountants signed the contract.</rmrsbankitem>
+  </proposition>
+  <proposition id="3.85.2">
+    <rmrsbankitem id="82">Did six lawyers sign the contract?</rmrsbankitem>
+  </proposition>
+  <valid id="3.85.a">
+    <theory> <ref src="3.85.1"/> </theory>
+    <conclusion> <negation> <ref src="3.85.2"/> </negation> </conclusion>
+  </valid>
+</testcase>
+
+<testcase id="3.86">
+  <proposition id="3.86.1">
+    <rmrsbankitem id="242">Exactly two lawyers and three accountants signed the contract.</rmrsbankitem>
+  </proposition>
+  <proposition id="3.86.2">
+    <rmrsbankitem id="83">Did six accountants sign the contract?</rmrsbankitem>
+  </proposition>
+  <valid id="3.86.a">
+    <theory> <ref src="3.86.1"/> </theory>
+    <conclusion> <negation> <ref src="3.86.2"/> </negation> </conclusion>
+  </valid>
+</testcase>
+
+<testcase id="3.87">
+  <proposition id="3.87.1">
+    <rmrsbankitem id="201">Every representative and client was at the meeting.</rmrsbankitem>
+  </proposition>
+  <proposition id="3.87.2">
+    <rmrsbankitem id="84">Was every representative at the meeting?</rmrsbankitem>
+  </proposition>
+  <valid id="3.87.a">
+    <theory> <ref src="3.87.1"/> </theory>
+    <conclusion> <ref src="3.87.2"/> </conclusion>
+  </valid>
+</testcase>
+
+<testcase id="3.88">
+  <proposition id="3.88.1">
+    <rmrsbankitem id="201">Every representative and client was at the meeting.</rmrsbankitem>
+  </proposition>
+  <proposition id="3.88.2">
+    <rmrsbankitem id="84">Was every representative at the meeting?</rmrsbankitem>
+  </proposition>
+  <nonvalid id="3.88.a">
+    <theory> <ref src="3.88.1"/> </theory>
+    <conclusion> <ref src="3.88.2"/> </conclusion>
+  </nonvalid>
+  <nonvalid id="3.88.b">
+    <theory> <ref src="3.88.1"/> </theory>
+    <conclusion> <negation> <ref src="3.88.2"/> </negation> </conclusion>
+  </nonvalid>
+</testcase>
+
+<testcase id="3.89">
+  <proposition id="3.89.1">
+    <rmrsbankitem id="202">Every representative or client was at the meeting.</rmrsbankitem>
+  </proposition>
+  <!-- Was every representative and every client at the meeting? -->
+  <proposition id="3.89.2">
+    <rmrsbankitem id="243">Were every representative and every client at the meeting?</rmrsbankitem>
+  </proposition>
+  <valid id="3.89.a">
+    <theory> <ref src="3.89.1"/> </theory>
+    <conclusion> <ref src="3.89.2"/> </conclusion>
+  </valid>
+</testcase>
+
+</testsuite>

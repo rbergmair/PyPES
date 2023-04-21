@@ -1,0 +1,363 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<entailment-corpus>
+<pair id='561' value='TRUE' task='QA'>
+  <t>The incident in Mogadishu, the Somali capital, came as U.S. forces began the final phase of their promised March 31 pullout.</t>
+  <h>The capital of Somalia is Mogadishu.</h>
+</pair>
+<pair id='562' value='TRUE' task='QA'>
+  <t>The two attacks last week by the Islamic Resistance Movement, as Hamas is formally known, dramatized for both Israelis and Palestinians the dangers they face in pursuing peaceful coexistence.</t>
+  <h>The Islamic Resistance Movement is also known as Hamas.</h>
+</pair>
+<pair id='563' value='FALSE' task='QA'>
+  <t>But most Israelis, including those sympathetic to the settlers' efforts to reclaim all the territory that was part of the biblical Land of Israel, reacted with horror to the Hebron killings and the subsequent violence.</t>
+  <h>Hebron is located 20 miles south of Jerusalem.</h>
+</pair>
+<pair id='564' value='FALSE' task='QA'>
+  <t>The Republic of Tajikistan, which declared independence from the Soviet Union in 1991, is in a region that has changed hands many times.</t>
+  <h>The Soviet Union collapsed in 1991.</h>
+</pair>
+<pair id='565' value='TRUE' task='QA'>
+  <t>Soprano's Square: Milan, Italy, home of the famed La Scala opera house, honored soprano Maria Callas on Wednesday when it renamed a new square after the diva.</t>
+  <h>La Scala opera house is located in Milan, Italy.</h>
+</pair>
+<pair id='566' value='FALSE' task='QA'>
+  <t>"I just hope I don't become so blissful I become boring." - *Nirvana leader Kurt Cobain, giving meaning to his "Teen Spirit" coda "a denial".</t>
+  <h>"Smells Like Teen Spirit" is a song by Nirvana.</h>
+</pair>
+<pair id='567' value='TRUE' task='QA'>
+  <t>Prime Minister Silvio Berlusconi was elected March 28 with a mandate to reform Italy's business regulations and pull the economy out of recession.</t>
+  <h>The Italian Prime Minister is Silvio Berlusconi.</h>
+</pair>
+<pair id='568' value='TRUE' task='QA'>
+  <t>Norway's most famous painting, "The Scream" by Edvard Munch, was recovered Saturday, almost three months after it was stolen from an Oslo museum.</t>
+  <h>Edvard Munch painted "The Scream".</h>
+</pair>
+<pair id='569' value='TRUE' task='QA'>
+  <t>Government forces killed the head of the Armed Islamic Group, or GIA, which has claimed responsibility for killing 61 foreigners in the last year.</t>
+  <h>The abbreviation GIA stands for Armed Islamic Group.</h>
+</pair>
+<pair id='570' value='TRUE' task='QA'>
+  <t>"I guess you have to expect this in a growing community," said Mardelle Kean, who lives across the street from John Joseph Famalaro, charged in the death of Denise A. Huber, who was 23 when she disappeared in 1991.</t>
+  <h>John J. Famalaro is accused of having killed Denise A. Huber.</h>
+</pair>
+<pair id='571' value='FALSE' task='QA'>
+  <t>In the very same room in fall, 1992, George Bush prepped to debate Clinton and Ross Perot in practice sessions with Chief of Staff John H. Sununu.</t>
+  <h>Ross Perot ran for president in 1992.</h>
+</pair>
+<pair id='572' value='FALSE' task='QA'>
+  <t>Camacho is a Mexican version of Japan's Morihiro Hosokawa - a pragmatic tactician using a crisis and the attendant outcry for reform to further his political standing.</t>
+  <h>The Japanese Prime Minister is Morihiro Hosokawa.</h>
+</pair>
+<pair id='573' value='TRUE' task='QA'>
+  <t>A farmer who was in contact with cows suffering from BSE - the so-called mad cow disease - has died from what is regarded as the human form of the disease.</t>
+  <h>Bovine spongiform encephalopathy is another name for the "mad cow disease".</h>
+</pair>
+<pair id='574' value='TRUE' task='QA'>
+  <t>Doctors who treated Ayrton Senna after he crashed during the San Marino Grand Prix have denied allegations that the Brazilian driver died at the Imola track.</t>
+  <h>Ayrton Senna had the accident that caused his death at the San Marino Grand Prix.</h>
+</pair>
+<pair id='575' value='TRUE' task='QA'>
+  <t>The black Muslim activist said that he had relieved Muhammad of his duties "until he demonstrates that he is willing to conform to the manner of representing Allah and the honorable Elijah Muhammad (founder of the Nation of Islam)".</t>
+  <h>Elijah Muhammad founded the Nation of Islam.</h>
+</pair>
+<pair id='577' value='TRUE' task='QA'>
+  <t>Oil prices, notoriously vulnerable to political events, spiked as high as $40 a barrel during the Gulf War in 1991.</t>
+  <h>The Gulf War was fought in 1991.</h>
+</pair>
+<pair id='578' value='TRUE' task='QA'>
+  <t>Easter is over but that doesn't mean you can't enjoy "Ben-Hur," the granddaddy of biblical epics and winner of a record 11 Oscars, including best picture and best actor (Charlton Heston in the title role).</t>
+  <h>Charlton Heston played the title role in the movie "Ben-Hur".</h>
+</pair>
+<pair id='579' value='TRUE' task='QA'>
+  <t>The anti-terrorist court found two men guilty of murdering Shapour Bakhtiar and his secretary Sorush Katibeh, who were found with their throats cut in August 1991.</t>
+  <h>Shapour Bakhtiar died in 1991.</h>
+</pair>
+<pair id='580' value='TRUE' task='QA'>
+  <t>The program will include Falla's "Night in the Gardens of Spain," Ravel's Piano Concerto in G, Berlioz's Overture to "Beatrice and Benedict," and Roy Harris' Symphony No. 3.</t>
+  <h>"Beatrice and Benedict" is an overture by Berlioz.</h>
+</pair>
+<pair id='581' value='TRUE' task='QA'>
+  <t>To the world, M. Larry Lawrence, the new U.S. emissary to Switzerland who hosted President Clinton on his Southern California vacation, will be known as Mr. Ambassador.</t>
+  <h>Larry Lawrence is the head of the U.S. Embassy in Switzerland.</h>
+</pair>
+<pair id='582' value='TRUE' task='QA'>
+  <t>Amid rumors that China's 90-year-old senior leader, Deng Xiaoping, is near death, the visit also comes at a propitious moment to establish relationships with top officials, both military and civilian, who are likely to play a role in the post-Deng succession period as China struggles to find a new leader.</t>
+  <h>Deng Xiaoping is 90 years old.</h>
+</pair>
+<pair id='583' value='FALSE' task='QA'>
+  <t>While civilians ran for cover or fled to the countryside, Russian forces were seen edging their artillery guns closer to Grozny, and Chechen fighters were offering little resistance.</t>
+  <h>Grozny is the capital of Chechnya.</h>
+</pair>
+<pair id='585' value='TRUE' task='QA'>
+  <t>Former tennis star Vitas Gerulaitis died in such fashion in September, from a lethal carbon monoxide buildup related to the faulty installation of a propane heater.</t>
+  <h>Vitas Gerulaitis died of carbon monoxide poisoning.</h>
+</pair>
+<pair id='586' value='TRUE' task='QA'>
+  <t>The two suspects belong to the 30th Street gang, which became embroiled in one of the most notorious recent crimes in Mexico: a shootout at the Guadalajara airport in May, 1993, that killed Cardinal Juan Jesus Posadas Ocampo and six others.</t>
+  <h>Cardinal Juan Jesus Posadas Ocampo died in 1993.</h>
+</pair>
+<pair id='587' value='TRUE' task='QA'>
+  <t>Two midsummer cruises aboard Clipper Adventure Cruises' 140-passenger World Discoverer (July 8 and Aug. 9) will take you to the wind-swept cliffs of the Pribilof Islands in the Bering Sea, where cartoon-faced horned and tufted puffins stare.</t>
+  <h>The Pribilof Islands are located in the Bering Sea.</h>
+</pair>
+<pair id='589' value='TRUE' task='QA'>
+  <t>That prompted Clinton, wife Hillary Rodham Clinton and daughter Chelsea to spend a cold and dreary Saturday in Minsk.</t>
+  <h>Clinton's wife is called Hillary Rodham Clinton.</h>
+</pair>
+<pair id='590' value='TRUE' task='QA'>
+  <t>Judie Vivian, chief executive at ProMedica, a medical service company that helps sustain the 2-year-old Vietnam Heart Institute in Ho Chi Minh City (formerly Saigon), said that so far about 1,500 children have received treatment.</t>
+  <h>The previous name of Ho Chi Minh City was Saigon.</h>
+</pair>
+<pair id='591' value='TRUE' task='QA'>
+  <t>A jury is slated to decide for the first time whether Jack Kevorkian, famed as "Dr. Death," has violated Michigan's assisted-suicide ban, while the state continues to grapple with the issue of what to allow when the ill want to end their pain by ending their lives.</t>
+  <h>Jack Kevorkian is the real name of "Dr. Death".</h>
+</pair>
+<pair id='592' value='TRUE' task='QA'>
+  <t>He endeared himself to artists by helping them in lean years and following their careers, said Henry Hopkins, chairman of UCLA's art department, director of the UCLA/Armand Hammer Museum and Cultural Center and former director of the Weisman foundation.</t>
+  <h>The UCLA/Hammer Museum is directed by Henry Hopkins.</h>
+</pair>
+<pair id='593' value='TRUE' task='QA'>
+  <t>Before the game, Alabama Birmingham Athletic Director and Coach Gene Bartow presented Cal State Northridge with a $5,000 check from Rust International Corp., for earthquake relief.</t>
+  <h>Gene Bartow coaches Alabama Birmingham.</h>
+</pair>
+<pair id='594' value='TRUE' task='QA'>
+  <t>"For the first time in history, the players are investing their own money to ensure the future of the game," Atlanta Brave pitcher Tom Glavine said.</t>
+  <h>Tom Glavine plays for the Atlanta Braves.</h>
+</pair>
+<pair id='601' value='FALSE' task='QA'>
+  <t>Wilson has, after all, produced all three Offspring albums, including "Smash," the one that has astonished everybody by selling 1 million copies in four months, establishing the heretofore unknown group as the leader, with Green Day, of an unprecedented wave of commercial success for punk.</t>
+  <h>"Smash" is the title of the third album of the Offspring.</h>
+</pair>
+<pair id='602' value='FALSE' task='QA'>
+  <t>Historians estimate that 800,000 Chechens were stuffed into rail cars and deported to Kazakhstan and Siberia, and 240,000 of them died en route.</t>
+  <h>Stalin deported 800,000 Chechens.</h>
+</pair>
+<pair id='603' value='FALSE' task='QA'>
+  <t>Germans vote for a party, rather than a person, and the left-of-center Social Democrats do not score as well in polls as Scharping himself.</t>
+  <h>Rudolph Scharping is a member of the Social Democrats.</h>
+</pair>
+<pair id='606' value='FALSE' task='QA'>
+  <t>That film wasn't too successful, but then 'WarGames,' which was successful, came out right when I won the Tony for 'Brighton Beach' in 1983.</t>
+  <h>The film "WarGames" was shot in 1983.</h>
+</pair>
+<pair id='609' value='FALSE' task='QA'>
+  <t>About half were along a 20-mile stretch of Santa Monica Bay from Topanga Canyon Boulevard to the Palos Verdes Peninsula.</t>
+  <h>The coastline of Santa Monica Bay is 50 miles long.</h>
+</pair>
+<pair id='611' value='FALSE' task='QA'>
+  <t>The Chapin Library's main attraction is its collection of Revolutionary-era documents, including a 1776 printed version of the Declaration of Independence.</t>
+  <h>The Declaration of Independence was signed in 1776.</h>
+</pair>
+<pair id='613' value='FALSE' task='QA'>
+  <t>20th Century spokesman Rick Dinon said that between the time it applied for the rate increase and changed its mind, the estimated quake losses had ballooned by several hundred million dollars.</t>
+  <h>Rick Dinon is the senior vice president of 20th Century Insurance Co.</h>
+</pair>
+<pair id='614' value='FALSE' task='QA'>
+  <t>In naming Guillermo Ortiz to be Mexico's finance minister, President Ernesto Zedillo appointed a friend, former colleague and, like himself, a U.S.-trained economist.</t>
+  <h>Guillermo Ortiz was born in Mexico.</h>
+</pair>
+<pair id='616' value='FALSE' task='QA'>
+  <t>This was, after all, Chuck Yeager, a guy with all the right stuff, the biggest top gun of them all, whose post-World War II exploits in the topsy-turvy world of supersonic air travel helped pave the way for space exploration.</t>
+  <h>Chuck Yeager broke the sound barrier in 1947.</h>
+</pair>
+<pair id='619' value='FALSE' task='QA'>
+  <t>Fiat's Gianni Agnelli, owner of Juventus, was quoted by Italian newspapers as saying that when Baggio came off the field after the Mexico game, "He looked like a wet rabbit."</t>
+  <h>Giovanni Agnelli is the president of Fiat.</h>
+</pair>
+<pair id='620' value='FALSE' task='QA'>
+  <t>*PERSPECTIVE ON BOSNIA; *A BALKANS PEACE THAT CANNOT LAST.</t>
+  <h>Bosnia is located in the former Yugoslavia.</h>
+</pair>
+<pair id='623' value='FALSE' task='QA'>
+  <t>Gunmen loyal to Bosnian Serb nationalist leader Radovan Karadzic conquered 70% of Bosnia with their arsenal of tanks, aircraft and howitzers bequeathed by the Yugoslav army.</t>
+  <h>Radovan Karadzic is the leader of Bosnia.</h>
+</pair>
+<pair id='625' value='FALSE' task='QA'>
+  <t>This year, however, the contest has taken on a new urgency as the Clinton Administration, moving to block the Pyongyang government's bid to build a nuclear arsenal, has rekindled some of the passion in North Korea's defiance of the West.</t>
+  <h>Pyongyang is the capital of North Korea.</h>
+</pair>
+<pair id='626' value='FALSE' task='QA'>
+  <t>In Seoul, Han confirmed that all North Korean media on Monday had started referring to Kim Jong Il as "His Excellency" or by the term previously reserved for his father, "the Great Leader." Until now, the younger Kim has been called "the Dear Leader."</t>
+  <h>Kim Il Sung's son is called Kim Jong Il.</h>
+</pair>
+<pair id='627' value='FALSE' task='QA'>
+  <t>Swiss police confirmed Thursday that cult leader Luc Jouret was among the dead found in the Order of the Solar Temple's fire-gutted chalet in the alpine village of Granges-sur-Salvan.</t>
+  <h>Luc Jouret was the leader of the Order of the Solar Temple.</h>
+</pair>
+<pair id='629' value='FALSE' task='QA'>
+  <t>It is an image familiar to many Southern Californians but vividly illustrative in this Egyptian metropolis, where a U.N. conference on global population is trying for the first time to draw clear links between population growth and the environment.</t>
+  <h>The International Conference on Population and Development was held in Cairo.</h>
+</pair>
+<pair id='632' value='FALSE' task='QA'>
+  <t>It rewrites the rules of global trade, established by the General Agreement on Tariffs and Trade, or GATT, in 1947, and modified in multiple rounds of negotiations since then.</t>
+  <h>GATT was formed in 1947.</h>
+</pair>
+<pair id='639' value='FALSE' task='QA'>
+  <t>But the retired teacher comes down on the other side of an emotional debate about whether Estonia, Sweden and Finland should spend the $70 million needed to raise the Estonia and the estimated 800 bodies entombed inside.</t>
+  <h>910 passengers died in the "Estonia" shipwreck.</h>
+</pair>
+<pair id='641' value='FALSE' task='QA'>
+  <t>"Mayday! Here is Estonia! *Outside Uto lighthouse. We have listed 20 to 30 degrees," the Finnish Coast Guard quoted the distress signal.</t>
+  <h>The Estonia sank south of Uto island.</h>
+</pair>
+<pair id='2064' value='FALSE' task='QA'>
+  <t>The Osaka World Trade Center is the tallest building in Western Japan.</t>
+  <h>The Osaka World Trade Center is the tallest building in Japan.</h>
+</pair>
+<pair id='1490' value='TRUE' task='QA'>
+  <t>"It's Only a Play" is Terrence McNally's "Give My Regards to Broadway," a lightweight tribute to the theater as seen from the lofty but limited vantage point of Broadway artists who are consumed by New York's hit/flop mentality.</t>
+  <h>Broadway is in New York.</h>
+</pair>
+<pair id='647' value='TRUE' task='QA'>
+  <t>Macedonian Milcho Manchevski's "Before the Rain" and Taiwanese Tsai Ming-liang's "Aiqing Wansui/Vive L'Amour" shared the Golden Lion award for best film.</t>
+  <h>"Before the Rain" and "Vive L'Amour" won the Golden Lion.</h>
+</pair>
+<pair id='2086' value='FALSE' task='QA'>
+  <t>Jigish Avalani, group manager of Windows DNA marketing at Microsoft, explains that Windows DNA refers to the Windows Distributed interNet Application architecture, launched by Microsoft in fall of 1997.</t>
+  <h>Microsoft was established in fall of 1997.</h>
+</pair>
+<pair id='598' value='TRUE' task='QA'>
+  <t>After the 1979 Soviet invasion and occupation, 3 million Afghans fled to Pakistan, which was encouraged by hefty Western aid to take them in.</t>
+  <h>Afghanistan was invaded by the Soviet Union in 1979.</h>
+</pair>
+<pair id='2067' value='FALSE' task='QA'>
+  <t>Andreessen, who helped define the Internet revolution as part of the team that created the first Internet browser (Mosaic) and his co-founder Netscape, told a packed hall at the San Francisco Marriott hotel Thursday that he is "extremely committed" to his startup Loudcloud.</t>
+  <h>The Internet browser Mosaic was created at the San Francisco Marriott hotel.</h>
+</pair>
+<pair id='2084' value='FALSE' task='QA'>
+  <t>Microsoft Israel was founded in 1989 and became one of the first Microsoft branches outside the USA.</t>
+  <h>Microsoft was established in 1989.</h>
+</pair>
+<pair id='1494' value='TRUE' task='QA'>
+  <t>The demands on Italy's 53rd postwar government are apparent, as are the resentment and uncertainties Berlusconi has roused at the head of a new party with the catchy name Forza Italia (Go, Italy).</t>
+  <h>Silvio Berlusconi is in Forza Italia.</h>
+</pair>
+<pair id='637' value='TRUE' task='QA'>
+  <t>In 1969, more than 500 million people around the world sat in front of television sets, watching grainy images of two men in white bulky spacesuits planting a U.S. flag on the lunar landscape with its black horizon.</t>
+  <h>The Apollo astronauts waved the American flag on the moon in 1969.</h>
+</pair>
+<pair id='600' value='TRUE' task='QA'>
+  <t>Thus began the journey that led Hannam, a 29-year-old free-lance journalist, on an international quest to solve one of the greatest mysteries of Asia: What happened to Lin Piao, the Chinese Communist Party leader accused of a 1971 plot to overthrow Chairman Mao.</t>
+  <h>Lin Piao was the Chinese Communist Party leader.</h>
+</pair>
+<pair id='2065' value='FALSE' task='QA'>
+  <t>The slender tower is the second tallest building in Japan.</t>
+  <h>The slender tower is the tallest building in Japan.</h>
+</pair>
+<pair id='2059' value='FALSE' task='QA'>
+  <t>At eurodisney, "once upon a time" is now in "this magical kingdom" where childhood fantasies and make-believe come to life.</t>
+  <h>EuroDisney is located in this magical kingdom.</h>
+</pair>
+<pair id='1456' value='FALSE' task='QA'>
+  <t>On his oak mantelpiece are a drinking bowl from Lake Turkana and an East African gourd, both of which he bought in Nairobi where he went in the fall of 1993 to visit Kitum Cave, the suspected host site for the Marburg virus, which is closely related to Ebola.</t>
+  <h>The Ebola virus has been found in Zaire.</h>
+</pair>
+<pair id='2046' value='FALSE' task='QA'>
+  <t>Hoover's director reports directly to Stanford's president.</t>
+  <h>Hoover is the president of Stanford University.</h>
+</pair>
+<pair id='628' value='TRUE' task='QA'>
+  <t>The human species may be more than 100,000 years old but the bulk of its numerical growth has come in just the last few decades: 2.6 billion of today's 5.6 billion people have been born since 1960.</t>
+  <h>The world population is 5.6 billion.</h>
+</pair>
+<pair id='2080' value='FALSE' task='QA'>
+  <t>VCU School of the Arts In Qatar is located in Doha, the capital city of Qatar.</t>
+  <h>Qatar is located in Doha.</h>
+</pair>
+<pair id='617' value='TRUE' task='QA'>
+  <t>In 1954, in a gesture of friendship to mark the 300th anniversary of Ukrainian union with Russia, Soviet Premier Nikita Khrushchev gave Crimea to Ukraine.</t>
+  <h>Crimea became part of Ukraine in 1954.</h>
+</pair>
+<pair id='2060' value='FALSE' task='QA'>
+  <t>On this particular trip, Airbus, in cooperation with its partners, organized a trip for 80 children between the ages of 9 and 16 years from nearby National Children's Homes to visit EuroDisney for a day.</t>
+  <h>EuroDisney is located nearby National Children's Homes.</h>
+</pair>
+<pair id='1493' value='TRUE' task='QA'>
+  <t>"We've never had a core (business) thing," founder Richard Branson told Reuters at the launch this month of Virgin Vodka, which, with Virgin cola and Virgin computers, are his latest bright ideas.</t>
+  <h>Richard Branson's cola is called Virgin Cola.</h>
+</pair>
+<pair id='2061' value='FALSE' task='QA'>
+  <t>Although Eurodisney is a great family day out, visit also the chateaux in the area and the various parks and pretty small villages.</t>
+  <h>EuroDisney is located in the various parks.</h>
+</pair>
+<pair id='595' value='TRUE' task='QA'>
+  <t>Brown brushed off a threat made Monday by his counterpart, Foreign Trade Minister Wu Yi, that if China's effort to join the General Agreement on Tariffs and Trade (GATT) by the year's end is unsuccessful, Beijing will no longer be bound by previous trade and economic commitments.</t>
+  <h>Wu Yi is the Foreign Trade Minister of China.</h>
+</pair>
+<pair id='1454' value='TRUE' task='QA'>
+  <t>In fact, Woolsey had had no first-hand experience with the world of spies until President Bill Clinton appointed him Director of Central Intelligence.</t>
+  <h>James Woolsey is the director of the CIA.</h>
+</pair>
+<pair id='622' value='TRUE' task='QA'>
+  <t>Witnesses of genocide attacks on minority Tutsis in Rwanda are being singled out for execution by extremist Hutus in refugee camps in southwest Rwanda, a U.N. spokesman said in Kigali, the capital.</t>
+  <h>The Hutu and Tutsi groups fought in Rwanda.</h>
+</pair>
+<pair id='2089' value='FALSE' task='QA'>
+  <t>Prince Charles was previously married to Princess Diana, who died in a car crash in Paris in August 1997.</t>
+  <h>Prince Charles and Princess Diana got married in August 1997.</h>
+</pair>
+<pair id='1474' value='TRUE' task='QA'>
+  <t>To avoid further price-gouging, Norway's Ministry of Government Administration announced that it was freezing prices on lodging, food and beverages in the Lillehammer area during the Winter Olympics.</t>
+  <h>Norway hosted the Winter Olympic Games.</h>
+</pair>
+<pair id='2057' value='FALSE' task='QA'>
+  <t>The Hotel Moulin de Paris in 2.5km away from Disneyland Paris, and is located in the charming city of Magny-Le-Hongre.</t>
+  <h>EuroDisney is located in the charming city of Magny-Le-Hongre.</h>
+</pair>
+<pair id='1453' value='TRUE' task='QA'>
+  <t>The county Board of Supervisors accepted more than $700,000 in state grants Tuesday to extend a program that provides the controversial drug azidothymidine - AZT - to low-income residents with AIDS or AIDS-related illnesses.</t>
+  <h>AZT is an AIDS treatment.</h>
+</pair>
+<pair id='1486' value='TRUE' task='QA'>
+  <t>Now it's Romania-Argentina at the Rose Bowl today - and with a victory, it's on to the quarterfinals at Stanford, and a victory there and Romania will be back in Pasadena for the semifinals and World Cup final.</t>
+  <h>The World Cup final was held in Pasadena.</h>
+</pair>
+<pair id='2044' value='FALSE' task='QA'>
+  <t>Jacqueline B. Wender is Assistant to the President of Stanford University.</t>
+  <h>Jacqueline B. Wender is the President of Stanford University.</h>
+</pair>
+<pair id='642' value='TRUE' task='QA'>
+  <t>For hundreds of family members holed up in a hotel not far from the Stockholm ferry terminal, where the boat Estonia was to have docked Wednesday morning after an overnight trip from the Estonian capital of Tallinn, the suspended rescue effort was just the latest in a day of heartbreaking reports.</t>
+  <h>The Estonia set sail from Tallinn.</h>
+</pair>
+<pair id='663' value='TRUE' task='QA'>
+  <t>A remastered version of Paramount's "Breakfast at Tiffany's," starring Audrey Hepburn, is scheduled for release Nov. 2 at $40.</t>
+  <h>Audrey Hepburn starred in "Breakfast at Tiffany's".</h>
+</pair>
+<pair id='2081' value='FALSE' task='QA'>
+  <t>The main race track in Qatar is located in Shahaniya, on the Dukhan Road.</t>
+  <h>Qatar is located in Shahaniya.</h>
+</pair>
+<pair id='648' value='TRUE' task='QA'>
+  <t>Yoko Ono, widow of murdered Beatles star John Lennon, has plastered the small German town of Langenhagen with backsides.</t>
+  <h>Yoko Ono was John Lennon's wife.</h>
+</pair>
+<pair id='643' value='TRUE' task='QA'>
+  <t>Practically every architect of international stature has vied for the bonanza of public and private projects - including Renzo Piano, Peter Eisenman, Philip Johnson, Rafael Moneo, Helmut Jahn and Richard Rogers.</t>
+  <h>Renzo Piano is an architect.</h>
+</pair>
+<pair id='2068' value='FALSE' task='QA'>
+  <t>There are more than 4,000 street children in the capital city of Ulan Bator.</t>
+  <h>The population of Ulan Bator is 4,000.</h>
+</pair>
+<pair id='2078' value='FALSE' task='QA'>
+  <t>Twelve of Jupiter's moons are relatively small and seem to have been more likely captured than to have been formed in orbit around Jupiter.</t>
+  <h>Jupiter has Twelve moons.</h>
+</pair>
+<pair id='2072' value='FALSE' task='QA'>
+  <t>In 1932 he joined the then illegal Communist party and held high government and party posts from 1942, becoming home secretary in 1948, when the Communist party took control in Hungary.</t>
+  <h>Communist control in Hungary ended in 1948.</h>
+</pair>
+<pair id='2066' value='FALSE' task='QA'>
+  <t>The tallest building in Tokyo and the second tallest building in Japan, the TMGO was conceived as a high-tech center from which Tokyo could be led into the promising twenty-first century.</t>
+  <h>TMGO is the tallest building in Japan.</h>
+</pair>
+<pair id='2069' value='FALSE' task='QA'>
+  <t>Grieving father Christopher Yavelow hopes to deliver one million letters to the queen of Holland to bring his children home.</t>
+  <h>Christopher Yavelow is the queen of Holland.</h>
+</pair>
+<pair id='636' value='TRUE' task='QA'>
+  <t>"How come a country (Vatican City), a so-called country, that is in essence 800 square acres of office space in the middle of Rome, that has a citizenry that excludes women and children, seems to attract the most attention in talking about public policy that deals with women and children?" she demanded.</t>
+  <h>The Vatican City is in Rome.</h>
+</pair>
+</entailment-corpus>

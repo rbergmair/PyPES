@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE testsuite SYSTEM "file:///home/rb432/workspace/rte/dtd/testsuite.dtd">
+
+<testsuite id="2.5" name="negated plurals">
+
+<testcase id="3.105">
+  <proposition id="3.105.1">
+    Just one accountant attended the meeting.
+  </proposition>
+  <proposition id="3.105.2">
+    Did no accountants attend the meeting?
+  </proposition>
+  <valid id="3.105.a">
+    <theory> <ref src="3.105.1"/> </theory>
+    <conclusion> <negation> <ref src="3.105.2"/> </negation> </conclusion>
+  </valid>
+</testcase>
+
+<testcase id="3.106">
+  <proposition id="3.106.1">
+    Just one accountant attended the meeting.
+  </proposition>
+  <proposition id="3.106.2">
+    Did no accountant attend the meeting?
+  </proposition>
+  <valid id="3.106.a">
+    <theory> <ref src="3.106.1"/> </theory>
+    <conclusion> <negation> <ref src="3.106.2"/> </negation> </conclusion>
+  </valid>
+</testcase>
+
+<testcase id="3.107">
+  <proposition id="3.107.1">
+    Just one accountant attended the meeting.
+  </proposition>
+  <proposition id="3.107.2">
+    Did any accountants attend the meeting?
+  </proposition>
+  <valid id="3.107.a">
+    <theory> <ref src="3.107.1"/> </theory>
+    <conclusion> <ref src="3.107.2"/> </conclusion>
+  </valid>
+</testcase>
+
+<testcase id="3.108">
+  <proposition id="3.108.1">
+    Just one accountant attended the meeting.
+  </proposition>
+  <proposition id="3.108.2">
+    Did any accountant attend the meeting?
+  </proposition>
+  <valid id="3.108.a">
+    <theory> <ref src="3.108.1"/> </theory>
+    <conclusion> <ref src="3.108.2"/> </conclusion>
+  </valid>
+</testcase>
+
+<testcase id="3.109">
+  <proposition id="3.109.1">
+    Just one accountant attended the meeting.
+  </proposition>
+  <proposition id="3.109.2">
+    Did some accountants attend the meeting?
+  </proposition>
+  <!-- ??? -->
+  <valid id="3.109.a">
+    <theory> <ref src="3.109.1"/> </theory>
+    <conclusion> <negation> <ref src="3.109.2"/> </negation> </conclusion>
+  </valid>
+</testcase>
+
+<testcase id="3.110">
+  <proposition id="3.110.1">
+    Just one accountant attended the meeting.
+  </proposition>
+  <proposition id="3.110.2">
+    Did some accountant attend the meeting?
+  </proposition>
+  <valid id="3.110.a">
+    <theory> <ref src="3.110.1"/> </theory>
+    <conclusion> <ref src="3.110.2"/> </conclusion>
+  </valid>
+</testcase>
+
+</testsuite>

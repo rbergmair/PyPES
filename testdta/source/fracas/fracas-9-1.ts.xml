@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE testsuite SYSTEM "file:///home/rb432/workspace/rte/dtd/testsuite.dtd">
+
+<testsuite id="9.1" name="epistemic, intentional and reportive attitudes">
+
+<testcase id="3.334">
+  <proposition id="3.334.1">
+    Smith knew that ITEL had won the contract in 1992.
+  </proposition>
+  <proposition id="3.334.2">
+    Did ITEL win the contract in 1992?
+  </proposition>
+  <valid id="3.334.a">
+    <theory> <ref src="3.334.1"/> </theory>
+    <conclusion> <ref src="3.334.2"/> </conclusion>
+  </valid>
+</testcase>
+
+<testcase id="3.335">
+  <proposition id="3.335.1.1">
+    Smith believed that ITEL had won the contract in 1992.
+  </proposition>
+  <proposition id="3.335.1.2">
+    Smith said that ITEL had won the contract in 1992.
+  </proposition>
+  <proposition id="3.335.1.3">
+    Smith denied that ITEL had won the contract in 1992.
+  </proposition>
+  <proposition id="3.335.1.4">
+    Smith feared that ITEL had won the contract in 1992.
+  </proposition>
+  <proposition id="3.335.1.5">
+    Smith hoped that ITEL had won the contract in 1992.
+  </proposition>
+  <proposition id="3.335.2">
+    Did ITEL win the contract in 1992?
+  </proposition>
+
+  <nonvalid id="3.335.a">
+    <theory> <ref src="3.335.1.1"/> </theory>
+    <conclusion> <ref src="3.335.2"/> </conclusion>
+  </nonvalid>
+  <nonvalid id="3.335.b">
+    <theory> <ref src="3.335.1.2"/> </theory>
+    <conclusion> <ref src="3.335.2"/> </conclusion>
+  </nonvalid>
+  <nonvalid id="3.335.c">
+    <theory> <ref src="3.335.1.3"/> </theory>
+    <conclusion> <ref src="3.335.2"/> </conclusion>
+  </nonvalid>
+  <nonvalid id="3.335.d">
+    <theory> <ref src="3.335.1.4"/> </theory>
+    <conclusion> <ref src="3.335.2"/> </conclusion>
+  </nonvalid>
+  <nonvalid id="3.335.e">
+    <theory> <ref src="3.335.1.5"/> </theory>
+    <conclusion> <ref src="3.335.2"/> </conclusion>
+  </nonvalid>
+
+  <nonvalid id="3.335.f">
+    <theory> <ref src="3.335.1.1"/> </theory>
+    <conclusion> <negation> <ref src="3.335.2"/> </negation> </conclusion>
+  </nonvalid>
+  <nonvalid id="3.335.g">
+    <theory> <ref src="3.335.1.2"/> </theory>
+    <conclusion> <negation> <ref src="3.335.2"/> </negation> </conclusion>
+  </nonvalid>
+  <nonvalid id="3.335.h">
+    <theory> <ref src="3.335.1.3"/> </theory>
+    <conclusion> <negation> <ref src="3.335.2"/> </negation> </conclusion>
+  </nonvalid>
+  <nonvalid id="3.335.i">
+    <theory> <ref src="3.335.1.4"/> </theory>
+    <conclusion> <negation> <ref src="3.335.2"/> </negation> </conclusion>
+  </nonvalid>
+  <nonvalid id="3.335.j">
+    <theory> <ref src="3.335.1.5"/> </theory>
+    <conclusion> <negation> <ref src="3.335.2"/> </negation> </conclusion>
+  </nonvalid>
+
+</testcase>
+
+<testcase id="3.336">
+  <proposition id="3.336.1">
+    ITEL managed to win the contract in 1992.
+  </proposition>
+  <proposition id="3.336.2">
+    Did ITEL win the contract in 1992?
+  </proposition>
+  <valid id="3.336.a">
+    <theory> <ref src="3.336.1"/> </theory>
+    <conclusion> <ref src="3.336.2"/> </conclusion>
+  </valid>
+</testcase>
+
+<testcase id="3.337">
+  <proposition id="3.337.1.1">
+    ITEL tried to win the contract in 1992.
+  </proposition>
+  <proposition id="3.337.1.2">
+    ITEL wanted to win the contract in 1992.
+  </proposition>
+  <proposition id="3.337.2">
+    Did ITEL win the contract in 1992?
+  </proposition>
+  <nonvalid id="3.337.a">
+    <theory> <ref src="3.337.1.1"/> </theory>
+    <conclusion> <ref src="3.337.2"/> </conclusion>
+  </nonvalid>
+  <nonvalid id="3.337.b">
+    <theory> <ref src="3.337.1.1"/> </theory>
+    <conclusion> <negation> <ref src="3.337.2"/> </negation> </conclusion>
+  </nonvalid>
+  <nonvalid id="3.337.c">
+    <theory> <ref src="3.337.1.2"/> </theory>
+    <conclusion> <ref src="3.337.2"/> </conclusion>
+  </nonvalid>
+  <nonvalid id="3.337.d">
+    <theory> <ref src="3.337.1.2"/> </theory>
+    <conclusion> <negation> <ref src="3.337.2"/> </negation> </conclusion>
+  </nonvalid>
+</testcase>
+
+<testcase id="3.338">
+  <proposition id="3.338.1">
+    It is true that ITEL won the contract in 1992.
+  </proposition>
+  <proposition id="3.338.2">
+    Did ITEL win the contract in 1992?
+  </proposition>
+  <valid id="3.338.a">
+    <theory> <ref src="3.338.1"/> </theory>
+    <conclusion> <ref src="3.338.2"/> </conclusion>
+  </valid>
+</testcase>
+
+<testcase id="3.339">
+  <proposition id="3.339.1">
+    It is false that ITEL won the contract in 1992
+  </proposition>
+  <proposition id="3.339.2">
+    Did ITEL win the contract in 1992?
+  </proposition>
+  <valid id="3.339.a">
+    <theory> <ref src="3.339.1"/> </theory>
+    <conclusion> <negation> <ref src="3.339.2"/> </negation> </conclusion>
+  </valid>
+</testcase>
+
+</testsuite>

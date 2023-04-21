@@ -1,0 +1,273 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE testsuite SYSTEM "file:///home/rb432/workspace/rte/dtd/testsuite.dtd">
+
+<testsuite id="1.2" name="monotonicity (upwards on second argument)">
+
+<testcase id="3.17">
+  <proposition id="3.17.1">
+    <rmrsbankitem id="176">An Irishman won the Nobel prize for literature.</rmrsbankitem>
+  </proposition>
+  <proposition id="3.17.2">
+    <rmrsbankitem id="119">Did an Irishman win a Nobel prize?</rmrsbankitem>
+  </proposition>
+  <valid id="3.17.a">
+    <theory> <ref src="3.17.1"/> </theory>
+    <conclusion> <ref src="3.17.2"/> </conclusion>
+  </valid>
+</testcase>
+
+<testcase id="3.18">
+  <proposition id="3.18.1">
+    <rmrsbankitem id="225">Every European has the right to live in Europe.</rmrsbankitem>
+  </proposition>
+  <proposition id="3.18.2">
+    <rmrsbankitem id="27">Every European is a person.</rmrsbankitem>
+  </proposition>
+  <proposition id="3.18.3">
+    <rmrsbankitem id="322">Every person who has the right to live in Europe can travel freely within Europe.</rmrsbankitem>
+  </proposition>
+  <proposition id="3.18.4">
+    <rmrsbankitem id="120">Can every European travel freely within Europe?</rmrsbankitem>
+  </proposition>
+  <valid id="3.18.a">
+    <theory> <ref src="3.18.1"/> <ref src="3.18.2"/> <ref src="3.18.3"/> </theory>
+    <conclusion> <ref src="3.18.4"/> </conclusion>
+  </valid>
+</testcase>
+
+<testcase id="3.19">
+  <proposition id="3.19.1">
+    <rmrsbankitem id="226">All Europeans have the right to live in Europe.</rmrsbankitem>
+  </proposition>
+  <proposition id="3.19.2">
+    <rmrsbankitem id="27">Every European is a person.</rmrsbankitem>
+  </proposition>
+  <proposition id="3.19.3">
+    <rmrsbankitem id="322">Every person who has the right to live in Europe can travel freely within Europe.</rmrsbankitem>
+  </proposition>
+  <proposition id="3.19.4">
+    <rmrsbankitem id="121">Can all Europeans travel freely within Europe?</rmrsbankitem>
+  </proposition>
+  <valid id="3.19.a">
+    <theory> <ref src="3.19.1"/> <ref src="3.19.2"/> <ref src="3.19.3"/> </theory>
+    <conclusion> <ref src="3.19.4"/> </conclusion>
+  </valid>
+</testcase>
+
+<testcase id="3.20">
+  <proposition id="3.20.1">
+    <rmrsbankitem id="227">Each European has the right to live in Europe.</rmrsbankitem>
+  </proposition>
+  <proposition id="3.20.2">
+    <rmrsbankitem id="27">Every European is a person.</rmrsbankitem>
+  </proposition>
+  <proposition id="3.20.3">
+    <rmrsbankitem id="322">Every person who has the right to live in Europe can travel freely within Europe.</rmrsbankitem>
+  </proposition>
+  <proposition id="3.20.4">
+    <rmrsbankitem id="122">Can each European travel freely within Europe?</rmrsbankitem>
+  </proposition>
+  <valid id="3.20.a">
+    <theory> <ref src="3.20.1"/> <ref src="3.20.2"/> <ref src="3.20.3"/> </theory>
+    <conclusion> <ref src="3.20.4"/> </conclusion>
+  </valid>
+</testcase>
+
+<testcase id="3.21">
+  <proposition id="3.21.1">
+    <rmrsbankitem id="299">The residents of member states have the right to live in Europe.</rmrsbankitem>
+  </proposition>
+  <proposition id="3.21.2">
+    <rmrsbankitem id="123">All residents of member states are individuals.</rmrsbankitem>
+  </proposition>
+  <proposition id="3.21.3">
+    <rmrsbankitem id="323">Every individual who has the right to live in Europe can travel freely within Europe.</rmrsbankitem>
+  </proposition>
+  <proposition id="3.21.4">
+    <rmrsbankitem id="255">Can the residents of member states travel freely within Europe?</rmrsbankitem>
+  </proposition>
+  <valid id="3.21.a">
+    <theory> <ref src="3.21.1"/> <ref src="3.21.2"/> <ref src="3.21.3"/> </theory>
+    <conclusion> <ref src="3.21.4"/> </conclusion>
+  </valid>
+</testcase>
+
+<testcase id="3.22">
+  <proposition id="3.22.1">
+    <rmrsbankitem id="124">No delegate finished the report on time.</rmrsbankitem>
+  </proposition>
+  <proposition id="3.22.2">
+    <rmrsbankitem id="71">Did no delegate finish the report?</rmrsbankitem>
+  </proposition>
+  <nonvalid id="3.22.a">
+    <theory> <ref src="3.22.1"/> </theory>
+    <conclusion> <ref src="3.22.2"/> </conclusion>
+  </nonvalid>
+  <nonvalid id="3.22.b">
+    <theory> <ref src="3.22.1"/> </theory>
+    <conclusion> <negation> <ref src="3.22.2"/> </negation> </conclusion>
+  </nonvalid>
+</testcase>
+
+<testcase id="3.23">
+  <proposition id="3.23.1">
+    <rmrsbankitem id="125">Some delegates finished the survey on time.</rmrsbankitem>
+  </proposition>
+  <proposition id="3.23.2">
+    <rmrsbankitem id="72">Did some delegates finish the survey?</rmrsbankitem>
+  </proposition>
+  <valid id="3.23.a">
+    <theory> <ref src="3.23.1"/> </theory>
+    <conclusion> <ref src="3.23.2"/> </conclusion>
+  </valid>
+</testcase>
+
+<testcase id="3.24">
+  <proposition id="3.24.1">
+    <rmrsbankitem id="177">Many delegates obtained interesting results from the survey.</rmrsbankitem>
+  </proposition>
+  <proposition id="3.24.2">
+    <rmrsbankitem id="178">Did many delegates obtain results from the survey?</rmrsbankitem>
+  </proposition>
+  <valid id="3.24.a">
+    <theory> <ref src="3.24.1"/> </theory>
+    <conclusion> <ref src="3.24.2"/> </conclusion>
+  </valid>
+</testcase>
+
+<testcase id="3.25">
+  <proposition id="3.25.1">
+    <rmrsbankitem id="256">Several delegates got the results published in major national newspapers.</rmrsbankitem>
+  </proposition>
+  <proposition id="3.25.2">
+    <rmrsbankitem id="126">Did several delegates get the results published?</rmrsbankitem>
+  </proposition>
+  <valid id="3.25.a">
+    <theory> <ref src="3.25.1"/> </theory>
+    <conclusion> <ref src="3.25.2"/> </conclusion>
+  </valid>
+</testcase>
+
+<testcase id="3.26">
+  <proposition id="3.26.1">
+    <rmrsbankitem id="73">Most Europeans are resident in Europe.</rmrsbankitem>
+  </proposition>
+  <proposition id="3.26.2">
+    <rmrsbankitem id="5">All Europeans are people.</rmrsbankitem>
+  </proposition>
+  <proposition id="3.26.3">
+    <rmrsbankitem id="300">All people who are resident in Europe can travel freely within Europe?</rmrsbankitem>
+  </proposition>
+  <proposition id="3.26.4">
+    <rmrsbankitem id="127">Can most Europeans travel freely within Europe?</rmrsbankitem>
+  </proposition>
+  <valid id="3.26.a">
+    <theory> <ref src="3.26.1"/> <ref src="3.26.2"/> <ref src="3.26.3"/> </theory>
+    <conclusion> <ref src="3.26.4"/> </conclusion>
+  </valid>
+</testcase>
+
+<testcase id="3.27">
+  <proposition id="3.27.1">
+    <rmrsbankitem id="128">A few committee members are from Sweden.</rmrsbankitem>
+  </proposition>
+  <proposition id="3.27.2">
+    <rmrsbankitem id="28">All committee members are people.</rmrsbankitem>
+  </proposition>
+  <proposition id="3.27.3">
+    <rmrsbankitem id="228">All people who are from Sweden are from Scandinavia.</rmrsbankitem>
+  </proposition>
+  <proposition id="3.27.4">
+    <rmrsbankitem id="229">Are at least a few committee members from Scandinavia?</rmrsbankitem>
+  </proposition>
+  <valid id="3.27.a">
+    <theory> <ref src="3.27.1"/> <ref src="3.27.2"/> <ref src="3.27.3"/> </theory>
+    <conclusion> <ref src="3.27.4"/> </conclusion>
+  </valid>
+</testcase>
+
+<testcase id="3.28">
+  <proposition id="3.28.1">
+    <rmrsbankitem id="74">Few committee members are from Portugal.</rmrsbankitem>
+  </proposition>
+  <proposition id="3.28.2">
+    <rmrsbankitem id="28">All committee members are people.</rmrsbankitem>
+  </proposition>
+  <proposition id="3.28.3">
+    <rmrsbankitem id="257">All people who are from Portugal are from southern Europe.</rmrsbankitem>
+  </proposition>
+  <proposition id="3.28.4">
+    <rmrsbankitem id="179">Are there few committee members from southern Europe?</rmrsbankitem>
+  </proposition>
+  <nonvalid id="3.28.a">
+    <theory> <ref src="3.28.1"/> <ref src="3.28.2"/> <ref src="3.28.3"/> </theory>
+    <conclusion> <ref src="3.28.4"/> </conclusion>
+  </nonvalid>
+  <nonvalid id="3.28.b">
+    <theory> <ref src="3.28.1"/> <ref src="3.28.2"/> <ref src="3.28.3"/> </theory>
+    <conclusion> <negation> <ref src="3.28.4"/> </negation> </conclusion>
+  </nonvalid>
+</testcase>
+
+<testcase id="3.29">
+  <proposition id="3.29.1">
+    <rmrsbankitem id="129">Both commissioners used to be leading businessmen.</rmrsbankitem>
+  </proposition>
+  <!-- Did both commissioners *used* to be businessmen? -->
+  <proposition id="3.29.2">
+    <rmrsbankitem id="130">Did both commissioners use to be businessmen?</rmrsbankitem>
+  </proposition>
+  <valid id="3.29.a">
+    <theory> <ref src="3.29.1"/> </theory>
+    <conclusion> <ref src="3.29.2"/> </conclusion>
+  </valid>
+</testcase>
+
+<testcase id="3.30">
+  <proposition id="3.30.1">
+    <rmrsbankitem id="230">Neither commissioner spends a lot of time at home.</rmrsbankitem>
+  </proposition>
+  <proposition id="3.30.2">
+    <rmrsbankitem id="131">Does neither commissioner spend time at home?</rmrsbankitem>
+  </proposition>
+  <nonvalid id="3.30.a">
+    <theory> <ref src="3.30.1"/> </theory>
+    <conclusion> <ref src="3.30.2"/> </conclusion>
+  </nonvalid>
+  <nonvalid id="3.30.b">
+    <theory> <ref src="3.30.1"/> </theory>
+    <conclusion> <negation> <ref src="3.30.2"/> </negation> </conclusion>
+  </nonvalid>
+</testcase>
+
+<testcase id="3.31">
+  <proposition id="3.31.1">
+    <rmrsbankitem id="288">At least three commissioners spend a lot of time at home.</rmrsbankitem>
+  </proposition>
+  <proposition id="3.31.2">
+    <rmrsbankitem id="231">Do at least three commissioners spend time at home?</rmrsbankitem>
+  </proposition>
+  <valid id="3.31.a">
+    <theory> <ref src="3.31.1"/> </theory>
+    <conclusion> <ref src="3.31.2"/> </conclusion>
+  </valid>
+</testcase>
+
+<testcase id="3.32">
+  <proposition id="3.32.1">
+    <rmrsbankitem id="289">At most ten commissioners spend a lot of time at home.</rmrsbankitem>
+  </proposition>
+  <proposition id="3.32.2">
+    <rmrsbankitem id="232">Do at most ten commissioners spend time at home?</rmrsbankitem>
+  </proposition>
+  <nonvalid id="3.32.a">
+    <theory> <ref src="3.32.1"/> </theory>
+    <conclusion> <ref src="3.32.2"/> </conclusion>
+  </nonvalid>
+  <nonvalid id="3.32.b">
+    <theory> <ref src="3.32.1"/> </theory>
+    <conclusion> <negation> <ref src="3.32.2"/> </negation> </conclusion>
+  </nonvalid>
+</testcase>
+
+</testsuite>

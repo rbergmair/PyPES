@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE testsuite SYSTEM "file:///home/rb432/workspace/rte/dtd/testsuite.dtd">
+
+<testsuite id="5.4" name="extensional comparison classes">
+
+<testcase id="3.210">
+  <proposition id="3.210.1">
+    <rmrsbankitem id="48">All mice are small animals.</rmrsbankitem>
+  </proposition>
+  <proposition id="3.210.2">
+    <rmrsbankitem id="49">Mickey is a large mouse.</rmrsbankitem>
+  </proposition>
+  <proposition id="3.210.3">
+    <rmrsbankitem id="41">Is Mickey a large animal?</rmrsbankitem>
+  </proposition>
+  <valid id="3.210.a">
+    <theory> <ref src="3.210.1"/> <ref src="3.210.2"/> </theory>
+    <conclusion> <negation> <ref src="3.210.3"/> </negation> </conclusion>
+  </valid>
+</testcase>
+
+<testcase id="3.211">
+  <proposition id="3.211.1">
+    <rmrsbankitem id="50">All elephants are large animals.</rmrsbankitem>
+  </proposition>
+  <proposition id="3.211.2">
+    <rmrsbankitem id="51">Dumbo is a small elephant.</rmrsbankitem>
+  </proposition>
+  <proposition id="3.211.3">
+    <rmrsbankitem id="43">Is Dumbo a small animal?</rmrsbankitem>
+  </proposition>
+  <valid id="3.211.a">
+    <theory> <ref src="3.211.1"/> <ref src="3.211.2"/> </theory>
+    <conclusion> <negation> <ref src="3.211.3"/> </negation> </conclusion>
+  </valid>
+</testcase>
+
+<testcase id="3.212">
+  <proposition id="3.212.1">
+    <rmrsbankitem id="48">All mice are small animals.</rmrsbankitem>
+  </proposition>
+  <proposition id="3.212.2">
+    <rmrsbankitem id="50">All elephants are large animals.</rmrsbankitem>
+  </proposition>
+  <proposition id="3.212.3">
+    <rmrsbankitem id="49">Mickey is a large mouse.</rmrsbankitem>
+  </proposition>
+  <proposition id="3.212.4">
+    <rmrsbankitem id="51">Dumbo is a small elephant.</rmrsbankitem>
+  </proposition>
+  <proposition id="3.212.5">
+    <rmrsbankitem id="52">Is Dumbo larger than Mickey?</rmrsbankitem>
+  </proposition>
+  <valid id="3.212.a">
+    <theory> <ref src="3.212.1"/> <ref src="3.212.2"/> <ref src="3.212.3"/> <ref src="3.212.4"/> </theory>
+    <conclusion> <ref src="3.212.5"/> </conclusion>
+  </valid>
+</testcase>
+
+<testcase id="3.213">
+  <proposition id="3.213.1">
+    <rmrsbankitem id="48">All mice are small animals.</rmrsbankitem>
+  </proposition>
+  <proposition id="3.213.2">
+    <rmrsbankitem id="49">Mickey is a large mouse.</rmrsbankitem>
+  </proposition>
+  <proposition id="3.213.3">
+    <rmrsbankitem id="3">Is Mickey small?</rmrsbankitem>
+  </proposition>
+  <!-- ??? -->
+  <nonvalid id="3.213.a">
+    <theory> <ref src="3.213.1"/> <ref src="3.213.2"/> </theory>
+    <conclusion> <ref src="3.213.3"/> </conclusion>
+  </nonvalid>
+  <nonvalid id="3.213.b">
+    <theory> <ref src="3.213.1"/> <ref src="3.213.2"/> </theory>
+    <conclusion> <negation> <ref src="3.213.3"/> </negation> </conclusion>
+  </nonvalid>
+</testcase>
+
+</testsuite>

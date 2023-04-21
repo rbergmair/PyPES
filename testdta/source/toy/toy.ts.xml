@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE testsuite SYSTEM "file:///home/rb432/workspace/rte/dtd/testsuite.dtd">
+
+<testsuite>
+
+
+
+<testsuite id="1" name="constraint removal">
+
+<testcase id="1.1">
+	<proposition id="1.1.1">Some white dogs bark.</proposition>
+	<proposition id="1.1.2">Some dogs bark.</proposition>
+	<true id="1.1.a">
+	  <implication>
+	    <antecedent> <ref src="1.1.1"/> </antecedent>
+	    <consequent> <ref src="1.1.2"/> </consequent>
+	  </implication>
+	</true>
+	<nontrue id="1.1.b">
+	  <implication>
+	    <antecedent> <ref src="1.1.2"/> </antecedent>
+	    <consequent> <ref src="1.1.1"/> </consequent>
+	  </implication>
+	</nontrue>
+</testcase>
+
+<testcase id="1.2">
+	<proposition id="1.2.1">Some white cats chase some black dogs.</proposition>
+	<proposition id="1.2.2">Some white cats chase some dogs.</proposition>
+	<true id="1.2.a">
+	  <implication>
+	    <antecedent> <ref src="1.2.1"/> </antecedent>
+	    <consequent> <ref src="1.2.2"/> </consequent>
+	  </implication>
+	</true>
+	<nontrue id="1.2.b">
+	  <implication>
+	    <antecedent> <ref src="1.2.2"/> </antecedent>
+	    <consequent> <ref src="1.2.1"/> </consequent>
+	  </implication>
+	</nontrue>
+</testcase>
+
+</testsuite>
+
+
+
+<testsuite id="2" name="constraint insertion">
+
+<testcase id="2.1">
+
+	<proposition id="2.1.1">Some dogs bark.</proposition>
+	<proposition id="2.1.2">Some brown dogs bark.</proposition>
+	<proposition id="2.1.3">Some big brown dogs bark.</proposition>
+	
+	<compare id="2.1.c">
+	  <greater>
+		  <implication>
+		    <antecedent> <ref src="2.1.1"/> </antecedent>
+		    <consequent> <ref src="2.1.2"/> </consequent>
+		  </implication>
+	  </greater>
+	  <smaller>
+		  <implication>
+		    <antecedent> <ref src="2.1.1"/> </antecedent>
+		    <consequent> <ref src="2.1.3"/> </consequent>
+		  </implication>
+	  </smaller>
+	</compare>
+	
+</testcase>
+
+</testsuite>
+
+
+
+<testsuite id="3" name="predicate-argument structure">
+
+<testcase id="3.1">
+	<proposition id="3.1.1">Some white cats chase some black dogs.</proposition>
+	<proposition id="3.1.2">Some white dogs chase some black cats.</proposition>
+	<nontrue id="3.1.a">
+	  <implication>
+	    <antecedent> <ref src="3.1.1"/> </antecedent>
+	    <consequent> <ref src="3.1.2"/> </consequent>
+	  </implication>
+	</nontrue>
+	<nontrue id="3.1.b">
+	  <implication>
+	    <antecedent> <ref src="3.1.2"/> </antecedent>
+	    <consequent> <ref src="3.1.1"/> </consequent>
+	  </implication>
+	</nontrue>
+</testcase>
+
+<testcase id="3.2">
+	<proposition id="3.2.1">Some white cats chase some black dogs.</proposition>
+	<proposition id="3.2.2">Some black cats chase some white dogs.</proposition>
+	<nontrue id="3.2.a">
+	  <implication>
+	    <antecedent> <ref src="3.2.1"/> </antecedent>
+	    <consequent> <ref src="3.2.2"/> </consequent>
+	  </implication>
+	</nontrue>
+	<nontrue id="3.2.b">
+	  <implication>
+	    <antecedent> <ref src="3.2.2"/> </antecedent>
+	    <consequent> <ref src="3.2.1"/> </consequent>
+	  </implication>
+	</nontrue>
+</testcase>
+
+<testcase id="3.3">
+	<proposition id="3.3.1">Some white cats chase some black dogs.</proposition>
+	<proposition id="3.3.2">Some black dogs chase some white cats.</proposition>
+	<nontrue id="3.3.a">
+	  <implication>
+	    <antecedent> <ref src="3.3.1"/> </antecedent>
+	    <consequent> <ref src="3.3.2"/> </consequent>
+	  </implication>
+	</nontrue>
+	<nontrue id="3.3.b">
+	  <implication>
+	    <antecedent> <ref src="3.3.2"/> </antecedent>
+	    <consequent> <ref src="3.3.1"/> </consequent>
+	  </implication>
+	</nontrue>
+</testcase>
+
+</testsuite>
+
+
+
+<testsuite id="4" name="quantifier strength">
+
+<testcase id="4.1">
+	<proposition id="4.1.1">All white cats chase some black dogs.</proposition>
+	<proposition id="4.1.2">Some white cats chase some black dogs.</proposition>
+	<true id="4.1.a">
+	  <implication>
+	    <antecedent> <ref src="4.1.1"/> </antecedent>
+	    <consequent> <ref src="4.1.2"/> </consequent>
+	  </implication>
+	</true>
+	<nontrue id="4.1.b" ignore="yes">
+	  <implication>
+	    <antecedent> <ref src="4.1.2"/> </antecedent>
+	    <consequent> <ref src="4.1.1"/> </consequent>
+	  </implication>
+	</nontrue>
+</testcase>
+
+<testcase id="4.2">
+	<proposition id="4.2.1">All white cats chase all black dogs.</proposition>
+	<proposition id="4.2.2">All white cats chase some black dogs.</proposition>
+	<true id="4.2.a">
+	  <implication>
+	    <antecedent> <ref src="4.2.1"/> </antecedent>
+	    <consequent> <ref src="4.2.2"/> </consequent>
+	  </implication>
+	</true>
+	<nontrue id="4.2.b" ignore="yes">
+	  <implication>
+	    <antecedent> <ref src="4.2.2"/> </antecedent>
+	    <consequent> <ref src="4.2.1"/> </consequent>
+	  </implication>
+	</nontrue>
+</testcase>
+
+</testsuite>
+
+
+
+</testsuite>

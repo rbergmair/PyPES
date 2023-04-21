@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE testsuite SYSTEM "file:///home/rb432/workspace/rte/dtd/testsuite.dtd">
+
+<testsuite id="5.4" name="extensional comparison classes">
+
+<testcase id="3.210">
+  <proposition id="3.210.1">
+    All mice are small animals.
+  </proposition>
+  <proposition id="3.210.2">
+    Mickey is a large mouse.
+  </proposition>
+  <proposition id="3.210.3">
+    Is Mickey a large animal?
+  </proposition>
+  <valid id="3.210.a">
+    <theory> <ref src="3.210.1"/> <ref src="3.210.2"/> </theory>
+    <conclusion> <negation> <ref src="3.210.3"/> </negation> </conclusion>
+  </valid>
+</testcase>
+
+<testcase id="3.211">
+  <proposition id="3.211.1">
+    All elephants are large animals.
+  </proposition>
+  <proposition id="3.211.2">
+    Dumbo is a small elephant.
+  </proposition>
+  <proposition id="3.211.3">
+    Is Dumbo a small animal?
+  </proposition>
+  <valid id="3.211.a">
+    <theory> <ref src="3.211.1"/> <ref src="3.211.2"/> </theory>
+    <conclusion> <negation> <ref src="3.211.3"/> </negation> </conclusion>
+  </valid>
+</testcase>
+
+<testcase id="3.212">
+  <proposition id="3.212.1">
+    All mice are small animals.
+  </proposition>
+  <proposition id="3.212.2">
+    All elephants are large animals.
+  </proposition>
+  <proposition id="3.212.3">
+    Mickey is a large mouse.
+  </proposition>
+  <proposition id="3.212.4">
+    Dumbo is a small elephant.
+  </proposition>
+  <proposition id="3.212.5">
+    Is Dumbo larger than Mickey?
+  </proposition>
+  <valid id="3.212.a">
+    <theory> <ref src="3.212.1"/> <ref src="3.212.2"/> <ref src="3.212.3"/> <ref src="3.212.4"/> </theory>
+    <conclusion> <ref src="3.212.5"/> </conclusion>
+  </valid>
+</testcase>
+
+<testcase id="3.213">
+  <proposition id="3.213.1">
+    All mice are small animals.
+  </proposition>
+  <proposition id="3.213.2">
+    Mickey is a large mouse.
+  </proposition>
+  <proposition id="3.213.3">
+    Is Mickey small?
+  </proposition>
+  <!-- ??? -->
+  <nonvalid id="3.213.a">
+    <theory> <ref src="3.213.1"/> <ref src="3.213.2"/> </theory>
+    <conclusion> <ref src="3.213.3"/> </conclusion>
+  </nonvalid>
+  <nonvalid id="3.213.b">
+    <theory> <ref src="3.213.1"/> <ref src="3.213.2"/> </theory>
+    <conclusion> <negation> <ref src="3.213.3"/> </negation> </conclusion>
+  </nonvalid>
+</testcase>
+
+</testsuite>

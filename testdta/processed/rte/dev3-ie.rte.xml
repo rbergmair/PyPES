@@ -1,0 +1,803 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<entailment-corpus>
+<pair id='1' value='TRUE' task='IE'>
+  <t><rmrsbankitem id="1">The sale was made to pay Yukos' US$ 27.5 billion tax bill, Yuganskneftegaz was originally sold for US$ 9.4 billion to a little known company Baikalfinansgroup which was later bought by the Russian state-owned oil company Rosneft.</rmrsbankitem></t>
+  <h><rmrsbankitem id="1">Baikalfinansgroup was sold to Rosneft.</rmrsbankitem></h>
+</pair>
+<pair id='2' value='FALSE' task='IE'>
+  <t><rmrsbankitem id="2">The sale was made to pay Yukos' US$ 27.5 billion tax bill, Yuganskneftegaz was originally sold for US$9.4 billion to a little known company Baikalfinansgroup which was later bought by the Russian state-owned oil company Rosneft.</rmrsbankitem></t>
+  <h><rmrsbankitem id="2">Yuganskneftegaz cost US$ 27.5 billion.</rmrsbankitem></h>
+</pair>
+<pair id='3' value='FALSE' task='IE'>
+  <t><rmrsbankitem id="3">Loraine besides participating in Broadway's Dreamgirls, also participated in the Off-Broadway production of "Does A Tiger Have A Necktie".</rmrsbankitem> <rmrsbankitem id="4">In 1999, Loraine went to London, United Kingdom.</rmrsbankitem> <rmrsbankitem id="5">There she participated in the production of "RENT" where she was cast as "Mimi" the understudy.</rmrsbankitem></t>
+  <h><rmrsbankitem id="3">"Does A Tiger Have A Necktie" was produced in London.</rmrsbankitem></h>
+</pair>
+<pair id='4' value='TRUE' task='IE'>
+  <t><rmrsbankitem id="6">"The Extra Girl" (1923) is a story of a small-town girl, Sue Graham (played by Mabel Normand) who comes to Hollywood to be in the pictures.</rmrsbankitem> <rmrsbankitem id="7">This Mabel Normand vehicle, produced by Mack Sennett, followed earlier films about the film industry and also paved the way for later films about Hollywood, such as King Vidor's "Show People" (1928).</rmrsbankitem></t>
+  <h><rmrsbankitem id="4">"The Extra Girl" was produced by Sennett.</rmrsbankitem></h>
+</pair>
+<pair id='5' value='TRUE' task='IE'>
+  <t><rmrsbankitem id="8">A bus collision with a truck in Uganda has resulted in at least 30 fatalities and has left a further 21 injured.</rmrsbankitem></t>
+  <h><rmrsbankitem id="5">30 die in a bus collision in Uganda.</rmrsbankitem></h>
+</pair>
+<pair id='6' value='FALSE' task='IE'>
+  <t><rmrsbankitem id="9">Take consumer products giant Procter and Gamble.</rmrsbankitem> <rmrsbankitem id="10">Even with a $1.8 billion Research and Development budget, it still manages 500 active partnerships each year, many of them with small companies.</rmrsbankitem></t>
+  <h><rmrsbankitem id="6">500 small companies are partners of Procter and Gamble.</rmrsbankitem></h>
+</pair>
+<pair id='7' value='TRUE' task='IE'>
+  <t><rmrsbankitem id="11">After his release, the clean-shaven Magdy el-Nashar told reporters outside his home that he had nothing to do with the July 7 transit attacks, which killed 52 people and the four bombers.</rmrsbankitem></t>
+  <h><rmrsbankitem id="7">52 people and four bombers were killed on July 7.</rmrsbankitem></h>
+</pair>
+<pair id='8' value='FALSE' task='IE'>
+  <t><rmrsbankitem id="12">Mrs. Bush's approval ratings have remained very high, above 80%, even as her husband's have recently dropped below 50%.</rmrsbankitem></t>
+  <h><rmrsbankitem id="8">80% approve of Mr. Bush.</rmrsbankitem></h>
+</pair>
+<pair id='9' value='FALSE' task='IE'>
+  <t><rmrsbankitem id="13">Recent Dakosaurus research comes from a complete skull found in Argentina in 1996, studied by Diego Pol of Ohio State University, Zulma Gasparini of Argentinas National University of La Plata, and their colleagues.</rmrsbankitem></t>
+  <h><rmrsbankitem id="9">A complete Dakosaurus was discovered by Diego Pol.</rmrsbankitem></h>
+</pair>
+<pair id='10' value='FALSE' task='IE'>
+  <t><rmrsbankitem id="14">On May 17, 2005, the National Assembly of Kuwait passed, by a majority of 35 to 23 (with 1 abstention), an amendment to its electoral law that would allow women to vote and to stand as parliamentary candidates.</rmrsbankitem></t>
+  <h><rmrsbankitem id="10">A pro-women amendment was rejected by the National Assembly of Kuwait.</rmrsbankitem></h>
+</pair>
+<pair id='11' value='FALSE' task='IE'>
+  <t><rmrsbankitem id="15">I recently took a round trip from Abuja to Yola, the capital of Adamawa State and back to Abuja, with a fourteen-seater bus.</rmrsbankitem></t>
+  <h><rmrsbankitem id="11">Abuja is located in Adamawa State.</rmrsbankitem></h>
+</pair>
+<pair id='12' value='FALSE' task='IE'>
+  <t><rmrsbankitem id="16">Accardo founded the Settimane Musicali Internazionali in Naples and the Cremona String Festival in 1971, and in 1996, he re-founded the Orchestra da Camera Italiana (O.C.I.), whose members are the best pupils of the Walter Stauffer Academy.</rmrsbankitem></t>
+  <h><rmrsbankitem id="12">Accardo was a member of the Walter Stauffer Academy.</rmrsbankitem></h>
+</pair>
+<pair id='13' value='TRUE' task='IE'>
+  <t><rmrsbankitem id="17">Airbus could site a design engineering centre in the Midlands region of the UK to take advantage of the availability of skilled engineering staff following the demise of MG Rover, the collapsed UK carmaker.</rmrsbankitem></t>
+  <h><rmrsbankitem id="13">Airbus plans a design engineering centre.</rmrsbankitem></h>
+</pair>
+<pair id='14' value='FALSE' task='IE'>
+  <t><rmrsbankitem id="18">Alex Dyer, spokesman for the group, stated that Santarchy in Auckland is part of a worldwide phenomenon.</rmrsbankitem></t>
+  <h><rmrsbankitem id="14">Alex Dyer represents Santarchy.</rmrsbankitem></h>
+</pair>
+<pair id='15' value='FALSE' task='IE'>
+  <t><rmrsbankitem id="19">As late as 1799, priests were still being imprisoned or deported to penal colonies and persecution only worsened after the French army led by General Louis Alexandre Berthier captured Rome and imprisoned Pope Pius VI, who would die in captivity in Valence, Drôme, France in August of 1799.</rmrsbankitem></t>
+  <h><rmrsbankitem id="15">Alexandre Berthier died in 1799.</rmrsbankitem></h>
+</pair>
+<pair id='16' value='FALSE' task='IE'>
+  <t><rmrsbankitem id="20">Cauhtemoc Cardenas said during a news conference on 7 June that the visit to Mexico by Salvadoran president Alfredo Cristiani is a visit by "a repressive ruler who oppresses a large sector of his people."</rmrsbankitem></t>
+  <h><rmrsbankitem id="16">Alfredo Cristiani visits Mexico on June 7.</rmrsbankitem></h>
+</pair>
+<pair id='17' value='TRUE' task='IE'>
+  <t><rmrsbankitem id="21">Allen was renowned for his skill at scratch-building and creating scenery, and he pioneered the technique of weathering his models to make them look old and more realistic.</rmrsbankitem></t>
+  <h><rmrsbankitem id="17">Allen introduced a new technique of creating realistic scenery.</rmrsbankitem></h>
+</pair>
+<pair id='18' value='FALSE' task='IE'>
+  <t><rmrsbankitem id="22">Gastrointestinal bleeding can happen as an adverse effect of non-steroidal anti-inflammatory drugs such as aspirin or ibuprofen.</rmrsbankitem></t>
+  <h><rmrsbankitem id="18">Aspirin prevents gastrointestinal bleeding.</rmrsbankitem></h>
+</pair>
+<pair id='19' value='FALSE' task='IE'>
+  <t><rmrsbankitem id="23">In 1969, he drew up the report proposing the expulsion from the party of the Manifesto group.</rmrsbankitem> <rmrsbankitem id="24">In 1984, after Berlinguer's death, Natta was elected as party secretary.</rmrsbankitem></t>
+  <h><rmrsbankitem id="19">Berlinguer succeeded Natta.</rmrsbankitem></h>
+</pair>
+<pair id='20' value='FALSE' task='IE'>
+  <t><rmrsbankitem id="25">Blue Mountain Lumber is a subsidiary of Malaysian forestry transnational corporation, Ernslaw One.</rmrsbankitem></t>
+  <h><rmrsbankitem id="20">Blue Mountain Lumber owns Ernslaw One.</rmrsbankitem></h>
+</pair>
+<pair id='21' value='FALSE' task='IE'>
+  <t><rmrsbankitem id="26">Blue Mountain Lumber said today it may have to relocate a $30 million project offshore in the wake of an Environment Court decision that blocked it from a planned development site on the Coromandel.</rmrsbankitem></t>
+  <h><rmrsbankitem id="21">Blue Mountain Lumber will locate a development site on the Coromandel.</rmrsbankitem></h>
+</pair>
+<pair id='22' value='FALSE' task='IE'>
+  <t><rmrsbankitem id="27">Chicago-based Boeing has already scrubbed three delivery slots in 2006 that had been booked by Air Canada.</rmrsbankitem></t>
+  <h><rmrsbankitem id="22">Boeing's headquarters is in Canada.</rmrsbankitem></h>
+</pair>
+<pair id='23' value='FALSE' task='IE'>
+  <t><rmrsbankitem id="28">The Kalido Technical Advisory Board members include Boris Evelson, founder and managing partner, Textra Group, Inc., and Bill Inmon, president, Inmon Data Systems.</rmrsbankitem></t>
+  <h><rmrsbankitem id="23">Boris Evelson founded the Kalido Technical Advisory Board.</rmrsbankitem></h>
+</pair>
+<pair id='24' value='TRUE' task='IE'>
+  <t><rmrsbankitem id="29">Bountiful arrived after war's end, sailing into San Francisco Bay 21 August 1945.</rmrsbankitem> <rmrsbankitem id="30">Bountiful was then assigned as hospital ship at Yokosuka, Japan, departing San Francisco 1 November 1945.</rmrsbankitem></t>
+  <h><rmrsbankitem id="24">Bountiful reached San Francisco in August 1945.</rmrsbankitem></h>
+</pair>
+<pair id='25' value='FALSE' task='IE'>
+  <t><rmrsbankitem id="29">Bountiful arrived after war's end, sailing into San Francisco Bay 21 August 1945.</rmrsbankitem> <rmrsbankitem id="30">Bountiful was then assigned as hospital ship at Yokosuka, Japan, departing San Francisco 1 November 1945.</rmrsbankitem></t>
+  <h><rmrsbankitem id="25">Bountiful reached San Francisco on 1 November 1945.</rmrsbankitem></h>
+</pair>
+<pair id='26' value='TRUE' task='IE'>
+  <t><rmrsbankitem id="31">The Prime Minister of Spain Zapatero visited Brazil, Argentina, Chile and Uruguay recently, in a effort to build a left axis in South America.</rmrsbankitem> <rmrsbankitem id="32">The cited countries' South American Presidents agreed to collaborate at international level, particularly in the United Nations, European Union and with Paris, Berlin and Madrid.</rmrsbankitem></t>
+  <h><rmrsbankitem id="26">Brazil is part of the United Nations.</rmrsbankitem></h>
+</pair>
+<pair id='27' value='TRUE' task='IE'>
+  <t><rmrsbankitem id="33">Under the headline "Greed instead of quality", Germany's Die Tageszeitung says no good will come of the acquisition of the publisher Berliner Verlag by two British and US-based investment funds.</rmrsbankitem></t>
+  <h><rmrsbankitem id="27">British and US-based investment funds acquire Berliner Verlag.</rmrsbankitem></h>
+</pair>
+<pair id='28' value='TRUE' task='IE'>
+  <t><rmrsbankitem id="34">As much as 200 mm of rain have been recorded in portions of British Columbia, on the west coast of Canada since Monday.</rmrsbankitem></t>
+  <h><rmrsbankitem id="28">British Columbia is located in Canada.</rmrsbankitem></h>
+</pair>
+<pair id='29' value='FALSE' task='IE'>
+  <t><rmrsbankitem id="35">Dr Wood led a courageous and committed team in the fight to save 28 patients suffering from between two and 92 per cent body burns, deadly infections and delayed shock.</rmrsbankitem> <rmrsbankitem id="36">As well as receiving much praise from both her own patients and the media, she also attracted controversy among other burns surgeons due to the fact that spray-on skin had not yet been subjected to clinical trials.</rmrsbankitem></t>
+  <h><rmrsbankitem id="29">Burns surgeons approve Dr Wood's spray-on skin.</rmrsbankitem></h>
+</pair>
+<pair id='30' value='FALSE' task='IE'>
+  <t><rmrsbankitem id="37">In announcing plans today to prepare the nation for combating a future worldwide wave of bird flu, President Bush used vocabulary and tactics that are familiar from his confrontation with global terrorism.</rmrsbankitem></t>
+  <h><rmrsbankitem id="30">Bush supports global terrorism.</rmrsbankitem></h>
+</pair>
+<pair id='31' value='FALSE' task='IE'>
+  <t><rmrsbankitem id="38">Scott Island was discovered and landed upon in December 1902 by Captain William Colbeck commander of the Morning, relief ship for Capt. Robert F. Scott's expedition.</rmrsbankitem></t>
+  <h><rmrsbankitem id="31">Capt. Scott reached Scott Island in December 1902.</rmrsbankitem></h>
+</pair>
+<pair id='32' value='TRUE' task='IE'>
+  <t><rmrsbankitem id="39">Carl Smith collided with a concrete lamp-post while skating and suffered a skull fracture that caused a coma.</rmrsbankitem> <rmrsbankitem id="40">When he failed to regain consciousness, his parents on August 8 consented to his life support machine being turned off.</rmrsbankitem></t>
+  <h><rmrsbankitem id="32">Carl Smith died on August 8.</rmrsbankitem></h>
+</pair>
+<pair id='33' value='TRUE' task='IE'>
+  <t><rmrsbankitem id="41">As leaders gather in Argentina ahead of this weekends regional talks, Hugo Chávez, Venezuela's populist president, is using an energy windfall to win friends and promote his vision of 21st-century socialism.</rmrsbankitem></t>
+  <h><rmrsbankitem id="33">Chávez is a follower of socialism.</rmrsbankitem></h>
+</pair>
+<pair id='34' value='TRUE' task='IE'>
+  <t><rmrsbankitem id="42">Parviz Davudi was representing Iran at a meeting of the Shanghai Co-operation Organisation (SCO), the fledgling association that binds Russia, China and four former Soviet republics of central Asia together to fight terrorism.</rmrsbankitem></t>
+  <h><rmrsbankitem id="34">China is a member of SCO.</rmrsbankitem></h>
+</pair>
+<pair id='35' value='TRUE' task='IE'>
+  <t><rmrsbankitem id="43">A leading human rights group on Wednesday identified Poland and Romania as the likely locations in eastern Europe of secret prisons where al-Qaeda suspects are interrogated by the Central Intelligence Agency.</rmrsbankitem></t>
+  <h><rmrsbankitem id="35">CIA secret prisons were located in Eastern Europe.</rmrsbankitem></h>
+</pair>
+<pair id='36' value='FALSE' task='IE'>
+  <t><rmrsbankitem id="44">The car which crashed against the mail-box belonged to James Clark, 68, an acquaintance of James Jones' family.</rmrsbankitem></t>
+  <h><rmrsbankitem id="36">Clark is a relative of Jones'.</rmrsbankitem></h>
+</pair>
+<pair id='37' value='TRUE' task='IE'>
+  <t><rmrsbankitem id="45">Colarusso, the Dover police captain, said authorities are interested in whether their suspect made a cell phone call while he was in the Dover woman's home.</rmrsbankitem></t>
+  <h><rmrsbankitem id="37">Colarusso works for Dover police.</rmrsbankitem></h>
+</pair>
+<pair id='38' value='TRUE' task='IE'>
+  <t><rmrsbankitem id="46">Côte d'Ivoire, once a haven of stability in West Africa and the world's top cocoa producer, has been split in two since a failed coup against Gbagbo in September 2002, pitting rebels from the Muslim-dominated north against the Christian-populated south.</rmrsbankitem></t>
+  <h><rmrsbankitem id="38">Côte d'Ivoire is located in Africa.</rmrsbankitem></h>
+</pair>
+<pair id='39' value='TRUE' task='IE'>
+  <t><rmrsbankitem id="47">He said that "there is evidence that Cristiani was involved in the murder of the six Jesuit priests" which occurred on 16 November in San Salvador.</rmrsbankitem></t>
+  <h><rmrsbankitem id="39">Cristiani is accused of the assassination of six Jesuits.</rmrsbankitem></h>
+</pair>
+<pair id='40' value='FALSE' task='IE'>
+  <t><rmrsbankitem id="48">The president Cristiani spoke today at the El Salvador military airport before he left for Costa Rica to attend the inauguration ceremony of president-elect Rafael Calderon Fournier.</rmrsbankitem></t>
+  <h><rmrsbankitem id="40">Cristiani is the president of Costa Rica.</rmrsbankitem></h>
+</pair>
+<pair id='41' value='FALSE' task='IE'>
+  <t><rmrsbankitem id="47">He said that "there is evidence that Cristiani was involved in the murder of the six Jesuit priests" which occurred on 16 November in San Salvador.</rmrsbankitem></t>
+  <h><rmrsbankitem id="41">Cristiani killed six Jesuits.</rmrsbankitem></h>
+</pair>
+<pair id='42' value='FALSE' task='IE'>
+  <t><rmrsbankitem id="49">"There were 20 survivors, the majority of them are in critical condition" said Cyprian Gatete, Rwanda's assistant commissioner of police, during a telephone conversation with Reuters.</rmrsbankitem></t>
+  <h><rmrsbankitem id="42">Cyprian Gatete is an employee of Reuters.</rmrsbankitem></h>
+</pair>
+<pair id='43' value='TRUE' task='IE'>
+  <t><rmrsbankitem id="50">Parents also had to contribute "much more fully", while "coasting" schools would be tackled, Ms Kelly told MPs.</rmrsbankitem> <rmrsbankitem id="51">But shadow education secretary David Cameron, who backed some ideas, said other parts were a "complete muddle".</rmrsbankitem></t>
+  <h><rmrsbankitem id="43">David Cameron works as the shadow education secretary.</rmrsbankitem></h>
+</pair>
+<pair id='44' value='TRUE' task='IE'>
+  <t><rmrsbankitem id="52">A former employee of the company, David Vance of South Portland, said Hooper spent a lot of time on the road, often meeting with customers between Portland and Kittery.</rmrsbankitem></t>
+  <h><rmrsbankitem id="44">David Vance lives in South Portland.</rmrsbankitem></h>
+</pair>
+<pair id='45' value='FALSE' task='IE'>
+  <t><rmrsbankitem id="53">James Kerr had been the foreman for the Deane, Adams and Deane gun factory.</rmrsbankitem> <rmrsbankitem id="54">Robert Adams, one of the partners and inventor of the Adams revolver, was Kerr's cousin.</rmrsbankitem></t>
+  <h><rmrsbankitem id="45">Dean invented a revolver.</rmrsbankitem></h>
+</pair>
+<pair id='46' value='FALSE' task='IE'>
+  <t><rmrsbankitem id="55">Shares of O2 Plc, which this week agreed to be bought for 17.7 billion pounds ($31.3 billion) by Telefonica SA, fell after Deutsche Telekom AG said it won't make a counter offer.</rmrsbankitem></t>
+  <h><rmrsbankitem id="46">Deutsche Telekom sold O2 Plc.</rmrsbankitem></h>
+</pair>
+<pair id='47' value='FALSE' task='IE'>
+  <t><rmrsbankitem id="56">The BBC's Tim Franks says frustrated British diplomats insist there have been several achievements but there is no doubt that the continued delay in reaching agreement on a budget for the EU hangs over all discussions.</rmrsbankitem></t>
+  <h><rmrsbankitem id="47">Diplomats agree on EU budget.</rmrsbankitem></h>
+</pair>
+<pair id='48' value='TRUE' task='IE'>
+  <t><rmrsbankitem id="57">She has become world renowned for her patented invention of spray on skin for burns victims, a treatment which is continually developing.</rmrsbankitem> <rmrsbankitem id="58">Via her research, Fiona found that scarring is greatly reduced if replacement skin could be provided within 10 days.</rmrsbankitem> <rmrsbankitem id="59">As a burns specialist the holy grail for Dr Fiona Wood is 'scarless, woundless healing'.</rmrsbankitem></t>
+  <h><rmrsbankitem id="48">Dr Fiona Wood has invented a treatment for burns victims.</rmrsbankitem></h>
+</pair>
+<pair id='49' value='TRUE' task='IE'>
+  <t><rmrsbankitem id="60">The British government did not initially purchase the weapon and civilian sales were modest.</rmrsbankitem> <rmrsbankitem id="61">However the U.S. Civil War began in 1860 and the governments of both the United States and the Confederacy began purchasing arms in Britain.</rmrsbankitem></t>
+  <h><rmrsbankitem id="49">During the Civil War the government of the United States bought arms from Britain.</rmrsbankitem></h>
+</pair>
+<pair id='50' value='TRUE' task='IE'>
+  <t><rmrsbankitem id="62">Edison decided to call "his" invention the Kinetoscope, combining the Greek root words "kineto" (movement), and "scopos" ("to view").</rmrsbankitem></t>
+  <h><rmrsbankitem id="50">Edison invented the Kinetoscope.</rmrsbankitem></h>
+</pair>
+<pair id='51' value='TRUE' task='IE'>
+  <t><rmrsbankitem id="63">"I want to go back again.</rmrsbankitem> <rmrsbankitem id="64">But I am afraid, honestly, I am afraid.</rmrsbankitem> <rmrsbankitem id="65">Propaganda against me made people think I am terrorist.", said el-Nashar.</rmrsbankitem></t>
+  <h><rmrsbankitem id="51">El-Nashar is accused of terrorism.</rmrsbankitem></h>
+</pair>
+<pair id='52' value='TRUE' task='IE'>
+  <t><rmrsbankitem id="66">El-Nashar was detained July 14 in Cairo after Britain notified Egyptian authorities that it suspected he may have had links to some of the attackers.</rmrsbankitem></t>
+  <h><rmrsbankitem id="52">El-Nashar was arrested in Egypt.</rmrsbankitem></h>
+</pair>
+<pair id='53' value='FALSE' task='IE'>
+  <t><rmrsbankitem id="67">The chapters voluntarily transferred their right of electing the bishop to Emperor Charles V, and Pope Clement VII gave his consent to these proceedings.</rmrsbankitem></t>
+  <h><rmrsbankitem id="53">Emperor Charles V was elected by Clement VII.</rmrsbankitem></h>
+</pair>
+<pair id='54' value='FALSE' task='IE'>
+  <t><rmrsbankitem id="68">The company, whose registered auditors are Deloitte and Touche, has instructed Ernst and Young to carry out a thorough review of the accounts of Eurest Support Services, a subsidiary which feeds UN peacekeepers in at least eight countries.</rmrsbankitem></t>
+  <h><rmrsbankitem id="54">Eurest Support Services is a subsidiary of Ernst and Young.</rmrsbankitem></h>
+</pair>
+<pair id='55' value='TRUE' task='IE'>
+  <t><rmrsbankitem id="69">Bosnia's leading Muslim daily Dnevni Avaz writes excitedly about "a sensational discovery" of "the first European pyramid" in the central town of Visoko, just north of Sarajevo.</rmrsbankitem></t>
+  <h><rmrsbankitem id="55">Europe's first pyramid has been discovered near Sarajevo.</rmrsbankitem></h>
+</pair>
+<pair id='56' value='TRUE' task='IE'>
+  <t><rmrsbankitem id="70">Female mosquitoes become infected with the malaria parasite when they draw blood from humans with malaria.</rmrsbankitem> <rmrsbankitem id="71">The insects can then pass this on to other humans they bite, but do not get sick themselves.</rmrsbankitem></t>
+  <h><rmrsbankitem id="56">Female mosquitoes spread malaria.</rmrsbankitem></h>
+</pair>
+<pair id='57' value='TRUE' task='IE'>
+  <t><rmrsbankitem id="72">FermiLab's goal is to ensure that if a program runs and is certified on RedHat Enterprise, then it will run on the corresponding Fermi Linux LTS release.</rmrsbankitem> <rmrsbankitem id="73">They have built Fermi Linux LTS for Fermilab's use, and that is their ultimate goal.</rmrsbankitem></t>
+  <h><rmrsbankitem id="57">FermiLab created Linux LTS.</rmrsbankitem></h>
+</pair>
+<pair id='58' value='TRUE' task='IE'>
+  <t><rmrsbankitem id="74">On the morning of 1 June, there was a blackout throughout most of the capital caused by urban commandos of the Farabundo Marti National Liberation Front (FMLN).</rmrsbankitem></t>
+  <h><rmrsbankitem id="58">FMLN caused a blackout in the capital.</rmrsbankitem></h>
+</pair>
+<pair id='59' value='TRUE' task='IE'>
+  <t><rmrsbankitem id="75">After graduating in 1977, Gallager chose to accept a full scholarship to play football for Temple University.</rmrsbankitem></t>
+  <h><rmrsbankitem id="59">Gallager attended Temple University.</rmrsbankitem></h>
+</pair>
+<pair id='60' value='FALSE' task='IE'>
+  <t><rmrsbankitem id="76">Russia's natural gas monopoly Gazprom has also shown interest in acquiring a sizable stake in the Uzbek pipeline monopoly.</rmrsbankitem></t>
+  <h><rmrsbankitem id="60">Gazprom detains the Uzbek pipeline monopoly.</rmrsbankitem></h>
+</pair>
+<pair id='61' value='TRUE' task='IE'>
+  <t><rmrsbankitem id="77">In addition to establishing the electoral commission, the laws also concern nationality, a contentious issue since citizenship laws were tightened to exclude one of Gbagbo's main competitors from the 2000 presidential race, former prime minister Alassane Ouattara.</rmrsbankitem></t>
+  <h><rmrsbankitem id="61">Gbagbo is a competitor of Ouattara.</rmrsbankitem></h>
+</pair>
+<pair id='62' value='FALSE' task='IE'>
+  <t><rmrsbankitem id="78">General Dynamics, the maker of land combat systems, warships and Gulfstream business jets, reported net earnings of $374m in the third quarter, or $1.84 per share.</rmrsbankitem></t>
+  <h><rmrsbankitem id="62">General Dynamics loses $374m.</rmrsbankitem></h>
+</pair>
+<pair id='63' value='FALSE' task='IE'>
+  <t><rmrsbankitem id="79">The Pet passport alone can be used to enter the UK, but it will not suffice to enter many countries.</rmrsbankitem> <rmrsbankitem id="80">For instance Guatemala, like almost every country, demands that all imported pets have a rabies vaccination, but will not accept the Pet passport as proof of said vaccination.</rmrsbankitem></t>
+  <h><rmrsbankitem id="63">Guatemala accepts the Pet passport as proof of vaccination.</rmrsbankitem></h>
+</pair>
+<pair id='64' value='TRUE' task='IE'>
+  <t><rmrsbankitem id="81">GUS on Friday disposed of its remaining home shopping business and last non-UK retail operation with the 390m (265m) sale of the Dutch home shopping company, Wehkamp, to Industri Kapital, a private equity firm.</rmrsbankitem></t>
+  <h><rmrsbankitem id="64">GUS sold Wehkamp.</rmrsbankitem></h>
+</pair>
+<pair id='65' value='TRUE' task='IE'>
+  <t><rmrsbankitem id="82">In 1927 Harnold Lamb wrote a biography of Genghis Khan, and following on its success turned more and more to the writing of non-fiction, penning numerous biographies and history books until his death in 1962.</rmrsbankitem></t>
+  <h><rmrsbankitem id="65">Harnold Lamb authored many biographies.</rmrsbankitem></h>
+</pair>
+<pair id='66' value='TRUE' task='IE'>
+  <t><rmrsbankitem id="83">The Health Department has been made aware that property located at Bear Creek is under investigation by the NC Division of Waste Management for the illegal discharge of hazardous chemical materials.</rmrsbankitem></t>
+  <h><rmrsbankitem id="66">Hazardous chemical materials have been discovered at Bear Creek.</rmrsbankitem></h>
+</pair>
+<pair id='67' value='FALSE' task='IE'>
+  <t><rmrsbankitem id="84">Hooper, a salesman of Portland, is accused of posing as a potential home buyer on July 26, then forcing himself inside the residence and raping a 19-year-old woman.</rmrsbankitem></t>
+  <h><rmrsbankitem id="67">Hooper bought a house in Portland.</rmrsbankitem></h>
+</pair>
+<pair id='68' value='FALSE' task='IE'>
+  <t><rmrsbankitem id="52">A former employee of the company, David Vance of South Portland, said Hooper spent a lot of time on the road, often meeting with customers between Portland and Kittery.</rmrsbankitem></t>
+  <h><rmrsbankitem id="68">Hooper is a citizen of Portland.</rmrsbankitem></h>
+</pair>
+<pair id='69' value='TRUE' task='IE'>
+  <t><rmrsbankitem id="85">Hugh was also very supportive of Mustang's plan to become Fuhrer, doing whatever he can to, as he put it, to "help him from the bottom to the top."</rmrsbankitem></t>
+  <h><rmrsbankitem id="69">Hugh assisted Mustang.</rmrsbankitem></h>
+</pair>
+<pair id='70' value='TRUE' task='IE'>
+  <t><rmrsbankitem id="86">Hughes loved his wife, Gracia, and was absolutely obsessed with his little daughter Elicia.</rmrsbankitem></t>
+  <h><rmrsbankitem id="70">Hughes was married to Gracia.</rmrsbankitem></h>
+</pair>
+<pair id='71' value='TRUE' task='IE'>
+  <t><rmrsbankitem id="87">As leaders gather in Argentina ahead of this weekends regional talks, Hugo Chávez, Venezuela's populist president is using an energy windfall to win friends and promote his vision of 21st-century socialism.</rmrsbankitem></t>
+  <h><rmrsbankitem id="71">Hugo Chávez acts as Venezuela's president.</rmrsbankitem></h>
+</pair>
+<pair id='72' value='TRUE' task='IE'>
+  <t><rmrsbankitem id="88">But these are only first hazards.</rmrsbankitem> <rmrsbankitem id="89">"If the rain continues at the same magnitude and according to the forecast, then some of the rivers could reach flood stage either later [Tuesday] or Wednesday morning," said Allan Chapman, a hydrologist with the River Forecast Centre in Victoria.</rmrsbankitem></t>
+  <h><rmrsbankitem id="72">Allan Chapman is employed at the River Forecast Centre.</rmrsbankitem></h>
+</pair>
+<pair id='73' value='TRUE' task='IE'>
+  <t><rmrsbankitem id="90">On October 1 2001, EU and other countries introduced the option for domestic animal owners to apply for Pet passports under the Pets Travel Scheme (PETS for short), for pets returning from abroad to the United Kingdom.</rmrsbankitem> <rmrsbankitem id="91">This replaced the old system of 6 months compulsory quarantine for all domestic pets.</rmrsbankitem></t>
+  <h><rmrsbankitem id="73">In 2001, the EU introduced a passport for pets.</rmrsbankitem></h>
+</pair>
+<pair id='74' value='FALSE' task='IE'>
+  <t><rmrsbankitem id="90">On October 1 2001, EU and other countries introduced the option for domestic animal owners to apply for Pet passports under the Pets Travel Scheme (PETS for short), for pets returning from abroad to the United Kingdom.</rmrsbankitem> <rmrsbankitem id="91">This replaced the old system of 6 months compulsory quarantine for all domestic pets.</rmrsbankitem></t>
+  <h><rmrsbankitem id="74">In 2001, the EU introduced a six-month compulsory quarantine for all domestic pets.</rmrsbankitem></h>
+</pair>
+<pair id='75' value='FALSE' task='IE'>
+  <t><rmrsbankitem id="92">In the May 2005 general election Michael Howard failed to unseat the Labour Government, although the Conservatives did gain 33 seats, playing the most significant role in reducing Labour's majority from 167 to 66.</rmrsbankitem></t>
+  <h><rmrsbankitem id="75">In the May 2005 general election Conservatives got 33 seats.</rmrsbankitem></h>
+</pair>
+<pair id='76' value='FALSE' task='IE'>
+  <t><rmrsbankitem id="93">The US state of Kansas has ruled that science classes in public schools should include the teaching of intelligent design and the doubts it casts on Darwinian evolution.</rmrsbankitem></t>
+  <h><rmrsbankitem id="76">Intelligent design supports Darwinian evolution.</rmrsbankitem></h>
+</pair>
+<pair id='77' value='FALSE' task='IE'>
+  <t><rmrsbankitem id="94">Following the Declaration of the Establishment of the State of Israel, May 14, 1948, seven Arab states entered Palestine and engaged Israeli forces.</rmrsbankitem></t>
+  <h><rmrsbankitem id="77">Israeli forces attacked seven Arab states in 1948.</rmrsbankitem></h>
+</pair>
+<pair id='78' value='FALSE' task='IE'>
+  <t><rmrsbankitem id="95">At the same time the Italian digital rights group, Electronic Frontiers Italy, has asked the nation's government to investigate Sony over its use of anti-piracy software.</rmrsbankitem></t>
+  <h><rmrsbankitem id="78">Italy's government investigates Sony.</rmrsbankitem></h>
+</pair>
+<pair id='79' value='TRUE' task='IE'>
+  <t><rmrsbankitem id="96">UK Foreign Secretary Jack Straw said Iraqis had "shown again their determination to defy the terrorists and take part in the democratic process".</rmrsbankitem></t>
+  <h><rmrsbankitem id="79">Jack Straw holds the position of UK Foreign Secretary.</rmrsbankitem></h>
+</pair>
+<pair id='80' value='TRUE' task='IE'>
+  <t><rmrsbankitem id="97">The original owner, Henry Borski, opened his tavern in 1945.</rmrsbankitem> <rmrsbankitem id="98">He later passed it on to his son Jake Borski, then it was owned by Phylis Roberts for approximately 23 years after that.</rmrsbankitem></t>
+  <h><rmrsbankitem id="80">Henry Borski and Jake Borski are relatives.</rmrsbankitem></h>
+</pair>
+<pair id='81' value='FALSE' task='IE'>
+  <t><rmrsbankitem id="99">According to NC Articles of Organization, the members of LLC company are H. Nelson Beavers, III, H. Chester Beavers and Jennie Beavers Stewart.</rmrsbankitem></t>
+  <h><rmrsbankitem id="81">Jennie Beavers Stewart is a share-holder of Carolina Analytical Laboratory.</rmrsbankitem></h>
+</pair>
+<pair id='82' value='TRUE' task='IE'>
+  <t><rmrsbankitem id="100">Jerry Reinsdorf (born February 25 1936 in Brooklyn, New York) is the owner of Chicago White Sox and the Chicago Bulls.</rmrsbankitem> <rmrsbankitem id="101">Recently, he helped the White Sox win the 2005 World Series and, in the process, collected his seventh championship ring overall (the first six were all with the Bulls in the 1990s), becoming the third owner in the history of North American sports to win a championship in two different sports.</rmrsbankitem></t>
+  <h><rmrsbankitem id="82">Jerry Reinsdorf has won 7 championships.</rmrsbankitem></h>
+</pair>
+<pair id='83' value='TRUE' task='IE'>
+  <t><rmrsbankitem id="102">John and Frances Galyean are partners in life and now both share a passion for photography.</rmrsbankitem> <rmrsbankitem id="103">The Galyeans, married for more than 46 years, have been involved in photography since 1999.</rmrsbankitem></t>
+  <h><rmrsbankitem id="83">John Galyean's wife is called Frances.</rmrsbankitem></h>
+</pair>
+<pair id='84' value='FALSE' task='IE'>
+  <t><rmrsbankitem id="104">Mr Fitzgerald revealed he was one of several top officials who told Mr Libby in June 2003 that Valerie Plame, wife of the former ambassador Joseph Wilson, worked for the CIA.</rmrsbankitem></t>
+  <h><rmrsbankitem id="84">Joseph Wilson is Valerie Plame's ex-husband.</rmrsbankitem></h>
+</pair>
+<pair id='85' value='FALSE' task='IE'>
+  <t><rmrsbankitem id="104">Mr Fitzgerald revealed he was one of several top officials who told Mr Libby in June 2003 that Valerie Plame, wife of the former ambassador Joseph Wilson, worked for the CIA.</rmrsbankitem></t>
+  <h><rmrsbankitem id="85">Joseph Wilson worked for CIA.</rmrsbankitem></h>
+</pair>
+<pair id='86' value='FALSE' task='IE'>
+  <t><rmrsbankitem id="105">Earlier this year reporter Judith Miller was jailed for refusing to name the US-government source who identified a member of the US Central Intelligence Agency (CIA), Valerie Plame.</rmrsbankitem></t>
+  <h><rmrsbankitem id="86">Judith Miller is a member of CIA.</rmrsbankitem></h>
+</pair>
+<pair id='87' value='FALSE' task='IE'>
+  <t><rmrsbankitem id="105">Earlier this year reporter Judith Miller was jailed for refusing to name the US-government source who identified a member of the US Central Intelligence Agency (CIA), Valerie Plame.</rmrsbankitem></t>
+  <h><rmrsbankitem id="87">Judith Miller works for the US Government.</rmrsbankitem></h>
+</pair>
+<pair id='88' value='FALSE' task='IE'>
+  <t><rmrsbankitem id="106">Jyestadeva (1500-1610), was an astronomer of the Kerala school founded by Madhava of Sangamagrama and a student of Damodara.</rmrsbankitem> <rmrsbankitem id="107">He is most known for writing the first calculus text, the Yuktibhasa.</rmrsbankitem> <rmrsbankitem id="108">He also authored the Drk-karana on astronomical observations.</rmrsbankitem></t>
+  <h><rmrsbankitem id="88">Jyestadeva invented calculus.</rmrsbankitem></h>
+</pair>
+<pair id='89' value='TRUE' task='IE'>
+  <t><rmrsbankitem id="106">Jyestadeva (1500-1610), was an astronomer of the Kerala school founded by Madhava of Sangamagrama and a student of Damodara.</rmrsbankitem> <rmrsbankitem id="107">He is most known for writing the first calculus text, the Yuktibhasa.</rmrsbankitem> <rmrsbankitem id="108">He also authored the Drk-karana on astronomical observations.</rmrsbankitem></t>
+  <h><rmrsbankitem id="89">Jyestadeva is the author of the Yuktibhasa.</rmrsbankitem></h>
+</pair>
+<pair id='90' value='FALSE' task='IE'>
+  <t><rmrsbankitem id="109">As an active member of the National Guard, he was called to duty in 1941.</rmrsbankitem> <rmrsbankitem id="110">Although Kennon did not see active combat, he did not return home from World War II until May of 1945.</rmrsbankitem></t>
+  <h><rmrsbankitem id="90">Kennon did not participate in WWII.</rmrsbankitem></h>
+</pair>
+<pair id='91' value='TRUE' task='IE'>
+  <t><rmrsbankitem id="109">As an active member of the National Guard, he was called to duty in 1941.</rmrsbankitem> <rmrsbankitem id="110">Although Kennon did not see active combat, he did not return home from World War II until May of 1945.</rmrsbankitem></t>
+  <h><rmrsbankitem id="91">Kennon was part of the National Guard.</rmrsbankitem></h>
+</pair>
+<pair id='92' value='TRUE' task='IE'>
+  <t><rmrsbankitem id="111">The Kinston Indians are a minor league baseball team in Kinston, North Carolina.</rmrsbankitem> <rmrsbankitem id="112">The team, a Class A affiliate of the Cleveland Indians, plays in the Carolina League.</rmrsbankitem></t>
+  <h><rmrsbankitem id="92">Kinston Indians participate in the Carolina League.</rmrsbankitem></h>
+</pair>
+<pair id='93' value='FALSE' task='IE'>
+  <t><rmrsbankitem id="113">UN Secretary General Kofi Annan has noted that the Iraqi people turned out in large numbers to vote in the January 30 ballot.</rmrsbankitem></t>
+  <h><rmrsbankitem id="93">Kofi Annan was elected in the January 30 ballot.</rmrsbankitem></h>
+</pair>
+<pair id='94' value='TRUE' task='IE'>
+  <t><rmrsbankitem id="114">Swansea striker Lee Trundle has negotiated a lucrative image-rights deal with the League One club.</rmrsbankitem></t>
+  <h><rmrsbankitem id="94">Lee Trundle is in business with the League One club.</rmrsbankitem></h>
+</pair>
+<pair id='95' value='FALSE' task='IE'>
+  <t><rmrsbankitem id="115">Levomepromazine has prominent sedative and anticholinergic/ sympatholytic effects (dry mouth, hypotension, sinus tachycardia, extreme night sweats) and causes massive weight gain.</rmrsbankitem> <rmrsbankitem id="116">These side effects normally do not allow to give the drug in doses needed for full remission of schizophrenia, so it has to be combined with a more potent antipsychotic.</rmrsbankitem></t>
+  <h><rmrsbankitem id="95">Levomepromazine causes schizophrenia.</rmrsbankitem></h>
+</pair>
+<pair id='96' value='TRUE' task='IE'>
+  <t><rmrsbankitem id="117">Live At Leeds (1970) is The Who's first live album, and indeed is their only live album that was released while the band was still recording and performing regularly.</rmrsbankitem></t>
+  <h><rmrsbankitem id="96">Live At Leeds was recorded by The Who.</rmrsbankitem></h>
+</pair>
+<pair id='97' value='FALSE' task='IE'>
+  <t><rmrsbankitem id="118">In June 2004, top Russian oil producer Lukoil signed a $1 billion 35-year production-sharing agreement to develop Uzbek natural gas deposits.</rmrsbankitem></t>
+  <h><rmrsbankitem id="97">Lukoil earned $1 billion in 2004.</rmrsbankitem></h>
+</pair>
+<pair id='98' value='FALSE' task='IE'>
+  <t><rmrsbankitem id="119">Scott's execution led to outrage in Ontario, and was largely responsible for prompting the Wolseley Expedition which forced Louis Riel, now branded a murderer, to flee the settlement.</rmrsbankitem></t>
+  <h><rmrsbankitem id="98">Louis Riel assassinated Scott.</rmrsbankitem></h>
+</pair>
+<pair id='99' value='TRUE' task='IE'>
+  <t><rmrsbankitem id="120">The Extra Girl (1923) is a story of a small-town girl, Sue Graham (played by Mabel Normand) who comes to Hollywood to be in the pictures.</rmrsbankitem> <rmrsbankitem id="121">This Mabel Normand vehicle, produced by Mack Sennett, followed earlier films about the film industry and also paved the way for later films about Hollywood, such as King Vidors Show People (1928).</rmrsbankitem></t>
+  <h><rmrsbankitem id="99">Mabel Normand starred in The Extra Girl.</rmrsbankitem></h>
+</pair>
+<pair id='100' value='FALSE' task='IE'>
+  <t><rmrsbankitem id="122">On 21 July, the Macdonough patrolled the waters off Guam to protect the assault craft from enemy submarines, continuing that role until departing for Hawaii on 10 August.</rmrsbankitem> <rmrsbankitem id="123">After a day at Pearl Harbor, she departed for the Admiralty Islands.</rmrsbankitem></t>
+  <h><rmrsbankitem id="100">The Macdonough left Hawaii on 10 August.</rmrsbankitem></h>
+</pair>
+<pair id='101' value='TRUE' task='IE'>
+  <t><rmrsbankitem id="124">The Pentagon is rejecting demands by Kyrgyzstan to pay for the past use of Manas air base, a key military facility for US aircraft flying missions to Afghanistan.</rmrsbankitem></t>
+  <h><rmrsbankitem id="101">Manas air base is located in Kyrgyzstan.</rmrsbankitem></h>
+</pair>
+<pair id='102' value='TRUE' task='IE'>
+  <t><rmrsbankitem id="125">He also referred to the "illegal" arrest on 31 May of Mexican Professor Maria Eugenia Ochoa Garcia, whom the Salvadoran government accused of having connections with the Salvadoran guerrillas.</rmrsbankitem></t>
+  <h><rmrsbankitem id="102">Maria Eugenia Ochoa Garcia was arrested in May.</rmrsbankitem></h>
+</pair>
+<pair id='103' value='FALSE' task='IE'>
+  <t><rmrsbankitem id="126">There is no way Marlowe could legally leave Italy, especially after an arrest warrant has been issued for him by the authorities.</rmrsbankitem> <rmrsbankitem id="127">Assisted by Zaleshoff, he succeeds in making his escape from Milan.</rmrsbankitem></t>
+  <h><rmrsbankitem id="103">Marlowe supported Zaleshoff.</rmrsbankitem></h>
+</pair>
+<pair id='104' value='FALSE' task='IE'>
+  <t><rmrsbankitem id="126">There is no way Marlowe could legally leave Italy, especially after an arrest warrant has been issued for him by the authorities.</rmrsbankitem> <rmrsbankitem id="127">Assisted by Zaleshoff, he succeeds in making his escape from Milan.</rmrsbankitem></t>
+  <h><rmrsbankitem id="104">Marlowe was arrested by Italian authorities.</rmrsbankitem></h>
+</pair>
+<pair id='105' value='FALSE' task='IE'>
+  <t><rmrsbankitem id="128">"We are ... deploying more people into Côte d'Ivoire - police, military people and people to work directly with the office of the prime minister" Mbeki told a news conference in Pretoria.</rmrsbankitem></t>
+  <h><rmrsbankitem id="105">Mbeki holds the office of Prime Minister.</rmrsbankitem></h>
+</pair>
+<pair id='106' value='TRUE' task='IE'>
+  <t><rmrsbankitem id="129">Mercedes-Benz USA (MBUSA), headquartered in Montvale, New Jersey, is responsible for the sales, marketing and service of all Mercedes-Benz and Maybach products in the United States.</rmrsbankitem></t>
+  <h><rmrsbankitem id="106">MBUSA is based in New Yersey.</rmrsbankitem></h>
+</pair>
+<pair id='107' value='TRUE' task='IE'>
+  <t><rmrsbankitem id="130">Since joining the Key to the Cure campaign three years ago, Mercedes-Benz has donated over $2 million toward finding new detection methods, treatments and cures for women's cancers.</rmrsbankitem></t>
+  <h><rmrsbankitem id="107">Mercedez-Benz supports the Key to the Cure campaign.</rmrsbankitem></h>
+</pair>
+<pair id='108' value='FALSE' task='IE'>
+  <t><rmrsbankitem id="17">Airbus could site a design engineering centre in the Midlands region of the UK to take advantage of the availability of skilled engineering staff following the demise of MG Rover, the collapsed UK carmaker.</rmrsbankitem></t>
+  <h><rmrsbankitem id="108">MG Rover has been bought by Airbus.</rmrsbankitem></h>
+</pair>
+<pair id='109' value='TRUE' task='IE'>
+  <t><rmrsbankitem id="131">ASCAP is a membership association of more than 200,000 U.S. composers, songwriters, lyricists and music publishers of every kind of music.</rmrsbankitem></t>
+  <h><rmrsbankitem id="109">More than 200,000 U.S. composers, songwriters, lyricists and music publishers are members of ASCAP.</rmrsbankitem></h>
+</pair>
+<pair id='110' value='TRUE' task='IE'>
+  <t><rmrsbankitem id="132">The drug dealers from Morro da Rocinha are in a war against drug dealers from the neighbouring Vidigal favela.</rmrsbankitem></t>
+  <h><rmrsbankitem id="110">Morro da Rocinha is near the Vidigal favela.</rmrsbankitem></h>
+</pair>
+<pair id='111' value='FALSE' task='IE'>
+  <t><rmrsbankitem id="133">U.S. District Judge Leonie Brinkema accepted would-be hijacker Zacarias Moussaoui's guilty pleas on six charges of conspiracy laid against him for his plotting to participate in the Sept. 11 attacks.</rmrsbankitem> <rmrsbankitem id="134">Moussaoui, who had to be restrained at one point during the trial in an Alexandria, Virginia courthouse, was polite and quiet during the day's appearance.</rmrsbankitem></t>
+  <h><rmrsbankitem id="111">Moussaoui participated in the Sept. 11 attacks.</rmrsbankitem></h>
+</pair>
+<pair id='112' value='TRUE' task='IE'>
+  <t><rmrsbankitem id="135">In the two weeks since his death, police have been posted outside the Beijing home where Mr. Zhao spent his last 15 years under house arrest and where hundreds have been assembling to pay tribute.</rmrsbankitem> <rmrsbankitem id="136">Agents have been turning many of the mourners away.</rmrsbankitem></t>
+  <h><rmrsbankitem id="112">Mr. Zhao died in Beijing.</rmrsbankitem></h>
+</pair>
+<pair id='113' value='FALSE' task='IE'>
+  <t><rmrsbankitem id="137">Unfortunately, a visit from Mrs Hobday, causes Mr Browne to leave for London.</rmrsbankitem></t>
+  <h><rmrsbankitem id="113">Mrs Hobday departs London.</rmrsbankitem></h>
+</pair>
+<pair id='114' value='FALSE' task='IE'>
+  <t><rmrsbankitem id="138">In conversations with Ms. Robbins, it is understood that Armstrong Environmental Inc. has been retained by past or present owners or some combination of these parties.</rmrsbankitem></t>
+  <h><rmrsbankitem id="114">Ms Robbins is a co-owner of Armstrong Environmental Inc.</rmrsbankitem></h>
+</pair>
+<pair id='115' value='TRUE' task='IE'>
+  <t><rmrsbankitem id="139">A light blue 1975 Ford Escort GL once owned by Pope John Paul II sold for $690,000 Saturday to a Houston multimillionaire who said he plans to put it in a museum he wants to build in his hometown.</rmrsbankitem></t>
+  <h><rmrsbankitem id="115">A Houston multimillionaire buys the Pope's Ford Escort.</rmrsbankitem></h>
+</pair>
+<pair id='116' value='TRUE' task='IE'>
+  <t><rmrsbankitem id="140">A strong supporter of the "Italian road to socialism", he was close to Enrico Berlinguer, and gained a position in the party secretariat.</rmrsbankitem> <rmrsbankitem id="23">In 1969, he drew up the report proposing the expulsion from the party of the Manifesto group.</rmrsbankitem> <rmrsbankitem id="24">In 1984, after Berlinguer's death, Natta was elected as party secretary.</rmrsbankitem></t>
+  <h><rmrsbankitem id="116">Natta supported Italian Socialism.</rmrsbankitem></h>
+</pair>
+<pair id='117' value='FALSE' task='IE'>
+  <t><rmrsbankitem id="23">In 1969, he drew up the report proposing the expulsion from the party of the Manifesto group.</rmrsbankitem> <rmrsbankitem id="24">In 1984, after Berlinguer's death, Natta was elected as party secretary.</rmrsbankitem></t>
+  <h><rmrsbankitem id="117">Natta supported the Manifesto group.</rmrsbankitem></h>
+</pair>
+<pair id='118' value='TRUE' task='IE'>
+  <t><rmrsbankitem id="141">According to Nelson Beavers, who is a co-owner of the current company, Carolina Analytical Laboratories, LLC. and has ownership/employment history with Woodson-Tenent and Eurofins, the septic system was installed in the early 1990s.</rmrsbankitem></t>
+  <h><rmrsbankitem id="118">Nelson Beavers is one of the owners of Carolina Analytical Laboratories.</rmrsbankitem></h>
+</pair>
+<pair id='119' value='TRUE' task='IE'>
+  <t><rmrsbankitem id="141">According to Nelson Beavers, who is a co-owner of the current company, Carolina Analytical Laboratories, LLC. and has ownership/employment history with Woodson-Tenent and Eurofins, the septic system was installed in the early 1990s.</rmrsbankitem></t>
+  <h><rmrsbankitem id="119">Nelson Beavers worked for Eurofins.</rmrsbankitem></h>
+</pair>
+<pair id='120' value='FALSE' task='IE'>
+  <t><rmrsbankitem id="142">Côte d'Ivoire's President Laurent Gbagbo promulgated new election laws on July 14, including the creation of an independent electoral commission to oversee the presidential vote, which is slated for October 30.</rmrsbankitem></t>
+  <h><rmrsbankitem id="120">New elections in Côte d'Ivoire will take place on July 14.</rmrsbankitem></h>
+</pair>
+<pair id='121' value='TRUE' task='IE'>
+  <t><rmrsbankitem id="142">Côte d'Ivoire's President Laurent Gbagbo promulgated new election laws on July 14, including the creation of an independent electoral commission to oversee the presidential vote, which is slated for October 30.</rmrsbankitem></t>
+  <h><rmrsbankitem id="121">New elections in Côte d'Ivoire will take place on October 30.</rmrsbankitem></h>
+</pair>
+<pair id='122' value='TRUE' task='IE'>
+  <t><rmrsbankitem id="143">Nival was founded in 1996 by Sergey Orlovskiy.</rmrsbankitem> <rmrsbankitem id="144">In early 2005, the company was bought by Ener1 Group, a Florida-based holdings company, for around US$10 million.</rmrsbankitem></t>
+  <h><rmrsbankitem id="122">Nival was sold in 2005.</rmrsbankitem></h>
+</pair>
+<pair id='123' value='FALSE' task='IE'>
+  <t><rmrsbankitem id="145">Nokia, Texas Instruments and other leading makers of mobile phones have formally complained to Brussels that Qualcomm, the US mobile chipmaker, has unfairly used its patents on 3G technologies.</rmrsbankitem></t>
+  <h><rmrsbankitem id="123">Nokia produces mobile chips.</rmrsbankitem></h>
+</pair>
+<pair id='124' value='FALSE' task='IE'>
+  <t><rmrsbankitem id="146">Last year's collapse of Italian dairy company Parmalat, with "14.3 billion euros that must still be accounted for", is given as evidence for "a lack of effective tools and controls regarding financial operations".</rmrsbankitem></t>
+  <h><rmrsbankitem id="124">Parmalat costs 14.3 billion euros.</rmrsbankitem></h>
+</pair>
+<pair id='125' value='TRUE' task='IE'>
+  <t><rmrsbankitem id="147">Councilman Pierce had built the home for his daughter on E. 28th Street off Rossville Blvd, as he lives nearby.</rmrsbankitem></t>
+  <h><rmrsbankitem id="125">Pierce lives near Rossville Blvd.</rmrsbankitem></h>
+</pair>
+<pair id='126' value='FALSE' task='IE'>
+  <t><rmrsbankitem id="147">Councilman Pierce had built the home for his daughter on E. 28th Street off Rossville Blvd, as he lives nearby.</rmrsbankitem></t>
+  <h><rmrsbankitem id="126">Pierce lives on E. 28th Street.</rmrsbankitem></h>
+</pair>
+<pair id='127' value='TRUE' task='IE'>
+  <t><rmrsbankitem id="19">As late as 1799, priests were still being imprisoned or deported to penal colonies and persecution only worsened after the French army led by General Louis Alexandre Berthier captured Rome and imprisoned Pope Pius VI, who would die in captivity in Valence, Drôme, France in August of 1799.</rmrsbankitem></t>
+  <h><rmrsbankitem id="127">Pope Pius VI died in France.</rmrsbankitem></h>
+</pair>
+<pair id='128' value='FALSE' task='IE'>
+  <t><rmrsbankitem id="148">South African President Thabo Mbeki, the main mediator in Côte d'Ivoire's peace process, said on Sunday that Pretoria is heightening its intervention in the West African nation to pave the way for elections later this year.</rmrsbankitem></t>
+  <h><rmrsbankitem id="128">Pretoria is located in Côte d'Ivoire.</rmrsbankitem></h>
+</pair>
+<pair id='129' value='TRUE' task='IE'>
+  <t><rmrsbankitem id="9">Take consumer products giant Procter and Gamble.</rmrsbankitem> <rmrsbankitem id="10">Even with a $1.8 billion Research and Development budget, it still manages 500 active partnerships each year, many of them with small companies.</rmrsbankitem></t>
+  <h><rmrsbankitem id="129">Procter and Gamble spends $1.8 billion for Research and Development.</rmrsbankitem></h>
+</pair>
+<pair id='130' value='FALSE' task='IE'>
+  <t><rmrsbankitem id="125">He also referred to the "illegal" arrest on 31 May of Mexican Professor Maria Eugenia Ochoa Garcia, whom the Salvadoran government accused of having connections with the Salvadoran guerrillas.</rmrsbankitem></t>
+  <h><rmrsbankitem id="130">Professor Ochoa Garcia is a member of the Salvadoran government.</rmrsbankitem></h>
+</pair>
+<pair id='131' value='FALSE' task='IE'>
+  <t><rmrsbankitem id="149">Animals are permitted to enter the UK 6 months later without quarantine as long as they have been treated for ticks, fleas and tapeworms between 24 and 48 hours before boarding the transport that will return the pets to the UK.</rmrsbankitem></t>
+  <h><rmrsbankitem id="131">Quarantine is compulsory for animals to enter the UK.</rmrsbankitem></h>
+</pair>
+<pair id='132' value='TRUE' task='IE'>
+  <t><rmrsbankitem id="48">The president Cristiani spoke today at the El Salvador military airport before he left for Costa Rica to attend the inauguration ceremony of president-elect Rafael Calderon Fournier.</rmrsbankitem></t>
+  <h><rmrsbankitem id="132">Rafael Calderon Fournier has been elected president of Costa Rica.</rmrsbankitem></h>
+</pair>
+<pair id='133' value='TRUE' task='IE'>
+  <t><rmrsbankitem id="150">From 1016 to 1030 the Normans were pure mercenaries, serving either Byzantines or Lombards, and then Sergius of Naples, by installing their leader Rainulf in the fortress of Aversa in 1030, gave them their first pied-à-terre and they began an organized conquest of the land.</rmrsbankitem></t>
+  <h><rmrsbankitem id="133">Rainulf was the leader of the Normans.</rmrsbankitem></h>
+</pair>
+<pair id='134' value='TRUE' task='IE'>
+  <t><rmrsbankitem id="151">Five years later, Rennyo returned to the Kyoto area, establishing new Honganji branch temples.</rmrsbankitem> <rmrsbankitem id="152">During this time, he established a new form of liturgy (gongyo), incorporating elements that would eventually become the core of Honganji Shinshu Buddhism.</rmrsbankitem></t>
+  <h><rmrsbankitem id="134">Rennyo founded Honganji Shinshu Buddhism.</rmrsbankitem></h>
+</pair>
+<pair id='135' value='TRUE' task='IE'>
+  <t><rmrsbankitem id="153">Forced to flee attack again in 1471 Rennyo travelled to Yoshizaki, where he built a popular temple which attracted many peasant converts from the region.</rmrsbankitem></t>
+  <h><rmrsbankitem id="135">Rennyo reached Yoshizaki in 1471.</rmrsbankitem></h>
+</pair>
+<pair id='136' value='FALSE' task='IE'>
+  <t><rmrsbankitem id="154">State Police issued bulletins via teletype requesting patrols to be on the lookout for Robert Senacal, 35, of Cortlandt Manor.</rmrsbankitem></t>
+  <h><rmrsbankitem id="136">Robert Senacal was arrested by police.</rmrsbankitem></h>
+</pair>
+<pair id='137' value='TRUE' task='IE'>
+  <t><rmrsbankitem id="155">Centre-left voters in Italy have chosen Romano Prodi as the candidate who will challenge Prime Minister Silvio Berlusconi in next year's election.</rmrsbankitem> <rmrsbankitem id="156">The former European Commission president and Italian PM won 73.5% of votes, according to partial results of primaries.</rmrsbankitem></t>
+  <h><rmrsbankitem id="137">Romano Prodi wins Italian primaries.</rmrsbankitem></h>
+</pair>
+<pair id='138' value='TRUE' task='IE'>
+  <t><rmrsbankitem id="2">The sale was made to pay Yukos' US$ 27.5 billion tax bill, Yuganskneftegaz was originally sold for US$9.4 billion to a little known company Baikalfinansgroup which was later bought by the Russian state-owned oil company Rosneft.</rmrsbankitem></t>
+  <h><rmrsbankitem id="138">Rosneft belonged to the Russian State.</rmrsbankitem></h>
+</pair>
+<pair id='139' value='FALSE' task='IE'>
+  <t><rmrsbankitem id="157">A former FBI special agent, Rowley, and Becky Lourey, whose son was killed in Iraq, will leave for Texas on Thursday and camp at the site for a few days.</rmrsbankitem></t>
+  <h><rmrsbankitem id="139">Rowley and Lourey are relatives.</rmrsbankitem></h>
+</pair>
+<pair id='140' value='FALSE' task='IE'>
+  <t><rmrsbankitem id="158">George Hawi's assassination came on the heels of the conclusion of the last round of parliamentary elections, which saw a coalition of opposition candidates led by Saad Hariri, son of former Prime Minister of Lebanon Rafik Hariri, capture a majority of seats.</rmrsbankitem></t>
+  <h><rmrsbankitem id="140">Saad Hariri was elected Prime Minister of Lebanon.</rmrsbankitem></h>
+</pair>
+<pair id='141' value='FALSE' task='IE'>
+  <t><rmrsbankitem id="159">Saddam Hussein accepted an 11th-hour offer to flee into exile weeks ahead of the U.S.-led 2003 invasion, but Arab League officials scuttled the proposal, officials in this Gulf state claimed.</rmrsbankitem></t>
+  <h><rmrsbankitem id="141">Saddam Hussein flees to the U.S.</rmrsbankitem></h>
+</pair>
+<pair id='142' value='TRUE' task='IE'>
+  <t><rmrsbankitem id="160">They named themselves for Saint Joan of Arc.</rmrsbankitem> <rmrsbankitem id="161">The brigade began with 17 women, but soon grew to 135 members.</rmrsbankitem> <rmrsbankitem id="162">Its mission was to obtain money, weapons, provisions, and information for the combatant men.</rmrsbankitem> <rmrsbankitem id="163">Many smuggled weapons into the combat zones by carrying them in carts filled with grain or cement.</rmrsbankitem></t>
+  <h><rmrsbankitem id="142">Saint Joan of Arc's brigade got weapons for combatants.</rmrsbankitem></h>
+</pair>
+<pair id='143' value='FALSE' task='IE'>
+  <t><rmrsbankitem id="164">Scott Stevens, the Idaho meteorologist who claimed that a weather manipulating conspiracy (possibly under the control of Japanese Yakuza mafia) caused Hurricane Katrina, has quit his job at KPVI-TV in Pocatello.</rmrsbankitem></t>
+  <h><rmrsbankitem id="143">Scott Stevens has connections with the Yakuza.</rmrsbankitem></h>
+</pair>
+<pair id='144' value='TRUE' task='IE'>
+  <t><rmrsbankitem id="165">Scott's execution led to outrage in Ontario, and was largely responsible for prompting the Wolseley Expedition, which forced Louis Riel, now branded a murderer, to flee the settlement.</rmrsbankitem></t>
+  <h><rmrsbankitem id="144">Scott's execution caused the Wolseley Expedition.</rmrsbankitem></h>
+</pair>
+<pair id='145' value='TRUE' task='IE'>
+  <t><rmrsbankitem id="154">State Police issued bulletins via teletype requesting patrols to be on the lookout for Robert Senacal, 35, of Cortlandt Manor.</rmrsbankitem></t>
+  <h><rmrsbankitem id="145">Senacal resides in Cortland Manor.</rmrsbankitem></h>
+</pair>
+<pair id='146' value='TRUE' task='IE'>
+  <t><rmrsbankitem id="166">So far Sony BMG has not released a list of how many of its CDs are protected or how many have been sold.</rmrsbankitem></t>
+  <h><rmrsbankitem id="146">Sony BMG sells protected CDs.</rmrsbankitem></h>
+</pair>
+<pair id='147' value='FALSE' task='IE'>
+  <t><rmrsbankitem id="167">Southwest Airlines on Thursday said rebuilding service at New Orleans was its number one priority as it unveiled its 58th consecutive quarterly profit and enhanced fuel hedges to extend its competitive advantage over rivals.</rmrsbankitem></t>
+  <h><rmrsbankitem id="147">Southwest Airlines operates in New Orleans.</rmrsbankitem></h>
+</pair>
+<pair id='148' value='TRUE' task='IE'>
+  <t><rmrsbankitem id="168">Carmine Rocco, Health Director was contacted in June by Sue Robbins, Division of Waste Management, to advise him that she would be in the county to conduct a site visit to the former Woodson-Tenent Laboratory.</rmrsbankitem></t>
+  <h><rmrsbankitem id="148">Sue Robbins visits the former Woodson-Tenent Laboratory.</rmrsbankitem></h>
+</pair>
+<pair id='149' value='TRUE' task='IE'>
+  <t><rmrsbankitem id="169">In 1869 Sumner resigned his see, but continued to live at the official residence at Farnham until his death on the 15th of August 1874.</rmrsbankitem></t>
+  <h><rmrsbankitem id="149">Sumner died at Farnham.</rmrsbankitem></h>
+</pair>
+<pair id='150' value='TRUE' task='IE'>
+  <t><rmrsbankitem id="170">Paralysis was followed by aphasia, and after acute pain, followed by a long period of apathy, from which death relieved Swift in October 1745.</rmrsbankitem></t>
+  <h><rmrsbankitem id="150">Swift died in 1745.</rmrsbankitem></h>
+</pair>
+<pair id='151' value='FALSE' task='IE'>
+  <t><rmrsbankitem id="171">Swift was offered and accepted the post of secretary and chaplain to the Earl of Berkeley, one of the Lords Justices, but when he reached Ireland he found that the secretaryship had been given to another.</rmrsbankitem></t>
+  <h><rmrsbankitem id="151">Swift worked for the Earl of Berkeley.</rmrsbankitem></h>
+</pair>
+<pair id='152' value='TRUE' task='IE'>
+  <t><rmrsbankitem id="172">Prior to that, Andy Sipowicz began to date Assistant District Attorney Sylvia Costas.</rmrsbankitem> <rmrsbankitem id="173">They got married in 1995 and had a son Theo in 1996.</rmrsbankitem></t>
+  <h><rmrsbankitem id="152">Sylvia Costas is the wife of Andy Sipowicz.</rmrsbankitem></h>
+</pair>
+<pair id='153' value='FALSE' task='IE'>
+  <t><rmrsbankitem id="174">The south Indian flute had only seven finger holes till the 1970s when the legendary T.R. Mahalingam introduced the eight holed variety.</rmrsbankitem></t>
+  <h><rmrsbankitem id="153">T.R. Mahalingham made the first seven holed flute.</rmrsbankitem></h>
+</pair>
+<pair id='154' value='TRUE' task='IE'>
+  <t><rmrsbankitem id="175">New research shows there has been a sharp increase in disfiguring skin cancers, particularly in women under the age of 40, providing more evidence that young people are not heeding warnings about the dangers of tanning.</rmrsbankitem></t>
+  <h><rmrsbankitem id="154">Tanning may cause skin cancers.</rmrsbankitem></h>
+</pair>
+<pair id='155' value='TRUE' task='IE'>
+  <t><rmrsbankitem id="145">Nokia, Texas Instruments and other leading makers of mobile phones have formally complained to Brussels that Qualcomm, the US mobile chipmaker, has unfairly used its patents on 3G technologies.</rmrsbankitem></t>
+  <h><rmrsbankitem id="155">Texas Instruments produces mobile phones.</rmrsbankitem></h>
+</pair>
+<pair id='156' value='FALSE' task='IE'>
+  <t><rmrsbankitem id="176">The Auburn High School Athletic Hall of Fame recently introduced its Class of 2005 which includes 10 members.</rmrsbankitem></t>
+  <h><rmrsbankitem id="156">The Auburn High School Athletic Hall of Fame has ten members.</rmrsbankitem></h>
+</pair>
+<pair id='157' value='FALSE' task='IE'>
+  <t><rmrsbankitem id="177">In 1955, the Aurora Borealis, a coating applied to crystal stones to produce a "rainbow of colors" effect was introduced.</rmrsbankitem></t>
+  <h><rmrsbankitem id="157">The Aurora Borealis was discovered in 1995.</rmrsbankitem></h>
+</pair>
+<pair id='158' value='TRUE' task='IE'>
+  <t><rmrsbankitem id="178">According to COPREFA, another soldier was wounded in a guerrilla ambush against the elite Bracamonte Battalion on a highway in central El Salvador.</rmrsbankitem></t>
+  <h><rmrsbankitem id="158">The Bracamonte Battalion was attacked by guerrillas.</rmrsbankitem></h>
+</pair>
+<pair id='159' value='TRUE' task='IE'>
+  <t><rmrsbankitem id="179">The Bolan Pass is a gap through the Toba Kakar Range of mountains on the border of Pakistan.</rmrsbankitem> <rmrsbankitem id="180">The British took the threat of a Russian invasion of India via the Khyber and Bolan Passes very seriously so in 1837, a British envoy was sent to Kabul to gain support of the Emir, Dost Mohammed.</rmrsbankitem> <rmrsbankitem id="181">In February of 1839, the British Army under Sir John Keane took 12,000 men through the Bolan Pass and entered Kandahar.</rmrsbankitem></t>
+  <h><rmrsbankitem id="159">The British Army crossed the Toba Kakar Range of mountains in 1839.</rmrsbankitem></h>
+</pair>
+<pair id='160' value='FALSE' task='IE'>
+  <t><rmrsbankitem id="182">The Canadian parliament's Ethics Commission said former immigration minister, Judy Sgro, did nothing wrong and her staff had put her into a conflict of interest.</rmrsbankitem></t>
+  <h><rmrsbankitem id="160">The Canadian parliament's Ethics Commission accuses Judy Sgro.</rmrsbankitem></h>
+</pair>
+<pair id='161' value='FALSE' task='IE'>
+  <t><rmrsbankitem id="183">The Counts of Holland and Geldern, between whose territories the lands of the Bishops of Utrecht lay, also sought to acquire influence over the filling of the episcopal see.</rmrsbankitem> <rmrsbankitem id="184">This often led to disputes and consequently the Holy See frequently interfered in the election.</rmrsbankitem></t>
+  <h><rmrsbankitem id="161">The Counts of Holland supported the Holy See.</rmrsbankitem></h>
+</pair>
+<pair id='162' value='FALSE' task='IE'>
+  <t><rmrsbankitem id="185">The end result says that 61.6% of the Dutch people vote (against) the European Constitution, while 38.4% voted (for) the Constitution.</rmrsbankitem></t>
+  <h><rmrsbankitem id="162">The Dutch people approve the European Constitution.</rmrsbankitem></h>
+</pair>
+<pair id='163' value='FALSE' task='IE'>
+  <t><rmrsbankitem id="186">The land claims agreement must still be approved by the Canadian House of Commons, but has already passed through the House of Assembly of Newfoundland and Labrador.</rmrsbankitem></t>
+  <h><rmrsbankitem id="163">The House of Assembly of Newfoundland and Labrador vote against the land claims agreement.</rmrsbankitem></h>
+</pair>
+<pair id='164' value='TRUE' task='IE'>
+  <t><rmrsbankitem id="187">Chicago White Sox Charities also provides annual ongoing support to programs such as Special Olympics and the Inner City Little League.</rmrsbankitem></t>
+  <h><rmrsbankitem id="164">The Inner City Little League is sponsored by Chicago White Sox Charities.</rmrsbankitem></h>
+</pair>
+<pair id='165' value='TRUE' task='IE'>
+  <t><rmrsbankitem id="188">Since the island also lacks wells, water has to be obtained from rain carefully collected in concrete cisterns.</rmrsbankitem></t>
+  <h><rmrsbankitem id="165">The island gets water from collected rain.</rmrsbankitem></h>
+</pair>
+<pair id='166' value='TRUE' task='IE'>
+  <t><rmrsbankitem id="189">In Italy, big protests by students and university staff against government reforms to higher education brought parts of central Rome to a standstill on Tuesday.</rmrsbankitem></t>
+  <h><rmrsbankitem id="166">The Italian government introduces reforms to higher education.</rmrsbankitem></h>
+</pair>
+<pair id='167' value='TRUE' task='IE'>
+  <t><rmrsbankitem id="190">The bus, which was heading for Nairobi in Kenya, crashed in the Kabale district of Uganda near the Rwandan border.</rmrsbankitem></t>
+  <h><rmrsbankitem id="167">The Kabale district borders on Rwanda.</rmrsbankitem></h>
+</pair>
+<pair id='168' value='TRUE' task='IE'>
+  <t><rmrsbankitem id="191">The Kakhovskaya Line is a line of the Moscow Metro.</rmrsbankitem> <rmrsbankitem id="192">Currently it is the only line that exists outside the ring.</rmrsbankitem> <rmrsbankitem id="193">It is the shortest line in Moscow.</rmrsbankitem> <rmrsbankitem id="194">Although the line was formed in 1995, the stations date to 1969 when they were opened as part of the Zamoskvoretskaya Line.</rmrsbankitem></t>
+  <h><rmrsbankitem id="168">The Kakhovskaya Line was built in 1995.</rmrsbankitem></h>
+</pair>
+<pair id='169' value='FALSE' task='IE'>
+  <t><rmrsbankitem id="195">The pet passport is a pink A4 sheet which contains the microchip number and certification that the dog has a rabies vaccination, and needs to be signed by a veterinary surgeon who has LVI status.</rmrsbankitem> <rmrsbankitem id="196">The passport is not to be confused with the much smaller purple folder routinely issued by vets which records the complete vaccination history of the pet.</rmrsbankitem></t>
+  <h><rmrsbankitem id="169">The pet passport contains the complete vaccination history of pets.</rmrsbankitem></h>
+</pair>
+<pair id='170' value='TRUE' task='IE'>
+  <t><rmrsbankitem id="197">The man known as just the "Piano Man" has left the hospital and has returned home to his native Germany.</rmrsbankitem> <rmrsbankitem id="198">According to British tabloids, the man, after losing his job in Paris, travelled to the UK through the Channel Tunnel.</rmrsbankitem></t>
+  <h><rmrsbankitem id="170">The "Piano Man" came from Germany.</rmrsbankitem></h>
+</pair>
+<pair id='171' value='FALSE' task='IE'>
+  <t><rmrsbankitem id="197">The man known as just the "Piano Man" has left the hospital and has returned home to his native Germany.</rmrsbankitem> <rmrsbankitem id="198">According to British tabloids, the man, after losing his job in Paris, travelled to the UK through the Channel Tunnel.</rmrsbankitem></t>
+  <h><rmrsbankitem id="171">The "Piano Man" worked for a British tabloid.</rmrsbankitem></h>
+</pair>
+<pair id='172' value='TRUE' task='IE'>
+  <t><rmrsbankitem id="199">Traditionally, the Brahui of the Raisani tribe are in charge of the law and order situation through the Pass area.</rmrsbankitem> <rmrsbankitem id="200">This tribe is still living in present day Balochistan in Pakistan.</rmrsbankitem></t>
+  <h><rmrsbankitem id="172">The Raisani tribe resides in Pakistan.</rmrsbankitem></h>
+</pair>
+<pair id='173' value='TRUE' task='IE'>
+  <t><rmrsbankitem id="201">The Armed Forces Press Committee (COPREFA) admitted that the government troops sustained 11 casualties in these clashes, adding that they inflicted three casualties on the rebels.</rmrsbankitem></t>
+  <h><rmrsbankitem id="173">Three rebels were killed by government troops.</rmrsbankitem></h>
+</pair>
+<pair id='174' value='TRUE' task='IE'>
+  <t><rmrsbankitem id="202">Four US cable companies, including industry leaders Comcast Corp and Time Warner Cable, have entered the fast-growing wireless arena through a joint venture with Sprint Nextel.</rmrsbankitem></t>
+  <h><rmrsbankitem id="174">Time Warner Cable is a partner of Sprint Nextel.</rmrsbankitem></h>
+</pair>
+<pair id='175' value='TRUE' task='IE'>
+  <t><rmrsbankitem id="203">A computer system failure closed down share trading at the Tokyo Stock Exchange for most of yesterday, the worst disruption to date for Asia's largest bourse.</rmrsbankitem></t>
+  <h><rmrsbankitem id="175">The Tokyo Stock Exchange was closed down by computer system failure.</rmrsbankitem></h>
+</pair>
+<pair id='176' value='TRUE' task='IE'>
+  <t><rmrsbankitem id="204">Tom Online revenues for the three months ended June 30, 2005 were US$42.78 mn, an increase of 38.5% over the same period in 2004.</rmrsbankitem></t>
+  <h><rmrsbankitem id="176">Tom Online earned US$42.78 mn in three months.</rmrsbankitem></h>
+</pair>
+<pair id='177' value='TRUE' task='IE'>
+  <t><rmrsbankitem id="204">Tom Online revenues for the three months ended June 30, 2005 were US$42.78 mn, an increase of 38.5% over the same period in 2004.</rmrsbankitem></t>
+  <h><rmrsbankitem id="177">Tom Online revenues have risen by 38.5%.</rmrsbankitem></h>
+</pair>
+<pair id='178' value='TRUE' task='IE'>
+  <t><rmrsbankitem id="205">Anglo/Dutch Royal Dutch Shell, Total, of France, and Spain's Repsol were all named as examples of established oil companies involved in the oil-for-food programme before surcharges began in 2001.</rmrsbankitem></t>
+  <h><rmrsbankitem id="178">Total participated in the oil-for-food programme.</rmrsbankitem></h>
+</pair>
+<pair id='179' value='TRUE' task='IE'>
+  <t><rmrsbankitem id="206">Violence over the last week killed 23 people, two worshippers dragged from a mosque and shot, underlining the challenges of bringing stability and strengthening Afghanistan's fledgling democracy.</rmrsbankitem></t>
+  <h><rmrsbankitem id="179">Two worshippers were killed in Afghanistan.</rmrsbankitem></h>
+</pair>
+<pair id='180' value='TRUE' task='IE'>
+  <t><rmrsbankitem id="207">A senior Russian politician has hailed a decision by Uzbekistan to shut down a United States military base there, although Moscow officially denies that it is applying pressure on Central Asian states to expel American forces.</rmrsbankitem></t>
+  <h><rmrsbankitem id="180">Uzbekistan closes United States military base.</rmrsbankitem></h>
+</pair>
+<pair id='181' value='FALSE' task='IE'>
+  <t><rmrsbankitem id="208">The decision by Uzbekistan was the latest development in diplomatic fallout with Washington over U.S. criticism about a violent crackdown against anti-government protestors last May.</rmrsbankitem></t>
+  <h><rmrsbankitem id="181">Uzbekistan protests against Washington.</rmrsbankitem></h>
+</pair>
+<pair id='182' value='TRUE' task='IE'>
+  <t><rmrsbankitem id="209">Vance used to be Hooper's supervisor, he said, but was let go several months ago.</rmrsbankitem></t>
+  <h><rmrsbankitem id="182">Vance worked with Hooper.</rmrsbankitem></h>
+</pair>
+<pair id='183' value='FALSE' task='IE'>
+  <t><rmrsbankitem id="210">Vera Beers, of Olivet, recently was named employee of the month at Standard Printing in Marshall.</rmrsbankitem></t>
+  <h><rmrsbankitem id="183">Vera Beers works for Olivet.</rmrsbankitem></h>
+</pair>
+<pair id='184' value='TRUE' task='IE'>
+  <t><rmrsbankitem id="210">Vera Beers, of Olivet, recently was named employee of the month at Standard Printing in Marshall.</rmrsbankitem></t>
+  <h><rmrsbankitem id="184">Vera Beers works for Standard Printing.</rmrsbankitem></h>
+</pair>
+<pair id='185' value='TRUE' task='IE'>
+  <t><rmrsbankitem id="211">The activists had been imprisoned in relation to their protest in the main square of Krakow, Poland, against the presence of Vladimir Putin at the ceremonies for the 60th anniversary of the freeing of the Auschwitz-Birkenau concentration camp.</rmrsbankitem></t>
+  <h><rmrsbankitem id="185">Vladimir Putin participated in the ceremonies for the freeing of the Auschwitz Birkenau concentration camp.</rmrsbankitem></h>
+</pair>
+<pair id='186' value='FALSE' task='IE'>
+  <t><rmrsbankitem id="81">GUS on Friday disposed of its remaining home shopping business and last non-UK retail operation with the 390m (265m) sale of the Dutch home shopping company, Wehkamp, to Industri Kapital, a private equity firm.</rmrsbankitem></t>
+  <h><rmrsbankitem id="186">Wehkamp was based in the UK.</rmrsbankitem></h>
+</pair>
+<pair id='187' value='TRUE' task='IE'>
+  <t><rmrsbankitem id="212">GUS on Friday disposed of its remaining home shopping business and last non-UK retail operation with the €390m (£265m) sale of the Dutch home shopping company, Wehkamp, to Industri Kapital, a private equity firm.</rmrsbankitem></t>
+  <h><rmrsbankitem id="187">Wehkamp cost €390m.</rmrsbankitem></h>
+</pair>
+<pair id='188' value='TRUE' task='IE'>
+  <t><rmrsbankitem id="213">White supported Gough Whitlam's Labor government of 1972 to 1975, and after Whitlam was ousted in the 1975 constitutional crisis, became particularly anti-royalist.</rmrsbankitem></t>
+  <h><rmrsbankitem id="188">White assisted the Labor government from 1972 to 1975.</rmrsbankitem></h>
+</pair>
+<pair id='189' value='FALSE' task='IE'>
+  <t><rmrsbankitem id="214">Around this time, White decided that he would not accept any more prizes for his work.</rmrsbankitem> <rmrsbankitem id="215">He declined both the $10,000 Britannia Award and another Miles Franklin Award.</rmrsbankitem></t>
+  <h><rmrsbankitem id="189">White got the $10,000 Britannia Award.</rmrsbankitem></h>
+</pair>
+<pair id='190' value='TRUE' task='IE'>
+  <t><rmrsbankitem id="216">In 1975, a 19 year old Wilkins was handed the captaincy of Chelsea, despite the presence of elder and more experienced players in the squad.</rmrsbankitem></t>
+  <h><rmrsbankitem id="190">Wilkins became the captain of Chelsea in 1975.</rmrsbankitem></h>
+</pair>
+<pair id='191' value='TRUE' task='IE'>
+  <t><rmrsbankitem id="217">Though Wilkins and his family settled quickly in Italy, it wasn't a successful era for Milan, and Wilkins was allowed to leave in 1987 to join French outfit Paris Saint-Germain.</rmrsbankitem></t>
+  <h><rmrsbankitem id="191">Wilkins departed Milan in 1987.</rmrsbankitem></h>
+</pair>
+<pair id='192' value='FALSE' task='IE'>
+  <t><rmrsbankitem id="218">Kuwait becomes the fourth Gulf country where women as well as men can vote in elections.</rmrsbankitem> <rmrsbankitem id="219">Saudi Arabia holds strictly limited, male-only elections.</rmrsbankitem></t>
+  <h><rmrsbankitem id="192">Women can vote in elections in Saudi Arabia.</rmrsbankitem></h>
+</pair>
+<pair id='193' value='TRUE' task='IE'>
+  <t><rmrsbankitem id="220">The fifth World Social Forum (WSF) has kicked off in Porto Alegre, Rio Grande do Sul state, Brazil.</rmrsbankitem></t>
+  <h><rmrsbankitem id="193">The WSF takes place in Brazil.</rmrsbankitem></h>
+</pair>
+<pair id='194' value='FALSE' task='IE'>
+  <t><rmrsbankitem id="221">US President George W. Bush has indicated he will invite Abbas to the United States for talks, something he never did with Abbas's predecessor, the late Yasser Arafat.</rmrsbankitem></t>
+  <h><rmrsbankitem id="194">Yasser Arafat succeeded Abbas.</rmrsbankitem></h>
+</pair>
+<pair id='195' value='TRUE' task='IE'>
+  <t><rmrsbankitem id="222">Zapatero visited the following cities in four days: Brasilia, São Paulo, Buenos Aires and Santiago de Chile.</rmrsbankitem> <rmrsbankitem id="223">According to official sources these visits are the last part of the project he began at the EU-Latin American Summit in Guadalajara, Mexico and pursued in the Ibero-American meeting in Costa Rica in November.</rmrsbankitem></t>
+  <h><rmrsbankitem id="195">Zapatero participated in the Ibero-American meeting in Costa Rica.</rmrsbankitem></h>
+</pair>
+<pair id='196' value='TRUE' task='IE'>
+  <t><rmrsbankitem id="224">Some large Russian oil companies, including Lukoil, Zarubezhneft, the state-owned oil company, and Alpha Eco, the trader, were implicated by the report.</rmrsbankitem></t>
+  <h><rmrsbankitem id="196">Zarubezhneft trades in oil.</rmrsbankitem></h>
+</pair>
+<pair id='197' value='TRUE' task='IE'>
+  <t><rmrsbankitem id="225">Zhao was removed from his position as secretary general of the Communist Party of China and placed under house arrest in 1989 after denouncing the use of force against student protesters in Tiananmen Square.</rmrsbankitem></t>
+  <h><rmrsbankitem id="197">Zhao was a member of the Communist Party.</rmrsbankitem></h>
+</pair>
+<pair id='198' value='TRUE' task='IE'>
+  <t><rmrsbankitem id="226">Zhao, who died at 85, was a reformer who was removed from office, and imprisoned, in 1989 after denouncing the use of force against student protesters in Tiananmen Square.</rmrsbankitem></t>
+  <h><rmrsbankitem id="198">Zhao was arrested in 1989.</rmrsbankitem></h>
+</pair>
+<pair id='199' value='FALSE' task='IE'>
+  <t><rmrsbankitem id="227">Though fearful of a forthcoming performance evaluation by her boss, Zoe must unravel the life of a man just found dead of a heart attack, who was supposed to have died three years earlier in a boating accident.</rmrsbankitem></t>
+  <h><rmrsbankitem id="199">Zoe died in a boating accident.</rmrsbankitem></h>
+</pair>
+<pair id='200' value='FALSE' task='IE'>
+  <t><rmrsbankitem id="228">In 1856 Manuel Ruiz Zorrilla was elected deputy, and soon attracted notice among the most advanced Progressists and Democrats.</rmrsbankitem> <rmrsbankitem id="229">He took part in the revolutionary propaganda that led to the military movement in Madrid on June 22, 1866.</rmrsbankitem> <rmrsbankitem id="230">He had to take refuge in France for two years, like his fellow-conspirators, and only returned to Spain when the revolution of 1868 took place.</rmrsbankitem></t>
+  <h><rmrsbankitem id="200">Zorrilla started the revolution of 1868.</rmrsbankitem></h>
+</pair>
+</entailment-corpus>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE testsuite SYSTEM "file:///home/rb432/workspace/rte/dtd/testsuite.dtd">
+
+<testsuite id="6.4" name="differential comparatives">
+
+<testcase id="3.243">
+  <proposition id="3.243.1">
+    ITEL sold 3000 more computers than APCOM.
+  </proposition>
+  <proposition id="3.243.2">
+    APCOM sold exactly 2500 computers.
+  </proposition>
+  <proposition id="3.243.3">
+    Did ITEL sell 5500 computers?
+  </proposition>
+  <valid id="3.243.a">
+    <theory> <ref src="3.243.1"/> <ref src="3.243.2"/> </theory>
+    <conclusion> <ref src="3.243.3"/> </conclusion>
+  </valid>
+</testcase>
+
+</testsuite>

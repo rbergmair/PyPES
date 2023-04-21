@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<entailment-corpus>
+<pair id='350' value='TRUE' task='MT'>
+  <t><rmrsbankitem id="1">The American Defense Department reported today, that the bombing runs against Iraq are being especially carried out via cruise missiles launched from American aircraft carriers and B52 bombers.</rmrsbankitem></t>
+  <h><rmrsbankitem id="1">The Pentagon reported today, that the bombing runs against Iraq are being especially carried out via cruise missiles launched from American aircrafts.</rmrsbankitem></h>
+</pair>
+<pair id='352' value='FALSE' task='MT'>
+  <t><rmrsbankitem id="2">The American State Department announced that Russia recalled her ambassador to the United States "for consultation" due to the bombing operations on Iraq.</rmrsbankitem></t>
+  <h><rmrsbankitem id="2">An official source in the American Ministry of Foreign Affairs announced that Russia called the United States "for consultation" because of the bombings on Iraq.</rmrsbankitem></h>
+</pair>
+<pair id='353' value='FALSE' task='MT'>
+  <t><rmrsbankitem id="3">The humane organization, Caritas, quoting its branch in Iraq, announced today, in Germany, that several Iraqi hospitals, especially Saddam Hospital, which is considered the biggest hospital in Iraq, were hit in the American-British bombing of the Iraqi capital.</rmrsbankitem></t>
+  <h><rmrsbankitem id="3">An official source for Caritas announced today in Germany, that several Iraqi hospitals, excluding Saddam Hospital, which is the biggest hospital in Iraq, were hit in the American-British shelling of Baghdad.</rmrsbankitem></h>
+</pair>
+<pair id='355' value='TRUE' task='MT'>
+  <t><rmrsbankitem id="4">An Iraqi official reported today, Saturday, that 68 Iraqi civilians were killed as a result of the American and British bombing on Iraq and that their funerals were held today in Baghdad.</rmrsbankitem></t>
+  <h><rmrsbankitem id="4">Reports from an Iraqi official today, Saturday, said that the 68 civilians killed as a result of the Anglo-American bombing of Iraq, were buried today in Baghdad.</rmrsbankitem></h>
+</pair>
+<pair id='357' value='TRUE' task='MT'>
+  <t><rmrsbankitem id="5">The funeral procession headed to the headquarters of the United Nations Development Programme in Baghdad, where funeral goers held banners denouncing the Americans as "Enemies of God."</rmrsbankitem></t>
+  <h><rmrsbankitem id="5">The funeral procession had been directed to the UNDP headquarters in Baghdad, where signs denouncing Americans as "enemies of God" were seen.</rmrsbankitem></h>
+</pair>
+<pair id='363' value='FALSE' task='MT'>
+  <t><rmrsbankitem id="6">Baghdad had announced that it will stop cooperating with UNSCOM completely but indicated that it will not ask for their departure.</rmrsbankitem></t>
+  <h><rmrsbankitem id="6">Baghdad announced the complete halt in their cooperation with UNSCOM, and said also, that it will ask them to leave.</rmrsbankitem></h>
+</pair>
+<pair id='378' value='TRUE' task='MT'>
+  <t><rmrsbankitem id="7">This opinion poll was conducted on the sixth and seventh of October, and included a cross section of 861 adults with a margin of error estimated at 4%.</rmrsbankitem></t>
+  <h><rmrsbankitem id="7">This poll was carried out on the 6th and 7th of October, and included a segment of 861 people with a margin of error estimated at 4%.</rmrsbankitem></h>
+</pair>
+<pair id='380' value='FALSE' task='MT'>
+  <t><rmrsbankitem id="8">Nevertheless, 58 percent of Americans expressed their satisfaction with the President's job performance.</rmrsbankitem> <rmrsbankitem id="9">44 percent supported Nixon at the very beginning of the investigation into Watergate.</rmrsbankitem></t>
+  <h><rmrsbankitem id="8">Although 58% of Americans are unsatisfied with Clinton's job performance, 44% found Nixon's work adequate at the start of the Watergate scandal.</rmrsbankitem></h>
+</pair>
+<pair id='1160' value='FALSE' task='MT'>
+  <t><rmrsbankitem id="6">Baghdad had announced that it will stop cooperating with UNSCOM completely but indicated that it will not ask for their departure.</rmrsbankitem></t>
+  <h><rmrsbankitem id="9">Baghdad will end its cooperation with UNSCOM, and wants them to leave.</rmrsbankitem></h>
+</pair>
+<pair id='1152' value='TRUE' task='MT'>
+  <t><rmrsbankitem id="4">An Iraqi official reported today, Saturday, that 68 Iraqi civilians were killed as a result of the American and British bombing on Iraq and that their funerals were held today in Baghdad.</rmrsbankitem></t>
+  <h><rmrsbankitem id="10">The 68 civilians killed as a result of the Anglo-American bombing of Iraq, were buried today in Baghdad.</rmrsbankitem></h>
+</pair>
+<pair id='1228' value='TRUE' task='MT'>
+  <t><rmrsbankitem id="10">An official of Abyan police, where 16 Western tourists are being held since yesterday, announced that the hostages are held by the Yemeni "Islamic Jihad" group, which is demanding the release of its leader and lifting the embargo on Iraq.</rmrsbankitem></t>
+  <h><rmrsbankitem id="11">The Yemen branch of the "Islamic Jihad" group, kidnapped the 16 Western tourists.</rmrsbankitem></h>
+</pair>
+<pair id='1197' value='TRUE' task='MT'>
+  <t><rmrsbankitem id="11">Contact with the press will be restricted to "periodic meetings", as promised by all three parties, in order to "focus their energies" on the most important issues.</rmrsbankitem></t>
+  <h><rmrsbankitem id="12">The delegations may only speak periodically to the press, in order to concentrate on the issues.</rmrsbankitem></h>
+</pair>
+<pair id='1153' value='TRUE' task='MT'>
+  <t><rmrsbankitem id="12">Sultan Al-Shawi, a.k.a the Attorney, said during a funeral held for the victims, "They were all children of Iraq killed during the savage bombing."</rmrsbankitem></t>
+  <h><rmrsbankitem id="13">The Attorney, said at the funeral, "They were all Iraqis killed during the brutal shelling."</rmrsbankitem></h>
+</pair>
+<pair id='2095' value='FALSE' task='MT'>
+  <t><rmrsbankitem id="13">Scientists had thought all gamma-ray bursts had a standard energy.</rmrsbankitem></t>
+  <h><rmrsbankitem id="14">The scientists had thought that all gamma ray explosions have a standard energy.</rmrsbankitem></h>
+</pair>
+<pair id='2107' value='FALSE' task='MT'>
+  <t><rmrsbankitem id="14">U.S. crude settled $1.32 lower at $42.83 a barrel.</rmrsbankitem></t>
+  <h><rmrsbankitem id="15">*Crude the light American lowered to the closing 1.32 dollars, to 42.83 dollars the barrel.</rmrsbankitem></h>
+</pair>
+<pair id='1190' value='TRUE' task='MT'>
+  <t><rmrsbankitem id="15">The Commission, designated to shed light on crimes and human rights violations during the apartheid period, accuses the African National Congress of carrying out torture and executions without trials in concentration camps, and also of playing an active role in the political violence incidents that took place between 1990 and 1994.</rmrsbankitem></t>
+  <h><rmrsbankitem id="16">The Commission accused the ANC of violence, executions and human rights violations.</rmrsbankitem></h>
+</pair>
+<pair id='1159' value='FALSE' task='MT'>
+  <t><rmrsbankitem id="16">The Commission's Deputy Chairman, Charles Duelfer, said, "We will keep the inspectors there in the hope that Iraq may back down from its decision."</rmrsbankitem></t>
+  <h><rmrsbankitem id="17">The Vice-Chairman of the Committee Charles Duelfer said, "we hope to end Iraq's resolution."</rmrsbankitem></h>
+</pair>
+<pair id='1186' value='FALSE' task='MT'>
+  <t><rmrsbankitem id="17">The Prime Minister's Office and the Foreign Office had earlier purposely asserted that the case is strictly in the jurisdiction of the police and the justice system.</rmrsbankitem></t>
+  <h><rmrsbankitem id="18">The jurisdiction of the case was queried by the Prime Minister and the Ministry of Foreign Affairs.</rmrsbankitem></h>
+</pair>
+<pair id='1156' value='FALSE' task='MT'>
+  <t><rmrsbankitem id="18">Iraq's representative to the United Nations, Nizar Hamdoun, announced today, Sunday, that thousands of people were killed or injured during the four days of air bombardment against Iraq.</rmrsbankitem></t>
+  <h><rmrsbankitem id="19">Nizar HAMDOON, Iraqi ambassador to the United Nations, announced that thousands of people could be killed or wounded due to the aerial bombardment of Iraq.</rmrsbankitem></h>
+</pair>
+<pair id='1226' value='TRUE' task='MT'>
+  <t><rmrsbankitem id="19">Ecevit, one of the most senior Turkish politicians, was unable to secure the necessary support from the parties represented in the Parliament in order to form his government.</rmrsbankitem></t>
+  <h><rmrsbankitem id="20">Ecevit was unable to form the government due to a lack of support.</rmrsbankitem></h>
+</pair>
+<pair id='1155' value='FALSE' task='MT'>
+  <t><rmrsbankitem id="20">The American television network "CNN" reported that officials at the American Defense Department (The Pentagon) will recommend halting the bombing on Iraq to President Bill Clinton this evening, Saturday.</rmrsbankitem></t>
+  <h><rmrsbankitem id="21">CNN reported that officials at the Pentagon said that President Clinton is obligated to stop the shelling on Iraq.</rmrsbankitem></h>
+</pair>
+<pair id='2099' value='FALSE' task='MT'>
+  <t><rmrsbankitem id="21">The cost of the consumer of the United States fell in June.</rmrsbankitem></t>
+  <h><rmrsbankitem id="22">U.S. consumer spending dived in June.</rmrsbankitem></h>
+</pair>
+<pair id='1191' value='FALSE' task='MT'>
+  <t><rmrsbankitem id="22">The Truth and Reconciliation Commission's investigators submitted the preliminary results of their work in early October to around 200 organisations and individuals to warn them of charges against them and to give them the opportunity to respond before final drafting of the report.</rmrsbankitem></t>
+  <h><rmrsbankitem id="23">The Commission investigated 200 people and oragnisations, before charging them, in order to prevent them from responding prior to the official release of the report.</rmrsbankitem></h>
+</pair>
+<pair id='1182' value='TRUE' task='MT'>
+  <t><rmrsbankitem id="23">This explanation was rejected by the Government of Chile, who insist that Pinochet enjoys diplomatic immunity in his capacity as "an elected member in the Senate for life" since leaving the command of the armed forces last March.</rmrsbankitem></t>
+  <h><rmrsbankitem id="24">The Chilean government affirming that as a member of the Senate, Pinochet has diplomatic immunity.</rmrsbankitem></h>
+</pair>
+<pair id='2105' value='FALSE' task='MT'>
+  <t><rmrsbankitem id="24">Brazil, Australia and Thailand argued that the EU, one of the world's largest exporters, broke WTO farm rules by exceeding limits on export subsidies laid down under WTO's 1994 Agreement on Agriculture.</rmrsbankitem></t>
+  <h><rmrsbankitem id="25">The three countries argued that UE, one of the greater exporters of the world, infringed the rules of the OMC when exceeding the limit of the subsidies to the exports indicated under the Agreement on Agriculture of the OMC in 1994.</rmrsbankitem></h>
+</pair>
+<pair id='1162' value='FALSE' task='MT'>
+  <t><rmrsbankitem id="25">UNSCOM employs about 120 persons in Iraq, including 40 inspectors.</rmrsbankitem></t>
+  <h><rmrsbankitem id="26">Wilson uses some 120 persons in Iraq, 40 of whom are inspectors.</rmrsbankitem></h>
+</pair>
+<pair id='1173' value='FALSE' task='MT'>
+  <t><rmrsbankitem id="26">The poll also showed that a higher percentage of Americans (65%) believe that even if the investigation proceedings actually began, Clinton ought not to be removed.</rmrsbankitem></t>
+  <h><rmrsbankitem id="27">According to the poll, 65% of Americans believe that Clinton should be removed from office.</rmrsbankitem></h>
+</pair>
+<pair id='1232' value='TRUE' task='MT'>
+  <t><rmrsbankitem id="27">The Damascus public have been welcomed into the election candidate's private homes or to specially erected tents where voters have been enjoying food, drink and entertainment, particularly in the home of the wealthy candidate, Adnan Mullah, where dozens of supporters and friends have been invited to dinner every evening.</rmrsbankitem></t>
+  <h><rmrsbankitem id="28">Candidates are entertaining voters in their homes.</rmrsbankitem></h>
+</pair>
+<pair id='2104' value='FALSE' task='MT'>
+  <t><rmrsbankitem id="28">It could mean to live in the street to thousands of workers.</rmrsbankitem></t>
+  <h><rmrsbankitem id="29">It could lead to thousands of job losses.</rmrsbankitem></h>
+</pair>
+<pair id='1244' value='TRUE' task='MT'>
+  <t><rmrsbankitem id="29">The source added that the investigation proved that the bases of the genocide crime "were completed with a series of illegal arrests followed in some cases with assassinations or cases of disappearances and were preceded, according to information attached to the file, by cases of torture."</rmrsbankitem></t>
+  <h><rmrsbankitem id="30">Investigators discovered that a series of illicit arrests were often followed by disappearances or murders and were preceded by torture.</rmrsbankitem></h>
+</pair>
+<pair id='1178' value='TRUE' task='MT'>
+  <t><rmrsbankitem id="30">Sources in Tegucigalpa reported that many Latin American countries are gearing up to face Hurricane "Mitch".</rmrsbankitem></t>
+  <h><rmrsbankitem id="31">South American countries are preparing for "Mitch".</rmrsbankitem></h>
+</pair>
+<pair id='1199' value='TRUE' task='MT'>
+  <t><rmrsbankitem id="31">Clinton informed the two parties that in the absence of an agreement, a public announcement would be made, with the apparent objective of applying pressure to both sides, particularly the Israelis.</rmrsbankitem></t>
+  <h><rmrsbankitem id="32">Clinton told the two sides that he would publicly announce their failure to agree, thereby pressurising them.</rmrsbankitem></h>
+</pair>
+<pair id='1158' value='TRUE' task='MT'>
+  <t><rmrsbankitem id="32">An official of the International Special Commission in charge of disarming Iraqi weapons (UNSCOM) announced yesterday, Saturday, that the Commission will keep its inspectors in Iraq despite Baghdad's decision to stop its cooperation with them.</rmrsbankitem></t>
+  <h><rmrsbankitem id="33">UNSCOM is to stay in Iraq.</rmrsbankitem></h>
+</pair>
+<pair id='1219' value='TRUE' task='MT'>
+  <t><rmrsbankitem id="33">The Tunisian Foreign Ministry announced that Libyan leader Colonel Moammar Al Kaddafy arrived in Tunis this morning, Monday, for a "brotherly and recreational" visit, at the invitation of Tunisian President Zine El Abidine Bin Ali.</rmrsbankitem></t>
+  <h><rmrsbankitem id="34">Libya's leader Colonel Muammar Qaddafi arrived in Tunisia at the invitation of President Zine El Abidine Bin Ali.</rmrsbankitem></h>
+</pair>
+<pair id='1172' value='TRUE' task='MT'>
+  <t><rmrsbankitem id="34">The American House of Representatives is due to vote today, on a resolution submitted by the Chairman of the Judicial Committee, Henry Hyde, asking Congress to launch an investigation over charges brought forward by Independent Prosecutor-General Kenneth Star against President Clinton in the Monica Lewinsky affair.</rmrsbankitem></t>
+  <h><rmrsbankitem id="35">Voting will take place in the American House of Representatives today, on the President Clinton-Monica Lewinsky scandal.</rmrsbankitem></h>
+</pair>
+<pair id='1177' value='FALSE' task='MT'>
+  <t><rmrsbankitem id="8">Nevertheless, 58 percent of Americans expressed their satisfaction with the President's job performance.</rmrsbankitem> <rmrsbankitem id="9">44 percent supported Nixon at the very beginning of the investigation into Watergate.</rmrsbankitem></t>
+  <h><rmrsbankitem id="36">58% of Americans are unsatisfied with Clinton's job performance.</rmrsbankitem></h>
+</pair>
+<pair id='1179' value='TRUE' task='MT'>
+  <t><rmrsbankitem id="35">Security authorities have declared a state of maximum emergency in Guatemala, which is located directly in the path of the hurricane.</rmrsbankitem></t>
+  <h><rmrsbankitem id="37">There is a state of maximum emergency in Guatemala because of the hurricane.</rmrsbankitem></h>
+</pair>
+<pair id='1230' value='TRUE' task='MT'>
+  <t><rmrsbankitem id="36">The Yemeni Islamic Jihad group emerged in 1992, and it is comprised of old warriors from Afghanistan.</rmrsbankitem></t>
+  <h><rmrsbankitem id="38">Yemen's Islamic Jihad group was set up by old Afgan warriors in 1992.</rmrsbankitem></h>
+</pair>
+<pair id='2100' value='FALSE' task='MT'>
+  <t><rmrsbankitem id="37">Greenspan's stance has underpinned predictions the Fed will raise rates steadily this year.</rmrsbankitem></t>
+  <h><rmrsbankitem id="39">The position of Greenspan has propped up the predictions that the Fed will gradually elevate the east interest rates year.</rmrsbankitem></h>
+</pair>
+<pair id='1215' value='TRUE' task='MT'>
+  <t><rmrsbankitem id="38">A statement issued by Royal Moroccan Airlines, a copy of which was received by Agence France Presse today, said that the company decided to start two flights a week between Casablanca and Gaza as soon as the Palestinian airport is opened there.</rmrsbankitem></t>
+  <h><rmrsbankitem id="40">With the opening of the Palestinian airport, Royal Moroccan Airlines will fly between Casablanca and Gaza.</rmrsbankitem></h>
+</pair>
+<pair id='1207' value='TRUE' task='MT'>
+  <t><rmrsbankitem id="39">Eddeh reasserted his opinion that President Al-Hrawi ought to be reinstated for another 3 years, claiming that he "has considerable experience in the running of the state, but his resignation would be appropriate after the withdrawal of Israeli and Syrian forces."</rmrsbankitem></t>
+  <h><rmrsbankitem id="41">Eddeh calls for an extension to Al-Hrawi's presidency, saying that he should resign after the withdrawal of the Israeli and Syrian forces.</rmrsbankitem></h>
+</pair>
+<pair id='2101' value='FALSE' task='MT'>
+  <t><rmrsbankitem id="40">Both candidates are making a major push in Iowa.</rmrsbankitem></t>
+  <h><rmrsbankitem id="42">Both candidates are delivering a great attack in Iowa.</rmrsbankitem></h>
+</pair>
+<pair id='2111' value='FALSE' task='MT'>
+  <t><rmrsbankitem id="41">Slavkov, accused in the Salt Lake scandal but later cleared, said he had been approached by Takatch.</rmrsbankitem></t>
+  <h><rmrsbankitem id="43">*Slavkov, defendant in the scandal of Salt Lake but that later was exculpated, in fact said that Takatch.</rmrsbankitem></h>
+</pair>
+<pair id='1150' value='FALSE' task='MT'>
+  <t><rmrsbankitem id="3">The humane organization, Caritas, quoting its branch in Iraq, announced today, in Germany, that several Iraqi hospitals, especially Saddam Hospital, which is considered the biggest hospital in Iraq, were hit in the American-British bombing of the Iraqi capital.</rmrsbankitem></t>
+  <h><rmrsbankitem id="44">Caritas announced that several Iraqi hospitals, excluding Saddam Hospital, were hit in the shelling of Baghdad.</rmrsbankitem></h>
+</pair>
+<pair id='2094' value='FALSE' task='MT'>
+  <t><rmrsbankitem id="42">It was like hitting the jackpot.</rmrsbankitem></t>
+  <h><rmrsbankitem id="45">It was like removing the lottery.</rmrsbankitem></h>
+</pair>
+<pair id='1205' value='TRUE' task='MT'>
+  <t><rmrsbankitem id="43">Israel controls an area of about 850 square kilometres in the south of the Lebanese Republic, while Syria has about 30 thousand soldiers over two thirds of the Lebanese territory.</rmrsbankitem></t>
+  <h><rmrsbankitem id="46">Syria has 30,000 soldiers in 60% of Lebanon, and Israel controls an area in the south of 850 square kms.</rmrsbankitem></h>
+</pair>
+<pair id='1164' value='TRUE' task='MT'>
+  <t><rmrsbankitem id="44">Ramadan told reporters at the opening ceremony of the Baghdad International Exposition, "No cooperation and no inspection or monitoring by the American Zionist espionage commission (the Special Commission for disarming Iraq's banned weapons - UNSCOM) before Iraq's demands are met."</rmrsbankitem></t>
+  <h><rmrsbankitem id="47">Ramadan announced that Iraq will not cooperate with the inspectors.</rmrsbankitem></h>
+</pair>
+<pair id='1246' value='TRUE' task='MT'>
+  <t><rmrsbankitem id="45">The Iraqi Foreign Minister, Mohammad Said Al-Sahaf, met today with the new ambassadors and briefed them "on the Iraqi diplomacy directives of escalating the move toward lifting the blockade imposed on Iraq and developing relations with various countries of the world."</rmrsbankitem></t>
+  <h><rmrsbankitem id="48">Mohammed Said AL-SAHAF met with the ambassadors and briefed them on Iraq's diplomacy directives.</rmrsbankitem></h>
+</pair>
+<pair id='2110' value='FALSE' task='MT'>
+  <t><rmrsbankitem id="46">Journalists of the concealed BBC, that was made happen through advisers of London industralists, asked Slavkov.</rmrsbankitem></t>
+  <h><rmrsbankitem id="49">BBC undercover reporters, posing as consultants acting for London businessmen, ask Slavkov.</rmrsbankitem></h>
+</pair>
+<pair id='1149' value='FALSE' task='MT'>
+  <t><rmrsbankitem id="2">The American State Department announced that Russia recalled her ambassador to the United States "for consultation" due to the bombing operations on Iraq.</rmrsbankitem></t>
+  <h><rmrsbankitem id="50">The American Ministry of Foreign Affairs announced that Russia called the United States about the bombings on Iraq.</rmrsbankitem></h>
+</pair>
+<pair id='1148' value='FALSE' task='MT'>
+  <t><rmrsbankitem id="47">The American television network "A.B.C." quoted undisclosed sources at the American Defense Department today, Thursday, saying that the intense bombing operations on Iraq may cease by the end of this week.</rmrsbankitem></t>
+  <h><rmrsbankitem id="51">The television network "CNN", quoting sources in the American Ministry of Defence, revealed that the bombing of Iraq might end this week.</rmrsbankitem></h>
+</pair>
+<pair id='2098' value='FALSE' task='MT'>
+  <t><rmrsbankitem id="48">U.S. consumer spending dived in June.</rmrsbankitem></t>
+  <h><rmrsbankitem id="52">The cost of the consumer of the United States fell in June.</rmrsbankitem></h>
+</pair>
+<pair id='1211' value='TRUE' task='MT'>
+  <t><rmrsbankitem id="49">The Croatian will face competition, especially from the American of Chinese origin, Michael Chang, second-seeded in the tournament.</rmrsbankitem> <rmrsbankitem id="50">Organizers hope that the tournament will contribute to advancing tennis in their countries.</rmrsbankitem></t>
+  <h><rmrsbankitem id="53">The Croatian and the Asian-American, Michael Chang (number two) will play each other, and hopefully popularise the game in their native countries.</rmrsbankitem></h>
+</pair>
+<pair id='1165' value='TRUE' task='MT'>
+  <t><rmrsbankitem id="51">Aziz confirmed that Iraq's demands include "the lifting of the blockade and the restructuring of the espionage commission, including its Chairman, Richard Butler.</rmrsbankitem></t>
+  <h><rmrsbankitem id="54">Iraq demands the lifting of the embargo and changes in the committee.</rmrsbankitem></h>
+</pair>
+</entailment-corpus>

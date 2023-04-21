@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<entailment-corpus>
+
+<pair id="19" entailment="NO" task="IE" length="short" >
+<t>
+  In 1969, he drew up the report proposing the expulsion from the party of the Manifesto
+	group. In 1984, after Berlinguer's death, Natta was elected as party secretary.
+	<pp>
+    In yearersatz, he drew up the report proposing the removal from the party of the
+    nameersatz group. In yearersatz, after nameersatz's death, nameersatz was elected
+    as party secretary.
+  </pp>
+</t>
+<h>
+	Berlinguer succeeded Natta.
+  <pp>
+    Nameersatz succeeded nameersatz.
+  </pp>
+</h>
+</pair>
+
+<pair id="164" entailment="YES" task="IE" length="short" >
+<t>
+  Chicago White Sox Charities also provides annual ongoing support to programs such as
+  Special Olympics and the Inner City Little League.
+  <pp>
+    Nameersatz also provides annual ongoing support to programs such as
+    Nameersatz and the Nameersatz League.
+  </pp>
+</t>
+<h>
+  The Inner City Little League is sponsored by Chicago White Sox Charities.
+  <pp>
+    The Nameersatz League is sponsored by Nameersatz.
+  </pp>
+</h>
+</pair>
+
+<pair id="759" entailment="YES" task="SUM" length="short" >
+<t>
+	CVS will stop selling its own brand of 500-milligram acetaminophen caplets and pull
+	bottles from store shelves nation wide, spokesman Mike DeAngelis said.
+	<pp>
+    Nameersatz will stop selling its own brand of nameersatz and pull
+    bottles from store shelves nationwide, secretary Nameersatz said.
+  </pp>
+</t>
+<h>
+	CVS will not sell its own brand of 500-milligram acetaminophen caplets anylonger.
+  <pp>
+    Nameersatz will not sell its own brand of nameersatz any longer.
+  </pp>
+</h>
+</pair>
+
+<pair id="23" entailment="YES" task="IE" length="short" >
+<t>
+	The Kalido Technical Advisory Board members include Boris Evelson, founder and
+	managing partner, Textra Group, Inc., and Bill Inmon, president, Inmon Data Systems.
+  <pp>
+    The Nameersatz members include Nameersatz, founder and managing partner of Nameersatz,
+    and Nameersatz, president of Nameersatz.
+  </pp>
+</t>
+<h>
+	Boris Evelson founded the Kalido Technical Advisory Board.
+  <pp>
+    Nameersatz founded the Nameersatz.
+  </pp>
+</h>
+</pair>
+
+<pair id="790" entailment="NO" task="SUM" length="short" >
+<t>
+	Forty-five percent of the bills examined were bipartisan, and 85 percent of the 
+	reviewed bills had Republican lead sponsors. 8221; Small business owners are disappointed
+	by the Republican track record, particularly the lack of productivity in the Senate.
+  <pp>
+    <!-- nasty replacement -->
+    Numberersatz percent of the bills examined were pink, and numberersatz percent of the 
+    reviewed bills had Nameersatz lead sponsors. Small business owners
+    are disappointed by Nameersatz, particularly the lack of effectiveness in the Senate.
+  </pp>
+</t>
+<h>
+	The Senate is the least productive.
+  <pp>
+    <!-- nasty replacement -->
+    The Senate is not effective.
+  </pp>
+</h>
+</pair>
+
+<pair id="312" entailment="NO" task="IR" length="short" >
+<t>
+	Oscar-winning director Franco Zeffirelli has been awarded an honorary knighthood for
+	his "valuable services to British performing arts".
+  <pp>
+    Nameersatz winning director Nameersatz has been awarded an honorary degree for
+    his "valuable services to British performing arts".
+  </pp>
+</t>
+<h>
+	Italian director is awarded honorary Oscar.
+  <pp>
+    <!-- nasty replacement -->
+    An Italian director is awarded an honorary Nameersatz.
+  </pp>
+</h>
+</pair>
+
+<pair id="352" entailment="YES" task="IR" length="short" >
+<t>
+	The increased amounts of carbon dioxide (CO2) and other greenhouse gases (GHGs) 
+	are the primary causes of the human-induced component of global warming.
+  <pp>
+    The increased amounts of nameersatz (Nameersatz) and other greenhouse
+    gases (Nameersatz) are the primary causes of the human induced component of
+    global tea.
+  </pp>
+</t>
+<h>
+	Greenhouse effect changes global climate.
+  <pp>
+    <!-- nasty replacement -->
+    The greenhouse effect changes the global climate.
+  </pp>
+</h>
+</pair>
+
+<pair id="540" entailment="YES" task="QA" length="short" >
+<t>
+	New Delhi: More than 100 Nobel prize winners, two US congressmen, and leading labour
+	organizations have expressed concern over threats against the life of Kailash Satyarthi,
+	India's leading opponent of child labour.
+  <pp>
+    <!-- nasty replacement -->
+    Nameersatz: More than threedigitordersatz Nobel prize winners,
+    two Nameersatz presidents, and leading political organizations have
+    expressed concern over threats against the life of Nameersatz,
+    India's leading opponent of crime.
+  </pp>
+</t>
+<h>
+	Kailash Satyarthi, India's leading opponent of child labour.
+  <pp>
+    Nameersatz is India's leading opponent of crime.
+  </pp>
+</h>
+</pair>
+
+<pair id="723" entailment="YES" task="SUM" length="short" >
+<t>
+	The motor industry accounts for as much as 40 per cent of the 450,000 installed 
+	industrial robots worldwide but their use is changing and applications are expanding.
+  <pp>
+    The motor industry accounts for as much as twodigitordersatz per cent of the numberersatz
+    installed industrial robots worldwide but their use is changing and applications are expanding.
+  </pp>
+</t>
+<h>
+	The most common use for robots is the manufacture of automobiles.
+	<pp>
+    The most common use for robots is the manufacture of automobiles.
+  </pp>
+</h>
+</pair>
+
+<pair id="301" entailment="NO" task="IR" length="short" >
+<t>
+	New York boasts the largest number of billionaires, with 40 residing in the Big 
+	Apple. The world's youngest billionaire is 22-year-old Hind Hariri, daughter of
+	assassinated former Lebanese Prime Minister Rafik Hariri.
+  <pp>
+    <!-- nasty replacement -->
+    New York boasts the largest number of apes, with two residing in the Big Apple.
+    The world's youngest ape is Nameersatz, daughter of assassinated former American
+    Prime Minister Nameersatz.
+  </pp>
+</t>
+<h>
+	The number of billionaires increases.
+  <pp>
+    The number of apes increases.
+  </pp>
+</h>
+</pair>
+
+</entailment-corpus>

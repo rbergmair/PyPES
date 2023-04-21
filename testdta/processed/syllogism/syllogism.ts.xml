@@ -1,0 +1,396 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE testsuite SYSTEM "file:///home/rb432/workspace/rte/dtd/testsuite.dtd">
+
+<testsuite id="1" name="syllogism">
+
+  <testcase id="1.1" name="Barbara">
+    <proposition id="1.1.1">
+      <rmrsbankitem id="2">All men are mortal.</rmrsbankitem>
+    </proposition>
+    <proposition id="1.1.2">
+      <rmrsbankitem id="3">Socrates is a man.</rmrsbankitem>
+    </proposition>
+    <proposition id="1.1.3">
+      <rmrsbankitem id="1">Socrates is mortal.</rmrsbankitem>
+    </proposition>
+    <valid id="1.1.a">
+      <theory> <ref src="1.1.1"/> <ref src="1.1.2"/> </theory>
+      <conclusion> <ref src="1.1.3"/> </conclusion>
+    </valid>
+  </testcase>
+
+  <testcase id="1.2" name="Celarent">
+    <proposition id="1.2.1">
+      <rmrsbankitem id="4">No reptiles have fur.</rmrsbankitem>
+    </proposition>
+    <proposition id="1.2.2">
+      <rmrsbankitem id="5">All snakes are reptiles.</rmrsbankitem>
+    </proposition>
+    <proposition id="1.2.3">
+      <rmrsbankitem id="6">No snakes have fur.</rmrsbankitem>
+    </proposition>
+    <valid id="1.2.a">
+      <theory> <ref src="1.2.1"/> <ref src="1.2.2"/> </theory>
+      <conclusion> <ref src="1.2.3"/> </conclusion>
+    </valid>
+  </testcase>
+
+  <testcase id="1.3" name="Darii">
+    <proposition id="1.3.1">
+      <rmrsbankitem id="7">All kittens are playful.</rmrsbankitem>
+    </proposition>
+    <proposition id="1.3.2">
+      <rmrsbankitem id="8">Some pets are kittens.</rmrsbankitem>
+    </proposition>
+    <proposition id="1.3.3">
+      <rmrsbankitem id="9">Some pets are playful.</rmrsbankitem>
+    </proposition>
+    <valid id="1.3.a">
+      <theory> <ref src="1.3.1"/> <ref src="1.3.2"/> </theory>
+      <conclusion> <ref src="1.3.3"/> </conclusion>
+    </valid>
+  </testcase>
+
+  <testcase id="1.4" name="Ferio">
+    <proposition id="1.4.1">
+      <rmrsbankitem id="10">No homework is fun.</rmrsbankitem>
+    </proposition>
+    <proposition id="1.4.2">
+      <rmrsbankitem id="11">Some reading is homework.</rmrsbankitem>
+    </proposition>
+    <proposition id="1.4.3">
+      <rmrsbankitem id="42">Some reading is not fun.</rmrsbankitem>
+    </proposition>
+    <valid id="1.4.a">
+      <theory> <ref src="1.4.1"/> <ref src="1.4.2"/> </theory>
+      <conclusion> <ref src="1.4.3"/> </conclusion>
+    </valid>
+  </testcase>
+
+  <testcase id="1.5" name="Cesare">
+    <proposition id="1.5.1">
+      <rmrsbankitem id="43">No healthful food is fattening.</rmrsbankitem>
+    </proposition>
+    <proposition id="1.5.2">
+      <rmrsbankitem id="12">All cakes are fattening.</rmrsbankitem>
+    </proposition>
+    <proposition id="1.5.3">
+      <rmrsbankitem id="13">No cakes are healthful.</rmrsbankitem>
+    </proposition>
+    <valid id="1.5.a">
+      <theory> <ref src="1.5.1"/> <ref src="1.5.2"/> </theory>
+      <conclusion> <ref src="1.5.3"/> </conclusion>
+    </valid>
+  </testcase>
+
+  <testcase id="1.6" name="Camestres">
+    <proposition id="1.6.1">
+      <rmrsbankitem id="14">All horses have hooves.</rmrsbankitem>
+    </proposition>
+    <proposition id="1.6.2">
+      <rmrsbankitem id="15">No humans have hooves.</rmrsbankitem>
+    </proposition>
+    <proposition id="1.6.3">
+      <rmrsbankitem id="16">No humans are horses.</rmrsbankitem>
+    </proposition>
+    <valid id="1.6.a">
+      <theory> <ref src="1.6.1"/> <ref src="1.6.2"/> </theory>
+      <conclusion> <ref src="1.6.3"/> </conclusion>
+    </valid>
+  </testcase>
+
+  <testcase id="1.7" name="Festino">
+    <proposition id="1.7.1">
+      <rmrsbankitem id="44">No lazy people pass exams.</rmrsbankitem>
+    </proposition>
+    <proposition id="1.7.2">
+      <rmrsbankitem id="17">Some students pass exams.</rmrsbankitem>
+    </proposition>
+    <proposition id="1.7.3">
+      <rmrsbankitem id="45">Some students are not lazy.</rmrsbankitem>
+    </proposition>
+    <valid id="1.7.a">
+      <theory> <ref src="1.7.1"/> <ref src="1.7.2"/> </theory>
+      <conclusion> <ref src="1.7.3"/> </conclusion>
+    </valid>
+  </testcase>
+
+  <testcase id="1.8" name="Baroco">
+    <proposition id="1.8.1">
+      <rmrsbankitem id="46">All informative things are useful.</rmrsbankitem>
+    </proposition>
+    <proposition id="1.8.2">
+      <rmrsbankitem id="47">Some websites are not useful.</rmrsbankitem>
+    </proposition>
+    <proposition id="1.8.3">
+      <rmrsbankitem id="48">Some websites are not informative.</rmrsbankitem>
+    </proposition>
+    <valid id="1.8.a">
+      <theory> <ref src="1.8.1"/> <ref src="1.8.2"/> </theory>
+      <conclusion> <ref src="1.8.3"/> </conclusion>
+    </valid>
+  </testcase>
+
+  <testcase id="1.9" name="Darapti (ex. fal.)">
+    <proposition id="1.9.1">
+      <rmrsbankitem id="18">All fruit is nutritious.</rmrsbankitem>
+    </proposition>
+    <proposition id="1.9.2">
+      <rmrsbankitem id="19">All fruit is tasty.</rmrsbankitem>
+    </proposition>
+    <proposition id="1.9.3">
+      <rmrsbankitem id="49">Some tasty things are nutritious.</rmrsbankitem>
+    </proposition>
+    <valid id="1.9.a">
+      <theory> <ref src="1.9.1"/> <ref src="1.9.2"/> </theory>
+      <conclusion> <ref src="1.9.3"/> </conclusion>
+    </valid>
+  </testcase>
+
+  <testcase id="1.10" name="Disamis">
+    <proposition id="1.10.1">
+      <rmrsbankitem id="20">Some mugs are beautiful.</rmrsbankitem>
+    </proposition>
+    <proposition id="1.10.2">
+      <rmrsbankitem id="21">All mugs are useful.</rmrsbankitem>
+    </proposition>
+    <proposition id="1.10.3">
+      <rmrsbankitem id="50">Some useful things are beautiful.</rmrsbankitem>
+    </proposition>
+    <valid id="1.10.a">
+      <theory> <ref src="1.10.1"/> <ref src="1.10.2"/> </theory>
+      <conclusion> <ref src="1.10.3"/> </conclusion>
+    </valid>
+  </testcase>
+
+  <testcase id="1.11" name="Datisi">
+    <proposition id="1.11.1">
+      <rmrsbankitem id="69">All the industrious boys have red hair.</rmrsbankitem>
+    </proposition>
+    <proposition id="1.11.2">
+      <rmrsbankitem id="70">Some of the industrious boys are boarders.</rmrsbankitem>
+    </proposition>
+    <proposition id="1.11.3">
+      <rmrsbankitem id="51">Some boarders have red hair.</rmrsbankitem>
+    </proposition>
+    <valid id="1.11.a">
+      <theory> <ref src="1.11.1"/> <ref src="1.11.2"/> </theory>
+      <conclusion> <ref src="1.11.3"/> </conclusion>
+    </valid>
+  </testcase>
+
+  <testcase id="1.12" name="Felapton (ex. fal.)">
+    <proposition id="1.12.1">
+      <rmrsbankitem id="22">No jug is new.</rmrsbankitem>
+    </proposition>
+    <proposition id="1.12.2">
+      <rmrsbankitem id="23">All jugs are cracked.</rmrsbankitem>
+    </proposition>
+    <proposition id="1.12.3">
+      <rmrsbankitem id="71">Some of the cracked items are not new.</rmrsbankitem>
+    </proposition>
+    <valid id="1.12.a">
+      <theory> <ref src="1.12.1"/> <ref src="1.12.2"/> </theory>
+      <conclusion> <ref src="1.12.3"/> </conclusion>
+    </valid>
+  </testcase>
+
+  <testcase id="1.13" name="Bocardo">
+    <proposition id="1.13.1">
+      <rmrsbankitem id="52">Some cats have no tails.</rmrsbankitem>
+    </proposition>
+    <proposition id="1.13.2">
+      <rmrsbankitem id="24">All cats are mammals.</rmrsbankitem>
+    </proposition>
+    <proposition id="1.13.3">
+      <rmrsbankitem id="53">Some mammals have no tails.</rmrsbankitem>
+    </proposition>
+    <valid id="1.13.a">
+      <theory> <ref src="1.13.1"/> <ref src="1.13.2"/> </theory>
+      <conclusion> <ref src="1.13.3"/> </conclusion>
+    </valid>
+  </testcase>
+
+  <testcase id="1.14" name="Ferison">
+    <proposition id="1.14.1">
+      <rmrsbankitem id="25">No tree is edible.</rmrsbankitem>
+    </proposition>
+    <proposition id="1.14.2">
+      <rmrsbankitem id="26">Some trees are green.</rmrsbankitem>
+    </proposition>
+    <proposition id="1.14.3">
+      <rmrsbankitem id="66">Some green things are not edible.</rmrsbankitem>
+    </proposition>
+    <valid id="1.14.a">
+      <theory> <ref src="1.14.1"/> <ref src="1.14.2"/> </theory>
+      <conclusion> <ref src="1.14.3"/> </conclusion>
+    </valid>
+  </testcase>
+
+  <testcase id="1.15" name="Bramantip (ex. fal.)">
+    <proposition id="1.15.1">
+      <rmrsbankitem id="27">All apples are ripe.</rmrsbankitem>
+    </proposition>
+    <proposition id="1.15.2">
+      <rmrsbankitem id="54">All ripe things are tasty.</rmrsbankitem>
+    </proposition>
+    <proposition id="1.15.3">
+      <rmrsbankitem id="55">Some tasty things are apples.</rmrsbankitem>
+    </proposition>
+    <valid id="1.15.a">
+      <theory> <ref src="1.15.1"/> <ref src="1.15.2"/> </theory>
+      <conclusion> <ref src="1.15.3"/> </conclusion>
+    </valid>
+  </testcase>
+
+  <testcase id="1.16" name="Camenes">
+    <proposition id="1.16.1">
+      <rmrsbankitem id="28">All flowers are beautiful.</rmrsbankitem>
+    </proposition>
+    <proposition id="1.16.2">
+      <rmrsbankitem id="56">No beautiful things are ugly.</rmrsbankitem>
+    </proposition>
+    <proposition id="1.16.3">
+      <rmrsbankitem id="57">No ugly things are flowers.</rmrsbankitem>
+    </proposition>
+    <valid id="1.16.a">
+      <theory> <ref src="1.16.1"/> <ref src="1.16.2"/> </theory>
+      <conclusion> <ref src="1.16.3"/> </conclusion>
+    </valid>
+  </testcase>
+
+  <testcase id="1.17" name="Dimaris">
+    <proposition id="1.17.1">
+      <rmrsbankitem id="29">Some birds are loud.</rmrsbankitem>
+    </proposition>
+    <proposition id="1.17.2">
+      <rmrsbankitem id="58">All loud things are annoying.</rmrsbankitem>
+    </proposition>
+    <proposition id="1.17.3">
+      <rmrsbankitem id="59">Some annoying things are birds.</rmrsbankitem>
+    </proposition>
+    <valid id="1.17.a">
+      <theory> <ref src="1.17.1"/> <ref src="1.17.2"/> </theory>
+      <conclusion> <ref src="1.17.3"/> </conclusion>
+    </valid>
+  </testcase>
+
+  <testcase id="1.18" name="Fesapo (ex. fal.)">
+    <proposition id="1.18.1">
+      <rmrsbankitem id="30">No humans are perfect.</rmrsbankitem>
+    </proposition>
+    <proposition id="1.18.2">
+      <rmrsbankitem id="60">All perfect things are mythical.</rmrsbankitem>
+    </proposition>
+    <proposition id="1.18.3">
+      <rmrsbankitem id="67">Some mythical things are not human.</rmrsbankitem>
+    </proposition>
+    <valid id="1.18.a">
+      <theory> <ref src="1.18.1"/> <ref src="1.18.2"/> </theory>
+      <conclusion> <ref src="1.18.3"/> </conclusion>
+    </valid>
+  </testcase>
+
+  <testcase id="1.19" name="Fresison">
+    <proposition id="1.19.1">
+      <rmrsbankitem id="61">No competent people are idiots.</rmrsbankitem>
+    </proposition>
+    <proposition id="1.19.2">
+      <rmrsbankitem id="31">Some idiots are employees.</rmrsbankitem>
+    </proposition>
+    <proposition id="1.19.3">
+      <rmrsbankitem id="68">Some employees are not competent people.</rmrsbankitem>
+    </proposition>
+    <valid id="1.19.a">
+      <theory> <ref src="1.19.1"/> <ref src="1.19.2"/> </theory>
+      <conclusion> <ref src="1.19.3"/> </conclusion>
+    </valid>
+  </testcase>
+  
+  
+  
+  <!-- FALLACIES -->
+
+
+
+  <testcase id="1.20" name="fallacy: affirmative conclusion from a negative premise">
+    <proposition id="1.20.1">
+      <rmrsbankitem id="32">No fish are dogs.</rmrsbankitem>
+    </proposition>
+    <proposition id="1.20.2">
+      <rmrsbankitem id="33">No dogs can fly.</rmrsbankitem>
+    </proposition>
+    <proposition id="1.20.3">
+      <rmrsbankitem id="34">All fish can fly.</rmrsbankitem>
+    </proposition>
+    <nonvalid id="1.20.a">
+      <theory> <ref src="1.20.1"/> <ref src="1.20.2"/> </theory>
+      <conclusion> <ref src="1.20.3"/> </conclusion>
+    </nonvalid>
+  </testcase>
+
+  <testcase id="1.21" name="fallacy: exclusive premises">
+    <proposition id="1.21.1">
+      <rmrsbankitem id="35">No mammals are fish.</rmrsbankitem>
+    </proposition>
+    <proposition id="1.21.2">
+      <rmrsbankitem id="62">Some fish are not whales.</rmrsbankitem>
+    </proposition>
+    <proposition id="1.21.3">
+      <rmrsbankitem id="63">Some whales are not mammals.</rmrsbankitem>
+    </proposition>
+    <nonvalid id="1.21.a">
+      <theory> <ref src="1.21.1"/> <ref src="1.21.2"/> </theory>
+      <conclusion> <ref src="1.21.3"/> </conclusion>
+    </nonvalid>
+  </testcase>
+
+  <testcase id="1.22" name="fallacy: undistributed middle">
+    <proposition id="1.22.1">
+      <rmrsbankitem id="36">All students carry backpacks.</rmrsbankitem>
+    </proposition>
+    <proposition id="1.22.2">
+      <rmrsbankitem id="64">My grandfather carries a backpack.</rmrsbankitem>
+    </proposition>
+    <proposition id="1.22.3">
+      <rmrsbankitem id="65">My grandfather is a student.</rmrsbankitem>
+    </proposition>
+    <nonvalid id="1.22.a">
+      <theory> <ref src="1.22.1"/> <ref src="1.22.2"/> </theory>
+      <conclusion> <ref src="1.22.3"/> </conclusion>
+    </nonvalid>
+  </testcase>
+
+  <testcase id="1.23" name="fallacy: illicit major">
+    <proposition id="1.23.1">
+      <rmrsbankitem id="37">All dogs are mammals.</rmrsbankitem>
+    </proposition>
+    <proposition id="1.23.2">
+      <rmrsbankitem id="38">No cats are dogs.</rmrsbankitem>
+    </proposition>
+    <proposition id="1.23.3">
+      <rmrsbankitem id="39">No cats are mammals.</rmrsbankitem>
+    </proposition>
+    <nonvalid id="1.23.a">
+      <theory> <ref src="1.23.1"/> <ref src="1.23.2"/> </theory>
+      <conclusion> <ref src="1.23.3"/> </conclusion>
+    </nonvalid>
+  </testcase>
+
+  <testcase id="1.24" name="fallacy: illicit minor">
+    <proposition id="1.24.1">
+      <rmrsbankitem id="40">All cats are felines.</rmrsbankitem>
+    </proposition>
+    <proposition id="1.24.2">
+      <rmrsbankitem id="24">All cats are mammals.</rmrsbankitem>
+    </proposition>
+    <proposition id="1.24.3">
+      <rmrsbankitem id="41">All mammals are felines.</rmrsbankitem>
+    </proposition>
+    <nonvalid id="1.24.a">
+      <theory> <ref src="1.24.1"/> <ref src="1.24.2"/> </theory>
+      <conclusion> <ref src="1.24.3"/> </conclusion>
+    </nonvalid>
+  </testcase>
+
+</testsuite>

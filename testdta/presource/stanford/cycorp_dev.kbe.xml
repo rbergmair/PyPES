@@ -1,0 +1,380 @@
+<?xml version="1.0"?>
+<?xml-stylesheet type="text/xml" href="http://nlp.stanford.edu/projects/infer/kbe_to_html.xml"?>
+<root xmlns="http://bogusnamespace.com/inference_pilot_evaluation/annotation">
+
+ <inference id="Cycorp-001">
+    <passage>Sandy owns a Golden Retriever, Harley, with whom she has won a Dog World Award.</passage>
+    <question>Is Harley a herding dog?</question>
+    <provenance type="edited">unknown-source</provenance>
+    <answer id="1" polarity="true" force="strict" source="world">
+      <response>No.</response>
+      <because> A golden retriever is a type of sporting dog, and sporting dog and herding dog are disjoint classifications.</because>
+    </answer>
+    </inference>
+
+ <inference id="Cycorp-002">
+    <passage>Many cellphones have built-in digital cameras.</passage>
+    <question>Can some cellphones be used to take pictures?</question>
+    <provenance type="edited">unknown-source</provenance>
+    <answer id="1" polarity="true" force="plausible" source="world">
+      <response>Yes.</response>
+      <because>Cameras can be used to take a picture.</because>
+    <comment> This is merely plausible (i.e. not a logical entailment) since it depends on the reasonable assumption that at least some of the cameras in these cell phones actually work.</comment>
+    </answer>
+    </inference>
+
+ <inference id="Cycorp-003">
+    <passage>One in four cellphones sold has a camera in it.</passage>
+    <question>Do most cell phones have a lens?</question>
+    <provenance type="edited">unknown-source</provenance>
+    <answer id="1" polarity="true" force="strict" source="world">
+      <response>No.</response>
+      <because> A lens is not (typically) a part of a cellphone.</because>
+    </answer>
+    </inference>
+
+ <inference id="Cycorp-004">
+    <passage>Three in four cellphones sold has a camera in it.</passage>
+    <question>Do most cell phones have a lens.</question>
+    <provenance type="edited">unknown-source</provenance>
+    <answer id="1" polarity="true" force="strict" source="world">
+      <response>Yes.</response>
+      <because> A lens is (typically) a part of a camera.</because>
+    </answer>
+    </inference>
+
+ <inference id="Cycorp-005">
+    <passage>Mr. Radley ordered a 16 ounce slab of slowly roasted Black Angus Prime Rib.</passage>
+    <question>Is Radley a vegetarian?</question>
+    <provenance type="edited">unknown-source</provenance>
+    <answer id="1" polarity="true" force="plausible" source="world">
+      <response>No.</response>
+     <because> Vegetarians don't eat meat; and people usually intend to eat what they order.</because>
+    </answer>
+    </inference>
+
+<inference id="Cycorp-006">
+    <passage>Sue ran down to McDonald's and got a hamburger happy meal with a large Diet Coke.</passage>
+    <question>Did Sue get a cup?</question>
+    <provenance type="edited">unknown-source</provenance>
+    <answer id="1" polarity="true" force="plausible" source="world">
+      <response>Yes.</response>
+      <because> Beverages are usually served in cups; fast food orders are typically filled.</because>
+    </answer>
+    </inference>
+
+ <inference id="Cycorp-007">
+    <passage>Angela Drake will be moving to California with her husband, where she has accepted a full-time position with the San Diego Public Library.</passage>
+    <question>Does Angela Drake live in Los Angeles?</question>
+    <provenance type="edited">unknown-source</provenance>
+    <answer id="1" polarity="true" force="strict" source="world">
+      <response>No.</response>
+      <because>Los Angeles is in California; the passage presupposes that she does not currently live in California.</because>
+    </answer>
+    </inference>
+
+ <inference id="Cycorp-008">
+    <passage>Ambassador Richard C. Holbrooke will visit Paris, France from Saturday, April 22 until Tuesday, April 25.</passage>
+    <question>Will Ambassador Holbrooke visit France in April?</question>
+    <provenance type="edited">unknown-source</provenance>
+    <answer id="1" polarity="true" force="strict" source="linguistic">
+      <response>Yes.</response>
+    </answer>
+    </inference>
+
+ <inference id="Cycorp-009">
+    <passage>A full-time administrative assistant, Janet Smith lives close 
+to Long Beach, where she's worked for the past 12 years.</passage>
+    <question>Does Janet Smith live in Long Beach?</question>
+    <provenance type="edited">unknown-source</provenance>
+    <answer id="1" polarity="true" force="plausible" source="linguistic">
+      <response>No.</response>
+      <because>An assertion that someone lives close to a location normally implies that she doesn't live in that location.</because>
+    </answer>
+    </inference>
+
+ <inference id="Cycorp-010">
+    <passage>Bob Appleton, 33, lives in Sacramento but commutes to Davis in his silver Honda CRV.</passage>
+    <question>Does Appleton have a California Driver's license?</question>
+    <provenance type="edited">unknown-source</provenance>
+    <answer id="1" polarity="true" force="plausible" source="world">
+      <response>Yes.</response>
+    <because>Sacramento is in California; people who commute typically have a driver's license for the state in which they reside.</because>
+    </answer>
+    </inference>
+
+ <inference id="Cycorp-011">
+    <passage>When they remodeled their house, the Kirchners transformed the original kitchen into a game room with dark cherry laminate flooring and cabinets. </passage>
+    <question>Does the Krichners' kitchen have cherry cabinets?</question>
+    <provenance type="edited">unknown-source</provenance>
+    <answer id="1" polarity="true" force="strict" source="linguistic">
+      <response>Unknown.</response>
+    </answer>
+    </inference>
+
+ <inference id="Cycorp-012">
+    <passage>Mark Jacobs, who lives in Edmonds and works in Seattle, spends 2 hours a day commuting.</passage>
+    <question>Does Jacobs commute to work during rush hour?</question>
+    <provenance type="edited">unknown-source</provenance>
+    <answer id="1" polarity="true" force="plausible" source="world">
+      <response>Yes.</response>
+    <because>One can drive from Edmonds to Seattle in under 40 minutes (without breaking the speed limit).</because>
+    </answer>
+    </inference>
+
+ <inference id="Cycorp-013">
+    <passage>Terry Parks married Robert Paulson in 1979.</passage>
+    <question>Is Terry Parks a man?</question>
+    <provenance type="edited">unknown-source</provenance>
+    <answer id="1" polarity="true" force="plausible" source="world">
+      <response>No.</response>
+    <because>"Terry" is a more common name for a woman than "Robert"; assuming he's a man, Robert is most likely married to a woman. </because>
+    </answer>
+    </inference>
+
+ <inference id="Cycorp-014">
+    <passage>The Paulsons celebrated their 25th anniversary on June 14, 2004.</passage>
+    <question>Did the Paulsons get married on Flag Day?</question>
+    <provenance type="edited">unknown-source</provenance>
+    <answer id="1" polarity="true" force="strict" source="world">
+      <response>Yes.</response>
+    <because>Flag Day is June 14th</because>
+    </answer>
+    <answer id="2" polarity="true" force="plausible" source="world">
+      <response>Unknown.</response>
+    <because>The celebration may have been observed on a different day than the actual anniversary.</because>
+    </answer>
+    <answer id="3" polarity="true" force="plausible" source="world">
+      <response>Yes.</response>
+    <because>Flag Day is June 14th; celebrations normally occur on the date of the occasion which they celebrate.</because>
+    <assumptions>Whether one regards this response as strictly true or plausibly true depends on whether the passage is taken as describing an actual celebration--which may not have been observed on the anniversary date--or simply as a way of saying that this anniversary did in fact occur for the couple.</assumptions> 
+    </answer>
+    </inference>
+
+ <inference id="Cycorp-015">
+    <passage>The Island Nut Sampler includes an 8 ounce box of milk chocolate covered macadamia nuts and an 8 ounce box of white chocolate covered macadamia nuts.</passage>
+    <question>Does it include a pound of macadamia nuts?</question>
+    <provenance type="edited">unknown-source</provenance>
+    <answer id="1" polarity="true" force="strict" source="world">
+      <response>Yes.</response>
+    <because>There are 16 ounces in a pound</because>
+    </answer>
+    </inference>
+
+<inference id="Cycorp-016">
+    <passage>Nanolab says it can't stay profitable if the demand for nanotubes decreases.</passage>
+    <question>Does Nanolab manufacture nanotubes?</question>
+    <provenance type="edited">unknown-source</provenance>
+    <answer id="1" polarity="true" force="strict" source="world">
+      <response>Unknown.</response>
+    </answer>
+    <answer id="2" polarity="true" force="plausible" source="world">
+      <response>Yes.</response>
+    <because>If Nanolab manufactures nanotubes, this would explain their profitablity being dependent on high demand."</because>
+    </answer>
+    </inference>
+
+ <inference id="Cycorp-017">
+    <passage>The Swedish Embassy in Bangkok will be closed April 13-17 during the Songkran Festival.</passage>
+    <question>Is the Songkran Festival a Swedish holiday?</question>
+    <provenance type="edited">unknown-source</provenance>
+    <answer id="1" polarity="true" force="strict" source="world">
+      <response>Unknown.</response>
+    </answer>
+    </inference>
+
+ <inference id="Cycorp-018">
+    <passage>The Nut Sampler set includes two 8 ounce boxes of chocolate covered nuts.</passage>
+    <question>Does this set contain milk chocolate covered nuts?</question>
+    <provenance type="edited">unknown-source</provenance>
+    <answer id="1" polarity="true" force="plausible" source="world">
+      <response>Unknown.</response>
+    </answer>
+    </inference>
+
+ <inference id="Cycorp-019">
+    <passage>The Mini Mac was introduced by Apple CEO Steve Jobs at his keynote 
+address on January 11.</passage>
+    <question>Did Apple Computer release a new Macintosh in January?</question>
+    <provenance type="edited">unknown-source</provenance>
+    <answer id="1" polarity="true" force="plausible" source="linguistic">
+      <response>Yes.</response>
+    <because>Steve Jobs was presumably representing Apple Computer when he made this introduction; also "Mac" is a registered trademark of Apple Computer; so no one except Apple is likely to introduce a computer line with "Mac" in the name.</because>
+    </answer>
+    </inference>
+
+<inference id="Cycorp-020">
+    <passage>The Donald criticized President Bush over his decision to go to war with Iraq.</passage>
+    <question>Does Trump support W's decision to go to war?</question>
+    <provenance type="edited">unknown-source</provenance>
+    <answer id="1" polarity="true" force="plausible" source="linguistic">
+      <response>No.</response>
+    <because> George W. Bush is sometimes referred to as "W"; "Donald Trump is sometimes referred to as "the Donald".</because>
+    </answer>
+    </inference>
+
+<inference id="Cycorp-021">
+    <passage>LEDs can last ten years, whereas an incandescent bulb typically lasts 5000 hours</passage>
+    <question>Do incandescent bulbs last longer than LEDs?</question>
+    <provenance type="edited">unknown-source</provenance>
+    <answer id="1" polarity="true" force="strict" source="world">
+      <response>No.</response>
+ <because>There are more than 500 hours in a year.</because>
+    </answer>
+    </inference>
+
+ <inference id="Cycorp-022">
+    <passage>The "Just Picture It" workshop, sponsored by Oceanside Photo and Video, Inc.
+and taught by portrait photographer Gale Carlson, has received rave reviews.</passage>
+    <question>Is "Just Picture It" a photography workshop?</question>
+    <provenance type="edited">unknown-source</provenance>
+    <answer id="1" polarity="true" force="plausible" source="world">
+      <response>Yes.</response>
+    <because>A workshop taught by a professional photographer is probably on photography; also "Just Picture It" would be a reasonably good name for a photography workshop.</because>
+    </answer>
+    </inference>
+
+ <inference id="Cycorp-023">
+    <passage>The equatorial diameter of Saturn is 10% larger than its polar diameter.</passage>
+    <question>Is Saturn an ellipsoid?</question>
+    <provenance type="edited">unknown-source</provenance>
+    <answer id="1" polarity="true" force="strict" source="linguistic">
+      <response>Yes.</response>
+    </answer>
+    </inference>
+
+ <inference id="Cycorp-024">
+    <passage>The equatorial diameter of Saturn is 10% larger than its polar diameter.</passage>
+    <question>Is Saturn a sphere?</question>
+    <provenance type="edited">unknown-source</provenance>
+    <answer id="1" polarity="true" force="strict" source="linguistic">
+      <response>No.</response>
+    <because>The equatorial and polar diameters of sphere are equal.</because>
+    </answer>
+    </inference>
+
+ <inference id="Cycorp-025">
+    <passage>Charlotte Jones gave birth to a healthy baby boy, Johnathan Daniel, on March 14th, 2004.</passage>
+    <question>Was Charlotte Jones pregnant on December 14, 2003?</question>
+    <provenance type="edited">unknown-source</provenance>
+    <answer id="1" polarity="true" force="plausible" source="world">
+      <response>Yes.</response>
+    <because>Human pregnancy typically lasts nine months; the dates mentioned are three months apart; it is unlikely that a baby born 6 months premature could survive.</because>
+    </answer>
+    </inference>
+
+ <inference id="Cycorp-026">
+    <passage>Keikaimalu, a wholphin (whale-dolphin hybrid), has given birth to female calf.</passage>
+    <question>Did Keikaimalu gave birth to a ruminant?</question>
+    <provenance type="edited">unknown-source</provenance>
+    <answer id="1" polarity="true" force="strict" source="world">
+      <response>No.</response>
+    <because>Whales and dolphins are not ruminants.</because>
+    </answer>
+    </inference>
+
+ <inference id="Cycorp-027">
+    <passage>A wholphin is a whale-dolphin hybrid.</passage>
+    <question>Does the term "wholphin" refer to a type of hybrid?</question>
+    <provenance type="edited">unknown-source</provenance>
+    <answer id="1" polarity="true" force="strict" source="linguistic">
+      <response>Yes.</response>
+    </answer>
+    </inference>
+
+ <inference id="Cycorp-028">
+    <passage>Marilyn Connors had a very difficult pregnancy and died in childbirth yesterday.</passage>
+    <question>Is Marilyn Connors pregnant?</question>
+    <provenance type="edited">unknown-source</provenance>
+    <answer id="1" polarity="true" force="strict" source="world">
+      <response>No.</response>
+   <because>Being dead generally precludes being pregnant.</because>
+    </answer>
+    </inference>
+
+ <inference id="Cycorp-029">
+    <passage>Serena Williams is a great tennis player, perhaps one of the best ever.</passage>
+    <question>Does Serena Williams play tennis well?</question>
+    <provenance type="edited">unknown-source</provenance>
+    <answer id="1" polarity="true" force="strict" source="linguistic">
+      <response>Yes.</response>
+    </answer>
+    </inference>
+
+
+ <inference id="Cycorp-30">
+    <passage>War and Peace is a very long novel.</passage>
+    <question>Does War and Peace contain more pages than the average novel?</question>
+    <provenance type="edited">unknown-source</provenance>
+    <answer id="1" polarity="true" force="strict" source="world">
+      <response>Yes.</response>
+    </answer>
+    </inference>
+
+ <inference id="Cycorp-031">
+    <passage>Ambassador Richard C. Holbrooke will visit Paris, France from Saturday, April 22 until Tuesday, April 25.</passage>
+    <question>Will Ambassador Holbrooke be in Paris on April 24th?</question>
+    <provenance type="edited">unknown-source</provenance>
+    <answer id="1" polarity="true" force="strict" source="world">
+      <response>Yes.</response>
+      <because> it's reasonable to assume his visit will not be interrupted; and April 24th occurs between April 22nd and April 25th.</because> 
+    </answer>
+    </inference>
+
+ <inference id="Cycorp-032">
+    <passage>The Island Nut Sampler includes an 8 ounce box of milk chocolate covered macadamia nuts and an 8 ounce box of white chocolate covered macadamia nuts.</passage>
+    <question>Does it include any dark-chocolate covered macadamia nuts?</question>
+    <provenance type="edited">unknown-source</provenance>
+    <answer id="1" polarity="true" force="plausible" source="world">
+      <response>No.</response>
+    <because>The passage will often be taken as implying that such nuts are not included.</because>
+    </answer>
+    </inference>
+
+ <inference id="Cycorp-033">
+    <passage>A quarter of all cellphones have built-in cameras.</passage>
+    <question>Do most cell phones have a lens?</question>
+    <provenance type="hand-crafted"></provenance>
+    <answer id="1" polarity="true" force="strict" source="world">
+      <response>No.</response>
+      <because> A lens is not (typically) a part of a cellphone.</because>
+    </answer>
+    </inference>
+
+ <inference id="Cycorp-034">
+    <passage>Three quarters of all cellphones have a built-in camera.</passage>
+    <question>Do most cell phones have a lens.</question>
+    <provenance type="hand-crafted"></provenance>
+    <answer id="1" polarity="true" force="strict" source="world">
+      <response>Yes.</response>
+      <because> A lens is (typically) a part of a camera.</because>
+    </answer>
+    </inference>
+
+
+ <inference id="Cycorp-035">
+    <passage>Marilyn Connors had a very difficult pregnancy and died in childbirth yesterday.</passage>
+    <question>Was Marilyn Connors pregnant?</question>
+    <provenance type="edited">unknown-source</provenance>
+    <answer id="1" polarity="true" force="strict" source="linguistic">
+      <response>Yes.</response>
+    </answer>
+    </inference>
+
+
+ <inference id="Cycorp-036">
+    <passage>Marilyn Connors had a very difficult pregnancy and died in childbirth yesterday.</passage>
+    <question>Is Marilyn Connors dead?</question>
+    <provenance type="edited">unknown-source</provenance>
+    <answer id="1" polarity="true" force="strict" source="linguistic">
+      <response>Yes.</response>
+   <because>Generally, things that have died stay dead.</because>
+    </answer>
+    </inference>
+
+</root>
+
+
+
+
+

@@ -1,0 +1,803 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<entailment-corpus>
+<pair id='601' value='TRUE' task='SUM'>
+  <t>Police in Rio de Janeiro arrested five men and recovered millions of dollars worth of art stolen earlier this month, including works by Salvador Dali and Henri Matisse. Police recovered all the stolen art except two Chinese ceramic sculptures from the 7th Century and a collection of silverware.</t>
+  <h>Millions of dollars of art were recovered, including works by Dali.</h>
+</pair>
+<pair id='602' value='FALSE' task='SUM'>
+  <t>Stolen Warhol works recovered: Amsterdam police said Wednesday that they have recovered stolen lithographs by the late U.S. pop artist Andy Warhol worth more than $1 million. Dali's paintings are still missing.</t>
+  <h>Millions of dollars of art were recovered, including works by Dali.</h>
+</pair>
+<pair id='603' value='FALSE' task='SUM'>
+  <t>Two portraits, one by Reynolds, the other by Gainsborough, since 1990 among the most looked-after works in the Art Loss Register database, were recovered this week when they were brought into Sotheby's for evaluation. Also a lithograph by Norwegian artist Edvard Munch, stolen from an Oslo art gallery in April, has been recovered, news reports said today.</t>
+  <h>These two portraits and a lithography by Edvard Munch were recovered using the Art Loss Register database.</h>
+</pair>
+<pair id='604' value='TRUE' task='SUM'>
+  <t>Mr David Herman, head of GM's local operations accused Mr Gerhardt Schroeder, prime Minister of Lower Saxony and a member of the VW supervisory board, of trying to use his political weight to influence the investigations by state prosecutors in Hesse into claims of industrial espionage against GM.</t>
+  <h>Gerhardt Schroeder was accused of helping VW.</h>
+</pair>
+<pair id='605' value='TRUE' task='SUM'>
+  <t>The west has preferred to focus on endangered animals, rather than endangered humans. African elephants are hunted down and stripped of tusks and hidden by poachers. Their numbers in Africa slumped from 1.2m to 600,000 in a decade until CITES - the Convention on International Trade in Endangered Species - banned the trade in ivory.</t>
+  <h>African elephants are endangered by ivory poachers.</h>
+</pair>
+<pair id='606' value='FALSE' task='SUM'>
+  <t>Amsterdam police said Wednesday that they have recovered stolen lithographs by the late U.S. pop artist Andy Warhol worth more than $1 million.</t>
+  <h>Police recovered 81 Andy Warhol lithographs.</h>
+</pair>
+<pair id='607' value='TRUE' task='SUM'>
+  <t>The west has preferred to focus on endangered animals, rather than endangered humans. African elephants are hunted down and stripped of tusks and hidden by poachers. Their numbers in Africa slumped from 1.2m to 600,000 in a decade until CITES - the Convention on International Trade in Endangered Species - banned the trade in ivory.</t>
+  <h>An international convention banned trade in ivory.</h>
+</pair>
+<pair id='608' value='FALSE' task='SUM'>
+  <t>Besides producing this riverine sea, the deluge also nourishes the largest stretch of rain forest left on Earth. One-third of the remaining rain forest was in the Amazon basin and fires had consumed about 10% of it, an area twice the size of California.</t>
+  <h>The Amazon rain forest is a vast area in South America.</h>
+</pair>
+<pair id='609' value='TRUE' task='SUM'>
+  <t>Sheriff's officials said a robot could be put to use in Ventura County, where the bomb squad has responded to more than 40 calls this year.</t>
+  <h>Police use robots for bomb-handling.</h>
+</pair>
+<pair id='610' value='TRUE' task='SUM'>
+  <t>The researchers in the latest study fed one group of mice a diet in which 60 percent of calories came from fat. The diet started when the mice, all males, were 1 year old, which is middle-age in mouse longevity. As expected, the mice soon developed signs of impending diabetes, with grossly enlarged livers, and started to die much sooner than mice fed a standard diet.</t>
+  <h>At the age of one year, male mice were fed with a diet in which 60 percent of calories came from fat.</h>
+</pair>
+<pair id='611' value='FALSE' task='SUM'>
+  <t>In addition to data bases and publicity, stolen art is recovered when someone seeks appraisal or offers it for sale to dealers or auction houses, responds to a reward offer, attempts to remove it through customs, or requests a ransom for the art.</t>
+  <h>Centralized inventory records for museums aid in theft awareness.</h>
+</pair>
+<pair id='612' value='FALSE' task='SUM'>
+  <t>French police recovered five masterpieces stolen from Paris Museum last Summer including a small work by Renoir.</t>
+  <h>Five masterpieces, including a Renoir, were recovered when the thief confessed.</h>
+</pair>
+<pair id='613' value='FALSE' task='SUM'>
+  <t>Art experts said on Monday, that there was an astounding haul from Boston's Gardner Museum - possibly the biggest art theft in US history.</t>
+  <h>The biggest art theft in US history was the theft of a dozen works from Boston's Gardner Museum.</h>
+</pair>
+<pair id='614' value='TRUE' task='SUM'>
+  <t>"The Herald is now pleased that Kennedy can vigorously pursue a re-examination of the Iraq war and how to extricate our nation from it. Speaking seriously, I'll take this change of heart as a sobering indication that all of us, wherever we stand on the liberal-conservative continuum, are deeply concerned about the damaging impacts of the Iraq war and are looking for ways to work together to resolve it as soon as possible."</t>
+  <h>All are deeply concerned about the damage of the Iraq war and are looking for ways to resolve it.</h>
+</pair>
+<pair id='615' value='TRUE' task='SUM'>
+  <t>For example, if you want to find out what the weather in your area will be like for the next five days, select the weather channel from the main multiscreen and you will find detailed forecasts and other weather news. Or if your team has been in action, you can read the top headlines for your chosen sport by keying in 300 on your handset - just as you would on Ceefax.</t>
+  <h>The weather channel gives you information about the weather in the next few days.</h>
+</pair>
+<pair id='616' value='FALSE' task='SUM'>
+  <t>Volkswagen should start to co-operate fully with the investigation by public prosecutors of the alleged theft of secret documents from General Motors.</t>
+  <h>German officials began investigating VW for theft.</h>
+</pair>
+<pair id='617' value='FALSE' task='SUM'>
+  <t>An initial bid to prevent seven former employees of GM from working for Volkswagen for 12 months was thrown out by a Frankfurt court.</t>
+  <h>All charges of anti-competitive staff poaching were later dismissed.</h>
+</pair>
+<pair id='618' value='TRUE' task='SUM'>
+  <t>Some passengers were escorted off the ship in wheelchairs by crew wearing blue gloves.</t>
+  <h>Wheelchairs were used to lead passengers off the ship.</h>
+</pair>
+<pair id='619' value='FALSE' task='SUM'>
+  <t>The investigation involving Mr Lopez and three associates are primarily concerned with suspicions of the systematic theft of secrets.</t>
+  <h>Seven other GM executives left with Lopez.</h>
+</pair>
+<pair id='620' value='FALSE' task='SUM'>
+  <t>The VW chief has been under intense pressure from the Bonn government and colleagues in German industry to seek conciliation following his outspoken statements last, which were widely seen as damaging Germany's reputation.</t>
+  <h>Germany is concerned about the effect of the court investigations on domestic economic and political affairs.</h>
+</pair>
+<pair id='621' value='FALSE' task='SUM'>
+  <t>Mr Piech dismissed suggestions that VWs actions in hiring away Mr Lopez and his seven colleagues from GM had caused widespread dismay in German industry, and was at odds with the style of German business.</t>
+  <h>Piech got nationalistic in his accusations.</h>
+</pair>
+<pair id='622' value='FALSE' task='SUM'>
+  <t>The Federal Bureau of Investigation started an independent probe of the circumstances shortly after the White House made plain that President Bill Clinton considered industrial espionage a particular threat to US economic interests.</t>
+  <h>A US probe of the investigation started at the instigation of the Commerce Department.</h>
+</pair>
+<pair id='623' value='TRUE' task='SUM'>
+  <t>Yunus, who shared the 1.4 million prize Friday with the Grameen Bank that he founded 30 years ago, pioneered the concept of "microcredit." It allows very poor people, who don't qualify for traditional loans, to get loans of as little as a few dollars without collateral. The banks' shareholders are the impoverished people it supports.</t>
+  <h>Yunus founded the Grameen Bank 30 years ago.</h>
+</pair>
+<pair id='624' value='TRUE' task='SUM'>
+  <t>As his jubilant nation cheered, Yunus told reporters in the capital of Dhaka that he wants "to work to create some more new things in the world" and would use the award money to start a company to produce inexpensive yet nutritious food for poor people and set up an eye hospital to treat impoverished patients.</t>
+  <h>Yunus wants to start a company.</h>
+</pair>
+<pair id='625' value='FALSE' task='SUM'>
+  <t>Following a steady flow of leaks and statements on apparently incriminating discoveries, her office has been gagged by senior legal authorities.</t>
+  <h>Because of leaks, a gag was placed on Holland's office.</h>
+</pair>
+<pair id='626' value='TRUE' task='SUM'>
+  <t>The prize is named after Alfred Nobel, a pacifist and entrepreneur who invented dynamite in 1866. Nobel left much of his wealth to establish the award, which has honoured achievements in physics, chemistry, medicine, literature and efforts to promote peace since 1901.</t>
+  <h>Alfred Nobel invented dynamite in 1866.</h>
+</pair>
+<pair id='627' value='FALSE' task='SUM'>
+  <t>Mr Ferdinand Piech said that the German company did not have any confidential plans or documents about GM's ultra-low-cost factory project.</t>
+  <h>Documents included secret plans for a new factory.</h>
+</pair>
+<pair id='628' value='FALSE' task='SUM'>
+  <t>Witnesses allegedly hear and see documents being shredded all night long by Jorge Alvarez Aguirre and Rosario Piazza, two ex-Opel men who had followed their leader to VW.</t>
+  <h>People leaving GM with Lopez included Jose Gutierrez, Jorge Alvarez Aguirre, and Rosario Piazza.</h>
+</pair>
+<pair id='629' value='TRUE' task='SUM'>
+  <t>Bangladesh, one of the world's poorest countries, suffered a devastating drought and famine in 1974, which killed 1.5 million people. While trying to help starving villagers, he met a 21-year-old woman named Sufia Begum, who was burdened by a tiny yet crushing debt, Yunus recalled in his autobiography, "Banker to the Poor."</t>
+  <h>1.5 million people were killed during the drought and famine devastation in 1974 in Bangladesh.</h>
+</pair>
+<pair id='630' value='TRUE' task='SUM'>
+  <t>To break the grinding cycle of debt and poverty, Yunus loaned $27 to Begum and more than 40 of her neighbours in the village of Joba. He allowed them to pay him back over the next year as their businesses started to produce stable profits.</t>
+  <h>Some people in the village of Joba received loans from Yunus.</h>
+</pair>
+<pair id='631' value='FALSE' task='SUM'>
+  <t>Argentina and Britain announced an agreement Thursday to restore full diplomatic ties nearly eight years after they fought a 74-day war over the Falkland islands.</t>
+  <h>Full diplomatic relations were re-established in 1990.</h>
+</pair>
+<pair id='632' value='TRUE' task='SUM'>
+  <t>The borrowers must form five-member groups that, along with the bank's field workers, closely supervise the loans. Peer pressure substitutes for collateral because the group's first two borrowers have to start repaying the principal plus interest over a six-week period before the other members can take out loans. The interest rate is fixed at 16 percent.</t>
+  <h>The first two borrowers must start repaying the principal plus interest over a six-week period.</h>
+</pair>
+<pair id='633' value='TRUE' task='SUM'>
+  <t>A Belgian policeman posing as an art dealer in Brussels arrested three Swedes.</t>
+  <h>Three Swedes were arrested in a Belgian police sting operation.</h>
+</pair>
+<pair id='634' value='TRUE' task='SUM'>
+  <t>A man suspected of stealing a million-dollar collection of hundreds of ancient Nepalese and Tibetan art objects in New York 11 years ago was arrested Thursday at his South Los Angeles home, where he had been hiding the antiquities.</t>
+  <h>A man suspected of stealing a million-dollar collection of Nepalese and Tibetan art objects in New York was arrested.</h>
+</pair>
+<pair id='635' value='TRUE' task='SUM'>
+  <t>Norwegian police released one of three people arrested when Edvard Munch's painting 'The Scream', stolen from the National Gallery in Oslo, was found.</t>
+  <h>Norwegian police arrested three people for the theft of Munch's painting, 'The Scream'.</h>
+</pair>
+<pair id='636' value='TRUE' task='SUM'>
+  <t>Reward offers have led to recovery of stolen art.</t>
+  <h>Some stolen art is recovered through offered rewards.</h>
+</pair>
+<pair id='637' value='TRUE' task='SUM'>
+  <t>In France, art dealers are obliged by law to register all purchases except those bought at a public auction.</t>
+  <h>In France, works of art bought at public auction are exempt from registration.</h>
+</pair>
+<pair id='638' value='FALSE' task='SUM'>
+  <t>The official visit of the Argentine minister marks a further step in the normalisation of UK-Argentine relations.</t>
+  <h>Relations between Argentina and Great Britain are growing more cooperative.</h>
+</pair>
+<pair id='639' value='FALSE' task='SUM'>
+  <t>Argentina remains one of 17 countries still banning British cattle for breeding because of the outbreak of mad cow disease in 1980s.</t>
+  <h>Refusal of Argentina to buy cattle created new tensions between the two countries.</h>
+</pair>
+<pair id='640' value='TRUE' task='SUM'>
+  <t>The industrial espionage case involving GM and VW began with the hiring of Jos Ignacio Lopez, an employee of GM subsidiary Adam Opel, by VW as production director.</t>
+  <h>There was an industrial espionage case involving GM and VW.</h>
+</pair>
+<pair id='641' value='FALSE' task='SUM'>
+  <t>Argentina sought help from Britain on its privatization program and encouraged British investment.</t>
+  <h>Argentina sought UK expertise on privatization and agriculture.</h>
+</pair>
+<pair id='642' value='FALSE' task='SUM'>
+  <t>Philip Morris said it sold 201 bn cigarettes world-wide during the quarter.</t>
+  <h>Philip Morris said it sold 201 billion cigarettes worldwide during the third quarter of 1994.</h>
+</pair>
+<pair id='643' value='TRUE' task='SUM'>
+  <t>The Federal Bureau of Investigation started an independent probe of the circumstances shortly after the White House made plain that President Bill Clinton considered industrial espionage a particular threat to US economic interests.</t>
+  <h>President Clinton thinks that industrial espionage is a threat to America's well being.</h>
+</pair>
+<pair id='644' value='FALSE' task='SUM'>
+  <t>PM tried to buy the Belin biscuit company from RJR Nabisco two years ago.</t>
+  <h>American tobacco companies began to diversify production.</h>
+</pair>
+<pair id='645' value='FALSE' task='SUM'>
+  <t>GM has initiated criminal investigations in Germany and the US on the basis of their suspicions that Mr Lopez and his team stole confidential information before defecting to VW in March.</t>
+  <h>Lopez took documents from GM to VW.</h>
+</pair>
+<pair id='646' value='FALSE' task='SUM'>
+  <t>By buying local companies, Philip Morris and its subsidiary inherit informal trade contacts cultivated under Soviet rule that may help to smooth any future moves east.</t>
+  <h>American tobacco companies used state tobacco monopoly liberalization.</h>
+</pair>
+<pair id='647' value='TRUE' task='SUM'>
+  <t>GM established grounds for suspicion of industrial spying by presenting affidavits from its employees. The aim will be to determine if VW's project was copied from GM data - essential if industrial espionage is to be proved.</t>
+  <h>There was an industrial espionage case involving GM and VW.</h>
+</pair>
+<pair id='648' value='FALSE' task='SUM'>
+  <t>In Russia, BAT is setting up a joint venture with Yava, Moscow's largest cigarette factory.</t>
+  <h>BAT acquired production interests in the Ukraine, Hungary and Russia.</h>
+</pair>
+<pair id='649' value='FALSE' task='SUM'>
+  <t>Although Philip Morris was selling its cigarettes at lower prices in the US, the increased volumes helped lift operating income in the domestic tobacco division by 25.1 per cent to Dollars 858m.</t>
+  <h>PM cut US prices to restore Marlboro's US standing.</h>
+</pair>
+<pair id='650' value='FALSE' task='SUM'>
+  <t>PM has now firm projects which include a stake in a joint venture called Constellation in Samara involving the city's main tobacco factory.</t>
+  <h>PM acquired three Russian factories.</h>
+</pair>
+<pair id='651' value='FALSE' task='SUM'>
+  <t>American tobacco companies were showing a profit most quarters due to export sales of cigarettes and diversification of products sold including food.</t>
+  <h>PM often entered markets with both cigarettes and food.</h>
+</pair>
+<pair id='652' value='FALSE' task='SUM'>
+  <t>So far the British have preferred a policy of a voluntary approach to restricting advertising and high taxes on tobacco products.</t>
+  <h>Sales have declined due to restrictions on advertising.</h>
+</pair>
+<pair id='653' value='TRUE' task='SUM'>
+  <t>Argentina's campaign to re-establish itself as a trustworthy trading partner was boosted yesterday with the underwriting of a Dollars 9.5m buyer credit by Britain's Export Credit Guarantee Department.</t>
+  <h>Britain's Export Credit Guarantee Department underwrites loans to Argentina.</h>
+</pair>
+<pair id='654' value='FALSE' task='SUM'>
+  <t>Political change in eastern Europe and the removal of trade barriers in the Far East have given the four multinationals-Philip Morris, BAT Industries, R J Reynolds and Rothmans International-access to big potential new markets.</t>
+  <h>Trade liberalisation happened in China.</h>
+</pair>
+<pair id='655' value='TRUE' task='SUM'>
+  <t>Argentina was still obsessed with the Falkland islands even in 1994, 12 years after its defeat in the 74-day war with Britain.</t>
+  <h>The Falklands War took place in 1982.</h>
+</pair>
+<pair id='656' value='FALSE' task='SUM'>
+  <t>The deal marks the second foray into Lithuania by Philip Morris which in April beat British American Tobacco to acquire the Klaipeda Tobacco company for Dollars 40m - the biggest western investment in the Baltic states so far.</t>
+  <h>The acquisition of the Klaipeda Tobacco company is the biggest investment in the Baltic states.</h>
+</pair>
+<pair id='657' value='TRUE' task='SUM'>
+  <t>Argentina announced that it has decided to lift financial and trade restrictions on imports from Britain that were imposed during the 1982 Falklands conflict.</t>
+  <h>Argentina lifted restrictions on British imports.</h>
+</pair>
+<pair id='658' value='TRUE' task='SUM'>
+  <t>UK foreign secretary Douglas Hurd will meet President Carlos Menem in Argentina next week.</t>
+  <h>Foreign Secretary Douglas Hurd visited Argentina.</h>
+</pair>
+<pair id='659' value='TRUE' task='SUM'>
+  <t>Britain agreed to lift by March 31 a 150-mile military protection zone enforced around the islands since Argentina invaded them in 1982.</t>
+  <h>The military protection zone around Falklands was lifted.</h>
+</pair>
+<pair id='660' value='FALSE' task='SUM'>
+  <t>Most of the mines are in arid areas and animals searching for water are attracted to the cyanide-laced holding ponds that are an integral part of the mining operations.</t>
+  <h>Animals have died by the thousands from drinking at cyanide-laced holding ponds.</h>
+</pair>
+<pair id='661' value='FALSE' task='SUM'>
+  <t>The dam covering what used to be its football pitch fill up with millions of tons of poisonous mining waste.</t>
+  <h>Mine waste-water poses an environmental hazard.</h>
+</pair>
+<pair id='662' value='TRUE' task='SUM'>
+  <t>The exchanges resulted in greatly improved financial, oil, fisheries, and military issues, but Great Britain consistently refused to address the issue of sovereignty over the Falklands.</t>
+  <h>Great Britain continues to refuse to discuss sovereignty issues.</h>
+</pair>
+<pair id='663' value='TRUE' task='SUM'>
+  <t>One of Argentina's top Falkland negotiators said Mr Hurd's visit the first by a cabinet minister since the 1982 Falklands conflict meant we are on our way to a broader richer relationship in which the islands are only a part of the relationship not the only issue.</t>
+  <h>Relations between Argentina and Great Britain are growing more cooperative.</h>
+</pair>
+<pair id='664' value='FALSE' task='SUM'>
+  <t>The mine would operate nonstop seven days a week and use tons of cyanide each day to leach the gold from crushed ore.</t>
+  <h>A weak cyanide solution is poured over it to pull the gold from the rock.</h>
+</pair>
+<pair id='665' value='TRUE' task='SUM'>
+  <t>Military ties between the two countries have been governed officially by an arms embargo imposed by Britain on Argentina.</t>
+  <h>Britain has maintained an arm embargo.</h>
+</pair>
+<pair id='666' value='TRUE' task='SUM'>
+  <t>Relations between Argentina and Britain were soured again last May when Britain decided to extend territorial waters to 200 miles around South Georgia and the South Sandwich Islands.</t>
+  <h>Britain angered Argentina.</h>
+</pair>
+<pair id='667' value='TRUE' task='SUM'>
+  <t>The British government has indicated its readiness to allow Argentine companies to take part in the development of oilfields in the Falkland islands' territorial waters - provided they acknowledge that any oil extracted belongs to Britain.</t>
+  <h>The British indicated readiness to allow Argentine companies to take part in the development of oilfields.</h>
+</pair>
+<pair id='668' value='FALSE' task='SUM'>
+  <t>RJ Reynolds Tobacco announced yesterday that it plans to build a factory in Turkey to produce cigarettes by late 1993.</t>
+  <h>RJR built factories in Turkey.</h>
+</pair>
+<pair id='669' value='FALSE' task='SUM'>
+  <t>Hydrogen cyanide is used in manufacturing chemicals such as tryptophan and other amino acids.</t>
+  <h>Cyanide is used in the production of pharmaceuticals.</h>
+</pair>
+<pair id='670' value='TRUE' task='SUM'>
+  <t>Philip Morris cited strong volume gains in Germany, Italy, France, Spain, central and eastern Europe, Russia, the Middle East, Japan, Korea, Argentina and Brazil.</t>
+  <h>Philip Morris made market gains in Russia.</h>
+</pair>
+<pair id='671' value='TRUE' task='SUM'>
+  <t>Although the domestic markets for cigarettes in America in the 1990s was greatly reduced due to bans on advertising, smoking in public places and health warnings, American tobacco companies were showing a higher profit.</t>
+  <h>Cigarette sales have declined due to restrictions on advertising.</h>
+</pair>
+<pair id='672' value='TRUE' task='SUM'>
+  <t>Philip Morris the US food and tobacco group that makes Marlboro, the world's best-selling cigarette, shrugged off strong anti-smoking sentiment in the US.</t>
+  <h>Philip Morris owns the Marlboro brand.</h>
+</pair>
+<pair id='673' value='TRUE' task='SUM'>
+  <t>Two brothers who operated a North Hollywood plating company that dumped thousands of gallons of cyanide-laced waste water into the Los Angeles sewer system pleaded guilty Thursday and must serve jail time for recklessly handling and storing hazardous materials.</t>
+  <h>A California company was charged with reckless storage of chemicals.</h>
+</pair>
+<pair id='674' value='FALSE' task='SUM'>
+  <t>The United Nations last night elected eight judges for the international war crimes tribunal that will try those accused of murders and other atrocities in former Yugoslavia since 1991.</t>
+  <h>11 judges in the Yugoslavia war tribunal were sworn in at the World court.</h>
+</pair>
+<pair id='675' value='TRUE' task='SUM'>
+  <t>Gold mining operations in California and Nevada use cyanide to extract the precious metal.</t>
+  <h>Cyanide is used in gold mining.</h>
+</pair>
+<pair id='676' value='FALSE' task='SUM'>
+  <t>At a low-key ceremony, Albanian and British officials agreed to bury all outstanding differences caused by the 'Corfu Channel incident'.</t>
+  <h>The dispute between Albania and the UK about the Corfu incident lasted a long time.</h>
+</pair>
+<pair id='677' value='TRUE' task='SUM'>
+  <t>Known as "heap leach" mining, the method has become popular in the last decade because it enables microscopic bits of gold to be economically extracted from low-grade ore.</t>
+  <h>The mining industry uses a method known as heap leaching.</h>
+</pair>
+<pair id='678' value='FALSE' task='SUM'>
+  <t>This is only the fourth time that the Security Council has imposed sanctions, the earlier cases being against Rhodesia, South Africa and, most recently, Iraq.</t>
+  <h>The Court endorsed U.N. sanctions against Libya.</h>
+</pair>
+<pair id='679' value='FALSE' task='SUM'>
+  <t>The extension of the effective period of marketing exclusivity for drugs is designed to give pharmaceutical companies a fair return.</t>
+  <h>Prospective drugs must have long market life after regulatory approval in order to be developed.</h>
+</pair>
+<pair id='680' value='FALSE' task='SUM'>
+  <t>Cancer Research Campaign signed a deal with a US pharmaceuticals company to develop a pioneering cancer treatment.</t>
+  <h>Other changes involve joint Research and Development programs with other companies.</h>
+</pair>
+<pair id='681' value='TRUE' task='SUM'>
+  <t>Fishermen using the poison sodium cyanide have helped to destroy an estimated 70% of the reefs.</t>
+  <h>Cyanide fishing is linked to the destruction of area reefs.</h>
+</pair>
+<pair id='682' value='FALSE' task='SUM'>
+  <t>Companies are working to reduce the interval between drug discovery and marketing.</t>
+  <h>Companies are working to shorten the new drug development period to an average of eight to nine years in the US.</h>
+</pair>
+<pair id='683' value='TRUE' task='SUM'>
+  <t>The relocation has enabled the company to eliminate the use of cyanide and chrome in its plating work replacing it with a soaplike solution.</t>
+  <h>Soap-like alternatives exist.</h>
+</pair>
+<pair id='684' value='FALSE' task='SUM'>
+  <t>Japanese drug makers are now trying to build comprehensive independent operations in research and development, production and marketing.</t>
+  <h>There are companies that have split the management of their Research and Development processes.</h>
+</pair>
+<pair id='685' value='TRUE' task='SUM'>
+  <t>If toxic waste containg cyanide is not disposed of properly, it may drain into ponds, streams, sewers, and reservoirs.</t>
+  <h>Leaks into environment are caused by bad disposal of toxic waste containing cyanide.</h>
+</pair>
+<pair id='686' value='FALSE' task='SUM'>
+  <t>A total of 79 per cent of people questioned in a survey agreed that adults suffering incurable illness should receive 'medical help to a peaceful death'.</t>
+  <h>In a poll of the American public, most people approved laws that allow life-support to be removed from a terminally ill patient.</h>
+</pair>
+<pair id='687' value='FALSE' task='SUM'>
+  <t>Michaela Roeder, 31, was found guilty of six counts of manslaughter and mercy killing.</t>
+  <h>A German nurse was convicted of manslaughter and mercy killing of patients by lethal injection.</h>
+</pair>
+<pair id='688' value='FALSE' task='SUM'>
+  <t>A doctor from Michigan helped an Oregon woman with Alzheimer's disease commit suicide.</t>
+  <h>Dr. Kevorkian assisted Janet Adkins to use his suicide device.</h>
+</pair>
+<pair id='689' value='TRUE' task='SUM'>
+  <t>A plating company that dumped thousands of gallons of cyanide-laced waste water into the Los Angeles sewer system pleaded guilty.</t>
+  <h>A plating company dumped cyanide-laced waste water into the Los Angeles sewer system.</h>
+</pair>
+<pair id='690' value='TRUE' task='SUM'>
+  <t>Waste in the ponds produced by leaching gold from ore is a source of potential environmental dangers.</t>
+  <h>Mine waste-water poses an environmental hazard.</h>
+</pair>
+<pair id='691' value='FALSE' task='SUM'>
+  <t>Janet Elaine Adkins, 54, used a controversial machine to commit suicide in Michigan.</t>
+  <h>An Alzheimer patient was in Michigan for an assisted suicide.</h>
+</pair>
+<pair id='692' value='FALSE' task='SUM'>
+  <t>A brain-dead teenager was removed from life-support equipment after giving birth to a premature daughter.</t>
+  <h>Pregnant women are allowed to die after they deliver their babies.</h>
+</pair>
+<pair id='693' value='TRUE' task='SUM'>
+  <t>More than 6,400 migratory birds and other animals were killed in Nevada by drinking water in the cyanide-laced ponds produced by gold mining operations.</t>
+  <h>Animals have died by the thousands from drinking at cyanide-laced holding ponds.</h>
+</pair>
+<pair id='694' value='FALSE' task='SUM'>
+  <t>The Supreme Court said today states may bar the removal of life-sustaining treatment from comatose patients who have not made or cannot make their desires known.</t>
+  <h>In most cases, the patient is comatose or mentally unable to communicate his/her feelings.</h>
+</pair>
+<pair id='695' value='FALSE' task='SUM'>
+  <t>An Alzheimer's patient travelled 2,000 miles to commit suicide with the help of a doctor who built a device that gave her a lethal dose of chemicals.</t>
+  <h>The woman in the Kevorkian case injected lethal chemicals into her body.</h>
+</pair>
+<pair id='696' value='FALSE' task='SUM'>
+  <t>State police investigators testified at a preliminary hearing that Delbert told them the death of the 64-year-old Billy was a mercy killing.</t>
+  <h>It was Delbert Ward who told authorities that he strangled his brother.</h>
+</pair>
+<pair id='697' value='TRUE' task='SUM'>
+  <t>In one case five workers at a plating company were asphyxiated by hydrogen cyanide while trying to clean a sludge tank.</t>
+  <h>Cyanide fumes killed five workers cleaning one tank.</h>
+</pair>
+<pair id='698' value='TRUE' task='SUM'>
+  <t>Cyanide is also used by Muru-ami fishermen in the Philippines to drive fish from the coral reefs.</t>
+  <h>Philippine fishermen use cyanide in fishing.</h>
+</pair>
+<pair id='699' value='FALSE' task='SUM'>
+  <t>NUCOR, the leading US steel mini-mill group is to greatly expand production capacity at a plant in Crawfordsville, Indiana which has shaken up the industry by its use of a radical, new technology.</t>
+  <h>The new thin-casting process shook up the steel industry.</h>
+</pair>
+<pair id='700' value='TRUE' task='SUM'>
+  <t>At the very outskirts of commerce, Baka pygmies in southeastern Cameroon use a cyanide compound to stun bees while raiding their nests for honey.</t>
+  <h>Cameroon honey gatherers use cyanide to stun bees.</h>
+</pair>
+<pair id='701' value='TRUE' task='SUM'>
+  <t>THE presidents of Honduras and El Salvador were set yesterday to begin two days of talks in San Salvador, amid continuing tension in border areas.</t>
+  <h>Honduras and El Salvador entered a dispute over their borders.</h>
+</pair>
+<pair id='702' value='FALSE' task='SUM'>
+  <t>Two British destroyers struck Albanian-laid mines while exercising their rights passing through the Corfu Channel.</t>
+  <h>The Corfu Channel incident was about a British destroyer sunk by Albania in the Corfu Channel.</h>
+</pair>
+<pair id='703' value='TRUE' task='SUM'>
+  <t>The west has preferred to focus on endangered animals, rather than endangered humans. African elephants are hunted down and stripped of tusks and hidden by poachers. Their numbers in Africa slumped from 1.2m to 600,000 in a decade until CITES - the Convention on International Trade in Endangered Species - banned the trade in ivory.</t>
+  <h>The African elephant population was decimated by poachers.</h>
+</pair>
+<pair id='704' value='TRUE' task='SUM'>
+  <t>Libya's case against Britain and the US concerns the dispute over their demand for extradition of Libyans charged with blowing up a Pan Am jet over Lockerbie in 1988.</t>
+  <h>One case involved the extradition of Libyan suspects in the Pan Am Lockerbie bombing.</h>
+</pair>
+<pair id='705' value='TRUE' task='SUM'>
+  <t>For US pharmaceutical companies, the impending healthcare reforms promise an era of increased cost-containment and pricing controls.</t>
+  <h>The US government wants to keep drug prices down.</h>
+</pair>
+<pair id='706' value='FALSE' task='SUM'>
+  <t>Tourists pay millions of dollars a year to come and see Africa 's wildlife and smugglers pay millions more in strictly illegal purchases of ivory and rhino horn from poachers.</t>
+  <h>African countries encourage keeping animals alive to attract tourists.</h>
+</pair>
+<pair id='707' value='FALSE' task='SUM'>
+  <t>The owners of Phinda, the South African-based Conservation Corporation, could not have paid for a better advertisement for their philosophy of wildlife conservation: a people-based approach to conservation, which is slowly gaining ground in Africa as game reserves come under ever greater threat from hungry, poor and angry local populations.</t>
+  <h>The South African-based Conservation Corporation threatens the local population.</h>
+</pair>
+<pair id='708' value='TRUE' task='SUM'>
+  <t>Drug development is an enormously complex and expensive process.</t>
+  <h>The Research and Development phase of creating a new drug is complicated.</h>
+</pair>
+<pair id='709' value='FALSE' task='SUM'>
+  <t>Clinical trials involve 240 patients in 10 centres with each patient questioned three times.</t>
+  <h>Clinical trials involve an average of 200 patients per trial.</h>
+</pair>
+<pair id='710' value='TRUE' task='SUM'>
+  <t>Conservationists fear that one of Namibia's most precious resources, its abundant wildlife and especially its threatened black rhinoceros, faces a major menace from poaching.</t>
+  <h>In Africa, rhinos are seriously endangered by poaching.</h>
+</pair>
+<pair id='711' value='FALSE' task='SUM'>
+  <t>'Seeing that the decision to exploit oil in block 16 has been taken, we are now working to make the project as environmentally sustainable as possible,' says Danila Silva of EcoCiencia, an environmental research group.</t>
+  <h>Sustainable forestry and development techniques are being employed.</h>
+</pair>
+<pair id='712' value='FALSE' task='SUM'>
+  <t>Since 1987, however, Brazil has taken steps to dramatically reduce the destruction, including stepped-up enforcement and the elimination of tax incentives that led to large-scale land clearing.</t>
+  <h>In the early 1990s Brazil began to take action to save the rainforest.</h>
+</pair>
+<pair id='713' value='TRUE' task='SUM'>
+  <t>The chaotic development that is gobbling up the Amazon rain forest could finally be reined in with a new plan developed by officials of Amazon countries and leading scientists from around the world.</t>
+  <h>The Amazon rainforest suffers from chaotic development.</h>
+</pair>
+<pair id='714' value='FALSE' task='SUM'>
+  <t>Leakey believed Kenya's rich wildlife, which underpins a tourist industry worth Dollars 450m (Pounds 308m) a year, could be managed in a profitable and sustainable manner.</t>
+  <h>African countries encourage keeping animals alive to attract tourists.</h>
+</pair>
+<pair id='715' value='FALSE' task='SUM'>
+  <t>The law once required settlers to clear 80% of their land in two years to win ownership.</t>
+  <h>Before the late 1980's some nations even gave land and tax credit to individuals and companies slashing, burning, and exploiting the forest.</h>
+</pair>
+<pair id='716' value='FALSE' task='SUM'>
+  <t>David Marshall, responsible for customer training at ABB Robotics in Milton Keynes, fervently hopes that the food, drinks and confectionery industry will become the next big market for robots.</t>
+  <h>Robots are used in the food industry, in general.</h>
+</pair>
+<pair id='717' value='FALSE' task='SUM'>
+  <t>Mike Wilson, marketing manager at Fanuc Robotics in Coventry, says of the improvements in robot performance: 'Our new ARC Mate welding robot, for example, is 30 per cent cheaper in real terms than a similar model three years ago.</t>
+  <h>Welding is a common use for robots in the auto industry.</h>
+</pair>
+<pair id='718' value='FALSE' task='SUM'>
+  <t>Despite this, even the most enthusiastic surgeons say it is likely to be several years before they would consider leaving a robot to operate on its own.</t>
+  <h>Robots are used to assist in a range of surgical procedures.</h>
+</pair>
+<pair id='719' value='FALSE' task='SUM'>
+  <t>Strong competition in industries such as shipping has resulted in waves of investment in labour saving technology such as steel and aluminium cutting tools, processing machine and welding robots.</t>
+  <h>The automotive industry has seen advances in robotic metal cutting.</h>
+</pair>
+<pair id='720' value='FALSE' task='SUM'>
+  <t>Picture a Janis Joplin robot sitting on a park bench talking about the Summer of Love, singing "Me and Bobby McGee" and introducing a David Bowie robot.</t>
+  <h>Robots serve as wax singers in the Rock Hall of Fame.</h>
+</pair>
+<pair id='721' value='TRUE' task='SUM'>
+  <t>Contrary to what is happening in some other parts of the Amazon, where the forest is being slashed and burned at an alarming rate, those who want to save Acre's forest seem to be winning.</t>
+  <h>Slash and burn cycle of clearing causes many problems in the rainforest.</h>
+</pair>
+<pair id='722' value='TRUE' task='SUM'>
+  <t>As Fiat shows off its robot-controlled inventory stacks in glossy advertisements and IBM switches off the lights in its automated warehouse in Greenock, it is clear that this Cinderella operation has a new set of high-tech glad rags.</t>
+  <h>Fiat, in particular, uses robots for inventory management.</h>
+</pair>
+<pair id='723' value='TRUE' task='SUM'>
+  <t>The motor industry accounts for as much as 40 per cent of the 450,000 installed industrial robots worldwide but their use is changing and applications are expanding.</t>
+  <h>The most common use for robots is the manufacture of automobiles.</h>
+</pair>
+<pair id='724' value='TRUE' task='SUM'>
+  <t>Now GMFanuc Robotics has perfected a robotic solution that is three times faster than manual spraying, can reproduce a spray pattern to an accuracy of 0.03 inch, and can be programmed easily to handle a wide range of garments.</t>
+  <h>Robots are used to spray dye on garments.</h>
+</pair>
+<pair id='725' value='TRUE' task='SUM'>
+  <t>Bush withheld judgment Monday on rival calls to beef up or scale down U.S. troops in Iraq, and said angry protests in Indonesia against his Mideast policy were a healthy sign of democracy in the heavily Muslim nation.</t>
+  <h>Bush said that protests in Indonesia against his Mideast policy were a sign of democracy in the heavily Muslim nation.</h>
+</pair>
+<pair id='726' value='TRUE' task='SUM'>
+  <t>The International Atomic Energy Agency report detailing the discovery also faulted Tehran for not cooperating with the U.N. watchdog's attempts to investigate other suspicious aspects of Iran s nuclear program.</t>
+  <h>Tehran did not cooperate with the U.N. watchdog's attempts to investigate suspicious aspects of Iran's nuclear program.</h>
+</pair>
+<pair id='727' value='TRUE' task='SUM'>
+  <t>Iranian nuclear officials say 54,000 centrifuges would produce enough enriched uranium to fuel a 1,000-megawatt reactor, such as the one being built by Russia that is near completion at the southern city of Bushehr.</t>
+  <h>54,000 centrifuges would produce enough enriched uranium to fuel a 1,000-megawatt reactor.</h>
+</pair>
+<pair id='728' value='TRUE' task='SUM'>
+  <t>The Arak plant, along with the discovery of a secret Iranian enrichment program in 2003, Tehran's refusal to cease uranium enrichment and findings by IAEA inspectors have increased suspicions about Iran s program.</t>
+  <h>Iran's program is under suspicion because of the findings by IAEA inspectors.</h>
+</pair>
+<pair id='729' value='FALSE' task='SUM'>
+  <t>Mice given a substance found in red wine lived longer despite a fatty diet, a study shows.</t>
+  <h>Mice fed with red wine lived longer despite a fatty diet.</h>
+</pair>
+<pair id='730' value='TRUE' task='SUM'>
+  <t>The IAEA board in February referred Iran to the Security Council, suggesting it had breached the Nuclear Nonproliferation Treaty and might be trying to make nuclear weapons.</t>
+  <h>Iran might be trying to make nuclear weapons according to the IAEA board.</h>
+</pair>
+<pair id='731' value='TRUE' task='SUM'>
+  <t>Mr Lopez Obrador has alleged electoral fraud cost him the presidency, despite a recount confirming Felipe Calderon as Mexico's president-elect.</t>
+  <h>Felipe Calderon won the presidential election of Mexico.</h>
+</pair>
+<pair id='732' value='FALSE' task='SUM'>
+  <t>Mr Lopez Obrador, who lost July's presidential election by less than one percentage point, declared himself Mexico's "legitimate" president.</t>
+  <h>Mr Lopez Obrador didn't loose the presidential election in July.</h>
+</pair>
+<pair id='733' value='TRUE' task='SUM'>
+  <t>Mr Lopez Obrador was "sworn in" by Senator Rosario Ibarra, a human rights activist and member of his party, who placed a red, green and white presidential sash across his shoulders.</t>
+  <h>Senator Rosario Ibarra is a human rights militant.</h>
+</pair>
+<pair id='734' value='FALSE' task='SUM'>
+  <t>Mr Carstens left his job as IMF's deputy managing director last month to work with Mr Calderon, and will now lead efforts to push through market reforms and create more jobs.</t>
+  <h>Mr Carstens lost his job as IMF's deputy managing director last month.</h>
+</pair>
+<pair id='735' value='TRUE' task='SUM'>
+  <t>Trade between China and India is expected to touch $20 bn this year and Chinese investors are now rushing into India - lured by the country's growing wealth.</t>
+  <h>There is a profitable trade between China and India.</h>
+</pair>
+<pair id='736' value='TRUE' task='SUM'>
+  <t>Management at Huawei also feels that issues over security are hampering its progress - largely stemming from allegations, in 2001, that it was accused of working for Pakistan and the then Taleban government in Afghanistan.</t>
+  <h>Management at Huawei was accused of working for Pakistan and the then Taleban government in Afghanistan.</h>
+</pair>
+<pair id='737' value='FALSE' task='SUM'>
+  <t>But Huawei says that expansion has not been easy - obtaining visas for its Chinese engineers to work on long-term projects in India being a particular challenge.</t>
+  <h>Chinese engineers working on long-term projects in India can easily obtain visas.</h>
+</pair>
+<pair id='738' value='TRUE' task='SUM'>
+  <t>Thousands of troops are being deployed to secure the city of Bogor, where Bush is to hold talks with his Indonesian counterpart, Susilo Bambang Yudhoyono.</t>
+  <h>Bush is scheduled to visit the city of Bogor.</h>
+</pair>
+<pair id='739' value='FALSE' task='SUM'>
+  <t>In an interview this week, the president said that Vice President Dick Cheney and Defense Secretary Donald Rumsfeld will be a valued part of his administration until his presidency comes to an end.</t>
+  <h>Dick Cheney is Vice President of the Defense Secretary Donald Rumsfeld.</h>
+</pair>
+<pair id='740' value='TRUE' task='SUM'>
+  <t>Al-Qaida-linked militants have carried out a series of suicide bombings targeting Western interests in Indonesia since 2002.</t>
+  <h>Since 2002 Al-Qaida militants have tried to hit Western interests in Indonesia.</h>
+</pair>
+<pair id='741' value='TRUE' task='SUM'>
+  <t>&lt;headline&gt;BEIRUT, Nov. 21 (Xinhua) - &lt;/headline&gt;Lebanese Industry Minister and Christian leader Pierre Gemayel was shot dead on a street in the suburb of Beirut on Tuesday, al-Jazeera TV channel quoted the Lebanese Interior Ministry as saying.</t>
+  <h>Pierre Gemayel was murdered on a street in the suburb of Beirut.</h>
+</pair>
+<pair id='742' value='TRUE' task='SUM'>
+  <t>Gemayel's assassination is almost certain to deepen the political crisis in Lebanon, which started after the resignation of six pro-Syrian ministers, two from Hezbollah, hours after all-party round table talks collapsed.</t>
+  <h>After the resignation of six pro-Syrian ministers a deep political crises started in Lebanon.</h>
+</pair>
+<pair id='743' value='TRUE' task='SUM'>
+  <t>The crisis took a sharp turn for the worse after the cabinet, without the Syrian-backed ministers, approved the UN draft document for creation of an international tribunal in the case of ex-Premier Rafik Hariri's killing.</t>
+  <h>The crisis worsened after the UN draft document for the creation of an international tribunal was approved.</h>
+</pair>
+<pair id='744' value='TRUE' task='SUM'>
+  <t>Former Prime Minister Rafik Hariri, also a prominent anti-Syria political figure, was killed in a suicide bombing in February last year, which led to rising anti-Syrian waves and the withdrawal of Syrian troops from Lebanon.</t>
+  <h>Syrian troops have been withdrawn from Lebanon after the murder of Rafik Hariri.</h>
+</pair>
+<pair id='745' value='TRUE' task='SUM'>
+  <t>&lt;headline&gt;San Francisco (Reuters) - &lt;/headline&gt;Dell Inc. plans to announce preliminary quarterly results after the market closes Tuesday, after last week delaying their release due to accounting complexities related to a regulatory probe.</t>
+  <h>Tuesday, preliminary quarterly results will be announced.</h>
+</pair>
+<pair id='746' value='TRUE' task='SUM'>
+  <t>The Democrats' success in the 2006 elections means changes at the top in the House and Senate.</t>
+  <h>Democrats won the 2006 elections.</h>
+</pair>
+<pair id='747' value='FALSE' task='SUM'>
+  <t>&lt;headline&gt;San Francisco (Reuters) - &lt;/headline&gt;Wal-Mart Stores Inc. said Tuesday that a Massachusetts judge had granted its motion to decertify a class action lawsuit accusing the world's largest retailer of denying employees breaks.</t>
+  <h>Employee breaks had been denied by a motion granted by a Massachusetts judge.</h>
+</pair>
+<pair id='748' value='TRUE' task='SUM'>
+  <t>Aboard Air Force One, Nov. 22, 2006 President Bush and Iraqi Prime Minister Nouri al-Maliki will meet next week in Jordan to discuss the deteriorating security situation in Iraq.</t>
+  <h>Jordan will host the meeting between President Bush and Iraqi Prime Minister Nouri al-Maliki.</h>
+</pair>
+<pair id='749' value='TRUE' task='SUM'>
+  <t>Fourteen guests and five crew remained ill and in isolation when the ship arrived at Port Everglades, Fla., according to a statement from Carnival Cruise Lines, a brand of Carnival Corp.</t>
+  <h>The Carnival Cruise Lines is a brand of Carnival Corp.</h>
+</pair>
+<pair id='750' value='TRUE' task='SUM'>
+  <t>Preliminary tests identified the source of the outbreak as the highly contagious norovirus, which had struck several guests just before they boarded the cruise Nov. 3 in Rome, Carnival officials said.</t>
+  <h>Norovirus is the source of the outbreak on the ship.</h>
+</pair>
+<pair id='751' value='FALSE' task='SUM'>
+  <t>A Pentagon committee and the congressionally chartered Iraq Study Group have been preparing reports for Bush, and Iran has asked the presidents of Iraq and Syria to meet in Tehran.</t>
+  <h>Bush will meet the presidents of Iraq and Syria in Tehran.</h>
+</pair>
+<pair id='752' value='FALSE' task='SUM'>
+  <t>Hadley said Jordan was chosen as the site of the meeting between Bush and al-Maliki because of its support for the unity government in Iraq and the fact that Bush would be in the region.</t>
+  <h>Bush will meet al-Maliki in Hadley.</h>
+</pair>
+<pair id='753' value='TRUE' task='SUM'>
+  <t>"They brought us 7-Up, bottled water, ice and a diet of rice, though you didn't feel like eating," said Jim Lankes, 48, of Phoenix.</t>
+  <h>Jim Lankes was given bottles of waters, ice and rice.</h>
+</pair>
+<pair id='754' value='TRUE' task='SUM'>
+  <t>A team from the U.S. Centers for Disease Control boarded the ship when it docked in St. Maarten to oversee the cleaning operation and try to determine what caused the outbreak, Carnival said.</t>
+  <h>The causes of the outbreak were searched for by a team from the U.S. CDC.</h>
+</pair>
+<pair id='755' value='TRUE' task='SUM'>
+  <t>The pills were sold under store brands by Wal-Mart, CVS, Safeway and more than 120 other major retailers, the Food and Drug Administration said.</t>
+  <h>The pills were commercialized by major retailers.</h>
+</pair>
+<pair id='756' value='TRUE' task='SUM'>
+  <t>The contaminated pills included metal fragments ranging in size from "microdots" to portions of wire one-third of an inch long, the FDA said.</t>
+  <h>The contaminated pills contained metal fragments.</h>
+</pair>
+<pair id='757' value='TRUE' task='SUM'>
+  <t>Consumers who take any of the contaminated pills could suffer minor stomach discomfort or possible cuts to the mouth and throat, the FDA said, adding that the risk of serious injury was remote.</t>
+  <h>Contaminated pills could cause minor stomach discomfort or possible cuts to the mouth and throat.</h>
+</pair>
+<pair id='758' value='TRUE' task='SUM'>
+  <t>The drug, along with aspirin and ibuprofen, is one of the most widely used pain relievers available without a doctor's note.</t>
+  <h>Aspirin is one of the most widely used pain relievers available without a doctor's note.</h>
+</pair>
+<pair id='759' value='TRUE' task='SUM'>
+  <t>CVS will stop selling its own brand of 500-milligram acetaminophen caplets and pull bottles from store shelves nation wide, spokesman Mike DeAngelis said.</t>
+  <h>CVS will not sell its own brand of 500-milligram acetaminophen caplets any longer.</h>
+</pair>
+<pair id='760' value='FALSE' task='SUM'>
+  <t>A company investigation turned up metal in roughly 200 pills of the 70 million it passed through a metal detector, according to the FDA.</t>
+  <h>The FDA turned up metal in roughly 200 pills of the 70 million it passed through a metal detector.</h>
+</pair>
+<pair id='761' value='TRUE' task='SUM'>
+  <t>The voluntary recall is considered a Class II recall since it covers products that might cause a temporary health problem or pose only a slight threat of a serious nature, the FDA said.</t>
+  <h>A Class II recall covers products that might cause a temporary health problem.</h>
+</pair>
+<pair id='762' value='FALSE' task='SUM'>
+  <t>Acetaminophen is best known as the drug in products sold under the Tylenol brand, but is widely available in typically less expensive generic versions.</t>
+  <h>Acetaminophen is produced by Tylenol.</h>
+</pair>
+<pair id='763' value='TRUE' task='SUM'>
+  <t>PST Chittagong, Bangladesh - Muhammad Yunus, Bangladesh's "Banker to the Poor" who provides loans to help millions of people fight poverty by starting businesses, has won the Nobel Peace Prize.</t>
+  <h>Muhammad Yunus won the Nobel Prize for Peace.</h>
+</pair>
+<pair id='764' value='FALSE' task='SUM'>
+  <t>Kevin Vincent, 44, of Arlington, Va., said his wife buys store brand acetaminophen and he wanted to find out more about the problem.</t>
+  <h>Kevin Vincent buys store brand acetaminophen.</h>
+</pair>
+<pair id='765' value='TRUE' task='SUM'>
+  <t>The Nobel shines a spotlight on a form of "social capitalism" that has gained currency in recent years, propelled by high-profile supporters like former President Bill Clinton, rock star Bono and Microsoft founder Bill Gates.</t>
+  <h>President Bill Clinton is a supporter of "social capitalism".</h>
+</pair>
+<pair id='766' value='FALSE' task='SUM'>
+  <t>Molly Walsh, 21, a George Washington University student shopping at a CVS pharmacy in Washington, D.C., said she didn't plan to toss any of the store-brand drugs at home that she'd bought to save money. Nor did she plan to stop buying the generic products.</t>
+  <h>Molly Walsh plans to stop buying the generic products.</h>
+</pair>
+<pair id='767' value='TRUE' task='SUM'>
+  <t>"I've always said he's the closest I will ever come to meeting Gandhi, he's simply unmoved by any obstacle or any argument," said Bill Clapp, an heir to the Weyerhaeuser fortune and founder of Global Partnerships, a Seattle microfinance group that has partnered with Grameen in Central America.</t>
+  <h>Bill Clapp is the founder of the Global Partnerships.</h>
+</pair>
+<pair id='768' value='FALSE' task='SUM'>
+  <t>The FDA would not say in which states the pills had been sold, but instead recommended that customers determine whether products they bought are being recalled by checking the store list on the FDA Web site, and the batch list. The batch numbers appear on the container's label.</t>
+  <h>The FDA provided a list of states in which the pills have been sold.</h>
+</pair>
+<pair id='769' value='TRUE' task='SUM'>
+  <t>He tried to persuade a local banker to loan more money to the villagers, but the banker refused, insisting they didn't qualify for credit. So, Yunus started his own bank to help the poorest of the poor lift themselves up.</t>
+  <h>Yunus started his own bank to loan money to the villagers.</h>
+</pair>
+<pair id='770' value='TRUE' task='SUM'>
+  <t>Most of Grameen Bank's borrowers use the small loans to start businesses by, for instance, buying a cow to produce milk, or a rickshaw, or materials to make cloth or pottery.</t>
+  <h>Grameen Bank's loans are used to buy a cow.</h>
+</pair>
+<pair id='771' value='TRUE' task='SUM'>
+  <t>In 2003, Yunus brought the microcredit revolution to the streets of Bangladesh to support more than 50,000 beggars, whom the Grameen Bank respectfully calls Struggling Members.</t>
+  <h>Yunus supported more than 50,000 Struggling Members.</h>
+</pair>
+<pair id='772' value='FALSE' task='SUM'>
+  <t>The Nobel committee said in a statement that "lasting peace cannot be achieved unless large population groups find ways in which to break out of poverty."</t>
+  <h>The Nobel committee plans to help people break out of poverty.</h>
+</pair>
+<pair id='773' value='TRUE' task='SUM'>
+  <t>While the House has been extremely active in passing bills addressing the key priorities of entrepreneurs, most of the legislation has hit a brick wall over in the Senate.</t>
+  <h>The House quickly passes bills addressing the priorities of entrepreneurs.</h>
+</pair>
+<pair id='774' value='FALSE' task='SUM'>
+  <t>In August, Gates' foundation gave Yunus' Grameen Foundation 1.5 million for a program to extend its microfinance programs to 5 million more of the world's poorest families. Three years ago, tech entrepreneur Craig McCaw provided 2 million to start up the Grameen Technology Center, which is using microcredit to finance cheap mobile service for people in Uganda and Rwanda.</t>
+  <h>Gates' foundation extends its microfinance programs to 5 million more of the world's poorest families.</h>
+</pair>
+<pair id='775' value='TRUE' task='SUM'>
+  <t>As a late September report by the Democrats points out, Republicans have done a poor job at getting their own small business bills through Congress even though they control both Houses and the White House.</t>
+  <h>Republicans control both Houses and the White House.</h>
+</pair>
+<pair id='776' value='FALSE' task='SUM'>
+  <t>Yunus, who was nominated for the peace prize at least twice before, is the first person from Bangladesh, a country of 147 million, to win a Nobel Prize. His Nobel Prize is a rare bright light in a country struggling to defeat Islamic terrorists, and which is chronically inundated by floods and battered by storms that blow in from the Bay of Bengal. The country, formerly known as East Pakistan, is bordered by the Bay of Bengal, India and Burma.</t>
+  <h>Yunus is the first person to win a Nobel Prize.</h>
+</pair>
+<pair id='777' value='TRUE' task='SUM'>
+  <t>The Hercules transporter plane which flew straight here from the first round of the trip in Pakistan, touched down and it was just a brisk 100m stroll to the handshakes.</t>
+  <h>The Hercules transporter plane made a flight to Pakistan.</h>
+</pair>
+<pair id='778' value='TRUE' task='SUM'>
+  <t>The trip was about doing what he hasn't done for what many troops feel has been too long - visiting the thousands of servicemen and women fighting a war in southern Afghanistan.</t>
+  <h>Servicemen and women are fighting a war in southern Afghanistan.</h>
+</pair>
+<pair id='779' value='FALSE' task='SUM'>
+  <t>Begum, who had to borrow to buy bamboo to make stools, received 25 cents a day from moneylenders. After giving them stools to pay off her debt, she was left with 2 cents a day, barely enough to feed herself.</t>
+  <h>Begum was not able to feed herself.</h>
+</pair>
+<pair id='780' value='TRUE' task='SUM'>
+  <t>New Zealand's Qualifications Authority said Friday that it still strongly discourages students from using anything other than full English, but that credit will be given if the answer "clearly shows the required understanding," even if it contains text-speak.</t>
+  <h>Full English is recommended by New Zealand's Qualifications Authority.</h>
+</pair>
+<pair id='781' value='TRUE' task='SUM'>
+  <t>Critics said the National Certificate of Educational Achievement or NCEA, the main qualification for high school students, would be degraded by the authority allowing text speak use in exams.</t>
+  <h>NCEA is the main qualification for high school students.</h>
+</pair>
+<pair id='782' value='TRUE' task='SUM'>
+  <t>A U.S. soldier accused of participating in the rape of an Iraqi girl and then killing her and her family was sentenced to 90 years in jail on Thursday, media reports said.</t>
+  <h>A U.S. soldier was sentenced to 90 years in jail.</h>
+</pair>
+<pair id='783' value='TRUE' task='SUM'>
+  <t>The soldier, James Barker, one of four American soldiers accused of raping the Iraqi girl and killing her family in the March 2006 incident, pleaded guilty on Wednesday to rape and murder in Fort Campbell, Kentucky.</t>
+  <h>James Barker is accused of raping an Iraqi girl and killing her family.</h>
+</pair>
+<pair id='784' value='TRUE' task='SUM'>
+  <t>Three nurses in one of Vienna's oldest hospitals have been arrested on suspicion of killing 35 patients.</t>
+  <h>Three Vienna nurses are under suspicion for killing patients.</h>
+</pair>
+<pair id='785' value='FALSE' task='SUM'>
+  <t>The BBC's Americas editor Will Grant says many Mexicans are tired of conflict and long for a return to normality.</t>
+  <h>Will Grant is researching a conflict with Mexicans.</h>
+</pair>
+<pair id='786' value='FALSE' task='SUM'>
+  <t>Although he has enough of a support base to be able to create a mass civil disobedience movement, some analysts think that his campaign will be, at best, a thorn in Mr Calderon's side.</t>
+  <h>Mr Calderon is able to create a mass civil disobedience movement.</h>
+</pair>
+<pair id='787' value='FALSE' task='SUM'>
+  <t>Of course, most of the tax cuts expire in 2010; only three years from when Rangel would take over as chair if Democrats win.</t>
+  <h>Democrats won the elections three years ago.</h>
+</pair>
+<pair id='788' value='FALSE' task='SUM'>
+  <t>Democrat members of the Ways and Means Committee, where tax bills are written and advanced, do not have strong small business voting records.</t>
+  <h>Democrat members had strong small business voting records.</h>
+</pair>
+<pair id='789' value='FALSE' task='SUM'>
+  <t>Maximo Rene Mendez in an apparent smuggling scheme died after doctors disconnected life-support equipment.</t>
+  <h>A cocaine-imbibing Miami man had life support removed.</h>
+</pair>
+<pair id='790' value='FALSE' task='SUM'>
+  <t>Forty-five percent of the bills examined were bipartisan, and 85 percent of the reviewed bills had Republican lead sponsors. 8221; Small business owners are disappointed by the Republican track record, particularly the lack of productivity in the Senate.</t>
+  <h>The Senate is the least productive.</h>
+</pair>
+<pair id='791' value='FALSE' task='SUM'>
+  <t>Attack helicopters, Chinooks, armoured vehicles, cranes and a fire engine encircled the group.</t>
+  <h>There was a Chinook attack.</h>
+</pair>
+<pair id='792' value='TRUE' task='SUM'>
+  <t>The Supreme Court said today states may bar the removal of life-sustaining treatment from comatose patients who have not made or cannot make their desires known.</t>
+  <h>There is a Supreme Court decision about the removal of life-support.</h>
+</pair>
+<pair id='793' value='FALSE' task='SUM'>
+  <t>"The word in the galley food queues is that we could do with more men, and the kit does keep wearing out, but that's due to the conditions here," said Corporal Martin Page.</t>
+  <h>Martin Page was sent on a mission to Afghanistan.</h>
+</pair>
+<pair id='794' value='TRUE' task='SUM'>
+  <t>The fatal shooting of Steven Charles Jenkins, a terminally ill AIDS patient, by his friend Philip Lee Saylor at Cedars-Sinai Medical Center has again focused attention on the problems of death and dying in our society.</t>
+  <h>Steven Jenkins was shot by a friend.</h>
+</pair>
+<pair id='795' value='TRUE' task='SUM'>
+  <t>The steel division of Broken Hill Proprietary, the Australian resources group, and North Star steel, part of the privately-owned Cargill group in the US, are joining forces to build and operate a new steel mini-mill in the US Midwest.</t>
+  <h>Australia's Broken Hill Proprietary and the US's North Star Steel will build and operate one in the US Midwest.</h>
+</pair>
+<pair id='796' value='FALSE' task='SUM'>
+  <t>Confident that those grading papers would understand answers written in text-speak, Haque stressed that in some exams, including English, text abbreviations would be penalized.</t>
+  <h>Haque wants to include English in some exams.</h>
+</pair>
+<pair id='797' value='TRUE' task='SUM'>
+  <t>Iscor, the South African iron and steel manufacturer, has announced plans to develop a steel mini-mill at Saldanha Bay on the country's west coast in partnership with the state-run industrial development Corporation.</t>
+  <h>The South African steel manufacturer Iscor plans to develop a mini-mill.</h>
+</pair>
+<pair id='798' value='FALSE' task='SUM'>
+  <t>Critics said the National Certificate of Educational Achievement or NCEA, the main qualification for high school students, would be degraded by the authority allowing text-speak use in exams.</t>
+  <h>The NCEA has been degraded by the authority.</h>
+</pair>
+<pair id='799' value='FALSE' task='SUM'>
+  <t>Two other marines, Tyler Jackson and John Jodka III, have already pleaded guilty to aggravated assault and conspiracy to obstruct justice and were sentenced to 21 months and 18 months, respectively.</t>
+  <h>Tyler Jackson has been sentenced to 18 months.</h>
+</pair>
+<pair id='800' value='TRUE' task='SUM'>
+  <t>US Steel could even have a technical advantage over Nucor since one new method of steel making it is considering, thin strip casting, may produce higher quality steel than the Nucor thin slab technique.</t>
+  <h>US Steel may invest in strip casting.</h>
+</pair>
+</entailment-corpus>

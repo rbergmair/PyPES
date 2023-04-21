@@ -1,0 +1,283 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<entailment-corpus>
+<pair id='268' value='TRUE' task='IE'>
+  <t><rmrsbankitem id="1">There can be no doubt that the Administration already is weary of Aristide, a populist Roman Catholic priest who in December, 1990, won an overwhelming victory in Haiti's only democratic presidential election.</rmrsbankitem></t>
+  <h><rmrsbankitem id="1">Aristide became president of Haiti in 1990.</rmrsbankitem></h>
+</pair>
+<pair id='271' value='FALSE' task='IE'>
+  <t><rmrsbankitem id="2">Evans Paul, the pro-Aristide mayor of Port-au-Prince, said he had been told that the money will go to American lobbyists, politicians and journalists to campaign against the return of Aristide, Haiti's first democratically elected president.</rmrsbankitem></t>
+  <h><rmrsbankitem id="2">Aristide is the mayor of Port-au-Prince.</rmrsbankitem></h>
+</pair>
+<pair id='273' value='FALSE' task='IE'>
+  <t><rmrsbankitem id="3">Cedras, Biamby, and Francois also led the 1991 coup that drove Aristide, Haiti's first democratically elected president, from office.</rmrsbankitem></t>
+  <h><rmrsbankitem id="3">Aristide seized power in 1991.</rmrsbankitem></h>
+</pair>
+<pair id='274' value='TRUE' task='IE'>
+  <t><rmrsbankitem id="4">U.S. officials said they hope to install Aristide presidential palace in Port-au-Prince about 10 days after U.S. troops land in Haiti, a schedule that an Aristide aide said is acceptable to the ousted president.</rmrsbankitem></t>
+  <h><rmrsbankitem id="4">Port-au-Prince is in Haiti.</rmrsbankitem></h>
+</pair>
+<pair id='941' value='TRUE' task='IE'>
+  <t><rmrsbankitem id="5">The U.S. handed power on June 30 to Iraq's interim government chosen by the United Nations and Paul Bremer, former governor of Iraq.</rmrsbankitem></t>
+  <h><rmrsbankitem id="5">There was a transfer of power in Iraq on June 30.</rmrsbankitem></h>
+</pair>
+<pair id='942' value='FALSE' task='IE'>
+  <t><rmrsbankitem id="5">The U.S. handed power on June 30 to Iraq's interim government chosen by the United Nations and Paul Bremer, former governor of Iraq.</rmrsbankitem></t>
+  <h><rmrsbankitem id="6">The United Nations officialy transferred power to Iraq.</rmrsbankitem></h>
+</pair>
+<pair id='943' value='TRUE' task='IE'>
+  <t><rmrsbankitem id="6">Iraq became a sovereign country Monday morning, but only a dozen officials were present at the transfer of power ceremony in the heavily guarded Green Zone of Baghdad.</rmrsbankitem> <rmrsbankitem id="7">Bremer handed over legal documents that were accepted by Iraq's interim Prime Minister Iyad Allawi.</rmrsbankitem></t>
+  <h><rmrsbankitem id="7">The transfer of power took place in Baghdad.</rmrsbankitem></h>
+</pair>
+<pair id='945' value='TRUE' task='IE'>
+  <t><rmrsbankitem id="8">Guerrillas killed a peasant in the city of Flores.</rmrsbankitem></t>
+  <h><rmrsbankitem id="8">Guerrillas killed a civilian.</rmrsbankitem></h>
+</pair>
+<pair id='946' value='FALSE' task='IE'>
+  <t><rmrsbankitem id="9">Metropolitan police personnel specializing in explosives defused the rockets.</rmrsbankitem> <rmrsbankitem id="10">Some 100 people were working inside the plant.</rmrsbankitem></t>
+  <h><rmrsbankitem id="9">100 people were injured.</rmrsbankitem></h>
+</pair>
+<pair id='947' value='TRUE' task='IE'>
+  <t><rmrsbankitem id="11">The extraditables today claimed responsibility for the murder of Antioquia police commander colonel Waldemar Franklin Quintero, which occurred this morning in Medellin.</rmrsbankitem></t>
+  <h><rmrsbankitem id="10">A police officer was killed.</rmrsbankitem></h>
+</pair>
+<pair id='948' value='FALSE' task='IE'>
+  <t><rmrsbankitem id="12">Leftist guerrillas early Tuesday attacked a residential neighborhood in northern San Salvador where many government and military leaders have their homes.</rmrsbankitem></t>
+  <h><rmrsbankitem id="11">Guerrillas attacked government buildings.</rmrsbankitem></h>
+</pair>
+<pair id='949' value='FALSE' task='IE'>
+  <t><rmrsbankitem id="13">Movil Access, a Grupo Salinas company, announced today that Gustavo Guzman will appoint Jose Luis Riera as company CFO of Grupo Iusacell.</rmrsbankitem></t>
+  <h><rmrsbankitem id="12">Movil Access appoints Gustavo Guzman as CFO.</rmrsbankitem></h>
+</pair>
+<pair id='950' value='TRUE' task='IE'>
+  <t><rmrsbankitem id="13">Movil Access, a Grupo Salinas company, announced today that Gustavo Guzman will appoint Jose Luis Riera as company CFO of Grupo Iusacell.</rmrsbankitem></t>
+  <h><rmrsbankitem id="13">Movil Access appoints Jose Luis Riera as CFO.</rmrsbankitem></h>
+</pair>
+<pair id='951' value='TRUE' task='IE'>
+  <t><rmrsbankitem id="14">QNX Software Systems Ltd., a leading provider of real-time software and services to the embedded computing market, is pleased to announce the appointment of Mr. Sachin Lawande to the position of vice president, engineering services.</rmrsbankitem></t>
+  <h><rmrsbankitem id="14">Sachin Lawande was named VP of Engineering Services at QNX.</rmrsbankitem></h>
+</pair>
+<pair id='952' value='FALSE' task='IE'>
+  <t><rmrsbankitem id="15">Stefano Falconi, director of finance at the Massachusetts Institute of Technology (MIT), has joined Carnegie Mellon as its vice president for administration and chief financial officer.</rmrsbankitem> <rmrsbankitem id="16">Falconi succeeds Jeff Bolton, who left the university last July to become chief financial officer at the Mayo Foundation in Rochester, Minn.</rmrsbankitem></t>
+  <h><rmrsbankitem id="15">The Massachusetts Institute of Technology (MIT) appoints Stefano Falconi as chief financial officer.</rmrsbankitem></h>
+</pair>
+<pair id='953' value='TRUE' task='IE'>
+  <t><rmrsbankitem id="17">Brent Frei, the co-founder of midmarket CRM vendor Onyx Software Corp., plans to step down as chief executive and chairman.</rmrsbankitem></t>
+  <h><rmrsbankitem id="16">Brent Frei quits ceo position.</rmrsbankitem></h>
+</pair>
+<pair id='954' value='FALSE' task='IE'>
+  <t><rmrsbankitem id="18">Mark Allen, the company's president and chief operating officer, will become the new CEO.</rmrsbankitem></t>
+  <h><rmrsbankitem id="17">Mark Allen is appointed as chief operating officer.</rmrsbankitem></h>
+</pair>
+<pair id='955' value='TRUE' task='IE'>
+  <t><rmrsbankitem id="19">C&amp;D Technologies announced that it has closed the acquisition of Datel, Inc.</rmrsbankitem></t>
+  <h><rmrsbankitem id="18">C&amp;D Technologies acquired Datel Inc.</rmrsbankitem></h>
+</pair>
+<pair id='956' value='FALSE' task='IE'>
+  <t><rmrsbankitem id="19">C&amp;D Technologies announced that it has closed the acquisition of Datel, Inc.</rmrsbankitem></t>
+  <h><rmrsbankitem id="19">Datel acquired C&amp;D Technologies.</rmrsbankitem></h>
+</pair>
+<pair id='957' value='FALSE' task='IE'>
+  <t><rmrsbankitem id="20">Ssangyong Motor was taken over by creditors after it collapsed under heavy debts during the 1997-98 Asian financial crisis.</rmrsbankitem></t>
+  <h><rmrsbankitem id="20">Asian financial crisis takes over Ssangyong Motor.</rmrsbankitem></h>
+</pair>
+<pair id='1599' value='TRUE' task='IE'>
+  <t><rmrsbankitem id="21">The board of Marks &amp; Spencer will take another look at Philip Green's increased takeover offer.</rmrsbankitem></t>
+  <h><rmrsbankitem id="21">Philip Green tries to take over Marks &amp; Spencer.</rmrsbankitem></h>
+</pair>
+<pair id='1604' value='FALSE' task='IE'>
+  <t><rmrsbankitem id="22">A brother of Colombia's education minister has been killed by Marxist rebels who kidnapped him three years ago.</rmrsbankitem></t>
+  <h><rmrsbankitem id="22">Colombia's education minister has been kidnapped by Marxist rebels.</rmrsbankitem></h>
+</pair>
+<pair id='1614' value='TRUE' task='IE'>
+  <t><rmrsbankitem id="23">CBS newsman Harry Reasoner is returning to his Iowa hometown to get married Saturday.</rmrsbankitem></t>
+  <h><rmrsbankitem id="23">CBS newsman Harry Reasoner was born in Iowa.</rmrsbankitem></h>
+</pair>
+<pair id='2007' value='FALSE' task='IE'>
+  <t><rmrsbankitem id="24">The program, financed with a grant from the UN Agency for International Development, is aimed at reducing infant mortality in Madagascar, an island nation in the Indian Ocean off the eastern coast of Africa.</rmrsbankitem></t>
+  <h><rmrsbankitem id="24">The UN Agency for International Development is an organisation based in Madagascar.</rmrsbankitem></h>
+</pair>
+<pair id='2004' value='FALSE' task='IE'>
+  <t><rmrsbankitem id="25">Bosch was found innocent in Venezuela of the bombing charges for a third time Aug. 7.</rmrsbankitem></t>
+  <h><rmrsbankitem id="25">Bosch lives in Venezuela.</rmrsbankitem></h>
+</pair>
+<pair id='1918' value='TRUE' task='IE'>
+  <t><rmrsbankitem id="26">The organizing committee said 65 countries have entered the Lillehammer Olympic Games, matching the number of nations at the 1992 Winter Games in Albertville, France.</rmrsbankitem></t>
+  <h><rmrsbankitem id="26">65 countries take part in the Lillehammer Olympic Games.</rmrsbankitem></h>
+</pair>
+<pair id='2075' value='FALSE' task='IE'>
+  <t><rmrsbankitem id="27">Queen Victoria died in 1901, at Osborne House on the Isle of Wight.</rmrsbankitem></t>
+  <h><rmrsbankitem id="27">Queen Victoria was born in 1901.</rmrsbankitem></h>
+</pair>
+<pair id='1658' value='TRUE' task='IE'>
+  <t><rmrsbankitem id="28">A cargo plane bound for Montreal with a small quantity of hazardous chemicals crashed and exploded shortly after takeoff.</rmrsbankitem></t>
+  <h><rmrsbankitem id="28">Dayton is located in Ohio.</rmrsbankitem></h>
+</pair>
+<pair id='1600' value='TRUE' task='IE'>
+  <t><rmrsbankitem id="29">Schroder Investment Management has indicated its intention to accept Revival's offer to buy retailer Marks &amp; Spencer.</rmrsbankitem></t>
+  <h><rmrsbankitem id="29">Revival tries to take over Marks &amp; Spencer Group.</rmrsbankitem></h>
+</pair>
+<pair id='1636' value='TRUE' task='IE'>
+  <t><rmrsbankitem id="30">Sirhan Sirhan, a Jordanian immigrant, was convicted of murdering Kennedy and is serving a life term at Soledad Prison.</rmrsbankitem></t>
+  <h><rmrsbankitem id="30">Sirhan Sirhan killed Kennedy.</rmrsbankitem></h>
+</pair>
+<pair id='2001' value='FALSE' task='IE'>
+  <t><rmrsbankitem id="31">Christoffer's family was identified only as an Air Force family living in Southern California.</rmrsbankitem></t>
+  <h><rmrsbankitem id="31">Air Force is an organisation based in Southern California.</rmrsbankitem></h>
+</pair>
+<pair id='1910' value='FALSE' task='IE'>
+  <t><rmrsbankitem id="32">Romano Prodi will meet the US President George Bush in his capacity as president of the European commission.</rmrsbankitem></t>
+  <h><rmrsbankitem id="32">George Bush is the president of the European Commission.</rmrsbankitem></h>
+</pair>
+<pair id='1652' value='TRUE' task='IE'>
+  <t><rmrsbankitem id="33">Rome is in Lazio province and Naples in Campania.</rmrsbankitem></t>
+  <h><rmrsbankitem id="33">Rome is located in Lazio province.</rmrsbankitem></h>
+</pair>
+<pair id='1933' value='FALSE' task='IE'>
+  <t><rmrsbankitem id="34">Like the United States, U.N. officials are also dismayed that Aristide killed a conference called by Prime Minister Robert Malval in Port-au-Prince in hopes of bringing all the feuding parties together.</rmrsbankitem></t>
+  <h><rmrsbankitem id="34">U.N. officials take part in a conference called by Prime Minister Robert Malval.</rmrsbankitem></h>
+</pair>
+<pair id='1619' value='TRUE' task='IE'>
+  <t><rmrsbankitem id="35">Illinois-born Charlton Heston was a 27-year-old actor from Broadway and television when he arrived in Hollywood for a five-picture contract with Hal Wallis.</rmrsbankitem></t>
+  <h><rmrsbankitem id="35">Charlton Heston was born in Illinois.</rmrsbankitem></h>
+</pair>
+<pair id='1605' value='TRUE' task='IE'>
+  <t><rmrsbankitem id="36">Deployment of workers to Iraq has been halted after the reported hostage-taking of a Filipino man by gunmen.</rmrsbankitem></t>
+  <h><rmrsbankitem id="36">A Filipino man has been kidnapped by gunmen.</rmrsbankitem></h>
+</pair>
+<pair id='1665' value='TRUE' task='IE'>
+  <t><rmrsbankitem id="37">He graduated from high school from Benton, Tenn. and from Tennessee Tech. in Cookville, and holds a doctorate in physics from Virginia Tech.</rmrsbankitem></t>
+  <h><rmrsbankitem id="37">Tennessee Tech is an organisation based in Cookville.</rmrsbankitem></h>
+</pair>
+<pair id='1631' value='TRUE' task='IE'>
+  <t><rmrsbankitem id="38">"Sculptures by Duane Hanson" is an exhibition of lifelike people sculptures created by this Minnesota-born artist.</rmrsbankitem></t>
+  <h><rmrsbankitem id="38">Duane Hanson was born in Minnesota.</rmrsbankitem></h>
+</pair>
+<pair id='1946' value='FALSE' task='IE'>
+  <t><rmrsbankitem id="39">Oil prices eased back from record high levels after Russia's justice ministry said embattled oil giant Yukos can continue oil production and sales.</rmrsbankitem></t>
+  <h><rmrsbankitem id="39">Oil prices rise.</rmrsbankitem></h>
+</pair>
+<pair id='1626' value='TRUE' task='IE'>
+  <t><rmrsbankitem id="40">As a real native Detroiter, I want to remind everyone that Madonna is from Bay City, Mich., a nice place in the thumb of the state's lower peninsula.</rmrsbankitem></t>
+  <h><rmrsbankitem id="40">Madonna was born in Bay City, Mich.</rmrsbankitem></h>
+</pair>
+<pair id='1635' value='TRUE' task='IE'>
+  <t><rmrsbankitem id="41">In 1865, John Wilkes Booth, the assassin of President Abraham Lincoln, was surrounded by federal troops near Bowling Green, Va., and killed.</rmrsbankitem></t>
+  <h><rmrsbankitem id="41">John Wilkes Booth killed President Abraham Lincoln.</rmrsbankitem></h>
+</pair>
+<pair id='1949' value='FALSE' task='IE'>
+  <t><rmrsbankitem id="42">Oil prices fall back as the Yukos oil threat is lifted.</rmrsbankitem></t>
+  <h><rmrsbankitem id="39">Oil prices rise.</rmrsbankitem></h>
+</pair>
+<pair id='1917' value='TRUE' task='IE'>
+  <t><rmrsbankitem id="1">There can be no doubt that the Administration already is weary of Aristide, a populist Roman Catholic priest who in December, 1990, won an overwhelming victory in Haiti's only democratic presidential election.</rmrsbankitem></t>
+  <h><rmrsbankitem id="42">Haiti's only democratic presidential election took place in 1990.</rmrsbankitem></h>
+</pair>
+<pair id='1902' value='FALSE' task='IE'>
+  <t><rmrsbankitem id="43">Sonia Gandhi can be defeated in the next elections in India by BJP.</rmrsbankitem></t>
+  <h><rmrsbankitem id="43">Sonia Gandhi is defeated by BJP.</rmrsbankitem></h>
+</pair>
+<pair id='1638' value='TRUE' task='IE'>
+  <t><rmrsbankitem id="44">Yount, who was living in Coeur under the alias James Marvin Forsgren, was sentenced to life in prison for his conviction on first-degree murder and rape charges in the 1966 slaying of Pamela Sue Rimer, a student in his high school mathematics class in Luthersberg, Pa.</rmrsbankitem></t>
+  <h><rmrsbankitem id="44">James Marvin Forsgren killed Pamela Sue Rimer.</rmrsbankitem></h>
+</pair>
+<pair id='2015' value='FALSE' task='IE'>
+  <t><rmrsbankitem id="45">BTA said those injured in the fire at Borovets, 22 miles southeast of Sofia, were from Britain, the Soviet Union, West Germany, the Netherlands, Greece and Denmark.</rmrsbankitem></t>
+  <h><rmrsbankitem id="45">Sofia is located in Britain.</rmrsbankitem></h>
+</pair>
+<pair id='1914' value='FALSE' task='IE'>
+  <t><rmrsbankitem id="34">Like the United States, U.N. officials are also dismayed that Aristide killed a conference called by Prime Minister Robert Malval in Port-au-Prince in hopes of bringing all the feuding parties together.</rmrsbankitem></t>
+  <h><rmrsbankitem id="46">Aristide kills Prime Minister Robert Malval.</rmrsbankitem></h>
+</pair>
+<pair id='1935' value='FALSE' task='IE'>
+  <t><rmrsbankitem id="2">Evans Paul, the pro-Aristide mayor of Port-au-Prince, said he had been told that the money will go to American lobbyists, politicians and journalists to campaign against the return of Aristide, Haiti's first democratically elected president.</rmrsbankitem></t>
+  <h><rmrsbankitem id="2">Aristide is the mayor of Port-au-Prince.</rmrsbankitem></h>
+</pair>
+<pair id='1612' value='TRUE' task='IE'>
+  <t><rmrsbankitem id="46">With South Carolina being Jesse Jackson's home state, there was a very strong incentive in the black community.</rmrsbankitem></t>
+  <h><rmrsbankitem id="47">Jesse Jackson was born in South Carolina.</rmrsbankitem></h>
+</pair>
+<pair id='1934' value='TRUE' task='IE'>
+  <t><rmrsbankitem id="2">Evans Paul, the pro-Aristide mayor of Port-au-Prince, said he had been told that the money will go to American lobbyists, politicians and journalists to campaign against the return of Aristide, Haiti's first democratically elected president.</rmrsbankitem></t>
+  <h><rmrsbankitem id="48">Evans Paul is the mayor of Port-au-Prince.</rmrsbankitem></h>
+</pair>
+<pair id='1637' value='TRUE' task='IE'>
+  <t><rmrsbankitem id="47">Twenty years ago, on June 6, 1968, Sen. Robert F. Kennedy died at Good Samaritan Hospital in Los Angeles, 25 - LCB - hours after he was shot at the Ambassador Hotel by Sirhan Bishara Sirhan.</rmrsbankitem></t>
+  <h><rmrsbankitem id="49">Sirhan Bishara Sirhan killed Sen. Robert F. Kennedy.</rmrsbankitem></h>
+</pair>
+<pair id='1951' value='TRUE' task='IE'>
+  <t><rmrsbankitem id="48">Crude oil prices shot to new highs yesterday as markets reacted to a threat by Russian authorities to shut down most of the production from that country's largest oil company.</rmrsbankitem></t>
+  <h><rmrsbankitem id="50">Crude oil prices rise.</rmrsbankitem></h>
+</pair>
+<pair id='1929' value='TRUE' task='IE'>
+  <t><rmrsbankitem id="49">Teenage sensation Wayne Rooney powered England into the quarter-finals of Euro 2004 with two goals in Monday's 4-2 defeat of Croatia and they were joined in the last eight by champions France who beat Switzerland 3-1.</rmrsbankitem></t>
+  <h><rmrsbankitem id="51">France participates in Euro 2004.</rmrsbankitem></h>
+</pair>
+<pair id='2011' value='FALSE' task='IE'>
+  <t><rmrsbankitem id="50">Los Angeles Mayor James Hahn, along with top members of the Automobile Club of Southern California, will announce the kickoff of a $9 billion plan to fund Los Angeles County's Top Ten Traffic Busters.</rmrsbankitem></t>
+  <h><rmrsbankitem id="52">James Hahn is a member of the Automobile Club of Southern California.</rmrsbankitem></h>
+</pair>
+<pair id='1639' value='TRUE' task='IE'>
+  <t><rmrsbankitem id="51">Lennon was murdered by Mark David Chapman outside the Dakota on Dec. 8, 1980.</rmrsbankitem></t>
+  <h><rmrsbankitem id="53">Mark David Chapman killed Lennon.</rmrsbankitem></h>
+</pair>
+<pair id='1939' value='FALSE' task='IE'>
+  <t><rmrsbankitem id="52">The plan was released by Mr Dean on behalf of the Secretary of Health and Human Services, Tommy Thompson, still recovering from a recent accident, at a Secretarial Summit on Health Information Technology that was attended by many of the nation's leaders in electronic health records.</rmrsbankitem></t>
+  <h><rmrsbankitem id="54">Mr Dean is the Secretary of Health and Human Services.</rmrsbankitem></h>
+</pair>
+<pair id='2002' value='FALSE' task='IE'>
+  <t><rmrsbankitem id="53">In 1973, the United States and Communist China agreed to establish liaison offices in Beijing and Washington.</rmrsbankitem></t>
+  <h><rmrsbankitem id="55">Communist China is an organisation based in Beijing and Washington.</rmrsbankitem></h>
+</pair>
+<pair id='2083' value='FALSE' task='IE'>
+  <t><rmrsbankitem id="54">The Irish Sales, Services and Marketing Operation of Microsoft was established in 1991.</rmrsbankitem></t>
+  <h><rmrsbankitem id="56">Microsoft was established in 1991.</rmrsbankitem></h>
+</pair>
+<pair id='2013' value='TRUE' task='IE'>
+  <t><rmrsbankitem id="55">P. Prayong, who like Kevala belongs to the Theravada sect of Buddhism, chose India over other Buddhist majority nations as it is the birthplace of Gautama Buddha.</rmrsbankitem></t>
+  <h><rmrsbankitem id="57">P. Prayong is a member of Theravada.</rmrsbankitem></h>
+</pair>
+<pair id='1927' value='FALSE' task='IE'>
+  <t><rmrsbankitem id="56">The organizers of the 15th International AIDS Conference, scheduled for next month in Bangkok, Thailand, on Saturday responded to press reports that a prominent hotel in Bangkok discriminated against HIV-positive visitors attending a different conference this month.</rmrsbankitem></t>
+  <h><rmrsbankitem id="58">HIV-positive visitors take part in the 15th International AIDS Conference.</rmrsbankitem></h>
+</pair>
+<pair id='1930' value='TRUE' task='IE'>
+  <t><rmrsbankitem id="57">The G8 summit, held June 8-10, brought together leaders of the world's major industrial democracies, including Canada, France, Germany, Italy, Japan, Russia, United Kingdom, European Union and United States.</rmrsbankitem></t>
+  <h><rmrsbankitem id="59">Canada participates in the G8 summit.</rmrsbankitem></h>
+</pair>
+<pair id='1931' value='TRUE' task='IE'>
+  <t><rmrsbankitem id="58">Three of its five permanent members, France, Russia and China, are pushing the U.N. Security Council to lift the embargo on Iraq.</rmrsbankitem></t>
+  <h><rmrsbankitem id="60">China is a member of the U.N. Security Council.</rmrsbankitem></h>
+</pair>
+<pair id='1601' value='FALSE' task='IE'>
+  <t><rmrsbankitem id="59">Mr Green, Marks &amp; Spencer's new owner, has made a lot of money by taking over underperforming businesses.</rmrsbankitem></t>
+  <h><rmrsbankitem id="61">Mr Green tries to take over Marks &amp; Spencer.</rmrsbankitem></h>
+</pair>
+<pair id='1467' value='FALSE' task='IE'>
+  <t><rmrsbankitem id="60">In an address to the IAEA board of governors in Vienna, Hans Blix said a technical team that visited North Korea last month found that "facilities subject to the freeze were not in operation and that construction work had stopped."</rmrsbankitem></t>
+  <h><rmrsbankitem id="62">Hans Blix is the director general of IAEA.</rmrsbankitem></h>
+</pair>
+<pair id='944' value='FALSE' task='IE'>
+  <t><rmrsbankitem id="5">The U.S. handed power on June 30 to Iraq's interim government chosen by the United Nations and Paul Bremer, former governor of Iraq.</rmrsbankitem></t>
+  <h><rmrsbankitem id="63">The U.S. chose Paul Bremer as new governor of Iraq.</rmrsbankitem></h>
+</pair>
+<pair id='2085' value='FALSE' task='IE'>
+  <t><rmrsbankitem id="61">The first Windows DNA lab outside Microsoft was established in suburban Philadelphia in June 1998.</rmrsbankitem></t>
+  <h><rmrsbankitem id="64">Microsoft was established in June 1998.</rmrsbankitem></h>
+</pair>
+<pair id='1926' value='FALSE' task='IE'>
+  <t><rmrsbankitem id="62">Ahern, who was travelling to Tokyo for an EU-Japan summit yesterday, will consult with other EU leaders about the election of the EU commission president.</rmrsbankitem></t>
+  <h><rmrsbankitem id="65">EU leaders take part in an EU-Japan summit.</rmrsbankitem></h>
+</pair>
+<pair id='1908' value='FALSE' task='IE'>
+  <t><rmrsbankitem id="32">Romano Prodi will meet the US President George Bush in his capacity as president of the European commission.</rmrsbankitem></t>
+  <h><rmrsbankitem id="66">Romani Prodi is the US President.</rmrsbankitem></h>
+</pair>
+<pair id='1659' value='TRUE' task='IE'>
+  <t><rmrsbankitem id="63">The Anzio beachhead, 33 miles south of Rome, saw some of the bloodiest fighting of World War II, and accounted for many of the 10,000 US battle deaths in Italy in the first half of 1944.</rmrsbankitem></t>
+  <h><rmrsbankitem id="67">The Anzio beachhead is located 33 miles south of Rome.</rmrsbankitem></h>
+</pair>
+<pair id='1950' value='FALSE' task='IE'>
+  <t><rmrsbankitem id="64">Crude oil dips below $43 on news that Russia's justice ministry will not force Yukos to halt sales.</rmrsbankitem></t>
+  <h><rmrsbankitem id="68">Crude oil rises.</rmrsbankitem></h>
+</pair>
+</entailment-corpus>

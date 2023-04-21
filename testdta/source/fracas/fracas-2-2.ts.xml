@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE testsuite SYSTEM "file:///home/rb432/workspace/rte/dtd/testsuite.dtd">
+
+<testsuite id="2.2" name="definite plurals">
+
+<testcase id="3.90">
+  <proposition id="3.90.1">
+    The chairman read out the items on the agenda.
+  </proposition>
+  <proposition id="3.90.2">
+    Did the chairman read out every item on the agenda?
+  </proposition>
+  <valid id="3.90.a">
+    <theory> <ref src="3.90.1"/> </theory>
+    <conclusion> <ref src="3.90.2"/> </conclusion>
+  </valid>
+</testcase>
+
+<testcase id="3.91">
+  <proposition id="3.91.1">
+    The people who were at the meeting voted for a new chairman.
+  </proposition>
+  <proposition id="3.91.2">
+    Did everyone at the meeting vote for a new chairman?
+  </proposition>
+  <!-- ??? -->
+  <nonvalid id="3.91.a">
+    <theory> <ref src="3.91.1"/> </theory>
+    <conclusion> <ref src="3.91.2"/> </conclusion>
+  </nonvalid>
+  <nonvalid id="3.91.b">
+    <theory> <ref src="3.91.1"/> </theory>
+    <conclusion> <negation> <ref src="3.91.2"/> </negation> </conclusion>
+  </nonvalid>
+</testcase>
+
+<testcase id="3.92">
+  <proposition id="3.92.1">
+    All the people who were at the meeting voted for a new chairman.
+  </proposition>
+  <proposition id="3.92.2">
+    Did everyone at the meeting vote for a new chairman?
+  </proposition>
+  <valid id="3.92.a">
+    <theory> <ref src="3.92.1"/> </theory>
+    <conclusion> <ref src="3.92.2"/> </conclusion>
+  </valid>
+</testcase>
+
+<testcase id="3.93">
+  <proposition id="3.93.1">
+    The people who were at the meeting all voted for a new chairman.
+  </proposition>
+  <proposition id="3.93.2">
+    Did everyone at the meeting vote for a new chairman?
+  </proposition>
+  <valid id="3.93.a">
+    <theory> <ref src="3.93.1"/> </theory>
+    <conclusion> <ref src="3.93.2"/> </conclusion>
+  </valid>
+</testcase>
+
+<testcase id="3.94">
+  <proposition id="3.94.1">
+    The inhabitants of Cambridge voted for a Labour MP.
+  </proposition>
+  <proposition id="3.94.2">
+    Did every inhabitant of Cambridge vote for a Labour MP?
+  </proposition>
+  <nonvalid id="3.94.a">
+    <theory> <ref src="3.94.1"/> </theory>
+    <conclusion> <ref src="3.94.2"/> </conclusion>
+  </nonvalid>
+  <nonvalid id="3.94.b">
+    <theory> <ref src="3.94.1"/> </theory>
+    <conclusion> <negation> <ref src="3.94.2"/> </negation> </conclusion>
+  </nonvalid>
+</testcase>
+
+<testcase id="3.95">
+  <proposition id="3.95.1">
+    The Ancient Greeks were noted philosophers.
+  </proposition>
+  <proposition id="3.95.2">
+    Was every Ancient Greek a noted philosopher?
+  </proposition>
+  <nonvalid id="3.95.a">
+    <theory> <ref src="3.95.1"/> </theory>
+    <conclusion> <ref src="3.95.2"/> </conclusion>
+  </nonvalid>
+  <nonvalid id="3.95.b">
+    <theory> <ref src="3.95.1"/> </theory>
+    <conclusion> <negation> <ref src="3.95.2"/> </negation> </conclusion>
+  </nonvalid>
+</testcase>
+
+<testcase id="3.96">
+  <proposition id="3.96.1">
+    The Ancient Greeks were all noted philosophers.
+  </proposition>
+  <proposition id="3.96.2">
+    Was every Ancient Greek a noted philosopher?
+  </proposition>
+  <valid id="3.96.a">
+    <theory> <ref src="3.96.1"/> </theory>
+    <conclusion> <ref src="3.96.2"/> </conclusion>
+  </valid>
+</testcase>
+
+</testsuite>

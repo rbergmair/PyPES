@@ -1,0 +1,803 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<entailment-corpus>
+<pair id='201' value='FALSE' task='IR'>
+  <t><rmrsbankitem id="1">"Child labor" is, generally speaking, work for children that harms them or exploits them in some way (physically, mentally, morally, or by blocking access to education).</rmrsbankitem></t>
+  <h><rmrsbankitem id="1">Child labor is widely used in Asia.</rmrsbankitem></h>
+</pair>
+<pair id='202' value='TRUE' task='IR'>
+  <t><rmrsbankitem id="2">"Glue sniffing" is most common among teenagers.</rmrsbankitem> <rmrsbankitem id="3">They generally grow out of it once other drugs such as alcohol and cannabis become available to them.</rmrsbankitem> <rmrsbankitem id="4">Seven-year-olds have been known to start "glue sniffing".</rmrsbankitem> <rmrsbankitem id="5">Because of the social stigma attached to "glue sniffing" most snifters stop around 16 or 17 years, unless they are seriously addicted.</rmrsbankitem></t>
+  <h><rmrsbankitem id="2">Glue-sniffing is common among youngsters.</rmrsbankitem></h>
+</pair>
+<pair id='203' value='FALSE' task='IR'>
+  <t><rmrsbankitem id="6">A decision to allow the exiled Italian royal family to return to Italy may be granted amid the discovery that the head of the family, Prince Vittorio Emmanuele, addressed the president of Italy properly.</rmrsbankitem> <rmrsbankitem id="7">He has called President Ciampi "our president, the president of all Italians".</rmrsbankitem></t>
+  <h><rmrsbankitem id="3">Italian royal family returns home.</rmrsbankitem></h>
+</pair>
+<pair id='204' value='TRUE' task='IR'>
+  <t><rmrsbankitem id="8">A former philosophy teacher whose best-known novel, Sophie's World, was a surprise international best-seller.</rmrsbankitem></t>
+  <h><rmrsbankitem id="4">Sophie's World is a best seller.</rmrsbankitem></h>
+</pair>
+<pair id='205' value='FALSE' task='IR'>
+  <t><rmrsbankitem id="9">A large proportion of young children in Ukraine suffer from various health problems that have probably gone undiagnosed until now, but which are being detected in connection with the Chernobyl disaster.</rmrsbankitem> <rmrsbankitem id="10">This could well point to a weak health care system and harsh living conditions.</rmrsbankitem></t>
+  <h><rmrsbankitem id="5">Chernobyl disaster had repercussions outside ex-USSR.</rmrsbankitem></h>
+</pair>
+<pair id='206' value='TRUE' task='IR'>
+  <t><rmrsbankitem id="11">A powerful typhoon battered the northern and central Philippines with rains and winds Thursday, killing at least three people and cutting off roads.</rmrsbankitem> <rmrsbankitem id="12">Authorities canceled flights and ferry service and shut down schools.</rmrsbankitem> <rmrsbankitem id="13">Typhoon Xangsane, packing winds of 81 mph made landfall overnight in the Bicol central region and was forecast to pass through the capital Manila, the Philippine weather bureau said.</rmrsbankitem></t>
+  <h><rmrsbankitem id="6">A typhoon batters the Philippines.</rmrsbankitem></h>
+</pair>
+<pair id='207' value='FALSE' task='IR'>
+  <t><rmrsbankitem id="14">A radiation leak at a nuclear power plant in Yeonggwang, South Jeolla province, led officials yesterday to shut down the facility.</rmrsbankitem></t>
+  <h><rmrsbankitem id="7">The nuclear power plant of Sosnovyi Bor suffers an emergency shut down.</rmrsbankitem></h>
+</pair>
+<pair id='208' value='FALSE' task='IR'>
+  <t><rmrsbankitem id="15">A series of projects with the objective of finding solutions to some of the consequences of the Chernobyl accident have been carried out within the framework of the UNESCO Chernobyl Programme.</rmrsbankitem> <rmrsbankitem id="16">The IHP organized a workshop to review and compare present knowledge of radionuclide transfer in the hydrological cycle.</rmrsbankitem></t>
+  <h><rmrsbankitem id="8">The Chernobyl disaster had repercussions outside the ex-USSR.</rmrsbankitem></h>
+</pair>
+<pair id='209' value='FALSE' task='IR'>
+  <t><rmrsbankitem id="17">A suicide attack is an attack in which the attacker or attackers intend to kill others and intend to die in the process (see suicide).</rmrsbankitem> <rmrsbankitem id="18">In a suicide attack in the strict sense the attacker dies by the attack itself, for example in an explosion or crash caused by the attacker.</rmrsbankitem></t>
+  <h><rmrsbankitem id="9">People were killed in Tamil suicide attacks.</rmrsbankitem></h>
+</pair>
+<pair id='210' value='FALSE' task='IR'>
+  <t><rmrsbankitem id="19">A unique feature of previous Ebola outbreaks has been the relative sparing of children.</rmrsbankitem> <rmrsbankitem id="20">For the first time, an out break of an unusual illness-Ebola haemorrhagic fever occurred in Northern Uganda - Gulu district.</rmrsbankitem></t>
+  <h><rmrsbankitem id="10">Ebola Epidemic breaks out in Zaire.</rmrsbankitem></h>
+</pair>
+<pair id='211' value='FALSE' task='IR'>
+  <t><rmrsbankitem id="21">Accompanied by Sioux prayers and the keening of Scottish bagpipes, a plain cotton shirt was returned to South Dakota this past summer.</rmrsbankitem></t>
+  <h><rmrsbankitem id="11">A Sioux ghost shirt was returned by a Scottish museum.</rmrsbankitem></h>
+</pair>
+<pair id='212' value='TRUE' task='IR'>
+  <t><rmrsbankitem id="22">Actor Christopher Reeve, best known for his role as Superman, is paralyzed and cannot breathe without the help of a respirator after breaking his neck in a riding accident in Culpeper, Va., on Saturday.</rmrsbankitem></t>
+  <h><rmrsbankitem id="12">Christopher Reeve had an accident.</rmrsbankitem></h>
+</pair>
+<pair id='213' value='FALSE' task='IR'>
+  <t><rmrsbankitem id="23">After years of study, the Vatican's doctrinal congregation has sent church leaders a confidential document concluding that "sex-change" procedures do not change a person's gender in the eyes of the church.</rmrsbankitem></t>
+  <h><rmrsbankitem id="13">Sex-change operations become more common.</rmrsbankitem></h>
+</pair>
+<pair id='214' value='FALSE' task='IR'>
+  <t><rmrsbankitem id="24">Although the number of the confirmed Ebola cases has risen slightly to 26 in Gabon and to 16 in Congo Brazzaville, new infections are now so low that it seems the epidemic is "burning out".</rmrsbankitem></t>
+  <h><rmrsbankitem id="10">Ebola Epidemic breaks out in Zaire.</rmrsbankitem></h>
+</pair>
+<pair id='215' value='TRUE' task='IR'>
+  <t><rmrsbankitem id="25">Anna Politkovskaya was found shot dead on Saturday in a lift at her block of flats in the Russian capital, Moscow.</rmrsbankitem></t>
+  <h><rmrsbankitem id="14">Anna Politkovskaya was murdered.</rmrsbankitem></h>
+</pair>
+<pair id='216' value='TRUE' task='IR'>
+  <t><rmrsbankitem id="26">Anti-nuclear protesters on Wednesday delayed the progress of a shipment of radioactive waste toward a dump in northern Germany.</rmrsbankitem> <rmrsbankitem id="27">The train stopped for the fourth time since crossing into Germany as it neared the northern town of Lueneburg.</rmrsbankitem></t>
+  <h><rmrsbankitem id="15">Nuclear waste transport delayed in Germany.</rmrsbankitem></h>
+</pair>
+<pair id='217' value='FALSE' task='IR'>
+  <t><rmrsbankitem id="28">Arlene Blum is a legendary trailblazer by any measure.</rmrsbankitem> <rmrsbankitem id="29">Defying the climbing establishment of the 1970s, she led the first teams of women on successful ascents of Mt.</rmrsbankitem> <rmrsbankitem id="30">McKinley and Annapurna, and was the first American woman to attempt Mt.</rmrsbankitem> <rmrsbankitem id="31">Everest.</rmrsbankitem> <rmrsbankitem id="32">In her long, adventurous career, she has played a leading role in more than twenty expeditions and forged a place for women in the perilous arena of high-altitude mountaineering.</rmrsbankitem></t>
+  <h><rmrsbankitem id="16">A woman succeeds in climbing Everest solo.</rmrsbankitem></h>
+</pair>
+<pair id='218' value='TRUE' task='IR'>
+  <t><rmrsbankitem id="33">Around 130 flights were cancelled during a strike held on 19 January, and others were cancelled in the days that followed.</rmrsbankitem> <rmrsbankitem id="34">When the flight assistants announced a further 24-hour for 23 January, the Italian Guarantee Authority (Commissione di Garanzia) which regulates strikes in essential public services (under the terms of laws no. 194/1990 and no. 83/2000) (IT0004266F) accused the unions of breaching the legal provision that 10 days must elapse between one strike and the next.</rmrsbankitem></t>
+  <h><rmrsbankitem id="17">Italian flight assistants go on strike.</rmrsbankitem></h>
+</pair>
+<pair id='219' value='FALSE' task='IR'>
+  <t><rmrsbankitem id="35">As parties adapt to these new conditions, new definitions - replete with new assumptions about their functions - are likely to shape the ongoing debate about their roles and functions in the 21st century.</rmrsbankitem></t>
+  <h><rmrsbankitem id="18">Several new political parties emerged.</rmrsbankitem></h>
+</pair>
+<pair id='220' value='FALSE' task='IR'>
+  <t><rmrsbankitem id="36">As the terms denoting this allowance vary, it may sometimes remain unclear whether fathers have any entitlements at all, and if so, to what exactly they are entitled.</rmrsbankitem></t>
+  <h><rmrsbankitem id="19">Maternity leave varies in Europe.</rmrsbankitem></h>
+</pair>
+<pair id='221' value='TRUE' task='IR'>
+  <t><rmrsbankitem id="37">Asia has the highest number of child workers, but Sub-Saharan Africa has the highest proportion of working children relative to population.</rmrsbankitem></t>
+  <h><rmrsbankitem id="1">Child labor is widely used in Asia.</rmrsbankitem></h>
+</pair>
+<pair id='222' value='TRUE' task='IR'>
+  <t><rmrsbankitem id="38">At least eight people have been killed in a suicide bomb attack on Sri Lanka's army headquarters, while the head of the army has been seriously injured.</rmrsbankitem> <rmrsbankitem id="39">Lt Gen Sarath Fonseka is said to be in a stable condition after surgery in Colombo, where the attack happened.</rmrsbankitem> <rmrsbankitem id="40">The military has blamed Tamil Tiger rebels for the attack and launched air strikes on their positions in the east.</rmrsbankitem></t>
+  <h><rmrsbankitem id="20">People were killed in suicide attacks.</rmrsbankitem></h>
+</pair>
+<pair id='223' value='FALSE' task='IR'>
+  <t><rmrsbankitem id="41">Athletics' governing body, the IAAF, last week cleared Ottey of accusations of steroid use and lifted a two-year ban after their arbitration panel said the IOC-accredited lab in Lausanne improperly tested Ottey's urine sample.</rmrsbankitem></t>
+  <h><rmrsbankitem id="21">Sportswomen have been accused of doping.</rmrsbankitem></h>
+</pair>
+<pair id='224' value='FALSE' task='IR'>
+  <t><rmrsbankitem id="42">Based on a worldwide study of smoking-related fire and disaster data, UC Davis epidemiologists show smoking is a leading cause of fires and death from fires globally.</rmrsbankitem></t>
+  <h><rmrsbankitem id="22">Domestic fires are the major cause of fire death.</rmrsbankitem></h>
+</pair>
+<pair id='225' value='TRUE' task='IR'>
+  <t><rmrsbankitem id="43">Between March and June, scientific observers say, up to 300,000 seals are killed.</rmrsbankitem> <rmrsbankitem id="44">In Canada, seal-hunting means jobs, but opponents say it is vicious and endangers the species, also threatened by global warming.</rmrsbankitem></t>
+  <h><rmrsbankitem id="23">Hunting endangers seal species.</rmrsbankitem></h>
+</pair>
+<pair id='226' value='TRUE' task='IR'>
+  <t><rmrsbankitem id="45">Both sides have a point.</rmrsbankitem> <rmrsbankitem id="46">German spelling does need overhauling: over the decades, it has grown more unwieldy.</rmrsbankitem> <rmrsbankitem id="47">But the reform, approved by German-speaking countries in 1996, does not make the rules much easier, and in some cases the new way is harder.</rmrsbankitem></t>
+  <h><rmrsbankitem id="24">A spelling reform was approved in all German speaking countries.</rmrsbankitem></h>
+</pair>
+<pair id='227' value='TRUE' task='IR'>
+  <t><rmrsbankitem id="48">British mountaineer Alison Hargreaves becomes the first woman to climb Mount Everest alone and without oxygen tanks.</rmrsbankitem></t>
+  <h><rmrsbankitem id="16">A woman succeeds in climbing Everest solo.</rmrsbankitem></h>
+</pair>
+<pair id='228' value='TRUE' task='IR'>
+  <t><rmrsbankitem id="49">Busby countered, telling The Iconoclast, the point is that material from Chernobyl which is 1,800 miles to the east of Great Britain traveled to Great Britain and contaminated Wales, Scotland, and various parts of the United Kingdom.</rmrsbankitem> <rmrsbankitem id="50">And they might as well have said that it was equally unfeasible for it to travel that distance in the opposite direction to the general flow of the wind, but we have examined computer Models of wind directions over the period of the Gulf War and its quite clear the material from Iraq could have come through the United Kingdom because of the particular types of depressions and anticyclone systems that were there.</rmrsbankitem></t>
+  <h><rmrsbankitem id="8">The Chernobyl disaster had repercussions outside the ex-USSR.</rmrsbankitem></h>
+</pair>
+<pair id='229' value='FALSE' task='IR'>
+  <t><rmrsbankitem id="51">Carelessness by contractors is a common cause of fire, including many fires that result in serious financial loss.</rmrsbankitem> <rmrsbankitem id="52">It has been estimated that perhaps 20-25% of all non-domestic fires result from 'on-going work', such as refurbishment, repair and construction.</rmrsbankitem></t>
+  <h><rmrsbankitem id="22">Domestic fires are the major cause of fire death.</rmrsbankitem></h>
+</pair>
+<pair id='230' value='TRUE' task='IR'>
+  <t><rmrsbankitem id="53">Castro's successful visits to Harlem and the Bronx, his speech to the United Nations General Assembly, and the October 21 march of 3,000 against U.S. policy and subsequent picket lines at Cuba's UN mission in defense of the revolution - all these events dealt blows to the U.S. government's unceasing efforts to isolate and slander Cuba.</rmrsbankitem></t>
+  <h><rmrsbankitem id="25">Castro visits the UN.</rmrsbankitem></h>
+</pair>
+<pair id='231' value='TRUE' task='IR'>
+  <t><rmrsbankitem id="54">Catastrophic floods in Europe endanger lives and cause human tragedy as well as heavy economic losses.</rmrsbankitem></t>
+  <h><rmrsbankitem id="26">Flooding in Europe causes major economic losses.</rmrsbankitem></h>
+</pair>
+<pair id='232' value='TRUE' task='IR'>
+  <t><rmrsbankitem id="55">China's announcement of a rival Panchen Lama to the boy already recognized by the Dalai Lama are indications that its Communist regime is desperate in using any means possible to strengthen control over Tibet and Tibetan affairs.</rmrsbankitem></t>
+  <h><rmrsbankitem id="27">Dalai Lama and the government of the People's Republic of China are in dispute over Panchen Lama's reincarnation.</rmrsbankitem></h>
+</pair>
+<pair id='233' value='FALSE' task='IR'>
+  <t><rmrsbankitem id="56">Chirac needed a new mandate for his government from the electorate, or a new left government was needed that could count on the support of the trade union bureaucracy and among the working class and so would encounter less resistance.</rmrsbankitem></t>
+  <h><rmrsbankitem id="28">Parliamentary elections create new government in France.</rmrsbankitem></h>
+</pair>
+<pair id='234' value='TRUE' task='IR'>
+  <t><rmrsbankitem id="57">Christopher Reeve, an actor and director who became an inspiration worldwide after being paralyzed in a horse riding accident, died Sunday of heart failure.</rmrsbankitem></t>
+  <h><rmrsbankitem id="12">Christopher Reeve had an accident.</rmrsbankitem></h>
+</pair>
+<pair id='235' value='FALSE' task='IR'>
+  <t><rmrsbankitem id="58">Claes denied categorically that they had ever known of the existence of an Agusta proposal, and told the NATO ambassadors that he did not know anything about an Agusta payment to the Socialist Party.</rmrsbankitem></t>
+  <h><rmrsbankitem id="29">NATO Secretary General Willy Claes resigned.</rmrsbankitem></h>
+</pair>
+<pair id='236' value='TRUE' task='IR'>
+  <t><rmrsbankitem id="59">Claes was foreign minister of Belgium from 1992 until 1994, and secretary general of NATO from 1994 until 1995, when he was forced to resign because of allegations of corruption related to improper contracts for Agusta helicopters approved by him while he was minister of economic affairs.</rmrsbankitem> <rmrsbankitem id="60">For that he also lost his civil rights for numerous years.</rmrsbankitem></t>
+  <h><rmrsbankitem id="29">NATO Secretary General Willy Claes resigned.</rmrsbankitem></h>
+</pair>
+<pair id='237' value='FALSE' task='IR'>
+  <t><rmrsbankitem id="61">Climate change is with us.</rmrsbankitem> <rmrsbankitem id="62">A decade ago, it was conjecture.</rmrsbankitem> <rmrsbankitem id="63">Now the future is unfolding before our eyes.</rmrsbankitem> <rmrsbankitem id="64">Canada's Inuit see it in disappearing Arctic ice and permafrost.</rmrsbankitem></t>
+  <h><rmrsbankitem id="30">Greenhouse effect changes global climate.</rmrsbankitem></h>
+</pair>
+<pair id='238' value='TRUE' task='IR'>
+  <t><headline>COLOMBO (Reuters) - </headline><rmrsbankitem id="65">At least five people were killed and 11 wounded when a suspected Tamil Tiger suicide bomber blew herself up inside a police station in the Sri Lankan capital on Wednesday, shattering more than two years of relative peace.</rmrsbankitem></t>
+  <h><rmrsbankitem id="9">People were killed in Tamil suicide attacks.</rmrsbankitem></h>
+</pair>
+<pair id='239' value='FALSE' task='IR'>
+  <t><rmrsbankitem id="66">Commander Thomas Karremans, who was in charge of Dutch troops in Srebrenica at the time, was filmed drinking a toast with war-crimes suspect and Serb general Ratko Mladic.</rmrsbankitem></t>
+  <h><rmrsbankitem id="31">Dutch photos of Srebrenica have disappeared.</rmrsbankitem></h>
+</pair>
+<pair id='240' value='TRUE' task='IR'>
+  <t><rmrsbankitem id="67">Cosmonaut Sergei Avdeyev, currently on board the Mir space station, has become the person with the longest total stay in space.</rmrsbankitem> <rmrsbankitem id="68">He has clocked up 681 days.</rmrsbankitem></t>
+  <h><rmrsbankitem id="32">Russians hold record for longest stay in space.</rmrsbankitem></h>
+</pair>
+<pair id='241' value='FALSE' task='IR'>
+  <t><rmrsbankitem id="69">Cuban Leader Fidel Castro sent a letter to United Nations Secretary-General Kofi Annan assuring him that Cuba will follow anti-terrorism treaties in the wake of last month's terrorist attacks against New York and Washington.</rmrsbankitem></t>
+  <h><rmrsbankitem id="25">Castro visits the UN.</rmrsbankitem></h>
+</pair>
+<pair id='242' value='FALSE' task='IR'>
+  <t><rmrsbankitem id="70">Dana Reeve, the widow of the actor Christopher Reeve, has died of lung cancer at age 44, according to the Christopher Reeve Foundation.</rmrsbankitem></t>
+  <h><rmrsbankitem id="12">Christopher Reeve had an accident.</rmrsbankitem></h>
+</pair>
+<pair id='243' value='FALSE' task='IR'>
+  <t><rmrsbankitem id="71">David Millar retained his Tour de France leader's yellow jersey despite crashing in the final two kilometres of the third stage of the race to Nantes.</rmrsbankitem></t>
+  <h><rmrsbankitem id="33">Tour de France winner is likely to lose the crown.</rmrsbankitem></h>
+</pair>
+<pair id='244' value='TRUE' task='IR'>
+  <t><rmrsbankitem id="72">Diana, Princess of Wales died on Sunday, 31 August 1997 following a car crash in Paris.</rmrsbankitem> <rmrsbankitem id="73">There was widespread public mourning at the death of this popular figure, culminating with her funeral at Westminster Abbey on Saturday, 6 September 1997.</rmrsbankitem></t>
+  <h><rmrsbankitem id="34">Lady Diana died in Paris.</rmrsbankitem></h>
+</pair>
+<pair id='245' value='FALSE' task='IR'>
+  <t><rmrsbankitem id="74">Digging in the badlands of east central Utah on a tip from a repentant poacher, researchers have unearthed the fossil remains of a dinosaur "missing link".</rmrsbankitem></t>
+  <h><rmrsbankitem id="35">Dinosaur remains were found in Asia.</rmrsbankitem></h>
+</pair>
+<pair id='246' value='TRUE' task='IR'>
+  <t><rmrsbankitem id="75">Domestic fire incidents have an important impact on population health by contributing to early death, serious and often disfiguring injuries, and ongoing disability.</rmrsbankitem> <rmrsbankitem id="76">Fire-related injury is a leading cause of unintentional injury in the home in all age groups.</rmrsbankitem></t>
+  <h><rmrsbankitem id="36">Domestic fires are a major cause of unintentional injury in the home.</rmrsbankitem></h>
+</pair>
+<pair id='247' value='TRUE' task='IR'>
+  <t><rmrsbankitem id="77">Ebola haemorrhagic fever is a fatal disease caused by a new virus which has no known cure.</rmrsbankitem> <rmrsbankitem id="78">When a new epidemic was detected in Zaire in the spring of 1995, it was widely perceived as a threat to the West.</rmrsbankitem> <rmrsbankitem id="79">Public attention was intense.</rmrsbankitem></t>
+  <h><rmrsbankitem id="10">Ebola Epidemic breaks out in Zaire.</rmrsbankitem></h>
+</pair>
+<pair id='248' value='FALSE' task='IR'>
+  <t><rmrsbankitem id="80">Ecuador has received short shrift in U.S. policy debates.</rmrsbankitem> <rmrsbankitem id="81">Yet in recent years, significant public debate has taken place in Ecuador on the joint U.S./Colombian initiative and its effects on Ecuador and its citizens.</rmrsbankitem></t>
+  <h><rmrsbankitem id="37">Peru debates border region with Ecuador.</rmrsbankitem></h>
+</pair>
+<pair id='249' value='FALSE' task='IR'>
+  <t><rmrsbankitem id="82">Elsewhere, Mozambique took its first ever Olympic gold medal when Maria Mutola won the women's eight-hundred metres, while the men's ten-thousand-metres went to the Ethiopian Haile Gebrselassie.</rmrsbankitem></t>
+  <h><rmrsbankitem id="38">The women's ten thousand metres champion is from Mozambique.</rmrsbankitem></h>
+</pair>
+<pair id='250' value='FALSE' task='IR'>
+  <t><rmrsbankitem id="83">English has been written using the Latin alphabet since around the ninth century.</rmrsbankitem> <rmrsbankitem id="84">(Before that, Old English had been written using the Anglo-Saxon Futhorc.)</rmrsbankitem> <rmrsbankitem id="85">The spelling system or orthography of English is historical, not phonological.</rmrsbankitem></t>
+  <h><rmrsbankitem id="24">A spelling reform was approved in all German speaking countries.</rmrsbankitem></h>
+</pair>
+<pair id='251' value='TRUE' task='IR'>
+  <t><rmrsbankitem id="86">Estimates vary widely, but it is believed there are up to 100 million children toiling in homes, factories, shops, fields, brothels and on the streets of rural and urban India.</rmrsbankitem></t>
+  <h><rmrsbankitem id="1">Child labor is widely used in Asia.</rmrsbankitem></h>
+</pair>
+<pair id='252' value='FALSE' task='IR'>
+  <t><rmrsbankitem id="87">Europe's economic environment has altered considerably over the last thirty years, and the economies of European countries have progressively opened up to the global economy.</rmrsbankitem> <rmrsbankitem id="88">As a result, the competitiveness of the European economies is dependent not just on production costs, but also on the performance of pension and social security systems guaranteeing security for the future.</rmrsbankitem></t>
+  <h><rmrsbankitem id="39">National pension systems currently adopted in Europe are in difficulties.</rmrsbankitem></h>
+</pair>
+<pair id='253' value='FALSE' task='IR'>
+  <t><rmrsbankitem id="89">Everest Grand Circle Expedition, Nepal and Tibet.</rmrsbankitem> <rmrsbankitem id="90">First circumambulation of Everest; trekking, skiing, and mountaineering.</rmrsbankitem> <rmrsbankitem id="91">First American winter ascent of Pumori (elev.</rmrsbankitem> <rmrsbankitem id="92">23,422').</rmrsbankitem> <rmrsbankitem id="93">Immortalized in the book Everest Grand Circle.</rmrsbankitem> <rmrsbankitem id="94">Ned Gillette, Jan Reynolds, Jim Bridwell, Steve McKinney, Craig Calonica and Rick Barker.</rmrsbankitem></t>
+  <h><rmrsbankitem id="16">A woman succeeds in climbing Everest solo.</rmrsbankitem></h>
+</pair>
+<pair id='254' value='TRUE' task='IR'>
+  <t><rmrsbankitem id="95">Every year Israel jails individuals simply because they refuse to perform military service for reasons of conscience.</rmrsbankitem></t>
+  <h><rmrsbankitem id="40">People are willing to risk imprisonment rather than perform military service.</rmrsbankitem></h>
+</pair>
+<pair id='255' value='FALSE' task='IR'>
+  <t><rmrsbankitem id="96">Every year, about a quarter of all children sustain an injury serious enough to require medical attention, school absences, and/or bed rest.</rmrsbankitem></t>
+  <h><rmrsbankitem id="41">Fireworks may cause serious injuries.</rmrsbankitem></h>
+</pair>
+<pair id='256' value='FALSE' task='IR'>
+  <t><rmrsbankitem id="97">Ewald, now 74, headed the East German Sports Federation from 1961 to 1988.</rmrsbankitem> <rmrsbankitem id="98">He was found guilty of making 142 East German sportswomen, mostly swimmers and athletes, take banned performance-enhancing drugs.</rmrsbankitem></t>
+  <h><rmrsbankitem id="42">Several sportswomen have been accused of doping.</rmrsbankitem></h>
+</pair>
+<pair id='257' value='FALSE' task='IR'>
+  <t><rmrsbankitem id="99">Fake prehistoric rock art of a caveman with a shopping trolley has been hung on the walls of the British Museum.</rmrsbankitem></t>
+  <h><rmrsbankitem id="43">Prehistoric art discovered in South Africa.</rmrsbankitem></h>
+</pair>
+<pair id='258' value='TRUE' task='IR'>
+  <t><rmrsbankitem id="100">Fiona North, Ophthalmic Adviser with the SHSSB added: Eye injuries caused by fireworks are extremely serious and can permanently damage eyesight.</rmrsbankitem> <rmrsbankitem id="101">I would urge those who are co-ordinating efficient firework displays to use appropriate eye protection.</rmrsbankitem></t>
+  <h><rmrsbankitem id="41">Fireworks may cause serious injuries.</rmrsbankitem></h>
+</pair>
+<pair id='259' value='FALSE' task='IR'>
+  <t><rmrsbankitem id="102">First Canadian and then Dutch peacekeepers were deployed in Srebrenica.</rmrsbankitem> <rmrsbankitem id="103">Seven hundred and fifty lightly armed UN peace-keepers were responsible for disarming Srebrenica's Muslim defenders and "deterring" Bosnian Serb attacks against the safe area.</rmrsbankitem> <rmrsbankitem id="104">Two years later, a Serb flag flew where the UN's once did and 7,079 Muslim men were missing.</rmrsbankitem></t>
+  <h><rmrsbankitem id="31">Dutch photos of Srebrenica have disappeared.</rmrsbankitem></h>
+</pair>
+<pair id='260' value='FALSE' task='IR'>
+  <t><rmrsbankitem id="105">Floods are one of Europe's most widespread disasters.</rmrsbankitem> <rmrsbankitem id="106">Major flooding has occurred nearly every year somewhere on our continent during the last few decades.</rmrsbankitem></t>
+  <h><rmrsbankitem id="26">Flooding in Europe causes major economic losses.</rmrsbankitem></h>
+</pair>
+<pair id='261' value='TRUE' task='IR'>
+  <t><rmrsbankitem id="107">For example, the fields of Western farmers feed the United States and many other parts of the world, and India's irrigation systems have enabled that country to be self-sufficient in food production since 1974.</rmrsbankitem> <rmrsbankitem id="108">In addition, in many parts of the world dams have helped to remedy life-threatening problems such as poverty from lack of economic development, famine as a result of drought, devastation from floods, and continued disease from lack of potable water supplies.</rmrsbankitem></t>
+  <h><rmrsbankitem id="44">Dam building prevents life-threatening situations.</rmrsbankitem></h>
+</pair>
+<pair id='262' value='TRUE' task='IR'>
+  <t><rmrsbankitem id="109">For women earning 22,000 a year, the total pay accumulated after six months maternity leave would be just 5,300 in the UK and 5,850 in Ireland.</rmrsbankitem> <rmrsbankitem id="110">Entitlements in Germany would also be relatively low, at 5,900, along with those in France, Spain and the Netherlands, all at 6,750.</rmrsbankitem> <rmrsbankitem id="111">At the other end of the scale, pay received after six months leave in Italy would be 9,150 while in Denmark and Norway it would be as much as 11,000.</rmrsbankitem></t>
+  <h><rmrsbankitem id="19">Maternity leave varies in Europe.</rmrsbankitem></h>
+</pair>
+<pair id='263' value='TRUE' task='IR'>
+  <t><rmrsbankitem id="112">Foreign Carmakers Gain in Russia.</rmrsbankitem> <rmrsbankitem id="113">The likes of Daewoo, Ford, Renault, and more can't produce fast enough.</rmrsbankitem></t>
+  <h><rmrsbankitem id="45">European cars sell in Russia.</rmrsbankitem></h>
+</pair>
+<pair id='264' value='TRUE' task='IR'>
+  <t><rmrsbankitem id="114">France is the only country with two fully governmental elections.</rmrsbankitem> <rmrsbankitem id="115">Parliamentary elections in France, when they create a new parliamentary majority, lead to a new government.</rmrsbankitem></t>
+  <h><rmrsbankitem id="46">Parliamentary elections may lead to a new government in France.</rmrsbankitem></h>
+</pair>
+<pair id='265' value='FALSE' task='IR'>
+  <t><rmrsbankitem id="116">Fujimori charged that on January 26, 1995, Ecuador fired the first shot, an allegation denied by Ecuador's leader, Sixto Duran-Ballen.</rmrsbankitem> <rmrsbankitem id="117">Predictably, each side blamed the other for starting the 1995 conflict, just as each pointed the finger of guilt to the other for provoking the border war of 1941, when Peru took most of the 120,000 square miles in contention between the two countries.</rmrsbankitem></t>
+  <h><rmrsbankitem id="47">President Fujimori was re-elected in 1995.</rmrsbankitem></h>
+</pair>
+<pair id='266' value='FALSE' task='IR'>
+  <t><rmrsbankitem id="118">Glue-sniffing and other forms of solvent abuse are being overlooked in the fight against drugs, according to a new report.</rmrsbankitem></t>
+  <h><rmrsbankitem id="2">Glue-sniffing is common among youngsters.</rmrsbankitem></h>
+</pair>
+<pair id='267' value='FALSE' task='IR'>
+  <t><rmrsbankitem id="119">Since the ancient Greeks, inhalation has been recognized as a highly effective means of ingesting drugs.</rmrsbankitem> <rmrsbankitem id="120">The extensive capillary surface area of the lungs allows rapid absorption, with a subsequent "rush" that has often been described as second in intensity only to intravenous injection.</rmrsbankitem></t>
+  <h><rmrsbankitem id="2">Glue-sniffing is common among youngsters.</rmrsbankitem></h>
+</pair>
+<pair id='268' value='TRUE' task='IR'>
+  <t><rmrsbankitem id="121">Greece objects to the neighbouring Skopje government using the name Macedonia, saying it implies claims on a Greek province of the same name.</rmrsbankitem></t>
+  <h><rmrsbankitem id="48">Greece and Macedonia are in dispute over name.</rmrsbankitem></h>
+</pair>
+<pair id='269' value='FALSE' task='IR'>
+  <t><rmrsbankitem id="122">His (or her) mandate is always to form a coalition based on a majority in the Dutch Parliament and a general agreement on policy ('regeerakkoord').</rmrsbankitem> <rmrsbankitem id="123">During a formation parties barter, letting go of some goals to achieve others.</rmrsbankitem></t>
+  <h><rmrsbankitem id="49">Three parties form a Dutch coalition government.</rmrsbankitem></h>
+</pair>
+<pair id='270' value='FALSE' task='IR'>
+  <t><rmrsbankitem id="124">His group's recently developed computer program, which provides group intelligence for a swarm of mini-robots to rapidly pin-point a source of contagion, can also be used by a group of humans carrying minicomputers, global positioning receivers, and simple radio equipment to find a skier buried in whiteness.</rmrsbankitem></t>
+  <h><rmrsbankitem id="50">Robots are used to find avalanche victims.</rmrsbankitem></h>
+</pair>
+<pair id='271' value='FALSE' task='IR'>
+  <t><rmrsbankitem id="125">Hubble is helping astronomers precisely calculate the age of the universe by providing accurate distances to galaxies, an important prerequisite for calculating age.</rmrsbankitem> <rmrsbankitem id="126">Hubble measures the distances to neighboring galaxies by finding accurate "milepost markers," a special class of pulsating star called Cepheid variables.</rmrsbankitem> <rmrsbankitem id="127">These, in turn, are being used to calibrate more remote milepost markers.</rmrsbankitem></t>
+  <h><rmrsbankitem id="51">Hubble discovers black holes.</rmrsbankitem></h>
+</pair>
+<pair id='272' value='FALSE' task='IR'>
+  <t><rmrsbankitem id="128">If you have an immediate problem with ice dams, you should remove the snow from the part of the roof directly above the ice dam.</rmrsbankitem> <rmrsbankitem id="129">This limits the amount of water that can collect behind the dam.</rmrsbankitem></t>
+  <h><rmrsbankitem id="44">Dam building prevents life-threatening situations.</rmrsbankitem></h>
+</pair>
+<pair id='273' value='FALSE' task='IR'>
+  <t><rmrsbankitem id="130">In 1979, the very first cases of AIDS appeared in New York.</rmrsbankitem> <rmrsbankitem id="131">Cases of the disease that had never been seen prior to 1979, but is now considered more deadly than the bubonic plague, continued to surface in California and New York, almost exclusively in homosexual men.</rmrsbankitem></t>
+  <h><rmrsbankitem id="52">AIDS spreads in Africa.</rmrsbankitem></h>
+</pair>
+<pair id='274' value='FALSE' task='IR'>
+  <t><rmrsbankitem id="132">In 1999, Victor Conte was sent two vials of a new drug by a chemist he knew and he started giving it to some of his clients.</rmrsbankitem> <rmrsbankitem id="133">Including says Conte, one of Americas most iconic sportswomen, Marion Jones, who was about to compete in the 2000 Sydney Olympics.</rmrsbankitem></t>
+  <h><rmrsbankitem id="53">Sportswomen have been suspected of doping.</rmrsbankitem></h>
+</pair>
+<pair id='275' value='FALSE' task='IR'>
+  <t><rmrsbankitem id="134">In Bosnia, diplomatic determination combined with military muscle to create an opportunity to secure a peace rather than permit instability to undermine this fragile region and U.S. interests.</rmrsbankitem></t>
+  <h><rmrsbankitem id="54">The Dayton Peace Treaty was formulated to end the war in Bosnia.</rmrsbankitem></h>
+</pair>
+<pair id='276' value='FALSE' task='IR'>
+  <t><rmrsbankitem id="135">In Britain, they channel their energies into gardening and riding.</rmrsbankitem> <rmrsbankitem id="136">In Holland, they travel by bicycle to prove that they are of the people.</rmrsbankitem> <rmrsbankitem id="137">But, conforming to a national stereotype, the Italian royal family, exiled from their homeland for 60 years, prefer fast cars and beautiful women.</rmrsbankitem></t>
+  <h><rmrsbankitem id="3">Italian royal family returns home.</rmrsbankitem></h>
+</pair>
+<pair id='277' value='TRUE' task='IR'>
+  <t><rmrsbankitem id="138">In February of 1995, one man single-handedly bankrupted the bank that financed the Napoleonic Wars.</rmrsbankitem> <rmrsbankitem id="139">Founded in 1762, Barings Bank was Britain's oldest merchant bank and Queen Elizabeth's personal bank.</rmrsbankitem></t>
+  <h><rmrsbankitem id="55">Barings was Britain's oldest merchant bank.</rmrsbankitem></h>
+</pair>
+<pair id='278' value='TRUE' task='IR'>
+  <t><rmrsbankitem id="140">In November 1990, the president announced that opposition political parties would be permitted to organize in 1991.</rmrsbankitem> <rmrsbankitem id="141">Several new parties emerged, including the Democratic Republican Movement (MDR), the Liberal Party (LP), the Democratic and Socialist Party (PSD), and the Coalition for the Defense of the Republic (CDR).</rmrsbankitem></t>
+  <h><rmrsbankitem id="18">Several new political parties emerged.</rmrsbankitem></h>
+</pair>
+<pair id='279' value='FALSE' task='IR'>
+  <t><rmrsbankitem id="142">In November 2005, the EU announced a partial suspension of the PCA with all subcommittees and the Cooperation Committee suspended indefinitely.</rmrsbankitem> <rmrsbankitem id="143">An arms embargo has also put in place, whilst a year-long visa ban has been imposed upon 12 Uzbek officials believed to have played a part in the forcible suppression of the Andijan demonstrations.</rmrsbankitem></t>
+  <h><rmrsbankitem id="56">The EU partially refuses commission candidates.</rmrsbankitem></h>
+</pair>
+<pair id='280' value='FALSE' task='IR'>
+  <t><rmrsbankitem id="144">In the history of art, prehistoric art is all art produced in preliterate cultures (prehistory), beginning somewhere in very late geological history.</rmrsbankitem></t>
+  <h><rmrsbankitem id="43">Prehistoric art discovered in South Africa.</rmrsbankitem></h>
+</pair>
+<pair id='281' value='FALSE' task='IR'>
+  <t><rmrsbankitem id="145">In this respect, the reforms required across Europe are similar: stronger incentives within pension systems to delay retirement, rules which facilitate gradual retirement, incentives for workers to save for their retirement, and public information measures to improve awareness of the options available.</rmrsbankitem></t>
+  <h><rmrsbankitem id="39">National pension systems currently adopted in Europe are in difficulties.</rmrsbankitem></h>
+</pair>
+<pair id='282' value='FALSE' task='IR'>
+  <t><rmrsbankitem id="146">It also raised questions about the quality of financial regulation in Singapore, where derivatives losses run up by former trader Nick Leeson led to the 1995 collapse of Barings Plc.</rmrsbankitem></t>
+  <h><rmrsbankitem id="57">Nick Leeson was arrested for collapse of Barings Bank PLC.</rmrsbankitem></h>
+</pair>
+<pair id='283' value='FALSE' task='IR'>
+  <t><rmrsbankitem id="147">It is estimated that the disaster resulting from the deliberate crash of a Jumbo-Jet on a nuclear power station would be a multiple of the Chernobyl accident in the worst case by a factor of 60.</rmrsbankitem></t>
+  <h><rmrsbankitem id="8">The Chernobyl disaster had repercussions outside the ex-USSR.</rmrsbankitem></h>
+</pair>
+<pair id='284' value='TRUE' task='IR'>
+  <t><rmrsbankitem id="148">It was difficult to assess the objectives behind increased militia activity in East Timor, but its intent seemed to be to continue a pattern of violence against civilians and the United Nations Transitional Administration in East Timor (UNTAET) in order to undermine the transition process, Hedi Annabi, Assistant Secretary-General for Peacekeeping Operations, told the Security Council this morning.</rmrsbankitem></t>
+  <h><rmrsbankitem id="58">Guerrillas increase activity in East Timor.</rmrsbankitem></h>
+</pair>
+<pair id='285' value='TRUE' task='IR'>
+  <t><rmrsbankitem id="149">Italian director Federico Fellini was older than his American peers at his first nomination and, like other foreigners, had not been nominated for his earlier masterworks, "La Strada" and "Nights of Cabiria", though both films had won the Best Foreign-Language Picture in 1956 and 1957, respectively.</rmrsbankitem> <rmrsbankitem id="150">Fellini later received an Honorary Oscar in 1993, which was basically a compensatory gesture.</rmrsbankitem></t>
+  <h><rmrsbankitem id="59">An Italian director is awarded an honorary Oscar.</rmrsbankitem></h>
+</pair>
+<pair id='286' value='TRUE' task='IR'>
+  <t><rmrsbankitem id="151">Italian film-maker, Fellini was awarded an honorary Oscar for lifetime achievement.</rmrsbankitem> <rmrsbankitem id="152">He died on October 31, 1993.</rmrsbankitem></t>
+  <h><rmrsbankitem id="59">An Italian director is awarded an honorary Oscar.</rmrsbankitem></h>
+</pair>
+<pair id='287' value='TRUE' task='IR'>
+  <t><rmrsbankitem id="153">Italy's highest court has upheld a court verdict that partially cleared former Prime Minister Giulio Andreotti of having colluded with the Mafia.</rmrsbankitem></t>
+  <h><rmrsbankitem id="60">Andreotti is accused of Mafia collusion.</rmrsbankitem></h>
+</pair>
+<pair id='288' value='TRUE' task='IR'>
+  <t><rmrsbankitem id="154">Jill Pilgrim, general counsel of USA Track and Field, brought up the issue during a panel on women's sports at the sports lawyers conference.</rmrsbankitem> <rmrsbankitem id="155">Pilgrim said the law regarding who is legally considered a woman is changing as sex-change operations become more common.</rmrsbankitem></t>
+  <h><rmrsbankitem id="13">Sex-change operations become more common.</rmrsbankitem></h>
+</pair>
+<pair id='289' value='TRUE' task='IR'>
+  <t><rmrsbankitem id="156">Kieslowski later said that he abandoned documentary filmmaking due to two experiences: the censorship of Workers '71, which caused him to doubt whether truth could be told literally under an authoritarian regime, and an incident during the filming of Station (1981) in which some of his footage was nearly used as evidence in a criminal case.</rmrsbankitem> <rmrsbankitem id="157">He decided that fiction not only allowed more artistic freedom, but could portray everyday life more truthfully.</rmrsbankitem></t>
+  <h><rmrsbankitem id="61">Kieslowski is a director.</rmrsbankitem></h>
+</pair>
+<pair id='290' value='TRUE' task='IR'>
+  <t><rmrsbankitem id="158">Last week, saw the fall of the Dutch right wing coalition government, made up of the Christian-democrats (CDA) led by Prime Minister Jan Peter Balkenende, the right wing liberal party (VVD) and the so-called left-liberal D66.</rmrsbankitem></t>
+  <h><rmrsbankitem id="49">Three parties form a Dutch coalition government.</rmrsbankitem></h>
+</pair>
+<pair id='291' value='FALSE' task='IR'>
+  <t><headline>LISBON, Jan. 22 (Xinhuanet) - </headline><rmrsbankitem id="159">Anibal Cavaco Silva, a former prime minister, won Portugal's presidential election on Sunday.</rmrsbankitem></t>
+  <h><rmrsbankitem id="62">New Portuguese prime minister is elected.</rmrsbankitem></h>
+</pair>
+<pair id='292' value='FALSE' task='IR'>
+  <t><rmrsbankitem id="160">Macedonia seems confident it can weather the storm, but some fear Athens may soon take things up a notch.</rmrsbankitem></t>
+  <h><rmrsbankitem id="48">Greece and Macedonia are in dispute over name.</rmrsbankitem></h>
+</pair>
+<pair id='293' value='TRUE' task='IR'>
+  <t><rmrsbankitem id="161">Medium-size black holes actually do exist, according to the latest findings from NASA's Hubble Space Telescope, but scientists had to look in some unexpected places to find them.</rmrsbankitem> <rmrsbankitem id="162">The previously undiscovered black holes provide an important link that sheds light on the way in which black holes grow.</rmrsbankitem></t>
+  <h><rmrsbankitem id="51">Hubble discovers black holes.</rmrsbankitem></h>
+</pair>
+<pair id='294' value='TRUE' task='IR'>
+  <t><rmrsbankitem id="163">Mental health problems in children and adolescents are on the rise, the British Medical Association has warned, and services are ill-equipped to cope.</rmrsbankitem></t>
+  <h><rmrsbankitem id="63">Mental health problems increase in the young.</rmrsbankitem></h>
+</pair>
+<pair id='295' value='TRUE' task='IR'>
+  <t><rmrsbankitem id="164">Most people are familiar with the idea of St. Bernards or other dogs taking part in rescue and recovery efforts.</rmrsbankitem> <rmrsbankitem id="165">Robots might also take part in search and rescue missions.</rmrsbankitem></t>
+  <h><rmrsbankitem id="64">Robots are used to find missing victims.</rmrsbankitem></h>
+</pair>
+<pair id='296' value='FALSE' task='IR'>
+  <t><rmrsbankitem id="166">Mozambique's Maria Mutola and Israel's Alex Averbukh produced the best performances of the year, in the women's 800 metres and men's pole vault, at the Super Grand Prix in Madrid on Saturday.</rmrsbankitem></t>
+  <h><rmrsbankitem id="38">The women's ten thousand metres champion is from Mozambique.</rmrsbankitem></h>
+</pair>
+<pair id='297' value='FALSE' task='IR'>
+  <t><rmrsbankitem id="167">Mr Gregory's conclusion in 1994 was that the ceremony, transferred to the more convenient nearest Sunday, was dying out.</rmrsbankitem> <rmrsbankitem id="168">However, that year the Conservative government proclaimed "festivities" to celebrate the 50th anniversary of the Normandy landings.</rmrsbankitem></t>
+  <h><rmrsbankitem id="65">50th Anniversary of Normandy Landings lasts a year.</rmrsbankitem></h>
+</pair>
+<pair id='298' value='TRUE' task='IR'>
+  <t><rmrsbankitem id="169">NASA's two Great Observatories, the Hubble Space Telescope and the Chandra X-ray Observatory, have independently provided what could be the best direct evidence yet for the existence of an event horizon, the defining feature of a black hole.</rmrsbankitem></t>
+  <h><rmrsbankitem id="51">Hubble discovers black holes.</rmrsbankitem></h>
+</pair>
+<pair id='299' value='TRUE' task='IR'>
+  <t><rmrsbankitem id="170">Nevertheless, increased longevity and falling birth rates are major factors making many state pension systems across Europe unsustainable in their present form.</rmrsbankitem> <rmrsbankitem id="171">Some member states have already introduced major reforms (e.g. Germany, France and Austria) others have continued to adapt their existing systems.</rmrsbankitem></t>
+  <h><rmrsbankitem id="39">National pension systems currently adopted in Europe are in difficulties.</rmrsbankitem></h>
+</pair>
+<pair id='300' value='TRUE' task='IR'>
+  <t><rmrsbankitem id="172">Nevertheless, the international reputation of some Polish artists, notably the film maker Krzysztof Kieslowski, has never been higher.</rmrsbankitem> <rmrsbankitem id="173">To use a crass commercial yardstick, the DVD boxed set of his Decalogue series (ten one-hour dramas based loosely on the Ten Commandments, made for Polish TV in 1988) is currently number 3,700 in Amazon.com's sales rankings (about even with The Alfred Hitchcock Signature Collection).</rmrsbankitem></t>
+  <h><rmrsbankitem id="66">Kieslowski is a film and TV director.</rmrsbankitem></h>
+</pair>
+<pair id='301' value='FALSE' task='IR'>
+  <t><rmrsbankitem id="174">New York boasts the largest number of billionaires, with 40 residing in the Big Apple.</rmrsbankitem> <rmrsbankitem id="175">The world's youngest billionaire is 22-year-old Hind Hariri, daughter of assassinated former Lebanese Prime Minister Rafik Hariri.</rmrsbankitem></t>
+  <h><rmrsbankitem id="67">The number of billionaires increases.</rmrsbankitem></h>
+</pair>
+<pair id='302' value='FALSE' task='IR'>
+  <t><rmrsbankitem id="176">Next year is the 50th anniversary of the Normandy invasion, an event that wouldn't have been possible without the Liberty ships.</rmrsbankitem> <rmrsbankitem id="177">The volunteers hope to raise enough money to sail the O'Brien to France for the big D-Day celebration.</rmrsbankitem></t>
+  <h><rmrsbankitem id="65">50th Anniversary of Normandy Landings lasts a year.</rmrsbankitem></h>
+</pair>
+<pair id='303' value='FALSE' task='IR'>
+  <t><rmrsbankitem id="178">Nicholas Burns stated in an exclusive interview for "Utrinski Vesnik" from Pristina that it would be disgraceful if Athens puts a veto on Macedonia's application for membership in the European Union and NATO.</rmrsbankitem></t>
+  <h><rmrsbankitem id="48">Greece and Macedonia are in dispute over name.</rmrsbankitem></h>
+</pair>
+<pair id='304' value='TRUE' task='IR'>
+  <t><rmrsbankitem id="179">Nick Leeson was jailed for fraud following the collapse of Barings Bank in 1995.</rmrsbankitem> <rmrsbankitem id="180">He had run up losses of 850m on the Far East stock markets.</rmrsbankitem></t>
+  <h><rmrsbankitem id="57">Nick Leeson was arrested for collapse of Barings Bank PLC.</rmrsbankitem></h>
+</pair>
+<pair id='305' value='FALSE' task='IR'>
+  <t><rmrsbankitem id="181">Northwest Strikes: If Northwest flight attendants go on strike on the 15th, what does that mean for travelers?</rmrsbankitem> <rmrsbankitem id="182">I have a trip booked on the 24th.</rmrsbankitem> <rmrsbankitem id="183">Will NW rebook us with other airlines?</rmrsbankitem></t>
+  <h><rmrsbankitem id="17">Italian flight assistants go on strike.</rmrsbankitem></h>
+</pair>
+<pair id='306' value='TRUE' task='IR'>
+  <t><rmrsbankitem id="184">Oh Eun-sun was the first Korean woman to climb Mt.</rmrsbankitem> <rmrsbankitem id="185">Everest solo.</rmrsbankitem> <rmrsbankitem id="186">For all the hardships she must have endured, she merely says that she was lucky.</rmrsbankitem> <rmrsbankitem id="187">She now reminisces about the days she spent in that mountain.</rmrsbankitem></t>
+  <h><rmrsbankitem id="16">A woman succeeds in climbing Everest solo.</rmrsbankitem></h>
+</pair>
+<pair id='307' value='TRUE' task='IR'>
+  <t><rmrsbankitem id="188">On 24 March 1992, the number 3 power generating unit at the Leningrad Atomic Power Station in Sosnovyi Bor underwent an emergency shutdown.</rmrsbankitem> <rmrsbankitem id="189">The plant suffered a steam leak, which spewed a total of some 3 thousand curies into the atmosphere.</rmrsbankitem></t>
+  <h><rmrsbankitem id="68">Nuclear Power Plant of Sosnovyi Bor suffers an emergency shut down.</rmrsbankitem></h>
+</pair>
+<pair id='308' value='TRUE' task='IR'>
+  <t><rmrsbankitem id="190">ON 29 June the Dutch right-wing coalition government collapsed.</rmrsbankitem> <rmrsbankitem id="191">It was made up of the Christian-democrats (CDA) led by Prime Minister Jan Peter Balkenende, the right wing liberal party (VVD) and the so-called 'left-liberal' D66.</rmrsbankitem></t>
+  <h><rmrsbankitem id="49">Three parties form a Dutch coalition government.</rmrsbankitem></h>
+</pair>
+<pair id='309' value='FALSE' task='IR'>
+  <t><rmrsbankitem id="192">On February 1, 1990, during a spacewalk, Alexander Serebrov dons an experimental flying armchair that had been delivered to Mir with Kvant 2.</rmrsbankitem> <rmrsbankitem id="193">Unlike U.S. astronauts, who flew untethered flights with a similar device, the Soviet cosmonaut remains attached to the station with a safety tether, since there is no space shuttle to pick him up in case of an emergency.</rmrsbankitem></t>
+  <h><rmrsbankitem id="69">US shuttle Atlantis docks with the Mir space station.</rmrsbankitem></h>
+</pair>
+<pair id='310' value='TRUE' task='IR'>
+  <t><rmrsbankitem id="194">On July 12 Portuguese President Jorge Sampaio asks Pedro Santana Lopes to form a government.</rmrsbankitem> <rmrsbankitem id="195">The new government is sworn in on July 17 and includes António Monteiro as foreign minister, Daniel Sanches as interior minister, and António Bago Flix as finance minister; Paulo Portas remains defense minister.</rmrsbankitem></t>
+  <h><rmrsbankitem id="62">New Portuguese prime minister is elected.</rmrsbankitem></h>
+</pair>
+<pair id='311' value='TRUE' task='IR'>
+  <t><rmrsbankitem id="196">On June 29, 1995, the Space Shuttle Atlantis made history when it docked with the Russian Mir space station, as shown in this photograph.</rmrsbankitem></t>
+  <h><rmrsbankitem id="69">US shuttle Atlantis docks with the Mir space station.</rmrsbankitem></h>
+</pair>
+<pair id='312' value='FALSE' task='IR'>
+  <t><rmrsbankitem id="197">Oscar-winning director Franco Zeffirelli has been awarded an honorary knighthood for his "valuable services to British performing arts".</rmrsbankitem></t>
+  <h><rmrsbankitem id="70">Italian director is awarded an honorary Oscar.</rmrsbankitem></h>
+</pair>
+<pair id='313' value='TRUE' task='IR'>
+  <t><rmrsbankitem id="198">Over a course of days, the bank went from apparent strength to bankruptcy.</rmrsbankitem> <rmrsbankitem id="199">Barings was Britain's oldest merchant bank.</rmrsbankitem> <rmrsbankitem id="200">It had financed the Napoleonic wars, the Louisiana purchase, and the Erie Canal.</rmrsbankitem> <rmrsbankitem id="201">Barings was the Queen's bank.</rmrsbankitem></t>
+  <h><rmrsbankitem id="55">Barings was Britain's oldest merchant bank.</rmrsbankitem></h>
+</pair>
+<pair id='314' value='FALSE' task='IR'>
+  <t><rmrsbankitem id="202">People who are deaf or have hearing impairments, those who are blind or have vision impairments, and those with mobility impairments may face unique challenges in an emergency.</rmrsbankitem> <rmrsbankitem id="203">Their ability to detect a fire or escape its effects may be hindered by their impairments.</rmrsbankitem> <rmrsbankitem id="204">As a result, people with these impairments are at a greater risk of death or injury due to fire.</rmrsbankitem></t>
+  <h><rmrsbankitem id="71">Deaf people encounter problems in the social community.</rmrsbankitem></h>
+</pair>
+<pair id='315' value='TRUE' task='IR'>
+  <t><rmrsbankitem id="205">Political parties in PNG lack ideological conviction and rely almost exclusively on patronage politics, personalism, and regional bases.</rmrsbankitem> <rmrsbankitem id="206">Several parties have emerged in Papua New Guinean politics.</rmrsbankitem> <rmrsbankitem id="207">In the House of Assembly elected in 1973, the Pangu Pati, headed by Michael Somare, formed a coalition government with the People's Progress Party, and Somare became prime minister.</rmrsbankitem></t>
+  <h><rmrsbankitem id="18">Several new political parties emerged.</rmrsbankitem></h>
+</pair>
+<pair id='316' value='TRUE' task='IR'>
+  <t><rmrsbankitem id="208">President Chirac has been advised that his resumption of nuclear testing would precipitate an international boycott of French products.</rmrsbankitem></t>
+  <h><rmrsbankitem id="72">International pressure is exerted to end French nuclear tests.</rmrsbankitem></h>
+</pair>
+<pair id='317' value='TRUE' task='IR'>
+  <t><rmrsbankitem id="209">President Fujimori was first elected in 1990, and then re-elected in 1995 under a new constitution.</rmrsbankitem></t>
+  <h><rmrsbankitem id="47">President Fujimori was re-elected in 1995.</rmrsbankitem></h>
+</pair>
+<pair id='318' value='TRUE' task='IR'>
+  <t><rmrsbankitem id="210">President Vladimir Putin vowed Monday to track down the killers of Anna Politkovskaya, while her colleagues at Novaya Gazeta pledged to continue her work despite dangers.</rmrsbankitem></t>
+  <h><rmrsbankitem id="14">Anna Politkovskaya was murdered.</rmrsbankitem></h>
+</pair>
+<pair id='319' value='FALSE' task='IR'>
+  <t><rmrsbankitem id="211">Prime Minister Jos Manuel Duro Barroso resigns.</rmrsbankitem> <rmrsbankitem id="212">He is to assume the presidency of the European Commission later in the year (the European Parliament approves him on July 22).</rmrsbankitem></t>
+  <h><rmrsbankitem id="62">New Portuguese prime minister is elected.</rmrsbankitem></h>
+</pair>
+<pair id='320' value='FALSE' task='IR'>
+  <t><rmrsbankitem id="213">Rabies is a viral disease of mammals and is transmitted primarily through bites.</rmrsbankitem> <rmrsbankitem id="214">Annually, 7,000 to 8,000 rabid animals are detected in the United States, with more than 90 percent of the cases in wild animals.</rmrsbankitem></t>
+  <h><rmrsbankitem id="73">Rabies is fatal in humans.</rmrsbankitem></h>
+</pair>
+<pair id='321' value='TRUE' task='IR'>
+  <t><rmrsbankitem id="215">Rabies virus infects the central nervous system, causing encephalopathy and ultimately death.</rmrsbankitem> <rmrsbankitem id="216">Early symptoms of rabies in humans are nonspecific, consisting of fever, headache, and general malaise.</rmrsbankitem></t>
+  <h><rmrsbankitem id="73">Rabies is fatal in humans.</rmrsbankitem></h>
+</pair>
+<pair id='322' value='FALSE' task='IR'>
+  <t><rmrsbankitem id="217">Research workers of the German archaeological institute have discovered a mummy in permafrost at excavation work in Mongolia of approximately 2,500 years old.</rmrsbankitem></t>
+  <h><rmrsbankitem id="74">Altai ice maiden triggers major dispute.</rmrsbankitem></h>
+</pair>
+<pair id='323' value='FALSE' task='IR'>
+  <t><rmrsbankitem id="218">Ronaldo Luiz Nazario da Silva is quite simply one of the greatest strikers in the history of world football, capable of leaving an entire team for dead with his darting runs and dribbling ability, voted FIFA World Player of the Year on three occasions and already a double FIFA World Cup winner.</rmrsbankitem></t>
+  <h><rmrsbankitem id="75">FIFA selects world football player of the year 1994.</rmrsbankitem></h>
+</pair>
+<pair id='324' value='TRUE' task='IR'>
+  <t><rmrsbankitem id="219">Russia doesn't excel in auto manufacturing, but it is tops in other areas.</rmrsbankitem> <rmrsbankitem id="220">The country's great wealth in oil, natural gas, and metals, in addition to generating revenue for the government, is creating a new middle class that craves European, Japanese and American cars.</rmrsbankitem></t>
+  <h><rmrsbankitem id="45">European cars sell in Russia.</rmrsbankitem></h>
+</pair>
+<pair id='325' value='TRUE' task='IR'>
+  <t><rmrsbankitem id="221">Russian cosmonaut Valery Polyakov set the record for the longest continuous amount of time spent in space, a staggering 438 days, between 1994 and 1995.</rmrsbankitem></t>
+  <h><rmrsbankitem id="32">Russians hold record for longest stay in space.</rmrsbankitem></h>
+</pair>
+<pair id='326' value='FALSE' task='IR'>
+  <t><rmrsbankitem id="222">Seal hunting has been a tradition in Norway for thousands of years, but has dwindled recently with only about half the annual 1,200 quota being killed each year.</rmrsbankitem></t>
+  <h><rmrsbankitem id="76">Seal-hunting endangers species.</rmrsbankitem></h>
+</pair>
+<pair id='327' value='FALSE' task='IR'>
+  <t><rmrsbankitem id="223">Secretary-General Kofi Annan and Nane Annan are greeted by President Fidel Castro upon their arrival at Jose Marti Airport in Havana on April 10.</rmrsbankitem></t>
+  <h><rmrsbankitem id="25">Castro visits the UN.</rmrsbankitem></h>
+</pair>
+<pair id='328' value='FALSE' task='IR'>
+  <t><headline>September 26 - </headline><rmrsbankitem id="224">Trial against former Italian Prime Minister Giulio Andreotti, accused of Mafia connections, begins.</rmrsbankitem></t>
+  <h><rmrsbankitem id="77">Andreotti collaborates with the Mafia.</rmrsbankitem></h>
+</pair>
+<pair id='329' value='TRUE' task='IR'>
+  <t><headline>September 26 - </headline><rmrsbankitem id="224">Trial against former Italian Prime Minister Giulio Andreotti, accused of Mafia connections, begins.</rmrsbankitem></t>
+  <h><rmrsbankitem id="60">Andreotti is accused of Mafia collusion.</rmrsbankitem></h>
+</pair>
+<pair id='330' value='FALSE' task='IR'>
+  <t><rmrsbankitem id="225">Sida does not take any new decisions on support to projects in the Baltic states.</rmrsbankitem></t>
+  <h><rmrsbankitem id="78">Baltic Countries join the EU.</rmrsbankitem></h>
+</pair>
+<pair id='331' value='FALSE' task='IR'>
+  <t><rmrsbankitem id="226">Speaking about the papal visit, Castro also said the government had agreed to make available half of its transport to ensure people can attend masses the pope will celebrate in the cities of Havana, Santa Clara, Camaguey and Santiago de Cuba.</rmrsbankitem> <rmrsbankitem id="227">Cuban church authorities have been concerned there will not be enough transport.</rmrsbankitem></t>
+  <h><rmrsbankitem id="79">Papal travel is affected by political concerns.</rmrsbankitem></h>
+</pair>
+<pair id='332' value='TRUE' task='IR'>
+  <t><headline>Stony Brook, NY (1/10/02) - </headline><rmrsbankitem id="228">The discovery of paleolithic art in a cave in South Africa is causing researchers to consider an older and less Euro-centric view of the origins of what is considered 'modern behavior'.</rmrsbankitem></t>
+  <h><rmrsbankitem id="43">Prehistoric art discovered in South Africa.</rmrsbankitem></h>
+</pair>
+<pair id='333' value='FALSE' task='IR'>
+  <t><rmrsbankitem id="229">Strong support was given to water conservation, recycling and demand reduction options, while storage augmentation (dam building) was rejected on the grounds that there would not be sufficient water to fill any new dams.</rmrsbankitem></t>
+  <h><rmrsbankitem id="44">Dam building prevents life-threatening situations.</rmrsbankitem></h>
+</pair>
+<pair id='334' value='FALSE' task='IR'>
+  <t><rmrsbankitem id="230">Thanks to the thirty Heads who responded to my question about maternity leave.</rmrsbankitem> <rmrsbankitem id="231">Clearly, the amount of maternity leave offered to teachers at international schools varies greatly from school to school.</rmrsbankitem></t>
+  <h><rmrsbankitem id="19">Maternity leave varies in Europe.</rmrsbankitem></h>
+</pair>
+<pair id='335' value='FALSE' task='IR'>
+  <t><rmrsbankitem id="232">The accident in the Ukrainian nuclear power plant at Chernobyl on April 26, 1986 brought along great harm for many people.</rmrsbankitem> <rmrsbankitem id="233">There were immediate damages and consequential burdens for human beings, the environment and the economy over long distances.</rmrsbankitem></t>
+  <h><rmrsbankitem id="68">Nuclear Power Plant of Sosnovyi Bor suffers an emergency shut down.</rmrsbankitem></h>
+</pair>
+<pair id='336' value='FALSE' task='IR'>
+  <t><rmrsbankitem id="234">The agreement also stated a period of transition for the Baltic countries to last until December 31, 1999.</rmrsbankitem> <rmrsbankitem id="235">This was a much shorter period than that which was assigned to the Central European countries (their transition periods were declared to be 10 years).</rmrsbankitem> <rmrsbankitem id="236">Estonia declined the transition period, Latvia received a transition period of four years, and Lithuania received a transition period of six years.</rmrsbankitem></t>
+  <h><rmrsbankitem id="78">Baltic Countries join the EU.</rmrsbankitem></h>
+</pair>
+<pair id='337' value='FALSE' task='IR'>
+  <t><rmrsbankitem id="237">The British tabloids portrayed Nicholas Leeson as a working-class villain who single-handedly brought down Barings PLC, a 233-year-old London merchant bank that helped finance the Napoleonic wars.</rmrsbankitem></t>
+  <h><rmrsbankitem id="55">Barings was Britain's oldest merchant bank.</rmrsbankitem></h>
+</pair>
+<pair id='338' value='TRUE' task='IR'>
+  <t><rmrsbankitem id="238">The chain of events which led to the collapse of Barings, Britain's oldest merchant bank, is a demonstration of how not to manage a derivatives operation.</rmrsbankitem></t>
+  <h><rmrsbankitem id="55">Barings was Britain's oldest merchant bank.</rmrsbankitem></h>
+</pair>
+<pair id='339' value='FALSE' task='IR'>
+  <t><rmrsbankitem id="239">The conference found that many Australians experience discrimination through the Governmental, penal, legal and health care systems because of their mental health, race, skin colour, sexuality, sexual formation or refugee status.</rmrsbankitem></t>
+  <h><rmrsbankitem id="63">Mental health problems increase in the young.</rmrsbankitem></h>
+</pair>
+<pair id='340' value='TRUE' task='IR'>
+  <t><rmrsbankitem id="240">The Dayton Peace Accords for Bosnia and Herzegovina was the first major peace agreement adopted after the Beijing conference, in December 1995.</rmrsbankitem></t>
+  <h><rmrsbankitem id="54">The Dayton Peace Treaty was formulated to end the war in Bosnia.</rmrsbankitem></h>
+</pair>
+<pair id='341' value='FALSE' task='IR'>
+  <t><rmrsbankitem id="241">The discovery is based on velocity measurements of a whirlpool of hot gas orbiting the black hole.</rmrsbankitem></t>
+  <h><rmrsbankitem id="51">Hubble discovers black holes.</rmrsbankitem></h>
+</pair>
+<pair id='342' value='FALSE' task='IR'>
+  <t><rmrsbankitem id="242">The discovery of the body of a warrior - thought to have died in battle more than 2,000 years ago - could help archaeologists to pinpoint the site of an ancient holy site.</rmrsbankitem> <rmrsbankitem id="243">The young warrior, aged about 30, with his spear, a sword, his belt and scabbard, stunned archaeologists who found his stone coffin.</rmrsbankitem></t>
+  <h><rmrsbankitem id="74">Altai ice maiden triggers major dispute.</rmrsbankitem></h>
+</pair>
+<pair id='343' value='FALSE' task='IR'>
+  <t><rmrsbankitem id="244">The Ebro Delta (delta de l'Ebro) is the largest humid zone in Catalonia.</rmrsbankitem> <rmrsbankitem id="245">It is the second most important natural aquatic habitat in Spain after the Doana National Park.</rmrsbankitem> <rmrsbankitem id="246">The Delta is of international importance for its plant species and its fauna.</rmrsbankitem></t>
+  <h><rmrsbankitem id="80">The Ebro Delta is used for farming.</rmrsbankitem></h>
+</pair>
+<pair id='344' value='TRUE' task='IR'>
+  <t><rmrsbankitem id="247">The ecological problems stem in large part from the fact that the brackish water and productive coastal wetlands and natural areas are often supplied with nutrient-rich irrigation return water, sometimes from rice farming.</rmrsbankitem> <rmrsbankitem id="248">The Ebro Delta and its wetlands suffer similar water quality problems since they lie around the fringes of the large Delta farm region.</rmrsbankitem></t>
+  <h><rmrsbankitem id="80">The Ebro Delta is used for farming.</rmrsbankitem></h>
+</pair>
+<pair id='345' value='FALSE' task='IR'>
+  <t><rmrsbankitem id="249">The eighth Paralympic Winter Games are set to take place in Salt Lake City, Utah.</rmrsbankitem> <rmrsbankitem id="250">For only the second time the Games are being held outside Europe, following the 1998 Winter Paralympics in Nagano, Japan.</rmrsbankitem> <rmrsbankitem id="251">And for the first time ever, there is just one combined organising committee for both the Winter Olympic and Paralympic Games.</rmrsbankitem> <rmrsbankitem id="252">Just 10 days after the Winter Olympics concludes, the Paralympics will begin in the same venue.</rmrsbankitem></t>
+  <h><rmrsbankitem id="81">The 2002 Olympic Winter games took place in Salt Lake.</rmrsbankitem></h>
+</pair>
+<pair id='346' value='TRUE' task='IR'>
+  <t><rmrsbankitem id="253">The first dinosaur remains in south-east Asia were found in Laos as early as 1936, but little else eventuated until the 1980s.</rmrsbankitem> <rmrsbankitem id="254">Much of the area is heavily vegetated, and although difficult to explore, promises many significant finds in the future.</rmrsbankitem> <rmrsbankitem id="255">Thailand has provided the best finds, particularly from the Khorat Group, which covers the period from the late Triassic to the early Cretaceous.</rmrsbankitem></t>
+  <h><rmrsbankitem id="35">Dinosaur remains were found in Asia.</rmrsbankitem></h>
+</pair>
+<pair id='347' value='FALSE' task='IR'>
+  <t><rmrsbankitem id="256">The first half of 1997 has been a year of considerable progress for East Timor in the international arena.</rmrsbankitem> <rmrsbankitem id="257">In April, a majority of members of the UN Commission on Human Rights voted in support of a strong resolution on East Timor, criticising the Indonesian government for its lack of progress on human rights in East Timor and calling for concrete steps to be taken to address the continuing violations.</rmrsbankitem></t>
+  <h><rmrsbankitem id="58">Guerrillas increase activity in East Timor.</rmrsbankitem></h>
+</pair>
+<pair id='348' value='TRUE' task='IR'>
+  <t><rmrsbankitem id="258">The floods were exceptional since they affected an extensive area across Europe from the UK to Spain and as far east as the Black Sea coast.</rmrsbankitem> <rmrsbankitem id="259">Economic losses amounted to EUR 9.2 bn in Germany, EUR 2.9 bn in Austria and EUR 2.3 bn in the Czech Republic.</rmrsbankitem> <rmrsbankitem id="260">Total economic damage exceeds EUR 15 bn.</rmrsbankitem></t>
+  <h><rmrsbankitem id="26">Flooding in Europe causes major economic losses.</rmrsbankitem></h>
+</pair>
+<pair id='349' value='TRUE' task='IR'>
+  <t><rmrsbankitem id="261">The ghost shirt was then donated to the Glasgow Museum in 1892 by an Indian interpreter and has remained a visitor attraction for 100 years.</rmrsbankitem> <rmrsbankitem id="262">It became the subject of an ownership wrangle when descendants of the Sioux tribe petitioned for its return in 1995.</rmrsbankitem> <rmrsbankitem id="263">The Wounded Knee Survivors Association including a Lakota elder had it returned to the tribe.</rmrsbankitem></t>
+  <h><rmrsbankitem id="11">A Sioux ghost shirt was returned by a Scottish museum.</rmrsbankitem></h>
+</pair>
+<pair id='350' value='FALSE' task='IR'>
+  <t><rmrsbankitem id="264">The golden jewellery, found in an intact Royal Macedonian tomb in 1977, is exquisite.</rmrsbankitem> <rmrsbankitem id="265">It is now the prize exhibit in the archaeological museum in Thessaloniki and the label says that it came from the tomb of Philip II, Alexander the Great's father.</rmrsbankitem></t>
+  <h><rmrsbankitem id="82">Alexander the Great's Tomb remains undiscovered.</rmrsbankitem></h>
+</pair>
+<pair id='351' value='TRUE' task='IR'>
+  <t><rmrsbankitem id="266">The group, along with a broad coalition of disarmament, environmental, peace, and religious organizations, expects the boycott to put pressure on French companies to exert their economic influence and encourage Chirac to end all nuclear weapons testing.</rmrsbankitem></t>
+  <h><rmrsbankitem id="72">International pressure is exerted to end French nuclear tests.</rmrsbankitem></h>
+</pair>
+<pair id='352' value='TRUE' task='IR'>
+  <t><rmrsbankitem id="267">The increased amounts of carbon dioxide (CO2) and other greenhouse gases (GHGs) are the primary causes of the human-induced component of global warming.</rmrsbankitem></t>
+  <h><rmrsbankitem id="30">Greenhouse effect changes global climate.</rmrsbankitem></h>
+</pair>
+<pair id='353' value='FALSE' task='IR'>
+  <t><rmrsbankitem id="268">The Industrial and Commercial Bank of China Ltd. raised $19.07 billion Friday after pricing its initial public offering at HK$3.07 (39 cents), the top end of its indicative price range, to become the world's biggest ever IPO.</rmrsbankitem></t>
+  <h><rmrsbankitem id="83">The merger of Japanese Banks creates the world's biggest bank.</rmrsbankitem></h>
+</pair>
+<pair id='354' value='FALSE' task='IR'>
+  <t><rmrsbankitem id="269">The International Olympic Committee has leapt to the defence of the drug-testing lab at the centre of the Merlene Ottey doping case.</rmrsbankitem> <rmrsbankitem id="41">Athletics' governing body, the IAAF, last week cleared Ottey of accusations of steroid use and lifted a two-year ban after their arbitration panel said the IOC-accredited lab in Lausanne improperly tested Ottey's urine sample.</rmrsbankitem></t>
+  <h><rmrsbankitem id="21">Sportswomen have been accused of doping.</rmrsbankitem></h>
+</pair>
+<pair id='355' value='FALSE' task='IR'>
+  <t><rmrsbankitem id="270">The investigation came about following the collapse of Barings Bank, when one of its traders based in Singapore, Nick Leeson, amassed losses of the order of 600-700 million without the bank being aware of it.</rmrsbankitem></t>
+  <h><rmrsbankitem id="57">Nick Leeson was arrested for collapse of Barings Bank PLC.</rmrsbankitem></h>
+</pair>
+<pair id='356' value='FALSE' task='IR'>
+  <t><rmrsbankitem id="271">The Italian air transport sector features many typical causes of industrial conflict, including: the troubled economic situation of Alitalia, Italy's flagship airline (IT0404304F); a set of specific factors concerning services delivery; and a marked fragmentation of trade union representation.</rmrsbankitem></t>
+  <h><rmrsbankitem id="17">Italian flight assistants go on strike.</rmrsbankitem></h>
+</pair>
+<pair id='357' value='FALSE' task='IR'>
+  <t><rmrsbankitem id="272">The Italian parliament may approve a draft law allowing descendants of the exiled royal family to return home.</rmrsbankitem> <rmrsbankitem id="273">The family was banished after the Second World War because of the King's collusion with the fascist regime, but moves were introduced this year to allow their return.</rmrsbankitem></t>
+  <h><rmrsbankitem id="3">Italian royal family returns home.</rmrsbankitem></h>
+</pair>
+<pair id='358' value='TRUE' task='IR'>
+  <t><rmrsbankitem id="274">The liner notes to the CD surmise that Farrakhan is the author of three selections, "Is She Is, or Is She Ain't", "Don't Touch Me Nylon," and "Female Boxer" and that is quite possible.</rmrsbankitem> <rmrsbankitem id="275">The most interesting is the first of these three, a topical number on Christie Jorgensen, the subject of a series of sex change operations.</rmrsbankitem> <rmrsbankitem id="276">While such transexual operations have since become more common, this was the first to receive high publicity.</rmrsbankitem></t>
+  <h><rmrsbankitem id="13">Sex-change operations become more common.</rmrsbankitem></h>
+</pair>
+<pair id='359' value='TRUE' task='IR'>
+  <t><rmrsbankitem id="277">The Longest Day ever lengthens.</rmrsbankitem> <rmrsbankitem id="278">The 25th anniversary celebration of the first Normandy landing lasted three days; the 50th will spread out over a year.</rmrsbankitem></t>
+  <h><rmrsbankitem id="65">50th Anniversary of Normandy Landings lasts a year.</rmrsbankitem></h>
+</pair>
+<pair id='360' value='FALSE' task='IR'>
+  <t><rmrsbankitem id="279">The longest mission which the Russian Salyuts supported was 63 days.</rmrsbankitem> <rmrsbankitem id="280">The second generation Salyuts would fly missions much longer and would need to be resupplied from time to time.</rmrsbankitem></t>
+  <h><rmrsbankitem id="32">Russians hold record for longest stay in space.</rmrsbankitem></h>
+</pair>
+<pair id='361' value='FALSE' task='IR'>
+  <t><rmrsbankitem id="281">The longest mission which these Salyuts supported was 63 days.</rmrsbankitem> <rmrsbankitem id="282">The second generation Salyuts would fly missions much longer and would need to be resupplied from time to time; therefore, a supply ferry was mandatory to maintain a fully operational Salyut for two years with 40,000 pounds of fuel, food, clothing and water.</rmrsbankitem></t>
+  <h><rmrsbankitem id="32">Russians hold record for longest stay in space.</rmrsbankitem></h>
+</pair>
+<pair id='362' value='TRUE' task='IR'>
+  <t><rmrsbankitem id="283">The magazine said the number of billionaires worldwide increased by 102 people in 2006 to 793, a record number, largely due to bullish global stock markets.</rmrsbankitem> <rmrsbankitem id="284">Their total net worth jumped 18 percent to $2.6 trillion.</rmrsbankitem></t>
+  <h><rmrsbankitem id="67">The number of billionaires increases.</rmrsbankitem></h>
+</pair>
+<pair id='363' value='FALSE' task='IR'>
+  <t><rmrsbankitem id="285">The main institutionalised forms of recognition for those who have made a significant contribution in the fields of physics, chemistry, medicine, literature, as well as for those working for peace (and more recently in the area of economics), are the Nobel prizes.</rmrsbankitem></t>
+  <h><rmrsbankitem id="84">Nobel Peace Prize candidates have been chosen.</rmrsbankitem></h>
+</pair>
+<pair id='364' value='TRUE' task='IR'>
+  <t><rmrsbankitem id="286">The most recent figures from UNAids show a continent divided in two.</rmrsbankitem> <rmrsbankitem id="287">In north Africa, up to 0.5% of the population has been infected with HIV.</rmrsbankitem> <rmrsbankitem id="288">In sub-Saharan Africa, that figure is 8.8% but rising to almost 40% in some countries.</rmrsbankitem> <rmrsbankitem id="289">In four countries - Botswana, Lesotho, Swaziland and Zimbabwe - at least one in three of the population is HIV positive.</rmrsbankitem></t>
+  <h><rmrsbankitem id="52">AIDS spreads in Africa.</rmrsbankitem></h>
+</pair>
+<pair id='365' value='TRUE' task='IR'>
+  <t><rmrsbankitem id="290">The mystery of Alexander the Great's tomb still has not unraveled, and locating the burial of Alexander seems to have become an impossible mission for archaeologists.</rmrsbankitem></t>
+  <h><rmrsbankitem id="82">Alexander the Great's Tomb remains undiscovered.</rmrsbankitem></h>
+</pair>
+<pair id='366' value='FALSE' task='IR'>
+  <t><rmrsbankitem id="291">The Norwegian Nobel Committee is responsible for the selection of the candidates and the choice of Prize Winners for the Peace Prize.</rmrsbankitem> <rmrsbankitem id="292">The Committee is composed of five members appointed by the Storting (Norwegian parliament).</rmrsbankitem> <rmrsbankitem id="293">The Peace Prize is awarded in Oslo, Norway and not in Stockholm, Sweden like the other Nobel Prizes.</rmrsbankitem></t>
+  <h><rmrsbankitem id="84">Nobel Peace Prize candidates have been chosen.</rmrsbankitem></h>
+</pair>
+<pair id='367' value='FALSE' task='IR'>
+  <t><rmrsbankitem id="294">The optimal style of dam building is specific to the particular macroproject, the nature of the geophysical worksite (Anon., 2005) as well as social uncertainty, the undertaking management organizations experience, the operational complexities of many kinds of construction machinery and worker nationalities, the macroprojects situational geography and the logistics of its required compositional materials.</rmrsbankitem></t>
+  <h><rmrsbankitem id="44">Dam building prevents life-threatening situations.</rmrsbankitem></h>
+</pair>
+<pair id='368' value='TRUE' task='IR'>
+  <t><rmrsbankitem id="295">The original spelling reform of 1996, which was meant to harmonize the spelling rules across the German-speaking countries, turned out to be a major embarrassment if not outright failure.</rmrsbankitem></t>
+  <h><rmrsbankitem id="24">A spelling reform was approved in all German speaking countries.</rmrsbankitem></h>
+</pair>
+<pair id='369' value='TRUE' task='IR'>
+  <t><rmrsbankitem id="296">The papers presented show that all European countries are experiencing rapidly aging populations that will cause sharp increases in the cost of retirement income over the next several decades.</rmrsbankitem></t>
+  <h><rmrsbankitem id="39">National pension systems currently adopted in Europe are in difficulties.</rmrsbankitem></h>
+</pair>
+<pair id='370' value='FALSE' task='IR'>
+  <t><rmrsbankitem id="297">The party system increased in importance during the Second Republic.</rmrsbankitem> <rmrsbankitem id="298">Large, strong parties were fostered under the d'Hondt method of proportional representation, and parties soon began to receive state subsidies.</rmrsbankitem></t>
+  <h><rmrsbankitem id="18">Several new political parties emerged.</rmrsbankitem></h>
+</pair>
+<pair id='371' value='FALSE' task='IR'>
+  <t><rmrsbankitem id="299">The policy focused on coca eradication from the territories of Peru and Bolivia.</rmrsbankitem> <rmrsbankitem id="300">During the years of 1996 and 2000, much of the resources of "Andean Initiative" where utilized in intense aerial fumigation in coca producing areas.</rmrsbankitem></t>
+  <h><rmrsbankitem id="37">Peru debates border region with Ecuador.</rmrsbankitem></h>
+</pair>
+<pair id='372' value='TRUE' task='IR'>
+  <t><rmrsbankitem id="301">The presidents of Ecuador and Peru say they have agreed to work together to try to find a peaceful solution to their long-running border dispute.</rmrsbankitem></t>
+  <h><rmrsbankitem id="37">Peru debates border region with Ecuador.</rmrsbankitem></h>
+</pair>
+<pair id='373' value='FALSE' task='IR'>
+  <t><rmrsbankitem id="302">The royal tombs at Vergina were identified as the ancient capital of Aigai in the 1930s.</rmrsbankitem> <rmrsbankitem id="303">A royal tomb identified as possibly Philip II of Macedonia, Alexander the Great's father, was found in 1977 by Manolis Andronikos.</rmrsbankitem></t>
+  <h><rmrsbankitem id="82">Alexander the Great's Tomb remains undiscovered.</rmrsbankitem></h>
+</pair>
+<pair id='374' value='TRUE' task='IR'>
+  <t><rmrsbankitem id="304">The Salt Lake City 2002 Winter Olympics will take place from February 8th to February 24th 2002.</rmrsbankitem> <rmrsbankitem id="305">The Paralympics will take place in Salt Lake City from March 7th to March 16th 2002.</rmrsbankitem></t>
+  <h><rmrsbankitem id="85">2002 Olympic Winter games take place in Salt Lake.</rmrsbankitem></h>
+</pair>
+<pair id='375' value='TRUE' task='IR'>
+  <t><rmrsbankitem id="306">The Sioux Ghost Shirt was a feature of Glasgow's Kelvingrove Museum for more than 100 years before being repatriated to its land of origin.</rmrsbankitem></t>
+  <h><rmrsbankitem id="11">A Sioux ghost shirt was returned by a Scottish museum.</rmrsbankitem></h>
+</pair>
+<pair id='376' value='TRUE' task='IR'>
+  <t><rmrsbankitem id="307">The son of Italy's last king returned to his homeland Monday, ending more than a half-century of exile.</rmrsbankitem> <rmrsbankitem id="308">Victor Emmanuel and his family landed at a military airport in Rome in a private plane and headed immediately for an audience with Pope John Paul II.</rmrsbankitem></t>
+  <h><rmrsbankitem id="3">Italian royal family returns home.</rmrsbankitem></h>
+</pair>
+<pair id='377' value='TRUE' task='IR'>
+  <t><rmrsbankitem id="309">The spread of AIDS in Africa is driven not by unsafe sex but by unsafe medical practice, according to research published last week.</rmrsbankitem></t>
+  <h><rmrsbankitem id="52">AIDS spreads in Africa.</rmrsbankitem></h>
+</pair>
+<pair id='378' value='TRUE' task='IR'>
+  <t><rmrsbankitem id="310">The U.S. space shuttle Atlantis, its lights flashing like a beacon, smoothly docked with Russia's space station Mir Wednesday on its mission to pick up U.S. astronaut Shannon Lucid, who has spent a record-breaking six months in orbit.</rmrsbankitem></t>
+  <h><rmrsbankitem id="69">US shuttle Atlantis docks with the Mir space station.</rmrsbankitem></h>
+</pair>
+<pair id='379' value='FALSE' task='IR'>
+  <t><rmrsbankitem id="311">The world's fast-growing thirst for water can only be met by purifying sea water as rivers and reservoirs become unable to meet demand, Spain said last week unveiling a major program to fight its own chronic shortages.</rmrsbankitem></t>
+  <h><rmrsbankitem id="80">The Ebro Delta is used for farming.</rmrsbankitem></h>
+</pair>
+<pair id='380' value='TRUE' task='IR'>
+  <t><rmrsbankitem id="312">Then China rolled out the fake Panchen Lama, Gyaltsen Norbu, a teenager chosen as the reincarnation of a major lama by the atheist Communist leaders and trained since childhood to spout nationalist slogans while wearing robes.</rmrsbankitem> <rmrsbankitem id="313">Newspapers reporting on the debacle generally tried to present both sides, but it seems fair to say there's really only one side to this sham and that pretty much nobody in the Tibetan community accepts Norbu as the real Panchen Lama.</rmrsbankitem> <rmrsbankitem id="314">The Dalai Lama's choice for Panchen Lama, Gedhun Choekyi Nyima, has been in secret Chinese custody since 1995.</rmrsbankitem></t>
+  <h><rmrsbankitem id="27">Dalai Lama and the government of the People's Republic of China are in dispute over Panchen Lama's reincarnation.</rmrsbankitem></h>
+</pair>
+<pair id='381' value='FALSE' task='IR'>
+  <t><rmrsbankitem id="315">There are four identified subtypes of Ebola virus.</rmrsbankitem> <rmrsbankitem id="316">Three of the four have caused disease in humans: Ebola-Zaire, Ebola-Sudan, and Ebola-Ivory Coast.</rmrsbankitem> <rmrsbankitem id="317">The fourth, Ebola-Reston, has caused disease in non-human primates, but not in humans.</rmrsbankitem></t>
+  <h><rmrsbankitem id="86">The Ebola epidemic breaks out in Zaire.</rmrsbankitem></h>
+</pair>
+<pair id='382' value='FALSE' task='IR'>
+  <t><rmrsbankitem id="318">There are many motives for suicide attacks: religious beliefs, nationalistic ideologies, obedience to charismatic and authoritarian leaders, or desire for political change.</rmrsbankitem> <rmrsbankitem id="319">The modus operandi may vary, whether to use one or several suicide bombers, whether to use men or women.</rmrsbankitem></t>
+  <h><rmrsbankitem id="9">People were killed in Tamil suicide attacks.</rmrsbankitem></h>
+</pair>
+<pair id='383' value='FALSE' task='IR'>
+  <t><rmrsbankitem id="320">This coalition took seven months to form, the longest deadlock in Dutch history.</rmrsbankitem> <rmrsbankitem id="321">It occurred only after negotiations between the CDA and the PvdA failed, first over tax issues, then over the issue of abortion.</rmrsbankitem></t>
+  <h><rmrsbankitem id="49">Three parties form a Dutch coalition government.</rmrsbankitem></h>
+</pair>
+<pair id='384' value='FALSE' task='IR'>
+  <t><rmrsbankitem id="322">This course helps students pursuing an AOS or AAS degree, gain an understanding of the experiences of Black people from hearing and deaf communities in America.</rmrsbankitem></t>
+  <h><rmrsbankitem id="71">Deaf people encounter problems in the social community.</rmrsbankitem></h>
+</pair>
+<pair id='385' value='FALSE' task='IR'>
+  <t><rmrsbankitem id="323">This is a kind of homework from last year's Halifax Summit.</rmrsbankitem> <rmrsbankitem id="324">Discussions have taken place on how to rationalize and coordinate the various activities of the international organizations.</rmrsbankitem></t>
+  <h><rmrsbankitem id="87">Financial reforms have been proposed at the G7 summit in Halifax.</rmrsbankitem></h>
+</pair>
+<pair id='386' value='TRUE' task='IR'>
+  <t><rmrsbankitem id="325">Three leading Japanese banks have announced an alliance forming the world's largest financial group.</rmrsbankitem> <rmrsbankitem id="326">Fuji Bank, Dai-Ichi Kangyo and the Industrial Bank of Japan say their operations will be integrated by the spring of 2002.</rmrsbankitem></t>
+  <h><rmrsbankitem id="88">Merger of Japanese Banks creates the world's biggest bank.</rmrsbankitem></h>
+</pair>
+<pair id='387' value='FALSE' task='IR'>
+  <t><rmrsbankitem id="327">Thus, China's President repeatedly sent letters and envoys to the Dalai Lama and to the Tibetan Government asking that Tibet "join" the Republic of China.</rmrsbankitem></t>
+  <h><rmrsbankitem id="27">Dalai Lama and the government of the People's Republic of China are in dispute over Panchen Lama's reincarnation.</rmrsbankitem></h>
+</pair>
+<pair id='388' value='FALSE' task='IR'>
+  <t><rmrsbankitem id="328">Two of Japan's biggest financial institutions on Friday announced plans to merge and create the world's largest bank, underscoring growing sentiments that the country's long troubled banking system has significantly improved.</rmrsbankitem></t>
+  <h><rmrsbankitem id="83">The merger of Japanese Banks creates the world's biggest bank.</rmrsbankitem></h>
+</pair>
+<pair id='389' value='FALSE' task='IR'>
+  <t><rmrsbankitem id="329">Typhoon Chanchu, packing winds up to 170 kph (106 mph) and the strongest typhoon on record to enter the South China Sea in May, made landfall between the cities of Shantou and Xiamen and was advancing northeast, the Hong Kong Observatory said.</rmrsbankitem></t>
+  <h><rmrsbankitem id="6">A typhoon batters the Philippines.</rmrsbankitem></h>
+</pair>
+<pair id='390' value='TRUE' task='IR'>
+  <t><rmrsbankitem id="330">Typhoon Xangsane lashed the Philippine capital on Thursday, grounding flights, halting vessels and closing schools and markets after triggering fatal flash floods in the centre of the country.</rmrsbankitem></t>
+  <h><rmrsbankitem id="6">A typhoon batters the Philippines.</rmrsbankitem></h>
+</pair>
+<pair id='391' value='FALSE' task='IR'>
+  <t><rmrsbankitem id="331">Typhoon Xangsane was downgraded to a tropical storm Sunday as it moved inland from the central Vietnam coast, where it killed two people, injured at least 80 others and damaged hundreds of homes, officials and state-controlled media reported.</rmrsbankitem></t>
+  <h><rmrsbankitem id="6">A typhoon batters the Philippines.</rmrsbankitem></h>
+</pair>
+<pair id='392' value='FALSE' task='IR'>
+  <t><rmrsbankitem id="332">U.S. space shuttle Atlantis and its seven-member crew concluded their pursuit of the International Space Station (ISS) on Wednesday and docked with the orbital outpost at 12:05 EDT (1605 GMT).</rmrsbankitem></t>
+  <h><rmrsbankitem id="69">US shuttle Atlantis docks with the Mir space station.</rmrsbankitem></h>
+</pair>
+<pair id='393' value='FALSE' task='IR'>
+  <t><rmrsbankitem id="333">UFJ Holdings Inc. said it wants to merge with Mitsubishi Tokyo Financial Group Inc., a combination that would surpass Citigroup Inc. as the world's biggest bank and accelerate Japan's attempts to clean up bad loans.</rmrsbankitem></t>
+  <h><rmrsbankitem id="83">The merger of Japanese Banks creates the world's biggest bank.</rmrsbankitem></h>
+</pair>
+<pair id='394' value='FALSE' task='IR'>
+  <t><rmrsbankitem id="334">Unlike seal hunting in Canada, where pups are hunted for fur, poachers in China catch seals primarily to sell to zoos or to use the genital organs for traditional Chinese medicine.</rmrsbankitem></t>
+  <h><rmrsbankitem id="76">Seal-hunting endangers species.</rmrsbankitem></h>
+</pair>
+<pair id='395' value='FALSE' task='IR'>
+  <t><rmrsbankitem id="335">We present a novel approach to enhance avalanche companion rescue using wearable sensing technologies.</rmrsbankitem> <rmrsbankitem id="336">The time to find and extricate victims is most crucial: once buried by an avalanche, survival chances drop dramatically already after the first 15 minutes.</rmrsbankitem></t>
+  <h><rmrsbankitem id="50">Robots are used to find avalanche victims.</rmrsbankitem></h>
+</pair>
+<pair id='396' value='TRUE' task='IR'>
+  <t><rmrsbankitem id="337">While the Baltic countries are set to join the European Union soon, their economies are already in good shape.</rmrsbankitem> <rmrsbankitem id="338">Estonia, Latvia and Lithuania boast the fastest economic growth in the entire Baltic Sea region, for example.</rmrsbankitem></t>
+  <h><rmrsbankitem id="89">The Baltic Countries will join the EU.</rmrsbankitem></h>
+</pair>
+<pair id='397' value='TRUE' task='IR'>
+  <t><rmrsbankitem id="339">With the publication of Sophie's World in 1991, Gaarder gained international fame.</rmrsbankitem> <rmrsbankitem id="340">Sophie's World spent three years as the best selling book in Norway.</rmrsbankitem> <rmrsbankitem id="341">His first book to be translated into English, Sophie's World was also the top-selling book in Germany, France, and Great Britain.</rmrsbankitem></t>
+  <h><rmrsbankitem id="4">Sophie's World is a best seller.</rmrsbankitem></h>
+</pair>
+<pair id='398' value='TRUE' task='IR'>
+  <t><rmrsbankitem id="342">Without a natural greenhouse effect, the temperature of the Earth would be about zero degrees F (-18C) instead of its present 57F (14C).</rmrsbankitem></t>
+  <h><rmrsbankitem id="30">Greenhouse effect changes global climate.</rmrsbankitem></h>
+</pair>
+<pair id='399' value='FALSE' task='IR'>
+  <t><rmrsbankitem id="343">Worldwide, child labor is most prevalent in the agricultural sector, where children are widely used as day laborers.</rmrsbankitem> <rmrsbankitem id="344">Working long hours, children working in agriculture are often exposed to harmful pesticides, dangerous machinery, backbreaking loads, and many other hazardous conditions.</rmrsbankitem></t>
+  <h><rmrsbankitem id="1">Child labor is widely used in Asia.</rmrsbankitem></h>
+</pair>
+<pair id='400' value='FALSE' task='IR'>
+  <t><rmrsbankitem id="345">Zinedine Zidane has beaten Thierry Henry and Ronaldo to the Fifa 2003 World Player of the Year award.</rmrsbankitem></t>
+  <h><rmrsbankitem id="75">FIFA selects world football player of the year 1994.</rmrsbankitem></h>
+</pair>
+</entailment-corpus>

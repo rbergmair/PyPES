@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE testsuite SYSTEM "file:///home/rb432/workspace/rte/dtd/testsuite.dtd">
+
+<testsuite id="1.1" name="conservativity">
+
+<testcase id="3.1">
+  <proposition id="3.1.1">
+    An Italian became the world's greatest tenor.
+  </proposition>
+  <proposition id="3.1.2">
+    Was there an Italian who became the world's greatest tenor?
+  </proposition>
+  <valid id="3.1.a">
+    <theory> <ref src="3.1.1"/> </theory>
+    <conclusion> <ref src="3.1.2"/> </conclusion>
+  </valid>
+</testcase>
+
+<testcase id="3.2">
+  <proposition id="3.2.1">
+    Every Italian man wants to be a great tenor.
+  </proposition>
+  <proposition id="3.2.2">
+    Some Italian men are great tenors.
+  </proposition>
+  <proposition id="3.2.3">
+    Are there Italian men who want to be a great tenor?
+  </proposition>
+  <valid id="3.2.a">
+    <theory> <ref src="3.2.1"/> <ref src="3.2.2"/> </theory>
+    <conclusion> <ref src="3.2.3"/> </conclusion>
+  </valid>
+</testcase>
+
+<testcase id="3.3">
+  <proposition id="3.3.1">
+    All Italian men want to be a great tenor.
+  </proposition>
+  <proposition id="3.3.2">
+    Some Italian men are great tenors.
+  </proposition>
+  <proposition id="3.3.3">
+    Are there Italian men who want to be a great tenor?
+  </proposition>
+  <valid id="3.3.a">
+    <theory> <ref src="3.3.1"/> <ref src="3.3.2"/> </theory>
+    <conclusion> <ref src="3.3.3"/> </conclusion>
+  </valid>
+</testcase>
+
+<testcase id="3.4">
+  <proposition id="3.4.1">
+    Each Italian tenor wants to be great.
+  </proposition>
+  <proposition id="3.4.2">
+    Some Italian tenors are great.
+  </proposition>
+  <proposition id="3.4.3">
+    Are there Italian tenors who want to be great?
+  </proposition>
+  <valid id="3.4.a">
+    <theory> <ref src="3.4.1"/> <ref src="3.4.2"/> </theory>
+    <conclusion> <ref src="3.4.3"/> </conclusion>
+  </valid>
+</testcase>
+
+<testcase id="3.5">
+  <proposition id="3.5.1">
+    The really ambitious tenors are Italian.
+  </proposition>
+  <proposition id="3.5.2">
+    Are there really ambitious tenors who are Italian?
+  </proposition>
+  <valid id="3.5.a">
+    <theory> <ref src="3.5.1"/> </theory>
+    <conclusion> <ref src="3.5.2"/> </conclusion>
+  </valid>
+</testcase>
+
+<testcase id="3.6">
+  <proposition id="3.6.1">
+    No really great tenors are modest.
+  </proposition>
+  <proposition id="3.6.2">
+    Are there really great tenors who are modest?
+  </proposition>
+  <valid id="3.6.a">
+    <theory> <ref src="3.6.1"/> </theory>
+    <conclusion> <negation> <ref src="3.6.2"/> </negation> </conclusion>
+  </valid>
+</testcase>
+
+<testcase id="3.7">
+  <proposition id="3.7.1">
+    Some great tenors are Swedish.
+  </proposition>
+  <proposition id="3.7.2">
+    Are there great tenors who are Swedish?
+  </proposition>
+  <valid id="3.7.a">
+    <theory> <ref src="3.7.1"/> </theory>
+    <conclusion> <ref src="3.7.2"/> </conclusion>
+  </valid>
+</testcase>
+
+<testcase id="3.8">
+  <proposition id="3.8.1">
+    Many great tenors are German.
+  </proposition>
+  <proposition id="3.8.2">
+    Are there great tenors who are German?
+  </proposition>
+  <valid id="3.8.a">
+    <theory> <ref src="3.8.1"/> </theory>
+    <conclusion> <ref src="3.8.2"/> </conclusion>
+  </valid>
+</testcase>
+
+<testcase id="3.9">
+  <proposition id="3.9.1">
+    Several great tenors are British.
+  </proposition>
+  <proposition id="3.9.2">
+    Are there great tenors who are British?
+  </proposition>
+  <valid id="3.9.a">
+    <theory> <ref src="3.9.1"/> </theory>
+    <conclusion> <ref src="3.9.2"/> </conclusion>
+  </valid>
+</testcase>
+
+<testcase id="3.10">
+  <proposition id="3.10.1">
+    Most great tenors are Italian.
+  </proposition>
+  <proposition id="3.10.2">
+    Are there great tenors who are Italian?
+  </proposition>
+  <valid id="3.10.a">
+    <theory> <ref src="3.10.1"/> </theory>
+    <conclusion> <ref src="3.10.2"/> </conclusion>
+  </valid>
+</testcase>
+
+<testcase id="3.11">
+  <proposition id="3.11.1">
+    A few great tenors sing popular music.
+  </proposition>
+  <proposition id="3.11.2">
+    Some great tenors like popular music.
+  </proposition>
+  <proposition id="3.11.3">
+    Are there great tenors who sing popular music?
+  </proposition>
+  <valid id="3.11.a">
+    <theory> <ref src="3.11.1"/> <ref src="3.11.2"/> </theory>
+    <conclusion> <ref src="3.11.3"/> </conclusion>
+  </valid>
+</testcase>
+
+<testcase id="3.12">
+  <proposition id="3.12.1">
+    Few great tenors are poor.
+  </proposition>
+  <proposition id="3.12.2">
+    Are there great tenors who are poor?
+  </proposition>
+  <nonvalid id="3.12.a">
+    <theory> <ref src="3.12.1"/> </theory>
+    <conclusion> <ref src="3.12.2"/> </conclusion>
+  </nonvalid>
+  <nonvalid id="3.12.b">
+    <theory> <ref src="3.12.1"/> </theory>
+    <conclusion> <negation> <ref src="3.12.2"/> </negation> </conclusion>
+  </nonvalid>
+</testcase>
+
+<testcase id="3.13">
+  <proposition id="3.13.1">
+    Both leading tenors are excellent.
+  </proposition>
+  <proposition id="3.13.2">
+    Leading tenors who are excellent are indispensable.
+  </proposition>
+  <proposition id="3.13.3">
+    Are both leading tenors indispensable?
+  </proposition>
+  <valid id="3.13.a">
+    <theory> <ref src="3.13.1"/> <ref src="3.13.2"/> </theory>
+    <conclusion> <ref src="3.13.3"/> </conclusion>
+  </valid>
+</testcase>
+
+<testcase id="3.14">
+  <proposition id="3.14.1">
+    Neither leading tenor comes cheap.
+  </proposition>
+  <proposition id="3.14.2">
+    One of the leading tenors is Pavarotti.
+  </proposition>
+  <proposition id="3.14.3">
+    Is Pavarotti a leading tenor who comes cheap?
+  </proposition>
+  <valid id="3.14.a">
+    <theory> <ref src="3.14.1"/> <ref src="3.14.2"/> </theory>
+    <conclusion> <negation> <ref src="3.14.3"/> </negation> </conclusion>
+  </valid>
+</testcase>
+
+<testcase id="3.15">
+  <proposition id="3.15.1">
+    At least three tenors will take part in the concert.
+  </proposition>
+  <proposition id="3.15.2">
+    Are there tenors who will take part in the concert?
+  </proposition>
+  <valid id="3.15.a">
+    <theory> <ref src="3.15.1"/> </theory>
+    <conclusion> <ref src="3.15.2"/> </conclusion>
+  </valid>
+</testcase>
+
+<testcase id="3.16">
+  <proposition id="3.16.1">
+    At most two tenors will contribute their fees to charity.
+  </proposition>
+  <proposition id="3.16.2">
+    Are there tenors who will contribute their fees to charity?
+  </proposition>
+  <nonvalid id="3.16.a">
+    <theory> <ref src="3.16.1"/> </theory>
+    <conclusion> <ref src="3.16.2"/> </conclusion>
+  </nonvalid>
+  <nonvalid id="3.16.b">
+    <theory> <ref src="3.16.1"/> </theory>
+    <conclusion> <negation> <ref src="3.16.2"/> </negation> </conclusion>
+  </nonvalid>
+</testcase>
+
+</testsuite>

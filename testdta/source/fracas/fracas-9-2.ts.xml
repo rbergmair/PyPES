@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE testsuite SYSTEM "file:///home/rb432/workspace/rte/dtd/testsuite.dtd">
+
+<testsuite id="9.2" name="preceptive attitudes: see with bare infinitive complements">
+
+  <testsuite id="9.2.1" name="inferences we do not get">
+
+    <testcase id="3.340">
+      <proposition id="3.340.1">
+        Smith saw Jones sign the contract.
+      </proposition>
+      <proposition id="3.340.2">
+        If Jones signed the contract, his heart was beating.
+      </proposition>
+      <proposition id="3.340.3">
+        Did Smith see Jones' heart beat?
+      </proposition>
+      <nonvalid id="3.340.a">
+        <theory> <ref src="3.340.1"/> <ref src="3.340.2"/> </theory>
+        <conclusion> <ref src="3.340.3"/> </conclusion>
+      </nonvalid>
+      <nonvalid id="3.340.b">
+        <theory> <ref src="3.340.1"/> <ref src="3.340.2"/> </theory>
+        <conclusion> <negation> <ref src="3.340.3"/> </negation> </conclusion>
+      </nonvalid>
+    </testcase>
+
+    <testcase id="3.341">
+      <proposition id="3.341.1">
+        Smith saw Jones sign the contract.
+      </proposition>
+      <proposition id="3.341.2">
+        When Jones signed the contract, his heart was beating.
+      </proposition>
+      <proposition id="3.341.3">
+        Did Smith see Jones' heart beat?
+      </proposition>
+      <nonvalid id="3.341.a">
+        <theory> <ref src="3.341.1"/> <ref src="3.341.2"/> </theory>
+        <conclusion> <ref src="3.341.3"/> </conclusion>
+      </nonvalid>
+      <nonvalid id="3.341.b">
+        <theory> <ref src="3.341.1"/> <ref src="3.341.2"/> </theory>
+        <conclusion> <negation> <ref src="3.341.3"/> </negation> </conclusion>
+      </nonvalid>
+    </testcase>
+
+  </testsuite>
+
+  <testsuite id="9.2.2" name="verdicality">
+
+    <testcase id="3.342">
+      <proposition id="3.342.1">
+        Smith saw Jones sign the contract.
+      </proposition>
+      <proposition id="3.342.2">
+        Did Jones sign the contract?
+      </proposition>
+      <valid id="3.342.a">
+        <theory> <ref src="3.342.1"/> </theory>
+        <conclusion> <ref src="3.342.2"/> </conclusion>
+      </valid>
+    </testcase>
+
+  </testsuite>
+
+  <testsuite id="9.2.3" name="substitution">
+
+    <testcase id="3.343">
+      <proposition id="3.343.1">
+        Smith saw Jones sign the contract.
+      </proposition>
+      <proposition id="3.343.2">
+        Jones is the chairman of ITEL.
+      </proposition>
+      <proposition id="3.343.3">
+        Did Smith see the chairman of ITEL sign the contract?
+      </proposition>
+      <valid id="3.343.a">
+        <theory> <ref src="3.343.1"/> <ref src="3.343.2"/> </theory>
+        <conclusion> <ref src="3.343.3"/> </conclusion>
+      </valid>
+    </testcase>
+
+  </testsuite>
+
+  <testsuite id="9.2.4" name="existential instantiation">
+
+    <testcase id="3.344">
+      <proposition id="3.344.1">
+        Helen saw the chairman of the department answer the phone.
+      </proposition>
+      <proposition id="3.344.2">
+        The chairman of the department is a person.
+      </proposition>
+      <proposition id="3.344.3">
+        Is there anyone whom Helen saw answer the phone?
+      </proposition>
+      <valid id="3.344.a">
+        <theory> <ref src="3.344.1"/> <ref src="3.344.2"/> </theory>
+        <conclusion> <ref src="3.344.3"/> </conclusion>
+      </valid>
+    </testcase>
+
+  </testsuite>
+
+  <testsuite id="9.2.5" name="conjunction distribution">
+
+    <testcase id="3.345">
+      <!-- Smith saw Jones sign the contract and his secretary make a copy. -->
+      <proposition id="3.345.1">
+        Smith saw Jones sign the contract and saw his secretary make a copy.
+      </proposition>
+      <proposition id="3.345.2">
+        Did Smith see Jones sign the contract?
+      </proposition>
+      <valid id="3.345.a">
+        <theory> <ref src="3.345.1"/> </theory>
+        <conclusion> <ref src="3.345.2"/> </conclusion>
+      </valid>
+    </testcase>
+
+  </testsuite>
+
+  <testsuite id="9.2.6" name="disjunction distribution">
+
+    <testcase id="3.346">
+      <proposition id="3.346.1">
+        Smith saw Jones sign the contract or cross out the crucial clause.
+      </proposition>
+      <!--
+        Did Smith either see Jones sign the contract or
+          see Jones cross out the crucial clause?
+      -->
+      <proposition id="3.346.2">
+        Did Smith see Jones sign the contract or
+          see Jones cross out the crucial clause?
+      </proposition>
+      <valid id="3.346.a">
+        <theory> <ref src="3.346.1"/> </theory>
+        <conclusion> <ref src="3.346.2"/> </conclusion>
+      </valid>
+    </testcase>
+
+  </testsuite>
+
+</testsuite>

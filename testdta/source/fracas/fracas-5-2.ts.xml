@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE testsuite SYSTEM "file:///home/rb432/workspace/rte/dtd/testsuite.dtd">
+
+<testsuite id="5.2" name="no comparison class">
+
+<testcase id="3.202">
+  <proposition id="3.202.1">
+    Every mammal is an animal.
+  </proposition>
+  <proposition id="3.202.2">
+    Is every four-legged mammal a four-legged animal?
+  </proposition>
+  <valid id="3.202.a">
+    <theory> <ref src="3.202.1"/> </theory>
+    <conclusion> <ref src="3.202.2"/> </conclusion>
+  </valid>
+</testcase>
+
+<testcase id="3.203">
+  <proposition id="3.203.1">
+    Dumbo is a four-legged animal.
+  </proposition>
+  <proposition id="3.203.2">
+    Is Dumbo four-legged?
+  </proposition>
+  <valid id="3.203.a">
+    <theory> <ref src="3.203.1"/> </theory>
+    <conclusion> <ref src="3.203.2"/> </conclusion>
+  </valid>
+</testcase>
+
+</testsuite>

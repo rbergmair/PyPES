@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE testsuite SYSTEM "file:///home/rb432/workspace/rte/dtd/testsuite.dtd">
+
+<testsuite id="2.4" name="dependent plurals">
+
+<testcase id="3.103">
+  <proposition id="3.103.1">
+    All APCOM managers have company cars.
+  </proposition>
+  <proposition id="3.103.2">
+    Jones is an APCOM manager.
+  </proposition>
+  <proposition id="3.103.3">
+    Does Jones have a company car?
+  </proposition>
+  <valid id="3.103.a">
+    <theory> <ref src="3.103.1"/> <ref src="3.103.2"/> </theory>
+    <conclusion> <ref src="3.103.3"/> </conclusion>
+  </valid>
+</testcase>
+
+<testcase id="3.104">
+  <proposition id="3.104.1">
+    All APCOM managers have company cars.
+  </proposition>
+  <proposition id="3.104.2">
+    Jones is an APCOM manager.
+  </proposition>
+  <proposition id="3.104.3">
+    Does Jones have more than one company car?
+  </proposition>
+  <nonvalid id="3.104.a">
+    <theory> <ref src="3.104.1"/> <ref src="3.104.2"/> </theory>
+    <conclusion> <ref src="3.104.3"/> </conclusion>
+  </nonvalid>
+  <nonvalid id="3.104.b">
+    <theory> <ref src="3.104.1"/> <ref src="3.104.2"/> </theory>
+    <conclusion> <negation> <ref src="3.104.3"/> </negation> </conclusion>
+  </nonvalid>
+</testcase>
+
+</testsuite>

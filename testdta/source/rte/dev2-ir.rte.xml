@@ -1,0 +1,803 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<entailment-corpus>
+<pair id='1' value='FALSE' task='IR'>
+  <t>As a result of these weaknesses, computer systems and the operations that rely on the systems were highly vulnerable to tampering, disruption, and misuse from both internal and external sources.</t>
+  <h>Non-authorized personnel illegally entered into computer networks.</h>
+</pair>
+<pair id='15' value='TRUE' task='IR'>
+  <t>A juvenile hacker who crippled an airport tower for six hours, damaged a town's phone system, and broke into pharmacy records has been charged in a first-ever federal prosecution, the U.S. Attorney's office announced today.</t>
+  <h>Non-authorized personnel illegally entered into computer networks.</h>
+</pair>
+<pair id='16' value='FALSE' task='IR'>
+  <t>There has been a lot of concern over the rise of drug-resistant bacteria.</t>
+  <h>Bacteria is winning the war against antibiotics.</h>
+</pair>
+<pair id='19' value='FALSE' task='IR'>
+  <t>Professional computer hackers from the secret services were brought in to attempt to hack into the Government's internal secure communications system, which was launched today.</t>
+  <h>Non-authorized personnel illegally entered into computer networks.</h>
+</pair>
+<pair id='24' value='TRUE' task='IR'>
+  <t>At the Amman Summit of Arab Women in Jordan last month, Secretary General of the Arab League Amr Moussa said womens' advancement in the Arab world will be hobbled as long as they are so poorly represented in parliaments.</t>
+  <h>Women are poorly represented in parliament.</h>
+</pair>
+<pair id='30' value='TRUE' task='IR'>
+  <t>Rockweed has been harvested commercially in Nova Scotia since the late 1950's and is currently the most important commercial seaweed in Atlantic Canada.</t>
+  <h>Marine vegetation is harvested.</h>
+</pair>
+<pair id='40' value='TRUE' task='IR'>
+  <t>The disputed waters lie close to the Sipadan and Ligitan islands, which Indonesia lost to Malaysia in a legal battle in the International Court of Justice in December 2002.</t>
+  <h>There is a territorial waters dispute.</h>
+</pair>
+<pair id='43' value='TRUE' task='IR'>
+  <t>The cost for some 30 million sheets of paper used each year by Cal State Long Beach colleges and departments went up Wednesday for the first time in four years.</t>
+  <h>The cost of paper is rising.</h>
+</pair>
+<pair id='47' value='TRUE' task='IR'>
+  <t>Women form half the population and 54% of the voters in the country, yet are very poorly represented in parliament.</t>
+  <h>Women are poorly represented in parliament.</h>
+</pair>
+<pair id='54' value='FALSE' task='IR'>
+  <t>By the time a case of rabies is confirmed, the disease may have taken hold in the area.</t>
+  <h>A case of rabies was confirmed.</h>
+</pair>
+<pair id='62' value='TRUE' task='IR'>
+  <t>Two weeks ago, China became the first nation to operate a maglev railway commercially, when officials inaugurated a 30-kilometer-long line between downtown Shanghai and the city's airport.</t>
+  <h>Maglev is commercially used.</h>
+</pair>
+<pair id='65' value='TRUE' task='IR'>
+  <t>A number of marine plants are harvested commercially in Nova Scotia.</t>
+  <h>Marine vegetation is harvested.</h>
+</pair>
+<pair id='66' value='FALSE' task='IR'>
+  <t>Lastly, the author uses the precedent of marijuana legalization in other countries as evidence that legalization does not solve any social problems, but instead creates them.</t>
+  <h>Drug legalization has benefits.</h>
+</pair>
+<pair id='68' value='TRUE' task='IR'>
+  <t>A United Nations vehicle was attacked in the Serbian province of Kosovo and at least one civilian policeman was killed, the United Nations said.</t>
+  <h>A civilian policeman was killed.</h>
+</pair>
+<pair id='70' value='FALSE' task='IR'>
+  <t>Nigeria has been the culprit so far, preventing the world from being completely polio-free.</t>
+  <h>Polio is under control in the world.</h>
+</pair>
+<pair id='72' value='TRUE' task='IR'>
+  <t>Environmental and social groups criticized the World Bank decision for shying from meaningful reform.</t>
+  <h>The World Bank is criticized for its policies.</h>
+</pair>
+<pair id='94' value='TRUE' task='IR'>
+  <t>If legalization reduced current narcotics enforcement costs by one-third to one-fourth, it might save $6 - $9 billion per year.</t>
+  <h>Drug legalization has benefits.</h>
+</pair>
+<pair id='96' value='TRUE' task='IR'>
+  <t>Moscow believes that the waters of the Sea of Azov should remain in common use, but Kiev insists on a clear division.</t>
+  <h>There is a territorial waters dispute.</h>
+</pair>
+<pair id='99' value='FALSE' task='IR'>
+  <t>All U.S Embassy personnel in non-emergency positions and family members of U.S Embassy personnel who were evacuated as a result of the initial conflict have been authorized to return to Eritrea.</t>
+  <h>U.S. Military evacuated U.S. citizens.</h>
+</pair>
+<pair id='103' value='TRUE' task='IR'>
+  <t>This paper describes American alcohol use, the temperance movement, Prohibition, and the War on Drugs and explains how legalizing drugs would reduce crime and public health problems.</t>
+  <h>Drug legalization has benefits.</h>
+</pair>
+<pair id='106' value='TRUE' task='IR'>
+  <t>Ocean colour satellite remote sensing has developed rapidly within the last five years and satellite imagery is now processed automatically and made available via the WWW.</t>
+  <h>Ocean remote sensing is developed.</h>
+</pair>
+<pair id='107' value='TRUE' task='IR'>
+  <t>President Ford reported that a force of 70 evacuation helicopters and 865 Marines had evacuated about 1,400 U.S. citizens and 5,500 third country nationals and South Vietnamese from landing zones near the U.S. Embassy in Saigon and the Tan Son Nhut Airfield.</t>
+  <h>U.S. Military evacuated U.S. citizens.</h>
+</pair>
+<pair id='110' value='FALSE' task='IR'>
+  <t>Drew Walker, NHS Tayside's public health director, said: "It is important to stress that this is not a confirmed case of rabies."</t>
+  <h>A case of rabies was confirmed.</h>
+</pair>
+<pair id='114' value='FALSE' task='IR'>
+  <t>The June Movement has always been opposed to giving EU cooperation a military dimension.</t>
+  <h>The introduction of the euro has been opposed.</h>
+</pair>
+<pair id='115' value='TRUE' task='IR'>
+  <t>The World Bank has also been criticized for its role in financing projects that have been detrimental to human rights and the natural environment.</t>
+  <h>The World Bank is criticized for its activities.</h>
+</pair>
+<pair id='116' value='TRUE' task='IR'>
+  <t>In most Pacific countries there are very few women in parliament.</t>
+  <h>Women are poorly represented in parliament.</h>
+</pair>
+<pair id='117' value='FALSE' task='IR'>
+  <t>The release of its report led to calls for a complete ivory trade ban, and at the seventh conference in 1989, the African Elephant was moved to appendix one of the treaty.</t>
+  <h>The ban on ivory trade has been effective in protecting the elephant from extinction.</h>
+</pair>
+<pair id='120' value='FALSE' task='IR'>
+  <t>We are committed to the deployment of these technologies and are excited by the advances in remote sensing technology that are enabling us to extract more information from sensors in a cost-efficient and timely manner.</t>
+  <h>Ocean remote sensing is developed.</h>
+</pair>
+<pair id='121' value='FALSE' task='IR'>
+  <t>The M-2000 uses a commercially manufactured NbTi superconductor, similar to that used in the M-2000 Maglev magnets.</t>
+  <h>Maglev is commercially used.</h>
+</pair>
+<pair id='122' value='FALSE' task='IR'>
+  <t>A pet must have rabies protection confirmed by a blood test.</t>
+  <h>A case of rabies was confirmed.</h>
+</pair>
+<pair id='127' value='FALSE' task='IR'>
+  <t>Humans have won notable battles in the war against infection - and antibiotics are still powerful weapons - but nature has evolution on its side, and the war against bacterial diseases is by no means over.</t>
+  <h>Bacteria is winning the war against antibiotics.</h>
+</pair>
+<pair id='130' value='TRUE' task='IR'>
+  <t>Other drugs on the market, approved to treat mild to moderate Alzheimer's, are believed to work by inhibiting cholinesterase, an enzyme that breaks down acetylcholine which is a chemical used by nerves to communicate with each other.</t>
+  <h>Alzheimer's disease is treated using drugs.</h>
+</pair>
+<pair id='138' value='TRUE' task='IR'>
+  <t>US military forces are evacuating U.S. citizens and citizens of 72 other countries from Liberia at the request of the U.S.</t>
+  <h>U.S. Military evacuated U.S. citizens.</h>
+</pair>
+<pair id='140' value='FALSE' task='IR'>
+  <t>Asprin, an inexpensive drug, helps protect survivors of heart attack and stroke from subsequent heart attacks and death, and even helps reduce the number of deaths that occur within the first hours following a heart attack.</t>
+  <h>People experienced adverse effects while taking aspirin.</h>
+</pair>
+<pair id='141' value='FALSE' task='IR'>
+  <t>A total of 599 United States citizens were evacuated safely, at their request; those who were interviewed expressed great relief at being out of Grenada.</t>
+  <h>The U.S. military evacuated U.S. citizens.</h>
+</pair>
+<pair id='146' value='TRUE' task='IR'>
+  <t>The presence of oil in the South Atlantic was first proved in 1974, but the distance and isolation of the Falklands deterred oil companies from exploring the area until the 1990s.</t>
+  <h>Petroleum is explored in the South Atlantic.</h>
+</pair>
+<pair id='148' value='FALSE' task='IR'>
+  <t>The unconfirmed case in Dundee concerns a rabies-like virus known only in bats.</t>
+  <h>A case of rabies was confirmed.</h>
+</pair>
+<pair id='149' value='TRUE' task='IR'>
+  <t>Legalization would eliminate the harms caused by prohibition, but it would not eliminate the harms caused by drug use.</t>
+  <h>Drug legalization has benefits.</h>
+</pair>
+<pair id='150' value='TRUE' task='IR'>
+  <t>Capital punishment has a deterrent effect.</t>
+  <h>Capital punishment is a deterrent to crime.</h>
+</pair>
+<pair id='155' value='TRUE' task='IR'>
+  <t>Scientists and engineers in the APL Space Department have contributed to ocean remote sensing science and technology for more than a quarter century.</t>
+  <h>Ocean remote sensing is developed.</h>
+</pair>
+<pair id='161' value='FALSE' task='IR'>
+  <t>A report by the African Elephant Specialist Group, which is responsible for monitoring the conservation of the elephants, concludes that elephant poaching has increased despite the 1989 international ban on ivory trading.</t>
+  <h>The ban on ivory trade has been effective in protecting the elephant from extinction.</h>
+</pair>
+<pair id='164' value='FALSE' task='IR'>
+  <t>US troops evacuated two injured soldiers said Staff Sgt. Duane Brown, a spokesman for the 42nd Infantry Division.</t>
+  <h>U.S. Military evacuated U.S. citizens.</h>
+</pair>
+<pair id='176' value='TRUE' task='IR'>
+  <t>Some 55 percent of the German public are opposed to the euro, less than 150 days before its introduction on January 1, 2002, a poll by research group Wahlen showed.</t>
+  <h>The introduction of the euro has been opposed.</h>
+</pair>
+<pair id='179' value='TRUE' task='IR'>
+  <t>Only 16 women were elected to the 223-member parliament in 1995, and only 2 women hold ministerial posts.</t>
+  <h>Women are poorly represented in parliament.</h>
+</pair>
+<pair id='184' value='TRUE' task='IR'>
+  <t>Often criticized and blamed for politically unpopular policies, and confronted with numerous setbacks, the World Bank is experiencing a difficult time with regard to which strategies to adopt, in particular in Africa.</t>
+  <h>The World Bank is criticized for its policies.</h>
+</pair>
+<pair id='190' value='TRUE' task='IR'>
+  <t>German Siemens and ThyssenKrupp may sell relevant core technology to China, which owns the first commercially operated maglev line.</t>
+  <h>Maglev is commercially used.</h>
+</pair>
+<pair id='191' value='FALSE' task='IR'>
+  <t>The introduction of the euro has dismantled barriers to cross-border trading and enhanced risk sharing and opportunities for diversification.</t>
+  <h>The introduction of the euro has been opposed.</h>
+</pair>
+<pair id='192' value='TRUE' task='IR'>
+  <t>Organic fertilizer slowly enriches and feeds the soil. Fast acting synthetic fertilizers harm soil life.</t>
+  <h>Organic fertilizers are used as soil enhancers.</h>
+</pair>
+<pair id='193' value='FALSE' task='IR'>
+  <t>The use of aspirin (acetylsalicylic acid) in single doses should not pose any significant risks to the suckling infant.</t>
+  <h>People experienced adverse effects while taking aspirin.</h>
+</pair>
+<pair id='196' value='FALSE' task='IR'>
+  <t>Most commercial logwood is grown in Honduras.</t>
+  <h>Plants are grown in water or in substances other than soil.</h>
+</pair>
+<pair id='198' value='FALSE' task='IR'>
+  <t>The participation of women in parliament in Mauritius is expected to increase as more female candidates have contested Monday's election.</t>
+  <h>Women are poorly represented in parliament.</h>
+</pair>
+<pair id='200' value='TRUE' task='IR'>
+  <t>Definitely do not lift the ban on ivory, it will drive the species to near extinction again. Elephant numbers should be controlled but what has ivory got to do with it? It is a barbaric trade and should be banned permanently.</t>
+  <h>The ban on ivory trade has been effective in protecting the elephant from extinction.</h>
+</pair>
+<pair id='203' value='TRUE' task='IR'>
+  <t>In a sharply-worded internal World Bank report (leaked to The New York Times) the Bank has criticized its own decision to approve a controversial $40 million anti-poverty plan.</t>
+  <h>The World Bank is criticized for its policies.</h>
+</pair>
+<pair id='205' value='FALSE' task='IR'>
+  <t>Geithner criticized the report's findings on the World Bank, including a commission recommendation that the Bank stop lending to emerging market economies, concentrate its resources on the poorest countries and shift the IFI's concessional assistance from loans to grants.</t>
+  <h>The World Bank is criticized for activities.</h>
+</pair>
+<pair id='206' value='TRUE' task='IR'>
+  <t>It has been observed that in those countries of the world where capital punishment is still in operation, the crime rate, especially murder, is distinctively low in comparison to countries where capital punishment has been discarded.</t>
+  <h>Capital punishment is a deterrent to crime.</h>
+</pair>
+<pair id='208' value='FALSE' task='IR'>
+  <t>More than 2,000 people lost their lives in the devastating Johnstown Flood.</t>
+  <h>100 or more people lost their lives in a ferry sinking.</h>
+</pair>
+<pair id='219' value='TRUE' task='IR'>
+  <t>Only a few Mag-lev trains have been used commercially such as at the Birmingham airport in the UK.</t>
+  <h>Maglev is commercially used.</h>
+</pair>
+<pair id='226' value='FALSE' task='IR'>
+  <t>For others, in the northern hemisphere, judgment may be a little off due to Seasonal Affective Disorder (SAD), which is often at its peak in the weeks following the shortest hours of daylight.</t>
+  <h>Seasonal Affective Disorder (SAD) is a worldwide disorder.</h>
+</pair>
+<pair id='228' value='FALSE' task='IR'>
+  <t>A new report indicates that women's participation in decision-making in the country is minimal.</t>
+  <h>Women are poorly represented in parliament.</h>
+</pair>
+<pair id='235' value='TRUE' task='IR'>
+  <t>Indonesia says the oil blocks are within its borders, as does Malaysia, which has also sent warships to the area, claiming that its waters and airspace have been violated.</t>
+  <h>There is a territorial waters dispute.</h>
+</pair>
+<pair id='236' value='FALSE' task='IR'>
+  <t>The greatest threat to life and property associated with a hurricane and tropical storm is storm surge.</t>
+  <h>A tropical storm has caused significant property damage or loss of life.</h>
+</pair>
+<pair id='237' value='FALSE' task='IR'>
+  <t>Rescuers searched rough seas off the capital yesterday for survivors of a ferry collision that claimed at least 28 lives, as officials blamed crew incompetence for the accident.</t>
+  <h>100 or more people lost their lives in a ferry sinking.</h>
+</pair>
+<pair id='243' value='FALSE' task='IR'>
+  <t>The ivory ban was imposed by CITES in 1989 after a wave of poaching across Africa saw elephant numbers fall from an estimated 1.3 million to a few hundred thousand.</t>
+  <h>The ban on ivory trade has been effective in protecting the elephant from extinction.</h>
+</pair>
+<pair id='245' value='FALSE' task='IR'>
+  <t>Aleksandr Yakovenko, an official representative of the Russian Foreign Ministry, has announced that, in connection with the recent terrorist action in Srinagar, about 100 Russian citizens will be evacuated from Pakistan in the near future.</t>
+  <h>U.S. Military evacuated U.S. citizens.</h>
+</pair>
+<pair id='248' value='FALSE' task='IR'>
+  <t>When patients interrupt a course of antibiotics, the surviving bacteria return with a vengeance, often having rapidly mutated to resist the therapy.</t>
+  <h>Bacteria is winning the war against antibiotics.</h>
+</pair>
+<pair id='250' value='FALSE' task='IR'>
+  <t>While Bush was in the air, the White House was evacuated, with many employees running away from the premises on orders from Secret Service agents.</t>
+  <h>The U.S. military evacuated U.S. citizens.</h>
+</pair>
+<pair id='251' value='TRUE' task='IR'>
+  <t>The university server containing the information relating to Mason's ID cards was illegally entered by computer hackers.</t>
+  <h>Non-authorized personnel illegally entered into computer networks.</h>
+</pair>
+<pair id='255' value='FALSE' task='IR'>
+  <t>Humic acids are complex organic molecules formed by the breakdown of organic matter in the soil. They are not considered to be fertilizers, but soil enhancers and improvers.</t>
+  <h>Organic fertilizers are used as soil enhancers.</h>
+</pair>
+<pair id='263' value='FALSE' task='IR'>
+  <t>A massive polio immunization drive is under way in more than 20 nations of West and Central Africa, but in Cote d'Ivoire violence has forced a postponement of the vaccination campaign, the Global Polio Eradication Initiative (GPEI) announced November 18.</t>
+  <h>Polio is under control in the world.</h>
+</pair>
+<pair id='264' value='TRUE' task='IR'>
+  <t>Despite Chinese assertions of control, tensions over the South China Sea's waters have continued to rise.</t>
+  <h>There is a territorial waters dispute.</h>
+</pair>
+<pair id='271' value='TRUE' task='IR'>
+  <t>The May 3 ferry sinking in the Meghna River that claimed the lives of at least 370 people is a reminder of the dangers inherent in this sort of travel.</t>
+  <h>100 or more people lost their lives in a ferry sinking.</h>
+</pair>
+<pair id='274' value='TRUE' task='IR'>
+  <t>In keeping with our national strategy, the concept of the operation was to further deploy our agent staffing and tactical infrastructure resources along the immediate border area, the Rio Grande River, to prevent and deter the illegal entry and smuggling of aliens into the United States at the border itself.</t>
+  <h>Steps are being taken to stop the smuggling of aliens.</h>
+</pair>
+<pair id='275' value='TRUE' task='IR'>
+  <t>For instance, the direct and indirect economic cost of the floods in Mozambique caused by Tropical Storms Elyne and Gloria in February and March 2000, is estimated at US$1 billion, as compared to the country's export earning of only US$300 million in 1999.</t>
+  <h>A tropical storm has caused significant property damage or loss of life.</h>
+</pair>
+<pair id='282' value='TRUE' task='IR'>
+  <t>What is certain, however, is that around 120,000 years ago, at least, the modern Homo sapiens first appeared and lived contemporaneously with the Neanderthal for at least 90,000 years, until the Neanderthal disappeared 30,000 years ago.</t>
+  <h>Humans existed 10,000 years ago.</h>
+</pair>
+<pair id='287' value='FALSE' task='IR'>
+  <t>The harvest of sea-weeds is not allowed in the Puget Sound because of marine vegetation's vital role in providing habitat to important species.</t>
+  <h>Marine vegetation is harvested.</h>
+</pair>
+<pair id='291' value='TRUE' task='IR'>
+  <t>The Sea-Viewing wide Field-of-View Sensor, SeaWiFS, has brought to oceanographers a welcomed and improved renewal of the ocean color remote sensing data.</t>
+  <h>Ocean remote sensing is developed.</h>
+</pair>
+<pair id='293' value='TRUE' task='IR'>
+  <t>The Townsend Thoresen cross-Channel ferry Herald of Free Enterprise capsized outside the Belgian port of Zeebrugge on the 6th of March with the loss of 135 lives.</t>
+  <h>100 or more people lost their lives in a ferry sinking.</h>
+</pair>
+<pair id='297' value='TRUE' task='IR'>
+  <t>Hurricane Isabel was a tropical storm when she entered Virginia, but caused damage to 75% of the state, making it one of the costliest disasters in Virginia's history.</t>
+  <h>A tropical storm has caused significant property damage or loss of life.</h>
+</pair>
+<pair id='298' value='FALSE' task='IR'>
+  <t>One reason for increased osteoporosis in developed countries is the sodium-potassium imbalance.</t>
+  <h>Dietary intake of potassium prevents osteoporosis.</h>
+</pair>
+<pair id='303' value='FALSE' task='IR'>
+  <t>The directive for the Border Patrol to stop arresting illegal aliens, as described in a previous post, has been rescinded by Robert C. Bonner, commissioner of the new Bureau of Customs and Border Protection.</t>
+  <h>Steps are being taken to stop the smuggling of aliens.</h>
+</pair>
+<pair id='304' value='TRUE' task='IR'>
+  <t>As a result, the elephant has been brought back from the brink of extinction, thanks to the ban on international trade in ivory and other elephant products.</t>
+  <h>The ban on ivory trade has been effective in protecting the elephant from extinction.</h>
+</pair>
+<pair id='305' value='FALSE' task='IR'>
+  <t>Tropical storm Koni dumped significant rains on the Philippines before becoming a minimal typhoon and eventually making landfall on the northern coast of Vietnam.</t>
+  <h>A tropical storm has caused significant property damage.</h>
+</pair>
+<pair id='307' value='TRUE' task='IR'>
+  <t>Napkins, invitations and plain old paper cost more than they did a month ago.</t>
+  <h>The cost of paper is rising.</h>
+</pair>
+<pair id='310' value='FALSE' task='IR'>
+  <t>The drive towards this new law was driven in part from a string of transport-related disasters in the late 1980s, such as the sinking of cross-Channel ferry the Herald of Free Enterprise in 1987, the oil platform Piper Alpha disaster in 1988, and the Marchioness Thames river boat collision in 1989. More than 400 people lost their lives in these three disasters, but no one individual or organisation was brought to account.</t>
+  <h>100 or more people lost their lives in a ferry sinking.</h>
+</pair>
+<pair id='322' value='TRUE' task='IR'>
+  <t>Some plants grow really well in a hydroponic environment, but others do not.</t>
+  <h>Plants are grown in water or in substances other than soil.</h>
+</pair>
+<pair id='327' value='TRUE' task='IR'>
+  <t>By 45,000 years ago, humans had weathered the comings and goings of a number of ice ages, had spread themselves throughout most of Africa, Europe and Asia, and had reached a population of roughly a million.</t>
+  <h>Humans existed 10,000 years ago.</h>
+</pair>
+<pair id='328' value='TRUE' task='IR'>
+  <t>Epiphyte is the name applied to the class of plants which typically do not root in the soil but, rather, attach themselves to trees or other tall objects where they can obtain light and moisture.</t>
+  <h>Plants are grown in substances other than soil.</h>
+</pair>
+<pair id='346' value='TRUE' task='IR'>
+  <t>About one million years ago, these people began to slowly leave Africa.</t>
+  <h>Humans existed 10,000 years ago.</h>
+</pair>
+<pair id='351' value='FALSE' task='IR'>
+  <t>Meteorological observations suggest Claudette remained a tropical storm as she affected parts of west Texas.</t>
+  <h>A tropical storm has caused significant property damage.</h>
+</pair>
+<pair id='352' value='FALSE' task='IR'>
+  <t>The increase in womens' representation in the first elections to the Scottish Parliament has become a symbol for change, backed by the Parliament's principled commitment to creating a more equal society.</t>
+  <h>Women are poorly represented in parliament.</h>
+</pair>
+<pair id='354' value='TRUE' task='IR'>
+  <t>The most recent poll carried out by NOP market research in January revealed that 61% of Britons are opposed to joining the euro.</t>
+  <h>The introduction of the euro has been opposed.</h>
+</pair>
+<pair id='355' value='TRUE' task='IR'>
+  <t>Albert Sabin developed an oral, attenuated (live) vaccine, which, with Salk's discovery, brought polio under control.</t>
+  <h>Polio is under control in the world.</h>
+</pair>
+<pair id='362' value='TRUE' task='IR'>
+  <t>His research had been focused on near-shore beds of marine plants commercially harvested in western P.E.I.</t>
+  <h>Marine vegetation is harvested.</h>
+</pair>
+<pair id='363' value='TRUE' task='IR'>
+  <t>One economic study will not be the basis of Canada's public policy decisions, but Easton's research does conclusively show that there are economic benefits in the legalization of marijuana.</t>
+  <h>Drug legalization has benefits.</h>
+</pair>
+<pair id='364' value='FALSE' task='IR'>
+  <t>Beth Israel is fighting back in the lab, where bacteria taken from patients are grown in cultures and tested against antibiotics to determine if the bug beats the drug.</t>
+  <h>Bacteria is winning the war against antibiotics.</h>
+</pair>
+<pair id='367' value='TRUE' task='IR'>
+  <t>There are actually good grounds to believe that legalization would reduce the costs of respiratory damage from marijuana smoking by encouraging the development of better smoke filtration technology, the substitution of more potent, less smoke-producing varieties of marijuana, and the substitution of oral preparations for smoked marijuana.</t>
+  <h>Drug legalization has benefits.</h>
+</pair>
+<pair id='369' value='TRUE' task='IR'>
+  <t>The Bakun Hydroelectric Project (BHEP) comprises the construction of a 2,400MW hydroelectric dam, the transmission of its electricity, and the building of related infrastructure including access roads.</t>
+  <h>A hydroelectric project is proposed or is under construction.</h>
+</pair>
+<pair id='370' value='FALSE' task='IR'>
+  <t>Westbridge manufactures certified organic fertilizers including liquid growth enhancers and biostimulants.</t>
+  <h>Organic fertilizers are used as soil enhancers.</h>
+</pair>
+<pair id='371' value='TRUE' task='IR'>
+  <t>The ivory ban has been successful. Demand for ivory has dropped and elephant populations expanded dramatically in areas where they were virtually extinct.</t>
+  <h>The ban on ivory trade has been effective in protecting the elephant from extinction.</h>
+</pair>
+<pair id='380' value='FALSE' task='IR'>
+  <t>Capital punishment is a catalyst for more crime.</t>
+  <h>Capital punishment is a deterrent to crime.</h>
+</pair>
+<pair id='385' value='FALSE' task='IR'>
+  <t>There is growing evidence that magnesium may be an important factor in the qualitative changes of the bone matrix that determine bone fragility.</t>
+  <h>Dietary intake of magnesium prevents osteoporosis.</h>
+</pair>
+<pair id='386' value='FALSE' task='IR'>
+  <t>Over 100 more lives were lost at sea, and 1800 were lost in Holland.</t>
+  <h>100 or more people lost their lives in a ferry sinking.</h>
+</pair>
+<pair id='390' value='FALSE' task='IR'>
+  <t>Polio is no longer a serious health problem for people living in the developed nations, such as the United States, Germany, or France.</t>
+  <h>Polio is under control in the world.</h>
+</pair>
+<pair id='391' value='FALSE' task='IR'>
+  <t>And this is a town that everybody agrees, law enforcement, Border Patrol, residents on both sides, is a staging area of illegal drugs and illegal aliens.</t>
+  <h>Steps are being taken to stop the smuggling of aliens.</h>
+</pair>
+<pair id='395' value='FALSE' task='IR'>
+  <t>In 1983, McClintock found that bacteria have rings of DNA (plasmids) that reproduce and have genetic changes that tell the bacteria how to defend itself against the antibiotics.</t>
+  <h>Bacteria is winning the war against antibiotics.</h>
+</pair>
+<pair id='399' value='FALSE' task='IR'>
+  <t>In reality, legalization would dramatically expand America's drug dependence, significantly increase the social costs of drug abuse, and put countless more innocent lives at risk.</t>
+  <h>Drug legalization has benefits.</h>
+</pair>
+<pair id='411' value='FALSE' task='IR'>
+  <t>Deceased U.S. soldiers and their effects were evacuated to Japan and then shipped home in refrigerated containers for interment in the U.S.</t>
+  <h>The U.S. military evacuated U.S. citizens.</h>
+</pair>
+<pair id='415' value='TRUE' task='IR'>
+  <t>The drugs that slow down or halt Alzheimer's disease work best the earlier you administer them.</t>
+  <h>Alzheimer's disease is treated using drugs.</h>
+</pair>
+<pair id='422' value='TRUE' task='IR'>
+  <t>The number of Danes opposed to swapping the krone for the euro has increased slightly to 35.3 percent, up from 34.6 percent in April, according to a poll published on Thursday by Danske Bank.</t>
+  <h>The introduction of the euro has been opposed.</h>
+</pair>
+<pair id='429' value='FALSE' task='IR'>
+  <t>Yes, water is a critical area of dispute in the Arab-Israeli conflict; but given the current climate of peacemaking, and given the general war-weariness among states and populations, such predictions are excitable pieces of subjectivism.</t>
+  <h>There is a territorial waters dispute.</h>
+</pair>
+<pair id='454' value='FALSE' task='IR'>
+  <t>Vegetables help to preserve your bones, and help fight the bone-thinning disease osteoporosis.</t>
+  <h>Fruits and vegetables prevent osteoporosis.</h>
+</pair>
+<pair id='461' value='FALSE' task='IR'>
+  <t>For such patients, regular aspirin use significantly decreased the risk for fatal and nonfatal strokes or heart attacks.</t>
+  <h>People experienced adverse effects while taking aspirin.</h>
+</pair>
+<pair id='462' value='TRUE' task='IR'>
+  <t>The development of agriculture by early humans, roughly 10,000 years ago, was also harmful to many natural ecosystems as they were systematically destroyed and replaced with artificial versions.</t>
+  <h>Humans existed 10,000 years ago.</h>
+</pair>
+<pair id='465' value='TRUE' task='IR'>
+  <t>The Croatian intent is even more problematic because the border between Slovenian and Croatian territorial waters has not yet been established. The dispute about this border began in 1991 when both countries became independent.</t>
+  <h>There is a territorial waters dispute.</h>
+</pair>
+<pair id='467' value='TRUE' task='IR'>
+  <t>Public health and animal health officials from the Departments of Health and Community Services and Forest Resources and Agrifoods today confirmed a rabies case involving a red fox in western Newfoundland.</t>
+  <h>A case of rabies was confirmed.</h>
+</pair>
+<pair id='471' value='TRUE' task='IR'>
+  <t>Yet, we now are discovering that antibiotics are losing their effectiveness against illness. Disease-causing bacteria are mutating faster than we can come up with new antibiotics to fight the new variations.</t>
+  <h>Bacteria is winning the war against antibiotics.</h>
+</pair>
+<pair id='487' value='FALSE' task='IR'>
+  <t>Rather than deterring crime, capital punishment actually increases the level of brutality in society.</t>
+  <h>Capital punishment is a deterrent to crime.</h>
+</pair>
+<pair id='488' value='FALSE' task='IR'>
+  <t>Obesity is medically accepted to be a disease in its own right.</t>
+  <h>Obesity is medically treated.</h>
+</pair>
+<pair id='489' value='TRUE' task='IR'>
+  <t>Initially the Bundesbank opposed the introduction of the euro but was compelled to accept it in light of the political pressure of the capitalist politicians who supported its introduction.</t>
+  <h>The introduction of the euro has been opposed.</h>
+</pair>
+<pair id='493' value='TRUE' task='IR'>
+  <t>IBM stole trade secrets to copy two of its programs - File-AID, a file manager, and Abend-AID, a program that helps users locate the source of glitches.</t>
+  <h>Trade secrets were stolen.</h>
+</pair>
+<pair id='498' value='TRUE' task='IR'>
+  <t>Seasonal affective disorder (SAD), a type of depression, is a debilitating problem that interferes with the quality of life of thousands of patients, especially during the fall, winter and early spring. This syndrome seems to be a worldwide phenomenon and occurs cross culturally, especially in countries far from the equator.</t>
+  <h>Seasonal affective disorder (SAD) is a worldwide disorder.</h>
+</pair>
+<pair id='499' value='TRUE' task='IR'>
+  <t>FBI agent Denise Stemen said in an affidavit that Lowe's alerted the FBI recently that intruders had broken into its computer at company headquarters in North Carolina, altered its computer programs and illegally intercepted credit card transactions.</t>
+  <h>Non-authorized personnel illegally entered into computer networks.</h>
+</pair>
+<pair id='503' value='TRUE' task='IR'>
+  <t>Newspapers choke on rising paper costs and falling revenue.</t>
+  <h>The cost of paper is rising.</h>
+</pair>
+<pair id='505' value='FALSE' task='IR'>
+  <t>The results of numerous epidemiological studies and recent clinical trials provide consistent evidence that diets rich in fruits and vegetables can reduce the risk of chronic disease.</t>
+  <h>Fruits and vegetables prevent osteoporosis.</h>
+</pair>
+<pair id='513' value='TRUE' task='IR'>
+  <t>These acoustic methods are now expected to be useful for the long-range remote sensing of schools of fish as well as for distant ocean bottom characterizations.</t>
+  <h>Ocean remote sensing is developed.</h>
+</pair>
+<pair id='514' value='TRUE' task='IR'>
+  <t>The World Trade Organization, the International Monetary Fund and the World Bank have all been criticized for their role in catalyzing the harmful impacts of corporate globalization on people, the environment and sustainable development.</t>
+  <h>The World Bank is criticized for its activities.</h>
+</pair>
+<pair id='515' value='FALSE' task='IR'>
+  <t>Confidential scriptural materials allegedly stolen from a church were not "trade secrets" as defined by California statute.</t>
+  <h>Trade secrets were stolen.</h>
+</pair>
+<pair id='516' value='FALSE' task='IR'>
+  <t>Lt. Mark Banks, of Savannah, Ga., tends to a patient who was medically evacuated by U.S. Navy helicopter to a temporary triage site in Aceh, Sumatra, Indonesia.</t>
+  <h>U.S. Military evacuated U.S. citizens.</h>
+</pair>
+<pair id='517' value='FALSE' task='IR'>
+  <t>Women are poorly trained for politics.</t>
+  <h>Women are poorly represented in parliament.</h>
+</pair>
+<pair id='520' value='FALSE' task='IR'>
+  <t>A wooden steamer of 293 ft sank on 10/13/1902, 13.5 miles North by Northwest of Fairport Harbor, Ohio. The lives of ten of the 19 persons on board were lost in the wreck.</t>
+  <h>100 or more people lost their lives in a ferry sinking.</h>
+</pair>
+<pair id='523' value='TRUE' task='IR'>
+  <t>Eleven years after 852 people, mostly Swedes, perished when the ferry Estonia sank on a stormy Baltic night, an exhibition in the National Maritime Museum in Stockholm brings back the pain and controversy which have haunted Sweden since the disaster.</t>
+  <h>100 or more people lost their lives in a ferry sinking.</h>
+</pair>
+<pair id='528' value='TRUE' task='IR'>
+  <t>Yet fishermen from both sides say boats lack navigational tools to let them know when they've crossed the frontier, which still is subject to a bilateral dispute dating to the 1965 war between the countries.</t>
+  <h>There is a territorial waters dispute.</h>
+</pair>
+<pair id='536' value='TRUE' task='IR'>
+  <t>United States naval forces evacuated U.S. civilians during hostilities between Turkish and Greek Cypriot forces.</t>
+  <h>U.S. Military evacuated U.S. citizens.</h>
+</pair>
+<pair id='539' value='FALSE' task='IR'>
+  <t>The total estimated project cost including financing, inflation and interest during construction, is approximately US$1.1 billion.</t>
+  <h>A hydroelectric project is proposed or is under construction.</h>
+</pair>
+<pair id='541' value='TRUE' task='IR'>
+  <t>Naval units evacuated U.S. civilians and military personnel from the Tachen Islands.</t>
+  <h>The U.S. military evacuated U.S. citizens.</h>
+</pair>
+<pair id='551' value='TRUE' task='IR'>
+  <t>The result in Denmark shows that people are fundamentally opposed to joining the euro.</t>
+  <h>The introduction of the euro has been opposed.</h>
+</pair>
+<pair id='554' value='FALSE' task='IR'>
+  <t>It appears that the super-conducting maglev system is technically ready to be used commercially as a very high-speed, large-capacity transportation system.</t>
+  <h>Maglev is commercially used.</h>
+</pair>
+<pair id='555' value='TRUE' task='IR'>
+  <t>This case of rabies in western Newfoundland is the first case confirmed on the island since 1989.</t>
+  <h>A case of rabies was confirmed.</h>
+</pair>
+<pair id='563' value='FALSE' task='IR'>
+  <t>If confirmed as rabies, the case could be the first occurence of the infection acquired in the UK since 1902.</t>
+  <h>A case of rabies was confirmed.</h>
+</pair>
+<pair id='564' value='TRUE' task='IR'>
+  <t>These problems can be avoided by legalization, under which cannabis could be legally sold, taxed and regulated like alcohol or tobacco.</t>
+  <h>Drug legalization has benefits.</h>
+</pair>
+<pair id='569' value='FALSE' task='IR'>
+  <t>About 3 million years ago, when Lucy was alive, she was rather short, about 4 feet tall, and probably weighed about 50 pounds.</t>
+  <h>Humans existed 10,000 years ago.</h>
+</pair>
+<pair id='571' value='TRUE' task='IR'>
+  <t>Sani-Seat can offset the rising cost of paper products.</t>
+  <h>The cost of paper is rising.</h>
+</pair>
+<pair id='572' value='FALSE' task='IR'>
+  <t>Fast forward a decade or two and scientists began to notice antibiotic-resistant strains of bacteria.</t>
+  <h>Bacteria is winning the war against antibiotics.</h>
+</pair>
+<pair id='583' value='FALSE' task='IR'>
+  <t>If the ruling is that these trade-secrets were stolen goods, I'd be willing to bet that these three guys could refuse to answer any questions, by invoking the 5th Amendment, since they would incriminate themselves by saying anything.</t>
+  <h>Trade secrets were stolen.</h>
+</pair>
+<pair id='584' value='TRUE' task='IR'>
+  <t>Hydroponics is the growth of plants in a substance other than soil with water.</t>
+  <h>Plants are grown in substances other than soil.</h>
+</pair>
+<pair id='585' value='TRUE' task='IR'>
+  <t>Since the fear of death is virtually a universal phenomenon, the death penalty is an unparalleled deterrent for people considering a crime.</t>
+  <h>Capital punishment is a deterrent to crime.</h>
+</pair>
+<pair id='588' value='FALSE' task='IR'>
+  <t>Security forces gunned down six Maoists; while the rebels killed a policeman and an abducted civilian drowned escaping from the Maoists, say latest insurgency related reports.</t>
+  <h>A civilian policeman was killed.</h>
+</pair>
+<pair id='590' value='FALSE' task='IR'>
+  <t>Diets that provide recommended levels of magnesium are beneficial for bone health, but further investigation on the role of magnesium in bone metabolism and osteoporosis is needed.</t>
+  <h>Dietary intake of magnesium prevents osteoporosis.</h>
+</pair>
+<pair id='591' value='FALSE' task='IR'>
+  <t>Both sides of this argument are presented in this paper, but it is the attempt of this paper to emphasize that the legalization of drugs would be destructive to our society.</t>
+  <h>Drug legalization has benefits.</h>
+</pair>
+<pair id='592' value='FALSE' task='IR'>
+  <t>Women are poorly represented in transactions financed by mortgage bonds.</t>
+  <h>Women are poorly represented in parliament.</h>
+</pair>
+<pair id='594' value='FALSE' task='IR'>
+  <t>Though owning no trees and no waters, Takeshima Island has become the subject of a bitter political dispute between Japan and South Korea.</t>
+  <h>There is a territorial waters dispute.</h>
+</pair>
+<pair id='599' value='FALSE' task='IR'>
+  <t>New security steps taken by the Customs Service may not be enough to stop a terrorist from smuggling in nuclear weapons.</t>
+  <h>Steps are being taken to stop the smuggling of aliens.</h>
+</pair>
+<pair id='601' value='FALSE' task='IR'>
+  <t>No case of indigenously acquired rabies infection has been confirmed in man or any animal species during the past 2 years.</t>
+  <h>A case of rabies was confirmed.</h>
+</pair>
+<pair id='603' value='TRUE' task='IR'>
+  <t>This taught postgraduate masters degree programme will provide specialised training at a postgraduate level in the methods and uses of remote sensing applied to the ocean.</t>
+  <h>Ocean remote sensing is applied.</h>
+</pair>
+<pair id='607' value='TRUE' task='IR'>
+  <t>Carmen was only slightly put out to find that women are as poorly represented among Australian political scientists as they are in parliament (Leonie was asking, 'where are all the women?').</t>
+  <h>Women are poorly represented in parliament.</h>
+</pair>
+<pair id='614' value='TRUE' task='IR'>
+  <t>Environment Minister David Anderson today announced his decision regarding the environmental assessment of the proposed Toulnustouc Hydroelectric Project.</t>
+  <h>A hydroelectric project is proposed or is under construction.</h>
+</pair>
+<pair id='624' value='FALSE' task='IR'>
+  <t>Some other objections to legalization point to the greater dangers of family violence, reckless driving, or reckless operation of subways and so on.</t>
+  <h>Drug legalization has benefits.</h>
+</pair>
+<pair id='630' value='TRUE' task='IR'>
+  <t>These early men learned to make fire. They traveled over land bridges from Africa, and began to populate the world, about 1 million years ago.</t>
+  <h>Humans existed 10,000 years ago.</h>
+</pair>
+<pair id='636' value='TRUE' task='IR'>
+  <t>Alzheimer's disease is successfully treated, and controlled by drugs which inhibit the synthesis of beta-amyloid protein.</t>
+  <h>Alzheimer's disease is treated using drugs.</h>
+</pair>
+<pair id='640' value='FALSE' task='IR'>
+  <t>Banning ivory is the surest road to extinction for the African elephant, argue leaders in those countries.</t>
+  <h>The ban on ivory trade has been effective in protecting the elephant from extinction.</h>
+</pair>
+<pair id='656' value='FALSE' task='IR'>
+  <t>After two years, the aspirin subjects experienced a reduced risk of fatal and nonfatal stroke.</t>
+  <h>People experienced adverse effects while taking aspirin.</h>
+</pair>
+<pair id='660' value='FALSE' task='IR'>
+  <t>The most surprising news story of the past week must be the 'wonderful' story that the AIDS epidemic in India is under control.</t>
+  <h>Polio is under control in the world.</h>
+</pair>
+<pair id='690' value='FALSE' task='IR'>
+  <t>The drawbacks of legalization do not imply that our current version of prohibition is the optimal drug strategy; it may well be possible to implement prohibition in less harmful ways.</t>
+  <h>Drug legalization has benefits.</h>
+</pair>
+<pair id='693' value='FALSE' task='IR'>
+  <t>They, too, have not produced a practical, commercially acceptable maglev.</t>
+  <h>Maglev is commercially used.</h>
+</pair>
+<pair id='695' value='TRUE' task='IR'>
+  <t>Another factor in the rising cost of paper is the increased cost of wood pulp, from which paper is made.</t>
+  <h>The cost of paper is rising.</h>
+</pair>
+<pair id='697' value='FALSE' task='IR'>
+  <t>20 million years ago there were apes, and by 5 million years ago our closest ancestors and cousins, early ape-humans, had split from the other apes.</t>
+  <h>Humans existed 10,000 years ago.</h>
+</pair>
+<pair id='700' value='FALSE' task='IR'>
+  <t>INS predicts that the smuggling will continue to increase and that alien smuggling organizations will become more sophisticated, organized, and complex.</t>
+  <h>Steps are being taken to stop the smuggling of aliens.</h>
+</pair>
+<pair id='705' value='TRUE' task='IR'>
+  <t>High dietary intake of potassium from fruits and vegetables throughout one's life helps to preserve bone mass, thereby preventing bone loss that can lead to osteoporosis.</t>
+  <h>Dietary intake of potassium prevents osteoporosis.</h>
+</pair>
+<pair id='708' value='FALSE' task='IR'>
+  <t>Nearly five months later on January 24, 1935, the passenger vessel MOHAWK sank after colliding with the Norwegian motorship TALISMAN, and 45 people lost their lives.</t>
+  <h>100 or more people lost their lives in a ferry sinking.</h>
+</pair>
+<pair id='710' value='TRUE' task='IR'>
+  <t>World Bank programs have been heavily criticized for many years for resulting in poverty.</t>
+  <h>The World Bank is criticized for its activities.</h>
+</pair>
+<pair id='716' value='TRUE' task='IR'>
+  <t>The recent 14% hike in third class postage rates, accompanied by simultaneous double-digit paper price increases, has hit smaller catalogers especially hard.</t>
+  <h>The cost of paper is rising.</h>
+</pair>
+<pair id='717' value='TRUE' task='IR'>
+  <t>The gastric bypass operation, also known as stomach stapling, has become the most common surgical procedure for treating obesity.</t>
+  <h>Obesity is medically treated.</h>
+</pair>
+<pair id='723' value='FALSE' task='IR'>
+  <t>Primary prevention of Alzheimer's disease is not possible at present.</t>
+  <h>Alzheimer's disease is treated using drugs.</h>
+</pair>
+<pair id='724' value='FALSE' task='IR'>
+  <t>The death penalty is not a deterrent.</t>
+  <h>Capital punishment is a deterrent to crime.</h>
+</pair>
+<pair id='725' value='TRUE' task='IR'>
+  <t>The German technology was employed to build Shanghai's existing maglev line, the first in the world to be used commercially.</t>
+  <h>Maglev is commercially used.</h>
+</pair>
+<pair id='726' value='TRUE' task='IR'>
+  <t>Organic fertilizers like vermi compost are used for increasing the quality, fertility and mineral content of the soil.</t>
+  <h>Organic fertilizers are used as soil enhancers.</h>
+</pair>
+<pair id='728' value='FALSE' task='IR'>
+  <t>As the U.S. military evacuated Saigon in the Spring of 1975, President Gerald Ford approved Operation Babylift, the plan to transport thousands of Vietnamese children to adoptive parents in the West, hundreds of them at a time, before the U.S. was forced out of the country.</t>
+  <h>The U.S. military evacuated U.S. citizens.</h>
+</pair>
+<pair id='734' value='FALSE' task='IR'>
+  <t>Well, the yolk is on us, the bacteria are winning, and at a record pace.</t>
+  <h>Bacteria is winning the war against antibiotics.</h>
+</pair>
+<pair id='735' value='FALSE' task='IR'>
+  <t>Actual statistics about the deterrent value of capital punishment are not available because it is impossible to know who may have been deterred from committing a crime.</t>
+  <h>Capital punishment is a deterrent to crime.</h>
+</pair>
+<pair id='737' value='TRUE' task='IR'>
+  <t>Capital punishment acts as a deterrent.</t>
+  <h>Capital punishment is a deterrent to crime.</h>
+</pair>
+<pair id='739' value='FALSE' task='IR'>
+  <t>On the other hand, the article, "Fiction and Facts About Drug Legalization", by Joseph Califano identifies possible social problems that could occur as a result of marijuana being decriminalized in any form, whether for medical purposes or for recreational use.</t>
+  <h>Drug legalization has benefits.</h>
+</pair>
+<pair id='742' value='FALSE' task='IR'>
+  <t>Compuware claims that Allan Tortorice and Jim Hildner were among several former employees who revealed trade secrets after they moved to IBM.</t>
+  <h>Trade secrets were stolen.</h>
+</pair>
+<pair id='748' value='FALSE' task='IR'>
+  <t>After the polio cases were identified, public health officials in the Dominican Republic and Haiti began giving the vaccines to large numbers of children. Public health officials now say the disease is under control and is not a public health threat.</t>
+  <h>Polio is under control in the world.</h>
+</pair>
+<pair id='750' value='FALSE' task='IR'>
+  <t>National currencies will be completely replaced by the euro in within six months after the introduction of euro notes and coins.</t>
+  <h>The introduction of the euro has been opposed.</h>
+</pair>
+<pair id='753' value='FALSE' task='IR'>
+  <t>The scientific community now generally agrees that between 5 and 8 million years ago, there lived in Africa a hominid which would ultimately give rise to the first hominids and later the members of the genus Homo.</t>
+  <h>Humans existed 10,000 years ago.</h>
+</pair>
+<pair id='754' value='TRUE' task='IR'>
+  <t>Some of the stolen trade secrets were seized from the defendants at the San Francisco International Airport (SFO) while they were attempting to fly to China.</t>
+  <h>Trade secrets were stolen.</h>
+</pair>
+<pair id='756' value='TRUE' task='IR'>
+  <t>Some people may think that there is no other way to grow plants other than in soil; there is however, another way.</t>
+  <h>Plants are grown in substances other than soil.</h>
+</pair>
+<pair id='757' value='TRUE' task='IR'>
+  <t>About 50 percent of all British party members are female (in contrast to only about 25 percent in Germany) but only 9.2 percent are represented in parliament.</t>
+  <h>Women are poorly represented in parliament.</h>
+</pair>
+<pair id='759' value='TRUE' task='IR'>
+  <t>Tropical Storm Debby is blamed for several deaths across the Caribbean.</t>
+  <h>A tropical storm has caused loss of life.</h>
+</pair>
+<pair id='762' value='FALSE' task='IR'>
+  <t>However, market players were more inclined towards weakening yen, as the yen plunged to its lowest levels since October 1998, after foreign exchange markets interpreted comments made by visiting U.S. Treasury Secretary Paul O'Neill to mean that Washington is not opposed to a weak Japanese currency.</t>
+  <h>The introduction of the euro has been opposed.</h>
+</pair>
+<pair id='763' value='TRUE' task='IR'>
+  <t>Thanks to a global ban on the ivory trade that was passed in 1989 by the Convention on International Trade in Endangered Species of Wild Fauna and Flora (CITES), the African elephant population may be reversing its spiral toward extinction.</t>
+  <h>The ban on ivory trade has been effective in protecting the elephant from extinction.</h>
+</pair>
+<pair id='767' value='FALSE' task='IR'>
+  <t>A recent study found no evidence of seasonal affective disorder in Iceland where the sun does not appear for a long time in the winter.</t>
+  <h>Seasonal affective disorder (SAD) is a worldwide disorder.</h>
+</pair>
+<pair id='773' value='TRUE' task='IR'>
+  <t>The provincial veterinarian with the Department of Forest Resources and Agrifoods, Dr. Hugh Whitney, confirmed today another case of rabies in Labrador, bringing the total number of confirmed rabies cases to nine in Labrador since November 2000.</t>
+  <h>A case of rabies was confirmed.</h>
+</pair>
+<pair id='778' value='TRUE' task='IR'>
+  <t>The commission's order on the proposed hydroelectric development shall describe the Energy Facility Siting Council's recommendations on the need for the power.</t>
+  <h>A hydroelectric project is proposed or is under construction.</h>
+</pair>
+<pair id='779' value='TRUE' task='IR'>
+  <t>A joint venture led by Australia's Global Petroleum Ltd. said, yesterday, it had won the right to explore for oil and gas in the inhospitable waters south and east of the Falkland Islands.</t>
+  <h>Petroleum will be explored in the South Atlantic.</h>
+</pair>
+<pair id='781' value='FALSE' task='IR'>
+  <t>A recent study offers sound medical proof that ACE inhibitors, like beta-blockers and aspirin, can improve a patient's odds of surviving a heart attack.</t>
+  <h>People experienced adverse effects while taking aspirin.</h>
+</pair>
+<pair id='785' value='FALSE' task='IR'>
+  <t>This paper discusses marijuana, crack/cocaine, tranquilizers, hallucinogens, amphetamines, heroin, alcohol, nicotine and caffeine to provide a framework for the author's argument that the legalization of drugs can in no way be deemed as ethical or moral.</t>
+  <h>Drug legalization has benefits.</h>
+</pair>
+<pair id='791' value='FALSE' task='IR'>
+  <t>It is hoped that women, who constitute more than half of the population, will vote for other women and ensure that their issues are represented in parliament.</t>
+  <h>Women are poorly represented in parliament.</h>
+</pair>
+<pair id='792' value='TRUE' task='IR'>
+  <t>Though the exact date is debated, dogs are thought to have been domesticated by humans approximately 12,000 years ago.</t>
+  <h>Humans existed 10,000 years ago.</h>
+</pair>
+<pair id='795' value='FALSE' task='IR'>
+  <t>A few growers place charcoal in the bottom of containers to absorb excess salts and maintain sweet soil, if plants are grown more than a few months.</t>
+  <h>Plants are grown in water or in substances other than soil.</h>
+</pair>
+</entailment-corpus>
