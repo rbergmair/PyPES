@@ -32,7 +32,7 @@ class MyRMRSifier( pyrmrs.rmrsifier.RMRSifier ):
     self.raspctrl = pyrmrs.ext.rasp.Rasp();
     self.raspsentctrl = pyrmrs.ext.raspsent.RaspSentenceSplitter();
     self.fsppctrl = pyrmrs.ext.fspp.FSPP();
-    # self.petctrl = pyrmrs.ext.pet.PET( 5, 5 );
+    self.petctrl = pyrmrs.ext.pet.PET( 5, 5 );
     
     self.outfile = open( "testdta/rtesmafs.pickle", "w" );
 
@@ -75,21 +75,21 @@ class MyRMRSifier( pyrmrs.rmrsifier.RMRSifier ):
         cPickle.dump( fsppsmaf, self.outfile, 2 );
         cPickle.dump( raspsmaf, self.outfile, 2 );
         
-        # smaf = pyrmrs.tools.merge_pos_into_smaf.merge_pos_into_smaf( fsppsmaf, raspsmaf );
-        # pyrmrs.globals.logDebug( self, "|>%s<|" % smaf.str_xml() );
+        smaf = pyrmrs.tools.merge_pos_into_smaf.merge_pos_into_smaf( fsppsmaf, raspsmaf );
+        pyrmrs.globals.logDebug( self, "|>%s<|" % smaf.str_xml() );
         
         # smaf = fsppsmaf;
           
-        # for rmrs in self.petctrl.smaf_to_rmrss( smaf ):
-        #  
-        # cnt += 1;
-        #  
-        #  self.out.write( "\n" + self.atindent + "<!--\n" );
-        #  self.out.write( rmrs.str_pretty() );
-        #  self.out.write( "\n" + self.atindent + "-->\n" + self.atindent );
-        #  self.out.write( \
-        #    rmrs.str_xml().replace( "\n", "\n" + self.atindent ) );
-        #  self.out.write( "\n" );
+        for rmrs in self.petctrl.smaf_to_rmrss( smaf ):
+          
+          cnt += 1;
+           
+          self.out.write( "\n" + self.atindent + "<!--\n" );
+          self.out.write( rmrs.str_pretty() );
+          self.out.write( "\n" + self.atindent + "-->\n" + self.atindent );
+          self.out.write( \
+            rmrs.str_xml().replace( "\n", "\n" + self.atindent ) );
+          self.out.write( "\n" );
       
       except pyrmrs.ext.pet.PETError, e:
         self.out.write( "<error>\n" );
@@ -150,12 +150,6 @@ def rmrsify( ifile, ofile ):
   
   print "readings per sentence: avg=%2.2f min=%d q1=%d med=%d q3=%d max=%d" % \
     ( avg, q0, q1, q2, q3, q4 );
-  
-  #
-  #   61.94369 secs ( 12.17 units of processor time )
-  #   62/248 successful ( 25.00% )
-  #   readings per sentence: avg=1.16 min=0 q1=0 med=0 q3=0 max=5
-  #
 
 def main(argv=None):
   
@@ -175,3 +169,21 @@ def main(argv=None):
 
 if __name__ == "__main__":
     sys.exit( main() );
+
+#
+# 61.94369 secs ( 12.17 units of processor time )
+# 62/248 successful ( 25.00% )
+# readings per sentence: avg=1.16 min=0 q1=0 med=0 q3=0 max=5
+#
+    
+#    
+# 101.49628 secs ( 30.98 units of processor time )
+# 61/248 successful ( 24.60% )
+# readings per sentence: avg=1.14 min=0 q1=0 med=0 q3=0 max=5
+#
+
+#
+# 220.12133 secs ( 42.79 units of processor time )
+# 149/248 successful ( 60.08% )
+# readings per sentence: avg=2.73 min=0 q1=0 med=4 q3=5 max=5
+#

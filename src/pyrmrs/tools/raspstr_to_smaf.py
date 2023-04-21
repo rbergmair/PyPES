@@ -5,6 +5,11 @@ import pyrmrs.smafpkg.pos_edge;
 
 import re;
 
+MAP = {
+  "&FO" : "UNC",
+  "$" : "POS"
+};
+
 def raspstr_to_smaf( surface, raspstr ):
   
   smaf = pyrmrs.smafpkg.smaf.SMAF();
@@ -73,7 +78,10 @@ def raspstr_to_smaf( surface, raspstr ):
       posedge.cfrom = edge.cfrom;
       posedge.cto = edge.cto;
       posedge.deps = edge.id;
-      posedge.tag = pos;
+      if MAP.has_key( pos ):
+        posedge.tag = MAP[ pos ];
+      else:
+        posedge.tag = pos;
 
       lattice.register( posedge );
 

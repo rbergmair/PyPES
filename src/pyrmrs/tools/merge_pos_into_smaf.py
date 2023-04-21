@@ -14,8 +14,20 @@ GRAMMAR = [
 #  ( [ "NN1" ], [ "NN1", None ] ),
 #  ( [ "NP1" ], [ "NP1", None, None ] ),
   ( [ "NP1" ], [ "NP1", "NP1" ] ),
-  ( [ "NN1" ], [ "NN1", "NN1" ] )
+  ( [ "NN1" ], [ "NN1", "NN1" ] ),
+  ( [ "NN2" ], [ "NN2", "NN2" ] ),
+  ( [ "UNC" ], [ "UNC", "UNC" ] ),
+  ( [ "NNSB1" ], [ "NNSB1", "NNSB1" ] ),
+  ( [ "RR" ], [ "RR", "RR" ] ),
+  ( [ "VV0" ], [ "VV0", "VV0" ] ),
+  ( [ "MD" ], [ "MD", "MD" ] ),
+  ( [ "VHZ" ], [ "VHZ", "XX" ] )
 ];
+
+LRPUN = [ '"' ];
+LPUN = [ "(", "[", "{" ];
+RPUN = [ ")", "]", "]", ".", "!", ",", ";", "?" ];
+PUN = LPUN + RPUN + LRPUN;
 
 i = None;
 
@@ -30,7 +42,7 @@ maxcto = None;
 def merge_pos_into_smaf( tok_smaf, pos_smaf ):
 
 
-      
+
   def get_pos_edge( edges ):
 
     for edge_ in edges:
@@ -38,38 +50,44 @@ def merge_pos_into_smaf( tok_smaf, pos_smaf ):
         return edge_;
 
   def get_tok_edge( edges ):
+    
+    candidates = [];
 
     for edge_ in edges:
       if isinstance( edge_, pyrmrs.smafpkg.token_edge.TokenEdge ):
-        return edge_;
+        candidates.append( edge_ )
       if isinstance( edge_, pyrmrs.smafpkg.ersatz_edge.ErsatzEdge ):
-        return edge_;
+        candidates.append( edge_ );
+    
+    if len(candidates) == 1:
+      return candidates[ 0 ];
+    
+    for edge_ in candidates:
+      if isinstance( edge_, pyrmrs.smafpkg.token_edge.TokenEdge ):
+        if edge_.text[0] != "_":
+          return edge_;
 
-  
-  
+
+
   def fit_tags( tags, target ):
     
-    if len(tags) == target:
-      return tags;
-    
     expand = None;
-    if len(tags) < target:
+    if len(tags) == len(target):
+      return tags;
+    elif len(tags) < len(target):
       expand = True;
-    elif len(tags) > target:
+    elif len(tags) > len(target):
       expand = False;
     
-    if target == 1 and len(tags) == 2 and tags[1] in [ ".", ",", "$" ]:
-      return tags[ 0 : 1 ];
-    
-    if target == 1 and len(tags) > 1:
-      curtag = tags[ 0 ];
-      allthesame = True;
-      for tag in tags:
-        if tag != curtag:
-          allthesame = False;
-          break;
-      if allthesame:
-        return [ curtag ] * target;
+    #if target == 1 and len(tags) > 1:
+    #  curtag = tags[ 0 ];
+    #  allthesame = True;
+    #  for tag in tags:
+    #    if tag != curtag:
+    #      allthesame = False;
+    #      break;
+    #  if allthesame:
+    #    return [ curtag ] * target;
     
     agenda = [ tags ];
     results = [];
@@ -82,8 +100,30 @@ def merge_pos_into_smaf( tok_smaf, pos_smaf ):
       item = agenda[ i ];
       i += 1;
       
-      if len( item ) == target:
-        results.append( item );
+      if len( item ) == len( target ):
+        #results.append( copy.copy( item ) );
+        passed = True;
+        for j in range( 0, len(item) ):
+          if item[j] in PUN and item[j] != target[j]:
+            passed = False;
+            break;
+        if passed:
+          results.append( item );
+        continue;
+
+      for k in range( 0, len(item) - 1 ):
+        it = item[ k : k+2 ];
+        if ( it[0] in LPUN+LRPUN ) and ( not it[1] in PUN ):
+          cp = copy.copy( item );
+          cp[ k : k+2 ] = item[ k+1 : k+2 ];
+          if not cp in agenda:
+            agenda.append( cp );
+          
+        if ( it[0] not in PUN ) and ( it[1] in RPUN+LRPUN ):
+          cp = copy.copy( item );
+          cp[ k : k+2 ] = item[ k:k+1 ];
+          if not cp in agenda:
+            agenda.append( cp );
       
       for ( lhs, rhs ) in GRAMMAR:
         
@@ -94,22 +134,24 @@ def merge_pos_into_smaf( tok_smaf, pos_smaf ):
           
         newlength = len(item) - len(rhs) + len(lhs);
         
-        if expand and ( newlength > target ):
+        if expand and ( newlength > len( target ) ):
           continue;
-        if not expand and ( newlength < target ):
+        if not expand and ( newlength < len( target ) ):
           continue;
         
         for k in range( 0, len(item) - len(rhs) + 1 ):
           if item[ k : k + len(rhs) ] == rhs:
             cp = copy.copy( item );
             cp[ k : k + len(rhs) ] = lhs;
-            agenda.append( cp );
+            if not cp in agenda:
+              agenda.append( cp );
     
     if len(results) != 1:
       reason = "no";
       if len(results) > 1:
         reason = "ambiguous";
-      print "%s results for %s -> %d." % ( reason, str(tags), target );
+      print "%s results for %s -> %s." % ( reason, str(tags), target );
+      print results;
       assert False;
     
     return results[ 0 ];
@@ -138,19 +180,28 @@ def merge_pos_into_smaf( tok_smaf, pos_smaf ):
     global output_lattice;
     global i;
     
-    if len( tok_edges ) != len( pos_edges ):
-      print "--"
-      for ( tok, pos ) in pos_edges:
-        print "  P %s/%s" % ( tok.text, pos.tag );
-      for tok in tok_edges:
-        print "  T %s" % tok.text;
-      
+    target = [];
+    
+    exp = "";
+    for ( tok, pos ) in pos_edges:
+      exp += "  P %s/%s\n" % ( tok.text, pos.tag );
+    for tok in tok_edges:
+      if isinstance( tok, pyrmrs.smafpkg.token_edge.TokenEdge ):
+        exp += "  T %s\n" % tok.text;
+        target.append( tok.text );
+      elif isinstance( tok, pyrmrs.smafpkg.ersatz_edge.ErsatzEdge ):
+        exp += "  E %s/%s\n" % ( tok.surface, tok.name );
+        target.append( tok.name );
     
     tags = [];
     for ( tok, pos ) in pos_edges:
       tags.append( pos.tag );
       
-    tags = fit_tags( tags, len(tok_edges) );
+    try:
+      tags = fit_tags( tags, target );
+    except:
+      print exp;
+      raise;
     
     for k in range( 0, len(tok_edges) ):
       
@@ -202,7 +253,7 @@ def merge_pos_into_smaf( tok_smaf, pos_smaf ):
       pos_tok_edge = get_tok_edge( pos_smaf.lattice.lattice[ trg ] );
       tok_edges = [ tok_edge ];
       pos_edges = [ (pos_tok_edge,pos_edge) ];
-      
+    
     elif tok_edge.cto > pos_edge.cto:
       trg = pos_edge.target;
       pos_edge = get_pos_edge( pos_smaf.lattice.lattice[ trg ] );
@@ -212,7 +263,7 @@ def merge_pos_into_smaf( tok_smaf, pos_smaf ):
     elif tok_edge.cto < pos_edge.cto:
       tok_edge = get_tok_edge( tok_smaf.lattice.lattice[ tok_edge.target ] );
       tok_edges.append( tok_edge );
-
+  
   #output_lattice.cfrom = mincfrom;
   #output_lattice.cto = maxcto;
   output_lattice.init = "v0";
