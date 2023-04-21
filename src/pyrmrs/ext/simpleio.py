@@ -99,15 +99,26 @@ class SimpleIO:
   def read_block( self ):
     
     block = "";
+    newdata = None;
     while True:
-      data = self.read_uncd( 512 );
+      if newdata is None:
+        data = self.read_uncd( 512 );
+      else:
+        data = newdata;
+        newdata = None;
       for ch in data:
         if not self.ignore_char( ch ):
           block += ch;
       r = data.find( "\027" );
       if r != -1:
-        data += self.read_uncd( 512 - ( len(data) - r ) );
-        break;
+        if len(data) > r+1 and data[r+1] != "\000":
+          continue;
+        newdata = self.read_uncd( 512 - ( len(data) - r ) );
+        if len(data) > r+1 and data[r+1] == "\000":
+          break;
+        elif len(data) == r+1 and newdata[0] == "\000":
+          break;
+          
     pyrmrs.globals.logDebug( self, "result of read_block(): |>%s<|;" % block );
     return block;
 

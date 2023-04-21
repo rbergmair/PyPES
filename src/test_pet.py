@@ -10,6 +10,20 @@ petctrl = pyrmrs.ext.pet.PET( 10 );
 fsppctrl = pyrmrs.ext.fspp.FSPP();
 
 
+
+try:  
+  for smaf in fsppctrl.sentstr_to_smafs( "Some trees are green." ):
+    for rmrs in petctrl.smaf_to_rmrss( smaf ):
+      print;
+      print rmrs.str_pretty();
+except pyrmrs.ext.pet.PETError, (e, msg):
+  print;
+  print "error %d: %s" % ( e, msg );
+
+print;
+print "---"
+print;
+
 try:  
   for smaf in fsppctrl.sentstr_to_smafs( "The asdf barks." ):
     for rmrs in petctrl.smaf_to_rmrss( smaf ):
@@ -19,6 +33,9 @@ except pyrmrs.ext.pet.PETError, (e, msg):
   print;
   print "error %d: %s" % ( e, msg );
 
+print;
+print "---"
+print;
 
 try:  
   for smaf in fsppctrl.sentstr_to_smafs( "Every person who has the right to live in Europe can travel freely within Europe." ):
@@ -30,6 +47,7 @@ except pyrmrs.ext.pet.PETError, (e, msg):
   print "error %d: %s" % ( e, msg );
 
 print;
+print "---"
 print;
 
 try:  
@@ -42,6 +60,7 @@ except pyrmrs.ext.pet.PETError, (e, msg):
   print "error %d: %s" % ( e, msg );
 
 print;
+print "---"
 print;
 
 try:  
@@ -54,6 +73,7 @@ except pyrmrs.ext.pet.PETError, (e, msg):
   print "error %d: %s" % ( e, msg );
 
 print;
+print "---"
 print;
 
 try:  
@@ -66,6 +86,7 @@ except pyrmrs.ext.pet.PETError, (e, msg):
   print "error %d: %s" % ( e, msg );
 
 print;
+print "---"
 print;
 
 try:  
@@ -78,6 +99,7 @@ except pyrmrs.ext.pet.PETError, (e, msg):
   print "error %d: %s" % ( e, msg );
 
 print;
+print "---"
 print;
 
 try:  
@@ -88,5 +110,7 @@ try:
 except pyrmrs.ext.pet.PETError, (e, msg):
   print;
   print "error %d: %s" % ( e, msg );
+
+
 
 pyrmrs.globals.destructMain();

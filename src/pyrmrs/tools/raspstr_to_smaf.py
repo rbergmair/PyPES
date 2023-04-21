@@ -17,7 +17,7 @@ def raspstr_to_smaf( surface, raspstr ):
   
   raspstr = raspstr[ : raspstr.find( "\n" ) ];
   
-  print surface;
+  # print surface;
   
   min = None;
   max = None;
@@ -90,7 +90,7 @@ def raspstr_to_smaf( surface, raspstr ):
   lattice.init = "v0";
   lattice.final = "v%d" % (i-1);
   lattice.cfrom = 0;
-  lattice.cto = max;
+  lattice.cto = max-1;
   
   smaf.register( lattice );
   
