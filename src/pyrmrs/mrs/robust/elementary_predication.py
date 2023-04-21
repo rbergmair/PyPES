@@ -42,7 +42,7 @@ class ElementaryPredication( pyrmrs.mrs.common.elementary_predication.Elementary
     base = pyrmrs.mrs.common.elementary_predication.ElementaryPredication.xml_tmplt( \
       self, base );
     
-    elements = string.replace( "\n" + self.var.str_xml(), "\n", "\n  " );
+    elements = " "+self.var.str_xml();
     
     base = base.replace( "%%", "%%%%" );
     return base % ( "%s", elements+"%s" );

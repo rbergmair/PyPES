@@ -1,6 +1,13 @@
 import edge;
 import token_edge;
 import ersatz_edge;
+import pos_edge;
+import morph_edge;
+import syntree_edge;
+import err_edge;
+import rmrs_edge;
+import whatever_edge;
+
 
 class GenericEdge( edge.Edge ):
   
@@ -20,7 +27,27 @@ class GenericEdge( edge.Edge ):
     elif self.type == "ersatz":
       self.edge_inst = ersatz_edge.ErsatzEdge();
       self.edge_inst.startElement( name, attrs );
+    elif self.type == "pos":
+      self.edge_inst = pos_edge.PosEdge();
+      self.edge_inst.startElement( name, attrs );
+    elif self.type == "morph":
+      self.edge_inst = morph_edge.MorphologicalEdge();
+      self.edge_inst.startElement( name, attrs );
+    elif self.type == "syntree":
+      self.edge_inst = syntree_edge.SyntaxTreeEdge();
+      self.edge_inst.startElement( name, attrs );
+    elif self.type == "err":
+      self.edge_inst = err_edge.ErrEdge();
+      self.edge_inst.startElement( name, attrs );
+    elif self.type == "rmrs":
+      self.edge_inst = rmrs_edge.RmrsEdge();
+      self.edge_inst.startElement( name, attrs );
+    elif self.type == "whatever":
+      self.edge_inst = whatever_edge.WhateverEdge();
+      self.edge_inst.startElement( name, attrs );
     else:
+      print self.type;
+      print name;
       assert False;
 
   def characters( self, content ):

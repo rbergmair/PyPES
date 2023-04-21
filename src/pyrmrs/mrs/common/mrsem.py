@@ -1,3 +1,5 @@
+import xml.sax.saxutils;
+
 import pyrmrs.xmltools.reader_element;
 
 import label;
@@ -85,9 +87,9 @@ class MRSem( pyrmrs.xmltools.reader_element.ReaderElement ):
     
     attributes = "";
     if self.surface != None:
-      attributes += " surface='%s'" % self.surface;
+      attributes += " surface='%s'" % xml.sax.saxutils.escape( self.surface );
     if self.ident != None:
-      attributes += " ident='%s'" % self.ident;
+      attributes += " ident='%s'" % xml.sax.saxutils.escape( self.ident );
     attributes = attributes.replace( "%", "%%" );
     
     body1 = string.replace( "\n" + self.top.str_xml(), "\n", "\n  " );

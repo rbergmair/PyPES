@@ -5,6 +5,7 @@ import generic_edge;
 import lattice;
 import smaf;
 import slot;
+import text;
 
 class SMAFReader( pyrmrs.xmltools.xmlreader.XMLReader ):
 
@@ -12,7 +13,8 @@ class SMAFReader( pyrmrs.xmltools.xmlreader.XMLReader ):
     generic_edge.GenericEdge,
     lattice.Lattice,
     smaf.SMAF,
-    slot.Slot
+    slot.Slot,
+    text.Text
   ];
 
   XMLELEM = smaf.SMAF.XMLELEM;

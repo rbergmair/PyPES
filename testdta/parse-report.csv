@@ -1,2 +1,1 @@
-filename,gram coverage [%],sys coverage [%],no items,avg readings,min readings,q1 readings,med readings,q3 readings,max readings,avg time per item [s],avg time per item [cpu]
-simple/katia-stuff.items,62.18,85.38,395,4.96,2,5,5,5,5,6.6274,0.4205
+080418-104715-17437-ih-0,simple/syllogism.items,100.00,100.00,100.00,71,2.76,1,2,2,4,5,0.2128,0.0277

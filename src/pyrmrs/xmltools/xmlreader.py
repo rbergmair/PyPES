@@ -21,6 +21,10 @@ class XMLReaderIter:
 
     self.reader = reader;
     self.dead = False;
+    
+  def __iter__( self ):
+    
+    return self;
 
   def next( self ):
     
@@ -73,6 +77,8 @@ class XMLReader( xml.sax.handler.ContentHandler ):
   char_callbacks = {};
   end_callbacks = {};
   
+  substfn = None;
+  
   def __init__( self, ifile, addxml=None, limit=None ):
     
     self.tlcont = "";
@@ -109,6 +115,10 @@ class XMLReader( xml.sax.handler.ContentHandler ):
     #  self.readChunk();
     #except StopIteration:
     #  pass;
+  
+  def setSubstFn( self, fn ):
+    
+    self.substfn = fn;
 
   def regStartElementCB( self, type, cb ):
     
@@ -167,10 +177,13 @@ class XMLReader( xml.sax.handler.ContentHandler ):
             if first < 0:
               first = 0;
             self.alldata = self.alldata[ first : len( self.alldata ) ];
+          if not self.substfn is None:
+            data = self.substfn( data );
           pyrmrs.globals.logDebug( self, data );
           self.parser.feed( data );
         except:
           pyrmrs.globals.logWarning( self, self.alldata );
+          print self.alldata;
           raise;
 
       if eob: # or data == "" or ( ( self.limit != None ) and ( self.noread >= self.limit ) ):
@@ -188,10 +201,23 @@ class XMLReader( xml.sax.handler.ContentHandler ):
         del self.buf[ 0 ];
       except StopIteration:
         break;
+      
 
-  def __iter__( self ):
+  def getAll( self ):
 
     return XMLReaderIter( self );
+  
+  def getFirst( self ):
+    
+    iter = self.getAll();
+    rslt = None;
+    try:
+      rslt = iter.next();
+    except StopIteration:
+      pass;
+    return rslt;
+    
+    
   
   def startElement( self, name, attrs ):
     

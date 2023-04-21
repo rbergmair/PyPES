@@ -1,3 +1,5 @@
+import xml.sax.saxutils;
+
 import pyrmrs.xmltools.reader_element;
 
 import variable;
@@ -71,7 +73,7 @@ class FvPair( pyrmrs.xmltools.reader_element.ReaderElement ):
   
   def xml_tmplt( self, base ):
     
-    body = "  <rargname>%s</rargname>" % self.rargname;
+    body = "  <rargname>%s</rargname>" % xml.sax.saxutils.escape( self.rargname );
     body += string.replace( "\n" + self.ref.str_xml(), "\n", "\n  " );
     
     base = base.replace( "%%", "%%%%" );

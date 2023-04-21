@@ -42,7 +42,7 @@ class Lattice( pyrmrs.xmltools.reader_element.ReaderElement ):
     if attrs.has_key( "cfrom" ):
       self.cfrom = int( attrs[ "cfrom" ] );
     if attrs.has_key( "cto" ):
-      self.cfrom = int( attrs[ "cto" ] );
+      self.cto = int( attrs[ "cto" ] );
       
     
 
@@ -78,12 +78,12 @@ class Lattice( pyrmrs.xmltools.reader_element.ReaderElement ):
       elements += "\n" + edge.str_xml();
     elements = elements.replace( "\n", "\n  " );
     elements = elements.replace( "%", "%%" );
+    
     attrs = " init=\"%s\" final=\"%s\"" % ( self.init, self.final );
     if not self.cfrom is None:
       attrs += " cfrom=\"%s\"" % self.cfrom;
     if not self.cto is None:
       attrs += " cto=\"%s\"" % self.cto;
-    elements = elements.replace( "%", "%%" );
     attrs = attrs.replace( "%", "%%" );
     
     base = base.replace( "%%", "%%%%" );

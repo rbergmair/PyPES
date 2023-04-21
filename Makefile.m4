@@ -13,6 +13,7 @@ FIND=find
 ECHO=echo
 CAT=cat
 SED=sed
+ENV=_SH_ENV
 
 
 
@@ -20,16 +21,14 @@ MAKEFILE=Makefile
 
 CONFIG=src/pyrmrs/config.py
 
-SCRIPTS=bin/rmrsify.py bin/test_large_mrs.py bin/test_large_rmrs.py \
-  bin/test_pet.py bin/test_rasp.py bin/test_raspsent.py bin/test_simple_mrs.py \
-  bin/test_simple_rmrs.py
+SCRIPTS=bin/worker.py bin/dispatcher.py bin/finish_flag.py
 
 TESTXMLS=testdta/testrmrslist.xml testdta/testmrslist.xml testdta/testsmaflist.xml \
   testdta/dragon.xml
 
 
 
-all: $(MAKEFILE) $(CONFIG) $(SCRIPTS) $(TESTXMLS)
+all: $(MAKEFILE) $(CONFIG) $(SCRIPTS)
 
 clean: $(MAKEFILE)
 	$(FIND) . -name *.pyc -exec $(RM) {} \;
@@ -38,8 +37,9 @@ clean: $(MAKEFILE)
 	$(RM) $(TESTXMLS)
   
 loc: $(MAKEFILE)
-	$(FIND) . -name *.py -exec $(GREP) -H --count -e "" {} \;
-	$(FIND) . -name *.py -exec $(CAT) {} \; | $(GREP) -e "" --count
+	$(FIND) src/pyrmrs -name *.py -exec $(GREP) -H --count -e "" {} \;
+	$(FIND) src/pyrmrstest -name *.py -exec $(GREP) -H --count -e "" {} \;
+	$(FIND) src/pyrmrs -name *.py -exec $(CAT) {} \; | $(GREP) -e "" --count
 
 
 
@@ -56,6 +56,6 @@ $(MAKEFILE): $(MAKEFILE).m4
 $(CONFIG): src/pyrmrs/config.py.m4 config.m4 _CONFIG_M4_LOCAL $(MAKEFILE)
 	( $(ECHO) "`m4_changecom'()"; $(CAT) $< ) | $(M4) - > $@
 
-bin/%.py: src/%.py $(MAKEFILE)
-	( $(ECHO) "#!_SH_PYTHON"; $(CAT) $< ) > $@
+bin/%.py: src/pyrmrs/bin/%.py $(MAKEFILE)
+	( $(ECHO) "#!_SH_PYTHON"; $(ECHO) "import sys;"; $(ECHO) "sys.path.append( \"_DIR_PYRMRSHOME/src\" );"; $(ECHO) "import pyrmrs.bin.$*;"; $(ECHO) "sys.exit( pyrmrs.bin.$*.main() );" ) > $@
 	$(CHMOD) +x $@

@@ -10,6 +10,8 @@
   (loop
 
     (setq len (read-sequence *indata* istrm))
+    (when (= len 0)
+      (return-from simple-io-read-block ""))
 
     (setq i 0)
     (setq o 0)
@@ -44,23 +46,24 @@
 
 (in-package :mrs)
 
-(defvar *rasp-rmrs-gram-file*)
-(defvar *rasp-rmrs-tag-file*)
-(defvar *rasp-xml-word-p*)
-(defvar *rasp-xml-type*)
+;; (defvar *rasp-rmrs-gram-file*)
+;; (defvar *rasp-rmrs-tag-file*)
+;; (defvar *rasp-xml-word-p*)
+;; (defvar *rasp-xml-type*)
 
 (defun simple-io-rasp-rmrs (istream ostream)
 
   (let ((*rasp-rmrs-gram-file*
-         "src/rmrs/rasp3/gram15.rmrs")
+         "src/rmrs/rasp3/gram15-general.rmrs")
         (*rasp-rmrs-tag-file*
          "src/rmrs/rasp3/lex15.rmrs")
         (*rasp-xml-word-p* t)
-        (*renumber-hack* t)
+        (*renumber-hack* nil)
         (*rasp-xml-type* :none))
 
     (setf *algebra-rule-instructions* nil)
     (setf *algebra-tag-instructions* nil)
+    (setf *anchor-rmrs-p* t)
 
     (clear-rule-record)
     (read-rmrs-grammar *rasp-rmrs-gram-file*)
@@ -68,6 +71,7 @@
 
     (setf (stream-external-format istream) :utf-8)
     (setf (stream-external-format ostream) :utf-8)
+    (setq excl::*global-gc-behavior* :auto)
 
     (common-lisp-user::simple-io-write-delim ostream)
     (finish-output ostream)
@@ -81,16 +85,19 @@
       (with-input-from-string (jstream input)
         (setf (stream-external-format jstream) :utf-8)
         (format ostream "<rmrs-list>~%")
-        (setq tagged (read jstream nil nil))
-        (setq number (read jstream nil nil))
+;;        (setq tagged (read jstream nil nil))
+;;        (setq number (read jstream nil nil))
         (loop
           (setq tree (read jstream nil nil))
           (unless tree
             (return))
-          (when tree
-            (construct-sem-for-tree 
-              tree
-              :rasp ostream tagged))
+          (construct-sem-for-tree 
+            tree
+            :rasp
+            ostream
+;;            tagged
+            nil
+          )
         )
         (format ostream "</rmrs-list>~%")
         (common-lisp-user::simple-io-write-delim ostream)
@@ -111,6 +118,7 @@
 
   (setf (stream-external-format istream) :utf-8)
   (setf (stream-external-format ostream) :utf-8)
+  (setq excl::*global-gc-behavior* :auto)
 
   (read-preprocessor "preprocessor.fsr") 
 

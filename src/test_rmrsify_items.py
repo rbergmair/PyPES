@@ -3,6 +3,8 @@
 import codecs;
 import time;
 
+import pyrmrs.globals;
+
 import pyrmrs.ext.fspp;
 import pyrmrs.ext.pet;
 
@@ -14,11 +16,13 @@ import pyrmrs.tools.merge_pos_into_smaf;
 
 import pyrmrs.tools.prepreprocess;
 
+import os;
+
 
 
 # INFILENAMEs = [ "simple/syllogism.items", "simple/fracas.items" ];
-# INFILENAMEs = [ "simple/syllogism.items" ];
-INFILENAMEs = [ "simple/katia-stuff.items" ];
+INFILENAMEs = [ "simple/syllogism.items" ];
+# INFILENAMEs = [ "simple/katia-stuff.items" ];
 
 
 
@@ -28,8 +32,16 @@ fsppctrl = pyrmrs.ext.fspp.FSPP();
 raspctrl = pyrmrs.ext.rasp.Rasp();
 petctrl = pyrmrs.ext.pet.PET( 5, 5 );
 
-reportfile = open( "testdta/parse-report.csv", "w" );
-reportfile.write( "filename,overall coverage[%],gram coverage [%],sys coverage [%],no items,avg readings,min readings,q1 readings,med readings,q3 readings,max readings,avg time per item [s],avg time per item [cpu]\n" );
+x = True;
+try:
+  f = open( "testdta/parse-report.csv", "r" );
+  f.close();
+except:
+  x = False;
+
+reportfile = open( "testdta/parse-report.csv", "a" );
+if x:
+  reportfile.write( "unqid,filename,overall coverage[%],gram coverage [%],sys coverage [%],no items,avg readings,min readings,q1 readings,med readings,q3 readings,max readings,avg time per item [s],avg time per item [cpu]\n" );
 
 
 
@@ -162,7 +174,8 @@ for filename in INFILENAMEs:
   print;
   print;
   
-  reportfile.write( "%s,%2.2f,%2.2f,%2.2f,%d,%2.2f,%d,%d,%d,%d,%d,%2.4f,%2.4f\n" % ( \
+  reportfile.write( "%s,%s,%2.2f,%2.2f,%2.2f,%d,%2.2f,%d,%d,%d,%d,%d,%2.4f,%2.4f\n" % ( \
+    pyrmrs.globals.getUnqID(),
     filename,
     ( 100.0 * float( total-gram_error-sys_error ) ) / float( total ), \
     ( 100.0 * float( total-gram_error-sys_error ) ) / float( total-sys_error ), \

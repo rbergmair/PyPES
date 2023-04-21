@@ -54,12 +54,12 @@ class InGroup( pyrmrs.xmltools.reader_element.ReaderElement ):
 
   def xml_base( self ):
     
-    return "<ing%s>%s\n</ing>";
+    return "<ing%s>   %s   </ing>";
 
   def xml_tmplt( self, base ):
     
-    elems = string.replace( "\n<ing-a> %s </ing-a>" % self.vara.str_xml(), "\n", "\n  " );
-    elems += string.replace( "\n<ing-b> %s </ing-b> " % self.varb.str_xml(), "\n", "\n  " );
+    elems = "<ing-a> %s </ing-a>   " % self.vara.str_xml();
+    elems += "<ing-b> %s </ing-b>" % self.varb.str_xml();
     
     base = base.replace( "%%", "%%%%" );
     return base % ( "%s", elems+"%s" );

@@ -1,3 +1,5 @@
+import xml.sax.saxutils;
+
 import pyrmrs.xmltools.reader_element;
 
 
@@ -57,8 +59,8 @@ class ExtraPair( pyrmrs.xmltools.reader_element.ReaderElement ):
   
   def xml_tmplt( self, base ):
     
-    elements = " <path>%s</path>" % self.path;
-    elements += " <value>%s</value> " % self.value;
+    elements = " <path>%s</path>" % xml.sax.saxutils.escape( self.path );
+    elements += " <value>%s</value> " % xml.sax.saxutils.escape( self.value );
     
     base = base.replace( "%%", "%%%%" );
     return base % ( "%s", elements+"%s" );

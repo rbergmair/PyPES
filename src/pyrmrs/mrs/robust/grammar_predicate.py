@@ -1,4 +1,5 @@
 import pyrmrs.xmltools.pchar_element;
+import xml.sax.saxutils;
 
 class GrammarPredicate( pyrmrs.xmltools.pchar_element.PCharElement ):
 
@@ -12,8 +13,10 @@ class GrammarPredicate( pyrmrs.xmltools.pchar_element.PCharElement ):
     return "<gpred%s>%s</gpred>";
 
   def xml_tmplt( self, base ):
-    
-    text = self.text.replace( "%", "%%" );
+
+    text = self.text;
+    text = xml.sax.saxutils.escape( text );
+    text = text.replace( "%", "%%" );
     base = base.replace( "%%", "%%%%" );
     return base % ( "%s", text+"%s" );
 

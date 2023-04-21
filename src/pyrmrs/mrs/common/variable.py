@@ -36,7 +36,8 @@ class Variable( pyrmrs.xmltools.reader_element.ReaderElement ):
       if self.referent != None:
         self.referent.startElement( name, attrs );
       self.vid = int( attrs[ "vid" ] );
-      self.sort = attrs[ "sort" ];
+      if attrs.has_key( "sort" ):
+        self.sort = attrs[ "sort" ];
 
   def characters( self, content ):
     

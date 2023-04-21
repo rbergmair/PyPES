@@ -1,4 +1,10 @@
+import traceback;
+
+import pyrmrs.globals;
 import pyrmrs.mrs.common.referent;
+import pyrmrs.error.xmlsem_error;
+
+
 
 class Referent( pyrmrs.mrs.common.referent.Referent ):
 
@@ -84,26 +90,39 @@ class Referent( pyrmrs.mrs.common.referent.Referent ):
     if selfat != None and refat != None:
       if refat != selfat:
         if refat != "u" and selfat != "u":
-          raise error.xmlsem_error.XMLSemError( \
-            error.xmlsem_error.XMLSemError.ERRNO_UNDEFINED, "" );
+          #raise pyrmrs.error.xmlsem_error.XMLSemError( \
+          #  ( pyrmrs.error.xmlsem_error.XMLSemError.ERRNO_UNDEFINED, "" ) );
+          #assert False;
+          pass;
             
     return selfat;
     
   def merge( self, ref2 ):
     
-    self.num = self.mergeat( self.num, ref2.num );
-    self.pers = self.mergeat( self.pers, ref2.pers );
-    self.gender = self.mergeat( self.gender, ref2.gender );
-    self.divisible = self.mergeat( self.divisible, ref2.divisible );
-    self.cognst = self.mergeat( self.cognst, ref2.cognst );
-    self.tense = self.mergeat( self.tense, ref2.tense );
-    self.telic = self.mergeat( self.telic, ref2.telic );
-    self.protracted = self.mergeat( self.protracted, ref2.protracted );
-    self.stative = self.mergeat( self.stative, ref2.stative );
-    self.incept = self.mergeat( self.incept, ref2.incept );
-    self.imr = self.mergeat( self.imr, ref2.imr );
-    self.boundedness = self.mergeat( self.boundedness, ref2.boundedness );
-    self.refdistinct = self.mergeat( self.refdistinct, ref2.refdistinct );
+    try:
+      
+      self.num = self.mergeat( self.num, ref2.num );
+      self.pers = self.mergeat( self.pers, ref2.pers );
+      self.gender = self.mergeat( self.gender, ref2.gender );
+      self.divisible = self.mergeat( self.divisible, ref2.divisible );
+      self.cognst = self.mergeat( self.cognst, ref2.cognst );
+      self.tense = self.mergeat( self.tense, ref2.tense );
+      self.telic = self.mergeat( self.telic, ref2.telic );
+      self.protracted = self.mergeat( self.protracted, ref2.protracted );
+      self.stative = self.mergeat( self.stative, ref2.stative );
+      self.incept = self.mergeat( self.incept, ref2.incept );
+      self.imr = self.mergeat( self.imr, ref2.imr );
+      self.boundedness = self.mergeat( self.boundedness, ref2.boundedness );
+      self.refdistinct = self.mergeat( self.refdistinct, ref2.refdistinct );
+    
+    except:
+      pyrmrs.globals.logError( self, "--- INABLE TO MERGE TWO REFERENTS ---" );
+      pyrmrs.globals.logError( self, traceback.format_exc() );
+      pyrmrs.globals.logError( self, "Referent 1: %s" % self.str_xml() );
+      pyrmrs.globals.logError( self, "Referent 2: %s" % ref2.str_xml() );
+      raise;
+      
+      
 
 
 

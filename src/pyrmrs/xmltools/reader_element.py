@@ -33,7 +33,7 @@ class ReaderElement( xml.sax.handler.ContentHandler ):
 
   def xml_base( self ):
     
-    return "<???%s>%s</???>";
+    return "<%s%%s>%%s</%s>" % ( self.XMLELEM, self.XMLELEM );
 
   def xml_tmplt( self, base ):
     

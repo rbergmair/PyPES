@@ -18,18 +18,26 @@ class NDomConSolution:
 
 
   def setequals( self, a, b ):
+
+    # asdf
+    return a == b;
     
-    found = False;
-    if len(a) == len(b):
-      found = True;
-      for item in a:
-        if not item in b:
-          found = False;
-          break;
-      for item in b:
-        if not item in a:
-          found = False;
-          break;
+    if len(a) != len(b):
+      return False;
+
+    found = True;
+    for item in a:
+      if not item in b:
+        found = False;
+        break;
+    if not found:
+      return False;
+    
+    found = True;
+    for item in b:
+      if not item in a:
+        found = False;
+        break;
     return found;
 
 
@@ -68,110 +76,102 @@ class NDomConSolution:
         self._cons_inv[ root ].append( hole );
 
 
-
-  def _reachable( self, v1, v2, roots_=None ):
+        
+  def _biconnected_graph( self, roots ):
     
-    roots = None;
-    if roots_ is None:
-      roots = copy.copy( self._fragments.keys() );
-    else:
-      roots = copy.copy( roots_ );
+    adjacent_nodes = {};
       
-    i = 0;
-    reachable = [];
-    if not self._reachability_cache is None:
-      ( roots_, reachable_, i_ ) = self._reachability_cache;
-      if roots == roots_:
-        reachable = reachable_;
-        i = i_;
-        pass;
+    for root in roots:
+      if not adjacent_nodes.has_key( root ):
+        adjacent_nodes[ root ] = [];
+      for hole in self._fragments[ root ]:
+        if not hole in adjacent_nodes[ root ]:
+          adjacent_nodes[ root ].append( hole );
+        if not adjacent_nodes.has_key( hole ):
+          adjacent_nodes[ hole ] = [];
+        if not root in adjacent_nodes[ hole ]:
+          adjacent_nodes[ hole ].append( root );
+        
+    for higher in self._cons:
+      if higher[0] and not higher in roots:
+        continue;
+      if not adjacent_nodes.has_key( higher ):
+        adjacent_nodes[ higher ] = [];
+      for lower in self._cons[ higher ]:
+        if lower[0] and not lower in roots:
+          continue;
+        if not lower in adjacent_nodes[ higher ]:
+          adjacent_nodes[ higher ].append( lower );
+        if not adjacent_nodes.has_key( lower ):
+          adjacent_nodes[ lower ] = [];
+        if not higher in adjacent_nodes[ lower ]:
+          adjacent_nodes[ lower ].append( higher );
     
-    if reachable == []:
-      for root in roots:
-        for hole in self._fragments[ root ]:
-          if ( not ( root, hole ) in reachable ) and \
-             ( not ( hole, root ) in reachable ):
-            reachable.append( (root,hole) );
-      for higher in self._cons:
-        for lower in self._cons[ higher ]:
-          if not ( higher[0] and not higher in roots ):
-            if ( not ( higher, lower ) in reachable ) and \
-               ( not ( lower, higher ) in reachable ):
-              reachable.append( (higher,lower) );
+    return adjacent_nodes;
 
-    self._reachability_cache = ( roots, reachable, i );
-    if (v1,v2) in reachable or (v2,v1) in reachable:
-      return True;
 
-    while True:
-      if i >= len( reachable ):
-        break;
-      ( a1, a2 ) = reachable[ i ];
+
+  def _reachable( self, v1, v2, roots ):
+    
+    adjacent_nodes = self._biconnected_graph( roots );
+    visited = {};
+    reachable = [ v1 ];
+    
+    i = 0;
+    
+    while i < len( reachable ):
+      
+      currentvtx = reachable[ i ];
       i += 1;
       
-      j = 0;
-      while True:
-        if j >= i:
-          break;
-        ( b1, b2 ) = reachable[ j ];
-        j += 1;
-        
-        if b1 == a2:
-          if not (a1,b2) in reachable:
-            if not (b2,a1) in reachable:
-              reachable.append( (a1,b2) );
-              if ( a1 == v1 and b2 == v2 ) or ( a1 == v2 and b2 == v1 ):
-                break;
-
-        if a1 == b2:
-          if not (a2,b1) in reachable:
-            if not (b1,a2) in reachable:
-              reachable.append( (a2,b1) );
-              if ( a2 == v1 and b1 == v2 ) or ( a2 == v2 and b1 == v1 ):
-                break;
-
-        if a1 == b1:
-          if not (a2,b2) in reachable:
-            if not (b2,a2) in reachable:
-              reachable.append( (a2,b2) );
-              if ( a2 == v1 and b2 == v2 ) or ( a2 == v2 and b2 == v1 ):
-                break;
-
-        if a2 == b2:
-          if not (a1,b1) in reachable:
-            if not (b1,a1) in reachable:
-              reachable.append( (a1,b1) );
-              if ( a1 == v1 and b1 == v2 ) or ( a1 == v2 and b1 == v1 ):
-                break;
-    
-    self._reachability_cache = ( roots, reachable, i );
-    if (v1,v2) in reachable or (v2,v1) in reachable:
-      return True;
-    else:
+      if adjacent_nodes.has_key( currentvtx ):
+        for next in adjacent_nodes[ currentvtx ]:
+          if not visited.has_key( next ):
+            visited[ next ] = True;
+            reachable.append( next );
+            if not v2 is None:
+              if next == v2:
+                return True;
+              
+    if v2 is None:
+      return visited.keys();
+    else:    
       return False;
-
-
-
-  def solve( self ):
     
-    if not self.solve_domcon():
-      return False;
+  def _is_reachable( self, v1, v2, roots ):
+    
+    return self._reachable( v1, v2, roots );
+  
+  def _generate_reachables( self, v1, roots ):
+    
+    return self._reachable( v1, None, roots );
+
+
+
+  def solve( self, beam_pruning=None ):
+    
+    # reachables = self._generate_reachables( (True,0), self._fragments.keys() );
+    # nonreachable = [];
+    # for root in self._fragments.keys():
+    #   if not root in reachables:
+    #     nonreachable.append( root );
+    # pass;
+    return self.solve_domcon( beam_pruning=beam_pruning );
 
 
 
   # GRAPH-SOLVER-CHART(G')
-  def solve_domcon( self, roots_=None ):
+  def solve_domcon( self, roots_=None, beam_pruning=None ):
 
     roots = None;
     if roots_ is None:
       roots = copy.copy( self._fragments.keys() );
     else:
       roots = copy.copy( roots_ );
+    
+    #asdf
+    roots.sort();
       
-    if self.setequals( roots, [(True, 2), (True, 12), (True, 10), (True, 11), (True, 1)] ):
-      # assert False;
-      pass;
-
     # if there is an entry for G' in the chart
     found = False;
     for i in range( 0, len(self._chart_keys) ):
@@ -189,24 +189,30 @@ class NDomConSolution:
       # then return true
       return True;
     
+    rootsplusdaughters = [];
+    for root in roots:
+      rootsplusdaughters.append( root );
+      for daughter in self._fragments[ root ]:
+        rootsplusdaughters.append( daughter );
+    
     # free <- FREE-FRAGMENTS(G')
     free_roots = [];
     for k in range( 0, len(roots) ):
       root = roots[ k ];
       if self._cons_inv.has_key( root ):
-        reach = False;
+        free = True;
         for pred in self._cons_inv[ root ]:
-          if self._reachable( pred, root, roots ):
-            reach = True;
+          if pred in rootsplusdaughters:
+            free = False;
             break;
-        if reach:
+        if not free:
           continue;
       del roots[ k ];
       fragment = self._fragments[ root ];
       free = True;
       for i in range( 0, len(fragment) ):
         for j in range( 0, i ):
-          if self._reachable( fragment[i], fragment[j], roots ):
+          if self._is_reachable( fragment[i], fragment[j], roots ):
             free = False;
       if free:
         free_roots.append( root );
@@ -221,9 +227,23 @@ class NDomConSolution:
       return False;
     
     splits = [];
-
+    
     # for each F in free
-    for free_root in free_roots:
+    
+    free_roots_ = [];
+    k = 0;
+    for root in free_roots:
+      if len( self._fragments[ root ] ) == 0:
+        continue;
+      free_roots_.append( root );
+      k += 1;
+      if not beam_pruning is None and beam_pruning >= k:
+        break;
+    
+    if len( free_roots_ ) == 0:
+      return False;
+    
+    for free_root in free_roots_:
 
       pyrmrs.globals.logDebug( self, "--> "+str(free_root) );
       
@@ -234,10 +254,10 @@ class NDomConSolution:
       empty_hole = [];
       for hole in self._fragments[ free_root ]:
         split[ hole ] = [];
-        for root in self._fragments:
-          if self._reachable( root, hole, roots ):
-            split[ hole ].append( root );
-            assigned.append( root );
+        for (tf,nn) in self._generate_reachables( hole, roots ):
+          if tf:
+            split[ hole ].append( (tf,nn) );
+        assigned += split[ hole ];
       for hole in split:
         if split[ hole ] == []:
           empty_hole.append( hole );
@@ -245,7 +265,9 @@ class NDomConSolution:
           pyrmrs.globals.logDebug( self, "    NEH %s %s" % (hole,split[hole]) );
 
       pyrmrs.globals.logDebug( self, "    EH"+str(empty_hole) );
-      assert len( empty_hole ) <= 1;
+      #assert len( empty_hole ) <= 1;
+      if len( empty_hole ) > 1:
+        return False;
       
       if len( empty_hole ) == 1:
         empty_hole = empty_hole[ 0 ];
@@ -253,8 +275,6 @@ class NDomConSolution:
         for root in roots:
           if not root in assigned:
             split[ empty_hole ].append( root );
-        if ( True, 1 ) in split[ empty_hole ]:
-          pass;
       roots.append( free_root );
       # assert split == SPLIT(G',F)
 
@@ -263,21 +283,17 @@ class NDomConSolution:
       # for each S in WCCS(G'-F)
       for hole in split:
         # if GRAPH-SOLVER-CHART(S) == false
-        if not self.solve_domcon( split[ hole ] ):
+        if not self.solve_domcon( split[ hole ], beam_pruning ):
           # return false
           return False;
         
       # add (G',split) to the chart
-      if split != {}:
-      #  found = False;
-      #  for i in range( 0, len(self._chart_keys) ):
-      #    if self.setequals( self._chart_keys[i], roots ):
-      #      if split == self._chart[i]:
-      #        found = True;
-      #        break;
-      #  if not found:
-        splits.append( (free_root,split) );
-      
+      assert split != {};
+      splits.append( (free_root,split) );
+        
+    # asdf
+    roots.sort();
+    
     self._chart_keys.append( roots );
     self._chart.append( splits );
     # return true
@@ -285,42 +301,87 @@ class NDomConSolution:
 
 
 
-  def enumerate_rec( self, roots ):
+  def multiply_dicts( self, dicts ):
+    
+    #if len( dicts ) == 0:
+    #  return [];
+    
+    firstpart = dicts[0];
+    rest = dicts[1:];
+    if len( rest ) == 0:
+      return firstpart;
+    
+    results = [];
+    
+    for firstdict in firstpart:
+      for restdict in self.multiply_dicts( rest ):
+        new = copy.copy( firstdict );
+        new = self.dictunion( new, restdict );
+        results.append( new );
+    
+    return results;
+    
+
+  def enumerate_rec( self, roots, only_first=False ):
     
     if len( roots ) == 1:
-      return [ ( {}, roots[0] ) ];
-
-    splits = [];
+      return [ ( roots[0], {} ) ];
     
+    #asdf
+    roots.sort();
+    
+    nonterminal = [];
+    for root in roots:
+      if len( self._fragments[ root ] ) > 0:
+        nonterminal.append( root );
+
+    splits = None;
     for i in range( 0, len(self._chart_keys) ):
       if self.setequals( self._chart_keys[i], roots ):
         splits = self._chart[i];
         break;
       
-    results = [];
-    for (top,split) in splits:
-      scopesin = [ {} ];
-      for root in split:
-        scopesout = [];
-        subroots = split[ root ];
-        subs = self.enumerate_rec( subroots );
-        for scope in scopesin:
-          scope_ = copy.copy( scope );
-          for (subscope,subtop) in subs:
-            scope_ = self.dictunion( scope, subscope );
-            scope_[ root ] = subtop;
-            if not scope_ in scopesout:
-              scopesout.append( scope_ );
-        scopesin = scopesout;
-      for scope in scopesout:
-        results.append( (scope,top) );
-    return results;
-  
-  
-  
-  def enumerate( self ):
+    if splits is None:
+      assert len( nonterminal ) == 0;
+      
+    if len( nonterminal ) == 0:
+      assert splits is None;
+      
+    if splits is None:
+      pass;
     
-    rslt = self.enumerate_rec( self._fragments.keys() );
+    scopings = [];
+    
+    splits.sort();
+    
+    for (top,split) in splits:
+      
+      parts = [];
+      
+      for root in split:
+        
+        subroots = split[ root ];
+        subparts = [];
+        subscopings = self.enumerate_rec( subroots, only_first );
+        for ( subtop, subscope ) in subscopings:
+          newscope = copy.copy( subscope );
+          newscope[ root ] = subtop;
+          subparts.append( newscope );
+        parts.append( subparts );
+          
+      for dict in self.multiply_dicts( parts ):
+        scopings.append( (top,dict) );
+      
+      if only_first:
+        break;
+            
+    return scopings;
+  
+  
+  
+  def enumerate( self, only_first=False ):
+    
+    rslt = self.enumerate_rec( self._fragments.keys(), only_first );
     #for x in rslt:
       #print "_ %s %s" % x;
       #assert False;
